@@ -32,6 +32,13 @@ describe('FirstPassRx app', () => {
     expect(screen.getByText(/Patient:/i)).toBeInTheDocument()
     expect(screen.getByText(/Doctor:/i)).toBeInTheDocument()
     expect(screen.getByText(/Pharmacy:/i)).toBeInTheDocument()
+    // Verify that the dynamic generic name is extracted and rendered properly in nested elements
+    const doctorLi = screen.getByText(/Doctor:/i).closest('li')
+    expect(doctorLi).toHaveTextContent(/write Ventolin HFA on the prescription, not generic albuterol/i)
+
+    const pharmacyLi = screen.getByText(/Pharmacy:/i).closest('li')
+    expect(pharmacyLi).toHaveTextContent(/switching this to generic albuterol may trigger extra insurance approval/i)
+
     expect(screen.queryByText(/generic OK/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/Q4-6H PRN/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/90 micrograms per puff/i)).not.toBeInTheDocument()

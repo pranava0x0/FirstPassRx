@@ -1,7 +1,7 @@
 import type { AltItem, PayerMeta } from '../types/formulary'
 
 function readableNote(note: string): string {
-  return note.replace(/PA/g, 'prior authorization').replace(/·/g, '+')
+  return note.replace(/\bPA\b/g, 'prior authorization').replace(/·/g, '+')
 }
 
 function readableDrug(drug: string): string {

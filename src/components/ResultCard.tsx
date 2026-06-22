@@ -24,6 +24,14 @@ export function ResultCard({ record, payer, drugClass, panelId, labelId }: Props
   const sources = resolveSources(record.sourceIds)
   const displayName = agent.brand ?? agent.inn
 
+  // Clinician & Patient UX: Extract a clean, lowercase generic name without salt/device suffixes
+  // (e.g. "Albuterol sulfate HFA" -> "albuterol", "Budesonide inhalation" -> "budesonide").
+  // This prevents hardcoding "generic albuterol" in BOGL (Brand Over Generic) instructions,
+  // making the component robust and correct for any other drug classes that prefer brands.
+  const genericBase = agent.inn
+    .replace(/\s+(sulfate|propionate|furoate|inhalation|HFA)\b/gi, '')
+    .toLowerCase()
+
   return (
     <section
       id={panelId}
@@ -55,27 +63,24 @@ export function ResultCard({ record, payer, drugClass, panelId, labelId }: Props
         <div className="patient-summary" aria-label="What to do next">
           <h3>What to do next</h3>
           <ol>
+            {/* Patient Action: Keep this clean, consistent, and identical for all records */}
+            <li>
+              <b>Patient:</b> ask your doctor if <strong>{displayName}</strong> is the right
+              inhaler for you.
+            </li>
             {record.boglActive ? (
               <>
                 <li>
-                  <b>Patient:</b> ask your doctor if <strong>{displayName}</strong> is the right
-                  inhaler for you.
-                </li>
-                <li>
                   <b>Doctor:</b> write <strong>{displayName}</strong> on the prescription, not
-                  generic albuterol.
+                  generic {genericBase}.
                 </li>
                 <li>
-                  <b>Pharmacy:</b> switching this to generic albuterol may trigger extra insurance
+                  <b>Pharmacy:</b> switching this to generic {genericBase} may trigger extra insurance
                   approval.
                 </li>
               </>
             ) : (
               <>
-                <li>
-                  <b>Patient:</b> ask your doctor if <strong>{displayName}</strong> is the right
-                  inhaler for you.
-                </li>
                 <li>
                   <b>Doctor:</b> this plan is likely to cover <strong>{displayName}</strong> without
                   prior authorization.
@@ -83,7 +88,7 @@ export function ResultCard({ record, payer, drugClass, panelId, labelId }: Props
                 <li>
                   <b>Pharmacy:</b>{' '}
                   {agent.genericAvailable
-                    ? 'a generic version is okay for this plan.'
+                    ? `a generic version is okay for this plan.`
                     : 'a generic version is not listed for this product.'}
                 </li>
               </>

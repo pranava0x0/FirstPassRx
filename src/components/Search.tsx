@@ -53,7 +53,7 @@ export function Search({ onPick }: { onPick: (payerId: PayerId, classId: ClassId
                     }}
                   >
                     <span className={`search__kind search__kind--${h.kind}`}>
-                      {h.kind === 'preferred' ? 'Preferred' : 'Rejects'}
+                      {h.kind === 'preferred' ? 'Preferred' : 'Needs PA'}
                     </span>
                     <span className="search__drug">{h.drug}</span>
                     <span className="search__where">
