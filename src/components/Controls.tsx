@@ -93,6 +93,7 @@ export function Controls({ payerId, classId, onPayer, onClass, panelId, tabId }:
                 onKeyDown={onTabKeyDown}
               >
                 <span className="seg__abbr">{c.plainName}</span>
+                <span className="seg__plain">{c.shortName}</span>
               </button>
             )
           })}

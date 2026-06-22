@@ -98,7 +98,11 @@ export function ResultCard({ record, payer, drugClass, panelId, labelId }: Props
 
         {record.boglActive && record.boglNote ? (
           <div>
-            <BoglBanner brand={agent.brand ?? displayName} />
+            <BoglBanner
+              brand={agent.brand ?? displayName}
+              payerName={payer.shortName}
+              genericBase={genericBase}
+            />
           </div>
         ) : null}
 
