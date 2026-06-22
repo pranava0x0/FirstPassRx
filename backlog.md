@@ -13,6 +13,9 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   Omlyclo biosimilar), mepolizumab, benralizumab, dupilumab, tezepelumab — specialty-pharmacy /
   buy-and-bill with their own PA pathway. Cite FDA + manufacturer; the sources research already
   gathered the key facts.
+- **Patient Synonym search mapping** (Newbie/Patient): Support mapping layperson search terms
+  (e.g., "rescue spray", "blue inhaler", "steroid pump", "COPD breath") to their clinical drug classes
+  or specific molecules in the search index so patients without medical background find what they need.
 
 ## Medium
 
@@ -24,6 +27,11 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   change quarterly).
 - **Print / hand-out view** of a plan's full preferred grid for a clinic binder or the patient.
 - **Quantity limits** as a first-class field (the formularies carry QL codes alongside PA/ST).
+- **Inhaler Spacer & Technique instructions** (Patient/Newbie): Show simple device-specific instructions
+  (MDI vs. DPI technique) based on the preferred agent's delivery type (e.g. HFA inhalers benefit from
+  spacers and slow deep breathing, while dry-powder inhalers need a fast, forceful breath).
+- **Insurance Card Helper (Payer finder)** (Newbie): Add a mini-guide explaining how patients can locate
+  their plan, PBM, RxBIN, and RxGroup on their physical insurance card to select the correct plan.
 
 ## Low
 
@@ -32,3 +40,6 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   gradients) into CI per docs/design.md.
 - GitHub Actions Pages deploy (SHA-pinned `actions/*`) as an alternative to the `gh-pages` branch.
 - Dark theme — invert to a warm near-black canvas, darken the three status hues one stop to hold AA.
+- **Compact Clinic Grid Layout** (Expert/UX): Add a toggle for a compact side-by-side comparison matrix of
+  all 5 plans for the active class, optimized for rapid clinical scanning and printing.
+

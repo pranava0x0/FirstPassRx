@@ -97,6 +97,7 @@ Never blindly write code.
 - **Cover edges:** empty `[] / {} / ""`, null for every optional field, boundary values, combined filters.
 - **Count-floor regression test.** For append-only datasets, assert total/item counts never drop versus the previous commit. Reintroduced caps and accidental deletions pass schema validation but fail a count floor.
 - **Seed one example per enum value.** When the UI renders a legend/chips off an enum, test the dataset ships ≥ 1 record per value — so no legend slot renders empty and deleting the last example fails loudly.
+- **Query text safely when elements contain nested markup.** Avoid calling `getByText` with a full sentence regex if it is split by `<b>` or `<strong>` tags. Instead, grab the closest wrapper element (e.g. `.closest('li')`) and assert using `.toHaveTextContent(regex)` which aggregates the text of all child nodes.
 - **Run the full suite before committing.**
 - **Never ship test files to production.** CI excludes tests, fixtures, debug artifacts.
 - **Tests are the eval suite** — the loop that tells you what works. Invest in it.
