@@ -27,6 +27,10 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   change quarterly).
 - **Print / hand-out view** of a plan's full preferred grid for a clinic binder or the patient.
 - **Quantity limits** as a first-class field (the formularies carry QL codes alongside PA/ST).
+- **Surface the strength/dose in the open answer** (Expert): the patient-first refactor moved the
+  strength (e.g. "90 mcg") and clinical sig behind the "Prescription text for clinician" `<details>`.
+  That is the one load-bearing number a prescriber needs every time — show it as a quiet line in the
+  open answer (DESIGN.md "one surface, two audiences"), without bringing back the rest of the jargon.
 - **Inhaler Spacer & Technique instructions** (Patient/Newbie): Show simple device-specific instructions
   (MDI vs. DPI technique) based on the preferred agent's delivery type (e.g. HFA inhalers benefit from
   spacers and slow deep breathing, while dry-powder inhalers need a fast, forceful breath).
