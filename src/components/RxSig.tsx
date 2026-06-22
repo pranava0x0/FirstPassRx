@@ -34,7 +34,7 @@ export function RxSig({ record }: { record: FormularyRecord }) {
 
   return (
     <div>
-      <p className="eyebrow">Rx sig — edit, then copy</p>
+      <p className="sig__patient">Clinician copy text. Edit before prescribing.</p>
       <div className="sig__row">
         <textarea
           className="sig__field"
@@ -42,7 +42,7 @@ export function RxSig({ record }: { record: FormularyRecord }) {
           value={value}
           spellCheck={false}
           onChange={(e) => setValue(e.target.value)}
-          aria-label="Editable prescription sig"
+          aria-label="Editable prescription text"
         />
         <button
           type="button"
@@ -57,7 +57,7 @@ export function RxSig({ record }: { record: FormularyRecord }) {
         </button>
       </div>
       <p className="sig__note">
-        Plain English: {record.preferredAgent.plainSig} Doses are a starting point — adjust per patient.
+        This is starter text for a clinician to adjust. Follow the final prescription label.
       </p>
     </div>
   )

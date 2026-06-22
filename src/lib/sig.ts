@@ -15,11 +15,15 @@ export function rxName(record: FormularyRecord): string {
   return preferredAgent.inn
 }
 
+function readableStrength(strength: string): string {
+  return strength.replace(/\bmcg\b/g, 'micrograms')
+}
+
 /**
  * EHR-ready prescription string for Epic/Cerner paste, e.g.
- * "Budesonide/formoterol 160/4.5 mcg - 2 puffs BID".
+ * "Budesonide/formoterol 160/4.5 micrograms - 2 puffs twice daily".
  */
 export function buildSig(record: FormularyRecord): string {
-  const { strength, sigShort } = record.preferredAgent
-  return `${rxName(record)} ${strength} - ${sigShort}`
+  const { strength, sig } = record.preferredAgent
+  return `${rxName(record)} ${readableStrength(strength)} - ${sig}`
 }

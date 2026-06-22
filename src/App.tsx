@@ -34,7 +34,9 @@ export default function App() {
             <h1 className="masthead__mark">
               First<span className="rx">Pass</span>Rx
             </h1>
-            <span className="masthead__stamp">Monograph · MA · as of {meta.lastUpdated}</span>
+            <span className="masthead__stamp">
+              Massachusetts inhaler guide · updated {meta.lastUpdated}
+            </span>
           </div>
           <p className="masthead__sub">
             Pick a plan and inhaler class. Start with the green answer.

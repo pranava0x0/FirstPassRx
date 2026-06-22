@@ -29,7 +29,9 @@ function record(over: Partial<FormularyRecord> = {}): FormularyRecord {
 
 describe('buildSig', () => {
   it('formats the example string for EHR paste', () => {
-    expect(buildSig(record())).toBe('Budesonide/formoterol 160/4.5 mcg - 2 puffs BID')
+    expect(buildSig(record())).toBe(
+      'Budesonide/formoterol 160/4.5 micrograms - 2 puffs twice daily',
+    )
   })
 
   it('uses the generic (INN) name when BOGL is off', () => {
@@ -51,7 +53,7 @@ describe('buildSig', () => {
       },
     })
     expect(rxName(r)).toBe('Ventolin HFA')
-    expect(buildSig(r)).toBe('Ventolin HFA 90 mcg - 2 puffs Q4-6H PRN')
+    expect(buildSig(r)).toBe('Ventolin HFA 90 micrograms - 2 puffs every 4 to 6 hours as needed')
   })
 
   it('falls back to the INN if a BOGL cell somehow lacks a brand', () => {

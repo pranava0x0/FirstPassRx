@@ -1,4 +1,4 @@
-import type { ClassMeta, FormularyRecord, PayerMeta, Verification } from '../types/formulary'
+import type { ClassMeta, FormularyRecord, PayerMeta } from '../types/formulary'
 import { meta, resolveSources } from '../lib/formulary'
 import { RxSig } from './RxSig'
 import { BoglBanner } from './BoglBanner'
@@ -15,15 +15,14 @@ interface Props {
   labelId: string
 }
 
-const VERIFY_LABEL: Record<Verification, string> = {
-  verified: 'Verified',
-  partial: 'Partial',
-  example: 'Example',
+function readableGenericName(name: string): string {
+  return name.replace(/\s+HFA\b/g, ' inhaler')
 }
 
 export function ResultCard({ record, payer, drugClass, panelId, labelId }: Props) {
   const agent = record.preferredAgent
   const sources = resolveSources(record.sourceIds)
+  const displayName = agent.brand ?? agent.inn
 
   return (
     <section
@@ -36,86 +35,82 @@ export function ResultCard({ record, payer, drugClass, panelId, labelId }: Props
     >
       <div className="doc">
         <div className="highlights">
-          <span className="eyebrow highlights__eyebrow">
+          <span className="recommendation-label">
             <span className="dot" aria-hidden="true" />
-            First choice · {payer.shortName}
+            Recommended for {payer.shortName}
           </span>
-          <h2 className="agent">
-            {agent.inn}
-            {agent.brand ? <span className="agent__brand"> ({agent.brand})</span> : null}
-          </h2>
-          <p className="agent__dose">
-            {agent.strength}
-            <span className="sep" aria-hidden="true">
-              ·
-            </span>
-            {agent.sigShort}
-            <span className="sep" aria-hidden="true">
-              ·
-            </span>
-            {agent.genericAvailable ? 'generic OK' : 'brand-only'}
+          <h2 className="agent">{displayName}</h2>
+          {agent.brand ? (
+            <p className="agent__generic">Also called: {readableGenericName(agent.inn)}</p>
+          ) : null}
+          <p className="agent__directions">
+            <b>Usual use:</b> {agent.plainSig}
           </p>
           <p className="agent__why">
-            Start here for this {drugClass.plainName.toLowerCase()}. It is the option most likely to
-            go through without prior authorization.
+            This is the first {drugClass.plainName.toLowerCase()} option to discuss for this plan
+            because it is likely to be covered without an insurance delay.
           </p>
-          <p className="agent__plain">{drugClass.plainDescription}</p>
         </div>
 
-        <div className="quick-read" aria-label="Quick answer">
-          <div className="quick-read__item">
-            <span>Ask about</span>
-            <strong>{agent.brand ?? agent.inn}</strong>
-          </div>
-          <div className="quick-read__item">
-            <span>Why</span>
-            <strong>No PA expected</strong>
-          </div>
-          <div className="quick-read__item">
-            <span>Check</span>
-            <strong>{record.boglActive ? 'Brand required' : VERIFY_LABEL[record.verification]}</strong>
-          </div>
-        </div>
-
-        <div className="stamps">
-          <span className="stamp stamp--go">● GO · preferred</span>
-          {record.boglActive ? <span className="stamp stamp--warn">⚠ BOGL · brand req</span> : null}
-          <span
-            className={`stamp stamp--verify is-${record.verification}`}
-            title={record.verificationNote}
-          >
-            {VERIFY_LABEL[record.verification]} data
-          </span>
+        <div className="patient-summary" aria-label="What to do next">
+          <h3>What to do next</h3>
+          <ol>
+            {record.boglActive ? (
+              <>
+                <li>
+                  <b>Patient:</b> ask your doctor if <strong>{displayName}</strong> is the right
+                  inhaler for you.
+                </li>
+                <li>
+                  <b>Doctor:</b> write <strong>{displayName}</strong> on the prescription, not
+                  generic albuterol.
+                </li>
+                <li>
+                  <b>Pharmacy:</b> switching this to generic albuterol may trigger extra insurance
+                  approval.
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <b>Patient:</b> ask your doctor if <strong>{displayName}</strong> is the right
+                  inhaler for you.
+                </li>
+                <li>
+                  <b>Doctor:</b> this plan is likely to cover <strong>{displayName}</strong> without
+                  prior authorization.
+                </li>
+                <li>
+                  <b>Pharmacy:</b>{' '}
+                  {agent.genericAvailable
+                    ? 'a generic version is okay for this plan.'
+                    : 'a generic version is not listed for this product.'}
+                </li>
+              </>
+            )}
+          </ol>
         </div>
 
         {record.boglActive && record.boglNote ? (
           <div>
-            <BoglBanner note={record.boglNote} />
+            <BoglBanner brand={agent.brand ?? displayName} />
           </div>
         ) : null}
 
-        <div>
-          <RxSig record={record} />
+        <div className="coverage-panels" aria-label="Coverage details">
+          <div className="coverage-panel coverage-panel--covered">
+            <Alternatives items={record.alternatives ?? []} payer={payer} />
+          </div>
+          <div className="coverage-panel coverage-panel--reject">
+            <RejectList items={record.paRequired} />
+          </div>
         </div>
 
         <div className="detail-stack">
           <details className="detail-block">
-            <summary>
-              Other covered choices
-              <span className="detail-count">{record.alternatives?.length ?? 0}</span>
-            </summary>
+            <summary>Prescription text for clinician</summary>
             <div className="detail-block__body">
-              <Alternatives items={record.alternatives ?? []} payer={payer} />
-            </div>
-          </details>
-
-          <details className="detail-block">
-            <summary>
-              Drugs that may reject
-              <span className="detail-count">{record.paRequired.length}</span>
-            </summary>
-            <div className="detail-block__body">
-              <RejectList items={record.paRequired} />
+              <RxSig record={record} />
             </div>
           </details>
 

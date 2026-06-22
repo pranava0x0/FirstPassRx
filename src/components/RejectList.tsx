@@ -1,6 +1,16 @@
 import type { PaItem } from '../types/formulary'
 import { GlossaryTerm } from './GlossaryTerm'
 
+function readableReason(reason: string): string {
+  const lower = reason.toLowerCase()
+  if (lower.includes('pa')) return 'prior authorization needed'
+  if (lower.includes('step')) return 'try another inhaler first'
+  if (lower.includes('non-formulary')) return 'not on the covered list'
+  if (lower.includes('non-preferred')) return 'not preferred'
+  if (lower.includes('higher tier')) return 'higher cost tier'
+  return reason
+}
+
 /**
  * Drugs that won't ship clean for this payer/class, as a ledger: one row per drug with a
  * deny rail, a ✕ glyph, and a right-flushed reason tag. The strike meaning is carried in
@@ -9,20 +19,14 @@ import { GlossaryTerm } from './GlossaryTerm'
 export function RejectList({ items }: { items: PaItem[] }) {
   return (
     <section aria-labelledby="reject-head">
-      <div className="reject__head">
-        <p className="eyebrow" id="reject-head">
-          Will reject — <GlossaryTerm match="Prior authorization">prior auth</GlossaryTerm> / step
-        </p>
-        <button
-          type="button"
-          className="appeal-btn"
-          disabled
-          aria-disabled="true"
-          title="Coming soon — auto-draft the PA appeal from this cell"
-        >
-          Automate appeal · soon
-        </button>
-      </div>
+      <p className="eyebrow" id="reject-head">
+        May need extra insurance approval
+      </p>
+      <p className="reject__intro">
+        These may get delayed unless your clinician is planning a{' '}
+        <GlossaryTerm match="Prior authorization">prior authorization</GlossaryTerm> or step-therapy
+        request.
+      </p>
 
       {items.length > 0 ? (
         <ul className="reject__list">
@@ -35,7 +39,7 @@ export function RejectList({ items }: { items: PaItem[] }) {
                 <span className="sr-only">Will reject: </span>
                 {it.drug}
               </span>
-              <span className="reject__reason">{it.reason}</span>
+              <span className="reject__reason">{readableReason(it.reason)}</span>
             </li>
           ))}
         </ul>

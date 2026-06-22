@@ -1,5 +1,13 @@
 import type { AltItem, PayerMeta } from '../types/formulary'
 
+function readableNote(note: string): string {
+  return note.replace(/PA/g, 'prior authorization').replace(/·/g, '+')
+}
+
+function readableDrug(drug: string): string {
+  return drug.replace(/\bDPI\b/g, 'dry-powder inhaler')
+}
+
 /**
  * The middle of the coverage ladder: other in-class agents this plan ALSO covers, so the
  * prescriber sees the real range of choices — not just the single first-pass pick.
@@ -8,7 +16,7 @@ export function Alternatives({ items, payer }: { items: AltItem[]; payer: PayerM
   return (
     <section aria-labelledby="alts-head">
       <p className="eyebrow" id="alts-head">
-        Also covered — other options in this class
+        Also covered by this plan
       </p>
       {items.length > 0 ? (
         <ul className="alts__list">
@@ -19,9 +27,9 @@ export function Alternatives({ items, payer }: { items: AltItem[]; payer: PayerM
               </span>
               <span className="alts__drug">
                 <span className="sr-only">Also covered: </span>
-                {it.drug}
+                {readableDrug(it.drug)}
               </span>
-              {it.note ? <span className="alts__note">{it.note}</span> : null}
+              {it.note ? <span className="alts__note">{readableNote(it.note)}</span> : null}
             </li>
           ))}
         </ul>

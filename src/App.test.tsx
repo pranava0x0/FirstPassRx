@@ -28,25 +28,38 @@ describe('FirstPassRx app', () => {
   it('defaults to MassHealth SABA and shows the verified BOGL brand-required warning', () => {
     render(<App />)
     expect(agentHeading()).toHaveTextContent('Ventolin HFA')
-    expect(screen.getByText(/BOGL · brand req/i)).toBeInTheDocument()
-    expect(screen.getAllByText(/Brand required/i).length).toBeGreaterThan(0)
+    expect(screen.getByText(/Ask for the brand name/i)).toBeInTheDocument()
+    expect(screen.getByText(/Patient:/i)).toBeInTheDocument()
+    expect(screen.getByText(/Doctor:/i)).toBeInTheDocument()
+    expect(screen.getByText(/Pharmacy:/i)).toBeInTheDocument()
+    expect(screen.queryByText(/generic OK/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/Q4-6H PRN/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/90 micrograms per puff/i)).not.toBeInTheDocument()
   })
 
   it('copies the (editable) brand sig for a BOGL cell', async () => {
     render(<App />)
+    fireEvent.click(screen.getByText(/Prescription text for clinician/i))
     fireEvent.click(screen.getByRole('button', { name: /copy sig/i }))
     await waitFor(() =>
-      expect(writeText).toHaveBeenCalledWith('Ventolin HFA 90 mcg - 2 puffs Q4-6H PRN'),
+      expect(writeText).toHaveBeenCalledWith(
+        'Ventolin HFA 90 micrograms - 2 puffs every 4 to 6 hours as needed',
+      ),
     )
   })
 
   it('lets the prescriber edit the sig before copying', async () => {
     render(<App />)
-    const field = screen.getByLabelText(/editable prescription sig/i)
-    fireEvent.change(field, { target: { value: 'Ventolin HFA 90 mcg - 1 puff QID PRN' } })
+    fireEvent.click(screen.getByText(/Prescription text for clinician/i))
+    const field = screen.getByLabelText(/editable prescription text/i)
+    fireEvent.change(field, {
+      target: { value: 'Ventolin HFA 90 micrograms - 1 puff four times daily as needed' },
+    })
     fireEvent.click(screen.getByRole('button', { name: /copy sig/i }))
     await waitFor(() =>
-      expect(writeText).toHaveBeenCalledWith('Ventolin HFA 90 mcg - 1 puff QID PRN'),
+      expect(writeText).toHaveBeenCalledWith(
+        'Ventolin HFA 90 micrograms - 1 puff four times daily as needed',
+      ),
     )
   })
 
@@ -55,20 +68,22 @@ describe('FirstPassRx app', () => {
     fireEvent.change(screen.getByLabelText(/select insurance plan/i), {
       target: { value: 'bcbsma' },
     })
-    expect(screen.queryByText(/BOGL · brand req/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/Use brand name/i)).not.toBeInTheDocument()
+    expect(screen.getByText(/a generic version is okay/i)).toBeInTheDocument()
+    fireEvent.click(screen.getByText(/Prescription text for clinician/i))
     fireEvent.click(screen.getByRole('button', { name: /copy sig/i }))
     await waitFor(() =>
-      expect(writeText).toHaveBeenCalledWith('Albuterol sulfate HFA 90 mcg - 2 puffs Q4-6H PRN'),
+      expect(writeText).toHaveBeenCalledWith(
+        'Albuterol sulfate HFA 90 micrograms - 2 puffs every 4 to 6 hours as needed',
+      ),
     )
   })
 
   it('lists reject drugs with reasons and disables the appeal + biologics actions', async () => {
     const user = userEvent.setup()
     render(<App />)
-    const panel = screen.getByRole('tabpanel')
-    await user.click(within(panel).getByText(/Drugs that may reject/i))
     expect(screen.getByText(/Levalbuterol \(Xopenex HFA\)/)).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /automate appeal/i })).toBeDisabled()
+    expect(screen.getAllByText(/prior authorization needed/i).length).toBeGreaterThan(0)
     const biologics = screen.getByRole('tab', { name: /biologics/i })
     expect(biologics).toHaveAttribute('aria-disabled', 'true')
     await user.click(biologics)
@@ -78,8 +93,8 @@ describe('FirstPassRx app', () => {
   it('changes the preferred agent when the class tab changes', async () => {
     const user = userEvent.setup()
     render(<App />)
-    await user.click(screen.getByRole('tab', { name: /ICS\/LABA/ }))
-    expect(agentHeading()).toHaveTextContent('Budesonide/formoterol')
+    await user.click(screen.getByRole('tab', { name: /Daily combo controller/ }))
+    expect(agentHeading()).toHaveTextContent('Symbicort')
   })
 
   it('shows source citations with working links on every result', () => {
@@ -99,32 +114,33 @@ describe('FirstPassRx app', () => {
     // Symbicort is preferred for several plans — click the first match.
     const results = await screen.findAllByRole('button', { name: /Preferred .*Symbicort/i })
     await user.click(results[0]!)
-    expect(agentHeading()).toHaveTextContent('Budesonide/formoterol')
+    expect(agentHeading()).toHaveTextContent('Symbicort')
   })
 
   it('shows a coverage ladder: first-pass pick + also-covered alternatives + rejects', async () => {
     const user = userEvent.setup()
     render(<App />)
     expect(screen.getByText(/How this works/i)).toBeInTheDocument()
-    await user.click(screen.getByRole('tab', { name: /ICS\/LABA/ }))
+    await user.click(screen.getByRole('tab', { name: /Daily combo controller/ }))
     const panel = screen.getByRole('tabpanel')
     // first-pass pick
-    expect(within(panel).getByText(/First choice/i)).toBeInTheDocument()
+    expect(within(panel).getByText(/Recommended for/i)).toBeInTheDocument()
     // also-covered alternatives (verified MassHealth no-PA combos)
-    await user.click(within(panel).getByText(/Other covered choices/i))
-    const alts = within(panel).getByRole('region', { name: /also covered/i })
+    const alts = within(panel).getByRole('region', { name: /also covered by this plan/i })
     expect(within(alts).getByText(/Advair Diskus/)).toBeInTheDocument()
     expect(within(alts).getByText(/Breo Ellipta/)).toBeInTheDocument()
     // rejects still present (scope to the reject ledger — the step text also names AirDuo)
-    await user.click(within(panel).getByText(/Drugs that may reject/i))
-    const rejects = within(panel).getByRole('region', { name: /will reject/i })
+    const rejects = within(panel).getByRole('region', {
+      name: /may need extra insurance approval/i,
+    })
     expect(within(rejects).getByText(/AirDuo RespiClick/)).toBeInTheDocument()
   })
 
   it('opens a plain-language glossary definition on tap', async () => {
     const user = userEvent.setup()
     render(<App />)
-    await user.click(screen.getByRole('button', { name: 'BOGL' }))
+    await user.click(screen.getByText(/Why this matters/i))
+    await user.click(screen.getByRole('button', { name: /brand-over-generic rule/i }))
     expect(screen.getByRole('tooltip')).toHaveTextContent(/brand/i)
   })
 })
