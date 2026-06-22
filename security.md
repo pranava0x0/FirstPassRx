@@ -1,0 +1,33 @@
+# Security advisory log
+
+Last updated: 2026-06-21
+
+## Advisory sweeps
+
+### 2026-06-21 — project scaffold + dependency install
+
+Source: `https://pranava0x0.github.io/vibe-coding-security/llms-ctx.txt` (compact variant, generated 2026-06-21).
+
+Triggered by: new project scaffold + first `npm install` of `vite`, `react`, `react-dom`,
+`@vitejs/plugin-react`, `typescript`, `vitest`, `jsdom`, `@testing-library/*`, `gh-pages`.
+
+**Result: clean.** None of the installed packages appear in the advisory index.
+
+Active campaigns noted (not in our tree — no action needed, listed for awareness):
+
+- **Mini Shai-Hulud (May 2026)** — `@tanstack/*`, `@mistralai/*`, `@opensearch-project/*`. Audit
+  lockfile if any are ever added.
+- **Shai-Hulud 3.0** — 492 npm packages, contained. IOC `@vietmoney/react-big-calendar@0.26.2`.
+- **Mastra AI npm compromise** — 145 `@mastra/*` packages, `easy-day-js` typosquat RAT.
+- **`chalk` (qix)**, **`axios`** — audit if transitively pulled.
+- **React2Shell (CVE-2025-55182)** — unauth RCE in React Server Components. We ship a plain
+  client SPA (no RSC), so not applicable; React pinned to 18.3.1 regardless.
+
+Mitigations applied at scaffold time:
+
+- Exact-pinned versions in `package.json` (no `^`/`~` ranges).
+- `package-lock.json` committed; CI/deploy should use `npm ci`, not `npm install`.
+- No third-party CDN assets (system fonts only, JSON bundled at build).
+
+Refresh this sweep on the next trigger (new dependency add/upgrade, CDN asset, GitHub Action,
+fetched install script) or if > 7 days old.

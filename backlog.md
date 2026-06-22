@@ -1,0 +1,34 @@
+# Backlog
+
+Ideas, each with a priority (low / medium / high). Reprioritize periodically.
+
+## High
+
+- **Finish verifying the `partial` / `example` cells.** MassHealth and MGB are largely `verified`;
+  Tufts and Harvard Pilgrim are `partial` (formulary PDFs verified, per-cell agent inferred); BCBS
+  MA is `example` (inhaler policy PDF returned HTTP 403 to the fetcher). Read each formulary PDF,
+  confirm the preferred agent + reject list + step text, and flip `verification` to `verified` with
+  an updated `verificationNote`. See `data-sources.md`.
+- **Biologics & non-inhaler class** (currently a disabled tab). Omalizumab (Xolair, now with the
+  Omlyclo biosimilar), mepolizumab, benralizumab, dupilumab, tezepelumab — specialty-pharmacy /
+  buy-and-bill with their own PA pathway. Cite FDA + manufacturer; the sources research already
+  gathered the key facts.
+
+## Medium
+
+- **Automate PA Appeal** (currently a disabled button): pre-fill the payer's PA form / appeal letter
+  from the selected cell's step-therapy text and reject reasons.
+- **Deep-link state to the URL** (`?plan=masshealth&class=icslaba`) so a prescriber can bookmark or
+  share a specific cell, and the search result can be shared.
+- **Freshness badge** that turns amber when a cell's `lastReviewed` is > 90 days old (formularies
+  change quarterly).
+- **Print / hand-out view** of a plan's full preferred grid for a clinic binder or the patient.
+- **Quantity limits** as a first-class field (the formularies carry QL codes alongside PA/ST).
+
+## Low
+
+- ESLint + Prettier (kept out of MVP to minimize dependency surface; tsc strict covers types). When
+  added, wire the design ban-list regex (no `bg-(indigo|violet|purple)`, `rounded-2xl`, `shadow-lg`,
+  gradients) into CI per docs/design.md.
+- GitHub Actions Pages deploy (SHA-pinned `actions/*`) as an alternative to the `gh-pages` branch.
+- Dark theme — invert to a warm near-black canvas, darken the three status hues one stop to hold AA.

@@ -1,0 +1,843 @@
+{
+  "meta": {
+    "title": "FirstPassRx — MA inhaler formulary",
+    "disclaimer": "A point-of-care reference, not a substitute for the payer's current formulary or clinical judgment. Formularies change quarterly; confirm every agent and restriction against the linked source before prescribing.",
+    "dataStatus": "mixed",
+    "lastUpdated": "2026-06-22",
+    "capturedAt": "2026-06-22",
+    "version": "0.2.0",
+    "references": [
+      {
+        "id": "mh-mhdl-t23",
+        "label": "MassHealth Drug List — Table 23: Respiratory Agents (Inhaled)",
+        "publisher": "MassHealth / EOHHS (via Conduent)",
+        "type": "gov",
+        "url": "https://mhdl.pharmacy.services.conduent.com/MHDL/pubtheradetail.do?id=23",
+        "effectiveDate": "2025-11",
+        "accessed": "2026-06-22"
+      },
+      {
+        "id": "mh-pa37",
+        "label": "MassHealth Inhaled Respiratory Agents Prior Authorization Request (PA-37, Rev. 01/26)",
+        "publisher": "MassHealth / EOHHS (via Conduent)",
+        "type": "gov",
+        "url": "https://mhdl.pharmacy.services.conduent.com/MHDL/pubpa.do?category=Prior+Authorization+Forms+for+Pharmacy+Services",
+        "effectiveDate": "2026-01",
+        "accessed": "2026-06-22"
+      },
+      {
+        "id": "bcbsma-medlookup",
+        "label": "Blue Cross Blue Shield of MA — Medication Look-up",
+        "publisher": "Blue Cross Blue Shield of Massachusetts",
+        "type": "payer",
+        "url": "https://provider.bluecrossma.com/ProviderHome/portal/home/pharmacy/formularies/medication-look-up",
+        "accessed": "2026-06-22"
+      },
+      {
+        "id": "tufts-formulary-2026",
+        "label": "Tufts Health Plan (Point32Health) — Value Direct 3-Tier Formulary, eff. Jan 1 2026",
+        "publisher": "Tufts Health Plan / Point32Health (via OptumRx)",
+        "type": "payer",
+        "url": "https://contenthub-aem.optumrx.com/content/dam/contenthub/rx-assets/en/documents/clients/harvard-pilgrim/p32-formulary-documents/2026/P32H-Value-Direct-3T-Comprehensive-Tufts.pdf",
+        "effectiveDate": "2026-01-01",
+        "accessed": "2026-06-22"
+      },
+      {
+        "id": "p32-changes-2026",
+        "label": "Point32Health — 2026 Commercial Drug Status Changes",
+        "publisher": "Point32Health",
+        "type": "payer",
+        "url": "https://www.point32health.org/documents/drug-status-changes-2026-commercial",
+        "effectiveDate": "2026-01-01",
+        "accessed": "2026-06-22"
+      },
+      {
+        "id": "hphc-formulary-2026",
+        "label": "Harvard Pilgrim (Point32Health) — Select 3-Tier 2026 Prescription Drug List",
+        "publisher": "Harvard Pilgrim Health Care / Point32Health (via OptumRx)",
+        "type": "payer",
+        "url": "https://contenthub-aem.optumrx.com/content/dam/contenthub/rx-assets/en/documents/clients/harvard-pilgrim/hphc-formulary-documents/2026-oe/HPHC-Select-3T-Comprehensive.pdf",
+        "effectiveDate": "2025-10-01",
+        "accessed": "2026-06-22"
+      },
+      {
+        "id": "p32-pa-form",
+        "label": "Massachusetts Standard Form for Medication Prior Authorization Requests",
+        "publisher": "Point32Health / MA Collaborative",
+        "type": "payer",
+        "url": "https://www.point32health.org/documents/hphc-ma-std-pa-form-medication",
+        "effectiveDate": "2024-02-01",
+        "accessed": "2026-06-22"
+      },
+      {
+        "id": "mgb-formulary-2026",
+        "label": "Mass General Brigham Health Plan — 2026 6-Tier Commercial Pharmacy Formulary",
+        "publisher": "Mass General Brigham Health Plan (via FormularyNavigator)",
+        "type": "payer",
+        "url": "https://fm.formularynavigator.com/FBO/192/20266T.pdf",
+        "effectiveDate": "2026-06-01",
+        "accessed": "2026-06-22"
+      },
+      {
+        "id": "mgb-flut-hfa-pa",
+        "label": "MGB Health Plan — Fluticasone Propionate HFA PA Policy (Commercial/Exchange)",
+        "publisher": "Mass General Brigham Health Plan",
+        "type": "payer",
+        "url": "https://resources.massgeneralbrighamhealthplan.org/pharmacy/PharmacyPolicies/CommercialPolicies/FluticasoneHFA_ComExch_Rx_09.01.2025.pdf",
+        "effectiveDate": "2025-09-10",
+        "accessed": "2026-06-22"
+      },
+      {
+        "id": "mgb-pharmacy-index",
+        "label": "MGB Health Plan — Commercial Pharmacy Policies index",
+        "publisher": "Mass General Brigham Health Plan",
+        "type": "payer",
+        "url": "https://massgeneralbrighamhealthplan.org/providers/pharmacy-guidelines/commercial",
+        "accessed": "2026-06-22"
+      },
+      {
+        "id": "nhlbi-asthma",
+        "label": "NHLBI — Asthma Treatment and Action Plan (medication classes)",
+        "publisher": "National Heart, Lung, and Blood Institute / NIH",
+        "type": "gov",
+        "url": "https://www.nhlbi.nih.gov/health/asthma/treatment-action-plan",
+        "accessed": "2026-06-22"
+      },
+      {
+        "id": "nhlbi-2020",
+        "label": "NHLBI — 2020 Focused Updates to the Asthma Management Guidelines (FAQs)",
+        "publisher": "National Heart, Lung, and Blood Institute / NIH",
+        "type": "gov",
+        "url": "https://www.nhlbi.nih.gov/health-topics/asthma-management-guidelines-2020-updates/faqs",
+        "accessed": "2026-06-22"
+      },
+      {
+        "id": "gina-reliever",
+        "label": "GINA — 2019 recommendations on reliever medications (ICS-formoterol vs SABA)",
+        "publisher": "Global Initiative for Asthma",
+        "type": "guideline",
+        "url": "https://ginasthma.org/gina-2019-recommendations-about-reliever-medications-in-steps-3-5/",
+        "accessed": "2026-06-22"
+      },
+      {
+        "id": "dailymed-spiriva",
+        "label": "DailyMed — SPIRIVA HANDIHALER (tiotropium) FDA label",
+        "publisher": "NIH / NLM DailyMed (FDA label)",
+        "type": "gov",
+        "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=820839ef-e53d-47e8-a3b9-d911ff92e6a9",
+        "accessed": "2026-06-22"
+      },
+      {
+        "id": "dailymed-incruse",
+        "label": "DailyMed — INCRUSE ELLIPTA (umeclidinium) FDA label",
+        "publisher": "NIH / NLM DailyMed (FDA label)",
+        "type": "gov",
+        "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=dbb64747-1505-49d7-9a33-99dd402e96d3",
+        "accessed": "2026-06-22"
+      },
+      {
+        "id": "ncbi-albuterol",
+        "label": "NCBI StatPearls — Albuterol (SABA mechanism, dosing)",
+        "publisher": "NCBI / NIH",
+        "type": "gov",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK482272/",
+        "accessed": "2026-06-22"
+      },
+      {
+        "id": "fda-firstgen-flovent",
+        "label": "FDA — First generic of Flovent HFA (fluticasone propionate) approved",
+        "publisher": "U.S. Food and Drug Administration",
+        "type": "gov",
+        "url": "https://www.fda.gov/drugs/drug-safety-and-availability/fda-approves-first-generic-flovent-hfa-treatment-asthma",
+        "effectiveDate": "2026-03-03",
+        "accessed": "2026-06-22"
+      },
+      {
+        "id": "fda-firstgen-2020",
+        "label": "FDA — 2020 First Generic Drug Approvals (albuterol sulfate HFA, ANDA 209959)",
+        "publisher": "U.S. Food and Drug Administration",
+        "type": "gov",
+        "url": "https://www.fda.gov/drugs/first-generic-drug-approvals/2020-first-generic-drug-approvals",
+        "accessed": "2026-06-22"
+      },
+      {
+        "id": "fda-wixela",
+        "label": "FDA — ANDA 208891 approval letter: Wixela Inhub (generic of Advair Diskus)",
+        "publisher": "U.S. Food and Drug Administration (Drugs@FDA)",
+        "type": "gov",
+        "url": "https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2019/208891Orig1s000ltr.pdf",
+        "accessed": "2026-06-22"
+      },
+      {
+        "id": "fda-breyna",
+        "label": "FDA — First generic budesonide/formoterol (Breyna, RLD Symbicort)",
+        "publisher": "U.S. Food and Drug Administration (CDER)",
+        "type": "gov",
+        "url": "https://www.fda.gov/media/173392/download",
+        "effectiveDate": "2023-09-14",
+        "accessed": "2026-06-22"
+      },
+      {
+        "id": "fda-biosimilars",
+        "label": "FDA — Biosimilar Product Information (Purple Book; Omlyclo → Xolair)",
+        "publisher": "U.S. Food and Drug Administration",
+        "type": "gov",
+        "url": "https://www.fda.gov/drugs/biosimilars/biosimilar-product-information",
+        "accessed": "2026-06-22"
+      },
+      {
+        "id": "fda-roundup-omlyclo",
+        "label": "FDA Roundup, March 11 2025 — Omlyclo, first interchangeable biosimilar to Xolair",
+        "publisher": "U.S. Food and Drug Administration",
+        "type": "gov",
+        "url": "https://www.fda.gov/news-events/press-announcements/fda-roundup-march-11-2025",
+        "effectiveDate": "2025-03-11",
+        "accessed": "2026-06-22"
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Prior authorization (PA)",
+        "short": "Insurer sign-off needed before the drug is covered.",
+        "definition": "A requirement that the prescriber get the plan's approval before it will pay for a drug. Until it's approved, the pharmacy claim rejects — which is the round-trip this tool helps you skip.",
+        "sourceIds": ["mh-pa37"]
+      },
+      {
+        "term": "BOGL (brand over generic)",
+        "short": "The plan forces the brand; the generic rejects.",
+        "definition": "Some plans prefer a specific brand and won't cover its generic equivalent. You must write the brand and mark \"dispense as written\" or the pharmacy claim rejects. Example: MassHealth prefers brand Ventolin over generic albuterol.",
+        "sourceIds": ["mh-mhdl-t23"]
+      },
+      {
+        "term": "Step therapy",
+        "short": "Must fail a preferred drug first.",
+        "definition": "The plan requires the patient to try (and fail, or be intolerant of) one or more preferred drugs before it will cover the one you want.",
+        "sourceIds": ["mh-pa37"]
+      },
+      {
+        "term": "Dispense as written (DAW)",
+        "short": "Tell the pharmacy not to substitute a generic.",
+        "definition": "A note on the prescription instructing the pharmacist to dispense the exact brand you wrote, not a generic substitute. Needed when the plan's BOGL rule forces the brand.",
+        "sourceIds": []
+      },
+      {
+        "term": "SABA — rescue inhaler",
+        "short": "Quick-relief inhaler for sudden symptoms.",
+        "definition": "Short-acting beta-agonist. The inhaler a patient carries and uses when they suddenly can't breathe well. Works in minutes; not a daily controller.",
+        "sourceIds": ["nhlbi-asthma", "ncbi-albuterol"]
+      },
+      {
+        "term": "ICS — daily controller",
+        "short": "A daily steroid inhaler that calms inflammation.",
+        "definition": "Inhaled corticosteroid. Taken every day to keep the airways from getting inflamed and twitchy. It prevents attacks; it does not relieve one in progress.",
+        "sourceIds": ["nhlbi-asthma"]
+      },
+      {
+        "term": "Generic vs. biosimilar",
+        "short": "Inhalers have generics; biologics have biosimilars.",
+        "definition": "Inhalers are small-molecule drugs, so cheaper copies are FDA-approved \"generics\" (e.g., Wixela Inhub for Advair). Injectable biologics like Xolair get \"biosimilars\" instead (e.g., Omlyclo) — a different FDA pathway.",
+        "sourceIds": ["fda-wixela", "fda-biosimilars"]
+      }
+    ],
+    "payers": [
+      {
+        "id": "masshealth",
+        "name": "MassHealth",
+        "shortName": "MassHealth",
+        "aka": "Massachusetts Medicaid",
+        "pbm": "Conduent (PBA)",
+        "formularyUrl": "https://mhdl.pharmacy.services.conduent.com/MHDL/pubtheradetail.do?id=23",
+        "paPolicyUrl": "https://mhdl.pharmacy.services.conduent.com/MHDL/pubpa.do?category=Prior+Authorization+Forms+for+Pharmacy+Services",
+        "sourceIds": ["mh-mhdl-t23", "mh-pa37"]
+      },
+      {
+        "id": "bcbsma",
+        "name": "Blue Cross Blue Shield of Massachusetts",
+        "shortName": "BCBS MA",
+        "aka": "Blue Cross",
+        "pbm": "CVS Caremark",
+        "formularyUrl": "https://provider.bluecrossma.com/ProviderHome/portal/home/pharmacy/formularies/medication-look-up",
+        "sourceIds": ["bcbsma-medlookup"]
+      },
+      {
+        "id": "tufts",
+        "name": "Tufts Health Plan",
+        "shortName": "Tufts",
+        "aka": "Point32Health",
+        "pbm": "OptumRx",
+        "formularyUrl": "https://contenthub-aem.optumrx.com/content/dam/contenthub/rx-assets/en/documents/clients/harvard-pilgrim/p32-formulary-documents/2026/P32H-Value-Direct-3T-Comprehensive-Tufts.pdf",
+        "paPolicyUrl": "https://www.point32health.org/documents/hphc-ma-std-pa-form-medication",
+        "sourceIds": ["tufts-formulary-2026", "p32-changes-2026", "p32-pa-form"]
+      },
+      {
+        "id": "harvardpilgrim",
+        "name": "Harvard Pilgrim Health Care",
+        "shortName": "Harvard Pilgrim",
+        "aka": "Point32Health",
+        "pbm": "OptumRx",
+        "formularyUrl": "https://contenthub-aem.optumrx.com/content/dam/contenthub/rx-assets/en/documents/clients/harvard-pilgrim/hphc-formulary-documents/2026-oe/HPHC-Select-3T-Comprehensive.pdf",
+        "paPolicyUrl": "https://www.point32health.org/documents/hphc-ma-std-pa-form-medication",
+        "sourceIds": ["hphc-formulary-2026", "p32-pa-form"]
+      },
+      {
+        "id": "mgb",
+        "name": "Mass General Brigham Health Plan",
+        "shortName": "MGB Health Plan",
+        "aka": "formerly AllWays / Neighborhood Health Plan",
+        "pbm": "Optum Rx",
+        "formularyUrl": "https://fm.formularynavigator.com/FBO/192/20266T.pdf",
+        "paPolicyUrl": "https://massgeneralbrighamhealthplan.org/providers/pharmacy-guidelines/commercial",
+        "sourceIds": ["mgb-formulary-2026", "mgb-flut-hfa-pa", "mgb-pharmacy-index"]
+      }
+    ],
+    "classes": [
+      {
+        "id": "saba",
+        "name": "SABA (Rescue)",
+        "shortName": "SABA",
+        "plainName": "Rescue inhaler",
+        "description": "Short-acting beta-agonist for acute bronchospasm; quick relief, not a controller.",
+        "plainDescription": "The inhaler you grab when you suddenly can't breathe. Works in minutes.",
+        "indication": "Asthma & COPD (rescue)",
+        "sourceIds": ["nhlbi-asthma", "ncbi-albuterol"]
+      },
+      {
+        "id": "ics",
+        "name": "ICS (Maintenance)",
+        "shortName": "ICS",
+        "plainName": "Daily steroid controller",
+        "description": "Inhaled corticosteroid; the anti-inflammatory foundation of daily asthma control.",
+        "plainDescription": "A daily inhaler that calms airway inflammation so attacks happen less.",
+        "indication": "Asthma controller",
+        "sourceIds": ["nhlbi-asthma"]
+      },
+      {
+        "id": "icslaba",
+        "name": "ICS/LABA (Combo)",
+        "shortName": "ICS/LABA",
+        "plainName": "Daily combo controller",
+        "description": "Steroid + long-acting bronchodilator in one inhaler for moderate-to-severe asthma or COPD.",
+        "plainDescription": "A daily inhaler that combines the steroid with a long-acting opener.",
+        "indication": "Asthma & COPD maintenance",
+        "sourceIds": ["nhlbi-2020", "gina-reliever"]
+      },
+      {
+        "id": "lama",
+        "name": "LAMA",
+        "shortName": "LAMA",
+        "plainName": "Long-acting opener (COPD)",
+        "description": "Long-acting muscarinic antagonist. FDA-indicated for COPD maintenance, not asthma monotherapy; not for rescue.",
+        "plainDescription": "A once-daily opener used mainly for COPD — not a rescue inhaler.",
+        "indication": "COPD only (FDA)",
+        "sourceIds": ["dailymed-spiriva", "dailymed-incruse"]
+      },
+      {
+        "id": "biologics",
+        "name": "Biologics & Non-Inhalers",
+        "shortName": "Biologics",
+        "plainName": "Injectable / specialty",
+        "description": "Specialty-pharmacy biologics (anti-IgE, anti-IL5, anti-IL4) for severe asthma. Separate PA pathway; not inhalers.",
+        "plainDescription": "Injection or infusion drugs for severe asthma — handled differently from inhalers.",
+        "indication": "Severe asthma (add-on)",
+        "comingSoon": true,
+        "sourceIds": ["fda-biosimilars", "fda-roundup-omlyclo"]
+      }
+    ]
+  },
+  "records": [
+    {
+      "payerId": "masshealth",
+      "classId": "saba",
+      "preferredAgent": {
+        "inn": "Albuterol sulfate HFA",
+        "brand": "Ventolin HFA",
+        "genericAvailable": true,
+        "strength": "90 mcg",
+        "sig": "2 puffs every 4 to 6 hours as needed",
+        "sigShort": "2 puffs Q4-6H PRN",
+        "plainSig": "Two puffs when you need it, no more than every 4 hours."
+      },
+      "boglActive": true,
+      "boglNote": "MassHealth lists brand Ventolin HFA as Brand Preferred and PA-exempt, while the generic albuterol HFA inhaler requires prior authorization. Write Ventolin, dispense as written.",
+      "alternatives": [
+        { "drug": "ProAir RespiClick (albuterol DPI)", "note": "no PA" },
+        { "drug": "Albuterol sulfate solution (nebulized)", "note": "no PA" }
+      ],
+      "paRequired": [
+        { "drug": "Albuterol HFA inhaler (generic)", "reason": "PA required" },
+        { "drug": "Levalbuterol (Xopenex HFA)", "reason": "PA required" },
+        { "drug": "ProAir Digihaler", "reason": "PA required" }
+      ],
+      "stepTherapy": "Generic albuterol HFA requires a documented trial of an albuterol product available without PA (brand Ventolin HFA, or ProAir RespiClick).",
+      "verification": "verified",
+      "verificationNote": "Read directly off MHDL Table 23 and PA-37 (Rev. 01/26): Ventolin is Brand Preferred/PA-exempt; generic albuterol inhaler requires PA.",
+      "sourceIds": ["mh-mhdl-t23", "mh-pa37"],
+      "lastReviewed": "2026-06-22"
+    },
+    {
+      "payerId": "masshealth",
+      "classId": "ics",
+      "preferredAgent": {
+        "inn": "Budesonide inhalation",
+        "brand": "Pulmicort Flexhaler",
+        "genericAvailable": false,
+        "strength": "180 mcg",
+        "sig": "2 inhalations twice daily",
+        "sigShort": "2 inh BID",
+        "plainSig": "Two breaths in, morning and night, every day."
+      },
+      "boglActive": false,
+      "boglNote": null,
+      "paRequired": [
+        { "drug": "Alvesco (ciclesonide)", "reason": "Step therapy" },
+        { "drug": "Fluticasone propionate HFA (≥12 yr)", "reason": "Step therapy" },
+        { "drug": "QVAR RediHaler", "reason": "Step therapy" }
+      ],
+      "stepTherapy": "Alvesco, fluticasone propionate aerosol (age ≥12), and QVAR RediHaler require a documented trial of two inhaled corticosteroids first.",
+      "verification": "partial",
+      "verificationNote": "Step-therapy structure is verbatim from PA-37; the specific no-PA preferred ICS is inferred — confirm the preferred agent on the current MHDL.",
+      "sourceIds": ["mh-mhdl-t23", "mh-pa37"],
+      "lastReviewed": "2026-06-22"
+    },
+    {
+      "payerId": "masshealth",
+      "classId": "icslaba",
+      "preferredAgent": {
+        "inn": "Budesonide/formoterol",
+        "brand": "Symbicort",
+        "genericAvailable": true,
+        "strength": "160/4.5 mcg",
+        "sig": "2 puffs twice daily",
+        "sigShort": "2 puffs BID",
+        "plainSig": "Two puffs, morning and night, every day."
+      },
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        { "drug": "Advair Diskus (fluticasone/salmeterol)", "note": "preferred · no PA" },
+        { "drug": "Breo Ellipta (fluticasone furoate/vilanterol)", "note": "preferred · no PA" },
+        { "drug": "Dulera (mometasone/formoterol)", "note": "preferred · no PA" }
+      ],
+      "paRequired": [
+        { "drug": "AirDuo RespiClick (generic fluticasone/salmeterol)", "reason": "Step therapy" }
+      ],
+      "stepTherapy": "AirDuo RespiClick requires a prior trial of fluticasone/salmeterol inhalation aerosol/powder (generic Advair). Symbicort, Advair, Breo, and Dulera are preferred without PA.",
+      "verification": "verified",
+      "verificationNote": "MHDL Table 23 marks Symbicort as Preferred Drug (PD), Brand Preferred, no PA; AirDuo step from PA-37 Section III.",
+      "sourceIds": ["mh-mhdl-t23", "mh-pa37"],
+      "lastReviewed": "2026-06-22"
+    },
+    {
+      "payerId": "masshealth",
+      "classId": "lama",
+      "preferredAgent": {
+        "inn": "Tiotropium",
+        "brand": "Spiriva Respimat",
+        "genericAvailable": false,
+        "strength": "2.5 mcg",
+        "sig": "2 inhalations once daily",
+        "sigShort": "2 inh daily",
+        "plainSig": "Two breaths in, once a day, same time each day."
+      },
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        { "drug": "Incruse Ellipta (umeclidinium)", "note": "preferred" },
+        { "drug": "Tiotropium inhalation powder", "note": "preferred" }
+      ],
+      "paRequired": [
+        { "drug": "Tudorza Pressair (aclidinium)", "reason": "Step therapy" },
+        { "drug": "Yupelri (revefenacin)", "reason": "Step therapy" }
+      ],
+      "stepTherapy": "Tudorza requires a prior trial of Incruse, Spiriva Respimat, or tiotropium inhalation powder. Yupelri requires a prior trial of ipratropium nebulizer solution. LAMA is covered for documented COPD.",
+      "verification": "verified",
+      "verificationNote": "Step-therapy criteria verbatim from PA-37 Section X / II.3; LAMA is COPD-indicated per the FDA label.",
+      "sourceIds": ["mh-mhdl-t23", "mh-pa37", "dailymed-spiriva"],
+      "lastReviewed": "2026-06-22"
+    },
+
+    {
+      "payerId": "bcbsma",
+      "classId": "saba",
+      "preferredAgent": {
+        "inn": "Albuterol sulfate HFA",
+        "brand": "ProAir HFA",
+        "genericAvailable": true,
+        "strength": "90 mcg",
+        "sig": "2 puffs every 4 to 6 hours as needed",
+        "sigShort": "2 puffs Q4-6H PRN",
+        "plainSig": "Two puffs when you need it, no more than every 4 hours."
+      },
+      "boglActive": false,
+      "boglNote": null,
+      "paRequired": [
+        { "drug": "Levalbuterol (Xopenex HFA)", "reason": "Non-preferred" }
+      ],
+      "stepTherapy": null,
+      "verification": "example",
+      "verificationNote": "BCBSMA's formulary and PA intake are confirmed, but the inhaler-specific preferred/PA criteria PDF blocked automated reading — verify on the BCBSMA Medication Look-up before relying on this cell.",
+      "sourceIds": ["bcbsma-medlookup"],
+      "lastReviewed": "2026-06-22"
+    },
+    {
+      "payerId": "bcbsma",
+      "classId": "ics",
+      "preferredAgent": {
+        "inn": "Fluticasone propionate",
+        "brand": "Flovent HFA (authorized generic)",
+        "genericAvailable": true,
+        "strength": "110 mcg",
+        "sig": "2 puffs twice daily",
+        "sigShort": "2 puffs BID",
+        "plainSig": "Two puffs, morning and night, every day."
+      },
+      "boglActive": false,
+      "boglNote": null,
+      "paRequired": [
+        { "drug": "Arnuity Ellipta", "reason": "Non-preferred" }
+      ],
+      "stepTherapy": null,
+      "verification": "example",
+      "verificationNote": "Illustrative — confirm the preferred ICS and any step therapy on the BCBSMA Medication Look-up (the asthma/COPD pharmacy policy PDF blocked automated reading).",
+      "sourceIds": ["bcbsma-medlookup", "fda-firstgen-flovent"],
+      "lastReviewed": "2026-06-22"
+    },
+    {
+      "payerId": "bcbsma",
+      "classId": "icslaba",
+      "preferredAgent": {
+        "inn": "Fluticasone/salmeterol",
+        "brand": "Wixela Inhub",
+        "genericAvailable": true,
+        "strength": "250/50 mcg",
+        "sig": "1 inhalation twice daily",
+        "sigShort": "1 inh BID",
+        "plainSig": "One breath in, morning and night, every day."
+      },
+      "boglActive": false,
+      "boglNote": null,
+      "paRequired": [
+        { "drug": "Breo Ellipta", "reason": "Non-preferred" }
+      ],
+      "stepTherapy": null,
+      "verification": "example",
+      "verificationNote": "Illustrative; Wixela Inhub is the FDA generic of Advair Diskus. Confirm the preferred combo on the BCBSMA Medication Look-up.",
+      "sourceIds": ["bcbsma-medlookup", "fda-wixela"],
+      "lastReviewed": "2026-06-22"
+    },
+    {
+      "payerId": "bcbsma",
+      "classId": "lama",
+      "preferredAgent": {
+        "inn": "Tiotropium",
+        "brand": "Spiriva Respimat",
+        "genericAvailable": false,
+        "strength": "2.5 mcg",
+        "sig": "2 inhalations once daily",
+        "sigShort": "2 inh daily",
+        "plainSig": "Two breaths in, once a day, same time each day."
+      },
+      "boglActive": false,
+      "boglNote": null,
+      "paRequired": [
+        { "drug": "Yupelri (revefenacin)", "reason": "Non-preferred" }
+      ],
+      "stepTherapy": null,
+      "verification": "example",
+      "verificationNote": "Illustrative — LAMA is COPD-indicated. Confirm the preferred agent on the BCBSMA Medication Look-up.",
+      "sourceIds": ["bcbsma-medlookup", "dailymed-spiriva"],
+      "lastReviewed": "2026-06-22"
+    },
+
+    {
+      "payerId": "tufts",
+      "classId": "saba",
+      "preferredAgent": {
+        "inn": "Albuterol sulfate HFA",
+        "brand": "ProAir HFA",
+        "genericAvailable": true,
+        "strength": "90 mcg",
+        "sig": "2 puffs every 4 to 6 hours as needed",
+        "sigShort": "2 puffs Q4-6H PRN",
+        "plainSig": "Two puffs when you need it, no more than every 4 hours."
+      },
+      "boglActive": false,
+      "boglNote": null,
+      "paRequired": [
+        { "drug": "Levalbuterol (Xopenex HFA)", "reason": "Non-preferred" }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Tufts Value Direct 3-Tier formulary (eff. 2026-01-01) is the verified source; the specific tier/PA for this agent is inferred — confirm in the formulary PDF.",
+      "sourceIds": ["tufts-formulary-2026"],
+      "lastReviewed": "2026-06-22"
+    },
+    {
+      "payerId": "tufts",
+      "classId": "ics",
+      "preferredAgent": {
+        "inn": "Fluticasone propionate",
+        "brand": "Flovent HFA (authorized generic)",
+        "genericAvailable": true,
+        "strength": "110 mcg",
+        "sig": "2 puffs twice daily",
+        "sigShort": "2 puffs BID",
+        "plainSig": "Two puffs, morning and night, every day."
+      },
+      "boglActive": false,
+      "boglNote": null,
+      "paRequired": [
+        { "drug": "Pulmicort Flexhaler", "reason": "Non-formulary 2026" },
+        { "drug": "Arnuity Ellipta", "reason": "Non-preferred" }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Point32Health's 2026 commercial drug-status changes confirm Pulmicort Flexhaler moved to non-formulary; the preferred ICS is inferred — confirm in the Tufts formulary PDF.",
+      "sourceIds": ["tufts-formulary-2026", "p32-changes-2026"],
+      "lastReviewed": "2026-06-22"
+    },
+    {
+      "payerId": "tufts",
+      "classId": "icslaba",
+      "preferredAgent": {
+        "inn": "Budesonide/formoterol",
+        "brand": "Symbicort",
+        "genericAvailable": true,
+        "strength": "160/4.5 mcg",
+        "sig": "2 puffs twice daily",
+        "sigShort": "2 puffs BID",
+        "plainSig": "Two puffs, morning and night, every day."
+      },
+      "boglActive": false,
+      "boglNote": null,
+      "paRequired": [
+        { "drug": "Breo Ellipta", "reason": "Step therapy" },
+        { "drug": "Dulera", "reason": "Non-preferred" }
+      ],
+      "stepTherapy": "Confirm step-therapy specifics in the Tufts formulary PDF; non-preferred combos may require a preferred-agent trial.",
+      "verification": "partial",
+      "verificationNote": "Tufts Value Direct 3-Tier formulary is verified as the source; preferred agent inferred — confirm tier/PA in the PDF.",
+      "sourceIds": ["tufts-formulary-2026", "p32-pa-form"],
+      "lastReviewed": "2026-06-22"
+    },
+    {
+      "payerId": "tufts",
+      "classId": "lama",
+      "preferredAgent": {
+        "inn": "Umeclidinium",
+        "brand": "Incruse Ellipta",
+        "genericAvailable": false,
+        "strength": "62.5 mcg",
+        "sig": "1 inhalation once daily",
+        "sigShort": "1 inh daily",
+        "plainSig": "One breath in, once a day, same time each day."
+      },
+      "boglActive": false,
+      "boglNote": null,
+      "paRequired": [
+        { "drug": "Tudorza Pressair", "reason": "Non-preferred" }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Source formulary verified; preferred LAMA inferred. LAMA is COPD-indicated. Confirm in the Tufts formulary PDF.",
+      "sourceIds": ["tufts-formulary-2026", "dailymed-incruse"],
+      "lastReviewed": "2026-06-22"
+    },
+
+    {
+      "payerId": "harvardpilgrim",
+      "classId": "saba",
+      "preferredAgent": {
+        "inn": "Albuterol sulfate HFA",
+        "brand": "ProAir HFA",
+        "genericAvailable": true,
+        "strength": "90 mcg",
+        "sig": "2 puffs every 4 to 6 hours as needed",
+        "sigShort": "2 puffs Q4-6H PRN",
+        "plainSig": "Two puffs when you need it, no more than every 4 hours."
+      },
+      "boglActive": false,
+      "boglNote": null,
+      "paRequired": [
+        { "drug": "Levalbuterol (Xopenex HFA)", "reason": "Non-preferred" }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Harvard Pilgrim Select 3-Tier 2026 PDL is the verified source; this agent's tier/PA is inferred — confirm in the PDF.",
+      "sourceIds": ["hphc-formulary-2026"],
+      "lastReviewed": "2026-06-22"
+    },
+    {
+      "payerId": "harvardpilgrim",
+      "classId": "ics",
+      "preferredAgent": {
+        "inn": "Mometasone furoate",
+        "brand": "Asmanex Twisthaler",
+        "genericAvailable": false,
+        "strength": "220 mcg",
+        "sig": "2 inhalations once daily in the evening",
+        "sigShort": "2 inh QHS",
+        "plainSig": "Two breaths in, once a day in the evening."
+      },
+      "boglActive": false,
+      "boglNote": null,
+      "paRequired": [
+        { "drug": "Alvesco (ciclesonide)", "reason": "Non-preferred" },
+        { "drug": "Arnuity Ellipta", "reason": "Non-preferred" }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Source PDL verified; preferred ICS inferred — confirm in the Harvard Pilgrim formulary PDF.",
+      "sourceIds": ["hphc-formulary-2026"],
+      "lastReviewed": "2026-06-22"
+    },
+    {
+      "payerId": "harvardpilgrim",
+      "classId": "icslaba",
+      "preferredAgent": {
+        "inn": "Fluticasone furoate/vilanterol",
+        "brand": "Breo Ellipta",
+        "genericAvailable": false,
+        "strength": "100/25 mcg",
+        "sig": "1 inhalation once daily",
+        "sigShort": "1 inh daily",
+        "plainSig": "One breath in, once a day, same time each day."
+      },
+      "boglActive": false,
+      "boglNote": null,
+      "paRequired": [
+        { "drug": "Dulera", "reason": "Non-preferred" }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Source PDL verified; preferred combo inferred — confirm tier/PA in the Harvard Pilgrim formulary PDF.",
+      "sourceIds": ["hphc-formulary-2026", "p32-pa-form"],
+      "lastReviewed": "2026-06-22"
+    },
+    {
+      "payerId": "harvardpilgrim",
+      "classId": "lama",
+      "preferredAgent": {
+        "inn": "Tiotropium",
+        "brand": "Spiriva Respimat",
+        "genericAvailable": false,
+        "strength": "2.5 mcg",
+        "sig": "2 inhalations once daily",
+        "sigShort": "2 inh daily",
+        "plainSig": "Two breaths in, once a day, same time each day."
+      },
+      "boglActive": false,
+      "boglNote": null,
+      "paRequired": [
+        { "drug": "Tudorza Pressair", "reason": "Non-preferred" }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Source PDL verified; preferred LAMA inferred. LAMA is COPD-indicated. Confirm in the Harvard Pilgrim formulary PDF.",
+      "sourceIds": ["hphc-formulary-2026", "dailymed-spiriva"],
+      "lastReviewed": "2026-06-22"
+    },
+
+    {
+      "payerId": "mgb",
+      "classId": "saba",
+      "preferredAgent": {
+        "inn": "Albuterol sulfate HFA",
+        "brand": "ProAir HFA",
+        "genericAvailable": true,
+        "strength": "90 mcg",
+        "sig": "2 puffs every 4 to 6 hours as needed",
+        "sigShort": "2 puffs Q4-6H PRN",
+        "plainSig": "Two puffs when you need it, no more than every 4 hours."
+      },
+      "boglActive": false,
+      "boglNote": null,
+      "paRequired": [
+        { "drug": "Levalbuterol (Xopenex HFA)", "reason": "Non-preferred" }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "MGB 2026 6-Tier formulary (current 6/1/2026) is the verified source; SABA tier not in the verified extract — confirm in the formulary PDF.",
+      "sourceIds": ["mgb-formulary-2026"],
+      "lastReviewed": "2026-06-22"
+    },
+    {
+      "payerId": "mgb",
+      "classId": "ics",
+      "preferredAgent": {
+        "inn": "Fluticasone furoate",
+        "brand": "Arnuity Ellipta",
+        "genericAvailable": false,
+        "strength": "100 mcg",
+        "sig": "1 inhalation once daily",
+        "sigShort": "1 inh daily",
+        "plainSig": "One breath in, once a day, same time each day."
+      },
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        { "drug": "QVAR RediHaler (beclomethasone)", "note": "preferred brand" }
+      ],
+      "paRequired": [
+        { "drug": "Fluticasone propionate HFA (age ≥12)", "reason": "PA required" }
+      ],
+      "stepTherapy": "Fluticasone propionate HFA requires members aged 12+ with asthma to fail BOTH preferred brands Arnuity Ellipta and QVAR RediHaler first (or document the need for an MDI + spacer). Covered without PA through age 11.",
+      "verification": "verified",
+      "verificationNote": "Read directly off MGB's Fluticasone Propionate HFA PA policy (eff. 2025-09-10): Arnuity Ellipta and QVAR RediHaler are the preferred ICS brands.",
+      "sourceIds": ["mgb-flut-hfa-pa", "mgb-formulary-2026"],
+      "lastReviewed": "2026-06-22"
+    },
+    {
+      "payerId": "mgb",
+      "classId": "icslaba",
+      "preferredAgent": {
+        "inn": "Budesonide/formoterol",
+        "brand": "Symbicort",
+        "genericAvailable": true,
+        "strength": "160/4.5 mcg",
+        "sig": "2 puffs twice daily",
+        "sigShort": "2 puffs BID",
+        "plainSig": "Two puffs, morning and night, every day."
+      },
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        { "drug": "Wixela Inhub (generic fluticasone/salmeterol)", "note": "Tier 2 · preferred" }
+      ],
+      "paRequired": [
+        { "drug": "Advair HFA", "reason": "Higher tier (3)" }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "MGB 2026 6-Tier formulary places Symbicort and Wixela Inhub at Tier 2 (preferred) and Advair HFA at Tier 3.",
+      "sourceIds": ["mgb-formulary-2026"],
+      "lastReviewed": "2026-06-22"
+    },
+    {
+      "payerId": "mgb",
+      "classId": "lama",
+      "preferredAgent": {
+        "inn": "Tiotropium",
+        "brand": "Spiriva HandiHaler",
+        "genericAvailable": false,
+        "strength": "18 mcg",
+        "sig": "2 inhalations (1 capsule) once daily",
+        "sigShort": "2 inh (1 cap) daily",
+        "plainSig": "Breathe in one capsule's worth, once a day."
+      },
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        { "drug": "Spiriva Respimat (tiotropium)", "note": "also listed" }
+      ],
+      "paRequired": [
+        { "drug": "Arformoterol / Formoterol nebulizer (COPD)", "reason": "PA required" }
+      ],
+      "stepTherapy": "Nebulized long-acting beta-agonists (Brovana/Perforomist) require a COPD diagnosis plus rationale for why a non-nebulized LABA cannot be used.",
+      "verification": "verified",
+      "verificationNote": "MGB 2026 6-Tier formulary places Spiriva HandiHaler at Tier 2; nebulized LABA PA from the Arformoterol/Formoterol policy (eff. 2025-09-01). LAMA is COPD-indicated.",
+      "sourceIds": ["mgb-formulary-2026", "mgb-pharmacy-index", "dailymed-spiriva"],
+      "lastReviewed": "2026-06-22"
+    }
+  ]
+}
