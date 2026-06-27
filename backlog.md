@@ -4,6 +4,10 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## High
 
+- **Confirm the MD Medicaid menopause `partial` cells against the dispensing MCOs.** The FFS PDL
+  doesn't manage HRT, so the FFS cells are `partial`. Pull the managed-care formularies (Priority
+  Partners, Maryland Physicians Care, Wellpoint/Amerigroup, etc.) to confirm the per-MCO tiering and
+  the brand vaginal insert/ring (Imvexxy, Estring, Femring) PA status, then flip to `verified`.
 - **Finish verifying the `partial` / `example` cells.** MassHealth and MGB are largely `verified`;
   Tufts and Harvard Pilgrim are `partial` (formulary PDFs verified, per-cell agent inferred); BCBS
   MA is `example` (inhaler policy PDF returned HTTP 403 to the fetcher). Read each formulary PDF,
@@ -19,6 +23,9 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## Medium
 
+- **MD menopause: ship the `combo` class + more payers.** Estrogen–progestogen combination products
+  (Combipatch, Bijuva, Climara Pro, generic estradiol/norethindrone) are scaffolded as a disabled
+  `combo` tab — source and enable them. Add UnitedHealthcare and Aetna of Maryland as payers.
 - **Automate PA Appeal** (currently a disabled button): pre-fill the payer's PA form / appeal letter
   from the selected cell's step-therapy text and reject reasons.
 - **Deep-link state to the URL** (`?plan=masshealth&class=icslaba`) so a prescriber can bookmark or

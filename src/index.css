@@ -121,6 +121,38 @@ button {
   padding: 22px 0 10px;
   border-bottom: 3px solid var(--ink);
 }
+
+/* Top-level guide switch (e.g. MA inhalers ↔ MD menopause HT). */
+.guide-switch {
+  display: inline-flex;
+  margin-bottom: 16px;
+  border: 1px solid var(--ink);
+}
+.guide-switch__btn {
+  appearance: none;
+  min-height: 38px;
+  padding: 7px 15px;
+  background: var(--paper);
+  border: 0;
+  border-right: 1px solid var(--rule);
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.guide-switch__btn:last-child {
+  border-right: 0;
+}
+.guide-switch__btn:hover[aria-pressed="false"] {
+  background: var(--paper-shade);
+  color: var(--ink);
+}
+.guide-switch__btn[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--paper);
+}
 .masthead__row {
   display: flex;
   align-items: baseline;

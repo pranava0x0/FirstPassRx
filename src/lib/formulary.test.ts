@@ -1,20 +1,101 @@
 import { describe, it, expect } from 'vitest'
-import {
-  activeClasses,
-  allClasses,
-  getRecord,
-  glossary,
-  lookupGlossary,
-  meta,
-  payers,
-  records,
-  resolveSources,
-  searchFormulary,
-} from './formulary'
+import { guides, getGuideView, meta } from './formulary'
 
-describe('formulary data integrity', () => {
+describe('guides + global meta', () => {
+  it('ships the MA inhaler guide and the MD menopause guide, in order', () => {
+    expect(guides.map((g) => g.id)).toEqual(['ma-inhalers', 'md-menopause'])
+  })
+
+  it('defaults to a guide that exists', () => {
+    expect(guides.some((g) => g.id === meta.defaultGuideId)).toBe(true)
+    expect(meta.title).toBeTruthy()
+    expect(meta.version).toBeTruthy()
+  })
+
+  it('gives every guide the copy the masthead/labels need', () => {
+    for (const g of guides) {
+      for (const field of ['label', 'region', 'topic', 'classNoun', 'unitNoun', 'tagline'] as const) {
+        expect(g[field], `${g.id} ${field}`).toBeTruthy()
+      }
+      expect(['sample', 'mixed', 'verified']).toContain(g.dataStatus)
+      expect(g.references.length, `${g.id} references`).toBeGreaterThan(0)
+      expect(g.capturedAt, `${g.id} capturedAt`).toBeTruthy()
+    }
+  })
+})
+
+// Universal invariants — must hold for every cell in every guide.
+describe.each(guides.map((g) => [g.id, g] as const))('guide invariants: %s', (_id, guide) => {
+  it('covers every payer × active class (count floor)', () => {
+    const active = guide.activeClasses
+    expect(guide.records.length).toBeGreaterThanOrEqual(guide.payers.length * active.length)
+    for (const p of guide.payers) {
+      for (const c of active) {
+        expect(guide.getRecord(p.id, c.id), `missing ${guide.id} ${p.id}/${c.id}`).toBeDefined()
+      }
+    }
+  })
+
+  it('never references a coming-soon class', () => {
+    const comingSoon = new Set(guide.allClasses.filter((c) => c.comingSoon).map((c) => c.id))
+    for (const r of guide.records) {
+      expect(comingSoon.has(r.classId), `${guide.id} ${r.payerId}/${r.classId}`).toBe(false)
+    }
+  })
+
+  it('every BOGL cell names a brand and explains itself', () => {
+    for (const r of guide.records.filter((r) => r.boglActive)) {
+      expect(r.preferredAgent.brand, `${r.payerId}/${r.classId} brand`).toBeTruthy()
+      expect(r.boglNote, `${r.payerId}/${r.classId} note`).toBeTruthy()
+    }
+  })
+
+  it('every preferred agent has the fields the sig + plain-language layers need', () => {
+    for (const r of guide.records) {
+      const a = r.preferredAgent
+      const at = `${guide.id} ${r.payerId}/${r.classId}`
+      expect(a.inn, `${at} inn`).toBeTruthy()
+      expect(a.strength, `${at} strength`).toBeTruthy()
+      expect(a.sigShort, `${at} sigShort`).toBeTruthy()
+      expect(a.plainSig, `${at} plainSig`).toBeTruthy()
+    }
+  })
+
+  it('every PA item carries a drug and a reason', () => {
+    for (const r of guide.records) {
+      for (const pa of r.paRequired) {
+        expect(pa.drug, `${r.payerId}/${r.classId} pa.drug`).toBeTruthy()
+        expect(pa.reason, `${r.payerId}/${r.classId} pa.reason`).toBeTruthy()
+      }
+    }
+  })
+
+  it('every cell cites at least one source, and every sourceId resolves within the guide', () => {
+    for (const r of guide.records) {
+      const at = `${guide.id} ${r.payerId}/${r.classId}`
+      expect(r.sourceIds.length, `${at} sourceIds`).toBeGreaterThan(0)
+      const resolved = guide.resolveSources(r.sourceIds)
+      expect(resolved.length, `${at} unresolved sourceId`).toBe(r.sourceIds.length)
+      for (const s of resolved) {
+        expect(s.url.startsWith('http'), `${at} ${s.id} url`).toBe(true)
+      }
+    }
+  })
+
+  it('every cell declares a verification state with a note', () => {
+    const allowed = new Set(['verified', 'partial', 'example'])
+    for (const r of guide.records) {
+      expect(allowed.has(r.verification), `${guide.id} ${r.payerId}/${r.classId}`).toBe(true)
+      expect(r.verificationNote, `${r.payerId}/${r.classId} note`).toBeTruthy()
+    }
+  })
+})
+
+describe('MA inhaler guide specifics', () => {
+  const ma = getGuideView('ma-inhalers')
+
   it('ships the five required MA payers', () => {
-    expect(payers.map((p) => p.id)).toEqual([
+    expect(ma.payers.map((p) => p.id)).toEqual([
       'masshealth',
       'bcbsma',
       'tufts',
@@ -24,113 +105,81 @@ describe('formulary data integrity', () => {
   })
 
   it('ships the four MVP classes plus a coming-soon biologics tab', () => {
-    expect(activeClasses.map((c) => c.id)).toEqual(['saba', 'ics', 'icslaba', 'lama'])
-    expect(allClasses.find((c) => c.id === 'biologics')?.comingSoon).toBe(true)
-  })
-
-  // Count floor: every payer × active class must be covered.
-  it('covers every payer × active class', () => {
-    expect(records.length).toBeGreaterThanOrEqual(payers.length * activeClasses.length)
-    for (const p of payers) {
-      for (const c of activeClasses) {
-        expect(getRecord(p.id, c.id), `missing ${p.id}/${c.id}`).toBeDefined()
-      }
-    }
-  })
-
-  it('never references a coming-soon class', () => {
-    const comingSoon = new Set(allClasses.filter((c) => c.comingSoon).map((c) => c.id))
-    for (const r of records) {
-      expect(comingSoon.has(r.classId), `${r.payerId}/${r.classId}`).toBe(false)
-    }
-  })
-
-  it('every BOGL cell names a brand and explains itself', () => {
-    for (const r of records.filter((r) => r.boglActive)) {
-      expect(r.preferredAgent.brand, `${r.payerId}/${r.classId} brand`).toBeTruthy()
-      expect(r.boglNote, `${r.payerId}/${r.classId} note`).toBeTruthy()
-    }
-  })
-
-  it('every preferred agent has the fields the sig + plain-language layers need', () => {
-    for (const r of records) {
-      const a = r.preferredAgent
-      const at = `${r.payerId}/${r.classId}`
-      expect(a.inn, `${at} inn`).toBeTruthy()
-      expect(a.strength, `${at} strength`).toBeTruthy()
-      expect(a.sigShort, `${at} sigShort`).toBeTruthy()
-      expect(a.plainSig, `${at} plainSig`).toBeTruthy()
-    }
-  })
-
-  it('every PA item carries a drug and a reason', () => {
-    for (const r of records) {
-      for (const pa of r.paRequired) {
-        expect(pa.drug, `${r.payerId}/${r.classId} pa.drug`).toBeTruthy()
-        expect(pa.reason, `${r.payerId}/${r.classId} pa.reason`).toBeTruthy()
-      }
-    }
-  })
-
-  it('every cell cites at least one source, and every sourceId resolves', () => {
-    for (const r of records) {
-      const at = `${r.payerId}/${r.classId}`
-      expect(r.sourceIds.length, `${at} sourceIds`).toBeGreaterThan(0)
-      const resolved = resolveSources(r.sourceIds)
-      expect(resolved.length, `${at} unresolved sourceId`).toBe(r.sourceIds.length)
-      for (const s of resolved) {
-        expect(s.url.startsWith('http'), `${at} ${s.id} url`).toBe(true)
-      }
-    }
-  })
-
-  it('every cell declares a verification state', () => {
-    const allowed = new Set(['verified', 'partial', 'example'])
-    for (const r of records) {
-      expect(allowed.has(r.verification), `${r.payerId}/${r.classId}`).toBe(true)
-      expect(r.verificationNote, `${r.payerId}/${r.classId} note`).toBeTruthy()
-    }
+    expect(ma.activeClasses.map((c) => c.id)).toEqual(['saba', 'ics', 'icslaba', 'lama'])
+    expect(ma.allClasses.find((c) => c.id === 'biologics')?.comingSoon).toBe(true)
   })
 
   it('keeps the verified MassHealth Ventolin BOGL finding', () => {
-    const cell = getRecord('masshealth', 'saba')
+    const cell = ma.getRecord('masshealth', 'saba')
     expect(cell?.boglActive).toBe(true)
     expect(cell?.preferredAgent.brand).toBe('Ventolin HFA')
     expect(cell?.verification).toBe('verified')
   })
-})
-
-describe('search index', () => {
-  it('returns nothing for queries under 2 chars', () => {
-    expect(searchFormulary('')).toEqual([])
-    expect(searchFormulary('a')).toEqual([])
-  })
 
   it('finds a preferred agent by brand and ranks preferred before rejects', () => {
-    const hits = searchFormulary('symbicort')
+    const hits = ma.searchFormulary('symbicort')
     expect(hits.length).toBeGreaterThan(0)
     expect(hits.every((h) => h.drug.toLowerCase().includes('symbicort'))).toBe(true)
     expect(hits[0]?.kind).toBe('preferred')
   })
 
   it('finds a drug that appears on a reject list', () => {
-    const hits = searchFormulary('levalbuterol')
+    const hits = ma.searchFormulary('levalbuterol')
     expect(hits.some((h) => h.kind === 'reject')).toBe(true)
   })
-})
 
-describe('glossary', () => {
-  it('has plain-language entries and is looked up by substring', () => {
-    expect(glossary.length).toBeGreaterThan(0)
-    expect(lookupGlossary('BOGL')?.definition).toMatch(/brand/i)
-    expect(lookupGlossary('step therapy')).toBeDefined()
+  it('returns nothing for queries under 2 chars', () => {
+    expect(ma.searchFormulary('')).toEqual([])
+    expect(ma.searchFormulary('a')).toEqual([])
+  })
+
+  it('has a glossary looked up by substring', () => {
+    expect(ma.lookupGlossary('BOGL')?.definition).toMatch(/brand/i)
+    expect(ma.lookupGlossary('step therapy')).toBeDefined()
   })
 })
 
-describe('meta', () => {
-  it('flags data status and captures references + dates', () => {
-    expect(['sample', 'mixed', 'verified']).toContain(meta.dataStatus)
-    expect(meta.references.length).toBeGreaterThan(0)
-    expect(meta.capturedAt).toBeTruthy()
+describe('MD menopause guide specifics', () => {
+  const md = getGuideView('md-menopause')
+
+  it('ships Maryland payers and the menopause hormone classes', () => {
+    expect(md.payers.map((p) => p.id)).toEqual(['mdmedicaid', 'carefirst', 'kpmidatlantic'])
+    expect(md.activeClasses.map((c) => c.id)).toEqual(['est-td', 'progestogen', 'vaginal'])
+    expect(md.allClasses.find((c) => c.id === 'combo')?.comingSoon).toBe(true)
+  })
+
+  it('first-pass transdermal pick is generic estradiol, searchable by name', () => {
+    const cell = md.getRecord('mdmedicaid', 'est-td')
+    expect(cell?.preferredAgent.inn).toMatch(/estradiol/i)
+    const hits = md.searchFormulary('estradiol')
+    expect(hits.length).toBeGreaterThan(0)
+  })
+
+  it('is sourced data — verified/partial cells, no leftover example scaffold', () => {
+    expect(md.dataStatus).toBe('mixed')
+    for (const r of md.records) {
+      expect(['verified', 'partial'], `${r.payerId}/${r.classId}`).toContain(r.verification)
+    }
+    // CareFirst + Kaiser were read off real formulary PDFs.
+    expect(md.getRecord('carefirst', 'est-td')?.verification).toBe('verified')
+    expect(md.getRecord('kpmidatlantic', 'progestogen')?.verification).toBe('verified')
+  })
+
+  it('captures the Kaiser quirk: medroxyprogesterone is first-pass because micronized progesterone needs PA', () => {
+    const cell = md.getRecord('kpmidatlantic', 'progestogen')
+    expect(cell?.preferredAgent.inn).toMatch(/medroxyprogesterone/i)
+    expect(cell?.paRequired.some((p) => /micronized progesterone/i.test(p.drug))).toBe(true)
+  })
+
+  it('cites Maryland government + payer sources that resolve', () => {
+    const cell = md.getRecord('mdmedicaid', 'est-td')
+    const srcs = md.resolveSources(cell!.sourceIds)
+    expect(srcs.length).toBe(cell!.sourceIds.length)
+    expect(srcs.some((s) => s.url.includes('health.maryland.gov'))).toBe(true)
+  })
+
+  it('carries menopause-specific glossary terms', () => {
+    expect(md.lookupGlossary('GSM')).toBeDefined()
+    expect(md.lookupGlossary('MHT')?.definition).toMatch(/estrogen/i)
   })
 })

@@ -2,9 +2,12 @@
 // src/data/formulary.json is validated against these types at load time
 // (src/lib/formulary.ts) so a malformed PR fails loud, not silent.
 
-export type ClassId = 'saba' | 'ics' | 'icslaba' | 'lama' | 'biologics'
+// Ids are guide-scoped now — each guide declares its own payers and classes — so these are
+// open strings validated at load (src/lib/formulary.ts) rather than a fixed union. The aliases
+// stay for readability at call sites that pass a payer/class id around.
+export type ClassId = string
 
-export type PayerId = 'masshealth' | 'bcbsma' | 'tufts' | 'harvardpilgrim' | 'mgb'
+export type PayerId = string
 
 export type SourceType = 'gov' | 'payer' | 'pbm' | 'manufacturer' | 'guideline' | 'reference'
 
@@ -115,21 +118,46 @@ export interface FormularyRecord {
   lastReviewed: string
 }
 
-export interface FormularyMeta {
+/** Global app meta — shared across every guide. */
+export interface AppMeta {
   title: string
   disclaimer: string
+  version: string
+  /** Which guide loads first (must match a guides[].id). */
+  defaultGuideId: string
+}
+
+/**
+ * One self-contained guide = a region × therapeutic area, with its own payers, classes,
+ * data, sources, and the copy that makes the masthead/labels read right for that domain.
+ * The top-level toggle swaps between guides.
+ */
+export interface Guide {
+  id: string
+  /** Short label for the top-level toggle, e.g. "MA · Inhalers". */
+  label: string
+  /** Region/jurisdiction, e.g. "Massachusetts". */
+  region: string
+  /** Therapeutic area shown in the masthead, e.g. "inhaler guide". */
+  topic: string
+  /** Legend for the class selector, e.g. "Inhaler type" / "Hormone type". */
+  classNoun: string
+  /** Singular noun for a product in this guide, e.g. "inhaler" / "medication". Used in patient copy. */
+  unitNoun: string
+  /** Masthead one-liner, e.g. "Pick a plan and inhaler class. Start with the green answer." */
+  tagline: string
   dataStatus: 'sample' | 'mixed' | 'verified'
   lastUpdated: string
   /** When the dataset was captured against its sources. */
   capturedAt: string
-  version: string
   payers: PayerMeta[]
   classes: ClassMeta[]
   references: Reference[]
   glossary: GlossaryTerm[]
+  records: FormularyRecord[]
 }
 
 export interface Formulary {
-  meta: FormularyMeta
-  records: FormularyRecord[]
+  meta: AppMeta
+  guides: Guide[]
 }

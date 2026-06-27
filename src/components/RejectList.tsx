@@ -4,7 +4,7 @@ import { GlossaryTerm } from './GlossaryTerm'
 function readableReason(reason: string): string {
   const lower = reason.toLowerCase()
   if (lower.includes('pa')) return 'prior authorization needed'
-  if (lower.includes('step')) return 'try another inhaler first'
+  if (lower.includes('step')) return 'try a preferred drug first'
   if (lower.includes('non-formulary')) return 'not on the covered list'
   if (lower.includes('non-preferred')) return 'not preferred'
   if (lower.includes('higher tier')) return 'higher cost tier'

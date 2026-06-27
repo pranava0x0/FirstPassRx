@@ -150,4 +150,22 @@ describe('FirstPassRx app', () => {
     await user.click(screen.getByRole('button', { name: /brand-over-generic rule/i }))
     expect(screen.getByRole('tooltip')).toHaveTextContent(/brand/i)
   })
+
+  it('toggles to the Maryland menopause guide: new region, plans, classes, and agent', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    // Default guide is MA inhalers.
+    expect(screen.getByText(/Massachusetts inhaler guide/i)).toBeInTheDocument()
+    expect(agentHeading()).toHaveTextContent('Ventolin HFA')
+
+    await user.click(screen.getByRole('button', { name: /Menopause HT/i }))
+
+    // Masthead, class legend, plan list, and the result all swap to the menopause guide.
+    expect(screen.getByText(/Maryland menopause/i)).toBeInTheDocument()
+    expect(screen.getByText('Hormone type', { selector: 'legend' })).toBeInTheDocument()
+    expect(screen.getByRole('option', { name: /Maryland Medicaid/i })).toBeInTheDocument()
+    expect(agentHeading()).toHaveTextContent(/Estradiol/i)
+    // Inhaler-specific plans are gone.
+    expect(screen.queryByRole('option', { name: 'MassHealth' })).not.toBeInTheDocument()
+  })
 })

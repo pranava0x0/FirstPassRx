@@ -1,7 +1,9 @@
 # Data sources
 
-Every cell in `src/data/formulary.json` carries a `sourceIds` list resolving to `meta.references`,
-plus a `verification` state. The UI shows the citations and the state on each result.
+The data is organized into **guides** (`src/data/formulary.json` → `guides[]`), one per region ×
+therapeutic area: `ma-inhalers` (Massachusetts inhalers) and `md-menopause` (Maryland menopause
+hormone therapy). Every cell carries a `sourceIds` list resolving to **its own guide's**
+`references`, plus a `verification` state. The UI shows the citations and the state on each result.
 
 ## Verification states
 
@@ -42,6 +44,40 @@ with publisher, effective date, and capture date.
 - **Inhalers are generics, not biosimilars:** Wixela Inhub (generic Advair), Breyna (generic
   Symbicort), generic albuterol/Flovent HFA — all ANDA generics. Biosimilars apply only to
   injectable biologics (Omlyclo → Xolair).
+
+## Maryland menopause hormone-therapy guide (`md-menopause`, captured 2026-06-27)
+
+Classes: `est-td` (transdermal estradiol), `progestogen`, `vaginal` (local vaginal estrogen);
+`combo` (estrogen–progestogen) ships disabled. Real plan PDFs were downloaded and read.
+
+| Payer | Source | Status |
+| --- | --- | --- |
+| Maryland Medicaid (FFS) | MD Medicaid PDL, eff. 1/1/2026 (upd. 3/26/2026) + DAW6 brand-preferred list | partial (class is unmanaged on the PDL) |
+| CareFirst BCBS (CVS Caremark) | 2026 Exchange/Individual & Small Group Formulary, upd. 6/1/2026 | verified |
+| Kaiser Permanente Mid-Atlantic | 2026 Marketplace Formulary, upd. 4/7/2026 (HMO formulary corroborates) | verified |
+
+### Key findings baked into the data
+
+- **Maryland Medicaid FFS does not manage HRT on its PDL** — systemic/vaginal estrogen and
+  progestogens are absent from the managed PDL and the DAW6 list names no estrogen, so generic
+  estradiol / micronized progesterone are standard-benefit with no PDL-driven PA. Compounded
+  "bioidentical" products are **excluded** (not FDA-approved), not merely PA. Cells are `partial`
+  (the unmanaged-class fact is verified; the specific first-pass agent is the clinically-standard
+  choice). Brand vaginal inserts/rings (Imvexxy, Estring, Femring) are not confirmed on the FFS PDL —
+  confirm against the dispensing MCO.
+- **CareFirst:** generic estradiol patch/gel, oral micronized progesterone, and estradiol vaginal
+  cream/tablet are all **Tier 1, no PA**. The one catch: estrogens carry a **High Risk Medication PA
+  for members age 70+** (Beers-criteria review) — not a barrier for typical menopausal patients. The
+  age-70 PA does **not** apply to vaginal cream.
+- **Kaiser Mid-Atlantic quirk:** generic **micronized progesterone is flagged PA + quantity limit**
+  on this plan (atypical), so generic **medroxyprogesterone** (no restriction) is the first-pass that
+  ships clean here; micronized progesterone is clinically preferred but expect a PA. Generic estradiol
+  patch and vaginal estradiol are unrestricted.
+- Guideline backing for the class definitions/dosing: ACOG menopause HT FAQ and The Menopause Society
+  (NAMS) 2022 position statement.
+
+No payer document was login-walled. The MD Medicaid PDL/DAW6/QL PDFs, the CareFirst Exchange
+formulary PDF, and the KP MAS Marketplace + HMO formulary PDFs were all fetched and read.
 
 ## Verification protocol (per cell, before flipping to `verified`)
 

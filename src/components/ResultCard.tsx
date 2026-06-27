@@ -1,5 +1,5 @@
 import type { ClassMeta, FormularyRecord, PayerMeta } from '../types/formulary'
-import { meta, resolveSources } from '../lib/formulary'
+import { useGuide } from '../lib/formulary'
 import { RxSig } from './RxSig'
 import { BoglBanner } from './BoglBanner'
 import { Alternatives } from './Alternatives'
@@ -20,6 +20,7 @@ function readableGenericName(name: string): string {
 }
 
 export function ResultCard({ record, payer, drugClass, panelId, labelId }: Props) {
+  const { resolveSources, capturedAt, unitNoun } = useGuide()
   const agent = record.preferredAgent
   const sources = resolveSources(record.sourceIds)
   const displayName = agent.brand ?? agent.inn
@@ -65,8 +66,8 @@ export function ResultCard({ record, payer, drugClass, panelId, labelId }: Props
           <ol>
             {/* Patient Action: Keep this clean, consistent, and identical for all records */}
             <li>
-              <b>Patient:</b> ask your doctor if <strong>{displayName}</strong> is the right
-              inhaler for you.
+              <b>Patient:</b> ask your doctor if <strong>{displayName}</strong> is the right{' '}
+              {unitNoun} for you.
             </li>
             {record.boglActive ? (
               <>
@@ -102,6 +103,7 @@ export function ResultCard({ record, payer, drugClass, panelId, labelId }: Props
               brand={agent.brand ?? displayName}
               payerName={payer.shortName}
               genericBase={genericBase}
+              unitNoun={unitNoun}
             />
           </div>
         ) : null}
@@ -142,7 +144,7 @@ export function ResultCard({ record, payer, drugClass, panelId, labelId }: Props
             <div className="detail-block__body">
               <Citations
                 sources={sources}
-                capturedAt={meta.capturedAt}
+                capturedAt={capturedAt}
                 verificationNote={record.verificationNote}
               />
             </div>
