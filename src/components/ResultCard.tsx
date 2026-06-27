@@ -1,5 +1,12 @@
-import type { ClassMeta, FormularyRecord, PayerMeta } from '../types/formulary'
+import type { ClassMeta, FormularyRecord, PayerMeta, Verification } from '../types/formulary'
 import { useGuide } from '../lib/formulary'
+
+/** How confident the cell is in its source — surfaced as a visible stamp, not buried in prose. */
+const VERIFY_LABEL: Record<Verification, string> = {
+  verified: 'Verified — read off the cited source',
+  partial: 'Partial — confirm in the source',
+  example: 'Example — unconfirmed',
+}
 import { RxSig } from './RxSig'
 import { BoglBanner } from './BoglBanner'
 import { Alternatives } from './Alternatives'
@@ -58,6 +65,11 @@ export function ResultCard({ record, payer, drugClass, panelId, labelId }: Props
           <p className="agent__why">
             This is the first {drugClass.plainName.toLowerCase()} option to discuss for this plan
             because it is likely to be covered without an insurance delay.
+          </p>
+          <p className={`stamp stamp--verify is-${record.verification}`}>
+            <span aria-hidden="true">{record.verification === 'verified' ? '✓' : '⚠'}</span>
+            <span className="sr-only">Source confidence: </span>
+            {VERIFY_LABEL[record.verification]}
           </p>
         </div>
 

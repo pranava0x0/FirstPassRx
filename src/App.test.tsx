@@ -168,4 +168,14 @@ describe('FirstPassRx app', () => {
     // Inhaler-specific plans are gone.
     expect(screen.queryByRole('option', { name: 'MassHealth' })).not.toBeInTheDocument()
   })
+
+  it('surfaces the source-confidence stamp without expanding Sources', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    // MA MassHealth SABA was read off the source.
+    expect(screen.getByText(/Verified — read off the cited source/i)).toBeInTheDocument()
+    // MD Maryland Medicaid is partial — the class is unmanaged on the PDL.
+    await user.click(screen.getByRole('button', { name: /Menopause HT/i }))
+    expect(screen.getByText(/Partial — confirm in the source/i)).toBeInTheDocument()
+  })
 })
