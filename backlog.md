@@ -4,10 +4,11 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## High
 
-- **Confirm the MD Medicaid menopause `partial` cells against the dispensing MCOs.** The FFS PDL
-  doesn't manage HRT, so the FFS cells are `partial`. Pull the managed-care formularies (Priority
-  Partners, Maryland Physicians Care, Wellpoint/Amerigroup, etc.) to confirm the per-MCO tiering and
-  the brand vaginal insert/ring (Imvexxy, Estring, Femring) PA status, then flip to `verified`.
+- **Add the remaining MD HealthChoice MCOs.** Johns Hopkins Priority Partners is now sourced
+  (`verified`); the MD Medicaid FFS cells stay `partial` because the FFS PDL structurally doesn't
+  manage HRT (not a closeable gap — it's a carve-out). Pull the other HealthChoice MCO formularies
+  (Maryland Physicians Care, Wellpoint/Amerigroup, Aetna Better Health, UnitedHealthcare Community
+  Plan, CareFirst Community Health Plan) so a Medicaid member can pick their actual MCO.
 - **Finish verifying the `partial` / `example` cells.** MassHealth and MGB are largely `verified`;
   Tufts and Harvard Pilgrim are `partial` (formulary PDFs verified, per-cell agent inferred); BCBS
   MA is `example` (inhaler policy PDF returned HTTP 403 to the fetcher). Read each formulary PDF,

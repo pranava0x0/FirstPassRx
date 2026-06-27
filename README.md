@@ -10,7 +10,9 @@ A top-level toggle switches between **guides** — each a region × therapeutic 
 classes, and sourced data:
 
 - **MA · Inhalers** — Massachusetts inhaler formularies (MassHealth, BCBS MA, Tufts, Harvard Pilgrim, MGB).
-- **MD · Menopause HT** — Maryland menopause hormone therapy (Maryland Medicaid, CareFirst, Kaiser Mid-Atlantic).
+- **MD · Menopause HT** — Maryland menopause hormone therapy across 8 plans (Maryland Medicaid,
+  CareFirst, Kaiser Mid-Atlantic, Johns Hopkins Priority Partners, UnitedHealthcare, Cigna, Aetna,
+  and a representative Medicare Part D plan).
 
 Static single-page app — React + Vite, no backend, deploys to GitHub Pages. Design identity is
 "Monograph" (a dated drug-compendium page); see [docs/design.md](docs/design.md).

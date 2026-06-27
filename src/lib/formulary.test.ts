@@ -142,10 +142,28 @@ describe('MA inhaler guide specifics', () => {
 describe('MD menopause guide specifics', () => {
   const md = getGuideView('md-menopause')
 
-  it('ships Maryland payers and the menopause hormone classes', () => {
-    expect(md.payers.map((p) => p.id)).toEqual(['mdmedicaid', 'carefirst', 'kpmidatlantic'])
+  it('ships the Maryland payer roster and the menopause hormone classes', () => {
+    expect(md.payers.map((p) => p.id)).toEqual([
+      'mdmedicaid',
+      'carefirst',
+      'kpmidatlantic',
+      'priority-partners',
+      'uhc-md',
+      'cigna',
+      'aetna',
+      'medicare-partd',
+    ])
     expect(md.activeClasses.map((c) => c.id)).toEqual(['est-td', 'progestogen', 'vaginal'])
     expect(md.allClasses.find((c) => c.id === 'combo')?.comingSoon).toBe(true)
+  })
+
+  it('contrasts plans on micronized progesterone: clean on Priority Partners, PA on Kaiser', () => {
+    // Same drug, opposite first-pass logic — the whole point of a per-plan tool.
+    const pp = md.getRecord('priority-partners', 'progestogen')
+    expect(pp?.preferredAgent.inn).toMatch(/progesterone/i)
+    expect(pp?.paRequired.length).toBe(0)
+    const kp = md.getRecord('kpmidatlantic', 'progestogen')
+    expect(kp?.paRequired.some((p) => /micronized progesterone/i.test(p.drug))).toBe(true)
   })
 
   it('first-pass transdermal pick is generic estradiol, searchable by name', () => {

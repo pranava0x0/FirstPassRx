@@ -55,6 +55,11 @@ Classes: `est-td` (transdermal estradiol), `progestogen`, `vaginal` (local vagin
 | Maryland Medicaid (FFS) | MD Medicaid PDL, eff. 1/1/2026 (upd. 3/26/2026) + DAW6 brand-preferred list | partial (class is unmanaged on the PDL) |
 | CareFirst BCBS (CVS Caremark) | 2026 Exchange/Individual & Small Group Formulary, upd. 6/1/2026 | verified |
 | Kaiser Permanente Mid-Atlantic | 2026 Marketplace Formulary, upd. 4/7/2026 (HMO formulary corroborates) | verified |
+| Johns Hopkins Priority Partners (HealthChoice MCO) | Priority Partners (690) Formulary, eff. 4/1/2026 (192-pp PDF read in full) | verified |
+| UnitedHealthcare (commercial, OptumRx) | Commercial Prescription Drug List, eff. 1/1/2026 | verified |
+| Cigna (commercial, Express Scripts) | Value 4-Tier PDL, eff. 7/1/2026 | verified |
+| Aetna (commercial, CVS Caremark) | 2026 Standard Plan Drug Guide | verified |
+| Medicare Part D (representative) | AARP MedicareRx Preferred (UHC), MD Region S5921, 2026 | verified |
 
 ### Key findings baked into the data
 
@@ -73,11 +78,27 @@ Classes: `est-td` (transdermal estradiol), `progestogen`, `vaginal` (local vagin
   on this plan (atypical), so generic **medroxyprogesterone** (no restriction) is the first-pass that
   ships clean here; micronized progesterone is clinically preferred but expect a PA. Generic estradiol
   patch and vaginal estradiol are unrestricted.
+- **Priority Partners is a *closed* formulary** — absence from the list = non-formulary (needs an
+  exception/PA). Generic estradiol patch, micronized progesterone, and vaginal estradiol tablet/cream
+  all ship clean; transdermal gels/sprays and Imvexxy/Estring/Femring are non-formulary. The Maryland
+  HealthChoice FFS PDL carve-out covers only behavioral-health/SUD drugs, so menopause hormones run
+  off *this* MCO formulary, not the state FFS PDL.
+- **Commercial plans converge** on generic estradiol patch / oral micronized progesterone / vaginal
+  estradiol as the clean Tier-1 first-pass (UnitedHealthcare/OptumRx, Aetna/CVS Caremark). Differences
+  are in the brand tail: Cigna requires PA on Myfembree and Crinone and tiers up Premarin/Intrarosa/
+  Osphena; Aetna prefers the vaginal *cream* over the generic tablet; UHC tiers up the gels and brand
+  patches.
+- **Medicare Part D varies by sponsor.** The cell names a concrete representative plan — AARP
+  MedicareRx Preferred (UnitedHealthcare), a Maryland Region S5921 Part D plan — where generic HRT is
+  covered (estrogens/progestins are not on the Part D excluded-drug list); Crinone needs PA and
+  Imvexxy/Femring are non-formulary. The verificationNote flags the per-plan variance.
 - Guideline backing for the class definitions/dosing: ACOG menopause HT FAQ and The Menopause Society
   (NAMS) 2022 position statement.
 
-No payer document was login-walled. The MD Medicaid PDL/DAW6/QL PDFs, the CareFirst Exchange
-formulary PDF, and the KP MAS Marketplace + HMO formulary PDFs were all fetched and read.
+No payer document was login-walled. Every cited formulary (MD Medicaid PDL/DAW6/QL, CareFirst, KP MAS
+Marketplace + HMO, Priority Partners 690, UnitedHealthcare commercial, Cigna, Aetna, AARP MedicareRx)
+was fetched and read — several large PDFs were downloaded and text-extracted locally where WebFetch
+could not render the binary stream.
 
 ## Verification protocol (per cell, before flipping to `verified`)
 

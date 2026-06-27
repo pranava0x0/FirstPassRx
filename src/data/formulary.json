@@ -2,7 +2,7 @@
   "meta": {
     "title": "FirstPassRx",
     "disclaimer": "A point-of-care reference, not a substitute for the payer's current formulary or clinical judgment. Formularies change quarterly; confirm every agent and restriction against the linked source before prescribing.",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "defaultGuideId": "ma-inhalers"
   },
   "guides": [
@@ -1107,6 +1107,66 @@
           "sourceIds": [
             "kp-mas-marketplace-2026"
           ]
+        },
+        {
+          "id": "priority-partners",
+          "name": "Johns Hopkins Priority Partners",
+          "shortName": "Priority Partners",
+          "aka": "Maryland HealthChoice MCO",
+          "pbm": "Johns Hopkins HealthCare",
+          "formularyUrl": "https://www.ppmco.org/wp-content/uploads/2023/03/ppmco_formulary.pdf",
+          "sourceIds": [
+            "pp-formulary-2026"
+          ],
+          "paPolicyUrl": "https://www.hopkinsmedicine.org/johns-hopkins-health-plans/providers-physicians/our-plans/priority-partners/pharmacy"
+        },
+        {
+          "id": "uhc-md",
+          "name": "UnitedHealthcare",
+          "shortName": "UnitedHealthcare",
+          "aka": "Maryland commercial",
+          "pbm": "OptumRx",
+          "formularyUrl": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ],
+          "paPolicyUrl": "https://www.uhcprovider.com/en/resource-library/drug-lists-pharmacy.html"
+        },
+        {
+          "id": "cigna",
+          "name": "Cigna HealthCare",
+          "shortName": "Cigna",
+          "aka": "Maryland commercial",
+          "pbm": "Express Scripts / Evernorth",
+          "formularyUrl": "https://www.cigna.com/static/www-cigna-com/docs/ifp/value-4-tier-spec.pdf",
+          "sourceIds": [
+            "cigna-value4t-2026"
+          ],
+          "paPolicyUrl": "https://static.cigna.com/assets/chcp/pdf/coveragePolicies/cnf/cnf_156_coveragepositioncriteria_estrogen_patches_dqm_per_days.pdf"
+        },
+        {
+          "id": "aetna",
+          "name": "Aetna",
+          "shortName": "Aetna",
+          "aka": "Maryland commercial",
+          "pbm": "CVS Caremark",
+          "formularyUrl": "https://www.aetna.com/content/dam/aetna/pdfs/aetnacom/individuals-families-health-insurance/document-library/pharmacy/2026_Drug_guide_Aetna_Standard_Plan.pdf",
+          "sourceIds": [
+            "aetna-standard-2026"
+          ],
+          "paPolicyUrl": "https://www.aetna.com/content/dam/aetna/pdfs/aetnacom/individuals-families-health-insurance/document-library/pharmacy/2026-exclusion-drug-list-standard-control-plan.pdf"
+        },
+        {
+          "id": "medicare-partd",
+          "name": "Medicare Part D — AARP MedicareRx Preferred (UHC)",
+          "shortName": "Medicare Part D",
+          "aka": "representative MD Part D plan · Region S5921",
+          "pbm": "OptumRx",
+          "formularyUrl": "https://www.uhc.com/medicare/alphadog/PDEX26PD0348627_001",
+          "sourceIds": [
+            "aarp-medicarerx-2026"
+          ],
+          "paPolicyUrl": "https://www.uhc.com/medicare/alphadog/PDEX26PD0348627_001"
         }
       ],
       "classes": [
@@ -1221,6 +1281,51 @@
           "type": "guideline",
           "url": "https://menopause.org/professional-resources/position-statements",
           "accessed": "2026-06-27"
+        },
+        {
+          "id": "pp-formulary-2026",
+          "label": "Priority Partners (690) Formulary, Effective 04/01/2026",
+          "publisher": "Priority Partners MCO",
+          "type": "payer",
+          "url": "https://www.ppmco.org/wp-content/uploads/2023/03/ppmco_formulary.pdf",
+          "accessed": "2026-06-27",
+          "effectiveDate": "2026-04-01"
+        },
+        {
+          "id": "uhc-commercial-pdl-2026",
+          "label": "UnitedHealthcare Commercial Prescription Drug List (PDL), Effective January 1, 2026",
+          "publisher": "UnitedHealthcare & affiliated companies",
+          "type": "payer",
+          "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+          "accessed": "2026-06-27",
+          "effectiveDate": "2026-01-01"
+        },
+        {
+          "id": "cigna-value4t-2026",
+          "label": "Cigna Healthcare Value 4-Tier Prescription Drug List — coverage starting July 1, 2026 (Hormonal Agents section, p.18)",
+          "publisher": "Cigna Healthcare (Express Scripts/Evernorth-administered)",
+          "type": "payer",
+          "url": "https://www.cigna.com/static/www-cigna-com/docs/ifp/value-4-tier-spec.pdf",
+          "accessed": "2026-06-27",
+          "effectiveDate": "2026-07-01"
+        },
+        {
+          "id": "aetna-standard-2026",
+          "label": "2026 Aetna Standard Plan Pharmacy Drug Guide — MENOPAUSAL SYMPTOM AGENTS / PROGESTINS covered list + 'Preferred Options List for Formulary Drug Removals' (estradiol, vaginal estrogen, progesterone entries)",
+          "publisher": "Aetna (CVS Health); PBM CVS Caremark",
+          "type": "payer",
+          "url": "https://www.aetna.com/content/dam/aetna/pdfs/aetnacom/individuals-families-health-insurance/document-library/pharmacy/2026_Drug_guide_Aetna_Standard_Plan.pdf",
+          "accessed": "2026-06-27",
+          "effectiveDate": "2026-01"
+        },
+        {
+          "id": "aarp-medicarerx-2026",
+          "label": "AARP Medicare Rx Preferred from UHC (PDP) — Complete Drug List (Formulary) 2026, Formulary ID 00026000, Estrogens / Progestins sections (pp. 70-74 index; drug list pp. ~70-72)",
+          "publisher": "UnitedHealthcare Insurance Company (AARP-branded Part D plan)",
+          "type": "payer",
+          "url": "https://www.uhc.com/medicare/alphadog/PDEX26PD0348627_001",
+          "accessed": "2026-06-27",
+          "effectiveDate": "2026-01-01"
         }
       ],
       "glossary": [
@@ -1606,6 +1711,783 @@
           "verificationNote": "Read off the KP Mid-Atlantic Marketplace Formulary (4/7/2026): the generic 'estradiol vaginal' line is Tiers 1–3 with no PA/ST. Femring is Tier 3, no PA.",
           "sourceIds": [
             "kp-mas-marketplace-2026"
+          ],
+          "lastReviewed": "2026-06-27"
+        },
+        {
+          "payerId": "priority-partners",
+          "classId": "est-td",
+          "preferredAgent": {
+            "inn": "Estradiol transdermal patch",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "0.05 mg/24 hr (transdermal patch)",
+            "sig": "Apply one estradiol 0.05 mg/24hr transdermal patch to clean, dry skin of the lower abdomen; rotate sites",
+            "sigShort": "Estradiol 0.05 mg/24hr patch; weekly or 2x/week",
+            "plainSig": "Stick one estrogen patch on your lower belly. Depending on the type, change it once a week or twice a week. Press it on clean, dry skin and rotate spots."
+          },
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "estradiol td patch weekly (generic of Climara) 0.025-0.1 mg/24hr",
+              "note": "On formulary, no restriction"
+            },
+            {
+              "drug": "estradiol td patch twice weekly (generic of Vivelle-Dot) 0.025-0.1 mg/24hr",
+              "note": "On formulary, no restriction"
+            },
+            {
+              "drug": "dotti (generic of Vivelle-Dot) patch",
+              "note": "On formulary, no restriction"
+            },
+            {
+              "drug": "lyllana (generic of Minivelle) patch",
+              "note": "On formulary, no restriction"
+            },
+            {
+              "drug": "CLIMARA PRO disc weekly (estradiol/levonorgestrel combo patch)",
+              "note": "On formulary (estrogen-progestin combination patch), no restriction"
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "estradiol transdermal gel (Divigel/Estrogel/Elestrin) and spray (Evamist)",
+              "reason": "Non-formulary"
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly off Priority Partners (690) formulary effective 04/01/2026, ESTROGENS > ESTROGENS section (p.89-90). Generic estradiol td patch weekly (generic of CLIMARA) and twice-weekly (generic of VIVELLE-DOT), plus branded-generic dotti and lyllana patches, all show a BLANK Requirements/Limits column = no PA, no step therapy, covered clean. No transdermal estradiol gel or spray products (Divigel/Estrogel/Evamist/Elestrin) appear anywhere in this closed formulary, so they are non-formulary. Patch is the systemic transdermal first-pass.",
+          "sourceIds": [
+            "pp-formulary-2026"
+          ],
+          "lastReviewed": "2026-06-27"
+        },
+        {
+          "payerId": "priority-partners",
+          "classId": "progestogen",
+          "preferredAgent": {
+            "inn": "Progesterone, micronized (oral)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "100 mg / 200 mg capsule",
+            "sig": "Take progesterone 200 mg by mouth at bedtime for 12-14 days each cycle (sequential), or 100 mg by mouth at bedtime daily (continuous), for endometrial protection alongside systemic estrogen",
+            "sigShort": "Micronized progesterone 100-200 mg PO at bedtime",
+            "plainSig": "Take one progesterone capsule at bedtime (it can make you drowsy). Your prescriber will tell you whether to take it every night or only part of the month, to protect your uterine lining."
+          },
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "medroxyprogesterone acetate tab 2.5/5/10 mg (generic of Provera)",
+              "note": "On formulary, no restriction; alternative oral progestogen"
+            },
+            {
+              "drug": "norethindrone acetate tab 5 mg",
+              "note": "On formulary, no restriction"
+            },
+            {
+              "drug": "progesterone vaginal suppository 100/200 mg",
+              "note": "On formulary under Vaginal Progestins, no restriction"
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly off Priority Partners (690) formulary effective 04/01/2026, PROGESTINS section (p.118). Generic micronized progesterone cap 100 mg and 200 mg (generic of PROMETRIUM) both show a BLANK Requirements/Limits column = no PA, no step therapy. It ships clean, so micronized progesterone is the first-pass for endometrial protection on THIS plan (no need to fall back to medroxyprogesterone). Medroxyprogesterone acetate 2.5/5/10 mg (generic of Provera) and norethindrone acetate 5 mg are also on formulary with no restriction.",
+          "sourceIds": [
+            "pp-formulary-2026"
+          ],
+          "lastReviewed": "2026-06-27"
+        },
+        {
+          "payerId": "priority-partners",
+          "classId": "vaginal",
+          "preferredAgent": {
+            "inn": "Estradiol vaginal tablet (insert)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "10 mcg vaginal insert",
+            "sig": "Insert one estradiol 10 mcg vaginal tablet vaginally once daily for 2 weeks, then one tablet vaginally twice weekly for maintenance",
+            "sigShort": "Estradiol 10 mcg vaginal tab: daily x2wk then 2x/week",
+            "plainSig": "Put one small estrogen tablet into your vagina every day for 2 weeks, then just twice a week after that. A cream version works the same way if you prefer it."
+          },
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "yuvafem 10 mcg vaginal tablet (generic of Vagifem)",
+              "note": "On formulary, no restriction"
+            },
+            {
+              "drug": "estradiol vaginal cream 0.01% (generic of Estrace)",
+              "note": "On formulary, no restriction"
+            },
+            {
+              "drug": "Premarin vaginal cream 0.625 mg (brand, conjugated estrogens)",
+              "note": "On formulary (no generic exists), no restriction"
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "estradiol vaginal insert (Imvexxy)",
+              "reason": "Non-formulary"
+            },
+            {
+              "drug": "estradiol vaginal ring (Estring)",
+              "reason": "Non-formulary"
+            },
+            {
+              "drug": "estradiol acetate vaginal ring (Femring)",
+              "reason": "Non-formulary"
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly off Priority Partners (690) formulary effective 04/01/2026, VAGINAL AND RELATED PRODUCTS > VAGINAL ESTROGENS section (p.126). Generic estradiol vaginal tab 10 mcg (generic of VAGIFEM), yuvafem (generic of VAGIFEM), estradiol vaginal cream 0.01% (generic of ESTRACE), and brand PREMARIN vag cream 0.625mg all show a BLANK Requirements/Limits column = no PA, covered clean. Imvexxy, Estring, and Femring do not appear anywhere in this closed formulary, so they are non-formulary (require a non-formulary exception/PA).",
+          "sourceIds": [
+            "pp-formulary-2026"
+          ],
+          "lastReviewed": "2026-06-27"
+        },
+        {
+          "payerId": "uhc-md",
+          "classId": "est-td",
+          "preferredAgent": {
+            "inn": "Estradiol",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "0.05 mg/24 hr (transdermal patch)",
+            "sig": "Apply one 0.05 mg/24 hr patch to clean, dry skin of the lower abdomen once weekly; rotate sites",
+            "sigShort": "1 patch weekly",
+            "plainSig": "Stick one patch on your lower belly once a week. Pick a slightly different spot each time. Use the lowest dose that controls your symptoms."
+          },
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "estradiol transdermal patch twice weekly (generic for Vivelle-Dot/Minivelle)",
+              "note": "Tier 2, QL — covered, no PA; 2x/week application"
+            },
+            {
+              "drug": "Evamist (estradiol transdermal spray)",
+              "note": "Tier 2, no PA — covered preferred-brand alternative"
+            },
+            {
+              "drug": "Dotti (estradiol patch twice weekly, brand)",
+              "note": "Tier 2, QL"
+            },
+            {
+              "drug": "Lyllana (estradiol transdermal system)",
+              "note": "Tier 2, QL"
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "estradiol transdermal gel (Divigel-equivalent, multiple strengths)",
+              "reason": "Higher tier"
+            },
+            {
+              "drug": "Estrogel (estradiol transdermal gel)",
+              "reason": "Higher tier"
+            },
+            {
+              "drug": "Elestrin (estradiol transdermal gel)",
+              "reason": "Higher tier"
+            },
+            {
+              "drug": "estradiol transdermal gel 0.06% 0.75 mg/1.25 gm",
+              "reason": "Higher tier"
+            },
+            {
+              "drug": "Menostar (low-dose estradiol patch)",
+              "reason": "Higher tier"
+            },
+            {
+              "drug": "Climara / Vivelle-Dot / Minivelle (brand patches)",
+              "reason": "Non-preferred"
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly off the Jan 1 2026 UHC Commercial PDL, 'Hormonal Agents - Hormone Replacement and Birth Control' section. 'estradiol transdermal patch weekly' is listed Tier 1 with annotation '(generic for Climara), QL' and no PA — the clean first-pass. 'estradiol patch twice weekly' is Tier 2 QL. Gels (Divigel/Estrogel/Elestrin) are Tier 3; Evamist spray Tier 2. Brand Climara/Vivelle-Dot/Minivelle carry the 'E' symbol (excluded/PA in CT, NJ, NY only — NOT applicable in Maryland), so in MD they default to non-preferred brand status. QL applies; specific quantity not printed in PDL.",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ],
+          "lastReviewed": "2026-06-27"
+        },
+        {
+          "payerId": "uhc-md",
+          "classId": "progestogen",
+          "preferredAgent": {
+            "inn": "Progesterone (micronized)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "100 mg / 200 mg capsule",
+            "sig": "Take 200 mg by mouth at bedtime for 12 days each calendar month (sequential), or 100 mg by mouth at bedtime daily (continuous), alongside systemic estrogen for endometrial protection",
+            "sigShort": "100–200 mg PO at bedtime",
+            "plainSig": "Take this capsule at bedtime (it can make you drowsy). Either one capsule every night, or two capsules nightly for 12 days each month — follow whichever schedule your prescriber chose to protect your uterus."
+          },
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "medroxyprogesterone acetate oral (generic Provera)",
+              "note": "Tier 1, no PA — LOWER tier than micronized progesterone on this plan; the lowest-friction progestogen if cost is the priority"
+            },
+            {
+              "drug": "norethindrone acetate oral",
+              "note": "Tier 1, no PA"
+            },
+            {
+              "drug": "estradiol-norethindrone acetate combo tablet",
+              "note": "Tier 2 — combined E+P option"
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Prometrium (brand micronized progesterone)",
+              "reason": "Non-preferred"
+            },
+            {
+              "drug": "Provera (brand medroxyprogesterone)",
+              "reason": "Higher tier"
+            },
+            {
+              "drug": "Bijuva (brand estradiol/progesterone combo)",
+              "reason": "Non-preferred"
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read off the same PDL section. Generic 'progesterone oral' (micronized) is Tier 2 with NO PA — ships clean for endometrial protection, which is the stated goal. Note this plan places generic micronized progesterone at Tier 2 while generic 'medroxyprogesterone acetate oral' is Tier 1 (lower cost, also no PA). Brand Prometrium carries the 'E' symbol (excluded/PA only in CT, NJ, NY — not Maryland) and no preferred tier number; brand Provera is Tier 4. Reported micronized progesterone as preferred first-pass because it is the clinically-preferred agent and ships without a PA round-trip; medroxyprogesterone (Tier 1) listed as the lower-friction-by-cost alternative.",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ],
+          "lastReviewed": "2026-06-27"
+        },
+        {
+          "payerId": "uhc-md",
+          "classId": "vaginal",
+          "preferredAgent": {
+            "inn": "Estradiol",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "10 mcg vaginal insert",
+            "sig": "Insert one 10 mcg vaginal tablet once daily for 2 weeks, then one tablet twice weekly for maintenance",
+            "sigShort": "10 mcg vaginally: daily x2 wk, then twice weekly",
+            "plainSig": "Place one tablet into the vagina with the applicator. Use it every day for the first 2 weeks, then drop to twice a week (for example, every Monday and Thursday)."
+          },
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "yuvafem (generic estradiol vaginal tablet 10 mcg)",
+              "note": "Tier 2, no PA"
+            },
+            {
+              "drug": "Imvexxy (estradiol vaginal insert, starter & maintenance packs)",
+              "note": "Tier 2, QL — covered preferred-brand, no PA"
+            },
+            {
+              "drug": "Estring (estradiol vaginal ring)",
+              "note": "Tier 2, QL — covered, no PA"
+            },
+            {
+              "drug": "estradiol vaginal cream",
+              "note": "Tier 3 — covered but non-preferred / higher cost"
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "estradiol vaginal cream",
+              "reason": "Higher tier"
+            },
+            {
+              "drug": "Premarin vaginal cream (conjugated estrogens)",
+              "reason": "Non-preferred"
+            },
+            {
+              "drug": "Femring (estradiol acetate vaginal ring)",
+              "reason": "Higher tier"
+            },
+            {
+              "drug": "Vagifem (brand estradiol vaginal tablet)",
+              "reason": "Non-preferred"
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read off the same PDL section. Generic 'estradiol vaginal tablet' is Tier 2 with no PA — the clean first-pass for genitourinary syndrome of menopause; generic 'yuvafem' (10 mcg tablet) also Tier 2. 'estradiol vaginal cream' is Tier 3. Imvexxy (starter + maintenance packs) is Tier 2 QL; Estring is Tier 2 QL; both covered without PA. Femring is Tier 3 QL; Premarin vaginal is Tier 3. Brand Vagifem carries the 'E' symbol (excluded/PA only in CT, NJ, NY — not Maryland). No PA on the generic tablet. QL printed but specific quantity not detailed in PDL.",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ],
+          "lastReviewed": "2026-06-27"
+        },
+        {
+          "payerId": "cigna",
+          "classId": "est-td",
+          "preferredAgent": {
+            "inn": "Estradiol transdermal (patch)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "0.05 mg/24 hr (transdermal patch)",
+            "sig": "Apply one 0.05 mg/24 hr transdermal patch to clean, dry skin of the lower abdomen twice weekly (or weekly for a Climara-type patch); rotate sites; titrate to symptom control",
+            "sigShort": "1 patch 0.05 mg/24h, apply twice weekly",
+            "plainSig": "Stick one estradiol skin patch on your lower belly and change it twice a week (or once a week for the weekly kind). Rotate where you put it."
+          },
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "lyllana (estradiol transdermal patch, generic Minivelle)",
+              "note": "Tier 1, QL — covered generic patch brand"
+            },
+            {
+              "drug": "estradiol gel packet / gel pump (generic, e.g. Divigel/Elestrin/EstroGel generics)",
+              "note": "Tier 1, QL — same generic-estradiol formulary line as the patch"
+            },
+            {
+              "drug": "COMBIPATCH (estradiol/norethindrone patch)",
+              "note": "Tier 2 — preferred brand combo patch if combined progestin patch is wanted"
+            },
+            {
+              "drug": "DUAVEE (conjugated estrogens/bazedoxifene)",
+              "note": "Tier 2 — oral, not transdermal"
+            },
+            {
+              "drug": "EVAMIST (estradiol transdermal spray)",
+              "note": "Tier 3 — non-preferred brand"
+            },
+            {
+              "drug": "MENOSTAR (estradiol 0.014 patch)",
+              "note": "Tier 3, QL — low-dose osteoporosis-only patch, non-preferred"
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "EVAMIST (estradiol spray)",
+              "reason": "Higher tier"
+            },
+            {
+              "drug": "MENOSTAR (estradiol patch)",
+              "reason": "Higher tier"
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly off the Cigna Healthcare Value 4-Tier PDL (eff. 2026-07-01), Hormonal Agents p.18: 'estradiol cream, gel packet, gel pump, patch, tablet, vaginal insert' = Tier 1, note QL; 'lyllana' = Tier 1 QL. The QL is a Drug Quantity Management (per-days) limit per Cigna National Formulary policy (review date 01/05/2026), NOT a prior auth — generic transdermal estradiol patch ships clean with only a quantity limit. EVAMIST/MENOSTAR are Tier 3.",
+          "sourceIds": [
+            "cigna-value4t-2026"
+          ],
+          "lastReviewed": "2026-06-27"
+        },
+        {
+          "payerId": "cigna",
+          "classId": "progestogen",
+          "preferredAgent": {
+            "inn": "Progesterone, micronized (oral)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "100 mg / 200 mg capsule",
+            "sig": "Take 100 mg by mouth at bedtime daily (continuous-combined), or 200 mg by mouth at bedtime for 12 days each month (sequential), for endometrial protection",
+            "sigShort": "200 mg PO at bedtime x12 days/month (or 100 mg nightly)",
+            "plainSig": "Take one progesterone capsule at night to protect the lining of your uterus — either 100 mg every night, or 200 mg nightly for 12 days each month."
+          },
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "medroxyprogesterone tablet (Provera generic)",
+              "note": "Tier 1 — also ships clean if micronized progesterone not tolerated"
+            },
+            {
+              "drug": "norethindrone 5 mg tablet",
+              "note": "Tier 1 — covered oral progestin alternative"
+            },
+            {
+              "drug": "PREMPRO / PREMPHASE (conjugated estrogens/medroxyprogesterone)",
+              "note": "Tier 2 — preferred brand estrogen+progestin combo"
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "MYFEMBREE (estradiol/norethindrone/relugolix)",
+              "reason": "PA required"
+            },
+            {
+              "drug": "CRINONE 4% vaginal gel (progesterone)",
+              "reason": "PA required"
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly off Value 4-Tier PDL p.18: 'progesterone capsule' = Tier 1, no restriction codes (micronized progesterone ships clean — no PA/step on THIS plan). 'medroxyprogesterone tablet' and 'norethindrone 5 mg tablet' also Tier 1. So the lowest-friction first-pass is generic micronized progesterone, not medroxyprogesterone. MYFEMBREE = Tier 2 PA, QL; CRINONE 4% gel = Tier 3 PA.",
+          "sourceIds": [
+            "cigna-value4t-2026"
+          ],
+          "lastReviewed": "2026-06-27"
+        },
+        {
+          "payerId": "cigna",
+          "classId": "vaginal",
+          "preferredAgent": {
+            "inn": "Estradiol vaginal (insert/tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "10 mcg vaginal insert",
+            "sig": "Insert one 10 mcg vaginal tablet/insert nightly for 2 weeks, then one insert twice weekly for maintenance",
+            "sigShort": "1 vaginal insert 10 mcg nightly x2 wk, then 2x/week",
+            "plainSig": "Put one small estradiol tablet into the vagina each night for two weeks, then twice a week after that, to ease vaginal dryness."
+          },
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "yuvafem (estradiol vaginal tablet 10 mcg, generic Vagifem)",
+              "note": "Tier 1, QL — covered generic vaginal tablet"
+            },
+            {
+              "drug": "estradiol vaginal cream 0.01% (generic Estrace cream)",
+              "note": "Tier 1, QL — same generic-estradiol formulary line"
+            },
+            {
+              "drug": "PREMARIN VAGINAL CREAM (conjugated estrogens)",
+              "note": "Tier 2 — preferred brand vaginal cream"
+            },
+            {
+              "drug": "INTRAROSA (prasterone/DHEA insert)",
+              "note": "Tier 3, QL — non-estrogen GSM agent, non-preferred"
+            },
+            {
+              "drug": "OSPHENA (ospemifene oral SERM)",
+              "note": "Tier 3, QL — non-estrogen oral GSM agent, non-preferred"
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "PREMARIN VAGINAL CREAM",
+              "reason": "Higher tier"
+            },
+            {
+              "drug": "INTRAROSA (prasterone insert)",
+              "reason": "Higher tier"
+            },
+            {
+              "drug": "OSPHENA (ospemifene)",
+              "reason": "Higher tier"
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly off Value 4-Tier PDL p.18: the 'estradiol cream, gel packet, gel pump, patch, tablet, vaginal insert' Tier 1 QL line covers the generic estradiol vaginal insert AND vaginal cream; 'yuvafem' (generic Vagifem vaginal tablet) = Tier 1 QL. No Estring/Femring/Imvexxy line appears on this formulary (those brand ring/insert products are not listed; generic estradiol insert/tablet/cream is the clean path). PREMARIN VAGINAL CREAM = Tier 2; INTRAROSA/OSPHENA = Tier 3 QL (non-estrogen GSM agents).",
+          "sourceIds": [
+            "cigna-value4t-2026"
+          ],
+          "lastReviewed": "2026-06-27"
+        },
+        {
+          "payerId": "aetna",
+          "classId": "est-td",
+          "preferredAgent": {
+            "inn": "Estradiol transdermal patch",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "0.05 mg/24 hr (transdermal patch)",
+            "sig": "Apply one 0.05 mg/24hr estradiol patch to clean, dry skin of the lower abdomen or buttock; replace twice weekly (or weekly for the once-weekly formulation)",
+            "sigShort": "Apply 1 estradiol patch (0.05 mg/24hr) transdermally; replace 2x/week, rotate sites",
+            "plainSig": "Stick one estrogen patch on your lower belly or hip and change it twice a week (some brands are once a week). Put each new patch on a slightly different spot. If you still have your uterus, you also need a progesterone to protect it."
+          },
+          "boglActive": false,
+          "boglNote": "No brand-over-generic mandate. Generic 'estradiol' (the transdermal patch is the systemic form) is the covered/preferred agent. The brand patches/gels/sprays are the ones that are removed and point BACK to generic estradiol: CLIMARA → 'estradiol', DIVIGEL → 'estradiol', EVAMIST → 'estradiol'. Generic is preferred, not forced to brand.",
+          "alternatives": [
+            {
+              "drug": "estradiol transdermal gel (generic; e.g. generic of Divigel/Elestrin/EstroGel)",
+              "note": "Covered generic ('estradiol' covers the gel dosage forms); preferred over brand gels"
+            },
+            {
+              "drug": "estradiol-norethindrone transdermal/oral combo (generic)",
+              "note": "Covered generic; combination estrogen+progestin for women with a uterus"
+            },
+            {
+              "drug": "DUAVEE (conjugated estrogens/bazedoxifene)",
+              "note": "Listed as a covered preferred brand in the MENOPAUSAL SYMPTOM AGENTS section (oral, not transdermal)"
+            },
+            {
+              "drug": "PREMPRO / PREMPHASE (conjugated estrogens/MPA)",
+              "note": "Covered preferred brand combination tablets (oral)"
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "CLIMARA (estradiol weekly patch, brand)",
+              "reason": "Non-preferred"
+            },
+            {
+              "drug": "DIVIGEL (estradiol gel, brand)",
+              "reason": "Non-preferred"
+            },
+            {
+              "drug": "EVAMIST (estradiol transdermal spray, brand)",
+              "reason": "Non-preferred"
+            },
+            {
+              "drug": "CLIMARA PRO (estradiol/levonorgestrel patch) / COMBIPATCH (estradiol/norethindrone patch)",
+              "reason": "Non-formulary"
+            }
+          ],
+          "stepTherapy": "No step therapy on generic transdermal estradiol — it is the covered preferred agent (and is itself the named preferred option for the removed brands CLIMARA, DIVIGEL, EVAMIST). Brand patches/gels/spray are simply removed from coverage with generic estradiol as the covered alternative.",
+          "verification": "verified",
+          "verificationNote": "Read directly off the 2026 Aetna Standard Plan Pharmacy Drug Guide: 'estradiol' is in the covered alphabetical drug list; CLIMARA→'estradiol', DIVIGEL→'estradiol', EVAMIST→'estradiol', CLIMARA PRO/COMBIPATCH in the Formulary Drug Removals (Preferred Options) list. Cross-confirmed in the April 2026 Standard Control Plan Exclusions list (identical mappings). This guide is a therapeutic-category covered/preferred-vs-removed structure and does NOT print numbered tiers; the 'no-PA, lowest-friction first pass' is generic estradiol patch. Sig/strength are clinically standard (not stated in the formulary).",
+          "sourceIds": [
+            "aetna-standard-2026"
+          ],
+          "lastReviewed": "2026-06-27"
+        },
+        {
+          "payerId": "aetna",
+          "classId": "progestogen",
+          "preferredAgent": {
+            "inn": "Micronized progesterone (oral)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "100 mg / 200 mg capsule",
+            "sig": "For endometrial protection with continuous estrogen: take 100 mg by mouth at bedtime nightly",
+            "sigShort": "Take 100 mg PO qHS (continuous) or 200 mg PO qHS x12 days/month (cyclic)",
+            "plainSig": "Take one progesterone capsule at bedtime. It can make you sleepy, so take it at night. It protects the lining of your uterus while you're using estrogen."
+          },
+          "boglActive": false,
+          "boglNote": "Generic 'progesterone, micronized' is covered (it is in the covered drug list AND is named as a preferred option for the removed brand PROMETRIUM). No brand mandate. Generic medroxyprogesterone is also covered as an alternative oral progestin.",
+          "alternatives": [
+            {
+              "drug": "medroxyprogesterone (generic Provera)",
+              "note": "Covered generic; named alongside micronized progesterone as the preferred option for removed brand PROMETRIUM"
+            },
+            {
+              "drug": "megestrol acetate (generic)",
+              "note": "Covered generic progestin (PROGESTINS section)"
+            },
+            {
+              "drug": "CRINONE (progesterone vaginal gel)",
+              "note": "Listed as a covered preferred brand in the PROGESTINS section"
+            },
+            {
+              "drug": "norethindrone acetate (generic)",
+              "note": "Covered generic progestin"
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "PROMETRIUM (brand micronized progesterone)",
+              "reason": "Non-preferred"
+            }
+          ],
+          "stepTherapy": "No step therapy on generic micronized progesterone. On THIS plan micronized progesterone is NOT placed behind a PA/step — generic 'progesterone, micronized' is covered/preferred and is itself the named preferred option (together with medroxyprogesterone) when brand PROMETRIUM is requested. Micronized progesterone is the clean first pass here; medroxyprogesterone is an equally-covered alternative, not a required step before it.",
+          "verification": "verified",
+          "verificationNote": "Read directly off the 2026 Aetna Standard Plan Pharmacy Drug Guide: 'progesterone, micronized' and 'medroxyprogesterone' both appear in the covered drug list (PROGESTINS); PROMETRIUM→'medroxyprogesterone; progesterone, micronized' in the Formulary Drug Removals list. Cross-confirmed in the April 2026 Standard Control Plan Exclusions list. The semicolon lists two co-equal covered generics; the clinically-standard endometrial-protection first pass is micronized progesterone. No numbered tier is printed. Sig/regimen is clinically standard (not stated in the formulary).",
+          "sourceIds": [
+            "aetna-standard-2026"
+          ],
+          "lastReviewed": "2026-06-27"
+        },
+        {
+          "payerId": "aetna",
+          "classId": "vaginal",
+          "preferredAgent": {
+            "inn": "Estradiol vaginal cream",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "0.01% (100 mcg/g) cream",
+            "sig": "Insert 2–4 g intravaginally daily for 1–2 weeks, then reduce to maintenance 1 g intravaginally 1–3 times weekly",
+            "sigShort": "Insert 1 g intravaginally 2-3x/week maintenance (after a ~2-wk daily induction)",
+            "plainSig": "Use the vaginal estrogen cream with the applicator. Start with a small daily dose for a week or two, then drop to about twice a week to keep the vaginal tissue healthy."
+          },
+          "boglActive": false,
+          "boglNote": "Generic 'estradiol vaginal cream' is the covered/preferred low-friction option. Plan-specific quirk: the generic estradiol vaginal TABLET (Yuvafem) is REMOVED — 'estradiol vaginal tablet' and 'Yuvafem' both point to preferred options 'estradiol vaginal cream, IMVEXXY, VAGIFEM'. So for the tablet/insert route the plan prefers the brands IMVEXXY and VAGIFEM over the generic tablet. The cleanest no-friction agent is generic estradiol vaginal cream.",
+          "alternatives": [
+            {
+              "drug": "VAGIFEM (estradiol vaginal insert 10 mcg, brand)",
+              "note": "Covered preferred brand (named preferred option; preferred over the generic estradiol vaginal tablet)"
+            },
+            {
+              "drug": "IMVEXXY (estradiol vaginal insert 4/10 mcg, brand)",
+              "note": "Covered preferred brand (named preferred option)"
+            },
+            {
+              "drug": "PREMPRO / PREMPHASE / DUAVEE",
+              "note": "Covered preferred brands in the menopausal section (systemic, not local vaginal)"
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "estradiol vaginal tablet (generic) / Yuvafem (branded generic, of Vagifem)",
+              "reason": "Non-preferred"
+            },
+            {
+              "drug": "ESTRING (estradiol vaginal ring)",
+              "reason": "Non-preferred"
+            },
+            {
+              "drug": "FEMRING (estradiol acetate vaginal ring)",
+              "reason": "Non-preferred"
+            },
+            {
+              "drug": "PREMARIN CREAM (conjugated estrogens vaginal cream)",
+              "reason": "Non-preferred"
+            }
+          ],
+          "stepTherapy": "No step therapy on generic estradiol vaginal cream — it is a covered preferred option. The vaginal rings ESTRING and FEMRING, brand PREMARIN CREAM, and the generic estradiol vaginal TABLET (Yuvafem) are removed, each pointing to 'estradiol vaginal cream, IMVEXXY, VAGIFEM' as the covered alternatives. So for an insert/tablet, the plan steers to brand IMVEXXY/VAGIFEM rather than the generic tablet.",
+          "verification": "verified",
+          "verificationNote": "Read directly off the 2026 Aetna Standard Plan Pharmacy Drug Guide: 'estradiol vaginal cream' and brand 'VAGIFEM' appear in the covered drug list; 'IMVEXXY' covered. In the Formulary Drug Removals list: 'estradiol vaginal tablet'→'estradiol vaginal cream, IMVEXXY, VAGIFEM', ESTRING→same, FEMRING→same, PREMARIN CREAM→same, Yuvafem→same. Cross-confirmed in the April 2026 Standard Control Plan Exclusions list. Notable: the generic vaginal tablet is removed in favor of generic cream + brand inserts; generic cream is the clean first pass. No numbered tier printed. Sig is clinically standard (not stated in the formulary).",
+          "sourceIds": [
+            "aetna-standard-2026"
+          ],
+          "lastReviewed": "2026-06-27"
+        },
+        {
+          "payerId": "medicare-partd",
+          "classId": "est-td",
+          "preferredAgent": {
+            "inn": "Estradiol transdermal patch (weekly)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "0.05 mg/24 hr (transdermal patch)",
+            "sig": "Apply one 0.05 mg/24hr patch to clean, dry skin of the lower abdomen once weekly; rotate application sites",
+            "sigShort": "Apply 1 patch (0.05 mg/24hr) transdermally q week; rotate sites",
+            "plainSig": "Stick one estrogen patch on your lower belly once a week. Pick a slightly different spot each time. If you still have your uterus, you also need to take a progesterone to protect it."
+          },
+          "boglActive": false,
+          "boglNote": "No brand-over-generic mandate. Generic estradiol transdermal patch (both once-weekly and twice-weekly) is Tier 2 (Generic). Brand combination/specialty transdermals sit higher: Climara Pro (estradiol/levonorgestrel) and Duavee are Brand Tier 4. Generic estradiol gel 0.06% is Tier 4 (DL). Evamist spray, Divigel, Elestrin and Estrace are not on this formulary. Generic patch is the preferred low-cost option, not forced to a brand.",
+          "alternatives": [
+            {
+              "drug": "estradiol transdermal patch twice-weekly (generic)",
+              "note": "Tier 2; QL (max 8 patches/28 days = 2/week, standard dosing)"
+            },
+            {
+              "drug": "estradiol oral tablet (generic)",
+              "note": "Tier 2; oral systemic estrogen alternative (not transdermal)"
+            },
+            {
+              "drug": "estradiol transdermal gel 0.06% 0.75mg/1.25gm (generic)",
+              "note": "Tier 4 (Non-preferred); DL — generic patch preferred over the gel here"
+            },
+            {
+              "drug": "Climara Pro (estradiol/levonorgestrel) transdermal patch",
+              "note": "Brand, Tier 4; DL — combination patch (includes progestin) for women with a uterus"
+            },
+            {
+              "drug": "estradiol valerate IM oil (generic)",
+              "note": "Tier 4; DL — injectable estrogen, not transdermal"
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "estradiol transdermal gel 0.06% (generic)",
+              "reason": "Higher tier"
+            },
+            {
+              "drug": "Climara Pro / Duavee (brand transdermal/combination)",
+              "reason": "Higher tier"
+            }
+          ],
+          "stepTherapy": "No step therapy on generic transdermal estradiol. The only restriction on the preferred once-weekly patch is a quantity limit (QL: maximum 4 patches per 28 days, i.e. one weekly patch per week) plus a 1-month dispensing limit (DL) — both are routine and consistent with standard once-weekly dosing, not a prescribing barrier.",
+          "verification": "verified",
+          "verificationNote": "Medicare Part D coverage varies by plan; this reflects AARP MedicareRx Preferred (UnitedHealthcare), a Maryland Part D plan. Read directly off the AARP Medicare Rx Preferred (PDP) 2026 formulary (Estrogens section): 'Estradiol (Transdermal Patch Weekly)' = Generic, Tier 2, coverage rule 'QL'; 'Estradiol (Transdermal Patch Twice Weekly)' = Generic, Tier 2, 'QL'. QL appendix confirms max 4 patches/28 days (weekly) and 8/28 days (twice-weekly). No PA, no ST. Medicare Part D coverage is SPONSOR-SPECIFIC and varies by plan; on the sibling AARP Medicare Rx Saver (PDP) the same generic weekly patch is Tier 4 with DL;QL, so this Tier 2 / no-PA result is specific to the Preferred plan. Sig is clinically standard (not stated in the formulary).",
+          "sourceIds": [
+            "aarp-medicarerx-2026"
+          ],
+          "lastReviewed": "2026-06-27"
+        },
+        {
+          "payerId": "medicare-partd",
+          "classId": "progestogen",
+          "preferredAgent": {
+            "inn": "Micronized progesterone (oral)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "100 mg / 200 mg capsule",
+            "sig": "For endometrial protection with continuous estrogen: take 100 mg by mouth at bedtime nightly",
+            "sigShort": "Take 100 mg PO qHS (continuous) or 200 mg PO qHS x12 days/month (cyclic)",
+            "plainSig": "Take one progesterone capsule at bedtime. It can make you drowsy, so take it at night. This protects the lining of your uterus while you are on estrogen."
+          },
+          "boglActive": false,
+          "boglNote": "Generic micronized progesterone (Progesterone Oral Capsule, the generic of Prometrium) is Tier 2 (Generic), no PA. Generic medroxyprogesterone acetate oral tablet sits even lower at Tier 1 (Preferred Generic). No brand mandate. Crinone (vaginal progesterone gel) is Brand Tier 4 and requires PA.",
+          "alternatives": [
+            {
+              "drug": "medroxyprogesterone acetate oral tablet 2.5/5/10 mg (generic Provera)",
+              "note": "Tier 1 (Preferred Generic); lowest-cost oral progestin alternative, no PA"
+            },
+            {
+              "drug": "norethindrone acetate 5 mg tablet (generic)",
+              "note": "Tier 2"
+            },
+            {
+              "drug": "estradiol/norethindrone acetate combination tablet (generic)",
+              "note": "Tier 3; combination estrogen+progestin oral for women with a uterus"
+            },
+            {
+              "drug": "Crinone 8% vaginal progesterone gel",
+              "note": "Brand, Tier 4; PA required (off-label for HRT endometrial protection)"
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Crinone (progesterone vaginal gel 8%)",
+              "reason": "PA required"
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Medicare Part D coverage varies by plan; this reflects AARP MedicareRx Preferred (UnitedHealthcare), a Maryland Part D plan. Read directly off the AARP Medicare Rx Preferred (PDP) 2026 formulary (Progestins section): 'Progesterone (Oral Capsule)' = Generic, Tier 2, no PA/ST/QL flag; 'Medroxyprogesterone Acetate (Oral Tablet)' = Generic, Tier 1, no flag; 'Crinone (8% Vaginal Gel)' = Brand, Tier 4, 'PA; DL'. IMPORTANT plan-specific note: micronized progesterone is the clean first-pass on THIS (Preferred) plan, BUT on the sibling AARP Medicare Rx Saver (PDP) micronized progesterone is NOT on the formulary at all — there the lowest-friction in-class agent is generic medroxyprogesterone acetate (Tier 2). Medicare Part D coverage varies by plan, so confirm against the patient's specific PDP. Sig/regimen is clinically standard (not stated in the formulary).",
+          "sourceIds": [
+            "aarp-medicarerx-2026"
+          ],
+          "lastReviewed": "2026-06-27"
+        },
+        {
+          "payerId": "medicare-partd",
+          "classId": "vaginal",
+          "preferredAgent": {
+            "inn": "Estradiol vaginal cream",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "0.01% (100 mcg/g) cream",
+            "sig": "Insert 2-4 g intravaginally daily for 1-2 weeks, then reduce to maintenance 1 g intravaginally 1-3 times weekly",
+            "sigShort": "Insert 1 g intravaginally 2-3x/week maintenance (after 2-wk induction)",
+            "plainSig": "Use the vaginal estrogen cream with the applicator. Start with a short daily course for a week or two, then drop to about twice a week to keep the vaginal tissue healthy."
+          },
+          "boglActive": false,
+          "boglNote": "Generic estradiol vaginal cream is Tier 3 with no PA/ST/QL flag. Generic estradiol vaginal tablet (Yuvafem, generic of Vagifem) is also Tier 3 (with a routine QL). No brand mandate. Brand Premarin vaginal cream is also Tier 3. Estring (brand vaginal ring) is Tier 4 (DL). Imvexxy and Femring are NOT on this formulary (would require a non-formulary/exception request).",
+          "alternatives": [
+            {
+              "drug": "estradiol vaginal tablet (Yuvafem, generic of Vagifem) 10 mcg",
+              "note": "Tier 3; QL (max 18 tablets/28 days = standard 2x/week maintenance after induction)"
+            },
+            {
+              "drug": "Premarin (conjugated estrogens) vaginal cream 0.625 mg/g",
+              "note": "Brand, Tier 3; no PA — alternative if estradiol cream not tolerated"
+            },
+            {
+              "drug": "Estring (estradiol vaginal ring) 2 mg / 7.5 mcg/24hr",
+              "note": "Brand, Tier 4; DL — 90-day ring, higher cost-share, no PA"
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Estring (estradiol vaginal ring)",
+              "reason": "Higher tier"
+            },
+            {
+              "drug": "Imvexxy / Femring (estradiol vaginal insert / ring)",
+              "reason": "Non-formulary"
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Medicare Part D coverage varies by plan; this reflects AARP MedicareRx Preferred (UnitedHealthcare), a Maryland Part D plan. Read directly off the AARP Medicare Rx Preferred (PDP) 2026 formulary (Estrogens section): 'Estradiol (Vaginal Cream)' = Generic, Tier 3, no restriction code (no PA/ST/QL); 'Estradiol (Vaginal Tablet)' / 'Yuvafem (Vaginal Tablet)' = Generic, Tier 3, 'QL'; 'Premarin (Vaginal Cream)' = Brand, Tier 3; 'Estring (Vaginal Ring)' = Brand, Tier 4, 'DL'. Imvexxy and Femring returned no hits in the formulary (non-formulary). Medicare Part D coverage varies by plan. Sig is clinically standard (not stated in the formulary).",
+          "sourceIds": [
+            "aarp-medicarerx-2026"
           ],
           "lastReviewed": "2026-06-27"
         }
