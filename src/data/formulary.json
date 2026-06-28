@@ -2,7 +2,7 @@
   "meta": {
     "title": "FirstPassRx",
     "disclaimer": "A point-of-care reference, not a substitute for the payer's current formulary or clinical judgment. Formularies change quarterly; confirm every agent and restriction against the linked source before prescribing.",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "defaultGuideId": "ma-inhalers"
   },
   "guides": [
@@ -1070,7 +1070,7 @@
       "unitNoun": "medication",
       "tagline": "Pick a plan and hormone type. Start with the green answer.",
       "dataStatus": "mixed",
-      "lastUpdated": "2026-06-27",
+      "lastUpdated": "2026-06-28",
       "capturedAt": "2026-06-27",
       "payers": [
         {
@@ -1177,6 +1177,19 @@
           "plainName": "Estrogen patch/gel",
           "description": "Transdermal 17β-estradiol (patch, gel, or spray); skips first-pass hepatic metabolism, lower VTE risk than oral.",
           "plainDescription": "An estrogen patch or gel absorbed through the skin — gentler on clot risk than pills.",
+          "indication": "Menopause vasomotor symptoms",
+          "sourceIds": [
+            "acog-mht",
+            "menopause-society-2022"
+          ]
+        },
+        {
+          "id": "est-oral",
+          "name": "Estrogen — oral",
+          "shortName": "Estrogen (oral)",
+          "plainName": "Estrogen pill",
+          "description": "Oral estradiol or conjugated estrogens; effective, but first-pass hepatic metabolism raises VTE/clot and stroke risk vs transdermal.",
+          "plainDescription": "An estrogen pill taken by mouth. Works well, but carries a higher clot risk than the patch.",
           "indication": "Menopause vasomotor symptoms",
           "sourceIds": [
             "acog-mht",
@@ -2490,6 +2503,357 @@
             "aarp-medicarerx-2026"
           ],
           "lastReviewed": "2026-06-27"
+        },
+        {
+          "payerId": "mdmedicaid",
+          "classId": "est-oral",
+          "preferredAgent": {
+            "inn": "Estradiol oral tablet",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "0.5 / 1 / 2 mg tablet",
+            "sig": "Take 1 mg by mouth once daily; titrate to the lowest effective dose",
+            "sigShort": "Estradiol 1 mg PO daily",
+            "plainSig": "Take one estradiol tablet by mouth once a day."
+          },
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "conjugated estrogens (Premarin)",
+              "note": "Brand only, no generic; covered under standard pharmacy benefit (not on PDL). Higher cost than generic estradiol; estradiol oral tablet is the clean first-pass."
+            },
+            {
+              "drug": "esterified estrogens (Menest)",
+              "note": "Brand; covered under standard pharmacy benefit (not on PDL)."
+            },
+            {
+              "drug": "estropipate",
+              "note": "Largely discontinued in the US; covered under standard pharmacy benefit if available (not on PDL)."
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "The plan's own PDL (Effective 1/1/2026, Updated 3/26/2026) was downloaded and fully text-searched across all 36 pages: zero occurrences of estrogen, estradiol, Premarin, Menest, esterified, conjugated estrogen, or estropipate. The ENDOCRINE section manages androgens, bone-resorption agents, growth hormone, and diabetes drugs but contains NO systemic estrogen / menopausal hormone-therapy class. Page 1 states: 'Therapeutic categories not listed here are not part of the PDL and will continue to be covered as they always have for Maryland Medicaid participants.' Therefore oral estrogen is NOT managed on the MD Medicaid FFS PDL: generic estradiol oral tablet ships clean under the standard generic pharmacy benefit with no PDL-level prior authorization. The preferred first-pass (generic estradiol, no PA) is inferred from the standard-generic-benefit policy and the documented absence of an estrogen PDL class, not read off an explicit estrogen line — hence 'partial', not 'verified'. Compounded products are excluded.",
+          "sourceIds": [
+            "md-pdl-2026",
+            "md-daw6-2026"
+          ],
+          "lastReviewed": "2026-06-28"
+        },
+        {
+          "payerId": "carefirst",
+          "classId": "est-oral",
+          "preferredAgent": {
+            "inn": "Estradiol oral tablet",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "0.5 / 1 / 2 mg tablet",
+            "sig": "Take 1 mg by mouth once daily; titrate to the lowest effective dose",
+            "sigShort": "Estradiol 1 mg PO daily",
+            "plainSig": "Take one estradiol tablet by mouth once a day."
+          },
+          "boglActive": false,
+          "boglNote": "No brand is forced over the generic. Generic oral estradiol tablet is Tier 1 (lowest tier). Premarin oral and Estrace brand are not on this formulary at all; only Premarin vaginal cream (Tier 3) appears. Brand Menest (esterified estrogens) is Tier 3 but is a separate molecule with no generic, not a forced brand over generic estradiol.",
+          "alternatives": [
+            {
+              "drug": "estrogens, conjugated (generic Premarin equivalent) tab 0.3 / 0.45 / 0.625 / 0.9 / 1.25 mg",
+              "note": "Tier 1 generic; HRM PA only for age 70+. Same clean-ship status as estradiol for patients under 70."
+            },
+            {
+              "drug": "MENEST (esterified estrogens) tab 0.3 / 0.625 / 1.25 / 2.5 mg",
+              "note": "Tier 3 non-preferred brand; no generic; HRM PA for age 70+. Reserve for esterified-estrogen-specific need."
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "MENEST (esterified estrogens) tab 0.3 / 0.625 / 1.25 / 2.5 mg",
+              "reason": "Higher tier"
+            },
+            {
+              "drug": "estradiol tab (0.5/1/2 mg) — members age 70+",
+              "reason": "PA required"
+            },
+            {
+              "drug": "estrogens, conjugated tab — members age 70+",
+              "reason": "PA required"
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "All values read directly off the plan's own 2026 Exchange Formulary PDF, MENOPAUSAL SYMPTOM AGENTS section (printed pages 118-121). First-pass oral estrogen is generic estradiol tablet (0.5/1/2 mg), Tier 1, ships clean with NO PA for members under age 70. The 'PA; High Risk Medications require PA for members age 70 and older' note applies to oral estradiol AND generic conjugated estrogens, but ONLY for members 70+ — confirmed by checking all 66 occurrences of this note, which are identically scoped to age 70+. So for a typical (<70) patient there is no PA round-trip. HRM PA DOES apply to oral estradiol, but only at 70+ (answers the prompt's note). No brand-over-generic forcing (boglActive=false). Menest (esterified estrogens) is Tier 3 brand, no generic.",
+          "sourceIds": [
+            "carefirst-exchange-2026"
+          ],
+          "lastReviewed": "2026-06-28"
+        },
+        {
+          "payerId": "kpmidatlantic",
+          "classId": "est-oral",
+          "preferredAgent": {
+            "inn": "Estradiol oral tablet",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "0.5 / 1 / 2 mg tablet",
+            "sig": "Take 1 mg by mouth once daily; titrate to the lowest effective dose",
+            "sigShort": "Estradiol 1 mg PO daily",
+            "plainSig": "Take one estradiol tablet by mouth once a day."
+          },
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "EEMT (esterified estrogens / methyltestosterone, oral)",
+              "note": "Tier 2 (most-preferred brand); combination product, not estrogen-only"
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "PREMARIN (conjugated estrogens)",
+              "reason": "Non-preferred"
+            },
+            {
+              "drug": "MENEST (esterified estrogens)",
+              "reason": "Non-preferred"
+            },
+            {
+              "drug": "estropipate",
+              "reason": "Non-formulary"
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly off the KP DC/MD/VA Marketplace Formulary (Last Update 04/07/2026), section 'ESTROGENS AND ANTIESTROGENS', pages 32-33. Oral generic estradiol listed at Tier 1/2/3 with no PA or ST tag = ships clean (Tier 1 most-preferred generic). PREMARIN and MENEST both Tier 3 (non-preferred) with no PA tag. No brand forced over generic (boglActive false). estropipate absent = non-formulary.",
+          "sourceIds": [
+            "kp-mas-marketplace-2026"
+          ],
+          "lastReviewed": "2026-06-28"
+        },
+        {
+          "payerId": "priority-partners",
+          "classId": "est-oral",
+          "preferredAgent": {
+            "inn": "Estradiol oral tablet",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "0.5 / 1 / 2 mg tablet",
+            "sig": "Take 1 mg by mouth once daily; titrate to the lowest effective dose",
+            "sigShort": "Estradiol 1 mg PO daily",
+            "plainSig": "Take one estradiol tablet by mouth once a day."
+          },
+          "boglActive": false,
+          "boglNote": "No brand-over-generic lock. The formulary lists generic estradiol oral tablets and generic conjugated estrogens tablets (generic of Premarin) with no brand forced.",
+          "alternatives": [
+            {
+              "drug": "estrogens, conjugated oral tablet (generic of Premarin)",
+              "note": "Covered, no PA/step. Strengths 0.3 / 0.45 / 0.625 / 0.9 / 1.25 mg. Listed in ESTROGENS section with blank Requirements/Limits column."
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Menest (esterified estrogens oral tablet)",
+              "reason": "Non-formulary"
+            },
+            {
+              "drug": "estropipate oral tablet",
+              "reason": "Non-formulary"
+            },
+            {
+              "drug": "Premarin brand conjugated estrogens oral tablet",
+              "reason": "Non-formulary"
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly off the Priority Partners (690) Formulary PDF, Effective 04/01/2026, ESTROGENS section (printed pp. 88-90). estradiol oral tablet 0.5/1/2 mg and estrogens, conjugated tab 0.3-1.25 mg (generic of Premarin) are both listed with a BLANK Requirements/Limits column = covered, no PA / step / QL. This is a two-column closed formulary (Drug Name | Requirements/Limits) with no numeric tiers; listing = covered, blank requirements = ships clean. Legend (p.21) confirms restriction codes: PA, ST, QL, SP, OTC, Opioid PA. Menest, estropipate, and brand Premarin tablets were searched across all 192 pages and are absent (non-formulary).",
+          "sourceIds": [
+            "pp-formulary-2026"
+          ],
+          "lastReviewed": "2026-06-28"
+        },
+        {
+          "payerId": "uhc-md",
+          "classId": "est-oral",
+          "preferredAgent": {
+            "inn": "Estradiol oral tablet",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "0.5 / 1 / 2 mg tablet",
+            "sig": "Take 1 mg by mouth once daily; titrate to the lowest effective dose",
+            "sigShort": "Estradiol 1 mg PO daily",
+            "plainSig": "Take one estradiol tablet by mouth once a day."
+          },
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "est estrogens-methyltest (esterified estrogens-methyltestosterone, e.g. Estratest F.S./Covaryx)",
+              "note": "Tier 1, no PA - estrogen+androgen combo, a borderline class member rather than a pure oral estrogen; lowest-cost tier"
+            },
+            {
+              "drug": "Estratest F.S. (esterified estrogens-methyltestosterone, full strength)",
+              "note": "Tier 1, no PA"
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "PREMARIN oral (conjugated estrogens; no generic exists)",
+              "reason": "Higher tier"
+            },
+            {
+              "drug": "ESTRACE (brand estradiol oral tablet)",
+              "reason": "Non-preferred"
+            },
+            {
+              "drug": "ESTRATEST H.S. (esterified estrogens-methyltestosterone, half strength)",
+              "reason": "Higher tier"
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly off the Jan 1, 2026 UnitedHealthcare Commercial PDL (OptumRx-administered), 'Hormonal Agents - Hormone Replacement and Birth Control' section (p. 36). The row 'estradiol oral' is listed at Tier 1 with NO restriction symbol (no PA, no ST, no QL, no E) - it ships completely clean and is the unambiguous first-pass oral estrogen; this is generic estradiol tablet (0.5/1/2 mg), brand Estrace. Brand 'ESTRACE' (estradiol oral) is flagged with the 'E' symbol and shows no printed MD tier number, defaulting to non-preferred brand in Maryland. 'PREMARIN ORAL' (conjugated estrogens, no generic) is Tier 3 (non-preferred brand). 'est estrogens-methyltest' / 'Estratest F.S.' (esterified estrogens-methyltestosterone) are Tier 1 but are estrogen+androgen combos rather than pure oral estrogens, so listed as borderline alternatives; 'ESTRATEST H.S.' is Tier 3. No generic conjugated estrogens, no Menest (esterified estrogens), and no estropipate lines appear in the document - those products are largely discontinued/unavailable in the US market and are not separately listed. KEY MARYLAND NUANCE: the 'E' symbol legend reads 'May be excluded from coverage or subject to Prior Authorization in Connecticut, New Jersey and New York' - it does NOT apply in Maryland; brand rows carry no separate printed MD tier. UnitedHealthcare publishes ONE national commercial PDL with state annotations; there is no MD-specific commercial PDF. boglActive is false - no brand is forced over the available generic estradiol tablet. CLINICAL CAVEAT (not a coverage fact): oral estrogen carries higher VTE/clot risk than transdermal.",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ],
+          "lastReviewed": "2026-06-28"
+        },
+        {
+          "payerId": "cigna",
+          "classId": "est-oral",
+          "preferredAgent": {
+            "inn": "Estradiol oral tablet",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "0.5 / 1 / 2 mg tablet",
+            "sig": "Take 1 mg by mouth once daily; titrate to the lowest effective dose",
+            "sigShort": "Estradiol 1 mg PO daily",
+            "plainSig": "Take one estradiol tablet by mouth once a day."
+          },
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "DUAVEE (conjugated estrogens/bazedoxifene tablet)",
+              "note": "Tier 2 preferred brand — oral estrogen+SERM for women with a uterus; the only branded oral systemic estrogen on this PDL"
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "PREMARIN (oral conjugated estrogens tablet)",
+              "reason": "Non-formulary"
+            },
+            {
+              "drug": "MENEST (esterified estrogens tablet)",
+              "reason": "Non-formulary"
+            },
+            {
+              "drug": "estropipate tablet (Ogen / Ortho-Est)",
+              "reason": "Non-formulary"
+            },
+            {
+              "drug": "DUAVEE (conjugated estrogens/bazedoxifene, oral)",
+              "reason": "Higher tier"
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly off the Cigna Healthcare Value 4-Tier Prescription Drug List (coverage starting 07/01/2026; last updated 04/01/2026), Hormonal Agents section p.18. The combined generic line 'estradiol cream, gel packet, gel pump, patch, tablet, vaginal insert' = Tier 1, note 'QL' (lines 963-964 of extracted text) — the oral 'tablet' form is explicitly on that Tier 1 generic line, so generic oral estradiol ships clean (Tier 1, no PA, no step). The 'QL' is a Drug Quantity Management per-days quantity limit (per Cigna National Formulary estrogen DQM policy, review 01/05/2026), NOT a prior authorization. Oral Premarin (conjugated estrogens tablet), Menest (esterified estrogens), and estropipate are NOT listed anywhere in the document (only 'PREMARIN VAGINAL CREAM' Tier 2 appears, which is vaginal, a separate class) — so those branded/older oral estrogens are non-formulary on this PDL. DUAVEE (oral conjugated estrogens/bazedoxifene) = Tier 2. Caption confirmed: publisher Cigna Healthcare, title 'Cigna Healthcare Value 4-Tier Prescription Drug List', effective 2026-07-01, Hormonal Agents section present p.18. PDF rendered as binary to WebFetch; extracted locally with pdfplumber, so all tier/restriction codes were read off the actual document, not inferred.",
+          "sourceIds": [
+            "cigna-value4t-2026"
+          ],
+          "lastReviewed": "2026-06-28"
+        },
+        {
+          "payerId": "aetna",
+          "classId": "est-oral",
+          "preferredAgent": {
+            "inn": "Estradiol oral tablet",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "0.5 / 1 / 2 mg tablet",
+            "sig": "Take 1 mg by mouth once daily; titrate to the lowest effective dose",
+            "sigShort": "Estradiol 1 mg PO daily",
+            "plainSig": "Take one estradiol tablet by mouth once a day."
+          },
+          "boglActive": false,
+          "boglNote": "No brand is forced over the generic. Generic oral estradiol tablet is the PREFERRED menopausal-agent oral estrogen. The brand oral estrogens (PREMARIN, MENEST) are non-preferred and their listed preferred option IS generic estradiol — the opposite of a brand-over-generic lock.",
+          "alternatives": [],
+          "paRequired": [
+            {
+              "drug": "PREMARIN (conjugated estrogens) oral tablet",
+              "reason": "Non-preferred"
+            },
+            {
+              "drug": "MENEST (esterified estrogens) oral tablet",
+              "reason": "Non-preferred"
+            }
+          ],
+          "stepTherapy": "PREMARIN (oral) and MENEST appear on the 'Preferred Options List for Formulary Drug Removals and Drugs Covered Only When Preferred Options Are Not Clinically Appropriate,' with generic estradiol named as the preferred option for both. Effectively a medical-necessity / try-generic-estradiol-first gate before the brand is covered.",
+          "verification": "verified",
+          "verificationNote": "Read directly off the plan's own document: 2026 Aetna Standard Plan Pharmacy Drug Guide, January 2026, downloaded from the prompt URL (curl, 593,810 bytes, valid PDF v1.6) and extracted with pypdf (33 pages). (1) MENOPAUSAL SYMPTOM AGENTS preferred-class list (printed p.~9) lists 'estradiol' in lowercase = generic, as the preferred oral estrogen; the other entries in that block are estradiol vaginal cream, estradiol-norethindrone (combo), and brands COMBIPATCH/DUAVEE/IMVEXXY/PREMPHASE/PREMPRO/VAGIFEM (all patch, vaginal, or combo = separate classes). (2) 'PREFERRED OPTIONS LIST FOR FORMULARY DRUG REMOVALS AND DRUGS COVERED ONLY WHEN PREFERRED OPTIONS ARE NOT CLINICALLY APPROPRIATE' maps PREMARIN -> estradiol and MENEST -> estradiol, confirming both brand oral estrogens are removed/non-preferred with generic estradiol as the preferred option (a try-generic-first gate). (3) The alphabetical Drug Name(s)/Preferred Option(s) index repeats PREMARIN -> estradiol and MENEST -> estradiol. So for a typical patient, generic estradiol oral tablet ships clean with no PA round-trip; the brand oral estrogens (Premarin oral, Menest) require clearing the preferred-option/medical-necessity gate. boglActive=false (no brand forced over generic). Caveat: this guide does not publish per-drug PA/ST/QL flags or age rules in line, so any plan-design-specific quantity limit or age edit is not visible in this document; the clean-ship conclusion for generic estradiol is grounded in it being the named PREFERRED agent. WebFetch could not decompress the PDF stream, but the URL returns HTTP 200 with a valid 579.9 KB PDF matching the curl download; content was verified from the direct extraction.",
+          "sourceIds": [
+            "aetna-standard-2026"
+          ],
+          "lastReviewed": "2026-06-28"
+        },
+        {
+          "payerId": "medicare-partd",
+          "classId": "est-oral",
+          "preferredAgent": {
+            "inn": "Estradiol oral tablet",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "0.5 / 1 / 2 mg tablet",
+            "sig": "Take 1 mg by mouth once daily; titrate to the lowest effective dose",
+            "sigShort": "Estradiol 1 mg PO daily",
+            "plainSig": "Take one estradiol tablet by mouth once a day."
+          },
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "Premarin (conjugated estrogens) oral tablet",
+              "note": "Brand, Tier 4, DL + QL (1-month dispensing limit, quantity limit); no PA. Brand-only — no generic conjugated estrogens exists."
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Premarin (conjugated estrogens) oral tablet",
+              "reason": "Non-preferred"
+            },
+            {
+              "drug": "Premphase (conjugated estrogens-medroxyprogesterone) oral tablet",
+              "reason": "Non-preferred"
+            },
+            {
+              "drug": "Prempro (conjugated estrogens-medroxyprogesterone) oral tablet",
+              "reason": "Non-preferred"
+            },
+            {
+              "drug": "Duavee (conjugated estrogens-bazedoxifene) oral tablet",
+              "reason": "Non-preferred"
+            },
+            {
+              "drug": "Menest (esterified estrogens) oral tablet",
+              "reason": "Non-formulary"
+            },
+            {
+              "drug": "conjugated estrogens generic / Cenestin / Enjuvia oral tablet",
+              "reason": "Non-formulary"
+            },
+            {
+              "drug": "estropipate oral tablet",
+              "reason": "Non-formulary"
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Medicare Part D coverage varies by plan; this reflects AARP MedicareRx Preferred (UnitedHealthcare), a Maryland Part D plan. Read directly off the plan's own 2026 formulary PDF (AARP Medicare Rx Preferred from UHC (PDP), Formulary ID 00026000, last updated October 1, 2025, publisher UnitedHealthcare). The 'Estrogens' subsection under 'Hormonal Agents, Stimulant/Replacement/Modifying (Sex Hormones/Modifiers)' spans pp. 77-81. Estradiol (Oral Tablet) = Generic, Tier 2, no restrictions. Premarin (Oral Tablet) = Brand, Tier 4, DL; QL. Premphase/Prempro = Brand, Tier 4, DL; QL (combos). Duavee = Brand, Tier 4, DL (combo). Abbreviation key read off pp. 6-7: PA=prior auth, ST=step therapy, QL=quantity limit, DL=dispensing limit (1-month supply), B/D=Part B-or-D. Estrogens are NOT on the Medicare Part D excluded-drug list, so oral estradiol is a covered Part D drug under this plan. Part D coverage varies by sponsor; this is one concrete MD-region plan (Region S5921, contract S5921; PBM OptumRx). Note: this PDP formulary lists drugs nationally and is not region-specific in its drug table; tier/restriction values shown apply to the AARP Medicare Rx Preferred plan.",
+          "sourceIds": [
+            "aarp-medicarerx-2026"
+          ],
+          "lastReviewed": "2026-06-28"
         }
       ]
     }

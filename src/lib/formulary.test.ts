@@ -153,8 +153,17 @@ describe('MD menopause guide specifics', () => {
       'aetna',
       'medicare-partd',
     ])
-    expect(md.activeClasses.map((c) => c.id)).toEqual(['est-td', 'progestogen', 'vaginal'])
+    expect(md.activeClasses.map((c) => c.id)).toEqual(['est-td', 'est-oral', 'progestogen', 'vaginal'])
     expect(md.allClasses.find((c) => c.id === 'combo')?.comingSoon).toBe(true)
+  })
+
+  it('oral estrogen is generic estradiol first-pass, with Premarin/conjugated as the brand tail', () => {
+    const cell = md.getRecord('carefirst', 'est-oral')
+    expect(cell?.preferredAgent.inn).toMatch(/estradiol/i)
+    // CareFirst's age-70+ High Risk Medication PA reaches oral estradiol too.
+    expect(cell?.paRequired.some((p) => /age 70/i.test(p.drug) && /PA/i.test(p.reason))).toBe(true)
+    // Every plan covers the oral class (count floor across 8 payers).
+    expect(md.records.filter((r) => r.classId === 'est-oral').length).toBe(md.payers.length)
   })
 
   it('contrasts plans on micronized progesterone: clean on Priority Partners, PA on Kaiser', () => {

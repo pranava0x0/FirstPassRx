@@ -47,8 +47,15 @@ with publisher, effective date, and capture date.
 
 ## Maryland menopause hormone-therapy guide (`md-menopause`, captured 2026-06-27)
 
-Classes: `est-td` (transdermal estradiol), `progestogen`, `vaginal` (local vaginal estrogen);
-`combo` (estrogen–progestogen) ships disabled. Real plan PDFs were downloaded and read.
+Classes: `est-td` (transdermal estradiol), `est-oral` (oral estradiol), `progestogen` (oral
+micronized progesterone / medroxyprogesterone), `vaginal` (local vaginal estrogen); `combo`
+(estrogen–progestogen) ships disabled. Real plan PDFs were downloaded and read.
+
+Oral estrogen (added 2026-06-28): generic **estradiol oral tablet** (0.5/1/2 mg) is the clean
+first-pass on every plan; Premarin/conjugated and Menest/esterified estrogens are the brand tail
+(non-preferred, higher tier, or — on the closed/Part-D formularies — non-formulary), and CareFirst's
+age-70+ High Risk Medication PA reaches oral estradiol too. The class carries the clot-risk caveat
+(oral > transdermal). MD Medicaid FFS is `partial` (same unmanaged-class reason as the other classes).
 
 | Payer | Source | Status |
 | --- | --- | --- |
