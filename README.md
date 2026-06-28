@@ -36,6 +36,7 @@ npm run typecheck   # tsc strict, no emit
 npm test            # vitest: data integrity + sig + app behavior
 npm run trace       # provenance gate: every line item resolves to a cited source
 npm run trace:live  # re-fetch every source, flag website drift (moved/404 URLs)
+npm run build:map   # regenerate docs/formulary-map.md (state · plan · PBM · formulary)
 npm run build       # tsc -b && vite build  → dist/
 npm run preview     # serve the production build locally
 ```

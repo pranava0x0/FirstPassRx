@@ -1,0 +1,235 @@
+{
+  "note": "Plan -> PBM -> formulary index for states not yet carrying drug-level data in the app. MA and MD are generated from src/data/formulary.json. Formulary URLs were fetched live on the capture date (fetchedOk).",
+  "scope": "inhalers, menopause hormone therapy",
+  "capturedAt": "2026-06-28",
+  "states": [
+    {
+      "code": "NY",
+      "name": "New York",
+      "note": "Pharmacy is carved OUT of mainstream Medicaid managed care into one statewide FFS program (NYRx) since 4/1/2023, so the Medicaid MCOs share the single NYRx PDL.",
+      "plans": [
+        {
+          "name": "NYRx — NYS Medicaid Pharmacy Program (Fee-for-Service)",
+          "kind": "Medicaid (FFS)",
+          "pbm": "Magellan Medicaid Administration (Prime Therapeutics; NYRx fiscal agent / PDP administrator)",
+          "formularyUrl": "https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf",
+          "formularyLabel": "NYRx Preferred Drug List (PDP PDL)",
+          "effectiveDate": "2026-06-04",
+          "fetchedOk": true
+        },
+        {
+          "name": "Healthfirst (Medicaid Managed Care / PHSP) — largest NY Medicaid MCO",
+          "kind": "Medicaid MCO",
+          "pbm": "None at plan level — pharmacy benefit carved out to NYRx (Magellan Medicaid Administration)",
+          "formularyUrl": "https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf",
+          "formularyLabel": "NYRx Preferred Drug List (Healthfirst Medicaid Rx is administered by NYRx)",
+          "effectiveDate": "2026-06-04",
+          "fetchedOk": true
+        },
+        {
+          "name": "Fidelis Care (Medicaid Managed Care) — 2nd largest NY Medicaid MCO",
+          "kind": "Medicaid MCO",
+          "pbm": "None at plan level — pharmacy benefit carved out to NYRx (Magellan Medicaid Administration)",
+          "formularyUrl": "https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf",
+          "formularyLabel": "NYRx Preferred Drug List (Fidelis Medicaid Rx is administered by NYRx)",
+          "effectiveDate": "2026-06-04",
+          "fetchedOk": true
+        },
+        {
+          "name": "MetroPlus Health Plan (Medicaid Managed Care) — 3rd largest NYC Medicaid MCO",
+          "kind": "Medicaid MCO",
+          "pbm": "None at plan level — pharmacy benefit carved out to NYRx (Magellan Medicaid Administration)",
+          "formularyUrl": "https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf",
+          "formularyLabel": "NYRx Preferred Drug List (MetroPlus Medicaid Rx is administered by NYRx)",
+          "effectiveDate": "2026-06-04",
+          "fetchedOk": true
+        },
+        {
+          "name": "Excellus BlueCross BlueShield (Commercial / Individual & Family) — the NY Blue plan (Lifetime Healthcare; upstate NY)",
+          "kind": "Commercial",
+          "pbm": "Express Scripts (ESI)",
+          "formularyUrl": "https://fm.formularynavigator.com/FBO/251/Excellus_2026_Metal_Plans_Base___Simply_Blue_Plus___College_Blue_Plans_Formulary_Guide_2981_v26.pdf",
+          "formularyLabel": "Excellus 2026 Metal Plans (Base / Simply Blue Plus / College Blue) 3-Tier Formulary Guide (2981)",
+          "effectiveDate": "2026-01-01",
+          "fetchedOk": true
+        },
+        {
+          "name": "UnitedHealthcare (Commercial) — largest NY commercial carrier",
+          "kind": "Commercial",
+          "pbm": "OptumRx",
+          "formularyUrl": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+          "formularyLabel": "UnitedHealthcare Commercial Prescription Drug List (PDL), effective Jan 1 2026",
+          "effectiveDate": "2026-01-01",
+          "fetchedOk": true
+        },
+        {
+          "name": "Anthem Blue Cross and Blue Shield of New York (Commercial)",
+          "kind": "Commercial",
+          "pbm": "CarelonRx",
+          "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_3_Tier_NY_ABS_IND.pdf",
+          "formularyLabel": "Anthem BCBS New York 2026 Select Drug List — Three-Tier (Individual/HIX)",
+          "effectiveDate": "2026-01-01",
+          "fetchedOk": true
+        },
+        {
+          "name": "Excellus Medicare BlueActive (PPO) — representative NY Medicare Advantage + Part D plan",
+          "kind": "Medicare",
+          "pbm": "Express Scripts (Medicare Part D)",
+          "formularyUrl": "https://fm.formularynavigator.com/FBO/251/Excellus_Medicare_5T_DP_even.pdf",
+          "formularyLabel": "Excellus 2026 Medicare BlueActive (PPO) Formulary — List of Covered Drugs (5-tier MAPD)",
+          "effectiveDate": "2026-01-01",
+          "fetchedOk": true
+        }
+      ]
+    },
+    {
+      "code": "VA",
+      "name": "Virginia",
+      "note": "Medicaid MCOs follow the statewide DMAS Common Core Formulary / PDL.",
+      "plans": [
+        {
+          "name": "Virginia Medicaid (Cardinal Care) Fee-for-Service",
+          "kind": "Medicaid (FFS)",
+          "pbm": "Conduent (DMAS pharmacy benefits administrator / fiscal agent); statewide Common Core Formulary set by DMAS",
+          "formularyUrl": "https://www.virginiamedicaidpharmacyservices.com/provider/preferred-drug-list/",
+          "formularyLabel": "Virginia Medicaid Preferred Drug List (PDL) / Common Core Formulary",
+          "effectiveDate": "2026-04-01",
+          "fetchedOk": true
+        },
+        {
+          "name": "Anthem HealthKeepers Plus (Cardinal Care)",
+          "kind": "Medicaid MCO",
+          "pbm": "CarelonRx",
+          "formularyUrl": "https://client.formularynavigator.com/Search.aspx?siteCode=1202239098",
+          "formularyLabel": "Anthem HealthKeepers Plus VA Medicaid formulary search (follows statewide PDL / Common Core Formulary)",
+          "effectiveDate": null,
+          "fetchedOk": true
+        },
+        {
+          "name": "Sentara Community Plan (Cardinal Care)",
+          "kind": "Medicaid MCO",
+          "pbm": "Express Scripts",
+          "formularyUrl": "https://www.sentarahealthplans.com/en/members/manage-plans/prescription-drug-lists",
+          "formularyLabel": "Sentara Health Plans prescription drug lists (Medicaid / Sentara Community Plan; follows statewide PDL / Common Core Formulary)",
+          "effectiveDate": null,
+          "fetchedOk": true
+        },
+        {
+          "name": "UnitedHealthcare Community Plan of Virginia (Cardinal Care)",
+          "kind": "Medicaid MCO",
+          "pbm": "OptumRx",
+          "formularyUrl": "https://www.uhcprovider.com/en/health-plans-by-state/virginia-health-plans/va-comm-plan-home/va-cp-pharmacy.html",
+          "formularyLabel": "UnitedHealthcare Community Plan of Virginia pharmacy resources / PDL search (follows statewide PDL / Common Core Formulary)",
+          "effectiveDate": null,
+          "fetchedOk": true
+        },
+        {
+          "name": "Aetna Better Health of Virginia (Cardinal Care)",
+          "kind": "Medicaid MCO",
+          "pbm": "CVS Caremark",
+          "formularyUrl": "https://www.aetnabetterhealth.com/virginia/pharmacy-prescription-drug-benefits.html",
+          "formularyLabel": "Aetna Better Health of Virginia pharmacy & prescription drug benefits (formulary / drug-search landing page; follows statewide PDL / Common Core Formulary)",
+          "effectiveDate": null,
+          "fetchedOk": false
+        },
+        {
+          "name": "Anthem Blue Cross and Blue Shield (HealthKeepers, Inc.) - Commercial",
+          "kind": "Commercial",
+          "pbm": "CarelonRx",
+          "formularyUrl": "https://www.anthem.com/va/pharmacy-information/drug-list-formulary",
+          "formularyLabel": "Anthem Virginia commercial/individual drug lists & formulary (Select / Essential / National drug lists, 2026)",
+          "effectiveDate": "2026-01-01",
+          "fetchedOk": true
+        },
+        {
+          "name": "Sentara Health Plans (Optima Health) - Commercial / Employer Group",
+          "kind": "Commercial",
+          "pbm": "Express Scripts",
+          "formularyUrl": "https://www.sentarahealthplans.com/en/members/manage-plans/employer-group-prescription-drug-lists",
+          "formularyLabel": "Sentara Health Plans employer-group / individual prescription drug lists & formularies (2026)",
+          "effectiveDate": "2026-01-01",
+          "fetchedOk": true
+        },
+        {
+          "name": "Wellcare Value Script (PDP) - Medicare Part D",
+          "kind": "Medicare",
+          "pbm": "Express Scripts",
+          "formularyUrl": "https://www.wellcare.com/en/pdp-member/2026-value-script-formulary",
+          "formularyLabel": "Wellcare Value Script (PDP) 2026 Medicare Part D formulary / drug-list search tool (nationwide PDP, incl. Virginia)",
+          "effectiveDate": "2026-01-01",
+          "fetchedOk": true
+        }
+      ]
+    },
+    {
+      "code": "DC",
+      "name": "District of Columbia",
+      "note": "DC Medicaid MCOs run their own formularies within DHCF rules.",
+      "plans": [
+        {
+          "name": "DC Medicaid (Fee-for-Service) / DC Healthcare Alliance - Preferred Drug List",
+          "kind": "Medicaid (FFS)",
+          "pbm": "Prime Therapeutics (administers pharmacy FFS for DC Dept. of Health Care Finance)",
+          "formularyUrl": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+          "formularyLabel": "District of Columbia Medicaid-Approved Preferred Drug List (PDL)",
+          "effectiveDate": "2026-03-23",
+          "fetchedOk": true
+        },
+        {
+          "name": "AmeriHealth Caritas District of Columbia (DC Healthy Families Medicaid MCO)",
+          "kind": "Medicaid MCO",
+          "pbm": "PerformRx (AmeriHealth Caritas Family of Companies affiliate)",
+          "formularyUrl": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+          "formularyLabel": "AmeriHealth Caritas DC Drug Formulary (List of Covered Drugs)",
+          "effectiveDate": null,
+          "fetchedOk": true
+        },
+        {
+          "name": "MedStar Family Choice District of Columbia (DC Healthy Families Medicaid MCO)",
+          "kind": "Medicaid MCO",
+          "pbm": "CVS Caremark",
+          "formularyUrl": "https://www.medstarfamilychoicedc.com/-/media/project/mho/mfcdc/pharmacy-materials/medstar-dc-formulary-starting-1-1-2026.pdf",
+          "formularyLabel": "DC Healthy Families Formulary (List of Covered Drugs), Effective 01/01/2026",
+          "effectiveDate": "2026-01-01",
+          "fetchedOk": true
+        },
+        {
+          "name": "Wellpoint District of Columbia (formerly Amerigroup; DC Healthy Families Medicaid MCO)",
+          "kind": "Medicaid MCO",
+          "pbm": "CarelonRx",
+          "formularyUrl": "https://www.wellpoint.com/dc/medicaid/pharmacy",
+          "formularyLabel": "Wellpoint DC Medicaid Pharmacy Benefits / Drug List (landing page; DC MCOs use the unified DC Medicaid PDL administered by Prime Therapeutics)",
+          "effectiveDate": null,
+          "fetchedOk": true
+        },
+        {
+          "name": "CareFirst BlueCross BlueShield (Individual / Small Group / Exchange - DC Health Link)",
+          "kind": "Commercial",
+          "pbm": "CVS Caremark",
+          "formularyUrl": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+          "formularyLabel": "CareFirst 2026 Exchange Formulary (List of Covered Drugs), applies to DC & MD individual/small group",
+          "effectiveDate": "2026-01-01",
+          "fetchedOk": true
+        },
+        {
+          "name": "Kaiser Permanente of the Mid-Atlantic States (Maryland / Virginia / DC - Marketplace/Commercial)",
+          "kind": "Commercial",
+          "pbm": "Kaiser Permanente in-house pharmacy (integrated; no external PBM)",
+          "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+          "formularyLabel": "Kaiser Permanente Mid-Atlantic Marketplace Formulary (List of Covered Drugs)",
+          "effectiveDate": null,
+          "fetchedOk": true
+        },
+        {
+          "name": "CareFirst BlueCross BlueShield Medicare Advantage (PPO) - Group Advantage",
+          "kind": "Medicare",
+          "pbm": "CVS Caremark",
+          "formularyUrl": "https://individual.carefirst.com/carefirst-resources/pdf/2026-ma-formulary-ppo.pdf",
+          "formularyLabel": "CareFirst BlueCross BlueShield Group Advantage (PPO) 2026 Part D Formulary, updated 10/15/2025",
+          "effectiveDate": "2026-01-01",
+          "fetchedOk": true
+        }
+      ]
+    }
+  ]
+}
