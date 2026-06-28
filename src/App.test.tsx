@@ -29,15 +29,10 @@ describe('FirstPassRx app', () => {
     render(<App />)
     expect(agentHeading()).toHaveTextContent('Ventolin HFA')
     expect(screen.getByText(/Ask for the brand name/i)).toBeInTheDocument()
-    expect(screen.getByText(/Patient:/i)).toBeInTheDocument()
-    expect(screen.getByText(/Doctor:/i)).toBeInTheDocument()
-    expect(screen.getByText(/Pharmacy:/i)).toBeInTheDocument()
-    // Verify that the dynamic generic name is extracted and rendered properly in nested elements
+    // Patient/Doctor guidance lives in the appendix; the dynamic generic name is interpolated.
     const doctorLi = screen.getByText(/Doctor:/i).closest('li')
     expect(doctorLi).toHaveTextContent(/write Ventolin HFA on the prescription, not generic albuterol/i)
-
-    const pharmacyLi = screen.getByText(/Pharmacy:/i).closest('li')
-    expect(pharmacyLi).toHaveTextContent(/switching this to generic albuterol may trigger extra insurance approval/i)
+    expect(screen.getByText(/Patient:/i)).toBeInTheDocument()
 
     expect(screen.queryByText(/generic OK/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/Q4-6H PRN/i)).not.toBeInTheDocument()
@@ -76,7 +71,7 @@ describe('FirstPassRx app', () => {
       target: { value: 'bcbsma' },
     })
     expect(screen.queryByText(/Use brand name/i)).not.toBeInTheDocument()
-    expect(screen.getByText(/a generic version is okay/i)).toBeInTheDocument()
+    expect(screen.getByText(/a generic is fine/i)).toBeInTheDocument()
     fireEvent.click(screen.getByText(/Prescription text for clinician/i))
     fireEvent.click(screen.getByRole('button', { name: /copy sig/i }))
     await waitFor(() =>
@@ -104,39 +99,28 @@ describe('FirstPassRx app', () => {
     expect(agentHeading()).toHaveTextContent('Symbicort')
   })
 
-  it('shows source citations with working links on every result', () => {
+  it('shows source citations with working links in the appendix', () => {
     render(<App />)
     const panel = screen.getByRole('tabpanel')
-    fireEvent.click(within(panel).getByText(/Sources and verification/i))
     const sources = within(panel).getByRole('region', { name: /sources/i })
     const links = within(sources).getAllByRole('link')
     expect(links.length).toBeGreaterThan(0)
     expect(links[0]).toHaveAttribute('href', expect.stringMatching(/^https?:\/\//))
   })
 
-  it('searches by drug name and jumps to the matching cell', async () => {
+  it('prescribing options render as a table: recommended row + also-covered alternatives + rejects', async () => {
     const user = userEvent.setup()
     render(<App />)
-    await user.type(screen.getByRole('searchbox', { name: /search a drug/i }), 'symbicort')
-    // Symbicort is preferred for several plans — click the first match.
-    const results = await screen.findAllByRole('button', { name: /Preferred .*Symbicort/i })
-    await user.click(results[0]!)
-    expect(agentHeading()).toHaveTextContent('Symbicort')
-  })
-
-  it('shows a coverage ladder: first-pass pick + also-covered alternatives + rejects', async () => {
-    const user = userEvent.setup()
-    render(<App />)
-    expect(screen.getByText(/How this works/i)).toBeInTheDocument()
     await user.click(screen.getByRole('tab', { name: /Daily combo controller/ }))
     const panel = screen.getByRole('tabpanel')
-    // first-pass pick
-    expect(within(panel).getByText(/Recommended for/i)).toBeInTheDocument()
-    // also-covered alternatives (verified MassHealth no-PA combos)
-    const alts = within(panel).getByRole('region', { name: /also covered by this plan/i })
-    expect(within(alts).getByText(/Advair Diskus/)).toBeInTheDocument()
-    expect(within(alts).getByText(/Breo Ellipta/)).toBeInTheDocument()
-    // rejects still present (scope to the reject ledger — the step text also names AirDuo)
+    // the options table — recommended pick + the also-covered combos
+    const options = within(panel).getByRole('region', { name: /what to prescribe/i })
+    expect(within(options).getByText(/Recommended/)).toBeInTheDocument()
+    expect(within(options).getByText(/Advair Diskus/)).toBeInTheDocument()
+    expect(within(options).getByText(/Breo Ellipta/)).toBeInTheDocument()
+    expect(within(options).getByText('Cost in plan')).toBeInTheDocument()
+    expect(within(options).getByText('Cash price')).toBeInTheDocument()
+    // rejects sit in their own ledger (the step text also names AirDuo)
     const rejects = within(panel).getByRole('region', {
       name: /may need extra insurance approval/i,
     })
@@ -169,35 +153,34 @@ describe('FirstPassRx app', () => {
     expect(screen.queryByRole('option', { name: 'MassHealth' })).not.toBeInTheDocument()
   })
 
-  it('cites coverage inline and shows insurance + cash cost with GoodRx/Cost Plus links', () => {
+  it('cites the source inline and shows in-plan + cash cost in the options table', () => {
     render(<App />)
-    // Coverage claim is backed by a visible source link, not only the collapsed Sources block.
-    const cite = screen.getByText(/Coverage per/i)
-    expect(cite).toBeInTheDocument()
-    expect(within(cite).getByRole('link')).toHaveAttribute('href', expect.stringMatching(/^https?:\/\//))
-    // Cost is shown in two lanes: insurance and cash.
-    expect(screen.getByText(/With insurance:/i)).toBeInTheDocument()
-    expect(screen.getByText(/Paying cash:/i)).toBeInTheDocument()
-    // Every result offers cash-price comparison links (GoodRx + Cost Plus Drugs).
-    expect(screen.getByRole('link', { name: /GoodRx/i })).toHaveAttribute(
-      'href',
-      expect.stringContaining('goodrx.com'),
-    )
-    expect(screen.getByRole('link', { name: /Cost Plus Drugs/i })).toHaveAttribute(
-      'href',
-      expect.stringContaining('costplusdrugs.com'),
-    )
-    // Coverage panels carry their own source link too.
-    expect(screen.getAllByRole('link', { name: /source/i }).length).toBeGreaterThan(0)
+    const panel = screen.getByRole('tabpanel')
+    // the answer cites its source inline (provenance line links to the formulary; the appendix
+    // citation links to the same source, so there's more than one)
+    const cite = within(panel).getAllByRole('link', { name: /MassHealth Drug List/i })
+    expect(cite[0]).toHaveAttribute('href', expect.stringMatching(/^https?:\/\//))
+    // cost shows as columns: in-plan and cash
+    expect(within(panel).getByText('Cost in plan')).toBeInTheDocument()
+    expect(within(panel).getByText('Cash price')).toBeInTheDocument()
+    // cash links per option — GoodRx and Cost Plus Drugs
+    const goodrx = within(panel).getAllByRole('link', { name: /GoodRx/i })
+    expect(goodrx.length).toBeGreaterThan(0)
+    expect(goodrx[0]).toHaveAttribute('href', expect.stringContaining('goodrx.com'))
+    const costPlus = within(panel).getAllByRole('link', { name: /Cost\+/i })
+    expect(costPlus.length).toBeGreaterThan(0)
+    expect(costPlus[0]).toHaveAttribute('href', expect.stringContaining('costplusdrugs.com'))
+    // coverage panels carry their own source link
+    expect(within(panel).getAllByRole('link', { name: /source/i }).length).toBeGreaterThan(0)
   })
 
-  it('surfaces the source-confidence stamp without expanding Sources', async () => {
+  it('surfaces the source-confidence state inline (verified vs partial)', async () => {
     const user = userEvent.setup()
     render(<App />)
-    // MA MassHealth SABA was read off the source.
-    expect(screen.getByText(/Verified — read off the cited source/i)).toBeInTheDocument()
-    // MD Maryland Medicaid is partial — the class is unmanaged on the PDL.
+    expect(screen.getByText(/Source confidence:/i).closest('p')).toHaveTextContent(/Verified/)
     await user.click(screen.getByRole('button', { name: /Menopause HT/i }))
-    expect(screen.getByText(/Partial — confirm in the source/i)).toBeInTheDocument()
+    expect(screen.getByText(/Source confidence:/i).closest('p')).toHaveTextContent(
+      /Partial — confirm in source/,
+    )
   })
 })

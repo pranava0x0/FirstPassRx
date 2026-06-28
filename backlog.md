@@ -4,6 +4,18 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## High
 
+- **Redesign the omni-search.** The drug search bar (`src/components/Search.tsx`) is parked
+  (removed from the App render) pending a rethink. Wanted: layperson synonyms ("HRT", "estrogen
+  patch", "rescue spray") mapping to classes/molecules, search scoped to or across guides, and a
+  clearer results UI. The lib `searchFormulary` index still exists and is tested.
+- **Archive source PDFs + extract from them (`trace:live` content-tracing).** Save each cited
+  formulary PDF to a local provenance store with metadata (URL, `fetched_at`, `sha256`, HTTP status,
+  content-type, size, method) so we track where/when/how each was scraped; commit the metadata
+  manifest + extracted-text excerpts (not the binaries — gitignore those). Then add a PDF text parser
+  (devDependency; run the supply-chain advisory check first) so `npm run trace:live` reads inside the
+  PDFs and verifies the actual tier/drug lines, not just reachability. User approved the dependency.
+- **Backfill MA inhaler `tier`.** The MA cells have no insurance-cost tier, so the options table
+  shows "see plan tier" for the recommended row. Read each MA formulary's tier table and set `tier`.
 - **Add the remaining MD HealthChoice MCOs.** Johns Hopkins Priority Partners is now sourced
   (`verified`); the MD Medicaid FFS cells stay `partial` because the FFS PDL structurally doesn't
   manage HRT (not a closeable gap — it's a carve-out). Pull the other HealthChoice MCO formularies

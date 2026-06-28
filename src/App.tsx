@@ -2,9 +2,9 @@ import { useState } from 'react'
 import type { ClassId, PayerId } from './types/formulary'
 import { GuideProvider, defaultGuideId, getGuideView, guides, meta } from './lib/formulary'
 import { Disclaimer } from './components/Disclaimer'
-import { Search } from './components/Search'
 import { Controls } from './components/Controls'
 import { ResultCard } from './components/ResultCard'
+// Note: the omni-search bar (src/components/Search.tsx) is parked pending a redesign — see backlog.md.
 
 const PANEL_ID = 'result-panel'
 const tabId = (c: ClassId) => `tab-${c}`
@@ -23,11 +23,6 @@ export default function App() {
     setGuideId(id)
     setPayerId(g.payers[0]!.id)
     setClassId(g.activeClasses[0]!.id)
-  }
-
-  function pick(p: PayerId, c: ClassId) {
-    setPayerId(p)
-    setClassId(c)
   }
 
   const payer = guide.getPayer(payerId)
@@ -81,7 +76,6 @@ export default function App() {
         </header>
 
         <main role="main">
-          <Search onPick={pick} />
           <Controls
             payerId={payerId}
             classId={classId}
@@ -95,7 +89,6 @@ export default function App() {
             <ResultCard
               record={record}
               payer={payer}
-              drugClass={drugClass}
               panelId={PANEL_ID}
               labelId={tabId(classId)}
             />
@@ -120,13 +113,21 @@ export default function App() {
             {guide.capturedAt}; confirm before prescribing.
           </p>
           <p>
-            Correct a cell or add a payer:{' '}
+            Open source ·{' '}
+            <a
+              href="https://github.com/pranava0x0/FirstPassRx"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              github.com/pranava0x0/FirstPassRx
+            </a>{' '}
+            ·{' '}
             <a
               href="https://github.com/pranava0x0/FirstPassRx/blob/main/src/data/formulary.json"
               target="_blank"
               rel="noopener noreferrer"
             >
-              edit formulary.json on GitHub &rarr;
+              correct a cell &rarr;
             </a>
           </p>
         </footer>
