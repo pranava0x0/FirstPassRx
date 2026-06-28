@@ -1,5 +1,4 @@
 import type { PaItem, Reference } from '../types/formulary'
-import { GlossaryTerm } from './GlossaryTerm'
 import { SourceLink } from './SourceLink'
 
 function readableReason(reason: string): string {
@@ -21,13 +20,8 @@ export function RejectList({ items, source }: { items: PaItem[]; source?: Refere
   return (
     <section aria-labelledby="reject-head">
       <p className="eyebrow" id="reject-head">
-        May need extra insurance approval
+        May need extra approval
         <SourceLink source={source} />
-      </p>
-      <p className="reject__intro">
-        These may get delayed unless your clinician is planning a{' '}
-        <GlossaryTerm match="Prior authorization">prior authorization</GlossaryTerm> or step-therapy
-        request.
       </p>
 
       {items.length > 0 ? (

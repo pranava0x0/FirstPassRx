@@ -21,9 +21,9 @@ interface Row {
 }
 
 /**
- * The two questions a prescriber actually asks, in one scannable table: what to prescribe on this
- * plan (recommended + the also-covered alternatives/biosimilars), what it costs through insurance
- * (the formulary tier), and what it costs cash (GoodRx / Cost Plus Drugs). Every claim is cited.
+ * The two questions a prescriber asks, in one scannable table: what to prescribe on this plan
+ * (recommended + the also-covered alternatives/biosimilars), what it costs through insurance (the
+ * formulary tier), and what it costs cash (GoodRx / Cost Plus Drugs). Every claim is cited.
  */
 export function PrescribeOptions({
   record,
@@ -39,7 +39,7 @@ export function PrescribeOptions({
     {
       drug: a.brand ?? a.inn,
       role: 'Recommended',
-      cost: record.tier ?? 'see plan tier',
+      cost: record.tier ?? 'see plan',
       cashName: a.inn,
       recommended: true,
     },
@@ -53,18 +53,18 @@ export function PrescribeOptions({
   ]
 
   return (
-    <section className="rx-options" aria-labelledby="rx-options-head">
-      <p className="eyebrow" id="rx-options-head">
-        What to prescribe on {payer.shortName}
-        <SourceLink source={source} />
-      </p>
+    <section className="rx-options" aria-label="Prescribing options">
       <div className="rx-table-wrap">
         <table className="rx-table">
+          <caption className="rx-cap">
+            Options on {payer.shortName}
+            <SourceLink source={source} />
+          </caption>
           <thead>
             <tr>
               <th scope="col">Option</th>
-              <th scope="col">Cost in plan</th>
-              <th scope="col">Cash price</th>
+              <th scope="col">In plan</th>
+              <th scope="col">Cash</th>
             </tr>
           </thead>
           <tbody>
@@ -74,8 +74,10 @@ export function PrescribeOptions({
                   <span className="rx-drug">{row.drug}</span>
                   <span className={`rx-tag rx-tag--${row.recommended ? 'rec' : 'alt'}`}>{row.role}</span>
                 </th>
-                <td className="rx-cost">{row.cost}</td>
-                <td className="rx-cash">
+                <td className="rx-cost" data-label="In plan">
+                  {row.cost}
+                </td>
+                <td className="rx-cash" data-label="Cash">
                   <a href={goodRxUrl(row.cashName)} target="_blank" rel="noopener noreferrer">
                     GoodRx &#8599;
                   </a>
@@ -88,9 +90,6 @@ export function PrescribeOptions({
           </tbody>
         </table>
       </div>
-      <p className="rx-options__note">
-        Cash can beat a copay on generics and skips prior authorization; prices change daily.
-      </p>
     </section>
   )
 }

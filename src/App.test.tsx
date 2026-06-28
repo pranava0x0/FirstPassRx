@@ -114,15 +114,15 @@ describe('FirstPassRx app', () => {
     await user.click(screen.getByRole('tab', { name: /Daily combo controller/ }))
     const panel = screen.getByRole('tabpanel')
     // the options table — recommended pick + the also-covered combos
-    const options = within(panel).getByRole('region', { name: /what to prescribe/i })
+    const options = within(panel).getByRole('region', { name: /prescribing options/i })
     expect(within(options).getByText(/Recommended/)).toBeInTheDocument()
     expect(within(options).getByText(/Advair Diskus/)).toBeInTheDocument()
     expect(within(options).getByText(/Breo Ellipta/)).toBeInTheDocument()
-    expect(within(options).getByText('Cost in plan')).toBeInTheDocument()
-    expect(within(options).getByText('Cash price')).toBeInTheDocument()
+    expect(within(options).getByText('In plan')).toBeInTheDocument()
+    expect(within(options).getByText('Cash')).toBeInTheDocument()
     // rejects sit in their own ledger (the step text also names AirDuo)
     const rejects = within(panel).getByRole('region', {
-      name: /may need extra insurance approval/i,
+      name: /may need extra approval/i,
     })
     expect(within(rejects).getByText(/AirDuo RespiClick/)).toBeInTheDocument()
   })
@@ -161,8 +161,8 @@ describe('FirstPassRx app', () => {
     const cite = within(panel).getAllByRole('link', { name: /MassHealth Drug List/i })
     expect(cite[0]).toHaveAttribute('href', expect.stringMatching(/^https?:\/\//))
     // cost shows as columns: in-plan and cash
-    expect(within(panel).getByText('Cost in plan')).toBeInTheDocument()
-    expect(within(panel).getByText('Cash price')).toBeInTheDocument()
+    expect(within(panel).getByText('In plan')).toBeInTheDocument()
+    expect(within(panel).getByText('Cash')).toBeInTheDocument()
     // cash links per option — GoodRx and Cost Plus Drugs
     const goodrx = within(panel).getAllByRole('link', { name: /GoodRx/i })
     expect(goodrx.length).toBeGreaterThan(0)
