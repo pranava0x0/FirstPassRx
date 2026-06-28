@@ -1,5 +1,6 @@
-import type { PaItem } from '../types/formulary'
+import type { PaItem, Reference } from '../types/formulary'
 import { GlossaryTerm } from './GlossaryTerm'
+import { SourceLink } from './SourceLink'
 
 function readableReason(reason: string): string {
   const lower = reason.toLowerCase()
@@ -16,11 +17,12 @@ function readableReason(reason: string): string {
  * deny rail, a ✕ glyph, and a right-flushed reason tag. The strike meaning is carried in
  * screen-reader text so the lossy visual doesn't drop information.
  */
-export function RejectList({ items }: { items: PaItem[] }) {
+export function RejectList({ items, source }: { items: PaItem[]; source?: Reference }) {
   return (
     <section aria-labelledby="reject-head">
       <p className="eyebrow" id="reject-head">
         May need extra insurance approval
+        <SourceLink source={source} />
       </p>
       <p className="reject__intro">
         These may get delayed unless your clinician is planning a{' '}

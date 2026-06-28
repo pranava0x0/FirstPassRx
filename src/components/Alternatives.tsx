@@ -1,4 +1,5 @@
-import type { AltItem, PayerMeta } from '../types/formulary'
+import type { AltItem, PayerMeta, Reference } from '../types/formulary'
+import { SourceLink } from './SourceLink'
 
 function readableNote(note: string): string {
   return note.replace(/\bPA\b/g, 'prior authorization').replace(/·/g, '+')
@@ -12,11 +13,20 @@ function readableDrug(drug: string): string {
  * The middle of the coverage ladder: other in-class agents this plan ALSO covers, so the
  * prescriber sees the real range of choices — not just the single first-pass pick.
  */
-export function Alternatives({ items, payer }: { items: AltItem[]; payer: PayerMeta }) {
+export function Alternatives({
+  items,
+  payer,
+  source,
+}: {
+  items: AltItem[]
+  payer: PayerMeta
+  source?: Reference
+}) {
   return (
     <section aria-labelledby="alts-head">
       <p className="eyebrow" id="alts-head">
         Also covered by this plan
+        <SourceLink source={source} />
       </p>
       {items.length > 0 ? (
         <ul className="alts__list">

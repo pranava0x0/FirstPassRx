@@ -1,5 +1,11 @@
 import type { ClassMeta, FormularyRecord, PayerMeta, Verification } from '../types/formulary'
 import { useGuide } from '../lib/formulary'
+import { RxSig } from './RxSig'
+import { BoglBanner } from './BoglBanner'
+import { Alternatives } from './Alternatives'
+import { RejectList } from './RejectList'
+import { Citations } from './Citations'
+import { GlossaryTerm } from './GlossaryTerm'
 
 /** How confident the cell is in its source — surfaced as a visible stamp, not buried in prose. */
 const VERIFY_LABEL: Record<Verification, string> = {
@@ -7,12 +13,16 @@ const VERIFY_LABEL: Record<Verification, string> = {
   partial: 'Partial — confirm in the source',
   example: 'Example — unconfirmed',
 }
-import { RxSig } from './RxSig'
-import { BoglBanner } from './BoglBanner'
-import { Alternatives } from './Alternatives'
-import { RejectList } from './RejectList'
-import { Citations } from './Citations'
-import { GlossaryTerm } from './GlossaryTerm'
+
+/**
+ * Cash-price lookup for an agent. Paying cash with a discount coupon can beat an insurance
+ * copay on cheap generics — and it sidesteps prior authorization entirely. We link to live
+ * pricing rather than bake a number (prices change daily; CLAUDE.md: don't manufacture certainty).
+ */
+function goodRxUrl(name: string): string {
+  const q = name.replace(/\(.*?\)/g, '').replace(/\s+/g, ' ').trim()
+  return `https://www.goodrx.com/search?query=${encodeURIComponent(q)}`
+}
 
 interface Props {
   record: FormularyRecord
@@ -30,6 +40,7 @@ export function ResultCard({ record, payer, drugClass, panelId, labelId }: Props
   const { resolveSources, capturedAt, unitNoun } = useGuide()
   const agent = record.preferredAgent
   const sources = resolveSources(record.sourceIds)
+  const primarySource = sources[0]
   const displayName = agent.brand ?? agent.inn
 
   // Clinician & Patient UX: Extract a clean, lowercase generic name without salt/device suffixes
@@ -71,6 +82,20 @@ export function ResultCard({ record, payer, drugClass, panelId, labelId }: Props
             <span className="sr-only">Source confidence: </span>
             {VERIFY_LABEL[record.verification]}
           </p>
+          {primarySource ? (
+            <p className="result__cite">
+              Coverage per{' '}
+              <a
+                className="result__cite-link"
+                href={primarySource.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {primarySource.label}
+              </a>
+              {primarySource.effectiveDate ? ` (rev. ${primarySource.effectiveDate})` : ''}.
+            </p>
+          ) : null}
         </div>
 
         <div className="patient-summary" aria-label="What to do next">
@@ -122,11 +147,25 @@ export function ResultCard({ record, payer, drugClass, panelId, labelId }: Props
 
         <div className="coverage-panels" aria-label="Coverage details">
           <div className="coverage-panel coverage-panel--covered">
-            <Alternatives items={record.alternatives ?? []} payer={payer} />
+            <Alternatives items={record.alternatives ?? []} payer={payer} source={primarySource} />
           </div>
           <div className="coverage-panel coverage-panel--reject">
-            <RejectList items={record.paRequired} />
+            <RejectList items={record.paRequired} source={primarySource} />
           </div>
+        </div>
+
+        <div className="cash-note">
+          <p className="eyebrow">Cash-pay option</p>
+          <p className="cash-note__body">
+            {agent.genericAvailable
+              ? 'A generic is often a few dollars with a discount coupon — sometimes cheaper than an insurance copay, and paying cash skips prior authorization entirely. '
+              : 'No generic is listed, so the cash price is usually higher — but it is still worth comparing. '}
+            Check today&rsquo;s cash price on{' '}
+            <a href={goodRxUrl(agent.inn)} target="_blank" rel="noopener noreferrer">
+              GoodRx &#8599;
+            </a>
+            .
+          </p>
         </div>
 
         <div className="detail-stack">

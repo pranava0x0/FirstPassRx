@@ -169,6 +169,19 @@ describe('FirstPassRx app', () => {
     expect(screen.queryByRole('option', { name: 'MassHealth' })).not.toBeInTheDocument()
   })
 
+  it('cites the coverage source inline and offers a cash-pay GoodRx link', () => {
+    render(<App />)
+    // Coverage claim is backed by a visible source link, not only the collapsed Sources block.
+    const cite = screen.getByText(/Coverage per/i)
+    expect(cite).toBeInTheDocument()
+    expect(within(cite).getByRole('link')).toHaveAttribute('href', expect.stringMatching(/^https?:\/\//))
+    // Every result offers a cash-price comparison link.
+    const goodrx = screen.getByRole('link', { name: /GoodRx/i })
+    expect(goodrx).toHaveAttribute('href', expect.stringContaining('goodrx.com'))
+    // Coverage panels carry their own source link too.
+    expect(screen.getAllByRole('link', { name: /source/i }).length).toBeGreaterThan(0)
+  })
+
   it('surfaces the source-confidence stamp without expanding Sources', async () => {
     const user = userEvent.setup()
     render(<App />)
