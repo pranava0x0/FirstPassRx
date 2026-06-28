@@ -89,6 +89,14 @@ When a subagent/background task returns, do a 30-second retrospective before con
 - **Result** — used downstream or wasted? Did it survive verification (grep the "complete" list, confirm the result isn't empty)?
 - **One improvement** — fold the lesson into a *file* (prompt template, `data-sources.md` dead-seam note, backlog entry), not just this reply. If the correction applies to the next run, it doesn't belong only in your head.
 
+**Log it (required).** After every Agent/Workflow run, append a row to
+[`docs/agent-runs.md`](docs/agent-runs.md) — date, run, agents, ~tokens, worked?, quality, efficiency
+note — and give the same retrospective in the response. That file is the running scorecard and holds
+the learned cost levers (gather **per entity not per cell**; **pre-supply known source URLs**; **fold
+verification into the gather agent** rather than a second phase; **index before drug-level**; inline
+for ≤3 lookups). Read it before launching a new fan-out. A run that finished suspiciously fast/cheap
+probably failed — confirm a non-empty result before trusting the metric.
+
 A solo turn with no spawn has nothing to evaluate — say so rather than invent analysis.
 
 ---
