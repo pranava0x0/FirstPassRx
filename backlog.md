@@ -36,6 +36,16 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## Medium
 
+- **Drug-level data for NY, VA, DC.** The state map indexes their plans/PBMs/formulary URLs
+  (`src/data/state-index.json`); turn those into in-app guides with drug-level cells (start with the
+  same two domains, inhalers + menopause HT). The archived PDFs under `sources/` are the starting
+  material.
+- **Wire `trace` + `build:map` into CI / a pre-commit.** `npm run trace` (static provenance) should
+  gate commits so a line item without a resolvable source fails loud; `build:map` should regenerate
+  and assert `docs/formulary-map.md` matches the data (generated output must commit with its source).
+  `trace:live` is too network-flaky for CI — run it on a schedule instead.
+- **Prune dead CSS from the reflow.** `.cost-note*`, `.reject__intro`, `.coverage-panels`,
+  `.coverage-panel--covered`, `.detail-stack`/`.detail-block` are now unmatched (see `issues.md`).
 - **MD menopause: ship the `combo` class + more payers.** Estrogen–progestogen combination products
   (Combipatch, Bijuva, Climara Pro, generic estradiol/norethindrone) are scaffolded as a disabled
   `combo` tab — source and enable them. Add UnitedHealthcare and Aetna of Maryland as payers.

@@ -194,6 +194,19 @@ One at a time. Don't grow into a queue — if you need stacked toasts, swap in a
 
 A matrix answers a binary question — "does this entity touch this dimension at all?" Render a single `✓` per populated cell, not a count. Volume belongs in the subsidiary list, not the at-a-glance grid; digits make the matrix harder to scan and over-state precision.
 
+### 8.7 Answer-first result layout
+
+Lead with the answer, not the preamble. A result card front-loaded a paragraph of patient prose, a 3-step list, and a cost note before the user reached the actual decision (what to prescribe + the alternatives). Reordered:
+
+- **The recommendation, then a scannable comparison table, then the rejects.** The two questions a user has ("what do I pick" / "what else is covered, at what cost") belong in one table — recommended row + alternatives, each tagged (Recommended / Generic / Biosimilar), with the in-plan cost beside the cash price. Don't make the table heading echo a label already shown ("Recommended for X" above, then "WHAT TO PRESCRIBE ON X" — pick one); use a compact caption.
+- **Demote everything else to ONE collapsed appendix** — patient guidance, paste-ready text, full sources. Don't scatter five `<details>` blocks.
+- **Merge provenance onto one line.** Verification state + the source citation read as "✓ Verified · per <source>", not a stamp plus a separate "Coverage per…" line.
+- **Cut the count of headings/subtitles.** Each eyebrow/subtitle is a tax on the scan; if a section's purpose is obvious from context, drop its label.
+
+### 8.8 Responsive data tables
+
+A 3+-column table cramped at mobile widths wraps headers and values to one word per line. Don't horizontal-scroll it — **stack each row into a labeled block** below the breakpoint (`thead` visually hidden; each `td` carries a `data-label` rendered via `::before`). Keep cell values concise — a verbose "Tier 1 · preferred generic (lowest copay)" blows out a column; store the short form ("Tier 1") for the cell and the prose elsewhere. Let the one wide column (the name) absorb slack with `width: 99%`; the rest size to their (short) content.
+
 ---
 
 ## 9. Accessibility (baseline)

@@ -126,6 +126,8 @@ Default verification matrix (project-specific `AGENTS.md` should override with c
 
 **DOM-count before screenshot.** For any DOM-rendering change, make a ~100-token element count (`querySelectorAll('.x').length` via `preview_eval`) the *first* verification step — it catches blank-because-scrolled viewports and stale-cached-JS that screenshots and unit tests miss. Screenshot only once the count is right, and **reload the preview after a rebuild** first — an open tab shows stale data until reloaded.
 
+**A wedged preview tab is a harness problem, not an app bug.** After many reloads the preview can split into two page contexts (duplicate `[vite] connecting` logs) so `preview_click` acts on one tab while `preview_eval` reads the other, or `location.reload()` races a `preview_click` so the click lands on the pre-reload DOM. Symptoms: a control that works in the unit test "does nothing" live, or `preview_eval` times out. Don't chase it — **`preview_stop` + `preview_start` fresh, navigate, then act**; trust the passing integration test plus one fresh-tab screenshot over a flaky live tab. Don't `location.reload()` immediately before a click in the same step.
+
 **Run a build/codegen script twice to assert idempotency** — the second run must inject identical bytes.
 
 **Spot-check source URLs by status** before committing externally-sourced records: `curl -s -o /dev/null -w "%{http_code}" -L -A "Mozilla/5.0..." <url>`. A 403 (bot-blocker) is inconclusive — keep it; a 404 is dead — drop or replace.

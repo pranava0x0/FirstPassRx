@@ -13,3 +13,8 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   PA-37 (timeout on the Conduent host) and the BCBS-MA / MassHealth-Table-23 / MGB-policy-index
   pages as content "drift" — they are JS-rendered portals, so the static HTML lacks the drug names.
   Not broken, but un-traceable by static fetch; verify manually or via the source PDF. _Open._
+- **2026-06-28 · CSS · dead rules after the result-card reflow.** The reflow (lead-with-table +
+  appendix) orphaned several CSS rules now matched by nothing: `.cost-note*`, `.reject__intro`,
+  `.coverage-panels` grid, `.coverage-panel--covered`, `.detail-stack` / `.detail-block` (RxSig moved
+  into `.appendix__block`). Root cause: **refactor leftover** (not a runtime bug — harmless, just dead
+  code). Fix: prune in a CSS-cleanup pass; low priority. _Open._
