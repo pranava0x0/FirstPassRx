@@ -111,6 +111,13 @@ export interface FormularyRecord {
   alternatives?: AltItem[]
   paRequired: PaItem[]
   stepTherapy: string | null
+  /**
+   * The insurance cost of the preferred agent, as a formulary tier/copay-level statement
+   * (not a dollar amount — actual copay depends on the member's plan/deductible). e.g.
+   * "Tier 1 · preferred generic (lowest copay)", "Standard generic benefit · flat Medicaid copay".
+   * Optional: omit when the source doesn't state a tier (the UI shows "depends on your plan").
+   */
+  tier?: string
   verification: Verification
   /** One line on what is and isn't confirmed for this cell. */
   verificationNote: string

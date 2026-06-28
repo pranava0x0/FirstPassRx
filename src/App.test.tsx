@@ -169,12 +169,15 @@ describe('FirstPassRx app', () => {
     expect(screen.queryByRole('option', { name: 'MassHealth' })).not.toBeInTheDocument()
   })
 
-  it('cites the coverage source inline and offers a cash-pay GoodRx link', () => {
+  it('cites coverage inline and shows insurance + cash cost with GoodRx/Cost Plus links', () => {
     render(<App />)
     // Coverage claim is backed by a visible source link, not only the collapsed Sources block.
     const cite = screen.getByText(/Coverage per/i)
     expect(cite).toBeInTheDocument()
     expect(within(cite).getByRole('link')).toHaveAttribute('href', expect.stringMatching(/^https?:\/\//))
+    // Cost is shown in two lanes: insurance and cash.
+    expect(screen.getByText(/With insurance:/i)).toBeInTheDocument()
+    expect(screen.getByText(/Paying cash:/i)).toBeInTheDocument()
     // Every result offers cash-price comparison links (GoodRx + Cost Plus Drugs).
     expect(screen.getByRole('link', { name: /GoodRx/i })).toHaveAttribute(
       'href',

@@ -6,6 +6,7 @@ import { Alternatives } from './Alternatives'
 import { RejectList } from './RejectList'
 import { Citations } from './Citations'
 import { GlossaryTerm } from './GlossaryTerm'
+import { SourceLink } from './SourceLink'
 
 /** How confident the cell is in its source — surfaced as a visible stamp, not buried in prose. */
 const VERIFY_LABEL: Record<Verification, string> = {
@@ -160,22 +161,30 @@ export function ResultCard({ record, payer, drugClass, panelId, labelId }: Props
           </div>
         </div>
 
-        <div className="cash-note">
-          <p className="eyebrow">Cash-pay option</p>
-          <p className="cash-note__body">
-            {agent.genericAvailable
-              ? 'A generic is often a few dollars cash — sometimes cheaper than an insurance copay, and paying cash skips prior authorization entirely. '
-              : 'No generic is listed, so the cash price is usually higher — but it is still worth comparing. '}
-            Compare cash prices at{' '}
-            <a href={goodRxUrl(agent.inn)} target="_blank" rel="noopener noreferrer">
-              GoodRx &#8599;
-            </a>{' '}
-            and{' '}
-            <a href={costPlusUrl(agent.inn)} target="_blank" rel="noopener noreferrer">
-              Cost Plus Drugs &#8599;
-            </a>
-            .
-          </p>
+        <div className="cost-note">
+          <p className="eyebrow">What it costs</p>
+          <ul className="cost-note__list">
+            <li>
+              <b>With insurance:</b>{' '}
+              {record.tier ?? 'depends on your plan tier — check the formulary'}
+              <SourceLink source={primarySource} />
+            </li>
+            <li>
+              <b>Paying cash:</b>{' '}
+              {agent.genericAvailable
+                ? 'a generic is often a few dollars — sometimes less than a copay, and cash skips prior authorization. '
+                : 'no generic is listed, so usually higher — still worth comparing. '}
+              Compare{' '}
+              <a href={goodRxUrl(agent.inn)} target="_blank" rel="noopener noreferrer">
+                GoodRx &#8599;
+              </a>{' '}
+              and{' '}
+              <a href={costPlusUrl(agent.inn)} target="_blank" rel="noopener noreferrer">
+                Cost Plus Drugs &#8599;
+              </a>
+              .
+            </li>
+          </ul>
         </div>
 
         <div className="detail-stack">

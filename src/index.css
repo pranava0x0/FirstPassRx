@@ -888,23 +888,30 @@ button {
   text-decoration: underline;
 }
 
-/* cash-pay / GoodRx consideration */
-.cash-note {
+/* cost: insurance tier vs cash (GoodRx / Cost Plus Drugs) */
+.cost-note {
   border: 1px solid var(--rule);
   border-left: 4px solid var(--status-warn);
   background: var(--paper-shade);
   padding: 12px 14px;
 }
-.cash-note .eyebrow {
-  margin: 0 0 4px;
+.cost-note .eyebrow {
+  margin: 0 0 6px;
 }
-.cash-note__body {
+.cost-note__list {
   margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
   font-size: 13.5px;
   line-height: 1.5;
   color: var(--ink);
 }
-.cash-note__body a {
+.cost-note__list b {
+  font-weight: 600;
+}
+.cost-note__list a {
   color: var(--accent-deep);
   text-decoration: underline;
   white-space: nowrap;
