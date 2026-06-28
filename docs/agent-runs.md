@@ -15,8 +15,9 @@ before launching a new fan-out — the cost levers at the bottom are learned her
 | 2026-06-27 | `md-menopause-payers-r2` — 5 more MD payers | 5 | 363K | ✅ all 5 verified | High — Cigna/Aetna/Medicare brand-tail nuances | Good — verification **folded into the gather agent** (lesson from run 1); no wasted verify phase. Minor: one agent left 3 empty stub files |
 | 2026-06-28 | `md-oral-estrogen` — oral estrogen, 8 payers | 8 | 428K | ✅ 7 verified, 1 partial | High — caught CareFirst's age-70 PA reaching oral estradiol | Good — agents were **pre-supplied the known formulary URLs**, so they fetched instead of searching |
 | 2026-06-28 | `state-formulary-index` — NY/VA/DC plan→PBM→formulary index | 3 | 216K | ✅ all 3, real URLs | High — surfaced NY's NYRx pharmacy carve-out | Cheap + high-value: **index-level** (plan/PBM/URL), not drug-level. 1 VA plan resolved to a landing page only |
+| 2026-06-28 | `md-combo-oral` — oral estrogen+progestin combo tablet, 8 payers | 8 | 475K | ✅ 7 verified, 1 partial | High — caught CareFirst's Bijuva PA and the brand-vs-generic tiers | Good — all three learned levers applied (per-payer, pre-supplied URLs, verification folded in). Enabled the previously-scaffolded `combo` tab |
 
-Session total: ~22 agents, ~1.35M subagent tokens across 4 workflows.
+Session total: ~30 agents, ~1.82M subagent tokens across 5 workflows.
 
 ## Was the fan-out the right call?
 

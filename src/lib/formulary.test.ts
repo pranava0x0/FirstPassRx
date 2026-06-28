@@ -153,8 +153,22 @@ describe('MD menopause guide specifics', () => {
       'aetna',
       'medicare-partd',
     ])
-    expect(md.activeClasses.map((c) => c.id)).toEqual(['est-td', 'est-oral', 'progestogen', 'vaginal'])
-    expect(md.allClasses.find((c) => c.id === 'combo')?.comingSoon).toBe(true)
+    expect(md.activeClasses.map((c) => c.id)).toEqual([
+      'est-td',
+      'est-oral',
+      'progestogen',
+      'vaginal',
+      'combo',
+    ])
+  })
+
+  it('oral combo class: generic estradiol/norethindrone first-pass across the carriers', () => {
+    const combo = md.records.filter((r) => r.classId === 'combo')
+    expect(combo.length).toBe(md.payers.length) // every carrier covered
+    expect(md.getRecord('carefirst', 'combo')?.preferredAgent.inn).toMatch(/norethindrone/i)
+    // brand single-pill combos (e.g. Bijuva) land on a reject/higher-tier list somewhere
+    const allRejects = combo.flatMap((r) => r.paRequired.map((p) => p.drug.toLowerCase()))
+    expect(allRejects.some((d) => /bijuva|angeliq|prempro|activella/.test(d))).toBe(true)
   })
 
   it('oral estrogen is generic estradiol first-pass, with Premarin/conjugated as the brand tail', () => {

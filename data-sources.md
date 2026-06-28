@@ -48,8 +48,15 @@ with publisher, effective date, and capture date.
 ## Maryland menopause hormone-therapy guide (`md-menopause`, captured 2026-06-27)
 
 Classes: `est-td` (transdermal estradiol), `est-oral` (oral estradiol), `progestogen` (oral
-micronized progesterone / medroxyprogesterone), `vaginal` (local vaginal estrogen); `combo`
-(estrogen–progestogen) ships disabled. Real plan PDFs were downloaded and read.
+micronized progesterone / medroxyprogesterone), `vaginal` (local vaginal estrogen), `combo` (oral
+combined estrogen+progestin tablet). Real plan PDFs were downloaded and read.
+
+Oral combo (added 2026-06-28): generic **estradiol / norethindrone acetate** tablet is the clean
+first-pass on every plan (Priority Partners' closed formulary lists the ethinyl-estradiol/norethindrone
+generic instead). Brand single-pill combos vary: CareFirst puts **Bijuva** behind a PA; Cigna and
+Kaiser tier Angeliq/Bijuva up (non-preferred); Medicare Part D lists Activella/Angeliq/Bijuva/Prefest
+as non-formulary; MD Medicaid FFS is `partial` (unmanaged class). No plan forces a brand over the
+generic.
 
 Oral estrogen (added 2026-06-28): generic **estradiol oral tablet** (0.5/1/2 mg) is the clean
 first-pass on every plan; Premarin/conjugated and Menest/esterified estrogens are the brand tail
