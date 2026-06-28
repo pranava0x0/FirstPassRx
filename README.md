@@ -34,9 +34,17 @@ npm run dev      # http://localhost:5173/FirstPassRx/
 ```sh
 npm run typecheck   # tsc strict, no emit
 npm test            # vitest: data integrity + sig + app behavior
+npm run trace       # provenance gate: every line item resolves to a cited source
+npm run trace:live  # re-fetch every source, flag website drift (moved/404 URLs)
 npm run build       # tsc -b && vite build  → dist/
 npm run preview     # serve the production build locally
 ```
+
+`npm run trace` is a static, offline gate (exits non-zero if any cell's preferred agent,
+alternative, reject, or tier doesn't trace to a resolvable cited source). `npm run trace:live`
+re-fetches each cited formulary/PDL — source **websites** move over time even when the **material**
+stays similar, so this catches dead/moved citations (run it each quarter). See
+[scripts/trace-sources.mjs](scripts/trace-sources.mjs).
 
 ## Deploy to GitHub Pages
 

@@ -60,8 +60,14 @@ later agent or the connection dies, every completed source is already on disk.
 1. **Scope inline** (cheap): list the target payers × classes; create `data-gathering/<stamp>/`.
 2. **Gather (fan-out).** Each research agent (agentType `general-purpose`, has WebSearch/WebFetch +
    Write):
-   - searches → fetches the reputable source → extracts the preferred agent, BOGL/brand flag,
-     reject list + reasons, step text, and citation URLs with effective dates;
+   - searches → fetches the reputable source → extracts **every line item the page will render**:
+     the preferred agent, BOGL/brand flag, the alternatives (also-covered) list, the reject list +
+     reasons, step text, and — read off the formulary's own tier table — the **insurance cost of the
+     preferred agent** as a `tier` statement (e.g. "Tier 1 · preferred generic", "Standard generic
+     benefit · flat Medicaid copay", "varies by Part D plan"; a tier level, **not** a dollar copay —
+     copay depends on the member's plan). Capture the page caption (publisher, plan, effective date)
+     and the citation URLs. Reason tags stay SHORT (`PA required` / `Step therapy` / `Non-formulary`
+     / `Non-preferred` / `Higher tier`) — detail goes in `verificationNote`.
    - **Writes `data-gathering/<stamp>/<payer>-<class>.json` (its findings + sources) BEFORE
      returning**, then returns the same object. (Checkpoint-then-return — never only return.)
 3. **Verify (fan-out).** For each payer's primary URL, a second agent re-fetches and confirms it
@@ -93,5 +99,10 @@ later agent or the connection dies, every completed source is already on disk.
   `capturedAt` / `lastUpdated`, and bump global `meta.version`.
 - Run `npm run typecheck && npm test` — the suite enforces that every cell cites a resolvable source,
   PA/alt items are well-formed, and the verified MassHealth Ventolin BOGL finding stays intact.
+- Run `npm run trace` (static provenance gate — every line item resolves to a cited source) and
+  `npm run trace:live` (re-fetches each source to catch website drift: moved/404 URLs, JS-only
+  pages). Source **websites** move over time even when the **material** is stable, so re-run
+  `trace:live` each quarter; a `DEAD`/`404` means the citation rotted — re-locate the doc and update
+  `meta.references`. Log dead/blocked sources in `issues.md` so the next run doesn't re-confirm them.
 - Update `data-sources.md` with the new sources and per-payer status; log any walled/403 sources so
   the next run doesn't re-confirm a dead end.
