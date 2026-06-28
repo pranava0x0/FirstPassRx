@@ -15,13 +15,19 @@ const VERIFY_LABEL: Record<Verification, string> = {
 }
 
 /**
- * Cash-price lookup for an agent. Paying cash with a discount coupon can beat an insurance
- * copay on cheap generics — and it sidesteps prior authorization entirely. We link to live
- * pricing rather than bake a number (prices change daily; CLAUDE.md: don't manufacture certainty).
+ * Cash-price lookups for an agent. Paying cash can beat an insurance copay on cheap generics —
+ * and it sidesteps prior authorization entirely. GoodRx aggregates pharmacy-coupon prices;
+ * Cost Plus Drugs (Mark Cuban) sells generics at cost + a flat markup. We link to live pricing
+ * rather than bake a number (prices change daily; CLAUDE.md: don't manufacture certainty).
  */
+function cashQuery(name: string): string {
+  return name.replace(/\(.*?\)/g, '').replace(/\s+/g, ' ').trim()
+}
 function goodRxUrl(name: string): string {
-  const q = name.replace(/\(.*?\)/g, '').replace(/\s+/g, ' ').trim()
-  return `https://www.goodrx.com/search?query=${encodeURIComponent(q)}`
+  return `https://www.goodrx.com/search?query=${encodeURIComponent(cashQuery(name))}`
+}
+function costPlusUrl(name: string): string {
+  return `https://costplusdrugs.com/medications/?search=${encodeURIComponent(cashQuery(name))}`
 }
 
 interface Props {
@@ -158,11 +164,15 @@ export function ResultCard({ record, payer, drugClass, panelId, labelId }: Props
           <p className="eyebrow">Cash-pay option</p>
           <p className="cash-note__body">
             {agent.genericAvailable
-              ? 'A generic is often a few dollars with a discount coupon — sometimes cheaper than an insurance copay, and paying cash skips prior authorization entirely. '
+              ? 'A generic is often a few dollars cash — sometimes cheaper than an insurance copay, and paying cash skips prior authorization entirely. '
               : 'No generic is listed, so the cash price is usually higher — but it is still worth comparing. '}
-            Check today&rsquo;s cash price on{' '}
+            Compare cash prices at{' '}
             <a href={goodRxUrl(agent.inn)} target="_blank" rel="noopener noreferrer">
               GoodRx &#8599;
+            </a>{' '}
+            and{' '}
+            <a href={costPlusUrl(agent.inn)} target="_blank" rel="noopener noreferrer">
+              Cost Plus Drugs &#8599;
             </a>
             .
           </p>

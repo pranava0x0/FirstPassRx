@@ -175,9 +175,15 @@ describe('FirstPassRx app', () => {
     const cite = screen.getByText(/Coverage per/i)
     expect(cite).toBeInTheDocument()
     expect(within(cite).getByRole('link')).toHaveAttribute('href', expect.stringMatching(/^https?:\/\//))
-    // Every result offers a cash-price comparison link.
-    const goodrx = screen.getByRole('link', { name: /GoodRx/i })
-    expect(goodrx).toHaveAttribute('href', expect.stringContaining('goodrx.com'))
+    // Every result offers cash-price comparison links (GoodRx + Cost Plus Drugs).
+    expect(screen.getByRole('link', { name: /GoodRx/i })).toHaveAttribute(
+      'href',
+      expect.stringContaining('goodrx.com'),
+    )
+    expect(screen.getByRole('link', { name: /Cost Plus Drugs/i })).toHaveAttribute(
+      'href',
+      expect.stringContaining('costplusdrugs.com'),
+    )
     // Coverage panels carry their own source link too.
     expect(screen.getAllByRole('link', { name: /source/i }).length).toBeGreaterThan(0)
   })
