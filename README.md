@@ -49,16 +49,24 @@ stays similar, so this catches dead/moved citations (run it each quarter). See
 
 ## Deploy to GitHub Pages
 
-The Vite `base` is set to `/FirstPassRx/` in [vite.config.ts](vite.config.ts) — change it if you
-fork to a differently named repo. Then:
+The application is configured to deploy to GitHub Pages automatically via GitHub Actions on every push/merge to the `main` branch.
+
+### Automatic Deploy (Recommended)
+We use a GitHub Actions workflow in `.github/workflows/deploy.yml` that builds and deploys the app.
+To enable this:
+1. Go to your repository on GitHub.
+2. Navigate to **Settings → Pages**.
+3. Under **Build and deployment → Source**, select **GitHub Actions** (instead of "Deploy from a branch").
+
+### Manual Deploy (Alternative)
+You can still deploy manually from your local machine to the `gh-pages` branch:
 
 ```sh
 npm run deploy      # builds, then pushes dist/ to the gh-pages branch (gh-pages -d dist -t)
 ```
 
-In the repo's **Settings → Pages**, set the source to the `gh-pages` branch. The site publishes at
-`https://<user>.github.io/FirstPassRx/`. (`-t` includes the `.nojekyll` dotfile so GitHub serves
-Vite's `assets/` output verbatim.)
+In this case, the Pages source in Settings must be set to deploy from the `gh-pages` branch.
+The site publishes at `https://<user>.github.io/FirstPassRx/`. (`-t` includes the `.nojekyll` dotfile so GitHub serves Vite's `assets/` output verbatim.)
 
 ## Update the data (the main contribution path)
 
