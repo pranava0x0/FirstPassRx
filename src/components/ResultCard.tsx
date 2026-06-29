@@ -50,10 +50,9 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
       <div className="doc">
         {/* The answer — minimal. */}
         <div className="highlights">
-          <span className="recommendation-label">
-            3. Preferred option
-          </span>
-          <h2 className="agent">{displayName}</h2>
+          <h2 className="recommendation-label">
+            3. Preferred option: {displayName}
+          </h2>
           {agent.brand ? (
             <p className="agent__generic">Also called: {readableGenericName(agent.inn)}</p>
           ) : null}
