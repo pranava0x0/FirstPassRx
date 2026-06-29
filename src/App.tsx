@@ -67,9 +67,9 @@ export default function App() {
           <details className="how">
             <summary>How this works</summary>
             <p className="how__body">
-              <b>First-pass pick</b> means the option most likely to go through without prior
-              authorization. Open the sections below it for backup choices, drugs that may reject,
-              and sources.
+              <b>Formulary first-pass</b> means the option most likely to go through under the exact
+              benefit product shown. It is not a clinical recommendation. Confirm the product and
+              patient-specific treatment choice before prescribing.
             </p>
           </details>
           <Disclaimer />

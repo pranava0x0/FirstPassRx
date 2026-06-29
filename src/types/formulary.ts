@@ -48,6 +48,12 @@ export interface PayerMeta {
   aka?: string
   /** Pharmacy benefit manager, when known (drives where PA actually routes). */
   pbm?: string
+  /** Exact benefit product represented by this formulary (not merely the carrier). */
+  productName: string
+  /** Market segment whose benefit design this product uses. */
+  marketSegment: 'medicaid-ffs' | 'medicaid-mco' | 'commercial-exchange' | 'commercial-employer' | 'medicare-part-d'
+  /** Stable formulary/document identifier shown by the publisher. */
+  formularyId: string
   formularyUrl: string
   paPolicyUrl?: string
   sourceIds: string[]
@@ -90,13 +96,17 @@ export interface PreferredAgent {
 /** A drug that won't ship clean for this payer/class, with the reason it rejects. */
 export interface PaItem {
   drug: string
-  /** Short reason tag, e.g. "PA required", "Step therapy", "Non-formulary", "Higher tier". */
+  sourceIds: string[]
+  /** A true coverage barrier; covered higher-tier/non-preferred choices belong in alternatives. */
+  outcome: 'pa' | 'step' | 'nonformulary'
+  /** Short human-readable reason, e.g. "PA required" or "Non-formulary". */
   reason: string
 }
 
 /** Another in-class agent that IS covered (besides the first-pass pick) — the rest of the ladder. */
 export interface AltItem {
   drug: string
+  sourceIds: string[]
   /** Why it's still fine to prescribe, e.g. "preferred · no PA", "Tier 2", "generic". */
   note?: string
 }
@@ -122,6 +132,10 @@ export interface FormularyRecord {
   /** One line on what is and isn't confirmed for this cell. */
   verificationNote: string
   sourceIds: string[]
+  /** Sources supporting preferred agent, alternatives, and tier. */
+  coverageSourceIds: string[]
+  /** Sources supporting PA, step-therapy, non-formulary, and BOGL claims. */
+  restrictionSourceIds: string[]
   lastReviewed: string
 }
 

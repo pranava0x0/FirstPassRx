@@ -1,5 +1,6 @@
-import type { PaItem, Reference } from '../types/formulary'
+import type { PaItem } from '../types/formulary'
 import { SourceLink } from './SourceLink'
+import { useGuide } from '../lib/formulary'
 
 function readableReason(reason: string): string {
   const lower = reason.toLowerCase()
@@ -12,16 +13,14 @@ function readableReason(reason: string): string {
 }
 
 /**
- * Drugs that won't ship clean for this payer/class, as a ledger: one row per drug with a
- * deny rail, a ✕ glyph, and a right-flushed reason tag. The strike meaning is carried in
- * screen-reader text so the lossy visual doesn't drop information.
+ * True coverage barriers for this product: PA, step therapy, or non-formulary.
  */
-export function RejectList({ items, source }: { items: PaItem[]; source?: Reference }) {
+export function RejectList({ items }: { items: PaItem[] }) {
+  const { resolveSources } = useGuide()
   return (
     <section aria-labelledby="reject-head">
       <p className="eyebrow" id="reject-head">
-        May need extra approval
-        <SourceLink source={source} />
+        Coverage barriers
       </p>
 
       {items.length > 0 ? (
@@ -32,10 +31,11 @@ export function RejectList({ items, source }: { items: PaItem[]; source?: Refere
                 &#10005;
               </span>
               <span className="reject__drug">
-                <span className="sr-only">Will reject: </span>
+                <span className="sr-only">Coverage barrier: </span>
                 {it.drug}
               </span>
               <span className="reject__reason">{readableReason(it.reason)}</span>
+              <SourceLink source={resolveSources(it.sourceIds)[0]} />
             </li>
           ))}
         </ul>

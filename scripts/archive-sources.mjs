@@ -14,6 +14,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
+import { stateSourceId } from './source-id.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const SRC_DIR = join(ROOT, 'sources')
@@ -35,7 +36,7 @@ try {
   const idx = JSON.parse(readFileSync(join(ROOT, 'src/data/state-index.json'), 'utf8'))
   for (const s of idx.states)
     for (const p of s.plans) {
-      const id = `state-${s.code.toLowerCase()}-${p.formularyUrl.replace(/\W+/g, '').slice(-16)}`
+      const id = stateSourceId(s.code, p.formularyUrl)
       if (!targets.has(id) && p.fetchedOk) targets.set(id, { id, label: `${s.code}: ${p.name}`, url: p.formularyUrl })
     }
 } catch {

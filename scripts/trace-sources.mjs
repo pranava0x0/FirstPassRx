@@ -30,7 +30,7 @@ const LIVE = args.includes('--live')
 const STRICT = args.includes('--strict')
 const TIMEOUT = Number((args.find((a) => a.startsWith('--timeout=')) || '').split('=')[1]) || 15000
 const UA = 'FirstPassRx-source-validator/1.0 (+https://github.com/pranava0x0/FirstPassRx)'
-const REASON_TAGS = ['PA required', 'Step therapy', 'Non-formulary', 'Non-preferred', 'Higher tier']
+const BARRIER_OUTCOMES = new Set(['pa', 'step', 'nonformulary'])
 
 const c = {
   red: (s) => `\x1b[31m${s}\x1b[0m`,
@@ -64,7 +64,7 @@ const warnings = [] // soft issues (reported, never fail unless --strict for liv
 console.log(c.bold('\n── Static provenance ──'))
 let recordCount = 0
 let claimCount = 0
-const liveTargets = new Map() // url -> { refId, label, citedDrugs:Set, records:[] }
+const liveTargets = new Map() // url -> { refId, label, citedTerms:Set, records:[] }
 
 for (const guide of formulary.guides) {
   const refs = new Map(guide.references.map((r) => [r.id, r]))
@@ -80,7 +80,7 @@ for (const guide of formulary.guides) {
       guideIssues++
       continue
     }
-    const resolved = []
+    const resolved = new Map()
     for (const id of r.sourceIds) {
       const ref = refs.get(id)
       if (!ref) {
@@ -90,32 +90,56 @@ for (const guide of formulary.guides) {
         problems.push(`${at}: source "${id}" has a non-http URL (${ref.url})`)
         guideIssues++
       } else {
-        resolved.push(ref)
+        resolved.set(ref.id, ref)
       }
     }
 
     if (!r.tier) missingTier++
 
     for (const pa of r.paRequired || []) {
-      const known = REASON_TAGS.some((t) => pa.reason.toLowerCase().includes(t.toLowerCase()))
-      if (!known) warnings.push(`${at}: reject reason "${pa.reason}" matches no known tag`)
+      if (!BARRIER_OUTCOMES.has(pa.outcome))
+        problems.push(`${at}: barrier "${pa.drug}" has invalid outcome "${pa.outcome}"`)
+      if (/higher tier|non-preferred/i.test(pa.reason))
+        problems.push(`${at}: covered/cost-sharing item "${pa.drug}" is incorrectly modeled as a barrier`)
     }
 
     // collect the page's line items as drugs to trace in the live source
-    const drugs = [
-      r.preferredAgent.brand || r.preferredAgent.inn,
-      ...(r.alternatives || []).map((a) => a.drug),
-      ...(r.paRequired || []).map((p) => p.drug),
+    const preferredTerms = [r.preferredAgent.brand || r.preferredAgent.inn]
+    const restrictionTerms = [
+      ...(r.stepTherapy ? [r.preferredAgent.brand || r.preferredAgent.inn] : []),
+      ...(r.boglActive ? [r.preferredAgent.brand || r.preferredAgent.inn] : []),
     ]
-    claimCount += drugs.length + (r.tier ? 1 : 0)
+    claimCount += preferredTerms.length + (r.alternatives || []).length + restrictionTerms.length + (r.tier ? 1 : 0)
 
-    for (const ref of resolved) {
+    const sourceLanes = [
+      ...(r.coverageSourceIds || []).map((id) => [id, preferredTerms]),
+      ...(r.alternatives || []).flatMap((alt) =>
+        (alt.sourceIds || []).map((id) => [id, [alt.drug]]),
+      ),
+      ...(r.paRequired || []).flatMap((barrier) =>
+        (barrier.sourceIds || []).map((id) => [id, [barrier.drug]]),
+      ),
+      ...(r.restrictionSourceIds || []).map((id) => [id, restrictionTerms]),
+    ]
+    if (!r.coverageSourceIds?.length) problems.push(`${at}: no claim-specific coverageSourceIds`)
+    if (!r.restrictionSourceIds?.length) problems.push(`${at}: no claim-specific restrictionSourceIds`)
+    for (const alt of r.alternatives || [])
+      if (!alt.sourceIds?.length) problems.push(`${at}: alternative "${alt.drug}" has no sourceIds`)
+    for (const barrier of r.paRequired || [])
+      if (!barrier.sourceIds?.length) problems.push(`${at}: barrier "${barrier.drug}" has no sourceIds`)
+
+    for (const [id, terms] of sourceLanes) {
+      const ref = resolved.get(id)
+      if (!ref) {
+        problems.push(`${at}: claim-specific source "${id}" is absent from sourceIds or unresolved`)
+        continue
+      }
       if (!liveTargets.has(ref.url)) {
-        liveTargets.set(ref.url, { refId: ref.id, label: ref.label, citedDrugs: new Set(), records: [] })
+        liveTargets.set(ref.url, { refId: ref.id, label: ref.label, citedTerms: new Set(), records: [] })
       }
       const t = liveTargets.get(ref.url)
       t.records.push(at)
-      t.citedDrugs.add(r.preferredAgent.brand || r.preferredAgent.inn)
+      for (const term of terms) t.citedTerms.add(term)
     }
   }
 
@@ -187,11 +211,11 @@ if (LIVE) {
       label = c.green('OK') + c.dim(' · PDF (reachable; content-trace needs a parser)')
     } else if (r.text) {
       // content trace: do the cited drug names still appear in the live HTML?
-      const missing = [...t.citedDrugs].filter((d) => coreToken(d) && !r.text.includes(coreToken(d)))
+      const missing = [...t.citedTerms].filter((d) => coreToken(d) && !r.text.includes(coreToken(d)))
       if (missing.length === 0) {
-        label = c.green('OK') + c.dim(` · ${t.citedDrugs.size} drug(s) traced`)
+        label = c.green('OK') + c.dim(` · ${t.citedTerms.size} claim term(s) traced`)
       } else {
-        label = c.yellow(`DRIFT · ${missing.length}/${t.citedDrugs.size} cited drug(s) not found in live text`)
+        label = c.yellow(`DRIFT · ${missing.length}/${t.citedTerms.size} claim term(s) not found in live text`)
         drift++
         if (STRICT) problems.push(`live: ${r.refId} drift — not found: ${missing.map(coreToken).join(', ')}`)
       }

@@ -17,6 +17,7 @@ const formulary = rawData as Formulary
 const key = (payerId: string, classId: string) => `${payerId}::${classId}`
 
 const VERIFICATIONS = new Set(['verified', 'partial', 'example'])
+const BARRIER_OUTCOMES = new Set(['pa', 'step', 'nonformulary'])
 
 /**
  * Validate the bundled data at module load. Runs in dev, build (via the test suite),
@@ -67,7 +68,11 @@ function validate(data: Formulary): void {
         if (!refIds.has(id)) problems.push(`${G} ${at}: unknown sourceId "${id}"`)
       })
 
-    guide.payers.forEach((p) => checkSources(p.sourceIds, `payer ${p.id}`))
+    guide.payers.forEach((p) => {
+      checkSources(p.sourceIds, `payer ${p.id}`)
+      if (!p.productName || !p.marketSegment || !p.formularyId)
+        problems.push(`${G} payer ${p.id}: missing exact productName/marketSegment/formularyId`)
+    })
     guide.classes.forEach((c) => {
       checkSources(c.sourceIds, `class ${c.id}`)
       if (!c.plainName) problems.push(`${G} class ${c.id}: missing plainName`)
@@ -97,12 +102,20 @@ function validate(data: Formulary): void {
         r.paRequired.forEach((p, j) => {
           if (!p || !p.drug || !p.reason)
             problems.push(`${G} ${at}: paRequired[${j}] missing drug/reason`)
+          else if (!BARRIER_OUTCOMES.has(p.outcome))
+            problems.push(`${G} ${at}: paRequired[${j}] invalid barrier outcome "${p.outcome}"`)
+          else if (/higher tier|non-preferred/i.test(p.reason))
+            problems.push(`${G} ${at}: paRequired[${j}] is covered/cost-sharing, not a barrier`)
+          checkSources(p.sourceIds || [], `${at} paRequired[${j}]`)
+          if (!p.sourceIds?.length) problems.push(`${G} ${at}: paRequired[${j}] has no sourceIds`)
         })
       if (r.alternatives !== undefined) {
         if (!Array.isArray(r.alternatives)) problems.push(`${G} ${at}: alternatives is not an array`)
         else
           r.alternatives.forEach((alt, j) => {
             if (!alt || !alt.drug) problems.push(`${G} ${at}: alternatives[${j}] missing drug`)
+            if (!alt.sourceIds?.length) problems.push(`${G} ${at}: alternatives[${j}] has no sourceIds`)
+            checkSources(alt.sourceIds || [], `${at} alternatives[${j}]`)
           })
       }
       if (r.boglActive && !a?.brand) problems.push(`${G} ${at}: boglActive is true but no brand is set`)
@@ -112,6 +125,10 @@ function validate(data: Formulary): void {
       if (!r.sourceIds || r.sourceIds.length === 0)
         problems.push(`${G} ${at}: no sourceIds (every cell must cite a source)`)
       checkSources(r.sourceIds || [], at)
+      if (!r.coverageSourceIds?.length) problems.push(`${G} ${at}: no coverageSourceIds`)
+      if (!r.restrictionSourceIds?.length) problems.push(`${G} ${at}: no restrictionSourceIds`)
+      checkSources(r.coverageSourceIds || [], `${at} coverage`)
+      checkSources(r.restrictionSourceIds || [], `${at} restrictions`)
     })
 
     // Count floor: every payer × active class must be covered within the guide.

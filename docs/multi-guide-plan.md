@@ -7,8 +7,9 @@ therapeutic area (Maryland · menopause hormone therapy) without nonsense cells,
 **guide** dimension: each guide bundles its own region, topic, payers, classes, records,
 references, and glossary. A top-level toggle swaps guides.
 
-The record/card shape is therapy-agnostic and unchanged — estradiol/progesterone reuse the exact
-"first-pass pick → BOGL → PA reject list → step therapy → alternatives → citations" model.
+The record/card shape separates formulary policy from clinical guidance: exact benefit product →
+formulary first-pass option → covered alternatives → true barriers → claim-specific citations.
+The app does not infer patient-specific treatment or dose from a formulary.
 
 ## Data shape (src/data/formulary.json)
 ```

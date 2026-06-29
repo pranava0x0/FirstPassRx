@@ -1,10 +1,10 @@
 # FirstPassRx
 
 Find the first-pass drug for each major plan and avoid a Prior Authorization round-trip. A
-prescriber picks the insurance plan and drug class (or searches a drug); the app shows the agent that
-ships clean, the brand-required (BOGL) warning, the drugs that reject and why, an editable Rx sig to
-paste into Epic/Cerner, and a numbered **source citation** on every result. Clinical terms carry a
-tap-for-plain-English glossary so patients can use it too.
+prescriber picks the exact benefit product and drug class; the app shows the formulary first-pass
+agent, covered alternatives, true coverage barriers, and a numbered **source citation** on every
+result. It does not recommend treatment or generate prescription directions: patient-specific
+clinical selection and dosing remain outside the formulary tool.
 
 A top-level toggle switches between **guides** — each a region × therapeutic area with its own plans,
 classes, and sourced data:
@@ -41,8 +41,8 @@ npm run build       # tsc -b && vite build  → dist/
 npm run preview     # serve the production build locally
 ```
 
-`npm run trace` is a static, offline gate (exits non-zero if any cell's preferred agent,
-alternative, reject, or tier doesn't trace to a resolvable cited source). `npm run trace:live`
+`npm run trace` is a static, offline gate (exits non-zero if any visible coverage or restriction
+claim lacks the correct claim-specific source lane). `npm run trace:live`
 re-fetches each cited formulary/PDL — source **websites** move over time even when the **material**
 stays similar, so this catches dead/moved citations (run it each quarter). See
 [scripts/trace-sources.mjs](scripts/trace-sources.mjs).
@@ -70,8 +70,11 @@ Everything lives in one file: [`src/data/formulary.json`](src/data/formulary.jso
   (`region`, `topic`, `classNoun`, `unitNoun`, `tagline`) and its own `dataStatus` / dates.
 - `payers` / `classes` are the **single source of truth** for that guide's dropdown and tabs — add a
   payer or class there and the toggle/UI picks it up. To add a new region or drug type, add a guide.
-- `records[]` is one entry per payer × class within the guide. Each carries the preferred agent,
-  `boglActive` (forces brand), `paRequired` (hard-reject list), and `stepTherapy`.
+- Every payer identifies the exact `productName`, `marketSegment`, and `formularyId`; a carrier name
+  alone is never treated as a coverage key.
+- `records[]` is one entry per product × class. Each carries the formulary first-pass agent,
+  alternatives, true barriers (`pa` / `step` / `nonformulary`), and separate
+  `coverageSourceIds` / `restrictionSourceIds`.
 - `npm test` enforces the invariants **per guide**: every payer × active class is covered, no record
   points at a coming-soon class, every BOGL cell names a brand + a reason, and every `sourceId`
   resolves within its guide. A bad PR fails loud.
@@ -87,12 +90,13 @@ src/
   types/formulary.ts      the shape (single source of truth)
   lib/formulary.ts        load + validate + index the data; search index; glossary + source lookup
   lib/sig.ts              build the EHR-ready Rx string (brand under BOGL, else generic)
-  components/             Search, Controls, ResultCard, BoglBanner, RejectList, RxSig,
+  components/             Search, Controls, ResultCard, BoglBanner, RejectList,
                           Citations, GlossaryTerm, Disclaimer
   App.tsx                 plan/class state + search wiring + layout
 ```
 
-Every cell links its sources (`sourceIds` → `meta.references`) and declares a `verification` state.
+Every cell links claim-specific sources (`coverageSourceIds` / `restrictionSourceIds` → references)
+and declares a coverage `verification` state.
 The UI renders the citations and the state on each result; `npm test` enforces that every cell
 cites a resolvable source and that the verified MassHealth Ventolin BOGL finding stays intact.
 

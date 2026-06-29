@@ -32,9 +32,9 @@ export function Controls({ payerId, classId, onPayer, onClass, panelId, tabId }:
   return (
     <div className="controls">
       <fieldset className="controls__group">
-        <legend className="controls__legend eyebrow">Insurance plan</legend>
+        <legend className="controls__legend eyebrow">Benefit product</legend>
         <label htmlFor="plan-select" className="sr-only">
-          Select insurance plan
+          Select benefit product
         </label>
         <select
           id="plan-select"
@@ -44,12 +44,14 @@ export function Controls({ payerId, classId, onPayer, onClass, panelId, tabId }:
         >
           {payers.map((p) => (
             <option key={p.id} value={p.id}>
-              {p.name}
+              {p.name} — {p.productName}
             </option>
           ))}
         </select>
-        {payer && (payer.aka || payer.pbm) && (
+        {payer && (
           <p className="plan-note">
+            {payer.productName} · {payer.formularyId}
+            {payer.aka || payer.pbm ? ' · ' : ''}
             {payer.aka ? payer.aka : ''}
             {payer.aka && payer.pbm ? ' · ' : ''}
             {payer.pbm ? `PBM: ${payer.pbm}` : ''}

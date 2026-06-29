@@ -2,7 +2,7 @@
   "meta": {
     "title": "FirstPassRx",
     "disclaimer": "A point-of-care reference, not a substitute for the payer's current formulary or clinical judgment. Formularies change quarterly; confirm every agent and restriction against the linked source before prescribing.",
-    "version": "0.7.0",
+    "version": "0.8.0",
     "defaultGuideId": "ma-inhalers"
   },
   "guides": [
@@ -29,7 +29,10 @@
           "sourceIds": [
             "mh-mhdl-t23",
             "mh-pa37"
-          ]
+          ],
+          "productName": "MassHealth fee-for-service pharmacy benefit",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "MHDL Table 23 / PA-37"
         },
         {
           "id": "bcbsma",
@@ -40,7 +43,10 @@
           "formularyUrl": "https://provider.bluecrossma.com/ProviderHome/portal/home/pharmacy/formularies/medication-look-up",
           "sourceIds": [
             "bcbsma-medlookup"
-          ]
+          ],
+          "productName": "Member-specific commercial formulary — confirm product",
+          "marketSegment": "commercial-employer",
+          "formularyId": "BCBSMA Medication Lookup"
         },
         {
           "id": "tufts",
@@ -54,7 +60,10 @@
             "tufts-formulary-2026",
             "p32-changes-2026",
             "p32-pa-form"
-          ]
+          ],
+          "productName": "Tufts Value Direct 3-Tier",
+          "marketSegment": "commercial-employer",
+          "formularyId": "P32H Value Direct 3T 2026"
         },
         {
           "id": "harvardpilgrim",
@@ -67,7 +76,10 @@
           "sourceIds": [
             "hphc-formulary-2026",
             "p32-pa-form"
-          ]
+          ],
+          "productName": "Harvard Pilgrim Select 3-Tier",
+          "marketSegment": "commercial-employer",
+          "formularyId": "HPHC Select 3T 2026"
         },
         {
           "id": "mgb",
@@ -81,7 +93,10 @@
             "mgb-formulary-2026",
             "mgb-flut-hfa-pa",
             "mgb-pharmacy-index"
-          ]
+          ],
+          "productName": "MGB Health Plan 6-Tier commercial formulary",
+          "marketSegment": "commercial-employer",
+          "formularyId": "FBO 192 / 2026 6T"
         }
       ],
       "classes": [
@@ -416,25 +431,43 @@
           "alternatives": [
             {
               "drug": "ProAir RespiClick (albuterol DPI)",
-              "note": "no PA"
+              "note": "no PA",
+              "sourceIds": [
+                "mh-mhdl-t23"
+              ]
             },
             {
               "drug": "Albuterol sulfate solution (nebulized)",
-              "note": "no PA"
+              "note": "no PA",
+              "sourceIds": [
+                "mh-mhdl-t23"
+              ]
             }
           ],
           "paRequired": [
             {
               "drug": "Albuterol HFA inhaler (generic)",
-              "reason": "PA required"
+              "reason": "PA required",
+              "outcome": "pa",
+              "sourceIds": [
+                "mh-pa37"
+              ]
             },
             {
               "drug": "Levalbuterol (Xopenex HFA)",
-              "reason": "PA required"
+              "reason": "PA required",
+              "outcome": "pa",
+              "sourceIds": [
+                "mh-pa37"
+              ]
             },
             {
               "drug": "ProAir Digihaler",
-              "reason": "PA required"
+              "reason": "PA required",
+              "outcome": "pa",
+              "sourceIds": [
+                "mh-pa37"
+              ]
             }
           ],
           "stepTherapy": "Generic albuterol HFA requires a documented trial of an albuterol product available without PA (brand Ventolin HFA, or ProAir RespiClick).",
@@ -444,7 +477,13 @@
             "mh-mhdl-t23",
             "mh-pa37"
           ],
-          "lastReviewed": "2026-06-22"
+          "lastReviewed": "2026-06-22",
+          "coverageSourceIds": [
+            "mh-mhdl-t23"
+          ],
+          "restrictionSourceIds": [
+            "mh-pa37"
+          ]
         },
         {
           "payerId": "masshealth",
@@ -463,15 +502,27 @@
           "paRequired": [
             {
               "drug": "Alvesco (ciclesonide)",
-              "reason": "Step therapy"
+              "reason": "Step therapy",
+              "outcome": "step",
+              "sourceIds": [
+                "mh-pa37"
+              ]
             },
             {
               "drug": "Fluticasone propionate HFA (≥12 yr)",
-              "reason": "Step therapy"
+              "reason": "Step therapy",
+              "outcome": "step",
+              "sourceIds": [
+                "mh-pa37"
+              ]
             },
             {
               "drug": "QVAR RediHaler",
-              "reason": "Step therapy"
+              "reason": "Step therapy",
+              "outcome": "step",
+              "sourceIds": [
+                "mh-pa37"
+              ]
             }
           ],
           "stepTherapy": "Alvesco, fluticasone propionate aerosol (age ≥12), and QVAR RediHaler require a documented trial of two inhaled corticosteroids first.",
@@ -481,7 +532,13 @@
             "mh-mhdl-t23",
             "mh-pa37"
           ],
-          "lastReviewed": "2026-06-22"
+          "lastReviewed": "2026-06-22",
+          "coverageSourceIds": [
+            "mh-mhdl-t23"
+          ],
+          "restrictionSourceIds": [
+            "mh-pa37"
+          ]
         },
         {
           "payerId": "masshealth",
@@ -500,21 +557,34 @@
           "alternatives": [
             {
               "drug": "Advair Diskus (fluticasone/salmeterol)",
-              "note": "preferred · no PA"
+              "note": "preferred · no PA",
+              "sourceIds": [
+                "mh-mhdl-t23"
+              ]
             },
             {
               "drug": "Breo Ellipta (fluticasone furoate/vilanterol)",
-              "note": "preferred · no PA"
+              "note": "preferred · no PA",
+              "sourceIds": [
+                "mh-mhdl-t23"
+              ]
             },
             {
               "drug": "Dulera (mometasone/formoterol)",
-              "note": "preferred · no PA"
+              "note": "preferred · no PA",
+              "sourceIds": [
+                "mh-mhdl-t23"
+              ]
             }
           ],
           "paRequired": [
             {
               "drug": "AirDuo RespiClick (generic fluticasone/salmeterol)",
-              "reason": "Step therapy"
+              "reason": "Step therapy",
+              "outcome": "step",
+              "sourceIds": [
+                "mh-pa37"
+              ]
             }
           ],
           "stepTherapy": "AirDuo RespiClick requires a prior trial of fluticasone/salmeterol inhalation aerosol/powder (generic Advair). Symbicort, Advair, Breo, and Dulera are preferred without PA.",
@@ -524,7 +594,13 @@
             "mh-mhdl-t23",
             "mh-pa37"
           ],
-          "lastReviewed": "2026-06-22"
+          "lastReviewed": "2026-06-22",
+          "coverageSourceIds": [
+            "mh-mhdl-t23"
+          ],
+          "restrictionSourceIds": [
+            "mh-pa37"
+          ]
         },
         {
           "payerId": "masshealth",
@@ -543,21 +619,35 @@
           "alternatives": [
             {
               "drug": "Incruse Ellipta (umeclidinium)",
-              "note": "preferred"
+              "note": "preferred",
+              "sourceIds": [
+                "mh-mhdl-t23"
+              ]
             },
             {
               "drug": "Tiotropium inhalation powder",
-              "note": "preferred"
+              "note": "preferred",
+              "sourceIds": [
+                "mh-mhdl-t23"
+              ]
             }
           ],
           "paRequired": [
             {
               "drug": "Tudorza Pressair (aclidinium)",
-              "reason": "Step therapy"
+              "reason": "Step therapy",
+              "outcome": "step",
+              "sourceIds": [
+                "mh-pa37"
+              ]
             },
             {
               "drug": "Yupelri (revefenacin)",
-              "reason": "Step therapy"
+              "reason": "Step therapy",
+              "outcome": "step",
+              "sourceIds": [
+                "mh-pa37"
+              ]
             }
           ],
           "stepTherapy": "Tudorza requires a prior trial of Incruse, Spiriva Respimat, or tiotropium inhalation powder. Yupelri requires a prior trial of ipratropium nebulizer solution. LAMA is covered for documented COPD.",
@@ -568,7 +658,13 @@
             "mh-pa37",
             "dailymed-spiriva"
           ],
-          "lastReviewed": "2026-06-22"
+          "lastReviewed": "2026-06-22",
+          "coverageSourceIds": [
+            "mh-mhdl-t23"
+          ],
+          "restrictionSourceIds": [
+            "mh-pa37"
+          ]
         },
         {
           "payerId": "bcbsma",
@@ -584,19 +680,29 @@
           },
           "boglActive": false,
           "boglNote": null,
-          "paRequired": [
-            {
-              "drug": "Levalbuterol (Xopenex HFA)",
-              "reason": "Non-preferred"
-            }
-          ],
+          "paRequired": [],
           "stepTherapy": null,
           "verification": "example",
           "verificationNote": "BCBSMA's formulary and PA intake are confirmed, but the inhaler-specific preferred/PA criteria PDF blocked automated reading — verify on the BCBSMA Medication Look-up before relying on this cell.",
           "sourceIds": [
             "bcbsma-medlookup"
           ],
-          "lastReviewed": "2026-06-22"
+          "lastReviewed": "2026-06-22",
+          "coverageSourceIds": [
+            "bcbsma-medlookup"
+          ],
+          "restrictionSourceIds": [
+            "bcbsma-medlookup"
+          ],
+          "alternatives": [
+            {
+              "drug": "Levalbuterol (Xopenex HFA)",
+              "note": "Non-preferred",
+              "sourceIds": [
+                "bcbsma-medlookup"
+              ]
+            }
+          ]
         },
         {
           "payerId": "bcbsma",
@@ -612,12 +718,7 @@
           },
           "boglActive": false,
           "boglNote": null,
-          "paRequired": [
-            {
-              "drug": "Arnuity Ellipta",
-              "reason": "Non-preferred"
-            }
-          ],
+          "paRequired": [],
           "stepTherapy": null,
           "verification": "example",
           "verificationNote": "Illustrative — confirm the preferred ICS and any step therapy on the BCBSMA Medication Look-up (the asthma/COPD pharmacy policy PDF blocked automated reading).",
@@ -625,7 +726,22 @@
             "bcbsma-medlookup",
             "fda-firstgen-flovent"
           ],
-          "lastReviewed": "2026-06-22"
+          "lastReviewed": "2026-06-22",
+          "coverageSourceIds": [
+            "bcbsma-medlookup"
+          ],
+          "restrictionSourceIds": [
+            "bcbsma-medlookup"
+          ],
+          "alternatives": [
+            {
+              "drug": "Arnuity Ellipta",
+              "note": "Non-preferred",
+              "sourceIds": [
+                "bcbsma-medlookup"
+              ]
+            }
+          ]
         },
         {
           "payerId": "bcbsma",
@@ -641,12 +757,7 @@
           },
           "boglActive": false,
           "boglNote": null,
-          "paRequired": [
-            {
-              "drug": "Breo Ellipta",
-              "reason": "Non-preferred"
-            }
-          ],
+          "paRequired": [],
           "stepTherapy": null,
           "verification": "example",
           "verificationNote": "Illustrative; Wixela Inhub is the FDA generic of Advair Diskus. Confirm the preferred combo on the BCBSMA Medication Look-up.",
@@ -654,7 +765,22 @@
             "bcbsma-medlookup",
             "fda-wixela"
           ],
-          "lastReviewed": "2026-06-22"
+          "lastReviewed": "2026-06-22",
+          "coverageSourceIds": [
+            "bcbsma-medlookup"
+          ],
+          "restrictionSourceIds": [
+            "bcbsma-medlookup"
+          ],
+          "alternatives": [
+            {
+              "drug": "Breo Ellipta",
+              "note": "Non-preferred",
+              "sourceIds": [
+                "bcbsma-medlookup"
+              ]
+            }
+          ]
         },
         {
           "payerId": "bcbsma",
@@ -670,12 +796,7 @@
           },
           "boglActive": false,
           "boglNote": null,
-          "paRequired": [
-            {
-              "drug": "Yupelri (revefenacin)",
-              "reason": "Non-preferred"
-            }
-          ],
+          "paRequired": [],
           "stepTherapy": null,
           "verification": "example",
           "verificationNote": "Illustrative — LAMA is COPD-indicated. Confirm the preferred agent on the BCBSMA Medication Look-up.",
@@ -683,7 +804,22 @@
             "bcbsma-medlookup",
             "dailymed-spiriva"
           ],
-          "lastReviewed": "2026-06-22"
+          "lastReviewed": "2026-06-22",
+          "coverageSourceIds": [
+            "bcbsma-medlookup"
+          ],
+          "restrictionSourceIds": [
+            "bcbsma-medlookup"
+          ],
+          "alternatives": [
+            {
+              "drug": "Yupelri (revefenacin)",
+              "note": "Non-preferred",
+              "sourceIds": [
+                "bcbsma-medlookup"
+              ]
+            }
+          ]
         },
         {
           "payerId": "tufts",
@@ -699,19 +835,29 @@
           },
           "boglActive": false,
           "boglNote": null,
-          "paRequired": [
-            {
-              "drug": "Levalbuterol (Xopenex HFA)",
-              "reason": "Non-preferred"
-            }
-          ],
+          "paRequired": [],
           "stepTherapy": null,
           "verification": "partial",
           "verificationNote": "Tufts Value Direct 3-Tier formulary (eff. 2026-01-01) is the verified source; the specific tier/PA for this agent is inferred — confirm in the formulary PDF.",
           "sourceIds": [
             "tufts-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22"
+          "lastReviewed": "2026-06-22",
+          "coverageSourceIds": [
+            "tufts-formulary-2026"
+          ],
+          "restrictionSourceIds": [
+            "tufts-formulary-2026"
+          ],
+          "alternatives": [
+            {
+              "drug": "Levalbuterol (Xopenex HFA)",
+              "note": "Non-preferred",
+              "sourceIds": [
+                "tufts-formulary-2026"
+              ]
+            }
+          ]
         },
         {
           "payerId": "tufts",
@@ -730,11 +876,11 @@
           "paRequired": [
             {
               "drug": "Pulmicort Flexhaler",
-              "reason": "Non-formulary 2026"
-            },
-            {
-              "drug": "Arnuity Ellipta",
-              "reason": "Non-preferred"
+              "reason": "Non-formulary 2026",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "tufts-formulary-2026"
+              ]
             }
           ],
           "stepTherapy": null,
@@ -744,7 +890,22 @@
             "tufts-formulary-2026",
             "p32-changes-2026"
           ],
-          "lastReviewed": "2026-06-22"
+          "lastReviewed": "2026-06-22",
+          "coverageSourceIds": [
+            "tufts-formulary-2026"
+          ],
+          "restrictionSourceIds": [
+            "tufts-formulary-2026"
+          ],
+          "alternatives": [
+            {
+              "drug": "Arnuity Ellipta",
+              "note": "Non-preferred",
+              "sourceIds": [
+                "tufts-formulary-2026"
+              ]
+            }
+          ]
         },
         {
           "payerId": "tufts",
@@ -763,11 +924,11 @@
           "paRequired": [
             {
               "drug": "Breo Ellipta",
-              "reason": "Step therapy"
-            },
-            {
-              "drug": "Dulera",
-              "reason": "Non-preferred"
+              "reason": "Step therapy",
+              "outcome": "step",
+              "sourceIds": [
+                "p32-pa-form"
+              ]
             }
           ],
           "stepTherapy": "Confirm step-therapy specifics in the Tufts formulary PDF; non-preferred combos may require a preferred-agent trial.",
@@ -777,7 +938,22 @@
             "tufts-formulary-2026",
             "p32-pa-form"
           ],
-          "lastReviewed": "2026-06-22"
+          "lastReviewed": "2026-06-22",
+          "coverageSourceIds": [
+            "tufts-formulary-2026"
+          ],
+          "restrictionSourceIds": [
+            "p32-pa-form"
+          ],
+          "alternatives": [
+            {
+              "drug": "Dulera",
+              "note": "Non-preferred",
+              "sourceIds": [
+                "tufts-formulary-2026"
+              ]
+            }
+          ]
         },
         {
           "payerId": "tufts",
@@ -793,12 +969,7 @@
           },
           "boglActive": false,
           "boglNote": null,
-          "paRequired": [
-            {
-              "drug": "Tudorza Pressair",
-              "reason": "Non-preferred"
-            }
-          ],
+          "paRequired": [],
           "stepTherapy": null,
           "verification": "partial",
           "verificationNote": "Source formulary verified; preferred LAMA inferred. LAMA is COPD-indicated. Confirm in the Tufts formulary PDF.",
@@ -806,7 +977,22 @@
             "tufts-formulary-2026",
             "dailymed-incruse"
           ],
-          "lastReviewed": "2026-06-22"
+          "lastReviewed": "2026-06-22",
+          "coverageSourceIds": [
+            "tufts-formulary-2026"
+          ],
+          "restrictionSourceIds": [
+            "tufts-formulary-2026"
+          ],
+          "alternatives": [
+            {
+              "drug": "Tudorza Pressair",
+              "note": "Non-preferred",
+              "sourceIds": [
+                "tufts-formulary-2026"
+              ]
+            }
+          ]
         },
         {
           "payerId": "harvardpilgrim",
@@ -822,19 +1008,29 @@
           },
           "boglActive": false,
           "boglNote": null,
-          "paRequired": [
-            {
-              "drug": "Levalbuterol (Xopenex HFA)",
-              "reason": "Non-preferred"
-            }
-          ],
+          "paRequired": [],
           "stepTherapy": null,
           "verification": "partial",
           "verificationNote": "Harvard Pilgrim Select 3-Tier 2026 PDL is the verified source; this agent's tier/PA is inferred — confirm in the PDF.",
           "sourceIds": [
             "hphc-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22"
+          "lastReviewed": "2026-06-22",
+          "coverageSourceIds": [
+            "hphc-formulary-2026"
+          ],
+          "restrictionSourceIds": [
+            "hphc-formulary-2026"
+          ],
+          "alternatives": [
+            {
+              "drug": "Levalbuterol (Xopenex HFA)",
+              "note": "Non-preferred",
+              "sourceIds": [
+                "hphc-formulary-2026"
+              ]
+            }
+          ]
         },
         {
           "payerId": "harvardpilgrim",
@@ -850,23 +1046,36 @@
           },
           "boglActive": false,
           "boglNote": null,
-          "paRequired": [
-            {
-              "drug": "Alvesco (ciclesonide)",
-              "reason": "Non-preferred"
-            },
-            {
-              "drug": "Arnuity Ellipta",
-              "reason": "Non-preferred"
-            }
-          ],
+          "paRequired": [],
           "stepTherapy": null,
           "verification": "partial",
           "verificationNote": "Source PDL verified; preferred ICS inferred — confirm in the Harvard Pilgrim formulary PDF.",
           "sourceIds": [
             "hphc-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22"
+          "lastReviewed": "2026-06-22",
+          "coverageSourceIds": [
+            "hphc-formulary-2026"
+          ],
+          "restrictionSourceIds": [
+            "hphc-formulary-2026"
+          ],
+          "alternatives": [
+            {
+              "drug": "Alvesco (ciclesonide)",
+              "note": "Non-preferred",
+              "sourceIds": [
+                "hphc-formulary-2026"
+              ]
+            },
+            {
+              "drug": "Arnuity Ellipta",
+              "note": "Non-preferred",
+              "sourceIds": [
+                "hphc-formulary-2026"
+              ]
+            }
+          ]
         },
         {
           "payerId": "harvardpilgrim",
@@ -882,12 +1091,7 @@
           },
           "boglActive": false,
           "boglNote": null,
-          "paRequired": [
-            {
-              "drug": "Dulera",
-              "reason": "Non-preferred"
-            }
-          ],
+          "paRequired": [],
           "stepTherapy": null,
           "verification": "partial",
           "verificationNote": "Source PDL verified; preferred combo inferred — confirm tier/PA in the Harvard Pilgrim formulary PDF.",
@@ -895,7 +1099,22 @@
             "hphc-formulary-2026",
             "p32-pa-form"
           ],
-          "lastReviewed": "2026-06-22"
+          "lastReviewed": "2026-06-22",
+          "coverageSourceIds": [
+            "hphc-formulary-2026"
+          ],
+          "restrictionSourceIds": [
+            "p32-pa-form"
+          ],
+          "alternatives": [
+            {
+              "drug": "Dulera",
+              "note": "Non-preferred",
+              "sourceIds": [
+                "hphc-formulary-2026"
+              ]
+            }
+          ]
         },
         {
           "payerId": "harvardpilgrim",
@@ -911,12 +1130,7 @@
           },
           "boglActive": false,
           "boglNote": null,
-          "paRequired": [
-            {
-              "drug": "Tudorza Pressair",
-              "reason": "Non-preferred"
-            }
-          ],
+          "paRequired": [],
           "stepTherapy": null,
           "verification": "partial",
           "verificationNote": "Source PDL verified; preferred LAMA inferred. LAMA is COPD-indicated. Confirm in the Harvard Pilgrim formulary PDF.",
@@ -924,7 +1138,22 @@
             "hphc-formulary-2026",
             "dailymed-spiriva"
           ],
-          "lastReviewed": "2026-06-22"
+          "lastReviewed": "2026-06-22",
+          "coverageSourceIds": [
+            "hphc-formulary-2026"
+          ],
+          "restrictionSourceIds": [
+            "hphc-formulary-2026"
+          ],
+          "alternatives": [
+            {
+              "drug": "Tudorza Pressair",
+              "note": "Non-preferred",
+              "sourceIds": [
+                "hphc-formulary-2026"
+              ]
+            }
+          ]
         },
         {
           "payerId": "mgb",
@@ -940,19 +1169,29 @@
           },
           "boglActive": false,
           "boglNote": null,
-          "paRequired": [
-            {
-              "drug": "Levalbuterol (Xopenex HFA)",
-              "reason": "Non-preferred"
-            }
-          ],
+          "paRequired": [],
           "stepTherapy": null,
           "verification": "partial",
           "verificationNote": "MGB 2026 6-Tier formulary (current 6/1/2026) is the verified source; SABA tier not in the verified extract — confirm in the formulary PDF.",
           "sourceIds": [
             "mgb-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22"
+          "lastReviewed": "2026-06-22",
+          "coverageSourceIds": [
+            "mgb-formulary-2026"
+          ],
+          "restrictionSourceIds": [
+            "mgb-formulary-2026"
+          ],
+          "alternatives": [
+            {
+              "drug": "Levalbuterol (Xopenex HFA)",
+              "note": "Non-preferred",
+              "sourceIds": [
+                "mgb-formulary-2026"
+              ]
+            }
+          ]
         },
         {
           "payerId": "mgb",
@@ -971,13 +1210,20 @@
           "alternatives": [
             {
               "drug": "QVAR RediHaler (beclomethasone)",
-              "note": "preferred brand"
+              "note": "preferred brand",
+              "sourceIds": [
+                "mgb-formulary-2026"
+              ]
             }
           ],
           "paRequired": [
             {
               "drug": "Fluticasone propionate HFA (age ≥12)",
-              "reason": "PA required"
+              "reason": "PA required",
+              "outcome": "pa",
+              "sourceIds": [
+                "mgb-flut-hfa-pa"
+              ]
             }
           ],
           "stepTherapy": "Fluticasone propionate HFA requires members aged 12+ with asthma to fail BOTH preferred brands Arnuity Ellipta and QVAR RediHaler first (or document the need for an MDI + spacer). Covered without PA through age 11.",
@@ -987,7 +1233,13 @@
             "mgb-flut-hfa-pa",
             "mgb-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22"
+          "lastReviewed": "2026-06-22",
+          "coverageSourceIds": [
+            "mgb-formulary-2026"
+          ],
+          "restrictionSourceIds": [
+            "mgb-flut-hfa-pa"
+          ]
         },
         {
           "payerId": "mgb",
@@ -1006,22 +1258,33 @@
           "alternatives": [
             {
               "drug": "Wixela Inhub (generic fluticasone/salmeterol)",
-              "note": "Tier 2 · preferred"
-            }
-          ],
-          "paRequired": [
+              "note": "Tier 2 · preferred",
+              "sourceIds": [
+                "mgb-formulary-2026"
+              ]
+            },
             {
               "drug": "Advair HFA",
-              "reason": "Higher tier (3)"
+              "note": "Higher tier (3)",
+              "sourceIds": [
+                "mgb-formulary-2026"
+              ]
             }
           ],
+          "paRequired": [],
           "stepTherapy": null,
           "verification": "verified",
           "verificationNote": "MGB 2026 6-Tier formulary places Symbicort and Wixela Inhub at Tier 2 (preferred) and Advair HFA at Tier 3.",
           "sourceIds": [
             "mgb-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22"
+          "lastReviewed": "2026-06-22",
+          "coverageSourceIds": [
+            "mgb-formulary-2026"
+          ],
+          "restrictionSourceIds": [
+            "mgb-formulary-2026"
+          ]
         },
         {
           "payerId": "mgb",
@@ -1040,13 +1303,20 @@
           "alternatives": [
             {
               "drug": "Spiriva Respimat (tiotropium)",
-              "note": "also listed"
+              "note": "also listed",
+              "sourceIds": [
+                "mgb-formulary-2026"
+              ]
             }
           ],
           "paRequired": [
             {
               "drug": "Arformoterol / Formoterol nebulizer (COPD)",
-              "reason": "PA required"
+              "reason": "PA required",
+              "outcome": "pa",
+              "sourceIds": [
+                "mgb-pharmacy-index"
+              ]
             }
           ],
           "stepTherapy": "Nebulized long-acting beta-agonists (Brovana/Perforomist) require a COPD diagnosis plus rationale for why a non-nebulized LABA cannot be used.",
@@ -1057,7 +1327,13 @@
             "mgb-pharmacy-index",
             "dailymed-spiriva"
           ],
-          "lastReviewed": "2026-06-22"
+          "lastReviewed": "2026-06-22",
+          "coverageSourceIds": [
+            "mgb-formulary-2026"
+          ],
+          "restrictionSourceIds": [
+            "mgb-pharmacy-index"
+          ]
         }
       ]
     },
@@ -1084,7 +1360,10 @@
           "sourceIds": [
             "md-pdl-2026",
             "md-daw6-2026"
-          ]
+          ],
+          "productName": "Maryland Medicaid fee-for-service pharmacy benefit",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "Maryland PDL 2026"
         },
         {
           "id": "carefirst",
@@ -1096,7 +1375,10 @@
           "sourceIds": [
             "carefirst-exchange-2026",
             "carefirst-pa-list"
-          ]
+          ],
+          "productName": "CareFirst individual and family Exchange Formulary 2",
+          "marketSegment": "commercial-exchange",
+          "formularyId": "SUM7277 2026"
         },
         {
           "id": "kpmidatlantic",
@@ -1106,7 +1388,10 @@
           "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
           "sourceIds": [
             "kp-mas-marketplace-2026"
-          ]
+          ],
+          "productName": "Kaiser Mid-Atlantic Marketplace formulary",
+          "marketSegment": "commercial-exchange",
+          "formularyId": "MAS Marketplace 2026"
         },
         {
           "id": "priority-partners",
@@ -1118,7 +1403,10 @@
           "sourceIds": [
             "pp-formulary-2026"
           ],
-          "paPolicyUrl": "https://www.hopkinsmedicine.org/johns-hopkins-health-plans/providers-physicians/our-plans/priority-partners/pharmacy"
+          "paPolicyUrl": "https://www.hopkinsmedicine.org/johns-hopkins-health-plans/providers-physicians/our-plans/priority-partners/pharmacy",
+          "productName": "Priority Partners HealthChoice MCO",
+          "marketSegment": "medicaid-mco",
+          "formularyId": "PPMCO Formulary 690"
         },
         {
           "id": "uhc-md",
@@ -1130,7 +1418,10 @@
           "sourceIds": [
             "uhc-commercial-pdl-2026"
           ],
-          "paPolicyUrl": "https://www.uhcprovider.com/en/resource-library/drug-lists-pharmacy.html"
+          "paPolicyUrl": "https://www.uhcprovider.com/en/resource-library/drug-lists-pharmacy.html",
+          "productName": "UnitedHealthcare 2026 Commercial PDL (base list)",
+          "marketSegment": "commercial-employer",
+          "formularyId": "Commercial PDL Jan 2026"
         },
         {
           "id": "cigna",
@@ -1142,7 +1433,10 @@
           "sourceIds": [
             "cigna-value4t-2026"
           ],
-          "paPolicyUrl": "https://static.cigna.com/assets/chcp/pdf/coveragePolicies/cnf/cnf_156_coveragepositioncriteria_estrogen_patches_dqm_per_days.pdf"
+          "paPolicyUrl": "https://static.cigna.com/assets/chcp/pdf/coveragePolicies/cnf/cnf_156_coveragepositioncriteria_estrogen_patches_dqm_per_days.pdf",
+          "productName": "Cigna individual and family Value 4-Tier",
+          "marketSegment": "commercial-exchange",
+          "formularyId": "IFP Value 4-Tier 2026"
         },
         {
           "id": "aetna",
@@ -1154,7 +1448,10 @@
           "sourceIds": [
             "aetna-standard-2026"
           ],
-          "paPolicyUrl": "https://www.aetna.com/content/dam/aetna/pdfs/aetnacom/individuals-families-health-insurance/document-library/pharmacy/2026-exclusion-drug-list-standard-control-plan.pdf"
+          "paPolicyUrl": "https://www.aetna.com/content/dam/aetna/pdfs/aetnacom/individuals-families-health-insurance/document-library/pharmacy/2026-exclusion-drug-list-standard-control-plan.pdf",
+          "productName": "Aetna Standard Plan",
+          "marketSegment": "commercial-employer",
+          "formularyId": "1348063-01-04"
         },
         {
           "id": "medicare-partd",
@@ -1166,7 +1463,10 @@
           "sourceIds": [
             "aarp-medicarerx-2026"
           ],
-          "paPolicyUrl": "https://www.uhc.com/medicare/alphadog/PDEX26PD0348627_001"
+          "paPolicyUrl": "https://www.uhc.com/medicare/alphadog/PDEX26PD0348627_001",
+          "productName": "AARP MedicareRx Preferred from UHC (Maryland)",
+          "marketSegment": "medicare-part-d",
+          "formularyId": "S5921 / Formulary 00026000"
         }
       ],
       "classes": [
@@ -1403,17 +1703,27 @@
           "alternatives": [
             {
               "drug": "Estradiol transdermal gel (generic)",
-              "note": "covered, no PDL PA"
+              "note": "covered, no PDL PA",
+              "sourceIds": [
+                "md-pdl-2026"
+              ]
             },
             {
               "drug": "Estradiol oral tablet (generic)",
-              "note": "covered — oral route option"
+              "note": "covered — oral route option",
+              "sourceIds": [
+                "md-pdl-2026"
+              ]
             }
           ],
           "paRequired": [
             {
               "drug": "Compounded “bioidentical” estradiol",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "md-daw6-2026"
+              ]
             }
           ],
           "stepTherapy": null,
@@ -1424,7 +1734,13 @@
             "md-daw6-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Generic (Medicaid)"
+          "tier": "Generic (Medicaid)",
+          "coverageSourceIds": [
+            "md-pdl-2026"
+          ],
+          "restrictionSourceIds": [
+            "md-daw6-2026"
+          ]
         },
         {
           "payerId": "mdmedicaid",
@@ -1443,17 +1759,27 @@
           "alternatives": [
             {
               "drug": "Medroxyprogesterone (generic Provera)",
-              "note": "covered"
+              "note": "covered",
+              "sourceIds": [
+                "md-pdl-2026"
+              ]
             },
             {
               "drug": "Norethindrone acetate (generic)",
-              "note": "covered"
+              "note": "covered",
+              "sourceIds": [
+                "md-pdl-2026"
+              ]
             }
           ],
           "paRequired": [
             {
               "drug": "Compounded progesterone",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "md-daw6-2026"
+              ]
             }
           ],
           "stepTherapy": null,
@@ -1464,7 +1790,13 @@
             "md-daw6-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Generic (Medicaid)"
+          "tier": "Generic (Medicaid)",
+          "coverageSourceIds": [
+            "md-pdl-2026"
+          ],
+          "restrictionSourceIds": [
+            "md-daw6-2026"
+          ]
         },
         {
           "payerId": "mdmedicaid",
@@ -1483,17 +1815,27 @@
           "alternatives": [
             {
               "drug": "Estradiol vaginal tablet/insert (generic Vagifem/Yuvafem)",
-              "note": "covered"
+              "note": "covered",
+              "sourceIds": [
+                "md-pdl-2026"
+              ]
             },
             {
               "drug": "Brand vaginal inserts/rings (Imvexxy, Estring, Femring)",
-              "note": "brand-only — may be higher tier on the dispensing MCO; confirm"
+              "note": "brand-only — may be higher tier on the dispensing MCO; confirm",
+              "sourceIds": [
+                "md-pdl-2026"
+              ]
             }
           ],
           "paRequired": [
             {
               "drug": "Compounded vaginal estrogen",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "md-daw6-2026"
+              ]
             }
           ],
           "stepTherapy": null,
@@ -1504,7 +1846,13 @@
             "md-daw6-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Generic (Medicaid)"
+          "tier": "Generic (Medicaid)",
+          "coverageSourceIds": [
+            "md-pdl-2026"
+          ],
+          "restrictionSourceIds": [
+            "md-daw6-2026"
+          ]
         },
         {
           "payerId": "carefirst",
@@ -1523,25 +1871,41 @@
           "alternatives": [
             {
               "drug": "Estradiol patch, twice-weekly (generic)",
-              "note": "Tier 1"
+              "note": "Tier 1",
+              "sourceIds": [
+                "carefirst-exchange-2026"
+              ]
             },
             {
               "drug": "Estradiol transdermal gel (generic)",
-              "note": "Tier 1"
+              "note": "Tier 1",
+              "sourceIds": [
+                "carefirst-exchange-2026"
+              ]
             },
             {
               "drug": "Climara Pro (estradiol/levonorgestrel) patch",
-              "note": "Tier 2 — combo patch for an intact uterus"
+              "note": "Tier 2 — combo patch for an intact uterus",
+              "sourceIds": [
+                "carefirst-exchange-2026"
+              ]
+            },
+            {
+              "drug": "Evamist (estradiol spray)",
+              "note": "Higher tier",
+              "sourceIds": [
+                "carefirst-exchange-2026"
+              ]
             }
           ],
           "paRequired": [
             {
               "drug": "Estradiol patch/gel — members age 70+ (High Risk Medication)",
-              "reason": "PA required"
-            },
-            {
-              "drug": "Evamist (estradiol spray)",
-              "reason": "Higher tier"
+              "reason": "PA required",
+              "outcome": "pa",
+              "sourceIds": [
+                "carefirst-exchange-2026"
+              ]
             }
           ],
           "stepTherapy": null,
@@ -1551,7 +1915,13 @@
             "carefirst-exchange-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Tier 1"
+          "tier": "Tier 1",
+          "coverageSourceIds": [
+            "carefirst-exchange-2026"
+          ],
+          "restrictionSourceIds": [
+            "carefirst-exchange-2026"
+          ]
         },
         {
           "payerId": "carefirst",
@@ -1570,15 +1940,24 @@
           "alternatives": [
             {
               "drug": "Medroxyprogesterone (generic Provera)",
-              "note": "Tier 1"
+              "note": "Tier 1",
+              "sourceIds": [
+                "carefirst-exchange-2026"
+              ]
             },
             {
               "drug": "Norethindrone acetate (generic)",
-              "note": "Tier 1"
+              "note": "Tier 1",
+              "sourceIds": [
+                "carefirst-exchange-2026"
+              ]
             },
             {
               "drug": "Estradiol/norethindrone combo tablet (generic)",
-              "note": "Tier 1 — combo for an intact uterus"
+              "note": "Tier 1 — combo for an intact uterus",
+              "sourceIds": [
+                "carefirst-exchange-2026"
+              ]
             }
           ],
           "paRequired": [],
@@ -1589,7 +1968,13 @@
             "carefirst-exchange-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Tier 1"
+          "tier": "Tier 1",
+          "coverageSourceIds": [
+            "carefirst-exchange-2026"
+          ],
+          "restrictionSourceIds": [
+            "carefirst-exchange-2026"
+          ]
         },
         {
           "payerId": "carefirst",
@@ -1608,15 +1993,24 @@
           "alternatives": [
             {
               "drug": "Estradiol vaginal tablet (Yuvafem, generic Vagifem)",
-              "note": "Tier 1"
+              "note": "Tier 1",
+              "sourceIds": [
+                "carefirst-exchange-2026"
+              ]
             },
             {
               "drug": "Imvexxy (estradiol vaginal insert)",
-              "note": "Tier 2"
+              "note": "Tier 2",
+              "sourceIds": [
+                "carefirst-exchange-2026"
+              ]
             },
             {
               "drug": "Premarin (conjugated estrogens) vaginal cream",
-              "note": "Tier 3 — brand"
+              "note": "Tier 3 — brand",
+              "sourceIds": [
+                "carefirst-exchange-2026"
+              ]
             }
           ],
           "paRequired": [],
@@ -1627,7 +2021,13 @@
             "carefirst-exchange-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Tier 1"
+          "tier": "Tier 1",
+          "coverageSourceIds": [
+            "carefirst-exchange-2026"
+          ],
+          "restrictionSourceIds": [
+            "carefirst-exchange-2026"
+          ]
         },
         {
           "payerId": "kpmidatlantic",
@@ -1646,11 +2046,17 @@
           "alternatives": [
             {
               "drug": "Climara Pro (estradiol/levonorgestrel) patch",
-              "note": "Tier 3 — combo patch, no PA"
+              "note": "Tier 3 — combo patch, no PA",
+              "sourceIds": [
+                "kp-mas-marketplace-2026"
+              ]
             },
             {
               "drug": "Depo-Estradiol (estradiol cypionate injection)",
-              "note": "Tier 3, quantity limit"
+              "note": "Tier 3, quantity limit",
+              "sourceIds": [
+                "kp-mas-marketplace-2026"
+              ]
             }
           ],
           "paRequired": [],
@@ -1661,7 +2067,13 @@
             "kp-mas-marketplace-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Tier 1"
+          "tier": "Tier 1",
+          "coverageSourceIds": [
+            "kp-mas-marketplace-2026"
+          ],
+          "restrictionSourceIds": [
+            "kp-mas-marketplace-2026"
+          ]
         },
         {
           "payerId": "kpmidatlantic",
@@ -1680,17 +2092,27 @@
           "alternatives": [
             {
               "drug": "Norethindrone acetate (generic)",
-              "note": "Tier 1 — no PA"
+              "note": "Tier 1 — no PA",
+              "sourceIds": [
+                "kp-mas-marketplace-2026"
+              ]
+            },
+            {
+              "drug": "Crinone (progesterone vaginal gel)",
+              "note": "Higher tier",
+              "sourceIds": [
+                "kp-mas-marketplace-2026"
+              ]
             }
           ],
           "paRequired": [
             {
               "drug": "Micronized progesterone (Prometrium generic) — clinically preferred, but PA on this plan",
-              "reason": "PA required"
-            },
-            {
-              "drug": "Crinone (progesterone vaginal gel)",
-              "reason": "Higher tier"
+              "reason": "PA required",
+              "outcome": "pa",
+              "sourceIds": [
+                "kp-mas-marketplace-2026"
+              ]
             }
           ],
           "stepTherapy": null,
@@ -1700,7 +2122,13 @@
             "kp-mas-marketplace-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Tier 1"
+          "tier": "Tier 1",
+          "coverageSourceIds": [
+            "kp-mas-marketplace-2026"
+          ],
+          "restrictionSourceIds": [
+            "kp-mas-marketplace-2026"
+          ]
         },
         {
           "payerId": "kpmidatlantic",
@@ -1719,11 +2147,17 @@
           "alternatives": [
             {
               "drug": "Estradiol 10 mcg vaginal insert (generic Vagifem/Yuvafem)",
-              "note": "covered, no PA"
+              "note": "covered, no PA",
+              "sourceIds": [
+                "kp-mas-marketplace-2026"
+              ]
             },
             {
               "drug": "Femring (estradiol acetate vaginal ring)",
-              "note": "Tier 3 — brand, no PA"
+              "note": "Tier 3 — brand, no PA",
+              "sourceIds": [
+                "kp-mas-marketplace-2026"
+              ]
             }
           ],
           "paRequired": [],
@@ -1734,7 +2168,13 @@
             "kp-mas-marketplace-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Tier 1"
+          "tier": "Tier 1",
+          "coverageSourceIds": [
+            "kp-mas-marketplace-2026"
+          ],
+          "restrictionSourceIds": [
+            "kp-mas-marketplace-2026"
+          ]
         },
         {
           "payerId": "priority-partners",
@@ -1753,29 +2193,48 @@
           "alternatives": [
             {
               "drug": "estradiol td patch weekly (generic of Climara) 0.025-0.1 mg/24hr",
-              "note": "On formulary, no restriction"
+              "note": "On formulary, no restriction",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             },
             {
               "drug": "estradiol td patch twice weekly (generic of Vivelle-Dot) 0.025-0.1 mg/24hr",
-              "note": "On formulary, no restriction"
+              "note": "On formulary, no restriction",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             },
             {
               "drug": "dotti (generic of Vivelle-Dot) patch",
-              "note": "On formulary, no restriction"
+              "note": "On formulary, no restriction",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             },
             {
               "drug": "lyllana (generic of Minivelle) patch",
-              "note": "On formulary, no restriction"
+              "note": "On formulary, no restriction",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             },
             {
               "drug": "CLIMARA PRO disc weekly (estradiol/levonorgestrel combo patch)",
-              "note": "On formulary (estrogen-progestin combination patch), no restriction"
+              "note": "On formulary (estrogen-progestin combination patch), no restriction",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             }
           ],
           "paRequired": [
             {
               "drug": "estradiol transdermal gel (Divigel/Estrogel/Elestrin) and spray (Evamist)",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             }
           ],
           "stepTherapy": null,
@@ -1785,7 +2244,13 @@
             "pp-formulary-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Covered, no PA"
+          "tier": "Covered, no PA",
+          "coverageSourceIds": [
+            "pp-formulary-2026"
+          ],
+          "restrictionSourceIds": [
+            "pp-formulary-2026"
+          ]
         },
         {
           "payerId": "priority-partners",
@@ -1804,15 +2269,24 @@
           "alternatives": [
             {
               "drug": "medroxyprogesterone acetate tab 2.5/5/10 mg (generic of Provera)",
-              "note": "On formulary, no restriction; alternative oral progestogen"
+              "note": "On formulary, no restriction; alternative oral progestogen",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             },
             {
               "drug": "norethindrone acetate tab 5 mg",
-              "note": "On formulary, no restriction"
+              "note": "On formulary, no restriction",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             },
             {
               "drug": "progesterone vaginal suppository 100/200 mg",
-              "note": "On formulary under Vaginal Progestins, no restriction"
+              "note": "On formulary under Vaginal Progestins, no restriction",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             }
           ],
           "paRequired": [],
@@ -1823,7 +2297,13 @@
             "pp-formulary-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Covered, no PA"
+          "tier": "Covered, no PA",
+          "coverageSourceIds": [
+            "pp-formulary-2026"
+          ],
+          "restrictionSourceIds": [
+            "pp-formulary-2026"
+          ]
         },
         {
           "payerId": "priority-partners",
@@ -1842,29 +2322,50 @@
           "alternatives": [
             {
               "drug": "yuvafem 10 mcg vaginal tablet (generic of Vagifem)",
-              "note": "On formulary, no restriction"
+              "note": "On formulary, no restriction",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             },
             {
               "drug": "estradiol vaginal cream 0.01% (generic of Estrace)",
-              "note": "On formulary, no restriction"
+              "note": "On formulary, no restriction",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             },
             {
               "drug": "Premarin vaginal cream 0.625 mg (brand, conjugated estrogens)",
-              "note": "On formulary (no generic exists), no restriction"
+              "note": "On formulary (no generic exists), no restriction",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             }
           ],
           "paRequired": [
             {
               "drug": "estradiol vaginal insert (Imvexxy)",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             },
             {
               "drug": "estradiol vaginal ring (Estring)",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             },
             {
               "drug": "estradiol acetate vaginal ring (Femring)",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             }
           ],
           "stepTherapy": null,
@@ -1874,7 +2375,13 @@
             "pp-formulary-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Covered, no PA"
+          "tier": "Covered, no PA",
+          "coverageSourceIds": [
+            "pp-formulary-2026"
+          ],
+          "restrictionSourceIds": [
+            "pp-formulary-2026"
+          ]
         },
         {
           "payerId": "uhc-md",
@@ -1893,47 +2400,76 @@
           "alternatives": [
             {
               "drug": "estradiol transdermal patch twice weekly (generic for Vivelle-Dot/Minivelle)",
-              "note": "Tier 2, QL — covered, no PA; 2x/week application"
+              "note": "Tier 2, QL — covered, no PA; 2x/week application",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "Evamist (estradiol transdermal spray)",
-              "note": "Tier 2, no PA — covered preferred-brand alternative"
+              "note": "Tier 2, no PA — covered preferred-brand alternative",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "Dotti (estradiol patch twice weekly, brand)",
-              "note": "Tier 2, QL"
+              "note": "Tier 2, QL",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "Lyllana (estradiol transdermal system)",
-              "note": "Tier 2, QL"
-            }
-          ],
-          "paRequired": [
+              "note": "Tier 2, QL",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
+            },
             {
               "drug": "estradiol transdermal gel (Divigel-equivalent, multiple strengths)",
-              "reason": "Higher tier"
+              "note": "Higher tier",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "Estrogel (estradiol transdermal gel)",
-              "reason": "Higher tier"
+              "note": "Higher tier",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "Elestrin (estradiol transdermal gel)",
-              "reason": "Higher tier"
+              "note": "Higher tier",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "estradiol transdermal gel 0.06% 0.75 mg/1.25 gm",
-              "reason": "Higher tier"
+              "note": "Higher tier",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "Menostar (low-dose estradiol patch)",
-              "reason": "Higher tier"
+              "note": "Higher tier",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "Climara / Vivelle-Dot / Minivelle (brand patches)",
-              "reason": "Non-preferred"
+              "note": "Non-preferred",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             }
           ],
+          "paRequired": [],
           "stepTherapy": null,
           "verification": "verified",
           "verificationNote": "Read directly off the Jan 1 2026 UHC Commercial PDL, 'Hormonal Agents - Hormone Replacement and Birth Control' section. 'estradiol transdermal patch weekly' is listed Tier 1 with annotation '(generic for Climara), QL' and no PA — the clean first-pass. 'estradiol patch twice weekly' is Tier 2 QL. Gels (Divigel/Estrogel/Elestrin) are Tier 3; Evamist spray Tier 2. Brand Climara/Vivelle-Dot/Minivelle carry the 'E' symbol (excluded/PA in CT, NJ, NY only — NOT applicable in Maryland), so in MD they default to non-preferred brand status. QL applies; specific quantity not printed in PDL.",
@@ -1941,7 +2477,13 @@
             "uhc-commercial-pdl-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Tier 1"
+          "tier": "Tier 1",
+          "coverageSourceIds": [
+            "uhc-commercial-pdl-2026"
+          ],
+          "restrictionSourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
         },
         {
           "payerId": "uhc-md",
@@ -1960,31 +2502,48 @@
           "alternatives": [
             {
               "drug": "medroxyprogesterone acetate oral (generic Provera)",
-              "note": "Tier 1, no PA — LOWER tier than micronized progesterone on this plan; the lowest-friction progestogen if cost is the priority"
+              "note": "Tier 1, no PA — LOWER tier than micronized progesterone on this plan; the lowest-friction progestogen if cost is the priority",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "norethindrone acetate oral",
-              "note": "Tier 1, no PA"
+              "note": "Tier 1, no PA",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "estradiol-norethindrone acetate combo tablet",
-              "note": "Tier 2 — combined E+P option"
-            }
-          ],
-          "paRequired": [
+              "note": "Tier 2 — combined E+P option",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
+            },
             {
               "drug": "Prometrium (brand micronized progesterone)",
-              "reason": "Non-preferred"
+              "note": "Non-preferred",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "Provera (brand medroxyprogesterone)",
-              "reason": "Higher tier"
+              "note": "Higher tier",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "Bijuva (brand estradiol/progesterone combo)",
-              "reason": "Non-preferred"
+              "note": "Non-preferred",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             }
           ],
+          "paRequired": [],
           "stepTherapy": null,
           "verification": "verified",
           "verificationNote": "Read off the same PDL section. Generic 'progesterone oral' (micronized) is Tier 2 with NO PA — ships clean for endometrial protection, which is the stated goal. Note this plan places generic micronized progesterone at Tier 2 while generic 'medroxyprogesterone acetate oral' is Tier 1 (lower cost, also no PA). Brand Prometrium carries the 'E' symbol (excluded/PA only in CT, NJ, NY — not Maryland) and no preferred tier number; brand Provera is Tier 4. Reported micronized progesterone as preferred first-pass because it is the clinically-preferred agent and ships without a PA round-trip; medroxyprogesterone (Tier 1) listed as the lower-friction-by-cost alternative.",
@@ -1992,7 +2551,13 @@
             "uhc-commercial-pdl-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Tier 1"
+          "tier": "Tier 1",
+          "coverageSourceIds": [
+            "uhc-commercial-pdl-2026"
+          ],
+          "restrictionSourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
         },
         {
           "payerId": "uhc-md",
@@ -2011,39 +2576,55 @@
           "alternatives": [
             {
               "drug": "yuvafem (generic estradiol vaginal tablet 10 mcg)",
-              "note": "Tier 2, no PA"
+              "note": "Tier 2, no PA",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "Imvexxy (estradiol vaginal insert, starter & maintenance packs)",
-              "note": "Tier 2, QL — covered preferred-brand, no PA"
+              "note": "Tier 2, QL — covered preferred-brand, no PA",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "Estring (estradiol vaginal ring)",
-              "note": "Tier 2, QL — covered, no PA"
+              "note": "Tier 2, QL — covered, no PA",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "estradiol vaginal cream",
-              "note": "Tier 3 — covered but non-preferred / higher cost"
-            }
-          ],
-          "paRequired": [
-            {
-              "drug": "estradiol vaginal cream",
-              "reason": "Higher tier"
+              "note": "Tier 3 — covered but non-preferred / higher cost",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "Premarin vaginal cream (conjugated estrogens)",
-              "reason": "Non-preferred"
+              "note": "Non-preferred",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "Femring (estradiol acetate vaginal ring)",
-              "reason": "Higher tier"
+              "note": "Higher tier",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "Vagifem (brand estradiol vaginal tablet)",
-              "reason": "Non-preferred"
+              "note": "Non-preferred",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             }
           ],
+          "paRequired": [],
           "stepTherapy": null,
           "verification": "verified",
           "verificationNote": "Read off the same PDL section. Generic 'estradiol vaginal tablet' is Tier 2 with no PA — the clean first-pass for genitourinary syndrome of menopause; generic 'yuvafem' (10 mcg tablet) also Tier 2. 'estradiol vaginal cream' is Tier 3. Imvexxy (starter + maintenance packs) is Tier 2 QL; Estring is Tier 2 QL; both covered without PA. Femring is Tier 3 QL; Premarin vaginal is Tier 3. Brand Vagifem carries the 'E' symbol (excluded/PA only in CT, NJ, NY — not Maryland). No PA on the generic tablet. QL printed but specific quantity not detailed in PDL.",
@@ -2051,7 +2632,13 @@
             "uhc-commercial-pdl-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Tier 1"
+          "tier": "Tier 1",
+          "coverageSourceIds": [
+            "uhc-commercial-pdl-2026"
+          ],
+          "restrictionSourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
         },
         {
           "payerId": "cigna",
@@ -2070,39 +2657,62 @@
           "alternatives": [
             {
               "drug": "lyllana (estradiol transdermal patch, generic Minivelle)",
-              "note": "Tier 1, QL — covered generic patch brand"
+              "note": "Tier 1, QL — covered generic patch brand",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             },
             {
               "drug": "estradiol gel packet / gel pump (generic, e.g. Divigel/Elestrin/EstroGel generics)",
-              "note": "Tier 1, QL — same generic-estradiol formulary line as the patch"
+              "note": "Tier 1, QL — same generic-estradiol formulary line as the patch",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             },
             {
               "drug": "COMBIPATCH (estradiol/norethindrone patch)",
-              "note": "Tier 2 — preferred brand combo patch if combined progestin patch is wanted"
+              "note": "Tier 2 — preferred brand combo patch if combined progestin patch is wanted",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             },
             {
               "drug": "DUAVEE (conjugated estrogens/bazedoxifene)",
-              "note": "Tier 2 — oral, not transdermal"
+              "note": "Tier 2 — oral, not transdermal",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             },
             {
               "drug": "EVAMIST (estradiol transdermal spray)",
-              "note": "Tier 3 — non-preferred brand"
+              "note": "Tier 3 — non-preferred brand",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             },
             {
               "drug": "MENOSTAR (estradiol 0.014 patch)",
-              "note": "Tier 3, QL — low-dose osteoporosis-only patch, non-preferred"
-            }
-          ],
-          "paRequired": [
+              "note": "Tier 3, QL — low-dose osteoporosis-only patch, non-preferred",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
+            },
             {
               "drug": "EVAMIST (estradiol spray)",
-              "reason": "Higher tier"
+              "note": "Higher tier",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             },
             {
               "drug": "MENOSTAR (estradiol patch)",
-              "reason": "Higher tier"
+              "note": "Higher tier",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             }
           ],
+          "paRequired": [],
           "stepTherapy": null,
           "verification": "verified",
           "verificationNote": "Read directly off the Cigna Healthcare Value 4-Tier PDL (eff. 2026-07-01), Hormonal Agents p.18: 'estradiol cream, gel packet, gel pump, patch, tablet, vaginal insert' = Tier 1, note QL; 'lyllana' = Tier 1 QL. The QL is a Drug Quantity Management (per-days) limit per Cigna National Formulary policy (review date 01/05/2026), NOT a prior auth — generic transdermal estradiol patch ships clean with only a quantity limit. EVAMIST/MENOSTAR are Tier 3.",
@@ -2110,7 +2720,13 @@
             "cigna-value4t-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Tier 1"
+          "tier": "Tier 1",
+          "coverageSourceIds": [
+            "cigna-value4t-2026"
+          ],
+          "restrictionSourceIds": [
+            "cigna-value4t-2026"
+          ]
         },
         {
           "payerId": "cigna",
@@ -2129,25 +2745,42 @@
           "alternatives": [
             {
               "drug": "medroxyprogesterone tablet (Provera generic)",
-              "note": "Tier 1 — also ships clean if micronized progesterone not tolerated"
+              "note": "Tier 1 — also ships clean if micronized progesterone not tolerated",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             },
             {
               "drug": "norethindrone 5 mg tablet",
-              "note": "Tier 1 — covered oral progestin alternative"
+              "note": "Tier 1 — covered oral progestin alternative",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             },
             {
               "drug": "PREMPRO / PREMPHASE (conjugated estrogens/medroxyprogesterone)",
-              "note": "Tier 2 — preferred brand estrogen+progestin combo"
+              "note": "Tier 2 — preferred brand estrogen+progestin combo",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             }
           ],
           "paRequired": [
             {
               "drug": "MYFEMBREE (estradiol/norethindrone/relugolix)",
-              "reason": "PA required"
+              "reason": "PA required",
+              "outcome": "pa",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             },
             {
               "drug": "CRINONE 4% vaginal gel (progesterone)",
-              "reason": "PA required"
+              "reason": "PA required",
+              "outcome": "pa",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             }
           ],
           "stepTherapy": null,
@@ -2157,7 +2790,13 @@
             "cigna-value4t-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Tier 1"
+          "tier": "Tier 1",
+          "coverageSourceIds": [
+            "cigna-value4t-2026"
+          ],
+          "restrictionSourceIds": [
+            "cigna-value4t-2026"
+          ]
         },
         {
           "payerId": "cigna",
@@ -2176,39 +2815,62 @@
           "alternatives": [
             {
               "drug": "yuvafem (estradiol vaginal tablet 10 mcg, generic Vagifem)",
-              "note": "Tier 1, QL — covered generic vaginal tablet"
+              "note": "Tier 1, QL — covered generic vaginal tablet",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             },
             {
               "drug": "estradiol vaginal cream 0.01% (generic Estrace cream)",
-              "note": "Tier 1, QL — same generic-estradiol formulary line"
+              "note": "Tier 1, QL — same generic-estradiol formulary line",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             },
             {
               "drug": "PREMARIN VAGINAL CREAM (conjugated estrogens)",
-              "note": "Tier 2 — preferred brand vaginal cream"
+              "note": "Tier 2 — preferred brand vaginal cream",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             },
             {
               "drug": "INTRAROSA (prasterone/DHEA insert)",
-              "note": "Tier 3, QL — non-estrogen GSM agent, non-preferred"
+              "note": "Tier 3, QL — non-estrogen GSM agent, non-preferred",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             },
             {
               "drug": "OSPHENA (ospemifene oral SERM)",
-              "note": "Tier 3, QL — non-estrogen oral GSM agent, non-preferred"
-            }
-          ],
-          "paRequired": [
+              "note": "Tier 3, QL — non-estrogen oral GSM agent, non-preferred",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
+            },
             {
               "drug": "PREMARIN VAGINAL CREAM",
-              "reason": "Higher tier"
+              "note": "Higher tier",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             },
             {
               "drug": "INTRAROSA (prasterone insert)",
-              "reason": "Higher tier"
+              "note": "Higher tier",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             },
             {
               "drug": "OSPHENA (ospemifene)",
-              "reason": "Higher tier"
+              "note": "Higher tier",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             }
           ],
+          "paRequired": [],
           "stepTherapy": null,
           "verification": "verified",
           "verificationNote": "Read directly off Value 4-Tier PDL p.18: the 'estradiol cream, gel packet, gel pump, patch, tablet, vaginal insert' Tier 1 QL line covers the generic estradiol vaginal insert AND vaginal cream; 'yuvafem' (generic Vagifem vaginal tablet) = Tier 1 QL. No Estring/Femring/Imvexxy line appears on this formulary (those brand ring/insert products are not listed; generic estradiol insert/tablet/cream is the clean path). PREMARIN VAGINAL CREAM = Tier 2; INTRAROSA/OSPHENA = Tier 3 QL (non-estrogen GSM agents).",
@@ -2216,7 +2878,13 @@
             "cigna-value4t-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Tier 1"
+          "tier": "Tier 1",
+          "coverageSourceIds": [
+            "cigna-value4t-2026"
+          ],
+          "restrictionSourceIds": [
+            "cigna-value4t-2026"
+          ]
         },
         {
           "payerId": "aetna",
@@ -2235,37 +2903,62 @@
           "alternatives": [
             {
               "drug": "estradiol transdermal gel (generic; e.g. generic of Divigel/Elestrin/EstroGel)",
-              "note": "Covered generic ('estradiol' covers the gel dosage forms); preferred over brand gels"
+              "note": "Covered generic ('estradiol' covers the gel dosage forms); preferred over brand gels",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
             },
             {
               "drug": "estradiol-norethindrone transdermal/oral combo (generic)",
-              "note": "Covered generic; combination estrogen+progestin for women with a uterus"
+              "note": "Covered generic; combination estrogen+progestin for women with a uterus",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
             },
             {
               "drug": "DUAVEE (conjugated estrogens/bazedoxifene)",
-              "note": "Listed as a covered preferred brand in the MENOPAUSAL SYMPTOM AGENTS section (oral, not transdermal)"
+              "note": "Listed as a covered preferred brand in the MENOPAUSAL SYMPTOM AGENTS section (oral, not transdermal)",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
             },
             {
               "drug": "PREMPRO / PREMPHASE (conjugated estrogens/MPA)",
-              "note": "Covered preferred brand combination tablets (oral)"
+              "note": "Covered preferred brand combination tablets (oral)",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
+            },
+            {
+              "drug": "CLIMARA (estradiol weekly patch, brand)",
+              "note": "Non-preferred",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
+            },
+            {
+              "drug": "DIVIGEL (estradiol gel, brand)",
+              "note": "Non-preferred",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
+            },
+            {
+              "drug": "EVAMIST (estradiol transdermal spray, brand)",
+              "note": "Non-preferred",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
             }
           ],
           "paRequired": [
             {
-              "drug": "CLIMARA (estradiol weekly patch, brand)",
-              "reason": "Non-preferred"
-            },
-            {
-              "drug": "DIVIGEL (estradiol gel, brand)",
-              "reason": "Non-preferred"
-            },
-            {
-              "drug": "EVAMIST (estradiol transdermal spray, brand)",
-              "reason": "Non-preferred"
-            },
-            {
               "drug": "CLIMARA PRO (estradiol/levonorgestrel patch) / COMBIPATCH (estradiol/norethindrone patch)",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
             }
           ],
           "stepTherapy": "No step therapy on generic transdermal estradiol — it is the covered preferred agent (and is itself the named preferred option for the removed brands CLIMARA, DIVIGEL, EVAMIST). Brand patches/gels/spray are simply removed from coverage with generic estradiol as the covered alternative.",
@@ -2275,7 +2968,13 @@
             "aetna-standard-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Tier 1"
+          "tier": "Tier 1",
+          "coverageSourceIds": [
+            "aetna-standard-2026"
+          ],
+          "restrictionSourceIds": [
+            "aetna-standard-2026"
+          ]
         },
         {
           "payerId": "aetna",
@@ -2294,27 +2993,41 @@
           "alternatives": [
             {
               "drug": "medroxyprogesterone (generic Provera)",
-              "note": "Covered generic; named alongside micronized progesterone as the preferred option for removed brand PROMETRIUM"
+              "note": "Covered generic; named alongside micronized progesterone as the preferred option for removed brand PROMETRIUM",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
             },
             {
               "drug": "megestrol acetate (generic)",
-              "note": "Covered generic progestin (PROGESTINS section)"
+              "note": "Covered generic progestin (PROGESTINS section)",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
             },
             {
               "drug": "CRINONE (progesterone vaginal gel)",
-              "note": "Listed as a covered preferred brand in the PROGESTINS section"
+              "note": "Listed as a covered preferred brand in the PROGESTINS section",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
             },
             {
               "drug": "norethindrone acetate (generic)",
-              "note": "Covered generic progestin"
-            }
-          ],
-          "paRequired": [
+              "note": "Covered generic progestin",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
+            },
             {
               "drug": "PROMETRIUM (brand micronized progesterone)",
-              "reason": "Non-preferred"
+              "note": "Non-preferred",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
             }
           ],
+          "paRequired": [],
           "stepTherapy": "No step therapy on generic micronized progesterone. On THIS plan micronized progesterone is NOT placed behind a PA/step — generic 'progesterone, micronized' is covered/preferred and is itself the named preferred option (together with medroxyprogesterone) when brand PROMETRIUM is requested. Micronized progesterone is the clean first pass here; medroxyprogesterone is an equally-covered alternative, not a required step before it.",
           "verification": "verified",
           "verificationNote": "Read directly off the 2026 Aetna Standard Plan Pharmacy Drug Guide: 'progesterone, micronized' and 'medroxyprogesterone' both appear in the covered drug list (PROGESTINS); PROMETRIUM→'medroxyprogesterone; progesterone, micronized' in the Formulary Drug Removals list. Cross-confirmed in the April 2026 Standard Control Plan Exclusions list. The semicolon lists two co-equal covered generics; the clinically-standard endometrial-protection first pass is micronized progesterone. No numbered tier is printed. Sig/regimen is clinically standard (not stated in the formulary).",
@@ -2322,7 +3035,13 @@
             "aetna-standard-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Tier 1"
+          "tier": "Tier 1",
+          "coverageSourceIds": [
+            "aetna-standard-2026"
+          ],
+          "restrictionSourceIds": [
+            "aetna-standard-2026"
+          ]
         },
         {
           "payerId": "aetna",
@@ -2341,35 +3060,55 @@
           "alternatives": [
             {
               "drug": "VAGIFEM (estradiol vaginal insert 10 mcg, brand)",
-              "note": "Covered preferred brand (named preferred option; preferred over the generic estradiol vaginal tablet)"
+              "note": "Covered preferred brand (named preferred option; preferred over the generic estradiol vaginal tablet)",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
             },
             {
               "drug": "IMVEXXY (estradiol vaginal insert 4/10 mcg, brand)",
-              "note": "Covered preferred brand (named preferred option)"
+              "note": "Covered preferred brand (named preferred option)",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
             },
             {
               "drug": "PREMPRO / PREMPHASE / DUAVEE",
-              "note": "Covered preferred brands in the menopausal section (systemic, not local vaginal)"
-            }
-          ],
-          "paRequired": [
+              "note": "Covered preferred brands in the menopausal section (systemic, not local vaginal)",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
+            },
             {
               "drug": "estradiol vaginal tablet (generic) / Yuvafem (branded generic, of Vagifem)",
-              "reason": "Non-preferred"
+              "note": "Non-preferred",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
             },
             {
               "drug": "ESTRING (estradiol vaginal ring)",
-              "reason": "Non-preferred"
+              "note": "Non-preferred",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
             },
             {
               "drug": "FEMRING (estradiol acetate vaginal ring)",
-              "reason": "Non-preferred"
+              "note": "Non-preferred",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
             },
             {
               "drug": "PREMARIN CREAM (conjugated estrogens vaginal cream)",
-              "reason": "Non-preferred"
+              "note": "Non-preferred",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
             }
           ],
+          "paRequired": [],
           "stepTherapy": "No step therapy on generic estradiol vaginal cream — it is a covered preferred option. The vaginal rings ESTRING and FEMRING, brand PREMARIN CREAM, and the generic estradiol vaginal TABLET (Yuvafem) are removed, each pointing to 'estradiol vaginal cream, IMVEXXY, VAGIFEM' as the covered alternatives. So for an insert/tablet, the plan steers to brand IMVEXXY/VAGIFEM rather than the generic tablet.",
           "verification": "verified",
           "verificationNote": "Read directly off the 2026 Aetna Standard Plan Pharmacy Drug Guide: 'estradiol vaginal cream' and brand 'VAGIFEM' appear in the covered drug list; 'IMVEXXY' covered. In the Formulary Drug Removals list: 'estradiol vaginal tablet'→'estradiol vaginal cream, IMVEXXY, VAGIFEM', ESTRING→same, FEMRING→same, PREMARIN CREAM→same, Yuvafem→same. Cross-confirmed in the April 2026 Standard Control Plan Exclusions list. Notable: the generic vaginal tablet is removed in favor of generic cream + brand inserts; generic cream is the clean first pass. No numbered tier printed. Sig is clinically standard (not stated in the formulary).",
@@ -2377,7 +3116,13 @@
             "aetna-standard-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Tier 1"
+          "tier": "Tier 1",
+          "coverageSourceIds": [
+            "aetna-standard-2026"
+          ],
+          "restrictionSourceIds": [
+            "aetna-standard-2026"
+          ]
         },
         {
           "payerId": "medicare-partd",
@@ -2396,35 +3141,55 @@
           "alternatives": [
             {
               "drug": "estradiol transdermal patch twice-weekly (generic)",
-              "note": "Tier 2; QL (max 8 patches/28 days = 2/week, standard dosing)"
+              "note": "Tier 2; QL (max 8 patches/28 days = 2/week, standard dosing)",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             },
             {
               "drug": "estradiol oral tablet (generic)",
-              "note": "Tier 2; oral systemic estrogen alternative (not transdermal)"
+              "note": "Tier 2; oral systemic estrogen alternative (not transdermal)",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             },
             {
               "drug": "estradiol transdermal gel 0.06% 0.75mg/1.25gm (generic)",
-              "note": "Tier 4 (Non-preferred); DL — generic patch preferred over the gel here"
+              "note": "Tier 4 (Non-preferred); DL — generic patch preferred over the gel here",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             },
             {
               "drug": "Climara Pro (estradiol/levonorgestrel) transdermal patch",
-              "note": "Brand, Tier 4; DL — combination patch (includes progestin) for women with a uterus"
+              "note": "Brand, Tier 4; DL — combination patch (includes progestin) for women with a uterus",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             },
             {
               "drug": "estradiol valerate IM oil (generic)",
-              "note": "Tier 4; DL — injectable estrogen, not transdermal"
-            }
-          ],
-          "paRequired": [
+              "note": "Tier 4; DL — injectable estrogen, not transdermal",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
+            },
             {
               "drug": "estradiol transdermal gel 0.06% (generic)",
-              "reason": "Higher tier"
+              "note": "Higher tier",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             },
             {
               "drug": "Climara Pro / Duavee (brand transdermal/combination)",
-              "reason": "Higher tier"
+              "note": "Higher tier",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             }
           ],
+          "paRequired": [],
           "stepTherapy": "No step therapy on generic transdermal estradiol. The only restriction on the preferred once-weekly patch is a quantity limit (QL: maximum 4 patches per 28 days, i.e. one weekly patch per week) plus a 1-month dispensing limit (DL) — both are routine and consistent with standard once-weekly dosing, not a prescribing barrier.",
           "verification": "verified",
           "verificationNote": "Medicare Part D coverage varies by plan; this reflects AARP MedicareRx Preferred (UnitedHealthcare), a Maryland Part D plan. Read directly off the AARP Medicare Rx Preferred (PDP) 2026 formulary (Estrogens section): 'Estradiol (Transdermal Patch Weekly)' = Generic, Tier 2, coverage rule 'QL'; 'Estradiol (Transdermal Patch Twice Weekly)' = Generic, Tier 2, 'QL'. QL appendix confirms max 4 patches/28 days (weekly) and 8/28 days (twice-weekly). No PA, no ST. Medicare Part D coverage is SPONSOR-SPECIFIC and varies by plan; on the sibling AARP Medicare Rx Saver (PDP) the same generic weekly patch is Tier 4 with DL;QL, so this Tier 2 / no-PA result is specific to the Preferred plan. Sig is clinically standard (not stated in the formulary).",
@@ -2432,7 +3197,13 @@
             "aarp-medicarerx-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Tier 1–2 (Part D)"
+          "tier": "Tier 1–2 (Part D)",
+          "coverageSourceIds": [
+            "aarp-medicarerx-2026"
+          ],
+          "restrictionSourceIds": [
+            "aarp-medicarerx-2026"
+          ]
         },
         {
           "payerId": "medicare-partd",
@@ -2451,25 +3222,41 @@
           "alternatives": [
             {
               "drug": "medroxyprogesterone acetate oral tablet 2.5/5/10 mg (generic Provera)",
-              "note": "Tier 1 (Preferred Generic); lowest-cost oral progestin alternative, no PA"
+              "note": "Tier 1 (Preferred Generic); lowest-cost oral progestin alternative, no PA",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             },
             {
               "drug": "norethindrone acetate 5 mg tablet (generic)",
-              "note": "Tier 2"
+              "note": "Tier 2",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             },
             {
               "drug": "estradiol/norethindrone acetate combination tablet (generic)",
-              "note": "Tier 3; combination estrogen+progestin oral for women with a uterus"
+              "note": "Tier 3; combination estrogen+progestin oral for women with a uterus",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             },
             {
               "drug": "Crinone 8% vaginal progesterone gel",
-              "note": "Brand, Tier 4; PA required (off-label for HRT endometrial protection)"
+              "note": "Brand, Tier 4; PA required (off-label for HRT endometrial protection)",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             }
           ],
           "paRequired": [
             {
               "drug": "Crinone (progesterone vaginal gel 8%)",
-              "reason": "PA required"
+              "reason": "PA required",
+              "outcome": "pa",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             }
           ],
           "stepTherapy": null,
@@ -2479,7 +3266,13 @@
             "aarp-medicarerx-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Tier 1–2 (Part D)"
+          "tier": "Tier 1–2 (Part D)",
+          "coverageSourceIds": [
+            "aarp-medicarerx-2026"
+          ],
+          "restrictionSourceIds": [
+            "aarp-medicarerx-2026"
+          ]
         },
         {
           "payerId": "medicare-partd",
@@ -2498,25 +3291,41 @@
           "alternatives": [
             {
               "drug": "estradiol vaginal tablet (Yuvafem, generic of Vagifem) 10 mcg",
-              "note": "Tier 3; QL (max 18 tablets/28 days = standard 2x/week maintenance after induction)"
+              "note": "Tier 3; QL (max 18 tablets/28 days = standard 2x/week maintenance after induction)",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             },
             {
               "drug": "Premarin (conjugated estrogens) vaginal cream 0.625 mg/g",
-              "note": "Brand, Tier 3; no PA — alternative if estradiol cream not tolerated"
+              "note": "Brand, Tier 3; no PA — alternative if estradiol cream not tolerated",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             },
             {
               "drug": "Estring (estradiol vaginal ring) 2 mg / 7.5 mcg/24hr",
-              "note": "Brand, Tier 4; DL — 90-day ring, higher cost-share, no PA"
+              "note": "Brand, Tier 4; DL — 90-day ring, higher cost-share, no PA",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
+            },
+            {
+              "drug": "Estring (estradiol vaginal ring)",
+              "note": "Higher tier",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             }
           ],
           "paRequired": [
             {
-              "drug": "Estring (estradiol vaginal ring)",
-              "reason": "Higher tier"
-            },
-            {
               "drug": "Imvexxy / Femring (estradiol vaginal insert / ring)",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             }
           ],
           "stepTherapy": null,
@@ -2526,7 +3335,13 @@
             "aarp-medicarerx-2026"
           ],
           "lastReviewed": "2026-06-27",
-          "tier": "Tier 1–2 (Part D)"
+          "tier": "Tier 1–2 (Part D)",
+          "coverageSourceIds": [
+            "aarp-medicarerx-2026"
+          ],
+          "restrictionSourceIds": [
+            "aarp-medicarerx-2026"
+          ]
         },
         {
           "payerId": "mdmedicaid",
@@ -2545,15 +3360,24 @@
           "alternatives": [
             {
               "drug": "conjugated estrogens (Premarin)",
-              "note": "Brand only, no generic; covered under standard pharmacy benefit (not on PDL). Higher cost than generic estradiol; estradiol oral tablet is the clean first-pass."
+              "note": "Brand only, no generic; covered under standard pharmacy benefit (not on PDL). Higher cost than generic estradiol; estradiol oral tablet is the clean first-pass.",
+              "sourceIds": [
+                "md-pdl-2026"
+              ]
             },
             {
               "drug": "esterified estrogens (Menest)",
-              "note": "Brand; covered under standard pharmacy benefit (not on PDL)."
+              "note": "Brand; covered under standard pharmacy benefit (not on PDL).",
+              "sourceIds": [
+                "md-pdl-2026"
+              ]
             },
             {
               "drug": "estropipate",
-              "note": "Largely discontinued in the US; covered under standard pharmacy benefit if available (not on PDL)."
+              "note": "Largely discontinued in the US; covered under standard pharmacy benefit if available (not on PDL).",
+              "sourceIds": [
+                "md-pdl-2026"
+              ]
             }
           ],
           "paRequired": [],
@@ -2565,7 +3389,13 @@
             "md-daw6-2026"
           ],
           "lastReviewed": "2026-06-28",
-          "tier": "Generic (Medicaid)"
+          "tier": "Generic (Medicaid)",
+          "coverageSourceIds": [
+            "md-pdl-2026"
+          ],
+          "restrictionSourceIds": [
+            "md-daw6-2026"
+          ]
         },
         {
           "payerId": "carefirst",
@@ -2584,25 +3414,35 @@
           "alternatives": [
             {
               "drug": "estrogens, conjugated (generic Premarin equivalent) tab 0.3 / 0.45 / 0.625 / 0.9 / 1.25 mg",
-              "note": "Tier 1 generic; HRM PA only for age 70+. Same clean-ship status as estradiol for patients under 70."
+              "note": "Tier 1 generic; HRM PA only for age 70+. Same clean-ship status as estradiol for patients under 70.",
+              "sourceIds": [
+                "carefirst-exchange-2026"
+              ]
             },
             {
               "drug": "MENEST (esterified estrogens) tab 0.3 / 0.625 / 1.25 / 2.5 mg",
-              "note": "Tier 3 non-preferred brand; no generic; HRM PA for age 70+. Reserve for esterified-estrogen-specific need."
+              "note": "Tier 3 non-preferred brand; no generic; HRM PA for age 70+. Reserve for esterified-estrogen-specific need.",
+              "sourceIds": [
+                "carefirst-exchange-2026"
+              ]
             }
           ],
           "paRequired": [
             {
-              "drug": "MENEST (esterified estrogens) tab 0.3 / 0.625 / 1.25 / 2.5 mg",
-              "reason": "Higher tier"
-            },
-            {
               "drug": "estradiol tab (0.5/1/2 mg) — members age 70+",
-              "reason": "PA required"
+              "reason": "PA required",
+              "outcome": "pa",
+              "sourceIds": [
+                "carefirst-exchange-2026"
+              ]
             },
             {
               "drug": "estrogens, conjugated tab — members age 70+",
-              "reason": "PA required"
+              "reason": "PA required",
+              "outcome": "pa",
+              "sourceIds": [
+                "carefirst-exchange-2026"
+              ]
             }
           ],
           "stepTherapy": null,
@@ -2612,7 +3452,13 @@
             "carefirst-exchange-2026"
           ],
           "lastReviewed": "2026-06-28",
-          "tier": "Tier 1"
+          "tier": "Tier 1",
+          "coverageSourceIds": [
+            "carefirst-exchange-2026"
+          ],
+          "restrictionSourceIds": [
+            "carefirst-exchange-2026"
+          ]
         },
         {
           "payerId": "kpmidatlantic",
@@ -2631,21 +3477,34 @@
           "alternatives": [
             {
               "drug": "EEMT (esterified estrogens / methyltestosterone, oral)",
-              "note": "Tier 2 (most-preferred brand); combination product, not estrogen-only"
+              "note": "Tier 2 (most-preferred brand); combination product, not estrogen-only",
+              "sourceIds": [
+                "kp-mas-marketplace-2026"
+              ]
+            },
+            {
+              "drug": "PREMARIN (conjugated estrogens)",
+              "note": "Non-preferred",
+              "sourceIds": [
+                "kp-mas-marketplace-2026"
+              ]
+            },
+            {
+              "drug": "MENEST (esterified estrogens)",
+              "note": "Non-preferred",
+              "sourceIds": [
+                "kp-mas-marketplace-2026"
+              ]
             }
           ],
           "paRequired": [
             {
-              "drug": "PREMARIN (conjugated estrogens)",
-              "reason": "Non-preferred"
-            },
-            {
-              "drug": "MENEST (esterified estrogens)",
-              "reason": "Non-preferred"
-            },
-            {
               "drug": "estropipate",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "kp-mas-marketplace-2026"
+              ]
             }
           ],
           "stepTherapy": null,
@@ -2655,7 +3514,13 @@
             "kp-mas-marketplace-2026"
           ],
           "lastReviewed": "2026-06-28",
-          "tier": "Tier 1"
+          "tier": "Tier 1",
+          "coverageSourceIds": [
+            "kp-mas-marketplace-2026"
+          ],
+          "restrictionSourceIds": [
+            "kp-mas-marketplace-2026"
+          ]
         },
         {
           "payerId": "priority-partners",
@@ -2674,21 +3539,36 @@
           "alternatives": [
             {
               "drug": "estrogens, conjugated oral tablet (generic of Premarin)",
-              "note": "Covered, no PA/step. Strengths 0.3 / 0.45 / 0.625 / 0.9 / 1.25 mg. Listed in ESTROGENS section with blank Requirements/Limits column."
+              "note": "Covered, no PA/step. Strengths 0.3 / 0.45 / 0.625 / 0.9 / 1.25 mg. Listed in ESTROGENS section with blank Requirements/Limits column.",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             }
           ],
           "paRequired": [
             {
               "drug": "Menest (esterified estrogens oral tablet)",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             },
             {
               "drug": "estropipate oral tablet",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             },
             {
               "drug": "Premarin brand conjugated estrogens oral tablet",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             }
           ],
           "stepTherapy": null,
@@ -2698,7 +3578,13 @@
             "pp-formulary-2026"
           ],
           "lastReviewed": "2026-06-28",
-          "tier": "Covered, no PA"
+          "tier": "Covered, no PA",
+          "coverageSourceIds": [
+            "pp-formulary-2026"
+          ],
+          "restrictionSourceIds": [
+            "pp-formulary-2026"
+          ]
         },
         {
           "payerId": "uhc-md",
@@ -2717,27 +3603,41 @@
           "alternatives": [
             {
               "drug": "est estrogens-methyltest (esterified estrogens-methyltestosterone, e.g. Estratest F.S./Covaryx)",
-              "note": "Tier 1, no PA - estrogen+androgen combo, a borderline class member rather than a pure oral estrogen; lowest-cost tier"
+              "note": "Tier 1, no PA - estrogen+androgen combo, a borderline class member rather than a pure oral estrogen; lowest-cost tier",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "Estratest F.S. (esterified estrogens-methyltestosterone, full strength)",
-              "note": "Tier 1, no PA"
-            }
-          ],
-          "paRequired": [
+              "note": "Tier 1, no PA",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
+            },
             {
               "drug": "PREMARIN oral (conjugated estrogens; no generic exists)",
-              "reason": "Higher tier"
+              "note": "Higher tier",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "ESTRACE (brand estradiol oral tablet)",
-              "reason": "Non-preferred"
+              "note": "Non-preferred",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "ESTRATEST H.S. (esterified estrogens-methyltestosterone, half strength)",
-              "reason": "Higher tier"
+              "note": "Higher tier",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             }
           ],
+          "paRequired": [],
           "stepTherapy": null,
           "verification": "verified",
           "verificationNote": "Read directly off the Jan 1, 2026 UnitedHealthcare Commercial PDL (OptumRx-administered), 'Hormonal Agents - Hormone Replacement and Birth Control' section (p. 36). The row 'estradiol oral' is listed at Tier 1 with NO restriction symbol (no PA, no ST, no QL, no E) - it ships completely clean and is the unambiguous first-pass oral estrogen; this is generic estradiol tablet (0.5/1/2 mg), brand Estrace. Brand 'ESTRACE' (estradiol oral) is flagged with the 'E' symbol and shows no printed MD tier number, defaulting to non-preferred brand in Maryland. 'PREMARIN ORAL' (conjugated estrogens, no generic) is Tier 3 (non-preferred brand). 'est estrogens-methyltest' / 'Estratest F.S.' (esterified estrogens-methyltestosterone) are Tier 1 but are estrogen+androgen combos rather than pure oral estrogens, so listed as borderline alternatives; 'ESTRATEST H.S.' is Tier 3. No generic conjugated estrogens, no Menest (esterified estrogens), and no estropipate lines appear in the document - those products are largely discontinued/unavailable in the US market and are not separately listed. KEY MARYLAND NUANCE: the 'E' symbol legend reads 'May be excluded from coverage or subject to Prior Authorization in Connecticut, New Jersey and New York' - it does NOT apply in Maryland; brand rows carry no separate printed MD tier. UnitedHealthcare publishes ONE national commercial PDL with state annotations; there is no MD-specific commercial PDF. boglActive is false - no brand is forced over the available generic estradiol tablet. CLINICAL CAVEAT (not a coverage fact): oral estrogen carries higher VTE/clot risk than transdermal.",
@@ -2745,7 +3645,13 @@
             "uhc-commercial-pdl-2026"
           ],
           "lastReviewed": "2026-06-28",
-          "tier": "Tier 1"
+          "tier": "Tier 1",
+          "coverageSourceIds": [
+            "uhc-commercial-pdl-2026"
+          ],
+          "restrictionSourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
         },
         {
           "payerId": "cigna",
@@ -2764,25 +3670,43 @@
           "alternatives": [
             {
               "drug": "DUAVEE (conjugated estrogens/bazedoxifene tablet)",
-              "note": "Tier 2 preferred brand — oral estrogen+SERM for women with a uterus; the only branded oral systemic estrogen on this PDL"
+              "note": "Tier 2 preferred brand — oral estrogen+SERM for women with a uterus; the only branded oral systemic estrogen on this PDL",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
+            },
+            {
+              "drug": "DUAVEE (conjugated estrogens/bazedoxifene, oral)",
+              "note": "Higher tier",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             }
           ],
           "paRequired": [
             {
               "drug": "PREMARIN (oral conjugated estrogens tablet)",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             },
             {
               "drug": "MENEST (esterified estrogens tablet)",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             },
             {
               "drug": "estropipate tablet (Ogen / Ortho-Est)",
-              "reason": "Non-formulary"
-            },
-            {
-              "drug": "DUAVEE (conjugated estrogens/bazedoxifene, oral)",
-              "reason": "Higher tier"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             }
           ],
           "stepTherapy": null,
@@ -2792,7 +3716,13 @@
             "cigna-value4t-2026"
           ],
           "lastReviewed": "2026-06-28",
-          "tier": "Tier 1"
+          "tier": "Tier 1",
+          "coverageSourceIds": [
+            "cigna-value4t-2026"
+          ],
+          "restrictionSourceIds": [
+            "cigna-value4t-2026"
+          ]
         },
         {
           "payerId": "aetna",
@@ -2808,17 +3738,23 @@
           },
           "boglActive": false,
           "boglNote": "No brand is forced over the generic. Generic oral estradiol tablet is the PREFERRED menopausal-agent oral estrogen. The brand oral estrogens (PREMARIN, MENEST) are non-preferred and their listed preferred option IS generic estradiol — the opposite of a brand-over-generic lock.",
-          "alternatives": [],
-          "paRequired": [
+          "alternatives": [
             {
               "drug": "PREMARIN (conjugated estrogens) oral tablet",
-              "reason": "Non-preferred"
+              "note": "Non-preferred",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
             },
             {
               "drug": "MENEST (esterified estrogens) oral tablet",
-              "reason": "Non-preferred"
+              "note": "Non-preferred",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
             }
           ],
+          "paRequired": [],
           "stepTherapy": "PREMARIN (oral) and MENEST appear on the 'Preferred Options List for Formulary Drug Removals and Drugs Covered Only When Preferred Options Are Not Clinically Appropriate,' with generic estradiol named as the preferred option for both. Effectively a medical-necessity / try-generic-estradiol-first gate before the brand is covered.",
           "verification": "verified",
           "verificationNote": "Read directly off the plan's own document: 2026 Aetna Standard Plan Pharmacy Drug Guide, January 2026, downloaded from the prompt URL (curl, 593,810 bytes, valid PDF v1.6) and extracted with pypdf (33 pages). (1) MENOPAUSAL SYMPTOM AGENTS preferred-class list (printed p.~9) lists 'estradiol' in lowercase = generic, as the preferred oral estrogen; the other entries in that block are estradiol vaginal cream, estradiol-norethindrone (combo), and brands COMBIPATCH/DUAVEE/IMVEXXY/PREMPHASE/PREMPRO/VAGIFEM (all patch, vaginal, or combo = separate classes). (2) 'PREFERRED OPTIONS LIST FOR FORMULARY DRUG REMOVALS AND DRUGS COVERED ONLY WHEN PREFERRED OPTIONS ARE NOT CLINICALLY APPROPRIATE' maps PREMARIN -> estradiol and MENEST -> estradiol, confirming both brand oral estrogens are removed/non-preferred with generic estradiol as the preferred option (a try-generic-first gate). (3) The alphabetical Drug Name(s)/Preferred Option(s) index repeats PREMARIN -> estradiol and MENEST -> estradiol. So for a typical patient, generic estradiol oral tablet ships clean with no PA round-trip; the brand oral estrogens (Premarin oral, Menest) require clearing the preferred-option/medical-necessity gate. boglActive=false (no brand forced over generic). Caveat: this guide does not publish per-drug PA/ST/QL flags or age rules in line, so any plan-design-specific quantity limit or age edit is not visible in this document; the clean-ship conclusion for generic estradiol is grounded in it being the named PREFERRED agent. WebFetch could not decompress the PDF stream, but the URL returns HTTP 200 with a valid 579.9 KB PDF matching the curl download; content was verified from the direct extraction.",
@@ -2826,7 +3762,13 @@
             "aetna-standard-2026"
           ],
           "lastReviewed": "2026-06-28",
-          "tier": "Tier 1"
+          "tier": "Tier 1",
+          "coverageSourceIds": [
+            "aetna-standard-2026"
+          ],
+          "restrictionSourceIds": [
+            "aetna-standard-2026"
+          ]
         },
         {
           "payerId": "medicare-partd",
@@ -2845,37 +3787,57 @@
           "alternatives": [
             {
               "drug": "Premarin (conjugated estrogens) oral tablet",
-              "note": "Brand, Tier 4, DL + QL (1-month dispensing limit, quantity limit); no PA. Brand-only — no generic conjugated estrogens exists."
+              "note": "Brand, Tier 4, DL + QL (1-month dispensing limit, quantity limit); no PA. Brand-only — no generic conjugated estrogens exists.",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
+            },
+            {
+              "drug": "Premphase (conjugated estrogens-medroxyprogesterone) oral tablet",
+              "note": "Non-preferred",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
+            },
+            {
+              "drug": "Prempro (conjugated estrogens-medroxyprogesterone) oral tablet",
+              "note": "Non-preferred",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
+            },
+            {
+              "drug": "Duavee (conjugated estrogens-bazedoxifene) oral tablet",
+              "note": "Non-preferred",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             }
           ],
           "paRequired": [
             {
-              "drug": "Premarin (conjugated estrogens) oral tablet",
-              "reason": "Non-preferred"
-            },
-            {
-              "drug": "Premphase (conjugated estrogens-medroxyprogesterone) oral tablet",
-              "reason": "Non-preferred"
-            },
-            {
-              "drug": "Prempro (conjugated estrogens-medroxyprogesterone) oral tablet",
-              "reason": "Non-preferred"
-            },
-            {
-              "drug": "Duavee (conjugated estrogens-bazedoxifene) oral tablet",
-              "reason": "Non-preferred"
-            },
-            {
               "drug": "Menest (esterified estrogens) oral tablet",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             },
             {
               "drug": "conjugated estrogens generic / Cenestin / Enjuvia oral tablet",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             },
             {
               "drug": "estropipate oral tablet",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             }
           ],
           "stepTherapy": null,
@@ -2885,7 +3847,13 @@
             "aarp-medicarerx-2026"
           ],
           "lastReviewed": "2026-06-28",
-          "tier": "Tier 1–2 (Part D)"
+          "tier": "Tier 1–2 (Part D)",
+          "coverageSourceIds": [
+            "aarp-medicarerx-2026"
+          ],
+          "restrictionSourceIds": [
+            "aarp-medicarerx-2026"
+          ]
         },
         {
           "payerId": "mdmedicaid",
@@ -2904,31 +3872,52 @@
           "alternatives": [
             {
               "drug": "ethinyl estradiol / norethindrone acetate (generic of femhrt / Jinteli)",
-              "note": "Tier 1 generic; covered under standard generic pharmacy benefit (not on PDL)."
+              "note": "Tier 1 generic; covered under standard generic pharmacy benefit (not on PDL).",
+              "sourceIds": [
+                "md-pdl-2026"
+              ]
             },
             {
               "drug": "estradiol / drospirenone (generic of Angeliq)",
-              "note": "Generic where stocked; covered under standard pharmacy benefit (not on PDL)."
+              "note": "Generic where stocked; covered under standard pharmacy benefit (not on PDL).",
+              "sourceIds": [
+                "md-pdl-2026"
+              ]
             },
             {
               "drug": "Activella / Mimvey (estradiol/norethindrone acetate, brand)",
-              "note": "Tier 3 brand reference; generic is the first-pass. Covered under standard benefit (not on PDL)."
+              "note": "Tier 3 brand reference; generic is the first-pass. Covered under standard benefit (not on PDL).",
+              "sourceIds": [
+                "md-pdl-2026"
+              ]
             },
             {
               "drug": "Angeliq (estradiol/drospirenone, brand)",
-              "note": "Tier 3 brand; covered under standard benefit (not on PDL)."
+              "note": "Tier 3 brand; covered under standard benefit (not on PDL).",
+              "sourceIds": [
+                "md-pdl-2026"
+              ]
             },
             {
               "drug": "Bijuva (estradiol/progesterone, brand)",
-              "note": "Tier 3 brand, no generic; covered under standard benefit (not on PDL)."
+              "note": "Tier 3 brand, no generic; covered under standard benefit (not on PDL).",
+              "sourceIds": [
+                "md-pdl-2026"
+              ]
             },
             {
               "drug": "Prefest (estradiol/norgestimate, brand)",
-              "note": "Tier 3 brand; covered under standard benefit (not on PDL)."
+              "note": "Tier 3 brand; covered under standard benefit (not on PDL).",
+              "sourceIds": [
+                "md-pdl-2026"
+              ]
             },
             {
               "drug": "Premphase / Prempro (conjugated estrogens/medroxyprogesterone, brand)",
-              "note": "Tier 3 brand, no generic; covered under standard benefit (not on PDL)."
+              "note": "Tier 3 brand, no generic; covered under standard benefit (not on PDL).",
+              "sourceIds": [
+                "md-pdl-2026"
+              ]
             }
           ],
           "paRequired": [],
@@ -2940,7 +3929,13 @@
             "md-pdl-2026",
             "md-daw6-2026"
           ],
-          "lastReviewed": "2026-06-28"
+          "lastReviewed": "2026-06-28",
+          "coverageSourceIds": [
+            "md-pdl-2026"
+          ],
+          "restrictionSourceIds": [
+            "md-daw6-2026"
+          ]
         },
         {
           "payerId": "carefirst",
@@ -2959,29 +3954,49 @@
           "alternatives": [
             {
               "drug": "estradiol / norethindrone acetate tab 0.5-0.1 mg",
-              "note": "Tier 1 generic"
+              "note": "Tier 1 generic",
+              "sourceIds": [
+                "carefirst-exchange-2026"
+              ]
             },
             {
               "drug": "mimvey (estradiol/norethindrone acetate 1-0.5 mg)",
-              "note": "Tier 1 brand"
+              "note": "Tier 1 brand",
+              "sourceIds": [
+                "carefirst-exchange-2026"
+              ]
             },
             {
               "drug": "jinteli (ethinyl estradiol/norethindrone acetate 5 mcg-1 mg)",
-              "note": "Tier 1 brand"
+              "note": "Tier 1 brand",
+              "sourceIds": [
+                "carefirst-exchange-2026"
+              ]
             },
             {
               "drug": "norethindrone acetate-ethinyl estradiol tab 0.5 mg-2.5 mcg (femhrt generic)",
-              "note": "Tier 1 generic"
+              "note": "Tier 1 generic",
+              "sourceIds": [
+                "carefirst-exchange-2026"
+              ]
             }
           ],
           "paRequired": [
             {
               "drug": "BIJUVA CAP 0.5-100 mg (estradiol/progesterone, oral capsule)",
-              "reason": "PA required"
+              "reason": "PA required",
+              "outcome": "pa",
+              "sourceIds": [
+                "carefirst-exchange-2026"
+              ]
             },
             {
               "drug": "BIJUVA CAP 1-100 mg (estradiol/progesterone, oral capsule)",
-              "reason": "PA required"
+              "reason": "PA required",
+              "outcome": "pa",
+              "sourceIds": [
+                "carefirst-exchange-2026"
+              ]
             }
           ],
           "stepTherapy": null,
@@ -2991,7 +4006,13 @@
           "sourceIds": [
             "carefirst-exchange-2026"
           ],
-          "lastReviewed": "2026-06-28"
+          "lastReviewed": "2026-06-28",
+          "coverageSourceIds": [
+            "carefirst-exchange-2026"
+          ],
+          "restrictionSourceIds": [
+            "carefirst-exchange-2026"
+          ]
         },
         {
           "payerId": "kpmidatlantic",
@@ -3010,19 +4031,31 @@
           "alternatives": [
             {
               "drug": "norethindrone acetate / ethinyl estradiol (generic of femhrt / Jinteli)",
-              "note": "Tier 3 non-preferred generic"
+              "note": "Tier 3 non-preferred generic",
+              "sourceIds": [
+                "kp-mas-marketplace-2026"
+              ]
             },
             {
               "drug": "ANGELIQ (estradiol / drospirenone)",
-              "note": "Tier 3 non-preferred brand"
+              "note": "Tier 3 non-preferred brand",
+              "sourceIds": [
+                "kp-mas-marketplace-2026"
+              ]
             },
             {
               "drug": "PREFEST (estradiol / norgestimate)",
-              "note": "Tier 3 non-preferred brand"
+              "note": "Tier 3 non-preferred brand",
+              "sourceIds": [
+                "kp-mas-marketplace-2026"
+              ]
             },
             {
               "drug": "PREMPHASE (conjugated estrogens / medroxyprogesterone)",
-              "note": "Tier 3 non-preferred brand"
+              "note": "Tier 3 non-preferred brand",
+              "sourceIds": [
+                "kp-mas-marketplace-2026"
+              ]
             }
           ],
           "paRequired": [],
@@ -3033,7 +4066,13 @@
           "sourceIds": [
             "kp-mas-marketplace-2026"
           ],
-          "lastReviewed": "2026-06-28"
+          "lastReviewed": "2026-06-28",
+          "coverageSourceIds": [
+            "kp-mas-marketplace-2026"
+          ],
+          "restrictionSourceIds": [
+            "kp-mas-marketplace-2026"
+          ]
         },
         {
           "payerId": "priority-partners",
@@ -3052,41 +4091,72 @@
           "alternatives": [
             {
               "drug": "fyavolv tab 0.5-2.5 and 1-5 (ethinyl estradiol/norethindrone acetate, generic of femhrt)",
-              "note": "Tier 1 generic. Listed in ESTROGEN COMBINATIONS with blank Requirements/Limits = covered, no PA/step/QL."
+              "note": "Tier 1 generic. Listed in ESTROGEN COMBINATIONS with blank Requirements/Limits = covered, no PA/step/QL.",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             },
             {
               "drug": "jinteli tab 1mg-5mcg (ethinyl estradiol/norethindrone acetate)",
-              "note": "Tier 1 generic. Listed clean, blank requirements."
+              "note": "Tier 1 generic. Listed clean, blank requirements.",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             },
             {
               "drug": "norethindrone acetate-ethinyl estradiol tab 0.5 mg-2.5 mcg and 1 mg-5 mcg",
-              "note": "Tier 1 generic (the generic ethinyl estradiol/NETA combo). Listed clean, blank requirements."
+              "note": "Tier 1 generic (the generic ethinyl estradiol/NETA combo). Listed clean, blank requirements.",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             },
             {
               "drug": "PREMPRO TAB (0.3-1.5 / 0.45-1.5 / 0.625-5) (conjugated estrogens/medroxyprogesterone)",
-              "note": "Tier-equivalent brand (no generic combo exists). Listed clean, blank requirements = no PA/step/QL."
+              "note": "Tier-equivalent brand (no generic combo exists). Listed clean, blank requirements = no PA/step/QL.",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             },
             {
               "drug": "PREMPHASE TAB (conjugated estrogens/medroxyprogesterone, cyclic)",
-              "note": "Tier-equivalent brand. Listed clean, blank requirements."
+              "note": "Tier-equivalent brand. Listed clean, blank requirements.",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             }
           ],
           "paRequired": [
             {
               "drug": "estradiol / norethindrone acetate tablet (generic of Activella, Mimvey, Amabelz, Lopreeza)",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             },
             {
               "drug": "estradiol / drospirenone tablet (Angeliq)",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             },
             {
               "drug": "estradiol / progesterone tablet (Bijuva)",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             },
             {
               "drug": "estradiol / norgestimate tablet (Prefest)",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "pp-formulary-2026"
+              ]
             }
           ],
           "stepTherapy": null,
@@ -3096,7 +4166,13 @@
           "sourceIds": [
             "pp-formulary-2026"
           ],
-          "lastReviewed": "2026-06-28"
+          "lastReviewed": "2026-06-28",
+          "coverageSourceIds": [
+            "pp-formulary-2026"
+          ],
+          "restrictionSourceIds": [
+            "pp-formulary-2026"
+          ]
         },
         {
           "payerId": "uhc-md",
@@ -3115,59 +4191,97 @@
           "alternatives": [
             {
               "drug": "estradiol / norethindrone acetate (mimvey, 1 mg/0.5 mg)",
-              "note": "Tier 1 generic"
+              "note": "Tier 1 generic",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "ethinyl estradiol / norethindrone acetate (fyavolv)",
-              "note": "Tier 1 generic"
+              "note": "Tier 1 generic",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "ethinyl estradiol / norethindrone acetate (jinteli, 5 mcg/1 mg)",
-              "note": "Tier 1 generic"
+              "note": "Tier 1 generic",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "estradiol / norethindrone acetate (estradiol-norethindrone acet)",
-              "note": "Tier 2 generic"
+              "note": "Tier 2 generic",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "estradiol / norethindrone acetate (amabelz, 0.5-0.1 mg & 1-0.5 mg)",
-              "note": "Tier 2 generic"
+              "note": "Tier 2 generic",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "Bijuva (estradiol/progesterone)",
-              "note": "Tier 3 brand"
+              "note": "Tier 3 brand",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "Premphase (conjugated estrogens/medroxyprogesterone)",
-              "note": "Tier 3 brand"
+              "note": "Tier 3 brand",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "Prempro (conjugated estrogens/medroxyprogesterone)",
-              "note": "Tier 3 brand"
+              "note": "Tier 3 brand",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "Activella (estradiol/norethindrone acetate)",
-              "note": "Tier 4 brand"
-            }
-          ],
-          "paRequired": [
+              "note": "Tier 4 brand",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
+            },
             {
               "drug": "Activella (brand estradiol/norethindrone acetate)",
-              "reason": "Higher tier"
+              "note": "Higher tier",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "Bijuva (brand estradiol/progesterone)",
-              "reason": "Higher tier"
+              "note": "Higher tier",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "Premphase (brand conjugated estrogens/medroxyprogesterone)",
-              "reason": "Higher tier"
+              "note": "Higher tier",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             },
             {
               "drug": "Prempro (brand conjugated estrogens/medroxyprogesterone)",
-              "reason": "Higher tier"
+              "note": "Higher tier",
+              "sourceIds": [
+                "uhc-commercial-pdl-2026"
+              ]
             }
           ],
+          "paRequired": [],
           "stepTherapy": null,
           "verification": "verified",
           "verificationNote": "Read directly off the UnitedHealthcare 2026 Commercial Prescription Drug List (effective Jan 1, 2026, PBM OptumRx), 'Hormonal Agents - Hormone Replacement and Birth Control' section (PDF pages 36-39). Tiers/flags transcribed from extracted PDF text: mimvey Tier 1 (no flags); fyavolv Tier 1; jinteli Tier 1; estradiol-norethindrone acet Tier 2; amabelz Tier 2; ACTIVELLA Tier 4; BIJUVA Tier 3; PREMPHASE Tier 3; PREMPRO Tier 3. Legend (PDF page 4-5) confirms PA/ST/QL/E meanings and that E = exclude-or-PA in CT/NJ/NY only. No PA or step flag appears on any oral combined tablet entry, so the first-pass generic ships clean in Maryland. Maryland-specific note: this is UHC's national commercial PDL; the only state carve-outs printed are for CT/NJ/NY, so Maryland follows the base tiering shown.",
@@ -3175,7 +4289,13 @@
           "sourceIds": [
             "uhc-commercial-pdl-2026"
           ],
-          "lastReviewed": "2026-06-28"
+          "lastReviewed": "2026-06-28",
+          "coverageSourceIds": [
+            "uhc-commercial-pdl-2026"
+          ],
+          "restrictionSourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
         },
         {
           "payerId": "cigna",
@@ -3194,31 +4314,34 @@
           "alternatives": [
             {
               "drug": "PREMPRO (conjugated estrogens / medroxyprogesterone)",
-              "note": "Tier 2 preferred brand"
+              "note": "Tier 2 preferred brand",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             },
             {
               "drug": "PREMPHASE (conjugated estrogens / medroxyprogesterone)",
-              "note": "Tier 2 preferred brand"
+              "note": "Tier 2 preferred brand",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             },
             {
               "drug": "ANGELIQ (estradiol / drospirenone)",
-              "note": "Tier 3 non-preferred brand"
+              "note": "Tier 3 non-preferred brand",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             },
             {
               "drug": "BIJUVA (estradiol / progesterone)",
-              "note": "Tier 3 non-preferred brand"
+              "note": "Tier 3 non-preferred brand",
+              "sourceIds": [
+                "cigna-value4t-2026"
+              ]
             }
           ],
-          "paRequired": [
-            {
-              "drug": "ANGELIQ (estradiol / drospirenone)",
-              "reason": "Non-preferred"
-            },
-            {
-              "drug": "BIJUVA (estradiol / progesterone)",
-              "reason": "Non-preferred"
-            }
-          ],
+          "paRequired": [],
           "stepTherapy": null,
           "verification": "verified",
           "verificationNote": "Read directly off the HORMONAL AGENTS section (pages 17-18) of the Cigna Healthcare Value 4-Tier Prescription Drug List, coverage starting 07/01/2026 (last updated 04/01/2026). Tier 1 'mimvey' (generic estradiol/norethindrone acetate) is the clean first-pass with no PA/ST/QL code. Preferred brands PREMPRO and PREMPHASE are Tier 2 (no restriction codes). ANGELIQ and BIJUVA are Tier 3 (non-preferred brand, no PA/ST code). Per legend (page 4): Tier 1 = generics/lowest cost-share, Tier 2 = preferred brands, Tier 3 = non-preferred brands, PA = prior authorization, ST = step therapy. No BOGL: generic is on the lowest tier. Plan is Cigna's IFP Value 4-Tier list; PBM Express Scripts/Evernorth. This list is not Maryland-specific (Cigna publishes a single national IFP Value drug list); confirmed it is the plan's own published formulary as named in the task.",
@@ -3226,7 +4349,13 @@
           "sourceIds": [
             "cigna-value4t-2026"
           ],
-          "lastReviewed": "2026-06-28"
+          "lastReviewed": "2026-06-28",
+          "coverageSourceIds": [
+            "cigna-value4t-2026"
+          ],
+          "restrictionSourceIds": [
+            "cigna-value4t-2026"
+          ]
         },
         {
           "payerId": "aetna",
@@ -3245,25 +4374,42 @@
           "alternatives": [
             {
               "drug": "PREMPRO (conjugated estrogens / medroxyprogesterone, oral combo tablet)",
-              "note": "Covered preferred brand — listed in the MENOPAUSAL SYMPTOM AGENTS preferred block and in the alphabetical covered list; not on the removals list"
+              "note": "Covered preferred brand — listed in the MENOPAUSAL SYMPTOM AGENTS preferred block and in the alphabetical covered list; not on the removals list",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
             },
             {
               "drug": "PREMPHASE (conjugated estrogens / medroxyprogesterone, oral cyclic combo)",
-              "note": "Covered preferred brand — listed in the MENOPAUSAL SYMPTOM AGENTS preferred block and in the alphabetical covered list; not on the removals list"
+              "note": "Covered preferred brand — listed in the MENOPAUSAL SYMPTOM AGENTS preferred block and in the alphabetical covered list; not on the removals list",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
             },
             {
               "drug": "estradiol (generic oral estrogen) + progesterone, micronized OR medroxyprogesterone (generic progestins)",
-              "note": "Two-pill alternative if a single combo tablet is not wanted — all three components are covered generics on this guide (estradiol; progesterone, micronized; medroxyprogesterone)"
+              "note": "Two-pill alternative if a single combo tablet is not wanted — all three components are covered generics on this guide (estradiol; progesterone, micronized; medroxyprogesterone)",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
             }
           ],
           "paRequired": [
             {
               "drug": "BIJUVA (estradiol/progesterone), ANGELIQ (estradiol/drospirenone), PREFEST (estradiol/norgestimate), femhrt / JINTELI (ethinyl estradiol/norethindrone acetate)",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
             },
             {
               "drug": "COMBIPATCH (estradiol/norethindrone transdermal patch) / CLIMARA PRO (estradiol/levonorgestrel patch)",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "aetna-standard-2026"
+              ]
             }
           ],
           "stepTherapy": null,
@@ -3273,7 +4419,13 @@
           "sourceIds": [
             "aetna-standard-2026"
           ],
-          "lastReviewed": "2026-06-28"
+          "lastReviewed": "2026-06-28",
+          "coverageSourceIds": [
+            "aetna-standard-2026"
+          ],
+          "restrictionSourceIds": [
+            "aetna-standard-2026"
+          ]
         },
         {
           "payerId": "medicare-partd",
@@ -3292,45 +4444,79 @@
           "alternatives": [
             {
               "drug": "estradiol / norethindrone acetate (oral tablet, generic)",
-              "note": "Tier 3 generic, no restrictions — first-pass"
+              "note": "Tier 3 generic, no restrictions — first-pass",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             },
             {
               "drug": "Mimvey (estradiol / norethindrone acetate, oral tablet)",
-              "note": "Tier 3 generic, no restrictions"
+              "note": "Tier 3 generic, no restrictions",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             },
             {
               "drug": "Jinteli (ethinyl estradiol / norethindrone acetate, oral tablet)",
-              "note": "Tier 3 generic, no restrictions"
+              "note": "Tier 3 generic, no restrictions",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             },
             {
               "drug": "norethindrone acetate / ethinyl estradiol (femhrt family, oral tablet, generic)",
-              "note": "Tier 3 generic, no restrictions"
+              "note": "Tier 3 generic, no restrictions",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
+            },
+            {
+              "drug": "Premphase (conjugated estrogens / medroxyprogesterone, oral tablet)",
+              "note": "Higher tier",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
+            },
+            {
+              "drug": "Prempro (conjugated estrogens / medroxyprogesterone, oral tablet)",
+              "note": "Higher tier",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             }
           ],
           "paRequired": [
             {
-              "drug": "Premphase (conjugated estrogens / medroxyprogesterone, oral tablet)",
-              "reason": "Higher tier"
-            },
-            {
-              "drug": "Prempro (conjugated estrogens / medroxyprogesterone, oral tablet)",
-              "reason": "Higher tier"
-            },
-            {
               "drug": "Activella (estradiol / norethindrone acetate, brand)",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             },
             {
               "drug": "Angeliq (estradiol / drospirenone, oral tablet)",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             },
             {
               "drug": "Bijuva (estradiol / progesterone, oral capsule)",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             },
             {
               "drug": "Prefest (estradiol / norgestimate, oral tablet)",
-              "reason": "Non-formulary"
+              "reason": "Non-formulary",
+              "outcome": "nonformulary",
+              "sourceIds": [
+                "aarp-medicarerx-2026"
+              ]
             }
           ],
           "stepTherapy": null,
@@ -3340,7 +4526,13 @@
           "sourceIds": [
             "aarp-medicarerx-2026"
           ],
-          "lastReviewed": "2026-06-28"
+          "lastReviewed": "2026-06-28",
+          "coverageSourceIds": [
+            "aarp-medicarerx-2026"
+          ],
+          "restrictionSourceIds": [
+            "aarp-medicarerx-2026"
+          ]
         }
       ]
     }

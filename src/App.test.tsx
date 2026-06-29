@@ -1,17 +1,7 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, within, fireEvent, waitFor } from '@testing-library/react'
+import { describe, it, expect } from 'vitest'
+import { render, screen, within, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import App from './App'
-
-const writeText = vi.fn().mockResolvedValue(undefined)
-
-beforeEach(() => {
-  writeText.mockClear()
-  Object.defineProperty(navigator, 'clipboard', {
-    value: { writeText },
-    configurable: true,
-  })
-})
 
 /** The preferred-agent name is the only level-2 heading in the result panel. */
 function agentHeading() {
@@ -29,56 +19,31 @@ describe('FirstPassRx app', () => {
     render(<App />)
     expect(agentHeading()).toHaveTextContent('Ventolin HFA')
     expect(screen.getByText(/Ask for the brand name/i)).toBeInTheDocument()
-    // Patient/Doctor guidance lives in the appendix; the dynamic generic name is interpolated.
+    // Coverage workflow stays explicit without exposing unsourced clinical dosing.
     const doctorLi = screen.getByText(/Doctor:/i).closest('li')
     expect(doctorLi).toHaveTextContent(/write Ventolin HFA on the prescription, not generic albuterol/i)
-    expect(screen.getByText(/Patient:/i)).toBeInTheDocument()
+    expect(screen.getByText(/Patient:/i).closest('li')).toHaveTextContent(/exact benefit product/i)
 
     expect(screen.queryByText(/generic OK/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/Q4-6H PRN/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/90 micrograms per puff/i)).not.toBeInTheDocument()
   })
 
-  it('copies the (editable) brand sig for a BOGL cell', async () => {
+  it('does not render clinical dosing or paste-ready prescription text', () => {
     render(<App />)
-    fireEvent.click(screen.getByText(/Prescription text for clinician/i))
-    fireEvent.click(screen.getByRole('button', { name: /copy sig/i }))
-    await waitFor(() =>
-      expect(writeText).toHaveBeenCalledWith(
-        'Ventolin HFA 90 micrograms - 2 puffs every 4 to 6 hours as needed',
-      ),
-    )
+    expect(screen.queryByText(/Prescription text for clinician/i)).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /copy sig/i })).not.toBeInTheDocument()
+    expect(screen.queryByText(/Usual use:/i)).not.toBeInTheDocument()
   })
 
-  it('lets the prescriber edit the sig before copying', async () => {
+  it('switches to a non-BOGL product and keeps the result coverage-only', () => {
     render(<App />)
-    fireEvent.click(screen.getByText(/Prescription text for clinician/i))
-    const field = screen.getByLabelText(/editable prescription text/i)
-    fireEvent.change(field, {
-      target: { value: 'Ventolin HFA 90 micrograms - 1 puff four times daily as needed' },
-    })
-    fireEvent.click(screen.getByRole('button', { name: /copy sig/i }))
-    await waitFor(() =>
-      expect(writeText).toHaveBeenCalledWith(
-        'Ventolin HFA 90 micrograms - 1 puff four times daily as needed',
-      ),
-    )
-  })
-
-  it('switches to a non-BOGL plan and copies the generic sig', async () => {
-    render(<App />)
-    fireEvent.change(screen.getByLabelText(/select insurance plan/i), {
+    fireEvent.change(screen.getByLabelText(/select benefit product/i), {
       target: { value: 'bcbsma' },
     })
     expect(screen.queryByText(/Use brand name/i)).not.toBeInTheDocument()
     expect(screen.getByText(/a generic is fine/i)).toBeInTheDocument()
-    fireEvent.click(screen.getByText(/Prescription text for clinician/i))
-    fireEvent.click(screen.getByRole('button', { name: /copy sig/i }))
-    await waitFor(() =>
-      expect(writeText).toHaveBeenCalledWith(
-        'Albuterol sulfate HFA 90 micrograms - 2 puffs every 4 to 6 hours as needed',
-      ),
-    )
+    expect(document.querySelector('.recommendation-label')).toHaveTextContent(/Formulary first-pass/i)
   })
 
   it('lists reject drugs with reasons and disables the appeal + biologics actions', async () => {
@@ -115,14 +80,14 @@ describe('FirstPassRx app', () => {
     const panel = screen.getByRole('tabpanel')
     // the options table — recommended pick + the also-covered combos
     const options = within(panel).getByRole('region', { name: /prescribing options/i })
-    expect(within(options).getByText(/Recommended/)).toBeInTheDocument()
+    expect(within(options).getByText(/First-pass/)).toBeInTheDocument()
     expect(within(options).getByText(/Advair Diskus/)).toBeInTheDocument()
     expect(within(options).getByText(/Breo Ellipta/)).toBeInTheDocument()
     expect(within(options).getByText('In plan')).toBeInTheDocument()
     expect(within(options).getByText('Cash')).toBeInTheDocument()
     // rejects sit in their own ledger (the step text also names AirDuo)
     const rejects = within(panel).getByRole('region', {
-      name: /may need extra approval/i,
+      name: /coverage barriers/i,
     })
     expect(within(rejects).getByText(/AirDuo RespiClick/)).toBeInTheDocument()
   })
@@ -151,6 +116,16 @@ describe('FirstPassRx app', () => {
     expect(agentHeading()).toHaveTextContent(/Estradiol/i)
     // Inhaler-specific plans are gone.
     expect(screen.queryByRole('option', { name: 'MassHealth' })).not.toBeInTheDocument()
+  })
+
+  it('names the exact benefit product instead of implying carrier-wide coverage', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    await user.click(screen.getByRole('button', { name: /Menopause HT/i }))
+    fireEvent.change(screen.getByLabelText(/select benefit product/i), { target: { value: 'uhc-md' } })
+    expect(screen.getByRole('option', { name: /UnitedHealthcare 2026 Commercial PDL/i })).toBeInTheDocument()
+    expect(screen.getByText(/Formulary first-pass for UnitedHealthcare 2026 Commercial PDL/i)).toBeInTheDocument()
+    expect(screen.getByText(/Commercial PDL Jan 2026/i)).toBeInTheDocument()
   })
 
   it('cites the source inline and shows in-plan + cash cost in the options table', () => {

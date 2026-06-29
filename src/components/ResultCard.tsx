@@ -1,6 +1,5 @@
 import type { FormularyRecord, PayerMeta, Verification } from '../types/formulary'
 import { useGuide } from '../lib/formulary'
-import { RxSig } from './RxSig'
 import { BoglBanner } from './BoglBanner'
 import { PrescribeOptions } from './PrescribeOptions'
 import { RejectList } from './RejectList'
@@ -29,7 +28,8 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
   const { resolveSources, capturedAt, unitNoun } = useGuide()
   const agent = record.preferredAgent
   const sources = resolveSources(record.sourceIds)
-  const primarySource = sources[0]
+  const coverageSources = resolveSources(record.coverageSourceIds)
+  const primarySource = coverageSources[0]
   const displayName = agent.brand ?? agent.inn
 
   // Clean lowercase generic name without salt/device suffixes, for the BOGL "write brand, not
@@ -52,13 +52,13 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
         <div className="highlights">
           <span className="recommendation-label">
             <span className="dot" aria-hidden="true" />
-            Recommended for {payer.shortName}
+            Formulary first-pass for {payer.productName}
           </span>
           <h2 className="agent">{displayName}</h2>
           {agent.brand ? (
             <p className="agent__generic">Also called: {readableGenericName(agent.inn)}</p>
           ) : null}
-          {/* Verification + citation on one line — every claim below traces here. */}
+          {/* Verification describes coverage evidence only; it is not clinical guidance. */}
           <p className={`result__provenance is-${record.verification}`}>
             <span aria-hidden="true">{record.verification === 'verified' ? '✓' : '⚠'}</span>{' '}
             <span className="sr-only">Source confidence: </span>
@@ -80,7 +80,7 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
 
         {/* What to avoid. */}
         <div className="coverage-panel coverage-panel--reject">
-          <RejectList items={record.paRequired} source={primarySource} />
+          <RejectList items={record.paRequired} />
         </div>
 
         {/* Load-bearing prescriber warning — stays visible when the plan forces the brand. */}
@@ -93,20 +93,16 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
           />
         ) : null}
 
-        {/* Everything else — patient guidance, Rx text, full sources — out of the way. */}
+        {/* Policy detail and provenance. Clinical selection and dosing stay outside this tool. */}
         <details className="appendix">
-          <summary>Patient guidance, prescription text &amp; full sources</summary>
+          <summary>Coverage detail &amp; full sources</summary>
           <div className="appendix__body">
-            <p className="agent__directions">
-              <b>Usual use:</b> {agent.plainSig}
-            </p>
-
             <div className="patient-summary" aria-label="What to do next">
               <p className="eyebrow">What to do next</p>
               <ol>
                 <li>
-                  <b>Patient:</b> ask your doctor if <strong>{displayName}</strong> is the right{' '}
-                  {unitNoun} for you.
+                  <b>Patient:</b> ask the pharmacy to confirm this exact benefit product before the
+                  prescription is sent.
                 </li>
                 {record.boglActive ? (
                   <li>
@@ -121,11 +117,6 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
                   </li>
                 )}
               </ol>
-            </div>
-
-            <div className="appendix__block">
-              <p className="eyebrow">Prescription text for clinician</p>
-              <RxSig record={record} />
             </div>
 
             <div className="appendix__block">

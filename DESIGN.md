@@ -198,8 +198,8 @@ A matrix answers a binary question — "does this entity touch this dimension at
 
 Lead with the answer, not the preamble. A result card front-loaded a paragraph of patient prose, a 3-step list, and a cost note before the user reached the actual decision (what to prescribe + the alternatives). Reordered:
 
-- **The recommendation, then a scannable comparison table, then the rejects.** The two questions a user has ("what do I pick" / "what else is covered, at what cost") belong in one table — recommended row + alternatives, each tagged (Recommended / Generic / Biosimilar), with the in-plan cost beside the cash price. Don't make the table heading echo a label already shown ("Recommended for X" above, then "WHAT TO PRESCRIBE ON X" — pick one); use a compact caption.
-- **Demote everything else to ONE collapsed appendix** — patient guidance, paste-ready text, full sources. Don't scatter five `<details>` blocks.
+- **The formulary first-pass option, then a scannable comparison table, then true barriers.** Coverage preference is not a clinical recommendation. Keep covered higher-tier/non-preferred drugs in the table; reserve the barrier rail for PA, step therapy, and non-formulary outcomes.
+- **Demote policy detail and full sources to ONE collapsed appendix.** Do not render dosing or paste-ready prescription text without independent clinical sources and patient-context gates.
 - **Merge provenance onto one line.** Verification state + the source citation read as "✓ Verified · per <source>", not a stamp plus a separate "Coverage per…" line.
 - **Cut the count of headings/subtitles.** Each eyebrow/subtitle is a tax on the scan; if a section's purpose is obvious from context, drop its label.
 

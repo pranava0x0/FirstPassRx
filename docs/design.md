@@ -24,11 +24,11 @@ means "the covered path."
   - **serif** (New York/Iowan/Palatino/Georgia) — the ONE verdict: the drug-name headline + wordmark.
   - **sans** — every sentence a human reads (plain language, instructions, UI). Weights 400/500 only.
   - **mono** (SF Mono) — every machine value you transcribe: dose, sig, status stamps, dates, the
-    numbered citations. Mono = "a literal value you copy verbatim."
+  numbered citations. Mono = "a literal policy value copied verbatim."
 - **Layout — a stacked document, not cards.** Square corners, hairline `--rule` dividers and a 3px
   ink masthead rule carry all structure; zero shadows/gradients/glassmorphism. Fixed
-  Highlights→Full-PI order: masthead → search → plan + class → highlights → status stamps → BOGL →
-  Rx sig → reject ledger → step therapy → source byline.
+  order: masthead → exact product + class → coverage result → options → barriers → policy detail →
+  source byline.
 - **Motion** — one orchestrated page-load (staggered rise of the result sections), nothing else;
   fully disabled under `prefers-reduced-motion`.
 
@@ -36,10 +36,10 @@ means "the covered path."
 
 1. **Outlined mono status stamps** ("GO · PREFERRED", "⚠ BOGL · BRAND REQ", "VERIFIED DATA") that
    read like a regulatory rubber-stamp.
-2. **The reject ledger** — one row per drug with a deny rail, ✕, and a right-flushed mono reason tag.
-3. **Editable Rx sig** — a mono field seeded with the default, tweakable before copy (doses vary).
-4. **A numbered source byline closes every result** — the trust mechanism is provenance, not polish.
-5. **Glossary affordance** — clinical terms wear a dotted-green underline; tap for a plain-language
+2. **The barrier ledger** — PA, step-therapy, and non-formulary outcomes only. Higher tiers stay in
+   the covered-options table.
+3. **A numbered source byline closes every result** — the trust mechanism is provenance, not polish.
+4. **Glossary affordance** — clinical terms wear a dotted-green underline; tap for a plain-language
    definition. Serves the confused patient without cluttering the expert's scan.
 
 ## What this deliberately is not
@@ -53,5 +53,5 @@ dated source trail are the "authored by a human" tells (DESIGN §1.1).
 Skip link · landmarks · fieldset+legend per control group · class tablist with roving tabindex +
 arrow keys · result is the `tabpanel` with `aria-live="polite"` · glossary popover wired with
 `aria-describedby`/`aria-expanded` and Esc-dismiss · search status in an `aria-live` region · lossy
-reject strike carries "Will reject:" in SR text · ≥44px targets · 16px inputs (no iOS zoom) · all
+barrier rows carry "Coverage barrier:" in SR text · ≥44px targets · 16px inputs (no iOS zoom) · all
 text/bg pairs ≥4.5:1 (contrast ratios recorded in the palette comments).

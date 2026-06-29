@@ -38,7 +38,7 @@ export function PrescribeOptions({
   const rows: Row[] = [
     {
       drug: a.brand ?? a.inn,
-      role: 'Recommended',
+      role: 'First-pass',
       cost: record.tier ?? 'see plan',
       cashName: a.inn,
       recommended: true,
@@ -57,7 +57,7 @@ export function PrescribeOptions({
       <div className="rx-table-wrap">
         <table className="rx-table">
           <caption className="rx-cap">
-            Options on {payer.shortName}
+            Options on {payer.productName}
             <SourceLink source={source} />
           </caption>
           <thead>

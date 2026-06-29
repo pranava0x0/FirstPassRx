@@ -66,6 +66,27 @@ describe.each(guides.map((g) => [g.id, g] as const))('guide invariants: %s', (_i
       for (const pa of r.paRequired) {
         expect(pa.drug, `${r.payerId}/${r.classId} pa.drug`).toBeTruthy()
         expect(pa.reason, `${r.payerId}/${r.classId} pa.reason`).toBeTruthy()
+        expect(['pa', 'step', 'nonformulary']).toContain(pa.outcome)
+        expect(pa.reason).not.toMatch(/higher tier|non-preferred/i)
+        expect(guide.resolveSources(pa.sourceIds)).toHaveLength(pa.sourceIds.length)
+      }
+    }
+  })
+
+  it('identifies exact products and claim-specific source lanes', () => {
+    for (const p of guide.payers) {
+      expect(p.productName, `${p.id} productName`).toBeTruthy()
+      expect(p.marketSegment, `${p.id} marketSegment`).toBeTruthy()
+      expect(p.formularyId, `${p.id} formularyId`).toBeTruthy()
+    }
+    for (const r of guide.records) {
+      expect(r.coverageSourceIds.length).toBeGreaterThan(0)
+      expect(r.restrictionSourceIds.length).toBeGreaterThan(0)
+      expect(guide.resolveSources(r.coverageSourceIds)).toHaveLength(r.coverageSourceIds.length)
+      expect(guide.resolveSources(r.restrictionSourceIds)).toHaveLength(r.restrictionSourceIds.length)
+      for (const alt of r.alternatives || []) {
+        expect(alt.sourceIds.length).toBeGreaterThan(0)
+        expect(guide.resolveSources(alt.sourceIds)).toHaveLength(alt.sourceIds.length)
       }
     }
   })
@@ -166,9 +187,12 @@ describe('MD menopause guide specifics', () => {
     const combo = md.records.filter((r) => r.classId === 'combo')
     expect(combo.length).toBe(md.payers.length) // every carrier covered
     expect(md.getRecord('carefirst', 'combo')?.preferredAgent.inn).toMatch(/norethindrone/i)
-    // brand single-pill combos (e.g. Bijuva) land on a reject/higher-tier list somewhere
-    const allRejects = combo.flatMap((r) => r.paRequired.map((p) => p.drug.toLowerCase()))
-    expect(allRejects.some((d) => /bijuva|angeliq|prempro|activella/.test(d))).toBe(true)
+    // Brand single-pill combos may be true barriers or covered higher-cost alternatives.
+    const allCoverageItems = combo.flatMap((r) => [
+      ...r.paRequired.map((p) => p.drug.toLowerCase()),
+      ...(r.alternatives || []).map((a) => a.drug.toLowerCase()),
+    ])
+    expect(allCoverageItems.some((d) => /bijuva|angeliq|prempro|activella/.test(d))).toBe(true)
   })
 
   it('oral estrogen is generic estradiol first-pass, with Premarin/conjugated as the brand tail', () => {
