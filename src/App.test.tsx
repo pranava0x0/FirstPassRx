@@ -46,7 +46,7 @@ describe('FirstPassRx app', () => {
     })
     expect(screen.queryByText(/Use brand name/i)).not.toBeInTheDocument()
     expect(screen.getByText(/a generic is fine/i)).toBeInTheDocument()
-    expect(document.querySelector('.recommendation-label')).toHaveTextContent(/Formulary first-pass/i)
+    expect(document.querySelector('.recommendation-label')).toHaveTextContent(/Preferred option/i)
   })
 
   it('lists reject drugs with reasons and disables the appeal + biologics actions', async () => {
@@ -113,7 +113,7 @@ describe('FirstPassRx app', () => {
 
     // Masthead, class legend, plan list, and the result all swap to the menopause guide.
     expect(screen.getByText(/Maryland menopause/i)).toBeInTheDocument()
-    expect(screen.getByText(/Prescription type/i, { selector: 'legend' })).toBeInTheDocument()
+    expect(screen.getByText(/Prescription type/i, { selector: 'h2' })).toBeInTheDocument()
     expect(screen.getByRole('option', { name: /Maryland Medicaid/i })).toBeInTheDocument()
     expect(agentHeading()).toHaveTextContent(/Estradiol/i)
     // Inhaler-specific plans are gone.
@@ -126,7 +126,7 @@ describe('FirstPassRx app', () => {
     await user.click(screen.getByRole('button', { name: /Menopause HT/i }))
     fireEvent.change(screen.getByLabelText(/select insurance plan/i), { target: { value: 'uhc-md' } })
     expect(screen.getByRole('option', { name: /UnitedHealthcare 2026 Commercial PDL/i })).toBeInTheDocument()
-    expect(screen.getByText(/Formulary first-pass for UnitedHealthcare 2026 Commercial PDL/i)).toBeInTheDocument()
+    expect(screen.getByText(/Preferred option/i)).toBeInTheDocument()
     expect(screen.getByText(/Commercial PDL Jan 2026/i)).toBeInTheDocument()
   })
 

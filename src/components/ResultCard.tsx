@@ -51,7 +51,7 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
         {/* The answer — minimal. */}
         <div className="highlights">
           <span className="recommendation-label">
-            3. Formulary first-pass for {payer.productName}
+            3. Preferred option
           </span>
           <h2 className="agent">{displayName}</h2>
           {agent.brand ? (
