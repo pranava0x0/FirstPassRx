@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeEach } from 'vitest'
 import { render, screen, within, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import App from './App'
@@ -9,6 +9,9 @@ function agentHeading() {
 }
 
 describe('FirstPassRx app', () => {
+  beforeEach(() => {
+    window.history.replaceState({}, '', '/')
+  })
   it('renders the masthead and the persistent reference-only disclaimer', () => {
     render(<App />)
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('FirstPassRx')
@@ -95,7 +98,6 @@ describe('FirstPassRx app', () => {
   it('opens a plain-language glossary definition on tap', async () => {
     const user = userEvent.setup()
     render(<App />)
-    await user.click(screen.getByText(/Why this matters/i))
     await user.click(screen.getByRole('button', { name: /brand-over-generic rule/i }))
     expect(screen.getByRole('tooltip')).toHaveTextContent(/brand/i)
   })
@@ -111,7 +113,7 @@ describe('FirstPassRx app', () => {
 
     // Masthead, class legend, plan list, and the result all swap to the menopause guide.
     expect(screen.getByText(/Maryland menopause/i)).toBeInTheDocument()
-    expect(screen.getByText('Hormone type', { selector: 'legend' })).toBeInTheDocument()
+    expect(screen.getByText(/Hormone type/i, { selector: 'legend' })).toBeInTheDocument()
     expect(screen.getByRole('option', { name: /Maryland Medicaid/i })).toBeInTheDocument()
     expect(agentHeading()).toHaveTextContent(/Estradiol/i)
     // Inhaler-specific plans are gone.

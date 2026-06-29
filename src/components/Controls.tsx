@@ -32,7 +32,7 @@ export function Controls({ payerId, classId, onPayer, onClass, panelId, tabId }:
   return (
     <div className="controls">
       <fieldset className="controls__group">
-        <legend className="controls__legend eyebrow">Benefit product</legend>
+        <legend className="controls__legend eyebrow">1. Benefit product</legend>
         <label htmlFor="plan-select" className="sr-only">
           Select benefit product
         </label>
@@ -60,7 +60,7 @@ export function Controls({ payerId, classId, onPayer, onClass, panelId, tabId }:
       </fieldset>
 
       <fieldset className="controls__group">
-        <legend className="controls__legend eyebrow">{classNoun}</legend>
+        <legend className="controls__legend eyebrow">2. {classNoun}</legend>
         <div className="seg" role="tablist" aria-label={classNoun}>
           {allClasses.map((c) => {
             if (c.comingSoon) {

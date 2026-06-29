@@ -10,7 +10,17 @@ const PANEL_ID = 'result-panel'
 const tabId = (c: ClassId) => `tab-${c}`
 
 export default function App() {
-  const [guideId, setGuideId] = useState<string>(defaultGuideId)
+  function getInitialGuideId(): string {
+    if (typeof window === 'undefined') return defaultGuideId
+    const params = new URLSearchParams(window.location.search)
+    const gId = params.get('guide')
+    if (gId && guides.some((g) => g.id === gId)) {
+      return gId
+    }
+    return defaultGuideId
+  }
+
+  const [guideId, setGuideId] = useState<string>(getInitialGuideId())
   const guide = getGuideView(guideId)
   const [payerId, setPayerId] = useState<PayerId>(guide.payers[0]!.id)
   const [classId, setClassId] = useState<ClassId>(guide.activeClasses[0]!.id)
@@ -23,6 +33,10 @@ export default function App() {
     setGuideId(id)
     setPayerId(g.payers[0]!.id)
     setClassId(g.activeClasses[0]!.id)
+
+    const url = new URL(window.location.href)
+    url.searchParams.set('guide', id)
+    window.history.pushState({}, '', url.toString())
   }
 
   const payer = guide.getPayer(payerId)
@@ -60,19 +74,6 @@ export default function App() {
             </span>
           </div>
           <p className="masthead__sub">{guide.tagline}</p>
-          <p className="masthead__audience">
-            Patients can bring this to a visit. Prescribers should confirm against the linked
-            formulary.
-          </p>
-          <details className="how">
-            <summary>How this works</summary>
-            <p className="how__body">
-              <b>Formulary first-pass</b> means the option most likely to go through under the exact
-              benefit product shown. It is not a clinical recommendation. Confirm the product and
-              patient-specific treatment choice before prescribing.
-            </p>
-          </details>
-          <Disclaimer />
         </header>
 
         <main role="main">
@@ -106,6 +107,18 @@ export default function App() {
             </section>
           )}
         </main>
+
+        <section className="disclaimer-group">
+          <details className="how">
+            <summary>How this works</summary>
+            <p className="how__body">
+              <b>Formulary first-pass</b> means the option most likely to go through under the exact
+              benefit product shown. It is not a clinical recommendation. Confirm the product and
+              patient-specific treatment choice before prescribing.
+            </p>
+          </details>
+          <Disclaimer />
+        </section>
 
         <footer className="footer" role="contentinfo">
           <p>

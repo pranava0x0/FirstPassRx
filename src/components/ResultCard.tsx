@@ -52,7 +52,7 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
         <div className="highlights">
           <span className="recommendation-label">
             <span className="dot" aria-hidden="true" />
-            Formulary first-pass for {payer.productName}
+            3. Formulary first-pass for {payer.productName}
           </span>
           <h2 className="agent">{displayName}</h2>
           {agent.brand ? (

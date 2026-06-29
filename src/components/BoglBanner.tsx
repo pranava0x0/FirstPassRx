@@ -21,13 +21,10 @@ export function BoglBanner({ brand, payerName, genericBase, unitNoun }: Props) {
           For {payerName}, ask for <b>{brand}</b>. The generic {genericBase} {unitNoun} may need
           extra insurance approval first.
         </p>
-        <details className="mini-detail">
-          <summary>Why this matters</summary>
-          <p>
-            {payerName} has a <GlossaryTerm match="BOGL">brand-over-generic rule</GlossaryTerm> for
-            this {unitNoun}: the brand is the easier path, even though a generic exists.
-          </p>
-        </details>
+        <p className="bogl__subtext">
+          {payerName} has a <GlossaryTerm match="BOGL">brand-over-generic rule</GlossaryTerm> for
+          this {unitNoun}: the brand is the easier path, even though a generic exists.
+        </p>
       </div>
     </div>
   )
