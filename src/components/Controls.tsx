@@ -31,8 +31,8 @@ export function Controls({ payerId, classId, onPayer, onClass, panelId, tabId }:
 
   return (
     <div className="controls">
-      <fieldset className="controls__group">
-        <legend className="controls__legend eyebrow">1. Insurance plan</legend>
+      <section className="controls__group" aria-labelledby="sec-plan-title">
+        <h2 id="sec-plan-title" className="controls__legend eyebrow">1. Insurance plan</h2>
         <label htmlFor="plan-select" className="sr-only">
           Select insurance plan
         </label>
@@ -57,12 +57,12 @@ export function Controls({ payerId, classId, onPayer, onClass, panelId, tabId }:
             {payer.pbm ? `PBM: ${payer.pbm}` : ''}
           </p>
         )}
-      </fieldset>
+      </section>
 
       <hr className="section-divider" />
 
-      <fieldset className="controls__group">
-        <legend className="controls__legend eyebrow">2. {classNoun}</legend>
+      <section className="controls__group" aria-labelledby="sec-class-title">
+        <h2 id="sec-class-title" className="controls__legend eyebrow">2. {classNoun}</h2>
         <div className="seg" role="tablist" aria-label={classNoun}>
           {allClasses.map((c) => {
             if (c.comingSoon) {
@@ -109,7 +109,7 @@ export function Controls({ payerId, classId, onPayer, onClass, panelId, tabId }:
             {activeClass.plainDescription}
           </p>
         )}
-      </fieldset>
+      </section>
     </div>
   )
 }

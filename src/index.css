@@ -376,7 +376,7 @@ button {
 
 /* ---- selectors ---- */
 .controls {
-  margin-top: 0;
+  margin-top: 24px;
 }
 .controls__group {
   border: 0;
@@ -391,6 +391,7 @@ button {
 .controls__legend {
   display: block;
   width: 100%;
+  margin: 0;
   padding: 0 0 8px;
   font-family: var(--font-serif);
   font-size: clamp(20px, 5vw, 24px);
@@ -542,21 +543,59 @@ button {
   font-family: var(--font-serif);
   font-size: clamp(20px, 5vw, 24px);
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
   color: var(--ink);
-  margin-bottom: 8px;
+  margin: 0;
 }
-.agent {
-  margin: 6px 0 0;
+
+.recommendation-hero {
+  border: 2px solid var(--accent);
+  background: var(--paper-shade);
+  padding: 16px;
+  margin: 16px 0 24px;
+}
+.recommendation-hero__label {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.recommendation-hero__name {
+  margin: 0;
   font-family: var(--font-serif);
-  font-size: 18px;
-  line-height: 1.2;
+  font-size: clamp(20px, 5vw, 24px);
   font-weight: 600;
   color: var(--ink);
 }
-.agent__generic {
+.recommendation-hero__generic {
   margin: 4px 0 0;
-  font-size: 14px;
+  font-size: 13.5px;
   color: var(--ink-muted);
+}
+.recommendation-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule-faint);
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+.recommendation-hero__cost b {
+  color: var(--ink);
+}
+.recommendation-hero__cash {
+  display: flex;
+  gap: 8px;
+}
+.recommendation-hero__cash a {
+  color: var(--accent-deep);
+  font-weight: 500;
 }
 .agent__directions {
   font-family: var(--font-sans);
@@ -904,10 +943,9 @@ button {
   color: var(--status-warn);
 }
 
-/* prescribe-options table: recommended + alternatives, cost in plan vs cash */
 .rx-options {
   border: 1px solid var(--rule);
-  border-left: 4px solid var(--accent);
+  border-left: 4px solid var(--status-deny);
   background: var(--paper);
   padding: 14px 16px;
 }
@@ -924,8 +962,8 @@ button {
   text-align: left;
   margin-bottom: 10px;
   font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.05em;
+  font-size: 13px;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--ink-muted);
 }
@@ -977,10 +1015,10 @@ button {
   color: var(--ink-muted);
   white-space: nowrap;
 }
-.rx-tag--rec {
+.rx-tag--barrier {
   color: var(--paper);
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--status-deny);
+  border-color: var(--status-deny);
 }
 .rx-cost {
   width: 20%;
