@@ -1,17 +1,11 @@
-import type { FormularyRecord, PayerMeta, Verification } from '../types/formulary'
+import type { FormularyRecord, PayerMeta } from '../types/formulary'
 import { useGuide } from '../lib/formulary'
+import { goodRxUrl, costPlusUrl } from '../lib/cash'
 import { BoglBanner } from './BoglBanner'
 import { PrescribeOptions } from './PrescribeOptions'
-import { RejectList } from './RejectList'
 import { Citations } from './Citations'
 import { GlossaryTerm } from './GlossaryTerm'
 
-/** Confidence word for the provenance line; the full note lives in the appendix citations. */
-const VERIFY_WORD: Record<Verification, string> = {
-  verified: 'Verified',
-  partial: 'Partial — confirm in source',
-  example: 'Example — unconfirmed',
-}
 
 interface Props {
   record: FormularyRecord
@@ -51,35 +45,67 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
         {/* The answer — minimal. */}
         <div className="highlights">
           <h2 className="recommendation-label">
-            3. Preferred option: {displayName}
+            3. Preferred option
           </h2>
-          {agent.brand ? (
-            <p className="agent__generic">Also called: {readableGenericName(agent.inn)}</p>
-          ) : null}
           {/* Verification describes coverage evidence only; it is not clinical guidance. */}
           <p className={`result__provenance is-${record.verification}`}>
             <span aria-hidden="true">{record.verification === 'verified' ? '✓' : '⚠'}</span>{' '}
-            <span className="sr-only">Source confidence: </span>
-            {VERIFY_WORD[record.verification]}
-            {primarySource ? (
+            {record.verification === 'verified' && (
               <>
-                {' · per '}
-                <a href={primarySource.url} target="_blank" rel="noopener noreferrer">
-                  {primarySource.label}
-                </a>
-                {primarySource.effectiveDate ? ` (rev. ${primarySource.effectiveDate})` : ''}
+                Verified against the official{' '}
+                {primarySource ? (
+                  <a href={primarySource.url} target="_blank" rel="noopener noreferrer">
+                    {primarySource.label}
+                  </a>
+                ) : (
+                  'plan formulary'
+                )}
+                {primarySource?.effectiveDate ? ` (effective ${primarySource.effectiveDate})` : ''}
               </>
-            ) : null}
+            )}
+            {record.verification === 'partial' && (
+              <>
+                Partially verified; confirm in the official{' '}
+                {primarySource ? (
+                  <a href={primarySource.url} target="_blank" rel="noopener noreferrer">
+                    {primarySource.label}
+                  </a>
+                ) : (
+                  'plan formulary'
+                )}
+                {primarySource?.effectiveDate ? ` (effective ${primarySource.effectiveDate})` : ''}
+              </>
+            )}
+            {record.verification === 'example' && (
+              <>Unconfirmed example data; verify details with the plan before prescribing</>
+            )}
           </p>
+        </div>
+
+        <div className="recommendation-hero">
+          <div className="recommendation-hero__label">FIRST-PASS RECOMMENDED</div>
+          <h3 className="recommendation-hero__name">{displayName}</h3>
+          {agent.brand ? (
+            <p className="recommendation-hero__generic">Also called: {readableGenericName(agent.inn)}</p>
+          ) : null}
+          <div className="recommendation-hero__meta">
+            <span className="recommendation-hero__cost">
+              In plan: <b>{record.tier ?? 'covered'}</b>
+            </span>
+            <span className="recommendation-hero__cash">
+              Cash:{' '}
+              <a href={goodRxUrl(agent.inn)} target="_blank" rel="noopener noreferrer">
+                GoodRx &#8599;
+              </a>
+              <a href={costPlusUrl(agent.inn)} target="_blank" rel="noopener noreferrer">
+                Cost+ &#8599;
+              </a>
+            </span>
+          </div>
         </div>
 
         {/* Q1 + Q2: what to prescribe + alternatives, with cost in plan vs cash. */}
         <PrescribeOptions record={record} payer={payer} source={primarySource} />
-
-        {/* What to avoid. */}
-        <div className="coverage-panel coverage-panel--reject">
-          <RejectList items={record.paRequired} />
-        </div>
 
         {/* Load-bearing prescriber warning — stays visible when the plan forces the brand. */}
         {record.boglActive && record.boglNote ? (
