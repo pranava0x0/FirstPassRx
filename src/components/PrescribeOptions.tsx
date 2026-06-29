@@ -79,8 +79,10 @@ export function PrescribeOptions({
       </div>
       
       <div className="rx-cards-list">
-        {rows.map((row) => (
-          <div key={row.drug} className={`rx-option-card is-${row.type}`}>
+        {rows.map((row) => {
+          const costPlusHref = costPlusUrl(row.cashName)
+          return (
+            <div key={row.drug} className={`rx-option-card is-${row.type}`}>
             <div className="rx-option-card__header">
               <h5 className="rx-option-card__name">{row.drug}</h5>
               <span className={`rx-tag rx-tag--${row.type}`}>{row.role}</span>
@@ -96,9 +98,11 @@ export function PrescribeOptions({
                     <a href={goodRxUrl(row.cashName)} target="_blank" rel="noopener noreferrer">
                       GoodRx &#8599;
                     </a>
-                    <a href={costPlusUrl(row.cashName)} target="_blank" rel="noopener noreferrer">
-                      Cost+ &#8599;
-                    </a>
+                    {costPlusHref ? (
+                      <a href={costPlusHref} target="_blank" rel="noopener noreferrer">
+                        Cost+ &#8599;
+                      </a>
+                    ) : null}
                   </>
                 ) : (
                   guide.resolveSources(row.sourceIds).map((src) => (
@@ -116,8 +120,9 @@ export function PrescribeOptions({
                 )}
               </span>
             </div>
-          </div>
-        ))}
+            </div>
+          )
+        })}
       </div>
     </section>
   )

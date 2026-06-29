@@ -142,7 +142,10 @@ describe('FirstPassRx app', () => {
     expect(goodrx[0]).toHaveAttribute('href', expect.stringContaining('goodrx.com'))
     const costPlus = within(panel).getAllByRole('link', { name: /Cost\+/i })
     expect(costPlus.length).toBeGreaterThan(0)
-    expect(costPlus[0]).toHaveAttribute('href', expect.stringContaining('costplusdrugs.com'))
+    costPlus.forEach((link) => {
+      expect(link).toHaveAttribute('href', expect.stringMatching(/costplusdrugs\.com\/medications\/.+\/$/))
+      expect(link).not.toHaveAttribute('href', 'https://www.costplusdrugs.com/medications/')
+    })
     // coverage panels carry their own source link
     expect(within(panel).getAllByRole('link', { name: /source/i }).length).toBeGreaterThan(0)
   })

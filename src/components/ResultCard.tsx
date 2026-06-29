@@ -25,6 +25,7 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
   const coverageSources = resolveSources(record.coverageSourceIds)
   const primarySource = coverageSources[0]
   const displayName = agent.brand ?? agent.inn
+  const costPlusHref = costPlusUrl(agent.inn)
 
   // Clean lowercase generic name without salt/device suffixes, for the BOGL "write brand, not
   // generic X" copy (e.g. "Albuterol sulfate HFA" -> "albuterol").
@@ -97,9 +98,11 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
               <a href={goodRxUrl(agent.inn)} target="_blank" rel="noopener noreferrer">
                 GoodRx &#8599;
               </a>
-              <a href={costPlusUrl(agent.inn)} target="_blank" rel="noopener noreferrer">
-                Cost+ &#8599;
-              </a>
+              {costPlusHref ? (
+                <a href={costPlusHref} target="_blank" rel="noopener noreferrer">
+                  Cost+ &#8599;
+                </a>
+              ) : null}
             </span>
           </div>
         </div>

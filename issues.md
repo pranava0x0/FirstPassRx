@@ -2,6 +2,14 @@
 
 Living audit trail. Each bug: date, area, description, root cause (code bug vs. test bug), status.
 
+## Fixed
+
+- **2026-06-29 · UI (cash-price links) · wrong vendor destinations.** GoodRx links used clinical
+  display labels as URL slugs, and every Cost+ link opened the unfiltered medication directory.
+  Root cause: **code bug** — vendor URL formats were treated as interchangeable. Cash links now
+  normalize to canonical GoodRx pages, use current Cost Plus product paths for matching products,
+  and omit Cost+ when no match is known. Covered by `src/lib/cash.test.ts` and app link assertions.
+
 ## Open
 
 - **2026-06-28 · data (MA inhalers) · dead source citation.** `npm run trace:live` flags the MGB
