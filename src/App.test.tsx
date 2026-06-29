@@ -41,7 +41,7 @@ describe('FirstPassRx app', () => {
 
   it('switches to a non-BOGL product and keeps the result coverage-only', () => {
     render(<App />)
-    fireEvent.change(screen.getByLabelText(/select benefit product/i), {
+    fireEvent.change(screen.getByLabelText(/select insurance plan/i), {
       target: { value: 'bcbsma' },
     })
     expect(screen.queryByText(/Use brand name/i)).not.toBeInTheDocument()
@@ -113,7 +113,7 @@ describe('FirstPassRx app', () => {
 
     // Masthead, class legend, plan list, and the result all swap to the menopause guide.
     expect(screen.getByText(/Maryland menopause/i)).toBeInTheDocument()
-    expect(screen.getByText(/Hormone type/i, { selector: 'legend' })).toBeInTheDocument()
+    expect(screen.getByText(/Prescription type/i, { selector: 'legend' })).toBeInTheDocument()
     expect(screen.getByRole('option', { name: /Maryland Medicaid/i })).toBeInTheDocument()
     expect(agentHeading()).toHaveTextContent(/Estradiol/i)
     // Inhaler-specific plans are gone.
@@ -124,7 +124,7 @@ describe('FirstPassRx app', () => {
     const user = userEvent.setup()
     render(<App />)
     await user.click(screen.getByRole('button', { name: /Menopause HT/i }))
-    fireEvent.change(screen.getByLabelText(/select benefit product/i), { target: { value: 'uhc-md' } })
+    fireEvent.change(screen.getByLabelText(/select insurance plan/i), { target: { value: 'uhc-md' } })
     expect(screen.getByRole('option', { name: /UnitedHealthcare 2026 Commercial PDL/i })).toBeInTheDocument()
     expect(screen.getByText(/Formulary first-pass for UnitedHealthcare 2026 Commercial PDL/i)).toBeInTheDocument()
     expect(screen.getByText(/Commercial PDL Jan 2026/i)).toBeInTheDocument()

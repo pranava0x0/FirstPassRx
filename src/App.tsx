@@ -51,29 +51,30 @@ export default function App() {
 
       <div className="shell">
         <header className="masthead" role="banner">
-          <div className="guide-switch" role="group" aria-label="Choose a guide">
-            {guides.map((g) => (
-              <button
-                key={g.id}
-                type="button"
-                className="guide-switch__btn"
-                aria-pressed={g.id === guideId}
-                onClick={() => switchGuide(g.id)}
-              >
-                {g.label}
-              </button>
-            ))}
-          </div>
-
           <div className="masthead__row">
             <h1 className="masthead__mark">
               First<span className="rx">Pass</span>Rx
             </h1>
+            <div className="guide-switch" role="group" aria-label="Choose a guide">
+              {guides.map((g) => (
+                <button
+                  key={g.id}
+                  type="button"
+                  className="guide-switch__btn"
+                  aria-pressed={g.id === guideId}
+                  onClick={() => switchGuide(g.id)}
+                >
+                  {g.label}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="masthead__subrow">
             <span className="masthead__stamp">
               {guide.region} {guide.topic} · updated {guide.lastUpdated}
             </span>
+            <p className="masthead__sub">{guide.tagline}</p>
           </div>
-          <p className="masthead__sub">{guide.tagline}</p>
         </header>
 
         <main role="main">
@@ -109,14 +110,6 @@ export default function App() {
         </main>
 
         <section className="disclaimer-group">
-          <details className="how">
-            <summary>How this works</summary>
-            <p className="how__body">
-              <b>Formulary first-pass</b> means the option most likely to go through under the exact
-              benefit product shown. It is not a clinical recommendation. Confirm the product and
-              patient-specific treatment choice before prescribing.
-            </p>
-          </details>
           <Disclaimer />
         </section>
 

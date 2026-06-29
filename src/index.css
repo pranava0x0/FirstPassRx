@@ -28,7 +28,7 @@
 
   --font-serif: "New York", "Iowan Old Style", "Palatino", "Palatino Linotype", "Georgia",
     "Times New Roman", serif;
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, "Helvetica Neue",
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, "Helvetica Neue",
     Arial, sans-serif;
   --font-mono: ui-monospace, "SF Mono", "SFMono-Regular", Menlo, Consolas, "Liberation Mono",
     monospace;
@@ -125,7 +125,6 @@ button {
 /* Top-level guide switch (e.g. MA inhalers ↔ MD menopause HT). */
 .guide-switch {
   display: inline-flex;
-  margin-bottom: 16px;
   border: 1px solid var(--ink);
 }
 .guide-switch__btn {
@@ -155,14 +154,14 @@ button {
 }
 .masthead__row {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
   flex-wrap: wrap;
 }
 .masthead__mark {
   font-family: var(--font-serif);
-  font-size: 27px;
+  font-size: clamp(30px, 7vw, 36px);
   font-weight: 500;
   letter-spacing: 0;
   margin: 0;
@@ -170,6 +169,12 @@ button {
 }
 .masthead__mark .rx {
   color: var(--accent);
+}
+.masthead__subrow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 12px;
 }
 .masthead__stamp {
   font-family: var(--font-mono);
@@ -179,7 +184,7 @@ button {
   color: var(--ink-muted);
 }
 .masthead__sub {
-  margin: 8px 0 0;
+  margin: 0;
   font-size: 14.5px;
   color: var(--ink-muted);
   max-width: 60ch;
@@ -379,7 +384,13 @@ button {
   padding: 0;
 }
 .controls__legend {
-  padding: 0 0 6px;
+  display: block;
+  width: 100%;
+  padding: 0 0 8px;
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 5vw, 24px);
+  font-weight: 600;
+  color: var(--ink);
 }
 
 .plan-select {
@@ -521,26 +532,19 @@ button {
 
 /* highlights (the answer) */
 .recommendation-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
+  display: block;
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 5vw, 24px);
   font-weight: 600;
-  color: var(--accent-deep);
-}
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: var(--accent);
-  flex: 0 0 auto;
+  color: var(--ink);
+  margin-bottom: 8px;
 }
 .agent {
   margin: 6px 0 0;
   font-family: var(--font-serif);
-  font-size: clamp(25px, 6vw, 33px);
-  line-height: 1.12;
-  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 600;
   color: var(--ink);
 }
 .agent__generic {
@@ -948,7 +952,7 @@ button {
   background: var(--paper-shade);
 }
 .rx-opt {
-  width: 99%; /* absorb the slack so cost + cash size to their (short) content */
+  width: 50%;
 }
 .rx-drug {
   display: block;
@@ -973,10 +977,12 @@ button {
   border-color: var(--accent);
 }
 .rx-cost {
+  width: 20%;
   color: var(--ink-muted);
   white-space: nowrap;
 }
 .rx-cash {
+  width: 30%;
   white-space: nowrap;
 }
 .rx-cash a {

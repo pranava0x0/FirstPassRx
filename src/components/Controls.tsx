@@ -32,9 +32,9 @@ export function Controls({ payerId, classId, onPayer, onClass, panelId, tabId }:
   return (
     <div className="controls">
       <fieldset className="controls__group">
-        <legend className="controls__legend eyebrow">1. Benefit product</legend>
+        <legend className="controls__legend eyebrow">1. Insurance plan</legend>
         <label htmlFor="plan-select" className="sr-only">
-          Select benefit product
+          Select insurance plan
         </label>
         <select
           id="plan-select"
