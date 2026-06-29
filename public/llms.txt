@@ -1,0 +1,32 @@
+# FirstPassRx
+
+> Point-of-care formulary reference: the first-pass drug to prescribe on a given U.S. health plan so
+> the prescription clears without a prior-authorization round-trip. Each result gives the recommended
+> agent, the also-covered alternatives, what rejects and why, cost in plan (formulary tier) vs cash
+> (GoodRx / Cost Plus Drugs), and a cited source on every claim. Reference only — confirm against the
+> linked formulary before prescribing; formularies change quarterly.
+
+## The app
+
+- [FirstPassRx](https://pranava0x0.github.io/FirstPassRx/): pick an insurance plan and a drug class.
+  A toggle switches between two guides:
+  - Massachusetts inhalers — MassHealth, Blue Cross Blue Shield MA, Tufts, Harvard Pilgrim, Mass
+    General Brigham; classes SABA (rescue), ICS, ICS/LABA, LAMA.
+  - Maryland menopause hormone therapy — Maryland Medicaid, CareFirst, Kaiser Mid-Atlantic, Johns
+    Hopkins Priority Partners, UnitedHealthcare, Cigna, Aetna, Medicare Part D; classes transdermal
+    estrogen, oral estrogen, progestogen, vaginal estrogen.
+
+## Data and provenance
+
+- [State · plan · PBM · formulary map](https://github.com/pranava0x0/FirstPassRx/blob/main/docs/formulary-map.md): every plan's published formulary link for MA, MD, NY, VA, DC.
+- [Formulary data (formulary.json)](https://github.com/pranava0x0/FirstPassRx/blob/main/src/data/formulary.json): one record per plan × class, each with sources and a verification state.
+- [Data sources and verification states](https://github.com/pranava0x0/FirstPassRx/blob/main/data-sources.md)
+- [Source code](https://github.com/pranava0x0/FirstPassRx)
+
+## Scope and caveats
+
+- Drug-level data is live for Massachusetts inhalers and Maryland menopause hormone therapy. New
+  York, Virginia, and DC currently have formulary links only (drug-level data pending).
+- Every cell declares a verification state — verified (read off the cited document), partial (right
+  formulary cited, exact value inferred), or example (unconfirmed) — and links its source.
+- Not medical advice and not a substitute for the plan's current formulary or clinical judgment.

@@ -1,6 +1,6 @@
 import type { KeyboardEvent } from 'react'
 import type { ClassId, PayerId } from '../types/formulary'
-import { activeClasses, allClasses, getClass, getPayer, payers } from '../lib/formulary'
+import { useGuide } from '../lib/formulary'
 
 interface Props {
   payerId: PayerId
@@ -12,6 +12,7 @@ interface Props {
 }
 
 export function Controls({ payerId, classId, onPayer, onClass, panelId, tabId }: Props) {
+  const { payers, allClasses, activeClasses, classNoun, getClass, getPayer } = useGuide()
   const activeClass = getClass(classId)
   const payer = getPayer(payerId)
 
@@ -31,9 +32,9 @@ export function Controls({ payerId, classId, onPayer, onClass, panelId, tabId }:
   return (
     <div className="controls">
       <fieldset className="controls__group">
-        <legend className="controls__legend eyebrow">Insurance plan</legend>
+        <legend className="controls__legend eyebrow">Benefit product</legend>
         <label htmlFor="plan-select" className="sr-only">
-          Select insurance plan
+          Select benefit product
         </label>
         <select
           id="plan-select"
@@ -43,12 +44,14 @@ export function Controls({ payerId, classId, onPayer, onClass, panelId, tabId }:
         >
           {payers.map((p) => (
             <option key={p.id} value={p.id}>
-              {p.name}
+              {p.name} — {p.productName}
             </option>
           ))}
         </select>
-        {payer && (payer.aka || payer.pbm) && (
+        {payer && (
           <p className="plan-note">
+            {payer.productName} · {payer.formularyId}
+            {payer.aka || payer.pbm ? ' · ' : ''}
             {payer.aka ? payer.aka : ''}
             {payer.aka && payer.pbm ? ' · ' : ''}
             {payer.pbm ? `PBM: ${payer.pbm}` : ''}
@@ -57,8 +60,8 @@ export function Controls({ payerId, classId, onPayer, onClass, panelId, tabId }:
       </fieldset>
 
       <fieldset className="controls__group">
-        <legend className="controls__legend eyebrow">Inhaler type</legend>
-        <div className="seg" role="tablist" aria-label="Inhaler type">
+        <legend className="controls__legend eyebrow">{classNoun}</legend>
+        <div className="seg" role="tablist" aria-label={classNoun}>
           {allClasses.map((c) => {
             if (c.comingSoon) {
               return (
@@ -70,7 +73,7 @@ export function Controls({ payerId, classId, onPayer, onClass, panelId, tabId }:
                   aria-disabled="true"
                   aria-selected="false"
                   tabIndex={-1}
-                  title="Coming soon — biologics and non-inhaler agents are out of scope for now"
+                  title="Coming soon — out of scope for now"
                   onClick={(e) => e.preventDefault()}
                 >
                   <span className="seg__abbr">{c.shortName}</span>

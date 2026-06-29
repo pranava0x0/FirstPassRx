@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import type { ClassId, PayerId } from '../types/formulary'
-import { getClass, getPayer, searchFormulary } from '../lib/formulary'
+import { useGuide } from '../lib/formulary'
 
 /** Omni-search: type a drug ("Symbicort") and jump to where it's preferred or rejects. */
 export function Search({ onPick }: { onPick: (payerId: PayerId, classId: ClassId) => void }) {
+  const { searchFormulary, getPayer, getClass } = useGuide()
   const [q, setQ] = useState('')
   const query = q.trim()
   const hits = searchFormulary(q)

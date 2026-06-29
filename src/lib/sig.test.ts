@@ -22,6 +22,8 @@ function record(over: Partial<FormularyRecord> = {}): FormularyRecord {
     verification: 'verified',
     verificationNote: 'test',
     sourceIds: ['x'],
+    coverageSourceIds: ['x'],
+    restrictionSourceIds: ['x'],
     lastReviewed: '2026-06-22',
     ...over,
   }

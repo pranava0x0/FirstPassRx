@@ -1,8 +1,23 @@
 # Security advisory log
 
-Last updated: 2026-06-21
+Last updated: 2026-06-28
 
 ## Advisory sweeps
+
+### 2026-06-28 — PDF-parser dependency for source archival/extraction
+
+Source: `https://pranava0x0.github.io/vibe-coding-security/llms-ctx.txt` (compact variant, generated 2026-06-28).
+
+Triggered by: planned add of a PDF text-extraction devDependency (for `npm run archive-sources` /
+`trace:live` content-tracing of the formulary PDFs).
+
+**Result: clean.** The advisory index names no PDF-parsing library — `pdf-parse`, `pdfjs-dist`,
+`pdf.js`, `unpdf`, `pdf2json`, `mupdf` are all absent. Safe to add (pin an exact version; `pdfjs-dist`
+is Mozilla-official and the lowest-risk choice). Active campaigns this sweep (none in our tree):
+Miasma / Mini Shai-Hulud (`@tanstack`, `@mistralai`, `@uipath`, `@opensearch-project`, `@mastra/*`,
+`@gluestack-ui`, …), Phantom Gyp (`binding.gyp` script-bypass, `@vapi-ai/server-sdk`), IronWorm
+(`asteroiddao`, 36 pkgs), Hades (MCP-targeted: `langchain-core-mcp`, `openai-mcp`, …), Solana
+FakeFix, node-ipc (`9.1.6` / `9.2.3` / `12.0.1`).
 
 ### 2026-06-21 — project scaffold + dependency install
 

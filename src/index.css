@@ -121,6 +121,38 @@ button {
   padding: 22px 0 10px;
   border-bottom: 3px solid var(--ink);
 }
+
+/* Top-level guide switch (e.g. MA inhalers ↔ MD menopause HT). */
+.guide-switch {
+  display: inline-flex;
+  margin-bottom: 16px;
+  border: 1px solid var(--ink);
+}
+.guide-switch__btn {
+  appearance: none;
+  min-height: 44px;
+  padding: 7px 15px;
+  background: var(--paper);
+  border: 0;
+  border-right: 1px solid var(--rule);
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.guide-switch__btn:last-child {
+  border-right: 0;
+}
+.guide-switch__btn:hover[aria-pressed="false"] {
+  background: var(--paper-shade);
+  color: var(--ink);
+}
+.guide-switch__btn[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--paper);
+}
 .masthead__row {
   display: flex;
   align-items: baseline;
@@ -581,8 +613,11 @@ button {
 .stamp--verify.is-verified {
   color: var(--accent-deep);
 }
-.stamp--verify.is-example {
+.stamp--verify.is-partial {
   color: var(--status-warn);
+}
+.stamp--verify.is-example {
+  color: var(--status-deny);
 }
 
 /* BOGL banner */
@@ -826,6 +861,212 @@ button {
 }
 .coverage-panel .eyebrow {
   margin: 0;
+}
+
+/* the "↗ source" link that ties a coverage claim to its cited formulary */
+.panel-cite {
+  margin-left: 8px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.panel-cite:hover {
+  text-decoration: underline;
+}
+
+/* provenance: verification state + citation on one line, under the answer */
+.result__provenance {
+  margin: 8px 0 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ink-muted);
+}
+.result__provenance a {
+  color: var(--accent-deep);
+  text-decoration: underline;
+}
+.result__provenance > span:first-child {
+  font-weight: 700;
+}
+.result__provenance.is-verified > span:first-child {
+  color: var(--accent-deep);
+}
+.result__provenance.is-partial > span:first-child,
+.result__provenance.is-example > span:first-child {
+  color: var(--status-warn);
+}
+
+/* prescribe-options table: recommended + alternatives, cost in plan vs cash */
+.rx-options {
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  background: var(--paper);
+  padding: 14px 16px;
+}
+.rx-table-wrap {
+  overflow-x: auto;
+}
+.rx-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.rx-cap {
+  caption-side: top;
+  text-align: left;
+  margin-bottom: 10px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.rx-table thead th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  font-weight: 500;
+  padding: 0 14px 7px 0;
+  border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+}
+.rx-table tbody th,
+.rx-table tbody td {
+  padding: 11px 14px 11px 0;
+  border-bottom: 1px solid var(--rule-faint);
+  vertical-align: top;
+  text-align: left;
+  font-weight: 400;
+}
+.rx-table tbody tr:last-child th,
+.rx-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+.rx-table__rec th,
+.rx-table__rec td {
+  background: var(--paper-shade);
+}
+.rx-opt {
+  width: 99%; /* absorb the slack so cost + cash size to their (short) content */
+}
+.rx-drug {
+  display: block;
+  font-weight: 500;
+  color: var(--ink);
+}
+.rx-tag {
+  display: inline-block;
+  margin-top: 4px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border: 1px solid var(--rule);
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+.rx-tag--rec {
+  color: var(--paper);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.rx-cost {
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+.rx-cash {
+  white-space: nowrap;
+}
+.rx-cash a {
+  color: var(--accent-deep);
+  text-decoration: underline;
+  font-size: 12.5px;
+}
+.rx-cash a + a {
+  margin-left: 10px;
+}
+
+/* narrow screens: stack each option into a labeled block, not a cramped 3-col table */
+@media (max-width: 520px) {
+  .rx-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+  .rx-table,
+  .rx-table tbody,
+  .rx-table tr,
+  .rx-table tbody th,
+  .rx-table tbody td {
+    display: block;
+    width: auto;
+  }
+  .rx-table tr {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule-faint);
+  }
+  .rx-table tbody tr:last-child {
+    border-bottom: 0;
+  }
+  /* must out-specify `.rx-table tr` above (which sets padding: 10px 0) */
+  .rx-table tr.rx-table__rec {
+    background: var(--paper-shade);
+    border-left: 3px solid var(--accent);
+    padding: 12px 12px 12px 16px;
+  }
+  .rx-table tbody th,
+  .rx-table tbody td {
+    padding: 2px 0;
+    border: 0;
+  }
+  .rx-cost::before,
+  .rx-cash::before {
+    content: attr(data-label) ": ";
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+}
+
+/* appendix: patient guidance, Rx text, full sources — collapsed by default */
+.appendix {
+  border: 1px solid var(--rule);
+  background: var(--paper);
+}
+.appendix > summary {
+  min-height: 46px;
+  padding: 12px 14px;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  display: flex;
+  align-items: center;
+}
+.appendix[open] > summary {
+  border-bottom: 1px solid var(--rule-faint);
+}
+.appendix__body {
+  padding: 12px 14px;
+  display: grid;
+  gap: 14px;
+}
+.appendix__block .eyebrow {
+  margin: 0 0 4px;
 }
 
 /* secondary policy/source disclosure */

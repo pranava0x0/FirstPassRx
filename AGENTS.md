@@ -89,6 +89,14 @@ When a subagent/background task returns, do a 30-second retrospective before con
 - **Result** — used downstream or wasted? Did it survive verification (grep the "complete" list, confirm the result isn't empty)?
 - **One improvement** — fold the lesson into a *file* (prompt template, `data-sources.md` dead-seam note, backlog entry), not just this reply. If the correction applies to the next run, it doesn't belong only in your head.
 
+**Log it (required).** After every Agent/Workflow run, append a row to
+[`docs/agent-runs.md`](docs/agent-runs.md) — date, run, agents, ~tokens, worked?, quality, efficiency
+note — and give the same retrospective in the response. That file is the running scorecard and holds
+the learned cost levers (gather **per entity not per cell**; **pre-supply known source URLs**; **fold
+verification into the gather agent** rather than a second phase; **index before drug-level**; inline
+for ≤3 lookups). Read it before launching a new fan-out. A run that finished suspiciously fast/cheap
+probably failed — confirm a non-empty result before trusting the metric.
+
 A solo turn with no spawn has nothing to evaluate — say so rather than invent analysis.
 
 ---
@@ -117,6 +125,8 @@ Default verification matrix (project-specific `AGENTS.md` should override with c
 **Never use an agent to review a live UI.** Static-analysis agents read HTML/JS but can't start a server or run JavaScript — they give confidently wrong answers about dynamic behavior (declaring a working JS-rendered feature "dead"). Use `preview_eval` / `preview_snapshot` / `preview_screenshot` directly: faster, ~3K vs ~40K tokens, and actually correct.
 
 **DOM-count before screenshot.** For any DOM-rendering change, make a ~100-token element count (`querySelectorAll('.x').length` via `preview_eval`) the *first* verification step — it catches blank-because-scrolled viewports and stale-cached-JS that screenshots and unit tests miss. Screenshot only once the count is right, and **reload the preview after a rebuild** first — an open tab shows stale data until reloaded.
+
+**A wedged preview tab is a harness problem, not an app bug.** After many reloads the preview can split into two page contexts (duplicate `[vite] connecting` logs) so `preview_click` acts on one tab while `preview_eval` reads the other, or `location.reload()` races a `preview_click` so the click lands on the pre-reload DOM. Symptoms: a control that works in the unit test "does nothing" live, or `preview_eval` times out. Don't chase it — **`preview_stop` + `preview_start` fresh, navigate, then act**; trust the passing integration test plus one fresh-tab screenshot over a flaky live tab. Don't `location.reload()` immediately before a click in the same step.
 
 **Run a build/codegen script twice to assert idempotency** — the second run must inject identical bytes.
 

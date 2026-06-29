@@ -1,16 +1,21 @@
-import type { ClassMeta, FormularyRecord, PayerMeta } from '../types/formulary'
-import { meta, resolveSources } from '../lib/formulary'
-import { RxSig } from './RxSig'
+import type { FormularyRecord, PayerMeta, Verification } from '../types/formulary'
+import { useGuide } from '../lib/formulary'
 import { BoglBanner } from './BoglBanner'
-import { Alternatives } from './Alternatives'
+import { PrescribeOptions } from './PrescribeOptions'
 import { RejectList } from './RejectList'
 import { Citations } from './Citations'
 import { GlossaryTerm } from './GlossaryTerm'
 
+/** Confidence word for the provenance line; the full note lives in the appendix citations. */
+const VERIFY_WORD: Record<Verification, string> = {
+  verified: 'Verified',
+  partial: 'Partial — confirm in source',
+  example: 'Example — unconfirmed',
+}
+
 interface Props {
   record: FormularyRecord
   payer: PayerMeta
-  drugClass: ClassMeta
   panelId: string
   labelId: string
 }
@@ -19,15 +24,16 @@ function readableGenericName(name: string): string {
   return name.replace(/\s+HFA\b/g, ' inhaler')
 }
 
-export function ResultCard({ record, payer, drugClass, panelId, labelId }: Props) {
+export function ResultCard({ record, payer, panelId, labelId }: Props) {
+  const { resolveSources, capturedAt, unitNoun } = useGuide()
   const agent = record.preferredAgent
   const sources = resolveSources(record.sourceIds)
+  const coverageSources = resolveSources(record.coverageSourceIds)
+  const primarySource = coverageSources[0]
   const displayName = agent.brand ?? agent.inn
 
-  // Clinician & Patient UX: Extract a clean, lowercase generic name without salt/device suffixes
-  // (e.g. "Albuterol sulfate HFA" -> "albuterol", "Budesonide inhalation" -> "budesonide").
-  // This prevents hardcoding "generic albuterol" in BOGL (Brand Over Generic) instructions,
-  // making the component robust and correct for any other drug classes that prefer brands.
+  // Clean lowercase generic name without salt/device suffixes, for the BOGL "write brand, not
+  // generic X" copy (e.g. "Albuterol sulfate HFA" -> "albuterol").
   const genericBase = agent.inn
     .replace(/\s+(sulfate|propionate|furoate|inhalation|HFA)\b/gi, '')
     .toLowerCase()
@@ -42,90 +48,78 @@ export function ResultCard({ record, payer, drugClass, panelId, labelId }: Props
       tabIndex={-1}
     >
       <div className="doc">
+        {/* The answer — minimal. */}
         <div className="highlights">
           <span className="recommendation-label">
             <span className="dot" aria-hidden="true" />
-            Recommended for {payer.shortName}
+            Formulary first-pass for {payer.productName}
           </span>
           <h2 className="agent">{displayName}</h2>
           {agent.brand ? (
             <p className="agent__generic">Also called: {readableGenericName(agent.inn)}</p>
           ) : null}
-          <p className="agent__directions">
-            <b>Usual use:</b> {agent.plainSig}
-          </p>
-          <p className="agent__why">
-            This is the first {drugClass.plainName.toLowerCase()} option to discuss for this plan
-            because it is likely to be covered without an insurance delay.
+          {/* Verification describes coverage evidence only; it is not clinical guidance. */}
+          <p className={`result__provenance is-${record.verification}`}>
+            <span aria-hidden="true">{record.verification === 'verified' ? '✓' : '⚠'}</span>{' '}
+            <span className="sr-only">Source confidence: </span>
+            {VERIFY_WORD[record.verification]}
+            {primarySource ? (
+              <>
+                {' · per '}
+                <a href={primarySource.url} target="_blank" rel="noopener noreferrer">
+                  {primarySource.label}
+                </a>
+                {primarySource.effectiveDate ? ` (rev. ${primarySource.effectiveDate})` : ''}
+              </>
+            ) : null}
           </p>
         </div>
 
-        <div className="patient-summary" aria-label="What to do next">
-          <h3>What to do next</h3>
-          <ol>
-            {/* Patient Action: Keep this clean, consistent, and identical for all records */}
-            <li>
-              <b>Patient:</b> ask your doctor if <strong>{displayName}</strong> is the right
-              inhaler for you.
-            </li>
-            {record.boglActive ? (
-              <>
-                <li>
-                  <b>Doctor:</b> write <strong>{displayName}</strong> on the prescription, not
-                  generic {genericBase}.
-                </li>
-                <li>
-                  <b>Pharmacy:</b> switching this to generic {genericBase} may trigger extra insurance
-                  approval.
-                </li>
-              </>
-            ) : (
-              <>
-                <li>
-                  <b>Doctor:</b> this plan is likely to cover <strong>{displayName}</strong> without
-                  prior authorization.
-                </li>
-                <li>
-                  <b>Pharmacy:</b>{' '}
-                  {agent.genericAvailable
-                    ? `a generic version is okay for this plan.`
-                    : 'a generic version is not listed for this product.'}
-                </li>
-              </>
-            )}
-          </ol>
+        {/* Q1 + Q2: what to prescribe + alternatives, with cost in plan vs cash. */}
+        <PrescribeOptions record={record} payer={payer} source={primarySource} />
+
+        {/* What to avoid. */}
+        <div className="coverage-panel coverage-panel--reject">
+          <RejectList items={record.paRequired} />
         </div>
 
+        {/* Load-bearing prescriber warning — stays visible when the plan forces the brand. */}
         {record.boglActive && record.boglNote ? (
-          <div>
-            <BoglBanner
-              brand={agent.brand ?? displayName}
-              payerName={payer.shortName}
-              genericBase={genericBase}
-            />
-          </div>
+          <BoglBanner
+            brand={agent.brand ?? displayName}
+            payerName={payer.shortName}
+            genericBase={genericBase}
+            unitNoun={unitNoun}
+          />
         ) : null}
 
-        <div className="coverage-panels" aria-label="Coverage details">
-          <div className="coverage-panel coverage-panel--covered">
-            <Alternatives items={record.alternatives ?? []} payer={payer} />
-          </div>
-          <div className="coverage-panel coverage-panel--reject">
-            <RejectList items={record.paRequired} />
-          </div>
-        </div>
-
-        <div className="detail-stack">
-          <details className="detail-block">
-            <summary>Prescription text for clinician</summary>
-            <div className="detail-block__body">
-              <RxSig record={record} />
+        {/* Policy detail and provenance. Clinical selection and dosing stay outside this tool. */}
+        <details className="appendix">
+          <summary>Coverage detail &amp; full sources</summary>
+          <div className="appendix__body">
+            <div className="patient-summary" aria-label="What to do next">
+              <p className="eyebrow">What to do next</p>
+              <ol>
+                <li>
+                  <b>Patient:</b> ask the pharmacy to confirm this exact benefit product before the
+                  prescription is sent.
+                </li>
+                {record.boglActive ? (
+                  <li>
+                    <b>Doctor:</b> write <strong>{displayName}</strong> on the prescription, not
+                    generic {genericBase} (the generic may need approval).
+                  </li>
+                ) : (
+                  <li>
+                    <b>Doctor:</b> this plan is likely to cover <strong>{displayName}</strong> without
+                    prior authorization
+                    {agent.genericAvailable ? '; a generic is fine.' : '.'}
+                  </li>
+                )}
+              </ol>
             </div>
-          </details>
 
-          <details className="detail-block">
-            <summary>Policy note</summary>
-            <div className="detail-block__body">
+            <div className="appendix__block">
               <p className="eyebrow">
                 <GlossaryTerm match="Step therapy">Step therapy</GlossaryTerm>
               </p>
@@ -135,19 +129,16 @@ export function ResultCard({ record, payer, drugClass, panelId, labelId }: Props
                 <p className="step__body step__body--none">None required for the preferred agent.</p>
               )}
             </div>
-          </details>
 
-          <details className="detail-block">
-            <summary>Sources and verification</summary>
-            <div className="detail-block__body">
+            <div className="appendix__block">
               <Citations
                 sources={sources}
-                capturedAt={meta.capturedAt}
+                capturedAt={capturedAt}
                 verificationNote={record.verificationNote}
               />
             </div>
-          </details>
-        </div>
+          </div>
+        </details>
       </div>
     </section>
   )
