@@ -386,6 +386,9 @@ Decisions made by *omission*:
 
 To maintain editorial gravitas and a unique point of view for FirstPassRx:
 - **Typography pairing:** Uses *Plus Jakarta Sans* for modern, premium sans-serif UI elements (tabs, inputs) and a traditional *Serif* stack (Charter, Georgia) for all main content titles, step headers, and recommendations.
-- **Size Hierarchy:** Follows a strict sizing hierarchy: Page Title (30-36px) > Step Headings (20-24px) > Hero Recommendation/Verdict (18px) > Body/Options.
+- **Section Headers:** Section headers (1, 2, and 3) must be styled identically as uppercase text (`text-transform: uppercase`) in the serif font (`clamp(20px, 5vw, 24px)`) to establish consistent structure.
 - **Workflow Sectioning:** Sections 1, 2, and 3 are separated by a `<hr className="section-divider" />` to keep spacing and dividers perfectly consistent (24px margins) and avoid browser-specific `<fieldset>` padding bugs.
+- **Recommendation Hero Box:** The first-pass choice is presented in a dedicated `.recommendation-hero` box at the top of Section 3, rather than being nested inside the options table.
+- **Unified Options Table:** All other drug options (alternatives that are covered and coverage barriers/rejects) are rendered in a single, unified prescribing table. Alternatives include pricing links, while barriers/rejects display direct policy/source links.
 - **Explicit Alignment:** Interactive button grid cells (`.seg__btn`) must explicitly define `text-align: left` to override browser-default button center-alignment for wrapped text, ensuring a uniform visual grid.
+
