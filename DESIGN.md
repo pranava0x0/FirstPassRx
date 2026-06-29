@@ -391,4 +391,5 @@ To maintain editorial gravitas and a unique point of view for FirstPassRx:
 - **Recommendation Hero Box:** The first-pass choice is presented in a dedicated `.recommendation-hero` box at the top of Section 3, rather than being nested inside the options table.
 - **Unified Options Table:** All other drug options (alternatives that are covered and coverage barriers/rejects) are rendered in a single, unified prescribing table. Alternatives include pricing links, while barriers/rejects display direct policy/source links.
 - **Explicit Alignment:** Interactive button grid cells (`.seg__btn`) must explicitly define `text-align: left` to override browser-default button center-alignment for wrapped text, ensuring a uniform visual grid.
+- **Vertical Centering in Boxes:** Do not rely on absolute `min-height` alone to vertically align text inside summaries, details, or boxes. Always combine equal top/bottom padding (e.g. `padding: 12px` or `14px 16px`) with `line-height` and flexbox (`display: flex; align-items: center;`) to guarantee perfect vertical centering across all browsers and prevent offset misalignment.
 
