@@ -55,6 +55,20 @@ export function Controls({ payerId, classId, onPayer, onClass, panelId, tabId }:
             {payer.aka ? payer.aka : ''}
             {payer.aka && payer.pbm ? ' · ' : ''}
             {payer.pbm ? `PBM: ${payer.pbm}` : ''}
+            {payer.formularyUrl ? (
+              <>
+                {' · '}
+                <a
+                  className="panel-cite"
+                  href={payer.formularyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Official plan formulary page"
+                >
+                  source plan &#8599;
+                </a>
+              </>
+            ) : null}
           </p>
         )}
       </section>

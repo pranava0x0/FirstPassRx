@@ -102,13 +102,13 @@ describe('FirstPassRx app', () => {
     const user = userEvent.setup()
     render(<App />)
     // Default guide is MA inhalers.
-    expect(screen.getByText(/Massachusetts inhaler guide/i)).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /Inhalers/i })).toHaveAttribute('aria-pressed', 'true')
     expect(agentHeading()).toHaveTextContent('Ventolin HFA')
 
     await user.click(screen.getByRole('button', { name: /Menopause HT/i }))
 
     // Masthead, class legend, plan list, and the result all swap to the menopause guide.
-    expect(screen.getByText(/Maryland menopause/i)).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /Menopause HT/i })).toHaveAttribute('aria-pressed', 'true')
     expect(screen.getByText(/Prescription type/i, { selector: 'h2' })).toBeInTheDocument()
     expect(screen.getByRole('option', { name: /Maryland Medicaid/i })).toBeInTheDocument()
     expect(agentHeading()).toHaveTextContent(/Estradiol/i)

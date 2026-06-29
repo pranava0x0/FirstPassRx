@@ -69,12 +69,7 @@ export default function App() {
               ))}
             </div>
           </div>
-          <div className="masthead__subrow">
-            <span className="masthead__stamp">
-              {guide.region} {guide.topic} · updated {guide.lastUpdated}
-            </span>
-            {guide.tagline ? <p className="masthead__sub">{guide.tagline}</p> : null}
-          </div>
+
         </header>
 
         <main role="main">
