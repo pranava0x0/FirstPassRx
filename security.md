@@ -1,8 +1,16 @@
 # Security advisory log
 
-Last updated: 2026-06-28
+Last updated: 2026-06-29
 
 ## Advisory sweeps
+
+### 2026-06-29 — GitHub Actions deployment workflow
+
+Source: `https://pranava0x0.github.io/vibe-coding-security/llms-ctx.txt` (compact variant, generated 2026-06-28).
+
+Triggered by: planned add of a GitHub Action deployment workflow (using `actions/checkout`, `actions/setup-node`, `actions/upload-pages-artifact`, and `actions/deploy-pages`).
+
+**Result: clean.** No advisories in the index target these official GitHub Actions. The active campaigns (Miasma, Solana FakeFix, Megalodon, Cordyceps) do not impact our planned usage of standard, SHA-pinned official actions. We will pin all actions to immutable commit SHAs for maximum security.
 
 ### 2026-06-28 — PDF-parser dependency for source archival/extraction
 
