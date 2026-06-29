@@ -25,6 +25,12 @@ interface Row {
  * Renders all other options besides the first-pass recommendation.
  * Shows covered alternatives and coverage barriers in a stack of styled cards.
  */
+function cleanNote(note: string): string {
+  return note
+    .replace(/\bno PDL PA\b/gi, 'no prior authorization required')
+    .replace(/\bno PA\b/gi, 'no prior authorization required')
+}
+
 export function PrescribeOptions({
   record,
   source,
@@ -79,7 +85,9 @@ export function PrescribeOptions({
               <h5 className="rx-option-card__name">{row.drug}</h5>
               <span className={`rx-tag rx-tag--${row.type}`}>{row.role}</span>
             </div>
-            <p className="rx-option-card__cost">{row.cost}</p>
+            <p className="rx-option-card__cost">
+              <strong>Coverage:</strong> {cleanNote(row.cost)}
+            </p>
             <div className="rx-option-card__footer">
               <span className="rx-option-card__label">Cash / Details:</span>
               <span className="rx-option-card__links">
