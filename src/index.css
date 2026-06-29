@@ -943,71 +943,62 @@ button {
   color: var(--status-warn);
 }
 
-.rx-options {
-  border: 1px solid var(--rule);
-  background: var(--paper);
-  padding: 14px 16px;
-}
-.rx-options.is-covered {
-  border-left: 4px solid var(--accent);
-}
-.rx-options.is-barrier {
-  border-left: 4px solid var(--status-deny);
-}
-.rx-table-wrap {
-  overflow-x: auto;
-}
-.rx-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-.rx-cap {
-  caption-side: top;
-  text-align: left;
-  margin-bottom: 10px;
+.rx-options-stack__title {
   font-family: var(--font-mono);
   font-size: 13px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--ink-muted);
+  margin: 12px 0 16px;
 }
-.rx-table thead th {
-  text-align: left;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-  font-weight: 500;
-  padding: 0 14px 7px 0;
-  border-bottom: 1px solid var(--rule);
-  white-space: nowrap;
+
+.rx-option-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  border-radius: 4px;
 }
-.rx-table tbody th,
-.rx-table tbody td {
-  padding: 11px 14px 11px 0;
-  border-bottom: 1px solid var(--rule-faint);
-  vertical-align: top;
-  text-align: left;
-  font-weight: 400;
+.rx-option-card.is-barrier {
+  border-left: 4px solid var(--status-deny);
 }
-.rx-table tbody tr:last-child th,
-.rx-table tbody tr:last-child td {
-  border-bottom: 0;
+.rx-option-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
 }
-.rx-table__rec th,
-.rx-table__rec td {
-  background: var(--paper-shade);
-}
-.rx-opt {
-  width: 50%;
-}
-.rx-drug {
-  display: block;
-  font-weight: 500;
+.rx-option-card__name {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
   color: var(--ink);
 }
+.rx-option-card__cost {
+  margin: 6px 0 0;
+  font-size: 13.5px;
+  color: var(--ink-muted);
+}
+.rx-option-card__footer {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--rule-faint);
+  font-size: 12.5px;
+  color: var(--ink-muted);
+}
+.rx-option-card__links {
+  display: flex;
+  gap: 8px;
+}
+.rx-option-card__links a {
+  color: var(--accent-deep);
+  font-weight: 500;
+  text-decoration: underline;
+}
+
 .rx-tag {
   display: inline-block;
   margin-top: 4px;
@@ -1025,69 +1016,8 @@ button {
   background: var(--status-deny);
   border-color: var(--status-deny);
 }
-.rx-cost {
-  width: 20%;
-  color: var(--ink-muted);
-  white-space: nowrap;
-}
-.rx-cash {
-  width: 30%;
-  white-space: nowrap;
-}
-.rx-cash a {
-  color: var(--accent-deep);
-  text-decoration: underline;
-  font-size: 12.5px;
-}
-.rx-cash a + a {
-  margin-left: 10px;
-}
 
-/* narrow screens: stack each option into a labeled block, not a cramped 3-col table */
-@media (max-width: 520px) {
-  .rx-table thead {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-  }
-  .rx-table,
-  .rx-table caption,
-  .rx-table tbody,
-  .rx-table tr,
-  .rx-table tbody th,
-  .rx-table tbody td {
-    display: block;
-    width: 100%;
-  }
-  .rx-table tr {
-    padding: 10px 0;
-    border-bottom: 1px solid var(--rule-faint);
-  }
-  .rx-table tbody tr:last-child {
-    border-bottom: 0;
-  }
-  /* must out-specify `.rx-table tr` above (which sets padding: 10px 0) */
-  .rx-table tr.rx-table__rec {
-    background: var(--paper-shade);
-    border-left: 3px solid var(--accent);
-    padding: 12px 12px 12px 16px;
-  }
-  .rx-table tbody th,
-  .rx-table tbody td {
-    padding: 2px 0;
-    border: 0;
-  }
-  .rx-cash::before {
-    content: attr(data-label) ": ";
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-  }
-}
+
 
 /* appendix: patient guidance, Rx text, full sources — collapsed by default */
 .appendix {

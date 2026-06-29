@@ -105,7 +105,7 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
         </div>
 
         {/* Q1 + Q2: what to prescribe + alternatives, with cost in plan vs cash. */}
-        <PrescribeOptions record={record} payer={payer} source={primarySource} />
+        <PrescribeOptions record={record} source={primarySource} />
 
         {/* Load-bearing prescriber warning — stays visible when the plan forces the brand. */}
         {record.boglActive && record.boglNote ? (

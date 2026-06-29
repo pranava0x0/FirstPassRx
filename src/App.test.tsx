@@ -86,8 +86,7 @@ describe('FirstPassRx app', () => {
     const options = within(panel).getByRole('region', { name: /prescribing options/i })
     expect(within(options).getByText(/Advair Diskus/)).toBeInTheDocument()
     expect(within(options).getByText(/Breo Ellipta/)).toBeInTheDocument()
-    expect(within(options).getByText('In plan')).toBeInTheDocument()
-    expect(within(options).getByText(/Cash/i)).toBeInTheDocument()
+    expect(within(options).getAllByText(/Cash \/ Details/i).length).toBeGreaterThan(0)
     // rejects/barriers sit inside the same options table
     expect(within(options).getByText(/AirDuo RespiClick/)).toBeInTheDocument()
   })
@@ -135,8 +134,8 @@ describe('FirstPassRx app', () => {
     const cite = within(panel).getAllByRole('link', { name: /MassHealth Drug List/i })
     expect(cite[0]).toHaveAttribute('href', expect.stringMatching(/^https?:\/\//))
     // cost shows as columns: in-plan and cash
-    expect(within(panel).getByText('In plan')).toBeInTheDocument()
-    expect(within(panel).getByText('Cash / Details')).toBeInTheDocument()
+    expect(within(panel).getByText(/In plan:/i)).toBeInTheDocument()
+    expect(within(panel).getAllByText(/Cash \/ Details/i).length).toBeGreaterThan(0)
     // cash links per option — GoodRx and Cost Plus Drugs
     const goodrx = within(panel).getAllByRole('link', { name: /GoodRx/i })
     expect(goodrx.length).toBeGreaterThan(0)

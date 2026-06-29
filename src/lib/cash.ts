@@ -3,14 +3,20 @@
 // (prices change daily; CLAUDE.md: don't manufacture certainty). GoodRx aggregates pharmacy coupons;
 // Cost Plus Drugs (Mark Cuban) sells generics at cost + a flat markup.
 
-function cashQuery(name: string): string {
-  return name.replace(/\(.*?\)/g, '').replace(/\s+/g, ' ').trim()
+function drugSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/\(.*?\)/g, '') // remove parenthesized details like (generic)
+    .replace(/[^a-z0-9]+/g, '-') // replace non-alphanumeric characters with hyphens
+    .replace(/^-+|-+$/g, '') // trim hyphens from the ends
 }
 
 export function goodRxUrl(name: string): string {
-  return `https://www.goodrx.com/search?query=${encodeURIComponent(cashQuery(name))}`
+  return `https://www.goodrx.com/${drugSlug(name)}`
 }
 
-export function costPlusUrl(name: string): string {
-  return `https://costplusdrugs.com/medications/?search=${encodeURIComponent(cashQuery(name))}`
+export function costPlusUrl(_name: string): string {
+  // Cost Plus Drugs uses a curated catalog and does not support search query parameters;
+  // linking to their search directory is the most reliable fallback.
+  return 'https://costplusdrugs.com/medications/'
 }

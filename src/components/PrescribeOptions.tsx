@@ -1,4 +1,4 @@
-import type { FormularyRecord, PayerMeta, Reference } from '../types/formulary'
+import type { FormularyRecord, Reference } from '../types/formulary'
 import { useGuide } from '../lib/formulary'
 import { goodRxUrl, costPlusUrl } from '../lib/cash'
 import { SourceLink } from './SourceLink'
@@ -23,15 +23,13 @@ interface Row {
 
 /**
  * Renders all other options besides the first-pass recommendation.
- * Shows covered alternatives and coverage barriers in a single, unified table.
+ * Shows covered alternatives and coverage barriers in a stack of styled cards.
  */
 export function PrescribeOptions({
   record,
-  payer,
   source,
 }: {
   record: FormularyRecord
-  payer: PayerMeta
   source?: Reference
 }) {
   const guide = useGuide()
@@ -60,65 +58,58 @@ export function PrescribeOptions({
     return null
   }
 
-  const pref = record.preferredAgent
-  const isCovered = !record.stepTherapy && !record.paRequired.some(
-    (p) => p.drug === pref.brand || p.drug === pref.inn
-  )
-
   return (
-    <section className={`rx-options ${isCovered ? 'is-covered' : 'is-barrier'}`} aria-label="Prescribing options">
-      <div className="rx-table-wrap">
-        <table className="rx-table">
-          <caption className="rx-cap">
-            Alternatives &amp; Barriers on {payer.productName}{' · '}
-            <SourceLink source={source} />
-          </caption>
-          <thead>
-            <tr>
-              <th scope="col">Option</th>
-              <th scope="col">In plan</th>
-              <th scope="col">Cash / Details</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row) => (
-              <tr key={row.drug} className={`rx-row--${row.type}`}>
-                <th scope="row" className="rx-opt">
-                  <span className="rx-drug">{row.drug}</span>
-                  <span className={`rx-tag rx-tag--${row.type}`}>{row.role}</span>
-                </th>
-                <td className="rx-cost" data-label="In plan">
-                  {row.cost}
-                </td>
-                <td className="rx-cash" data-label="Cash / Details">
-                  {row.type === 'alternative' ? (
-                    <>
-                      <a href={goodRxUrl(row.cashName)} target="_blank" rel="noopener noreferrer">
-                        GoodRx &#8599;
-                      </a>
-                      <a href={costPlusUrl(row.cashName)} target="_blank" rel="noopener noreferrer">
-                        Cost+ &#8599;
-                      </a>
-                    </>
-                  ) : (
-                    guide.resolveSources(row.sourceIds).map((src) => (
-                      <a
-                        key={src.id}
-                        className="panel-cite"
-                        href={src.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        title={src.label}
-                      >
-                        source &#8599;
-                      </a>
-                    ))
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <section className="rx-options-stack" aria-label="Prescribing options">
+      <div className="rx-options-stack__header">
+        <h4 className="rx-options-stack__title">
+          Alternatives
+          {source ? (
+            <>
+              {' · '}
+              <SourceLink source={source} />
+            </>
+          ) : null}
+        </h4>
+      </div>
+      
+      <div className="rx-cards-list">
+        {rows.map((row) => (
+          <div key={row.drug} className={`rx-option-card is-${row.type}`}>
+            <div className="rx-option-card__header">
+              <h5 className="rx-option-card__name">{row.drug}</h5>
+              <span className={`rx-tag rx-tag--${row.type}`}>{row.role}</span>
+            </div>
+            <p className="rx-option-card__cost">{row.cost}</p>
+            <div className="rx-option-card__footer">
+              <span className="rx-option-card__label">Cash / Details:</span>
+              <span className="rx-option-card__links">
+                {row.type === 'alternative' ? (
+                  <>
+                    <a href={goodRxUrl(row.cashName)} target="_blank" rel="noopener noreferrer">
+                      GoodRx &#8599;
+                    </a>
+                    <a href={costPlusUrl(row.cashName)} target="_blank" rel="noopener noreferrer">
+                      Cost+ &#8599;
+                    </a>
+                  </>
+                ) : (
+                  guide.resolveSources(row.sourceIds).map((src) => (
+                    <a
+                      key={src.id}
+                      className="panel-cite"
+                      href={src.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={src.label}
+                    >
+                      source &#8599;
+                    </a>
+                  ))
+                )}
+              </span>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   )
