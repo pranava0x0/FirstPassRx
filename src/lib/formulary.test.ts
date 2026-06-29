@@ -14,7 +14,7 @@ describe('guides + global meta', () => {
 
   it('gives every guide the copy the masthead/labels need', () => {
     for (const g of guides) {
-      for (const field of ['label', 'region', 'topic', 'classNoun', 'unitNoun', 'tagline'] as const) {
+      for (const field of ['label', 'region', 'topic', 'classNoun', 'unitNoun'] as const) {
         expect(g[field], `${g.id} ${field}`).toBeTruthy()
       }
       expect(['sample', 'mixed', 'verified']).toContain(g.dataStatus)

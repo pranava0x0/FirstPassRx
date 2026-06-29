@@ -42,7 +42,7 @@ function validate(data: Formulary): void {
   data.guides.forEach((guide, gi) => {
     const G = `guide ${guide.id || `#${gi}`}`
     if (!guide.id) problems.push(`${G}: missing id`)
-    for (const field of ['label', 'region', 'topic', 'classNoun', 'unitNoun', 'tagline'] as const) {
+    for (const field of ['label', 'region', 'topic', 'classNoun', 'unitNoun'] as const) {
       if (!guide[field]) problems.push(`${G}: missing ${field}`)
     }
     if (!guide.capturedAt) problems.push(`${G}: missing capturedAt`)
