@@ -87,6 +87,8 @@ export default function App() {
             tabId={tabId}
           />
 
+          <hr className="section-divider" />
+
           {record && payer && drugClass ? (
             <ResultCard
               record={record}

@@ -59,6 +59,8 @@ export function Controls({ payerId, classId, onPayer, onClass, panelId, tabId }:
         )}
       </fieldset>
 
+      <hr className="section-divider" />
+
       <fieldset className="controls__group">
         <legend className="controls__legend eyebrow">2. {classNoun}</legend>
         <div className="seg" role="tablist" aria-label={classNoun}>

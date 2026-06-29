@@ -379,3 +379,13 @@ Decisions made by *omission*:
 - **Apple Human Interface Guidelines** — touch targets, safe areas, mobile-first ergonomics.
 - **Pieter Levels (levels.io)** — "you don't need a backend, you don't need a CSS framework, you don't need a font, you don't need npm." When in doubt, ship the simpler thing.
 - **Andrej Karpathy** — performance budgets are real constraints, not afterthoughts; measure before optimizing; the smallest version that works is the right starting point.
+
+---
+
+## 15. FirstPassRx Project Overrides & Visual Uniformity
+
+To maintain editorial gravitas and a unique point of view for FirstPassRx:
+- **Typography pairing:** Uses *Plus Jakarta Sans* for modern, premium sans-serif UI elements (tabs, inputs) and a traditional *Serif* stack (Charter, Georgia) for all main content titles, step headers, and recommendations.
+- **Size Hierarchy:** Follows a strict sizing hierarchy: Page Title (30-36px) > Step Headings (20-24px) > Hero Recommendation/Verdict (18px) > Body/Options.
+- **Workflow Sectioning:** Sections 1, 2, and 3 are separated by a `<hr className="section-divider" />` to keep spacing and dividers perfectly consistent (24px margins) and avoid browser-specific `<fieldset>` padding bugs.
+- **Explicit Alignment:** Interactive button grid cells (`.seg__btn`) must explicitly define `text-align: left` to override browser-default button center-alignment for wrapped text, ensuring a uniform visual grid.
