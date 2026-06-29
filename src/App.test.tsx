@@ -3,9 +3,9 @@ import { render, screen, within, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import App from './App'
 
-/** The preferred-agent name is the only level-2 heading in the result panel. */
+/** The preferred-agent name is the level-3 heading in the recommendation hero box. */
 function agentHeading() {
-  return within(screen.getByRole('tabpanel')).getByRole('heading', { level: 2 })
+  return within(screen.getByRole('tabpanel')).getByRole('heading', { level: 3 })
 }
 
 describe('FirstPassRx app', () => {
@@ -53,7 +53,7 @@ describe('FirstPassRx app', () => {
     const user = userEvent.setup()
     render(<App />)
     expect(screen.getByText(/Levalbuterol \(Xopenex HFA\)/)).toBeInTheDocument()
-    expect(screen.getAllByText(/prior authorization needed/i).length).toBeGreaterThan(0)
+    expect(screen.getAllByText(/PA Required/i).length).toBeGreaterThan(0)
     const biologics = screen.getByRole('tab', { name: /biologics/i })
     expect(biologics).toHaveAttribute('aria-disabled', 'true')
     await user.click(biologics)
@@ -82,17 +82,14 @@ describe('FirstPassRx app', () => {
     await user.click(screen.getByRole('tab', { name: /Daily combo controller/ }))
     const panel = screen.getByRole('tabpanel')
     // the options table — recommended pick + the also-covered combos
+    expect(within(panel).getByText(/FIRST-PASS RECOMMENDED/i)).toBeInTheDocument()
     const options = within(panel).getByRole('region', { name: /prescribing options/i })
-    expect(within(options).getByText(/First-pass/)).toBeInTheDocument()
     expect(within(options).getByText(/Advair Diskus/)).toBeInTheDocument()
     expect(within(options).getByText(/Breo Ellipta/)).toBeInTheDocument()
     expect(within(options).getByText('In plan')).toBeInTheDocument()
-    expect(within(options).getByText('Cash')).toBeInTheDocument()
-    // rejects sit in their own ledger (the step text also names AirDuo)
-    const rejects = within(panel).getByRole('region', {
-      name: /coverage barriers/i,
-    })
-    expect(within(rejects).getByText(/AirDuo RespiClick/)).toBeInTheDocument()
+    expect(within(options).getByText(/Cash/i)).toBeInTheDocument()
+    // rejects/barriers sit inside the same options table
+    expect(within(options).getByText(/AirDuo RespiClick/)).toBeInTheDocument()
   })
 
   it('opens a plain-language glossary definition on tap', async () => {
@@ -139,7 +136,7 @@ describe('FirstPassRx app', () => {
     expect(cite[0]).toHaveAttribute('href', expect.stringMatching(/^https?:\/\//))
     // cost shows as columns: in-plan and cash
     expect(within(panel).getByText('In plan')).toBeInTheDocument()
-    expect(within(panel).getByText('Cash')).toBeInTheDocument()
+    expect(within(panel).getByText('Cash / Details')).toBeInTheDocument()
     // cash links per option — GoodRx and Cost Plus Drugs
     const goodrx = within(panel).getAllByRole('link', { name: /GoodRx/i })
     expect(goodrx.length).toBeGreaterThan(0)
@@ -154,10 +151,8 @@ describe('FirstPassRx app', () => {
   it('surfaces the source-confidence state inline (verified vs partial)', async () => {
     const user = userEvent.setup()
     render(<App />)
-    expect(screen.getByText(/Source confidence:/i).closest('p')).toHaveTextContent(/Verified/)
+    expect(screen.getByText(/Verified against/i)).toBeInTheDocument()
     await user.click(screen.getByRole('button', { name: /Menopause HT/i }))
-    expect(screen.getByText(/Source confidence:/i).closest('p')).toHaveTextContent(
-      /Partial — confirm in source/,
-    )
+    expect(screen.getByText(/Partially verified/i)).toBeInTheDocument()
   })
 })
