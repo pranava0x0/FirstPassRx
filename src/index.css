@@ -23,6 +23,8 @@
   --accent-deep: #08493d;
   --sig-highlight: #d6eee6;
 
+  --section-spacing: 20px;
+
   --status-warn: #8a4b00;
   --status-deny: #8e1f1a;
 
@@ -118,7 +120,7 @@ button {
 
 /* ---- masthead ---- */
 .masthead {
-  padding: 22px 0 10px;
+  padding: 14px 0 8px;
   border-bottom: 3px solid var(--ink);
 }
 
@@ -174,7 +176,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin-top: 12px;
+  margin-top: 8px;
 }
 .masthead__stamp {
   font-family: var(--font-mono);
@@ -376,7 +378,7 @@ button {
 
 /* ---- selectors ---- */
 .controls {
-  margin-top: 24px;
+  margin-top: var(--section-spacing);
 }
 .controls__group {
   border: 0;
@@ -386,15 +388,15 @@ button {
 .section-divider {
   border: 0;
   border-top: 1px solid var(--rule-faint);
-  margin: 24px 0;
+  margin: var(--section-spacing) 0;
 }
 .controls__legend {
   display: block;
   width: 100%;
   margin: 0;
-  padding: 0 0 8px;
+  padding: 0 0 6px;
   font-family: var(--font-serif);
-  font-size: clamp(20px, 5vw, 24px);
+  font-size: clamp(18px, 4.5vw, 20px);
   font-weight: 600;
   color: var(--ink);
 }
@@ -406,8 +408,8 @@ button {
   color: var(--ink);
   background: var(--paper);
   border: 1px solid var(--rule);
-  padding: 12px 36px 12px 12px;
-  min-height: 48px;
+  padding: 8px 36px 8px 12px;
+  min-height: 40px;
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%235f5e5a' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
@@ -430,8 +432,8 @@ button {
   border: 1px solid var(--rule);
 }
 .seg__btn {
-  min-height: 52px;
-  padding: 8px 10px;
+  min-height: 44px;
+  padding: 6px 10px;
   background: var(--paper);
   border: 0;
   color: var(--ink);
@@ -441,7 +443,7 @@ button {
   align-items: flex-start;
   justify-content: center;
   gap: 1px;
-  line-height: 1.2;
+  line-height: 1.1;
   text-align: left;
 }
 .seg__btn:hover:not([aria-disabled="true"]):not([aria-selected="true"]) {
@@ -541,7 +543,7 @@ button {
 .recommendation-label {
   display: block;
   font-family: var(--font-serif);
-  font-size: clamp(20px, 5vw, 24px);
+  font-size: clamp(18px, 4.5vw, 20px);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -552,8 +554,8 @@ button {
 .recommendation-hero {
   border: 2px solid var(--accent);
   background: var(--paper-shade);
-  padding: 16px;
-  margin: 16px 0 24px;
+  padding: 14px 16px;
+  margin: 12px 0 var(--section-spacing);
 }
 .recommendation-hero__label {
   font-family: var(--font-mono);
@@ -567,8 +569,9 @@ button {
 .recommendation-hero__name {
   margin: 0;
   font-family: var(--font-serif);
-  font-size: clamp(20px, 5vw, 24px);
+  font-size: clamp(18px, 4vw, 20px);
   font-weight: 600;
+  line-height: 1.2;
   color: var(--ink);
 }
 .recommendation-hero__generic {
