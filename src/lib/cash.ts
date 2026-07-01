@@ -3,7 +3,7 @@
 /** Ceiling on covered-drug names with no explicit cash-link rule (see issues.md) -- a ceiling,
  * not a target: it must never grow silently. Shared by cash.test.ts and validate-prices.mjs so
  * the two never drift out of sync with each other. */
-export const KNOWN_UNPRICED_GAP = 76
+export const KNOWN_UNPRICED_GAP = 72
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -191,6 +191,42 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxPrice: { price: 33.50, quantity: '30 tablets, 5mg' },
     costPlusPrice: { price: 8.48, quantity: '30 tablets, 5mg' },
     pricesCapturedAt: '2026-06-30',
+  },
+  {
+    matches: /^(?!.*oral solution).*(?:lisinopril|zestril|prinivil)/i,
+    goodRxSlug: 'lisinopril',
+    goodRxParams: 'label_override=lisinopril&form=tablet&dosage=10mg&quantity=30',
+    costPlusPath: 'lisinopril-10mg-tablet',
+    goodRxPrice: { price: 14.56, quantity: '30 tablets, 10mg' },
+    costPlusPrice: { price: 5.39, quantity: '30 tablets, 10mg' },
+    pricesCapturedAt: '2026-07-01',
+  },
+  {
+    matches: /^(?!.*oral solution).*(?:benazepril|lotensin)/i,
+    goodRxSlug: 'benazepril',
+    goodRxParams: 'label_override=benazepril&form=tablet&dosage=10mg&quantity=30',
+    costPlusPath: 'benazeprilhcl-10mg-tablet',
+    goodRxPrice: { price: 30.00, quantity: '30 tablets, 10mg' },
+    costPlusPrice: { price: 5.79, quantity: '30 tablets, 10mg' },
+    pricesCapturedAt: '2026-07-01',
+  },
+  {
+    matches: /^(?!.*oral solution).*(?:enalapril|vasotec)/i,
+    goodRxSlug: 'enalapril',
+    goodRxParams: 'label_override=enalapril&form=tablet&dosage=10mg&quantity=30',
+    costPlusPath: 'enalaprilmaleate-10mg-tablet',
+    goodRxPrice: { price: 27.65, quantity: '30 tablets, 10mg' },
+    costPlusPrice: { price: 5.69, quantity: '30 tablets, 10mg' },
+    pricesCapturedAt: '2026-07-01',
+  },
+  {
+    matches: /^(?!.*oral solution).*(?:ramipril|altace)/i,
+    goodRxSlug: 'ramipril',
+    goodRxParams: 'label_override=ramipril&form=capsule&dosage=10mg&quantity=30',
+    costPlusPath: 'ramipril-10mg-capsule',
+    goodRxPrice: { price: 28.00, quantity: '30 capsules, 10mg' },
+    costPlusPrice: { price: 6.04, quantity: '30 capsules, 10mg' },
+    pricesCapturedAt: '2026-07-01',
   },
 ]
 

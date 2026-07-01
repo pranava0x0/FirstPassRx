@@ -10,6 +10,10 @@ describe('cash price links', () => {
     ['Tiotropium', 'https://www.goodrx.com/tiotropium'],
     ['Estradiol transdermal patch (weekly)', 'https://www.goodrx.com/estradiol'],
     ['Progesterone, micronized (oral)', 'https://www.goodrx.com/progesterone'],
+    ['Lisinopril', 'https://www.goodrx.com/lisinopril?label_override=lisinopril&form=tablet&dosage=10mg&quantity=30'],
+    ['Benazepril', 'https://www.goodrx.com/benazepril?label_override=benazepril&form=tablet&dosage=10mg&quantity=30'],
+    ['Enalapril', 'https://www.goodrx.com/enalapril?label_override=enalapril&form=tablet&dosage=10mg&quantity=30'],
+    ['Ramipril', 'https://www.goodrx.com/ramipril?label_override=ramipril&form=capsule&dosage=10mg&quantity=30'],
   ])('links %s to its canonical GoodRx page', (name, expected) => {
     expect(goodRxUrl(name)).toBe(expected)
   })
@@ -20,6 +24,10 @@ describe('cash price links', () => {
     ['Estradiol vaginal cream', 'estradiol-0_01-tubeofcream42_5g'],
     ['Estradiol transdermal patch (weekly)', 'carton-of-weekly-patches'],
     ['Progesterone (micronized)', 'progesterone-100mg-capsule'],
+    ['Lisinopril', 'lisinopril-10mg-tablet'],
+    ['Benazepril', 'benazeprilhcl-10mg-tablet'],
+    ['Enalapril', 'enalaprilmaleate-10mg-tablet'],
+    ['Ramipril', 'ramipril-10mg-capsule'],
   ])('links %s to its matching Cost Plus product page', (name, expectedPath) => {
     const url = costPlusUrl(name)
     expect(url).toContain(expectedPath)
@@ -28,6 +36,13 @@ describe('cash price links', () => {
 
   it('does not offer Cost Plus when no matching product is known', () => {
     expect(costPlusUrl('Dulera (mometasone/formoterol)')).toBeNull()
+  })
+
+  it.each([
+    'Qbrelis (lisinopril oral solution)',
+    'Epaned (enalapril oral solution, brand)',
+  ])('does not attach a tablet/capsule price to the oral-solution form of %s', (name) => {
+    expect(hasCashLinkRule(name)).toBe(false)
   })
 })
 
@@ -48,12 +63,12 @@ function coveredDrugNames(): string[] {
 }
 
 describe('cash price coverage across the live formulary', () => {
-  // Baseline as of 2026-07-01 (see issues.md): 76 covered-drug name variants have no explicit
-  // cash-link rule yet and fall to the generic slug guesser -- 72 from the MD menopause gap
-  // (Premarin/Prempro/Duavee/Bijuva family, vaginal rings, non-inhaler respiratory drugs), plus
-  // 4 new ones from the NY ACE inhibitor guide (lisinopril, benazepril, enalapril, ramipril --
-  // a whole new drug class cash.ts has no rules for yet). KNOWN_UNPRICED_GAP is exported from
-  // cash.ts (shared with validate-prices.mjs) so the two never drift out of sync.
+  // Baseline as of 2026-07-01 (see issues.md): 72 covered-drug name variants have no explicit
+  // cash-link rule yet and fall to the generic slug guesser -- all from the MD menopause gap
+  // (Premarin/Prempro/Duavee/Bijuva family, vaginal rings, non-inhaler respiratory drugs). The
+  // NY ACE inhibitor guide's 4 names (lisinopril, benazepril, enalapril, ramipril) now have
+  // explicit rules. KNOWN_UNPRICED_GAP is exported from cash.ts (shared with
+  // validate-prices.mjs) so the two never drift out of sync.
 
   it('does not silently grow the set of covered drugs without an explicit cash-link rule', () => {
     const unmatched = coveredDrugNames().filter((name) => !hasCashLinkRule(name))

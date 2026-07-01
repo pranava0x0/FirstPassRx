@@ -4,6 +4,15 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
 
 ## Fixed
 
+- **2026-07-01 · data (cash prices) · NY ACE inhibitor guide's 4 drugs had no cash-link rule.**
+  `Lisinopril`, `Benazepril`, `Enalapril`, `Ramipril` — the preferred agent + all 3 covered
+  alternatives in the `ny-ace` guide — fell to the generic fallback-slug guesser (link only, no
+  verified price), since ACE inhibitors were a new drug class `cash.ts` had no rules for. Root
+  cause: **coverage gap**, not a code bug. Fixed: added 4 `CASH_LINK_RULE`s with real GoodRx
+  (exact-dosage `goodRxParams` deep link, 10mg/30-count) and Cost Plus Drugs prices captured via a
+  real browser session; `KNOWN_UNPRICED_GAP` dropped 76 → 72 accordingly. `validate-prices.mjs`'s
+  existing ceiling check already re-verifies this on every future data refresh (any class, not just
+  ACE) — it fails loud if a new covered drug is added without a matching cash-link rule.
 - **2026-06-29 · UI (cash-price links) · wrong vendor destinations.** GoodRx links used clinical
   display labels as URL slugs, and every Cost+ link opened the unfiltered medication directory.
   Root cause: **code bug** — vendor URL formats were treated as interchangeable. Cash links now
@@ -29,6 +38,28 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   the index-only section now both key off the same guide list, and the map was regenerated.
 
 ## Open
+
+- **2026-07-01 · process (data gathering) · VA diabetes re-gather (chunked ≤2 concurrent) hit
+  transient connection failures, not rate-limiting.** Resuming the `va-diabetes-gather` Workflow
+  (run `wf_20cee55f-82a`) to pick up the remaining 7 of 8 payers failed all 7 with
+  `FailedToOpenSocket`/`ConnectionRefused` errors — a different failure mode than the earlier
+  85%-rate-limited 55-agent fan-out (see below), and not something the ≤2-concurrent cap was meant
+  to fix. Root cause: **infra/connectivity**, not a code or scale bug. 1 of 8 payers (VA Medicaid
+  FFS) completed successfully before the failures and is checkpointed at
+  `data-gathering/va-diabetes-2026-07-01/va-medicaid-ffs.json` (verified, all 4 classes). _Open —
+  see backlog.md for the resume plan._
+- **2026-07-01 · process (data gathering) · `data-gathering/` checkpoints referenced in
+  backlog.md no longer existed on disk at the start of this session.** Both
+  `data-gathering/va-diabetes-2026-07-01/` and `data-gathering/ny-ace-2026-07-01/`, which
+  backlog.md described as holding per-payer research ready to "resume from disk," were absent —
+  the directory is gitignored and apparently didn't survive past the session/worktree that wrote
+  it. Root cause: **process gap**, not a code bug — the checkpoint-then-return pattern protects
+  against a dropped connection mid-run, but nothing protects an unmerged checkpoint from a
+  worktree cleanup between sessions. Recovery: re-ran the VA diabetes gather this session, which
+  re-populated `data-gathering/va-diabetes-2026-07-01/` with 1 fresh, real payer checkpoint
+  (`va-medicaid-ffs.json` — see the entry above); that directory is no longer empty as of this
+  writing. `data-gathering/ny-ace-2026-07-01/` was **not** re-gathered this session and remains
+  empty/absent. _Open — NY ACE's other 5 payers still need a fresh gather; see backlog.md._
 
 - **2026-06-28 · data (MA inhalers) · dead source citation.** `npm run trace:live` flags the MGB
   Fluticasone HFA PA Policy URL (`mgb-flut-hfa-pa`, cited by `mgb/ics`) as **HTTP 404** — the policy
