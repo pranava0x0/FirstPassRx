@@ -69,8 +69,11 @@ out loud before doing either, and never force-push or skip hooks to get there.
 
 - Confirm tests are green and there are no unresolved blocking comments (a persona or the codex
   bot flagging something real that wasn't addressed).
-- Merge with `gh pr merge --squash` (matches this repo's existing history -- one commit per PR on
-  `main`) unless the user's asked for a different merge strategy.
+- Check actual merge history first (`git log --merges --oneline main`) rather than assuming a
+  convention -- this repo's own history is mixed (PR #1 and #2 are real merge commits, PR #3 was
+  squashed). Default to `gh pr merge --squash` for a single-purpose PR since it keeps `main`'s
+  history bisectable one-commit-per-change, but use a merge commit instead if the PR intentionally
+  carries multiple independent commits worth preserving. Ask the user if genuinely unsure.
 - Delete the remote and local feature branch after a successful merge (`gh pr merge --delete-branch`
   handles the remote side; delete the local branch and switch back to `main` yourself).
 - Report what shipped, what got fixed from review, and what got deferred to the backlog.

@@ -10,6 +10,10 @@ describe('cash price links', () => {
     ['Tiotropium', 'https://www.goodrx.com/tiotropium'],
     ['Estradiol transdermal patch (weekly)', 'https://www.goodrx.com/estradiol'],
     ['Progesterone, micronized (oral)', 'https://www.goodrx.com/progesterone'],
+    ['Lisinopril', 'https://www.goodrx.com/lisinopril?label_override=lisinopril&form=tablet&dosage=10mg&quantity=30'],
+    ['Benazepril', 'https://www.goodrx.com/benazepril?label_override=benazepril&form=tablet&dosage=10mg&quantity=30'],
+    ['Enalapril', 'https://www.goodrx.com/enalapril?label_override=enalapril&form=tablet&dosage=10mg&quantity=30'],
+    ['Ramipril', 'https://www.goodrx.com/ramipril?label_override=ramipril&form=capsule&dosage=10mg&quantity=30'],
   ])('links %s to its canonical GoodRx page', (name, expected) => {
     expect(goodRxUrl(name)).toBe(expected)
   })
@@ -20,6 +24,10 @@ describe('cash price links', () => {
     ['Estradiol vaginal cream', 'estradiol-0_01-tubeofcream42_5g'],
     ['Estradiol transdermal patch (weekly)', 'carton-of-weekly-patches'],
     ['Progesterone (micronized)', 'progesterone-100mg-capsule'],
+    ['Lisinopril', 'lisinopril-10mg-tablet'],
+    ['Benazepril', 'benazeprilhcl-10mg-tablet'],
+    ['Enalapril', 'enalaprilmaleate-10mg-tablet'],
+    ['Ramipril', 'ramipril-10mg-capsule'],
   ])('links %s to its matching Cost Plus product page', (name, expectedPath) => {
     const url = costPlusUrl(name)
     expect(url).toContain(expectedPath)
@@ -28,6 +36,13 @@ describe('cash price links', () => {
 
   it('does not offer Cost Plus when no matching product is known', () => {
     expect(costPlusUrl('Dulera (mometasone/formoterol)')).toBeNull()
+  })
+
+  it.each([
+    'Qbrelis (lisinopril oral solution)',
+    'Epaned (enalapril oral solution, brand)',
+  ])('does not attach a tablet/capsule price to the oral-solution form of %s', (name) => {
+    expect(hasCashLinkRule(name)).toBe(false)
   })
 })
 

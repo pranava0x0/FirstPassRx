@@ -49,15 +49,17 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   `data-gathering/va-diabetes-2026-07-01/va-medicaid-ffs.json` (verified, all 4 classes). _Open —
   see backlog.md for the resume plan._
 - **2026-07-01 · process (data gathering) · `data-gathering/` checkpoints referenced in
-  backlog.md no longer exist on disk.** Both `data-gathering/va-diabetes-2026-07-01/` and
-  `data-gathering/ny-ace-2026-07-01/`, which backlog.md described as holding per-payer research
-  ready to "resume from disk," were entirely absent in this session's worktree — the directory is
-  gitignored and apparently didn't survive past the session/worktree that wrote it. Root cause:
-  **process gap**, not a code bug — the checkpoint-then-return pattern protects against a dropped
-  connection mid-run, but nothing protects an unmerged checkpoint from a worktree cleanup between
-  sessions. Recovery: re-ran the VA diabetes gather from scratch this session (see CLAUDE.md scar
-  tissue for the general lesson). _Open — NY ACE's other 5 payers still need the same re-gather;
-  see backlog.md._
+  backlog.md no longer existed on disk at the start of this session.** Both
+  `data-gathering/va-diabetes-2026-07-01/` and `data-gathering/ny-ace-2026-07-01/`, which
+  backlog.md described as holding per-payer research ready to "resume from disk," were absent —
+  the directory is gitignored and apparently didn't survive past the session/worktree that wrote
+  it. Root cause: **process gap**, not a code bug — the checkpoint-then-return pattern protects
+  against a dropped connection mid-run, but nothing protects an unmerged checkpoint from a
+  worktree cleanup between sessions. Recovery: re-ran the VA diabetes gather this session, which
+  re-populated `data-gathering/va-diabetes-2026-07-01/` with 1 fresh, real payer checkpoint
+  (`va-medicaid-ffs.json` — see the entry above); that directory is no longer empty as of this
+  writing. `data-gathering/ny-ace-2026-07-01/` was **not** re-gathered this session and remains
+  empty/absent. _Open — NY ACE's other 5 payers still need a fresh gather; see backlog.md._
 
 - **2026-06-28 · data (MA inhalers) · dead source citation.** `npm run trace:live` flags the MGB
   Fluticasone HFA PA Policy URL (`mgb-flut-hfa-pa`, cited by `mgb/ics`) as **HTTP 404** — the policy

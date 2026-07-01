@@ -193,7 +193,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-06-30',
   },
   {
-    matches: /lisinopril|zestril|prinivil/i,
+    matches: /^(?!.*oral solution).*(?:lisinopril|zestril|prinivil)/i,
     goodRxSlug: 'lisinopril',
     goodRxParams: 'label_override=lisinopril&form=tablet&dosage=10mg&quantity=30',
     costPlusPath: 'lisinopril-10mg-tablet',
@@ -202,7 +202,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-07-01',
   },
   {
-    matches: /benazepril|lotensin/i,
+    matches: /^(?!.*oral solution).*(?:benazepril|lotensin)/i,
     goodRxSlug: 'benazepril',
     goodRxParams: 'label_override=benazepril&form=tablet&dosage=10mg&quantity=30',
     costPlusPath: 'benazeprilhcl-10mg-tablet',
@@ -211,7 +211,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-07-01',
   },
   {
-    matches: /enalapril|vasotec/i,
+    matches: /^(?!.*oral solution).*(?:enalapril|vasotec)/i,
     goodRxSlug: 'enalapril',
     goodRxParams: 'label_override=enalapril&form=tablet&dosage=10mg&quantity=30',
     costPlusPath: 'enalaprilmaleate-10mg-tablet',
@@ -220,7 +220,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-07-01',
   },
   {
-    matches: /ramipril|altace/i,
+    matches: /^(?!.*oral solution).*(?:ramipril|altace)/i,
     goodRxSlug: 'ramipril',
     goodRxParams: 'label_override=ramipril&form=capsule&dosage=10mg&quantity=30',
     costPlusPath: 'ramipril-10mg-capsule',
