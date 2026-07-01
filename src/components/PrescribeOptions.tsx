@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { ClassMeta, FormularyRecord, PaItem, PayerMeta, Reference } from '../types/formulary'
 import { useGuide } from '../lib/formulary'
 import { goodRxUrl, costPlusUrl, goodRxPrice, costPlusPrice, pricesCapturedAt } from '../lib/cash'
 import { buildAppealLetter } from '../lib/appealLetter'
-import { copyToClipboard } from '../lib/clipboard'
+import { useCopyToClipboard } from '../lib/clipboard'
 import { SourceLink } from './SourceLink'
 import { CashPriceBoxes } from './CashPriceBoxes'
 
@@ -152,20 +152,17 @@ function AppealAction({
   payer: PayerMeta
   drugClass: ClassMeta
 }) {
+  const initial = buildAppealLetter(record, item, payer, drugClass)
   const [open, setOpen] = useState(false)
-  const [value, setValue] = useState(() => buildAppealLetter(record, item, payer, drugClass))
-  const [copied, setCopied] = useState(false)
-  const timer = useRef<number | undefined>(undefined)
+  const [value, setValue] = useState(initial)
+  const { copied, copy, reset } = useCopyToClipboard()
 
-  useEffect(() => () => window.clearTimeout(timer.current), [])
-
-  async function copy() {
-    const ok = await copyToClipboard(value)
-    if (!ok) return
-    setCopied(true)
-    window.clearTimeout(timer.current)
-    timer.current = window.setTimeout(() => setCopied(false), 2000)
-  }
+  // Rebuild the letter whenever the underlying cell changes (payer/class switch can reuse this
+  // component instance for a same-named barrier drug — see RxSig's identical fix for the same issue).
+  useEffect(() => {
+    setValue(initial)
+    reset()
+  }, [initial])
 
   return (
     <div className="appeal">
@@ -197,7 +194,7 @@ function AppealAction({
           <button
             type="button"
             className={`copy-btn${copied ? ' copy-btn--done' : ''}`}
-            onClick={copy}
+            onClick={() => copy(value)}
             aria-label={`Copy appeal letter for ${item.drug}`}
           >
             <span aria-hidden="true">{copied ? '✓ Copied' : 'Copy letter'}</span>

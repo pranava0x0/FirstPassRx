@@ -80,13 +80,23 @@ describe('buildAppealLetter', () => {
     expect(letter).not.toContain('Plan PA policy')
   })
 
-  it('includes step-therapy text when the cell has it', () => {
-    const letter = buildAppealLetter(record({ stepTherapy: 'Try albuterol HFA first.' }), item, payer, drugClass)
-    expect(letter).toContain('Step therapy on file with the plan: Try albuterol HFA first.')
+  it('includes step-therapy text when the item outcome is step', () => {
+    const letter = buildAppealLetter(
+      record({ stepTherapy: 'Try albuterol HFA first.' }),
+      { ...item, outcome: 'step' },
+      payer,
+      drugClass,
+    )
+    expect(letter).toContain('Step therapy on file with the plan for this drug class: Try albuterol HFA first.')
   })
 
   it('omits the step-therapy line when the cell has none', () => {
-    const letter = buildAppealLetter(record(), item, payer, drugClass)
+    const letter = buildAppealLetter(record(), { ...item, outcome: 'step' }, payer, drugClass)
+    expect(letter).not.toContain('Step therapy on file')
+  })
+
+  it('omits step-therapy text for a non-step outcome even when the record has one (avoids misattributing another drug\'s requirement)', () => {
+    const letter = buildAppealLetter(record({ stepTherapy: 'Try albuterol HFA first.' }), item, payer, drugClass)
     expect(letter).not.toContain('Step therapy on file')
   })
 

@@ -1,5 +1,10 @@
 // Vendor URLs must use canonical medication names, not the clinical labels shown in the UI.
 
+/** Ceiling on covered-drug names with no explicit cash-link rule (see issues.md) -- a ceiling,
+ * not a target: it must never grow silently. Shared by cash.test.ts and validate-prices.mjs so
+ * the two never drift out of sync with each other. */
+export const KNOWN_UNPRICED_GAP = 76
+
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
  * volatile numbers as fact). */
@@ -226,9 +231,4 @@ export function pricesCapturedAt(name: string): string | null {
 /** Whether this drug resolves to an explicit rule, vs. the generic fallback-slug guesser. */
 export function hasCashLinkRule(name: string): boolean {
   return cashLinkRule(name) !== undefined
-}
-
-/** "~$41.45 (1 HFA inhaler, 90mcg) as of 2026-06-30" — a labeled snapshot, not a live price. */
-export function priceNote(point: PricePoint, capturedAt: string): string {
-  return `~$${point.price.toFixed(2)} (${point.quantity}) as of ${capturedAt}`
 }

@@ -44,8 +44,11 @@ export function buildAppealLetter(
       `I received a denial letter dated [date] stating: "${item.reason}."`,
     '',
   ]
-  if (record.stepTherapy) {
-    lines.push(`Step therapy on file with the plan: ${record.stepTherapy}`, '')
+  // record.stepTherapy is a class-wide note (it can describe more than one drug's requirement --
+  // e.g. one blurb covering both Tudorza's and Yupelri's distinct step rules), so it's only safe
+  // to surface for a "step" outcome, and framed as class-wide rather than asserted as this drug's.
+  if (item.outcome === 'step' && record.stepTherapy) {
+    lines.push(`Step therapy on file with the plan for this drug class: ${record.stepTherapy}`, '')
   }
   lines.push(
     'I am currently under the care of [Prescriber Name] at [Practice/Facility Name]. ' +

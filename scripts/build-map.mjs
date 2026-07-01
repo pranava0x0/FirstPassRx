@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Generates docs/formulary-map.md — the auditable state → plan → PBM → formulary index.
-// MA and MD come from src/data/formulary.json (full drug-level data in the app); NY, VA, DC come
-// from src/data/state-index.json (formulary links only, drug-level pending). Run: npm run build:map.
+// States in STATE_OF below come from src/data/formulary.json (full drug-level data in the app);
+// every other state comes from src/data/state-index.json (formulary links only, drug-level
+// pending). Run: npm run build:map.
 
 import { readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
@@ -23,7 +24,14 @@ function kindOf(name, aka = '') {
   return 'Commercial'
 }
 
-const STATE_OF = { 'ma-inhalers': ['MA', 'Massachusetts'], 'md-menopause': ['MD', 'Maryland'] }
+const STATE_OF = {
+  'ma-inhalers': ['MA', 'Massachusetts'],
+  'md-menopause': ['MD', 'Maryland'],
+  'ny-ace': ['NY', 'New York'],
+}
+// Codes already covered by an in-app guide -- drop from the "index only" section below so a
+// state doesn't get both an in-app row and a stale index-only row once it has drug-level data.
+const IN_APP_CODES = new Set(Object.values(STATE_OF).map(([code]) => code))
 
 const out = []
 out.push('# FirstPassRx — state · plan · PBM · formulary map\n')
@@ -44,6 +52,7 @@ for (const g of formulary.guides) {
   out.push(`| ${cell(name)} (${code}) | ${cell(g.topic)} — drug-level | ${g.payers.length} |`)
 }
 for (const s of stateIndex.states) {
+  if (IN_APP_CODES.has(s.code)) continue
   out.push(`| ${cell(s.name)} (${s.code}) | index only | ${s.plans.length} |`)
 }
 out.push('')
@@ -67,8 +76,9 @@ for (const g of formulary.guides) {
   out.push('')
 }
 
-// NY / VA / DC — index only
+// VA / DC (and any state not yet promoted to an in-app guide) — index only
 for (const s of stateIndex.states) {
+  if (IN_APP_CODES.has(s.code)) continue
   out.push(`## ${s.name} (${s.code}) — index only\n`)
   if (s.note) out.push(`> ${cell(s.note)}\n`)
   out.push('| Plan | Type | PBM | Published formulary |')
@@ -81,17 +91,19 @@ for (const s of stateIndex.states) {
   out.push('')
 }
 
+const indexOnlyStates = stateIndex.states.filter((s) => !IN_APP_CODES.has(s.code))
+
 out.push('---\n')
 out.push(
-  'Auditability: each MA/MD row cites the exact formulary document the app read (with its effective\n' +
-    'date); each NY/VA/DC row links the live formulary/PDL the index agent fetched. `npm run trace:live`\n' +
-    're-fetches every cited source and flags any that moved or 404d.\n',
+  'Auditability: each in-app row cites the exact formulary document the app read (with its\n' +
+    'effective date); each index-only row links the live formulary/PDL the index agent fetched.\n' +
+    '`npm run trace:live` re-fetches every cited source and flags any that moved or 404d.\n',
 )
 
 writeFileSync(join(ROOT, 'docs/formulary-map.md'), out.join('\n'))
 const planTotal =
   formulary.guides.reduce((n, g) => n + g.payers.length, 0) +
-  stateIndex.states.reduce((n, s) => n + s.plans.length, 0)
+  indexOnlyStates.reduce((n, s) => n + s.plans.length, 0)
 console.log(
-  `docs/formulary-map.md — ${formulary.guides.length} in-app states + ${stateIndex.states.length} index states, ${planTotal} plans`,
+  `docs/formulary-map.md — ${formulary.guides.length} in-app states + ${indexOnlyStates.length} index states, ${planTotal} plans`,
 )

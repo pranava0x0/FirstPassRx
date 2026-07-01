@@ -79,6 +79,38 @@ describe('FirstPassRx app', () => {
     expect(writeText).toHaveBeenCalledWith(expect.stringContaining('Levalbuterol (Xopenex HFA)'))
   })
 
+  it('regenerates an open appeal letter when the payer changes for the same-named barrier drug', async () => {
+    // Regression test: "estropipate oral tablet" is a PA barrier under both Priority Partners and
+    // Medicare Part D in the MD menopause guide -- same row.drug at the same list position, so
+    // AppealAction's component instance is reused across the payer switch (React keys by
+    // row.drug, not by payer). A useState lazy initializer would keep showing the old payer's
+    // letter here; this asserts it rebuilds instead.
+    const user = userEvent.setup()
+    render(<App />)
+    await user.click(screen.getByRole('button', { name: /Menopause HT/i }))
+    fireEvent.change(screen.getByLabelText(/select insurance plan/i), { target: { value: 'priority-partners' } })
+    await user.click(screen.getByRole('tab', { name: /Estrogen pill/i }))
+
+    const card = screen.getByRole('heading', { level: 5, name: /estropipate oral tablet/i }).closest(
+      '.rx-option-card',
+    ) as HTMLElement
+    await user.click(within(card).getByRole('button', { name: /draft appeal letter/i }))
+    const letter = within(card).getByRole('textbox', { name: /editable pa appeal letter/i }) as HTMLTextAreaElement
+    expect(letter.value).toContain('Priority Partners')
+
+    fireEvent.change(screen.getByLabelText(/select insurance plan/i), { target: { value: 'medicare-partd' } })
+    await user.click(screen.getByRole('tab', { name: /Estrogen pill/i }))
+
+    const sameCard = screen.getByRole('heading', { level: 5, name: /estropipate oral tablet/i }).closest(
+      '.rx-option-card',
+    ) as HTMLElement
+    const updatedLetter = within(sameCard).getByRole('textbox', {
+      name: /editable pa appeal letter/i,
+    }) as HTMLTextAreaElement
+    expect(updatedLetter.value).toContain('Medicare Part D')
+    expect(updatedLetter.value).not.toContain('Priority Partners')
+  })
+
   it('changes the preferred agent when the class tab changes', async () => {
     const user = userEvent.setup()
     render(<App />)

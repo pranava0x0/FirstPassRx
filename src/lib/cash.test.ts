@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { costPlusUrl, goodRxUrl, hasCashLinkRule, goodRxPrice, costPlusPrice, pricesCapturedAt } from './cash'
+import { costPlusUrl, goodRxUrl, hasCashLinkRule, goodRxPrice, costPlusPrice, pricesCapturedAt, KNOWN_UNPRICED_GAP } from './cash'
 import { guides } from './formulary'
 
 describe('cash price links', () => {
@@ -52,9 +52,8 @@ describe('cash price coverage across the live formulary', () => {
   // cash-link rule yet and fall to the generic slug guesser -- 72 from the MD menopause gap
   // (Premarin/Prempro/Duavee/Bijuva family, vaginal rings, non-inhaler respiratory drugs), plus
   // 4 new ones from the NY ACE inhibitor guide (lisinopril, benazepril, enalapril, ramipril --
-  // a whole new drug class cash.ts has no rules for yet). A ceiling, not a target: it must never
-  // grow silently.
-  const KNOWN_UNPRICED_GAP = 76
+  // a whole new drug class cash.ts has no rules for yet). KNOWN_UNPRICED_GAP is exported from
+  // cash.ts (shared with validate-prices.mjs) so the two never drift out of sync.
 
   it('does not silently grow the set of covered drugs without an explicit cash-link rule', () => {
     const unmatched = coveredDrugNames().filter((name) => !hasCashLinkRule(name))

@@ -39,11 +39,25 @@ const c = {
   bold: (s) => `\x1b[1m${s}\x1b[0m`,
 }
 
-// Baseline as of 2026-06-30 (see issues.md) -- must never grow silently.
-const KNOWN_UNPRICED_GAP = 76
-
-const { goodRxUrl, costPlusUrl, goodRxPrice, costPlusPrice, pricesCapturedAt, hasCashLinkRule } =
-  await import(CASH_LIB)
+// cash.ts is TypeScript; importing it directly relies on Node's built-in type-stripping, which is
+// on by default only from Node 22.18.0/23.6.0+ (needs --experimental-strip-types on 22.12-22.17,
+// and isn't available at all below that). This script (unlike `build`/`test`) isn't run in CI, but
+// fail with a clear message rather than a cryptic syntax error if run on an older local Node.
+let cashLib
+try {
+  cashLib = await import(CASH_LIB)
+} catch (e) {
+  console.error(c.red(`\nFailed to import ${CASH_LIB}: ${e.message}`))
+  console.error(
+    c.dim(
+      '  This script imports a .ts file directly, which needs Node >=22.18.0 (or >=22.12 with\n' +
+        '  the --experimental-strip-types flag). Run `node --version` to check yours.\n',
+    ),
+  )
+  process.exit(1)
+}
+const { goodRxUrl, costPlusUrl, goodRxPrice, costPlusPrice, pricesCapturedAt, hasCashLinkRule, KNOWN_UNPRICED_GAP } =
+  cashLib
 
 const formulary = JSON.parse(readFileSync(DATA, 'utf8'))
 const problems = []

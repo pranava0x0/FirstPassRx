@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { FormularyRecord } from '../types/formulary'
 import { buildSig } from '../lib/sig'
-import { copyToClipboard } from '../lib/clipboard'
+import { useCopyToClipboard } from '../lib/clipboard'
 
 /**
  * The Rx sig as an editable starting point (doses vary by patient), with a copy button and a
@@ -10,23 +10,13 @@ import { copyToClipboard } from '../lib/clipboard'
 export function RxSig({ record }: { record: FormularyRecord }) {
   const initial = buildSig(record)
   const [value, setValue] = useState(initial)
-  const [copied, setCopied] = useState(false)
-  const timer = useRef<number | undefined>(undefined)
+  const { copied, copy, reset } = useCopyToClipboard()
 
-  // Reset to the new default whenever the selected record changes; clear timer on unmount.
+  // Reset to the new default whenever the selected record changes.
   useEffect(() => {
     setValue(initial)
-    setCopied(false)
-    return () => window.clearTimeout(timer.current)
+    reset()
   }, [initial])
-
-  async function copy() {
-    const ok = await copyToClipboard(value)
-    if (!ok) return
-    setCopied(true)
-    window.clearTimeout(timer.current)
-    timer.current = window.setTimeout(() => setCopied(false), 2000)
-  }
 
   return (
     <div>
@@ -43,7 +33,7 @@ export function RxSig({ record }: { record: FormularyRecord }) {
         <button
           type="button"
           className={`copy-btn${copied ? ' copy-btn--done' : ''}`}
-          onClick={copy}
+          onClick={() => copy(value)}
           aria-label={`Copy sig: ${value}`}
         >
           <span aria-hidden="true">{copied ? '✓ Copied' : 'Copy'}</span>
