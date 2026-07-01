@@ -114,6 +114,38 @@ Marketplace + HMO, Priority Partners 690, UnitedHealthcare commercial, Cigna, Ae
 was fetched and read — several large PDFs were downloaded and text-extracted locally where WebFetch
 could not render the binary stream.
 
+## NY ACE inhibitors (`ny-ace` guide) — 2026-07-01
+
+**Shipped: 1 of 6 intended payers.** New York carved the Medicaid pharmacy benefit entirely out of
+Medicaid Managed Care effective April 1, 2023 — every NY Medicaid MCO (Fidelis, Healthfirst,
+MetroPlus, UnitedHealthcare Community Plan, EmblemHealth) now shares one statewide program, NYRx,
+rather than publishing its own formulary. Confirmed independently by two separately-researched MCOs
+(Fidelis Care and Healthfirst) both resolving to the identical NYRx Preferred Drug List (revised
+2026-06-04) with identical preferred-agent/PA findings — so the guide lists one consolidated
+**"New York Medicaid (NYRx)"** payer instead of 5 near-duplicate MCO entries. Preferred agent:
+lisinopril (generic, no PA); benazepril/enalapril/ramipril also preferred; all other ACE inhibitors
+(captopril, fosinopril, moexipril, perindopril, quinapril, trandolapril, and all brand names) require
+PA. Source: `newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf` (gov, NYS DOH via Prime
+Therapeutics/FHSC). `health.ny.gov` pages 403'd to automated fetch during this research but are
+cross-referenced by the NYRx materials as the authoritative program home — don't re-attempt a direct
+fetch there without a real browser session.
+
+**Not yet gathered:** the 5 NY commercial payers (Empire BCBS, Excellus BCBS, Cigna, Aetna, UHC
+commercial) — payer metadata (formularyUrl/PBM) is checkpointed at
+`data-gathering/ny-ace-2026-07-01/payer-*.json` but no drug-class records exist yet. See backlog.md.
+
+## VA diabetes (4 classes: metformin/oral, GLP-1/GIP, SGLT2, insulin) — 2026-07-01
+
+**Not shipped.** Payer metadata gathered for 9 of 10 payers (checkpointed at
+`data-gathering/va-diabetes-2026-07-01/payer-*.json`); only UnitedHealthcare Community Plan of
+Virginia has any drug-class records (3 of 4 — missing insulin), so the guide can't pass schema
+validation yet (every payer needs every active class). Virginia Medicaid MCOs each publish their own
+formulary page but converge on the same DMAS-set "Common Core Formulary" baseline — confirmed via a
+directly-fetched `vamedicaid.dmas.virginia.gov` bulletin for Aetna Better Health of Virginia. Note:
+`aetnabetterhealth.com` 403'd every direct fetch attempt (Akamai WAF) — the DMAS-hosted PDF mirror
+(`dmas.virginia.gov/media/2977/aetna-ccc-plus.pdf`) was usable instead to confirm the PBM (CVS
+Caremark). See backlog.md for the completion plan (small-batch, ≤2 concurrent agents).
+
 ## Verification protocol (per cell, before flipping to `verified`)
 
 1. Open the payer's current formulary for the drug class.

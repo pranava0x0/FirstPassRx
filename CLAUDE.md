@@ -250,3 +250,56 @@ For a content/static site, default to a **cookieless, privacy-first** tool (no c
 - **Pieter Levels (levels.io)** — ship fast and ugly; boring tech beats shiny; solo-friendly defaults (vanilla, SQLite, single-file, cheap hosting); profit before scale; don't add a dependency you can't maintain alone; talk to users daily.
 
 When in doubt: **ship the smallest version that works, then iterate on what real users do, not what you imagine they'll do.**
+
+---
+
+## FirstPassRx — project-specific scar tissue
+
+Append-only. These are quirks specific to this repo's data sources and tooling, not universal rules.
+
+- **GoodRx and Cost Plus Drugs both 403 a plain `fetch()`/WebFetch call, but a real browser session
+  (Chrome extension navigate + get_page_text) gets through cleanly.** Bot-protection is keyed on
+  TLS/browser fingerprint, not URL shape. For any future cash-price work, drive the real browser
+  tool, not WebFetch — WebFetch will look like a dead end that isn't actually dead.
+  Counter-intuitively, a plain server-side Node `fetch()` (used in `scripts/validate-prices.mjs`)
+  *does* get through to Cost Plus Drugs (though still 403s on GoodRx) — different rate-limit tier
+  than the WebFetch tool's IP/UA, so the live-validator script still works even though ad hoc
+  WebFetch calls don't.
+- **GoodRx's bare drug-name slug page (`/albuterol`, `/activella`, `/divigel`, `/climara`, ...)
+  defaults to whichever strength/form the page picks first — often NOT the one a specific formulary
+  cell needs.** Don't take the first price you see as truth for a specific dose. The page's own
+  "Edit" control exposes every real strength/form/quantity combo as a `<select>`; picking the right
+  one and hitting "Confirm prescription" rewrites the URL with `?label_override=&form=&dosage=&quantity=`
+  params that deep-link straight to that exact combo — reuse that URL as both the citation link and
+  the price source so the link and the number always match. See `goodRxParams` in `src/lib/cash.ts`.
+- **A brand-name price is not a substitute for a missing generic price.** When GoodRx has no page at
+  the exact generic strength/form a cell describes but does have the *brand* at that strength, don't
+  attach the brand price — brand can be 3-10x the generic and would badly overstate real cost. Leave
+  it link-only and log the gap in `issues.md` (see the Climara 0.05mg case).
+  - **Cost Plus Drugs product pages sometimes fail to hydrate on the first `get_page_text` read**
+  (shows only "Skip to Main Content" — a client-side price-calc race, not a real 404/error). A second
+  read on the same tab after a beat resolves it. Don't treat this as "no price available" without a
+  retry.
+- **State Medicaid MCO rosters churn — verify the current list before building a payer set, don't
+  trust memory/training data.** Molina exited Virginia Medicaid mid-2025; a plan named "VA Premier"
+  doesn't exist. One `WebSearch` for "<state> Medicaid managed care organizations <year>" before
+  scaffolding a new guide's payer list is cheap insurance against citing a defunct or wrong plan.
+  Same instinct applies to commercial-plan rebrands (Amerigroup → Wellpoint happened in 6 specific
+  states, not nationwide — check the state list, don't assume a rebrand is universal).
+- **This session's browser-preview tool (`preview_screenshot`) intermittently returns a blank or
+  corrupted frame after a `scrollIntoView`/`scrollBy` + reload sequence, on an otherwise-healthy
+  page.** Confirmed via `document.body.innerText` / computed-style reads returning correct content
+  every time the screenshot was blank. Treat `preview_eval` DOM/style reads as the authoritative
+  verification signal; retry `preview_screenshot` at most once or two before trusting the DOM read
+  over it — don't burn turns re-screenshotting a real bug that isn't there.
+- **Never fan a Workflow out past 2 concurrent agents without asking first.** Two data-gathering
+  Workflow scripts in one session (one `pipeline(10 payers) → parallel(4 classes)` = ~55 agents, one
+  ~30 agents) both hit "Server is temporarily limiting requests" on ~85% of agents — the fan-out
+  width overwhelmed the API regardless of the formal per-workflow concurrency cap. The user's
+  correction was blunt and specific: never more than 2 at a time without asking, even under a
+  standing "don't stop to ask, just decide" instruction from the same session. Recovery worked
+  because each agent had been told to checkpoint its own JSON to
+  `data-gathering/<stamp>/<payer>[-<class>].json` before returning (per the `formulary-data` skill) —
+  reading those files off disk recovered the ~15% that did succeed instead of needing to re-run
+  anything. For any future multi-payer/multi-class gather, do it in small batches (≤2 concurrent)
+  and confirm scale with the user before launching, not after something breaks.
