@@ -12,7 +12,7 @@
 | --- | --- | --- |
 | Massachusetts (MA) | inhaler guide — drug-level | 5 |
 | Maryland (MD) | menopause hormone-therapy guide — drug-level | 8 |
-| New York (NY) | index only | 8 |
+| New York (NY) | ACE inhibitor guide — drug-level | 1 |
 | Virginia (VA) | index only | 8 |
 | District of Columbia (DC) | index only | 7 |
 
@@ -39,20 +39,11 @@
 | Aetna | Commercial | CVS Caremark | [2026 Aetna Standard Plan Pharmacy Drug Guide — MENOPAUSAL SYMPTOM AGENTS / PROGESTINS covered list + 'Preferred Options List for Formulary Drug Removals' (estradiol, vaginal estrogen, progesterone entries)](https://www.aetna.com/content/dam/aetna/pdfs/aetnacom/individuals-families-health-insurance/document-library/pharmacy/2026_Drug_guide_Aetna_Standard_Plan.pdf) — eff. 2026-01 |
 | Medicare Part D — AARP MedicareRx Preferred (UHC) | Medicare | OptumRx | [AARP Medicare Rx Preferred from UHC (PDP) — Complete Drug List (Formulary) 2026, Formulary ID 00026000, Estrogens / Progestins sections (pp. 70-74 index; drug list pp. ~70-72)](https://www.uhc.com/medicare/alphadog/PDEX26PD0348627_001) — eff. 2026-01-01 |
 
-## New York (NY) — index only
+## New York (NY) — ACE inhibitor guide · in app
 
-> Pharmacy is carved OUT of mainstream Medicaid managed care into one statewide FFS program (NYRx) since 4/1/2023, so the Medicaid MCOs share the single NYRx PDL.
-
-| Plan | Type | PBM | Published formulary |
+| Plan | Type | PBM | Published formulary (as of) |
 | --- | --- | --- | --- |
-| NYRx — NYS Medicaid Pharmacy Program (Fee-for-Service) | Medicaid (FFS) | Magellan Medicaid Administration (Prime Therapeutics; NYRx fiscal agent / PDP administrator) | [NYRx Preferred Drug List (PDP PDL)](https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf) — eff. 2026-06-04 |
-| Healthfirst (Medicaid Managed Care / PHSP) — largest NY Medicaid MCO | Medicaid MCO | None at plan level — pharmacy benefit carved out to NYRx (Magellan Medicaid Administration) | [NYRx Preferred Drug List (Healthfirst Medicaid Rx is administered by NYRx)](https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf) — eff. 2026-06-04 |
-| Fidelis Care (Medicaid Managed Care) — 2nd largest NY Medicaid MCO | Medicaid MCO | None at plan level — pharmacy benefit carved out to NYRx (Magellan Medicaid Administration) | [NYRx Preferred Drug List (Fidelis Medicaid Rx is administered by NYRx)](https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf) — eff. 2026-06-04 |
-| MetroPlus Health Plan (Medicaid Managed Care) — 3rd largest NYC Medicaid MCO | Medicaid MCO | None at plan level — pharmacy benefit carved out to NYRx (Magellan Medicaid Administration) | [NYRx Preferred Drug List (MetroPlus Medicaid Rx is administered by NYRx)](https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf) — eff. 2026-06-04 |
-| Excellus BlueCross BlueShield (Commercial / Individual & Family) — the NY Blue plan (Lifetime Healthcare; upstate NY) | Commercial | Express Scripts (ESI) | [Excellus 2026 Metal Plans (Base / Simply Blue Plus / College Blue) 3-Tier Formulary Guide (2981)](https://fm.formularynavigator.com/FBO/251/Excellus_2026_Metal_Plans_Base___Simply_Blue_Plus___College_Blue_Plans_Formulary_Guide_2981_v26.pdf) — eff. 2026-01-01 |
-| UnitedHealthcare (Commercial) — largest NY commercial carrier | Commercial | OptumRx | [UnitedHealthcare Commercial Prescription Drug List (PDL), effective Jan 1 2026](https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf) — eff. 2026-01-01 |
-| Anthem Blue Cross and Blue Shield of New York (Commercial) | Commercial | CarelonRx | [Anthem BCBS New York 2026 Select Drug List — Three-Tier (Individual/HIX)](https://fm.formularynavigator.com/FBO/143/2026_Select_3_Tier_NY_ABS_IND.pdf) — eff. 2026-01-01 |
-| Excellus Medicare BlueActive (PPO) — representative NY Medicare Advantage + Part D plan | Medicare | Express Scripts (Medicare Part D) | [Excellus 2026 Medicare BlueActive (PPO) Formulary — List of Covered Drugs (5-tier MAPD)](https://fm.formularynavigator.com/FBO/251/Excellus_Medicare_5T_DP_even.pdf) — eff. 2026-01-01 |
+| New York Medicaid (NYRx) | Medicaid | Prime Therapeutics / FHSC (NYRx fiscal agent) | [NYRx, the Medicaid Pharmacy Program Preferred Drug List (PDL) — revised June 4, 2026](https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf) — eff. 2026-06-04 |
 
 ## Virginia (VA) — index only
 
@@ -85,6 +76,6 @@
 
 ---
 
-Auditability: each MA/MD row cites the exact formulary document the app read (with its effective
-date); each NY/VA/DC row links the live formulary/PDL the index agent fetched. `npm run trace:live`
-re-fetches every cited source and flags any that moved or 404d.
+Auditability: each in-app row cites the exact formulary document the app read (with its
+effective date); each index-only row links the live formulary/PDL the index agent fetched.
+`npm run trace:live` re-fetches every cited source and flags any that moved or 404d.

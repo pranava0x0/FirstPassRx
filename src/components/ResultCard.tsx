@@ -1,10 +1,11 @@
 import type { FormularyRecord, PayerMeta } from '../types/formulary'
 import { useGuide } from '../lib/formulary'
-import { goodRxUrl, costPlusUrl } from '../lib/cash'
+import { goodRxUrl, costPlusUrl, goodRxPrice, costPlusPrice, pricesCapturedAt } from '../lib/cash'
 import { BoglBanner } from './BoglBanner'
 import { PrescribeOptions } from './PrescribeOptions'
 import { Citations } from './Citations'
 import { GlossaryTerm } from './GlossaryTerm'
+import { CashPriceBoxes } from './CashPriceBoxes'
 
 
 interface Props {
@@ -26,6 +27,9 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
   const primarySource = coverageSources[0]
   const displayName = agent.brand ?? agent.inn
   const costPlusHref = costPlusUrl(agent.inn)
+  const goodRxPoint = goodRxPrice(agent.inn)
+  const costPlusPoint = costPlusPrice(agent.inn)
+  const pricesAsOf = pricesCapturedAt(agent.inn)
 
   // Clean lowercase generic name without salt/device suffixes, for the BOGL "write brand, not
   // generic X" copy (e.g. "Albuterol sulfate HFA" -> "albuterol").
@@ -93,22 +97,18 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
             <span className="recommendation-hero__cost">
               In plan: <b>{record.tier ?? 'covered'}</b>
             </span>
-            <span className="recommendation-hero__cash">
-              Cash:{' '}
-              <a href={goodRxUrl(agent.inn)} target="_blank" rel="noopener noreferrer">
-                GoodRx &#8599;
-              </a>
-              {costPlusHref ? (
-                <a href={costPlusHref} target="_blank" rel="noopener noreferrer">
-                  Cost+ &#8599;
-                </a>
-              ) : null}
-            </span>
           </div>
+          <CashPriceBoxes
+            goodRxHref={goodRxUrl(agent.inn)}
+            goodRx={goodRxPoint}
+            costPlusHref={costPlusHref}
+            costPlus={costPlusPoint}
+            capturedAt={pricesAsOf}
+          />
         </div>
 
         {/* Q1 + Q2: what to prescribe + alternatives, with cost in plan vs cash. */}
-        <PrescribeOptions record={record} source={primarySource} />
+        <PrescribeOptions record={record} source={primarySource} payer={payer} />
 
         {/* Load-bearing prescriber warning — stays visible when the plan forces the brand. */}
         {record.boglActive && record.boglNote ? (

@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from 'vitest'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { render, screen, within, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import App from './App'
@@ -49,7 +49,7 @@ describe('FirstPassRx app', () => {
     expect(document.querySelector('.recommendation-label')).toHaveTextContent(/Preferred option/i)
   })
 
-  it('lists reject drugs with reasons and disables the appeal + biologics actions', async () => {
+  it('lists reject drugs with reasons and disables the biologics tab', async () => {
     const user = userEvent.setup()
     render(<App />)
     expect(screen.getByText(/Levalbuterol \(Xopenex HFA\)/)).toBeInTheDocument()
@@ -58,6 +58,57 @@ describe('FirstPassRx app', () => {
     expect(biologics).toHaveAttribute('aria-disabled', 'true')
     await user.click(biologics)
     expect(agentHeading()).toHaveTextContent('Ventolin HFA')
+  })
+
+  it('drafts and copies a pre-filled PA appeal letter for a rejected drug', async () => {
+    const user = userEvent.setup()
+    const writeText = vi.fn().mockResolvedValue(undefined)
+    Object.defineProperty(navigator, 'clipboard', { value: { writeText }, configurable: true })
+    render(<App />)
+
+    const rejectCard = screen.getByText(/Levalbuterol \(Xopenex HFA\)/).closest('.rx-option-card')
+    expect(rejectCard).not.toBeNull()
+    const within_ = within(rejectCard as HTMLElement)
+    await user.click(within_.getByRole('button', { name: /draft appeal letter/i }))
+
+    const letter = within_.getByRole('textbox', { name: /editable pa appeal letter/i }) as HTMLTextAreaElement
+    expect(letter.value).toContain('Levalbuterol (Xopenex HFA)')
+    expect(letter.value).toContain('MassHealth')
+
+    await user.click(within_.getByRole('button', { name: /copy appeal letter/i }))
+    expect(writeText).toHaveBeenCalledWith(expect.stringContaining('Levalbuterol (Xopenex HFA)'))
+  })
+
+  it('regenerates an open appeal letter when the payer changes for the same-named barrier drug', async () => {
+    // Regression test: "estropipate oral tablet" is a PA barrier under both Priority Partners and
+    // Medicare Part D in the MD menopause guide -- same row.drug at the same list position, so
+    // AppealAction's component instance is reused across the payer switch (React keys by
+    // row.drug, not by payer). A useState lazy initializer would keep showing the old payer's
+    // letter here; this asserts it rebuilds instead.
+    const user = userEvent.setup()
+    render(<App />)
+    await user.click(screen.getByRole('button', { name: /Menopause HT/i }))
+    fireEvent.change(screen.getByLabelText(/select insurance plan/i), { target: { value: 'priority-partners' } })
+    await user.click(screen.getByRole('tab', { name: /Estrogen pill/i }))
+
+    const card = screen.getByRole('heading', { level: 5, name: /estropipate oral tablet/i }).closest(
+      '.rx-option-card',
+    ) as HTMLElement
+    await user.click(within(card).getByRole('button', { name: /draft appeal letter/i }))
+    const letter = within(card).getByRole('textbox', { name: /editable pa appeal letter/i }) as HTMLTextAreaElement
+    expect(letter.value).toContain('Priority Partners')
+
+    fireEvent.change(screen.getByLabelText(/select insurance plan/i), { target: { value: 'medicare-partd' } })
+    await user.click(screen.getByRole('tab', { name: /Estrogen pill/i }))
+
+    const sameCard = screen.getByRole('heading', { level: 5, name: /estropipate oral tablet/i }).closest(
+      '.rx-option-card',
+    ) as HTMLElement
+    const updatedLetter = within(sameCard).getByRole('textbox', {
+      name: /editable pa appeal letter/i,
+    }) as HTMLTextAreaElement
+    expect(updatedLetter.value).toContain('Medicare Part D')
+    expect(updatedLetter.value).not.toContain('Priority Partners')
   })
 
   it('changes the preferred agent when the class tab changes', async () => {
@@ -86,7 +137,7 @@ describe('FirstPassRx app', () => {
     const options = within(panel).getByRole('region', { name: /prescribing options/i })
     expect(within(options).getByText(/Advair Diskus/)).toBeInTheDocument()
     expect(within(options).getByText(/Breo Ellipta/)).toBeInTheDocument()
-    expect(within(options).getAllByText(/Cash \/ Details/i).length).toBeGreaterThan(0)
+    expect(within(options).getAllByRole('link', { name: /GoodRx/i }).length).toBeGreaterThan(0)
     // rejects/barriers sit inside the same options table
     expect(within(options).getByText(/AirDuo RespiClick/)).toBeInTheDocument()
   })
@@ -135,7 +186,6 @@ describe('FirstPassRx app', () => {
     expect(cite[0]).toHaveAttribute('href', expect.stringMatching(/^https?:\/\//))
     // cost shows as columns: in-plan and cash
     expect(within(panel).getByText(/In plan:/i)).toBeInTheDocument()
-    expect(within(panel).getAllByText(/Cash \/ Details/i).length).toBeGreaterThan(0)
     // cash links per option — GoodRx and Cost Plus Drugs
     const goodrx = within(panel).getAllByRole('link', { name: /GoodRx/i })
     expect(goodrx.length).toBeGreaterThan(0)

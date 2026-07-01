@@ -1,7 +1,11 @@
-import type { FormularyRecord, Reference } from '../types/formulary'
+import { useEffect, useState } from 'react'
+import type { ClassMeta, FormularyRecord, PaItem, PayerMeta, Reference } from '../types/formulary'
 import { useGuide } from '../lib/formulary'
-import { goodRxUrl, costPlusUrl } from '../lib/cash'
+import { goodRxUrl, costPlusUrl, goodRxPrice, costPlusPrice, pricesCapturedAt } from '../lib/cash'
+import { buildAppealLetter } from '../lib/appealLetter'
+import { useCopyToClipboard } from '../lib/clipboard'
 import { SourceLink } from './SourceLink'
+import { CashPriceBoxes } from './CashPriceBoxes'
 
 /** Tag an option by what it is, read from the drug text / coverage note. */
 function roleOf(text: string): string {
@@ -19,6 +23,7 @@ interface Row {
   cashName: string
   type: 'alternative' | 'barrier'
   sourceIds: string[]
+  paItem?: PaItem
 }
 
 /**
@@ -34,12 +39,15 @@ function cleanNote(note: string): string {
 export function PrescribeOptions({
   record,
   source,
+  payer,
 }: {
   record: FormularyRecord
   source?: Reference
+  payer: PayerMeta
 }) {
   const guide = useGuide()
-  
+  const drugClass = guide.getClass(record.classId)
+
   const alternates: Row[] = (record.alternatives ?? []).map((alt) => ({
     drug: alt.drug,
     role: roleOf(`${alt.drug} ${alt.note ?? ''}`),
@@ -56,6 +64,7 @@ export function PrescribeOptions({
     cashName: rej.drug,
     type: 'barrier',
     sourceIds: rej.sourceIds,
+    paItem: rej,
   }))
 
   const rows = [...alternates, ...barriers]
@@ -81,6 +90,9 @@ export function PrescribeOptions({
       <div className="rx-cards-list">
         {rows.map((row) => {
           const costPlusHref = costPlusUrl(row.cashName)
+          const goodRxPoint = row.type === 'alternative' ? goodRxPrice(row.cashName) : null
+          const costPlusPoint = row.type === 'alternative' ? costPlusPrice(row.cashName) : null
+          const capturedAt = pricesCapturedAt(row.cashName)
           return (
             <div key={row.drug} className={`rx-option-card is-${row.type}`}>
             <div className="rx-option-card__header">
@@ -90,22 +102,19 @@ export function PrescribeOptions({
             <p className="rx-option-card__cost">
               <strong>Coverage:</strong> {cleanNote(row.cost)}
             </p>
-            <div className="rx-option-card__footer">
-              <span className="rx-option-card__label">Cash / Details:</span>
-              <span className="rx-option-card__links">
-                {row.type === 'alternative' ? (
-                  <>
-                    <a href={goodRxUrl(row.cashName)} target="_blank" rel="noopener noreferrer">
-                      GoodRx &#8599;
-                    </a>
-                    {costPlusHref ? (
-                      <a href={costPlusHref} target="_blank" rel="noopener noreferrer">
-                        Cost+ &#8599;
-                      </a>
-                    ) : null}
-                  </>
-                ) : (
-                  guide.resolveSources(row.sourceIds).map((src) => (
+            {row.type === 'alternative' ? (
+              <CashPriceBoxes
+                goodRxHref={goodRxUrl(row.cashName)}
+                goodRx={goodRxPoint}
+                costPlusHref={costPlusHref}
+                costPlus={costPlusPoint}
+                capturedAt={capturedAt}
+              />
+            ) : (
+              <div className="rx-option-card__footer">
+                <span className="rx-option-card__label">Details:</span>
+                <span className="rx-option-card__links">
+                  {guide.resolveSources(row.sourceIds).map((src) => (
                     <a
                       key={src.id}
                       className="panel-cite"
@@ -116,14 +125,85 @@ export function PrescribeOptions({
                     >
                       source &#8599;
                     </a>
-                  ))
-                )}
-              </span>
-            </div>
+                  ))}
+                </span>
+              </div>
+            )}
+            {row.type === 'barrier' && row.paItem && drugClass ? (
+              <AppealAction record={record} item={row.paItem} payer={payer} drugClass={drugClass} />
+            ) : null}
             </div>
           )
         })}
       </div>
     </section>
+  )
+}
+
+/** Toggle that reveals a pre-filled, editable, copyable PA appeal letter for one blocked drug. */
+function AppealAction({
+  record,
+  item,
+  payer,
+  drugClass,
+}: {
+  record: FormularyRecord
+  item: PaItem
+  payer: PayerMeta
+  drugClass: ClassMeta
+}) {
+  const initial = buildAppealLetter(record, item, payer, drugClass)
+  const [open, setOpen] = useState(false)
+  const [value, setValue] = useState(initial)
+  const { copied, copy, reset } = useCopyToClipboard()
+
+  // Rebuild the letter whenever the underlying cell changes (payer/class switch can reuse this
+  // component instance for a same-named barrier drug — see RxSig's identical fix for the same issue).
+  useEffect(() => {
+    setValue(initial)
+    reset()
+  }, [initial])
+
+  return (
+    <div className="appeal">
+      <button
+        type="button"
+        className="appeal-btn"
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+      >
+        {open ? 'Hide appeal letter' : 'Draft appeal letter'}
+        <span className="appeal-btn__chevron" aria-hidden="true">
+          &#9662;
+        </span>
+      </button>
+      {open ? (
+        <div className="appeal-panel">
+          <p className="appeal-panel__note">
+            Pre-filled from this cell's coverage data. Patient and prescriber fields are blank —
+            fill those in before sending.
+          </p>
+          <textarea
+            className="appeal-panel__field"
+            rows={14}
+            value={value}
+            spellCheck={false}
+            onChange={(e) => setValue(e.target.value)}
+            aria-label={`Editable PA appeal letter for ${item.drug}`}
+          />
+          <button
+            type="button"
+            className={`copy-btn${copied ? ' copy-btn--done' : ''}`}
+            onClick={() => copy(value)}
+            aria-label={`Copy appeal letter for ${item.drug}`}
+          >
+            <span aria-hidden="true">{copied ? '✓ Copied' : 'Copy letter'}</span>
+            <span className="sr-only" aria-live="polite">
+              {copied ? 'Copied to clipboard' : ''}
+            </span>
+          </button>
+        </div>
+      ) : null}
+    </div>
   )
 }

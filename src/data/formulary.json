@@ -2,7 +2,7 @@
   "meta": {
     "title": "FirstPassRx",
     "disclaimer": "A point-of-care reference, not a substitute for the payer's current formulary or clinical judgment. Formularies change quarterly; confirm every agent and restriction against the linked source before prescribing.",
-    "version": "0.8.0",
+    "version": "0.8.1",
     "defaultGuideId": "ma-inhalers"
   },
   "guides": [
@@ -4533,6 +4533,234 @@
           "restrictionSourceIds": [
             "aarp-medicarerx-2026"
           ]
+        }
+      ]
+    },
+    {
+      "id": "ny-ace",
+      "label": "NY · ACE Inhibitors",
+      "region": "New York",
+      "topic": "ACE inhibitor guide",
+      "classNoun": "Prescription type",
+      "unitNoun": "medication",
+      "tagline": "",
+      "dataStatus": "verified",
+      "lastUpdated": "2026-07-01",
+      "capturedAt": "2026-07-01",
+      "payers": [
+        {
+          "id": "ny-medicaid",
+          "name": "New York Medicaid (NYRx)",
+          "shortName": "NY Medicaid",
+          "aka": "NYRx — NYS Medicaid Pharmacy Program (Fee-for-Service); covers every NY Medicaid Managed Care plan's pharmacy benefit statewide since the April 1, 2023 pharmacy carve-out",
+          "pbm": "Prime Therapeutics / FHSC (NYRx fiscal agent)",
+          "formularyUrl": "https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf",
+          "paPolicyUrl": "https://www.health.ny.gov/health_care/medicaid/program/pharmacy/program_info.htm",
+          "sourceIds": [
+            "ny-medicaid-nyrx-pdl-2026-06",
+            "ny-medicaid-pharmacy-program-info"
+          ],
+          "productName": "NYRx — NY Medicaid Pharmacy Program (Fee-for-Service, statewide)",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "NYRx PDL, revised 2026-06-04"
+        }
+      ],
+      "classes": [
+        {
+          "id": "ace-inhibitor",
+          "name": "ACE inhibitors",
+          "shortName": "ACE inhibitor",
+          "plainName": "Blood pressure pill (ACE)",
+          "description": "Angiotensin-converting-enzyme inhibitors (lisinopril, enalapril, benazepril, ramipril, etc.) -- first-line oral therapy for hypertension and heart failure.",
+          "plainDescription": "A common daily pill for high blood pressure or heart failure.",
+          "indication": "Hypertension & heart failure",
+          "sourceIds": [
+            "ny-medicaid-nyrx-pdl-2026-06"
+          ]
+        }
+      ],
+      "references": [
+        {
+          "id": "ny-medicaid-nyrx-pdl-2026-06",
+          "label": "NYRx, the Medicaid Pharmacy Program Preferred Drug List (PDL) — revised June 4, 2026",
+          "publisher": "New York State Department of Health / NYRx (administered via FHSC/Prime Therapeutics)",
+          "type": "gov",
+          "url": "https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf",
+          "effectiveDate": "2026-06-04",
+          "accessed": "2026-07-01"
+        },
+        {
+          "id": "ny-medicaid-pharmacy-program-info",
+          "label": "NYRx, the Medicaid Pharmacy Program — program information and PA policy",
+          "publisher": "New York State Department of Health",
+          "type": "gov",
+          "url": "https://www.health.ny.gov/health_care/medicaid/program/pharmacy/program_info.htm",
+          "accessed": "2026-07-01"
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Prior authorization (PA)",
+          "short": "Insurer sign-off first",
+          "definition": "Insurer sign-off needed before the drug is covered."
+        },
+        {
+          "term": "Step therapy",
+          "short": "Try a preferred drug first",
+          "definition": "Must fail a preferred drug first before the plan covers this one."
+        }
+      ],
+      "records": [
+        {
+          "payerId": "ny-medicaid",
+          "classId": "ace-inhibitor",
+          "preferredAgent": {
+            "inn": "Lisinopril",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "10 mg",
+            "sig": "1 tablet by mouth once daily",
+            "sigShort": "1 tab QD",
+            "plainSig": "One pill, once a day."
+          },
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "Benazepril",
+              "note": "Preferred on NYRx PDL alongside lisinopril; covered without PA.",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Enalapril",
+              "note": "Preferred on NYRx PDL alongside lisinopril; covered without PA.",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Ramipril",
+              "note": "Preferred on NYRx PDL alongside lisinopril; covered without PA.",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Captopril",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Fosinopril",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Moexipril",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Perindopril",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Quinapril",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Trandolapril",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Accupril (quinapril brand)",
+              "outcome": "nonformulary",
+              "reason": "Non-formulary; generic quinapril is preferred instead",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Altace (ramipril brand)",
+              "outcome": "nonformulary",
+              "reason": "Non-formulary; generic ramipril is preferred instead",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Lotensin (benazepril brand)",
+              "outcome": "nonformulary",
+              "reason": "Non-formulary; generic benazepril is preferred instead",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Zestril (lisinopril brand)",
+              "outcome": "nonformulary",
+              "reason": "Non-formulary; generic lisinopril is preferred instead",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Epaned (enalapril oral solution, brand)",
+              "outcome": "nonformulary",
+              "reason": "Non-formulary",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Qbrelis (lisinopril oral solution)",
+              "outcome": "nonformulary",
+              "reason": "Non-formulary",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "tier": "Preferred Drug List — no PA required for the preferred generic",
+          "verification": "verified",
+          "verificationNote": "Read directly off the NYRx Preferred Drug List (PDL) PDF, revised June 4, 2026, page 9, section III. Cardiovascular > Angiotensin Converting Enzyme Inhibitors (ACEIs). Preferred: benazepril, enalapril, lisinopril, ramipril (no PA on any of the four); non-preferred agents require PA. Cross-confirmed independently via two Medicaid MCOs (Fidelis Care and Healthfirst) that both resolved to this same statewide PDL. New York carved the Medicaid pharmacy benefit out of Medicaid Managed Care entirely, effective April 1, 2023 — every NY Medicaid Managed Care plan (Fidelis, Healthfirst, MetroPlus, UnitedHealthcare Community Plan, EmblemHealth, etc.) shares this single NYRx PDL rather than publishing its own, so this guide lists one consolidated \"New York Medicaid (NYRx)\" payer instead of listing each MCO separately with duplicate cells. Dose/sig (10mg once daily) is standard first-line dosing, not itself stated in the PDL (which lists drug names/coverage only) — verification applies to the preferred/non-preferred/PA determination. NYRx does not publish per-agent dollar copay tiers in this PDL.",
+          "sourceIds": [
+            "ny-medicaid-nyrx-pdl-2026-06",
+            "ny-medicaid-pharmacy-program-info"
+          ],
+          "coverageSourceIds": [
+            "ny-medicaid-nyrx-pdl-2026-06"
+          ],
+          "restrictionSourceIds": [
+            "ny-medicaid-nyrx-pdl-2026-06"
+          ],
+          "lastReviewed": "2026-07-01"
         }
       ]
     }

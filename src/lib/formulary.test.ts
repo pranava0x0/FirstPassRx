@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest'
 import { guides, getGuideView, meta } from './formulary'
 
 describe('guides + global meta', () => {
-  it('ships the MA inhaler guide and the MD menopause guide, in order', () => {
-    expect(guides.map((g) => g.id)).toEqual(['ma-inhalers', 'md-menopause'])
+  it('ships the MA inhaler, MD menopause, and NY ACE inhibitor guides, in order', () => {
+    expect(guides.map((g) => g.id)).toEqual(['ma-inhalers', 'md-menopause', 'ny-ace'])
   })
 
   it('defaults to a guide that exists', () => {
