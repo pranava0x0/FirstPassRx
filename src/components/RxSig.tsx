@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { FormularyRecord } from '../types/formulary'
 import { buildSig } from '../lib/sig'
+import { copyToClipboard } from '../lib/clipboard'
 
 /**
  * The Rx sig as an editable starting point (doses vary by patient), with a copy button and a
@@ -20,12 +21,7 @@ export function RxSig({ record }: { record: FormularyRecord }) {
   }, [initial])
 
   async function copy() {
-    let ok = true
-    try {
-      await navigator.clipboard.writeText(value)
-    } catch {
-      ok = legacyCopy(value)
-    }
+    const ok = await copyToClipboard(value)
     if (!ok) return
     setCopied(true)
     window.clearTimeout(timer.current)
@@ -61,22 +57,4 @@ export function RxSig({ record }: { record: FormularyRecord }) {
       </p>
     </div>
   )
-}
-
-function legacyCopy(text: string): boolean {
-  const ta = document.createElement('textarea')
-  ta.value = text
-  ta.setAttribute('readonly', '')
-  ta.style.position = 'fixed'
-  ta.style.opacity = '0'
-  document.body.appendChild(ta)
-  ta.select()
-  let ok = false
-  try {
-    ok = document.execCommand('copy')
-  } catch {
-    ok = false
-  }
-  document.body.removeChild(ta)
-  return ok
 }

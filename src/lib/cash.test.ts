@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { costPlusUrl, goodRxUrl } from './cash'
+import { costPlusUrl, goodRxUrl, hasCashLinkRule, goodRxPrice, costPlusPrice, pricesCapturedAt } from './cash'
+import { guides } from './formulary'
 
 describe('cash price links', () => {
   it.each([
@@ -27,5 +28,55 @@ describe('cash price links', () => {
 
   it('does not offer Cost Plus when no matching product is known', () => {
     expect(costPlusUrl('Dulera (mometasone/formoterol)')).toBeNull()
+  })
+})
+
+/** Every drug name a live cell can render: the preferred agent + its covered alternatives,
+ * across active (non-comingSoon) classes only -- what a user can actually see today. */
+function coveredDrugNames(): string[] {
+  const names = new Set<string>()
+  for (const guide of guides) {
+    const activeClassIds = new Set(guide.activeClasses.map((c) => c.id))
+    for (const record of guide.records) {
+      if (!activeClassIds.has(record.classId)) continue
+      names.add(record.preferredAgent.inn)
+      if (record.preferredAgent.brand) names.add(record.preferredAgent.brand)
+      for (const alt of record.alternatives ?? []) names.add(alt.drug)
+    }
+  }
+  return [...names]
+}
+
+describe('cash price coverage across the live formulary', () => {
+  // Baseline as of 2026-07-01 (see issues.md): 76 covered-drug name variants have no explicit
+  // cash-link rule yet and fall to the generic slug guesser -- 72 from the MD menopause gap
+  // (Premarin/Prempro/Duavee/Bijuva family, vaginal rings, non-inhaler respiratory drugs), plus
+  // 4 new ones from the NY ACE inhibitor guide (lisinopril, benazepril, enalapril, ramipril --
+  // a whole new drug class cash.ts has no rules for yet). A ceiling, not a target: it must never
+  // grow silently.
+  const KNOWN_UNPRICED_GAP = 76
+
+  it('does not silently grow the set of covered drugs without an explicit cash-link rule', () => {
+    const unmatched = coveredDrugNames().filter((name) => !hasCashLinkRule(name))
+    expect(unmatched.length).toBeLessThanOrEqual(KNOWN_UNPRICED_GAP)
+  })
+
+  it('every explicit cash-link rule carries a captured-at date', () => {
+    const matched = coveredDrugNames().filter((name) => hasCashLinkRule(name))
+    for (const name of matched) {
+      expect(pricesCapturedAt(name), `${name} has a rule but no pricesCapturedAt`).not.toBeNull()
+    }
+  })
+
+  it('every explicit cash-link rule has a price snapshot, except known unavailable cases', () => {
+    // Weekly-patch family (rule: estradiol.*(weekly|patch|transdermal)|climara): GoodRx's generic
+    // page defaults to a different dose than the 0.05mg Climara product cited, and Cost Plus Drugs
+    // had 0.05mg out of stock at capture time -- link-only by design, not a bug. Covers the brand
+    // (Climara/Menostar) and generic "estradiol transdermal/patch" phrasings that fall to this rule.
+    const KNOWN_PRICE_UNAVAILABLE = [/climara/i, /menostar/i, /evamist/i, /estradiol transdermal(?! system)/i]
+    const matched = coveredDrugNames().filter((name) => hasCashLinkRule(name))
+    const missingPrice = matched.filter((name) => !goodRxPrice(name) && !costPlusPrice(name))
+    const unexpected = missingPrice.filter((name) => !KNOWN_PRICE_UNAVAILABLE.some((re) => re.test(name)))
+    expect(unexpected).toEqual([])
   })
 })

@@ -133,6 +133,12 @@ export default function App() {
               correct a cell &rarr;
             </a>
           </p>
+          <p>
+            Built by{' '}
+            <a href="https://www.pranavaraparla.com" target="_blank" rel="noopener noreferrer">
+              Pranava Raparla
+            </a>
+          </p>
         </footer>
       </div>
     </GuideProvider>
