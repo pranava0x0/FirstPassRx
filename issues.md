@@ -9,6 +9,24 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   Root cause: **code bug** — vendor URL formats were treated as interchangeable. Cash links now
   normalize to canonical GoodRx pages, use current Cost Plus product paths for matching products,
   and omit Cost+ when no match is known. Covered by `src/lib/cash.test.ts` and app link assertions.
+- **2026-07-01 · UI (PA appeal letter) · stale letter text after switching payer/class.**
+  `AppealAction`'s letter was built once via a `useState` lazy initializer and never rebuilt when
+  the surrounding record/payer/drugClass changed for a same-named barrier drug at the same list
+  position (React reuses the component instance). Root cause: **code bug** — missing the
+  `useEffect` resync pattern `RxSig` already used for the identical problem. Found independently by
+  3 review passes plus the `chatgpt-codex-connector` PR bot, which supplied a real reproduction
+  case already in the data ("estropipate oral tablet" under MD menopause's Priority Partners vs
+  Medicare Part D). Fixed with the same resync pattern; regression test in `App.test.tsx`.
+- **2026-07-01 · data (PA appeal letter) · step-therapy text could describe a different drug.**
+  `record.stepTherapy` is a class-level blurb that can cover multiple distinct barrier drugs (e.g.
+  MassHealth LAMA's combined Tudorza/Yupelri note); it was attached to every barrier drug's letter
+  regardless of relevance. Root cause: **code bug** — no outcome check before including it. Fixed:
+  only shown for a `step` outcome, framed as class-wide rather than specific to the one drug.
+- **2026-07-01 · docs · formulary-map.md not regenerated for the new NY guide.** `build-map.mjs`
+  hardcoded only `ma-inhalers`/`md-menopause` in its state-name lookup, so adding `ny-ace` would
+  have rendered an ugly `ny-ace (ny-ace)` in-app header alongside a stale "New York — index only"
+  duplicate section. Root cause: **code bug** — found by the codex PR bot. Fixed: the lookup and
+  the index-only section now both key off the same guide list, and the map was regenerated.
 
 ## Open
 

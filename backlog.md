@@ -80,6 +80,15 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## Low
 
+- **`goodRxParams` as structured fields.** `src/lib/cash.ts`'s exact-dosage deep links are hand-
+  written query strings (`label_override=...&form=...&dosage=...`); worth turning into a
+  `{form, dosage, quantity}` object + one shared builder once a 4th/5th rule needs the same
+  treatment (only 3 do today — not worth the abstraction yet per "build the helper the second time
+  you need it"). Flagged in code review.
+- **`cashLinkRule()` per-row re-scan.** Each of `goodRxUrl`/`costPlusUrl`/`goodRxPrice`/
+  `costPlusPrice`/`pricesCapturedAt` independently re-scans the ~20-rule regex table for the same
+  drug name; harmless at this scale, worth a single `resolveCashLink(name)` if the rule table grows
+  much larger. Flagged in code review.
 - ESLint + Prettier (kept out of MVP to minimize dependency surface; tsc strict covers types). When
   added, wire the design ban-list regex (no `bg-(indigo|violet|purple)`, `rounded-2xl`, `shadow-lg`,
   gradients) into CI per docs/design.md.

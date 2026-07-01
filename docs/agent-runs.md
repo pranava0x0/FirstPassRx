@@ -16,8 +16,14 @@ before launching a new fan-out — the cost levers at the bottom are learned her
 | 2026-06-28 | `md-oral-estrogen` — oral estrogen, 8 payers | 8 | 428K | ✅ 7 verified, 1 partial | High — caught CareFirst's age-70 PA reaching oral estradiol | Good — agents were **pre-supplied the known formulary URLs**, so they fetched instead of searching |
 | 2026-06-28 | `state-formulary-index` — NY/VA/DC plan→PBM→formulary index | 3 | 216K | ✅ all 3, real URLs | High — surfaced NY's NYRx pharmacy carve-out | Cheap + high-value: **index-level** (plan/PBM/URL), not drug-level. 1 VA plan resolved to a landing page only |
 | 2026-06-28 | `md-combo-oral` — oral estrogen+progestin combo tablet, 8 payers | 8 | 475K | ✅ 7 verified, 1 partial | High — caught CareFirst's Bijuva PA and the brand-vs-generic tiers | Good — all three learned levers applied (per-payer, pre-supplied URLs, verification folded in). Enabled the previously-scaffolded `combo` tab |
+| 2026-07-01 | `va-diabetes-formulary` — 10 payers × 4 classes + verify, one big fan-out | 55 | 1.30M | ❌ ~85% of class-gather/verify agents rate-limited ("Server is temporarily limiting requests") | Low — only 1/10 payers got any class data (3/4 classes), guide unshippable | **Failure: fan-out width (55) overwhelmed the API regardless of the per-workflow concurrency cap.** User corrected mid-session: never >2 concurrent agents without asking. Recovered ~15% that succeeded from on-disk checkpoints (per-agent Write-before-return) instead of re-running blind |
+| 2026-07-01 | `ny-ace-formulary` — 10 payers × 1 class + verify, same shape | 30 | 1.22M | ❌ same rate-limit failure, ~1 payer usable | Low — shipped 1/6 intended payers (the one with clean data) | Same root cause as above — launched before checking `src/data/state-index.json`, which already had pre-vetted NY/VA formulary URLs from an earlier session; re-discovering them in the payer-metadata phase was pure waste on top of the rate-limit failure |
+| 2026-07-01 | `code-review-8-angle` — correctness/cleanup/altitude/conventions finders, run in pairs | 8 | ~613K | ✅ all 8 completed | High — 3 angles independently converged on the same real bug (stale appeal-letter state); codex bot found the same bug plus 2 more | Correct response to the concurrency-cap correction: same review depth, batched ≤2 at a time instead of one 8-wide fan-out. Slower wall-clock, zero failures |
 
-Session total: ~30 agents, ~1.82M subagent tokens across 5 workflows.
+Session total (2026-07-01): ~93 agents, ~3.13M subagent tokens across 3 workflows/fan-outs — of which
+~2.5M tokens across 2 workflows produced almost nothing usable. See "Concurrency cap" below.
+
+Running total across all sessions: ~123 agents, ~4.95M subagent tokens across 8 workflows.
 
 ## Was the fan-out the right call?
 
@@ -40,6 +46,16 @@ only) was the cheapest per unit of value.
    the map; full drug-level data is the expensive follow-up — do it on demand, not speculatively.
 5. **Inline for ≤3 lookups.** A fan-out costs ~25–40K tokens of orchestration overhead before any
    work; for a handful of lookups, grep → read → one fetch inline is cheaper.
+6. **Never fan out past 2 concurrent agents without asking first** — even inside a single Workflow's
+   `parallel()`/`pipeline()` stage. Two 2026-07-01 workflows (55 and 30 agents) both hit "Server is
+   temporarily limiting requests" on ~85% of agents; the per-workflow concurrency cap (min(16,
+   cores-2)) does not protect against this. This is now a hard user-stated rule, not just a cost
+   optimization — confirm scale before launching, don't discover the failure mode again.
+7. **Check for existing pre-vetted data before spawning a metadata-discovery phase.** The same
+   2026-07-01 session launched a payer-metadata-gather phase for VA/NY without first checking
+   `src/data/state-index.json`, which already had verified formulary URLs/PBMs for both states from
+   an earlier index-level run (lever #4). Grep the repo's own data files for what a prior session
+   already gathered before re-discovering it with agents.
 
 ## Going forward (required)
 

@@ -303,3 +303,9 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   reading those files off disk recovered the ~15% that did succeed instead of needing to re-run
   anything. For any future multi-payer/multi-class gather, do it in small batches (≤2 concurrent)
   and confirm scale with the user before launching, not after something breaks.
+- **Check `src/data/state-index.json` before spawning a payer-metadata discovery phase for any
+  state.** It already holds pre-vetted formulary URLs, PBMs, and market-segment info for several
+  states (populated by an earlier `state-formulary-index` run) — the VA/NY workflow above launched
+  a full payer-metadata-gather phase without checking this first, burning agents to re-discover
+  data that was already sitting in the repo. Grep it first; only spawn discovery for states/payers
+  actually missing from it.
