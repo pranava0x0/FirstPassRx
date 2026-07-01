@@ -48,12 +48,12 @@ function coveredDrugNames(): string[] {
 }
 
 describe('cash price coverage across the live formulary', () => {
-  // Baseline as of 2026-07-01 (see issues.md): 76 covered-drug name variants have no explicit
-  // cash-link rule yet and fall to the generic slug guesser -- 72 from the MD menopause gap
-  // (Premarin/Prempro/Duavee/Bijuva family, vaginal rings, non-inhaler respiratory drugs), plus
-  // 4 new ones from the NY ACE inhibitor guide (lisinopril, benazepril, enalapril, ramipril --
-  // a whole new drug class cash.ts has no rules for yet). KNOWN_UNPRICED_GAP is exported from
-  // cash.ts (shared with validate-prices.mjs) so the two never drift out of sync.
+  // Baseline as of 2026-07-01 (see issues.md): 72 covered-drug name variants have no explicit
+  // cash-link rule yet and fall to the generic slug guesser -- all from the MD menopause gap
+  // (Premarin/Prempro/Duavee/Bijuva family, vaginal rings, non-inhaler respiratory drugs). The
+  // NY ACE inhibitor guide's 4 names (lisinopril, benazepril, enalapril, ramipril) now have
+  // explicit rules. KNOWN_UNPRICED_GAP is exported from cash.ts (shared with
+  // validate-prices.mjs) so the two never drift out of sync.
 
   it('does not silently grow the set of covered drugs without an explicit cash-link rule', () => {
     const unmatched = coveredDrugNames().filter((name) => !hasCashLinkRule(name))

@@ -309,3 +309,41 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   a full payer-metadata-gather phase without checking this first, burning agents to re-discover
   data that was already sitting in the repo. Grep it first; only spawn discovery for states/payers
   actually missing from it.
+- **`data-gathering/<stamp>/` checkpoints do not survive between sessions — they're gitignored and
+  live only in that session's worktree.** A later session picking up "resume from the checkpoint"
+  language in `backlog.md`/`issues.md` found the entire `data-gathering/va-diabetes-2026-07-01/`
+  and `data-gathering/ny-ace-2026-07-01/` directories simply gone (the worktree that wrote them had
+  been cleaned up). The checkpoint-then-return pattern only protects against *that session's*
+  connection drop, not against the directory outliving the session. Don't treat an unmerged
+  checkpoint as durable state referenced from committed docs across sessions — either merge it into
+  `formulary.json` promptly, or note in the backlog that the checkpoint may need re-gathering from
+  scratch next time, not "resume from disk."
+- **`validate()`'s count-floor (every payer × active class must have a cell) means a guide can't be
+  committed with partial payer coverage.** Adding a new multi-payer guide (e.g. VA diabetes: 8
+  payers × 4 classes) can't be merged into `src/data/formulary.json` piecemeal as each payer's
+  research finishes — a guide with 3 of 8 payers filled in fails `npm test` immediately, because
+  every existing payer must cover every non-`comingSoon` class. Gather the full grid in a scratch
+  location (agent checkpoints, or a Workflow's returned results) first, and only write the guide
+  into `formulary.json` once every payer × class cell is present; if the gather run comes up short,
+  leave `formulary.json` untouched and report the gap rather than half-merging.
+- **Enforce the hard 2-concurrent-agent cap *inside* a Workflow script by chunking, not by trusting
+  the workflow's own concurrency cap.** `parallel()`/`pipeline()` run up to `min(16, cores-2)`
+  agents at once by default — well above this project's hard limit. To actually get ≤2 concurrent,
+  loop over the item list in chunks of 2 and `await parallel(chunk...)` per chunk (a plain `for`
+  loop with a sliced array), rather than calling `parallel()`/`pipeline()` once over the full list.
+- **GoodRx's exact-dosage query params can be guessed directly from the pattern — no need to click
+  through the page's "Edit" UI every time.** The format is
+  `label_override=<slug>&form=<tablet|capsule|...>&dosage=<N>mg&quantity=<count>`; navigating
+  straight to a guessed URL (e.g. `?label_override=lisinopril&form=tablet&dosage=10mg&quantity=30`)
+  landed on the exact strength/quantity page on the first try for 4/4 ACE inhibitors this session.
+  Cheaper than the click-through-Edit-and-Confirm flow documented earlier for the HRT patches (that
+  flow still exists as a fallback if a direct param guess doesn't resolve to the right page).
+- **Cost Plus Drugs product slugs aren't always `<genericname>-<strength>-<form>` — verify with the
+  site's own search before assuming a 404 means "not carried."** `benazepril-10mg-tablet` 404'd,
+  but the real product exists at `benazeprilhcl-10mg-tablet` (search suffixes the salt form, "hcl").
+  `enalapril-10mg-tablet` similarly 404'd; the real slug was `enalaprilmaleate-10mg-tablet`. Fix:
+  hit `costplusdrugs.com/medications/?query=<genericname>` first, read the real product link off
+  the results table, and only fall back to a "not carried" conclusion if the search itself comes up
+  empty. Also reconfirms the known hydration race (CLAUDE.md above): the price-calculator box can
+  render empty on the first `get_page_text` read even on a URL that resolves fine — reload once
+  before concluding a product isn't priced.
