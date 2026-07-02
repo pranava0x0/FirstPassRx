@@ -1410,6 +1410,22 @@ button {
 }
 
 @media (max-width: 520px) {
+  .guide-switch {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+  .guide-switch__btn {
+    min-width: 0;
+    padding-inline: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .guide-switch__btn:nth-child(2n) {
+    border-right: 0;
+  }
+  .guide-switch__btn:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
   .alts__row,
   .reject__row {
     align-items: flex-start;
