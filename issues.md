@@ -135,3 +135,18 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   re-verified the load-bearing claim (still no estrogen/progestogen named on the list) before
   swapping the URL/effectiveDate/accessed on `md-daw6-2026`. Root cause: **source website drift**,
   not a code bug — exactly what the link validator exists to catch. _Fixed._
+- **2026-07-02 · review (PR #5) · persona reviews found 3 blocking issues in the shipped VA data;
+  all fixed same-day.** (1) **Code/UI**: non-BOGL cells rendered "likely to cover X without prior
+  authorization" even when the preferred agent itself was PA-gated (all 8 VA GLP-1 cells) — added
+  `preferredRestriction` to `FormularyRecord`, ResultCard now shows the restriction instead, and a
+  regression test asserts every va-diabetes glp1 cell carries it. (2) **Data**: 4 GLP-1 cells
+  dual-listed drugs in both `alternatives` and `paRequired` (including their own preferred agent) —
+  stripped; guard test added. (3) **Data**: aetna-better-health/glp1 claimed "no service
+  authorization" for Trulicity, contradicting the governing statewide PDL — corrected + cross-cited.
+  Also fixed: FFS closed-class `nonformulary`→`pa`, sentara-commercial insulin flagged BOGL (all
+  glargine biosimilars non-formulary), 4 BOGL flags that described a sibling drug, metformin
+  titration sigs, insulin sig individualization, tirzepatide GIP/GLP-1 labeling, biosimilar-not-
+  generic wording, Xultophy discontinued annotation, DMAS PDL ref mislabeled as Anthem's, PDF
+  WinAnsi sanitization, download error state, and the 44px touch-target on the tips summary.
+  Root causes: **UI copy assumed an unrestricted preferred agent** (schema couldn't express the
+  exception) and **gather agents modeled class-wide PA two different ways**. _Fixed (commit on PR #5)._

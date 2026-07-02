@@ -50,7 +50,11 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   ACE-inhibitor price fixes in `issues.md`), and insulin dosing is individualized enough that a
   single `sig` string can't represent it honestly. Some formularies also gate PA/quantity limits
   by strength (e.g. only the highest-dose SKU needs PA), which today's schema can't express at
-  all. Add a strength dimension to `FormularyRecord`/`PreferredAgent` (or a `strengths[]` list of
+  all. The VA diabetes guide (shipped 2026-07-02) makes this gap bigger: each cell pins one
+  representative strength/sig for drugs whose dosing is inherently titrated (GLP-1 escalation
+  schedules, individualized insulin units, metformin ramp-up), and the VA Medicaid PDL itself
+  gates metformin differently *by strength* (500 mg PA'd, 1000 mg not) — exactly what this item
+  exists to express. Add a strength dimension to `FormularyRecord`/`PreferredAgent` (or a `strengths[]` list of
   `{strength, sig, sigShort, plainSig, tier?, paRequired?}` variants) so a drug can carry more than
   one dose, and have cash-link resolution key off `(name, strength)` instead of name alone. Do
   this *after* — and folding in — the existing low-priority `goodRxParams` structured-fields item,
@@ -137,3 +141,12 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 - **Compact Clinic Grid Layout** (Expert/UX): Add a toggle for a compact side-by-side comparison matrix of
   all 5 plans for the active class, optimized for rapid clinical scanning and printing.
 
+
+- **(low) One reference id per document per guide.** The va-diabetes guide registers the statewide
+  DMAS PDL PDF under 2 ids (and the DMAS bulletin under 3) because each payer's gather agent minted
+  its own; validation passes but single-source-of-truth favors deduping and remapping sourceIds.
+  Flagged by the PR #5 data review.
+- **(low) `npm ci --omit=optional` in CI/deploy.** jspdf's optionalDependencies pull core-js (has an
+  install script) + canvg/html2canvas/dompurify, all unused by our code path (no `html()`/`svg()`
+  calls). Omitting optionals shrinks the install-script and supply-chain surface at zero runtime
+  cost. Flagged by the PR #5 SW review.

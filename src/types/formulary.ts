@@ -115,6 +115,13 @@ export interface FormularyRecord {
   payerId: PayerId
   classId: ClassId
   preferredAgent: PreferredAgent
+  /**
+   * Restriction the PREFERRED agent itself carries (e.g. "PA required — plan's T2D clinical
+   * criteria" or "Step therapy: metformin first"). When set, the UI must NOT claim the plan
+   * covers this drug without prior authorization — even the first-pass pick needs sign-off.
+   * Omit when the preferred agent ships clean.
+   */
+  preferredRestriction?: string
   boglActive: boolean
   boglNote: string | null
   /** Other covered agents in this class (the middle of the coverage ladder). Optional. */

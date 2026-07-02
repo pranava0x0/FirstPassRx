@@ -3,13 +3,22 @@
 // only when the user clicks Export PDF, so it stays out of the main bundle.
 import type { jsPDF } from 'jspdf'
 
-// US Letter in points, 1in margins.
-const PAGE_WIDTH = 612
-const PAGE_HEIGHT = 792
-const MARGIN = 72
+const MARGIN = 72 // 1in in points
 const FONT_SIZE = 12
 const LINE_HEIGHT = FONT_SIZE * 1.45
 const PARAGRAPH_GAP = FONT_SIZE * 0.9
+
+/**
+ * jsPDF's standard fonts encode WinAnsi (cp1252) — anything outside it (✓, CJK, emoji) is
+ * silently mangled into garbage bytes in the PDF. The letter is free-form user-editable text,
+ * so replace unsupported code points with '?' rather than ship a corrupted document.
+ * Covers ASCII plus the cp1252 extras the template itself uses (em dash, curly quotes, ·, °).
+ */
+const WIN_ANSI_EXTRAS = new Set('€‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ')
+
+export function toWinAnsi(text: string): string {
+  return [...text].map((ch) => (ch.charCodeAt(0) < 0x80 || WIN_ANSI_EXTRAS.has(ch) ? ch : '?')).join('')
+}
 
 /** Sanitize a letter title into a safe download filename (no extension). */
 export function pdfFilename(title: string): string {
@@ -29,16 +38,22 @@ export function pdfFilename(title: string): string {
 export function buildLetterPdf(doc: jsPDF, letterText: string): jsPDF {
   doc.setFont('times', 'normal')
   doc.setFontSize(FONT_SIZE)
-  const contentWidth = PAGE_WIDTH - 2 * MARGIN
-  let y = MARGIN
+  // The caller's format decides the page box — derive, don't duplicate.
+  const pageWidth = doc.internal.pageSize.getWidth()
+  const pageHeight = doc.internal.pageSize.getHeight()
+  const contentWidth = pageWidth - 2 * MARGIN
+  // doc.text's y is the baseline, so start one font-size below the margin or ascenders
+  // poke into it.
+  const top = MARGIN + FONT_SIZE
+  let y = top
 
-  for (const paragraph of letterText.split(/\n{2,}/)) {
+  for (const paragraph of toWinAnsi(letterText).split(/\n{2,}/)) {
     for (const sourceLine of paragraph.split('\n')) {
       const wrapped: string[] = sourceLine === '' ? [''] : doc.splitTextToSize(sourceLine, contentWidth)
       for (const line of wrapped) {
-        if (y > PAGE_HEIGHT - MARGIN) {
+        if (y > pageHeight - MARGIN) {
           doc.addPage()
-          y = MARGIN
+          y = top
         }
         doc.text(line, MARGIN, y)
         y += LINE_HEIGHT

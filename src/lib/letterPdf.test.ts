@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { jsPDF } from 'jspdf'
-import { buildLetterPdf, pdfFilename } from './letterPdf'
+import { buildLetterPdf, pdfFilename, toWinAnsi } from './letterPdf'
 
 function build(text: string): jsPDF {
   return buildLetterPdf(new jsPDF({ unit: 'pt', format: 'letter' }), text)
@@ -41,5 +41,23 @@ describe('buildLetterPdf', () => {
     // Wrapped output shows as multiple text-showing operations, one per rendered line.
     const textOps = out.match(/Tj/g) ?? []
     expect(textOps.length).toBeGreaterThan(3)
+  })
+
+  it('handles empty letter text without throwing', () => {
+    const doc = build('')
+    expect(doc.getNumberOfPages()).toBe(1)
+  })
+
+  it('character-breaks a single unbroken long word rather than overflowing', () => {
+    const doc = build('x'.repeat(600))
+    const textOps = doc.output().match(/Tj/g) ?? []
+    expect(textOps.length).toBeGreaterThan(3)
+  })
+
+  it('replaces non-WinAnsi characters instead of mangling the PDF, keeping the template chars', () => {
+    // Template punctuation survives; symbols outside cp1252 become '?'.
+    expect(toWinAnsi('em—dash ·dot “curly” ✓check 漢字')).toBe('em—dash ·dot “curly” ?check ??')
+    const doc = build('before ✓ after')
+    expect(doc.output()).toContain('before ? after')
   })
 })

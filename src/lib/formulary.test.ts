@@ -248,3 +248,33 @@ describe('MD menopause guide specifics', () => {
     expect(md.lookupGlossary('MHT')?.definition).toMatch(/estrogen/i)
   })
 })
+
+describe('VA diabetes guide specifics', () => {
+  const va = getGuideView('va-diabetes')
+
+  it('ships all 8 Virginia payers x 4 diabetes classes, every cell verified', () => {
+    expect(va.payers).toHaveLength(8)
+    expect(va.activeClasses.map((c) => c.id)).toEqual(['metformin-oral', 'glp1', 'sglt2', 'insulin'])
+    expect(va.records).toHaveLength(32)
+    expect(va.records.every((r) => r.verification === 'verified')).toBe(true)
+  })
+
+  it('never claims a clean first-pass GLP-1 — every glp1 cell carries a preferredRestriction (no VA payer covers a GLP-1 without PA)', () => {
+    for (const r of va.records.filter((r) => r.classId === 'glp1')) {
+      expect(r.preferredRestriction, `${r.payerId}/glp1`).toBeTruthy()
+    }
+  })
+
+  it('no cell lists the same drug as both a covered alternative and a coverage barrier', () => {
+    for (const r of va.records) {
+      const alts = new Set((r.alternatives ?? []).map((a) => a.drug))
+      for (const p of r.paRequired) {
+        expect(alts.has(p.drug), `${r.payerId}/${r.classId}: ${p.drug}`).toBe(false)
+      }
+      expect(
+        (r.alternatives ?? []).some((a) => a.drug === r.preferredAgent.inn || a.drug === r.preferredAgent.brand),
+        `${r.payerId}/${r.classId}: preferred agent dual-listed`,
+      ).toBe(false)
+    }
+  })
+})

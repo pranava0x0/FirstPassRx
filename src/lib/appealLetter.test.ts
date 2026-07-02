@@ -131,6 +131,11 @@ describe('buildAppealLetter', () => {
     expect(letter).toContain('1. [Formulary alternative — dates tried and outcome')
   })
 
+  it('instructs deleting non-comparable pre-filled alternatives (mixed basal/rapid insulin case)', () => {
+    const letter = buildAppealLetter(record(), item, payer, drugClass)
+    expect(letter).toContain('Delete any listed drug that is not the same kind of medication')
+  })
+
   it('includes the optional expedited-appeal paragraph with its delete instruction', () => {
     const letter = buildAppealLetter(record(), item, payer, drugClass)
     expect(letter).toContain('I request an EXPEDITED appeal')

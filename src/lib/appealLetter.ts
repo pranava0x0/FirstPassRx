@@ -72,7 +72,9 @@ export function buildAppealLetter(
   lines.push(
     "The plan's preferred alternatives for this drug class, and why each was not effective or " +
       'not clinically appropriate for me (dates and outcomes below; clinical detail is in the ' +
-      "enclosed Letter of Medical Necessity):",
+      'enclosed Letter of Medical Necessity). [Delete any listed drug that is not the same kind ' +
+      'of medication as the one denied — e.g. keep only basal insulins when appealing a basal ' +
+      'insulin denial:]',
     ...(altNames.length > 0
       ? altNames.map(
           (name, i) =>

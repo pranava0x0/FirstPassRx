@@ -157,12 +157,14 @@ function AppealAction({
   const initial = buildAppealLetter(record, item, payer, drugClass)
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState(initial)
+  const [pdfError, setPdfError] = useState(false)
   const { copied, copy, reset } = useCopyToClipboard()
 
   // Rebuild the letter whenever the underlying cell changes (payer/class switch can reuse this
   // component instance for a same-named barrier drug — see RxSig's identical fix for the same issue).
   useEffect(() => {
     setValue(initial)
+    setPdfError(false)
     reset()
   }, [initial])
 
@@ -209,12 +211,20 @@ function AppealAction({
             <button
               type="button"
               className="copy-btn"
-              onClick={() => void downloadLetterPdf(value, `Appeal letter — ${item.drug}`)}
+              onClick={() => {
+                setPdfError(false)
+                downloadLetterPdf(value, `Appeal letter — ${item.drug}`).catch(() => setPdfError(true))
+              }}
               aria-label={`Download appeal letter for ${item.drug} as PDF`}
             >
               Download PDF
             </button>
           </div>
+          {pdfError ? (
+            <p className="appeal-panel__error" role="alert">
+              PDF download failed — check your connection and try again, or use Copy letter instead.
+            </p>
+          ) : null}
           <AppealTips />
         </div>
       ) : null}
