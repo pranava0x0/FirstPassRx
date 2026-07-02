@@ -119,6 +119,8 @@ function validate(data: Formulary): void {
           })
       }
       if (r.boglActive && !a?.brand) problems.push(`${G} ${at}: boglActive is true but no brand is set`)
+      if (r.boglActive && !a?.genericAvailable)
+        problems.push(`${G} ${at}: boglActive is true but the preferred agent has no generic/biosimilar counterpart`)
       if (r.boglActive && !r.boglNote) problems.push(`${G} ${at}: boglActive is true but boglNote is empty`)
       if (!VERIFICATIONS.has(r.verification)) problems.push(`${G} ${at}: invalid verification "${r.verification}"`)
       if (!r.verificationNote) problems.push(`${G} ${at}: missing verificationNote`)

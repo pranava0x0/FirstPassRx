@@ -277,4 +277,10 @@ describe('VA diabetes guide specifics', () => {
       ).toBe(false)
     }
   })
+
+  it('only sets BOGL when the preferred agent itself has a generic or biosimilar counterpart', () => {
+    for (const r of va.records.filter((record) => record.boglActive)) {
+      expect(r.preferredAgent.genericAvailable, `${r.payerId}/${r.classId}`).toBe(true)
+    }
+  })
 })

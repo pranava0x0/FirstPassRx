@@ -122,13 +122,14 @@ describe('buildAppealLetter', () => {
       payer,
       drugClass,
     )
-    expect(letter).toContain('1. Wixela Inhub — [dates tried and outcome')
-    expect(letter).toContain('2. Advair HFA — [dates tried and outcome')
+    expect(letter).toContain('1. Symbicort — [dates tried and outcome')
+    expect(letter).toContain('2. Wixela Inhub — [dates tried and outcome')
+    expect(letter).toContain('3. Advair HFA — [dates tried and outcome')
   })
 
-  it('keeps a placeholder alternative line when the cell lists no alternatives', () => {
+  it('still includes the preferred agent when the cell lists no additional alternatives', () => {
     const letter = buildAppealLetter(record(), item, payer, drugClass)
-    expect(letter).toContain('1. [Formulary alternative — dates tried and outcome')
+    expect(letter).toContain('1. Symbicort — [dates tried and outcome')
   })
 
   it('instructs deleting non-comparable pre-filled alternatives (mixed basal/rapid insulin case)', () => {
@@ -161,9 +162,30 @@ describe('buildAppealLetter', () => {
     expect(letter).not.toContain('plan PA policy:')
   })
 
-  it('includes decision-timeframe language and the external-review reservation', () => {
+  it('uses the Medicaid fair-hearing path for Medicaid plans', () => {
     const letter = buildAppealLetter(record(), item, payer, drugClass)
     expect(letter).toContain('written decision within the timeframe')
+    expect(letter).toContain('state Medicaid fair-hearing review')
+    expect(letter).not.toContain('independent external review')
+  })
+
+  it('uses Part D reconsideration language for Medicare drug plans', () => {
+    const letter = buildAppealLetter(
+      record(),
+      item,
+      { ...payer, marketSegment: 'medicare-part-d' },
+      drugClass,
+    )
+    expect(letter).toContain('Medicare Part D Independent Review Entity')
+  })
+
+  it('keeps independent external review language for commercial plans', () => {
+    const letter = buildAppealLetter(
+      record(),
+      item,
+      { ...payer, marketSegment: 'commercial-employer' },
+      drugClass,
+    )
     expect(letter).toContain('independent external review')
   })
 

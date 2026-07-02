@@ -6,6 +6,16 @@ const BARRIER_LABEL: Record<PaItem['outcome'], string> = {
   nonformulary: 'non-formulary status',
 }
 
+function nextAppealStep(payer: PayerMeta): string {
+  if (payer.marketSegment === 'medicare-part-d') {
+    return 'If this redetermination is denied, I intend to request reconsideration by the Medicare Part D Independent Review Entity. Please include the required filing instructions and deadline in the decision notice.'
+  }
+  if (payer.marketSegment === 'medicaid-ffs' || payer.marketSegment === 'medicaid-mco') {
+    return 'If this appeal is denied, I intend to request the applicable state Medicaid fair-hearing review. Please include the required filing instructions and deadline in the decision notice.'
+  }
+  return 'If this internal appeal is denied, I intend to request an independent external review. Please include the required filing instructions and deadline in the decision notice.'
+}
+
 /**
  * A pre-filled PA appeal letter for one blocked drug, built from data already on the cell
  * (reject reason, step-therapy text, the plan's own preferred alternatives, payer/PBM) plus
@@ -68,7 +78,11 @@ export function buildAppealLetter(
   // The tried-and-failed list is the strongest medical-necessity argument. Pre-fill it with the
   // plan's own preferred alternatives for this class so the reviewer sees their formulary's
   // agents addressed one by one; the patient/prescriber fills in dates and outcomes.
-  const altNames = (record.alternatives ?? []).map((a) => a.drug)
+  const preferredName = record.preferredAgent.brand ?? record.preferredAgent.inn
+  const altNames = [preferredName, ...(record.alternatives ?? []).map((a) => a.drug)].filter(
+    (name, index, names) =>
+      names.findIndex((candidate) => candidate.toLowerCase() === name.toLowerCase()) === index,
+  )
   lines.push(
     "The plan's preferred alternatives for this drug class, and why each was not effective or " +
       'not clinically appropriate for me (dates and outcomes below; clinical detail is in the ' +
@@ -95,9 +109,8 @@ export function buildAppealLetter(
     '',
     'Please issue a written decision within the timeframe my plan is required to meet for ' +
       'pre-service appeals [see your denial letter for the deadline that applies to this plan; ' +
-      '72 hours if expedited]. If this internal appeal is denied, I intend to exercise my right ' +
-      'to an independent external review, and I request that your decision letter include ' +
-      'instructions and deadlines for requesting it.',
+      '72 hours if expedited]. ' +
+      nextAppealStep(payer),
     '',
     `Please contact me at [Patient Phone] or my prescriber at [Prescriber Phone] if you need any ` +
       'additional information to complete this review. Thank you for your time and attention to this matter.',
