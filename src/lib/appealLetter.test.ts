@@ -110,6 +110,58 @@ describe('buildAppealLetter', () => {
     expect(letter).toContain('appeal the non-formulary status denial')
   })
 
+  it('pre-fills the tried-and-failed list from the plan\'s own preferred alternatives', () => {
+    const letter = buildAppealLetter(
+      record({
+        alternatives: [
+          { drug: 'Wixela Inhub', sourceIds: ['x'], note: 'preferred' },
+          { drug: 'Advair HFA', sourceIds: ['x'] },
+        ],
+      }),
+      item,
+      payer,
+      drugClass,
+    )
+    expect(letter).toContain('1. Wixela Inhub — [dates tried and outcome')
+    expect(letter).toContain('2. Advair HFA — [dates tried and outcome')
+  })
+
+  it('keeps a placeholder alternative line when the cell lists no alternatives', () => {
+    const letter = buildAppealLetter(record(), item, payer, drugClass)
+    expect(letter).toContain('1. [Formulary alternative — dates tried and outcome')
+  })
+
+  it('includes the optional expedited-appeal paragraph with its delete instruction', () => {
+    const letter = buildAppealLetter(record(), item, payer, drugClass)
+    expect(letter).toContain('I request an EXPEDITED appeal')
+    expect(letter).toContain('otherwise delete it')
+    expect(letter).toContain('72 hours')
+  })
+
+  it('carries denial-code and ICD-10 placeholders in the RE: block', () => {
+    const letter = buildAppealLetter(record(), item, payer, drugClass)
+    expect(letter).toContain('Denial code(s):')
+    expect(letter).toContain('ICD-10')
+  })
+
+  it('asks for review against the plan\'s own coverage criteria, citing the PA policy URL', () => {
+    const letter = buildAppealLetter(record(), item, payer, drugClass)
+    expect(letter).toContain("plan's own written coverage criteria")
+    expect(letter).toContain('(plan PA policy: https://example.com/pa-policy)')
+  })
+
+  it('omits the inline policy URL when the payer has none but keeps the criteria request', () => {
+    const letter = buildAppealLetter(record(), item, { ...payer, paPolicyUrl: undefined }, drugClass)
+    expect(letter).toContain("plan's own written coverage criteria")
+    expect(letter).not.toContain('plan PA policy:')
+  })
+
+  it('includes decision-timeframe language and the external-review reservation', () => {
+    const letter = buildAppealLetter(record(), item, payer, drugClass)
+    expect(letter).toContain('written decision within the timeframe')
+    expect(letter).toContain('independent external review')
+  })
+
   it('references the RE: block, addressee, and enclosures modeled on published appeal templates', () => {
     const letter = buildAppealLetter(record(), item, payer, drugClass)
     expect(letter).toContain('Appeals and Grievances Department')

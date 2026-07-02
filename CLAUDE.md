@@ -347,3 +347,8 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   empty. Also reconfirms the known hydration race (CLAUDE.md above): the price-calculator box can
   render empty on the first `get_page_text` read even on a URL that resolves fine — reload once
   before concluding a product isn't priced.
+- **Never use a bare `===` as an echo separator in Bash commands — zsh equals-expansion kills the
+  whole compound command.** Any word starting with `=` makes zsh try to resolve the rest as a
+  command path (`(eval): == not found`, exit 1), so `grep … ; echo ===; grep …` silently drops
+  everything after the first grep. Quote it (`echo "==="`). Bit a workflow agent and the main
+  session on the same day (2026-07-02).

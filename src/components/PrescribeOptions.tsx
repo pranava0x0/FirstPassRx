@@ -3,9 +3,11 @@ import type { ClassMeta, FormularyRecord, PaItem, PayerMeta, Reference } from '.
 import { useGuide } from '../lib/formulary'
 import { goodRxUrl, costPlusUrl, goodRxPrice, costPlusPrice, pricesCapturedAt } from '../lib/cash'
 import { buildAppealLetter } from '../lib/appealLetter'
+import { downloadLetterPdf } from '../lib/letterPdf'
 import { useCopyToClipboard } from '../lib/clipboard'
 import { SourceLink } from './SourceLink'
 import { CashPriceBoxes } from './CashPriceBoxes'
+import { AppealTips } from './AppealTips'
 
 /** Tag an option by what it is, read from the drug text / coverage note. */
 function roleOf(text: string): string {
@@ -180,8 +182,9 @@ function AppealAction({
       {open ? (
         <div className="appeal-panel">
           <p className="appeal-panel__note">
-            Pre-filled from this cell's coverage data. Patient and prescriber fields are blank —
-            fill those in before sending.
+            Pre-filled from this cell's coverage data — including this plan's own preferred
+            alternatives to address one by one. [Bracketed] fields are blank on purpose; fill
+            those in (and delete the expedited paragraph if it doesn't apply) before sending.
           </p>
           <textarea
             className="appeal-panel__field"
@@ -191,17 +194,28 @@ function AppealAction({
             onChange={(e) => setValue(e.target.value)}
             aria-label={`Editable PA appeal letter for ${item.drug}`}
           />
-          <button
-            type="button"
-            className={`copy-btn${copied ? ' copy-btn--done' : ''}`}
-            onClick={() => copy(value)}
-            aria-label={`Copy appeal letter for ${item.drug}`}
-          >
-            <span aria-hidden="true">{copied ? '✓ Copied' : 'Copy letter'}</span>
-            <span className="sr-only" aria-live="polite">
-              {copied ? 'Copied to clipboard' : ''}
-            </span>
-          </button>
+          <div className="appeal-panel__actions">
+            <button
+              type="button"
+              className={`copy-btn${copied ? ' copy-btn--done' : ''}`}
+              onClick={() => copy(value)}
+              aria-label={`Copy appeal letter for ${item.drug}`}
+            >
+              <span aria-hidden="true">{copied ? '✓ Copied' : 'Copy letter'}</span>
+              <span className="sr-only" aria-live="polite">
+                {copied ? 'Copied to clipboard' : ''}
+              </span>
+            </button>
+            <button
+              type="button"
+              className="copy-btn"
+              onClick={() => void downloadLetterPdf(value, `Appeal letter — ${item.drug}`)}
+              aria-label={`Download appeal letter for ${item.drug} as PDF`}
+            >
+              Download PDF
+            </button>
+          </div>
+          <AppealTips />
         </div>
       ) : null}
     </div>
