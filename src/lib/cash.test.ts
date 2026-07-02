@@ -1,6 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import { costPlusUrl, goodRxUrl, hasCashLinkRule, goodRxPrice, costPlusPrice, pricesCapturedAt, KNOWN_UNPRICED_GAP } from './cash'
-import { guides } from './formulary'
+import rawData from '../data/formulary.json'
+import type { Formulary } from '../types/formulary'
+
+const guides = (rawData as Formulary).guides
 
 describe('cash price links', () => {
   it.each([
@@ -51,7 +54,7 @@ describe('cash price links', () => {
 function coveredDrugNames(): string[] {
   const names = new Set<string>()
   for (const guide of guides) {
-    const activeClassIds = new Set(guide.activeClasses.map((c) => c.id))
+    const activeClassIds = new Set(guide.classes.filter((c) => !c.comingSoon).map((c) => c.id))
     for (const record of guide.records) {
       if (!activeClassIds.has(record.classId)) continue
       names.add(record.preferredAgent.inn)

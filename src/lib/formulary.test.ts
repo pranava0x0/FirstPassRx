@@ -1,5 +1,10 @@
 import { describe, it, expect } from 'vitest'
-import { guides, getGuideView, meta } from './formulary'
+import rawData from '../data/formulary.json'
+import type { Formulary } from '../types/formulary'
+import { buildGuideView, meta } from './formulary'
+
+const guides = (rawData as Formulary).guides.map(buildGuideView)
+const getGuideView = (id: string) => guides.find((guide) => guide.id === id) ?? guides[0]!
 
 describe('guides + global meta', () => {
   it('ships the MA inhaler, MD menopause, NY ACE inhibitor, and VA diabetes guides, in order', () => {

@@ -1,6 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { ClassId, PayerId } from './types/formulary'
-import { GuideProvider, defaultGuideId, getGuideView, guides, meta } from './lib/formulary'
+import {
+  GuideProvider,
+  defaultGuideId,
+  getDefaultGuideView,
+  guideOptions,
+  loadGuideView,
+  meta,
+} from './lib/formulary'
 import { Disclaimer } from './components/Disclaimer'
 import { Controls } from './components/Controls'
 import { ResultCard } from './components/ResultCard'
@@ -14,29 +21,56 @@ export default function App() {
     if (typeof window === 'undefined') return defaultGuideId
     const params = new URLSearchParams(window.location.search)
     const gId = params.get('guide')
-    if (gId && guides.some((g) => g.id === gId)) {
+    if (gId && guideOptions.some((g) => g.id === gId)) {
       return gId
     }
     return defaultGuideId
   }
 
-  const [guideId, setGuideId] = useState<string>(getInitialGuideId())
-  const guide = getGuideView(guideId)
-  const [payerId, setPayerId] = useState<PayerId>(guide.payers[0]!.id)
-  const [classId, setClassId] = useState<ClassId>(guide.activeClasses[0]!.id)
+  const [selection, setSelection] = useState(() => {
+    const guide = getDefaultGuideView()
+    return {
+      guide,
+      payerId: guide.payers[0]!.id as PayerId,
+      classId: guide.activeClasses[0]!.id as ClassId,
+    }
+  })
+  const { guide, payerId, classId } = selection
+  const [loadingGuideId, setLoadingGuideId] = useState<string | null>(null)
+  const [guideLoadError, setGuideLoadError] = useState(false)
+  const guideRequest = useRef(0)
+
+  useEffect(() => {
+    const initialGuideId = getInitialGuideId()
+    if (initialGuideId !== defaultGuideId) void switchGuide(initialGuideId, false)
+  }, [])
 
   // Switching guide swaps the whole dataset (payers + classes differ), so reset the
   // selection to the new guide's defaults rather than carry a now-invalid payer/class.
-  function switchGuide(id: string) {
-    if (id === guideId) return
-    const g = getGuideView(id)
-    setGuideId(id)
-    setPayerId(g.payers[0]!.id)
-    setClassId(g.activeClasses[0]!.id)
+  async function switchGuide(id: string, updateUrl = true): Promise<void> {
+    if (id === guide.id || loadingGuideId === id) return
+    const request = ++guideRequest.current
+    setLoadingGuideId(id)
+    setGuideLoadError(false)
+    try {
+      const nextGuide = await loadGuideView(id)
+      if (request !== guideRequest.current) return
+      setSelection({
+        guide: nextGuide,
+        payerId: nextGuide.payers[0]!.id,
+        classId: nextGuide.activeClasses[0]!.id,
+      })
 
-    const url = new URL(window.location.href)
-    url.searchParams.set('guide', id)
-    window.history.pushState({}, '', url.toString())
+      if (updateUrl) {
+        const url = new URL(window.location.href)
+        url.searchParams.set('guide', id)
+        window.history.pushState({}, '', url.toString())
+      }
+    } catch {
+      if (request === guideRequest.current) setGuideLoadError(true)
+    } finally {
+      if (request === guideRequest.current) setLoadingGuideId(null)
+    }
   }
 
   const payer = guide.getPayer(payerId)
@@ -55,20 +89,31 @@ export default function App() {
             <h1 className="masthead__mark">
               First<span className="rx">Pass</span>Rx
             </h1>
-            <div className="guide-switch" role="group" aria-label="Choose a guide">
-              {guides.map((g) => (
+            <div
+              className="guide-switch"
+              role="group"
+              aria-label="Choose a guide"
+              aria-busy={loadingGuideId !== null}
+            >
+              {guideOptions.map((g) => (
                 <button
                   key={g.id}
                   type="button"
                   className="guide-switch__btn"
-                  aria-pressed={g.id === guideId}
-                  onClick={() => switchGuide(g.id)}
+                  aria-pressed={g.id === guide.id}
+                  disabled={loadingGuideId !== null}
+                  onClick={() => void switchGuide(g.id)}
                 >
                   {g.label}
                 </button>
               ))}
             </div>
           </div>
+          {guideLoadError ? (
+            <p className="guide-load-error" role="alert">
+              This guide could not load. Check your connection and try again.
+            </p>
+          ) : null}
 
         </header>
 
@@ -76,8 +121,12 @@ export default function App() {
           <Controls
             payerId={payerId}
             classId={classId}
-            onPayer={setPayerId}
-            onClass={setClassId}
+            onPayer={(nextPayerId) =>
+              setSelection((current) => ({ ...current, payerId: nextPayerId }))
+            }
+            onClass={(nextClassId) =>
+              setSelection((current) => ({ ...current, classId: nextClassId }))
+            }
             panelId={PANEL_ID}
             tabId={tabId}
           />
