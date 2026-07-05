@@ -1,6 +1,8 @@
 import { createContext, useContext } from 'react'
-import rawData from '../data/formulary.json'
+import formularyIndexRaw from '../data/generated/index.json'
+import defaultGuideRaw from '../data/generated/guides/ma-inhalers.json'
 import type {
+  AppMeta,
   ClassId,
   ClassMeta,
   Formulary,
@@ -12,7 +14,13 @@ import type {
   Reference,
 } from '../types/formulary'
 
-const formulary = rawData as Formulary
+export interface GuideSummary {
+  id: string
+  label: string
+}
+
+const formularyIndex = formularyIndexRaw as { meta: AppMeta; guides: GuideSummary[] }
+const defaultGuideData = defaultGuideRaw as Guide
 
 const key = (payerId: string, classId: string) => `${payerId}::${classId}`
 
@@ -119,6 +127,8 @@ function validate(data: Formulary): void {
           })
       }
       if (r.boglActive && !a?.brand) problems.push(`${G} ${at}: boglActive is true but no brand is set`)
+      if (r.boglActive && !a?.genericAvailable)
+        problems.push(`${G} ${at}: boglActive is true but the preferred agent has no generic/biosimilar counterpart`)
       if (r.boglActive && !r.boglNote) problems.push(`${G} ${at}: boglActive is true but boglNote is empty`)
       if (!VERIFICATIONS.has(r.verification)) problems.push(`${G} ${at}: invalid verification "${r.verification}"`)
       if (!r.verificationNote) problems.push(`${G} ${at}: missing verificationNote`)
@@ -145,8 +155,6 @@ function validate(data: Formulary): void {
     throw new Error(`Invalid formulary.json:\n - ${problems.join('\n - ')}`)
   }
 }
-
-validate(formulary)
 
 // ---- Search index (precomputed once per guide at load, not per keystroke) ----
 
@@ -178,7 +186,8 @@ export interface GuideView extends Guide {
   searchFormulary(query: string, limit?: number): SearchHit[]
 }
 
-function buildGuideView(guide: Guide): GuideView {
+export function buildGuideView(guide: Guide): GuideView {
+  validate({ meta: { ...formularyIndex.meta, defaultGuideId: guide.id }, guides: [guide] })
   const recordsByKey = new Map<string, FormularyRecord>(
     guide.records.map((r) => [key(r.payerId, r.classId), r]),
   )
@@ -254,25 +263,51 @@ function buildGuideView(guide: Guide): GuideView {
 }
 
 /** Global, guide-independent app meta (title, disclaimer, version, default guide). */
-export const meta = formulary.meta
+export const meta = formularyIndex.meta
 
-export const defaultGuideId = formulary.meta.defaultGuideId
+export const defaultGuideId = formularyIndex.meta.defaultGuideId
 
-/** Every guide, pre-indexed, in declaration order — the source of truth for the top-level toggle. */
-export const guides: GuideView[] = formulary.guides.map(buildGuideView)
+/** Small guide manifest used by the top-level toggle; full guide data loads on selection. */
+export const guideOptions: GuideSummary[] = formularyIndex.guides
 
-const guidesById = new Map<string, GuideView>(guides.map((g) => [g.id, g]))
+if (defaultGuideData.id !== defaultGuideId) {
+  throw new Error(
+    `Generated default guide mismatch: expected ${defaultGuideId}, received ${defaultGuideData.id}`,
+  )
+}
 
-/** Resolve a guide by id, falling back to the first guide if the id is unknown. */
-export function getGuideView(id: string): GuideView {
-  return guidesById.get(id) ?? guides[0]!
+const defaultGuideView = buildGuideView(defaultGuideData)
+const guideModules = import.meta.glob<{ default: Guide }>([
+  '../data/generated/guides/*.json',
+  '!../data/generated/guides/ma-inhalers.json',
+])
+const guideCache = new Map<string, Promise<GuideView>>([
+  [defaultGuideId, Promise.resolve(defaultGuideView)],
+])
+
+export function getDefaultGuideView(): GuideView {
+  return defaultGuideView
+}
+
+/** Load one guide chunk by id and cache its indexed view. */
+export function loadGuideView(id: string): Promise<GuideView> {
+  const requestedId = guideOptions.some((guide) => guide.id === id) ? id : defaultGuideId
+  const cached = guideCache.get(requestedId)
+  if (cached) return cached
+
+  const path = `../data/generated/guides/${requestedId}.json`
+  const load = guideModules[path]
+  if (!load) return Promise.reject(new Error(`No generated guide chunk for ${requestedId}`))
+  const pending = load().then((module) => buildGuideView(module.default))
+  guideCache.set(requestedId, pending)
+  return pending
 }
 
 // ---- Active-guide context ----
 // The active guide is ambient for deep components (GlossaryTerm sits inside BoglBanner inside
 // ResultCard), so it rides a context rather than threading a lookup through every layer.
 
-const GuideContext = createContext<GuideView>(getGuideView(defaultGuideId))
+const GuideContext = createContext<GuideView>(defaultGuideView)
 
 export const GuideProvider = GuideContext.Provider
 

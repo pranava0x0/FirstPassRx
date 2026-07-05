@@ -1,8 +1,22 @@
 # Security advisory log
 
-Last updated: 2026-06-29
+Last updated: 2026-07-01
 
 ## Advisory sweeps
+
+### 2026-07-01 — jsPDF for client-side appeal-letter PDF download
+
+Source: `https://pranava0x0.github.io/vibe-coding-security/llms-ctx.txt`.
+
+Triggered by: adding `jspdf@4.2.1` (pinned exact) so the PA appeal letter downloads as a real PDF
+file instead of opening the print dialog. Loaded via dynamic `import()` only when the user clicks
+Export PDF, so it stays out of the main bundle.
+
+**Result: clean.** No advisory names jspdf/jsPDF/pdf-lib or any client-side PDF generation
+library. Active campaigns this sweep (none in our tree): Miasma / Mini Shai-Hulud (TanStack, @antv,
+@redhat-cloud-services, SAP, Azure), TeamPCP/PCPcat (Trivy, LiteLLM, Nx Console), IronWorm (36 npm
+pkgs), Operation Navy Ghost (PyPI pyrogram forks), 0DIN DNS-TXT injection, PromptSnatcher (Chrome
+extensions), Agentjacking (Sentry DSN), Atomic Arch (AUR).
 
 ### 2026-06-29 — GitHub Actions deployment workflow
 

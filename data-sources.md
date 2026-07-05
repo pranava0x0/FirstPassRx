@@ -134,17 +134,29 @@ fetch there without a real browser session.
 commercial) — payer metadata (formularyUrl/PBM) is checkpointed at
 `data-gathering/ny-ace-2026-07-01/payer-*.json` but no drug-class records exist yet. See backlog.md.
 
-## VA diabetes (4 classes: metformin/oral, GLP-1/GIP, SGLT2, insulin) — 2026-07-01
+## VA diabetes (4 classes: metformin/oral, GLP-1, SGLT2, insulin) — shipped 2026-07-02
 
-**Not shipped.** Payer metadata gathered for 9 of 10 payers (checkpointed at
-`data-gathering/va-diabetes-2026-07-01/payer-*.json`); only UnitedHealthcare Community Plan of
-Virginia has any drug-class records (3 of 4 — missing insulin), so the guide can't pass schema
-validation yet (every payer needs every active class). Virginia Medicaid MCOs each publish their own
-formulary page but converge on the same DMAS-set "Common Core Formulary" baseline — confirmed via a
-directly-fetched `vamedicaid.dmas.virginia.gov` bulletin for Aetna Better Health of Virginia. Note:
-`aetnabetterhealth.com` 403'd every direct fetch attempt (Akamai WAF) — the DMAS-hosted PDF mirror
-(`dmas.virginia.gov/media/2977/aetna-ccc-plus.pdf`) was usable instead to confirm the PBM (CVS
-Caremark). See backlog.md for the completion plan (small-batch, ≤2 concurrent agents).
+**Shipped, all 32 cells `verified`.** 8 payers × 4 classes in the `va-diabetes` guide, each cell
+read directly off the payer's own formulary document:
+
+- **VA Medicaid FFS (Cardinal Care)** — statewide Medicaid-Approved PDL / Common Core Formulary
+  PDF (`fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf`, effective 2026-05-01), plus a
+  DMAS bulletin. The four Medicaid MCOs below follow this statewide PDL for PDL-managed classes;
+  each MCO cell also cites the MCO's own document confirming the deferral.
+- **Anthem HealthKeepers Plus** (CarelonRx), **Sentara Community Plan** (Express Scripts, July–Sept
+  2026 formulary, doc SHP_MD_MEM_OMSC_230005), **UHC Community Plan of VA** (OptumRx), **Aetna
+  Better Health of VA** (CVS Caremark; the aetnabetterhealth.com WAF still 403s plain fetches —
+  DMAS-hosted mirrors used where needed).
+- **Anthem BCBS VA Commercial** (CarelonRx, 2026 drug list), **Sentara Commercial / employer group**
+  (Standard Formulary Large Group, July–Sept 2026, via the sitecorecontenthub PDF the drug-lists
+  page links), **Wellcare Value Script PDP** (2026 comprehensive formulary, HPMS ID 26195, updated
+  07/01/2026, via `fm.formularynavigator.com/FBO/67/`; Part D $35/month insulin cap noted from the
+  plan's own tier legend).
+
+Notable coverage quirks worth remembering when re-verifying: no VA payer covers a GLP-1 without PA;
+the state PDL prefers *brand* Lantus/Jardiance/Farxiga over generics/biosimilars; Sentara Commercial
+covers no aspart-family insulin at all (lispro only), while Wellcare covers no lispro-family (aspart
+only); Wellcare puts GLP-1s on its $11 Select Care tier (Tier 6) with PA.
 
 ## Verification protocol (per cell, before flipping to `verified`)
 

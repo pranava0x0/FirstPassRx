@@ -88,6 +88,7 @@ describe('FirstPassRx app', () => {
     const user = userEvent.setup()
     render(<App />)
     await user.click(screen.getByRole('button', { name: /Menopause HT/i }))
+    await screen.findByRole('tab', { name: /Estrogen pill/i })
     fireEvent.change(screen.getByLabelText(/select insurance plan/i), { target: { value: 'priority-partners' } })
     await user.click(screen.getByRole('tab', { name: /Estrogen pill/i }))
 
@@ -165,6 +166,16 @@ describe('FirstPassRx app', () => {
     expect(agentHeading()).toHaveTextContent(/Estradiol/i)
     // Inhaler-specific plans are gone.
     expect(screen.queryByRole('option', { name: 'MassHealth' })).not.toBeInTheDocument()
+  })
+
+  it('loads a non-default guide directly from the URL', async () => {
+    window.history.replaceState({}, '', '/?guide=va-diabetes')
+    render(<App />)
+    expect(await screen.findByRole('option', { name: /Virginia Medicaid/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /VA · Diabetes/i })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    )
   })
 
   it('names the exact benefit product instead of implying carrier-wide coverage', async () => {

@@ -4,21 +4,6 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## High
 
-- **Flesh out the PA appeal letter against real prior-appeal examples.** `buildAppealLetter`
-  (`src/lib/appealLetter.ts`) currently follows the general shape of 2 published templates
-  (Patient Advocate Foundation's sample pre-auth appeal, WA OIC's appeal structure), but a review
-  against real successful appeals suggests it's missing several elements those actually include:
-  (1) the plan's specific appeal deadline / response-timeframe language (varies by state and
-  ERISA vs. non-ERISA plans), (2) an **expedited/urgent appeal** request option when delaying
-  treatment risks health, (3) an explicit list of which formulary alternatives were tried and
-  failed (or why not clinically appropriate) — the strongest medical-necessity argument and
-  currently left entirely to the attached Letter of Medical Necessity, (4) a placeholder for the
-  specific denial/procedure code and ICD-10 diagnosis code, (5) a citation to the plan's own
-  medical policy criteria for the drug, not just a generic PA-policy URL link, (6) language noting
-  the right to external/independent review if the internal appeal is denied. Research actual
-  payer appeal-letter requirements (start with a couple of large PBMs' appeal-submission
-  checklists + a state DOI appeals guide) and revise the template + its placeholder fields
-  accordingly; add fixture-based tests for the new sections.
 - **Redesign the omni-search.** The drug search bar (`src/components/Search.tsx`) is parked
   (removed from the App render) pending a rethink. Wanted: layperson synonyms ("HRT", "estrogen
   patch", "rescue spray") mapping to classes/molecules, search scoped to or across guides, and a
@@ -51,6 +36,12 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## Medium
 
+- **Cash-link rules for the VA diabetes drugs.** The `va-diabetes` guide shipped with no explicit
+  GoodRx/Cost Plus rules, raising `KNOWN_UNPRICED_GAP` from 72 to 148 (`src/lib/cash.ts`).
+  Metformin, generic dapagliflozin, insulin glargine biosimilars, and generic lispro/aspart are
+  exactly the drugs where a cash price beats insurance often enough to matter. Use the browser
+  session (GoodRx 403s plain fetch) + `costplusdrugs.com/medications/?query=` slug search;
+  guess GoodRx exact-dosage params directly per the CLAUDE.md pattern.
 - **Dosage/strength as a first-class field.** `PreferredAgent.strength` (and every cash-link rule
   in `cash.ts`) pins one representative strength per drug rather than letting a user pick the
   strength actually prescribed and see the sig/price/PA rule for that exact dose. This has bitten
@@ -59,7 +50,11 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   ACE-inhibitor price fixes in `issues.md`), and insulin dosing is individualized enough that a
   single `sig` string can't represent it honestly. Some formularies also gate PA/quantity limits
   by strength (e.g. only the highest-dose SKU needs PA), which today's schema can't express at
-  all. Add a strength dimension to `FormularyRecord`/`PreferredAgent` (or a `strengths[]` list of
+  all. The VA diabetes guide (shipped 2026-07-02) makes this gap bigger: each cell pins one
+  representative strength/sig for drugs whose dosing is inherently titrated (GLP-1 escalation
+  schedules, individualized insulin units, metformin ramp-up), and the VA Medicaid PDL itself
+  gates metformin differently *by strength* (500 mg PA'd, 1000 mg not) — exactly what this item
+  exists to express. Add a strength dimension to `FormularyRecord`/`PreferredAgent` (or a `strengths[]` list of
   `{strength, sig, sigShort, plainSig, tier?, paRequired?}` variants) so a drug can carry more than
   one dose, and have cash-link resolution key off `(name, strength)` instead of name alone. Do
   this *after* — and folding in — the existing low-priority `goodRxParams` structured-fields item,
@@ -91,22 +86,12 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   commercial) need a fresh gather — the `data-gathering/ny-ace-2026-07-01/payer-*.json` checkpoints
   a prior backlog note pointed at no longer exist on disk (see issues.md); there is no shortcut,
   they need re-gathering from scratch.
-  **VA diabetes: not shipped, 1/8 payers verified this session.** `state-index.json` actually lists
-  8 VA payers, not 10 as an earlier note said. A chunked (≤2-concurrent) re-gather this session
-  (2026-07-01, Workflow run `wf_20cee55f-82a`) got 1 payer fully done — **VA Medicaid FFS
-  (Cardinal Care), all 4 classes (metformin-oral/glp1/sglt2/insulin), `verified` off the real PDL
-  PDF** — checkpointed at `data-gathering/va-diabetes-2026-07-01/va-medicaid-ffs.json`. The other 7
-  (Anthem HealthKeepers Plus, Sentara Community Plan, UHC Community Plan, Aetna Better Health,
-  Anthem BCBS Commercial, Sentara Commercial, Wellcare Value Script PDP) all failed on a resume
-  attempt with `FailedToOpenSocket`/`ConnectionRefused` errors — a transient connectivity issue,
-  **not** the earlier rate-limit failure mode. The guide still can't ship (count-floor validation
-  needs every payer × every active class). Next step: resume the same run
-  (`Workflow({scriptPath: .../va-diabetes-gather.mjs, resumeFromRunId: "wf_20cee55f-82a"})`) once
-  connectivity is stable — it replays the VA-Medicaid-FFS result from cache at no cost and only
-  re-runs the 7 that failed, still in chunks of ≤2. Note: `resumeFromRunId` only works within the
-  *same* session that launched the run, so a future session can't reuse that run id — but it can
-  still skip re-gathering VA Medicaid FFS by reading the already-checkpointed
-  `va-medicaid-ffs.json` directly and only spawning the other 7.
+  **VA diabetes: SHIPPED 2026-07-02** — `va-diabetes` guide, all 8 payers × 4 classes
+  (metformin-oral/glp1/sglt2/insulin), every cell `verified` off the payer's own formulary
+  document. 6 payers gathered by a fresh chunked (≤2-concurrent) Workflow run; the last 2
+  (Sentara Commercial, Wellcare Value Script) hit the session usage limit as agents and were
+  finished inline off the same PDFs. Remaining VA follow-up: cash-link rules for the diabetes
+  drugs (see below) and a quarterly re-verify.
 - **Wire `trace` + `build:map` into CI / a pre-commit.** `npm run trace` (static provenance) should
   gate commits so a line item without a resolvable source fails loud; `build:map` should regenerate
   and assert `docs/formulary-map.md` matches the data (generated output must commit with its source).
@@ -131,9 +116,11 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   spacers and slow deep breathing, while dry-powder inhalers need a fast, forceful breath).
 - **Insurance Card Helper (Payer finder)** (Newbie): Add a mini-guide explaining how patients can locate
   their plan, PBM, RxBIN, and RxGroup on their physical insurance card to select the correct plan.
-- **PA appeal as a downloadable pre-filled PDF form**, phase 2 of the appeal letter shipped in
-  `PrescribeOptions.tsx`/`lib/appealLetter.ts`. Needs a per-payer PDF form template and a PDF-fill
-  dependency — run the supply-chain advisory check before adding it.
+- **PA appeal as a payer's own pre-filled PDF form.** The letter now downloads as a real PDF
+  (`lib/letterPdf.ts`, jspdf@4.2.1 lazy-loaded on click, shipped 2026-07-01); what remains is
+  filling a payer's *official* appeal-form PDF (some plans require their form, not a letter).
+  Needs a per-payer PDF form template — jspdf can't fill AcroForms, so that phase wants pdf-lib
+  instead (advisory-swept clean 2026-07-01 alongside jspdf).
 
 ## Low
 
@@ -154,3 +141,12 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 - **Compact Clinic Grid Layout** (Expert/UX): Add a toggle for a compact side-by-side comparison matrix of
   all 5 plans for the active class, optimized for rapid clinical scanning and printing.
 
+
+- **(low) One reference id per document per guide.** The va-diabetes guide registers the statewide
+  DMAS PDL PDF under 2 ids (and the DMAS bulletin under 3) because each payer's gather agent minted
+  its own; validation passes but single-source-of-truth favors deduping and remapping sourceIds.
+  Flagged by the PR #5 data review.
+- **(low) `npm ci --omit=optional` in CI/deploy.** jspdf's optionalDependencies pull core-js (has an
+  install script) + canvg/html2canvas/dompurify, all unused by our code path (no `html()`/`svg()`
+  calls). Omitting optionals shrinks the install-script and supply-chain surface at zero runtime
+  cost. Flagged by the PR #5 SW review.

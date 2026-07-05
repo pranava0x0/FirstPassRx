@@ -114,3 +114,39 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   Medicaid/NYRx) that had complete, dual-sourced data; held back VA and the other 5 NY payers
   rather than fabricate or force incomplete cells past schema validation. _Open — remaining cells
   need small-batch (≤2 concurrent) follow-up, see backlog.md._
+- **2026-07-02 · process (data gathering) · VA diabetes gather: 2 of 8 payer agents died on the
+  session usage limit; finished inline.** A fresh chunked Workflow (≤2 concurrent, 8 agents, one
+  per payer) completed 6 payers cleanly; the final chunk (Sentara Commercial, Wellcare Value
+  Script) failed with "You've hit your session limit" before either agent started, so no
+  checkpoint existed for them. Root cause: **usage-limit exhaustion**, not rate-limiting and not a
+  code bug. Recovered by gathering both inline in the main session (curl + pypdf off the plans'
+  own formulary PDFs — no agents needed), writing the same checkpoint shape to
+  `data-gathering/va-diabetes-2026-07-01/`, and merging all 8. Lesson: for a 1-payer-sized gap,
+  inline gathering is cheaper and immune to the subagent usage limit. _Fixed (guide shipped)._
+- **2026-07-02 · tooling (zsh) · `echo ===` separator aborts a compound Bash command.** In zsh, any
+  word starting with `=` triggers equals-expansion (`=cmd` → path lookup), so a bare `===`/`====`
+  separator fails the whole command with `== not found` (exit 1) even though everything before it
+  succeeded. Bit a workflow agent's "Extract Sentara formulary text" step and then the main session
+  in the same day. Root cause: **shell quirk**, not a code bug. Fix: quote it (`echo "==="`). _Fixed
+  (noted in CLAUDE.md scar tissue)._
+- **2026-07-02 · data (MD menopause) · DAW6 list citation rotted.** `validate-links` caught
+  `health.maryland.gov/.../DAW6 List effective 3-26-2026.pdf` returning 404 — MDH reissued the
+  list at `/mmcp/pap/docs/daw6-7-1-2026.pdf` (eff. 7/1/2026). Re-fetched the new PDF and
+  re-verified the load-bearing claim (still no estrogen/progestogen named on the list) before
+  swapping the URL/effectiveDate/accessed on `md-daw6-2026`. Root cause: **source website drift**,
+  not a code bug — exactly what the link validator exists to catch. _Fixed._
+- **2026-07-02 · review (PR #5) · persona reviews found 3 blocking issues in the shipped VA data;
+  all fixed same-day.** (1) **Code/UI**: non-BOGL cells rendered "likely to cover X without prior
+  authorization" even when the preferred agent itself was PA-gated (all 8 VA GLP-1 cells) — added
+  `preferredRestriction` to `FormularyRecord`, ResultCard now shows the restriction instead, and a
+  regression test asserts every va-diabetes glp1 cell carries it. (2) **Data**: 4 GLP-1 cells
+  dual-listed drugs in both `alternatives` and `paRequired` (including their own preferred agent) —
+  stripped; guard test added. (3) **Data**: aetna-better-health/glp1 claimed "no service
+  authorization" for Trulicity, contradicting the governing statewide PDL — corrected + cross-cited.
+  Also fixed: FFS closed-class `nonformulary`→`pa`, sentara-commercial insulin flagged BOGL (all
+  glargine biosimilars non-formulary), 4 BOGL flags that described a sibling drug, metformin
+  titration sigs, insulin sig individualization, tirzepatide GIP/GLP-1 labeling, biosimilar-not-
+  generic wording, Xultophy discontinued annotation, DMAS PDL ref mislabeled as Anthem's, PDF
+  WinAnsi sanitization, download error state, and the 44px touch-target on the tips summary.
+  Root causes: **UI copy assumed an unrestricted preferred agent** (schema couldn't express the
+  exception) and **gather agents modeled class-wide PA two different ways**. _Fixed (commit on PR #5)._

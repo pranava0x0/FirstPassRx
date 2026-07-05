@@ -172,6 +172,11 @@ button {
 .masthead__mark .rx {
   color: var(--accent);
 }
+.guide-load-error {
+  margin: 8px 0 0;
+  color: var(--status-deny);
+  font-size: 13px;
+}
 .masthead__subrow {
   display: flex;
   flex-direction: column;
@@ -882,8 +887,77 @@ button {
   border-color: var(--accent-deep);
   background: var(--sig-highlight);
 }
-.appeal-panel .copy-btn {
+.appeal-panel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
   margin-top: 8px;
+}
+.appeal-panel__error {
+  margin: 8px 0 0;
+  font-size: 12.5px;
+  color: var(--status-deny);
+}
+
+/* appeal-writing guidance, collapsed by default */
+.appeal-tips {
+  margin-top: 12px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+}
+.appeal-tips > summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  line-height: 1.2;
+}
+.appeal-tips[open] > summary {
+  border-bottom: 1px solid var(--rule-faint);
+}
+.appeal-tips__body {
+  padding: 12px 14px;
+  font-size: 13.5px;
+  color: var(--ink);
+}
+.appeal-tips__list {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+}
+.appeal-tips__example {
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: var(--paper-shade);
+  border-left: 3px solid var(--rule);
+}
+.appeal-tips__example-label {
+  margin: 0 0 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.appeal-tips__weak {
+  margin: 0 0 6px;
+  color: var(--status-deny);
+}
+.appeal-tips__strong {
+  margin: 0;
+  color: var(--accent-deep);
+}
+.appeal-tips__sources {
+  margin: 12px 0 0;
+  font-size: 12.5px;
+  color: var(--ink-muted);
 }
 
 /* first-pass caption */
@@ -1341,6 +1415,22 @@ button {
 }
 
 @media (max-width: 520px) {
+  .guide-switch {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+  .guide-switch__btn {
+    min-width: 0;
+    padding-inline: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .guide-switch__btn:nth-child(2n) {
+    border-right: 0;
+  }
+  .guide-switch__btn:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
   .alts__row,
   .reject__row {
     align-items: flex-start;

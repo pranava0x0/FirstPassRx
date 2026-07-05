@@ -100,6 +100,12 @@ verification into the gather agent** rather than a second phase; **index before 
 for ≤3 lookups). Read it before launching a new fan-out. A run that finished suspiciously fast/cheap
 probably failed — confirm a non-empty result before trusting the metric.
 
+**Save it (required).** The retro row must be *committed* in the same session that ran the agents —
+an updated `docs/agent-runs.md` left uncommitted in a worktree is deleted when the worktree is
+cleaned, which is how earlier retros were lost. Additionally, give a **whole-session evaluation** of
+all agent use (quality of results, token efficiency, and per-run whether an agent was needed at all
+versus simpler inline tool calls) before the session ends, without waiting to be asked.
+
 A solo turn with no spawn has nothing to evaluate — say so rather than invent analysis.
 
 ---

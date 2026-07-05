@@ -6,17 +6,34 @@ const BARRIER_LABEL: Record<PaItem['outcome'], string> = {
   nonformulary: 'non-formulary status',
 }
 
+function nextAppealStep(payer: PayerMeta): string {
+  if (payer.marketSegment === 'medicare-part-d') {
+    return 'If this redetermination is denied, I intend to request reconsideration by the Medicare Part D Independent Review Entity. Please include the required filing instructions and deadline in the decision notice.'
+  }
+  if (payer.marketSegment === 'medicaid-ffs' || payer.marketSegment === 'medicaid-mco') {
+    return 'If this appeal is denied, I intend to request the applicable state Medicaid fair-hearing review. Please include the required filing instructions and deadline in the decision notice.'
+  }
+  return 'If this internal appeal is denied, I intend to request an independent external review. Please include the required filing instructions and deadline in the decision notice.'
+}
+
 /**
  * A pre-filled PA appeal letter for one blocked drug, built from data already on the cell
- * (reject reason, step-therapy text, payer/PBM) plus placeholders the patient/prescriber fill
- * in (member ID, denial letter reference, clinical history) — the app holds no patient data.
+ * (reject reason, step-therapy text, the plan's own preferred alternatives, payer/PBM) plus
+ * placeholders the patient/prescriber fill in (member ID, denial reference, codes, clinical
+ * history) — the app holds no patient data.
  *
- * Structure follows published patient-advocacy and state-insurance-commissioner templates:
+ * Structure follows published patient-advocacy and regulator templates and checklists:
  * Patient Advocate Foundation's "Sample Appeal Letter for Pre-Authorization Denial"
- * (patientadvocate.org/migrainematters) and the appeal-letter structure summarized by the
- * Washington state Office of the Insurance Commissioner (insurance.wa.gov). Both keep the
- * patient's own appeal letter separate from — but referencing — the prescriber's attached
- * Letter of Medical Necessity, rather than merging both voices into one document.
+ * (patientadvocate.org), the Washington OIC appeals guide (insurance.wa.gov), and the
+ * ACA internal-appeal / external-review framework (healthcare.gov). Beyond the original
+ * template this adds: expedited-appeal language, the tried-and-failed alternatives list
+ * (pre-filled with this plan's own preferred agents), denial-code and ICD-10 placeholders,
+ * a pointer at the plan's own coverage criteria, decision-timeframe language, and the
+ * external-review reservation. The patient's letter stays separate from — but references —
+ * the prescriber's attached Letter of Medical Necessity.
+ *
+ * Deadlines vary by plan type (ACA commercial vs. Medicaid vs. Medicare Part D), so the
+ * letter carries placeholders and points at the denial letter rather than baking one number.
  */
 export function buildAppealLetter(
   record: FormularyRecord,
@@ -30,18 +47,26 @@ export function buildAppealLetter(
     '',
     payer.name,
     'Appeals and Grievances Department',
+    '[Appeals address — from your denial letter or member handbook]',
     '',
-    'RE:',
+    `RE: Internal appeal — coverage denial of ${item.drug}`,
     '[Patient Name]',
     '[Member ID]',
     '[Reference # on Denial Letter]',
     '[Patient Date of Birth]',
+    'Denial code(s): [code(s) listed on the denial letter, if any]',
+    'Diagnosis: [ICD-10 code and name, e.g. J45.40 — moderate persistent asthma]',
     '',
     `To Whom It May Concern at ${payer.name}:`,
     '',
     `My name is [Patient Name] and I am a member of ${payer.name}${payer.pbm ? ` (pharmacy benefits administered by ${payer.pbm})` : ''}. ` +
       `I am writing to appeal the ${barrierLabel} denial of coverage for ${item.drug}, prescribed for ${drugClass.plainName.toLowerCase()}. ` +
-      `I received a denial letter dated [date] stating: "${item.reason}."`,
+      `I received a denial letter dated [date] stating: "${item.reason}." Please treat this letter as a formal internal appeal of that decision.`,
+    '',
+    '[Keep this paragraph only if a delay would put your health at risk — otherwise delete it:]',
+    'I request an EXPEDITED appeal. My prescriber has determined that waiting for the standard ' +
+      'review timeframe could seriously jeopardize my health, and a supporting statement is enclosed. ' +
+      'Expedited appeals are typically decided within 72 hours.',
     '',
   ]
   // record.stepTherapy is a class-wide note (it can describe more than one drug's requirement --
@@ -50,15 +75,44 @@ export function buildAppealLetter(
   if (item.outcome === 'step' && record.stepTherapy) {
     lines.push(`Step therapy on file with the plan for this drug class: ${record.stepTherapy}`, '')
   }
+  // The tried-and-failed list is the strongest medical-necessity argument. Pre-fill it with the
+  // plan's own preferred alternatives for this class so the reviewer sees their formulary's
+  // agents addressed one by one; the patient/prescriber fills in dates and outcomes.
+  const preferredName = record.preferredAgent.brand ?? record.preferredAgent.inn
+  const altNames = [preferredName, ...(record.alternatives ?? []).map((a) => a.drug)].filter(
+    (name, index, names) =>
+      names.findIndex((candidate) => candidate.toLowerCase() === name.toLowerCase()) === index,
+  )
   lines.push(
+    "The plan's preferred alternatives for this drug class, and why each was not effective or " +
+      'not clinically appropriate for me (dates and outcomes below; clinical detail is in the ' +
+      'enclosed Letter of Medical Necessity). [Delete any listed drug that is not the same kind ' +
+      'of medication as the one denied — e.g. keep only basal insulins when appealing a basal ' +
+      'insulin denial:]',
+    ...(altNames.length > 0
+      ? altNames.map(
+          (name, i) =>
+            `${i + 1}. ${name} — [dates tried and outcome, or reason it is not clinically appropriate]`,
+        )
+      : ['1. [Formulary alternative — dates tried and outcome, or reason it is not clinically appropriate]']),
+    '',
     'I am currently under the care of [Prescriber Name] at [Practice/Facility Name]. ' +
       'My prescriber has attached a Letter of Medical Necessity explaining why this medication ' +
       'is clinically appropriate for me — including any prior treatments tried, why they were not ' +
       'suitable, and any diagnosis or clinical history supporting this request. Please refer to ' +
       'that letter for the full clinical rationale.',
     '',
-    `Please reconsider this decision and approve coverage for ${item.drug} without further delay. ` +
-      'Please contact me at [Patient Phone] or my prescriber at [Prescriber Phone] if you need any ' +
+    "Please review this appeal against the plan's own written coverage criteria for this " +
+      `medication: [medical policy / criteria name and number, if listed on the denial letter]` +
+      `${payer.paPolicyUrl ? ` (plan PA policy: ${payer.paPolicyUrl})` : ''}. ` +
+      'If the denial relied on any criterion outside that policy, please identify it in your response.',
+    '',
+    'Please issue a written decision within the timeframe my plan is required to meet for ' +
+      'pre-service appeals [see your denial letter for the deadline that applies to this plan; ' +
+      '72 hours if expedited]. ' +
+      nextAppealStep(payer),
+    '',
+    `Please contact me at [Patient Phone] or my prescriber at [Prescriber Phone] if you need any ` +
       'additional information to complete this review. Thank you for your time and attention to this matter.',
     '',
     'Respectfully,',
@@ -68,7 +122,7 @@ export function buildAppealLetter(
     'Enclosures:',
     '1. Denial letter from plan',
     "2. Prescriber's Letter of Medical Necessity",
-    '3. Relevant medical records',
+    '3. Relevant medical records (including records of the alternatives tried)',
   )
   if (payer.paPolicyUrl) {
     lines.push(`4. Plan PA policy: ${payer.paPolicyUrl}`)

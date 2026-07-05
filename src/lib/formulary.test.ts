@@ -1,9 +1,14 @@
 import { describe, it, expect } from 'vitest'
-import { guides, getGuideView, meta } from './formulary'
+import rawData from '../data/formulary.json'
+import type { Formulary } from '../types/formulary'
+import { buildGuideView, meta } from './formulary'
+
+const guides = (rawData as Formulary).guides.map(buildGuideView)
+const getGuideView = (id: string) => guides.find((guide) => guide.id === id) ?? guides[0]!
 
 describe('guides + global meta', () => {
-  it('ships the MA inhaler, MD menopause, and NY ACE inhibitor guides, in order', () => {
-    expect(guides.map((g) => g.id)).toEqual(['ma-inhalers', 'md-menopause', 'ny-ace'])
+  it('ships the MA inhaler, MD menopause, NY ACE inhibitor, and VA diabetes guides, in order', () => {
+    expect(guides.map((g) => g.id)).toEqual(['ma-inhalers', 'md-menopause', 'ny-ace', 'va-diabetes'])
   })
 
   it('defaults to a guide that exists', () => {
@@ -246,5 +251,41 @@ describe('MD menopause guide specifics', () => {
   it('carries menopause-specific glossary terms', () => {
     expect(md.lookupGlossary('GSM')).toBeDefined()
     expect(md.lookupGlossary('MHT')?.definition).toMatch(/estrogen/i)
+  })
+})
+
+describe('VA diabetes guide specifics', () => {
+  const va = getGuideView('va-diabetes')
+
+  it('ships all 8 Virginia payers x 4 diabetes classes, every cell verified', () => {
+    expect(va.payers).toHaveLength(8)
+    expect(va.activeClasses.map((c) => c.id)).toEqual(['metformin-oral', 'glp1', 'sglt2', 'insulin'])
+    expect(va.records).toHaveLength(32)
+    expect(va.records.every((r) => r.verification === 'verified')).toBe(true)
+  })
+
+  it('never claims a clean first-pass GLP-1 — every glp1 cell carries a preferredRestriction (no VA payer covers a GLP-1 without PA)', () => {
+    for (const r of va.records.filter((r) => r.classId === 'glp1')) {
+      expect(r.preferredRestriction, `${r.payerId}/glp1`).toBeTruthy()
+    }
+  })
+
+  it('no cell lists the same drug as both a covered alternative and a coverage barrier', () => {
+    for (const r of va.records) {
+      const alts = new Set((r.alternatives ?? []).map((a) => a.drug))
+      for (const p of r.paRequired) {
+        expect(alts.has(p.drug), `${r.payerId}/${r.classId}: ${p.drug}`).toBe(false)
+      }
+      expect(
+        (r.alternatives ?? []).some((a) => a.drug === r.preferredAgent.inn || a.drug === r.preferredAgent.brand),
+        `${r.payerId}/${r.classId}: preferred agent dual-listed`,
+      ).toBe(false)
+    }
+  })
+
+  it('only sets BOGL when the preferred agent itself has a generic or biosimilar counterpart', () => {
+    for (const r of va.records.filter((record) => record.boglActive)) {
+      expect(r.preferredAgent.genericAvailable, `${r.payerId}/${r.classId}`).toBe(true)
+    }
   })
 })
