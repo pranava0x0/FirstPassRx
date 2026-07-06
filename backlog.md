@@ -4,6 +4,17 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## High
 
+- **Every prescription type should have data for every state selected (user priority, 2026-07-05).**
+  The state/therapeutic-area picker (shipped 2026-07-05) makes the full grid visible, but most
+  cells are still empty — a user can select any state and any prescription type, but only gets a
+  real answer for the handful of (state, topic) pairs that have been researched so far. The product
+  goal is that **whichever prescription type a user picks, their selected state has real, cited
+  data for it** — not just a subset of states per topic. Current coverage as of 2026-07-05:
+  inhalers (MA only), menopause HT (MD only), ACE inhibitors (NY only, 1/6 payers), diabetes (VA
+  only), NSAIDs (NY + IL, 1 payer each). Closing this gap means running the `formulary-data` skill
+  for every missing (state, topic) cell — one combo at a time, confirming scope before any Workflow
+  fan-out (hard ≤2-concurrent-agent cap, see CLAUDE.md). See the "Separate the state and
+  prescription-type selectors" item below for the full grid and what's already shipped vs. open.
 - **Redesign the omni-search.** The drug search bar (`src/components/Search.tsx`) is parked
   (removed from the App render) pending a rethink. Wanted: layperson synonyms ("HRT", "estrogen
   patch", "rescue spray") mapping to classes/molecules, search scoped to or across guides, and a
@@ -36,6 +47,37 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## Medium
 
+- **PR #6 review nitpicks, deferred rather than blocking merge.** From the two-persona review
+  (SW engineer + data reviewer) of the state/topic-picker split and NY/IL NSAID guides:
+  - `Controls.tsx`'s state/topic segmented tablists omit `aria-controls` (unlike the existing class
+    tabs, which set it to the result panel id) — minor a11y gap; there's arguably no single stable
+    panel these two new tabs "control" the way class tabs do, so decide the right target before
+    adding it.
+  - Rapid double-arrow-key navigation on the state/topic tablist can land focus on a button that's
+    mid-fetch-disabled; `.focus()` on a disabled element silently no-ops, dropping focus to
+    `document.body`. Narrow today (most combos have no guide yet), will widen as more guides ship.
+  - `onTabKeyDown`/`onStateKeyDown`/`onTopicKeyDown` in `Controls.tsx` are copy-pasted
+    roving-tabindex logic, differing only in the array/getter/setter — worth one generic factory.
+  - The `!activeGuideId` "Not covered yet" panel and the "No record for this payer/class" panel in
+    `App.tsx` are two near-identical empty-state JSX blocks — worth one small `EmptyState`
+    component (this is the second occurrence of the pattern, per the repo's own "build the helper
+    the second time" rule).
+  - `findGuideId` re-scans `guideOptions` (currently 6 entries) on every render — not worth a
+    `useMemo` at this scale, revisit if the guide count grows a lot.
+  - ~~Grouped `paRequired`/`alternatives` entries lose per-drug accountability~~ — **FIXED**: the
+    codex bot caught this concretely (IL's original grouped entry misclassified Etodolac,
+    Flurbiprofen, and Ketoprofen as PA-required when the PDL lists all three preferred); the
+    `il-nsaids` cell now transcribes every PREFERRED/NON_PREFERRED line item individually. Keep this
+    per-drug granularity for future guides instead of reverting to grouped entries.
+  - Confirm whether Illinois's HFS PDL has an equivalent to NY's "PA required if 2+ concurrent
+    NSAIDs" class-wide criterion (captured on NY's record as `preferredRestriction`) or genuinely
+    lacks one — the `il-nsaids` cell currently has no `preferredRestriction` set.
+  - **Persist the state/topic pick in the URL, not just a valid `?guide=` id** (codex bot, P3).
+    Landing on an uncovered (state, topic) combo today only clears a stale `guide` param — it
+    doesn't add a `state=`/`topic=` param, so reloading or sharing that URL lands on the default
+    guide instead of reproducing the exact gap the user was looking at. Deliberately out of scope
+    for the initial picker split (see the "Separate the state and prescription-type selectors"
+    item); worth adding `state=`/`topic=` URL params once the gap-browsing use case matters enough.
 - **Cash-link rules for the VA diabetes drugs.** The `va-diabetes` guide shipped with no explicit
   GoodRx/Cost Plus rules, raising `KNOWN_UNPRICED_GAP` from 72 to 148 (`src/lib/cash.ts`).
   Metformin, generic dapagliflozin, insulin glargine biosimilars, and generic lispro/aspart are
@@ -59,26 +101,31 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   one dose, and have cash-link resolution key off `(name, strength)` instead of name alone. Do
   this *after* — and folding in — the existing low-priority `goodRxParams` structured-fields item,
   since both touch the same "one drug, several dose variants" shape.
-- **Separate the state and prescription-type selectors.** Today `Guide` bundles one region +
-  one therapeutic area into a single self-contained unit (`ma-inhalers`, `md-menopause`,
-  `ny-ace`), and the top toggle picks a whole guide at once — so a state and a drug class are
-  really one combined choice, not two independent ones. This gets worse once a state ships a 2nd
-  topic (VA is getting diabetes now; NY could later get inhalers too): today's schema would need a
-  whole new guide object that *duplicates* that state's payer list just to pair it with a
-  different class list.
-  - **Phase 1 (UI only, no schema change):** turn "Choose a guide" into a 2-step picker — pick a
-    state first (derived from `guide.region`), then pick a therapeutic area among the guides that
-    exist for that state (derived from `guide.topic`). Guides stay exactly as self-contained as
-    they are today; this only changes how the existing guide list is grouped and presented. Safe
-    to do now, and immediately clearer once VA (diabetes) and NY (ACE inhibitors, eventually more)
-    both exist.
-  - **Phase 2 (schema change, defer until a state actually has 2+ topics and the payer-duplication
-    cost is felt):** factor `payers[]` out of `Guide` into a per-state pool shared across that
-    state's topics, so adding a 2nd topic to an existing state doesn't mean re-entering the same
-    MCO/PBM/formulary-URL metadata again. `classes[]`/`records[]`/`references[]` stay topic-scoped.
-    This is a real data-migration (every existing guide's `payers[]` moves and every `payerId` in
-    `records[]` needs to keep resolving), so don't do it speculatively — wait until VA or another
-    state actually needs a 2nd topic before touching the schema.
+- **Separate the state and prescription-type selectors — Phase 1 SHIPPED 2026-07-05.** `Guide`
+  gained explicit `stateCode`/`topicId` keys (plus a short `topic` display label); `App.tsx`/
+  `Controls.tsx` now expose two independent segmented-button controls (both state and
+  therapeutic-area render as `.seg` tab groups — `src/lib/formulary.ts`'s
+  `stateOptions`/`topicOptions`/`findGuideId`) instead of one flat guide-switch button row. Picking
+  a (state, topic) pair with no guide shows an explicit "Not covered yet" panel instead of hiding
+  the combination.
+  - **NSAIDs topic added 2026-07-05:** `ny-nsaids` (NY Medicaid/NYRx) and `il-nsaids` (Illinois
+    Medicaid/HFS, a brand-new state for this app) shipped, each 1 payer × 1 class (`nsaid-oral`),
+    both cells `verified`. See `data-sources.md`. This makes **NY the first state with 2 topics**
+    (ace-inhibitors + nsaids) — the Phase 2 trigger condition below has now actually occurred.
+  - **Next: fill remaining (state, topic) gaps.** MA/MD/NY/VA/IL × {inhalers, menopause-ht,
+    ace-inhibitors, diabetes, nsaids} is a big grid; most cells are still empty. Each missing cell
+    needs a full `formulary-data` skill run (every payer × active class in the guide sourced and
+    cited) before it can ship — do these one (state, topic) combo at a time, confirming scope
+    before any Workflow fan-out (hard ≤2-concurrent-agent cap). Also still open: `ny-ace`'s
+    remaining 5 NY commercial payers, NY/IL NSAIDs' remaining commercial payers (tracked in
+    `data-sources.md`), and cash-link rules for the 5 NSAID drug names (`KNOWN_UNPRICED_GAP` raised
+    148 → 161, see `src/lib/cash.ts`).
+  - **Phase 2 (schema change) — trigger condition now met, still not urgent.** Factor `payers[]`
+    out of `Guide` into a per-state pool shared across that state's topics, so adding a payer to
+    NY's next topic doesn't mean re-entering NYRx's identity a 3rd time. NY now has 2 topics
+    (`ny-ace`, `ny-nsaids`) with the exact same single payer object duplicated verbatim between
+    them — real but small duplication cost today (1 payer object, not 8). Worth doing next time NY
+    gets a 3rd topic or gains more payers, rather than before then.
 - **Drug-level data for NY, VA, DC.** The state map indexes their plans/PBMs/formulary URLs
   (`src/data/state-index.json`); turn those into in-app guides with drug-level cells. DC not started.
   **NY ACE inhibitors: 1/6 intended payers shipped** (`ny-ace` guide, NY Medicaid/NYRx only —

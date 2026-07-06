@@ -7,8 +7,15 @@ const guides = (rawData as Formulary).guides.map(buildGuideView)
 const getGuideView = (id: string) => guides.find((guide) => guide.id === id) ?? guides[0]!
 
 describe('guides + global meta', () => {
-  it('ships the MA inhaler, MD menopause, NY ACE inhibitor, and VA diabetes guides, in order', () => {
-    expect(guides.map((g) => g.id)).toEqual(['ma-inhalers', 'md-menopause', 'ny-ace', 'va-diabetes'])
+  it('ships the MA inhaler, MD menopause, NY ACE inhibitor, VA diabetes, NY NSAIDs, and IL NSAIDs guides, in order', () => {
+    expect(guides.map((g) => g.id)).toEqual([
+      'ma-inhalers',
+      'md-menopause',
+      'ny-ace',
+      'va-diabetes',
+      'ny-nsaids',
+      'il-nsaids',
+    ])
   })
 
   it('defaults to a guide that exists', () => {
@@ -19,7 +26,7 @@ describe('guides + global meta', () => {
 
   it('gives every guide the copy the masthead/labels need', () => {
     for (const g of guides) {
-      for (const field of ['label', 'region', 'topic', 'classNoun', 'unitNoun'] as const) {
+      for (const field of ['label', 'stateCode', 'region', 'topicId', 'topic', 'classNoun', 'unitNoun'] as const) {
         expect(g[field], `${g.id} ${field}`).toBeTruthy()
       }
       expect(['sample', 'mixed', 'verified']).toContain(g.dataStatus)

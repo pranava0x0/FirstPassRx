@@ -357,3 +357,16 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   command path (`(eval): == not found`, exit 1), so `grep … ; echo ===; grep …` silently drops
   everything after the first grep. Quote it (`echo "==="`). Bit a workflow agent and the main
   session on the same day (2026-07-02).
+- **A plain `WebFetch` on a large government PDL PDF can return only binary/metadata with no
+  readable page text, even though the PDF itself is real and fetchable** — same "looks dead but
+  isn't" category as the GoodRx/Cost Plus bot-protection note above, just a different cause (PDF
+  parsing, not bot detection). The NYRx PDL (85 pages) needed the PDF-reading tool to extract real
+  text; a naive fetch alone would have wrongly concluded the source was unreadable. For any future
+  large-PDF formulary source, try a dedicated PDF tool before downgrading verification to
+  `partial`/`example` on the assumption the document is unreachable.
+- **A brand-new state (no `state-index.json` entry, no existing guide) needs its Medicaid
+  administrator/PDL identity discovered from scratch via live search — never assume the agency name
+  from training data.** Illinois HFS's PDL and pharmacy-benefit structure (administered directly, no
+  contracted PBM) was confirmed by search + a live fetch of the actual `illinois.gov` PDL PDF before
+  citing anything, per the existing state-Medicaid-roster-churn rule above. Same instinct, now
+  proven for a state with zero prior footprint in this repo, not just a payer-roster refresh.

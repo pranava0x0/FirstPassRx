@@ -4,8 +4,15 @@
  * not a target: it must never grow silently. Shared by cash.test.ts and validate-prices.mjs so
  * the two never drift out of sync with each other. Raised 72 → 148 on 2026-07-02 when the VA
  * diabetes guide shipped (8 payers × 4 classes) with no cash-link rules yet -- adding rules for
- * the diabetes drugs (metformin, GLP-1s, SGLT2s, insulins) is a logged backlog item. */
-export const KNOWN_UNPRICED_GAP = 148
+ * the diabetes drugs (metformin, GLP-1s, SGLT2s, insulins) is a logged backlog item. Raised
+ * 148 → 161 on 2026-07-05 when the ny-nsaids and il-nsaids guides shipped (1 payer × 1 class
+ * each) with no cash-link rules yet -- oral NSAIDs are mostly cheap OTC-adjacent generics, but
+ * adding real GoodRx/Cost Plus rules for naproxen/ibuprofen/meloxicam/celecoxib/diclofenac is a
+ * logged backlog item. Raised 161 → 168 the same day when a PR review (codex bot) caught the
+ * il-nsaids cell misclassifying several preferred drugs (Etodolac, Flurbiprofen, Ketoprofen) as
+ * PA-required -- correcting the cell against the source PDL surfaced additional real preferred
+ * drug names (Indomethacin, Ketorolac, Nabumetone, Sulindac) that also have no cash-link rule. */
+export const KNOWN_UNPRICED_GAP = 168
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake

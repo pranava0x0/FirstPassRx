@@ -3,10 +3,13 @@ import type { ClassId, PayerId } from './types/formulary'
 import {
   GuideProvider,
   defaultGuideId,
+  findGuideId,
   getDefaultGuideView,
   guideOptions,
   loadGuideView,
   meta,
+  stateOptions,
+  topicOptions,
 } from './lib/formulary'
 import { Disclaimer } from './components/Disclaimer'
 import { Controls } from './components/Controls'
@@ -40,10 +43,39 @@ export default function App() {
   const [guideLoadError, setGuideLoadError] = useState(false)
   const guideRequest = useRef(0)
 
+  // State and prescription type are picked independently of which guide is actually
+  // loaded — most (state, topic) pairs don't have a guide yet (see backlog.md). Seeded from
+  // the same default guide as `selection` above (not a URL-targeted guide) so the tabs and
+  // the rendered content always describe the same guide on first paint; switchGuide moves
+  // them together once a non-default guide actually finishes loading, instead of the tabs
+  // jumping ahead of content that hasn't arrived yet.
+  const defaultSummary = guideOptions.find((g) => g.id === defaultGuideId) ?? guideOptions[0]!
+  const [stateCode, setStateCode] = useState(defaultSummary.stateCode)
+  const [topicId, setTopicId] = useState(defaultSummary.topicId)
+  const activeGuideId = findGuideId(stateCode, topicId)
+
   useEffect(() => {
     const initialGuideId = getInitialGuideId()
     if (initialGuideId !== defaultGuideId) void switchGuide(initialGuideId, false)
   }, [])
+
+  useEffect(() => {
+    if (!activeGuideId) {
+      setGuideLoadError(false)
+      setLoadingGuideId(null)
+      // Clear a stale ?guide= param so a reload lands on the default guide instead of
+      // silently reverting to whatever unrelated guide it used to name. This doesn't
+      // reproduce the exact gap selection itself (state/topic aren't persisted in the
+      // URL at all yet — see backlog.md), only prevents the wrong-guide revert.
+      if (new URLSearchParams(window.location.search).has('guide')) {
+        const url = new URL(window.location.href)
+        url.searchParams.delete('guide')
+        window.history.replaceState({}, '', url.toString())
+      }
+      return
+    }
+    void switchGuide(activeGuideId)
+  }, [activeGuideId])
 
   // Switching guide swaps the whole dataset (payers + classes differ), so reset the
   // selection to the new guide's defaults rather than carry a now-invalid payer/class.
@@ -60,6 +92,10 @@ export default function App() {
         payerId: nextGuide.payers[0]!.id,
         classId: nextGuide.activeClasses[0]!.id,
       })
+      // Move the tabs together with the content, never ahead of it (a no-op when this came
+      // from the user picking these exact tabs; keeps them in sync on the initial URL load).
+      setStateCode(nextGuide.stateCode)
+      setTopicId(nextGuide.topicId)
 
       if (updateUrl) {
         const url = new URL(window.location.href)
@@ -76,6 +112,10 @@ export default function App() {
   const payer = guide.getPayer(payerId)
   const drugClass = guide.getClass(classId)
   const record = guide.getRecord(payerId, classId)
+  // The loaded guide can briefly lag the current state/topic pick while a chunk fetches (or
+  // fail to catch up at all, on error) — gate on the two actually matching so stale
+  // Controls/ResultCard content never renders under tabs that have already moved on.
+  const guideReady = activeGuideId !== undefined && activeGuideId === guide.id
 
   return (
     <GuideProvider value={guide}>
@@ -89,32 +129,7 @@ export default function App() {
             <h1 className="masthead__mark">
               First<span className="rx">Pass</span>Rx
             </h1>
-            <div
-              className="guide-switch"
-              role="group"
-              aria-label="Choose a guide"
-              aria-busy={loadingGuideId !== null}
-            >
-              {guideOptions.map((g) => (
-                <button
-                  key={g.id}
-                  type="button"
-                  className="guide-switch__btn"
-                  aria-pressed={g.id === guide.id}
-                  disabled={loadingGuideId !== null}
-                  onClick={() => void switchGuide(g.id)}
-                >
-                  {g.label}
-                </button>
-              ))}
-            </div>
           </div>
-          {guideLoadError ? (
-            <p className="guide-load-error" role="alert">
-              This guide could not load. Check your connection and try again.
-            </p>
-          ) : null}
-
         </header>
 
         <main role="main">
@@ -129,11 +144,45 @@ export default function App() {
             }
             panelId={PANEL_ID}
             tabId={tabId}
+            stateOptions={stateOptions}
+            topicOptions={topicOptions}
+            stateCode={stateCode}
+            topicId={topicId}
+            onState={setStateCode}
+            onTopic={setTopicId}
+            loadingGuideId={loadingGuideId}
+            guideLoadError={guideLoadError}
+            hasGuide={guideReady}
           />
 
           <hr className="section-divider" />
 
-          {record && payer && drugClass ? (
+          {!activeGuideId ? (
+            <section id={PANEL_ID} className="result" aria-live="polite">
+              <div className="doc">
+                <div className="highlights">
+                  <span className="eyebrow">Not covered yet</span>
+                  <p className="agent__plain">
+                    No formulary guide covers this state and prescription type yet.
+                    Pick a different combination above.
+                  </p>
+                </div>
+              </div>
+            </section>
+          ) : !guideReady ? (
+            <section id={PANEL_ID} className="result" aria-live="polite" aria-busy={loadingGuideId !== null}>
+              <div className="doc">
+                <div className="highlights">
+                  <span className="eyebrow">{guideLoadError ? 'Could not load' : 'Loading'}</span>
+                  <p className="agent__plain">
+                    {guideLoadError
+                      ? 'This guide could not load. Check your connection and try again.'
+                      : 'Loading this state and prescription type…'}
+                  </p>
+                </div>
+              </div>
+            </section>
+          ) : record && payer && drugClass ? (
             <ResultCard
               record={record}
               payer={payer}

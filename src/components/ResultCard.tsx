@@ -50,7 +50,7 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
         {/* The answer — minimal. */}
         <div className="highlights">
           <h2 className="recommendation-label">
-            3. Preferred option
+            4. Preferred option
           </h2>
           {/* Verification describes coverage evidence only; it is not clinical guidance. */}
           <p className={`result__provenance is-${record.verification}`}>

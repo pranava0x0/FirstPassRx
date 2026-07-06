@@ -16,7 +16,14 @@ outputs.set(
   `${JSON.stringify(
     {
       meta: formulary.meta,
-      guides: formulary.guides.map(({ id, label }) => ({ id, label })),
+      guides: formulary.guides.map(({ id, label, stateCode, region, topicId, topic }) => ({
+        id,
+        label,
+        stateCode,
+        region,
+        topicId,
+        topic,
+      })),
     },
     null,
     2,
