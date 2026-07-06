@@ -110,6 +110,10 @@ export default function App() {
   const payer = guide.getPayer(payerId)
   const drugClass = guide.getClass(classId)
   const record = guide.getRecord(payerId, classId)
+  // The loaded guide can briefly lag the current state/topic pick while a chunk fetches (or
+  // fail to catch up at all, on error) — gate on the two actually matching so stale
+  // Controls/ResultCard content never renders under tabs that have already moved on.
+  const guideReady = activeGuideId !== undefined && activeGuideId === guide.id
 
   return (
     <GuideProvider value={guide}>
@@ -146,7 +150,7 @@ export default function App() {
             onTopic={setTopicId}
             loadingGuideId={loadingGuideId}
             guideLoadError={guideLoadError}
-            hasGuide={activeGuideId !== undefined}
+            hasGuide={guideReady}
           />
 
           <hr className="section-divider" />
@@ -159,6 +163,19 @@ export default function App() {
                   <p className="agent__plain">
                     No formulary guide covers this state and prescription type yet.
                     Pick a different combination above.
+                  </p>
+                </div>
+              </div>
+            </section>
+          ) : !guideReady ? (
+            <section id={PANEL_ID} className="result" aria-live="polite" aria-busy={loadingGuideId !== null}>
+              <div className="doc">
+                <div className="highlights">
+                  <span className="eyebrow">{guideLoadError ? 'Could not load' : 'Loading'}</span>
+                  <p className="agent__plain">
+                    {guideLoadError
+                      ? 'This guide could not load. Check your connection and try again.'
+                      : 'Loading this state and prescription type…'}
                   </p>
                 </div>
               </div>
