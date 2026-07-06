@@ -63,8 +63,10 @@ export default function App() {
     if (!activeGuideId) {
       setGuideLoadError(false)
       setLoadingGuideId(null)
-      // Clear a stale ?guide= param so a reload reproduces this "not covered yet"
-      // selection instead of silently reverting to whatever guide it used to name.
+      // Clear a stale ?guide= param so a reload lands on the default guide instead of
+      // silently reverting to whatever unrelated guide it used to name. This doesn't
+      // reproduce the exact gap selection itself (state/topic aren't persisted in the
+      // URL at all yet — see backlog.md), only prevents the wrong-guide revert.
       if (new URLSearchParams(window.location.search).has('guide')) {
         const url = new URL(window.location.href)
         url.searchParams.delete('guide')

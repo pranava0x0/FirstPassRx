@@ -64,15 +64,20 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
     the second time" rule).
   - `findGuideId` re-scans `guideOptions` (currently 6 entries) on every render — not worth a
     `useMemo` at this scale, revisit if the guide count grows a lot.
-  - Grouped `paRequired`/`alternatives` entries (e.g. IL's "Etodolac, Fenoprofen (incl.
-    Fenopron/Nalfon brands), Flurbiprofen, Ketoprofen, Oxaprozin, Piroxicam, Tolmetin" bucketed into
-    one reason string) lose per-drug accountability — if one of those actually has a different
-    status (a quantity limit instead of flat PA, like NY's Elyxyb), it's unverifiable without
-    re-opening the source PDF. Split multi-drug PA entries once a payer set for a guide grows past
-    the first cell, rather than let more guides copy the grouped pattern.
+  - ~~Grouped `paRequired`/`alternatives` entries lose per-drug accountability~~ — **FIXED**: the
+    codex bot caught this concretely (IL's original grouped entry misclassified Etodolac,
+    Flurbiprofen, and Ketoprofen as PA-required when the PDL lists all three preferred); the
+    `il-nsaids` cell now transcribes every PREFERRED/NON_PREFERRED line item individually. Keep this
+    per-drug granularity for future guides instead of reverting to grouped entries.
   - Confirm whether Illinois's HFS PDL has an equivalent to NY's "PA required if 2+ concurrent
     NSAIDs" class-wide criterion (captured on NY's record as `preferredRestriction`) or genuinely
     lacks one — the `il-nsaids` cell currently has no `preferredRestriction` set.
+  - **Persist the state/topic pick in the URL, not just a valid `?guide=` id** (codex bot, P3).
+    Landing on an uncovered (state, topic) combo today only clears a stale `guide` param — it
+    doesn't add a `state=`/`topic=` param, so reloading or sharing that URL lands on the default
+    guide instead of reproducing the exact gap the user was looking at. Deliberately out of scope
+    for the initial picker split (see the "Separate the state and prescription-type selectors"
+    item); worth adding `state=`/`topic=` URL params once the gap-browsing use case matters enough.
 - **Cash-link rules for the VA diabetes drugs.** The `va-diabetes` guide shipped with no explicit
   GoodRx/Cost Plus rules, raising `KNOWN_UNPRICED_GAP` from 72 to 148 (`src/lib/cash.ts`).
   Metformin, generic dapagliflozin, insulin glargine biosimilars, and generic lispro/aspart are
