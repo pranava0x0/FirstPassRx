@@ -158,6 +158,36 @@ the state PDL prefers *brand* Lantus/Jardiance/Farxiga over generics/biosimilars
 covers no aspart-family insulin at all (lispro only), while Wellcare covers no lispro-family (aspart
 only); Wellcare puts GLP-1s on its $11 Select Care tier (Tier 6) with PA.
 
+## NSAIDs — NY (`ny-nsaids`) and IL (`il-nsaids`) guides — shipped 2026-07-05
+
+**Shipped: 1 payer × 1 class each (Medicaid FFS only), both cells `verified`** — the smallest
+version that works, matching how `ny-ace` shipped with 1 of 6 intended payers first. Single class
+`nsaid-oral` (Oral NSAID) covering naproxen, ibuprofen, meloxicam, celecoxib, diclofenac.
+
+- **NY Medicaid (NYRx)** — reused the same payer identity already verified for `ny-ace`. Read the
+  live NYRx PDL PDF (`newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf`, revised 2026-06-04)
+  page 4-5, "I. Analgesics — NSAIDs" table directly. Plain `WebFetch` returned only binary/metadata
+  for this PDF — needed the PDF-reading tool to get real page text (same "naive fetch looks dead
+  but isn't" category as the CLAUDE.md GoodRx/Cost Plus scar tissue, just a different tool).
+  Preferred: naproxen tablet (also ibuprofen, celecoxib, meloxicam tablet, diclofenac sodium oral,
+  and several others, all preferred/no-PA). Non-preferred forms/brands need PA. Class-wide rule: PA
+  required if the patient is using 2+ NSAIDs concurrently — captured as the record's
+  `preferredRestriction`, since it applies to the preferred agent too, not just rejects.
+- **Illinois Medicaid (HFS) Fee-for-Service** — brand-new state for this app, so payer identity was
+  discovered from scratch (no state-index.json entry, no prior guide). Confirmed via live search
+  that Illinois HFS (Dept. of Healthcare and Family Services) administers FFS pharmacy directly, no
+  contracted PBM. Downloaded and read the current PDL PDF (`illinois.gov/.../pdl07012026.pdf`,
+  effective 2026-07-01) pages 4-5. Preferred: ibuprofen tablet (also naproxen, meloxicam tablet,
+  celecoxib generic capsule, and specific diclofenac forms). One honest caveat: the PDL doesn't
+  state a class-specific PA sentence for NSAIDs (unlike ADHD/PPI/antipsychotics, which have explicit
+  footnotes) — "non-preferred → PA required" reflects standard HFS PDL convention, not a quoted
+  sentence for this class; noted in the cell's `verificationNote`.
+
+**Not yet gathered:** every other payer for both states (NY has 5 more commercial payers indexed in
+`state-index.json`; IL has none indexed yet — would need the same from-scratch discovery). No
+cash-link rules yet for any of the 5 NSAID drug names (`KNOWN_UNPRICED_GAP` raised 148 → 161). Both
+tracked in `backlog.md`.
+
 ## Verification protocol (per cell, before flipping to `verified`)
 
 1. Open the payer's current formulary for the drug class.

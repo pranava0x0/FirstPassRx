@@ -59,26 +59,31 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   one dose, and have cash-link resolution key off `(name, strength)` instead of name alone. Do
   this *after* — and folding in — the existing low-priority `goodRxParams` structured-fields item,
   since both touch the same "one drug, several dose variants" shape.
-- **Separate the state and prescription-type selectors.** Today `Guide` bundles one region +
-  one therapeutic area into a single self-contained unit (`ma-inhalers`, `md-menopause`,
-  `ny-ace`), and the top toggle picks a whole guide at once — so a state and a drug class are
-  really one combined choice, not two independent ones. This gets worse once a state ships a 2nd
-  topic (VA is getting diabetes now; NY could later get inhalers too): today's schema would need a
-  whole new guide object that *duplicates* that state's payer list just to pair it with a
-  different class list.
-  - **Phase 1 (UI only, no schema change):** turn "Choose a guide" into a 2-step picker — pick a
-    state first (derived from `guide.region`), then pick a therapeutic area among the guides that
-    exist for that state (derived from `guide.topic`). Guides stay exactly as self-contained as
-    they are today; this only changes how the existing guide list is grouped and presented. Safe
-    to do now, and immediately clearer once VA (diabetes) and NY (ACE inhibitors, eventually more)
-    both exist.
-  - **Phase 2 (schema change, defer until a state actually has 2+ topics and the payer-duplication
-    cost is felt):** factor `payers[]` out of `Guide` into a per-state pool shared across that
-    state's topics, so adding a 2nd topic to an existing state doesn't mean re-entering the same
-    MCO/PBM/formulary-URL metadata again. `classes[]`/`records[]`/`references[]` stay topic-scoped.
-    This is a real data-migration (every existing guide's `payers[]` moves and every `payerId` in
-    `records[]` needs to keep resolving), so don't do it speculatively — wait until VA or another
-    state actually needs a 2nd topic before touching the schema.
+- **Separate the state and prescription-type selectors — Phase 1 SHIPPED 2026-07-05.** `Guide`
+  gained explicit `stateCode`/`topicId` keys (plus a short `topic` display label); `App.tsx`/
+  `Controls.tsx` now expose two independent segmented-button controls (both state and
+  therapeutic-area render as `.seg` tab groups — `src/lib/formulary.ts`'s
+  `stateOptions`/`topicOptions`/`findGuideId`) instead of one flat guide-switch button row. Picking
+  a (state, topic) pair with no guide shows an explicit "Not covered yet" panel instead of hiding
+  the combination.
+  - **NSAIDs topic added 2026-07-05:** `ny-nsaids` (NY Medicaid/NYRx) and `il-nsaids` (Illinois
+    Medicaid/HFS, a brand-new state for this app) shipped, each 1 payer × 1 class (`nsaid-oral`),
+    both cells `verified`. See `data-sources.md`. This makes **NY the first state with 2 topics**
+    (ace-inhibitors + nsaids) — the Phase 2 trigger condition below has now actually occurred.
+  - **Next: fill remaining (state, topic) gaps.** MA/MD/NY/VA/IL × {inhalers, menopause-ht,
+    ace-inhibitors, diabetes, nsaids} is a big grid; most cells are still empty. Each missing cell
+    needs a full `formulary-data` skill run (every payer × active class in the guide sourced and
+    cited) before it can ship — do these one (state, topic) combo at a time, confirming scope
+    before any Workflow fan-out (hard ≤2-concurrent-agent cap). Also still open: `ny-ace`'s
+    remaining 5 NY commercial payers, NY/IL NSAIDs' remaining commercial payers (tracked in
+    `data-sources.md`), and cash-link rules for the 5 NSAID drug names (`KNOWN_UNPRICED_GAP` raised
+    148 → 161, see `src/lib/cash.ts`).
+  - **Phase 2 (schema change) — trigger condition now met, still not urgent.** Factor `payers[]`
+    out of `Guide` into a per-state pool shared across that state's topics, so adding a payer to
+    NY's next topic doesn't mean re-entering NYRx's identity a 3rd time. NY now has 2 topics
+    (`ny-ace`, `ny-nsaids`) with the exact same single payer object duplicated verbatim between
+    them — real but small duplication cost today (1 payer object, not 8). Worth doing next time NY
+    gets a 3rd topic or gains more payers, rather than before then.
 - **Drug-level data for NY, VA, DC.** The state map indexes their plans/PBMs/formulary URLs
   (`src/data/state-index.json`); turn those into in-app guides with drug-level cells. DC not started.
   **NY ACE inhibitors: 1/6 intended payers shipped** (`ny-ace` guide, NY Medicaid/NYRx only —

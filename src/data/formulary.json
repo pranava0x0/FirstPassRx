@@ -7976,6 +7976,497 @@
           "lastReviewed": "2026-07-02"
         }
       ]
+    },
+    {
+      "id": "ny-nsaids",
+      "label": "NY · NSAIDs",
+      "stateCode": "NY",
+      "region": "New York",
+      "topicId": "nsaids",
+      "topic": "NSAIDs",
+      "classNoun": "Prescription type",
+      "unitNoun": "medication",
+      "tagline": "",
+      "dataStatus": "verified",
+      "lastUpdated": "2026-07-05",
+      "capturedAt": "2026-07-05",
+      "payers": [
+        {
+          "id": "ny-medicaid",
+          "name": "New York Medicaid (NYRx)",
+          "shortName": "NY Medicaid",
+          "aka": "NYRx — NYS Medicaid Pharmacy Program (Fee-for-Service); covers every NY Medicaid Managed Care plan's pharmacy benefit statewide since the April 1, 2023 pharmacy carve-out",
+          "pbm": "Prime Therapeutics / FHSC (NYRx fiscal agent)",
+          "formularyUrl": "https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf",
+          "paPolicyUrl": "https://www.health.ny.gov/health_care/medicaid/program/pharmacy/program_info.htm",
+          "sourceIds": [
+            "ny-medicaid-nyrx-pdl-2026-06"
+          ],
+          "productName": "NYRx — NY Medicaid Pharmacy Program (Fee-for-Service, statewide)",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "NYRx PDL, revised 2026-06-04"
+        }
+      ],
+      "classes": [
+        {
+          "id": "nsaid-oral",
+          "name": "Oral NSAIDs",
+          "shortName": "NSAID",
+          "plainName": "Anti-inflammatory pain reliever",
+          "description": "Oral nonsteroidal anti-inflammatory drugs (naproxen, ibuprofen, meloxicam, celecoxib, diclofenac, etc.) — first-line therapy for musculoskeletal pain and inflammation.",
+          "plainDescription": "A pill that reduces pain, swelling, and inflammation — commonly used for joint and muscle pain.",
+          "indication": "Musculoskeletal pain & inflammation (e.g. osteoarthritis, back pain)",
+          "sourceIds": [
+            "ny-medicaid-nyrx-pdl-2026-06"
+          ]
+        }
+      ],
+      "references": [
+        {
+          "id": "ny-medicaid-nyrx-pdl-2026-06",
+          "label": "NYRx, the Medicaid Pharmacy Program Preferred Drug List (PDL) — Section I. Analgesics, NSAIDs — revised June 4, 2026",
+          "publisher": "New York State Department of Health / NYRx (administered via FHSC/Prime Therapeutics)",
+          "type": "gov",
+          "url": "https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf",
+          "effectiveDate": "2026-06-04",
+          "accessed": "2026-07-05"
+        },
+        {
+          "id": "dailymed-naproxen-tablet",
+          "label": "Naproxen Tablet, USP — FDA label dosing",
+          "publisher": "DailyMed (National Library of Medicine)",
+          "type": "gov",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=4350a2d9-5228-460e-b7b1-27e8fa846787",
+          "accessed": "2026-07-05"
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Prior authorization (PA)",
+          "short": "Insurer sign-off first",
+          "definition": "Insurer sign-off needed before the drug is covered."
+        },
+        {
+          "term": "Step therapy",
+          "short": "Try a preferred drug first",
+          "definition": "Must fail a preferred drug first before the plan covers this one."
+        }
+      ],
+      "records": [
+        {
+          "payerId": "ny-medicaid",
+          "classId": "nsaid-oral",
+          "preferredAgent": {
+            "inn": "Naproxen",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "500 mg",
+            "sig": "1 tablet by mouth twice daily with food",
+            "sigShort": "1 tab BID w/ food",
+            "plainSig": "One 500 mg tablet by mouth twice a day, with food."
+          },
+          "preferredRestriction": "PA required if the patient is using 2 or more NSAIDs concurrently (class-wide clinical criterion).",
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "Ibuprofen",
+              "note": "Preferred (no PA) on the NYRx PDL alongside naproxen.",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Celecoxib",
+              "note": "Preferred (no PA); COX-2 selective option, subject to the class-wide 2+ concurrent NSAID PA criterion.",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Meloxicam (tablet)",
+              "note": "Preferred (no PA); only the tablet form — meloxicam capsule requires PA.",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Diclofenac sodium (oral)",
+              "note": "Preferred (no PA); distinct from diclofenac potassium and diclofenac sodium ER, which require PA.",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Indomethacin (capsule)",
+              "note": "Preferred (no PA) on the NYRx PDL oral NSAID table.",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Ketorolac",
+              "note": "Preferred (no PA) on the NYRx PDL oral NSAID table.",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Nabumetone",
+              "note": "Preferred (no PA) on the NYRx PDL oral NSAID table.",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Piroxicam",
+              "note": "Preferred (no PA) on the NYRx PDL oral NSAID table.",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Sulindac",
+              "note": "Preferred (no PA) on the NYRx PDL oral NSAID table.",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Celecoxib oral solution (Elyxyb)",
+              "outcome": "pa",
+              "reason": "Quantity limit: max 9 bottles (4.8 mL/120mg) per 30 days",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Diclofenac potassium (25mg tablet/capsule, Cambia brand)",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Diclofenac sodium ER, diclofenac epolamine patch, diclofenac/misoprostol combo, diclofenac topical solution",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Diflunisal",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Etodolac (incl. ER)",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Fenoprofen, Flurbiprofen",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Ibuprofen 300mg strength; ibuprofen/famotidine combo (Duexis)",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Indomethacin ER, indomethacin suspension",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Ketoprofen (all forms)",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Meclofenamate, Mefenamic acid",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Meloxicam capsule (e.g. Vivlodex) — only the tablet form is preferred",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Nalfon (brand fenoprofen), Naprelan (brand naproxen) — generic equivalents preferred instead",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Naproxen suspension, CR/ER/DR forms, naproxen-esomeprazole combo, naproxen sodium — only plain naproxen tablet is preferred",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Oxaprozin",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Relafen DS (brand nabumetone), Tolmetin, Zybic — generic equivalents preferred instead",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            },
+            {
+              "drug": "Arthrotec, Coxanto, Daypro (brands) — generic equivalents preferred instead",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "ny-medicaid-nyrx-pdl-2026-06"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "tier": "Preferred Drug List — preferred generic, no PA required",
+          "verification": "verified",
+          "verificationNote": "Read directly off the live NYRx PDL PDF (revised June 4, 2026), page 4-5, 'I. Analgesics — Non-Steroidal Anti-Inflammatory Drugs (NSAIDs)' table: confirmed preferred vs non-preferred status for every oral NSAID listed, the class-wide clinical criterion requiring PA for 2+ concurrent NSAIDs, and the Elyxyb quantity limit. No BOGL program applies to oral NSAIDs — all preferred agents are generic. Sig for naproxen 500mg tablet is standard adult dosing from the DailyMed FDA label; the PDL itself states coverage rules only, not dosing directions.",
+          "sourceIds": [
+            "ny-medicaid-nyrx-pdl-2026-06",
+            "dailymed-naproxen-tablet"
+          ],
+          "coverageSourceIds": [
+            "ny-medicaid-nyrx-pdl-2026-06"
+          ],
+          "restrictionSourceIds": [
+            "ny-medicaid-nyrx-pdl-2026-06"
+          ],
+          "lastReviewed": "2026-07-05"
+        }
+      ]
+    },
+    {
+      "id": "il-nsaids",
+      "label": "IL · NSAIDs",
+      "stateCode": "IL",
+      "region": "Illinois",
+      "topicId": "nsaids",
+      "topic": "NSAIDs",
+      "classNoun": "Prescription type",
+      "unitNoun": "medication",
+      "tagline": "",
+      "dataStatus": "verified",
+      "lastUpdated": "2026-07-05",
+      "capturedAt": "2026-07-05",
+      "payers": [
+        {
+          "id": "il-medicaid",
+          "name": "Illinois Medicaid (HFS) Fee-for-Service",
+          "shortName": "IL Medicaid FFS",
+          "formularyUrl": "https://www.illinois.gov/content/dam/soi/en/web/hfs/medicalproviders/pharmacy/documents/pdl07012026.pdf",
+          "paPolicyUrl": "https://hfs.illinois.gov/medicalproviders/pharmacy/preferreddruglistprocess.html",
+          "sourceIds": [
+            "il-hfs-pdl-2026-07",
+            "il-hfs-pdl-process"
+          ],
+          "productName": "Illinois Medicaid Fee-for-Service Preferred Drug List",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "IL HFS PDL, effective 2026-07-01"
+        }
+      ],
+      "classes": [
+        {
+          "id": "nsaid-oral",
+          "name": "Oral NSAIDs",
+          "shortName": "NSAID",
+          "plainName": "Anti-inflammatory pain reliever",
+          "description": "Oral nonsteroidal anti-inflammatory drugs (naproxen, ibuprofen, meloxicam, celecoxib, diclofenac, etc.) — first-line therapy for musculoskeletal pain and inflammation.",
+          "plainDescription": "A pill that reduces pain, swelling, and inflammation — commonly used for joint and muscle pain.",
+          "indication": "Musculoskeletal pain & inflammation (e.g. osteoarthritis, back pain)",
+          "sourceIds": [
+            "il-hfs-pdl-2026-07"
+          ]
+        }
+      ],
+      "references": [
+        {
+          "id": "il-hfs-pdl-2026-07",
+          "label": "Illinois Medicaid Preferred Drug List — Analgesics/NSAIDs section, effective July 1, 2026",
+          "publisher": "Illinois Department of Healthcare and Family Services (HFS)",
+          "type": "gov",
+          "url": "https://www.illinois.gov/content/dam/soi/en/web/hfs/medicalproviders/pharmacy/documents/pdl07012026.pdf",
+          "effectiveDate": "2026-07-01",
+          "accessed": "2026-07-05"
+        },
+        {
+          "id": "il-hfs-pdl-process",
+          "label": "Illinois HFS Preferred Drug List Process (prior-authorization process description)",
+          "publisher": "Illinois Department of Healthcare and Family Services (HFS)",
+          "type": "gov",
+          "url": "https://hfs.illinois.gov/medicalproviders/pharmacy/preferreddruglistprocess.html",
+          "accessed": "2026-07-05"
+        },
+        {
+          "id": "dailymed-ibuprofen-tablet",
+          "label": "Ibuprofen Tablet — FDA label dosing",
+          "publisher": "DailyMed (National Library of Medicine)",
+          "type": "gov",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=8ea0e303-3967-4d71-8255-ac42a841ce28",
+          "accessed": "2026-07-05"
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Prior authorization (PA)",
+          "short": "Insurer sign-off first",
+          "definition": "Insurer sign-off needed before the drug is covered."
+        },
+        {
+          "term": "Step therapy",
+          "short": "Try a preferred drug first",
+          "definition": "Must fail a preferred drug first before the plan covers this one."
+        }
+      ],
+      "records": [
+        {
+          "payerId": "il-medicaid",
+          "classId": "nsaid-oral",
+          "preferredAgent": {
+            "inn": "Ibuprofen",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "400/600/800 mg",
+            "sig": "1 tablet (400 mg) by mouth every 4–6 hours as needed for pain; for osteoarthritis/rheumatoid arthritis, 1200–3200 mg daily in divided doses",
+            "sigShort": "400mg PO q4-6h PRN (max 3200mg/day)",
+            "plainSig": "Take one tablet by mouth every 4 to 6 hours as needed for pain, or as directed for arthritis. Do not exceed 3200 mg in 24 hours."
+          },
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "Naproxen (tablet, suspension, delayed-release tablet, sodium tablet)",
+              "note": "Preferred (no PA) on the IL HFS PDL alongside ibuprofen.",
+              "sourceIds": [
+                "il-hfs-pdl-2026-07"
+              ]
+            },
+            {
+              "drug": "Meloxicam (tablet)",
+              "note": "Preferred (no PA); only the tablet form — meloxicam capsule requires PA.",
+              "sourceIds": [
+                "il-hfs-pdl-2026-07"
+              ]
+            },
+            {
+              "drug": "Celecoxib (generic capsule)",
+              "note": "Preferred (no PA); brand Celebrex requires PA.",
+              "sourceIds": [
+                "il-hfs-pdl-2026-07"
+              ]
+            },
+            {
+              "drug": "Diclofenac potassium 50mg tablet, diclofenac sodium ER, diclofenac sodium delayed-release",
+              "note": "Preferred (no PA); other diclofenac forms (25mg tablet/capsule, brand Cataflam) require PA.",
+              "sourceIds": [
+                "il-hfs-pdl-2026-07"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Meloxicam capsule",
+              "outcome": "pa",
+              "reason": "PA required; only the tablet form is preferred",
+              "sourceIds": [
+                "il-hfs-pdl-2026-07"
+              ]
+            },
+            {
+              "drug": "Celebrex (brand celecoxib)",
+              "outcome": "pa",
+              "reason": "PA required; generic celecoxib is preferred instead",
+              "sourceIds": [
+                "il-hfs-pdl-2026-07"
+              ]
+            },
+            {
+              "drug": "Diclofenac potassium 25mg tablet/capsule, Cataflam (brand)",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "il-hfs-pdl-2026-07"
+              ]
+            },
+            {
+              "drug": "Naproxen sodium extended/controlled-release (incl. Naprelan brand)",
+              "outcome": "pa",
+              "reason": "PA required; plain naproxen forms are preferred instead",
+              "sourceIds": [
+                "il-hfs-pdl-2026-07"
+              ]
+            },
+            {
+              "drug": "Etodolac, Fenoprofen (incl. Fenopron/Nalfon brands), Flurbiprofen, Ketoprofen, Oxaprozin, Piroxicam, Tolmetin — non-preferred forms/brands",
+              "outcome": "pa",
+              "reason": "PA required",
+              "sourceIds": [
+                "il-hfs-pdl-2026-07"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "tier": "Preferred Drug List — preferred generic, no PA required",
+          "verification": "verified",
+          "verificationNote": "Downloaded and read the current HFS PDL PDF (effective July 1, 2026, 150 pages) directly from illinois.gov, page 4-5, 'Analgesics - Anti-Inflammatory: Nonsteroidal Anti-Inflammatory Agents (NSAIDs)' table: confirmed preferred vs non-preferred status for every line item. Illinois FFS Medicaid pharmacy is administered directly by HFS (no contracted PBM). The PDL does not state a class-specific PA sentence for NSAIDs (unlike ADHD/PPI/antipsychotic classes, which have explicit footnotes) — 'non-preferred requires PA' reflects standard HFS PDL convention rather than a quoted sentence for this specific class. Sig for ibuprofen 400mg tablet is standard adult dosing from the DailyMed FDA label; the PDL itself lists coverage status only, not dosing.",
+          "sourceIds": [
+            "il-hfs-pdl-2026-07",
+            "dailymed-ibuprofen-tablet"
+          ],
+          "coverageSourceIds": [
+            "il-hfs-pdl-2026-07"
+          ],
+          "restrictionSourceIds": [
+            "il-hfs-pdl-2026-07"
+          ],
+          "lastReviewed": "2026-07-05"
+        }
+      ]
     }
   ]
 }
