@@ -44,23 +44,35 @@ export default function App() {
   const guideRequest = useRef(0)
 
   // State and prescription type are picked independently of which guide is actually
-  // loaded — most (state, topic) pairs don't have a guide yet (see backlog.md).
-  const initialSummary = guideOptions.find((g) => g.id === getInitialGuideId()) ?? guideOptions[0]!
-  const [stateCode, setStateCode] = useState(initialSummary.stateCode)
-  const [topicId, setTopicId] = useState(initialSummary.topicId)
+  // loaded — most (state, topic) pairs don't have a guide yet (see backlog.md). Seeded from
+  // the same default guide as `selection` above (not a URL-targeted guide) so the tabs and
+  // the rendered content always describe the same guide on first paint; switchGuide moves
+  // them together once a non-default guide actually finishes loading, instead of the tabs
+  // jumping ahead of content that hasn't arrived yet.
+  const defaultSummary = guideOptions.find((g) => g.id === defaultGuideId) ?? guideOptions[0]!
+  const [stateCode, setStateCode] = useState(defaultSummary.stateCode)
+  const [topicId, setTopicId] = useState(defaultSummary.topicId)
   const activeGuideId = findGuideId(stateCode, topicId)
-  const isInitialGuideLoad = useRef(true)
+
+  useEffect(() => {
+    const initialGuideId = getInitialGuideId()
+    if (initialGuideId !== defaultGuideId) void switchGuide(initialGuideId, false)
+  }, [])
 
   useEffect(() => {
     if (!activeGuideId) {
       setGuideLoadError(false)
+      setLoadingGuideId(null)
+      // Clear a stale ?guide= param so a reload reproduces this "not covered yet"
+      // selection instead of silently reverting to whatever guide it used to name.
+      if (new URLSearchParams(window.location.search).has('guide')) {
+        const url = new URL(window.location.href)
+        url.searchParams.delete('guide')
+        window.history.replaceState({}, '', url.toString())
+      }
       return
     }
-    // The first resolution reflects whatever ?guide= was already in the URL, so don't
-    // re-push the same URL onto history; later switches (from picking a new state/topic)
-    // do update it.
-    void switchGuide(activeGuideId, !isInitialGuideLoad.current)
-    isInitialGuideLoad.current = false
+    void switchGuide(activeGuideId)
   }, [activeGuideId])
 
   // Switching guide swaps the whole dataset (payers + classes differ), so reset the
@@ -78,6 +90,10 @@ export default function App() {
         payerId: nextGuide.payers[0]!.id,
         classId: nextGuide.activeClasses[0]!.id,
       })
+      // Move the tabs together with the content, never ahead of it (a no-op when this came
+      // from the user picking these exact tabs; keeps them in sync on the initial URL load).
+      setStateCode(nextGuide.stateCode)
+      setTopicId(nextGuide.topicId)
 
       if (updateUrl) {
         const url = new URL(window.location.href)

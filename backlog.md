@@ -4,6 +4,17 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## High
 
+- **Every prescription type should have data for every state selected (user priority, 2026-07-05).**
+  The state/therapeutic-area picker (shipped 2026-07-05) makes the full grid visible, but most
+  cells are still empty — a user can select any state and any prescription type, but only gets a
+  real answer for the handful of (state, topic) pairs that have been researched so far. The product
+  goal is that **whichever prescription type a user picks, their selected state has real, cited
+  data for it** — not just a subset of states per topic. Current coverage as of 2026-07-05:
+  inhalers (MA only), menopause HT (MD only), ACE inhibitors (NY only, 1/6 payers), diabetes (VA
+  only), NSAIDs (NY + IL, 1 payer each). Closing this gap means running the `formulary-data` skill
+  for every missing (state, topic) cell — one combo at a time, confirming scope before any Workflow
+  fan-out (hard ≤2-concurrent-agent cap, see CLAUDE.md). See the "Separate the state and
+  prescription-type selectors" item below for the full grid and what's already shipped vs. open.
 - **Redesign the omni-search.** The drug search bar (`src/components/Search.tsx`) is parked
   (removed from the App render) pending a rethink. Wanted: layperson synonyms ("HRT", "estrogen
   patch", "rescue spray") mapping to classes/molecules, search scoped to or across guides, and a
@@ -36,6 +47,32 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## Medium
 
+- **PR #6 review nitpicks, deferred rather than blocking merge.** From the two-persona review
+  (SW engineer + data reviewer) of the state/topic-picker split and NY/IL NSAID guides:
+  - `Controls.tsx`'s state/topic segmented tablists omit `aria-controls` (unlike the existing class
+    tabs, which set it to the result panel id) — minor a11y gap; there's arguably no single stable
+    panel these two new tabs "control" the way class tabs do, so decide the right target before
+    adding it.
+  - Rapid double-arrow-key navigation on the state/topic tablist can land focus on a button that's
+    mid-fetch-disabled; `.focus()` on a disabled element silently no-ops, dropping focus to
+    `document.body`. Narrow today (most combos have no guide yet), will widen as more guides ship.
+  - `onTabKeyDown`/`onStateKeyDown`/`onTopicKeyDown` in `Controls.tsx` are copy-pasted
+    roving-tabindex logic, differing only in the array/getter/setter — worth one generic factory.
+  - The `!activeGuideId` "Not covered yet" panel and the "No record for this payer/class" panel in
+    `App.tsx` are two near-identical empty-state JSX blocks — worth one small `EmptyState`
+    component (this is the second occurrence of the pattern, per the repo's own "build the helper
+    the second time" rule).
+  - `findGuideId` re-scans `guideOptions` (currently 6 entries) on every render — not worth a
+    `useMemo` at this scale, revisit if the guide count grows a lot.
+  - Grouped `paRequired`/`alternatives` entries (e.g. IL's "Etodolac, Fenoprofen (incl.
+    Fenopron/Nalfon brands), Flurbiprofen, Ketoprofen, Oxaprozin, Piroxicam, Tolmetin" bucketed into
+    one reason string) lose per-drug accountability — if one of those actually has a different
+    status (a quantity limit instead of flat PA, like NY's Elyxyb), it's unverifiable without
+    re-opening the source PDF. Split multi-drug PA entries once a payer set for a guide grows past
+    the first cell, rather than let more guides copy the grouped pattern.
+  - Confirm whether Illinois's HFS PDL has an equivalent to NY's "PA required if 2+ concurrent
+    NSAIDs" class-wide criterion (captured on NY's record as `preferredRestriction`) or genuinely
+    lacks one — the `il-nsaids` cell currently has no `preferredRestriction` set.
 - **Cash-link rules for the VA diabetes drugs.** The `va-diabetes` guide shipped with no explicit
   GoodRx/Cost Plus rules, raising `KNOWN_UNPRICED_GAP` from 72 to 148 (`src/lib/cash.ts`).
   Metformin, generic dapagliflozin, insulin glargine biosimilars, and generic lispro/aspart are
