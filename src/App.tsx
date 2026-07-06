@@ -3,10 +3,13 @@ import type { ClassId, PayerId } from './types/formulary'
 import {
   GuideProvider,
   defaultGuideId,
+  findGuideId,
   getDefaultGuideView,
   guideOptions,
   loadGuideView,
   meta,
+  stateOptions,
+  topicOptions,
 } from './lib/formulary'
 import { Disclaimer } from './components/Disclaimer'
 import { Controls } from './components/Controls'
@@ -40,10 +43,25 @@ export default function App() {
   const [guideLoadError, setGuideLoadError] = useState(false)
   const guideRequest = useRef(0)
 
+  // State and prescription type are picked independently of which guide is actually
+  // loaded — most (state, topic) pairs don't have a guide yet (see backlog.md).
+  const initialSummary = guideOptions.find((g) => g.id === getInitialGuideId()) ?? guideOptions[0]!
+  const [stateCode, setStateCode] = useState(initialSummary.stateCode)
+  const [topicId, setTopicId] = useState(initialSummary.topicId)
+  const activeGuideId = findGuideId(stateCode, topicId)
+  const isInitialGuideLoad = useRef(true)
+
   useEffect(() => {
-    const initialGuideId = getInitialGuideId()
-    if (initialGuideId !== defaultGuideId) void switchGuide(initialGuideId, false)
-  }, [])
+    if (!activeGuideId) {
+      setGuideLoadError(false)
+      return
+    }
+    // The first resolution reflects whatever ?guide= was already in the URL, so don't
+    // re-push the same URL onto history; later switches (from picking a new state/topic)
+    // do update it.
+    void switchGuide(activeGuideId, !isInitialGuideLoad.current)
+    isInitialGuideLoad.current = false
+  }, [activeGuideId])
 
   // Switching guide swaps the whole dataset (payers + classes differ), so reset the
   // selection to the new guide's defaults rather than carry a now-invalid payer/class.
@@ -89,32 +107,7 @@ export default function App() {
             <h1 className="masthead__mark">
               First<span className="rx">Pass</span>Rx
             </h1>
-            <div
-              className="guide-switch"
-              role="group"
-              aria-label="Choose a guide"
-              aria-busy={loadingGuideId !== null}
-            >
-              {guideOptions.map((g) => (
-                <button
-                  key={g.id}
-                  type="button"
-                  className="guide-switch__btn"
-                  aria-pressed={g.id === guide.id}
-                  disabled={loadingGuideId !== null}
-                  onClick={() => void switchGuide(g.id)}
-                >
-                  {g.label}
-                </button>
-              ))}
-            </div>
           </div>
-          {guideLoadError ? (
-            <p className="guide-load-error" role="alert">
-              This guide could not load. Check your connection and try again.
-            </p>
-          ) : null}
-
         </header>
 
         <main role="main">
@@ -129,11 +122,32 @@ export default function App() {
             }
             panelId={PANEL_ID}
             tabId={tabId}
+            stateOptions={stateOptions}
+            topicOptions={topicOptions}
+            stateCode={stateCode}
+            topicId={topicId}
+            onState={setStateCode}
+            onTopic={setTopicId}
+            loadingGuideId={loadingGuideId}
+            guideLoadError={guideLoadError}
+            hasGuide={activeGuideId !== undefined}
           />
 
           <hr className="section-divider" />
 
-          {record && payer && drugClass ? (
+          {!activeGuideId ? (
+            <section id={PANEL_ID} className="result" aria-live="polite">
+              <div className="doc">
+                <div className="highlights">
+                  <span className="eyebrow">Not covered yet</span>
+                  <p className="agent__plain">
+                    No formulary guide covers this state and prescription type yet.
+                    Pick a different combination above.
+                  </p>
+                </div>
+              </div>
+            </section>
+          ) : record && payer && drugClass ? (
             <ResultCard
               record={record}
               payer={payer}

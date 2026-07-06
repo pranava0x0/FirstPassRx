@@ -8,6 +8,12 @@ function agentHeading() {
   return within(screen.getByRole('tabpanel')).getByRole('heading', { level: 3 })
 }
 
+/** State + prescription type are two independent controls now — set both to reach a guide. */
+async function switchGuide(user: ReturnType<typeof userEvent.setup>, stateName: RegExp, topicName: RegExp) {
+  await user.click(screen.getByRole('tab', { name: stateName }))
+  await user.click(screen.getByRole('tab', { name: topicName }))
+}
+
 describe('FirstPassRx app', () => {
   beforeEach(() => {
     window.history.replaceState({}, '', '/')
@@ -87,7 +93,7 @@ describe('FirstPassRx app', () => {
     // letter here; this asserts it rebuilds instead.
     const user = userEvent.setup()
     render(<App />)
-    await user.click(screen.getByRole('button', { name: /Menopause HT/i }))
+    await switchGuide(user, /Maryland/i, /Menopause HT/i)
     await screen.findByRole('tab', { name: /Estrogen pill/i })
     fireEvent.change(screen.getByLabelText(/select insurance plan/i), { target: { value: 'priority-partners' } })
     await user.click(screen.getByRole('tab', { name: /Estrogen pill/i }))
@@ -154,13 +160,13 @@ describe('FirstPassRx app', () => {
     const user = userEvent.setup()
     render(<App />)
     // Default guide is MA inhalers.
-    expect(screen.getByRole('button', { name: /Inhalers/i })).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.getByRole('tab', { name: /Inhalers/i })).toHaveAttribute('aria-selected', 'true')
     expect(agentHeading()).toHaveTextContent('Ventolin HFA')
 
-    await user.click(screen.getByRole('button', { name: /Menopause HT/i }))
+    await switchGuide(user, /Maryland/i, /Menopause HT/i)
 
     // Masthead, class legend, plan list, and the result all swap to the menopause guide.
-    expect(screen.getByRole('button', { name: /Menopause HT/i })).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.getByRole('tab', { name: /Menopause HT/i })).toHaveAttribute('aria-selected', 'true')
     expect(screen.getByText(/Prescription type/i, { selector: 'h2' })).toBeInTheDocument()
     expect(screen.getByRole('option', { name: /Maryland Medicaid/i })).toBeInTheDocument()
     expect(agentHeading()).toHaveTextContent(/Estradiol/i)
@@ -172,16 +178,27 @@ describe('FirstPassRx app', () => {
     window.history.replaceState({}, '', '/?guide=va-diabetes')
     render(<App />)
     expect(await screen.findByRole('option', { name: /Virginia Medicaid/i })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /VA · Diabetes/i })).toHaveAttribute(
-      'aria-pressed',
-      'true',
-    )
+    expect(screen.getByRole('tab', { name: /Virginia/i })).toHaveAttribute('aria-selected', 'true')
+    expect(screen.getByRole('tab', { name: /^Diabetes$/i })).toHaveAttribute('aria-selected', 'true')
+  })
+
+  it('shows the not-covered state for a state/topic pair with no guide', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    await user.click(screen.getByRole('tab', { name: /Virginia/i }))
+    // VA only has a diabetes guide today; inhalers stays selected from the MA default.
+    expect(screen.getByText(/Not covered yet/i)).toBeInTheDocument()
+    expect(screen.queryByLabelText(/select insurance plan/i)).not.toBeInTheDocument()
+
+    await user.click(screen.getByRole('tab', { name: /^Diabetes$/i }))
+    expect(await screen.findByRole('option', { name: /Virginia Medicaid/i })).toBeInTheDocument()
+    expect(screen.queryByText(/Not covered yet/i)).not.toBeInTheDocument()
   })
 
   it('names the exact benefit product instead of implying carrier-wide coverage', async () => {
     const user = userEvent.setup()
     render(<App />)
-    await user.click(screen.getByRole('button', { name: /Menopause HT/i }))
+    await switchGuide(user, /Maryland/i, /Menopause HT/i)
     fireEvent.change(screen.getByLabelText(/select insurance plan/i), { target: { value: 'uhc-md' } })
     expect(screen.getByRole('option', { name: /UnitedHealthcare 2026 Commercial PDL/i })).toBeInTheDocument()
     expect(screen.getByText(/Preferred option/i)).toBeInTheDocument()
@@ -215,7 +232,7 @@ describe('FirstPassRx app', () => {
     const user = userEvent.setup()
     render(<App />)
     expect(screen.getByText(/Verified against/i)).toBeInTheDocument()
-    await user.click(screen.getByRole('button', { name: /Menopause HT/i }))
+    await switchGuide(user, /Maryland/i, /Menopause HT/i)
     expect(screen.getByText(/Partially verified/i)).toBeInTheDocument()
   })
 })

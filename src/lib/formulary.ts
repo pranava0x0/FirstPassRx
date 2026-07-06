@@ -17,6 +17,10 @@ import type {
 export interface GuideSummary {
   id: string
   label: string
+  stateCode: string
+  region: string
+  topicId: string
+  topic: string
 }
 
 const formularyIndex = formularyIndexRaw as { meta: AppMeta; guides: GuideSummary[] }
@@ -50,7 +54,7 @@ function validate(data: Formulary): void {
   data.guides.forEach((guide, gi) => {
     const G = `guide ${guide.id || `#${gi}`}`
     if (!guide.id) problems.push(`${G}: missing id`)
-    for (const field of ['label', 'region', 'topic', 'classNoun', 'unitNoun'] as const) {
+    for (const field of ['label', 'stateCode', 'region', 'topicId', 'topic', 'classNoun', 'unitNoun'] as const) {
       if (!guide[field]) problems.push(`${G}: missing ${field}`)
     }
     if (!guide.capturedAt) problems.push(`${G}: missing capturedAt`)
@@ -269,6 +273,45 @@ export const defaultGuideId = formularyIndex.meta.defaultGuideId
 
 /** Small guide manifest used by the top-level toggle; full guide data loads on selection. */
 export const guideOptions: GuideSummary[] = formularyIndex.guides
+
+export interface StateOption {
+  code: string
+  region: string
+}
+
+export interface TopicOption {
+  id: string
+  label: string
+}
+
+function uniqueBy<T, K>(items: T[], key: (item: T) => K): T[] {
+  const seen = new Set<K>()
+  const out: T[] = []
+  for (const item of items) {
+    const k = key(item)
+    if (seen.has(k)) continue
+    seen.add(k)
+    out.push(item)
+  }
+  return out
+}
+
+/** Every state that has at least one guide, in first-seen order — feeds the state selector. */
+export const stateOptions: StateOption[] = uniqueBy(
+  guideOptions.map((g) => ({ code: g.stateCode, region: g.region })),
+  (s) => s.code,
+)
+
+/** Every prescription type that has at least one guide, in first-seen order — feeds the topic selector. */
+export const topicOptions: TopicOption[] = uniqueBy(
+  guideOptions.map((g) => ({ id: g.topicId, label: g.topic })),
+  (t) => t.id,
+)
+
+/** Resolves a (state, topic) pair to a guide id, or undefined if that combination isn't covered yet. */
+export function findGuideId(stateCode: string, topicId: string): string | undefined {
+  return guideOptions.find((g) => g.stateCode === stateCode && g.topicId === topicId)?.id
+}
 
 if (defaultGuideData.id !== defaultGuideId) {
   throw new Error(

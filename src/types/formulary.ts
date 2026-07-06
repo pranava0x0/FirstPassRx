@@ -164,9 +164,13 @@ export interface Guide {
   id: string
   /** Short label for the top-level toggle, e.g. "MA · Inhalers". */
   label: string
+  /** Stable state key for the state selector, e.g. "MA". Distinct from the region display string. */
+  stateCode: string
   /** Region/jurisdiction, e.g. "Massachusetts". */
   region: string
-  /** Therapeutic area shown in the masthead, e.g. "inhaler guide". */
+  /** Stable topic key for the prescription-type selector, e.g. "inhalers". */
+  topicId: string
+  /** Short display label for the prescription-type selector, e.g. "Inhalers". */
   topic: string
   /** Legend for the class selector, e.g. "Inhaler type" / "Hormone type". */
   classNoun: string
