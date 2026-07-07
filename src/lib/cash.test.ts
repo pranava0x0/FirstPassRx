@@ -89,8 +89,9 @@ describe('cash price coverage across the live formulary', () => {
     // Weekly-patch family (rule: estradiol.*(weekly|patch|transdermal)|climara): GoodRx's generic
     // page defaults to a different dose than the 0.05mg Climara product cited, and Cost Plus Drugs
     // had 0.05mg out of stock at capture time -- link-only by design, not a bug. Covers the brand
-    // (Climara/Menostar) and generic "estradiol transdermal/patch" phrasings that fall to this rule.
-    const KNOWN_PRICE_UNAVAILABLE = [/climara/i, /menostar/i, /evamist/i, /estradiol transdermal(?! system)/i]
+    // (Climara/Menostar/Alora) and generic "estradiol transdermal/patch" phrasings that fall to
+    // this rule. Alora added 2026-07-07 (VA gather) -- same brand family, no separate price rule.
+    const KNOWN_PRICE_UNAVAILABLE = [/climara/i, /menostar/i, /evamist/i, /alora/i, /estradiol transdermal(?! system)/i]
     const matched = coveredDrugNames().filter((name) => hasCashLinkRule(name))
     const missingPrice = matched.filter((name) => !goodRxPrice(name) && !costPlusPrice(name))
     const unexpected = missingPrice.filter((name) => !KNOWN_PRICE_UNAVAILABLE.some((re) => re.test(name)))

@@ -23,6 +23,9 @@ describe('guides + global meta', () => {
       'md-ace',
       'md-diabetes',
       'md-nsaids',
+      'va-inhalers',
+      'va-menopause',
+      'va-nsaids',
     ])
   })
 

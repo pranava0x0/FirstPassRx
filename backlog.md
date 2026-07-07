@@ -33,30 +33,26 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   separate payer entries — they share the single NYRx carve-out PDL already listed.
 
   **Remaining for the 5 listed states** (run `npm run validate-coverage --verbose` for the live
-  picture): **NY is now fully done** (all 5 topics — `ny-inhalers`/`ny-menopause`/`ny-diabetes`
-  shipped 2026-07-06 alongside the already-done `ny-ace`/`ny-nsaids`, 5 payers each). **MD is now
-  fully done** (all 5 topics — `md-inhalers`/`md-ace`/`md-diabetes`/`md-nsaids` shipped 2026-07-07,
-  8 payers each, alongside the already-done `md-menopause`; every cell `verified` or `mixed`). MA
-  needs menopause HT, ACE inhibitors, diabetes, NSAIDs (has inhalers only); VA needs inhalers,
-  menopause HT, NSAIDs (ACE inhibitors and diabetes are done); IL needs inhalers, menopause HT,
-  ACE inhibitors, diabetes, plus expanding its existing NSAIDs guide beyond 1 payer — IL also needs
-  a payer-roster discovery pass first (unlike MA/VA, which already have known payer lists in their
-  existing guides to reuse). Each new guide reuses the target state's existing payer roster + the
+  picture): **NY, MD, and VA are now fully done** (all 5 topics each). NY: `ny-inhalers`/
+  `ny-menopause`/`ny-diabetes` shipped 2026-07-06 alongside the already-done `ny-ace`/`ny-nsaids`, 5
+  payers each. MD: `md-inhalers`/`md-ace`/`md-diabetes`/`md-nsaids` shipped 2026-07-07 alongside the
+  already-done `md-menopause`, 8 payers each. VA: `va-inhalers`/`va-menopause`/`va-nsaids` shipped
+  2026-07-07 alongside the already-done `va-ace`/`va-diabetes`, 8 payers each. Every cell across all
+  three states is `verified` or `mixed`. **Only MA and IL remain.** MA needs menopause HT, ACE
+  inhibitors, diabetes, NSAIDs (has inhalers only); IL needs inhalers, menopause HT, ACE
+  inhibitors, diabetes, plus expanding its existing NSAIDs guide beyond 1 payer — IL also needs a
+  payer-roster discovery pass first (unlike MA, which already has a known payer list in its
+  existing guide to reuse). Each new guide reuses the target state's existing payer roster + the
   topic's existing class taxonomy from its origin guide (see `formulary-gather.js`'s header comment
   for the args shape) — only the per-cell drug content needs fresh research. **Gather per state
   across every remaining topic in one pass, not one gather per topic** (`docs/agent-runs.md` lever
-  #7) — the NY and MD multi-topic runs both proved this cuts token cost roughly in half to a third
-  vs. building each topic's guide as a separate gather, since the per-payer fetch cost is flat
-  regardless of how many classes you pull from it. A guide still can't be committed with partial
-  payer coverage (see `validate()`'s count floor), so merge only once a state's full
+  #7) — the NY, MD, and VA multi-topic runs all proved this cuts token cost roughly in half to a
+  third vs. building each topic's guide as a separate gather, since the per-payer fetch cost is
+  flat regardless of how many classes you pull from it. A guide still can't be committed with
+  partial payer coverage (see `validate()`'s count floor), so merge only once a state's full
   remaining-class list comes back.
 
   **Picking this up in a new session — what's already researched, don't re-discover it:**
-  - **VA** (10 remaining classes: inhalers 4 + menopause-ht 5 + nsaid-oral 1 — confirm exact class
-    ids against `va-ace`/`va-diabetes`): reuse VA's known 8-payer roster from those two existing
-    guides. Note Sentara Community Plan / Sentara Commercial should use the **resolved CDN
-    document URLs already captured in `va-ace`'s `references`**, not the plan's landing page (the
-    landing page doesn't resolve to a fetchable PDF directly).
   - **MA** (11 remaining classes: menopause-ht 5 + ace-inhibitor 1 + diabetes 4 + nsaid-oral 1):
     reuse MA's known 5-payer roster from `ma-inhalers` (MassHealth, MGB, Tufts, Harvard Pilgrim,
     BCBS MA).

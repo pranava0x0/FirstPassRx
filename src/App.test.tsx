@@ -200,13 +200,13 @@ describe('FirstPassRx app', () => {
   it('shows the not-covered state for a state/topic pair with no guide', async () => {
     const user = userEvent.setup()
     render(<App />)
-    await user.click(screen.getByRole('tab', { name: /Virginia/i }))
-    // VA only has a diabetes guide today; inhalers stays selected from the MA default.
+    await user.click(screen.getByRole('tab', { name: /Illinois/i }))
+    // IL only has an NSAIDs guide today; inhalers stays selected from the MA default.
     expect(screen.getByText(/Not covered yet/i)).toBeInTheDocument()
     expect(screen.queryByLabelText(/select insurance plan/i)).not.toBeInTheDocument()
 
-    await user.click(screen.getByRole('tab', { name: /^Diabetes$/i }))
-    expect(await screen.findByRole('option', { name: /Virginia Medicaid/i })).toBeInTheDocument()
+    await user.click(screen.getByRole('tab', { name: /^NSAIDs$/i }))
+    expect(await screen.findByRole('option', { name: /Illinois Medicaid/i })).toBeInTheDocument()
     expect(screen.queryByText(/Not covered yet/i)).not.toBeInTheDocument()
   })
 
