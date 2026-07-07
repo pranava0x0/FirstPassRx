@@ -4,6 +4,105 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
 
 ## Fixed
 
+- **2026-07-07 · test (App.test.tsx) · a guide-switch test hung for 15+ seconds instead of failing
+  fast, tracing to a real (but user-unreachable) UI race.** Adding MD's first second guide
+  (`md-inhalers`) meant a state click could itself trigger an intermediate guide load (MD already
+  had a guide for the *current* topic) before the topic click landed. `Controls.tsx` correctly
+  disables every state/topic tab while `loadingGuideId !== null`, specifically to prevent a state
+  and topic switch from racing each other — but the test's `switchGuide` helper clicked the topic
+  tab immediately after the state tab, landing on a still-disabled button, which silently no-ops.
+  Root cause: **test bug** — a scripted click sequence is far faster than any real user, who
+  physically cannot click a disabled button (a lazy-loaded JSON chunk resolves in a few ms).
+  Diagnosed by temporarily logging every `switchGuide` call + its `loadGuideView` resolution
+  (removed after); confirmed by the actual DOM show a legitimate "could not load" panel from an
+  *unrelated*, real data bug (see the `cigna/icslaba` entry below) found along the way — don't
+  assume "flaky" means "just add a timeout" without checking the DOM for what's actually rendered.
+  Fixed the test helper to wait for the topic tab to be enabled before clicking it, matching what a
+  real user's click would do. All 214 tests now run in ~2.5s (was hanging to a 15s+ timeout).
+- **2026-07-07 · data (md-inhalers) · one more `paRequired`-vs-`alternatives` misclassification
+  (`cigna`/`icslaba` TRELEGY ELLIPTA) escaped the first fix pass because the same drug appears
+  twice — once under LAMA, once under ICS/LABA (it's a triple-therapy product spanning both
+  classes).** The LAMA instance was fixed; the ICS/LABA instance was missed in the same pass.
+  Root cause: **process gap**, not a code bug — `validate()` caught it immediately once the guide
+  was actually loaded through the app (not just via the schema test, which only validates the
+  *first* guide with an error before `Array.map` throws and skips the rest — see the coverage note
+  in backlog.md). Fixed; also fixed the same rewording/BOGL patterns recurring in `md-ace`,
+  `md-diabetes`, and `md-nsaids`, which the schema test's short-circuit had never actually reached.
+
+- **2026-07-06 · data (3 new NY guides: ny-inhalers, ny-menopause, ny-diabetes) · a cluster of
+  ~18 research-agent misclassifications caught by `validate()` across 5 payers.** Two distinct,
+  now-recurring failure modes, both already seen once each in earlier sessions but this time at
+  volume (NYRx alone tripped it across all 4 inhaler classes + insulin + sglt2 + glp1):
+  (1) **Genuine PA barriers mislabeled by wording, not by fact.** NYRx's PDL is a real binary
+  preferred/non-preferred system where "non-preferred" **is** the PA trigger — these are true
+  barriers, just phrased with the literal word `validate()`'s cost-tier regex flags. Fixed by
+  rewording (not reclassifying) every instance to "not on NYRx's preferred list."
+  (2) **BOGL flagged on the wrong drug, or where no real generic exists to be "over."** Several
+  records set `boglActive: true` with a `boglNote` describing a *different* alternative drug's
+  brand-preference, not the actually-chosen `preferredAgent` (which had `brand: null` — a hard
+  schema violation). Others set it for a class where the boglNote itself said "no generic exists
+  in this class at all" — that's a brand-only market, not BOGL (which requires an *available*
+  generic being passed over). One record (`ny-medicaid`/LAMA) had a real bug baked into the
+  chosen `preferredAgent`: it picked bare generic tiotropium as "preferred," while the record's
+  *own* `paRequired` list correctly showed generic tiotropium needs PA (NYRx's BLTG program
+  prefers the brand Spiriva HandiHaler) — a genuine self-contradiction, fixed by making the brand
+  the preferred agent. Root cause: **process gap**, not a code bug — `validate()` caught every
+  instance; none shipped unnoticed. Given the volume, `docs/agent-runs.md`'s per-run note flags
+  this as a candidate for adding worked examples to the gather prompt if it recurs a third time
+  at this scale.
+
+- **2026-07-06 · process · a full session of tooling work produced zero new (state, topic) grid
+  cells.** User asked directly "what did you do this session for new data? I don't see any" after
+  a session that built the reusable `formulary-gather` workflow, the coverage validator, and
+  expanded 2 *existing* NY guides' payer depth — none of which changed the national grid count
+  (still 6/255, same as session start, confirmed by `npm run validate-coverage`). Root cause:
+  **scope drift** — the actual ask ("prescription data present for all states") requires new
+  (state, topic) guides, but every completed task had been payer-depth or cash-price work on
+  guides that already existed. Fixed by actually creating one: `va-ace` (8 payers, reusing
+  `va-diabetes`'s roster, all `verified`) — first new grid cell of the session, 6/255 → 7/255.
+  Two research-agent misclassifications caught by `validate()` and fixed in the same pass: Aetna
+  Better Health VA's cost-tier-only items (no PA/step per the agent's own NDC-level data) were
+  wrongly tagged `nonformulary` — moved to `alternatives`; Anthem HealthKeepers Plus's and UHC
+  Community Plan's *real* PA barriers had reason text that happened to contain the word
+  "non-preferred," tripping the same regex for a different reason — reworded rather than
+  reclassified, since these are genuine barriers, not cost-tier placements.
+- **2026-07-06 · data (cash prices) · closed the ma-inhalers cash-link gap (13 of 232 unpriced
+  names).** User flagged "lots of GoodRx and Cost+ drugs info missing" after browsing the app.
+  Researched all 8 remaining ma-inhalers drugs via a real browser session (Dulera, Incruse
+  Ellipta, Arnuity Ellipta, Yupelri, Tudorza Pressair, Asmanex Twisthaler, Alvesco, QVAR
+  RediHaler): real GoodRx coupon prices for all 8, but **zero** Cost Plus Drugs matches — searched
+  each generic name (mometasone, umeclidinium, fluticasone furoate, revefenacin, aclidinium,
+  ciclesonide, beclomethasone) and Cost Plus only carries topical/nasal/combo forms of a couple of
+  these components, not the actual inhaler devices. Root cause: **coverage gap**, not a code bug.
+  `KNOWN_UNPRICED_GAP` lowered 232 → 219. Remaining, still open: md-menopause (59), ny-nsaids (66),
+  va-diabetes (76, currently **zero** priced drugs), il-nsaids (12), ny-ace (10). See backlog.md.
+- **2026-07-06 · data (ny-ace, ny-nsaids payer expansion) · 2 research agents misclassified a
+  covered-but-higher-tier drug as a coverage barrier.** Gathering the 4 new NY payers (Excellus
+  BCBS, UnitedHealthcare, Anthem BCBS NY, Excellus Medicare) via the new `formulary-gather`
+  Workflow, 2 of 8 cells put a drug in `paRequired` with a reason mentioning "higher tier" or
+  "non-preferred" — exactly the pattern `validate()` already guards against (a cost-sharing
+  difference is not a barrier; see the IL NSAIDs case below from 2026-07-05). `ny-excellus-bcbs`/
+  `ace-inhibitor` flagged Trandolapril as `step` for being Tier 3 with no actual PA/ST code; moved
+  to `alternatives`. `ny-anthem-bcbs`/`nsaid-oral` flagged TOLECTIN (tolmetin) as `pa` based on the
+  agent's own admission that its tier wasn't cleanly read (page-boundary extraction issue) — rather
+  than guess, the line item was dropped from the record entirely (neither claimed covered nor
+  PA-required) with the `verificationNote` updated to say so honestly. Root cause: **process gap**,
+  not a code bug — `validate()`'s regex check caught both immediately; `npm test` never needed to
+  be bypassed. Confirms the schema-validation gate is doing its job on freshly-gathered data, same
+  as it did for the codex-bot-caught IL NSAIDs case.
+- **2026-07-06 · infra (Workflow tool) · the `args` global arrives as a JSON-encoded string in this
+  harness, not the parsed object the tool's own docs describe.** A first `formulary-gather` run
+  threw `undefined is not an object (evaluating 'cells.length')` immediately, even though `args` was
+  passed as a real JSON object in the tool call (not a string) per the documented convention. A
+  minimal diagnostic script (`log(typeof args)` / `JSON.stringify(args)`) confirmed `args` itself
+  was the literal string `'{"hello": "world", ...}'`. Root cause: **environment/tooling quirk**, not
+  a project code bug — worked around by having the script itself do
+  `const parsedArgs = typeof args === 'string' ? JSON.parse(args) : args` before destructuring,
+  which is now baked into `.claude/workflows/formulary-gather.js` so future invocations don't hit
+  this. Also confirmed: `scriptPath` mode only works cleanly once a script has been registered via
+  an inline `script` call first — a cold `scriptPath` call to a file that was only ever written by
+  hand (never run via `script`) hit the same `args` bug immediately, so any newly hand-authored
+  workflow script needs its first invocation to pass `script` inline, not `scriptPath`.
 - **2026-07-01 · data (cash prices) · NY ACE inhibitor guide's 4 drugs had no cash-link rule.**
   `Lisinopril`, `Benazepril`, `Enalapril`, `Ramipril` — the preferred agent + all 3 covered
   alternatives in the `ny-ace` guide — fell to the generic fallback-slug guesser (link only, no
@@ -75,6 +174,15 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   `.coverage-panels` grid, `.coverage-panel--covered`, `.detail-stack` / `.detail-block` (RxSig moved
   into `.appendix__block`). Root cause: **refactor leftover** (not a runtime bug — harmless, just dead
   code). Fix: prune in a CSS-cleanup pass; low priority. _Open._
+- **2026-07-06 · data (cash prices) · NY payer-expansion added 64 more unpriced drug names.**
+  Expanding `ny-ace`/`ny-nsaids` from 1→5 payers each surfaced each new payer's own long tail of
+  ACE-inhibitor/NSAID brand and generic-form variants (ALTACE, VASOTEC, ZESTRIL, LOTENSIN family;
+  CELEBREX, ANAPROX DS, NAPROSYN, RELAFEN, FELDENE, DAYPRO, EC-NAPROSYN, diclofenac submicronized,
+  etc.) that the existing 20-drug `cash.ts` ruleset has no entry for. `src/lib/cash.test.ts`'s
+  ceiling caught it (`KNOWN_UNPRICED_GAP` raised 168 → 232, same "declared, not silent" pattern as
+  the 2026-06-30 and 2026-07-02 raises below). Root cause: **coverage gap**, not a code bug. Fix:
+  research + add cash-link rules for the new NY commercial/Medicare drug names, same process as the
+  existing 20. _Open._
 - **2026-06-30 · data (cash prices) · 72 of 220 covered-drug names have no priced cash-link rule.**
   `src/lib/cash.ts` has real GoodRx + Cost Plus prices (captured 2026-06-30, live browser session)
   for the 20 rules covering both inhaler classes and the core menopause HT products. The MD menopause

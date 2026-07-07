@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
-import { render, screen, within, fireEvent } from '@testing-library/react'
+import { render, screen, within, fireEvent, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import App from './App'
 
@@ -8,10 +8,25 @@ function agentHeading() {
   return within(screen.getByRole('tabpanel')).getByRole('heading', { level: 3 })
 }
 
-/** State + prescription type are two independent controls now — set both to reach a guide. */
+/**
+ * State + prescription type are two independent controls now — set both to reach a guide.
+ * Guide chunks are lazy-loaded, and a state can already have a guide for the *current* topic
+ * (e.g. a state with several topics), so the state click alone can trigger an intermediate async
+ * guide swap before the topic click ever happens. `Controls` disables every state/topic tab while
+ * a guide is loading (`disabled={loadingGuideId !== null}`) to prevent exactly the race this would
+ * otherwise create -- so clicking the topic tab too soon (while still disabled from the state
+ * click's own load) silently no-ops. Real users never hit this (a lazy-loaded JSON chunk resolves
+ * in a few ms, far faster than a human's next click); wait for the tab to be enabled again before
+ * clicking it, the same way a real user's click would simply land after the button re-enables.
+ */
 async function switchGuide(user: ReturnType<typeof userEvent.setup>, stateName: RegExp, topicName: RegExp) {
   await user.click(screen.getByRole('tab', { name: stateName }))
+  await waitFor(() => expect(screen.getByRole('tab', { name: topicName })).toBeEnabled())
   await user.click(screen.getByRole('tab', { name: topicName }))
+  await waitFor(() => {
+    expect(screen.getByRole('tab', { name: topicName })).toHaveAttribute('aria-selected', 'true')
+    expect(screen.queryByText(/^Loading$/)).not.toBeInTheDocument()
+  })
 }
 
 describe('FirstPassRx app', () => {
