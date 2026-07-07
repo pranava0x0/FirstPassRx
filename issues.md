@@ -4,6 +4,31 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
 
 ## Fixed
 
+- **2026-07-07 · test (App.test.tsx) · a guide-switch test hung for 15+ seconds instead of failing
+  fast, tracing to a real (but user-unreachable) UI race.** Adding MD's first second guide
+  (`md-inhalers`) meant a state click could itself trigger an intermediate guide load (MD already
+  had a guide for the *current* topic) before the topic click landed. `Controls.tsx` correctly
+  disables every state/topic tab while `loadingGuideId !== null`, specifically to prevent a state
+  and topic switch from racing each other — but the test's `switchGuide` helper clicked the topic
+  tab immediately after the state tab, landing on a still-disabled button, which silently no-ops.
+  Root cause: **test bug** — a scripted click sequence is far faster than any real user, who
+  physically cannot click a disabled button (a lazy-loaded JSON chunk resolves in a few ms).
+  Diagnosed by temporarily logging every `switchGuide` call + its `loadGuideView` resolution
+  (removed after); confirmed by the actual DOM show a legitimate "could not load" panel from an
+  *unrelated*, real data bug (see the `cigna/icslaba` entry below) found along the way — don't
+  assume "flaky" means "just add a timeout" without checking the DOM for what's actually rendered.
+  Fixed the test helper to wait for the topic tab to be enabled before clicking it, matching what a
+  real user's click would do. All 214 tests now run in ~2.5s (was hanging to a 15s+ timeout).
+- **2026-07-07 · data (md-inhalers) · one more `paRequired`-vs-`alternatives` misclassification
+  (`cigna`/`icslaba` TRELEGY ELLIPTA) escaped the first fix pass because the same drug appears
+  twice — once under LAMA, once under ICS/LABA (it's a triple-therapy product spanning both
+  classes).** The LAMA instance was fixed; the ICS/LABA instance was missed in the same pass.
+  Root cause: **process gap**, not a code bug — `validate()` caught it immediately once the guide
+  was actually loaded through the app (not just via the schema test, which only validates the
+  *first* guide with an error before `Array.map` throws and skips the rest — see the coverage note
+  in backlog.md). Fixed; also fixed the same rewording/BOGL patterns recurring in `md-ace`,
+  `md-diabetes`, and `md-nsaids`, which the schema test's short-circuit had never actually reached.
+
 - **2026-07-06 · data (3 new NY guides: ny-inhalers, ny-menopause, ny-diabetes) · a cluster of
   ~18 research-agent misclassifications caught by `validate()` across 5 payers.** Two distinct,
   now-recurring failure modes, both already seen once each in earlier sessions but this time at

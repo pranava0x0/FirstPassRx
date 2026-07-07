@@ -7,7 +7,7 @@ const guides = (rawData as Formulary).guides.map(buildGuideView)
 const getGuideView = (id: string) => guides.find((guide) => guide.id === id) ?? guides[0]!
 
 describe('guides + global meta', () => {
-  it('ships the MA inhaler, MD menopause, NY ACE inhibitor, VA diabetes, NY NSAIDs, IL NSAIDs, VA ACE inhibitor, NY inhalers, NY menopause, and NY diabetes guides, in order', () => {
+  it('ships every guide in the expected order', () => {
     expect(guides.map((g) => g.id)).toEqual([
       'ma-inhalers',
       'md-menopause',
@@ -19,6 +19,10 @@ describe('guides + global meta', () => {
       'ny-inhalers',
       'ny-menopause',
       'ny-diabetes',
+      'md-inhalers',
+      'md-ace',
+      'md-diabetes',
+      'md-nsaids',
     ])
   })
 

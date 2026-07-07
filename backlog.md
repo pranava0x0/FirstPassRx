@@ -34,20 +34,53 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
   **Remaining for the 5 listed states** (run `npm run validate-coverage --verbose` for the live
   picture): **NY is now fully done** (all 5 topics — `ny-inhalers`/`ny-menopause`/`ny-diabetes`
-  shipped 2026-07-06 alongside the already-done `ny-ace`/`ny-nsaids`, 5 payers each). MA needs
-  menopause HT, ACE inhibitors, diabetes, NSAIDs (has inhalers only); MD needs inhalers, ACE
-  inhibitors, diabetes, NSAIDs (has menopause HT only); VA needs inhalers, menopause HT, NSAIDs
-  (ACE inhibitors and diabetes are done); IL needs inhalers, menopause HT, ACE inhibitors,
-  diabetes, plus expanding its existing NSAIDs guide beyond 1 payer — IL also needs a payer-roster
-  discovery pass first (unlike MA/MD/VA, which already have known payer lists in their existing
-  guides to reuse). Each new guide reuses the target state's existing payer roster + the topic's
-  existing class taxonomy from its origin guide (see `formulary-gather.js`'s header comment for the
-  args shape) — only the per-cell drug content needs fresh research. **Gather per state across
-  every remaining topic in one pass, not one gather per topic** (`docs/agent-runs.md` lever #7) —
-  the NY multi-topic run proved this cuts token cost roughly in half to a third vs. building each
-  topic's guide as a separate gather, since the per-payer fetch cost is flat regardless of how many
-  classes you pull from it. A guide still can't be committed with partial payer coverage (see
-  `validate()`'s count floor), so merge only once a state's full remaining-class list comes back.
+  shipped 2026-07-06 alongside the already-done `ny-ace`/`ny-nsaids`, 5 payers each). **MD is now
+  fully done** (all 5 topics — `md-inhalers`/`md-ace`/`md-diabetes`/`md-nsaids` shipped 2026-07-07,
+  8 payers each, alongside the already-done `md-menopause`; every cell `verified` or `mixed`). MA
+  needs menopause HT, ACE inhibitors, diabetes, NSAIDs (has inhalers only); VA needs inhalers,
+  menopause HT, NSAIDs (ACE inhibitors and diabetes are done); IL needs inhalers, menopause HT,
+  ACE inhibitors, diabetes, plus expanding its existing NSAIDs guide beyond 1 payer — IL also needs
+  a payer-roster discovery pass first (unlike MA/VA, which already have known payer lists in their
+  existing guides to reuse). Each new guide reuses the target state's existing payer roster + the
+  topic's existing class taxonomy from its origin guide (see `formulary-gather.js`'s header comment
+  for the args shape) — only the per-cell drug content needs fresh research. **Gather per state
+  across every remaining topic in one pass, not one gather per topic** (`docs/agent-runs.md` lever
+  #7) — the NY and MD multi-topic runs both proved this cuts token cost roughly in half to a third
+  vs. building each topic's guide as a separate gather, since the per-payer fetch cost is flat
+  regardless of how many classes you pull from it. A guide still can't be committed with partial
+  payer coverage (see `validate()`'s count floor), so merge only once a state's full
+  remaining-class list comes back.
+
+  **Picking this up in a new session — what's already researched, don't re-discover it:**
+  - **VA** (10 remaining classes: inhalers 4 + menopause-ht 5 + nsaid-oral 1 — confirm exact class
+    ids against `va-ace`/`va-diabetes`): reuse VA's known 8-payer roster from those two existing
+    guides. Note Sentara Community Plan / Sentara Commercial should use the **resolved CDN
+    document URLs already captured in `va-ace`'s `references`**, not the plan's landing page (the
+    landing page doesn't resolve to a fetchable PDF directly).
+  - **MA** (11 remaining classes: menopause-ht 5 + ace-inhibitor 1 + diabetes 4 + nsaid-oral 1):
+    reuse MA's known 5-payer roster from `ma-inhalers` (MassHealth, MGB, Tufts, Harvard Pilgrim,
+    BCBS MA).
+  - **IL** (14 remaining classes: inhalers 5 + menopause-ht 5 + ace-inhibitor 1 + diabetes 4, plus
+    expanding `il-nsaids` past its current 1 payer): a partial payer roster was already researched
+    via WebSearch but never run through an actual gather — **IL Medicaid FFS** (existing, already
+    the sole `il-nsaids` payer), **BCBS Illinois commercial** (found — PDL lives on
+    `myprime.com`, a 6-tier HIM formulary PDF), and **Wellcare Value Script Medicare Part D**
+    (reusable directly — it's the same national Part D formulary already sourced for VA). Confirm
+    this 3-payer roster is actually the full intended set before gathering — it was researched,
+    not verified as complete.
+  - **Merge tooling**: the multi-topic merge for NY and MD both used a scratch-only (not committed)
+    Python helper — a generic `merge_state(state_code, region, today, ckpt_dir, payer_order,
+    payer_meta_by_id, topics, glossary_source_guide)` function — to fold per-payer/per-class
+    gather-agent checkpoint JSON into `formulary.json`'s guide shape (glossary is always emitted
+    as a minimal 2-term glossary; copying a full glossary from an existing guide breaks
+    `validate()`'s cross-guide sourceId resolution). This script does **not** persist between
+    sessions (scratchpad only) — recreate the same shape, or hand-merge, next time.
+  - **Gather-agent checkpoints are session-local, not durable.** Past sessions' checkpoint
+    directories under `data-gathering/<stamp>/` are gitignored and live only in the worktree that
+    created them — once that worktree is cleaned up, they're gone (confirmed: the `va-diabetes` and
+    `ny-ace-2026-07-01` checkpoint dirs referenced by older backlog notes no longer exist). Don't
+    treat an unmerged checkpoint as safe to leave for "later" across a session boundary — merge it
+    into `formulary.json` before the session ends, or expect to re-gather from scratch.
 
   **National grid status 2026-07-06 (`npm run validate-coverage`): 10/255 cells, 6/255 full-depth
   verified.** Watch for 3 recurring research-agent mistakes, now seen across NY and VA gathers:

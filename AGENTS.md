@@ -130,6 +130,8 @@ Default verification matrix (project-specific `AGENTS.md` should override with c
 
 **Narrowest meaningful test first, then broaden.** Run the test closest to the change for the fast loop; escalate to the full suite only when the change has cross-cutting risk. Don't pay full-suite latency on every iteration, and don't skip it before declaring a substantial change done.
 
+**A schema-validation test built on `array.map(validateOne)` only reports the FIRST failing item — don't read silence past it as "the rest are clean."** `.map()`'s callback throwing on item N never runs items N+1..end in that same test invocation, so "no errors from guides 5-8" can mean "never reached," not "verified clean." Confirmed 2026-07-07: fixing one guide's validation errors revealed 3 more guides' worth of the identical issue that a prior "no errors" read had missed entirely, because the first guide's throw had masked them. Fix each reported error and re-run — don't conclude a clean sweep until a run produces zero errors with nothing left to fix.
+
 **For UI changes**, also run the app locally and click through the affected views — type checks and unit tests verify code correctness, not feature correctness. Two screenshots — 375×812 and 1280×800 — settle a UI fix; more than that is token waste unless the change is genuinely complex.
 
 **For data changes**, diff the canonical output (`docs/data/*.json` or equivalent) and skim the diff before committing. A 30-second skim catches regressions tests miss (especially around character encoding, pretty-printer drift, and unintended fields).

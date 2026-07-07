@@ -38,8 +38,15 @@
  * cash-link rule yet (this mirrors the exact same "new guide surfaces a new drug-name long tail"
  * pattern as every prior raise above, just at 3x the guides in one merge). Adding real GoodRx/
  * Cost Plus rules for these is a logged backlog item alongside the existing md-menopause (59),
- * ny-nsaids (66), va-diabetes (76, still zero priced), and il-nsaids (12) gaps. */
-export const KNOWN_UNPRICED_GAP = 401
+ * ny-nsaids (66), va-diabetes (76, still zero priced), and il-nsaids (12) gaps.
+ * Raised 401 → 681 on 2026-07-07 when 4 brand-new MD guides shipped (`md-inhalers`, `md-ace`,
+ * `md-diabetes`, `md-nsaids`; 8 payers each). Most of the increase (~150 names) came from a
+ * `validate()`-driven fix, not new coverage: several cost-tier-only items were reclassified from
+ * `paRequired` to `alternatives` (see issues.md) -- `coveredDrugNames()` only counts
+ * `preferredAgent`/`alternatives`, never `paRequired`, so correctly reclassifying a drug as
+ * "still covered, just pricier" makes it newly count toward this gap. That's the honest, expected
+ * outcome of the fix, not a regression to paper over. */
+export const KNOWN_UNPRICED_GAP = 681
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
