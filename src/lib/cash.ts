@@ -45,8 +45,13 @@
  * `paRequired` to `alternatives` (see issues.md) -- `coveredDrugNames()` only counts
  * `preferredAgent`/`alternatives`, never `paRequired`, so correctly reclassifying a drug as
  * "still covered, just pricier" makes it newly count toward this gap. That's the honest, expected
- * outcome of the fix, not a regression to paper over. */
-export const KNOWN_UNPRICED_GAP = 681
+ * outcome of the fix, not a regression to paper over.
+ * Raised 681 → 684 on 2026-07-07 (same day) when 3 brand-new VA guides shipped (`va-inhalers`,
+ * `va-menopause`, `va-nsaids`; 8 payers each, reusing VA's known roster). Only 3 new names this
+ * time (not ~150 like MD) because VA reuses the same inhaler/menopause/NSAID drug-name universe
+ * already priced or logged as a gap for MA/NY/MD -- the marginal new names are payer-specific
+ * brand variants (e.g. DUAVEE moved to alternatives, a few uhc-community brand-tier duplicates). */
+export const KNOWN_UNPRICED_GAP = 684
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
