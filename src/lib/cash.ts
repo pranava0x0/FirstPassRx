@@ -11,8 +11,35 @@
  * logged backlog item. Raised 161 → 168 the same day when a PR review (codex bot) caught the
  * il-nsaids cell misclassifying several preferred drugs (Etodolac, Flurbiprofen, Ketoprofen) as
  * PA-required -- correcting the cell against the source PDL surfaced additional real preferred
- * drug names (Indomethacin, Ketorolac, Nabumetone, Sulindac) that also have no cash-link rule. */
-export const KNOWN_UNPRICED_GAP = 168
+ * drug names (Indomethacin, Ketorolac, Nabumetone, Sulindac) that also have no cash-link rule.
+ * Raised 168 → 232 on 2026-07-06 when the ny-ace and ny-nsaids guides gained 4 new payers each
+ * (Excellus BCBS, UnitedHealthcare, Anthem BCBS NY, Excellus Medicare) -- each payer's own
+ * formulary names its own long tail of ACE-inhibitor/NSAID brand and generic-form variants
+ * (ALTACE, VASOTEC, ZESTRIL, LOTENSIN family; CELEBREX, ANAPROX DS, NAPROSYN, RELAFEN, FELDENE,
+ * DAYPRO, EC-NAPROSYN, diclofenac submicronized, etc.) that the existing 20-drug cash.ts ruleset
+ * has no entry for. Adding real GoodRx/Cost Plus rules for these is a logged backlog item.
+ * Lowered 232 → 219 on 2026-07-06 (same day): added real GoodRx rules for all 8 remaining
+ * ma-inhalers drugs (Dulera, Incruse Ellipta, Arnuity Ellipta, Yupelri, Tudorza Pressair, Asmanex
+ * Twisthaler, Alvesco, QVAR RediHaler), captured via a real browser session. None of the 8 had a
+ * Cost Plus Drugs match (searched each generic name -- Cost Plus doesn't carry any of these
+ * specialty inhalers/devices, only the combo or topical/nasal forms of a couple of their
+ * components), so those rules are GoodRx-only by design, not an oversight. md-menopause (59),
+ * ny-nsaids (66), va-diabetes (76, currently zero priced), and il-nsaids (12) remain open --
+ * logged in issues.md/backlog.md.
+ * Raised 219 → 235 on 2026-07-06 (same day) when the new `va-ace` guide shipped (8 payers, 1
+ * class, reusing VA's existing payer roster) -- the non-preferred/non-formulary ACE inhibitors
+ * (captopril, fosinopril, moexipril, perindopril, quinapril, trandolapril, plus their brand and
+ * combo-product name variants) have no cash-link rule yet. Adding them would also help the
+ * existing `ny-ace` guide, which has the same gap for the same drugs -- logged as one combined
+ * backlog item rather than two.
+ * Raised 235 → 401 on 2026-07-06 (same day) when 3 brand-new NY guides shipped (`ny-inhalers`,
+ * `ny-menopause`, `ny-diabetes`; 5 payers each, 13 classes total) -- each payer's own formulary
+ * names its own long tail of inhaler/HT/diabetes brand and generic-form variants with no
+ * cash-link rule yet (this mirrors the exact same "new guide surfaces a new drug-name long tail"
+ * pattern as every prior raise above, just at 3x the guides in one merge). Adding real GoodRx/
+ * Cost Plus rules for these is a logged backlog item alongside the existing md-menopause (59),
+ * ny-nsaids (66), va-diabetes (76, still zero priced), and il-nsaids (12) gaps. */
+export const KNOWN_UNPRICED_GAP = 401
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -236,6 +263,69 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxPrice: { price: 28.00, quantity: '30 capsules, 10mg' },
     costPlusPrice: { price: 6.04, quantity: '30 capsules, 10mg' },
     pricesCapturedAt: '2026-07-01',
+  },
+  {
+    // No Cost Plus match: not carried (searched "mometasone", "mometasone formoterol" -- only
+    // topical/nasal mometasone forms exist there, no inhaler).
+    matches: /dulera|mometasone.*formoterol/i,
+    goodRxSlug: 'dulera',
+    goodRxPrice: { price: 199.0, quantity: '1 inhaler, 200mcg/5mcg, 120 doses' },
+    pricesCapturedAt: '2026-07-06',
+  },
+  {
+    // No Cost Plus match: searched "umeclidinium" -- only the umeclidinium/vilanterol (Anoro)
+    // combo is carried, not standalone umeclidinium (Incruse Ellipta).
+    matches: /incruse|umeclidinium/i,
+    goodRxSlug: 'incruse-ellipta',
+    goodRxPrice: { price: 211.22, quantity: '1 inhaler, 62.5mcg, 30 blisters' },
+    pricesCapturedAt: '2026-07-06',
+  },
+  {
+    // No Cost Plus match: searched "fluticasone furoate" -- only the furoate/vilanterol (Breo)
+    // combo and fluticasone propionate forms are carried, not standalone furoate (Arnuity Ellipta).
+    // Order matters: must sit after the Breo rule above so a real Breo match (which also contains
+    // "fluticasone furoate") is caught by that more specific vilanterol-qualified rule first.
+    matches: /arnuity|fluticasone furoate/i,
+    goodRxSlug: 'arnuity-ellipta',
+    goodRxPrice: { price: 137.1, quantity: '1 inhaler, 100mcg, 30 blisters' },
+    pricesCapturedAt: '2026-07-06',
+  },
+  {
+    // No Cost Plus match: searched "revefenacin" -- no medications found.
+    matches: /yupelri|revefenacin/i,
+    goodRxSlug: 'yupelri',
+    goodRxPrice: { price: 1654, quantity: '1 carton, 175mcg/3mL, 30 vials' },
+    pricesCapturedAt: '2026-07-06',
+  },
+  {
+    // No Cost Plus match: searched "aclidinium" -- no real aclidinium product (only an unrelated
+    // umeclidinium/vilanterol fuzzy hit).
+    matches: /tudorza/i,
+    goodRxSlug: 'tudorza-pressair',
+    goodRxPrice: { price: 322.15, quantity: '1 inhaler, 400mcg, 60 doses' },
+    pricesCapturedAt: '2026-07-06',
+  },
+  {
+    // No Cost Plus match: searched "mometasone" -- only topical/nasal forms carried, not the
+    // Twisthaler. Doesn't collide with the Dulera rule above (that one requires "...formoterol").
+    matches: /asmanex|mometasone furoate/i,
+    goodRxSlug: 'asmanex',
+    goodRxPrice: { price: 143.06, quantity: '1 inhaler, 220mcg, 60 doses' },
+    pricesCapturedAt: '2026-07-06',
+  },
+  {
+    // No Cost Plus match: searched "ciclesonide" -- no medications found.
+    matches: /alvesco|ciclesonide/i,
+    goodRxSlug: 'alvesco',
+    goodRxPrice: { price: 176.38, quantity: '1 inhaler, 160mcg' },
+    pricesCapturedAt: '2026-07-06',
+  },
+  {
+    // No Cost Plus match: searched "beclomethasone" -- only unrelated topical steroid fuzzy hits.
+    matches: /qvar|beclomethasone/i,
+    goodRxSlug: 'qvar',
+    goodRxPrice: { price: 324.95, quantity: '1 redihaler, 80mcg, 10.6g' },
+    pricesCapturedAt: '2026-07-06',
   },
 ]
 

@@ -4,17 +4,83 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## High
 
-- **Every prescription type should have data for every state selected (user priority, 2026-07-05).**
-  The state/therapeutic-area picker (shipped 2026-07-05) makes the full grid visible, but most
-  cells are still empty — a user can select any state and any prescription type, but only gets a
-  real answer for the handful of (state, topic) pairs that have been researched so far. The product
-  goal is that **whichever prescription type a user picks, their selected state has real, cited
-  data for it** — not just a subset of states per topic. Current coverage as of 2026-07-05:
-  inhalers (MA only), menopause HT (MD only), ACE inhibitors (NY only, 1/6 payers), diabetes (VA
-  only), NSAIDs (NY + IL, 1 payer each). Closing this gap means running the `formulary-data` skill
-  for every missing (state, topic) cell — one combo at a time, confirming scope before any Workflow
-  fan-out (hard ≤2-concurrent-agent cap, see CLAUDE.md). See the "Separate the state and
-  prescription-type selectors" item below for the full grid and what's already shipped vs. open.
+- **Every prescription type should have data for every state selected (user priority, 2026-07-05;
+  scoped 2026-07-06).** The state/therapeutic-area picker (shipped 2026-07-05) makes the full grid
+  visible, but most cells are still empty — a user can select any state and any prescription type,
+  but only gets a real answer for the handful of (state, topic) pairs that have been researched so
+  far. The product goal is that **whichever prescription type a user picks, their selected state
+  has real, cited data for it** — not just a subset of states per topic.
+
+  **True scope, computed 2026-07-06 via `npm run validate-coverage`:** only 5 states have ANY guide
+  (MA, MD, NY, VA, IL) out of 51 (50 states + DC); only 6/255 possible (state × topic) cells are
+  covered at all, 3/255 at full verified depth. Closing the gap for just these 5 already-listed
+  states means creating ~19 new guides (5 states × 5 topics − 6 existing), each needing the state's
+  full payer roster researched per class. The user's direction (2026-07-06): start with the 5
+  already-listed states before adding new ones, and build a reusable Workflow script rather than
+  re-authoring the gather logic each time.
+
+  **Now built:** [.claude/workflows/formulary-gather.js](.claude/workflows/formulary-gather.js) — a
+  reusable, checkpointed gather script (one agent per *payer*, covering all its assigned classes
+  off a single fetch — not one agent per payer×class cell, which re-fetches the same source
+  redundantly; fixed 2026-07-06 after the first run confirmed the duplicate-fetch cost, see
+  `docs/agent-runs.md`), chunked to the hard ≤2-concurrent cap, callable via
+  `Workflow({scriptPath: ..., args: {stamp, state, today, payerTasks}})` for any future (state,
+  topic) combo. [scripts/validate-coverage.mjs](scripts/validate-coverage.mjs)
+  (`npm run validate-coverage`) reports the full national grid plus a payer-roster cross-check
+  against `state-index.json`. First real batch closed 2026-07-06: `ny-ace` and `ny-nsaids` expanded
+  from 1→5 payers each (added Excellus BCBS, UnitedHealthcare, Anthem BCBS NY, Excellus Medicare —
+  all `verified`). NY's 3 Medicaid MCOs (Healthfirst, Fidelis, MetroPlus) are deliberately NOT
+  separate payer entries — they share the single NYRx carve-out PDL already listed.
+
+  **Remaining for the 5 listed states** (run `npm run validate-coverage --verbose` for the live
+  picture): **NY is now fully done** (all 5 topics — `ny-inhalers`/`ny-menopause`/`ny-diabetes`
+  shipped 2026-07-06 alongside the already-done `ny-ace`/`ny-nsaids`, 5 payers each). MA needs
+  menopause HT, ACE inhibitors, diabetes, NSAIDs (has inhalers only); MD needs inhalers, ACE
+  inhibitors, diabetes, NSAIDs (has menopause HT only); VA needs inhalers, menopause HT, NSAIDs
+  (ACE inhibitors and diabetes are done); IL needs inhalers, menopause HT, ACE inhibitors,
+  diabetes, plus expanding its existing NSAIDs guide beyond 1 payer — IL also needs a payer-roster
+  discovery pass first (unlike MA/MD/VA, which already have known payer lists in their existing
+  guides to reuse). Each new guide reuses the target state's existing payer roster + the topic's
+  existing class taxonomy from its origin guide (see `formulary-gather.js`'s header comment for the
+  args shape) — only the per-cell drug content needs fresh research. **Gather per state across
+  every remaining topic in one pass, not one gather per topic** (`docs/agent-runs.md` lever #7) —
+  the NY multi-topic run proved this cuts token cost roughly in half to a third vs. building each
+  topic's guide as a separate gather, since the per-payer fetch cost is flat regardless of how many
+  classes you pull from it. A guide still can't be committed with partial payer coverage (see
+  `validate()`'s count floor), so merge only once a state's full remaining-class list comes back.
+
+  **National grid status 2026-07-06 (`npm run validate-coverage`): 10/255 cells, 6/255 full-depth
+  verified.** Watch for 3 recurring research-agent mistakes, now seen across NY and VA gathers:
+  (1) a covered-but-higher-tier drug tagged `nonformulary`/`pa` instead of `alternatives` — verify
+  the payer's own data really has no PA/step flag before moving it, don't just reword around the
+  regex; (2) a true barrier (real PA required) whose reason text happens to contain the trigger
+  phrase "non-preferred" or "higher tier" — reword, don't reclassify, when the payer's own binary
+  preferred/non-preferred system genuinely gates access (NYRx's PDL is exactly this — being
+  "non-preferred" **is** the PA trigger, unlike a payer with real multi-tier cost-sharing); (3) a
+  BOGL flag (`boglActive: true`) set on the wrong drug (the `boglNote` describes a *different*
+  alternative's brand-preference, not the actually-chosen `preferredAgent` — a hard tell is
+  `preferredAgent.brand: null` with `boglActive: true`) or set when no generic exists in the class
+  at all (BOGL requires an *available* generic being passed over, not a brand-only market) —
+  clear it in both cases. Also sanity-check that the chosen `preferredAgent` isn't contradicted by
+  its own record's `paRequired` list (seen once: a record picked a bare generic as "preferred"
+  while its own paRequired said that exact generic needs PA under the payer's own BLTG program).
+
+  Expanding beyond these 5 states to the remaining ~46 is explicitly deferred — the saved workflow
+  script is the reusable asset for that future work, not something to launch without the user
+  re-confirming scope.
+- **Close the cash-price gap (user flagged directly, 2026-07-06): 219 of ~470 covered-drug names
+  still have no GoodRx/Cost Plus rule.** `src/lib/cash.ts`'s `KNOWN_UNPRICED_GAP` tracks this
+  precisely (was 232, now 219 after the ma-inhalers fix below). Per-guide breakdown as of
+  2026-07-06 (run the scratch query in `cash.test.ts`'s `coveredDrugNames()` helper to refresh):
+  **va-diabetes 76/76 (100% unpriced — every diabetes drug shows link-only)**, ny-nsaids 66,
+  md-menopause 59, il-nsaids 12, ny-ace 10. `ma-inhalers` (was 13) is now fully closed — see
+  issues.md. Do this like the state-data work: real browser session (GoodRx/Cost Plus both block
+  plain fetch — see CLAUDE.md), one guide at a time, smallest/highest-impact first. va-diabetes is
+  both the largest gap and arguably the highest-value (cash prices matter most for chronic daily
+  meds like metformin/insulin/GLP-1s) — good next target. Not every drug will have a Cost Plus
+  match (confirmed for all 8 ma-inhalers drugs — Cost Plus's catalog skews toward common generics,
+  several specialty inhalers/devices simply aren't carried); that's a legitimate, documented
+  outcome, not a research failure — record it in the rule's comment either way.
 - **Redesign the omni-search.** The drug search bar (`src/components/Search.tsx`) is parked
   (removed from the App render) pending a rethink. Wanted: layperson synonyms ("HRT", "estrogen
   patch", "rescue spray") mapping to classes/molecules, search scoped to or across guides, and a
@@ -83,7 +149,8 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   Metformin, generic dapagliflozin, insulin glargine biosimilars, and generic lispro/aspart are
   exactly the drugs where a cash price beats insurance often enough to matter. Use the browser
   session (GoodRx 403s plain fetch) + `costplusdrugs.com/medications/?query=` slug search;
-  guess GoodRx exact-dosage params directly per the CLAUDE.md pattern.
+  guess GoodRx exact-dosage params directly per the CLAUDE.md pattern. **Status 2026-07-06: still
+  0/76 priced** — the single biggest remaining chunk of the cash-price gap below.
 - **Dosage/strength as a first-class field.** `PreferredAgent.strength` (and every cash-link rule
   in `cash.ts`) pins one representative strength per drug rather than letting a user pick the
   strength actually prescribed and see the sig/price/PA rule for that exact dose. This has bitten

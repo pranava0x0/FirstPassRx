@@ -370,3 +370,37 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   contracted PBM) was confirmed by search + a live fetch of the actual `illinois.gov` PDL PDF before
   citing anything, per the existing state-Medicaid-roster-churn rule above. Same instinct, now
   proven for a state with zero prior footprint in this repo, not just a payer-roster refresh.
+- **The Workflow tool's `args` global can arrive as a JSON-encoded string in this harness, not the
+  parsed object its own docs describe.** A first `formulary-gather` invocation threw
+  `undefined is not an object (evaluating 'cells.length')` immediately, even though `args` was
+  passed as a real JSON object (not a string) in the tool call. A minimal diagnostic script
+  (`log(typeof args)`) confirmed `args` was literally the string `'{"hello": "world", ...}'`. Fix:
+  every workflow script should defensively do
+  `const parsedArgs = typeof args === 'string' ? JSON.parse(args) : args` before destructuring —
+  baked into `.claude/workflows/formulary-gather.js`. Also: a brand-new hand-authored script only
+  works reliably invoked via `script` (inline) the first time; a cold `scriptPath` call to a file
+  that was never run via `script` hit the same bug immediately — resubmit inline once, then switch
+  to `scriptPath` for later runs/edits.
+- **`fm.formularynavigator.com` and `uhcprovider.com` join the "looks blocked but isn't" list** (see
+  the GoodRx/Cost Plus Drugs note above): both block Claude's `WebFetch` (a domain safe-browsing
+  check), but a plain `curl` with a browser User-Agent gets the real PDF every time. For any payer
+  formulary hosted on FormularyNavigator or a big-carrier provider domain, try a direct `curl`
+  fetch before concluding the source is unreachable.
+- **A `git diff` on `formulary.json` after a Python `json.dump` re-serialize can look enormous
+  (thousands of lines) even when only a couple of guides actually changed.** Adding 8 records to
+  `ny-ace`/`ny-nsaids` produced a 4500-line default-algorithm diff touching `va-diabetes`/
+  `il-nsaids` too — but `git diff --diff-algorithm=histogram` on the same change showed the true
+  edit (~1300 insertions, 4 deletions), and a Python equality check confirmed every untouched
+  guide's parsed content was byte-for-byte identical. Myers diff gets confused by JSON's repetitive
+  `},`/`{`/`],` structural tokens once line positions shift from an insertion earlier in the file.
+  Use `--diff-algorithm=histogram` (or compare parsed JSON directly) before assuming a huge diff
+  means unintended reformatting.
+- **`.claude/workflows/formulary-gather.js` is the reusable gather script for any future (state,
+  topic) expansion** — parameterized by `{stamp, state, today, payerTasks}` where each payerTask
+  carries one payer plus its full list of assigned classes (one agent per payer, one fetch,
+  every assigned class covered from it — never one agent per (payer, class) cell, which
+  re-fetches the same source N times; see `docs/agent-runs.md` cost lever #1 and the 2026-07-06
+  row for the confirmed incident this shape fixes). Chunks agent calls to the hard ≤2-concurrent
+  cap itself, so it's safe to invoke directly without re-deriving the chunking logic. `npm run
+  validate-coverage` reports the full national (state × topic) grid plus a payer-roster cross-check against
+  `state-index.json` — run it before scoping any new gather batch instead of hand-counting gaps.

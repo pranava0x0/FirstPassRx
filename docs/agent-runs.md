@@ -23,11 +23,32 @@ before launching a new fan-out — the cost levers at the bottom are learned her
 | 2026-07-02 | `va-diabetes-gather` (this session, run `wf_0d3afb8d-ef2`) — fresh gather, 8 VA payers × 4 classes, one agent per payer, chunked ≤2 via `for`+`parallel(chunk)` | 8 | ~650K | ⚠️ 6/8 ok (all 24 cells verified w/ page-level citations); 2 died pre-start on the session **usage limit** (not rate-limiting) | High — every completed payer verified off the real formulary doc; checkpoint-then-return meant the 2 failures cost ~0 | ~94K/payer as agents vs ~15-20K/payer when the last 2 were finished **inline** (curl+pypdf, same quality, ~10 tool calls each). Verdict: fan-out justified for 8 payers (context isolation + wall-clock), but 1-2 payer gaps should always be closed inline |
 | 2026-07-02 | PR #5 persona review — SW engineer | 1 | ~84K | ✅ | High — 7 findings, 3 real should-fixes, each empirically verified (e.g. proved non-WinAnsi chars mangle in the PDF) rather than speculated | Worth it: fresh-eyes review of my own code caught things I'd re-read past. Personas dropped when marginal (PM skipped this PR per user's efficiency flag) |
 | 2026-07-02 | PR #5 persona review — data reviewer + clinical domain expert | 2 | ~197K (108K + 88K) | ✅ both | Very high — 2 real blockings each, incl. the highest-value find of the session (UI claiming "no PA" on PA-gated preferred agents — a patient-safety copy bug no static validator caught); domain expert also verified every dosing sig | The strongest agent ROI this session: reviewing one's own freshly-merged data with fresh eyes found modeling inconsistencies (dual-listing, sibling-drug BOGL flags) that came from the gather agents themselves modeling the same situation two ways. PM persona deliberately dropped (marginal value on a data+letter PR) |
+| 2026-07-06 | `formulary-gather` (new reusable, saved script) — NY payer expansion: 4 new payers (Excellus BCBS, UnitedHealthcare, Anthem BCBS NY, Excellus Medicare) × 2 classes (ace-inhibitor, nsaid-oral), chunked ≤2 via `for`+`parallel(chunk)`, flat one-agent-per-(payer,class) cell shape | 8 (+2 prior invocations that failed pre-agent-spawn, 0 agents/tokens each) | ~758K | ✅ all 8 verified against real fetched PDFs | High — all 8 cells `verified`; 2 minor `paRequired`-vs-`alternatives` misclassifications caught by `validate()` post-merge and fixed (a covered-but-higher-tier drug wrongly flagged a barrier; one unconfirmed line item dropped rather than guessed) — see `issues.md` | **Violated cost lever #1 below**: the script's flat per-(payer, class) cell shape meant every one of the 4 payers had its formulary PDF independently fetched *twice* (once per class-agent) — confirmed by diffing each pair's `primarySource.url` (identical). Root cause: the reusable script was authored without applying the existing lever from this same log. Fixed in the script itself (not just noted here) — `formulary-gather.js` now takes `payerTasks[]` (one agent per payer, covering every assigned class off a single fetch) instead of flat `cells[]`. Separately: the first 2 invocations failed instantly (0 agents spawned) on a harness quirk where `args` arrived as a JSON-encoded string rather than the parsed object the Workflow tool's own docs describe — cost ~0 tokens to hit and diagnose (one 3-line diagnostic script isolated it), fixed with a defensive `JSON.parse` now baked into the script for every future invocation |
+| 2026-07-06 | `formulary-gather` (fixed `payerTasks[]` shape) — new `va-ace` guide: 8 VA payers (reusing `va-diabetes`'s roster) × 1 class (ace-inhibitor), one agent per payer, chunked ≤2 | 8 | ~694K | ✅ all 8 verified against real fetched sources (one payer's source was a 27MB flat NDC-level JSON export, not a PDF — agent correctly filtered ~102K records by generic-name stem) | High, after 2 fixes — user had directly called out that a full prior session of tooling work produced zero new (state, topic) grid cells; this run was the fix, closing NY's ACE-inhibitor gap's sibling in VA. Caught 2 more `validate()` misclassifications post-merge: Aetna Better Health's cost-tier-only items (its own data showed no PA/step) wrongly tagged `nonformulary` — moved to `alternatives`; Anthem HealthKeepers Plus / UHC Community Plan had *real* PA barriers whose reason text happened to say "non-preferred," tripping the same regex for the opposite reason — reworded, not reclassified | Confirms the `payerTasks[]` fix from the row above worked as intended — no payer's source was fetched twice this run. New failure mode found: research agents keep writing the *fact* "still covered, no PA, just a different cost tier" correctly, then choosing the wrong `outcome` enum value anyway (`nonformulary`/`pa` instead of modeling it as an `alternatives` entry) — worth adding an explicit example pair (barrier vs. cost-tier, same wording pattern) to the gather prompt's TASK section next time this class of mistake recurs a third time |
+| 2026-07-06 | `formulary-gather` (lever #7 applied) — NY multi-topic gather: 5 NY payers × 13 classes (inhalers 4 + menopause HT 5 + diabetes 4) in one pass, split at merge time into 3 new guides (`ny-inhalers`, `ny-menopause`, `ny-diabetes`) | 5 (first launch: 2 succeeded, 3 failed on a session-limit reset; resumed via the same `runId` after the reset passed, re-ran only the 3 — confirmed via checkpoint file mtimes, not the notification's `agent_count`, which reads identical either way) | ~500K (first launch) + ~504K (resume) ≈ 1.0M total | ✅ all 65 cells complete (60 verified, 5 honestly `example` — NYRx's PDL has no menopause-HT section at all, a real carve-out, not a research gap) | High once fixed — but this run produced by far the largest single cluster of `validate()`-caught misclassifications yet (~18 across 5 payers): NYRx's binary preferred/non-preferred PDL model tripped the cost-tier-wording regex systematically (genuine PA barriers, reworded not reclassified) across nearly every NYRx class, plus 6 separate BOGL mismatches (boglNote describing a different alternative drug than the chosen preferredAgent, or claiming BOGL when no generic exists in the class at all) and one real bug where the chosen preferredAgent contradicted the record's own paRequired list (ny-medicaid/LAMA picked bare generic tiotropium as "preferred" while its own paRequired correctly said the generic needs PA under NYRx's BLTG program — brand Spiriva HandiHaler is the real preferred pick) | Proves lever #7 (gather per state across every topic, not per guide) works exactly as intended — one 5-payer pass instead of 3 separate 5-payer passes for the same underlying documents. Also proves levers #10/#11 (session-limit handling): the resumed run correctly replayed the 2 completed payers from cache (confirmed via untouched file mtimes) rather than re-paying for them. The high misclassification *volume* here (vs. 1-2 per run previously) is a real signal — NYRx's binary-PDL vocabulary is unusually prone to this specific mistake; worth a prompt update with a worked example if a `ny-*` gather trips it again |
+
+Session total (2026-07-06, gather workflows only): 24 agents (across 4 workflow launches, one a
+resume), ~2.95M subagent tokens, for 81 new records and 4 new (state, topic) guides (`va-ace`,
+`ny-inhalers`, `ny-menopause`, `ny-diabetes`) plus 8 payer-depth additions to 2 existing NY guides.
+User called out the first two runs directly mid-session ("what did you do this session for new
+data? I don't see any") — correctly, since payer-depth-only work doesn't move the (state, topic)
+grid at all. Root cause of the low yield-per-token on the *first* run wasn't the agents' work
+quality (`verified` output throughout) — it was **scope structure**: that run fixed a per-cell
+fetch duplication (lever #1) but not the sharper version (#7) — batching a state's remaining
+classes across *every* topic it still needs, not just within one topic. Applying lever #7 to the
+NY multi-topic run (5 payers × 13 classes in one pass instead of 3 separate 5-payer passes) was
+the direct fix, plus levers #10/#11 correctly handled a mid-run session-limit pause without
+re-paying for the 2 payers that had already completed. Remaining scope for these 3 states: MA (4
+topics), MD (4), VA (2: menopause HT, NSAIDs), IL (4, plus payer discovery) — still substantial,
+now-cheaper-per-guide work.
 
 Session total (2026-07-01): ~93 agents, ~3.13M subagent tokens across 3 workflows/fan-outs — of which
 ~2.5M tokens across 2 workflows produced almost nothing usable. See "Concurrency cap" below.
 
-Running total across all sessions: ~123 agents, ~4.95M subagent tokens across 8 workflows.
+Running total across all sessions: ~144 agents, ~7.40M subagent tokens across 11 workflows (excludes
+the 2 failed 2026-07-06 pre-attempts, which spawned no agents and cost ~0 tokens; the NY multi-topic
+gather's initial launch + resume count as one workflow, since the resume replayed 2 of its 5 payers
+from cache rather than re-running them).
 
 ## Was the fan-out the right call?
 
@@ -40,6 +61,9 @@ only) was the cheapest per unit of value.
 
 1. **Gather per entity, not per cell.** One agent reads one payer's formulary for *all* drug classes
    at once. Per-(payer × class) re-fetches the same PDF N times — the single biggest avoidable cost.
+   Confirmed again 2026-07-06: a flat per-cell `formulary-gather` script had 4 payers each fetch
+   their own PDF twice (once per class) — check a new script's *shape* against this lever before
+   the first run, not after.
 2. **Pre-supply known source URLs.** If a formulary URL is already in the data (or a prior run),
    pass it to the agent so it fetches directly instead of burning a search loop.
 3. **Fold verification into the gather agent.** A separate adversarial verify phase roughly doubled
@@ -55,11 +79,60 @@ only) was the cheapest per unit of value.
    temporarily limiting requests" on ~85% of agents; the per-workflow concurrency cap (min(16,
    cores-2)) does not protect against this. This is now a hard user-stated rule, not just a cost
    optimization — confirm scale before launching, don't discover the failure mode again.
-7. **Check for existing pre-vetted data before spawning a metadata-discovery phase.** The same
+7. **Gather per payer across every topic/guide you'll need from them, not per (payer, single-topic
+   guide) — the fetch+extraction cost is flat, not per-class.** Measured directly 2026-07-06:
+   va-diabetes (4 classes/payer) cost ~81K tokens/payer; va-ace (1 class/payer, different topic,
+   same 8 VA payers) cost ~87K tokens/payer. Nearly identical, because the expensive part is
+   fetching a government/payer PDF that WebFetch usually can't parse (needs a curl fallback + a
+   from-scratch PDF-extraction script) and locating the right section — reading one more class out
+   of a document you already opened is nearly free. The lesson: **one state's payer PDL/formulary
+   almost always covers every drug-class topic FirstPassRx tracks in one document.** Building
+   `va-inhalers`, `va-menopause`, and `va-nsaids` as 3 separate future gathers would each re-pay
+   the ~87K/payer fetch cost for the same 8 documents already fetched for va-ace/va-diabetes — a
+   ~3x avoidable spend. Batch all of a state's remaining classes (across every remaining topic)
+   into ONE `payerTasks[].classes[]` list per payer — `formulary-gather.js` already supports this
+   (the script has no concept of "topic," only a flat class list); only the merge step needs to
+   split the returned records into separate guides by which topic each classId belongs to.
+8. **Cache the resolved source URL, not just the landing-page URL, once an agent finds it.** Two of
+   VA's 8 payers (Sentara Community, Sentara Commercial) had a `payerFormularyUrl` that was a
+   landing page; each agent had to search/crawl to the real downloadable file (a CDN content-hub
+   link). That resolved URL is now sitting in the va-ace checkpoint's `primarySource.url` — reuse
+   it directly as the `payerFormularyUrl` for that same payer's next gather instead of passing the
+   landing page again and paying the discovery cost twice.
+9. **Check for existing pre-vetted data before spawning a metadata-discovery phase.** The same
    2026-07-01 session launched a payer-metadata-gather phase for VA/NY without first checking
    `src/data/state-index.json`, which already had verified formulary URLs/PBMs for both states from
    an earlier index-level run (lever #4). Grep the repo's own data files for what a prior session
    already gathered before re-discovering it with agents.
+10. **A "session limit" failure names its own reset time — read it, don't guess or hammer retries.**
+    Distinct from a rate-limit (`Server is temporarily limiting requests` — back off, retry soon)
+    or a transient connectivity error (`FailedToOpenSocket`/`ConnectionRefused` — safe to retry
+    immediately): a message like `You've hit your session limit · resets 7:50pm (America/New_York)`
+    tells you exactly when a retry will actually succeed. Confirmed 2026-07-06: a 5-payer NY gather
+    had agents 1-2 (chunk 1) succeed, then agents 3-4 (chunk 2) fail on this exact message before
+    agent 5 (chunk 3) ever started. Before resuming, check the current time in the named timezone
+    (`TZ="America/New_York" date`) against the stated reset. If the reset has already passed,
+    resume immediately. If it hasn't, retrying now just fails again for free — tell the user the
+    reset time and stop; this is a **graceful pause**, not a dead run, because completed work is
+    already checkpointed to disk (see lever on Workflow disk discipline above).
+11. **Always resume a partially-failed run via its own `runId` — never a fresh, non-resumed
+    re-launch.** The Workflow tool's resume model caches the *longest unchanged prefix of agent()
+    calls that completed successfully*; a call that failed (or one after it, even if it never
+    started) is NOT part of that cached prefix and reruns live when you resume. Call `Workflow`
+    again with `resumeFromRunId` set to the ORIGINAL run's id (shown in every launch response,
+    separate from the per-call "Task ID" — a new Task ID each call is normal and does not mean a
+    fresh workflow), the same `scriptPath`, and byte-identical `args` (reordering or editing args
+    breaks the cache match). A fresh launch without `resumeFromRunId` would silently re-pay the
+    full token cost of the already-completed agents.
+    - **`agent_count` in the completion notification is NOT the right signal to verify a cache
+      hit with — it counts the full logical set of agent() calls in the script, including
+      free/instant cache replays, not just the live re-runs.** Confirmed 2026-07-06: resuming a
+      5-payer run where 2 had already succeeded still reported `agent_count: 5` on the resumed
+      call — indistinguishable at a glance from "all 5 re-ran." The reliable check is checkpoint
+      file **mtimes**: the 2 already-completed payers' files kept their original timestamps
+      (untouched), while the 3 that needed to re-run got fresh files stamped during the resumed
+      call. `ls` (or stat) the checkpoint directory's file times before concluding the cache
+      did or didn't hit — don't infer it from the summary counts alone.
 
 ## Going forward (required)
 
