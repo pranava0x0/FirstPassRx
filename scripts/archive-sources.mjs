@@ -18,7 +18,7 @@
 //
 // Usage:  node scripts/archive-sources.mjs [--timeout=30000]   (npm run archive-sources)
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs'
+import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
@@ -38,27 +38,36 @@ const now = () => new Date().toISOString()
 // Third-party pages routinely embed API keys for maps/analytics/chat widgets. These patterns
 // cover the credential shapes seen in practice; extend this list rather than relying on someone
 // remembering to grep before a commit (see the header comment above for the incident this fixes).
+//
+// Every replacement is LENGTH-PRESERVING (masked with `*`, never a fixed string like `[REDACTED]`)
+// so a match inside a binary format (PDF) can't shift byte offsets and corrupt xref tables/stream
+// lengths -- flagged independently by both the automated review and a human reviewer on the PR
+// that introduced this script; a fixed-length replacement was the exact bug they caught.
+const mask = (s) => '*'.repeat(s.length)
 const SECRET_PATTERNS = [
-  { name: 'Mapbox token', re: /\b(?:pk|sk)\.eyJ[A-Za-z0-9._-]{20,}/g, replacer: () => '[REDACTED]' },
-  { name: 'Google API key', re: /\bAIzaSy[A-Za-z0-9_-]{33}\b/g, replacer: () => '[REDACTED]' },
-  { name: 'AWS access key ID', re: /\bAKIA[0-9A-Z]{16}\b/g, replacer: () => '[REDACTED]' },
-  { name: 'Slack token', re: /\bxox[baprs]-[0-9A-Za-z-]{10,}\b/g, replacer: () => '[REDACTED]' },
+  { name: 'Mapbox token', re: /\b(?:pk|sk)\.eyJ[A-Za-z0-9._-]{20,}/g, replacer: (match) => mask(match) },
+  { name: 'Google API key', re: /\bAIzaSy[A-Za-z0-9_-]{33}\b/g, replacer: (match) => mask(match) },
+  { name: 'AWS access key ID', re: /\bAKIA[0-9A-Z]{16}\b/g, replacer: (match) => mask(match) },
+  { name: 'Slack token', re: /\bxox[baprs]-[0-9A-Za-z-]{10,}\b/g, replacer: (match) => mask(match) },
   {
     name: 'PEM private key',
     re: /-----BEGIN[ A-Z]*PRIVATE KEY-----[\s\S]*?-----END[ A-Z]*PRIVATE KEY-----/g,
-    replacer: () => '[REDACTED]',
+    replacer: (match) => mask(match),
   },
   {
-    // Keeps the key name (e.g. "apiKey") but redacts only the quoted value, so the surrounding
-    // markup/JS stays parseable-looking rather than replacing the whole assignment.
+    // Keeps the key name (e.g. "apiKey") and surrounding quotes/separators, masks only the value
+    // itself -- character-for-character, so the assignment still looks parseable and no byte
+    // length changes. Matches bare credential names (password/pass/pwd) as well as compound
+    // "prefix + key/secret/token" names, and tolerates a quoted key (JSON: "apiKey": "...").
     name: 'generic key/secret/token assignment',
-    re: /((?:api|client|secret|access)[_-]?(?:key|secret|token))(\s*[:=]\s*["'])([A-Za-z0-9_\-.]{16,})(["'])/gi,
-    replacer: (_match, keyName, sep, _value, quote) => `${keyName}${sep}[REDACTED]${quote}`,
+    re: /(["']?(?:api[_-]?key|client[_-]?secret|secret[_-]?key|access[_-]?token|password|pass|pwd)["']?)(\s*[:=]\s*["'])([A-Za-z0-9_\-.]{16,})(["'])/gi,
+    replacer: (_match, keyName, sep, value, quote) => `${keyName}${sep}${mask(value)}${quote}`,
   },
 ]
 
-/** Scans+redacts in a byte-exact way (latin1 round-trips 1:1) so binary formats like PDF aren't
- * corrupted. Returns the redacted buffer and a list of {name, count} for anything found. */
+/** Scans+redacts in a byte-exact way (latin1 round-trips 1:1, and every replacement preserves the
+ * original matched length) so binary formats like PDF aren't corrupted. Returns the redacted
+ * buffer and a list of {name, count} for anything found. */
 function redactSecrets(buf) {
   let text = buf.toString('binary')
   const found = []
@@ -92,6 +101,24 @@ try {
 
 if (!existsSync(SRC_DIR)) mkdirSync(SRC_DIR, { recursive: true })
 const manifest = existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf8')) : { entries: {} }
+
+// ---- prune manifest entries for ids no longer in the current target set ----
+// An id scheme change (e.g. stateSourceId() moving from a truncated-URL slice to a proper sha256
+// hash) or a reference simply dropping out of formulary.json/state-index.json leaves the OLD id's
+// manifest entry behind forever -- the loop below only ever adds/updates entries for ids in
+// `targets`, never removes ones that fell out of it. Confirmed in review (2026-07-08): 18 such
+// orphaned entries had `ok: true` with a `saved_path` pointing at a file that was never fetched
+// under the current scheme, so anything trusting `ok && saved_path` would try to read a file that
+// doesn't exist. Prune before archiving, not after, so a run that fails partway still leaves a
+// clean manifest rather than a stale one plus a partial one.
+let pruned = 0
+for (const id of Object.keys(manifest.entries)) {
+  if (!targets.has(id)) {
+    delete manifest.entries[id]
+    pruned++
+  }
+}
+if (pruned) console.log(`  (pruned ${pruned} manifest entr${pruned === 1 ? 'y' : 'ies'} no longer in the current target set)`)
 
 async function fetchBytes(url) {
   const ctrl = new AbortController()
@@ -195,3 +222,33 @@ console.log(
     (redactedCount ? ` · ${redactedCount} had secrets redacted` : '') +
     ` · manifest: sources/manifest.json`,
 )
+
+// ---- integrity check: every `ok` entry must have a tracked file with matching bytes/sha ----
+// Catches exactly the class of bug review caught (an `ok: true` entry whose file was never
+// committed, or a file that's drifted out from under a stale manifest entry) the moment it
+// happens, rather than letting it surface later in an unrelated offline-extraction/drift-check run.
+const integrityIssues = []
+for (const [id, e] of Object.entries(manifest.entries)) {
+  if (!e.ok) continue
+  const path = join(ROOT, e.saved_path)
+  if (!existsSync(path)) {
+    integrityIssues.push(`${id}: saved_path "${e.saved_path}" does not exist on disk`)
+    continue
+  }
+  const stat = statSync(path)
+  if (stat.size !== e.bytes) {
+    integrityIssues.push(`${id}: manifest says ${e.bytes} bytes, file is ${stat.size} bytes`)
+    continue
+  }
+  const actualSha = createHash('sha256').update(readFileSync(path)).digest('hex')
+  if (actualSha !== e.sha256) {
+    integrityIssues.push(`${id}: manifest sha256 ${e.sha256.slice(0, 12)}… doesn't match file's ${actualSha.slice(0, 12)}…`)
+  }
+}
+if (integrityIssues.length) {
+  console.error(`\n  ⚠ manifest integrity check found ${integrityIssues.length} issue(s):`)
+  for (const issue of integrityIssues) console.error(`    - ${issue}`)
+  process.exitCode = 1
+} else {
+  console.log(`  ✓ manifest integrity check: every "ok" entry has a matching file with matching bytes/sha256`)
+}

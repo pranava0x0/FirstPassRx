@@ -265,3 +265,9 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   install script) + canvg/html2canvas/dompurify, all unused by our code path (no `html()`/`svg()`
   calls). Omitting optionals shrinks the install-script and supply-chain surface at zero runtime
   cost. Flagged by the PR #5 SW review.
+- **(low) Consider Git LFS for `sources/` if it keeps growing.** Committing the archived source
+  documents (2026-07-07) put `sources/` at ~509MB and it grows every time a new state/topic gather
+  ships (each guide adds up to 8 payers' worth of PDFs). Every future clone downloads this full
+  history. Not urgent today, but worth moving to Git LFS (or an external bucket, keeping only
+  `sources/manifest.json` committed to the main repo) if the directory keeps scaling with new
+  states — flagged by the PR #11 data review.
