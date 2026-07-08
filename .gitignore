@@ -13,9 +13,9 @@ coverage/
 # Intermediate formulary-gathering checkpoints (see .claude/skills/formulary-data)
 data-gathering/
 
-# Archived source documents: binaries stay out of git; the provenance manifest is committed
-sources/*
-!sources/manifest.json
+# Archived source documents (scripts/archive-sources.mjs): committed for durability across
+# sessions/worktrees. Not under public/ and never imported by app code, so Vite's build never
+# picks these up -- safe to commit without shipping them to the deployed site.
 
 # Secrets (none expected in this static app, but never commit them)
 .env

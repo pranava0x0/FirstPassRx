@@ -1,0 +1,2354 @@
+<!DOCTYPE html>
+<html lang="en" id="page">
+<link rel="stylesheet" type="text/css" href="https://www.bluecrossma.org/aboutus/libraries/fontawesome/css/all.min.css" />
+
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<title>Medication Lookup</title>
+
+<script type="text/javascript">
+    // IE9 fix
+    if(!window.console) {
+        var console = {
+            log : function(){},
+            warn : function(){},
+            error : function(){},
+            time : function(){},
+            timeEnd : function(){}
+        }
+    }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<link id="com.ibm.lotus.NavStateUrl" rel="alternate" href="/ProviderHome/portal/home/pharmacy/formularies/medication-look-up/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziwxzNPJzcPIwM3M1cHA083Zz9XH2NAwwMDMz0w8EKDFCAo4FTkJGTsYGBu7-RfhTp-pFNIk4_HgVR-I0P149CtcLC183NwNPPyN0x1M3d2CDQEEOBvwXQCj-TMAMTP0dDg1BTqAJ8YUDIFQW5oaERBpme6Y6KigBpTNwI/dz/d5/L2dJQSEvUUt3QS80TmxFL1o2X1ZBNkhCRkgyMEc2REEwSUZDTkVNM1AwMDA2/" />
+<link rel="bookmark" title='Medication Lookup' href='/ProviderHome/portal/home/pharmacy/formularies/medication-look-up/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziwxzNPJzcPIwM3M1cHA083Zz9XH2NAwwMDMz0w8EKDFCAo4FTkJGTsYGBu7-RfhTp-pFNIk4_HgVR-I0P149CtcLC183NwNPPyN0x1M3d2CDQEEOBvwXQCj-TMAMTP0dDg1BTqAJ8YUDIFQW5oaERBpme6Y6KigBpTNwI/dz/d5/L2dJQSEvUUt3QS80TmxFL1o2X1ZBNkhCRkgyMEc2REEwSUZDTkVNM1AwMDA2/' hreflang="en"/>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+<link href="/ProviderHome/pp.theme.providercentral.dynamic.v2.war/themes/html/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="/ProviderHome/pp.theme.providercentral.dynamic.v2.war/themes/html/s/app.css"/>
+
+<!-- WCM Styling  -->
+<link rel="stylesheet" type="text/css" href="/ProviderHome/wcm/connect/provider%20portal%20technical%20assets/resources/wcm.css?subtype=css"/>
+<script src="/ProviderHome/wcm/connect/provider%20portal%20technical%20assets/resources/wcm.js?subtype=javascript"></script>
+<!--[if IE]>
+    <link href="/ProviderHome/pp.theme.providercentral.dynamic.v2.war/themes/html/s/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+ <![endif]--> 
+ </head>
+ <div class="themeContainer">
+		<header class="header"><!-- row -->
+			<div class="grid-container full">
+				<div class="grid-x utility-container">
+					<div class="medium-5 cell text-left context-switcher" >
+						<!-- controls the display of the page functional  -->
+						
+		<script src="//assets.adobedtm.com/launch-ENe7f27ca40dd941c8ba4dba97e1ed6499.min.js" async></script>
+	 
+	<script language="javascript">
+	window.wa=window.wa || {};
+    window.wa.loginStatus = "PP - Anonymous";
+    console.log("HEAD - Anonymous user set:",window.wa);
+	</script>
+
+			<div class="logo">
+				<a href="/ProviderHome/portal/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziwxzNPJzcPIwM3M1cHA083Zz9XH2NAwwMDMz0w8EKDFCAo4FTkJGTsYGBu7-RfhTp-pFNIk4_HgVR-I0P149CtcLC183NwNPPyN0x1M3d2CDQEEOBvwXQCj-TMAMTP0dDg1BTqAJ8YUDIFQW5oaERBpme6Y6KigBpTNwI/dz/d5/L2dJQSEvUUt3QS80TmxFL1o2XzA5TUUxMjgyTjhOM0IwUUdWOU5ENk4yMDAx/" alt="Provider Central">
+					<span class="icon-logo-bcbs-ma-footer"></span>
+					<h1>Provider Central</h1>
+				</a>
+			</div>
+		</div>
+					<div class="medium-7 cell text-right utility">
+						<!-- menu the display of the page functional  --><!-- FORMS functional  -->
+						  
+<link rel="stylesheet" href="https://www.bluecrossma.org/aboutus/libraries/fontawesome/css/all.min.css">
+
+
+		
+		<ul class="menu" data-header-type="both"><li>
+	
+		<a href="/ProviderHome/portal/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziwxzNPJzcPIwM3M1cHA083Zz9XH2NAwwMDMz0w8EKDFCAo4FTkJGTsYGBu7-RfhTp-pFNIk4_HgVR-I0P149CtcLC183NwNPPyN0x1M3d2CDQEEOBvwXQCj-TMAMTP0dDg1BTqAJ8YUDIFQW5oaERBpme6Y6KigBpTNwI/dz/d5/L2dJQSEvUUt3QS80TmxFL1o2XzA5TUUxMjgyTjhOM0IwUUdWOU5ENk4yMDAx/">Home</a>
+	
+</li>
+<li>
+	
+		<a href="/ProviderHome/portal/home/contact-us/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziwxzNPJzcPIwM3M1cHA083Zz9XH2NAwwMDMz0w8EKDFCAo4FTkJGTsYGBu7-RfhTp-pFNIk4_HgVR-I0P149CtcLC183NwNPPyN0x1M3d2CDQEEOBvwXQCj-TMAMTP0dDg1BTqAJ8YUDIFQW5oaERBpme6Y6KigBpTNwI/dz/d5/L2dJQSEvUUt3QS80TmxFL1o2X1ZBNkhCRkgyMDBTSTYwSU5NNDZUNzgzMEc1/">Contacts & Sites</a>
+		
+</li>
+<li id="prviderdirectoryid">	
+		<a id="provider-color" class="providerhover" href="/ProviderHome/portal/home/patient-resources/plans-and-products/find-a-doctor?nav=ineedto">Provider Directory</a>
+		<span id="providermenutext" style="font-size: 13px;"> Review your directory information every 90 days.</span>
+</li>
+
+
+									<li class="login"><a href="?uri=nm:oid:Z6_H2IC1K80OGA770Q8P4O9A83082" class="wpthemeLeft "><span lang="en" dir="ltr">Login</a></li>	
+								<li class="tooltipmenu">
+									<span class="tooltipmenutext pad10" style="font-size: 14px;">  Log in for full access to: Time-sensitive news, fee schedules,<br/>eTools for administrative transactions, and more.</span>									
+									<i class="far fa-info-circle" style="color: #838383;font-size: 13px;"></i>
+								</li>
+							
+									<li class="login"><a href="?uri=nm:oid:Z6_H2IC1K80OGA770Q8P4O9A83083" class="wpthemeLeft "><span lang="en" dir="ltr">Register</a></li>
+	</ul>
+	<!-- search.jsp  of the page functional -->
+	<div class="wpthemeSearch" role="search" aria-label="Click to perform a search.">
+		<form id="mainSearch" name="searchQueryForm" method="post" action="?urile=wcm:path%3A%2FProvider%2BPortal%2BContent%2BLibrary%2FSite%2BUtilities%2FSearch" onsubmit="submitSearch('mainSearch')">
+			<label for="wpthemeSearchBoxInput" class="wpthemeDisplayNone hide">Search</label>
+			<input placeholder="Search Provider Central" class="wpthemeSearchText" type="text" id="wpthemeSearchBoxInput" name="search_query">
+			<a class="wpthemeSearchButton fi-magnifying-glass" onclick="$('#mainSearch').submit()" title="Click to perform a search."></a>
+		</form>
+	</div>
+<div id="myMenu">
+							  
+<link rel="stylesheet" href="https://www.bluecrossma.org/aboutus/libraries/fontawesome/css/all.min.css">
+
+
+		
+		<ul class="menu" data-header-type="both">
+	</ul>
+	</div>
+					</div>
+				</div>
+			</div>
+			<div class="grid-container full">
+				<div class="grid-x navigation-container">
+					<div class="medium-12 cell title-bar-right">
+						<div class="main-navigation">
+							<nav class="main-menu">
+								<a class="menu-close fi-x hide"></a>
+								
+<ul class="menu text-">
+			<li class=""><a href="/ProviderHome/portal/home/office-resources" class="wpthemeLeft"><span lang="en" dir="ltr">Office Resources</a><ul class="children"><li data-vis="Visible" class=" page_item_has_children"><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/office-resources/billing-and-reimbursement" class="wpthemeLeft"><span lang="en" dir="ltr">Billing &amp; Reimbursement</span></a>
+						<span class="menuloginbutn">						
+						<a href="?uri=nm:oid:Z6_H2IC1K80OGA770Q8P4O9A83082" class="menuloginhyperlink-button"> 
+						<span lang="en" dir="ltr" style="font-weight: 900 !important">Log in for more <i class="menuloginbutnarrow"></i></span></a>
+						</span>
+						<ul class="children"><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/office-resources/billing-and-reimbursement/billing-guidelines-and-resources" class="wpthemeLeft"><span lang="en" dir="ltr">Billing Guidelines &amp; Resources</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/office-resources/billing-and-reimbursement/cdt_dental_proc_lookup" class="wpthemeLeft"><span lang="en" dir="ltr">CDT Dental Procedure Code Lookup</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/office-resources/billing-and-reimbursement/Claim%20Submission" class="wpthemeLeft"><span lang="en" dir="ltr">Claim Submission</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/office-resources/billing-and-reimbursement/coordination-of-benefits-new" class="wpthemeLeft"><span lang="en" dir="ltr">Coordination of Benefits</span></a></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style><
+					%></li><li data-vis="Visible" class=" page_item_has_children"><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/office-resources/enrollment" class="wpthemeLeft"><span lang="en" dir="ltr">Enrollment</span></a>
+						<span class="menuloginbutn">						
+						<a href="?uri=nm:oid:Z6_H2IC1K80OGA770Q8P4O9A83082" class="menuloginhyperlink-button"> 
+						<span lang="en" dir="ltr" style="font-weight: 900 !important">Log in for more <i class="menuloginbutnarrow"></i></span></a>
+						</span>
+						<ul class="children"><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/office-resources/enrollment/become-a-blue-cross-provider" class="wpthemeLeft"><span lang="en" dir="ltr">Become a Blue Cross Provider</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/office-resources/enrollment/contracting-applications" class="wpthemeLeft"><span lang="en" dir="ltr">Contracting Applications</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/office-resources/enrollment/credentialing-and-recredentialing" class="wpthemeLeft"><span lang="en" dir="ltr">Credentialing &amp; Recredentialing</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/office-resources/enrollment/privileging" class="wpthemeLeft"><span lang="en" dir="ltr">Privileging</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/office-resources/enrollment/maintaining-and-changing-status" class="wpthemeLeft"><span lang="en" dir="ltr">Maintaining &amp; Changing Status</span></a></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style><
+					%></li><li data-vis="Visible" class=" page_item_has_children"><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/office-resources/policies-and-guidelines" class="wpthemeLeft"><span lang="en" dir="ltr">Policies &amp; Guidelines</span></a>
+						<span class="menuloginbutn">						
+						<a href="?uri=nm:oid:Z6_H2IC1K80OGA770Q8P4O9A83082" class="menuloginhyperlink-button"> 
+						<span lang="en" dir="ltr" style="font-weight: 900 !important">Log in for more <i class="menuloginbutnarrow"></i></span></a>
+						</span>
+						<ul class="children"><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/office-resources/policies-and-guidelines/referrals" class="wpthemeLeft"><span lang="en" dir="ltr">Referrals</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/office-resources/policies-and-guidelines/reviews-appeals" class="wpthemeLeft"><span lang="en" dir="ltr">Reviews &amp; Appeals</span></a></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style><
+					%></li><li data-vis="Visible" class=" page_item_has_children"><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/office-resources/tne" class="wpthemeLeft"><span lang="en" dir="ltr">Training &amp; Events</span></a>
+						<span class="menuloginbutn">						
+						<a href="?uri=nm:oid:Z6_H2IC1K80OGA770Q8P4O9A83082" class="menuloginhyperlink-button"> 
+						<span lang="en" dir="ltr" style="font-weight: 900 !important">Log in for more <i class="menuloginbutnarrow"></i></span></a>
+						</span>
+						<ul class="children"><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/office-resources/tne/training-and-events" class="wpthemeLeft"><span lang="en" dir="ltr">Training &amp; Events</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/office-resources/tne/faqs" class="wpthemeLeft"><span lang="en" dir="ltr">FAQs</span></a></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style><
+					%></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style></li>
+			<li class=""><a href="/ProviderHome/portal/home/clinical-resources" class="wpthemeLeft"><span lang="en" dir="ltr">Clinical Resources</a><ul class="children"><li data-vis="Visible" class=" page_item_has_children"><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/clinical-resources/clinical-criteria-and-guidelines" class="wpthemeLeft"><span lang="en" dir="ltr">Clinical Criteria &amp; Guidelines</span></a>
+						<span class="menuloginbutn">						
+						<a href="?uri=nm:oid:Z6_H2IC1K80OGA770Q8P4O9A83082" class="menuloginhyperlink-button"> 
+						<span lang="en" dir="ltr" style="font-weight: 900 !important">Log in for more <i class="menuloginbutnarrow"></i></span></a>
+						</span>
+						<ul class="children"><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/clinical-resources/clinical-criteria-and-guidelines/clinical-criteria" class="wpthemeLeft"><span lang="en" dir="ltr">Clinical Criteria Overview</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/clinical-resources/clinical-criteria-and-guidelines/interqual-criteria-and-smartsheets" class="wpthemeLeft"><span lang="en" dir="ltr">InterQual Criteria</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/clinical-resources/clinical-criteria-and-guidelines/medical-policies" class="wpthemeLeft"><span lang="en" dir="ltr">Medical Policies</span></a></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style><
+					%></li><li data-vis="Visible" class=" page_item_has_children"><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/clinical-resources/prior-authorization" class="wpthemeLeft"><span lang="en" dir="ltr">Prior Authorization</span></a>
+						<span class="menuloginbutn">						
+						<a href="?uri=nm:oid:Z6_H2IC1K80OGA770Q8P4O9A83082" class="menuloginhyperlink-button"> 
+						<span lang="en" dir="ltr" style="font-weight: 900 !important">Log in for more <i class="menuloginbutnarrow"></i></span></a>
+						</span>
+						<ul class="children"><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/clinical-resources/prior-authorization/prior-auth-overview" class="wpthemeLeft"><span lang="en" dir="ltr">Prior Auth Overview</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/clinical-resources/prior-authorization/cancer-care" class="wpthemeLeft"><span lang="en" dir="ltr">Cancer Care</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/clinical-resources/prior-authorization/chiropractic-services" class="wpthemeLeft"><span lang="en" dir="ltr">Chiropractic Services</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/clinical-resources/prior-authorization/dental" class="wpthemeLeft"><span lang="en" dir="ltr">Dental</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/clinical-resources/prior-authorization/genetic-testing" class="wpthemeLeft"><span lang="en" dir="ltr">Genetic Testing</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/clinical-resources/prior-authorization/high-tech-radiology" class="wpthemeLeft"><span lang="en" dir="ltr">High-tech Radiology</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/clinical-resources/prior-authorization/outpatient-rehabilitation-therapy" class="wpthemeLeft"><span lang="en" dir="ltr">Outpatient Rehabilitation Therapy</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/clinical-resources/prior-authorization/sleep-management" class="wpthemeLeft"><span lang="en" dir="ltr">Sleep Management</span></a></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style><
+					%></li><li data-vis="Visible" class=" page_item_has_children"><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/clinical-resources/clinical-programs-and-information" class="wpthemeLeft"><span lang="en" dir="ltr">Clinical Programs &amp; Information </span></a>
+						<span class="menuloginbutn">						
+						<a href="?uri=nm:oid:Z6_H2IC1K80OGA770Q8P4O9A83082" class="menuloginhyperlink-button"> 
+						<span lang="en" dir="ltr" style="font-weight: 900 !important">Log in for more <i class="menuloginbutnarrow"></i></span></a>
+						</span>
+						<ul class="children"><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/clinical-resources/clinical-programs-and-information/health-management-programs" class="wpthemeLeft"><span lang="en" dir="ltr">Health Management Programs</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/clinical-resources/clinical-programs-and-information/mental-health" class="wpthemeLeft"><span lang="en" dir="ltr">Mental Health</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/clinical-resources/clinical-programs-and-information/oral-and-overall-health" class="wpthemeLeft"><span lang="en" dir="ltr">Oral &amp; Overall Health</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/clinical-resources/clinical-programs-and-information/treatment-resources" class="wpthemeLeft"><span lang="en" dir="ltr">Treatment Resources</span></a></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style><
+					%></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style></li>
+			<li class=""><a href="/ProviderHome/portal/home/News2" class="wpthemeLeft"><span lang="en" dir="ltr">News</a><ul class="children"><li data-vis="Hidden" class=" page_item_has_children">
+						<span class="menuloginbutn">						
+						<a href="?uri=nm:oid:Z6_H2IC1K80OGA770Q8P4O9A83082" class="menuloginhyperlink-button"> 
+						<span lang="en" dir="ltr" style="font-weight:900 !important">Log in for more <i class="menuloginbutnarrow"></i></span></a>
+						</span>
+						<ul class="children"><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/News2/news/currentnew" class="wpthemeLeft"><span lang="en" dir="ltr">Current News</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/News2/news/archive" class="wpthemeLeft"><span lang="en" dir="ltr">Archived News</span></a></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style></li>
+			<li class=""><a href="/ProviderHome/portal/home/patient-resources" class="wpthemeLeft"><span lang="en" dir="ltr">Patient Resources</a><ul class="children"><li data-vis="Visible" class=" page_item_has_children"><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/patient-resources/sites-of-care" class="wpthemeLeft"><span lang="en" dir="ltr">Sites of Care</span></a>
+						<span class="menuloginbutn">						
+						<a href="?uri=nm:oid:Z6_H2IC1K80OGA770Q8P4O9A83082" class="menuloginhyperlink-button"> 
+						<span lang="en" dir="ltr" style="font-weight: 900 !important">Log in for more <i class="menuloginbutnarrow"></i></span></a>
+						</span>
+						<ul class="children"><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/patient-resources/sites-of-care/telehealth" class="wpthemeLeft"><span lang="en" dir="ltr">Telehealth</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/patient-resources/sites-of-care/after-hours-support" class="wpthemeLeft"><span lang="en" dir="ltr">After Hours Support</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/patient-resources/sites-of-care/directing-members-lowercost-services" class="wpthemeLeft"><span lang="en" dir="ltr">Lower-cost Service Options</span></a></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style><
+					%></li><li data-vis="Visible" class=" page_item_has_children"><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/patient-resources/tools-and-resources" class="wpthemeLeft"><span lang="en" dir="ltr">Tools &amp; Resources</span></a>
+						<span class="menuloginbutn">						
+						<a href="?uri=nm:oid:Z6_H2IC1K80OGA770Q8P4O9A83082" class="menuloginhyperlink-button"> 
+						<span lang="en" dir="ltr" style="font-weight: 900 !important">Log in for more <i class="menuloginbutnarrow"></i></span></a>
+						</span>
+						<ul class="children"><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/patient-resources/tools-and-resources/practice-related-materials" class="wpthemeLeft"><span lang="en" dir="ltr">Practice-related Materials</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/patient-resources/tools-and-resources/preventive-and-chronic-care-reminders" class="wpthemeLeft"><span lang="en" dir="ltr">Preventive &amp; Chronic Care Reminders</span></a></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style><
+					%></li><li data-vis="Visible" class=" page_item_has_children"><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/patient-resources/plans-and-products" class="wpthemeLeft"><span lang="en" dir="ltr">Plans &amp; Products</span></a>
+						<span class="menuloginbutn">						
+						<a href="?uri=nm:oid:Z6_H2IC1K80OGA770Q8P4O9A83082" class="menuloginhyperlink-button"> 
+						<span lang="en" dir="ltr" style="font-weight: 900 !important">Log in for more <i class="menuloginbutnarrow"></i></span></a>
+						</span>
+						<ul class="children"><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/patient-resources/plans-and-products/product-overview" class="wpthemeLeft"><span lang="en" dir="ltr">Product Overview</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/patient-resources/plans-and-products/plan-design-features" class="wpthemeLeft"><span lang="en" dir="ltr">Plan Design Features</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/patient-resources/plans-and-products/bluecard-and-out-of-area-programs" class="wpthemeLeft"><span lang="en" dir="ltr">BlueCard &amp; Out-of-Area Programs</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/patient-resources/plans-and-products/find-a-doctor" class="wpthemeLeft"><span lang="en" dir="ltr">Find a Doctor &amp; Estimate Costs</span></a></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style><
+					%></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style></li>
+			<li class="active"><a href="/ProviderHome/portal/home/pharmacy" class="wpthemeLeft"><span lang="en" dir="ltr">Pharmacy</a><ul class="children"><li data-vis="Visible" class=" page_item_has_children"><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/pharmacy/formularies" class="wpthemeLeft"><span lang="en" dir="ltr">Formularies</span></a>
+						<span class="menuloginbutn">						
+						<a href="?uri=nm:oid:Z6_H2IC1K80OGA770Q8P4O9A83082" class="menuloginhyperlink-button"> 
+						<span lang="en" dir="ltr" style="font-weight: 900 !important">Log in for more <i class="menuloginbutnarrow"></i></span></a>
+						</span>
+						<ul class="children"><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/pharmacy/formularies/medication-look-up" class="wpthemeLeft"><span lang="en" dir="ltr">Medication Lookup</span></a></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style><
+					%></li><li data-vis="Visible" class=" page_item_has_children"><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/pharmacy/ordering-medications" class="wpthemeLeft"><span lang="en" dir="ltr">Ordering Medications</span></a>
+						<span class="menuloginbutn">						
+						<a href="?uri=nm:oid:Z6_H2IC1K80OGA770Q8P4O9A83082" class="menuloginhyperlink-button"> 
+						<span lang="en" dir="ltr" style="font-weight: 900 !important">Log in for more <i class="menuloginbutnarrow"></i></span></a>
+						</span>
+						<ul class="children"><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/pharmacy/ordering-medications/eprescribing" class="wpthemeLeft"><span lang="en" dir="ltr">ePrescribing</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/pharmacy/ordering-medications/generic-medications" class="wpthemeLeft"><span lang="en" dir="ltr">Generic Medications</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/pharmacy/ordering-medications/home-infusion-therapy" class="wpthemeLeft"><span lang="en" dir="ltr">Home Infusion Therapy</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/pharmacy/ordering-medications/mail-service-pharmacy" class="wpthemeLeft"><span lang="en" dir="ltr">Mail Service Pharmacy</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/pharmacy/ordering-medications/medications-you-administer" class="wpthemeLeft"><span lang="en" dir="ltr">Medications You Administer</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/pharmacy/ordering-medications/specialty-pharmacy" class="wpthemeLeft"><span lang="en" dir="ltr">Specialty Pharmacy</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/pharmacy/ordering-medications/vaccines" class="wpthemeLeft"><span lang="en" dir="ltr">Vaccines</span></a></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style><
+					%></li><li data-vis="Visible" class=" page_item_has_children"><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/pharmacy/requirements-and-policies" class="wpthemeLeft"><span lang="en" dir="ltr">Requirements &amp; Policies</span></a>
+						<span class="menuloginbutn">						
+						<a href="?uri=nm:oid:Z6_H2IC1K80OGA770Q8P4O9A83082" class="menuloginhyperlink-button"> 
+						<span lang="en" dir="ltr" style="font-weight: 900 !important">Log in for more <i class="menuloginbutnarrow"></i></span></a>
+						</span>
+						<ul class="children"><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/pharmacy/requirements-and-policies/non-covered-medications" class="wpthemeLeft"><span lang="en" dir="ltr">Non-covered Medications</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/pharmacy/requirements-and-policies/otc-benefit-exclusions" class="wpthemeLeft"><span lang="en" dir="ltr">OTC Benefit Exclusions</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/pharmacy/requirements-and-policies/prior-authorization" class="wpthemeLeft"><span lang="en" dir="ltr">Prior Authorization</span></a></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style><
+					%></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style></li>
+			<li class=""><a href="/ProviderHome/portal/home/quality-and-performance" class="wpthemeLeft"><span lang="en" dir="ltr">Quality &amp; Performance</a><ul class="children"><li data-vis="Visible" class=" page_item_has_children"><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/quality-and-performance/quality-indicators" class="wpthemeLeft"><span lang="en" dir="ltr">Quality Indicators</span></a>
+						<span class="menuloginbutn">						
+						<a href="?uri=nm:oid:Z6_H2IC1K80OGA770Q8P4O9A83082" class="menuloginhyperlink-button"> 
+						<span lang="en" dir="ltr" style="font-weight: 900 !important">Log in for more <i class="menuloginbutnarrow"></i></span></a>
+						</span>
+						<ul class="children"><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/quality-and-performance/quality-indicators/blue-distinction" class="wpthemeLeft"><span lang="en" dir="ltr">Blue Distinction</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/quality-and-performance/quality-indicators/cms-stars" class="wpthemeLeft"><span lang="en" dir="ltr">CMS Stars</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/quality-and-performance/quality-indicators/experience-outcomes" class="wpthemeLeft"><span lang="en" dir="ltr">Experience &amp; Outcomes Surveys</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/quality-and-performance/quality-indicators/hedis" class="wpthemeLeft"><span lang="en" dir="ltr">HEDIS</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/quality-and-performance/quality-indicators/risk-adjust" class="wpthemeLeft"><span lang="en" dir="ltr">Risk Adjustment Documentation &amp; Coding</span></a></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style><
+					%></li><li data-vis="Visible" class=" page_item_has_children"><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/quality-and-performance/performance-programs" class="wpthemeLeft"><span lang="en" dir="ltr">Performance Programs</span></a>
+						<span class="menuloginbutn">						
+						<a href="?uri=nm:oid:Z6_H2IC1K80OGA770Q8P4O9A83082" class="menuloginhyperlink-button"> 
+						<span lang="en" dir="ltr" style="font-weight: 900 !important">Log in for more <i class="menuloginbutnarrow"></i></span></a>
+						</span>
+						<ul class="children"><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/quality-and-performance/performance-programs/value-based-contracts" class="wpthemeLeft"><span lang="en" dir="ltr">Value-Based Contracts</span></a></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style><
+					%></li><li data-vis="Visible" class=" page_item_has_children"><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/quality-and-performance/HealthEquity" class="wpthemeLeft"><span lang="en" dir="ltr">Health Equity</span></a>
+						<span class="menuloginbutn">						
+						<a href="?uri=nm:oid:Z6_H2IC1K80OGA770Q8P4O9A83082" class="menuloginhyperlink-button"> 
+						<span lang="en" dir="ltr" style="font-weight: 900 !important">Log in for more <i class="menuloginbutnarrow"></i></span></a>
+						</span>
+						<ul class="children"><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/quality-and-performance/HealthEquity/HealthEquityOverview" class="wpthemeLeft"><span lang="en" dir="ltr">Health Equity Overview</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/quality-and-performance/HealthEquity/affirming-blue-partnerships" class="wpthemeLeft"><span lang="en" dir="ltr">Affirming Blue Partnerships</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/quality-and-performance/HealthEquity/cultural-competency" class="wpthemeLeft"><span lang="en" dir="ltr">Cultural Competency</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/quality-and-performance/HealthEquity/womens-health" class="wpthemeLeft"><span lang="en" dir="ltr">Women&#039;s Health</span></a></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style><
+					%></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style></li>
+			<li class=""><a href="/ProviderHome/portal/home/etools" class="wpthemeLeft"><span lang="en" dir="ltr">eTools</a><ul class="children"><li data-vis="Hidden" class=" page_item_has_children">
+						<span class="menuloginbutn">						
+						<a href="?uri=nm:oid:Z6_H2IC1K80OGA770Q8P4O9A83082" class="menuloginhyperlink-button"> 
+						<span lang="en" dir="ltr" style="font-weight:900 !important">Log in for more <i class="menuloginbutnarrow"></i></span></a>
+						</span>
+						<ul class="children"><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/etools/etools/appealsmanager" class="wpthemeLeft"><span lang="en" dir="ltr">Appeals Manager</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/etools/etools/mhk" class="wpthemeLeft"><span lang="en" dir="ltr">Authorization Manager</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/etools/etools/authorization-quick-lookup" class="wpthemeLeft"><span lang="en" dir="ltr">Authorization Quick Lookup</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/etools/etools/carelon" class="wpthemeLeft"><span lang="en" dir="ltr">Carelon</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/etools/etools/chiro-authorizations" class="wpthemeLeft"><span lang="en" dir="ltr">Chiro Authorizations</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/etools/etools/clear-claim-connection" class="wpthemeLeft"><span lang="en" dir="ltr">Clear Claim Connection</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/etools/etools/connect-center" class="wpthemeLeft"><span lang="en" dir="ltr">ConnectCenter</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/etools/etools/direct-connection" class="wpthemeLeft"><span lang="en" dir="ltr">Direct Connection</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/etools/etools/pay-span" class="wpthemeLeft"><span lang="en" dir="ltr">Payspan</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/etools/etools/pre-service-review-for-bluecard-members" class="wpthemeLeft"><span lang="en" dir="ltr">Pre-service review for BlueCard members</span></a></li><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/etools/etools/transact-rx" class="wpthemeLeft"><span lang="en" dir="ltr">TransactRx</span></a></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style></li>
+			<li class=""><a href="/ProviderHome/portal/home/forms" class="wpthemeLeft"><span lang="en" dir="ltr">Forms</a><ul class="children"><li data-vis="Hidden" class=" page_item_has_children">
+						<span class="menuloginbutn">						
+						<a href="?uri=nm:oid:Z6_H2IC1K80OGA770Q8P4O9A83082" class="menuloginhyperlink-button"> 
+						<span lang="en" dir="ltr" style="font-weight:900 !important">Log in for more <i class="menuloginbutnarrow"></i></span></a>
+						</span>
+						<ul class="children"><li data-vis="Visible" class=""><!-- Code updated for not retaining the portlet state --><a href="/ProviderHome/portal/home/forms/forms/forms-library" class="wpthemeLeft"><span lang="en" dir="ltr">Forms Library</span></a></li><li data-vis="Hidden" class=""></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style></li></ul>
+
+
+<style>
+
+.menuloginbutn{
+	color:#2574bb;
+	position: absolute;
+	z-index:999;
+	border-radius: 22px;
+	border: -15px solid #fff;
+	max-width: 154px;
+	right: 22px; 
+	bottom: 15px;
+	background: #fff;
+	font-weight: 600;
+	text-align: center;
+	width: 100%;
+}
+
+.menuloginhyperlink-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #2574bb !important;
+      text-decoration: none;
+      border: none;
+      transition: text-decoration 0.3s;
+    }
+
+
+    .menuloginhyperlink-button:hover {
+      border-bottom: 1px solid #2574bb !important;
+    }
+
+
+    .menuloginhyperlink-button:active {
+      text-decoration: none;
+    }
+
+.menuloginbutnarrow {
+  color:#2574bb;	
+  background-color: transparent;
+  border: 15px solid #2574bb;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-50deg);
+  -webkit-transform: rotate(-45deg);
+}
+</style></li></ul>
+</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>		
+		<div id="main" class="grid-container full">
+		  	<div class="grid-x collapse main-container">
+		  		<div class="block-breadcrumbs columns">
+					
+<div class="asa.page asa-hidden" id="asa.page">
+	<span class="asa.page.id">Z6_VA6HBFH20G6DA0IFCNEM3P0006</span>
+
+	
+
+</div>
+
+
+		<div class=" wpthemeLeft">
+			
+							<a href="/ProviderHome/portal/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziwxzNPJzcPIwM3M1cHA083Zz9XH2NAwwMDMz0w8EKDFCAo4FTkJGTsYGBu7-RfhTp-pFNIk4_HgVR-I0P149CtcLC183NwNPPyN0x1M3d2CDQEEOBvwXQCj-TMAMTP0dDg1BTqAJ8YUDIFQW5oaERBpme6Y6KigBpTNwI/dz/d5/L2dJQSEvUUt3QS80TmxFL1o2XzA5TUUxMjgyTjhOM0IwUUdWOU5ENk4yMDAx/" title="Home">Home</a>
+							<span class="wpthemeCrumbTrailSeparator">&gt;</span>
+						
+								<a href="?uri=nm:oid:Z6_VA6HBFH208O8A0IN4V04NA10U5" title="Pharmacy"><span lang="en" dir="ltr">Pharmacy</span></a>
+							
+							<span class="wpthemeCrumbTrailSeparator">&gt;</span>
+						
+								<span lang="en" dir="ltr">Formularies</span>
+							
+							<span class="wpthemeCrumbTrailSeparator">&gt;</span>
+						
+								<span class="wpthemeSelected" lang="en" dir="ltr">Medication Lookup</span>
+							
+		</div>
+	<!-- required - do not remove -->
+					<div style="display:none" id="portletState">{}</div></div>
+			</div>
+			<div id="layoutContainers" class="wpthemeLayoutContainers wpthemeLayoutContainersHidden" >
+				<!-- this layout has one main fluid container -->
+<div class='component-container pp_providerFullWidth id-Z7_VA6HBFH20G6DA0IFCNEM3P0003' name='ibmMainContainer' ><div class='component-control id-Z7_VA6HBFH2005V00IVOOPKJB10G0' ><span id="Z7_VA6HBFH2005V00IVOOPKJB10G0"></span><section class="ibmPortalControl wpthemeNoSkin a11yRegionTarget" role="region" >
+	<!-- marks the node the analytics tags for this portlet will be placed in -->
+	
+	<div class="asa.portlet asa-hidden" id="asa.portlet.Z7_VA6HBFH2005V00IVOOPKJB10G0">
+		<span class="asa.portlet.id">Z7_VA6HBFH2005V00IVOOPKJB10G0</span>
+
+		
+
+	</div>
+	
+<!-- asa.overlay marks the node that the AsaOverlayWidget will be placed in -->
+	<div style="position:relative; z-index: 1;">
+		<div class="analytics.overlay" ></div>
+	</div>
+    <!-- Hide the text of the title, but still provide the lm-dynamic-title container for accessing the dynamic title -->
+    <span class="wpthemeAccess">
+ 		<span class="lm-dynamic-title asa.portlet.title a11yRegionLabel">Medication Look-up</span>
+	</span>
+    <div class="wpthemeOverflowAuto"> <!-- lm:control dynamic spot injects markup of layout control -->
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+    
+
+
+
+
+
+    
+    
+        
+            
+            <div class="whiteBackgroundNoMinHeight">
+  <div class="pp_font_18_bold">Medication Lookup</div>
+
+<!-- Rich Text -->
+<div class="pp_font_12"><!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://www.bluecrossma.org/aboutus/libraries/fontawesome/css/all.min.css">
+
+<style>
+  .far {
+    font-size: 20px;
+    color: #1d75bc
+  }
+</style> <style>
+/* The Modal (background) */
+.mpc_pp_modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 99 !important; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.mpc_pp_modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    max-width: 550px;
+}
+
+/* The Close Button */
+.mpc_pp_close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.mpc_pp_close2::before {
+	content:"Close";
+}
+
+.mpc_pp_close:hover,
+.mpc_pp_close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.mpc_button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.mpc_closeB {
+	width: 50%;
+	height: 50%;
+	top:50%;
+	margin: 0 auto;
+	position: relative;
+}
+.mpc_button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #e96c24;
+}
+.mpc_myTrig {
+	cursor:pointer;
+}
+p.mpc_myTrig {
+	display:inline;
+}
+
+
+/*body {background-color: #CDDEF7;}*/
+.collapsible {
+  background-color: white;
+  font-weight:bold;
+  color: #003366;
+  font-family: verdana,geneva; 
+  font-size: 8pt;
+  cursor: pointer;
+  margin: 0 0 -5px 0;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+ /* font-size: 15px;*/
+}
+
+.active, .collapsible:hover {
+  /*background-color: #CDDEF7;*/
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: #003366;
+  font-weight: bold;
+  float: left;
+  margin-right: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.content {
+  padding: 0 0 0 20px;
+  font-family: verdana,geneva; 
+  font-size: 8pt;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+ /* background-color: #CDDEF7;*/
+
+}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+// JavaScript Document
+$(document).ready(function() {
+	
+$(".mpc_myTrig").each(function() {
+$(this).click(function() {
+	$(this).next("div.mpc_myModal.mpc_pp_modal").show();
+	
+	//$(this).next("div.experience").toggle();
+	//var aPop = this.nextElementSibling;
+	//$(aPop).show();
+});
+
+
+// When the user clicks on <span> (x), close the modal
+$(".mpc_pp_close").click(function() {
+	$(".mpc_myModal").hide();
+});
+// When the user clicks anywhere else on the modal, close the modal
+$(".mpc_pp_close2").click(function() {
+	$(".mpc_myModal").hide();
+});
+
+})
+
+
+
+})
+</script>
+
+ <script>
+window.onload = function() {
+	document.getElementsByClassName("a11yRegionTarget")[1].style.display="none";
+        document.getElementsByClassName("divBlock")[0].style.display="none"; 
+}
+</script>-->
+<p>Our formularies offer members coverage for a variety of medications. Use the links below to find out if a medication is covered on the member's formulary.</p>
+<h3>Formularies</h3>
+<table width="100%">
+<tbody>
+<tr>
+<th valign="top" style="width: 50%;"><strong>This formulary</strong></th>
+<th valign="top"><strong>Is used with these health plans</strong></th>
+</tr>
+<tr>
+<td valign="top">
+<ul>
+<li><a href="http://medicarerx.bluecrossma.com/2026/" title="Medicare Advantage formulary" target="_blank"  rel="noopener">Medicare Advantage formulary</a></li>
+</ul>
+</td>
+<td valign="top">
+<ul type="disc">
+<li>Medicare HMO Blue</li>
+<li>Medicare PPO Blue</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<ul>
+<li><a href="https://www.bluecrossma.org/medication/standard-control-formulary?provider=true" title="Standard Control with Advanced Control Specialty Formulary" target="_blank"  rel="noopener">Standard Control with Advanced Control Specialty Formulary</a></li>
+<li><a href="https://www.bluecrossma.org/medication/standard-control-formulary?provider=true" title="Standard Control with Advanced Control Specialty Formulary  Focused" >Standard Control with Advanced Control Specialty Formulary &mdash; Focused</a></li>
+</ul>
+(managed by&nbsp;CVS Caremark)</td>
+<td valign="top">
+<ul type="disc">
+<li>Commercial HMO</li>
+<li>Commercial PPO plans</li>
+</ul>
+<p style="margin-top: 12px;">(Offered to certain self-insured employers. Members with &ldquo;Focused&rdquo; in the name of their formulary only have coverage for GLP-1s that are used to treat type 2 diabetes.)</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<ul>
+<li><a href="https://www.bluecrossma.org/medication/?provider=true" title="Blue Cross Blue Shield of Massachusetts Formulary" target="_blank"  rel="noopener">Blue Cross Blue Shield of Massachusetts Formulary</a></li>
+<li><a href="https://www.bluecrossma.org/medication/?provider=true" title="Blue Cross Blue Shield of Massachusetts Formulary focused" >Blue Cross Blue Shield of Massachusetts Formulary &mdash; Focused</a></li>
+</ul>
+(Blue Cross manages)</td>
+<td valign="top">
+<ul type="disc">
+<li>Commercial members with a medical plan that includes pharmacy benefits</li>
+<li>Group Medex members with a three-tier pharmacy benefit</li>
+</ul>
+<p style="margin-top: 12px;">Note: Members with &ldquo;Focused&rdquo; in the name of their formulary only have coverage for GLP-1s that are used to treat type 2 diabetes.</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<ul>
+<li><a href="https://www.caremark.com/portal/asset/z6500_drug_list807_OE.pdf" title="FEP Blue Basic formulary" target="_blank"  rel="noopener">FEP Blue Basic&trade; formulary</a></li>
+<li><a href="https://www.caremark.com/portal/asset/FEP_Blue_Focus_Formulary_2.pdf" title="FEP Blue Focus formulary" target="_blank"  rel="noopener">FEP Blue Focus<sup>&reg;</sup> formulary</a></li>
+<li><a href="https://www.caremark.com/portal/asset/z6500_drug_list_OE.pdf" title="FEP Blue Standard formulary" target="_blank"  rel="noopener">FEP Blue Standard formulary</a></li>
+</ul>
+</td>
+<td valign="top">
+<ul type="disc">
+<li>Federal Employee Program</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<ul>
+<li><a href="https://www.caremark.com/content/dam/enterprise/headless/caremark/cmk/en/assets/clinical/drug-lists-client/drug-lists-fep/BO_MPDP_Formulary_OE.pdf" title="FEP Blue Basic Medicare Prescription Drug Program" >FEP Blue Basic Medicare Prescription Drug Program</a></li>
+<li><a href="https://www.caremark.com/content/dam/enterprise/headless/caremark/cmk/en/assets/clinical/drug-lists-client/drug-lists-fep/FBF_MPDP_Formulary_OE.pdf" title="FEP Blue Focus Medicare Prescription Drug Program" >FEP Blue Focus Medicare Prescription Drug Program</a> (for Postal Service Health Benefits only)</li>
+<li><a href="https://www.caremark.com/content/dam/enterprise/headless/caremark/cmk/en/assets/clinical/drug-lists-client/drug-lists-fep/SO_MPDP_Formulary_OE.pdf" title="FEP Blue Standard Medicare Prescription Drug Program" >FEP Blue Standard Medicare Prescription Drug Program</a></li>
+</ul>
+</td>
+<td valign="top">
+<ul type="disc">
+<li>Federal Employee Program members with Medicare</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table></div>
+
+
+<div class="clearFloats"></div>
+<!-- Last Review Date and Time -->
+
+
+</div>
+
+        
+        
+    
+
+    
+        
+
+
+
+
+
+        
+
+
+
+
+
+
+
+    
+</div>
+</section> </div></div>
+</div>
+		</div>
+		<footer id="footer" class="clear-both">
+			
+
+<div class="footer grid-container">
+	<div class="grid-x grid-margin-x">
+		<div class="medium-2 cell">
+			
+			    <div class="footer-logo">
+			        <a href="/ProviderHome/portal/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziwxzNPJzcPIwM3M1cHA083Zz9XH2NAwwMDMz0w8EKDFCAo4FTkJGTsYGBu7-RfhTp-pFNIk4_HgVR-I0P149CtcLC183NwNPPyN0x1M3d2CDQEEOBvwXQCj-TMAMTP0dDg1BTqAJ8YUDIFQW5oaERBpme6Y6KigBpTNwI/dz/d5/L2dJQSEvUUt3QS80TmxFL1o2XzA5TUUxMjgyTjhOM0IwUUdWOU5ENk4yMDAx/" alt="Provider Central">
+			            <img src="/ProviderHome/pp.theme.providercentral.dynamic.v2.war/themes/html/img/logo-bcbs-ma.svg"/>
+			        </a>
+			    </div>
+			
+		</div>
+		<div class="medium-10 cell">
+			<div class="grid-x">
+				<div class = "cell">		
+					<style>
+   /* Modal Styles */
+  #modal {
+   width: 600px;
+   z-index: 11;
+  }
+
+  #modal .content {
+    border-radius: .375rem;
+    box-shadow: #0a0a0a 1px 1px 10px;
+    min-height: 8.625rem;
+    z-index: 20;
+    position: relative;
+    padding-top: 5px;
+  }
+  
+  #modal .body{
+    background: #fefefe !important;
+    padding: 1.5625rem 1.625rem 1.25rem 1.625rem;
+    min-height: 7.5rem;
+    border-radius: 0 0 .375rem .375rem;
+    text-align: left;
+  }
+	
+  #modal .content p {
+    color: #383838;
+    font-family: Roboto, sans-serif, "Helvetica Neue", Helvetica, Arial;
+    font-weight: normal;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    outline: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+ }
+ 
+ #modal .header.no-shade {
+    background: #fefefe;
+    border-bottom-color: #fefefe;
+ }
+
+ #modal .header {
+    padding: .75rem 1.625rem .125rem 1.625rem;
+    border-bottom: 1px solid #ccc;
+    border-radius: .375rem .375rem 0 0;
+    background: #eee;
+    padding: 0px;
+ }
+
+ #modal .etoolsWCM .logo-container {
+    border-bottom-width: 2px;
+    margin-bottom: 1rem;
+    margin-top: 0px;
+ }
+
+  #modal .button.primary {
+    background-color: #1779ba;
+    color: #fefefe;
+ }
+
+  #modal .button.primary:hover {
+    background-color: #126195;
+    color: #fefefe;
+  }
+ 
+  #modal .button.hollow.primary {
+    border: 1px solid #1779ba;
+    color: #1779ba;
+    background-color: transparent;
+  }
+
+  #modal .button.hollow.primary:hover {
+    border: 1px solid #1779ba;
+    color: #1779ba;
+  }
+		
+  #modal .button {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0 1rem 0;
+    font-family: inherit;
+    -webkit-appearance: none;
+    transition: background-color 0.25s ease-out, color 0.25s ease-out;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+  }	 	
+
+  .xOut:hover {
+    cursor:pointer;
+    color:#676464;
+  }
+</style>
+
+<!-- Modal Popup -->
+<div tabindex="-1" role="dialog" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable ui-resizable" 
+style="display: none;  z-index:1000">
+
+	
+<div id="modal" class="text-left ui-dialog-content ui-widget-content">
+	<div class="content">
+	
+		<div class="header no-shade ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle">
+		
+		<span id="ui-id-1" class="ui-dialog-title">&nbsp;</span>
+		<button type="button" class="xOut ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close fi-x" title="">
+			<span class="ui-button-icon ui-icon ui-icon-closethick"></span>
+			<span class="ui-button-icon-space"> </span>
+		</button>
+							
+		</div>
+		<div class="body etoolsWCM">
+			<div class="logo logo-container">
+				<a alt="Provider Central">
+				<span class="icon-logo-bcbs-ma-footer"></span>
+				<h1>Provider <span>Central</span></h1>
+				</a>
+			</div>
+	   <div>
+		<p>Just so you know....<br /> 
+		You are about to leave Provider Central. By clicking the continue button you will connect to the other website. If you wish to return to Provider Central, simply close this window.</p>
+		
+		<p>Your use of the selected site is subject to the Terms of Use and Privacy Policies of the publisher of that site. Blue Cross Blue Shield of Massachusetts’ Terms of Use and its Privacy Policy do not apply at the selected site. Use of any such site, including the information, services, products, materials, and any other resources contained on it, is conducted solely at your own risk.</p>
+		
+		<div class="grid-x">
+			<div class="medium-6 cell">
+				<button id="cancel-leave" class="button primary hollow">Cancel</button>
+			</div>
+			<div class="medium-6 cell text-right">
+				<button id="confirm-leave" class="button primary">Continue</button>
+			</div>
+		</div>  
+		</div> 
+	  </div>
+	</div>
+	</div>
+</div>
+
+<!-- Links on the page -->
+
+<!-- JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get the query parameter from the URL
+
+    // Handle confirmation to leave the site
+    document.getElementById('confirm-leave').addEventListener('click', function() {
+      // Close modal popup
+      //document.getElementById('modal').style.display = 'none';
+	  document.getElementById('modal').parentElement.closest('div').style.display = 'none';
+	  
+      // Proceed to the external link if a link was clicked
+      if (currentLink) {
+        // Update the href to open in a new window
+        currentLink.setAttribute('target', '_blank');
+        // Proceed to the external link
+        window.open(currentLink.href, '_blank');
+      }
+    });
+
+    // Handle cancellation
+    document.getElementById('cancel-leave').addEventListener('click', function() {
+      // Close modal popup
+      // document.getElementById('modal').style.display = 'none';
+	  document.getElementById('modal').parentElement.closest('div').style.display = 'none';
+    });
+
+    // Handle modal close button
+    document.querySelector('.xOut').addEventListener('click', function() {
+      // Close modal popup
+      // document.getElementById('modal').style.display = 'none';
+	  document.getElementById('modal').parentElement.closest('div').style.display = 'none';
+    });
+
+    // Get all links on the page
+    const links = document.querySelectorAll('a');
+    let currentLink = null; // Variable to remember the current link
+
+    // Iterate through each link
+    links.forEach(link => {
+		//console.log("link>>>",link);
+	
+		if(link){
+			// Add click event listener to the link
+			link.addEventListener('click', function(event) {
+			  console.log('Link was clicked>>>');
+			  const fullURL = this.href;
+			  
+			  //console.log("fullURL>>>"+fullURL);
+			  const scriptLink = fullURL.includes('javascript:');
+			  console.log('scriptLink ...'+scriptLink );
+			  
+              const mailtoLink = fullURL.includes('mailto:');
+			  console.log('mailtoLink ...'+mailtoLink );
+
+			  const ssoLink = this.closest('.modal');  
+ 
+			  var excludeLink = false;			
+			  if (ssoLink || scriptLink || mailtoLink) {
+				console.log("ssoLink id:", ssoLink .id);
+				if(ssoLink.id){
+				   excludeLink = true;
+				}
+			  }
+			  
+			console.log('excludeLink ...'+excludeLink); 
+			if(fullURL && !excludeLink ){
+				const domainName = getHostnameFromUrl(fullURL);
+				console.log("domainName::"+domainName);
+				
+				if(isExternalLink(domainName)){
+				  console.log("External Link >>");
+					
+				  // Prevent default link behavior
+				  event.preventDefault();
+				  // Display modal popup
+				  
+				  const parentDiv = document.getElementById('modal').parentElement.closest('div');
+				  
+				  parentDiv.style.display= 'flex';
+				  parentDiv.style.position= 'fixed'; 
+				  parentDiv.style.width= '100%';
+				  parentDiv.style.height= '100%';
+				  parentDiv.style.justifyContent= 'center';
+				  parentDiv.style.alignItems= 'center';	
+				  parentDiv.style.top= '0px';	
+				  parentDiv.style.left= '0px';					  
+	               
+                                  currentLink = link;
+				  }
+			  }
+
+			});
+		}
+    
+    });
+  });
+  
+function getHostnameFromUrl(urlString) {
+  try {
+    const urlObject = new URL(urlString);
+    return urlObject.hostname;
+  } catch (error) {
+    console.error("Invalid URL:", error);
+    return null; // Handle cases where the input string isn't a valid URL  }
+  }
+}
+
+
+function isExternalLink(domainName) {
+   if (!(domainName.includes("bwcmp01vr")
+        || domainName.includes("bppap01vr")
+        || domainName.includes("bppap02vr")
+        || domainName.includes("bluecrossma")
+        || domainName.includes("players")
+        || domainName.includes("survey")
+	|| domainName.includes("fepblue")
+	|| domainName.includes("blue365deals")
+	|| domainName.includes("bluebenefitma"))) {
+	console.log("domainName contains the string!");
+	return true;
+    }
+    return false;
+}
+</script>
+
+
+<p class="footnote">Blue Cross Blue Shield of Massachusetts is an Independent Licensee of the Blue Cross and Blue Shield Association. Blue Cross and Blue Shield of Massachusetts HMO Blue, Inc., and/or Massachusetts Benefit Administrators LLC, based on Product participation. ® Registered Marks of the Blue Cross and Blue Shield Association. ®´ Registered Marks of Blue Cross and Blue Shield of Massachusetts, Inc., and Blue Cross and Blue Shield of Massachusetts HMO Blue, Inc. ®´´ Registered Marks, TM Trademarks. and SM Service Marks are the property of their respective owners. © <span id="lblYear"></span> Blue Cross and Blue Shield of Massachusetts, Inc., and Blue Cross and Blue Shield of Massachusetts HMO Blue, Inc.</p>
+<p class="footnote">101 Huntington Avenue, Suite 1300, Boston, MA 02199-7611</p>
+
+<script>
+  var currentYear = new Date().getFullYear();
+  document.getElementById("lblYear").innerHTML = currentYear;
+</script>
+				</div>
+			</div>
+			<div class="float-left footer-links">
+				
+					<a href="/ProviderHome/portal/hidden/bcbsma/terms-of-use/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziwxzNPJzcPIwM3M1cHA083Zz9XH2NAwwMDMz0w8EKDFCAo4FTkJGTsYGBu7-RfhTp-pFNIk4_HgVR-I0P149CtcLC183NwNPPyN0x1M3d2CDQEEOBvwXQCj-TMAMTP0dDg1BTqAJ8YUDIFQW5oaERBpme6Y6KigBpTNwI/dz/d5/L2dJQSEvUUt3QS80TmxFL1o2X1ZBNkhCRkgyME9EMUUwSVY2Qk05MVEwR1Ix/">Terms of Use, Privacy &amp; Security</a>&nbsp;|&nbsp;
+				
+					<a href="/ProviderHome/portal/hidden/bcbsma/supported-browsers/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziwxzNPJzcPIwM3M1cHA083Zz9XH2NAwwMDMz0w8EKDFCAo4FTkJGTsYGBu7-RfhTp-pFNIk4_HgVR-I0P149CtcLC183NwNPPyN0x1M3d2CDQEEOBvwXQCj-TMAMTP0dDg1BTqAJ8YUDIFQW5oaERBpme6Y6KigBpTNwI/dz/d5/L2dJQSEvUUt3QS80TmxFL1o2X1ZBNkhCRkgyMDBTSTYwSU5NNDZUNzgzMDQ1/">Supported browsers</a>&nbsp;|&nbsp;
+				
+				<a target="_blank" href="http://www.bluecrossma.com/redirect/about-us/accessibility.html">Accessibility</a>	
+				
+						&nbsp;|&nbsp;<a href="/ProviderHome/portal/hidden/bcbsma/site-map/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziwxzNPJzcPIwM3M1cHA083Zz9XH2NAwwMDMz0w8EKDFCAo4FTkJGTsYGBu7-RfhTp-pFNIk4_HgVR-I0P149CtcLC183NwNPPyN0x1M3d2CDQEEOBvwXQCj-TMAMTP0dDg1BTqAJ8YUDIFQW5oaERBpme6Y6KigBpTNwI/dz/d5/L2dJQSEvUUt3QS80TmxFL1o2X1ZBNkhCRkgyMDhMSTYwSU42TE9JRU8xMDAx/">Sitemap</a>
+				
+			</div>
+			<!-- footer-links start -->
+			<div class="float-right social-icons">
+				<ul>
+					
+					<li class="we-mega-menu-li" description="Join us on Facebook">
+					<a href="https://www.facebook.com/BCBSMA" target="_blank" title="Follow us on Facebook"> 
+					<i class="fab fa-facebook-f"></i>
+					</a>
+					</li>
+					<li class="we-mega-menu-li" description="Follow us on Instagram">
+					<a href="https://www.instagram.com/bluecrossma/" target="_blank" title="Follow us on Instagram"> 
+					<i class="fab fa-instagram"></i>
+					</a>
+					</li>
+					<!--li class="we-mega-menu-li" description="Follow us on X">
+					<a href="https://twitter.com/BCBSMA" target="_blank" title="Follow us on X"> 
+					<i class="fab fa-x-twitter"></i>
+					</a>
+					</li-->
+					<li class="we-mega-menu-li" description="Join us on LinkedIn">
+					<a href="https://www.linkedin.com/company/blue-cross-blue-shield-of-massachusetts/" target="_blank" title="Follow us on LinkedIn">
+					<i class="fab fa-linkedin-in"></i>
+					</a>
+					</li>
+					<!--li class="we-mega-menu-li" description="Watch our YouTube channel">
+					<a href="https://www.youtube.com/channel/UCxtKEeJPREsFwTrJ87VFfTQ/featured" target="_blank" title="Watch our YouTube channel"> 
+					<i class="fab fa-youtube"></i>
+					</a>
+					</li-->
+				</ul>
+			</div>
+			<!-- social-icons end -->
+			<div class="clearfix">
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="/ProviderHome/pp.theme.providercentral.dynamic.v2.war/themes/html/assets/js/app.js?cachetimestamp=20191202"></script> 
+<script type="text/javascript" src="/ProviderHome/pp.theme.providercentral.dynamic.v2.war/themes/html/assets/js/home.js"></script>
+<script type="text/javascript" src="/ProviderHome/pp.theme.providercentral.dynamic.v2.war/themes/html/assets/js/loader.js"></script>
+<script type="text/javascript" src="/ProviderHome/pp.theme.providercentral.dynamic.v2.war/themes/html/assets/js/dialog.js"></script>
+<script type="text/javascript" src="/ProviderHome/pp.theme.providercentral.dynamic.v2.war/themes/html/assets/js/grid.js?cachetimestamp=201806111420"></script>
+<script type="text/javascript" src="/ProviderHome/pp.theme.providercentral.dynamic.v2.war/themes/html/assets/js/forms.js"></script>
+<script type="text/javascript" src="/ProviderHome/pp.theme.providercentral.dynamic.v2.war/themes/html/assets/js/tabs.js"></script>
+<script type="text/javascript" src="/ProviderHome/pp.theme.providercentral.dynamic.v2.war/themes/html/assets/js/accordion.js"></script>
+<script type="text/javascript" src="/ProviderHome/pp.theme.providercentral.dynamic.v2.war/themes/html/assets/js/cookie.js"></script>
+<!-- <script type="text/javascript" src="/ProviderHome/pp.theme.providercentral.dynamic.v2.war/themes/html/assets/js/motion-ui.js"></script> -->
+<!-- <link href="/ProviderHome/pp.theme.providercentral.dynamic.v2.war/themes/html/s/motion-ui.css" rel="stylesheet" type="text/css"/> -->
+<link href="/ProviderHome/pp.theme.providercentral.dynamic.v2.war/themes/html/s/print.css" media="print" rel="stylesheet" type="text/css" />
+
+<!-- my organizations state issue added below code -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const links = document.querySelectorAll("#myMenu a");
+    links.forEach(function (link) {
+        const text = link.textContent.trim();
+        if (text === "My Organizations") {
+                link.href = "/ProviderHome/myportal/home/home/my-organizations?uri=nm:oid:Z6_H2IC1K80OGA770Q8P4O9A830G1";
+        }
+    });
+});
+</script></footer>
+	</div>
+	<div id="page-loader" class="loader full-page"></div>
+</body>
+</html>
