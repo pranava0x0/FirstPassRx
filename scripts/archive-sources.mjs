@@ -3,9 +3,10 @@
 // formulary was scraped — and have a frozen copy to extract from even after the live site changes.
 //
 // For each reference in src/data/formulary.json (+ src/data/state-index.json) it fetches the URL,
-// saves the body to sources/<id>.<ext> (gitignored — binaries don't belong in git), and records a
-// provenance entry in sources/manifest.json (committed): url, final URL, HTTP status, content-type,
-// byte size, sha256, fetch method, first-archived and last-verified timestamps. Signature-keyed: a
+// saves the body to sources/<id>.<ext> (committed -- not under public/ and never imported by app
+// code, so Vite's build never ships these to the deployed site), and records a provenance entry
+// in sources/manifest.json (also committed): url, final URL, HTTP status, content-type, byte
+// size, sha256, fetch method, first-archived and last-verified timestamps. Signature-keyed: a
 // re-run only bumps last_verified when the bytes are unchanged, and flags a new sha256 as drift.
 //
 // Usage:  node scripts/archive-sources.mjs [--timeout=30000]   (npm run archive-sources)
