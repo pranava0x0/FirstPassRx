@@ -404,3 +404,16 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   cap itself, so it's safe to invoke directly without re-deriving the chunking logic. `npm run
   validate-coverage` reports the full national (state × topic) grid plus a payer-roster cross-check against
   `state-index.json` — run it before scoping any new gather batch instead of hand-counting gaps.
+- **Run `npm run archive-sources` after every gather-and-merge cycle, not just when convenient.**
+  `scripts/archive-sources.mjs` already exists (committed 2026-07-06) and does exactly what a future
+  session needs: fetches every cited reference URL with a browser UA, saves raw bytes to `sources/`
+  (gitignored — keeps binaries out of git), and commits a `sources/manifest.json` provenance entry
+  (url, sha256, http status, content-type, size, first_archived/last_verified) keyed for drift
+  detection. It was forgotten for 3 consecutive multi-topic merges (MD, VA, MA shipped 2026-07-07
+  with zero new archive entries) before a user reminder caught the gap — running it afterward
+  backfilled 52 → 196 entries in one pass. Make it the last step of every merge, right alongside
+  `npm run data:split` and the test suite, not an optional afterthought. The raw bytes only persist
+  for the current worktree's lifetime (same durability caveat as `data-gathering/<stamp>/`
+  checkpoints — see the entry above) but the committed manifest survives regardless, so even a
+  future session that lost the cached bytes knows exactly which URL/hash to re-fetch instead of
+  re-discovering the source from scratch.
