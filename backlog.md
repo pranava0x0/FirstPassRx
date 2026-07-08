@@ -57,6 +57,18 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   `verified`/`mixed` depth.** Expanding beyond these 5 states to the remaining ~46 is explicitly
   deferred — the saved workflow script is the reusable asset for that future work, not something
   to launch without the user re-confirming scope.
+- **New topic areas to cover, beyond the current 5 (inhalers, ACE inhibitors, diabetes, menopause
+  HT, NSAIDs) — user-requested 2026-07-07, not yet scoped.** SSRIs; biologics for autoimmune
+  conditions (e.g. rheumatoid arthritis, psoriasis, IBD); DOACs (direct oral anticoagulants);
+  atypical antipsychotics & ADHD medications; migraine therapeutics (triptans, CGRP
+  antagonists/mAbs). Each is a new therapeutic-area topic, same shape as the existing 5 — needs its
+  own class taxonomy (see `ma-inhalers`/`ny-ace`/`va-diabetes`/`md-menopause`/`ny-nsaids` as the
+  reference guides `formulary-gather.js` reuses class taxonomy from) before any gather can run.
+  Before launching a gather for any of these: confirm scope/priority order with the user (which
+  topic first, which states), and note biologics in particular already has a disabled `biologics`
+  tab scaffolded in the existing inhaler taxonomy (see the separate "Biologics & non-inhaler class"
+  item below) — worth checking whether that scaffold should extend to autoimmune biologics too, or
+  stay narrowly respiratory-only, before treating this as a clean fifth+ topic.
 - **Close the cash-price gap (user flagged directly, 2026-07-06): 219 of ~470 covered-drug names
   still have no GoodRx/Cost Plus rule.** `src/lib/cash.ts`'s `KNOWN_UNPRICED_GAP` tracks this
   precisely (was 232, now 219 after the ma-inhalers fix below). Per-guide breakdown as of

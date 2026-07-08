@@ -4,6 +4,48 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
 
 ## Fixed
 
+- **2026-07-07 · security (sources/ archive) · a live third-party API key reached a local commit
+  before push, caught by GitHub push protection — root cause analysis.**
+
+  **What happened:** After switching `scripts/archive-sources.mjs`'s output from gitignored to
+  committed (per user request, to make the archive durable across worktree cleanup), a bulk `git
+  add sources/ && git commit` staged 214 archived third-party pages verbatim. One of them
+  (`sources/il-hfs-pdl-process.html`, Illinois HFS's own PDL-process page) contained a live Mapbox
+  API key embedded in a `<map-details api-key="...">` widget. `git push` was rejected by GitHub's
+  secret-scanning push protection (`GH013`) before anything reached the remote — the secret never
+  became publicly visible.
+
+  **Root cause:** I ran a bulk-commit of raw, unmodified third-party HTML/PDF content without first
+  scanning file *contents* for embedded credentials — despite CLAUDE.md's own standing instruction
+  ("Before committing: `git diff --cached | grep -iE \"apikey|password|token|secret\"`") already
+  covering exactly this check. Two things let it slip past attention: (1) the mental model was
+  "these are formulary documents" (drug/coverage data), not "these are arbitrary third-party web
+  pages that can embed anything a map widget, translation script, or analytics tag needs" — the
+  content-type reasoning didn't generalize past what I was looking *for* (drug data) to what else
+  might be *in* the file; (2) 214 files were staged in one `git add sources/`, past the point where
+  a human would eyeball a diff before committing. The existing repo convention (grep before
+  commit) is a manual step that depends on someone remembering to run it on exactly this kind of
+  bulk, non-authored content — it did not fire.
+
+  **Verification after the fact:** searched full git history (`git rev-list --all` + `git grep`)
+  and confirmed the secret existed in exactly one local commit, which was never pushed (the reject
+  happened first). Redacted the file, amended that commit (safe — never left this machine), then
+  ran `git reflog expire --expire=now --all && git gc --prune=now` to purge the now-dangling
+  original commit/blob from the local object store entirely, so the secret doesn't linger even
+  unreachable-but-present in `.git/`.
+
+  **Structural fix (not just a note to remember next time):** built automatic secret detection
+  directly into `scripts/archive-sources.mjs` itself — every fetched byte is scanned against a
+  pattern list (Mapbox/Google/AWS/Slack tokens, PEM private keys, generic `key: "..."` assignments)
+  and redacted *before* the bytes ever touch disk, with the redaction recorded in the manifest
+  entry for auditability. Re-running the archiver with this in place immediately found **3 more**
+  previously-uncaught instances beyond the one that tripped GitHub's scanner: a Weglot
+  translation-widget key (same Illinois HFS page) and an Akamai Boomerang RUM analytics key shared
+  across 3 unrelated payer pages — confirming this is a systemic property of scraping third-party
+  web pages, not a one-off, and that a one-time manual grep would have kept missing instances a
+  broader, automated, and *permanent* scan catches by construction. See `scripts/archive-sources.mjs`
+  for the pattern list and redaction logic.
+
 - **2026-07-07 · test (App.test.tsx) · a guide-switch test hung for 15+ seconds instead of failing
   fast, tracing to a real (but user-unreachable) UI race.** Adding MD's first second guide
   (`md-inhalers`) meant a state click could itself trigger an intermediate guide load (MD already
