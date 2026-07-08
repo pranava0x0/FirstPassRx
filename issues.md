@@ -4,6 +4,30 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
 
 ## Fixed
 
+- **2026-07-08 · code (scripts/archive-sources.mjs) · two real bugs caught by PR review on the
+  redaction feature, both fixed same-day.** (1) **Fixed-length redaction could corrupt binary
+  files**: the original `redactSecrets()` replaced a matched secret with the literal string
+  `[REDACTED]`, a different byte length than what it removed — harmless for the HTML files seen so
+  far, but a real corruption risk the moment a match ever landed inside a PDF's byte-offset-
+  dependent structure (xref table, stream `/Length`). Root cause: **code bug** — didn't consider
+  that the redaction function is applied uniformly to every fetched buffer regardless of format,
+  not just the HTML files where the first incident happened. Fixed by masking every match
+  character-for-character (`'*'.repeat(match.length)`), so no replacement ever changes a file's
+  byte length. (2) **18 manifest entries claimed `ok: true` with a `saved_path` that was never
+  actually committed** — orphaned by an old id scheme (`stateSourceId()` used to slice/truncate the
+  URL string directly; it was rewritten at some point to a proper sha256-based hash, silently
+  orphaning every entry keyed under the old scheme, since the archiver only ever adds/updates
+  entries for ids in the *current* target set, never removes ones that fell out of it). Root
+  cause: **process gap** — the archiver had no step that reconciled `manifest.entries` against the
+  actual current target set, so a scheme change (or any reference dropping out of
+  `formulary.json`/`state-index.json`) accumulates permanent dead weight. Fixed by pruning any
+  manifest entry whose id isn't in the current target set before archiving, plus a new end-of-run
+  integrity check that verifies every `ok` entry has a matching file with matching bytes/sha256 and
+  fails loud (non-zero exit) if not — see the PR review + CLAUDE.md's FirstPassRx scar-tissue
+  section for the underlying reasoning.
+
+- **2026-07-07 · security (sources/ archive) · a live third-party API key reached a local commit
+
 - **2026-07-07 · security (sources/ archive) · a live third-party API key reached a local commit
   before push, caught by GitHub push protection — root cause analysis.**
 

@@ -434,3 +434,34 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   `d["guides"]`. This script lives in the session's scratchpad, not committed to the repo — a
   future session needs to recreate the same shape (or hand-merge) rather than expecting to find it
   on disk.
+- **A large government PDL PDF (100+ pages) is cheaper to mine by targeted keyword search + page
+  reads than by reading the whole document.** IL HFS's 150-page PDL was covered for all 14 needed
+  drug classes by searching for each class's section heading and reading only those pages (SABA/
+  ICS/ICS-LABA/LAMA on pages 9-13, ACE inhibitors on 44-45, diabetes classes on 23-28, HRT classes
+  split across 74/139/150) rather than reading page 1 through 150 in order. Applies to any
+  100+ page formulary/PDL source once you know the class names to search for.
+- **A PDF table-extraction artifact can fabricate a drug form that doesn't exist in reality — sanity-
+  check extracted entries against real drug knowledge, don't just transcribe the table.** The IL
+  Medicaid gather's GLP-1 extraction produced `"OZEMPIC TABS PREFERRED_WITH_PA"` — Ozempic
+  (semaglutide) has no FDA-approved tablet form; the real oral semaglutide product is Rybelsus, a
+  separate line in the same PDF. This is almost certainly a multi-row/multi-NDC table collapsing
+  during extraction, not a real formulary entry. The research agent caught it by flagging the
+  anomaly explicitly in its `verificationNote` rather than silently transcribing it as fact, and
+  used Rybelsus as the authoritative oral-semaglutide preferred pick instead — the right instinct
+  when a PDF extraction produces something that contradicts known drug facts (a molecule/dosage-
+  form pairing that doesn't exist) is to flag it and cross-check, not trust the raw extracted text.
+  A second, similar case the same gather caught: `SPIRIVA RESPIMAT 2.5 MCG/ACT` appeared twice in
+  one extracted table with conflicting Preferred/Non-Preferred status on the same line item, almost
+  certainly a pack-size/NDC collision in the source table — flagged in the record's
+  `verificationNote` rather than arbitrarily picking one status, so a human reviewer knows to
+  verify at the point of prescribing rather than trusting a silently-resolved guess.
+- **A payer's own PDL wording style — not the state — determines whether a "non-preferred" hit is a
+  genuine PA barrier (reword) or a real cost-tier-only item (reclassify to `alternatives`).** Every
+  Medicaid MCO's binary Preferred/Non-Preferred PDL seen across NY/MD/VA/MA/IL gathers is the
+  reword case (being "non-preferred" **is** the PA trigger under these payers' own process). The
+  IL gather was the first to also hit the inverse for real: `bcbs-illinois-commercial`, an actual
+  multi-tier **commercial** Marketplace plan (not Medicaid), had "Tier 3/4, non-preferred" items
+  with no PA/step criteria stated anywhere in the source — these are genuinely just costlier-but-
+  covered and belong in `alternatives`, not `paRequired`. Check the payer's *document structure*
+  (binary PDL vs. real tiered cost-sharing) each time, not an assumption carried over from the
+  last payer in the same batch.
