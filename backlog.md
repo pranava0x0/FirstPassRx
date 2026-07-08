@@ -33,29 +33,27 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   separate payer entries — they share the single NYRx carve-out PDL already listed.
 
   **Remaining for the 5 listed states** (run `npm run validate-coverage --verbose` for the live
-  picture): **NY, MD, and VA are now fully done** (all 5 topics each). NY: `ny-inhalers`/
+  picture): **NY, MD, VA, and MA are now fully done** (all 5 topics each). NY: `ny-inhalers`/
   `ny-menopause`/`ny-diabetes` shipped 2026-07-06 alongside the already-done `ny-ace`/`ny-nsaids`, 5
   payers each. MD: `md-inhalers`/`md-ace`/`md-diabetes`/`md-nsaids` shipped 2026-07-07 alongside the
   already-done `md-menopause`, 8 payers each. VA: `va-inhalers`/`va-menopause`/`va-nsaids` shipped
-  2026-07-07 alongside the already-done `va-ace`/`va-diabetes`, 8 payers each. Every cell across all
-  three states is `verified` or `mixed`. **Only MA and IL remain.** MA needs menopause HT, ACE
-  inhibitors, diabetes, NSAIDs (has inhalers only); IL needs inhalers, menopause HT, ACE
-  inhibitors, diabetes, plus expanding its existing NSAIDs guide beyond 1 payer — IL also needs a
-  payer-roster discovery pass first (unlike MA, which already has a known payer list in its
-  existing guide to reuse). Each new guide reuses the target state's existing payer roster + the
+  2026-07-07 alongside the already-done `va-ace`/`va-diabetes`, 8 payers each. MA: `ma-ace`/
+  `ma-diabetes`/`ma-menopause`/`ma-nsaids` shipped 2026-07-07 alongside the already-done
+  `ma-inhalers`, 5 payers each. Every cell across all four states is `verified` or `mixed`. **Only
+  IL remains.** IL needs inhalers, menopause HT, ACE inhibitors, diabetes, plus expanding its
+  existing NSAIDs guide beyond 1 payer — IL also needs a payer-roster discovery pass first (its
+  partial 3-payer roster below was researched via WebSearch but never confirmed complete or run
+  through an actual gather). Each new guide reuses the target state's existing payer roster + the
   topic's existing class taxonomy from its origin guide (see `formulary-gather.js`'s header comment
   for the args shape) — only the per-cell drug content needs fresh research. **Gather per state
   across every remaining topic in one pass, not one gather per topic** (`docs/agent-runs.md` lever
-  #7) — the NY, MD, and VA multi-topic runs all proved this cuts token cost roughly in half to a
-  third vs. building each topic's guide as a separate gather, since the per-payer fetch cost is
+  #7) — the NY, MD, VA, and MA multi-topic runs all proved this cuts token cost roughly in half to
+  a third vs. building each topic's guide as a separate gather, since the per-payer fetch cost is
   flat regardless of how many classes you pull from it. A guide still can't be committed with
   partial payer coverage (see `validate()`'s count floor), so merge only once a state's full
   remaining-class list comes back.
 
   **Picking this up in a new session — what's already researched, don't re-discover it:**
-  - **MA** (11 remaining classes: menopause-ht 5 + ace-inhibitor 1 + diabetes 4 + nsaid-oral 1):
-    reuse MA's known 5-payer roster from `ma-inhalers` (MassHealth, MGB, Tufts, Harvard Pilgrim,
-    BCBS MA).
   - **IL** (14 remaining classes: inhalers 5 + menopause-ht 5 + ace-inhibitor 1 + diabetes 4, plus
     expanding `il-nsaids` past its current 1 payer): a partial payer roster was already researched
     via WebSearch but never run through an actual gather — **IL Medicaid FFS** (existing, already

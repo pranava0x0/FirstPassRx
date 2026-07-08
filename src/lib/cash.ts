@@ -50,8 +50,16 @@
  * `va-menopause`, `va-nsaids`; 8 payers each, reusing VA's known roster). Only 3 new names this
  * time (not ~150 like MD) because VA reuses the same inhaler/menopause/NSAID drug-name universe
  * already priced or logged as a gap for MA/NY/MD -- the marginal new names are payer-specific
- * brand variants (e.g. DUAVEE moved to alternatives, a few uhc-community brand-tier duplicates). */
-export const KNOWN_UNPRICED_GAP = 684
+ * brand variants (e.g. DUAVEE moved to alternatives, a few uhc-community brand-tier duplicates).
+ * Raised 684 → 808 on 2026-07-07 (same day) when 4 brand-new MA guides shipped (`ma-ace`,
+ * `ma-diabetes`, `ma-menopause`, `ma-nsaids`; 5 payers each). Unlike the VA raise above, this is a
+ * large jump (+124) because it's MA's *first* diabetes and full menopause-HT coverage -- each of
+ * MassHealth/BCBSMA/Tufts/Harvard Pilgrim/MGB names its own long tail of insulin/GLP-1/SGLT2 and
+ * estrogen-product brand variants the existing ruleset has no entry for, the same "new drug-class
+ * long tail" pattern as the original NY/MD raises above, not a `validate()`-fix artifact this time
+ * (only ~16 items were reclassified `paRequired` -> `alternatives` here, most of the increase is
+ * genuinely new covered-drug names). */
+export const KNOWN_UNPRICED_GAP = 808
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
