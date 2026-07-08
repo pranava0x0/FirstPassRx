@@ -417,3 +417,20 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   checkpoints — see the entry above) but the committed manifest survives regardless, so even a
   future session that lost the cached bytes knows exactly which URL/hash to re-fetch instead of
   re-discovering the source from scratch.
+- **The multi-topic merge (checkpoint JSON → new/expanded guides in `formulary.json`) has a stable
+  shape across every state gathered so far (NY, MD, VA, MA, IL) — recreate it, don't reinvent it.**
+  A generic `merge_state(state_code, region, today, ckpt_dir, payer_order, payer_meta_by_id,
+  topics, glossary_source_guide)` Python function folds per-payer/per-class checkpoint JSON into
+  one-or-more new guide objects: `topics` is a dict of `guide_id -> {label, topicId, topic,
+  unitNoun, classIds, classes_source_guide, include_coming_soon}`, reusing an existing guide's
+  class taxonomy (`ma-inhalers` for inhaler classes, `ny-ace` for ace-inhibitor, `va-diabetes` for
+  diabetes classes, `md-menopause` for menopause-HT classes) rather than re-authoring class
+  metadata per state. Always emit a minimal 2-term glossary (PA, step therapy) rather than copying
+  a source guide's full glossary — sourceIds are guide-scoped, so a copied glossary breaks
+  `validate()`'s cross-guide resolution. *Expanding* an existing guide (adding new payers to
+  `il-nsaids` rather than creating a brand-new guide) needs one extra manual step beyond
+  `merge_state()`: append the new payers/records/references directly to the existing guide object
+  (reusing `build_record()`), since `merge_state()` only ever appends brand-new guides to
+  `d["guides"]`. This script lives in the session's scratchpad, not committed to the repo — a
+  future session needs to recreate the same shape (or hand-merge) rather than expecting to find it
+  on disk.

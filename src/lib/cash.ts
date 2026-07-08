@@ -58,8 +58,16 @@
  * estrogen-product brand variants the existing ruleset has no entry for, the same "new drug-class
  * long tail" pattern as the original NY/MD raises above, not a `validate()`-fix artifact this time
  * (only ~16 items were reclassified `paRequired` -> `alternatives` here, most of the increase is
- * genuinely new covered-drug names). */
-export const KNOWN_UNPRICED_GAP = 808
+ * genuinely new covered-drug names).
+ * Raised 808 → 1088 on 2026-07-07 (same day) when 4 brand-new IL guides shipped (`il-inhalers`,
+ * `il-ace`, `il-diabetes`, `il-menopause`; 8 payers each) plus `il-nsaids` expanded from 1 payer
+ * to 8. This is IL's first depth beyond a single FFS payer for every topic, so 5 brand-new
+ * Medicaid MCOs (Aetna Better Health of Illinois, Blue Cross Community Health Plans, CountyCare,
+ * Meridian, Molina) each name their own long tail of inhaler/ACE/diabetes/HRT/NSAID brand and
+ * generic-form variants the existing ruleset has no entry for -- the same "new payer roster
+ * surfaces a new drug-name long tail" pattern as every prior raise above, now at IL's full
+ * 8-payer depth in one merge. */
+export const KNOWN_UNPRICED_GAP = 1088
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake

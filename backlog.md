@@ -4,97 +4,59 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## High
 
-- **Every prescription type should have data for every state selected (user priority, 2026-07-05;
-  scoped 2026-07-06).** The state/therapeutic-area picker (shipped 2026-07-05) makes the full grid
-  visible, but most cells are still empty — a user can select any state and any prescription type,
-  but only gets a real answer for the handful of (state, topic) pairs that have been researched so
-  far. The product goal is that **whichever prescription type a user picks, their selected state
-  has real, cited data for it** — not just a subset of states per topic.
+- **Every prescription type should have data for every state selected — DONE for the 5 originally
+  listed states (user priority, 2026-07-05; scoped 2026-07-06; completed 2026-07-07).** The
+  state/therapeutic-area picker (shipped 2026-07-05) makes the full grid visible; **MA, MD, NY, VA,
+  and IL now each have all 5 topics** (inhalers, ACE inhibitors, diabetes, menopause HT, NSAIDs) —
+  a perfect 5×5 = 25-guide grid, every cell `verified` or `mixed`, zero gaps left among these 5
+  states. IL was last to close (2026-07-07): `il-inhalers`/`il-ace`/`il-diabetes`/`il-menopause`
+  shipped new (8 payers each) and the existing `il-nsaids` guide expanded from 1 payer to 8 —
+  the largest single gather this project has run (8 payers × up to 15 classes, ~1.43M tokens, zero
+  failures). IL's payer roster needed correcting mid-project: the original 3-payer plan
+  undercounted IL Medicaid (most members are in a managed-care plan, not FFS — see CLAUDE.md's
+  "state Medicaid MCO rosters churn" scar tissue); the real roster is IL Medicaid FFS + 5 Medicaid
+  MCOs (Aetna Better Health of Illinois, Blue Cross Community Health Plans, CountyCare, Meridian,
+  Molina) + BCBS Illinois commercial + Wellcare Value Script (Medicare Part D).
 
-  **True scope, computed 2026-07-06 via `npm run validate-coverage`:** only 5 states have ANY guide
-  (MA, MD, NY, VA, IL) out of 51 (50 states + DC); only 6/255 possible (state × topic) cells are
-  covered at all, 3/255 at full verified depth. Closing the gap for just these 5 already-listed
-  states means creating ~19 new guides (5 states × 5 topics − 6 existing), each needing the state's
-  full payer roster researched per class. The user's direction (2026-07-06): start with the 5
-  already-listed states before adding new ones, and build a reusable Workflow script rather than
-  re-authoring the gather logic each time.
-
-  **Now built:** [.claude/workflows/formulary-gather.js](.claude/workflows/formulary-gather.js) — a
-  reusable, checkpointed gather script (one agent per *payer*, covering all its assigned classes
-  off a single fetch — not one agent per payer×class cell, which re-fetches the same source
-  redundantly; fixed 2026-07-06 after the first run confirmed the duplicate-fetch cost, see
-  `docs/agent-runs.md`), chunked to the hard ≤2-concurrent cap, callable via
+  **Reusable assets built along the way, still live for any future expansion:**
+  [.claude/workflows/formulary-gather.js](.claude/workflows/formulary-gather.js) — a reusable,
+  checkpointed gather script (one agent per *payer*, covering all its assigned classes off a
+  single fetch), chunked to the hard ≤2-concurrent cap, callable via
   `Workflow({scriptPath: ..., args: {stamp, state, today, payerTasks}})` for any future (state,
   topic) combo. [scripts/validate-coverage.mjs](scripts/validate-coverage.mjs)
   (`npm run validate-coverage`) reports the full national grid plus a payer-roster cross-check
-  against `state-index.json`. First real batch closed 2026-07-06: `ny-ace` and `ny-nsaids` expanded
-  from 1→5 payers each (added Excellus BCBS, UnitedHealthcare, Anthem BCBS NY, Excellus Medicare —
-  all `verified`). NY's 3 Medicaid MCOs (Healthfirst, Fidelis, MetroPlus) are deliberately NOT
-  separate payer entries — they share the single NYRx carve-out PDL already listed.
+  against `state-index.json`. **Gather per state across every remaining topic in one pass, not one
+  gather per topic** (`docs/agent-runs.md` lever #7) — proven across NY/MD/VA/MA/IL to cut token
+  cost roughly in half to a third vs. one gather per topic, since the per-payer fetch cost is flat
+  regardless of how many classes you pull from it. A guide still can't be committed with partial
+  payer coverage (see `validate()`'s count floor), so merge only once a state's full class list
+  comes back. `npm run archive-sources` (see CLAUDE.md) archives every cited source with a
+  provenance manifest — run it right after every merge, not as an afterthought (it was skipped for
+  3 consecutive merges this project before catching up in one pass).
 
-  **Remaining for the 5 listed states** (run `npm run validate-coverage --verbose` for the live
-  picture): **NY, MD, VA, and MA are now fully done** (all 5 topics each). NY: `ny-inhalers`/
-  `ny-menopause`/`ny-diabetes` shipped 2026-07-06 alongside the already-done `ny-ace`/`ny-nsaids`, 5
-  payers each. MD: `md-inhalers`/`md-ace`/`md-diabetes`/`md-nsaids` shipped 2026-07-07 alongside the
-  already-done `md-menopause`, 8 payers each. VA: `va-inhalers`/`va-menopause`/`va-nsaids` shipped
-  2026-07-07 alongside the already-done `va-ace`/`va-diabetes`, 8 payers each. MA: `ma-ace`/
-  `ma-diabetes`/`ma-menopause`/`ma-nsaids` shipped 2026-07-07 alongside the already-done
-  `ma-inhalers`, 5 payers each. Every cell across all four states is `verified` or `mixed`. **Only
-  IL remains.** IL needs inhalers, menopause HT, ACE inhibitors, diabetes, plus expanding its
-  existing NSAIDs guide beyond 1 payer — IL also needs a payer-roster discovery pass first (its
-  partial 3-payer roster below was researched via WebSearch but never confirmed complete or run
-  through an actual gather). Each new guide reuses the target state's existing payer roster + the
-  topic's existing class taxonomy from its origin guide (see `formulary-gather.js`'s header comment
-  for the args shape) — only the per-cell drug content needs fresh research. **Gather per state
-  across every remaining topic in one pass, not one gather per topic** (`docs/agent-runs.md` lever
-  #7) — the NY, MD, VA, and MA multi-topic runs all proved this cuts token cost roughly in half to
-  a third vs. building each topic's guide as a separate gather, since the per-payer fetch cost is
-  flat regardless of how many classes you pull from it. A guide still can't be committed with
-  partial payer coverage (see `validate()`'s count floor), so merge only once a state's full
-  remaining-class list comes back.
+  **Recurring `validate()`-fix patterns, seen across every one of these 5 states' gathers** — worth
+  knowing before touching any of this data again: (1) a covered-but-higher-tier drug tagged
+  `nonformulary`/`pa` instead of `alternatives` — verify the payer's own data really has no PA/step
+  flag before moving it, don't just reword around the regex; (2) a true barrier (real PA required)
+  whose reason text happens to contain the trigger phrase "non-preferred" or "higher tier" —
+  reword, don't reclassify, when the payer's own binary preferred/non-preferred system genuinely
+  gates access (every state Medicaid PDL/MCO seen so far is exactly this — being "non-preferred"
+  **is** the PA trigger); (3) the *inverse* case, confirmed for the first time in IL: a real
+  multi-tier **commercial** plan's "Tier 3/4, non-preferred" items with no PA/step criteria stated
+  anywhere — these genuinely are cost-tier-only and DO belong in `alternatives`. The distinguishing
+  signal is the payer's own document structure (binary Medicaid PDL vs. real commercial tiering),
+  not the state; (4) a BOGL flag (`boglActive: true`) set on the wrong drug (the `boglNote`
+  describes a *different* alternative's brand-preference, not the actually-chosen
+  `preferredAgent` — a hard tell is `preferredAgent.brand: null` with `boglActive: true`) or set
+  when no generic exists in the class at all — clear it in both cases; (5) the rarer inverse of
+  (4): `genericAvailable: false` on a record whose own `paRequired` list names a real generic or
+  biosimilar being passed over — here the *field* is the bug, not the flag; correct
+  `genericAvailable` to `true` and keep `boglActive` as real BOGL.
 
-  **Picking this up in a new session — what's already researched, don't re-discover it:**
-  - **IL** (14 remaining classes: inhalers 5 + menopause-ht 5 + ace-inhibitor 1 + diabetes 4, plus
-    expanding `il-nsaids` past its current 1 payer): a partial payer roster was already researched
-    via WebSearch but never run through an actual gather — **IL Medicaid FFS** (existing, already
-    the sole `il-nsaids` payer), **BCBS Illinois commercial** (found — PDL lives on
-    `myprime.com`, a 6-tier HIM formulary PDF), and **Wellcare Value Script Medicare Part D**
-    (reusable directly — it's the same national Part D formulary already sourced for VA). Confirm
-    this 3-payer roster is actually the full intended set before gathering — it was researched,
-    not verified as complete.
-  - **Merge tooling**: the multi-topic merge for NY and MD both used a scratch-only (not committed)
-    Python helper — a generic `merge_state(state_code, region, today, ckpt_dir, payer_order,
-    payer_meta_by_id, topics, glossary_source_guide)` function — to fold per-payer/per-class
-    gather-agent checkpoint JSON into `formulary.json`'s guide shape (glossary is always emitted
-    as a minimal 2-term glossary; copying a full glossary from an existing guide breaks
-    `validate()`'s cross-guide sourceId resolution). This script does **not** persist between
-    sessions (scratchpad only) — recreate the same shape, or hand-merge, next time.
-  - **Gather-agent checkpoints are session-local, not durable.** Past sessions' checkpoint
-    directories under `data-gathering/<stamp>/` are gitignored and live only in the worktree that
-    created them — once that worktree is cleaned up, they're gone (confirmed: the `va-diabetes` and
-    `ny-ace-2026-07-01` checkpoint dirs referenced by older backlog notes no longer exist). Don't
-    treat an unmerged checkpoint as safe to leave for "later" across a session boundary — merge it
-    into `formulary.json` before the session ends, or expect to re-gather from scratch.
-
-  **National grid status 2026-07-06 (`npm run validate-coverage`): 10/255 cells, 6/255 full-depth
-  verified.** Watch for 3 recurring research-agent mistakes, now seen across NY and VA gathers:
-  (1) a covered-but-higher-tier drug tagged `nonformulary`/`pa` instead of `alternatives` — verify
-  the payer's own data really has no PA/step flag before moving it, don't just reword around the
-  regex; (2) a true barrier (real PA required) whose reason text happens to contain the trigger
-  phrase "non-preferred" or "higher tier" — reword, don't reclassify, when the payer's own binary
-  preferred/non-preferred system genuinely gates access (NYRx's PDL is exactly this — being
-  "non-preferred" **is** the PA trigger, unlike a payer with real multi-tier cost-sharing); (3) a
-  BOGL flag (`boglActive: true`) set on the wrong drug (the `boglNote` describes a *different*
-  alternative's brand-preference, not the actually-chosen `preferredAgent` — a hard tell is
-  `preferredAgent.brand: null` with `boglActive: true`) or set when no generic exists in the class
-  at all (BOGL requires an *available* generic being passed over, not a brand-only market) —
-  clear it in both cases. Also sanity-check that the chosen `preferredAgent` isn't contradicted by
-  its own record's `paRequired` list (seen once: a record picked a bare generic as "preferred"
-  while its own paRequired said that exact generic needs PA under the payer's own BLTG program).
-
-  Expanding beyond these 5 states to the remaining ~46 is explicitly deferred — the saved workflow
-  script is the reusable asset for that future work, not something to launch without the user
-  re-confirming scope.
+  **National grid status 2026-07-07 (`npm run validate-coverage`): 25/255 cells, all at full
+  `verified`/`mixed` depth.** Expanding beyond these 5 states to the remaining ~46 is explicitly
+  deferred — the saved workflow script is the reusable asset for that future work, not something
+  to launch without the user re-confirming scope.
 - **Close the cash-price gap (user flagged directly, 2026-07-06): 219 of ~470 covered-drug names
   still have no GoodRx/Cost Plus rule.** `src/lib/cash.ts`'s `KNOWN_UNPRICED_GAP` tracks this
   precisely (was 232, now 219 after the ma-inhalers fix below). Per-guide breakdown as of

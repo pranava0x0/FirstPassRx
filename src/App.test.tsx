@@ -197,18 +197,11 @@ describe('FirstPassRx app', () => {
     expect(screen.getByRole('tab', { name: /^Diabetes$/i })).toHaveAttribute('aria-selected', 'true')
   })
 
-  it('shows the not-covered state for a state/topic pair with no guide', async () => {
-    const user = userEvent.setup()
-    render(<App />)
-    await user.click(screen.getByRole('tab', { name: /Illinois/i }))
-    // IL only has an NSAIDs guide today; inhalers stays selected from the MA default.
-    expect(screen.getByText(/Not covered yet/i)).toBeInTheDocument()
-    expect(screen.queryByLabelText(/select insurance plan/i)).not.toBeInTheDocument()
-
-    await user.click(screen.getByRole('tab', { name: /^NSAIDs$/i }))
-    expect(await screen.findByRole('option', { name: /Illinois Medicaid/i })).toBeInTheDocument()
-    expect(screen.queryByText(/Not covered yet/i)).not.toBeInTheDocument()
-  })
+  // The "Not covered yet" empty state (App.tsx's `!activeGuideId` branch) is real defensive code,
+  // but as of 2026-07-07 the 5-state x 5-topic grid (MA/MD/NY/VA/IL) is fully filled -- every
+  // combination the state/topic tabs can select maps to a real guide, so there's no reachable
+  // state/topic pair left to exercise this branch through the picker. Re-add a test for it once a
+  // 6th state or a 6th topic ships with partial coverage (see backlog.md).
 
   it('names the exact benefit product instead of implying carrier-wide coverage', async () => {
     const user = userEvent.setup()
