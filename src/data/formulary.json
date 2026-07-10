@@ -479,13 +479,14 @@
             "mh-mhdl-t23",
             "mh-pa37"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "mh-mhdl-t23"
           ],
           "restrictionSourceIds": [
             "mh-pa37"
-          ]
+          ],
+          "tier": "Brand Preferred, PA-exempt (MassHealth Drug List)"
         },
         {
           "payerId": "masshealth",
@@ -504,42 +505,59 @@
           "paRequired": [
             {
               "drug": "Alvesco (ciclesonide)",
-              "reason": "Step therapy",
+              "reason": "Step therapy: trial of two no-PA inhaled corticosteroids first",
               "outcome": "step",
               "sourceIds": [
                 "mh-pa37"
               ]
             },
             {
-              "drug": "Fluticasone propionate HFA (≥12 yr)",
-              "reason": "Step therapy",
+              "drug": "QVAR RediHaler (beclomethasone)",
+              "reason": "Step therapy: trial of two no-PA inhaled corticosteroids first",
               "outcome": "step",
               "sourceIds": [
                 "mh-pa37"
               ]
             },
             {
-              "drug": "QVAR RediHaler",
-              "reason": "Step therapy",
+              "drug": "Fluticasone propionate inhalation aerosol (≥12 yr) & powder",
+              "reason": "Step therapy: trial of two no-PA inhaled corticosteroids first",
               "outcome": "step",
               "sourceIds": [
                 "mh-pa37"
               ]
             }
           ],
-          "stepTherapy": "Alvesco, fluticasone propionate aerosol (age ≥12), and QVAR RediHaler require a documented trial of two inhaled corticosteroids first.",
-          "verification": "partial",
-          "verificationNote": "Step-therapy structure is verbatim from PA-37; the specific no-PA preferred ICS is inferred — confirm the preferred agent on the current MHDL.",
+          "stepTherapy": "Alvesco, QVAR RediHaler, and fluticasone propionate require a documented trial of two inhaled corticosteroids available without PA (e.g. budesonide powder, Arnuity, Asmanex).",
+          "verification": "verified",
+          "verificationNote": "Read directly off MHDL Table 23 (Inhaled Respiratory Agents – Corticosteroids) and PA-37: budesonide inhalation powder (Pulmicort Flexhaler), mometasone (Asmanex), and fluticasone furoate (Arnuity, Brand Preferred) are available without PA; Qvar RediHaler, Alvesco, and fluticasone propionate require PA/step therapy. Confirms the inferred no-PA preferred agent.",
           "sourceIds": [
             "mh-mhdl-t23",
             "mh-pa37"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "mh-mhdl-t23"
           ],
           "restrictionSourceIds": [
             "mh-pa37"
+          ],
+          "tier": "Covered without PA (MassHealth Drug List); no-PA preferred agent",
+          "alternatives": [
+            {
+              "drug": "Fluticasone furoate (Arnuity Ellipta)",
+              "note": "No PA (Brand Preferred)",
+              "sourceIds": [
+                "mh-mhdl-t23"
+              ]
+            },
+            {
+              "drug": "Mometasone (Asmanex HFA / Twisthaler)",
+              "note": "No PA",
+              "sourceIds": [
+                "mh-mhdl-t23"
+              ]
+            }
           ]
         },
         {
@@ -554,8 +572,8 @@
             "sigShort": "2 puffs BID",
             "plainSig": "Two puffs, morning and night, every day."
           },
-          "boglActive": false,
-          "boglNote": null,
+          "boglActive": true,
+          "boglNote": "MassHealth lists brand Symbicort (budesonide/formoterol) as Brand Preferred over its generic equivalent on the MassHealth Drug List — the plan requires a trial of the preferred brand or clinical rationale before the generic. Write Symbicort, dispense as written.",
           "alternatives": [
             {
               "drug": "Advair Diskus (fluticasone/salmeterol)",
@@ -591,18 +609,19 @@
           ],
           "stepTherapy": "AirDuo RespiClick requires a prior trial of fluticasone/salmeterol inhalation aerosol/powder (generic Advair). Symbicort, Advair, Breo, and Dulera are preferred without PA.",
           "verification": "verified",
-          "verificationNote": "MHDL Table 23 marks Symbicort as Preferred Drug (PD), Brand Preferred, no PA; AirDuo step from PA-37 Section III.",
+          "verificationNote": "Read directly off MHDL Table 23 (Inhaled Respiratory Agents – ICS/LABA combinations): budesonide/formoterol (Symbicort) is a Preferred Drug marked \"BP\" (Brand Preferred over generic equivalents), no PA. The MHDL legend defines BP as requiring a trial of the preferred brand — a BOGL situation.",
           "sourceIds": [
             "mh-mhdl-t23",
             "mh-pa37"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "mh-mhdl-t23"
           ],
           "restrictionSourceIds": [
             "mh-pa37"
-          ]
+          ],
+          "tier": "Preferred / Brand Preferred, no PA (MassHealth Drug List)"
         },
         {
           "payerId": "masshealth",
@@ -660,13 +679,14 @@
             "mh-pa37",
             "dailymed-spiriva"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "mh-mhdl-t23"
           ],
           "restrictionSourceIds": [
             "mh-pa37"
-          ]
+          ],
+          "tier": "Covered, no PA (MassHealth Drug List)"
         },
         {
           "payerId": "bcbsma",
@@ -828,7 +848,7 @@
           "classId": "saba",
           "preferredAgent": {
             "inn": "Albuterol sulfate HFA",
-            "brand": "ProAir HFA",
+            "brand": null,
             "genericAvailable": true,
             "strength": "90 mcg",
             "sig": "2 puffs every 4 to 6 hours as needed",
@@ -838,13 +858,13 @@
           "boglActive": false,
           "boglNote": null,
           "paRequired": [],
-          "stepTherapy": null,
-          "verification": "partial",
-          "verificationNote": "Tufts Value Direct 3-Tier formulary (eff. 2026-01-01) is the verified source; the specific tier/PA for this agent is inferred — confirm in the formulary PDF.",
+          "stepTherapy": "",
+          "verification": "verified",
+          "verificationNote": "Read directly off the Tufts Value Direct 3-Tier formulary PDF (Respiratory / Asthma section, \"Last Update 06/15/26\"): generic albuterol sulfate HFA aerosol 108 (90 base) mcg/act is Tier 1 with no PA/ST.",
           "sourceIds": [
             "tufts-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "tufts-formulary-2026"
           ],
@@ -853,46 +873,61 @@
           ],
           "alternatives": [
             {
-              "drug": "Levalbuterol (Xopenex HFA)",
-              "note": "Non-preferred",
+              "drug": "Levalbuterol HFA (Xopenex HFA)",
+              "note": "Tier 2",
+              "sourceIds": [
+                "tufts-formulary-2026"
+              ]
+            },
+            {
+              "drug": "ProAir Digihaler / branded SABAs",
+              "note": "higher tier",
               "sourceIds": [
                 "tufts-formulary-2026"
               ]
             }
-          ]
+          ],
+          "tier": "Tier 1 (generic, lowest cost-share); no PA"
         },
         {
           "payerId": "tufts",
           "classId": "ics",
           "preferredAgent": {
-            "inn": "Fluticasone propionate",
-            "brand": "Flovent HFA (authorized generic)",
+            "inn": "Beclomethasone dipropionate HFA",
+            "brand": "QVAR",
             "genericAvailable": true,
-            "strength": "110 mcg",
-            "sig": "2 puffs twice daily",
-            "sigShort": "2 puffs BID",
-            "plainSig": "Two puffs, morning and night, every day."
+            "strength": "80 mcg",
+            "sig": "1 to 2 inhalations twice daily",
+            "sigShort": "1-2 inh BID",
+            "plainSig": "One to two breaths in, morning and night."
           },
           "boglActive": false,
           "boglNote": null,
           "paRequired": [
             {
-              "drug": "Pulmicort Flexhaler",
-              "reason": "Non-formulary 2026",
-              "outcome": "nonformulary",
+              "drug": "Fluticasone propionate HFA",
+              "reason": "Step therapy; age limit (max 6 years)",
+              "outcome": "step",
+              "sourceIds": [
+                "tufts-formulary-2026"
+              ]
+            },
+            {
+              "drug": "Asmanex (mometasone) HFA & Twisthaler",
+              "reason": "Step therapy",
+              "outcome": "step",
               "sourceIds": [
                 "tufts-formulary-2026"
               ]
             }
           ],
-          "stepTherapy": null,
-          "verification": "partial",
-          "verificationNote": "Point32Health's 2026 commercial drug-status changes confirm Pulmicort Flexhaler moved to non-formulary; the preferred ICS is inferred — confirm in the Tufts formulary PDF.",
+          "stepTherapy": "",
+          "verification": "verified",
+          "verificationNote": "Read directly off the Tufts Value Direct 3-Tier formulary PDF: beclomethasone diprop HFA 40/80 mcg is Tier 2 with no PA/ST, while fluticasone propionate HFA and Asmanex are Tier 3 with step therapy. Preferred pick corrected to the lowest-tier unrestricted ICS inhaler.",
           "sourceIds": [
-            "tufts-formulary-2026",
-            "p32-changes-2026"
+            "tufts-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "tufts-formulary-2026"
           ],
@@ -901,53 +936,65 @@
           ],
           "alternatives": [
             {
-              "drug": "Arnuity Ellipta",
-              "note": "Non-preferred",
+              "drug": "Arnuity Ellipta (fluticasone furoate)",
+              "note": "Tier 2",
+              "sourceIds": [
+                "tufts-formulary-2026"
+              ]
+            },
+            {
+              "drug": "QVAR RediHaler",
+              "note": "Tier 2",
               "sourceIds": [
                 "tufts-formulary-2026"
               ]
             }
-          ]
+          ],
+          "tier": "Tier 2; no PA/step therapy"
         },
         {
           "payerId": "tufts",
           "classId": "icslaba",
           "preferredAgent": {
-            "inn": "Budesonide/formoterol",
-            "brand": "Symbicort",
+            "inn": "Fluticasone/salmeterol",
+            "brand": "Wixela Inhub (generic Advair Diskus)",
             "genericAvailable": true,
-            "strength": "160/4.5 mcg",
-            "sig": "2 puffs twice daily",
-            "sigShort": "2 puffs BID",
-            "plainSig": "Two puffs, morning and night, every day."
+            "strength": "250/50 mcg",
+            "sig": "1 inhalation twice daily",
+            "sigShort": "1 inh BID",
+            "plainSig": "One breath in, morning and night, every day."
           },
           "boglActive": false,
           "boglNote": null,
-          "paRequired": [
-            {
-              "drug": "Breo Ellipta",
-              "reason": "Step therapy",
-              "outcome": "step",
-              "sourceIds": [
-                "p32-pa-form"
-              ]
-            }
-          ],
-          "stepTherapy": "Confirm step-therapy specifics in the Tufts formulary PDF; non-preferred combos may require a preferred-agent trial.",
-          "verification": "partial",
-          "verificationNote": "Tufts Value Direct 3-Tier formulary is verified as the source; preferred agent inferred — confirm tier/PA in the PDF.",
+          "paRequired": [],
+          "stepTherapy": "",
+          "verification": "verified",
+          "verificationNote": "Read directly off the Tufts Value Direct 3-Tier formulary PDF: generic fluticasone-salmeterol DPI (100-50/250-50/500-50) is Tier 1 with QL max 1 inhaler/30 days; Symbicort and Breo Ellipta are Tier 2. Preferred pick corrected from Symbicort (Tier 2) to the Tier-1 generic.",
           "sourceIds": [
-            "tufts-formulary-2026",
-            "p32-pa-form"
+            "tufts-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "tufts-formulary-2026"
           ],
           "restrictionSourceIds": [
-            "p32-pa-form"
+            "tufts-formulary-2026"
           ],
           "alternatives": [
+            {
+              "drug": "Symbicort (budesonide/formoterol)",
+              "note": "Tier 2",
+              "sourceIds": [
+                "tufts-formulary-2026"
+              ]
+            },
+            {
+              "drug": "Breo Ellipta (fluticasone furoate/vilanterol)",
+              "note": "Tier 2",
+              "sourceIds": [
+                "tufts-formulary-2026"
+              ]
+            },
             {
               "drug": "Dulera",
               "note": "Non-preferred",
@@ -955,7 +1002,8 @@
                 "tufts-formulary-2026"
               ]
             }
-          ]
+          ],
+          "tier": "Tier 1 (generic DPI); QL max 1 inhaler / 30 days"
         },
         {
           "payerId": "tufts",
@@ -972,14 +1020,13 @@
           "boglActive": false,
           "boglNote": null,
           "paRequired": [],
-          "stepTherapy": null,
-          "verification": "partial",
-          "verificationNote": "Source formulary verified; preferred LAMA inferred. LAMA is COPD-indicated. Confirm in the Tufts formulary PDF.",
+          "stepTherapy": "",
+          "verification": "verified",
+          "verificationNote": "Read directly off the Tufts Value Direct 3-Tier formulary PDF: Incruse Ellipta (umeclidinium) is Tier 2, QL max 1 inhaler/30 days; no generic LAMA on the market. LAMA is COPD-indicated.",
           "sourceIds": [
-            "tufts-formulary-2026",
-            "dailymed-incruse"
+            "tufts-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "tufts-formulary-2026"
           ],
@@ -988,20 +1035,28 @@
           ],
           "alternatives": [
             {
-              "drug": "Tudorza Pressair",
+              "drug": "Tiotropium (Spiriva HandiHaler / Respimat)",
+              "note": "Tier 2",
+              "sourceIds": [
+                "tufts-formulary-2026"
+              ]
+            },
+            {
+              "drug": "Tudorza Pressair (aclidinium)",
               "note": "Non-preferred",
               "sourceIds": [
                 "tufts-formulary-2026"
               ]
             }
-          ]
+          ],
+          "tier": "Tier 2; QL max 1 inhaler / 30 days"
         },
         {
           "payerId": "harvardpilgrim",
           "classId": "saba",
           "preferredAgent": {
             "inn": "Albuterol sulfate HFA",
-            "brand": "ProAir HFA",
+            "brand": null,
             "genericAvailable": true,
             "strength": "90 mcg",
             "sig": "2 puffs every 4 to 6 hours as needed",
@@ -1011,13 +1066,13 @@
           "boglActive": false,
           "boglNote": null,
           "paRequired": [],
-          "stepTherapy": null,
-          "verification": "partial",
-          "verificationNote": "Harvard Pilgrim Select 3-Tier 2026 PDL is the verified source; this agent's tier/PA is inferred — confirm in the PDF.",
+          "stepTherapy": "",
+          "verification": "verified",
+          "verificationNote": "Read directly off the Harvard Pilgrim Select 3-Tier 2026 formulary PDF (Asthma section): generic albuterol sulfate HFA aerosol 108 (90 base) mcg/act is Tier 1 with no PA/ST.",
           "sourceIds": [
             "hphc-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "hphc-formulary-2026"
           ],
@@ -1026,89 +1081,121 @@
           ],
           "alternatives": [
             {
-              "drug": "Levalbuterol (Xopenex HFA)",
-              "note": "Non-preferred",
+              "drug": "Levalbuterol HFA (Xopenex HFA)",
+              "note": "Tier 2",
               "sourceIds": [
                 "hphc-formulary-2026"
               ]
             }
-          ]
+          ],
+          "tier": "Tier 1 (generic, lowest cost-share); no PA"
         },
         {
           "payerId": "harvardpilgrim",
           "classId": "ics",
           "preferredAgent": {
-            "inn": "Mometasone furoate",
-            "brand": "Asmanex Twisthaler",
+            "inn": "Beclomethasone dipropionate",
+            "brand": "QVAR RediHaler",
             "genericAvailable": false,
-            "strength": "220 mcg",
-            "sig": "2 inhalations once daily in the evening",
-            "sigShort": "2 inh QHS",
-            "plainSig": "Two breaths in, once a day in the evening."
+            "strength": "80 mcg",
+            "sig": "1 to 2 inhalations twice daily",
+            "sigShort": "1-2 inh BID",
+            "plainSig": "One to two breaths in, morning and night."
           },
           "boglActive": false,
           "boglNote": null,
-          "paRequired": [],
-          "stepTherapy": null,
-          "verification": "partial",
-          "verificationNote": "Source PDL verified; preferred ICS inferred — confirm in the Harvard Pilgrim formulary PDF.",
-          "sourceIds": [
-            "hphc-formulary-2026"
-          ],
-          "lastReviewed": "2026-06-22",
-          "coverageSourceIds": [
-            "hphc-formulary-2026"
-          ],
-          "restrictionSourceIds": [
-            "hphc-formulary-2026"
-          ],
-          "alternatives": [
+          "paRequired": [
             {
-              "drug": "Alvesco (ciclesonide)",
-              "note": "Non-preferred",
+              "drug": "Asmanex (mometasone) HFA & Twisthaler",
+              "reason": "Step therapy",
+              "outcome": "step",
               "sourceIds": [
                 "hphc-formulary-2026"
               ]
             },
             {
-              "drug": "Arnuity Ellipta",
-              "note": "Non-preferred",
+              "drug": "Fluticasone propionate HFA",
+              "reason": "Step therapy; age limit (max 6 years)",
+              "outcome": "step",
               "sourceIds": [
                 "hphc-formulary-2026"
               ]
             }
-          ]
+          ],
+          "stepTherapy": "",
+          "verification": "verified",
+          "verificationNote": "Read directly off the Harvard Pilgrim Select 3-Tier 2026 formulary PDF: QVAR RediHaler (beclomethasone) and Arnuity Ellipta are Tier 2 with no step therapy, while Asmanex and fluticasone propionate HFA are Tier 3 with step therapy. Preferred pick corrected from mometasone/Asmanex (Tier 3, ST) to a Tier-2 unrestricted ICS.",
+          "sourceIds": [
+            "hphc-formulary-2026"
+          ],
+          "lastReviewed": "2026-07-10",
+          "coverageSourceIds": [
+            "hphc-formulary-2026"
+          ],
+          "restrictionSourceIds": [
+            "hphc-formulary-2026"
+          ],
+          "alternatives": [
+            {
+              "drug": "Arnuity Ellipta (fluticasone furoate)",
+              "note": "Tier 2",
+              "sourceIds": [
+                "hphc-formulary-2026"
+              ]
+            },
+            {
+              "drug": "QVAR RediHaler",
+              "note": "Tier 2",
+              "sourceIds": [
+                "hphc-formulary-2026"
+              ]
+            }
+          ],
+          "tier": "Tier 2; no PA/step therapy"
         },
         {
           "payerId": "harvardpilgrim",
           "classId": "icslaba",
           "preferredAgent": {
-            "inn": "Fluticasone furoate/vilanterol",
-            "brand": "Breo Ellipta",
-            "genericAvailable": false,
-            "strength": "100/25 mcg",
-            "sig": "1 inhalation once daily",
-            "sigShort": "1 inh daily",
-            "plainSig": "One breath in, once a day, same time each day."
+            "inn": "Fluticasone/salmeterol",
+            "brand": "Wixela Inhub (generic Advair Diskus)",
+            "genericAvailable": true,
+            "strength": "250/50 mcg",
+            "sig": "1 inhalation twice daily",
+            "sigShort": "1 inh BID",
+            "plainSig": "One breath in, morning and night, every day."
           },
           "boglActive": false,
           "boglNote": null,
           "paRequired": [],
-          "stepTherapy": null,
-          "verification": "partial",
-          "verificationNote": "Source PDL verified; preferred combo inferred — confirm tier/PA in the Harvard Pilgrim formulary PDF.",
+          "stepTherapy": "",
+          "verification": "verified",
+          "verificationNote": "Read directly off the Harvard Pilgrim Select 3-Tier 2026 formulary PDF: generic fluticasone-salmeterol DPI is Tier 1 with QL max 1 inhaler/30 days; Breo Ellipta and Symbicort are Tier 2. Preferred pick corrected from Breo Ellipta (Tier 2) to the Tier-1 generic.",
           "sourceIds": [
-            "hphc-formulary-2026",
-            "p32-pa-form"
+            "hphc-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "hphc-formulary-2026"
           ],
           "restrictionSourceIds": [
-            "p32-pa-form"
+            "hphc-formulary-2026"
           ],
           "alternatives": [
+            {
+              "drug": "Symbicort (budesonide/formoterol)",
+              "note": "Tier 2",
+              "sourceIds": [
+                "hphc-formulary-2026"
+              ]
+            },
+            {
+              "drug": "Breo Ellipta (fluticasone furoate/vilanterol)",
+              "note": "Tier 2",
+              "sourceIds": [
+                "hphc-formulary-2026"
+              ]
+            },
             {
               "drug": "Dulera",
               "note": "Non-preferred",
@@ -1116,7 +1203,8 @@
                 "hphc-formulary-2026"
               ]
             }
-          ]
+          ],
+          "tier": "Tier 1 (generic DPI); QL max 1 inhaler / 30 days"
         },
         {
           "payerId": "harvardpilgrim",
@@ -1133,14 +1221,13 @@
           "boglActive": false,
           "boglNote": null,
           "paRequired": [],
-          "stepTherapy": null,
-          "verification": "partial",
-          "verificationNote": "Source PDL verified; preferred LAMA inferred. LAMA is COPD-indicated. Confirm in the Harvard Pilgrim formulary PDF.",
+          "stepTherapy": "",
+          "verification": "verified",
+          "verificationNote": "Read directly off the Harvard Pilgrim Select 3-Tier 2026 formulary PDF: Spiriva Respimat and Spiriva HandiHaler (tiotropium) and Incruse Ellipta are all Tier 2, QL max 1 inhaler/30 days; no generic LAMA on the market. LAMA is COPD-indicated.",
           "sourceIds": [
-            "hphc-formulary-2026",
-            "dailymed-spiriva"
+            "hphc-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "hphc-formulary-2026"
           ],
@@ -1149,20 +1236,28 @@
           ],
           "alternatives": [
             {
-              "drug": "Tudorza Pressair",
+              "drug": "Incruse Ellipta (umeclidinium)",
+              "note": "Tier 2",
+              "sourceIds": [
+                "hphc-formulary-2026"
+              ]
+            },
+            {
+              "drug": "Tudorza Pressair (aclidinium)",
               "note": "Non-preferred",
               "sourceIds": [
                 "hphc-formulary-2026"
               ]
             }
-          ]
+          ],
+          "tier": "Tier 2; QL max 1 inhaler / 30 days"
         },
         {
           "payerId": "mgb",
           "classId": "saba",
           "preferredAgent": {
             "inn": "Albuterol sulfate HFA",
-            "brand": "ProAir HFA",
+            "brand": null,
             "genericAvailable": true,
             "strength": "90 mcg",
             "sig": "2 puffs every 4 to 6 hours as needed",
@@ -1172,13 +1267,13 @@
           "boglActive": false,
           "boglNote": null,
           "paRequired": [],
-          "stepTherapy": null,
-          "verification": "partial",
-          "verificationNote": "MGB 2026 6-Tier formulary (current 6/1/2026) is the verified source; SABA tier not in the verified extract — confirm in the formulary PDF.",
+          "stepTherapy": "",
+          "verification": "verified",
+          "verificationNote": "Read directly off the MGB Health Plan 2026 6-Tier Pharmacy Formulary PDF: albuterol sulfate HFA aerosol 108 (90 base) mcg/act (reference Ventolin HFA) is Tier 2 with QL 2 inhalers/30 days.",
           "sourceIds": [
             "mgb-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "mgb-formulary-2026"
           ],
@@ -1188,12 +1283,13 @@
           "alternatives": [
             {
               "drug": "Levalbuterol (Xopenex HFA)",
-              "note": "Non-preferred",
+              "note": "Tier 2",
               "sourceIds": [
                 "mgb-formulary-2026"
               ]
             }
-          ]
+          ],
+          "tier": "Tier 2; QL 2 inhalers / 30 days"
         },
         {
           "payerId": "mgb",
@@ -1216,6 +1312,13 @@
               "sourceIds": [
                 "mgb-formulary-2026"
               ]
+            },
+            {
+              "drug": "Budesonide inhalation (Pulmicort)",
+              "note": "Tier 2, no PA (lower cost-share)",
+              "sourceIds": [
+                "mgb-formulary-2026"
+              ]
             }
           ],
           "paRequired": [
@@ -1230,18 +1333,19 @@
           ],
           "stepTherapy": "Fluticasone propionate HFA requires members aged 12+ with asthma to fail BOTH preferred brands Arnuity Ellipta and QVAR RediHaler first (or document the need for an MDI + spacer). Covered without PA through age 11.",
           "verification": "verified",
-          "verificationNote": "Read directly off MGB's Fluticasone Propionate HFA PA policy (eff. 2025-09-10): Arnuity Ellipta and QVAR RediHaler are the preferred ICS brands.",
+          "verificationNote": "Read directly off MGB's Fluticasone Propionate HFA PA policy (eff. 2025-09-10): Arnuity Ellipta and QVAR RediHaler are the preferred ICS brands. MGB 2026 formulary: Arnuity Ellipta and QVAR RediHaler are Tier 3; budesonide inhalation (Pulmicort) is a Tier-2 no-PA option.",
           "sourceIds": [
             "mgb-flut-hfa-pa",
             "mgb-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "mgb-formulary-2026"
           ],
           "restrictionSourceIds": [
             "mgb-flut-hfa-pa"
-          ]
+          ],
+          "tier": "Tier 3 (MGB-designated preferred ICS brand per PA policy)"
         },
         {
           "payerId": "mgb",
@@ -1280,13 +1384,14 @@
           "sourceIds": [
             "mgb-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "mgb-formulary-2026"
           ],
           "restrictionSourceIds": [
             "mgb-formulary-2026"
-          ]
+          ],
+          "tier": "Tier 2; QL applies"
         },
         {
           "payerId": "mgb",
@@ -1329,13 +1434,14 @@
             "mgb-pharmacy-index",
             "dailymed-spiriva"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "mgb-formulary-2026"
           ],
           "restrictionSourceIds": [
             "mgb-pharmacy-index"
-          ]
+          ],
+          "tier": "Tier 2; QL applies"
         }
       ]
     },

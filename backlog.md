@@ -122,11 +122,18 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   manage HRT (not a closeable gap — it's a carve-out). Pull the other HealthChoice MCO formularies
   (Maryland Physicians Care, Wellpoint/Amerigroup, Aetna Better Health, UnitedHealthcare Community
   Plan, CareFirst Community Health Plan) so a Medicaid member can pick their actual MCO.
-- **Finish verifying the `partial` / `example` cells.** MassHealth and MGB are largely `verified`;
-  Tufts and Harvard Pilgrim are `partial` (formulary PDFs verified, per-cell agent inferred); BCBS
-  MA is `example` (inhaler policy PDF returned HTTP 403 to the fetcher). Read each formulary PDF,
-  confirm the preferred agent + reject list + step text, and flip `verification` to `verified` with
-  an updated `verificationNote`. See `data-sources.md`.
+- **Finish verifying the `partial` / `example` cells — LARGELY DONE 2026-07-10.** Tufts (4),
+  Harvard Pilgrim (4), MGB SABA (1), and MassHealth ICS (1) are now `verified` against the live
+  formulary PDFs / MHDL Table 23 (several inferred picks were corrected — see the 2026-07-10 issues.md
+  entry). ma-inhalers is now **16 verified / 4 example**. The 4 remaining `example` cells are **BCBS
+  MA (Standard Control / CVS Caremark)** only: bluecrossma.org 403s WebFetch and curl, and the
+  "Focused" PDF extracts as a character-fragmented alphabetical index with no usable tier column. To
+  close these, drive the CVS Caremark medication-lookup via the in-app browser tool (per-drug tier
+  reads) — the last honest path; don't fabricate tiers from the unreadable source. LOW priority (4
+  cells, honestly labeled). Across all 25 guides: 463 verified / 38 partial / 9 example remain (the
+  38 partial are mostly MD-Medicaid-FFS structural gaps and a handful of commercial cells; the 9
+  example are 4 BCBS-MA + 5 NYRx menopause-HT open-benefit cells that are a legitimate "no PDL
+  entry = unrestricted" state, not extraction failures).
 - **Biologics & non-inhaler class** (currently a disabled tab). Omalizumab (Xolair, now with the
   Omlyclo biosimilar), mepolizumab, benralizumab, dupilumab, tezepelumab — specialty-pharmacy /
   buy-and-bill with their own PA pathway. Cite FDA + manufacturer; the sources research already
