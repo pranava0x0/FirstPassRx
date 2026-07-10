@@ -66,8 +66,40 @@
  * Meridian, Molina) each name their own long tail of inhaler/ACE/diabetes/HRT/NSAID brand and
  * generic-form variants the existing ruleset has no entry for -- the same "new payer roster
  * surfaces a new drug-name long tail" pattern as every prior raise above, now at IL's full
- * 8-payer depth in one merge. */
-export const KNOWN_UNPRICED_GAP = 1088
+ * 8-payer depth in one merge.
+ * Lowered 1088 → 633 on 2026-07-09: added real GoodRx/Cost Plus rules for every diabetes
+ * (metformin, dapagliflozin, empagliflozin, insulin glargine/lispro/degludec, dulaglutide,
+ * liraglutide, semaglutide oral + injectable) and NSAID (naproxen, ibuprofen, meloxicam) preferred
+ * agent -- the 177-cell preferred-agent gap the validation run surfaced, which also swept up ~278
+ * of these same drugs' alternative-list names across all 5 states. Prices captured off a real
+ * browser session (see the rule block below). Remaining 633 is the long tail of brand/generic-form
+ * variants in alternatives lists (HRT products, ACE/inhaler brand variants) -- a logged backlog
+ * item, not a preferred-agent gap.
+ * Lowered 633 → 537 on 2026-07-09 (same session): priced the last 7 non-diabetes/NSAID
+ * preferred-agent stragglers (vaginal estradiol, ipratropium, oral conjugated estrogens), so
+ * EVERY one of the 510 state×class preferred-agent cells now carries a captured price. The
+ * remaining long tail is purely alternatives-list HRT/ACE/inhaler brand & generic-form variants
+ * -- logged in backlog.md, not a headline-recommendation gap.
+ * Lowered 537 → 509 on 2026-07-09 (same session): broadened the existing micronized-progesterone
+ * rule's matcher to catch the bare "progesterone" inn (3 progestogen cells the UI resolves by inn
+ * alone showed link-only), which also swept up progesterone brand variants in alternatives. Every
+ * preferred-agent cell now prices by inn-only lookup -- the exact path ResultCard/PrescribeOptions
+ * use.
+ * Raised 509 → 541 on 2026-07-09 (code-review fix, same session): the metformin rule was catching
+ * ~32 multi-ingredient combo names (Synjardy/Xigduo/Trijardy/glipizide-metformin/...) and pricing
+ * them as cheap plain metformin ($29.63) -- badly wrong for $300-600 brand combos. Added a combo
+ * negative-lookahead so those fall through to the SGLT2 rules (reasonable proxy) or the no-price
+ * fallback instead. Every combo dropped here was an *alternatives*-list name, never a preferred
+ * agent, so all 510 preferred-agent cells still price. Correctness raise (we stopped mispricing),
+ * not a coverage regression -- same category as the MD paRequired→alternatives raises above.
+ * Raised 541 → 575 on 2026-07-09 (Codex PR review, same session): same combo/form-mismatch class
+ * caught in two more matchers -- (1) the broadened progesterone rule was pricing non-oral forms
+ * (Crinone vaginal gel, vaginal suppository, Endometrin insert, injection oil) and the Bijuva
+ * estradiol/progesterone combo as the 100mg oral capsule; (2) the glargine rule matched the Soliqua
+ * glargine-lixisenatide fixed-dose combo and priced it as Lantus $35. Both now excluded via negative
+ * lookahead so they fall through instead of showing a confident wrong price. Again all
+ * preferred-agent cells still price; the raise is dropped alternatives-list mispricings. */
+export const KNOWN_UNPRICED_GAP = 575
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -241,7 +273,12 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-06-30',
   },
   {
-    matches: /micronized progesterone|progesterone.*micronized|prometrium/i,
+    // Bare "progesterone" (the progestogen-cell inn) means ORAL micronized progesterone here.
+    // Broadened 2026-07-09 to catch the bare inn, then narrowed same-day (code review) to exclude
+    // non-oral forms (Crinone gel, vaginal suppository, Endometrin insert, injection oil) and combos
+    // (Bijuva estradiol/progesterone) that would otherwise be mispriced as the 100mg oral capsule.
+    // medroxyprogesterone has its own rule earlier, so first-match-wins keeps it unaffected.
+    matches: /^(?!.*(vaginal|suppositor|\bgel\b|\binsert\b|crinone|endometrin|prochieve|intramuscular|injection|\boil\b|estradiol|bijuva)).*(progesterone|prometrium)/i,
     goodRxSlug: 'progesterone',
     costPlusPath: 'progesterone-100mg-capsule',
     goodRxPrice: { price: 31.54, quantity: '30 capsules, 100mg' },
@@ -354,6 +391,165 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxSlug: 'qvar',
     goodRxPrice: { price: 324.95, quantity: '1 redihaler, 80mcg, 10.6g' },
     pricesCapturedAt: '2026-07-06',
+  },
+
+  // ---- Diabetes + NSAID preferred agents (added 2026-07-09) ----
+  // Every diabetes (metformin/GLP-1/SGLT2/insulin) and NSAID preferred agent across all 5 states
+  // shipped link-only (no captured price) -- the 177-cell preferred-agent gap the 2026-07-09
+  // validation run surfaced. Prices read off a real browser session (both vendors bot-block plain
+  // fetch), ZIP 20009, on the capture date. GoodRx figure is the "Standard GoodRx price" unless a
+  // manufacturer cash program is what the page surfaces (Jardiance/Lantus/Ozempic), matching the
+  // existing inhaler rules' convention. Cost Plus omitted where the catalog genuinely doesn't carry
+  // the drug (brand GLP-1s, brand SGLT2s, all insulins, OTC-strength ibuprofen) -- confirmed by
+  // search, a documented outcome, not a research gap.
+  {
+    // Standalone metformin only. The negative lookahead excludes multi-ingredient combos
+    // (Synjardy/Xigduo/Trijardy/Janumet/glipizide-metformin/pioglitazone-metformin/...) so they are
+    // NOT priced as cheap plain metformin -- those fall through to the SGLT2 rules below (a
+    // reasonable proxy, the SGLT2 is the costly component) or, for DPP4/SU/TZD combos, to the
+    // no-price fallback (their pre-2026-07-09 behavior). Without this, ~50 covered combo names
+    // showed $29.63, badly understating $300-600 brand combos.
+    matches: /^(?!.*\b(?:dapagliflozin|empagliflozin|canagliflozin|ertugliflozin|sitagliptin|saxagliptin|linagliptin|alogliptin|glipizide|glyburide|glimepiride|pioglitazone|rosiglitazone|repaglinide|nateglinide|synjardy|xigduo|trijardy|glyxambi|janumet|jentadueto|kazano|oseni|metaglip|glucovance|actoplus|kombiglyze|prandimet|invokamet|segluromet|qternmet|steglujan|soliqua)\b).*\bmetformin\b/i,
+    goodRxSlug: 'metformin',
+    goodRxParams: 'label_override=metformin&form=tablet&dosage=500mg&quantity=60',
+    costPlusPath: 'metformin-500mg-tablet',
+    goodRxPrice: { price: 29.63, quantity: '60 tablets, 500mg' },
+    costPlusPrice: { price: 5.31, quantity: '30 tablets, 500mg' },
+    pricesCapturedAt: '2026-07-09',
+  },
+  {
+    matches: /naproxen|naprosyn|anaprox/i,
+    goodRxSlug: 'naproxen',
+    goodRxParams: 'label_override=naproxen&form=tablet&dosage=500mg&quantity=60',
+    costPlusPath: 'naproxen-500mg-tablet',
+    goodRxPrice: { price: 30.71, quantity: '60 tablets, 500mg' },
+    costPlusPrice: { price: 6.38, quantity: '30 tablets, 500mg' },
+    pricesCapturedAt: '2026-07-09',
+  },
+  {
+    // No Cost Plus match: ibuprofen 600mg and 800mg both 404 -- Cost Plus doesn't carry the
+    // OTC-adjacent Rx strengths. GoodRx-only by design.
+    matches: /ibuprofen/i,
+    goodRxSlug: 'ibuprofen',
+    goodRxParams: 'label_override=ibuprofen&form=tablet&dosage=600mg&quantity=30',
+    goodRxPrice: { price: 29.65, quantity: '30 tablets, 600mg' },
+    pricesCapturedAt: '2026-07-09',
+  },
+  {
+    matches: /meloxicam|mobic/i,
+    goodRxSlug: 'meloxicam',
+    goodRxParams: 'label_override=meloxicam&form=tablet&dosage=15mg&quantity=30',
+    costPlusPath: 'meloxicam-15mg-tablet',
+    goodRxPrice: { price: 19.61, quantity: '30 tablets, 15mg' },
+    costPlusPrice: { price: 5.38, quantity: '30 tablets, 15mg' },
+    pricesCapturedAt: '2026-07-09',
+  },
+  {
+    // Cost Plus slug carries the salt + brand suffix (dapagliflozin-propanediol-...-farxiga), not
+    // the plain generic-name pattern -- see CLAUDE.md's Cost Plus slug scar tissue.
+    matches: /dapagliflozin|farxiga/i,
+    goodRxSlug: 'dapagliflozin',
+    goodRxParams: 'label_override=dapagliflozin&form=tablet&dosage=10mg&quantity=30',
+    costPlusPath: 'dapagliflozin-propanediol-10mg-tablet-farxiga',
+    goodRxPrice: { price: 20.15, quantity: '30 tablets, 10mg' },
+    costPlusPrice: { price: 8.35, quantity: '30 tablets, 10mg' },
+    pricesCapturedAt: '2026-07-09',
+  },
+  {
+    // Brand only (no generic empagliflozin in the US at capture time); Cost Plus doesn't carry it.
+    // GoodRx surfaces the manufacturer cash price ($249) vs. $759.99 retail.
+    matches: /empagliflozin|jardiance/i,
+    goodRxSlug: 'jardiance',
+    goodRxParams: 'label_override=jardiance&form=tablet&dosage=10mg&quantity=30',
+    goodRxPrice: { price: 249.0, quantity: '30 tablets, 10mg (manufacturer cash price)' },
+    pricesCapturedAt: '2026-07-09',
+  },
+  {
+    // Covers brand Lantus, biosimilar/interchangeable glargine (Basaglar, Semglee, glargine-yfgn,
+    // "GLARGIN YFGN") and Toujeo (glargine U-300, same molecule + $35 program). Cost Plus doesn't
+    // carry insulins. $35 is the Sanofi Insulins $35/30-day cap surfaced via GoodRx, which the
+    // biosimilars match or beat. Negative lookahead excludes the Soliqua glargine-lixisenatide
+    // fixed-dose combo (a GLP-1/insulin combo ~$600+, a different product) per code review.
+    matches: /^(?!.*(lixisenatide|soliqua)).*(insulin glargine|glargin|lantus|basaglar|semglee)/i,
+    goodRxSlug: 'lantus',
+    goodRxPrice: { price: 35.0, quantity: '30-day supply, 100 units/mL (Sanofi $35 program / GoodRx)' },
+    pricesCapturedAt: '2026-07-09',
+  },
+  {
+    matches: /insulin lispro|humalog|lispro/i,
+    goodRxSlug: 'humalog',
+    goodRxPrice: { price: 51.24, quantity: '1 vial, 10mL, 100 units/mL' },
+    pricesCapturedAt: '2026-07-09',
+  },
+  {
+    matches: /insulin degludec|degludec|tresiba/i,
+    goodRxSlug: 'tresiba',
+    goodRxPrice: { price: 141.54, quantity: '1 vial, 10mL, 100 units/mL' },
+    pricesCapturedAt: '2026-07-09',
+  },
+  {
+    // Brand only; Cost Plus doesn't carry it. Standard GoodRx price, 1-carton (1-month) supply.
+    matches: /dulaglutide|trulicity/i,
+    goodRxSlug: 'trulicity',
+    goodRxPrice: { price: 1052, quantity: '1 carton (4 pens), 0.75mg/0.5mL' },
+    pricesCapturedAt: '2026-07-09',
+  },
+  {
+    matches: /liraglutide|victoza/i,
+    goodRxSlug: 'victoza',
+    goodRxPrice: { price: 154.2, quantity: '1 carton (3 pens), 18mg/3mL' },
+    pricesCapturedAt: '2026-07-09',
+  },
+  {
+    // Oral semaglutide -- MUST precede the injectable Ozempic rule below so oral cells don't route
+    // to the pen. Cost Plus doesn't carry it.
+    matches: /rybelsus|semaglutide.*oral|oral.*semaglutide/i,
+    goodRxSlug: 'rybelsus',
+    goodRxPrice: { price: 1065, quantity: '30 tablets, 3mg' },
+    pricesCapturedAt: '2026-07-09',
+  },
+  {
+    // Injectable semaglutide. GoodRx migrated its Ozempic page to the new oral tablet and gates the
+    // pen behind a form switch; $199 is the NovoCare 1-month pen cash price the page surfaces (vs.
+    // ~$950 standard). Cost Plus doesn't carry it.
+    matches: /semaglutide|ozempic/i,
+    goodRxSlug: 'ozempic',
+    goodRxPrice: { price: 199, quantity: '1 pen, 1-month supply (NovoCare cash price via GoodRx)' },
+    pricesCapturedAt: '2026-07-09',
+  },
+
+  // ---- Non-diabetes/NSAID straggler preferred agents (added 2026-07-09) ----
+  // The last 7 preferred-agent cells with no captured price after the diabetes/NSAID sweep above:
+  // vaginal estradiol (4), ipratropium (2), oral conjugated estrogens (1). Same real browser
+  // session, same capture date.
+  {
+    // Vaginal estradiol insert/tablet/cream (generic Vagifem/Yuvafem/Estrace Vaginal). Placed after
+    // the transdermal/patch estradiol rules above so it only catches the vaginal phrasing.
+    matches: /estradiol vaginal|vaginal.*estradiol|vagifem|yuvafem|imvexxy/i,
+    goodRxSlug: 'estradiol',
+    goodRxParams: 'form=insert&label_override=estradiol',
+    goodRxPrice: { price: 159.35, quantity: '24 inserts, 10mcg (generic Vagifem/Yuvafem)' },
+    pricesCapturedAt: '2026-07-09',
+  },
+  {
+    // Both ipratropium cells resolve by the bare name "ipratropium bromide" (coveredDrugNames keys
+    // off inn/brand, not strength) so one rule serves both. Priced as the generic nebulizer solution
+    // (0.02%, 25 vials, $33.96) -- the common multisource form. The brand Atrovent HFA aerosol
+    // (17mcg inhaler) runs ~$233.92 standard; the name-based rule can't distinguish the two forms
+    // (the logged "strength/form as a first-class field" limitation).
+    matches: /ipratropium|atrovent/i,
+    goodRxSlug: 'ipratropium',
+    goodRxParams: 'form=vial&dosage=0.02%25&label_override=ipratropium-bromide',
+    goodRxPrice: { price: 33.96, quantity: '25 vials, 0.02% (2.5mL nebulizer solution)' },
+    pricesCapturedAt: '2026-07-09',
+  },
+  {
+    // Brand only (no generic conjugated estrogens); Cost Plus doesn't carry it.
+    matches: /conjugated estrogen|premarin/i,
+    goodRxSlug: 'premarin',
+    goodRxParams: 'form=tablet&dosage=0.625mg&quantity=30&label_override=premarin',
+    goodRxPrice: { price: 99.0, quantity: '30 tablets, 0.625mg (GoodRx coupon)' },
+    pricesCapturedAt: '2026-07-09',
   },
 ]
 

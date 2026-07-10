@@ -57,31 +57,54 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   `verified`/`mixed` depth.** Expanding beyond these 5 states to the remaining ~46 is explicitly
   deferred — the saved workflow script is the reusable asset for that future work, not something
   to launch without the user re-confirming scope.
-- **New topic areas to cover, beyond the current 5 (inhalers, ACE inhibitors, diabetes, menopause
-  HT, NSAIDs) — user-requested 2026-07-07, not yet scoped.** SSRIs; biologics for autoimmune
-  conditions (e.g. rheumatoid arthritis, psoriasis, IBD); DOACs (direct oral anticoagulants);
-  atypical antipsychotics & ADHD medications; migraine therapeutics (triptans, CGRP
-  antagonists/mAbs). Each is a new therapeutic-area topic, same shape as the existing 5 — needs its
-  own class taxonomy (see `ma-inhalers`/`ny-ace`/`va-diabetes`/`md-menopause`/`ny-nsaids` as the
-  reference guides `formulary-gather.js` reuses class taxonomy from) before any gather can run.
-  Before launching a gather for any of these: confirm scope/priority order with the user (which
-  topic first, which states), and note biologics in particular already has a disabled `biologics`
-  tab scaffolded in the existing inhaler taxonomy (see the separate "Biologics & non-inhaler class"
-  item below) — worth checking whether that scaffold should extend to autoimmune biologics too, or
-  stay narrowly respiratory-only, before treating this as a clean fifth+ topic.
-- **Close the cash-price gap (user flagged directly, 2026-07-06): 219 of ~470 covered-drug names
-  still have no GoodRx/Cost Plus rule.** `src/lib/cash.ts`'s `KNOWN_UNPRICED_GAP` tracks this
-  precisely (was 232, now 219 after the ma-inhalers fix below). Per-guide breakdown as of
-  2026-07-06 (run the scratch query in `cash.test.ts`'s `coveredDrugNames()` helper to refresh):
-  **va-diabetes 76/76 (100% unpriced — every diabetes drug shows link-only)**, ny-nsaids 66,
-  md-menopause 59, il-nsaids 12, ny-ace 10. `ma-inhalers` (was 13) is now fully closed — see
-  issues.md. Do this like the state-data work: real browser session (GoodRx/Cost Plus both block
-  plain fetch — see CLAUDE.md), one guide at a time, smallest/highest-impact first. va-diabetes is
-  both the largest gap and arguably the highest-value (cash prices matter most for chronic daily
-  meds like metformin/insulin/GLP-1s) — good next target. Not every drug will have a Cost Plus
-  match (confirmed for all 8 ma-inhalers drugs — Cost Plus's catalog skews toward common generics,
-  several specialty inhalers/devices simply aren't carried); that's a legitimate, documented
-  outcome, not a research failure — record it in the rule's comment either way.
+- **EXPANSION requested 2026-07-09: add SSRIs + osteoporosis topics for every state, and add
+  Pennsylvania, Alabama, California as new states.** This is the big multi-session data-gathering
+  ask. Full scope if taken literally: **2 new topics × 5 existing states = 10 new guides**, plus
+  **3 new states × 7 topics (the 5 existing + SSRI + osteoporosis) = 21 new guides** = ~31 new
+  8-payer gathers. Sequencing/scale must be confirmed with the user before launching (per the hard
+  ≤2-concurrent-agent cap and this project's gather-cost scar tissue — a single state × all-topics
+  gather is already ~1M+ tokens). Prep work that must precede any gather:
+  - **New class taxonomies needed** (neither topic exists yet). *SSRIs*: fluoxetine, sertraline,
+    citalopram, escitalopram, paroxetine, fluvoxamine — likely one `ssri-oral` class (mirror the
+    single-class `nsaid-oral`/`ace-inhibitor` shape) or split by generation. *Osteoporosis*: oral
+    bisphosphonates (alendronate, risedronate, ibandronate), IV/injectable bisphosphonate
+    (zoledronic acid), RANKL mAb (denosumab/Prolia), anabolics (teriparatide, romosozumab), plus
+    SERM (raloxifene) — 3–5 classes. Author these once, reuse across all states (see how
+    `formulary-gather.js` reuses `ma-inhalers`/`va-diabetes`/etc. taxonomies).
+  - **New-state payer rosters must be discovered live, never from memory** (CLAUDE.md MCO-churn
+    scar tissue). None of PA/AL/CA are in `src/data/state-index.json` yet — each needs a
+    `WebSearch` for "<state> Medicaid managed care organizations 2026" + PDL identity before
+    scaffolding. CA in particular: Medi-Cal Rx carves the pharmacy benefit out to a single
+    statewide FFS PDL (Magellan) — same NYRx-style consolidation as NY, so most Medi-Cal MCOs
+    likely share one PDL; confirm before listing MCOs separately.
+  - **Superseded item** (still valid, folded in here): earlier 2026-07-07 topic list — biologics
+    for autoimmune conditions, DOACs, atypical antipsychotics & ADHD meds, migraine therapeutics
+    (triptans/CGRP). Biologics already has a disabled `biologics` tab scaffolded in the inhaler
+    taxonomy — decide whether that extends to autoimmune biologics or stays respiratory-only.
+  - **Cost/dosage debt compounds:** every new guide inherits the same two gaps this validation run
+    surfaced — diabetes/NSAID-style *cash-price* holes (SSRIs and oral bisphosphonates are cheap
+    generics with real GoodRx/Cost Plus prices worth capturing at gather time) and *unsourced
+    dosage* (see the two items below). Capture cash rules and dose provenance as each new guide
+    ships, not as a later backfill, so the debt doesn't keep growing per the pattern in `cash.ts`.
+- **Close the cash-price gap (user flagged directly 2026-07-06; re-flagged 2026-07-09).**
+  `src/lib/cash.ts`'s `KNOWN_UNPRICED_GAP` is now 1088 covered-drug *names* (of 1951) with no
+  explicit GoodRx/Cost Plus rule. The 2026-07-09 validation run measured the gap the way it
+  actually matters to a user — **per *cell*, on the headline `preferredAgent`, not on the long tail
+  of alternatives/brand variants**: 177 of 510 cells (35%) have a preferred agent with no captured
+  cash price, and they are almost entirely two classes repeated across all 5 states:
+  **diabetes 136 cells (metformin, glp1, sglt2, insulin — all 5 states, 100% unpriced)** and
+  **NSAIDs 34 cells (all 5 states)**, plus 7 stragglers (menopause vaginal estradiol ×4, LAMA
+  inhalers ×2, oral estrogen ×1). So ~12 distinct drugs — metformin, dulaglutide/Trulicity,
+  semaglutide/Ozempic+Rybelsus, empagliflozin/Jardiance, dapagliflozin/Farxiga, insulin
+  glargine/Lantus, naproxen, ibuprofen, meloxicam, celecoxib, diclofenac, etodolac — cover
+  essentially the whole preferred-agent gap. Fixing the *preferred-agent* prices first is the
+  highest-leverage move: it's what the UI shows as the recommendation. Do it like the state-data
+  work: real browser session (GoodRx/Cost Plus both block plain fetch — see CLAUDE.md), guess
+  GoodRx exact-dosage params directly, `costplusdrugs.com/medications/?query=<generic>` for the
+  Cost Plus slug (mind the salt-suffix + hydration-race gotchas in CLAUDE.md). Not every drug has a
+  Cost Plus match (documented for the ma-inhalers specialty devices) — record the "not carried"
+  outcome in the rule comment either way. Refresh these numbers with the esbuild/`hasCashLinkRule`
+  scratch query used in the 2026-07-09 run, or `cash.test.ts`'s `coveredDrugNames()` helper.
 - **Redesign the omni-search.** The drug search bar (`src/components/Search.tsx`) is parked
   (removed from the App render) pending a rethink. Wanted: layperson synonyms ("HRT", "estrogen
   patch", "rescue spray") mapping to classes/molecules, search scoped to or across guides, and a
@@ -169,6 +192,22 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   one dose, and have cash-link resolution key off `(name, strength)` instead of name alone. Do
   this *after* — and folding in — the existing low-priority `goodRxParams` structured-fields item,
   since both touch the same "one drug, several dose variants" shape.
+- **Recommended-dosage data is unsourced standard-of-care, not cited (flagged in the 2026-07-09
+  validation run).** Every one of the 510 cells carries a `preferredAgent.strength` + `sig` +
+  `sigShort` + `plainSig` (0 missing), so the *field* coverage is complete — but the values are
+  first-line clinical dosing filled in by the gather agents, **not read off the payer source**. The
+  formularies list drug names / coverage / PA only, never a dose, so the dose carries no
+  `sourceId` of its own and `verification` on the cell speaks only to the preferred/PA
+  determination (see the `ny-ace` `verificationNote`, which says this explicitly; 224/510 cells'
+  notes already hedge the dose this way). Improvements, in priority order: (1) give the dose its
+  own provenance — cite a clinical reference (FDA label / Lexicomp / AHFS) per drug and add a
+  `dosageSourceIds` (or a `dosage.verified` flag) so a shown sig is traceable, not assumed;
+  (2) capture titration / renal-adjustment / max-dose rather than a single representative string
+  (GLP-1 escalation, insulin individualization, metformin ramp, renal-dosed ACE inhibitors) —
+  overlaps the structured-`strengths[]` item above; (3) add an explicit "confirm dose against
+  current labeling" disclaimer on any cell whose dose is un-cited. Do NOT let a future gather treat
+  the standard-of-care dose as source-verified. Medium priority — the data is clinically reasonable
+  today, this is about honesty of provenance and titration nuance.
 - **Separate the state and prescription-type selectors — Phase 1 SHIPPED 2026-07-05.** `Guide`
   gained explicit `stateCode`/`topicId` keys (plus a short `topic` display label); `App.tsx`/
   `Controls.tsx` now expose two independent segmented-button controls (both state and

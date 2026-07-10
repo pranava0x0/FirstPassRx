@@ -465,3 +465,44 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   covered and belong in `alternatives`, not `paRequired`. Check the payer's *document structure*
   (binary PDL vs. real tiered cost-sharing) each time, not an assumption carried over from the
   last payer in the same batch.
+- **Cash-link resolution is keyed on the drug NAME, not strength/form — and the UI (`ResultCard`/
+  `PrescribeOptions`) looks it up by `agent.inn` ALONE, not `inn + brand`.** Two consequences bit
+  the 2026-07-09 cash-price sweep: (1) a matcher must hit the *inn* string, not just the brand — the
+  existing micronized-progesterone rule matched only `/micronized progesterone|prometrium/` and so
+  the bare inn "progesterone" (the actual progestogen-cell value) fell through to a link-only
+  fallback until the matcher was broadened to `/progesterone|prometrium/`; (2) two forms sharing one
+  inn can't be told apart — both ipratropium cells carry inn "ipratropium bromide" (one HFA aerosol
+  ~$234, one nebulizer solution ~$34), so a single rule serves both and must pick one representative
+  price (chose the generic nebulizer, noted the HFA caveat in the rule comment). When measuring the
+  cash-price gap, measure it *per cell on the preferred agent* (the 177-cell number that actually
+  matters to a user), not `KNOWN_UNPRICED_GAP`, which counts every covered name including the
+  alternatives long tail and reads far scarier than the headline-recommendation gap.
+- **A bare generic-name cash matcher silently mis-prices multi-ingredient COMBO drugs — always
+  exclude combos with a negative lookahead.** `/\bmetformin\b/` matched ~50 covered combo names
+  (Synjardy, Xigduo XR, Trijardy, Janumet/sitagliptin-metformin, glipizide/pioglitazone/saxagliptin-
+  metformin) and priced them all as cheap plain metformin ($29.63) — badly wrong for $300-600 brand
+  combos, and worse than the prior link-only state because it shows a confidently-wrong number. A
+  code-review pass (regex-shadowing angle) caught it. Fix: `/^(?!.*\b(?:dapagliflozin|empagliflozin|
+  sitagliptin|glipizide|pioglitazone|synjardy|xigduo|...)\b).*\bmetformin\b/i` so combos fall
+  through to the SGLT2 rules (a reasonable proxy — the SGLT2 is the costly component) or the no-price
+  fallback. Same trap applies to any single-agent matcher whose drug appears in fixed-dose combos.
+- **GoodRx exact-dosage deep links still work by guessing params, but two 2026 quirks:** (1) the
+  Ozempic page has migrated to the new *oral* semaglutide tablet as its default and gates the
+  injectable pen behind a client-side "Switch" control that `?form=pen` no longer overrides — capture
+  the pen via the manufacturer cash price the page surfaces (NovoCare "$199", vs ~$950 standard),
+  same as Jardiance ($249) and Lantus ($35) surface manufacturer/copay-program prices rather than a
+  plain coupon; (2) for injectable brands (Trulicity/Lantus/Humalog/Victoza/Tresiba) the **bare slug**
+  (`goodrx.com/trulicity`) lands on GoodRx's own sensible 1-carton/1-vial default and is more reliable
+  than fighting the quantity param (a `quantity=4` was interpreted as 4 cartons = 4 months). The
+  headline number to record is the "Standard GoodRx price" (CVS-anchored at the session ZIP), matching
+  the existing inhaler rules' convention.
+- **Cost Plus product slugs are inconsistent — some carry a salt + brand suffix, some don't — so
+  discover the real slug from the search page's DOM instead of guessing.** `metformin-500mg-tablet`,
+  `naproxen-500mg-tablet`, `meloxicam-15mg-tablet` resolve on the plain `<generic>-<strength>-<form>`
+  pattern, but `dapagliflozin-10mg-tablet` 404s and the real slug is
+  `dapagliflozin-propanediol-10mg-tablet-farxiga` (salt + brand suffix). Fastest discovery:
+  `navigate` to `costplusdrugs.com/medications/?query=<generic>`, then
+  `javascript_tool` → `[...document.querySelectorAll('a[href*="/medications/"]')].map(a=>a.href)` to
+  read the real product hrefs (the search rows aren't exposed in the accessibility tree, so
+  `read_page` won't surface them). Ibuprofen (any Rx strength) is genuinely not carried — a real
+  "not carried" outcome, GoodRx-only by design.
