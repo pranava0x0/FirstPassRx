@@ -10,7 +10,7 @@ Two things, in this order of preference the user set:
 
 1. **DONE — cash prices for existing guides.** Every diabetes/NSAID (and straggler) preferred-agent
    cell now has a captured GoodRx/Cost Plus price. Shipped in `src/lib/cash.ts`
-   (`KNOWN_UNPRICED_GAP` 1088 → 541; the 541 is purely the alternatives long tail). Not part of the
+   (`KNOWN_UNPRICED_GAP` 1088 → 575; the 575 is purely the alternatives long tail). Not part of the
    remaining expansion.
 2. **REMAINING — data expansion.** Add **SSRIs** and **osteoporosis** topics for every state, and
    add **Pennsylvania, Alabama, California** as new states. User chose **"one guide as proof
@@ -89,5 +89,5 @@ npm run archive-sources     # snapshot cited sources + manifest — run right af
 
 ## Progress ledger (update after every chunk)
 - 2026-07-09 — Cash-price gap for existing diabetes/NSAID/straggler guides CLOSED (`cash.ts`,
-  `KNOWN_UNPRICED_GAP` 1088→541). Backlog scoped. Expansion NOT started. **Next: Step 1 (SSRI +
+  `KNOWN_UNPRICED_GAP` 1088→575). Backlog scoped. Expansion NOT started. **Next: Step 1 (SSRI +
   osteoporosis taxonomies).**

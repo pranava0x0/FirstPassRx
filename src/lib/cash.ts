@@ -91,8 +91,15 @@
  * negative-lookahead so those fall through to the SGLT2 rules (reasonable proxy) or the no-price
  * fallback instead. Every combo dropped here was an *alternatives*-list name, never a preferred
  * agent, so all 510 preferred-agent cells still price. Correctness raise (we stopped mispricing),
- * not a coverage regression -- same category as the MD paRequired→alternatives raises above. */
-export const KNOWN_UNPRICED_GAP = 541
+ * not a coverage regression -- same category as the MD paRequired→alternatives raises above.
+ * Raised 541 → 575 on 2026-07-09 (Codex PR review, same session): same combo/form-mismatch class
+ * caught in two more matchers -- (1) the broadened progesterone rule was pricing non-oral forms
+ * (Crinone vaginal gel, vaginal suppository, Endometrin insert, injection oil) and the Bijuva
+ * estradiol/progesterone combo as the 100mg oral capsule; (2) the glargine rule matched the Soliqua
+ * glargine-lixisenatide fixed-dose combo and priced it as Lantus $35. Both now excluded via negative
+ * lookahead so they fall through instead of showing a confident wrong price. Again all
+ * preferred-agent cells still price; the raise is dropped alternatives-list mispricings. */
+export const KNOWN_UNPRICED_GAP = 575
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -266,10 +273,12 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-06-30',
   },
   {
-    // Bare "progesterone" (the progestogen-cell inn) means micronized progesterone here; broadened
-    // 2026-07-09 to catch it. medroxyprogesterone has its own rule earlier, so first-match-wins
-    // keeps it unaffected.
-    matches: /progesterone|prometrium/i,
+    // Bare "progesterone" (the progestogen-cell inn) means ORAL micronized progesterone here.
+    // Broadened 2026-07-09 to catch the bare inn, then narrowed same-day (code review) to exclude
+    // non-oral forms (Crinone gel, vaginal suppository, Endometrin insert, injection oil) and combos
+    // (Bijuva estradiol/progesterone) that would otherwise be mispriced as the 100mg oral capsule.
+    // medroxyprogesterone has its own rule earlier, so first-match-wins keeps it unaffected.
+    matches: /^(?!.*(vaginal|suppositor|\bgel\b|\binsert\b|crinone|endometrin|prochieve|intramuscular|injection|\boil\b|estradiol|bijuva)).*(progesterone|prometrium)/i,
     goodRxSlug: 'progesterone',
     costPlusPath: 'progesterone-100mg-capsule',
     goodRxPrice: { price: 31.54, quantity: '30 capsules, 100mg' },
@@ -457,9 +466,11 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   },
   {
     // Covers brand Lantus, biosimilar/interchangeable glargine (Basaglar, Semglee, glargine-yfgn,
-    // "GLARGIN YFGN"). Cost Plus doesn't carry insulins. $35 is the Sanofi Insulins $35/30-day cap
-    // surfaced via GoodRx, which the biosimilars match or beat.
-    matches: /insulin glargine|glargin|lantus|basaglar|semglee/i,
+    // "GLARGIN YFGN") and Toujeo (glargine U-300, same molecule + $35 program). Cost Plus doesn't
+    // carry insulins. $35 is the Sanofi Insulins $35/30-day cap surfaced via GoodRx, which the
+    // biosimilars match or beat. Negative lookahead excludes the Soliqua glargine-lixisenatide
+    // fixed-dose combo (a GLP-1/insulin combo ~$600+, a different product) per code review.
+    matches: /^(?!.*(lixisenatide|soliqua)).*(insulin glargine|glargin|lantus|basaglar|semglee)/i,
     goodRxSlug: 'lantus',
     goodRxPrice: { price: 35.0, quantity: '30-day supply, 100 units/mL (Sanofi $35 program / GoodRx)' },
     pricesCapturedAt: '2026-07-09',
