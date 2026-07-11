@@ -356,3 +356,27 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   ResultCard and risks contradicting what each payer's source actually supports (biosimilar ≠ AB-
   rated generic). Left as-is pending per-source confirmation; documented here so a future sweep
   doesn't re-flag them as new. Root cause: **heuristic false-positive class**, not a data defect.
+- **2026-07-11 · data (correctness) · Aetna Better Health of VA cells verified against Aetna's own
+  formulary; two real BOGLs the statewide-PDL mirror had missed.** The 10 `partial` Aetna Better
+  Health cells in `va-inhalers`/`va-menopause`/`va-nsaids` had been filled by mirroring the statewide
+  DMAS PDL (they carried FFS-identical data marked `partial` only because no Aetna-branded source had
+  been read). Fetched Aetna's payer-specific FormularyNavigator NDC export
+  (`fm.formularynavigator.com/FBO/111/Aetna_Better_Health_of_Virginia.json`, 27 MB, 102,529 NDCs,
+  formulary_id 22791 v33, eff 07/01/2026) via curl+browser-UA. Nine cells upgraded to `verified`
+  (est-oral left `partial`, matching its FFS twin — a structural PDL gap). Two were genuinely **wrong**
+  in the mirror, not just under-verified: `icslaba` (brand **Symbicort** is Preferred, generic
+  budesonide-formoterol is State-PDL-Non-Preferred) and `lama` (brand **Spiriva** Preferred, generic
+  tiotropium capsule Non-Preferred) — both real brand-preferred-over-generic situations that the mirror
+  had encoded as `genericAvailable:false, boglActive:false`. Because the tier label reads "**State** PDL
+  Non-Preferred", the same BOGL propagates to every statewide-PDL-following payer: also corrected the
+  `va-medicaid-ffs`, `anthem-healthkeepers-plus`, and `sentara-community` icslaba+lama cells
+  (`genericAvailable:true, boglActive:true` + boglNote). Result: `va-inhalers` 32/32 verified,
+  `va-nsaids` 8/8, `va-menopause` 38/40. Added the Aetna source as a new reference in all three guides;
+  trace still resolves 100%. _Fixed (this commit)._ **Refines the 2026-07-10 observation above:** the
+  `genericAvailable:false` pattern is NOT uniformly a false positive — where an *AB-rated generic of the
+  exact product* exists (Symbicort→Breyna, Spiriva HandiHaler→generic tiotropium capsule, Advair→Wixela,
+  Vagifem→generic estradiol vaginal tablet) it is a true BOGL bug. The remaining ~30 flagged cells split
+  cleanly: **true negatives** (GLP-1 Trulicity/Ozempic/Rybelsus, SGLT2 Jardiance/Farxiga, insulin —
+  no AB-rated US generic exists; leave) vs. **still-to-fix BOGLs** in `ma-inhalers`/`md-inhalers`/
+  `ny-inhalers`/`il-inhalers` (Symbicort, Spiriva, Advair) and `va-menopause` anthem Vagifem — deferred
+  to a follow-up pass that re-reads each payer's own source rather than mass-flipping. _Open (scoped)._
