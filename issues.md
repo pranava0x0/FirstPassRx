@@ -397,3 +397,18 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   brand-over-generic steer. Only a source explicitly preferring brand Spiriva HandiHaler *capsule*
   over the non-covered generic tiotropium capsule would qualify; none seen. Diabetes/insulin
   `genericAvailable:false` cells (GLP-1, SGLT2, insulin) remain true negatives. _Sweep closed._
+- **2026-07-11 (cont.) · ny-menopause ny-medicaid 5 `example` cells — coverage confirmed on the NYRx
+  reimbursable-drugs file, but PA depth blocked on an undocumented code.** Fetched the authoritative
+  NYRx List of Reimbursable Drugs (`docs.emedny.org/ReimbursableDrugs/MedReimbDrugsFormulary.csv`,
+  37,669 NDCs, eff 2026-07-11). All five HT drug families **are covered** (estradiol 211 NDCs across
+  patch/oral/vaginal, micronized progesterone, estradiol-norethindrone combo). The file's `PA` column
+  takes values `0` / `G` / `N`, but eMedNY's own file-layout spec (`FormularyFileInfo.pdf`) is a COBOL
+  copybook that never defines the flattened CSV's single-letter `PA` / `PREFERRED DRUG CODE` values.
+  Per-form PA breakdown: **vaginal insert/cream and the estradiol-norethindrone combo are uniformly
+  `PA=0`** (clean, no PA); **transdermal patch, oral tablet, and micronized progesterone are mostly
+  `PA=G`** (17/109 patch, 6/34 oral, 15/26 progesterone are `0`). Because `G` is undefined in the
+  available materials, marking a "no PA" verified finding on the patch/oral/progesterone cells would
+  fabricate a claim, so they stay `example`. **To finish:** obtain eMedNY's `PA`-code legend (call
+  center / provider manual) — if `G` ≠ prior-authorization, all 5 upgrade to verified citing the CSV;
+  the `vaginal` + `combo` cells (uniform `PA=0`) are already safe to upgrade whenever a future pass
+  adds the CSV as a source. _Open (blocked on code legend)._
