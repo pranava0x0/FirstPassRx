@@ -380,3 +380,20 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   no AB-rated US generic exists; leave) vs. **still-to-fix BOGLs** in `ma-inhalers`/`md-inhalers`/
   `ny-inhalers`/`il-inhalers` (Symbicort, Spiriva, Advair) and `va-menopause` anthem Vagifem — deferred
   to a follow-up pass that re-reads each payer's own source rather than mass-flipping. _Open (scoped)._
+- **2026-07-11 (cont.) · cross-guide `icslaba` BOGL sweep resolved; `lama` Spiriva cells confirmed
+  NOT blanket BOGLs.** Followed up the scoped remainder above by reading each payer's own source:
+  - **CountyCare (IL) `icslaba`** — Advair Diskus/HFA are Preferred; generic fluticasone-salmeterol
+    (Wixela) is absent from the 117-page Q1-2026 formulary → real BOGL, fixed.
+  - **Excellus Medicare (NY) `icslaba`** — Symbicort is Tier 3/QL; generic budesonide-formoterol
+    (Breyna) is absent from the 108-page 5-tier PDF → real BOGL, fixed.
+  - **anthem-healthkeepers-plus (VA) `vaginal`** — generic estradiol vaginal tablet IS Preferred on
+    the statewide PDL → `genericAvailable` false→true, *not* a BOGL.
+  That closes every clean AB-rated-generic `icslaba`/vaginal case (Symbicort→Breyna, Advair→Wixela,
+  Vagifem→generic estradiol vaginal). **The remaining `lama` Spiriva Respimat candidates
+  (`ma`/`md` masshealth, bcbsma, harvardpilgrim, cigna, medicare-partd, kpmidatlantic; va
+  sentara-commercial) are deliberately left as `genericAvailable:false`:** Spiriva Respimat is a
+  soft-mist device with no AB-rated generic, and where a source was read (CountyCare) the generic
+  tiotropium *capsule* is itself covered — so these are device-distinct alternatives, not a
+  brand-over-generic steer. Only a source explicitly preferring brand Spiriva HandiHaler *capsule*
+  over the non-covered generic tiotropium capsule would qualify; none seen. Diabetes/insulin
+  `genericAvailable:false` cells (GLP-1, SGLT2, insulin) remain true negatives. _Sweep closed._

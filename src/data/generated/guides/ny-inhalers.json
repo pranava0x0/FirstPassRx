@@ -1814,15 +1814,15 @@
       "preferredAgent": {
         "inn": "budesonide-formoterol",
         "brand": "Symbicort",
-        "genericAvailable": false,
+        "genericAvailable": true,
         "strength": "inhalation HFA aerosol inhaler",
         "sig": "2 inhalations by mouth twice daily",
         "sigShort": "2 puffs PO BID",
         "plainSig": "Take 2 puffs twice a day, every day, to control asthma or COPD symptoms."
       },
       "preferredRestriction": "Quantity limit only: 11 GM per 30 days. No PA or step therapy.",
-      "boglActive": false,
-      "boglNote": null,
+      "boglActive": true,
+      "boglNote": "Excellus BlueCross BlueShield Medicare (5-tier PDP) lists SYMBICORT as Tier 3 with a quantity limit while the AB-rated generic budesonide-formoterol (Breyna) is absent from the 108-page formulary — only the brand is covered. Write Symbicort, dispense as written.",
       "alternatives": [
         {
           "drug": "ADVAIR DISKUS (fluticasone-salmeterol)",
@@ -1864,7 +1864,7 @@
       "stepTherapy": null,
       "tier": "Tier 3 - Preferred Brand",
       "verification": "verified",
-      "verificationNote": "Read directly from the Excellus BlueCross BlueShield 2026 Formulary (List of Covered Drugs), PDF page 94 (internal document page 84), section 'RESPIRATORY TRACT/ PULMONARY AGENTS' > 'Respiratory Tract Agents, Other'. Confirmed verbatim: 'ADVAIR DISKUS' Tier 3, QL (60 EA per 30 days); 'ADVAIR HFA' Tier 3, QL (12 GM per 30 days); 'BREO ELLIPTA' Tier 3, QL (60 EA per 30 days); 'DULERA' Tier 3, QL (13 GM per 30 days); 'SYMBICORT' Tier 3, QL (11 GM per 30 days); 'BREZTRI AEROSPHERE' Tier 3, QL (10.7 GM per 30 days); 'ANORO ELLIPTA' Tier 3, QL (60 EA per 30 days, LAMA/LABA not ICS/LABA). Searched the full extracted document text for 'fluticasone-salmeterol', 'budesonide-formoterol', 'mometasone-formoterol', 'WIXELA', 'AIRDUO' — none appear anywhere, confirming no generic ICS/LABA combination inhaler is covered under this formulary as of the 7/01/2026 effective date. Picked Symbicort as the representative preferred agent since all five ICS/LABA brand options sit on the same tier with the same restriction profile (QL only, no PA/ST) — the choice among them is not formulary-driven.",
+      "verificationNote": "Verified against Excellus Medicare's own 5-Tier formulary PDF (FormularyNavigator FBO/251, 108 pages, fetched via curl+browser-UA, 200 OK): SYMBICORT is Tier 3 (QL 11 GM/30 days); generic budesonide-formoterol / Breyna does not appear anywhere in the document. Corrected genericAvailable false->true and flipped the missed BOGL (brand covered, AB-rated generic not on formulary). Read directly from the Excellus BlueCross BlueShield 2026 Formulary (List of Covered Drugs), PDF page 94 (internal document page 84), section 'RESPIRATORY TRACT/ PULMONARY AGENTS' > 'Respiratory Tract Agents, Other'. Confirmed verbatim: 'ADVAIR DISKUS' Tier 3, QL (60 EA per 30 days); 'ADVAIR HFA' Tier 3, QL (12 GM per 30 days); 'BREO ELLIPTA' Tier 3, QL (60 EA per 30 days); 'DULERA' Tier 3, QL (13 GM per 30 days); 'SYMBICORT' Tier 3, QL (11 GM per 30 days); 'BREZTRI AEROSPHERE' Tier 3, QL (10.7 GM per 30 days); 'ANORO ELLIPTA' Tier 3, QL (60 EA per 30 days, LAMA/LABA not ICS/LABA). Searched the full extracted document text for 'fluticasone-salmeterol', 'budesonide-formoterol', 'mometasone-formoterol', 'WIXELA', 'AIRDUO' — none appear anywhere, confirming no generic ICS/LABA combination inhaler is covered under this formulary as of the 7/01/2026 effective date. Picked Symbicort as the representative preferred agent since all five ICS/LABA brand options sit on the same tier with the same restriction profile (QL only, no PA/ST) — the choice among them is not formulary-driven.",
       "sourceIds": [
         "ny-excellus-medicare-inhalers-source-2026-07"
       ],
