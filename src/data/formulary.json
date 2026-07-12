@@ -479,13 +479,14 @@
             "mh-mhdl-t23",
             "mh-pa37"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "mh-mhdl-t23"
           ],
           "restrictionSourceIds": [
             "mh-pa37"
-          ]
+          ],
+          "tier": "Brand Preferred, PA-exempt (MassHealth Drug List)"
         },
         {
           "payerId": "masshealth",
@@ -504,42 +505,59 @@
           "paRequired": [
             {
               "drug": "Alvesco (ciclesonide)",
-              "reason": "Step therapy",
+              "reason": "Step therapy: trial of two no-PA inhaled corticosteroids first",
               "outcome": "step",
               "sourceIds": [
                 "mh-pa37"
               ]
             },
             {
-              "drug": "Fluticasone propionate HFA (≥12 yr)",
-              "reason": "Step therapy",
+              "drug": "QVAR RediHaler (beclomethasone)",
+              "reason": "Step therapy: trial of two no-PA inhaled corticosteroids first",
               "outcome": "step",
               "sourceIds": [
                 "mh-pa37"
               ]
             },
             {
-              "drug": "QVAR RediHaler",
-              "reason": "Step therapy",
+              "drug": "Fluticasone propionate inhalation aerosol (≥12 yr) & powder",
+              "reason": "Step therapy: trial of two no-PA inhaled corticosteroids first",
               "outcome": "step",
               "sourceIds": [
                 "mh-pa37"
               ]
             }
           ],
-          "stepTherapy": "Alvesco, fluticasone propionate aerosol (age ≥12), and QVAR RediHaler require a documented trial of two inhaled corticosteroids first.",
-          "verification": "partial",
-          "verificationNote": "Step-therapy structure is verbatim from PA-37; the specific no-PA preferred ICS is inferred — confirm the preferred agent on the current MHDL.",
+          "stepTherapy": "Alvesco, QVAR RediHaler, and fluticasone propionate require a documented trial of two inhaled corticosteroids available without PA (e.g. budesonide powder, Arnuity, Asmanex).",
+          "verification": "verified",
+          "verificationNote": "Read directly off MHDL Table 23 (Inhaled Respiratory Agents – Corticosteroids) and PA-37: budesonide inhalation powder (Pulmicort Flexhaler), mometasone (Asmanex), and fluticasone furoate (Arnuity, Brand Preferred) are available without PA; Qvar RediHaler, Alvesco, and fluticasone propionate require PA/step therapy. Confirms the inferred no-PA preferred agent.",
           "sourceIds": [
             "mh-mhdl-t23",
             "mh-pa37"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "mh-mhdl-t23"
           ],
           "restrictionSourceIds": [
             "mh-pa37"
+          ],
+          "tier": "Covered without PA (MassHealth Drug List); no-PA preferred agent",
+          "alternatives": [
+            {
+              "drug": "Fluticasone furoate (Arnuity Ellipta)",
+              "note": "No PA (Brand Preferred)",
+              "sourceIds": [
+                "mh-mhdl-t23"
+              ]
+            },
+            {
+              "drug": "Mometasone (Asmanex HFA / Twisthaler)",
+              "note": "No PA",
+              "sourceIds": [
+                "mh-mhdl-t23"
+              ]
+            }
           ]
         },
         {
@@ -554,8 +572,8 @@
             "sigShort": "2 puffs BID",
             "plainSig": "Two puffs, morning and night, every day."
           },
-          "boglActive": false,
-          "boglNote": null,
+          "boglActive": true,
+          "boglNote": "MassHealth lists brand Symbicort (budesonide/formoterol) as Brand Preferred over its generic equivalent on the MassHealth Drug List — the plan requires a trial of the preferred brand or clinical rationale before the generic. Write Symbicort, dispense as written.",
           "alternatives": [
             {
               "drug": "Advair Diskus (fluticasone/salmeterol)",
@@ -591,18 +609,19 @@
           ],
           "stepTherapy": "AirDuo RespiClick requires a prior trial of fluticasone/salmeterol inhalation aerosol/powder (generic Advair). Symbicort, Advair, Breo, and Dulera are preferred without PA.",
           "verification": "verified",
-          "verificationNote": "MHDL Table 23 marks Symbicort as Preferred Drug (PD), Brand Preferred, no PA; AirDuo step from PA-37 Section III.",
+          "verificationNote": "Read directly off MHDL Table 23 (Inhaled Respiratory Agents – ICS/LABA combinations): budesonide/formoterol (Symbicort) is a Preferred Drug marked \"BP\" (Brand Preferred over generic equivalents), no PA. The MHDL legend defines BP as requiring a trial of the preferred brand — a BOGL situation.",
           "sourceIds": [
             "mh-mhdl-t23",
             "mh-pa37"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "mh-mhdl-t23"
           ],
           "restrictionSourceIds": [
             "mh-pa37"
-          ]
+          ],
+          "tier": "Preferred / Brand Preferred, no PA (MassHealth Drug List)"
         },
         {
           "payerId": "masshealth",
@@ -660,13 +679,14 @@
             "mh-pa37",
             "dailymed-spiriva"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "mh-mhdl-t23"
           ],
           "restrictionSourceIds": [
             "mh-pa37"
-          ]
+          ],
+          "tier": "Covered, no PA (MassHealth Drug List)"
         },
         {
           "payerId": "bcbsma",
@@ -828,7 +848,7 @@
           "classId": "saba",
           "preferredAgent": {
             "inn": "Albuterol sulfate HFA",
-            "brand": "ProAir HFA",
+            "brand": null,
             "genericAvailable": true,
             "strength": "90 mcg",
             "sig": "2 puffs every 4 to 6 hours as needed",
@@ -838,13 +858,13 @@
           "boglActive": false,
           "boglNote": null,
           "paRequired": [],
-          "stepTherapy": null,
-          "verification": "partial",
-          "verificationNote": "Tufts Value Direct 3-Tier formulary (eff. 2026-01-01) is the verified source; the specific tier/PA for this agent is inferred — confirm in the formulary PDF.",
+          "stepTherapy": "",
+          "verification": "verified",
+          "verificationNote": "Read directly off the Tufts Value Direct 3-Tier formulary PDF (Respiratory / Asthma section, \"Last Update 06/15/26\"): generic albuterol sulfate HFA aerosol 108 (90 base) mcg/act is Tier 1 with no PA/ST.",
           "sourceIds": [
             "tufts-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "tufts-formulary-2026"
           ],
@@ -853,46 +873,61 @@
           ],
           "alternatives": [
             {
-              "drug": "Levalbuterol (Xopenex HFA)",
-              "note": "Non-preferred",
+              "drug": "Levalbuterol HFA (Xopenex HFA)",
+              "note": "Tier 2",
+              "sourceIds": [
+                "tufts-formulary-2026"
+              ]
+            },
+            {
+              "drug": "ProAir Digihaler / branded SABAs",
+              "note": "higher tier",
               "sourceIds": [
                 "tufts-formulary-2026"
               ]
             }
-          ]
+          ],
+          "tier": "Tier 1 (generic, lowest cost-share); no PA"
         },
         {
           "payerId": "tufts",
           "classId": "ics",
           "preferredAgent": {
-            "inn": "Fluticasone propionate",
-            "brand": "Flovent HFA (authorized generic)",
+            "inn": "Beclomethasone dipropionate HFA",
+            "brand": "QVAR",
             "genericAvailable": true,
-            "strength": "110 mcg",
-            "sig": "2 puffs twice daily",
-            "sigShort": "2 puffs BID",
-            "plainSig": "Two puffs, morning and night, every day."
+            "strength": "80 mcg",
+            "sig": "1 to 2 inhalations twice daily",
+            "sigShort": "1-2 inh BID",
+            "plainSig": "One to two breaths in, morning and night."
           },
           "boglActive": false,
           "boglNote": null,
           "paRequired": [
             {
-              "drug": "Pulmicort Flexhaler",
-              "reason": "Non-formulary 2026",
-              "outcome": "nonformulary",
+              "drug": "Fluticasone propionate HFA",
+              "reason": "Step therapy; age limit (max 6 years)",
+              "outcome": "step",
+              "sourceIds": [
+                "tufts-formulary-2026"
+              ]
+            },
+            {
+              "drug": "Asmanex (mometasone) HFA & Twisthaler",
+              "reason": "Step therapy",
+              "outcome": "step",
               "sourceIds": [
                 "tufts-formulary-2026"
               ]
             }
           ],
-          "stepTherapy": null,
-          "verification": "partial",
-          "verificationNote": "Point32Health's 2026 commercial drug-status changes confirm Pulmicort Flexhaler moved to non-formulary; the preferred ICS is inferred — confirm in the Tufts formulary PDF.",
+          "stepTherapy": "",
+          "verification": "verified",
+          "verificationNote": "Read directly off the Tufts Value Direct 3-Tier formulary PDF: beclomethasone diprop HFA 40/80 mcg is Tier 2 with no PA/ST, while fluticasone propionate HFA and Asmanex are Tier 3 with step therapy. Preferred pick corrected to the lowest-tier unrestricted ICS inhaler.",
           "sourceIds": [
-            "tufts-formulary-2026",
-            "p32-changes-2026"
+            "tufts-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "tufts-formulary-2026"
           ],
@@ -901,53 +936,65 @@
           ],
           "alternatives": [
             {
-              "drug": "Arnuity Ellipta",
-              "note": "Non-preferred",
+              "drug": "Arnuity Ellipta (fluticasone furoate)",
+              "note": "Tier 2",
+              "sourceIds": [
+                "tufts-formulary-2026"
+              ]
+            },
+            {
+              "drug": "QVAR RediHaler",
+              "note": "Tier 2",
               "sourceIds": [
                 "tufts-formulary-2026"
               ]
             }
-          ]
+          ],
+          "tier": "Tier 2; no PA/step therapy"
         },
         {
           "payerId": "tufts",
           "classId": "icslaba",
           "preferredAgent": {
-            "inn": "Budesonide/formoterol",
-            "brand": "Symbicort",
+            "inn": "Fluticasone/salmeterol",
+            "brand": "Wixela Inhub (generic Advair Diskus)",
             "genericAvailable": true,
-            "strength": "160/4.5 mcg",
-            "sig": "2 puffs twice daily",
-            "sigShort": "2 puffs BID",
-            "plainSig": "Two puffs, morning and night, every day."
+            "strength": "250/50 mcg",
+            "sig": "1 inhalation twice daily",
+            "sigShort": "1 inh BID",
+            "plainSig": "One breath in, morning and night, every day."
           },
           "boglActive": false,
           "boglNote": null,
-          "paRequired": [
-            {
-              "drug": "Breo Ellipta",
-              "reason": "Step therapy",
-              "outcome": "step",
-              "sourceIds": [
-                "p32-pa-form"
-              ]
-            }
-          ],
-          "stepTherapy": "Confirm step-therapy specifics in the Tufts formulary PDF; non-preferred combos may require a preferred-agent trial.",
-          "verification": "partial",
-          "verificationNote": "Tufts Value Direct 3-Tier formulary is verified as the source; preferred agent inferred — confirm tier/PA in the PDF.",
+          "paRequired": [],
+          "stepTherapy": "",
+          "verification": "verified",
+          "verificationNote": "Read directly off the Tufts Value Direct 3-Tier formulary PDF: generic fluticasone-salmeterol DPI (100-50/250-50/500-50) is Tier 1 with QL max 1 inhaler/30 days; Symbicort and Breo Ellipta are Tier 2. Preferred pick corrected from Symbicort (Tier 2) to the Tier-1 generic.",
           "sourceIds": [
-            "tufts-formulary-2026",
-            "p32-pa-form"
+            "tufts-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "tufts-formulary-2026"
           ],
           "restrictionSourceIds": [
-            "p32-pa-form"
+            "tufts-formulary-2026"
           ],
           "alternatives": [
+            {
+              "drug": "Symbicort (budesonide/formoterol)",
+              "note": "Tier 2",
+              "sourceIds": [
+                "tufts-formulary-2026"
+              ]
+            },
+            {
+              "drug": "Breo Ellipta (fluticasone furoate/vilanterol)",
+              "note": "Tier 2",
+              "sourceIds": [
+                "tufts-formulary-2026"
+              ]
+            },
             {
               "drug": "Dulera",
               "note": "Non-preferred",
@@ -955,7 +1002,8 @@
                 "tufts-formulary-2026"
               ]
             }
-          ]
+          ],
+          "tier": "Tier 1 (generic DPI); QL max 1 inhaler / 30 days"
         },
         {
           "payerId": "tufts",
@@ -972,14 +1020,13 @@
           "boglActive": false,
           "boglNote": null,
           "paRequired": [],
-          "stepTherapy": null,
-          "verification": "partial",
-          "verificationNote": "Source formulary verified; preferred LAMA inferred. LAMA is COPD-indicated. Confirm in the Tufts formulary PDF.",
+          "stepTherapy": "",
+          "verification": "verified",
+          "verificationNote": "Read directly off the Tufts Value Direct 3-Tier formulary PDF: Incruse Ellipta (umeclidinium) is Tier 2, QL max 1 inhaler/30 days; no generic LAMA on the market. LAMA is COPD-indicated.",
           "sourceIds": [
-            "tufts-formulary-2026",
-            "dailymed-incruse"
+            "tufts-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "tufts-formulary-2026"
           ],
@@ -988,20 +1035,28 @@
           ],
           "alternatives": [
             {
-              "drug": "Tudorza Pressair",
+              "drug": "Tiotropium (Spiriva HandiHaler / Respimat)",
+              "note": "Tier 2",
+              "sourceIds": [
+                "tufts-formulary-2026"
+              ]
+            },
+            {
+              "drug": "Tudorza Pressair (aclidinium)",
               "note": "Non-preferred",
               "sourceIds": [
                 "tufts-formulary-2026"
               ]
             }
-          ]
+          ],
+          "tier": "Tier 2; QL max 1 inhaler / 30 days"
         },
         {
           "payerId": "harvardpilgrim",
           "classId": "saba",
           "preferredAgent": {
             "inn": "Albuterol sulfate HFA",
-            "brand": "ProAir HFA",
+            "brand": null,
             "genericAvailable": true,
             "strength": "90 mcg",
             "sig": "2 puffs every 4 to 6 hours as needed",
@@ -1011,13 +1066,13 @@
           "boglActive": false,
           "boglNote": null,
           "paRequired": [],
-          "stepTherapy": null,
-          "verification": "partial",
-          "verificationNote": "Harvard Pilgrim Select 3-Tier 2026 PDL is the verified source; this agent's tier/PA is inferred — confirm in the PDF.",
+          "stepTherapy": "",
+          "verification": "verified",
+          "verificationNote": "Read directly off the Harvard Pilgrim Select 3-Tier 2026 formulary PDF (Asthma section): generic albuterol sulfate HFA aerosol 108 (90 base) mcg/act is Tier 1 with no PA/ST.",
           "sourceIds": [
             "hphc-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "hphc-formulary-2026"
           ],
@@ -1026,89 +1081,114 @@
           ],
           "alternatives": [
             {
-              "drug": "Levalbuterol (Xopenex HFA)",
-              "note": "Non-preferred",
+              "drug": "Levalbuterol HFA (Xopenex HFA)",
+              "note": "Tier 2",
               "sourceIds": [
                 "hphc-formulary-2026"
               ]
             }
-          ]
+          ],
+          "tier": "Tier 1 (generic, lowest cost-share); no PA"
         },
         {
           "payerId": "harvardpilgrim",
           "classId": "ics",
           "preferredAgent": {
-            "inn": "Mometasone furoate",
-            "brand": "Asmanex Twisthaler",
+            "inn": "Beclomethasone dipropionate",
+            "brand": "QVAR RediHaler",
             "genericAvailable": false,
-            "strength": "220 mcg",
-            "sig": "2 inhalations once daily in the evening",
-            "sigShort": "2 inh QHS",
-            "plainSig": "Two breaths in, once a day in the evening."
+            "strength": "80 mcg",
+            "sig": "1 to 2 inhalations twice daily",
+            "sigShort": "1-2 inh BID",
+            "plainSig": "One to two breaths in, morning and night."
           },
           "boglActive": false,
           "boglNote": null,
-          "paRequired": [],
-          "stepTherapy": null,
-          "verification": "partial",
-          "verificationNote": "Source PDL verified; preferred ICS inferred — confirm in the Harvard Pilgrim formulary PDF.",
-          "sourceIds": [
-            "hphc-formulary-2026"
-          ],
-          "lastReviewed": "2026-06-22",
-          "coverageSourceIds": [
-            "hphc-formulary-2026"
-          ],
-          "restrictionSourceIds": [
-            "hphc-formulary-2026"
-          ],
-          "alternatives": [
+          "paRequired": [
             {
-              "drug": "Alvesco (ciclesonide)",
-              "note": "Non-preferred",
+              "drug": "Asmanex (mometasone) HFA & Twisthaler",
+              "reason": "Step therapy",
+              "outcome": "step",
               "sourceIds": [
                 "hphc-formulary-2026"
               ]
             },
             {
-              "drug": "Arnuity Ellipta",
-              "note": "Non-preferred",
+              "drug": "Fluticasone propionate HFA",
+              "reason": "Step therapy; age limit (max 6 years)",
+              "outcome": "step",
               "sourceIds": [
                 "hphc-formulary-2026"
               ]
             }
-          ]
+          ],
+          "stepTherapy": "",
+          "verification": "verified",
+          "verificationNote": "Read directly off the Harvard Pilgrim Select 3-Tier 2026 formulary PDF: QVAR RediHaler (beclomethasone) and Arnuity Ellipta are Tier 2 with no step therapy, while Asmanex and fluticasone propionate HFA are Tier 3 with step therapy. Preferred pick corrected from mometasone/Asmanex (Tier 3, ST) to a Tier-2 unrestricted ICS.",
+          "sourceIds": [
+            "hphc-formulary-2026"
+          ],
+          "lastReviewed": "2026-07-10",
+          "coverageSourceIds": [
+            "hphc-formulary-2026"
+          ],
+          "restrictionSourceIds": [
+            "hphc-formulary-2026"
+          ],
+          "alternatives": [
+            {
+              "drug": "Arnuity Ellipta (fluticasone furoate)",
+              "note": "Tier 2",
+              "sourceIds": [
+                "hphc-formulary-2026"
+              ]
+            }
+          ],
+          "tier": "Tier 2; no PA/step therapy"
         },
         {
           "payerId": "harvardpilgrim",
           "classId": "icslaba",
           "preferredAgent": {
-            "inn": "Fluticasone furoate/vilanterol",
-            "brand": "Breo Ellipta",
-            "genericAvailable": false,
-            "strength": "100/25 mcg",
-            "sig": "1 inhalation once daily",
-            "sigShort": "1 inh daily",
-            "plainSig": "One breath in, once a day, same time each day."
+            "inn": "Fluticasone/salmeterol",
+            "brand": "Wixela Inhub (generic Advair Diskus)",
+            "genericAvailable": true,
+            "strength": "250/50 mcg",
+            "sig": "1 inhalation twice daily",
+            "sigShort": "1 inh BID",
+            "plainSig": "One breath in, morning and night, every day."
           },
           "boglActive": false,
           "boglNote": null,
           "paRequired": [],
-          "stepTherapy": null,
-          "verification": "partial",
-          "verificationNote": "Source PDL verified; preferred combo inferred — confirm tier/PA in the Harvard Pilgrim formulary PDF.",
+          "stepTherapy": "",
+          "verification": "verified",
+          "verificationNote": "Read directly off the Harvard Pilgrim Select 3-Tier 2026 formulary PDF: generic fluticasone-salmeterol DPI is Tier 1 with QL max 1 inhaler/30 days; Breo Ellipta and Symbicort are Tier 2. Preferred pick corrected from Breo Ellipta (Tier 2) to the Tier-1 generic.",
           "sourceIds": [
-            "hphc-formulary-2026",
-            "p32-pa-form"
+            "hphc-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "hphc-formulary-2026"
           ],
           "restrictionSourceIds": [
-            "p32-pa-form"
+            "hphc-formulary-2026"
           ],
           "alternatives": [
+            {
+              "drug": "Symbicort (budesonide/formoterol)",
+              "note": "Tier 2",
+              "sourceIds": [
+                "hphc-formulary-2026"
+              ]
+            },
+            {
+              "drug": "Breo Ellipta (fluticasone furoate/vilanterol)",
+              "note": "Tier 2",
+              "sourceIds": [
+                "hphc-formulary-2026"
+              ]
+            },
             {
               "drug": "Dulera",
               "note": "Non-preferred",
@@ -1116,7 +1196,8 @@
                 "hphc-formulary-2026"
               ]
             }
-          ]
+          ],
+          "tier": "Tier 1 (generic DPI); QL max 1 inhaler / 30 days"
         },
         {
           "payerId": "harvardpilgrim",
@@ -1133,14 +1214,13 @@
           "boglActive": false,
           "boglNote": null,
           "paRequired": [],
-          "stepTherapy": null,
-          "verification": "partial",
-          "verificationNote": "Source PDL verified; preferred LAMA inferred. LAMA is COPD-indicated. Confirm in the Harvard Pilgrim formulary PDF.",
+          "stepTherapy": "",
+          "verification": "verified",
+          "verificationNote": "Read directly off the Harvard Pilgrim Select 3-Tier 2026 formulary PDF: Spiriva Respimat and Spiriva HandiHaler (tiotropium) and Incruse Ellipta are all Tier 2, QL max 1 inhaler/30 days; no generic LAMA on the market. LAMA is COPD-indicated.",
           "sourceIds": [
-            "hphc-formulary-2026",
-            "dailymed-spiriva"
+            "hphc-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "hphc-formulary-2026"
           ],
@@ -1149,20 +1229,28 @@
           ],
           "alternatives": [
             {
-              "drug": "Tudorza Pressair",
+              "drug": "Incruse Ellipta (umeclidinium)",
+              "note": "Tier 2",
+              "sourceIds": [
+                "hphc-formulary-2026"
+              ]
+            },
+            {
+              "drug": "Tudorza Pressair (aclidinium)",
               "note": "Non-preferred",
               "sourceIds": [
                 "hphc-formulary-2026"
               ]
             }
-          ]
+          ],
+          "tier": "Tier 2; QL max 1 inhaler / 30 days"
         },
         {
           "payerId": "mgb",
           "classId": "saba",
           "preferredAgent": {
             "inn": "Albuterol sulfate HFA",
-            "brand": "ProAir HFA",
+            "brand": null,
             "genericAvailable": true,
             "strength": "90 mcg",
             "sig": "2 puffs every 4 to 6 hours as needed",
@@ -1172,13 +1260,13 @@
           "boglActive": false,
           "boglNote": null,
           "paRequired": [],
-          "stepTherapy": null,
-          "verification": "partial",
-          "verificationNote": "MGB 2026 6-Tier formulary (current 6/1/2026) is the verified source; SABA tier not in the verified extract — confirm in the formulary PDF.",
+          "stepTherapy": "",
+          "verification": "verified",
+          "verificationNote": "Read directly off the MGB Health Plan 2026 6-Tier Pharmacy Formulary PDF: albuterol sulfate HFA aerosol 108 (90 base) mcg/act (reference Ventolin HFA) is Tier 2 with QL 2 inhalers/30 days.",
           "sourceIds": [
             "mgb-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "mgb-formulary-2026"
           ],
@@ -1188,12 +1276,13 @@
           "alternatives": [
             {
               "drug": "Levalbuterol (Xopenex HFA)",
-              "note": "Non-preferred",
+              "note": "Tier 2",
               "sourceIds": [
                 "mgb-formulary-2026"
               ]
             }
-          ]
+          ],
+          "tier": "Tier 2; QL 2 inhalers / 30 days"
         },
         {
           "payerId": "mgb",
@@ -1216,6 +1305,13 @@
               "sourceIds": [
                 "mgb-formulary-2026"
               ]
+            },
+            {
+              "drug": "Budesonide inhalation (Pulmicort)",
+              "note": "Tier 2, no PA (lower cost-share)",
+              "sourceIds": [
+                "mgb-formulary-2026"
+              ]
             }
           ],
           "paRequired": [
@@ -1230,18 +1326,19 @@
           ],
           "stepTherapy": "Fluticasone propionate HFA requires members aged 12+ with asthma to fail BOTH preferred brands Arnuity Ellipta and QVAR RediHaler first (or document the need for an MDI + spacer). Covered without PA through age 11.",
           "verification": "verified",
-          "verificationNote": "Read directly off MGB's Fluticasone Propionate HFA PA policy (eff. 2025-09-10): Arnuity Ellipta and QVAR RediHaler are the preferred ICS brands.",
+          "verificationNote": "Read directly off MGB's Fluticasone Propionate HFA PA policy (eff. 2025-09-10): Arnuity Ellipta and QVAR RediHaler are the preferred ICS brands. MGB 2026 formulary: Arnuity Ellipta and QVAR RediHaler are Tier 3; budesonide inhalation (Pulmicort) is a Tier-2 no-PA option.",
           "sourceIds": [
             "mgb-flut-hfa-pa",
             "mgb-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "mgb-formulary-2026"
           ],
           "restrictionSourceIds": [
             "mgb-flut-hfa-pa"
-          ]
+          ],
+          "tier": "Tier 3 (MGB-designated preferred ICS brand per PA policy)"
         },
         {
           "payerId": "mgb",
@@ -1280,13 +1377,14 @@
           "sourceIds": [
             "mgb-formulary-2026"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "mgb-formulary-2026"
           ],
           "restrictionSourceIds": [
             "mgb-formulary-2026"
-          ]
+          ],
+          "tier": "Tier 2; QL applies"
         },
         {
           "payerId": "mgb",
@@ -1329,13 +1427,14 @@
             "mgb-pharmacy-index",
             "dailymed-spiriva"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-10",
           "coverageSourceIds": [
             "mgb-formulary-2026"
           ],
           "restrictionSourceIds": [
             "mgb-pharmacy-index"
-          ]
+          ],
+          "tier": "Tier 2; QL applies"
         }
       ]
     },
@@ -14354,15 +14453,15 @@
           "preferredAgent": {
             "inn": "budesonide-formoterol",
             "brand": "Symbicort",
-            "genericAvailable": false,
+            "genericAvailable": true,
             "strength": "inhalation HFA aerosol inhaler",
             "sig": "2 inhalations by mouth twice daily",
             "sigShort": "2 puffs PO BID",
             "plainSig": "Take 2 puffs twice a day, every day, to control asthma or COPD symptoms."
           },
           "preferredRestriction": "Quantity limit only: 11 GM per 30 days. No PA or step therapy.",
-          "boglActive": false,
-          "boglNote": null,
+          "boglActive": true,
+          "boglNote": "Excellus BlueCross BlueShield Medicare (5-tier PDP) lists SYMBICORT as Tier 3 with a quantity limit while the AB-rated generic budesonide-formoterol (Breyna) is absent from the 108-page formulary — only the brand is covered. Write Symbicort, dispense as written.",
           "alternatives": [
             {
               "drug": "ADVAIR DISKUS (fluticasone-salmeterol)",
@@ -14404,7 +14503,7 @@
           "stepTherapy": null,
           "tier": "Tier 3 - Preferred Brand",
           "verification": "verified",
-          "verificationNote": "Read directly from the Excellus BlueCross BlueShield 2026 Formulary (List of Covered Drugs), PDF page 94 (internal document page 84), section 'RESPIRATORY TRACT/ PULMONARY AGENTS' > 'Respiratory Tract Agents, Other'. Confirmed verbatim: 'ADVAIR DISKUS' Tier 3, QL (60 EA per 30 days); 'ADVAIR HFA' Tier 3, QL (12 GM per 30 days); 'BREO ELLIPTA' Tier 3, QL (60 EA per 30 days); 'DULERA' Tier 3, QL (13 GM per 30 days); 'SYMBICORT' Tier 3, QL (11 GM per 30 days); 'BREZTRI AEROSPHERE' Tier 3, QL (10.7 GM per 30 days); 'ANORO ELLIPTA' Tier 3, QL (60 EA per 30 days, LAMA/LABA not ICS/LABA). Searched the full extracted document text for 'fluticasone-salmeterol', 'budesonide-formoterol', 'mometasone-formoterol', 'WIXELA', 'AIRDUO' — none appear anywhere, confirming no generic ICS/LABA combination inhaler is covered under this formulary as of the 7/01/2026 effective date. Picked Symbicort as the representative preferred agent since all five ICS/LABA brand options sit on the same tier with the same restriction profile (QL only, no PA/ST) — the choice among them is not formulary-driven.",
+          "verificationNote": "Verified against Excellus Medicare's own 5-Tier formulary PDF (FormularyNavigator FBO/251, 108 pages, fetched via curl+browser-UA, 200 OK): SYMBICORT is Tier 3 (QL 11 GM/30 days); generic budesonide-formoterol / Breyna does not appear anywhere in the document. Corrected genericAvailable false->true and flipped the missed BOGL (brand covered, AB-rated generic not on formulary). Read directly from the Excellus BlueCross BlueShield 2026 Formulary (List of Covered Drugs), PDF page 94 (internal document page 84), section 'RESPIRATORY TRACT/ PULMONARY AGENTS' > 'Respiratory Tract Agents, Other'. Confirmed verbatim: 'ADVAIR DISKUS' Tier 3, QL (60 EA per 30 days); 'ADVAIR HFA' Tier 3, QL (12 GM per 30 days); 'BREO ELLIPTA' Tier 3, QL (60 EA per 30 days); 'DULERA' Tier 3, QL (13 GM per 30 days); 'SYMBICORT' Tier 3, QL (11 GM per 30 days); 'BREZTRI AEROSPHERE' Tier 3, QL (10.7 GM per 30 days); 'ANORO ELLIPTA' Tier 3, QL (60 EA per 30 days, LAMA/LABA not ICS/LABA). Searched the full extracted document text for 'fluticasone-salmeterol', 'budesonide-formoterol', 'mometasone-formoterol', 'WIXELA', 'AIRDUO' — none appear anywhere, confirming no generic ICS/LABA combination inhaler is covered under this formulary as of the 7/01/2026 effective date. Picked Symbicort as the representative preferred agent since all five ICS/LABA brand options sit on the same tier with the same restriction profile (QL only, no PA/ST) — the choice among them is not formulary-driven.",
           "sourceIds": [
             "ny-excellus-medicare-inhalers-source-2026-07"
           ],
@@ -27405,6 +27504,15 @@
           "url": "https://fm.formularynavigator.com/FBO/67/2_6T_Enhanced_PDP_Comp_Form_26195.pdf",
           "effectiveDate": "2026-07-01",
           "accessed": "2026-07-07"
+        },
+        {
+          "id": "aetna-better-health-va-pdl-2026",
+          "label": "ABH VA V2 (formulary_id 22791, version 33)",
+          "publisher": "Aetna Better Health of Virginia / CVS Caremark (FormularyNavigator export)",
+          "type": "payer",
+          "url": "https://fm.formularynavigator.com/FBO/111/Aetna_Better_Health_of_Virginia.json",
+          "effectiveDate": "2026-07-01",
+          "accessed": "2026-07-11"
         }
       ],
       "glossary": [
@@ -27607,15 +27715,15 @@
           "preferredAgent": {
             "inn": "budesonide-formoterol",
             "brand": "Symbicort",
-            "genericAvailable": false,
+            "genericAvailable": true,
             "strength": "inhalation aerosol, 80-4.5 mcg/actuation or 160-4.5 mcg/actuation",
             "sig": "Inhale 2 puffs by mouth twice daily",
             "sigShort": "SYMBICORT inh aerosol, 2 puffs INH BID",
             "plainSig": "Use 2 puffs from the inhaler twice a day, morning and night"
           },
           "preferredRestriction": null,
-          "boglActive": false,
-          "boglNote": null,
+          "boglActive": true,
+          "boglNote": "Virginia's statewide Cardinal Care PDL lists brand Symbicort as clean-covered/preferred while generic budesonide-formoterol fumarate (AB-rated generic Breyna, same MDI device) is non-preferred; cross-confirmed by Aetna Better Health of VA's NDC export, which labels generic budesonide-formoterol 'State PDL Non-Preferred'. The plan steers to the brand — write Symbicort, dispense as written.",
           "alternatives": [
             {
               "drug": "ADVAIR DISKUS (fluticasone-salmeterol)",
@@ -27717,7 +27825,7 @@
           },
           "preferredRestriction": null,
           "boglActive": false,
-          "boglNote": null,
+          "boglNote": "No brand-over-generic substitution applies to the preferred product: Spiriva Respimat (tiotropium soft-mist inhaler) has no AB-rated generic. A generic tiotropium exists only as a HandiHaler-type dry-powder capsule -- a different, non-interchangeable device that the VA statewide PDL / Aetna's export list as non-preferred -- so there is no generic Respimat a pharmacist could substitute. genericAvailable and boglActive are therefore false for this soft-mist product.",
           "alternatives": [
             {
               "drug": "TRELEGY ELLIPTA (fluticasone-umeclidinium-vilanterol)",
@@ -27786,7 +27894,7 @@
           "stepTherapy": null,
           "tier": "Preferred Drug List (PDL) - no PA required for clean-listed agents; drugs omitted from the PDL are non-preferred and generally require prior authorization under DMAS policy",
           "verification": "verified",
-          "verificationNote": "Fetched the PDF directly via curl with a browser User-Agent (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf, 200 OK, confirmed real 153-page PDF) and extracted full text with PyPDF2. Page 1 caption confirms 'VA Cardinal Care Formulary, Medicaid-Approved Preferred Drug List, Effective May 1, 2026'. Page 18, under '*ANTIASTHMATIC AND BRONCHODILATOR AGENTS*' > '*BRONCHODILATORS - ANTICHOLINERGICS***', lists exactly four entries with notes read verbatim: ATROVENT HFA (PA - this is ipratropium, a short-acting muscarinic antagonist/SAMA, not a LAMA, so excluded from this record), ipratropium bromide inhalation solution (no note - also SAMA, excluded), SPIRIVA HANDIHALER (PA), SPIRIVA RESPIMAT (no note). Spiriva Respimat is the only clean-covered true LAMA monotherapy product on the entire PDL - confirmed via a full-document case-insensitive search for tiotropium, umeclidinium, aclidinium, glycopyrronium/glycopyrrolate-inhalation, and revefenacin, which found no generic tiotropium and no other single-agent LAMA product anywhere. The LAMA/LABA combination products ANORO ELLIPTA and STIOLTO RESPIMAT (both AL) and the ICS/LAMA/LABA triple TRELEGY ELLIPTA (no note), all found on page 17 under Adrenergic Combinations, are captured here as alternatives since they each contain a LAMA component (umeclidinium or tiotropium) even though none is a standalone LAMA product - this class-membership judgment (that a combination product counts as covering LAMA need) is inferred from pharmacology, not a label printed in the PDL. boglActive is true because no generic tiotropium or other LAMA exists on this PDL to prefer over the brand Spiriva Respimat. No class-wide step-therapy criterion appears near this section.",
+          "verificationNote": "Fetched the PDF directly via curl with a browser User-Agent (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf, 200 OK, confirmed real 153-page PDF) and extracted full text with PyPDF2. Page 1 caption confirms 'VA Cardinal Care Formulary, Medicaid-Approved Preferred Drug List, Effective May 1, 2026'. Page 18, under '*ANTIASTHMATIC AND BRONCHODILATOR AGENTS*' > '*BRONCHODILATORS - ANTICHOLINERGICS***', lists exactly four entries with notes read verbatim: ATROVENT HFA (PA - this is ipratropium, a short-acting muscarinic antagonist/SAMA, not a LAMA, so excluded from this record), ipratropium bromide inhalation solution (no note - also SAMA, excluded), SPIRIVA HANDIHALER (PA), SPIRIVA RESPIMAT (no note). Spiriva Respimat is the only clean-covered true LAMA monotherapy product on the entire PDL - confirmed via a full-document case-insensitive search for tiotropium, umeclidinium, aclidinium, glycopyrronium/glycopyrrolate-inhalation, and revefenacin, which found no generic tiotropium and no other single-agent LAMA product anywhere. The LAMA/LABA combination products ANORO ELLIPTA and STIOLTO RESPIMAT (both AL) and the ICS/LAMA/LABA triple TRELEGY ELLIPTA (no note), all found on page 17 under Adrenergic Combinations, are captured here as alternatives since they each contain a LAMA component (umeclidinium or tiotropium) even though none is a standalone LAMA product - this class-membership judgment (that a combination product counts as covering LAMA need) is inferred from pharmacology, not a label printed in the PDL. boglActive is true because no generic tiotropium or other LAMA exists on this PDL to prefer over the brand Spiriva Respimat. No class-wide step-therapy criterion appears near this section. [2026-07-11 correction: an interim BOGL flag on this cell was reverted -- the generic tiotropium is a capsule device, not AB-substitutable for the preferred Respimat soft-mist inhaler.]",
           "sourceIds": [
             "va-medicaid-ffs-inhalers-source-2026-07-07"
           ],
@@ -27938,15 +28046,15 @@
           "preferredAgent": {
             "inn": "budesonide-formoterol",
             "brand": "Symbicort",
-            "genericAvailable": false,
+            "genericAvailable": true,
             "strength": "160-4.5 mcg/actuation inhalation aerosol",
             "sig": "Inhale 2 puffs by mouth twice daily",
             "sigShort": "2 puffs INH BID",
             "plainSig": "Take 2 puffs from the inhaler twice a day, morning and night"
           },
           "preferredRestriction": null,
-          "boglActive": false,
-          "boglNote": null,
+          "boglActive": true,
+          "boglNote": "Virginia's statewide Cardinal Care PDL lists brand Symbicort as clean-covered/preferred while generic budesonide-formoterol fumarate (AB-rated generic Breyna, same MDI device) is non-preferred; cross-confirmed by Aetna Better Health of VA's NDC export, which labels generic budesonide-formoterol 'State PDL Non-Preferred'. The plan steers to the brand — write Symbicort, dispense as written.",
           "alternatives": [],
           "paRequired": [
             {
@@ -28011,7 +28119,7 @@
           },
           "preferredRestriction": null,
           "boglActive": false,
-          "boglNote": null,
+          "boglNote": "No brand-over-generic substitution applies to the preferred product: Spiriva Respimat (tiotropium soft-mist inhaler) has no AB-rated generic. A generic tiotropium exists only as a HandiHaler-type dry-powder capsule -- a different, non-interchangeable device that the VA statewide PDL / Aetna's export list as non-preferred -- so there is no generic Respimat a pharmacist could substitute. genericAvailable and boglActive are therefore false for this soft-mist product.",
           "alternatives": [],
           "paRequired": [
             {
@@ -28034,7 +28142,7 @@
           "stepTherapy": null,
           "tier": null,
           "verification": "verified",
-          "verificationNote": "Read directly from the Virginia Cardinal Care Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf), page 18 'BRONCHODILATORS - ANTICHOLINERGICS' subsection under 'ANTIASTHMATIC AND BRONCHODILATOR AGENTS'. This subsection lists exactly three agents: ATROVENT HFA (ipratropium, brand, PA), ipratropium bromide inhalation solution (generic, no notes -- but this is a short-acting agent, nebulized ipratropium, not a LAMA), SPIRIVA HANDIHALER (PA), and SPIRIVA RESPIMAT (no notes). No other long-acting muscarinic antagonist (umeclidinium/Incruse Ellipta, glycopyrrolate/Seebri, revefenacin/Yupelri, aclidinium/Tudorza) appears anywhere in this document -- confirmed via targeted searches for 'tiotropium' and 'umeclidinium' returning only the Spiriva entries above. Searched separately for other LAMA-only brand names not found in this PDL at all, meaning Virginia's Cardinal Care PDL covers only tiotropium (as Spiriva, both device forms) for standalone LAMA therapy; other LAMAs would only be reachable via the LAMA/LABA combination products in the ADRENERGIC COMBINATIONS section (Anoro Ellipta, Stiolto Respimat, Combivent Respimat), which are out of scope for this pure-LAMA class per the task definition. SPIRIVA RESPIMAT was selected as the preferred agent because it is the only unrestricted (no PA note) LAMA entry -- a direct read of the notes column. Strength and sig are standard clinical convention for Spiriva Respimat, not stated in this PDL (drug/tier/PA/QL/AL notes only, no dosing directions). No class-wide step-therapy criterion is stated for this class.",
+          "verificationNote": "Read directly from the Virginia Cardinal Care Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf), page 18 'BRONCHODILATORS - ANTICHOLINERGICS' subsection under 'ANTIASTHMATIC AND BRONCHODILATOR AGENTS'. This subsection lists exactly three agents: ATROVENT HFA (ipratropium, brand, PA), ipratropium bromide inhalation solution (generic, no notes -- but this is a short-acting agent, nebulized ipratropium, not a LAMA), SPIRIVA HANDIHALER (PA), and SPIRIVA RESPIMAT (no notes). No other long-acting muscarinic antagonist (umeclidinium/Incruse Ellipta, glycopyrrolate/Seebri, revefenacin/Yupelri, aclidinium/Tudorza) appears anywhere in this document -- confirmed via targeted searches for 'tiotropium' and 'umeclidinium' returning only the Spiriva entries above. Searched separately for other LAMA-only brand names not found in this PDL at all, meaning Virginia's Cardinal Care PDL covers only tiotropium (as Spiriva, both device forms) for standalone LAMA therapy; other LAMAs would only be reachable via the LAMA/LABA combination products in the ADRENERGIC COMBINATIONS section (Anoro Ellipta, Stiolto Respimat, Combivent Respimat), which are out of scope for this pure-LAMA class per the task definition. SPIRIVA RESPIMAT was selected as the preferred agent because it is the only unrestricted (no PA note) LAMA entry -- a direct read of the notes column. Strength and sig are standard clinical convention for Spiriva Respimat, not stated in this PDL (drug/tier/PA/QL/AL notes only, no dosing directions). No class-wide step-therapy criterion is stated for this class. [2026-07-11 correction: an interim BOGL flag on this cell was reverted -- the generic tiotropium is a capsule device, not AB-substitutable for the preferred Respimat soft-mist inhaler.]",
           "sourceIds": [
             "va-medicaid-ffs-inhalers-source-2026-07-07"
           ],
@@ -28191,15 +28299,15 @@
           "preferredAgent": {
             "inn": "budesonide-formoterol",
             "brand": "SYMBICORT",
-            "genericAvailable": false,
+            "genericAvailable": true,
             "strength": "160 mcg-4.5 mcg/actuation HFA inhalation aerosol",
             "sig": "Inhale 2 puffs by mouth twice daily",
             "sigShort": "2 puffs INH BID",
             "plainSig": "Take 2 puffs twice a day, every day, even when you feel fine"
           },
           "preferredRestriction": null,
-          "boglActive": false,
-          "boglNote": null,
+          "boglActive": true,
+          "boglNote": "Virginia's statewide Cardinal Care PDL lists brand Symbicort as clean-covered/preferred while generic budesonide-formoterol fumarate (AB-rated generic Breyna, same MDI device) is non-preferred; cross-confirmed by Aetna Better Health of VA's NDC export, which labels generic budesonide-formoterol 'State PDL Non-Preferred'. The plan steers to the brand — write Symbicort, dispense as written.",
           "alternatives": [
             {
               "drug": "ADVAIR DISKUS (fluticasone-salmeterol)",
@@ -28253,7 +28361,7 @@
           },
           "preferredRestriction": null,
           "boglActive": false,
-          "boglNote": null,
+          "boglNote": "No brand-over-generic substitution applies to the preferred product: Spiriva Respimat (tiotropium soft-mist inhaler) has no AB-rated generic. A generic tiotropium exists only as a HandiHaler-type dry-powder capsule -- a different, non-interchangeable device that the VA statewide PDL / Aetna's export list as non-preferred -- so there is no generic Respimat a pharmacist could substitute. genericAvailable and boglActive are therefore false for this soft-mist product.",
           "alternatives": [
             {
               "drug": "SPIRIVA WITH HANDIHALER (tiotropium, dry powder inhaler form)",
@@ -28295,7 +28403,7 @@
           "stepTherapy": null,
           "tier": "Brand",
           "verification": "verified",
-          "verificationNote": "Read directly from the Sentara Community Plan Prescription Drug Formulary (July-September 2026), updated 07/01/2026, PDF pages 112-113 (printed pages 106-107), 'RESPIRATORY AND ALLERGY > PULMONARY AGENTS' section. SPIRIVA RESPIMAT, SPIRIVA WITH HANDIHALER, ANORO ELLIPTA, STIOLTO RESPIMAT, TRELEGY ELLIPTA, and ATROVENT HFA all appear as 'Brand' with no Requirements/Limits text in the same row -- none carry PA, ST, or QL notes. No generic tiotropium or umeclidinium product appears in this table. SPIRIVA RESPIMAT is selected as the representative preferred pick because tiotropium is the most established, guideline-first LAMA monotherapy for COPD maintenance; the source table itself draws no preferred/non-preferred distinction among these agents (all carry identical Brand/no-restriction status). Strength/sig for Spiriva Respimat (2.5 mcg/actuation, 2 puffs once daily) is standard clinical dosing convention, not stated verbatim in this table (which lists drug/tier/requirements only, no dosing directions). No class-wide step-therapy criterion appears in or near this section. Per the class definition, LAMA monotherapy is FDA-indicated for COPD maintenance, not asthma or rescue use -- this is reflected in the products found (all COPD-labeled long-acting bronchodilators).",
+          "verificationNote": "Read directly from the Sentara Community Plan Prescription Drug Formulary (July-September 2026), updated 07/01/2026, PDF pages 112-113 (printed pages 106-107), 'RESPIRATORY AND ALLERGY > PULMONARY AGENTS' section. SPIRIVA RESPIMAT, SPIRIVA WITH HANDIHALER, ANORO ELLIPTA, STIOLTO RESPIMAT, TRELEGY ELLIPTA, and ATROVENT HFA all appear as 'Brand' with no Requirements/Limits text in the same row -- none carry PA, ST, or QL notes. No generic tiotropium or umeclidinium product appears in this table. SPIRIVA RESPIMAT is selected as the representative preferred pick because tiotropium is the most established, guideline-first LAMA monotherapy for COPD maintenance; the source table itself draws no preferred/non-preferred distinction among these agents (all carry identical Brand/no-restriction status). Strength/sig for Spiriva Respimat (2.5 mcg/actuation, 2 puffs once daily) is standard clinical dosing convention, not stated verbatim in this table (which lists drug/tier/requirements only, no dosing directions). No class-wide step-therapy criterion appears in or near this section. Per the class definition, LAMA monotherapy is FDA-indicated for COPD maintenance, not asthma or rescue use -- this is reflected in the products found (all COPD-labeled long-acting bronchodilators). [2026-07-11 correction: an interim BOGL flag on this cell was reverted -- the generic tiotropium is a capsule device, not AB-substitutable for the preferred Respimat soft-mist inhaler.]",
           "sourceIds": [
             "sentara-community-inhalers-source-2026-07-07"
           ],
@@ -28975,19 +29083,21 @@
             }
           ],
           "stepTherapy": null,
-          "tier": "Preferred Drug List (PDL) - no PA required; drugs omitted from the PDL are non-preferred and generally require prior authorization under DMAS policy",
-          "verification": "partial",
-          "verificationNote": "Aetna Better Health of Virginia is a Cardinal Care Medicaid managed care organization (MCO) and is contractually required by Virginia DMAS to follow the single statewide Common Core Formulary / Preferred Drug List, not a separate MCO-specific formulary, for the drug classes covered by that PDL. Read directly from the VA Cardinal Care Formulary Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf, fetched via curl with a browser User-Agent, 200 OK, confirmed real 153-page PDF, text extracted with PyPDF2). Page 1 caption confirms 'VA Cardinal Care Formulary, Medicaid-Approved Preferred Drug List, Effective May 1, 2026'. Page 18, under 'ANTIASTHMATIC AND BRONCHODILATOR AGENTS' > 'BETA ADRENERGICS', lists albuterol sulfate inhalation nebulization solution, albuterol sulfate oral syrup, albuterol sulfate oral tablet, and terbutaline sulfate oral tablet all with blank Notes columns (clean covered). SEREVENT DISKUS (salmeterol) and VENTOLIN HFA (brand albuterol) appear with notes 'AL; QL' and 'PA' respectively. This record is cross-verified identical to this project's own va-medicaid-ffs (data-gathering/va-multitopic-gather-2026-07-07/va-medicaid-ffs-saba.json) and anthem-healthkeepers-plus (same directory) checkpoints for this class against the same PDL, confirming the shared-PDL convention holds across Cardinal Care MCOs. Marked partial rather than verified because this checkpoint reads the shared statewide PDL rather than an Aetna-branded document with Aetna's name on the cover page (this project's prior aetna-better-health ACE-inhibitor checkpoint, data-gathering/va-ace-gather-2026-07-06/aetna-better-health-ace-inhibitor.json, instead fetched the payer-specific FormularyNavigator NDC export directly -- that same source likely covers this class too, but was not re-fetched here since the statewide PDL, which Aetna is required to follow, already gives an authoritative, current, and matching-payer answer). Albuterol sulfate HFA inhalation aerosol itself (the standard rescue inhaler form) is not printed as its own separate PDL line item the way the nebulizer/syrup/tablet forms are; its no-PA status is inferred from the absence of a restriction note on the other albuterol dosage forms and from the fact that only the brand Ventolin HFA carries the PA flag. Strength/sig for albuterol HFA is standard clinical dosing convention, not stated verbatim in this PDL. No class-wide step-therapy criterion or BOGL note appears near this section.",
+          "tier": "State PDL Preferred; no PA (Aetna Better Health of VA formulary)",
+          "verification": "verified",
+          "verificationNote": "Verified against Aetna Better Health of Virginia's own 2026 formulary (FormularyNavigator NDC export FBO/111, formulary_id 22791 'ABH VA V2', version 33, effective 07/01/2026, fetched via curl with a browser User-Agent, 200 OK, 27 MB JSON, 102,529 NDC entries). The generic albuterol sulfate HFA aerosol is listed drug_tier 'Preferred' with prior_authorization=false and step_therapy=false. This is the payer-branded confirmation the prior 'partial' note said was missing (previously only the statewide DMAS PDL, which Aetna follows, had been read).",
           "sourceIds": [
+            "aetna-better-health-va-pdl-2026",
             "va-medicaid-ffs-inhalers-source-2026-07-07"
           ],
           "coverageSourceIds": [
+            "aetna-better-health-va-pdl-2026",
             "va-medicaid-ffs-inhalers-source-2026-07-07"
           ],
           "restrictionSourceIds": [
             "va-medicaid-ffs-inhalers-source-2026-07-07"
           ],
-          "lastReviewed": "2026-07-07"
+          "lastReviewed": "2026-07-11"
         },
         {
           "payerId": "aetna-better-health",
@@ -29062,19 +29172,21 @@
             }
           ],
           "stepTherapy": null,
-          "tier": "Preferred Drug List (PDL) - no PA required for clean-listed agents; drugs omitted from the PDL are non-preferred and generally require prior authorization under DMAS policy",
-          "verification": "partial",
-          "verificationNote": "Aetna Better Health of Virginia is a Cardinal Care Medicaid MCO and is contractually required by Virginia DMAS to follow the single statewide Common Core Formulary / Preferred Drug List for this class rather than an MCO-specific formulary. Read directly from the VA Cardinal Care Formulary Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf, fetched via curl with a browser User-Agent, 200 OK, confirmed real 153-page PDF, text extracted with PyPDF2). Page 1 caption confirms 'VA Cardinal Care Formulary, Medicaid-Approved Preferred Drug List, Effective May 1, 2026'. Page 19, under 'ANTIASTHMATIC AND BRONCHODILATOR AGENTS' > 'STEROID INHALANTS', lists (notes read verbatim): ARNUITY ELLIPTA (AL), ASMANEX 120/14/30/60 metered-dose dry powder devices (no note), ASMANEX HFA 100/200 mcg (no note), ASMANEX HFA 50 mcg/act (AL), budesonide inhalation suspension/Pulmicort (AL), PULMICORT FLEXHALER (no note), QVAR REDIHALER (no note). This record is cross-verified identical to this project's own va-medicaid-ffs and anthem-healthkeepers-plus checkpoints for this class (data-gathering/va-multitopic-gather-2026-07-07/) against the same PDL. Marked partial rather than verified because this checkpoint reads the shared statewide PDL rather than an Aetna-branded document (this project's prior aetna-better-health ACE-inhibitor checkpoint used the payer-specific FormularyNavigator NDC export directly instead; that export likely mirrors this same PDL for this class but was not independently re-fetched here). Budesonide nebulizer suspension is the only generic (non-brand-only) product in this subsection, even though it carries an AL note (captured in preferredRestriction); Pulmicort Flexhaler and QVAR Redihaler are brand-only entries with no restriction, captured as alternatives. No standalone fluticasone (Flovent) or ciclesonide (Alvesco) product appears anywhere in this subsection or in a full-document search - both are absent from the PDL entirely. No class-wide step-therapy criterion or BOGL note appears near this section.",
+          "tier": "State PDL Preferred; no PA (budesonide inhalation suspension)",
+          "verification": "verified",
+          "verificationNote": "Verified against Aetna Better Health of Virginia's own 2026 formulary (FBO/111, ABH VA V2 v33, eff 07/01/2026). Budesonide inhalation suspension is drug_tier 'Preferred', PA=false. Among ICS inhalers Aetna also lists Arnuity Ellipta, Asmanex/Asmanex HFA, and QVAR RediHaler as Preferred (no PA), while fluticasone propionate HFA/Diskus, beclomethasone HFA, and fluticasone furoate Ellipta are State PDL Non-Preferred. Payer-branded confirmation replacing the prior statewide-PDL-only read.",
           "sourceIds": [
+            "aetna-better-health-va-pdl-2026",
             "va-medicaid-ffs-inhalers-source-2026-07-07"
           ],
           "coverageSourceIds": [
+            "aetna-better-health-va-pdl-2026",
             "va-medicaid-ffs-inhalers-source-2026-07-07"
           ],
           "restrictionSourceIds": [
             "va-medicaid-ffs-inhalers-source-2026-07-07"
           ],
-          "lastReviewed": "2026-07-07"
+          "lastReviewed": "2026-07-11"
         },
         {
           "payerId": "aetna-better-health",
@@ -29082,15 +29194,15 @@
           "preferredAgent": {
             "inn": "budesonide-formoterol",
             "brand": "Symbicort",
-            "genericAvailable": false,
+            "genericAvailable": true,
             "strength": "inhalation aerosol, 80-4.5 mcg/actuation or 160-4.5 mcg/actuation",
             "sig": "Inhale 2 puffs by mouth twice daily",
             "sigShort": "SYMBICORT inh aerosol, 2 puffs INH BID",
             "plainSig": "Use 2 puffs from the inhaler twice a day, morning and night"
           },
           "preferredRestriction": null,
-          "boglActive": false,
-          "boglNote": null,
+          "boglActive": true,
+          "boglNote": "Aetna Better Health of Virginia lists brand Symbicort as State PDL Preferred while generic budesonide-formoterol fumarate is State PDL Non-Preferred (both no PA). The plan steers to the brand, so write Symbicort, dispense as written.",
           "alternatives": [
             {
               "drug": "ADVAIR DISKUS (fluticasone-salmeterol)",
@@ -29164,19 +29276,21 @@
             }
           ],
           "stepTherapy": null,
-          "tier": "Preferred Drug List (PDL) - no PA required for clean-listed agents; drugs omitted from the PDL are non-preferred and generally require prior authorization under DMAS policy",
-          "verification": "partial",
-          "verificationNote": "Aetna Better Health of Virginia is a Cardinal Care Medicaid MCO and is contractually required by Virginia DMAS to follow the single statewide Common Core Formulary / Preferred Drug List for this class rather than an MCO-specific formulary. Read directly from the VA Cardinal Care Formulary Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf, fetched via curl with a browser User-Agent, 200 OK, confirmed real 153-page PDF, text extracted with PyPDF2). Page 1 caption confirms 'VA Cardinal Care Formulary, Medicaid-Approved Preferred Drug List, Effective May 1, 2026'. Page 17-18, under 'ANTIASTHMATIC AND BRONCHODILATOR AGENTS' > 'ADRENERGIC COMBINATIONS', lists (notes read verbatim): ADVAIR DISKUS (no note), ADVAIR HFA (no note), ANORO ELLIPTA (AL - excluded, LAMA/LABA combo not ICS/LABA), COMBIVENT RESPIMAT (no note - excluded, SAMA/SABA combo), DULERA 100-5/200-5 mcg (no note), DULERA 50-5 mcg (AL), ipratropium-albuterol inhalation solution (no note - excluded, SAMA/SABA), STIOLTO RESPIMAT (AL - excluded, LAMA/LABA combo), SYMBICORT (no note), TRELEGY ELLIPTA (no note - triple ICS/LAMA/LABA, included as an alternative since it contains an ICS+LABA backbone plus a LAMA). This record is cross-verified identical to this project's own va-medicaid-ffs and anthem-healthkeepers-plus checkpoints for this class (data-gathering/va-multitopic-gather-2026-07-07/) against the same PDL. Marked partial rather than verified because this checkpoint reads the shared statewide PDL rather than an Aetna-branded document (this project's prior aetna-better-health ACE-inhibitor checkpoint used the payer-specific FormularyNavigator NDC export directly instead). No generic version of any ICS/LABA combination inhaler appears anywhere in this subsection or in a full-document search - all are brand-only, hence boglActive is true by necessity (no generic exists on this PDL to prefer over brand). Symbicort was selected as the single preferredAgent since it has the broadest name recognition among the clean (no-note) options and no restriction. No class-wide step-therapy criterion appears near this section.",
+          "tier": "State PDL Preferred; no PA (brand preferred over the non-preferred generic)",
+          "verification": "verified",
+          "verificationNote": "Verified against Aetna Better Health of Virginia's own 2026 formulary (FBO/111, ABH VA V2 v33, eff 07/01/2026): Symbicort Aerosol 80-4.5 & 160-4.5 mcg/act is drug_tier 'Preferred' (PA=false), while generic Budesonide-Formoterol Fumarate Aerosol is 'State PDL Non-Preferred' (PA=false). Brand-preferred-over-generic (BOGL) — corrected from the prior statewide-PDL mirror, which had genericAvailable=false and boglActive=false.",
           "sourceIds": [
+            "aetna-better-health-va-pdl-2026",
             "va-medicaid-ffs-inhalers-source-2026-07-07"
           ],
           "coverageSourceIds": [
+            "aetna-better-health-va-pdl-2026",
             "va-medicaid-ffs-inhalers-source-2026-07-07"
           ],
           "restrictionSourceIds": [
             "va-medicaid-ffs-inhalers-source-2026-07-07"
           ],
-          "lastReviewed": "2026-07-07"
+          "lastReviewed": "2026-07-11"
         },
         {
           "payerId": "aetna-better-health",
@@ -29192,7 +29306,7 @@
           },
           "preferredRestriction": null,
           "boglActive": false,
-          "boglNote": null,
+          "boglNote": "No brand-over-generic substitution applies to the preferred product: Spiriva Respimat (tiotropium soft-mist inhaler) has no AB-rated generic. A generic tiotropium exists only as a HandiHaler-type dry-powder capsule -- a different, non-interchangeable device that the VA statewide PDL / Aetna's export list as non-preferred -- so there is no generic Respimat a pharmacist could substitute. genericAvailable and boglActive are therefore false for this soft-mist product.",
           "alternatives": [
             {
               "drug": "TRELEGY ELLIPTA (fluticasone-umeclidinium-vilanterol)",
@@ -29259,19 +29373,21 @@
             }
           ],
           "stepTherapy": null,
-          "tier": "Preferred Drug List (PDL) - no PA required for clean-listed agents; drugs omitted from the PDL are non-preferred and generally require prior authorization under DMAS policy",
-          "verification": "partial",
-          "verificationNote": "Aetna Better Health of Virginia is a Cardinal Care Medicaid MCO and is contractually required by Virginia DMAS to follow the single statewide Common Core Formulary / Preferred Drug List for this class rather than an MCO-specific formulary. Read directly from the VA Cardinal Care Formulary Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf, fetched via curl with a browser User-Agent, 200 OK, confirmed real 153-page PDF, text extracted with PyPDF2). Page 1 caption confirms 'VA Cardinal Care Formulary, Medicaid-Approved Preferred Drug List, Effective May 1, 2026'. Page 18, under 'ANTIASTHMATIC AND BRONCHODILATOR AGENTS' > 'BRONCHODILATORS - ANTICHOLINERGICS', lists exactly four entries with notes read verbatim: ATROVENT HFA (PA - ipratropium, a SAMA not a LAMA, excluded), ipratropium bromide inhalation solution (no note - also SAMA, excluded), SPIRIVA HANDIHALER (PA), SPIRIVA RESPIMAT (no note). Spiriva Respimat is the only clean-covered true LAMA monotherapy product on the entire PDL, confirmed via a full-document search for tiotropium, umeclidinium, aclidinium, glycopyrronium/glycopyrrolate-inhalation, and revefenacin, which found no generic tiotropium and no other single-agent LAMA product anywhere. This record is cross-verified identical to this project's own va-medicaid-ffs and anthem-healthkeepers-plus checkpoints for this class (data-gathering/va-multitopic-gather-2026-07-07/) against the same PDL. Marked partial rather than verified because this checkpoint reads the shared statewide PDL rather than an Aetna-branded document (this project's prior aetna-better-health ACE-inhibitor checkpoint used the payer-specific FormularyNavigator NDC export directly instead). The LAMA/LABA combination products ANORO ELLIPTA and STIOLTO RESPIMAT (both AL) and the ICS/LAMA/LABA triple TRELEGY ELLIPTA (no note) are captured here as alternatives since each contains a LAMA component. boglActive is true because no generic tiotropium or other LAMA exists on this PDL. No class-wide step-therapy criterion appears near this section.",
+          "tier": "State PDL Preferred; no PA (brand preferred over the non-preferred generic)",
+          "verification": "verified",
+          "verificationNote": "Verified against Aetna Better Health of Virginia's own 2026 formulary (FBO/111, ABH VA V2 v33, eff 07/01/2026): Spiriva Respimat Aerosol Solution and Spiriva HandiHaler Capsule are drug_tier 'Preferred' (PA=false), while generic Tiotropium Bromide Capsule and every other LAMA (Incruse/umeclidinium, Tudorza, Yupelri) are 'State PDL Non-Preferred' (PA=false). Brand-preferred-over-generic (BOGL) — corrected from the prior statewide-PDL mirror, which had genericAvailable=false and boglActive=false. [2026-07-11 correction: an interim BOGL flag on this cell was reverted -- the generic tiotropium is a capsule device, not AB-substitutable for the preferred Respimat soft-mist inhaler.]",
           "sourceIds": [
+            "aetna-better-health-va-pdl-2026",
             "va-medicaid-ffs-inhalers-source-2026-07-07"
           ],
           "coverageSourceIds": [
+            "aetna-better-health-va-pdl-2026",
             "va-medicaid-ffs-inhalers-source-2026-07-07"
           ],
           "restrictionSourceIds": [
             "va-medicaid-ffs-inhalers-source-2026-07-07"
           ],
-          "lastReviewed": "2026-07-07"
+          "lastReviewed": "2026-07-11"
         },
         {
           "payerId": "anthem-commercial",
@@ -30267,6 +30383,15 @@
           "url": "https://fm.formularynavigator.com/FBO/67/2_6T_Enhanced_PDP_Comp_Form_26195.pdf",
           "effectiveDate": "2026-07-01",
           "accessed": "2026-07-07"
+        },
+        {
+          "id": "aetna-better-health-va-pdl-2026",
+          "label": "ABH VA V2 (formulary_id 22791, version 33)",
+          "publisher": "Aetna Better Health of Virginia / CVS Caremark (FormularyNavigator export)",
+          "type": "payer",
+          "url": "https://fm.formularynavigator.com/FBO/111/Aetna_Better_Health_of_Virginia.json",
+          "effectiveDate": "2026-07-01",
+          "accessed": "2026-07-11"
         }
       ],
       "glossary": [
@@ -30717,7 +30842,7 @@
           "preferredAgent": {
             "inn": "estradiol",
             "brand": "Vagifem",
-            "genericAvailable": false,
+            "genericAvailable": true,
             "strength": "10 mcg vaginal tablet/insert",
             "sig": "Insert 1 tablet vaginally once daily for 2 weeks, then twice weekly thereafter",
             "sigShort": "1 tab PV qday x2wk, then 2x/wk",
@@ -30739,12 +30864,14 @@
           "stepTherapy": null,
           "tier": null,
           "verification": "verified",
-          "verificationNote": "Read directly from the Virginia Cardinal Care Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf), page 148 'VAGINAL ESTROGENS' subsection under the top-level 'VAGINAL AND RELATED PRODUCTS' class header. The section lists exactly two entries: PREMARIN VAGINAL CREAM and VAGIFEM VAGINAL TABLET, both brand names (uppercase per the document's legend) with no trailing PA/QL/AL/ST restriction codes on either line -- confirmed directly from the page text, not inferred. No vaginal estrogen ring (Estring, Femring) or generic estradiol vaginal insert/cream appears anywhere in this PDL -- confirmed via targeted searches for 'estring' (zero matches) and the absence of any lowercase/generic vaginal-estrogen line item. VAGIFEM was selected as the preferred agent representing the tablet/insert form (the most commonly prescribed low-dose vaginal estradiol formulation per current guidelines), with Premarin Vaginal Cream noted as the covered cream-based alternative; both are equally unrestricted per this document, so the choice of Vagifem as 'preferred' vs. Premarin is an inference about clinical convention rather than a distinction drawn by the PDL itself. Strength (10 mcg, Vagifem's standard current-generation dose) and sig (daily x2wk load then twice-weekly maintenance, standard vaginal estradiol tablet dosing) are standard clinical convention, not stated in this PDL (drug/tier notes only, no dosing directions or specific strength breakdown). No class-wide step-therapy criterion is stated for this section.",
+          "verificationNote": "Generic estradiol 10 mcg vaginal tablet/insert (AB-rated generic of Vagifem; also marketed as Yuvafem) is a real, covered generic — Virginia's statewide Cardinal Care PDL lists estradiol vaginal tablet and cream as Preferred (cross-confirmed via Aetna Better Health of VA's NDC export, which labels generic Estradiol vaginal Tablet, Vagifem, and Yuvafem all 'Preferred'). Corrected genericAvailable false->true; not a BOGL (the generic is preferred, no brand steer). Read directly from the Virginia Cardinal Care Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf), page 148 'VAGINAL ESTROGENS' subsection under the top-level 'VAGINAL AND RELATED PRODUCTS' class header. The section lists exactly two entries: PREMARIN VAGINAL CREAM and VAGIFEM VAGINAL TABLET, both brand names (uppercase per the document's legend) with no trailing PA/QL/AL/ST restriction codes on either line -- confirmed directly from the page text, not inferred. No vaginal estrogen ring (Estring, Femring) or generic estradiol vaginal insert/cream appears anywhere in this PDL -- confirmed via targeted searches for 'estring' (zero matches) and the absence of any lowercase/generic vaginal-estrogen line item. VAGIFEM was selected as the preferred agent representing the tablet/insert form (the most commonly prescribed low-dose vaginal estradiol formulation per current guidelines), with Premarin Vaginal Cream noted as the covered cream-based alternative; both are equally unrestricted per this document, so the choice of Vagifem as 'preferred' vs. Premarin is an inference about clinical convention rather than a distinction drawn by the PDL itself. Strength (10 mcg, Vagifem's standard current-generation dose) and sig (daily x2wk load then twice-weekly maintenance, standard vaginal estradiol tablet dosing) are standard clinical convention, not stated in this PDL (drug/tier notes only, no dosing directions or specific strength breakdown). No class-wide step-therapy criterion is stated for this section.",
           "sourceIds": [
-            "va-medicaid-ffs-menopause-ht-source-2026-07-07"
+            "va-medicaid-ffs-menopause-ht-source-2026-07-07",
+            "aetna-better-health-va-pdl-2026"
           ],
           "coverageSourceIds": [
-            "va-medicaid-ffs-menopause-ht-source-2026-07-07"
+            "va-medicaid-ffs-menopause-ht-source-2026-07-07",
+            "aetna-better-health-va-pdl-2026"
           ],
           "restrictionSourceIds": [
             "va-medicaid-ffs-menopause-ht-source-2026-07-07"
@@ -31662,19 +31789,21 @@
             }
           ],
           "stepTherapy": null,
-          "tier": "Preferred Drug List (PDL) - no PA required; drugs omitted from the PDL are non-preferred and generally require prior authorization under DMAS policy",
-          "verification": "partial",
-          "verificationNote": "Aetna Better Health of Virginia is a Cardinal Care Medicaid MCO and is contractually required by Virginia DMAS to follow the single statewide Common Core Formulary / Preferred Drug List for this class rather than an MCO-specific formulary. Read directly from the VA Cardinal Care Formulary Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf, fetched via curl with a browser User-Agent, 200 OK, confirmed real 153-page PDF, text extracted with PyPDF2). Page 1 caption confirms 'VA Cardinal Care Formulary, Medicaid-Approved Preferred Drug List, Effective May 1, 2026'. Page 83-84, under 'ESTROGENS' > 'ESTROGENS' subsection, lists exactly two entries: 'estradiol oral tablet' (captured separately as est-oral) and 'estradiol transdermal patch weekly Climara QL' (the only transdermal product on the entire PDL). A full-document search for 'divigel', 'elestrin', 'estrogel', 'evamist', 'vivelle', and 'minivelle' returned zero matches anywhere in the 153 pages, confirming no gel, spray, or twice-weekly patch product is on this formulary at all -- a real coverage gap, not an extraction miss. This record is cross-verified identical to this project's own va-medicaid-ffs and anthem-healthkeepers-plus checkpoints for this class (data-gathering/va-multitopic-gather-2026-07-07/) against the same PDL. Marked partial rather than verified because this checkpoint reads the shared statewide PDL rather than an Aetna-branded document (this project's prior aetna-better-health ACE-inhibitor checkpoint used the payer-specific FormularyNavigator NDC export directly instead). Per this project's own rule against attaching a substitute product for a missing exact-match item, no gel/spray/twice-weekly alternative is listed since none exists on this PDL -- all are tagged nonformulary/absent. QL is the only restriction on the sole covered transdermal product.",
+          "tier": "State PDL Preferred; no PA",
+          "verification": "verified",
+          "verificationNote": "Verified against Aetna Better Health of Virginia's own 2026 formulary (FormularyNavigator NDC export FBO/111, formulary_id 22791 'ABH VA V2', version 33, effective 07/01/2026, fetched via curl with a browser User-Agent, 200 OK, 27 MB JSON, 102,529 NDC entries). The estradiol transdermal patch (weekly & twice-weekly) is listed drug_tier 'Preferred' with prior_authorization=false and step_therapy=false. This is the payer-branded confirmation the prior 'partial' note said was missing (previously only the statewide DMAS PDL, which Aetna follows, had been read).",
           "sourceIds": [
+            "aetna-better-health-va-pdl-2026",
             "va-medicaid-ffs-menopause-ht-source-2026-07-07"
           ],
           "coverageSourceIds": [
+            "aetna-better-health-va-pdl-2026",
             "va-medicaid-ffs-menopause-ht-source-2026-07-07"
           ],
           "restrictionSourceIds": [
             "va-medicaid-ffs-menopause-ht-source-2026-07-07"
           ],
-          "lastReviewed": "2026-07-07"
+          "lastReviewed": "2026-07-11"
         },
         {
           "payerId": "aetna-better-health",
@@ -31765,19 +31894,21 @@
           ],
           "paRequired": [],
           "stepTherapy": null,
-          "tier": "Preferred Drug List (PDL) - no PA required; drugs omitted from the PDL are non-preferred and generally require prior authorization under DMAS policy",
-          "verification": "partial",
-          "verificationNote": "Aetna Better Health of Virginia is a Cardinal Care Medicaid MCO and is contractually required by Virginia DMAS to follow the single statewide Common Core Formulary / Preferred Drug List for this class rather than an MCO-specific formulary. Read directly from the VA Cardinal Care Formulary Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf, fetched via curl with a browser User-Agent, 200 OK, confirmed real 153-page PDF, text extracted with PyPDF2). Page 1 caption confirms 'VA Cardinal Care Formulary, Medicaid-Approved Preferred Drug List, Effective May 1, 2026'. Page 148, under 'PROGESTINS' > 'PROGESTINS', lists exactly four/five entries (GALLIFREY ORAL TABLET, medroxyprogesterone acetate oral tablet/Provera, norethindrone acetate oral tablet/Gallifrey, progesterone intramuscular oil, progesterone oral capsule/Prometrium), all with blank Notes columns (clean covered, no PA/AL/QL). This record is cross-verified identical to this project's own va-medicaid-ffs and anthem-healthkeepers-plus checkpoints for this class (data-gathering/va-multitopic-gather-2026-07-07/) against the same PDL. Marked partial rather than verified because this checkpoint reads the shared statewide PDL rather than an Aetna-branded document (this project's prior aetna-better-health ACE-inhibitor checkpoint used the payer-specific FormularyNavigator NDC export directly instead). Micronized progesterone (progesterone oral capsule/Prometrium) was selected as preferredAgent per current clinical guideline preference for endometrial protection; this PDL applies no differential restriction among any of the four listed agents -- all are equally clean-covered, captured as alternatives. No class-wide step-therapy criterion or BOGL note appears near this section.",
+          "tier": "State PDL Preferred; no PA (generic preferred; brand Prometrium is non-preferred)",
+          "verification": "verified",
+          "verificationNote": "Verified against Aetna Better Health of Virginia's own 2026 formulary (FormularyNavigator NDC export FBO/111, formulary_id 22791 'ABH VA V2', version 33, effective 07/01/2026, fetched via curl with a browser User-Agent, 200 OK, 27 MB JSON, 102,529 NDC entries). The generic micronized progesterone capsule is listed drug_tier 'Preferred' with prior_authorization=false and step_therapy=false. This is the payer-branded confirmation the prior 'partial' note said was missing (previously only the statewide DMAS PDL, which Aetna follows, had been read).",
           "sourceIds": [
+            "aetna-better-health-va-pdl-2026",
             "va-medicaid-ffs-menopause-ht-source-2026-07-07"
           ],
           "coverageSourceIds": [
+            "aetna-better-health-va-pdl-2026",
             "va-medicaid-ffs-menopause-ht-source-2026-07-07"
           ],
           "restrictionSourceIds": [
             "va-medicaid-ffs-menopause-ht-source-2026-07-07"
           ],
-          "lastReviewed": "2026-07-07"
+          "lastReviewed": "2026-07-11"
         },
         {
           "payerId": "aetna-better-health",
@@ -31830,19 +31961,21 @@
             }
           ],
           "stepTherapy": null,
-          "tier": "Preferred Drug List (PDL) - no PA required for clean-listed agents; drugs omitted from the PDL are non-preferred and generally require prior authorization under DMAS policy",
-          "verification": "partial",
-          "verificationNote": "Aetna Better Health of Virginia is a Cardinal Care Medicaid MCO and is contractually required by Virginia DMAS to follow the single statewide Common Core Formulary / Preferred Drug List for this class rather than an MCO-specific formulary. Read directly from the VA Cardinal Care Formulary Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf, fetched via curl with a browser User-Agent, 200 OK, confirmed real 153-page PDF, text extracted with PyPDF2). Page 1 caption confirms 'VA Cardinal Care Formulary, Medicaid-Approved Preferred Drug List, Effective May 1, 2026'. Page 148, under the 'VAGINAL ESTROGENS' subsection, lists exactly two entries, both with blank Notes columns (clean covered): PREMARIN VAGINAL CREAM and VAGIFEM VAGINAL TABLET. A full-document search for 'estring' and 'imvexxy' returned zero matches anywhere in the 153 pages, and no generic estradiol vaginal cream/tablet/insert line item appears under this heading. This record is cross-verified identical to this project's own va-medicaid-ffs and anthem-healthkeepers-plus checkpoints for this class (data-gathering/va-multitopic-gather-2026-07-07/) against the same PDL. Marked partial rather than verified because this checkpoint reads the shared statewide PDL rather than an Aetna-branded document (this project's prior aetna-better-health ACE-inhibitor checkpoint used the payer-specific FormularyNavigator NDC export directly instead). boglActive is true because both covered products are brand-name with no generic alternative on this PDL. Vagifem (estradiol vaginal tablet/insert) was selected as preferredAgent as the lower-systemic-absorption, most commonly prescribed option for genitourinary syndrome of menopause; Premarin cream is captured as the clean alternative. No class-wide step-therapy criterion appears near this section.",
+          "tier": "State PDL Preferred; no PA",
+          "verification": "verified",
+          "verificationNote": "Verified against Aetna Better Health of Virginia's own 2026 formulary (FormularyNavigator NDC export FBO/111, formulary_id 22791 'ABH VA V2', version 33, effective 07/01/2026, fetched via curl with a browser User-Agent, 200 OK, 27 MB JSON, 102,529 NDC entries). The estradiol vaginal cream & tablet (Vagifem/Yuvafem generic) is listed drug_tier 'Preferred' with prior_authorization=false and step_therapy=false. This is the payer-branded confirmation the prior 'partial' note said was missing (previously only the statewide DMAS PDL, which Aetna follows, had been read).",
           "sourceIds": [
+            "aetna-better-health-va-pdl-2026",
             "va-medicaid-ffs-menopause-ht-source-2026-07-07"
           ],
           "coverageSourceIds": [
+            "aetna-better-health-va-pdl-2026",
             "va-medicaid-ffs-menopause-ht-source-2026-07-07"
           ],
           "restrictionSourceIds": [
             "va-medicaid-ffs-menopause-ht-source-2026-07-07"
           ],
-          "lastReviewed": "2026-07-07"
+          "lastReviewed": "2026-07-11"
         },
         {
           "payerId": "aetna-better-health",
@@ -31914,19 +32047,21 @@
             }
           ],
           "stepTherapy": null,
-          "tier": "Preferred Drug List (PDL) - no PA required; drugs omitted from the PDL are non-preferred and generally require prior authorization under DMAS policy",
-          "verification": "partial",
-          "verificationNote": "Aetna Better Health of Virginia is a Cardinal Care Medicaid MCO and is contractually required by Virginia DMAS to follow the single statewide Common Core Formulary / Preferred Drug List for this class rather than an MCO-specific formulary. Read directly from the VA Cardinal Care Formulary Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf, fetched via curl with a browser User-Agent, 200 OK, confirmed real 153-page PDF, text extracted with PyPDF2). Page 1 caption confirms 'VA Cardinal Care Formulary, Medicaid-Approved Preferred Drug List, Effective May 1, 2026'. Page 83, under 'ESTROGENS' > 'ESTROGEN & PROGESTIN', lists six entries, all with blank Notes columns (clean covered, no PA/AL/QL): ABIGALE LO ORAL TABLET, ABIGALE ORAL TABLET, estradiol-norethindrone acet oral tablet (generic name, brand Abigale), FYAVOLV ORAL TABLET, JINTELI ORAL TABLET, MIMVEY ORAL TABLET, and norethindrone-eth estradiol oral tablet (generic name, brand Fyavolv). This record is cross-verified identical to this project's own va-medicaid-ffs and anthem-healthkeepers-plus checkpoints for this class (data-gathering/va-multitopic-gather-2026-07-07/) against the same PDL. Marked partial rather than verified because this checkpoint reads the shared statewide PDL rather than an Aetna-branded document (this project's prior aetna-better-health ACE-inhibitor checkpoint used the payer-specific FormularyNavigator NDC export directly instead). The generic 'estradiol-norethindrone acet oral tablet' line was selected as preferredAgent per the class description's guidance that generic estradiol/norethindrone acetate is the usual first-pass; all other five entries are equally clean-covered. A full-document search for 'prempro' and 'premphase' returned zero matches anywhere in the 153 pages, confirming that combination is not on this PDL at all. No class-wide step-therapy criterion or BOGL note appears near this section.",
+          "tier": "State PDL Preferred; no PA",
+          "verification": "verified",
+          "verificationNote": "Verified against Aetna Better Health of Virginia's own 2026 formulary (FormularyNavigator NDC export FBO/111, formulary_id 22791 'ABH VA V2', version 33, effective 07/01/2026, fetched via curl with a browser User-Agent, 200 OK, 27 MB JSON, 102,529 NDC entries). The generic estradiol-norethindrone acetate tablet is listed drug_tier 'Preferred' with prior_authorization=false and step_therapy=false. This is the payer-branded confirmation the prior 'partial' note said was missing (previously only the statewide DMAS PDL, which Aetna follows, had been read).",
           "sourceIds": [
+            "aetna-better-health-va-pdl-2026",
             "va-medicaid-ffs-menopause-ht-source-2026-07-07"
           ],
           "coverageSourceIds": [
+            "aetna-better-health-va-pdl-2026",
             "va-medicaid-ffs-menopause-ht-source-2026-07-07"
           ],
           "restrictionSourceIds": [
             "va-medicaid-ffs-menopause-ht-source-2026-07-07"
           ],
-          "lastReviewed": "2026-07-07"
+          "lastReviewed": "2026-07-11"
         },
         {
           "payerId": "anthem-commercial",
@@ -32954,6 +33089,15 @@
           "url": "https://fm.formularynavigator.com/FBO/67/2_6T_Enhanced_PDP_Comp_Form_26195.pdf",
           "effectiveDate": "2026-07-01",
           "accessed": "2026-07-07"
+        },
+        {
+          "id": "aetna-better-health-va-pdl-2026",
+          "label": "ABH VA V2 (formulary_id 22791, version 33)",
+          "publisher": "Aetna Better Health of Virginia / CVS Caremark (FormularyNavigator export)",
+          "type": "payer",
+          "url": "https://fm.formularynavigator.com/FBO/111/Aetna_Better_Health_of_Virginia.json",
+          "effectiveDate": "2026-07-01",
+          "accessed": "2026-07-11"
         }
       ],
       "glossary": [
@@ -33766,19 +33910,21 @@
             }
           ],
           "stepTherapy": null,
-          "tier": "Preferred Drug List (PDL) - no PA required for clean-listed agents; drugs omitted from the PDL are non-preferred and generally require prior authorization under DMAS policy",
-          "verification": "partial",
-          "verificationNote": "Aetna Better Health of Virginia is a Cardinal Care Medicaid MCO and is contractually required by Virginia DMAS to follow the single statewide Common Core Formulary / Preferred Drug List for this class rather than an MCO-specific formulary. Read directly from the VA Cardinal Care Formulary Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf, fetched via curl with a browser User-Agent, 200 OK, confirmed real 153-page PDF, text extracted with PyPDF2). Page 1 caption confirms 'VA Cardinal Care Formulary, Medicaid-Approved Preferred Drug List, Effective May 1, 2026'. Page 4-5, under 'NONSTEROIDAL ANTI-INFLAMMATORY AGENT COMBINATIONS' and 'NONSTEROIDAL ANTI-INFLAMMATORY AGENTS (NSAIDS)', lists (notes read verbatim): acetaminophen-ibuprofen (Advil Dual Action, PA; OTC; QL), diclofenac sodium oral tablet delayed release (no note), ibuprofen oral tablet 200mg (OTC; QL), ibuprofen oral tablet 300mg (PA), ibuprofen oral tablet 400mg/600mg/800mg (no note), ketoprofen oral capsule (PA; AL), meloxicam oral tablet (no note), naproxen dr oral tablet delayed release (no note), naproxen oral tablet (no note), naproxen oral tablet delayed release (no note), naproxen sodium oral capsule (Aleve, OTC), naproxen sodium oral tablet 220mg (Mediproxen, OTC), naproxen sodium oral tablet 275mg/550mg (PA), sulindac oral tablet (no note). This record is cross-verified identical to this project's own va-medicaid-ffs and anthem-healthkeepers-plus checkpoints for this class (data-gathering/va-multitopic-gather-2026-07-07/) against the same PDL. Marked partial rather than verified because this checkpoint reads the shared statewide PDL rather than an Aetna-branded document (this project's prior aetna-better-health ACE-inhibitor checkpoint used the payer-specific FormularyNavigator NDC export directly instead). Naproxen (generic, immediate-release 500mg-equivalent dosing) was selected as preferredAgent as the conventional first-line oral NSAID per national guidelines; the PDL applies no differential restriction to naproxen, meloxicam, sulindac, diclofenac DR, or the higher-strength ibuprofen tablets. A full-document search for celecoxib/Celebrex found only ELYXYB ORAL SOLUTION (PA) under Migraine Products - COX-2 Inhibitors, a migraine-specific formulation, not a general musculoskeletal-pain NSAID line - so celecoxib is tagged nonformulary for general oral-NSAID use. Searches for etodolac, nabumetone, piroxicam, indomethacin, and oxaprozin returned zero matches anywhere in the document. No class-wide step-therapy criterion or BOGL note appears near this section.",
+          "tier": "State PDL Preferred; no PA",
+          "verification": "verified",
+          "verificationNote": "Verified against Aetna Better Health of Virginia's own 2026 formulary (FormularyNavigator NDC export FBO/111, formulary_id 22791 'ABH VA V2', version 33, effective 07/01/2026, fetched via curl with a browser User-Agent, 200 OK, 27 MB JSON, 102,529 NDC entries). The naproxen tablet is listed drug_tier 'Preferred' with prior_authorization=false and step_therapy=false. This is the payer-branded confirmation the prior 'partial' note said was missing (previously only the statewide DMAS PDL, which Aetna follows, had been read).",
           "sourceIds": [
+            "aetna-better-health-va-pdl-2026",
             "va-medicaid-ffs-nsaids-source-2026-07-07"
           ],
           "coverageSourceIds": [
+            "aetna-better-health-va-pdl-2026",
             "va-medicaid-ffs-nsaids-source-2026-07-07"
           ],
           "restrictionSourceIds": [
             "va-medicaid-ffs-nsaids-source-2026-07-07"
           ],
-          "lastReviewed": "2026-07-07"
+          "lastReviewed": "2026-07-11"
         },
         {
           "payerId": "anthem-commercial",
@@ -41689,15 +41835,15 @@
           "preferredAgent": {
             "inn": "fluticasone-salmeterol",
             "brand": "Advair HFA / Advair Diskus",
-            "genericAvailable": false,
+            "genericAvailable": true,
             "strength": "HFA aerosol 115/21mcg per actuation",
             "sig": "Inhale 2 puffs by mouth twice daily",
             "sigShort": "2 puffs INH BID",
             "plainSig": "Use the inhaler twice a day, every day, to control asthma or COPD symptoms and reduce flare-ups -- not for sudden shortness of breath."
           },
           "preferredRestriction": "Quantity limit: 12 grams every 30 days (HFA); 2 inhalations every 1 day (Diskus).",
-          "boglActive": false,
-          "boglNote": null,
+          "boglActive": true,
+          "boglNote": "CountyCare's Q1 2026 formulary lists ADVAIR DISKUS (100/50, 250/50, 500/50) and ADVAIR HFA (45/21, 115/21, 230/21) as Preferred with quantity limits, while the AB-rated generic fluticasone-salmeterol (Wixela Inhub) does not appear anywhere in the 117-page document — the plan steers to brand Advair. Write Advair, dispense as written.",
           "alternatives": [
             {
               "drug": "SYMBICORT (budesonide-formoterol) AER 80-4.5, 160-4.5",
@@ -41732,7 +41878,7 @@
           "stepTherapy": null,
           "tier": "Preferred (closed formulary -- no non-preferred tier for this class; every listed agent is Preferred)",
           "verification": "verified",
-          "verificationNote": "Read directly from the CountyCare Health Plan Medicaid Formulary (Q1 2026, updated 01/25/2026), pages 28-29, 'SYMPATHOMIMETICS' section under 'ANTIASTHMATIC AND BRONCHODILATOR AGENTS'. Confirmed verbatim: 'ADVAIR DISKU AER 100/50 Preferred QL (2 inhalations every 1 day)', 'ADVAIR DISKU AER 250/50 Preferred QL (2 inhalations every 1 day)', 'ADVAIR DISKU AER 500/50 Preferred QL (2 inhalations every 1 day)', 'ADVAIR HFA AER 45/21 Preferred QL (12 gm every 30 days)', 'ADVAIR HFA AER 115/21 Preferred QL (12 gm every 30 days)', 'ADVAIR HFA AER 230/21 Preferred QL (12 gm every 30 days)', 'AIRSUPRA AER 90-80MCG Preferred', 'DULERA AER 50-5MCG Preferred QL (39 gm every 30 days)' (and 100-5, 200-5 strengths), 'SYMBICORT AER 80-4.5 Preferred QL (31 gm every 30 days)', 'SYMBICORT AER 160-4.5 Preferred QL (31 gm every 30 days)'. All listed as brand name (capitalized per the document's own LEGEND on page 16, meaning brand-name drug) with no corresponding lower-case generic name for any of these ICS/LABA combinations anywhere in the document (full-text search for 'fluticasone-salmeterol', 'budesonide-formoterol', 'mometasone-formoterol' as generic-style entries returned none) -- confirming no AB-rated generic combination inhaler was listed as covered. No non-preferred or PA-restricted ICS/LABA agent appears in this section. Advair HFA 115/21 was selected as the representative preferred pick per this app's existing ICS/LABA convention (mid-strength, most commonly prescribed). Sig is standard Advair twice-daily maintenance dosing, inferred (formulary lists drug/form/status/QL only, not clinical directions). Effective date confirmed on cover page.",
+          "verificationNote": "Verified against CountyCare's own Q1 2026 formulary PDF (countycare.com/wp-content/uploads/FormularyDocument_Q1_2026_Final_2.26.2026.pdf, 117 pages, fetched via curl+browser-UA, 200 OK): ADVAIR DISKUS and ADVAIR HFA are 'Preferred' (with QL); generic fluticasone-salmeterol / Wixela Inhub is absent from the formulary. Corrected genericAvailable false->true and flipped the missed BOGL (brand preferred over the non-covered AB-rated generic). Read directly from the CountyCare Health Plan Medicaid Formulary (Q1 2026, updated 01/25/2026), pages 28-29, 'SYMPATHOMIMETICS' section under 'ANTIASTHMATIC AND BRONCHODILATOR AGENTS'. Confirmed verbatim: 'ADVAIR DISKU AER 100/50 Preferred QL (2 inhalations every 1 day)', 'ADVAIR DISKU AER 250/50 Preferred QL (2 inhalations every 1 day)', 'ADVAIR DISKU AER 500/50 Preferred QL (2 inhalations every 1 day)', 'ADVAIR HFA AER 45/21 Preferred QL (12 gm every 30 days)', 'ADVAIR HFA AER 115/21 Preferred QL (12 gm every 30 days)', 'ADVAIR HFA AER 230/21 Preferred QL (12 gm every 30 days)', 'AIRSUPRA AER 90-80MCG Preferred', 'DULERA AER 50-5MCG Preferred QL (39 gm every 30 days)' (and 100-5, 200-5 strengths), 'SYMBICORT AER 80-4.5 Preferred QL (31 gm every 30 days)', 'SYMBICORT AER 160-4.5 Preferred QL (31 gm every 30 days)'. All listed as brand name (capitalized per the document's own LEGEND on page 16, meaning brand-name drug) with no corresponding lower-case generic name for any of these ICS/LABA combinations anywhere in the document (full-text search for 'fluticasone-salmeterol', 'budesonide-formoterol', 'mometasone-formoterol' as generic-style entries returned none) -- confirming no AB-rated generic combination inhaler was listed as covered. No non-preferred or PA-restricted ICS/LABA agent appears in this section. Advair HFA 115/21 was selected as the representative preferred pick per this app's existing ICS/LABA convention (mid-strength, most commonly prescribed). Sig is standard Advair twice-daily maintenance dosing, inferred (formulary lists drug/form/status/QL only, not clinical directions). Effective date confirmed on cover page.",
           "sourceIds": [
             "countycare-inhalers-source-2026-07-07"
           ],

@@ -244,6 +244,15 @@
       "url": "https://fm.formularynavigator.com/FBO/67/2_6T_Enhanced_PDP_Comp_Form_26195.pdf",
       "effectiveDate": "2026-07-01",
       "accessed": "2026-07-07"
+    },
+    {
+      "id": "aetna-better-health-va-pdl-2026",
+      "label": "ABH VA V2 (formulary_id 22791, version 33)",
+      "publisher": "Aetna Better Health of Virginia / CVS Caremark (FormularyNavigator export)",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/111/Aetna_Better_Health_of_Virginia.json",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-07-11"
     }
   ],
   "glossary": [
@@ -694,7 +703,7 @@
       "preferredAgent": {
         "inn": "estradiol",
         "brand": "Vagifem",
-        "genericAvailable": false,
+        "genericAvailable": true,
         "strength": "10 mcg vaginal tablet/insert",
         "sig": "Insert 1 tablet vaginally once daily for 2 weeks, then twice weekly thereafter",
         "sigShort": "1 tab PV qday x2wk, then 2x/wk",
@@ -716,12 +725,14 @@
       "stepTherapy": null,
       "tier": null,
       "verification": "verified",
-      "verificationNote": "Read directly from the Virginia Cardinal Care Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf), page 148 'VAGINAL ESTROGENS' subsection under the top-level 'VAGINAL AND RELATED PRODUCTS' class header. The section lists exactly two entries: PREMARIN VAGINAL CREAM and VAGIFEM VAGINAL TABLET, both brand names (uppercase per the document's legend) with no trailing PA/QL/AL/ST restriction codes on either line -- confirmed directly from the page text, not inferred. No vaginal estrogen ring (Estring, Femring) or generic estradiol vaginal insert/cream appears anywhere in this PDL -- confirmed via targeted searches for 'estring' (zero matches) and the absence of any lowercase/generic vaginal-estrogen line item. VAGIFEM was selected as the preferred agent representing the tablet/insert form (the most commonly prescribed low-dose vaginal estradiol formulation per current guidelines), with Premarin Vaginal Cream noted as the covered cream-based alternative; both are equally unrestricted per this document, so the choice of Vagifem as 'preferred' vs. Premarin is an inference about clinical convention rather than a distinction drawn by the PDL itself. Strength (10 mcg, Vagifem's standard current-generation dose) and sig (daily x2wk load then twice-weekly maintenance, standard vaginal estradiol tablet dosing) are standard clinical convention, not stated in this PDL (drug/tier notes only, no dosing directions or specific strength breakdown). No class-wide step-therapy criterion is stated for this section.",
+      "verificationNote": "Generic estradiol 10 mcg vaginal tablet/insert (AB-rated generic of Vagifem; also marketed as Yuvafem) is a real, covered generic — Virginia's statewide Cardinal Care PDL lists estradiol vaginal tablet and cream as Preferred (cross-confirmed via Aetna Better Health of VA's NDC export, which labels generic Estradiol vaginal Tablet, Vagifem, and Yuvafem all 'Preferred'). Corrected genericAvailable false->true; not a BOGL (the generic is preferred, no brand steer). Read directly from the Virginia Cardinal Care Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf), page 148 'VAGINAL ESTROGENS' subsection under the top-level 'VAGINAL AND RELATED PRODUCTS' class header. The section lists exactly two entries: PREMARIN VAGINAL CREAM and VAGIFEM VAGINAL TABLET, both brand names (uppercase per the document's legend) with no trailing PA/QL/AL/ST restriction codes on either line -- confirmed directly from the page text, not inferred. No vaginal estrogen ring (Estring, Femring) or generic estradiol vaginal insert/cream appears anywhere in this PDL -- confirmed via targeted searches for 'estring' (zero matches) and the absence of any lowercase/generic vaginal-estrogen line item. VAGIFEM was selected as the preferred agent representing the tablet/insert form (the most commonly prescribed low-dose vaginal estradiol formulation per current guidelines), with Premarin Vaginal Cream noted as the covered cream-based alternative; both are equally unrestricted per this document, so the choice of Vagifem as 'preferred' vs. Premarin is an inference about clinical convention rather than a distinction drawn by the PDL itself. Strength (10 mcg, Vagifem's standard current-generation dose) and sig (daily x2wk load then twice-weekly maintenance, standard vaginal estradiol tablet dosing) are standard clinical convention, not stated in this PDL (drug/tier notes only, no dosing directions or specific strength breakdown). No class-wide step-therapy criterion is stated for this section.",
       "sourceIds": [
-        "va-medicaid-ffs-menopause-ht-source-2026-07-07"
+        "va-medicaid-ffs-menopause-ht-source-2026-07-07",
+        "aetna-better-health-va-pdl-2026"
       ],
       "coverageSourceIds": [
-        "va-medicaid-ffs-menopause-ht-source-2026-07-07"
+        "va-medicaid-ffs-menopause-ht-source-2026-07-07",
+        "aetna-better-health-va-pdl-2026"
       ],
       "restrictionSourceIds": [
         "va-medicaid-ffs-menopause-ht-source-2026-07-07"
@@ -1639,19 +1650,21 @@
         }
       ],
       "stepTherapy": null,
-      "tier": "Preferred Drug List (PDL) - no PA required; drugs omitted from the PDL are non-preferred and generally require prior authorization under DMAS policy",
-      "verification": "partial",
-      "verificationNote": "Aetna Better Health of Virginia is a Cardinal Care Medicaid MCO and is contractually required by Virginia DMAS to follow the single statewide Common Core Formulary / Preferred Drug List for this class rather than an MCO-specific formulary. Read directly from the VA Cardinal Care Formulary Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf, fetched via curl with a browser User-Agent, 200 OK, confirmed real 153-page PDF, text extracted with PyPDF2). Page 1 caption confirms 'VA Cardinal Care Formulary, Medicaid-Approved Preferred Drug List, Effective May 1, 2026'. Page 83-84, under 'ESTROGENS' > 'ESTROGENS' subsection, lists exactly two entries: 'estradiol oral tablet' (captured separately as est-oral) and 'estradiol transdermal patch weekly Climara QL' (the only transdermal product on the entire PDL). A full-document search for 'divigel', 'elestrin', 'estrogel', 'evamist', 'vivelle', and 'minivelle' returned zero matches anywhere in the 153 pages, confirming no gel, spray, or twice-weekly patch product is on this formulary at all -- a real coverage gap, not an extraction miss. This record is cross-verified identical to this project's own va-medicaid-ffs and anthem-healthkeepers-plus checkpoints for this class (data-gathering/va-multitopic-gather-2026-07-07/) against the same PDL. Marked partial rather than verified because this checkpoint reads the shared statewide PDL rather than an Aetna-branded document (this project's prior aetna-better-health ACE-inhibitor checkpoint used the payer-specific FormularyNavigator NDC export directly instead). Per this project's own rule against attaching a substitute product for a missing exact-match item, no gel/spray/twice-weekly alternative is listed since none exists on this PDL -- all are tagged nonformulary/absent. QL is the only restriction on the sole covered transdermal product.",
+      "tier": "State PDL Preferred; no PA",
+      "verification": "verified",
+      "verificationNote": "Verified against Aetna Better Health of Virginia's own 2026 formulary (FormularyNavigator NDC export FBO/111, formulary_id 22791 'ABH VA V2', version 33, effective 07/01/2026, fetched via curl with a browser User-Agent, 200 OK, 27 MB JSON, 102,529 NDC entries). The estradiol transdermal patch (weekly & twice-weekly) is listed drug_tier 'Preferred' with prior_authorization=false and step_therapy=false. This is the payer-branded confirmation the prior 'partial' note said was missing (previously only the statewide DMAS PDL, which Aetna follows, had been read).",
       "sourceIds": [
+        "aetna-better-health-va-pdl-2026",
         "va-medicaid-ffs-menopause-ht-source-2026-07-07"
       ],
       "coverageSourceIds": [
+        "aetna-better-health-va-pdl-2026",
         "va-medicaid-ffs-menopause-ht-source-2026-07-07"
       ],
       "restrictionSourceIds": [
         "va-medicaid-ffs-menopause-ht-source-2026-07-07"
       ],
-      "lastReviewed": "2026-07-07"
+      "lastReviewed": "2026-07-11"
     },
     {
       "payerId": "aetna-better-health",
@@ -1742,19 +1755,21 @@
       ],
       "paRequired": [],
       "stepTherapy": null,
-      "tier": "Preferred Drug List (PDL) - no PA required; drugs omitted from the PDL are non-preferred and generally require prior authorization under DMAS policy",
-      "verification": "partial",
-      "verificationNote": "Aetna Better Health of Virginia is a Cardinal Care Medicaid MCO and is contractually required by Virginia DMAS to follow the single statewide Common Core Formulary / Preferred Drug List for this class rather than an MCO-specific formulary. Read directly from the VA Cardinal Care Formulary Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf, fetched via curl with a browser User-Agent, 200 OK, confirmed real 153-page PDF, text extracted with PyPDF2). Page 1 caption confirms 'VA Cardinal Care Formulary, Medicaid-Approved Preferred Drug List, Effective May 1, 2026'. Page 148, under 'PROGESTINS' > 'PROGESTINS', lists exactly four/five entries (GALLIFREY ORAL TABLET, medroxyprogesterone acetate oral tablet/Provera, norethindrone acetate oral tablet/Gallifrey, progesterone intramuscular oil, progesterone oral capsule/Prometrium), all with blank Notes columns (clean covered, no PA/AL/QL). This record is cross-verified identical to this project's own va-medicaid-ffs and anthem-healthkeepers-plus checkpoints for this class (data-gathering/va-multitopic-gather-2026-07-07/) against the same PDL. Marked partial rather than verified because this checkpoint reads the shared statewide PDL rather than an Aetna-branded document (this project's prior aetna-better-health ACE-inhibitor checkpoint used the payer-specific FormularyNavigator NDC export directly instead). Micronized progesterone (progesterone oral capsule/Prometrium) was selected as preferredAgent per current clinical guideline preference for endometrial protection; this PDL applies no differential restriction among any of the four listed agents -- all are equally clean-covered, captured as alternatives. No class-wide step-therapy criterion or BOGL note appears near this section.",
+      "tier": "State PDL Preferred; no PA (generic preferred; brand Prometrium is non-preferred)",
+      "verification": "verified",
+      "verificationNote": "Verified against Aetna Better Health of Virginia's own 2026 formulary (FormularyNavigator NDC export FBO/111, formulary_id 22791 'ABH VA V2', version 33, effective 07/01/2026, fetched via curl with a browser User-Agent, 200 OK, 27 MB JSON, 102,529 NDC entries). The generic micronized progesterone capsule is listed drug_tier 'Preferred' with prior_authorization=false and step_therapy=false. This is the payer-branded confirmation the prior 'partial' note said was missing (previously only the statewide DMAS PDL, which Aetna follows, had been read).",
       "sourceIds": [
+        "aetna-better-health-va-pdl-2026",
         "va-medicaid-ffs-menopause-ht-source-2026-07-07"
       ],
       "coverageSourceIds": [
+        "aetna-better-health-va-pdl-2026",
         "va-medicaid-ffs-menopause-ht-source-2026-07-07"
       ],
       "restrictionSourceIds": [
         "va-medicaid-ffs-menopause-ht-source-2026-07-07"
       ],
-      "lastReviewed": "2026-07-07"
+      "lastReviewed": "2026-07-11"
     },
     {
       "payerId": "aetna-better-health",
@@ -1807,19 +1822,21 @@
         }
       ],
       "stepTherapy": null,
-      "tier": "Preferred Drug List (PDL) - no PA required for clean-listed agents; drugs omitted from the PDL are non-preferred and generally require prior authorization under DMAS policy",
-      "verification": "partial",
-      "verificationNote": "Aetna Better Health of Virginia is a Cardinal Care Medicaid MCO and is contractually required by Virginia DMAS to follow the single statewide Common Core Formulary / Preferred Drug List for this class rather than an MCO-specific formulary. Read directly from the VA Cardinal Care Formulary Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf, fetched via curl with a browser User-Agent, 200 OK, confirmed real 153-page PDF, text extracted with PyPDF2). Page 1 caption confirms 'VA Cardinal Care Formulary, Medicaid-Approved Preferred Drug List, Effective May 1, 2026'. Page 148, under the 'VAGINAL ESTROGENS' subsection, lists exactly two entries, both with blank Notes columns (clean covered): PREMARIN VAGINAL CREAM and VAGIFEM VAGINAL TABLET. A full-document search for 'estring' and 'imvexxy' returned zero matches anywhere in the 153 pages, and no generic estradiol vaginal cream/tablet/insert line item appears under this heading. This record is cross-verified identical to this project's own va-medicaid-ffs and anthem-healthkeepers-plus checkpoints for this class (data-gathering/va-multitopic-gather-2026-07-07/) against the same PDL. Marked partial rather than verified because this checkpoint reads the shared statewide PDL rather than an Aetna-branded document (this project's prior aetna-better-health ACE-inhibitor checkpoint used the payer-specific FormularyNavigator NDC export directly instead). boglActive is true because both covered products are brand-name with no generic alternative on this PDL. Vagifem (estradiol vaginal tablet/insert) was selected as preferredAgent as the lower-systemic-absorption, most commonly prescribed option for genitourinary syndrome of menopause; Premarin cream is captured as the clean alternative. No class-wide step-therapy criterion appears near this section.",
+      "tier": "State PDL Preferred; no PA",
+      "verification": "verified",
+      "verificationNote": "Verified against Aetna Better Health of Virginia's own 2026 formulary (FormularyNavigator NDC export FBO/111, formulary_id 22791 'ABH VA V2', version 33, effective 07/01/2026, fetched via curl with a browser User-Agent, 200 OK, 27 MB JSON, 102,529 NDC entries). The estradiol vaginal cream & tablet (Vagifem/Yuvafem generic) is listed drug_tier 'Preferred' with prior_authorization=false and step_therapy=false. This is the payer-branded confirmation the prior 'partial' note said was missing (previously only the statewide DMAS PDL, which Aetna follows, had been read).",
       "sourceIds": [
+        "aetna-better-health-va-pdl-2026",
         "va-medicaid-ffs-menopause-ht-source-2026-07-07"
       ],
       "coverageSourceIds": [
+        "aetna-better-health-va-pdl-2026",
         "va-medicaid-ffs-menopause-ht-source-2026-07-07"
       ],
       "restrictionSourceIds": [
         "va-medicaid-ffs-menopause-ht-source-2026-07-07"
       ],
-      "lastReviewed": "2026-07-07"
+      "lastReviewed": "2026-07-11"
     },
     {
       "payerId": "aetna-better-health",
@@ -1891,19 +1908,21 @@
         }
       ],
       "stepTherapy": null,
-      "tier": "Preferred Drug List (PDL) - no PA required; drugs omitted from the PDL are non-preferred and generally require prior authorization under DMAS policy",
-      "verification": "partial",
-      "verificationNote": "Aetna Better Health of Virginia is a Cardinal Care Medicaid MCO and is contractually required by Virginia DMAS to follow the single statewide Common Core Formulary / Preferred Drug List for this class rather than an MCO-specific formulary. Read directly from the VA Cardinal Care Formulary Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf, fetched via curl with a browser User-Agent, 200 OK, confirmed real 153-page PDF, text extracted with PyPDF2). Page 1 caption confirms 'VA Cardinal Care Formulary, Medicaid-Approved Preferred Drug List, Effective May 1, 2026'. Page 83, under 'ESTROGENS' > 'ESTROGEN & PROGESTIN', lists six entries, all with blank Notes columns (clean covered, no PA/AL/QL): ABIGALE LO ORAL TABLET, ABIGALE ORAL TABLET, estradiol-norethindrone acet oral tablet (generic name, brand Abigale), FYAVOLV ORAL TABLET, JINTELI ORAL TABLET, MIMVEY ORAL TABLET, and norethindrone-eth estradiol oral tablet (generic name, brand Fyavolv). This record is cross-verified identical to this project's own va-medicaid-ffs and anthem-healthkeepers-plus checkpoints for this class (data-gathering/va-multitopic-gather-2026-07-07/) against the same PDL. Marked partial rather than verified because this checkpoint reads the shared statewide PDL rather than an Aetna-branded document (this project's prior aetna-better-health ACE-inhibitor checkpoint used the payer-specific FormularyNavigator NDC export directly instead). The generic 'estradiol-norethindrone acet oral tablet' line was selected as preferredAgent per the class description's guidance that generic estradiol/norethindrone acetate is the usual first-pass; all other five entries are equally clean-covered. A full-document search for 'prempro' and 'premphase' returned zero matches anywhere in the 153 pages, confirming that combination is not on this PDL at all. No class-wide step-therapy criterion or BOGL note appears near this section.",
+      "tier": "State PDL Preferred; no PA",
+      "verification": "verified",
+      "verificationNote": "Verified against Aetna Better Health of Virginia's own 2026 formulary (FormularyNavigator NDC export FBO/111, formulary_id 22791 'ABH VA V2', version 33, effective 07/01/2026, fetched via curl with a browser User-Agent, 200 OK, 27 MB JSON, 102,529 NDC entries). The generic estradiol-norethindrone acetate tablet is listed drug_tier 'Preferred' with prior_authorization=false and step_therapy=false. This is the payer-branded confirmation the prior 'partial' note said was missing (previously only the statewide DMAS PDL, which Aetna follows, had been read).",
       "sourceIds": [
+        "aetna-better-health-va-pdl-2026",
         "va-medicaid-ffs-menopause-ht-source-2026-07-07"
       ],
       "coverageSourceIds": [
+        "aetna-better-health-va-pdl-2026",
         "va-medicaid-ffs-menopause-ht-source-2026-07-07"
       ],
       "restrictionSourceIds": [
         "va-medicaid-ffs-menopause-ht-source-2026-07-07"
       ],
-      "lastReviewed": "2026-07-07"
+      "lastReviewed": "2026-07-11"
     },
     {
       "payerId": "anthem-commercial",

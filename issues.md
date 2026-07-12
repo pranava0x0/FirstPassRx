@@ -324,3 +324,94 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   WinAnsi sanitization, download error state, and the 44px touch-target on the tips summary.
   Root causes: **UI copy assumed an unrestricted preferred agent** (schema couldn't express the
   exception) and **gather agents modeled class-wide PA two different ways**. _Fixed (commit on PR #5)._
+- **2026-07-10 · data (ma-inhalers) · first-built guide carried soft cells; upgraded 12 to verified
+  + fixed a missed BOGL.** A full correctness/citation sweep flagged `ma-inhalers` (built before the
+  reusable gather workflow existed) as the weakest guide: 6 verified / 10 partial / 4 example. The
+  three commercial payer PDFs (Tufts Value Direct, Harvard Pilgrim Select — both on Optum
+  contenthub — and MGB on FormularyNavigator) and the MassHealth MHDL Table 23 all fetched cleanly
+  via `curl`/direct GET (the "looks blocked but isn't" pattern), so the inferred cells were verified
+  against the real formularies. Corrections found while verifying: (a) Tufts/HPHC **SABA** preferred
+  was branded "ProAir HFA" — real preferred is generic albuterol sulfate HFA (Tier 1); (b) Tufts
+  **ICS** inferred fluticasone propionate HFA, which is actually **Tier 3 + step therapy** — real
+  low-tier ICS is beclomethasone HFA (Tier 2); (c) HPHC **ICS** inferred mometasone/Asmanex, also
+  **Tier 3 + step therapy** — corrected to a Tier-2 unrestricted ICS; (d) Tufts/HPHC **ICS/LABA**
+  inferred Symbicort/Breo (Tier 2) — real preferred is generic fluticasone-salmeterol DPI (**Tier
+  1**). Also fixed a **missed BOGL**: MassHealth's `icslaba` (Symbicort) is marked "BP" (Brand
+  Preferred over generic equivalents) on MHDL Table 23 — `boglActive` was `false`; flipped to `true`
+  with a `boglNote`, matching the SABA/Ventolin cell. Added `tier` strings to 16 cells (the trace
+  "no insurance tier/cost" warning dropped from 20/20 → 4/20). Result: **16 verified / 4 example**;
+  the 4 remaining `example` cells are BlueCross MA (Standard Control / CVS Caremark), whose source is
+  an interactive lookup that 403s WebFetch/curl and whose "Focused" PDF extracts as a fragmented
+  index — left honestly labeled "verify on the BCBSMA Medication Look-up" rather than fabricate
+  tiers. Root cause: **pre-workflow guide had inferred preferred agents**; verifying against the live
+  sources both upgraded depth and corrected several picks. _Fixed (this commit)._
+- **2026-07-10 · data (observation, not a bug) · `genericAvailable:false` on 13 brand-preferred
+  cells where the same molecule has a generic/biosimilar named elsewhere in the cell.** The
+  correctness sweep flagged records (mostly insulin glargine/Lantus, plus tiotropium/Spiriva and
+  budesonide-formoterol/Symbicort) where the preferred agent is a brand with `genericAvailable:false`
+  while an alternative lists a generic/biosimilar of that molecule. These are internally consistent
+  (all have `boglActive:false`, so no invariant is violated) and several are true negatives
+  (empagliflozin/Jardiance genuinely has no US generic; the "generic" named is a different molecule
+  in a combined phrase). Flipping them changes only the cosmetic "; a generic is fine." suffix in
+  ResultCard and risks contradicting what each payer's source actually supports (biosimilar ≠ AB-
+  rated generic). Left as-is pending per-source confirmation; documented here so a future sweep
+  doesn't re-flag them as new. Root cause: **heuristic false-positive class**, not a data defect.
+- **2026-07-11 · data (correctness) · Aetna Better Health of VA cells verified against Aetna's own
+  formulary; two real BOGLs the statewide-PDL mirror had missed.** The 10 `partial` Aetna Better
+  Health cells in `va-inhalers`/`va-menopause`/`va-nsaids` had been filled by mirroring the statewide
+  DMAS PDL (they carried FFS-identical data marked `partial` only because no Aetna-branded source had
+  been read). Fetched Aetna's payer-specific FormularyNavigator NDC export
+  (`fm.formularynavigator.com/FBO/111/Aetna_Better_Health_of_Virginia.json`, 27 MB, 102,529 NDCs,
+  formulary_id 22791 v33, eff 07/01/2026) via curl+browser-UA. Nine cells upgraded to `verified`
+  (est-oral left `partial`, matching its FFS twin — a structural PDL gap). One cell was genuinely **wrong**
+  in the mirror, not just under-verified: `icslaba` (brand **Symbicort** is Preferred, generic
+  budesonide-formoterol is State-PDL-Non-Preferred; same MDI device as generic Breyna) — a real
+  brand-preferred-over-generic situation the mirror had encoded as `genericAvailable:false,
+  boglActive:false`. Because the tier label reads "**State** PDL Non-Preferred", the same BOGL propagates
+  to every statewide-PDL-following payer: also corrected the `va-medicaid-ffs`,
+  `anthem-healthkeepers-plus`, and `sentara-community` `icslaba` cells (`genericAvailable:true,
+  boglActive:true` + boglNote). (The `lama` cells were initially flipped the same way but **reverted on
+  code review** — Spiriva Respimat is a soft-mist device with no AB-rated generic; generic tiotropium is
+  a non-substitutable capsule, so those stay `genericAvailable:false, boglActive:false`. See the
+  `2026-07-11 (cont.)` sweep entry below.) Result: `va-inhalers` 32/32 verified,
+  `va-nsaids` 8/8, `va-menopause` 38/40. Added the Aetna source as a new reference in all three guides;
+  trace still resolves 100%. _Fixed (this commit)._ **Refines the 2026-07-10 observation above:** the
+  `genericAvailable:false` pattern is NOT uniformly a false positive — where an *AB-rated generic of the
+  exact product* exists (Symbicort→Breyna, Spiriva HandiHaler→generic tiotropium capsule, Advair→Wixela,
+  Vagifem→generic estradiol vaginal tablet) it is a true BOGL bug. The remaining ~30 flagged cells split
+  cleanly: **true negatives** (GLP-1 Trulicity/Ozempic/Rybelsus, SGLT2 Jardiance/Farxiga, insulin —
+  no AB-rated US generic exists; leave) vs. **still-to-fix BOGLs** in `ma-inhalers`/`md-inhalers`/
+  `ny-inhalers`/`il-inhalers` (Symbicort, Spiriva, Advair) and `va-menopause` anthem Vagifem — deferred
+  to a follow-up pass that re-reads each payer's own source rather than mass-flipping. _Open (scoped)._
+- **2026-07-11 (cont.) · cross-guide `icslaba` BOGL sweep resolved; `lama` Spiriva cells confirmed
+  NOT blanket BOGLs.** Followed up the scoped remainder above by reading each payer's own source:
+  - **CountyCare (IL) `icslaba`** — Advair Diskus/HFA are Preferred; generic fluticasone-salmeterol
+    (Wixela) is absent from the 117-page Q1-2026 formulary → real BOGL, fixed.
+  - **Excellus Medicare (NY) `icslaba`** — Symbicort is Tier 3/QL; generic budesonide-formoterol
+    (Breyna) is absent from the 108-page 5-tier PDF → real BOGL, fixed.
+  - **anthem-healthkeepers-plus (VA) `vaginal`** — generic estradiol vaginal tablet IS Preferred on
+    the statewide PDL → `genericAvailable` false→true, *not* a BOGL.
+  That closes every clean AB-rated-generic `icslaba`/vaginal case (Symbicort→Breyna, Advair→Wixela,
+  Vagifem→generic estradiol vaginal). **The remaining `lama` Spiriva Respimat candidates
+  (`ma`/`md` masshealth, bcbsma, harvardpilgrim, cigna, medicare-partd, kpmidatlantic; va
+  sentara-commercial) are deliberately left as `genericAvailable:false`:** Spiriva Respimat is a
+  soft-mist device with no AB-rated generic, and where a source was read (CountyCare) the generic
+  tiotropium *capsule* is itself covered — so these are device-distinct alternatives, not a
+  brand-over-generic steer. Only a source explicitly preferring brand Spiriva HandiHaler *capsule*
+  over the non-covered generic tiotropium capsule would qualify; none seen. Diabetes/insulin
+  `genericAvailable:false` cells (GLP-1, SGLT2, insulin) remain true negatives. _Sweep closed._
+- **2026-07-11 (cont.) · ny-menopause ny-medicaid 5 `example` cells — coverage confirmed on the NYRx
+  reimbursable-drugs file, but PA depth blocked on an undocumented code.** Fetched the authoritative
+  NYRx List of Reimbursable Drugs (`docs.emedny.org/ReimbursableDrugs/MedReimbDrugsFormulary.csv`,
+  37,669 NDCs, eff 2026-07-11). All five HT drug families **are covered** (estradiol 211 NDCs across
+  patch/oral/vaginal, micronized progesterone, estradiol-norethindrone combo). The file's `PA` column
+  takes values `0` / `G` / `N`, but eMedNY's own file-layout spec (`FormularyFileInfo.pdf`) is a COBOL
+  copybook that never defines the flattened CSV's single-letter `PA` / `PREFERRED DRUG CODE` values.
+  Per-form PA breakdown: **vaginal insert/cream and the estradiol-norethindrone combo are uniformly
+  `PA=0`** (clean, no PA); **transdermal patch, oral tablet, and micronized progesterone are mostly
+  `PA=G`** (17/109 patch, 6/34 oral, 15/26 progesterone are `0`). Because `G` is undefined in the
+  available materials, marking a "no PA" verified finding on the patch/oral/progesterone cells would
+  fabricate a claim, so they stay `example`. **To finish:** obtain eMedNY's `PA`-code legend (call
+  center / provider manual) — if `G` ≠ prior-authorization, all 5 upgrade to verified citing the CSV;
+  the `vaginal` + `combo` cells (uniform `PA=0`) are already safe to upgrade whenever a future pass
+  adds the CSV as a source. _Open (blocked on code legend)._
