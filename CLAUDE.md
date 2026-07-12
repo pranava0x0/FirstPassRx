@@ -506,3 +506,26 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   read the real product hrefs (the search rows aren't exposed in the accessibility tree, so
   `read_page` won't surface them). Ibuprofen (any Rx strength) is genuinely not carried — a real
   "not carried" outcome, GoodRx-only by design.
+- **A BOGL (`boglActive:true`) requires the generic to be AB-substitutable for the EXACT preferred
+  product/device — not just "a generic of the same molecule exists somewhere."** The 2026-07-11 VA
+  sweep flipped the four `va-inhalers` `lama` cells to BOGL because a generic tiotropium exists — but
+  the preferred agent is **Spiriva Respimat** (a soft-mist inhaler with NO AB-rated generic), while the
+  only generic tiotropium is a **HandiHaler dry-powder capsule**: a different, non-interchangeable
+  device a pharmacist can never substitute at the counter, so DAW accomplishes nothing. Code review
+  (device-nuance angle) caught it; reverted all four to `genericAvailable:false, boglActive:false`.
+  Contrast the *clean* same-device BOGLs that stuck the same day: Symbicort MDI→generic
+  budesonide-formoterol (Breyna, same MDI), Advair Diskus→Wixela (same DPI), Spiriva **HandiHaler**
+  capsule→generic tiotropium capsule (same capsule) — all AB-rated to the exact preferred product.
+  Rule: before setting `boglActive`, confirm the generic shares the preferred agent's **dosage form +
+  delivery device**, not merely its INN. Soft-mist (Respimat), Ellipta/Breo, and other proprietary
+  devices usually have *no* generic even when the molecule does — leave those `genericAvailable:false`.
+- **For a Medicaid MCO cell, verify against the MCO's OWN FormularyNavigator `FBO/<n>/<Payer>.json`
+  NDC export, not a mirror of the statewide PDL.** VA's Cardinal Care MCOs follow the statewide DMAS
+  PDL, so an earlier gather filled the Aetna Better Health cells by copying FFS data and marking them
+  `partial`. Fetching Aetna's own export (`fm.formularynavigator.com/FBO/111/Aetna_Better_Health_of_Virginia.json`,
+  27 MB, 102,529 NDCs, per-NDC `drug_tier`/`prior_authorization`/`step_therapy` flags; curl+browser-UA,
+  the host 403s a plain fetch) both upgraded 9 cells `partial`→`verified` AND surfaced a real BOGL the
+  mirror had encoded wrong. The FBO JSON is the authoritative payer-branded source; the per-NDC
+  `drug_tier` label even names the statewide tier ("State PDL Non-Preferred"), so one MCO's export also
+  reveals what the shared PDL does for every sibling MCO. Blob is byte-identical across payers pointing
+  at the same FBO number, so committing it costs ~nothing (git dedups by sha).

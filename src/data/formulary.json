@@ -1142,13 +1142,6 @@
               "sourceIds": [
                 "hphc-formulary-2026"
               ]
-            },
-            {
-              "drug": "QVAR RediHaler",
-              "note": "Tier 2",
-              "sourceIds": [
-                "hphc-formulary-2026"
-              ]
             }
           ],
           "tier": "Tier 2; no PA/step therapy"
@@ -27824,15 +27817,15 @@
           "preferredAgent": {
             "inn": "tiotropium bromide",
             "brand": "Spiriva Respimat",
-            "genericAvailable": true,
+            "genericAvailable": false,
             "strength": "inhalation aerosol solution, 2.5 mcg/actuation",
             "sig": "Inhale 2 puffs by mouth once daily",
             "sigShort": "SPIRIVA RESPIMAT, 2 puffs INH daily",
             "plainSig": "Use 2 puffs from the inhaler once a day, same time each day"
           },
           "preferredRestriction": null,
-          "boglActive": true,
-          "boglNote": "Virginia's statewide Cardinal Care PDL lists brand Spiriva (Respimat clean-covered; HandiHaler with PA) as preferred while generic tiotropium bromide capsule is non-preferred; cross-confirmed by Aetna Better Health of VA's NDC export, which labels generic Tiotropium Bromide Capsule 'State PDL Non-Preferred'. The plan steers to brand Spiriva — write Spiriva, dispense as written.",
+          "boglActive": false,
+          "boglNote": "No brand-over-generic substitution applies to the preferred product: Spiriva Respimat (tiotropium soft-mist inhaler) has no AB-rated generic. A generic tiotropium exists only as a HandiHaler-type dry-powder capsule -- a different, non-interchangeable device that the VA statewide PDL / Aetna's export list as non-preferred -- so there is no generic Respimat a pharmacist could substitute. genericAvailable and boglActive are therefore false for this soft-mist product.",
           "alternatives": [
             {
               "drug": "TRELEGY ELLIPTA (fluticasone-umeclidinium-vilanterol)",
@@ -27901,7 +27894,7 @@
           "stepTherapy": null,
           "tier": "Preferred Drug List (PDL) - no PA required for clean-listed agents; drugs omitted from the PDL are non-preferred and generally require prior authorization under DMAS policy",
           "verification": "verified",
-          "verificationNote": "Fetched the PDF directly via curl with a browser User-Agent (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf, 200 OK, confirmed real 153-page PDF) and extracted full text with PyPDF2. Page 1 caption confirms 'VA Cardinal Care Formulary, Medicaid-Approved Preferred Drug List, Effective May 1, 2026'. Page 18, under '*ANTIASTHMATIC AND BRONCHODILATOR AGENTS*' > '*BRONCHODILATORS - ANTICHOLINERGICS***', lists exactly four entries with notes read verbatim: ATROVENT HFA (PA - this is ipratropium, a short-acting muscarinic antagonist/SAMA, not a LAMA, so excluded from this record), ipratropium bromide inhalation solution (no note - also SAMA, excluded), SPIRIVA HANDIHALER (PA), SPIRIVA RESPIMAT (no note). Spiriva Respimat is the only clean-covered true LAMA monotherapy product on the entire PDL - confirmed via a full-document case-insensitive search for tiotropium, umeclidinium, aclidinium, glycopyrronium/glycopyrrolate-inhalation, and revefenacin, which found no generic tiotropium and no other single-agent LAMA product anywhere. The LAMA/LABA combination products ANORO ELLIPTA and STIOLTO RESPIMAT (both AL) and the ICS/LAMA/LABA triple TRELEGY ELLIPTA (no note), all found on page 17 under Adrenergic Combinations, are captured here as alternatives since they each contain a LAMA component (umeclidinium or tiotropium) even though none is a standalone LAMA product - this class-membership judgment (that a combination product counts as covering LAMA need) is inferred from pharmacology, not a label printed in the PDL. boglActive is true because no generic tiotropium or other LAMA exists on this PDL to prefer over the brand Spiriva Respimat. No class-wide step-therapy criterion appears near this section.",
+          "verificationNote": "Fetched the PDF directly via curl with a browser User-Agent (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf, 200 OK, confirmed real 153-page PDF) and extracted full text with PyPDF2. Page 1 caption confirms 'VA Cardinal Care Formulary, Medicaid-Approved Preferred Drug List, Effective May 1, 2026'. Page 18, under '*ANTIASTHMATIC AND BRONCHODILATOR AGENTS*' > '*BRONCHODILATORS - ANTICHOLINERGICS***', lists exactly four entries with notes read verbatim: ATROVENT HFA (PA - this is ipratropium, a short-acting muscarinic antagonist/SAMA, not a LAMA, so excluded from this record), ipratropium bromide inhalation solution (no note - also SAMA, excluded), SPIRIVA HANDIHALER (PA), SPIRIVA RESPIMAT (no note). Spiriva Respimat is the only clean-covered true LAMA monotherapy product on the entire PDL - confirmed via a full-document case-insensitive search for tiotropium, umeclidinium, aclidinium, glycopyrronium/glycopyrrolate-inhalation, and revefenacin, which found no generic tiotropium and no other single-agent LAMA product anywhere. The LAMA/LABA combination products ANORO ELLIPTA and STIOLTO RESPIMAT (both AL) and the ICS/LAMA/LABA triple TRELEGY ELLIPTA (no note), all found on page 17 under Adrenergic Combinations, are captured here as alternatives since they each contain a LAMA component (umeclidinium or tiotropium) even though none is a standalone LAMA product - this class-membership judgment (that a combination product counts as covering LAMA need) is inferred from pharmacology, not a label printed in the PDL. boglActive is true because no generic tiotropium or other LAMA exists on this PDL to prefer over the brand Spiriva Respimat. No class-wide step-therapy criterion appears near this section. [2026-07-11 correction: an interim BOGL flag on this cell was reverted -- the generic tiotropium is a capsule device, not AB-substitutable for the preferred Respimat soft-mist inhaler.]",
           "sourceIds": [
             "va-medicaid-ffs-inhalers-source-2026-07-07"
           ],
@@ -28118,15 +28111,15 @@
           "preferredAgent": {
             "inn": "tiotropium bromide",
             "brand": "Spiriva Respimat",
-            "genericAvailable": true,
+            "genericAvailable": false,
             "strength": "2.5 mcg/actuation inhalation spray",
             "sig": "Inhale 2 puffs by mouth once daily",
             "sigShort": "2 puffs INH qday",
             "plainSig": "Take 2 puffs from the inhaler once a day, same time each day"
           },
           "preferredRestriction": null,
-          "boglActive": true,
-          "boglNote": "Virginia's statewide Cardinal Care PDL lists brand Spiriva (Respimat clean-covered; HandiHaler with PA) as preferred while generic tiotropium bromide capsule is non-preferred; cross-confirmed by Aetna Better Health of VA's NDC export, which labels generic Tiotropium Bromide Capsule 'State PDL Non-Preferred'. The plan steers to brand Spiriva — write Spiriva, dispense as written.",
+          "boglActive": false,
+          "boglNote": "No brand-over-generic substitution applies to the preferred product: Spiriva Respimat (tiotropium soft-mist inhaler) has no AB-rated generic. A generic tiotropium exists only as a HandiHaler-type dry-powder capsule -- a different, non-interchangeable device that the VA statewide PDL / Aetna's export list as non-preferred -- so there is no generic Respimat a pharmacist could substitute. genericAvailable and boglActive are therefore false for this soft-mist product.",
           "alternatives": [],
           "paRequired": [
             {
@@ -28149,7 +28142,7 @@
           "stepTherapy": null,
           "tier": null,
           "verification": "verified",
-          "verificationNote": "Read directly from the Virginia Cardinal Care Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf), page 18 'BRONCHODILATORS - ANTICHOLINERGICS' subsection under 'ANTIASTHMATIC AND BRONCHODILATOR AGENTS'. This subsection lists exactly three agents: ATROVENT HFA (ipratropium, brand, PA), ipratropium bromide inhalation solution (generic, no notes -- but this is a short-acting agent, nebulized ipratropium, not a LAMA), SPIRIVA HANDIHALER (PA), and SPIRIVA RESPIMAT (no notes). No other long-acting muscarinic antagonist (umeclidinium/Incruse Ellipta, glycopyrrolate/Seebri, revefenacin/Yupelri, aclidinium/Tudorza) appears anywhere in this document -- confirmed via targeted searches for 'tiotropium' and 'umeclidinium' returning only the Spiriva entries above. Searched separately for other LAMA-only brand names not found in this PDL at all, meaning Virginia's Cardinal Care PDL covers only tiotropium (as Spiriva, both device forms) for standalone LAMA therapy; other LAMAs would only be reachable via the LAMA/LABA combination products in the ADRENERGIC COMBINATIONS section (Anoro Ellipta, Stiolto Respimat, Combivent Respimat), which are out of scope for this pure-LAMA class per the task definition. SPIRIVA RESPIMAT was selected as the preferred agent because it is the only unrestricted (no PA note) LAMA entry -- a direct read of the notes column. Strength and sig are standard clinical convention for Spiriva Respimat, not stated in this PDL (drug/tier/PA/QL/AL notes only, no dosing directions). No class-wide step-therapy criterion is stated for this class.",
+          "verificationNote": "Read directly from the Virginia Cardinal Care Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf), page 18 'BRONCHODILATORS - ANTICHOLINERGICS' subsection under 'ANTIASTHMATIC AND BRONCHODILATOR AGENTS'. This subsection lists exactly three agents: ATROVENT HFA (ipratropium, brand, PA), ipratropium bromide inhalation solution (generic, no notes -- but this is a short-acting agent, nebulized ipratropium, not a LAMA), SPIRIVA HANDIHALER (PA), and SPIRIVA RESPIMAT (no notes). No other long-acting muscarinic antagonist (umeclidinium/Incruse Ellipta, glycopyrrolate/Seebri, revefenacin/Yupelri, aclidinium/Tudorza) appears anywhere in this document -- confirmed via targeted searches for 'tiotropium' and 'umeclidinium' returning only the Spiriva entries above. Searched separately for other LAMA-only brand names not found in this PDL at all, meaning Virginia's Cardinal Care PDL covers only tiotropium (as Spiriva, both device forms) for standalone LAMA therapy; other LAMAs would only be reachable via the LAMA/LABA combination products in the ADRENERGIC COMBINATIONS section (Anoro Ellipta, Stiolto Respimat, Combivent Respimat), which are out of scope for this pure-LAMA class per the task definition. SPIRIVA RESPIMAT was selected as the preferred agent because it is the only unrestricted (no PA note) LAMA entry -- a direct read of the notes column. Strength and sig are standard clinical convention for Spiriva Respimat, not stated in this PDL (drug/tier/PA/QL/AL notes only, no dosing directions). No class-wide step-therapy criterion is stated for this class. [2026-07-11 correction: an interim BOGL flag on this cell was reverted -- the generic tiotropium is a capsule device, not AB-substitutable for the preferred Respimat soft-mist inhaler.]",
           "sourceIds": [
             "va-medicaid-ffs-inhalers-source-2026-07-07"
           ],
@@ -28360,15 +28353,15 @@
           "preferredAgent": {
             "inn": "tiotropium bromide",
             "brand": "SPIRIVA RESPIMAT",
-            "genericAvailable": true,
+            "genericAvailable": false,
             "strength": "2.5 mcg/actuation inhalation spray",
             "sig": "Inhale 2 puffs by mouth once daily",
             "sigShort": "2 puffs INH daily",
             "plainSig": "Take 2 puffs once a day, every day, at the same time each day, for COPD maintenance -- not for quick relief"
           },
           "preferredRestriction": null,
-          "boglActive": true,
-          "boglNote": "Virginia's statewide Cardinal Care PDL lists brand Spiriva (Respimat clean-covered; HandiHaler with PA) as preferred while generic tiotropium bromide capsule is non-preferred; cross-confirmed by Aetna Better Health of VA's NDC export, which labels generic Tiotropium Bromide Capsule 'State PDL Non-Preferred'. The plan steers to brand Spiriva — write Spiriva, dispense as written.",
+          "boglActive": false,
+          "boglNote": "No brand-over-generic substitution applies to the preferred product: Spiriva Respimat (tiotropium soft-mist inhaler) has no AB-rated generic. A generic tiotropium exists only as a HandiHaler-type dry-powder capsule -- a different, non-interchangeable device that the VA statewide PDL / Aetna's export list as non-preferred -- so there is no generic Respimat a pharmacist could substitute. genericAvailable and boglActive are therefore false for this soft-mist product.",
           "alternatives": [
             {
               "drug": "SPIRIVA WITH HANDIHALER (tiotropium, dry powder inhaler form)",
@@ -28410,7 +28403,7 @@
           "stepTherapy": null,
           "tier": "Brand",
           "verification": "verified",
-          "verificationNote": "Read directly from the Sentara Community Plan Prescription Drug Formulary (July-September 2026), updated 07/01/2026, PDF pages 112-113 (printed pages 106-107), 'RESPIRATORY AND ALLERGY > PULMONARY AGENTS' section. SPIRIVA RESPIMAT, SPIRIVA WITH HANDIHALER, ANORO ELLIPTA, STIOLTO RESPIMAT, TRELEGY ELLIPTA, and ATROVENT HFA all appear as 'Brand' with no Requirements/Limits text in the same row -- none carry PA, ST, or QL notes. No generic tiotropium or umeclidinium product appears in this table. SPIRIVA RESPIMAT is selected as the representative preferred pick because tiotropium is the most established, guideline-first LAMA monotherapy for COPD maintenance; the source table itself draws no preferred/non-preferred distinction among these agents (all carry identical Brand/no-restriction status). Strength/sig for Spiriva Respimat (2.5 mcg/actuation, 2 puffs once daily) is standard clinical dosing convention, not stated verbatim in this table (which lists drug/tier/requirements only, no dosing directions). No class-wide step-therapy criterion appears in or near this section. Per the class definition, LAMA monotherapy is FDA-indicated for COPD maintenance, not asthma or rescue use -- this is reflected in the products found (all COPD-labeled long-acting bronchodilators).",
+          "verificationNote": "Read directly from the Sentara Community Plan Prescription Drug Formulary (July-September 2026), updated 07/01/2026, PDF pages 112-113 (printed pages 106-107), 'RESPIRATORY AND ALLERGY > PULMONARY AGENTS' section. SPIRIVA RESPIMAT, SPIRIVA WITH HANDIHALER, ANORO ELLIPTA, STIOLTO RESPIMAT, TRELEGY ELLIPTA, and ATROVENT HFA all appear as 'Brand' with no Requirements/Limits text in the same row -- none carry PA, ST, or QL notes. No generic tiotropium or umeclidinium product appears in this table. SPIRIVA RESPIMAT is selected as the representative preferred pick because tiotropium is the most established, guideline-first LAMA monotherapy for COPD maintenance; the source table itself draws no preferred/non-preferred distinction among these agents (all carry identical Brand/no-restriction status). Strength/sig for Spiriva Respimat (2.5 mcg/actuation, 2 puffs once daily) is standard clinical dosing convention, not stated verbatim in this table (which lists drug/tier/requirements only, no dosing directions). No class-wide step-therapy criterion appears in or near this section. Per the class definition, LAMA monotherapy is FDA-indicated for COPD maintenance, not asthma or rescue use -- this is reflected in the products found (all COPD-labeled long-acting bronchodilators). [2026-07-11 correction: an interim BOGL flag on this cell was reverted -- the generic tiotropium is a capsule device, not AB-substitutable for the preferred Respimat soft-mist inhaler.]",
           "sourceIds": [
             "sentara-community-inhalers-source-2026-07-07"
           ],
@@ -29305,15 +29298,15 @@
           "preferredAgent": {
             "inn": "tiotropium bromide",
             "brand": "Spiriva Respimat",
-            "genericAvailable": true,
+            "genericAvailable": false,
             "strength": "inhalation aerosol solution, 2.5 mcg/actuation",
             "sig": "Inhale 2 puffs by mouth once daily",
             "sigShort": "SPIRIVA RESPIMAT, 2 puffs INH daily",
             "plainSig": "Use 2 puffs from the inhaler once a day, same time each day"
           },
           "preferredRestriction": null,
-          "boglActive": true,
-          "boglNote": "Aetna Better Health of Virginia lists brand Spiriva (Respimat aerosol and HandiHaler capsule) as State PDL Preferred while generic tiotropium bromide capsule is State PDL Non-Preferred (both no PA). Write Spiriva Respimat, dispense as written.",
+          "boglActive": false,
+          "boglNote": "No brand-over-generic substitution applies to the preferred product: Spiriva Respimat (tiotropium soft-mist inhaler) has no AB-rated generic. A generic tiotropium exists only as a HandiHaler-type dry-powder capsule -- a different, non-interchangeable device that the VA statewide PDL / Aetna's export list as non-preferred -- so there is no generic Respimat a pharmacist could substitute. genericAvailable and boglActive are therefore false for this soft-mist product.",
           "alternatives": [
             {
               "drug": "TRELEGY ELLIPTA (fluticasone-umeclidinium-vilanterol)",
@@ -29382,7 +29375,7 @@
           "stepTherapy": null,
           "tier": "State PDL Preferred; no PA (brand preferred over the non-preferred generic)",
           "verification": "verified",
-          "verificationNote": "Verified against Aetna Better Health of Virginia's own 2026 formulary (FBO/111, ABH VA V2 v33, eff 07/01/2026): Spiriva Respimat Aerosol Solution and Spiriva HandiHaler Capsule are drug_tier 'Preferred' (PA=false), while generic Tiotropium Bromide Capsule and every other LAMA (Incruse/umeclidinium, Tudorza, Yupelri) are 'State PDL Non-Preferred' (PA=false). Brand-preferred-over-generic (BOGL) — corrected from the prior statewide-PDL mirror, which had genericAvailable=false and boglActive=false.",
+          "verificationNote": "Verified against Aetna Better Health of Virginia's own 2026 formulary (FBO/111, ABH VA V2 v33, eff 07/01/2026): Spiriva Respimat Aerosol Solution and Spiriva HandiHaler Capsule are drug_tier 'Preferred' (PA=false), while generic Tiotropium Bromide Capsule and every other LAMA (Incruse/umeclidinium, Tudorza, Yupelri) are 'State PDL Non-Preferred' (PA=false). Brand-preferred-over-generic (BOGL) — corrected from the prior statewide-PDL mirror, which had genericAvailable=false and boglActive=false. [2026-07-11 correction: an interim BOGL flag on this cell was reverted -- the generic tiotropium is a capsule device, not AB-substitutable for the preferred Respimat soft-mist inhaler.]",
           "sourceIds": [
             "aetna-better-health-va-pdl-2026",
             "va-medicaid-ffs-inhalers-source-2026-07-07"
@@ -30873,10 +30866,12 @@
           "verification": "verified",
           "verificationNote": "Generic estradiol 10 mcg vaginal tablet/insert (AB-rated generic of Vagifem; also marketed as Yuvafem) is a real, covered generic — Virginia's statewide Cardinal Care PDL lists estradiol vaginal tablet and cream as Preferred (cross-confirmed via Aetna Better Health of VA's NDC export, which labels generic Estradiol vaginal Tablet, Vagifem, and Yuvafem all 'Preferred'). Corrected genericAvailable false->true; not a BOGL (the generic is preferred, no brand steer). Read directly from the Virginia Cardinal Care Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf), page 148 'VAGINAL ESTROGENS' subsection under the top-level 'VAGINAL AND RELATED PRODUCTS' class header. The section lists exactly two entries: PREMARIN VAGINAL CREAM and VAGIFEM VAGINAL TABLET, both brand names (uppercase per the document's legend) with no trailing PA/QL/AL/ST restriction codes on either line -- confirmed directly from the page text, not inferred. No vaginal estrogen ring (Estring, Femring) or generic estradiol vaginal insert/cream appears anywhere in this PDL -- confirmed via targeted searches for 'estring' (zero matches) and the absence of any lowercase/generic vaginal-estrogen line item. VAGIFEM was selected as the preferred agent representing the tablet/insert form (the most commonly prescribed low-dose vaginal estradiol formulation per current guidelines), with Premarin Vaginal Cream noted as the covered cream-based alternative; both are equally unrestricted per this document, so the choice of Vagifem as 'preferred' vs. Premarin is an inference about clinical convention rather than a distinction drawn by the PDL itself. Strength (10 mcg, Vagifem's standard current-generation dose) and sig (daily x2wk load then twice-weekly maintenance, standard vaginal estradiol tablet dosing) are standard clinical convention, not stated in this PDL (drug/tier notes only, no dosing directions or specific strength breakdown). No class-wide step-therapy criterion is stated for this section.",
           "sourceIds": [
-            "va-medicaid-ffs-menopause-ht-source-2026-07-07"
+            "va-medicaid-ffs-menopause-ht-source-2026-07-07",
+            "aetna-better-health-va-pdl-2026"
           ],
           "coverageSourceIds": [
-            "va-medicaid-ffs-menopause-ht-source-2026-07-07"
+            "va-medicaid-ffs-menopause-ht-source-2026-07-07",
+            "aetna-better-health-va-pdl-2026"
           ],
           "restrictionSourceIds": [
             "va-medicaid-ffs-menopause-ht-source-2026-07-07"

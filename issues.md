@@ -363,14 +363,17 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   been read). Fetched Aetna's payer-specific FormularyNavigator NDC export
   (`fm.formularynavigator.com/FBO/111/Aetna_Better_Health_of_Virginia.json`, 27 MB, 102,529 NDCs,
   formulary_id 22791 v33, eff 07/01/2026) via curl+browser-UA. Nine cells upgraded to `verified`
-  (est-oral left `partial`, matching its FFS twin — a structural PDL gap). Two were genuinely **wrong**
+  (est-oral left `partial`, matching its FFS twin — a structural PDL gap). One cell was genuinely **wrong**
   in the mirror, not just under-verified: `icslaba` (brand **Symbicort** is Preferred, generic
-  budesonide-formoterol is State-PDL-Non-Preferred) and `lama` (brand **Spiriva** Preferred, generic
-  tiotropium capsule Non-Preferred) — both real brand-preferred-over-generic situations that the mirror
-  had encoded as `genericAvailable:false, boglActive:false`. Because the tier label reads "**State** PDL
-  Non-Preferred", the same BOGL propagates to every statewide-PDL-following payer: also corrected the
-  `va-medicaid-ffs`, `anthem-healthkeepers-plus`, and `sentara-community` icslaba+lama cells
-  (`genericAvailable:true, boglActive:true` + boglNote). Result: `va-inhalers` 32/32 verified,
+  budesonide-formoterol is State-PDL-Non-Preferred; same MDI device as generic Breyna) — a real
+  brand-preferred-over-generic situation the mirror had encoded as `genericAvailable:false,
+  boglActive:false`. Because the tier label reads "**State** PDL Non-Preferred", the same BOGL propagates
+  to every statewide-PDL-following payer: also corrected the `va-medicaid-ffs`,
+  `anthem-healthkeepers-plus`, and `sentara-community` `icslaba` cells (`genericAvailable:true,
+  boglActive:true` + boglNote). (The `lama` cells were initially flipped the same way but **reverted on
+  code review** — Spiriva Respimat is a soft-mist device with no AB-rated generic; generic tiotropium is
+  a non-substitutable capsule, so those stay `genericAvailable:false, boglActive:false`. See the
+  `2026-07-11 (cont.)` sweep entry below.) Result: `va-inhalers` 32/32 verified,
   `va-nsaids` 8/8, `va-menopause` 38/40. Added the Aetna source as a new reference in all three guides;
   trace still resolves 100%. _Fixed (this commit)._ **Refines the 2026-07-10 observation above:** the
   `genericAvailable:false` pattern is NOT uniformly a false positive — where an *AB-rated generic of the

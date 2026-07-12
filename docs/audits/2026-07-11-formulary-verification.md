@@ -18,11 +18,14 @@ finding but not cited in `formulary.json`) are recorded here with their extracti
 
 ## What each source verified
 
-- **Aetna FBO/111 JSON** — authoritative payer-branded source for the 15 VA cell fixes: 9 Aetna cells
-  `partial`→`verified`, and the two BOGLs (Symbicort `icslaba`, Spiriva `lama`) whose generics it labels
-  "State PDL Non-Preferred", propagated to `va-medicaid-ffs` / `anthem-healthkeepers-plus` /
-  `sentara-community`. Also confirms generic estradiol vaginal is Preferred (anthem `vaginal` fix). Full
-  drug-tier rows: [`aetna-va-fbo111-extraction.txt`](2026-07-11/aetna-va-fbo111-extraction.txt).
+- **Aetna FBO/111 JSON** — authoritative payer-branded source for the VA cell fixes: 9 Aetna cells
+  `partial`→`verified`, and the Symbicort `icslaba` BOGL (generic budesonide-formoterol labeled "State
+  PDL Non-Preferred"; same MDI device as generic Breyna), propagated to `va-medicaid-ffs` /
+  `anthem-healthkeepers-plus` / `sentara-community`. Also confirms generic estradiol vaginal is Preferred
+  (anthem `vaginal` fix). Note: the `lama` cells (Spiriva Respimat) are **not** BOGL — the preferred
+  soft-mist device has no AB-rated generic (generic tiotropium is a different, non-substitutable capsule
+  device), so those stay `genericAvailable:false / boglActive:false`. Full drug-tier rows:
+  [`aetna-va-fbo111-extraction.txt`](2026-07-11/aetna-va-fbo111-extraction.txt).
 - **CountyCare PDF** — Advair Diskus/HFA Preferred, generic fluticasone-salmeterol (Wixela) absent →
   `il-inhalers` countycare `icslaba` BOGL.
 - **Excellus Medicare PDF** — Symbicort Tier 3/QL, generic budesonide-formoterol (Breyna) absent →
