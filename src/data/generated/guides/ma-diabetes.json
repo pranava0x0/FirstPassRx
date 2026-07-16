@@ -8,9 +8,9 @@
   "classNoun": "Prescription type",
   "unitNoun": "medication",
   "tagline": "",
-  "dataStatus": "mixed",
-  "lastUpdated": "2026-07-07",
-  "capturedAt": "2026-07-07",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-07-16",
+  "capturedAt": "2026-07-16",
   "payers": [
     {
       "id": "masshealth",
@@ -33,13 +33,13 @@
       "shortName": "BCBS MA",
       "aka": "Blue Cross",
       "pbm": "CVS Caremark",
-      "formularyUrl": "https://provider.bluecrossma.com/ProviderHome/portal/home/pharmacy/formularies/medication-look-up",
+      "formularyUrl": "https://www.bluecrossma.org/medication/standard-control-formulary?provider=true",
       "sourceIds": [
         "bcbsma-diabetes-source-2026-07-07"
       ],
-      "productName": "Member-specific commercial formulary — confirm product",
+      "productName": "Standard Control with Advanced Control Specialty Formulary (CVS Caremark)",
       "marketSegment": "commercial-employer",
-      "formularyId": "BCBSMA Medication Lookup"
+      "formularyId": "BCBSMA SC ACSF — 07/01/2026"
     },
     {
       "id": "tufts",
@@ -182,6 +182,33 @@
       "url": "https://fm.formularynavigator.com/FBO/192/20266T.pdf",
       "effectiveDate": "2026-06-01",
       "accessed": "2026-07-07"
+    },
+    {
+      "id": "bcbsma-std-covered-2026-07",
+      "label": "BCBS MA Standard Control with Advanced Control Specialty Formulary — Comprehensive Covered Medication List (effective July 2026)",
+      "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+      "type": "pbm",
+      "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-000720261-standard-control-with-advanced-control-specialty-formulary-comprehensive-covered-medication-list-july-2026.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-07-16"
+    },
+    {
+      "id": "bcbsma-std-removals-2026-07",
+      "label": "BCBS MA Standard Control with Advanced Control Specialty Formulary — Comprehensive Drug Removal List (effective July 2026)",
+      "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+      "type": "pbm",
+      "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-10654612D-drug-removals-for-standard-control-with-advanced-control-specialty-formulary-july-2026.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-07-16"
+    },
+    {
+      "id": "bcbsma-std-updates-2026-07",
+      "label": "BCBS MA Standard Control Formulary — Quarterly Updates (July 2026)",
+      "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+      "type": "pbm",
+      "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-10654612C-standard-control-formulary-quarterly-updates-july-2026.pdf",
+      "effectiveDate": "2026-04-01",
+      "accessed": "2026-07-16"
     }
   ],
   "glossary": [
@@ -553,44 +580,33 @@
       ],
       "paRequired": [
         {
-          "drug": "Fortamet (metformin ER brand)",
+          "drug": "Fortamet / Glumetza (metformin ER brand)",
           "outcome": "nonformulary",
-          "reason": "Brand-name listed on the Non-Covered Medications list; generic metformin ER is the covered alternative",
+          "reason": "Confirmed via the Comprehensive Covered Medication List: only generic metformin ER is listed (with an explicit 'Except generics for FORTAMET and GLUMETZA' exclusion note), meaning the brand-name ER products themselves are not the covered SKU.",
           "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Glumetza (metformin ER brand)",
-          "outcome": "nonformulary",
-          "reason": "Brand-name listed on the Non-Covered Medications list; generic metformin ER is the covered alternative",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Metformin 625mg / 750mg (non-standard strength products)",
-          "outcome": "nonformulary",
-          "reason": "Listed on the Non-Covered Medications list — likely a specific non-generic/branded-generic SKU at that strength; standard 500/850/1000 mg generic metformin is unaffected",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ]
         }
       ],
       "stepTherapy": "This class is named in the Step Therapy 'Diabetes Management' list, which requires trying a first-step agent (e.g., generic metformin) before step-2 diabetes drugs (sulfonylureas, DPP-4s, SGLT2/GLP-1 combos, etc.) are covered — the guide lists step-therapy-affected drug names but does not print the underlying clinical criteria text.",
       "tier": "Tier 1 (generic)",
-      "verification": "partial",
-      "verificationNote": "Read the Diabetes Management step-therapy list (PDF page 22, printed page 20) and the Non-Covered Medications list (PDF pages 30-39). Confirmed: bare 'Metformin' (standard immediate-release generic) does not appear on Non-Covered, PA, or QCD lists, and is only referenced structurally as the implied first-step agent in the Diabetes Management step-therapy category (which lists step-2/non-preferred agents like Actos, Januvia, Farxiga, Jardiance, etc., not metformin itself). Metformin ER generic, Glucophage/Glucophage XR brand, and Riomet/Riomet ER (liquid) all appear in the step-therapy list as covered options; Fortamet, Glumetza brands and the two odd-strength 'Metformin 625mg'/'750mg' SKUs are separately non-covered. No PA is required for standard-strength generic metformin. Preferred agent and its clean-covered status are read directly off the document; sig/dosing details are standard clinical convention (not printed in this administrative guide).",
+      "verification": "verified",
+      "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List (effective July 2026, 'ANTIDIABETICS > BIGUANIDES' section). Generic metformin HCl (immediate-release and extended-release) is Tier 1 with no PA/QL/ST — matches the prior partial finding exactly, now confirmed against the primary tier table rather than inferred from an absence on a restriction list.",
       "sourceIds": [
-        "bcbsma-diabetes-source-2026-07-07"
+        "bcbsma-diabetes-source-2026-07-07",
+        "bcbsma-std-covered-2026-07",
+        "bcbsma-std-removals-2026-07"
       ],
       "coverageSourceIds": [
-        "bcbsma-diabetes-source-2026-07-07"
+        "bcbsma-std-covered-2026-07"
       ],
       "restrictionSourceIds": [
-        "bcbsma-diabetes-source-2026-07-07"
+        "bcbsma-diabetes-source-2026-07-07",
+        "bcbsma-std-covered-2026-07",
+        "bcbsma-std-removals-2026-07"
       ],
-      "lastReviewed": "2026-07-07"
+      "lastReviewed": "2026-07-16"
     },
     {
       "payerId": "bcbsma",
@@ -609,243 +625,107 @@
       "boglNote": null,
       "alternatives": [
         {
-          "drug": "Mounjaro (tirzepatide)",
-          "note": "PA required — dual GIP/GLP-1, covered with PA per plan's GLP-1-inclusive formulary",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
           "drug": "Trulicity (dulaglutide)",
-          "note": "PA required — covered alternative agent in class",
+          "note": "Tier 2, PA required — covered alternative in class",
           "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-std-covered-2026-07"
           ]
         },
         {
           "drug": "Rybelsus (oral semaglutide)",
-          "note": "PA required — oral GLP-1 alternative",
+          "note": "Tier 2, PA required — oral alternative",
           "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-std-covered-2026-07"
+          ]
+        },
+        {
+          "drug": "Liraglutide (generic Victoza)",
+          "note": "Tier 1, PA required — cheaper generic alternative, same PA gate",
+          "sourceIds": [
+            "bcbsma-std-covered-2026-07"
           ]
         }
       ],
       "paRequired": [
         {
-          "drug": "Wegovy (semaglutide, weight-mgmt)",
+          "drug": "Mounjaro (tirzepatide)",
           "outcome": "pa",
-          "reason": "Listed on Prior Authorization list; weight-management GLP-1 indication typically has stricter PA criteria than the diabetes indication",
+          "reason": "Every GLP-1/GIP agent in this class requires PA on this formulary, per the Comprehensive Covered Medication List's INCRETIN MIMETIC AGENTS section.",
           "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Zepbound (tirzepatide, weight-mgmt)",
-          "outcome": "pa",
-          "reason": "Listed on Prior Authorization list",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Saxenda (liraglutide, weight-mgmt)",
-          "outcome": "pa",
-          "reason": "Listed on Prior Authorization list",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Victoza (liraglutide)",
-          "outcome": "nonformulary",
-          "reason": "Also appears on the Non-Covered Medications list — older once-daily GLP-1, superseded by once-weekly agents",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Byetta (exenatide)",
-          "outcome": "nonformulary",
-          "reason": "Non-Covered Medications list — older twice-daily GLP-1",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Bydureon / Bydureon Bcise (exenatide ER)",
-          "outcome": "nonformulary",
-          "reason": "Non-Covered Medications list",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Adlyxin (lixisenatide)",
-          "outcome": "nonformulary",
-          "reason": "Non-Covered Medications list",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Soliqua (insulin glargine/lixisenatide)",
-          "outcome": "nonformulary",
-          "reason": "Non-Covered Medications list (combo GLP-1/insulin product)",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Xultophy (insulin degludec/liraglutide)",
-          "outcome": "nonformulary",
-          "reason": "Non-Covered Medications list (combo GLP-1/insulin product)",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ]
         }
       ],
       "stepTherapy": null,
-      "tier": "Non-preferred / PA-required tier (specific tier level not printed per-drug in this guide)",
-      "verification": "partial",
-      "verificationNote": "Read the Prior Authorization alphabetical list (PDF pages 16-20, printed pages 14-18) and Non-Covered Medications list (PDF pages 30-39) plus the front-cover plan description confirming GLP-1 coverage is included on this specific formulary variant. Confirmed: Ozempic, Rybelsus, Trulicity, Mounjaro, Wegovy, Saxenda, Zepbound all appear on the Prior Authorization list (every branded GLP-1/dual-agonist requires PA under this plan). Victoza, Byetta, Bydureon, Bydureon Bcise, Adlyxin, Soliqua, and Xultophy appear on the Non-Covered list instead. The document does not print PA clinical criteria (e.g., A1c threshold, prior metformin trial) or rank Ozempic vs Mounjaro vs Trulicity as 'preferred' within the PA-required set — Ozempic is inferred as the de facto preferred/most commonly prescribed agent per market convention, not a rank stated in the source. No generic/biosimilar GLP-1 exists as of this review.",
+      "tier": "Tier 2, PA required (class-wide)",
+      "verification": "verified",
+      "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List (effective July 2026, 'INCRETIN MIMETIC AGENTS' section). Every listed agent (Mounjaro, Ozempic, Rybelsus, Trulicity, generic liraglutide) explicitly shows 'PA' as a requirement — confirms the prior finding that this is a class-wide PA gate, not payer favoritism toward a specific brand. Ozempic stays the preferred pick (same molecule/device family as the highest-volume prescription); generic liraglutide is the one Tier 1 option in the class, still gated by the same PA.",
       "sourceIds": [
-        "bcbsma-diabetes-source-2026-07-07"
+        "bcbsma-std-covered-2026-07",
+        "bcbsma-std-removals-2026-07"
       ],
       "coverageSourceIds": [
-        "bcbsma-diabetes-source-2026-07-07"
+        "bcbsma-std-covered-2026-07"
       ],
       "restrictionSourceIds": [
-        "bcbsma-diabetes-source-2026-07-07"
+        "bcbsma-std-covered-2026-07",
+        "bcbsma-std-removals-2026-07"
       ],
-      "lastReviewed": "2026-07-07"
+      "lastReviewed": "2026-07-16"
     },
     {
       "payerId": "bcbsma",
       "classId": "sglt2",
       "preferredAgent": {
         "inn": "dapagliflozin",
-        "brand": "Farxiga",
-        "genericAvailable": false,
+        "brand": null,
+        "genericAvailable": true,
         "strength": "10 mg tablet",
         "sig": "Take 1 tablet (10 mg) by mouth once daily",
         "sigShort": "1 tab PO daily",
         "plainSig": "Take one 10 mg tablet by mouth once a day"
       },
-      "preferredRestriction": "step",
       "boglActive": false,
       "boglNote": null,
       "alternatives": [
         {
-          "drug": "Jardiance (empagliflozin)",
-          "note": "Cardiovascular Medications step-therapy list — covered alternative, same step-therapy tier as Farxiga",
+          "drug": "Farxiga (dapagliflozin brand)",
+          "note": "Tier 2 — higher-cost brand, no PA",
           "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-std-covered-2026-07"
           ]
         },
         {
-          "drug": "Invokana (canagliflozin)",
-          "note": "Diabetes Management step-therapy list — covered, step therapy applies",
+          "drug": "Jardiance (empagliflozin, brand-only molecule)",
+          "note": "Tier 2 — higher-cost, no PA",
           "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-std-covered-2026-07"
+          ]
+        },
+        {
+          "drug": "Synjardy / Xigduo XR / Trijardy XR / Glyxambi (SGLT2 combo brands)",
+          "note": "Tier 2 — higher-cost combo products, no PA",
+          "sourceIds": [
+            "bcbsma-std-covered-2026-07"
           ]
         }
       ],
-      "paRequired": [
-        {
-          "drug": "Steglatro (ertugliflozin)",
-          "outcome": "step",
-          "reason": "Diabetes Management step-therapy list, and separately on Non-Covered list — step therapy plus non-covered status",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Invokamet / Invokamet XR (canagliflozin/metformin)",
-          "outcome": "step",
-          "reason": "Diabetes Management step-therapy list; also Non-Covered — combo product not clean-covered",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Segluromet (ertugliflozin/metformin)",
-          "outcome": "step",
-          "reason": "Diabetes Management step-therapy list; also Non-Covered",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Synjardy / Synjardy XR (empagliflozin/metformin)",
-          "outcome": "step",
-          "reason": "Diabetes Management step-therapy list",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Xigduo / Xigduo XR (dapagliflozin/metformin)",
-          "outcome": "step",
-          "reason": "Diabetes Management step-therapy list",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Glyxambi (empagliflozin/linagliptin)",
-          "outcome": "step",
-          "reason": "Diabetes Management step-therapy list",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Qtern (dapagliflozin/saxagliptin)",
-          "outcome": "step",
-          "reason": "Diabetes Management step-therapy list; also Non-Covered",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Steglujan (ertugliflozin/sitagliptin)",
-          "outcome": "step",
-          "reason": "Diabetes Management step-therapy list; also Non-Covered",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Trijardy XR (empagliflozin/linagliptin/metformin)",
-          "outcome": "step",
-          "reason": "Diabetes Management step-therapy list",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Brenzavvy (bexagliflozin)",
-          "outcome": "step",
-          "reason": "Diabetes Management step-therapy list — newest-to-market SGLT2, step therapy applies",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        }
-      ],
-      "stepTherapy": "Both a 'Cardiovascular Medications' step-therapy category (Dapagliflozin, Farxiga, Inpefa, Jardiance, Verquvo) and a separate 'Diabetes Management' step-therapy category name SGLT2 agents and SGLT2/metformin combo products — the guide lists affected drugs but does not print the underlying step criteria (e.g., what must be tried first).",
-      "tier": "Non-preferred / step-therapy tier (specific tier level not printed per-drug)",
-      "verification": "partial",
-      "verificationNote": "Read the Step Therapy section (PDF pages 21-22, printed pages 19-20), which has both a 'Cardiovascular Medications' list (Dapagliflozin, Farxiga, Inpefa, Jardiance, Verquvo) and a 'Diabetes Management' list naming essentially every SGLT2 agent and SGLT2 combo product, plus cross-checked the Non-Covered list for combo products. Confirmed both Farxiga (dapagliflozin) and Jardiance (empagliflozin) require step therapy under this plan for at least one indication — this is a class-wide step-therapy program, not a single clean-covered preferred agent. Farxiga is inferred as the likely first-choice/most commonly used SGLT2 since the source does not itself rank Farxiga vs Jardiance vs Invokana. No generic SGLT2 inhibitor exists as of this review (all are still branded).",
+      "paRequired": [],
+      "stepTherapy": null,
+      "tier": "Tier 1 (generic)",
+      "verification": "verified",
+      "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List (effective July 2026, 'SODIUM-GLUCOSE CO-TRANSPORTER 2 (SGLT2) INHIBITORS' section). This corrects the prior cell materially: generic dapagliflozin is Tier 1 with NO PA or step-therapy flag anywhere in the printed requirements column — the prior 'step therapy, Farxiga preferred' finding was inferred from a step-therapy drug-name list without direct tier confirmation, and does not match this quarter's actual formulary. Brand Farxiga and Jardiance (still no generic) are Tier 2 with no PA/step either; SGLT2/metformin combo brands are Tier 2, also with no PA/step flag. Generic dapagliflozin is now the accurate first-pass recommendation — a real, actionable improvement over the prior step-therapy-gated brand pick.",
       "sourceIds": [
-        "bcbsma-diabetes-source-2026-07-07"
+        "bcbsma-std-covered-2026-07"
       ],
       "coverageSourceIds": [
-        "bcbsma-diabetes-source-2026-07-07"
+        "bcbsma-std-covered-2026-07"
       ],
       "restrictionSourceIds": [
-        "bcbsma-diabetes-source-2026-07-07"
+        "bcbsma-std-covered-2026-07"
       ],
-      "lastReviewed": "2026-07-07"
+      "lastReviewed": "2026-07-16"
     },
     {
       "payerId": "bcbsma",
@@ -865,113 +745,97 @@
       "alternatives": [
         {
           "drug": "Novolog (insulin aspart, brand, rapid-acting)",
-          "note": "Quality Care Dosing (quantity limit) only — covered, no PA",
+          "note": "Tier 2 — covered, no PA (formulary option for removed Humalog/Apidra)",
           "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ]
         },
         {
-          "drug": "Humalog (insulin lispro, brand, rapid-acting)",
-          "note": "Quality Care Dosing (quantity limit) only — covered, no PA",
+          "drug": "Fiasp (insulin aspart, faster-acting)",
+          "note": "Tier 2 — covered, no PA (formulary option for removed Humalog/Apidra)",
           "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Novolin / Humulin (human insulin, brand)",
-          "note": "Quality Care Dosing (quantity limit) only — covered, no PA",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ]
         },
         {
           "drug": "Tresiba (insulin degludec, basal)",
-          "note": "Quality Care Dosing (quantity limit) only — covered, no PA",
+          "note": "Tier 2 — covered, no PA",
           "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-std-covered-2026-07"
+          ]
+        },
+        {
+          "drug": "Toujeo (insulin glargine U-300, basal)",
+          "note": "Tier 2 — covered, no PA",
+          "sourceIds": [
+            "bcbsma-std-covered-2026-07"
+          ]
+        },
+        {
+          "drug": "Insulin glargine-yfgn (Semglee/Rezvoglar interchangeable biosimilar)",
+          "note": "Tier 2 — covered, no PA (formulary option for removed Basaglar)",
+          "sourceIds": [
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ]
         }
       ],
       "paRequired": [
         {
+          "drug": "Humalog (insulin lispro, brand)",
+          "outcome": "nonformulary",
+          "reason": "Confirmed removed from the formulary — the Comprehensive Drug Removal List names Humalog under 'ANTIDIABETICS, INSULIN' with Fiasp and Novolog as the formulary options.",
+          "sourceIds": [
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
+          ]
+        },
+        {
+          "drug": "Apidra (insulin glulisine, brand)",
+          "outcome": "nonformulary",
+          "reason": "Confirmed removed — same removal-list entry as Humalog.",
+          "sourceIds": [
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
+          ]
+        },
+        {
           "drug": "Basaglar (insulin glargine, follow-on brand)",
           "outcome": "nonformulary",
-          "reason": "Listed on the Non-Covered Medications list; Lantus brand remains covered",
+          "reason": "Confirmed removed — the removal list names Basaglar with insulin glargine-yfgn and Lantus as the formulary options.",
           "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Semglee (insulin glargine biosimilar)",
-          "outcome": "nonformulary",
-          "reason": "Listed on the Non-Covered Medications list",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Rezvoglar (insulin glargine biosimilar)",
-          "outcome": "nonformulary",
-          "reason": "Listed on the Non-Covered Medications list",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ]
         },
         {
           "drug": "Levemir (insulin detemir, basal)",
           "outcome": "nonformulary",
-          "reason": "Listed on the Non-Covered Medications list — superseded by Lantus/Tresiba on this formulary",
+          "reason": "Confirmed removed on the Comprehensive Drug Removal List.",
           "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Fiasp (insulin aspart, faster-acting)",
-          "outcome": "nonformulary",
-          "reason": "Listed on the Non-Covered Medications list; Novolog remains covered",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Lyumjev (insulin lispro, faster-acting)",
-          "outcome": "nonformulary",
-          "reason": "Listed on the Non-Covered Medications list; Humalog remains covered",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Admelog (insulin lispro, follow-on brand)",
-          "outcome": "nonformulary",
-          "reason": "Listed on the Non-Covered Medications list",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "generic-labeled 'Insulin Aspart' / 'Insulin Glargine' / 'Insulin Lispro' (authorized-generic/unbranded SKUs)",
-          "outcome": "nonformulary",
-          "reason": "Listed on the Non-Covered Medications list separately from the branded product of the same molecule — the branded originator (Lantus, Novolog, Humalog) is the covered SKU, not the unbranded version",
-          "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ]
         }
       ],
       "stepTherapy": null,
-      "tier": "Quality Care Dosing applies (quantity limit) — tier level not printed per-drug",
-      "verification": "partial",
-      "verificationNote": "Read the Quality Care Dosing list (PDF pages 10-15, printed pages 8-13) and Non-Covered Medications list (PDF pages 30-39). Confirmed Lantus, Novolog, Humalog, Novolin, Humulin, and Tresiba all appear only under Quality Care Dosing (a quantity/dose limit, not a coverage barrier) — meaning they are covered without PA. By contrast, Basaglar, Semglee, Rezvoglar (glargine alternatives), Levemir (detemir), Fiasp, Lyumjev, Admelog (rapid-acting alternatives), and the bare unbranded 'Insulin Aspart'/'Insulin Glargine'/'Insulin Lispro' line items all appear on the Non-Covered list. This is a brand-name-driven formulary (Lantus/Novolog/Humalog preferred over their follow-on-brand and biosimilar/authorized-generic competitors), unusual relative to typical genericfirst formularies — flagged as 'partial' rather than 'verified' because the guide does not explicitly label Lantus/Novolog/Humalog as 'preferred,' this is inferred from the absence of any restriction combined with competitors' explicit non-covered status.",
+      "tier": "Tier 2 (brand — no generic insulin glargine SKU listed)",
+      "verification": "verified",
+      "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List and Comprehensive Drug Removal List (both effective July 2026). This corrects two errors in the prior partial cell: (1) Humalog was listed there as a covered alternative, but the removal list explicitly names Humalog as removed (Fiasp/Novolog are the formulary options); (2) Fiasp was listed as non-covered, but it is Tier 2 covered per both documents. Insulin glargine-yfgn (the FDA nonproprietary name for the Semglee/Rezvoglar interchangeable biosimilar) is also confirmed covered, not nonformulary as previously recorded — the removal list names it as the direct replacement for removed Basaglar. Lantus remains the covered, unrestricted preferred brand; Basaglar and Levemir are confirmed removed.",
       "sourceIds": [
-        "bcbsma-diabetes-source-2026-07-07"
+        "bcbsma-std-covered-2026-07",
+        "bcbsma-std-removals-2026-07"
       ],
       "coverageSourceIds": [
-        "bcbsma-diabetes-source-2026-07-07"
+        "bcbsma-std-covered-2026-07"
       ],
       "restrictionSourceIds": [
-        "bcbsma-diabetes-source-2026-07-07"
+        "bcbsma-std-covered-2026-07",
+        "bcbsma-std-removals-2026-07"
       ],
-      "lastReviewed": "2026-07-07"
+      "lastReviewed": "2026-07-16"
     },
     {
       "payerId": "tufts",

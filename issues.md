@@ -415,3 +415,52 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   center / provider manual) — if `G` ≠ prior-authorization, all 5 upgrade to verified citing the CSV;
   the `vaginal` + `combo` cells (uniform `PA=0`) are already safe to upgrade whenever a future pass
   adds the CSV as a source. _Open (blocked on code legend)._
+- **2026-07-16 · data (coverage gap) · BCBS MA (`bcbsma`) 15/15 cells across all 5 MA guides upgraded
+  partial/example → verified; the payer's `pbm: "CVS Caremark"` field and its actual source document
+  had been mismatched.** The 2026-07-16 UAT found bcbsma's `ma-inhalers` cells cited its own
+  medication-lookup page (blocked, hence `example`), while `ma-ace`/`ma-diabetes`/`ma-menopause`/
+  `ma-nsaids` cited a `BCBSMA Commercial Formulary Guide` labeled "for members with the **Blue Cross
+  Blue Shield of Massachusetts Formulary**" — a *different* formulary family from the one the payer
+  object's own `pbm: "CVS Caremark"` field points to (BCBS MA runs 3 parallel commercial formularies:
+  Medicare Advantage, **Standard Control with Advanced Control Specialty Formulary — CVS Caremark
+  administered**, and the Blue-Cross-managed one). `provider.bluecrossma.com`'s medication-lookup page
+  loads fine in a real browser session (matches the GoodRx/Cost Plus "looks blocked, isn't" pattern in
+  CLAUDE.md) and links to `bluecrossma.org/medication/standard-control-formulary`, which lists direct
+  PDF links; those PDFs are NOT bot-protected — plain `curl` with a browser UA fetched all 3
+  (Comprehensive Covered Medication List, 172pp; Comprehensive Drug Removal List, 36pp; Quarterly
+  Updates, 3pp; all effective July 2026) in one pass. `pypdf` extracted clean per-drug tier tables
+  (`Drug Name | Tier | Requirements/Limits` columns) — no OCR/fragmentation issue this time. Standardized
+  all 15 bcbsma cells onto this one authoritative source, which **resolved every open ambiguity that
+  had kept them at `partial`**: (1) `ace-inhibitor` — Accupril/Altace/Lotensin/Vasotec/Zestril/Prinivil
+  brands are Tier 3 *covered*, not on the removal list — moved from `paRequired`(nonformulary) to
+  `alternatives`, the same "commercial multi-tier, no PA = alternatives not paRequired" pattern
+  documented for IL BCBS commercial in the 2026-07-07 entries above; (2) `sglt2` — generic
+  dapagliflozin is Tier 1 with **no PA/step-therapy flag at all**, contradicting the prior inferred
+  "Farxiga preferred, step therapy" finding — preferred agent changed from brand Farxiga (step-gated)
+  to generic dapagliflozin (clean Tier 1), a materially better first-pass recommendation; (3) `insulin`
+  — the removal list explicitly names Humalog+Apidra as removed (Fiasp+Novolog are the listed
+  replacements) and Basaglar as removed (insulin glargine-yfgn, i.e. the Semglee/Rezvoglar biosimilar
+  under its FDA nonproprietary name, is the listed replacement) — the prior cell had this exactly
+  backwards (Humalog as a covered alternative, Fiasp and the glargine biosimilar as nonformulary);
+  (4) `lama` — resolves the open item from the 2026-07-11 sweep above: BCBS MA's Standard Control
+  formulary explicitly prices Spiriva **HandiHaler** (capsule) at Tier 1 with no generic tiotropium of
+  any device listed, while Spiriva **Respimat** sits at Tier 2 — the "explicit HandiHaler-over-Respimat
+  preference" that entry said would be needed to change anything now exists for this one payer;
+  preferred agent switched from Respimat to HandiHaler, `genericAvailable` stays `false` (still no
+  generic tiotropium listed for either device); (5) several menopause-HT alternatives were misclassified
+  in both directions — Estrace and Imvexxy were wrongly `paRequired`(nonformulary) (Estrace is Tier 3
+  covered; Imvexxy is the removal list's own named replacement for removed Estring/Yuvafem/Premarin
+  Cream) while Climara/Vivelle-Dot/Minivelle were wrongly in `alternatives` (all three are on the
+  removal list). Also fixed a live bug the new Jardiance alternative entry would have tripped:
+  `PrescribeOptions.tsx`'s `roleOf()` badge picker naive-substring-matches "generic" in the drug/note
+  text, so "no generic exists" phrasing (already present in several older records across MD/VA/IL
+  guides — not touched here) renders a false "Generic" badge; reworded this record's text to avoid it
+  and spun off a background task to fix `roleOf()` itself rather than working around it record-by-record.
+  Also corrected the payer's `productName`/`formularyUrl`/`formularyId` (previously "confirm product",
+  now names the exact formulary + effective date) and added 3 new guide-scoped references
+  (`bcbsma-std-covered-2026-07`, `bcbsma-std-removals-2026-07`, `bcbsma-std-updates-2026-07`) across
+  all 5 MA guides, replacing the old `bcbsma-medlookup`/`bcbsma-*-source-2026-07-07` citations for
+  these cells. `ma-inhalers`/`ma-ace`/`ma-diabetes`/`ma-nsaids` guides are now `dataStatus: verified`
+  (every cell in the guide, not just bcbsma's); `ma-menopause` stays `mixed` (MGB's 1 `vaginal` cell
+  is still `partial`, unrelated payer). `npm test`/`typecheck`/`validate-coverage`/`trace`/
+  `validate-prices` all pass; per-cell cash-price gap stays 0/510. _Fixed (this commit)._

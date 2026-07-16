@@ -111,26 +111,33 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   manage HRT (not a closeable gap — it's a carve-out). Pull the other HealthChoice MCO formularies
   (Maryland Physicians Care, Wellpoint/Amerigroup, Aetna Better Health, UnitedHealthcare Community
   Plan, CareFirst Community Health Plan) so a Medicaid member can pick their actual MCO.
-- **Finish verifying the `partial` / `example` cells — refreshed by the 2026-07-16 UAT.** Current
-  state (`npm run validate-coverage`): **472 verified / 29 partial / 9 example** of 510 cells (was
-  463/38/9 on 2026-07-10 — the VA Aetna Better Health re-verify, see issues.md 2026-07-11, closed
-  9 of the old 38). Pulled every non-verified cell's guide/payer/class/note to find the real
-  clusters — this is 4 root causes, not 38 scattered one-offs:
-  - **BCBS Massachusetts blocks automated reading — 15/38 cells (40% of the whole remaining gap),
-    across every one of the 5 MA guides.** `ma-inhalers` (4 example: saba/ics/icslaba/lama),
-    `ma-ace` (1 partial), `ma-diabetes` (4: metformin/glp1/sglt2/insulin), `ma-menopause` (5:
-    est-td/est-oral/progestogen/vaginal/combo), `ma-nsaids` (1). bluecrossma.org 403s WebFetch and
-    curl, and the "Focused" PDF extracts as a character-fragmented alphabetical index with no
-    usable tier column. The last honest path is the CVS Caremark medication-lookup tool driven
-    per-drug via the in-app browser — worth doing as one batch covering all 5 MA guides at once
-    (one blocked source, not 5 separate investigations). LOW priority individually (honestly
-    labeled today) but HIGH leverage since one fix closes 40% of the gap.
-  - **AARP Medicare Rx Preferred (UHC PDP) extraction is incomplete — 5/38 cells.**
+- **Finish verifying the `partial` / `example` cells — the BCBS MA cluster is DONE (2026-07-16).**
+  Current state (`npm run validate-coverage`): **487 verified / 18 partial / 5 example** of 510
+  cells (was 472/29/9 right after the 2026-07-16 UAT found the clusters below — the BCBS MA fix
+  closed 11 `partial` + 4 `example` cells; was 463/38/9 on 2026-07-10). Root causes, in priority
+  order:
+  - **BCBS Massachusetts — FIXED 2026-07-16, all 15/15 cells now verified.** The blocker wasn't
+    really "PDF extraction fails" as previously assumed — it was that 4 of the 5 MA guides
+    (`ma-ace`/`ma-diabetes`/`ma-menopause`/`ma-nsaids`) had been sourced from the wrong BCBS MA
+    formulary family (the Blue-Cross-managed one) when the payer's own `pbm` field says CVS
+    Caremark. Found the correct CVS Caremark "Standard Control" formulary via a real browser
+    session on `provider.bluecrossma.com` (same "looks blocked, isn't" pattern as GoodRx/Cost
+    Plus — see CLAUDE.md), and its 3 PDFs (comprehensive covered list, drug removal list,
+    quarterly updates, all effective July 2026) fetched clean via plain `curl` + browser UA, with
+    clean `pypdf` text extraction (per-drug tier table, no fragmentation this time). Standardizing
+    all 15 cells onto this one source fixed several real errors along the way, not just filled in
+    blanks — see issues.md's 2026-07-16 entry for the full list (ACE brand tiers, a materially
+    better SGLT2 pick, a flipped insulin alternatives/nonformulary list, the LAMA device
+    preference, menopause-HT alternative misclassifications). Also surfaced and worked around a
+    live UI bug (`roleOf()` in `PrescribeOptions.tsx` false-"Generic"-badges any alternative whose
+    text contains the substring "generic", even in "no generic exists" — spun off as its own task
+    rather than patched per-record).
+  - **AARP Medicare Rx Preferred (UHC PDP) extraction is incomplete — 5 cells, still open.**
     `md-inhalers` (ics, lama) + `md-diabetes` (glp1, sglt2, insulin), all payer `medicare-partd`.
     Fetched via curl with a browser UA (plain WebFetch 403'd) but the PDF only partially
     extracted. Re-attempt with a dedicated PDF-reading tool before concluding it's unreadable —
     same "looks dead but isn't" pattern the NYRx PDL hit (see CLAUDE.md).
-  - **Structural carve-outs — 12/38 cells, not closeable, already correctly labeled.** MD Medicaid
+  - **Structural carve-outs — 12 cells, not closeable, already correctly labeled.** MD Medicaid
     FFS doesn't manage menopause HT as a PDL category (`md-menopause` mdmedicaid × 5); VA's
     statewide PDL likewise doesn't manage oral estrogen (`va-menopause` va-medicaid-ffs +
     aetna-better-health × 2, matching FFS twins); NY Medicaid's PA column uses an undocumented `G`
