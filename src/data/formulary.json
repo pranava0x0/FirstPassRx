@@ -2,7 +2,7 @@
   "meta": {
     "title": "FirstPassRx",
     "disclaimer": "A point-of-care reference, not a substitute for the payer's current formulary or clinical judgment. Formularies change quarterly; confirm every agent and restriction against the linked source before prescribing.",
-    "version": "0.9.4",
+    "version": "0.9.5",
     "defaultGuideId": "ma-inhalers"
   },
   "guides": [
@@ -16,9 +16,9 @@
       "classNoun": "Prescription type",
       "unitNoun": "inhaler",
       "tagline": "",
-      "dataStatus": "mixed",
-      "lastUpdated": "2026-06-22",
-      "capturedAt": "2026-06-22",
+      "dataStatus": "verified",
+      "lastUpdated": "2026-07-16",
+      "capturedAt": "2026-07-16",
       "payers": [
         {
           "id": "masshealth",
@@ -42,13 +42,13 @@
           "shortName": "BCBS MA",
           "aka": "Blue Cross",
           "pbm": "CVS Caremark",
-          "formularyUrl": "https://provider.bluecrossma.com/ProviderHome/portal/home/pharmacy/formularies/medication-look-up",
+          "formularyUrl": "https://www.bluecrossma.org/medication/standard-control-formulary?provider=true",
           "sourceIds": [
             "bcbsma-medlookup"
           ],
-          "productName": "Member-specific commercial formulary — confirm product",
+          "productName": "Standard Control with Advanced Control Specialty Formulary (CVS Caremark)",
           "marketSegment": "commercial-employer",
-          "formularyId": "BCBSMA Medication Lookup"
+          "formularyId": "BCBSMA SC ACSF — 07/01/2026"
         },
         {
           "id": "tufts",
@@ -355,6 +355,33 @@
           "url": "https://www.fda.gov/news-events/press-announcements/fda-roundup-march-11-2025",
           "effectiveDate": "2025-03-11",
           "accessed": "2026-06-22"
+        },
+        {
+          "id": "bcbsma-std-covered-2026-07",
+          "label": "BCBS MA Standard Control with Advanced Control Specialty Formulary — Comprehensive Covered Medication List (effective July 2026)",
+          "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+          "type": "pbm",
+          "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-000720261-standard-control-with-advanced-control-specialty-formulary-comprehensive-covered-medication-list-july-2026.pdf",
+          "effectiveDate": "2026-07-01",
+          "accessed": "2026-07-16"
+        },
+        {
+          "id": "bcbsma-std-removals-2026-07",
+          "label": "BCBS MA Standard Control with Advanced Control Specialty Formulary — Comprehensive Drug Removal List (effective July 2026)",
+          "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+          "type": "pbm",
+          "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-10654612D-drug-removals-for-standard-control-with-advanced-control-specialty-formulary-july-2026.pdf",
+          "effectiveDate": "2026-07-01",
+          "accessed": "2026-07-16"
+        },
+        {
+          "id": "bcbsma-std-updates-2026-07",
+          "label": "BCBS MA Standard Control Formulary — Quarterly Updates (July 2026)",
+          "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+          "type": "pbm",
+          "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-10654612C-standard-control-formulary-quarterly-updates-july-2026.pdf",
+          "effectiveDate": "2026-04-01",
+          "accessed": "2026-07-16"
         }
       ],
       "glossary": [
@@ -693,9 +720,9 @@
           "classId": "saba",
           "preferredAgent": {
             "inn": "Albuterol sulfate HFA",
-            "brand": "ProAir HFA",
+            "brand": null,
             "genericAvailable": true,
-            "strength": "90 mcg",
+            "strength": "108 mcg/act (90 mcg delivered)",
             "sig": "2 puffs every 4 to 6 hours as needed",
             "sigShort": "2 puffs Q4-6H PRN",
             "plainSig": "Two puffs when you need it, no more than every 4 hours."
@@ -704,36 +731,37 @@
           "boglNote": null,
           "paRequired": [],
           "stepTherapy": null,
-          "verification": "example",
-          "verificationNote": "BCBSMA's formulary and PA intake are confirmed, but the inhaler-specific preferred/PA criteria PDF blocked automated reading — verify on the BCBSMA Medication Look-up before relying on this cell.",
+          "verification": "verified",
+          "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control with Advanced Control Specialty Formulary Comprehensive Covered Medication List (effective July 2026, downloaded and text-extracted, 172 pages, 'ANTIASTHMATIC AND BRONCHODILATOR AGENTS > SYMPATHOMIMETICS' section). Generic albuterol sulfate HFA is Tier 1 with no PA/QL/ST (two specific NDCs are excluded from Tier 1 pricing, likely brand ProAir/Ventolin NDCs mapped elsewhere). Generic levalbuterol (both HCl nebulized and tartrate HFA) is also Tier 1, no restrictions. This corrects the prior 'example' cell, which used a brand name (ProAir HFA) as the preferred pick without a readable source; the actual formulary structures coverage around the generic molecule, not a specific brand.",
           "sourceIds": [
-            "bcbsma-medlookup"
+            "bcbsma-std-covered-2026-07"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-16",
           "coverageSourceIds": [
-            "bcbsma-medlookup"
+            "bcbsma-std-covered-2026-07"
           ],
           "restrictionSourceIds": [
-            "bcbsma-medlookup"
+            "bcbsma-std-covered-2026-07"
           ],
           "alternatives": [
             {
-              "drug": "Levalbuterol (Xopenex HFA)",
-              "note": "Non-preferred",
+              "drug": "Levalbuterol HCl / levalbuterol tartrate (generic Xopenex)",
+              "note": "Tier 1, no PA — same-tier alternative",
               "sourceIds": [
-                "bcbsma-medlookup"
+                "bcbsma-std-covered-2026-07"
               ]
             }
-          ]
+          ],
+          "tier": "Tier 1 (generic)"
         },
         {
           "payerId": "bcbsma",
           "classId": "ics",
           "preferredAgent": {
-            "inn": "Fluticasone propionate",
-            "brand": "Flovent HFA (authorized generic)",
+            "inn": "Fluticasone propionate HFA",
+            "brand": null,
             "genericAvailable": true,
-            "strength": "110 mcg",
+            "strength": "44 mcg/act",
             "sig": "2 puffs twice daily",
             "sigShort": "2 puffs BID",
             "plainSig": "Two puffs, morning and night, every day."
@@ -742,28 +770,42 @@
           "boglNote": null,
           "paRequired": [],
           "stepTherapy": null,
-          "verification": "example",
-          "verificationNote": "Illustrative — confirm the preferred ICS and any step therapy on the BCBSMA Medication Look-up (the asthma/COPD pharmacy policy PDF blocked automated reading).",
+          "verification": "verified",
+          "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List (effective July 2026, 'STEROID INHALANTS' section). Generic fluticasone propionate HFA, budesonide inhalation, beclomethasone dipropionate, and fluticasone furoate are all Tier 1 with no PA/QL/ST. Brand Asmanex HFA is Tier 2; brand Pulmicort/Pulmicort Flexhaler is Tier 2-3. No PA is required anywhere in this class.",
           "sourceIds": [
-            "bcbsma-medlookup",
-            "fda-firstgen-flovent"
+            "bcbsma-std-covered-2026-07"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-16",
           "coverageSourceIds": [
-            "bcbsma-medlookup"
+            "bcbsma-std-covered-2026-07"
           ],
           "restrictionSourceIds": [
-            "bcbsma-medlookup"
+            "bcbsma-std-covered-2026-07"
           ],
           "alternatives": [
             {
-              "drug": "Arnuity Ellipta",
-              "note": "Non-preferred",
+              "drug": "Budesonide (inhalation) / beclomethasone dipropionate / fluticasone furoate (generics)",
+              "note": "Tier 1, no PA — same-tier alternatives",
               "sourceIds": [
-                "bcbsma-medlookup"
+                "bcbsma-std-covered-2026-07"
+              ]
+            },
+            {
+              "drug": "Asmanex HFA (brand)",
+              "note": "Tier 2 — higher-cost alternative",
+              "sourceIds": [
+                "bcbsma-std-covered-2026-07"
+              ]
+            },
+            {
+              "drug": "Pulmicort / Pulmicort Flexhaler (brand)",
+              "note": "Tier 2/3 — higher-cost alternative",
+              "sourceIds": [
+                "bcbsma-std-covered-2026-07"
               ]
             }
-          ]
+          ],
+          "tier": "Tier 1 (generic)"
         },
         {
           "payerId": "bcbsma",
@@ -781,67 +823,88 @@
           "boglNote": null,
           "paRequired": [],
           "stepTherapy": null,
-          "verification": "example",
-          "verificationNote": "Illustrative; Wixela Inhub is the FDA generic of Advair Diskus. Confirm the preferred combo on the BCBSMA Medication Look-up.",
+          "verification": "verified",
+          "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List (effective July 2026, 'SYMPATHOMIMETICS' section). Confirms Wixela Inhub (generic Advair Diskus) at all three strengths is Tier 1, no PA — matches the prior illustrative pick exactly. Generic budesonide-formoterol (Breyna) is also Tier 1. Breo Ellipta is Tier 2, confirming the prior 'non-preferred' alternative note.",
           "sourceIds": [
-            "bcbsma-medlookup",
-            "fda-wixela"
+            "bcbsma-std-covered-2026-07"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-16",
           "coverageSourceIds": [
-            "bcbsma-medlookup"
+            "bcbsma-std-covered-2026-07"
           ],
           "restrictionSourceIds": [
-            "bcbsma-medlookup"
+            "bcbsma-std-covered-2026-07"
           ],
           "alternatives": [
             {
-              "drug": "Breo Ellipta",
-              "note": "Non-preferred",
+              "drug": "Budesonide-formoterol (generic Symbicort / Breyna)",
+              "note": "Tier 1, no PA — same-tier alternative",
               "sourceIds": [
-                "bcbsma-medlookup"
+                "bcbsma-std-covered-2026-07"
+              ]
+            },
+            {
+              "drug": "Breo Ellipta (brand)",
+              "note": "Tier 2 — higher-cost alternative",
+              "sourceIds": [
+                "bcbsma-std-covered-2026-07"
               ]
             }
-          ]
+          ],
+          "tier": "Tier 1 (generic)"
         },
         {
           "payerId": "bcbsma",
           "classId": "lama",
           "preferredAgent": {
             "inn": "Tiotropium",
-            "brand": "Spiriva Respimat",
+            "brand": "Spiriva HandiHaler",
             "genericAvailable": false,
-            "strength": "2.5 mcg",
-            "sig": "2 inhalations once daily",
-            "sigShort": "2 inh daily",
-            "plainSig": "Two breaths in, once a day, same time each day."
+            "strength": "18 mcg capsule",
+            "sig": "1 capsule inhaled once daily via HandiHaler device",
+            "sigShort": "1 cap inh daily",
+            "plainSig": "Inhale one capsule, once a day, same time each day."
           },
           "boglActive": false,
           "boglNote": null,
           "paRequired": [],
           "stepTherapy": null,
-          "verification": "example",
-          "verificationNote": "Illustrative — LAMA is COPD-indicated. Confirm the preferred agent on the BCBSMA Medication Look-up.",
+          "verification": "verified",
+          "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List (effective July 2026, 'BRONCHODILATORS - ANTICHOLINERGICS' section). Corrects the prior illustrative pick: Spiriva HandiHaler (capsule device) is Tier 1 with no generic tiotropium capsule listed on this formulary, while Spiriva Respimat (soft-mist device) is Tier 2 — the plan steers to the cheaper capsule device, not the Respimat this cell previously assumed. Generic umeclidinium bromide (Incruse Ellipta equivalent) is a same-tier (Tier 1) alternative. No PA required anywhere in this class; boglActive stays false since no generic tiotropium (any device) is listed.",
           "sourceIds": [
-            "bcbsma-medlookup",
-            "dailymed-spiriva"
+            "bcbsma-std-covered-2026-07"
           ],
-          "lastReviewed": "2026-06-22",
+          "lastReviewed": "2026-07-16",
           "coverageSourceIds": [
-            "bcbsma-medlookup"
+            "bcbsma-std-covered-2026-07"
           ],
           "restrictionSourceIds": [
-            "bcbsma-medlookup"
+            "bcbsma-std-covered-2026-07"
           ],
           "alternatives": [
             {
-              "drug": "Yupelri (revefenacin)",
-              "note": "Non-preferred",
+              "drug": "Umeclidinium bromide (generic Incruse Ellipta)",
+              "note": "Tier 1, no PA — same-tier alternative",
               "sourceIds": [
-                "bcbsma-medlookup"
+                "bcbsma-std-covered-2026-07"
+              ]
+            },
+            {
+              "drug": "Spiriva Respimat (brand, soft-mist device)",
+              "note": "Tier 2 — higher-cost, different device",
+              "sourceIds": [
+                "bcbsma-std-covered-2026-07"
+              ]
+            },
+            {
+              "drug": "Yupelri (revefenacin, nebulized)",
+              "note": "Tier 2 — higher-cost alternative",
+              "sourceIds": [
+                "bcbsma-std-covered-2026-07"
               ]
             }
-          ]
+          ],
+          "tier": "Tier 1 (brand — no generic listed)"
         },
         {
           "payerId": "tufts",
@@ -34357,9 +34420,9 @@
       "classNoun": "Prescription type",
       "unitNoun": "medication",
       "tagline": "",
-      "dataStatus": "mixed",
-      "lastUpdated": "2026-07-07",
-      "capturedAt": "2026-07-07",
+      "dataStatus": "verified",
+      "lastUpdated": "2026-07-16",
+      "capturedAt": "2026-07-16",
       "payers": [
         {
           "id": "masshealth",
@@ -34382,13 +34445,13 @@
           "shortName": "BCBS MA",
           "aka": "Blue Cross",
           "pbm": "CVS Caremark",
-          "formularyUrl": "https://provider.bluecrossma.com/ProviderHome/portal/home/pharmacy/formularies/medication-look-up",
+          "formularyUrl": "https://www.bluecrossma.org/medication/standard-control-formulary?provider=true",
           "sourceIds": [
             "bcbsma-ace-inhibitors-source-2026-07-07"
           ],
-          "productName": "Member-specific commercial formulary — confirm product",
+          "productName": "Standard Control with Advanced Control Specialty Formulary (CVS Caremark)",
           "marketSegment": "commercial-employer",
-          "formularyId": "BCBSMA Medication Lookup"
+          "formularyId": "BCBSMA SC ACSF — 07/01/2026"
         },
         {
           "id": "tufts",
@@ -34495,6 +34558,33 @@
           "url": "https://fm.formularynavigator.com/FBO/192/20266T.pdf",
           "effectiveDate": "2026-06-01",
           "accessed": "2026-07-07"
+        },
+        {
+          "id": "bcbsma-std-covered-2026-07",
+          "label": "BCBS MA Standard Control with Advanced Control Specialty Formulary — Comprehensive Covered Medication List (effective July 2026)",
+          "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+          "type": "pbm",
+          "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-000720261-standard-control-with-advanced-control-specialty-formulary-comprehensive-covered-medication-list-july-2026.pdf",
+          "effectiveDate": "2026-07-01",
+          "accessed": "2026-07-16"
+        },
+        {
+          "id": "bcbsma-std-removals-2026-07",
+          "label": "BCBS MA Standard Control with Advanced Control Specialty Formulary — Comprehensive Drug Removal List (effective July 2026)",
+          "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+          "type": "pbm",
+          "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-10654612D-drug-removals-for-standard-control-with-advanced-control-specialty-formulary-july-2026.pdf",
+          "effectiveDate": "2026-07-01",
+          "accessed": "2026-07-16"
+        },
+        {
+          "id": "bcbsma-std-updates-2026-07",
+          "label": "BCBS MA Standard Control Formulary — Quarterly Updates (July 2026)",
+          "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+          "type": "pbm",
+          "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-10654612C-standard-control-formulary-quarterly-updates-july-2026.pdf",
+          "effectiveDate": "2026-04-01",
+          "accessed": "2026-07-16"
         }
       ],
       "glossary": [
@@ -34676,109 +34766,53 @@
             "sigShort": "1 tab PO daily",
             "plainSig": "Take one 10 mg tablet by mouth once a day"
           },
-          "preferredRestriction": null,
           "boglActive": false,
           "boglNote": null,
           "alternatives": [
             {
-              "drug": "enalapril",
-              "note": "generic, no PA — not on any restricted list",
+              "drug": "enalapril / benazepril / captopril / ramipril / fosinopril / quinapril / moexipril / perindopril / trandolapril (generics)",
+              "note": "Tier 1, no PA — same-tier alternatives",
               "sourceIds": [
-                "bcbsma-ace-inhibitors-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "benazepril",
-              "note": "generic, no PA — not on any restricted list",
-              "sourceIds": [
-                "bcbsma-ace-inhibitors-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "captopril",
-              "note": "generic, no PA — not on any restricted list",
-              "sourceIds": [
-                "bcbsma-ace-inhibitors-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "ramipril",
-              "note": "generic, no PA — not on any restricted list",
-              "sourceIds": [
-                "bcbsma-ace-inhibitors-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "fosinopril",
-              "note": "generic, no PA — not on any restricted list",
-              "sourceIds": [
-                "bcbsma-ace-inhibitors-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "quinapril",
-              "note": "generic, no PA — not on any restricted list",
-              "sourceIds": [
-                "bcbsma-ace-inhibitors-source-2026-07-07"
-              ]
-            }
-          ],
-          "paRequired": [
-            {
-              "drug": "Accupril (quinapril brand)",
-              "outcome": "nonformulary",
-              "reason": "Brand-name listed on the Non-Covered Medications list; generic quinapril is unrestricted",
-              "sourceIds": [
-                "bcbsma-ace-inhibitors-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Altace (ramipril brand)",
-              "outcome": "nonformulary",
-              "reason": "Brand-name listed on the Non-Covered Medications list; generic ramipril is unrestricted",
-              "sourceIds": [
-                "bcbsma-ace-inhibitors-source-2026-07-07"
+                "bcbsma-std-covered-2026-07"
               ]
             },
             {
               "drug": "Lotensin (benazepril brand)",
-              "outcome": "nonformulary",
-              "reason": "Brand-name listed on the Non-Covered Medications list; generic benazepril is unrestricted",
+              "note": "Tier 3 — higher-cost, still covered (not removed)",
               "sourceIds": [
-                "bcbsma-ace-inhibitors-source-2026-07-07"
+                "bcbsma-std-covered-2026-07"
               ]
             },
             {
-              "drug": "Vasotec (enalapril brand)",
-              "outcome": "nonformulary",
-              "reason": "Brand-name listed on the Non-Covered Medications list; generic enalapril is unrestricted",
+              "drug": "Zestril (lisinopril brand)",
+              "note": "Tier 3 — higher-cost, still covered (not removed)",
               "sourceIds": [
-                "bcbsma-ace-inhibitors-source-2026-07-07"
+                "bcbsma-std-covered-2026-07"
               ]
             },
             {
-              "drug": "Zestril/Prinivil (lisinopril brand)",
-              "outcome": "nonformulary",
-              "reason": "Brand-name listed on the Non-Covered Medications list; generic lisinopril is unrestricted",
+              "drug": "Accupril (quinapril brand) / Altace (ramipril brand) / Vasotec (enalapril brand) / Prinivil (lisinopril brand)",
+              "note": "Tier 3 — higher-cost brand equivalents, still covered (not removed)",
               "sourceIds": [
-                "bcbsma-ace-inhibitors-source-2026-07-07"
+                "bcbsma-std-covered-2026-07"
               ]
             }
           ],
+          "paRequired": [],
           "stepTherapy": null,
           "tier": "Tier 1 (generic)",
-          "verification": "partial",
-          "verificationNote": "Read the Non-Covered Medications alphabetical list (PDF pages 30-39, printed pages 27-37) and cross-checked against the Quality Care Dosing, Prior Authorization, and Step Therapy lists (printed pages 9-20) of the BCBSMA Commercial Formulary Guide, effective/last-updated February 1, 2026 (most category lists dated 'up to date as of January 1, 2026'). Confirmed: none of lisinopril, enalapril, benazepril, captopril, ramipril, fosinopril, or quinapril (generic names) appear on any restricted list, meaning they are clean-covered generics; only their brand-name counterparts (Accupril, Altace, Lotensin, Vasotec, Zestril, Prinivil) appear on the Non-Covered list. The document does not name a single class-wide 'preferred' ACE inhibitor — lisinopril is inferred as the de facto first-line pick per standard formulary convention (most commonly prescribed, cheapest generic) since the guide itself only distinguishes covered-generic vs non-covered-brand rather than ranking within the covered-generic set. Tier assignment (Tier 1) is inferred from the tier-structure description (generics = Tier 1 across all 5 possible tier structures) rather than a drug-specific tier table, since this guide does not print a per-drug tier grid.",
+          "verification": "verified",
+          "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List (effective July 2026, 'ANTIHYPERTENSIVES > ACE INHIBITORS' section) and cross-checked every brand name against the Comprehensive Drug Removal List (effective July 2026) — none of Accupril/Altace/Lotensin/Vasotec/Zestril/Prinivil appear on the removal list. This corrects the prior cell: those brands are Tier 3 covered alternatives (higher cost, not a PA/coverage barrier), not 'nonformulary' — moved from paRequired to alternatives. All 9 generic ACE inhibitors on this formulary are Tier 1 with zero PA/QL/ST anywhere in the class.",
           "sourceIds": [
-            "bcbsma-ace-inhibitors-source-2026-07-07"
+            "bcbsma-std-covered-2026-07"
           ],
           "coverageSourceIds": [
-            "bcbsma-ace-inhibitors-source-2026-07-07"
+            "bcbsma-std-covered-2026-07"
           ],
           "restrictionSourceIds": [
-            "bcbsma-ace-inhibitors-source-2026-07-07"
+            "bcbsma-std-covered-2026-07"
           ],
-          "lastReviewed": "2026-07-07"
+          "lastReviewed": "2026-07-16"
         },
         {
           "payerId": "tufts",
@@ -35087,9 +35121,9 @@
       "classNoun": "Prescription type",
       "unitNoun": "medication",
       "tagline": "",
-      "dataStatus": "mixed",
-      "lastUpdated": "2026-07-07",
-      "capturedAt": "2026-07-07",
+      "dataStatus": "verified",
+      "lastUpdated": "2026-07-16",
+      "capturedAt": "2026-07-16",
       "payers": [
         {
           "id": "masshealth",
@@ -35112,13 +35146,13 @@
           "shortName": "BCBS MA",
           "aka": "Blue Cross",
           "pbm": "CVS Caremark",
-          "formularyUrl": "https://provider.bluecrossma.com/ProviderHome/portal/home/pharmacy/formularies/medication-look-up",
+          "formularyUrl": "https://www.bluecrossma.org/medication/standard-control-formulary?provider=true",
           "sourceIds": [
             "bcbsma-diabetes-source-2026-07-07"
           ],
-          "productName": "Member-specific commercial formulary — confirm product",
+          "productName": "Standard Control with Advanced Control Specialty Formulary (CVS Caremark)",
           "marketSegment": "commercial-employer",
-          "formularyId": "BCBSMA Medication Lookup"
+          "formularyId": "BCBSMA SC ACSF — 07/01/2026"
         },
         {
           "id": "tufts",
@@ -35261,6 +35295,33 @@
           "url": "https://fm.formularynavigator.com/FBO/192/20266T.pdf",
           "effectiveDate": "2026-06-01",
           "accessed": "2026-07-07"
+        },
+        {
+          "id": "bcbsma-std-covered-2026-07",
+          "label": "BCBS MA Standard Control with Advanced Control Specialty Formulary — Comprehensive Covered Medication List (effective July 2026)",
+          "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+          "type": "pbm",
+          "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-000720261-standard-control-with-advanced-control-specialty-formulary-comprehensive-covered-medication-list-july-2026.pdf",
+          "effectiveDate": "2026-07-01",
+          "accessed": "2026-07-16"
+        },
+        {
+          "id": "bcbsma-std-removals-2026-07",
+          "label": "BCBS MA Standard Control with Advanced Control Specialty Formulary — Comprehensive Drug Removal List (effective July 2026)",
+          "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+          "type": "pbm",
+          "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-10654612D-drug-removals-for-standard-control-with-advanced-control-specialty-formulary-july-2026.pdf",
+          "effectiveDate": "2026-07-01",
+          "accessed": "2026-07-16"
+        },
+        {
+          "id": "bcbsma-std-updates-2026-07",
+          "label": "BCBS MA Standard Control Formulary — Quarterly Updates (July 2026)",
+          "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+          "type": "pbm",
+          "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-10654612C-standard-control-formulary-quarterly-updates-july-2026.pdf",
+          "effectiveDate": "2026-04-01",
+          "accessed": "2026-07-16"
         }
       ],
       "glossary": [
@@ -35632,44 +35693,33 @@
           ],
           "paRequired": [
             {
-              "drug": "Fortamet (metformin ER brand)",
+              "drug": "Fortamet / Glumetza (metformin ER brand)",
               "outcome": "nonformulary",
-              "reason": "Brand-name listed on the Non-Covered Medications list; generic metformin ER is the covered alternative",
+              "reason": "Confirmed via the Comprehensive Covered Medication List: only generic metformin ER is listed (with an explicit 'Except generics for FORTAMET and GLUMETZA' exclusion note), meaning the brand-name ER products themselves are not the covered SKU.",
               "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Glumetza (metformin ER brand)",
-              "outcome": "nonformulary",
-              "reason": "Brand-name listed on the Non-Covered Medications list; generic metformin ER is the covered alternative",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Metformin 625mg / 750mg (non-standard strength products)",
-              "outcome": "nonformulary",
-              "reason": "Listed on the Non-Covered Medications list — likely a specific non-generic/branded-generic SKU at that strength; standard 500/850/1000 mg generic metformin is unaffected",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
               ]
             }
           ],
           "stepTherapy": "This class is named in the Step Therapy 'Diabetes Management' list, which requires trying a first-step agent (e.g., generic metformin) before step-2 diabetes drugs (sulfonylureas, DPP-4s, SGLT2/GLP-1 combos, etc.) are covered — the guide lists step-therapy-affected drug names but does not print the underlying clinical criteria text.",
           "tier": "Tier 1 (generic)",
-          "verification": "partial",
-          "verificationNote": "Read the Diabetes Management step-therapy list (PDF page 22, printed page 20) and the Non-Covered Medications list (PDF pages 30-39). Confirmed: bare 'Metformin' (standard immediate-release generic) does not appear on Non-Covered, PA, or QCD lists, and is only referenced structurally as the implied first-step agent in the Diabetes Management step-therapy category (which lists step-2/non-preferred agents like Actos, Januvia, Farxiga, Jardiance, etc., not metformin itself). Metformin ER generic, Glucophage/Glucophage XR brand, and Riomet/Riomet ER (liquid) all appear in the step-therapy list as covered options; Fortamet, Glumetza brands and the two odd-strength 'Metformin 625mg'/'750mg' SKUs are separately non-covered. No PA is required for standard-strength generic metformin. Preferred agent and its clean-covered status are read directly off the document; sig/dosing details are standard clinical convention (not printed in this administrative guide).",
+          "verification": "verified",
+          "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List (effective July 2026, 'ANTIDIABETICS > BIGUANIDES' section). Generic metformin HCl (immediate-release and extended-release) is Tier 1 with no PA/QL/ST — matches the prior partial finding exactly, now confirmed against the primary tier table rather than inferred from an absence on a restriction list.",
           "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-diabetes-source-2026-07-07",
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ],
           "coverageSourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-std-covered-2026-07"
           ],
           "restrictionSourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-diabetes-source-2026-07-07",
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ],
-          "lastReviewed": "2026-07-07"
+          "lastReviewed": "2026-07-16"
         },
         {
           "payerId": "bcbsma",
@@ -35688,243 +35738,107 @@
           "boglNote": null,
           "alternatives": [
             {
-              "drug": "Mounjaro (tirzepatide)",
-              "note": "PA required — dual GIP/GLP-1, covered with PA per plan's GLP-1-inclusive formulary",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
               "drug": "Trulicity (dulaglutide)",
-              "note": "PA required — covered alternative agent in class",
+              "note": "Tier 2, PA required — covered alternative in class",
               "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
+                "bcbsma-std-covered-2026-07"
               ]
             },
             {
               "drug": "Rybelsus (oral semaglutide)",
-              "note": "PA required — oral GLP-1 alternative",
+              "note": "Tier 2, PA required — oral alternative",
               "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
+                "bcbsma-std-covered-2026-07"
+              ]
+            },
+            {
+              "drug": "Liraglutide (generic Victoza)",
+              "note": "Tier 1, PA required — cheaper generic alternative, same PA gate",
+              "sourceIds": [
+                "bcbsma-std-covered-2026-07"
               ]
             }
           ],
           "paRequired": [
             {
-              "drug": "Wegovy (semaglutide, weight-mgmt)",
+              "drug": "Mounjaro (tirzepatide)",
               "outcome": "pa",
-              "reason": "Listed on Prior Authorization list; weight-management GLP-1 indication typically has stricter PA criteria than the diabetes indication",
+              "reason": "Every GLP-1/GIP agent in this class requires PA on this formulary, per the Comprehensive Covered Medication List's INCRETIN MIMETIC AGENTS section.",
               "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Zepbound (tirzepatide, weight-mgmt)",
-              "outcome": "pa",
-              "reason": "Listed on Prior Authorization list",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Saxenda (liraglutide, weight-mgmt)",
-              "outcome": "pa",
-              "reason": "Listed on Prior Authorization list",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Victoza (liraglutide)",
-              "outcome": "nonformulary",
-              "reason": "Also appears on the Non-Covered Medications list — older once-daily GLP-1, superseded by once-weekly agents",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Byetta (exenatide)",
-              "outcome": "nonformulary",
-              "reason": "Non-Covered Medications list — older twice-daily GLP-1",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Bydureon / Bydureon Bcise (exenatide ER)",
-              "outcome": "nonformulary",
-              "reason": "Non-Covered Medications list",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Adlyxin (lixisenatide)",
-              "outcome": "nonformulary",
-              "reason": "Non-Covered Medications list",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Soliqua (insulin glargine/lixisenatide)",
-              "outcome": "nonformulary",
-              "reason": "Non-Covered Medications list (combo GLP-1/insulin product)",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Xultophy (insulin degludec/liraglutide)",
-              "outcome": "nonformulary",
-              "reason": "Non-Covered Medications list (combo GLP-1/insulin product)",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
               ]
             }
           ],
           "stepTherapy": null,
-          "tier": "Non-preferred / PA-required tier (specific tier level not printed per-drug in this guide)",
-          "verification": "partial",
-          "verificationNote": "Read the Prior Authorization alphabetical list (PDF pages 16-20, printed pages 14-18) and Non-Covered Medications list (PDF pages 30-39) plus the front-cover plan description confirming GLP-1 coverage is included on this specific formulary variant. Confirmed: Ozempic, Rybelsus, Trulicity, Mounjaro, Wegovy, Saxenda, Zepbound all appear on the Prior Authorization list (every branded GLP-1/dual-agonist requires PA under this plan). Victoza, Byetta, Bydureon, Bydureon Bcise, Adlyxin, Soliqua, and Xultophy appear on the Non-Covered list instead. The document does not print PA clinical criteria (e.g., A1c threshold, prior metformin trial) or rank Ozempic vs Mounjaro vs Trulicity as 'preferred' within the PA-required set — Ozempic is inferred as the de facto preferred/most commonly prescribed agent per market convention, not a rank stated in the source. No generic/biosimilar GLP-1 exists as of this review.",
+          "tier": "Tier 2, PA required (class-wide)",
+          "verification": "verified",
+          "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List (effective July 2026, 'INCRETIN MIMETIC AGENTS' section). Every listed agent (Mounjaro, Ozempic, Rybelsus, Trulicity, generic liraglutide) explicitly shows 'PA' as a requirement — confirms the prior finding that this is a class-wide PA gate, not payer favoritism toward a specific brand. Ozempic stays the preferred pick (same molecule/device family as the highest-volume prescription); generic liraglutide is the one Tier 1 option in the class, still gated by the same PA.",
           "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ],
           "coverageSourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-std-covered-2026-07"
           ],
           "restrictionSourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ],
-          "lastReviewed": "2026-07-07"
+          "lastReviewed": "2026-07-16"
         },
         {
           "payerId": "bcbsma",
           "classId": "sglt2",
           "preferredAgent": {
             "inn": "dapagliflozin",
-            "brand": "Farxiga",
-            "genericAvailable": false,
+            "brand": null,
+            "genericAvailable": true,
             "strength": "10 mg tablet",
             "sig": "Take 1 tablet (10 mg) by mouth once daily",
             "sigShort": "1 tab PO daily",
             "plainSig": "Take one 10 mg tablet by mouth once a day"
           },
-          "preferredRestriction": "step",
           "boglActive": false,
           "boglNote": null,
           "alternatives": [
             {
-              "drug": "Jardiance (empagliflozin)",
-              "note": "Cardiovascular Medications step-therapy list — covered alternative, same step-therapy tier as Farxiga",
+              "drug": "Farxiga (dapagliflozin brand)",
+              "note": "Tier 2 — higher-cost brand, no PA",
               "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
+                "bcbsma-std-covered-2026-07"
               ]
             },
             {
-              "drug": "Invokana (canagliflozin)",
-              "note": "Diabetes Management step-therapy list — covered, step therapy applies",
+              "drug": "Jardiance (empagliflozin, brand-only molecule)",
+              "note": "Tier 2 — higher-cost, no PA",
               "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
+                "bcbsma-std-covered-2026-07"
+              ]
+            },
+            {
+              "drug": "Synjardy / Xigduo XR / Trijardy XR / Glyxambi (SGLT2 combo brands)",
+              "note": "Tier 2 — higher-cost combo products, no PA",
+              "sourceIds": [
+                "bcbsma-std-covered-2026-07"
               ]
             }
           ],
-          "paRequired": [
-            {
-              "drug": "Steglatro (ertugliflozin)",
-              "outcome": "step",
-              "reason": "Diabetes Management step-therapy list, and separately on Non-Covered list — step therapy plus non-covered status",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Invokamet / Invokamet XR (canagliflozin/metformin)",
-              "outcome": "step",
-              "reason": "Diabetes Management step-therapy list; also Non-Covered — combo product not clean-covered",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Segluromet (ertugliflozin/metformin)",
-              "outcome": "step",
-              "reason": "Diabetes Management step-therapy list; also Non-Covered",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Synjardy / Synjardy XR (empagliflozin/metformin)",
-              "outcome": "step",
-              "reason": "Diabetes Management step-therapy list",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Xigduo / Xigduo XR (dapagliflozin/metformin)",
-              "outcome": "step",
-              "reason": "Diabetes Management step-therapy list",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Glyxambi (empagliflozin/linagliptin)",
-              "outcome": "step",
-              "reason": "Diabetes Management step-therapy list",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Qtern (dapagliflozin/saxagliptin)",
-              "outcome": "step",
-              "reason": "Diabetes Management step-therapy list; also Non-Covered",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Steglujan (ertugliflozin/sitagliptin)",
-              "outcome": "step",
-              "reason": "Diabetes Management step-therapy list; also Non-Covered",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Trijardy XR (empagliflozin/linagliptin/metformin)",
-              "outcome": "step",
-              "reason": "Diabetes Management step-therapy list",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Brenzavvy (bexagliflozin)",
-              "outcome": "step",
-              "reason": "Diabetes Management step-therapy list — newest-to-market SGLT2, step therapy applies",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            }
-          ],
-          "stepTherapy": "Both a 'Cardiovascular Medications' step-therapy category (Dapagliflozin, Farxiga, Inpefa, Jardiance, Verquvo) and a separate 'Diabetes Management' step-therapy category name SGLT2 agents and SGLT2/metformin combo products — the guide lists affected drugs but does not print the underlying step criteria (e.g., what must be tried first).",
-          "tier": "Non-preferred / step-therapy tier (specific tier level not printed per-drug)",
-          "verification": "partial",
-          "verificationNote": "Read the Step Therapy section (PDF pages 21-22, printed pages 19-20), which has both a 'Cardiovascular Medications' list (Dapagliflozin, Farxiga, Inpefa, Jardiance, Verquvo) and a 'Diabetes Management' list naming essentially every SGLT2 agent and SGLT2 combo product, plus cross-checked the Non-Covered list for combo products. Confirmed both Farxiga (dapagliflozin) and Jardiance (empagliflozin) require step therapy under this plan for at least one indication — this is a class-wide step-therapy program, not a single clean-covered preferred agent. Farxiga is inferred as the likely first-choice/most commonly used SGLT2 since the source does not itself rank Farxiga vs Jardiance vs Invokana. No generic SGLT2 inhibitor exists as of this review (all are still branded).",
+          "paRequired": [],
+          "stepTherapy": null,
+          "tier": "Tier 1 (generic)",
+          "verification": "verified",
+          "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List (effective July 2026, 'SODIUM-GLUCOSE CO-TRANSPORTER 2 (SGLT2) INHIBITORS' section). This corrects the prior cell materially: generic dapagliflozin is Tier 1 with NO PA or step-therapy flag anywhere in the printed requirements column — the prior 'step therapy, Farxiga preferred' finding was inferred from a step-therapy drug-name list without direct tier confirmation, and does not match this quarter's actual formulary. Brand Farxiga and Jardiance (still no generic) are Tier 2 with no PA/step either; SGLT2/metformin combo brands are Tier 2, also with no PA/step flag. Generic dapagliflozin is now the accurate first-pass recommendation — a real, actionable improvement over the prior step-therapy-gated brand pick.",
           "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-std-covered-2026-07"
           ],
           "coverageSourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-std-covered-2026-07"
           ],
           "restrictionSourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-std-covered-2026-07"
           ],
-          "lastReviewed": "2026-07-07"
+          "lastReviewed": "2026-07-16"
         },
         {
           "payerId": "bcbsma",
@@ -35944,113 +35858,97 @@
           "alternatives": [
             {
               "drug": "Novolog (insulin aspart, brand, rapid-acting)",
-              "note": "Quality Care Dosing (quantity limit) only — covered, no PA",
+              "note": "Tier 2 — covered, no PA (formulary option for removed Humalog/Apidra)",
               "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
               ]
             },
             {
-              "drug": "Humalog (insulin lispro, brand, rapid-acting)",
-              "note": "Quality Care Dosing (quantity limit) only — covered, no PA",
+              "drug": "Fiasp (insulin aspart, faster-acting)",
+              "note": "Tier 2 — covered, no PA (formulary option for removed Humalog/Apidra)",
               "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Novolin / Humulin (human insulin, brand)",
-              "note": "Quality Care Dosing (quantity limit) only — covered, no PA",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
               ]
             },
             {
               "drug": "Tresiba (insulin degludec, basal)",
-              "note": "Quality Care Dosing (quantity limit) only — covered, no PA",
+              "note": "Tier 2 — covered, no PA",
               "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
+                "bcbsma-std-covered-2026-07"
+              ]
+            },
+            {
+              "drug": "Toujeo (insulin glargine U-300, basal)",
+              "note": "Tier 2 — covered, no PA",
+              "sourceIds": [
+                "bcbsma-std-covered-2026-07"
+              ]
+            },
+            {
+              "drug": "Insulin glargine-yfgn (Semglee/Rezvoglar interchangeable biosimilar)",
+              "note": "Tier 2 — covered, no PA (formulary option for removed Basaglar)",
+              "sourceIds": [
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
               ]
             }
           ],
           "paRequired": [
             {
+              "drug": "Humalog (insulin lispro, brand)",
+              "outcome": "nonformulary",
+              "reason": "Confirmed removed from the formulary — the Comprehensive Drug Removal List names Humalog under 'ANTIDIABETICS, INSULIN' with Fiasp and Novolog as the formulary options.",
+              "sourceIds": [
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
+              ]
+            },
+            {
+              "drug": "Apidra (insulin glulisine, brand)",
+              "outcome": "nonformulary",
+              "reason": "Confirmed removed — same removal-list entry as Humalog.",
+              "sourceIds": [
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
+              ]
+            },
+            {
               "drug": "Basaglar (insulin glargine, follow-on brand)",
               "outcome": "nonformulary",
-              "reason": "Listed on the Non-Covered Medications list; Lantus brand remains covered",
+              "reason": "Confirmed removed — the removal list names Basaglar with insulin glargine-yfgn and Lantus as the formulary options.",
               "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Semglee (insulin glargine biosimilar)",
-              "outcome": "nonformulary",
-              "reason": "Listed on the Non-Covered Medications list",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Rezvoglar (insulin glargine biosimilar)",
-              "outcome": "nonformulary",
-              "reason": "Listed on the Non-Covered Medications list",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
               ]
             },
             {
               "drug": "Levemir (insulin detemir, basal)",
               "outcome": "nonformulary",
-              "reason": "Listed on the Non-Covered Medications list — superseded by Lantus/Tresiba on this formulary",
+              "reason": "Confirmed removed on the Comprehensive Drug Removal List.",
               "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Fiasp (insulin aspart, faster-acting)",
-              "outcome": "nonformulary",
-              "reason": "Listed on the Non-Covered Medications list; Novolog remains covered",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Lyumjev (insulin lispro, faster-acting)",
-              "outcome": "nonformulary",
-              "reason": "Listed on the Non-Covered Medications list; Humalog remains covered",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Admelog (insulin lispro, follow-on brand)",
-              "outcome": "nonformulary",
-              "reason": "Listed on the Non-Covered Medications list",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "generic-labeled 'Insulin Aspart' / 'Insulin Glargine' / 'Insulin Lispro' (authorized-generic/unbranded SKUs)",
-              "outcome": "nonformulary",
-              "reason": "Listed on the Non-Covered Medications list separately from the branded product of the same molecule — the branded originator (Lantus, Novolog, Humalog) is the covered SKU, not the unbranded version",
-              "sourceIds": [
-                "bcbsma-diabetes-source-2026-07-07"
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
               ]
             }
           ],
           "stepTherapy": null,
-          "tier": "Quality Care Dosing applies (quantity limit) — tier level not printed per-drug",
-          "verification": "partial",
-          "verificationNote": "Read the Quality Care Dosing list (PDF pages 10-15, printed pages 8-13) and Non-Covered Medications list (PDF pages 30-39). Confirmed Lantus, Novolog, Humalog, Novolin, Humulin, and Tresiba all appear only under Quality Care Dosing (a quantity/dose limit, not a coverage barrier) — meaning they are covered without PA. By contrast, Basaglar, Semglee, Rezvoglar (glargine alternatives), Levemir (detemir), Fiasp, Lyumjev, Admelog (rapid-acting alternatives), and the bare unbranded 'Insulin Aspart'/'Insulin Glargine'/'Insulin Lispro' line items all appear on the Non-Covered list. This is a brand-name-driven formulary (Lantus/Novolog/Humalog preferred over their follow-on-brand and biosimilar/authorized-generic competitors), unusual relative to typical genericfirst formularies — flagged as 'partial' rather than 'verified' because the guide does not explicitly label Lantus/Novolog/Humalog as 'preferred,' this is inferred from the absence of any restriction combined with competitors' explicit non-covered status.",
+          "tier": "Tier 2 (brand — no generic insulin glargine SKU listed)",
+          "verification": "verified",
+          "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List and Comprehensive Drug Removal List (both effective July 2026). This corrects two errors in the prior partial cell: (1) Humalog was listed there as a covered alternative, but the removal list explicitly names Humalog as removed (Fiasp/Novolog are the formulary options); (2) Fiasp was listed as non-covered, but it is Tier 2 covered per both documents. Insulin glargine-yfgn (the FDA nonproprietary name for the Semglee/Rezvoglar interchangeable biosimilar) is also confirmed covered, not nonformulary as previously recorded — the removal list names it as the direct replacement for removed Basaglar. Lantus remains the covered, unrestricted preferred brand; Basaglar and Levemir are confirmed removed.",
           "sourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ],
           "coverageSourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-std-covered-2026-07"
           ],
           "restrictionSourceIds": [
-            "bcbsma-diabetes-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ],
-          "lastReviewed": "2026-07-07"
+          "lastReviewed": "2026-07-16"
         },
         {
           "payerId": "tufts",
@@ -37118,8 +37016,8 @@
       "unitNoun": "medication",
       "tagline": "",
       "dataStatus": "mixed",
-      "lastUpdated": "2026-07-07",
-      "capturedAt": "2026-07-07",
+      "lastUpdated": "2026-07-16",
+      "capturedAt": "2026-07-16",
       "payers": [
         {
           "id": "masshealth",
@@ -37142,13 +37040,13 @@
           "shortName": "BCBS MA",
           "aka": "Blue Cross",
           "pbm": "CVS Caremark",
-          "formularyUrl": "https://provider.bluecrossma.com/ProviderHome/portal/home/pharmacy/formularies/medication-look-up",
+          "formularyUrl": "https://www.bluecrossma.org/medication/standard-control-formulary?provider=true",
           "sourceIds": [
             "bcbsma-menopause-ht-source-2026-07-07"
           ],
-          "productName": "Member-specific commercial formulary — confirm product",
+          "productName": "Standard Control with Advanced Control Specialty Formulary (CVS Caremark)",
           "marketSegment": "commercial-employer",
-          "formularyId": "BCBSMA Medication Lookup"
+          "formularyId": "BCBSMA SC ACSF — 07/01/2026"
         },
         {
           "id": "tufts",
@@ -37312,6 +37210,33 @@
           "url": "https://fm.formularynavigator.com/FBO/192/20266T.pdf",
           "effectiveDate": "2026-06-01",
           "accessed": "2026-07-07"
+        },
+        {
+          "id": "bcbsma-std-covered-2026-07",
+          "label": "BCBS MA Standard Control with Advanced Control Specialty Formulary — Comprehensive Covered Medication List (effective July 2026)",
+          "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+          "type": "pbm",
+          "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-000720261-standard-control-with-advanced-control-specialty-formulary-comprehensive-covered-medication-list-july-2026.pdf",
+          "effectiveDate": "2026-07-01",
+          "accessed": "2026-07-16"
+        },
+        {
+          "id": "bcbsma-std-removals-2026-07",
+          "label": "BCBS MA Standard Control with Advanced Control Specialty Formulary — Comprehensive Drug Removal List (effective July 2026)",
+          "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+          "type": "pbm",
+          "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-10654612D-drug-removals-for-standard-control-with-advanced-control-specialty-formulary-july-2026.pdf",
+          "effectiveDate": "2026-07-01",
+          "accessed": "2026-07-16"
+        },
+        {
+          "id": "bcbsma-std-updates-2026-07",
+          "label": "BCBS MA Standard Control Formulary — Quarterly Updates (July 2026)",
+          "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+          "type": "pbm",
+          "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-10654612C-standard-control-formulary-quarterly-updates-july-2026.pdf",
+          "effectiveDate": "2026-04-01",
+          "accessed": "2026-07-16"
         }
       ],
       "glossary": [
@@ -37698,106 +37623,58 @@
           "boglNote": null,
           "alternatives": [
             {
-              "drug": "Vivelle-Dot (estradiol patch, brand)",
-              "note": "Quality Care Dosing (quantity limit) only — covered, no PA",
-              "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Climara (estradiol patch, brand)",
-              "note": "Quality Care Dosing (quantity limit) only — covered, no PA",
-              "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Minivelle (estradiol patch, brand)",
-              "note": "Quality Care Dosing (quantity limit) only — covered, no PA",
-              "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
-              ]
-            },
-            {
               "drug": "Estradiol gel (generic)",
-              "note": "Quality Care Dosing (quantity limit) only — covered, no PA",
+              "note": "Tier 1, no PA — same-tier alternative form",
               "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
+                "bcbsma-std-covered-2026-07"
               ]
             }
           ],
           "paRequired": [
             {
-              "drug": "Alora (estradiol patch, brand)",
+              "drug": "Climara / Vivelle-Dot / Minivelle (estradiol patch, brand)",
               "outcome": "nonformulary",
-              "reason": "Non-Covered Medications list; generic estradiol patch remains covered",
+              "reason": "Confirmed removed — the Comprehensive Drug Removal List names all three under 'ESTROGENS', with formulary option 'estradiol' (the generic patch).",
               "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Divigel (estradiol gel, brand)",
-              "outcome": "nonformulary",
-              "reason": "Non-Covered Medications list; generic estradiol gel remains covered",
-              "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Elestrin (estradiol gel, brand)",
-              "outcome": "nonformulary",
-              "reason": "Non-Covered Medications list",
-              "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Estrogel (estradiol gel, brand)",
-              "outcome": "nonformulary",
-              "reason": "Non-Covered Medications list",
-              "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Evamist (estradiol spray, brand)",
-              "outcome": "nonformulary",
-              "reason": "Non-Covered Medications list",
-              "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Adlarity (estradiol weekly patch, brand)",
-              "outcome": "nonformulary",
-              "reason": "Non-Covered Medications list",
-              "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
               ]
             },
             {
               "drug": "Climara Pro (estradiol/levonorgestrel combo patch, brand)",
               "outcome": "nonformulary",
-              "reason": "Not found on the Non-Covered list itself but no generic equivalent exists; appears only under Quality Care Dosing — treated as covered with quantity limit, listed here for completeness since it is a combo, not plain estradiol",
+              "reason": "Confirmed removed — listed under 'MENOPAUSAL SYMPTOM AGENTS' with formulary option 'estradiol'.",
               "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
+              ]
+            },
+            {
+              "drug": "Alora / Divigel / Elestrin / Estrogel / Evamist / Adlarity / Menostar (brand)",
+              "outcome": "nonformulary",
+              "reason": "Confirmed removed — all listed on the Comprehensive Drug Removal List under 'ESTROGENS' / 'MENOPAUSAL SYMPTOM AGENTS' with formulary option 'estradiol'.",
+              "sourceIds": [
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
               ]
             }
           ],
           "stepTherapy": null,
-          "tier": "Tier 1 (generic patch/gel) / Quality Care Dosing quantity limit applies",
-          "verification": "partial",
-          "verificationNote": "Read the Quality Care Dosing list (PDF pages 10-15) and Non-Covered Medications list (PDF pages 30-39). Confirmed generic 'Estradiol Gel' and 'Estradiol Patch' line items, plus brand Climara, Vivelle-Dot, and Minivelle, appear only under Quality Care Dosing (quantity limit, not a coverage bar) — meaning generic transdermal estradiol is clean-covered. Alora, Divigel, Elestrin, Estrogel, Evamist, and Adlarity (all brand-only transdermal estrogen products without their own generic) are on the Non-Covered list, implying members should use the covered generic patch/gel or Climara/Vivelle-Dot/Minivelle instead. The guide does not print a specific 'preferred agent' name for this class — generic estradiol patch is inferred as the standard first-line choice per clinical convention, not a stated pick in the source.",
+          "tier": "Tier 1 (generic)",
+          "verification": "verified",
+          "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List and Comprehensive Drug Removal List (both effective July 2026). This corrects the prior cell: Climara, Vivelle-Dot, and Minivelle were listed there as covered alternatives ('Quality Care Dosing only'), but the removal list explicitly names all three as removed this quarter, with generic estradiol patch as the sole formulary option — moved from alternatives to nonformulary. Generic estradiol patch/gel remains Tier 1, unrestricted, and is the only covered transdermal estrogen product on this formulary.",
           "sourceIds": [
-            "bcbsma-menopause-ht-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ],
           "coverageSourceIds": [
-            "bcbsma-menopause-ht-source-2026-07-07"
+            "bcbsma-std-covered-2026-07"
           ],
           "restrictionSourceIds": [
-            "bcbsma-menopause-ht-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ],
-          "lastReviewed": "2026-07-07"
+          "lastReviewed": "2026-07-16"
         },
         {
           "payerId": "bcbsma",
@@ -37816,45 +37693,47 @@
           "boglNote": null,
           "alternatives": [
             {
-              "drug": "conjugated estrogens (Premarin, brand and generic)",
-              "note": "Not found on any restricted list — covered, no PA (no exact page hit for 'Premarin'/'Conjugated Estrogens' in this document's alphabetical lists)",
+              "drug": "Estrogens, conjugated (generic Premarin)",
+              "note": "Tier 1, no PA — same-tier alternative",
               "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
+                "bcbsma-std-covered-2026-07"
+              ]
+            },
+            {
+              "drug": "Estrace (estradiol brand)",
+              "note": "Tier 3 — higher-cost, still covered (not removed)",
+              "sourceIds": [
+                "bcbsma-std-covered-2026-07"
               ]
             }
           ],
           "paRequired": [
             {
-              "drug": "Estrace tablets (estradiol brand)",
-              "outcome": "nonformulary",
-              "reason": "Appears on the Non-Covered Medications list ('Estrace'); generic estradiol tablet remains covered",
-              "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
-              ]
-            },
-            {
               "drug": "Menest (esterified estrogens, brand)",
               "outcome": "nonformulary",
-              "reason": "No generic exists and not found on any covered list in this document — treated as a legacy/lower-utilization agent, not confirmed non-covered directly (see verification note)",
+              "reason": "Confirmed removed — the Comprehensive Drug Removal List names Menest (with Osphena) under 'ESTROGENS', formulary option 'estradiol'.",
               "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
               ]
             }
           ],
           "stepTherapy": null,
           "tier": "Tier 1 (generic)",
-          "verification": "partial",
-          "verificationNote": "Searched the Non-Covered Medications list (PDF pages 30-39), Quality Care Dosing (PDF pages 10-15), Prior Authorization (PDF pages 16-20), and Step Therapy (PDF pages 21-22) lists of the BCBSMA Commercial Formulary Guide for 'Estradiol', 'Premarin', 'Conjugated Estrogens', 'Cenestin', 'Enjuvia', 'Estrace', and 'Menest'. Confirmed only 'Estrace' (the brand oral tablet) appears, on the Non-Covered list — bare 'Estradiol' and 'Premarin'/'Conjugated Estrogens' do not appear on any restricted list in this document, implying they are covered without PA, consistent with generic-estradiol and Premarin both being long-standing, typically-covered agents on commercial formularies. This is marked partial rather than verified because the absence of a name from an alphabetical restriction list is being used as proof of coverage (a valid inference for this document's structure, per the ACE-inhibitor and metformin classes above) rather than a direct 'covered, Tier 1' statement — this document does not print a positive per-drug coverage confirmation, only restriction lists.",
+          "verification": "verified",
+          "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List and Comprehensive Drug Removal List (both effective July 2026). This corrects the prior cell: Estrace was marked nonformulary there, but it does not appear on the removal list — the covered-medication list shows it as a Tier 3 (higher-cost) brand, still covered, not removed — moved from paRequired to alternatives. Menest is confirmed removed. Generic estradiol tablet and generic conjugated estrogens are both Tier 1, unrestricted.",
           "sourceIds": [
-            "bcbsma-menopause-ht-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ],
           "coverageSourceIds": [
-            "bcbsma-menopause-ht-source-2026-07-07"
+            "bcbsma-std-covered-2026-07"
           ],
           "restrictionSourceIds": [
-            "bcbsma-menopause-ht-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ],
-          "lastReviewed": "2026-07-07"
+          "lastReviewed": "2026-07-16"
         },
         {
           "payerId": "bcbsma",
@@ -37873,17 +37752,24 @@
           "boglNote": null,
           "alternatives": [
             {
-              "drug": "medroxyprogesterone (Provera, generic)",
-              "note": "Not found on any restricted list — covered, no PA",
+              "drug": "Medroxyprogesterone acetate (generic Provera)",
+              "note": "Tier 1, no PA — same-tier alternative",
               "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
+                "bcbsma-std-covered-2026-07"
               ]
             },
             {
-              "drug": "norethindrone acetate (Aygestin, generic)",
-              "note": "Not found on any restricted list — covered, no PA",
+              "drug": "Norethindrone acetate (generic Aygestin)",
+              "note": "Tier 1, no PA — same-tier alternative",
               "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
+                "bcbsma-std-covered-2026-07"
+              ]
+            },
+            {
+              "drug": "Provera (medroxyprogesterone brand)",
+              "note": "Tier 3 — higher-cost, still covered (not removed)",
+              "sourceIds": [
+                "bcbsma-std-covered-2026-07"
               ]
             }
           ],
@@ -37891,26 +37777,29 @@
             {
               "drug": "Prometrium (micronized progesterone, brand)",
               "outcome": "nonformulary",
-              "reason": "Appears on the Non-Covered Medications list; generic micronized progesterone remains covered",
+              "reason": "Confirmed removed — the Comprehensive Drug Removal List names Prometrium under 'PROGESTINS', formulary options medroxyprogesterone and micronized progesterone (generic).",
               "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
               ]
             }
           ],
           "stepTherapy": null,
           "tier": "Tier 1 (generic)",
-          "verification": "partial",
-          "verificationNote": "Searched the Non-Covered Medications list (PDF pages 30-39) and all other restriction lists for 'Prometrium', 'Progesterone', 'Micronized Progesterone', 'Medroxyprogesterone', 'Provera', 'Norethindrone Acetate', and 'Aygestin'. Confirmed only the brand 'Prometrium' appears, on the Non-Covered list; the generic names for micronized progesterone, medroxyprogesterone, and norethindrone acetate do not appear on any restriction list, implying clean coverage. As with the oral-estrogen class, this is 'partial' verification — absence from the alphabetical restriction lists is being used as the coverage signal (consistent with this document's structure across other classes), not a positive per-drug 'Tier 1, covered' statement printed in the source.",
+          "verification": "verified",
+          "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List and Comprehensive Drug Removal List (both effective July 2026, 'PROGESTINS' section). Confirms the prior partial finding exactly: generic micronized progesterone is Tier 1 unrestricted; brand Prometrium is confirmed removed (formerly inferred from its absence, now confirmed via the explicit removal list).",
           "sourceIds": [
-            "bcbsma-menopause-ht-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ],
           "coverageSourceIds": [
-            "bcbsma-menopause-ht-source-2026-07-07"
+            "bcbsma-std-covered-2026-07"
           ],
           "restrictionSourceIds": [
-            "bcbsma-menopause-ht-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ],
-          "lastReviewed": "2026-07-07"
+          "lastReviewed": "2026-07-16"
         },
         {
           "payerId": "bcbsma",
@@ -37929,52 +37818,64 @@
           "boglNote": null,
           "alternatives": [
             {
-              "drug": "conjugated estrogens vaginal cream (Premarin cream, brand/generic)",
-              "note": "Not found on any restricted list — covered, no PA",
+              "drug": "Vagifem (estradiol vaginal tablet, brand)",
+              "note": "Tier 1, no PA — same-tier brand alternative",
               "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
+                "bcbsma-std-covered-2026-07"
               ]
             },
             {
-              "drug": "estradiol vaginal tablet/insert (Vagifem/Yuvafem generic, Estring ring)",
-              "note": "Not found on any restricted list — covered, no PA",
+              "drug": "Imvexxy (estradiol vaginal insert, brand)",
+              "note": "Tier 2 — the removal list names Imvexxy as a formulary option for removed Estring/Yuvafem/Premarin Cream",
               "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
+              ]
+            },
+            {
+              "drug": "Conjugated estrogens vaginal cream (generic Premarin cream)",
+              "note": "Tier 1, no PA — same-tier alternative",
+              "sourceIds": [
+                "bcbsma-std-covered-2026-07"
               ]
             }
           ],
           "paRequired": [
             {
-              "drug": "Imvexxy (estradiol vaginal insert, brand)",
+              "drug": "Estring / Yuvafem (generic estradiol vaginal tablet) / Premarin Cream / Intrarosa",
               "outcome": "nonformulary",
-              "reason": "Appears on the Non-Covered Medications list; generic estradiol vaginal tablet/insert remains covered",
+              "reason": "Confirmed removed — the Comprehensive Drug Removal List names these under 'ESTROGENS', with formulary options 'estradiol vaginal cream, Imvexxy, Vagifem'.",
               "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
               ]
             },
             {
               "drug": "Femring (estradiol acetate vaginal ring, systemic-dose)",
               "outcome": "nonformulary",
-              "reason": "Appears on the Non-Covered Medications list — note Femring is a higher, systemic-absorption ring distinct from low-dose Estring",
+              "reason": "Confirmed removed on the Comprehensive Drug Removal List; no direct replacement listed (systemic-absorption ring, distinct from low-dose local products).",
               "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
               ]
             }
           ],
           "stepTherapy": null,
           "tier": "Tier 1 (generic)",
-          "verification": "partial",
-          "verificationNote": "Searched the Non-Covered Medications list and all other restriction lists for 'Vagifem', 'Yuvafem', 'Estring', 'Imvexxy', 'Estrace cream'/'Estrace Vaginal Cream', 'Premarin cream'/'Premarin Vaginal Cream', and 'Femring'. Confirmed only Imvexxy and Femring appear, both on the Non-Covered list; the generic vaginal estradiol/conjugated-estrogen cream, tablet, and ring names do not appear on any restriction list, implying clean coverage. Marked 'partial' for the same reason as the other hormone-therapy classes above — this document's structure only surfaces restricted drugs by name; the covered/preferred status of the generic is inferred from its absence, not a direct printed statement.",
+          "verification": "verified",
+          "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List and Comprehensive Drug Removal List (both effective July 2026). This corrects the prior cell: Imvexxy was marked nonformulary there, but the removal list explicitly names Imvexxy (alongside Vagifem) as the formulary option replacing removed Estring, Yuvafem, and Premarin Cream — moved from paRequired to alternatives. Generic estradiol vaginal cream remains the Tier 1, unrestricted preferred pick; Vagifem (brand tablet) is also Tier 1.",
           "sourceIds": [
-            "bcbsma-menopause-ht-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ],
           "coverageSourceIds": [
-            "bcbsma-menopause-ht-source-2026-07-07"
+            "bcbsma-std-covered-2026-07"
           ],
           "restrictionSourceIds": [
-            "bcbsma-menopause-ht-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ],
-          "lastReviewed": "2026-07-07"
+          "lastReviewed": "2026-07-16"
         },
         {
           "payerId": "bcbsma",
@@ -37993,17 +37894,17 @@
           "boglNote": null,
           "alternatives": [
             {
-              "drug": "conjugated estrogens/medroxyprogesterone (Prempro/Premphase, brand/generic)",
-              "note": "Not found on any restricted list — covered, no PA",
+              "drug": "Conjugated estrogens/medroxyprogesterone (Prempro/Premphase, brand)",
+              "note": "Tier 2, no PA — covered alternative",
               "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
+                "bcbsma-std-covered-2026-07"
               ]
             },
             {
-              "drug": "norethindrone acetate/ethinyl estradiol (Femhrt, generic)",
-              "note": "Not found on any restricted list — covered, no PA",
+              "drug": "Norethindrone acetate/ethinyl estradiol (generic Femhrt)",
+              "note": "Tier 1, no PA — same-tier alternative",
               "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
+                "bcbsma-std-covered-2026-07"
               ]
             }
           ],
@@ -38011,50 +37912,56 @@
             {
               "drug": "Activella (estradiol/norethindrone acetate, brand)",
               "outcome": "nonformulary",
-              "reason": "Appears on the Non-Covered Medications list; generic estradiol/norethindrone acetate remains covered",
+              "reason": "Not listed on the Comprehensive Covered Medication List; generic estradiol/norethindrone acetate is covered instead.",
               "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
               ]
             },
             {
               "drug": "Angeliq (estradiol/drospirenone, brand)",
               "outcome": "nonformulary",
-              "reason": "Appears on the Non-Covered Medications list",
+              "reason": "Not listed on the Comprehensive Covered Medication List.",
               "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
               ]
             },
             {
               "drug": "Bijuva (estradiol/progesterone, brand, bio-identical combo)",
               "outcome": "nonformulary",
-              "reason": "Appears on the Non-Covered Medications list; also on Quality Care Dosing (quantity limit applies if an exception is approved)",
+              "reason": "Not listed on the Comprehensive Covered Medication List.",
               "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
               ]
             },
             {
               "drug": "Duavee (conjugated estrogens/bazedoxifene, brand)",
               "outcome": "nonformulary",
-              "reason": "Appears on the Non-Covered Medications list",
+              "reason": "Not listed on the Comprehensive Covered Medication List.",
               "sourceIds": [
-                "bcbsma-menopause-ht-source-2026-07-07"
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
               ]
             }
           ],
           "stepTherapy": null,
           "tier": "Tier 1 (generic)",
-          "verification": "partial",
-          "verificationNote": "Searched the Non-Covered Medications list and all other restriction lists for 'Activella', 'Prempro', 'Premphase', 'Angeliq', 'Duavee', 'Bijuva', and 'Femhrt'/'Combipatch'. Confirmed Activella, Angeliq, Bijuva, and Duavee (all combo brands) appear on the Non-Covered list; generic estradiol/norethindrone acetate and Prempro/Premphase/Femhrt names do not appear on any restriction list, implying clean coverage. Marked 'partial' — same reasoning as the other hormone-therapy classes: absence from the restriction lists is the coverage signal used, not a directly printed 'preferred, Tier 1' statement for the generic combo tablet.",
+          "verification": "verified",
+          "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List (effective July 2026, 'ESTROGEN COMBINATIONS' section). Confirms the prior partial finding: generic estradiol/norethindrone acetate tablet is Tier 1 unrestricted; Prempro/Premphase (brand) are Tier 2 covered. Activella, Angeliq, Bijuva, and Duavee do not appear on either the covered-medication list or the drug-removal list this quarter — absent from both, consistent with non-coverage, though (unlike the other corrections above) this one could not be cross-confirmed against an explicit removal entry naming them by name.",
           "sourceIds": [
-            "bcbsma-menopause-ht-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ],
           "coverageSourceIds": [
-            "bcbsma-menopause-ht-source-2026-07-07"
+            "bcbsma-std-covered-2026-07"
           ],
           "restrictionSourceIds": [
-            "bcbsma-menopause-ht-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ],
-          "lastReviewed": "2026-07-07"
+          "lastReviewed": "2026-07-16"
         },
         {
           "payerId": "tufts",
@@ -39100,9 +39007,9 @@
       "classNoun": "Prescription type",
       "unitNoun": "medication",
       "tagline": "",
-      "dataStatus": "mixed",
-      "lastUpdated": "2026-07-07",
-      "capturedAt": "2026-07-07",
+      "dataStatus": "verified",
+      "lastUpdated": "2026-07-16",
+      "capturedAt": "2026-07-16",
       "payers": [
         {
           "id": "masshealth",
@@ -39125,13 +39032,13 @@
           "shortName": "BCBS MA",
           "aka": "Blue Cross",
           "pbm": "CVS Caremark",
-          "formularyUrl": "https://provider.bluecrossma.com/ProviderHome/portal/home/pharmacy/formularies/medication-look-up",
+          "formularyUrl": "https://www.bluecrossma.org/medication/standard-control-formulary?provider=true",
           "sourceIds": [
             "bcbsma-nsaids-source-2026-07-07"
           ],
-          "productName": "Member-specific commercial formulary — confirm product",
+          "productName": "Standard Control with Advanced Control Specialty Formulary (CVS Caremark)",
           "marketSegment": "commercial-employer",
-          "formularyId": "BCBSMA Medication Lookup"
+          "formularyId": "BCBSMA SC ACSF — 07/01/2026"
         },
         {
           "id": "tufts",
@@ -39238,6 +39145,33 @@
           "url": "https://fm.formularynavigator.com/FBO/192/20266T.pdf",
           "effectiveDate": "2026-06-01",
           "accessed": "2026-07-07"
+        },
+        {
+          "id": "bcbsma-std-covered-2026-07",
+          "label": "BCBS MA Standard Control with Advanced Control Specialty Formulary — Comprehensive Covered Medication List (effective July 2026)",
+          "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+          "type": "pbm",
+          "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-000720261-standard-control-with-advanced-control-specialty-formulary-comprehensive-covered-medication-list-july-2026.pdf",
+          "effectiveDate": "2026-07-01",
+          "accessed": "2026-07-16"
+        },
+        {
+          "id": "bcbsma-std-removals-2026-07",
+          "label": "BCBS MA Standard Control with Advanced Control Specialty Formulary — Comprehensive Drug Removal List (effective July 2026)",
+          "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+          "type": "pbm",
+          "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-10654612D-drug-removals-for-standard-control-with-advanced-control-specialty-formulary-july-2026.pdf",
+          "effectiveDate": "2026-07-01",
+          "accessed": "2026-07-16"
+        },
+        {
+          "id": "bcbsma-std-updates-2026-07",
+          "label": "BCBS MA Standard Control Formulary — Quarterly Updates (July 2026)",
+          "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+          "type": "pbm",
+          "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-10654612C-standard-control-formulary-quarterly-updates-july-2026.pdf",
+          "effectiveDate": "2026-04-01",
+          "accessed": "2026-07-16"
         }
       ],
       "glossary": [
@@ -39615,38 +39549,10 @@
           "boglNote": null,
           "alternatives": [
             {
-              "drug": "ibuprofen (generic)",
-              "note": "Not found on any restricted list — covered, no PA",
+              "drug": "Ibuprofen / meloxicam / diclofenac (sodium or potassium) / etodolac / nabumetone / sulindac / piroxicam / ketoprofen / ketorolac / indomethacin (generics)",
+              "note": "Tier 1, no PA — same-tier alternatives",
               "sourceIds": [
-                "bcbsma-nsaids-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "meloxicam (generic)",
-              "note": "Quality Care Dosing (quantity limit) only — covered, no PA",
-              "sourceIds": [
-                "bcbsma-nsaids-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "celecoxib (generic)",
-              "note": "Quality Care Dosing (quantity limit) only — covered, no PA",
-              "sourceIds": [
-                "bcbsma-nsaids-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "diclofenac tablet (generic)",
-              "note": "Not found on any restricted list — covered, no PA",
-              "sourceIds": [
-                "bcbsma-nsaids-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "etodolac / nabumetone / sulindac / piroxicam / ketoprofen (generics)",
-              "note": "Not found on any restricted list — covered, no PA",
-              "sourceIds": [
-                "bcbsma-nsaids-source-2026-07-07"
+                "bcbsma-std-covered-2026-07"
               ]
             }
           ],
@@ -39654,50 +39560,38 @@
             {
               "drug": "Celebrex (celecoxib, brand)",
               "outcome": "nonformulary",
-              "reason": "Appears on the Non-Covered Medications list; generic celecoxib remains covered",
+              "reason": "Confirmed removed — the Comprehensive Drug Removal List names Celebrex under 'ANALGESICS: COX-2 INHIBITORS', formulary options celecoxib (generic), diclofenac sodium, ibuprofen, meloxicam tablet, naproxen.",
               "sourceIds": [
-                "bcbsma-nsaids-source-2026-07-07"
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
               ]
             },
             {
-              "drug": "Naprosyn / Mobic (brand naproxen / brand meloxicam)",
+              "drug": "Arthrotec (diclofenac/misoprostol combo, brand)",
               "outcome": "nonformulary",
-              "reason": "Appear on the Non-Covered Medications list; generic naproxen/meloxicam remain covered",
+              "reason": "Confirmed removed — same removal-list category as Celebrex.",
               "sourceIds": [
-                "bcbsma-nsaids-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Zorvolex / Zipsor (diclofenac, brand low-dose capsule formulations)",
-              "outcome": "nonformulary",
-              "reason": "Appear on the Non-Covered Medications list",
-              "sourceIds": [
-                "bcbsma-nsaids-source-2026-07-07"
-              ]
-            },
-            {
-              "drug": "Ibuprofen 300mg (branded product SKU)",
-              "outcome": "nonformulary",
-              "reason": "Appears on the Non-Covered Medications list as a specific branded-strength product, distinct from standard-strength generic ibuprofen which remains covered",
-              "sourceIds": [
-                "bcbsma-nsaids-source-2026-07-07"
+                "bcbsma-std-covered-2026-07",
+                "bcbsma-std-removals-2026-07"
               ]
             }
           ],
           "stepTherapy": null,
           "tier": "Tier 1 (generic)",
-          "verification": "partial",
-          "verificationNote": "Searched the Non-Covered Medications list (PDF pages 30-39) and Quality Care Dosing list (PDF pages 10-15) for naproxen, ibuprofen, meloxicam, celecoxib, diclofenac, and other common oral NSAIDs and their brand names. Confirmed generic naproxen, ibuprofen (standard strengths), diclofenac tablet, etodolac, nabumetone, sulindac, piroxicam, and ketoprofen do not appear on any restriction list (clean-covered); meloxicam and celecoxib generics appear only under Quality Care Dosing (quantity limit, not a coverage bar). Brand versions — Naprosyn, Mobic, Celebrex, Zorvolex, Zipsor, and a specific 'Ibuprofen 300MG (Branded Product)' SKU — are on the Non-Covered list. Marked 'partial' rather than 'verified' because, as with the other classes, this document surfaces restricted drugs by name only; the covered/preferred status of the standard generics is inferred from their absence from every restriction list, not a directly printed 'Tier 1, preferred' statement naming naproxen specifically.",
+          "verification": "verified",
+          "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List and Comprehensive Drug Removal List (both effective July 2026, 'NONSTEROIDAL ANTI-INFLAMMATORY AGENTS (NSAIDS)' section). This corrects the prior cell: celecoxib and meloxicam were flagged there as 'Quality Care Dosing (quantity limit) only' — the primary tier table shows both as clean Tier 1 with no requirements column entry at all. Every generic oral NSAID on this formulary (naproxen, ibuprofen, celecoxib, meloxicam, diclofenac, etodolac, nabumetone, sulindac, piroxicam, ketoprofen, ketorolac, indomethacin) is Tier 1, unrestricted. Celebrex and Arthrotec are confirmed removed; older/discontinued brand names (Naprosyn, Mobic, Zorvolex, Zipsor) do not appear on either list and are omitted rather than asserted as nonformulary without direct evidence.",
           "sourceIds": [
-            "bcbsma-nsaids-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ],
           "coverageSourceIds": [
-            "bcbsma-nsaids-source-2026-07-07"
+            "bcbsma-std-covered-2026-07"
           ],
           "restrictionSourceIds": [
-            "bcbsma-nsaids-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ],
-          "lastReviewed": "2026-07-07"
+          "lastReviewed": "2026-07-16"
         },
         {
           "payerId": "tufts",

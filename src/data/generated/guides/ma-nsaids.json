@@ -8,9 +8,9 @@
   "classNoun": "Prescription type",
   "unitNoun": "medication",
   "tagline": "",
-  "dataStatus": "mixed",
-  "lastUpdated": "2026-07-07",
-  "capturedAt": "2026-07-07",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-07-16",
+  "capturedAt": "2026-07-16",
   "payers": [
     {
       "id": "masshealth",
@@ -33,13 +33,13 @@
       "shortName": "BCBS MA",
       "aka": "Blue Cross",
       "pbm": "CVS Caremark",
-      "formularyUrl": "https://provider.bluecrossma.com/ProviderHome/portal/home/pharmacy/formularies/medication-look-up",
+      "formularyUrl": "https://www.bluecrossma.org/medication/standard-control-formulary?provider=true",
       "sourceIds": [
         "bcbsma-nsaids-source-2026-07-07"
       ],
-      "productName": "Member-specific commercial formulary — confirm product",
+      "productName": "Standard Control with Advanced Control Specialty Formulary (CVS Caremark)",
       "marketSegment": "commercial-employer",
-      "formularyId": "BCBSMA Medication Lookup"
+      "formularyId": "BCBSMA SC ACSF — 07/01/2026"
     },
     {
       "id": "tufts",
@@ -146,6 +146,33 @@
       "url": "https://fm.formularynavigator.com/FBO/192/20266T.pdf",
       "effectiveDate": "2026-06-01",
       "accessed": "2026-07-07"
+    },
+    {
+      "id": "bcbsma-std-covered-2026-07",
+      "label": "BCBS MA Standard Control with Advanced Control Specialty Formulary — Comprehensive Covered Medication List (effective July 2026)",
+      "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+      "type": "pbm",
+      "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-000720261-standard-control-with-advanced-control-specialty-formulary-comprehensive-covered-medication-list-july-2026.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-07-16"
+    },
+    {
+      "id": "bcbsma-std-removals-2026-07",
+      "label": "BCBS MA Standard Control with Advanced Control Specialty Formulary — Comprehensive Drug Removal List (effective July 2026)",
+      "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+      "type": "pbm",
+      "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-10654612D-drug-removals-for-standard-control-with-advanced-control-specialty-formulary-july-2026.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-07-16"
+    },
+    {
+      "id": "bcbsma-std-updates-2026-07",
+      "label": "BCBS MA Standard Control Formulary — Quarterly Updates (July 2026)",
+      "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+      "type": "pbm",
+      "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-10654612C-standard-control-formulary-quarterly-updates-july-2026.pdf",
+      "effectiveDate": "2026-04-01",
+      "accessed": "2026-07-16"
     }
   ],
   "glossary": [
@@ -523,38 +550,10 @@
       "boglNote": null,
       "alternatives": [
         {
-          "drug": "ibuprofen (generic)",
-          "note": "Not found on any restricted list — covered, no PA",
+          "drug": "Ibuprofen / meloxicam / diclofenac (sodium or potassium) / etodolac / nabumetone / sulindac / piroxicam / ketoprofen / ketorolac / indomethacin (generics)",
+          "note": "Tier 1, no PA — same-tier alternatives",
           "sourceIds": [
-            "bcbsma-nsaids-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "meloxicam (generic)",
-          "note": "Quality Care Dosing (quantity limit) only — covered, no PA",
-          "sourceIds": [
-            "bcbsma-nsaids-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "celecoxib (generic)",
-          "note": "Quality Care Dosing (quantity limit) only — covered, no PA",
-          "sourceIds": [
-            "bcbsma-nsaids-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "diclofenac tablet (generic)",
-          "note": "Not found on any restricted list — covered, no PA",
-          "sourceIds": [
-            "bcbsma-nsaids-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "etodolac / nabumetone / sulindac / piroxicam / ketoprofen (generics)",
-          "note": "Not found on any restricted list — covered, no PA",
-          "sourceIds": [
-            "bcbsma-nsaids-source-2026-07-07"
+            "bcbsma-std-covered-2026-07"
           ]
         }
       ],
@@ -562,50 +561,38 @@
         {
           "drug": "Celebrex (celecoxib, brand)",
           "outcome": "nonformulary",
-          "reason": "Appears on the Non-Covered Medications list; generic celecoxib remains covered",
+          "reason": "Confirmed removed — the Comprehensive Drug Removal List names Celebrex under 'ANALGESICS: COX-2 INHIBITORS', formulary options celecoxib (generic), diclofenac sodium, ibuprofen, meloxicam tablet, naproxen.",
           "sourceIds": [
-            "bcbsma-nsaids-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ]
         },
         {
-          "drug": "Naprosyn / Mobic (brand naproxen / brand meloxicam)",
+          "drug": "Arthrotec (diclofenac/misoprostol combo, brand)",
           "outcome": "nonformulary",
-          "reason": "Appear on the Non-Covered Medications list; generic naproxen/meloxicam remain covered",
+          "reason": "Confirmed removed — same removal-list category as Celebrex.",
           "sourceIds": [
-            "bcbsma-nsaids-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Zorvolex / Zipsor (diclofenac, brand low-dose capsule formulations)",
-          "outcome": "nonformulary",
-          "reason": "Appear on the Non-Covered Medications list",
-          "sourceIds": [
-            "bcbsma-nsaids-source-2026-07-07"
-          ]
-        },
-        {
-          "drug": "Ibuprofen 300mg (branded product SKU)",
-          "outcome": "nonformulary",
-          "reason": "Appears on the Non-Covered Medications list as a specific branded-strength product, distinct from standard-strength generic ibuprofen which remains covered",
-          "sourceIds": [
-            "bcbsma-nsaids-source-2026-07-07"
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
           ]
         }
       ],
       "stepTherapy": null,
       "tier": "Tier 1 (generic)",
-      "verification": "partial",
-      "verificationNote": "Searched the Non-Covered Medications list (PDF pages 30-39) and Quality Care Dosing list (PDF pages 10-15) for naproxen, ibuprofen, meloxicam, celecoxib, diclofenac, and other common oral NSAIDs and their brand names. Confirmed generic naproxen, ibuprofen (standard strengths), diclofenac tablet, etodolac, nabumetone, sulindac, piroxicam, and ketoprofen do not appear on any restriction list (clean-covered); meloxicam and celecoxib generics appear only under Quality Care Dosing (quantity limit, not a coverage bar). Brand versions — Naprosyn, Mobic, Celebrex, Zorvolex, Zipsor, and a specific 'Ibuprofen 300MG (Branded Product)' SKU — are on the Non-Covered list. Marked 'partial' rather than 'verified' because, as with the other classes, this document surfaces restricted drugs by name only; the covered/preferred status of the standard generics is inferred from their absence from every restriction list, not a directly printed 'Tier 1, preferred' statement naming naproxen specifically.",
+      "verification": "verified",
+      "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List and Comprehensive Drug Removal List (both effective July 2026, 'NONSTEROIDAL ANTI-INFLAMMATORY AGENTS (NSAIDS)' section). This corrects the prior cell: celecoxib and meloxicam were flagged there as 'Quality Care Dosing (quantity limit) only' — the primary tier table shows both as clean Tier 1 with no requirements column entry at all. Every generic oral NSAID on this formulary (naproxen, ibuprofen, celecoxib, meloxicam, diclofenac, etodolac, nabumetone, sulindac, piroxicam, ketoprofen, ketorolac, indomethacin) is Tier 1, unrestricted. Celebrex and Arthrotec are confirmed removed; older/discontinued brand names (Naprosyn, Mobic, Zorvolex, Zipsor) do not appear on either list and are omitted rather than asserted as nonformulary without direct evidence.",
       "sourceIds": [
-        "bcbsma-nsaids-source-2026-07-07"
+        "bcbsma-std-covered-2026-07",
+        "bcbsma-std-removals-2026-07"
       ],
       "coverageSourceIds": [
-        "bcbsma-nsaids-source-2026-07-07"
+        "bcbsma-std-covered-2026-07"
       ],
       "restrictionSourceIds": [
-        "bcbsma-nsaids-source-2026-07-07"
+        "bcbsma-std-covered-2026-07",
+        "bcbsma-std-removals-2026-07"
       ],
-      "lastReviewed": "2026-07-07"
+      "lastReviewed": "2026-07-16"
     },
     {
       "payerId": "tufts",

@@ -415,3 +415,199 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   center / provider manual) — if `G` ≠ prior-authorization, all 5 upgrade to verified citing the CSV;
   the `vaginal` + `combo` cells (uniform `PA=0`) are already safe to upgrade whenever a future pass
   adds the CSV as a source. _Open (blocked on code legend)._
+- **2026-07-16 · data (coverage gap) · BCBS MA (`bcbsma`) 15/15 cells across all 5 MA guides upgraded
+  partial/example → verified; the payer's `pbm: "CVS Caremark"` field and its actual source document
+  had been mismatched.** The 2026-07-16 UAT found bcbsma's `ma-inhalers` cells cited its own
+  medication-lookup page (blocked, hence `example`), while `ma-ace`/`ma-diabetes`/`ma-menopause`/
+  `ma-nsaids` cited a `BCBSMA Commercial Formulary Guide` labeled "for members with the **Blue Cross
+  Blue Shield of Massachusetts Formulary**" — a *different* formulary family from the one the payer
+  object's own `pbm: "CVS Caremark"` field points to (BCBS MA runs 3 parallel commercial formularies:
+  Medicare Advantage, **Standard Control with Advanced Control Specialty Formulary — CVS Caremark
+  administered**, and the Blue-Cross-managed one). `provider.bluecrossma.com`'s medication-lookup page
+  loads fine in a real browser session (matches the GoodRx/Cost Plus "looks blocked, isn't" pattern in
+  CLAUDE.md) and links to `bluecrossma.org/medication/standard-control-formulary`, which lists direct
+  PDF links; those PDFs are NOT bot-protected — plain `curl` with a browser UA fetched all 3
+  (Comprehensive Covered Medication List, 172pp; Comprehensive Drug Removal List, 36pp; Quarterly
+  Updates, 3pp; all effective July 2026) in one pass. `pypdf` extracted clean per-drug tier tables
+  (`Drug Name | Tier | Requirements/Limits` columns) — no OCR/fragmentation issue this time. Standardized
+  all 15 bcbsma cells onto this one authoritative source, which **resolved every open ambiguity that
+  had kept them at `partial`**: (1) `ace-inhibitor` — Accupril/Altace/Lotensin/Vasotec/Zestril/Prinivil
+  brands are Tier 3 *covered*, not on the removal list — moved from `paRequired`(nonformulary) to
+  `alternatives`, the same "commercial multi-tier, no PA = alternatives not paRequired" pattern
+  documented for IL BCBS commercial in the 2026-07-07 entries above; (2) `sglt2` — generic
+  dapagliflozin is Tier 1 with **no PA/step-therapy flag at all**, contradicting the prior inferred
+  "Farxiga preferred, step therapy" finding — preferred agent changed from brand Farxiga (step-gated)
+  to generic dapagliflozin (clean Tier 1), a materially better first-pass recommendation; (3) `insulin`
+  — the removal list explicitly names Humalog+Apidra as removed (Fiasp+Novolog are the listed
+  replacements) and Basaglar as removed (insulin glargine-yfgn, i.e. the Semglee/Rezvoglar biosimilar
+  under its FDA nonproprietary name, is the listed replacement) — the prior cell had this exactly
+  backwards (Humalog as a covered alternative, Fiasp and the glargine biosimilar as nonformulary);
+  (4) `lama` — resolves the open item from the 2026-07-11 sweep above: BCBS MA's Standard Control
+  formulary explicitly prices Spiriva **HandiHaler** (capsule) at Tier 1 with no generic tiotropium of
+  any device listed, while Spiriva **Respimat** sits at Tier 2 — the "explicit HandiHaler-over-Respimat
+  preference" that entry said would be needed to change anything now exists for this one payer;
+  preferred agent switched from Respimat to HandiHaler, `genericAvailable` stays `false` (still no
+  generic tiotropium listed for either device); (5) several menopause-HT alternatives were misclassified
+  in both directions — Estrace and Imvexxy were wrongly `paRequired`(nonformulary) (Estrace is Tier 3
+  covered; Imvexxy is the removal list's own named replacement for removed Estring/Yuvafem/Premarin
+  Cream) while Climara/Vivelle-Dot/Minivelle were wrongly in `alternatives` (all three are on the
+  removal list). Also fixed a live bug the new Jardiance alternative entry would have tripped:
+  `PrescribeOptions.tsx`'s `roleOf()` badge picker naive-substring-matches "generic" in the drug/note
+  text, so "no generic exists" phrasing (already present in several older records across MD/VA/IL
+  guides — not touched here) renders a false "Generic" badge; reworded this record's text to avoid it
+  and spun off a background task to fix `roleOf()` itself rather than working around it record-by-record.
+  Also corrected the payer's `productName`/`formularyUrl`/`formularyId` (previously "confirm product",
+  now names the exact formulary + effective date) and added 3 new guide-scoped references
+  (`bcbsma-std-covered-2026-07`, `bcbsma-std-removals-2026-07`, `bcbsma-std-updates-2026-07`) across
+  all 5 MA guides, replacing the old `bcbsma-medlookup`/`bcbsma-*-source-2026-07-07` citations for
+  these cells. `ma-inhalers`/`ma-ace`/`ma-diabetes`/`ma-nsaids` guides are now `dataStatus: verified`
+  (every cell in the guide, not just bcbsma's); `ma-menopause` stays `mixed` (MGB's 1 `vaginal` cell
+  is still `partial`, unrelated payer). `npm test`/`typecheck`/`validate-coverage`/`trace`/
+  `validate-prices` all pass; per-cell cash-price gap stays 0/510. _Fixed (this commit)._
+- **2026-07-16 (cont.) · user UAT screenshot caught the NSAID alternatives-list cash-price gap;
+  ~19 real molecules had zero cash-link rule, referenced under ~200 verbatim phrasings.** User
+  screenshotted `il-nsaids` alternatives (Etodolac, Flurbiprofen, Indomethacin) rendering with a
+  GoodRx box but no Cost Plus box, and asked for a full sweep of every combination plus a check of
+  competing cash-price vendors. Measured the real scope: 3,079 distinct drug-name strings
+  referenced across all 25 guides (preferred agent + alternatives + paRequired), only 1,271 with
+  both vendor prices. Scoped to NSAIDs first per the user's explicit pick (of 3 options offered) to
+  finish one topic fully before widening. The 213 unmatched NSAID-guide alternative-list names
+  collapsed to ~19 real molecules referenced under wildly different verbatim phrasing per source
+  PDF (e.g. "Etodolac (capsule, tablet, extended-release)" vs "etodolac cap/tab (generic Lodine)"
+  vs "etodolac oral capsule/tablet 200-500 mg" — all the same drug). Added regex-based rules for
+  all 19 (celecoxib, diclofenac potassium/sodium-ER/topical/misoprostol-combo as 4 distinct
+  sub-rules ordered specific-before-general, etodolac, flurbiprofen, indomethacin, ketoprofen +
+  ketoprofen-ER as 2 distinct sub-rules, ketorolac, meclofenamate, mefenamic acid, nabumetone,
+  oxaprozin, piroxicam, sulindac, diflunisal, tolmetin, salsalate, aspirin) instead of editing 200+
+  individual data strings — the fix belongs in `cash.ts`'s matching layer, not the data.
+  `KNOWN_UNPRICED_GAP` dropped 575 → 362. **GoodRx blocked this browser session with a real
+  "Press & Hold" bot-check CAPTCHA** (not the usual plain-fetch 403 documented elsewhere in
+  CLAUDE.md) after exactly one successful lookup (celecoxib, $21.41) — did not attempt to solve or
+  route around it (bypassing bot-detection is off-limits regardless of context). All 17 Cost Plus
+  prices captured are real, from a live browser session 2026-07-16; GoodRx prices are omitted, not
+  fabricated, with an explicit code comment distinguishing "pending, blocked this session" from the
+  2 molecules (meclofenamate, salsalate) and 1 form (immediate-release ketoprofen) Cost Plus
+  genuinely doesn't carry (confirmed by search). `npm test` (25/25 cash tests, 301/301 total),
+  `typecheck`, `validate-prices`, and `trace` all pass. Also researched competing cash-price
+  vendors per the user's ask (SingleCare, Amazon Pharmacy RxPass, RxSaver/WellRx) — SingleCare is
+  the strongest 3rd-vendor candidate (no membership fee, more pharmacies than Cost Plus) but the
+  user deferred that decision until the price-fill gap is further along. **Open follow-ups, in
+  priority order:** (1) retry GoodRx for these 19 NSAID molecules once the bot-check clears —
+  don't just retry blindly, wait a session or more; (2) the remaining ~362-name gap outside NSAIDs
+  (per the user's stated order: NSAIDs first, then "alternatives shown in the UI" broadly, then
+  evaluate an exhaustive pass) — see backlog.md.
+- **2026-07-16 (cont. 2) · continued the alternatives-list price-fill sweep across ACE inhibitors,
+  inhalers, diabetes, and menopause-HT; `KNOWN_UNPRICED_GAP` 362 → 76 (87% total reduction from
+  the original 575).** User said "DO IT" to continue past NSAIDs into the rest of the app. Worked
+  topic by topic, same regex-rule approach: ACE inhibitors (captopril, fosinopril, moexipril,
+  perindopril, trandolapril, their HCTZ/verapamil combos, sacubitril/valsartan — quinapril
+  confirmed not carried by Cost Plus) and inhalers (Anoro, Perforomist, terbutaline, montelukast,
+  Nasonex, flunisolide, Breyna) are now **fully resolved, zero gap remaining in either topic**.
+  Diabetes closed the largest chunk: glipizide/glyburide/glimepiride/pioglitazone and their
+  metformin/glimepiride combos, sitagliptin + Janumet, exenatide, Xigduo XR all priced; confirmed
+  **the entire insulin brand family (NovoLog, Humulin, Novolin, Fiasp, Levemir, Lyumjev, Soliqua,
+  Merilog) is not carried by Cost Plus** — consistent with this file's pre-existing "Cost Plus
+  doesn't carry insulins" finding on the Lantus/Humalog/Tresiba rules, so not re-verified
+  drug-by-drug beyond confirming insulin aspart and Humulin directly; same for Mounjaro/
+  tirzepatide, Invokana/canagliflozin, Synjardy/Trijardy/Glyxambi (no generic empagliflozin
+  exists), and alogliptin-/saxagliptin-metformin. Menopause-HT closed Prempro/Premphase/Duavee/
+  megestrol; the rest (Femring, Bijuva, Crinone, Depo-Estradiol, Osphena, Endometrin, injectable/
+  vaginal progesterone, estradiol valerate IM) confirmed not carried by direct search — this topic
+  now holds all 76 remaining gap names.
+  Along the way, found and fixed **3 pre-existing regex precedence bugs** unrelated to this
+  session's new drugs: `estradiol.*(gel|divigel|estrogel|elestrin)` required the literal word
+  "estradiol" to appear before the brand name, so bare "DIVIGEL"/"ESTROGEL"/"ELESTRIN" mentions
+  (no "estradiol" in the same string) fell through — same issue on the twice-weekly-patch rule
+  (missing "alora") and weekly-patch rule (missing "menostar"). Also added a bare "\bibu\b"
+  abbreviation to the ibuprofen rule and a bare "glucophage" brand mention to the metformin rule —
+  both real formulary phrasings that had zero rule despite the underlying molecule already being
+  priced under its generic name.
+  GoodRx access was highly inconsistent this session: fully CAPTCHA-walled at the start (matches
+  the earlier NSAID entry), then recovered mid-session for a run of ~15 successful lookups, then
+  the classifier infrastructure itself (not GoodRx) intermittently denied browser tool calls with
+  "Stage 2 classifier error" for stretches of several consecutive attempts — retried each until it
+  cleared rather than working around it, per the tool's own guidance. All 44 new Cost Plus prices
+  this pass are real, captured live 2026-07-16; GoodRx remains pending for all of them (same
+  "pending, not confirmed-unavailable" distinction as the NSAID entry). `npm test` (25/25 cash
+  tests, 301/301 total), `typecheck`, and `validate-prices` all pass.
+  **Remaining 76-name gap is now 100% menopause-HT**, and almost entirely confirmed not carried by
+  Cost Plus (see above). A handful are still genuinely unconfirmed (not yet searched or the search
+  was interrupted by tool flakiness): Menest, Estratest/EEMT/Covaryx, Estring, Abigale/Zafemy/
+  Gallifrey, Prefest, estropipate, plain norethindrone 5mg, and conjugated-estrogens-oral/Premarin
+  (Premarin brand confirmed carried at $192.85 mid-search, but the exact Cost Plus slug wasn't
+  captured before the session's tool access degraded — needs a quick re-confirm, not a fresh
+  search). Logged as an open follow-up, not guessed at.
+- **2026-07-16 (cont. 3) · closed the remaining menopause-HT gap to zero (76 → 0 unmatched);
+  caught and fixed 2 real embedded-substring mispricing bugs via a full-formulary audit.** User
+  said "keep going." Confirmed the last unconfirmed items by direct Cost Plus search: Menest,
+  Estratest/EEMT/Covaryx, Estring, Prefest, Abigale, estropipate all genuinely not carried.
+  Closed 3 real, previously-uncounted gaps: (1) Abigale/Gallifrey/Zafemy are branded-generic
+  manufacturer names for the *same* estradiol/norethindrone acetate combo as Activella (added to
+  that existing, already-priced rule — a real find, not a new lookup); (2) "norethindrone 5 mg
+  tablet" is the acetate-salt strength without the word "acetate" in the source phrasing
+  (broadened the existing norethindrone-acetate rule, real price $8.48/$33.50); (3) the Premarin
+  rule only matched "conjugated estrogen" in that literal word order, so "estrogens conjugated"
+  (reversed, used by several sources) fell through entirely — broadened the regex AND corrected a
+  stale "Cost Plus doesn't carry it" comment (true for the old rule's 0.625mg citation, false for
+  the 0.3mg product, which is real and now priced at $192.85). Added 15 explicit "not carried,
+  GoodRx-slug-only" rules for the confirmed-absent menopause-HT products (Evamist, Depo-Estradiol,
+  Crinone, Femring, Endometrin, injectable/vaginal progesterone, Intrarosa, Osphena, Menest family,
+  Angeliq, Bijuva, Prefest, Estring, estradiol valerate IM, estropipate) instead of leaving them to
+  the fallback slug guesser. **`KNOWN_UNPRICED_GAP` reached 0 — every one of the 1,973 covered
+  drug names in the live formulary now has an explicit cash-link rule** (down from 575 this
+  morning).
+  **Then a UI verification pass (clicking through md-menopause's Combination pill class) caught a
+  real, live mispricing bug**: "estradiol / drospirenone (generic of Angeliq)" was rendering the
+  *Divigel gel* price ($42.11/$26.85) instead of no price. Root cause: "Angeliq" contains the
+  literal substring "gel" (an-GEL-iq) and the estradiol-gel rule's bare (non-word-bounded) "gel"
+  alternation matched it. Fixed with a word boundary (`\bgel\b`). Ran a systematic audit of every
+  short (3–6 char) bare alternation token across all of `cash.ts` against every real formulary
+  drug-name string, checking for the same embedded-substring pattern — found a **second, more
+  severe instance already shipped this session**: the new estropipate rule's bare "ogen" trigger
+  (meant to catch the brand name "Ogen") matched the substring "ogen" embedded in "estrogen"/
+  "estrogens" everywhere, silently shadowing the correctly-priced Prempro/Premphase/Duavee/
+  Premarin rules for any string mentioning "estrogens" not already caught by a more specific rule
+  earlier in the array — e.g. "conjugated estrogens (Premarin)" was resolving to the *wrong*,
+  unpriced estropipate rule instead of its own real $192.85 price. Fixed the same way (`\bogen\b`).
+  Added 2 new regression tests (4 total assertions) covering both bugs by name, per this project's
+  "every fix ships with a regression test" rule — a future rule addition that reintroduces a bare
+  short substring trigger will now fail loudly instead of silently shadowing an unrelated,
+  correctly-priced rule.
+  `npm test` (29/29 cash tests, 305/305 total), `typecheck`, `validate-prices`, and `trace` all
+  pass. **Open follow-up: GoodRx is still pending for the majority of rules added across this
+  entire day's sweep** (access was erratic all session — CAPTCHA-walled, briefly recovered for a
+  handful of lookups, then blocked again) — revisit in a future session, not by guessing prices.
+- **2026-07-16 (cont. 4) · `roleOf()` false-"Generic"-badge bug fixed; consolidated via cherry-pick
+  from a parallel spawn_task session.** The bug flagged above (bare `.includes('generic')` substring
+  match false-badging "no generic exists" text) was fixed in a separate background session spun off
+  earlier: `roleOf()` now uses `/(?<!\bno )generic/` (negative lookbehind) instead of a bare
+  substring check, shipped with a new `PrescribeOptions.test.tsx` (regression coverage for both the
+  bug case and the true-positive case). That session also independently fixed an unrelated dev-
+  server annoyance — `.claude/launch.json`'s preview config hard-failed when port 5173 was already
+  bound by another concurrent session in the same worktree setup; added `"autoPort": true` so the
+  preview tool reassigns a free port instead of blocking. Both commits were on a separate branch/
+  worktree (`jam/quizzical-mahavira-84cc82`) sharing the same base commit as this session's branch;
+  cherry-picked both cleanly (no conflicts) into `jam/uat-data-gaps-backlog-fb1d83`, then removed
+  the now-redundant worktree and deleted the branch. `npm test` 307/307 (up from 305 — the new
+  regression test). _Fixed._
+- **2026-07-16 (cont. 5) · code review (single-pass, per user request to keep agent count low)
+  caught 2 real rule-shadowing bugs in this session's own cash.ts additions.** `CASH_LINK_RULES`
+  is matched with `.find()` — first match wins — so a broader/earlier rule silently shadows a
+  narrower/later one for the same class of reason as the gel/ogen embedded-substring bugs above,
+  just via rule *order* instead of an unbounded token: (1) the bare `fluticasone` rule (broadened
+  this session, line ~233) sat before the Arnuity Ellipta rule (`fluticasone furoate`, no
+  vilanterol), so `"ARNUITY ELLIPTA (fluticasone furoate)"` resolved to fluticasone-propionate HFA
+  pricing ($185.03) instead of its own unpriced link-only Arnuity rule — moved the Arnuity block
+  above the bare-fluticasone rule (same fix shape as the existing Breo-before-bare-fluticasone
+  ordering already in the file); (2) the new Xigduo/Synjardy combo rules (added this session) sat
+  *after* the pre-existing single-agent `dapagliflozin`/`empagliflozin` rules, so
+  `"XIGDUO XR (dapagliflozin-metformin)"` resolved to plain dapagliflozin ($8.35) instead of the
+  $19.77 combo price, and Synjardy/Trijardy/Glyxambi similarly fell through to Jardiance — moved
+  both combo rules above the single-agent SGLT2 rules. Added 3 new regression tests
+  (`cash.test.ts`) naming both bugs by example string, matching this project's existing pattern.
+  **Lesson: `hasCashLinkRule`'s coverage check (`KNOWN_UNPRICED_GAP`) only proves *some* rule
+  matched, not the *correct* one — a combo/brand-variant name silently resolving to the wrong,
+  earlier rule passes that gate cleanly.** Any future addition of a combo or brand-specific rule
+  must be checked against every existing single-agent rule for its component molecules, and placed
+  above them in the array, not just added at the array's tail. `npm test` 310/310, `typecheck` and
+  `validate-prices` clean. _Fixed._

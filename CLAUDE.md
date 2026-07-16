@@ -486,6 +486,15 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   sitagliptin|glipizide|pioglitazone|synjardy|xigduo|...)\b).*\bmetformin\b/i` so combos fall
   through to the SGLT2 rules (a reasonable proxy — the SGLT2 is the costly component) or the no-price
   fallback. Same trap applies to any single-agent matcher whose drug appears in fixed-dose combos.
+- **The mirror-image of the above: adding a new combo rule at the array's tail doesn't fix
+  anything if an existing single-agent rule for its component molecule still sits earlier.**
+  `CASH_LINK_RULES` is matched with `.find()` (first match wins), so appending new `xigduo`/
+  `synjardy` combo rules after the pre-existing `dapagliflozin`/`empagliflozin` single-agent rules
+  left them fully dead — `"XIGDUO XR"` still resolved to plain dapagliflozin. A code-review pass
+  caught it the same day it shipped. When adding ANY new rule whose match string is a superset or
+  variant of an existing rule's, grep every existing rule for the new rule's component molecule
+  names first, and insert the new rule *above* any rule it could collide with — appending to the
+  end is only safe when nothing upstream could also match the new pattern.
 - **GoodRx exact-dosage deep links still work by guessing params, but two 2026 quirks:** (1) the
   Ozempic page has migrated to the new *oral* semaglutide tablet as its default and gates the
   injectable pen behind a client-side "Switch" control that `?form=pen` no longer overrides — capture
@@ -529,3 +538,14 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   `drug_tier` label even names the statewide tier ("State PDL Non-Preferred"), so one MCO's export also
   reveals what the shared PDL does for every sibling MCO. Blob is byte-identical across payers pointing
   at the same FBO number, so committing it costs ~nothing (git dedups by sha).
+- **A spawn_task chip's background session lands its own worktree/branch — fold it into the active
+  PR with `git cherry-pick`, don't open a second PR.** A UI bug flagged mid-session (the `roleOf()`
+  false-"Generic"-badge bug above) was spun off as a background task; it landed 2 commits on
+  `jam/quizzical-mahavira-84cc82` in its own worktree, sharing the same base commit as the active
+  session's branch. `git merge-base` confirmed the shared base, so `git cherry-pick <sha1> <sha2>`
+  applied both cleanly with zero conflicts — cheaper and cleaner than merging or opening a rival PR.
+  After tests passed (307/307, +2 for the new regression test) and the branch was pushed, removed
+  the now-redundant worktree (`git worktree remove`) and deleted the local branch (`git branch -D`).
+  Also: `.claude/launch.json`'s dev-server preview should set `"autoPort": true` on every
+  configuration — a fixed port hard-fails when a concurrent session's dev server already holds it,
+  which is common when multiple worktrees/spawn_task sessions run against this repo at once.

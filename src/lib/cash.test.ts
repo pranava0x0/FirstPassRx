@@ -47,6 +47,48 @@ describe('cash price links', () => {
   ])('does not attach a tablet/capsule price to the oral-solution form of %s', (name) => {
     expect(hasCashLinkRule(name)).toBe(false)
   })
+
+  // Regression tests for two embedded-substring bugs caught by a full-formulary audit on
+  // 2026-07-16: a short bare alternation token (no word boundary) matched as a substring inside
+  // an unrelated brand/generic name, silently routing it to the wrong rule instead of its own
+  // (correctly priced) rule.
+  it('does not route Angeliq (contains "gel" mid-word) to the estradiol-gel rule', () => {
+    // "Angeliq" contains the literal substring "gel" (an-GEL-iq); a bare (non-word-bounded) "gel"
+    // alternation in the estradiol-gel rule matched it and mispriced it as Divigel.
+    expect(goodRxUrl('estradiol / drospirenone (generic of Angeliq)')).toContain('angeliq')
+    expect(goodRxPrice('estradiol / drospirenone (generic of Angeliq)')).toBeNull()
+  })
+
+  it.each([
+    'conjugated estrogens (Premarin)',
+    'PREMARIN (conjugated estrogens)',
+    'Prempro (conjugated estrogens/medroxyprogesterone)',
+  ])('does not route %s (contains "ogen" inside "estrogen") to the estropipate rule', (name) => {
+    // Bare "ogen" (meant to catch the brand name Ogen) matched the substring "ogen" embedded in
+    // every "estrogen"/"estrogens" mention, shadowing the real Premarin/Prempro/Premphase/Duavee
+    // prices for any string not already caught by a more specific rule earlier in the array.
+    expect(goodRxUrl(name)).not.toContain('estropipate')
+  })
+
+  // Regression tests for two rule-shadowing bugs (a broader/earlier rule intercepting a
+  // narrower/later one; .find() returns first match) caught by code review on 2026-07-16.
+  it('does not route Arnuity Ellipta (fluticasone furoate) to the bare fluticasone-propionate rule', () => {
+    // The bare "fluticasone" rule (broadened 2026-07-16 to catch DISKUS/nasal-only phrasings) sat
+    // before the Arnuity rule in the array, so "ARNUITY ELLIPTA (fluticasone furoate)" resolved to
+    // fluticasone propionate HFA pricing instead of its own (unpriced, link-only) Arnuity rule.
+    expect(goodRxUrl('ARNUITY ELLIPTA (fluticasone furoate)')).toContain('arnuity')
+    expect(costPlusUrl('ARNUITY ELLIPTA (fluticasone furoate)')).toBeNull()
+  })
+
+  it.each([
+    ['XIGDUO XR (dapagliflozin-metformin)', 'xigduo'],
+    ['SYNJARDY (empagliflozin-metformin)', 'synjardy'],
+  ])('routes %s to its own combo rule, not the single-agent SGLT2 rule', (name, expectedSlug) => {
+    // The single-agent dapagliflozin/empagliflozin rules sat before the Xigduo/Synjardy combo
+    // rules in the array, so a combo name matched (and was priced/linked as) the single agent --
+    // e.g. Xigduo XR resolving to plain dapagliflozin at $8.35 instead of the $19.77 combo price.
+    expect(goodRxUrl(name)).toContain(expectedSlug)
+  })
 })
 
 /** Every drug name a live cell can render: the preferred agent + its covered alternatives,
@@ -91,7 +133,83 @@ describe('cash price coverage across the live formulary', () => {
     // had 0.05mg out of stock at capture time -- link-only by design, not a bug. Covers the brand
     // (Climara/Menostar/Alora) and generic "estradiol transdermal/patch" phrasings that fall to
     // this rule. Alora added 2026-07-07 (VA gather) -- same brand family, no separate price rule.
-    const KNOWN_PRICE_UNAVAILABLE = [/climara/i, /menostar/i, /evamist/i, /alora/i, /estradiol transdermal(?! system)/i]
+    // meclofenamate/salsalate/quinapril: confirmed not carried by Cost Plus (search returns only
+    // an unrelated fuzzy match); GoodRx pending -- a real "Press & Hold" bot-check blocked
+    // repeated attempts in the 2026-07-16 session after one successful lookup. Bare "ketoprofen"
+    // (not ER): Cost Plus only carries the 200mg extended-release capsule, not the
+    // immediate-release 50/75mg one; GoodRx pending for the same reason.
+    const KNOWN_PRICE_UNAVAILABLE = [
+      /climara/i,
+      /menostar/i,
+      /evamist/i,
+      /alora/i,
+      /estradiol transdermal(?! system)/i,
+      /meclofenamate/i,
+      /salsalate/i,
+      /ketoprofen/i,
+      /quinapril/i,
+      /accupril/i,
+      /striverdi/i,
+      /olodaterol/i,
+      /trelegy/i,
+      /epinephrine/i,
+      /bevespi/i,
+      /metaproterenol/i,
+      /seebri/i,
+      /duaklir/i,
+      /serevent/i,
+      /breztri/i,
+      /mounjaro/i,
+      /tirzepatide/i,
+      /invokana/i,
+      /canagliflozin/i,
+      /novolog/i,
+      /insulin aspart/i,
+      /merilog/i,
+      /humulin/i,
+      /novolin/i,
+      /fiasp/i,
+      /levemir/i,
+      /detemir/i,
+      /soliqua/i,
+      /lixisenatide/i,
+      /alogliptin/i,
+      /saxagliptin/i,
+      /synjardy/i,
+      /trijardy/i,
+      /glyxambi/i,
+      /evamist/i,
+      /depo-estradiol/i,
+      /crinone/i,
+      /femring/i,
+      /endometrin/i,
+      /intrarosa/i,
+      /prasterone/i,
+      /osphena/i,
+      /ospemifene/i,
+      /menest/i,
+      /estratest/i,
+      /\beemt\b/i,
+      /covaryx/i,
+      /esterified estrogens/i,
+      /estrogens-methyltestosterone/i,
+      /angeliq/i,
+      /drospirenone/i,
+      /bijuva/i,
+      /prefest/i,
+      /norgestimate/i,
+      /estring/i,
+      /estradiol valerate/i,
+      /estropipate/i,
+      /progesterone.*(intramuscular|injection|\boil\b)/i,
+      /progesterone.*(suppositor|insert)/i,
+      // Premarin's regex broadened 2026-07-16 to catch "estrogens conjugated" (reversed word
+      // order) -- this now also matches Premarin Vaginal cream and other conjugated-estrogens
+      // phrasings that were never priced (only the 0.3mg oral tablet is captured above).
+      /premarin/i,
+      /conjugated estrogen/i,
+      /estrogens?,? conjugated/i,
+    ]
     const matched = coveredDrugNames().filter((name) => hasCashLinkRule(name))
     const missingPrice = matched.filter((name) => !goodRxPrice(name) && !costPlusPrice(name))
     const unexpected = missingPrice.filter((name) => !KNOWN_PRICE_UNAVAILABLE.some((re) => re.test(name)))

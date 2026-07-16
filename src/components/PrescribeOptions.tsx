@@ -13,7 +13,8 @@ import { AppealTips } from './AppealTips'
 function roleOf(text: string): string {
   const t = text.toLowerCase()
   if (t.includes('biosimilar')) return 'Biosimilar'
-  if (t.includes('generic')) return 'Generic'
+  // "no generic exists"/"no generic combo exists" etc. are the ABSENCE of a generic, not a match.
+  if (/(?<!\bno )generic/.test(t)) return 'Generic'
   if (t.includes('combo') || t.includes('combination')) return 'Combination'
   return 'Alternative'
 }

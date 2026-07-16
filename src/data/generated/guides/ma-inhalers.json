@@ -8,9 +8,9 @@
   "classNoun": "Prescription type",
   "unitNoun": "inhaler",
   "tagline": "",
-  "dataStatus": "mixed",
-  "lastUpdated": "2026-06-22",
-  "capturedAt": "2026-06-22",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-07-16",
+  "capturedAt": "2026-07-16",
   "payers": [
     {
       "id": "masshealth",
@@ -34,13 +34,13 @@
       "shortName": "BCBS MA",
       "aka": "Blue Cross",
       "pbm": "CVS Caremark",
-      "formularyUrl": "https://provider.bluecrossma.com/ProviderHome/portal/home/pharmacy/formularies/medication-look-up",
+      "formularyUrl": "https://www.bluecrossma.org/medication/standard-control-formulary?provider=true",
       "sourceIds": [
         "bcbsma-medlookup"
       ],
-      "productName": "Member-specific commercial formulary — confirm product",
+      "productName": "Standard Control with Advanced Control Specialty Formulary (CVS Caremark)",
       "marketSegment": "commercial-employer",
-      "formularyId": "BCBSMA Medication Lookup"
+      "formularyId": "BCBSMA SC ACSF — 07/01/2026"
     },
     {
       "id": "tufts",
@@ -347,6 +347,33 @@
       "url": "https://www.fda.gov/news-events/press-announcements/fda-roundup-march-11-2025",
       "effectiveDate": "2025-03-11",
       "accessed": "2026-06-22"
+    },
+    {
+      "id": "bcbsma-std-covered-2026-07",
+      "label": "BCBS MA Standard Control with Advanced Control Specialty Formulary — Comprehensive Covered Medication List (effective July 2026)",
+      "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+      "type": "pbm",
+      "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-000720261-standard-control-with-advanced-control-specialty-formulary-comprehensive-covered-medication-list-july-2026.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-07-16"
+    },
+    {
+      "id": "bcbsma-std-removals-2026-07",
+      "label": "BCBS MA Standard Control with Advanced Control Specialty Formulary — Comprehensive Drug Removal List (effective July 2026)",
+      "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+      "type": "pbm",
+      "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-10654612D-drug-removals-for-standard-control-with-advanced-control-specialty-formulary-july-2026.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-07-16"
+    },
+    {
+      "id": "bcbsma-std-updates-2026-07",
+      "label": "BCBS MA Standard Control Formulary — Quarterly Updates (July 2026)",
+      "publisher": "CVS Caremark (administers pharmacy benefits for Blue Cross Blue Shield of Massachusetts)",
+      "type": "pbm",
+      "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-10654612C-standard-control-formulary-quarterly-updates-july-2026.pdf",
+      "effectiveDate": "2026-04-01",
+      "accessed": "2026-07-16"
     }
   ],
   "glossary": [
@@ -685,9 +712,9 @@
       "classId": "saba",
       "preferredAgent": {
         "inn": "Albuterol sulfate HFA",
-        "brand": "ProAir HFA",
+        "brand": null,
         "genericAvailable": true,
-        "strength": "90 mcg",
+        "strength": "108 mcg/act (90 mcg delivered)",
         "sig": "2 puffs every 4 to 6 hours as needed",
         "sigShort": "2 puffs Q4-6H PRN",
         "plainSig": "Two puffs when you need it, no more than every 4 hours."
@@ -696,36 +723,37 @@
       "boglNote": null,
       "paRequired": [],
       "stepTherapy": null,
-      "verification": "example",
-      "verificationNote": "BCBSMA's formulary and PA intake are confirmed, but the inhaler-specific preferred/PA criteria PDF blocked automated reading — verify on the BCBSMA Medication Look-up before relying on this cell.",
+      "verification": "verified",
+      "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control with Advanced Control Specialty Formulary Comprehensive Covered Medication List (effective July 2026, downloaded and text-extracted, 172 pages, 'ANTIASTHMATIC AND BRONCHODILATOR AGENTS > SYMPATHOMIMETICS' section). Generic albuterol sulfate HFA is Tier 1 with no PA/QL/ST (two specific NDCs are excluded from Tier 1 pricing, likely brand ProAir/Ventolin NDCs mapped elsewhere). Generic levalbuterol (both HCl nebulized and tartrate HFA) is also Tier 1, no restrictions. This corrects the prior 'example' cell, which used a brand name (ProAir HFA) as the preferred pick without a readable source; the actual formulary structures coverage around the generic molecule, not a specific brand.",
       "sourceIds": [
-        "bcbsma-medlookup"
+        "bcbsma-std-covered-2026-07"
       ],
-      "lastReviewed": "2026-06-22",
+      "lastReviewed": "2026-07-16",
       "coverageSourceIds": [
-        "bcbsma-medlookup"
+        "bcbsma-std-covered-2026-07"
       ],
       "restrictionSourceIds": [
-        "bcbsma-medlookup"
+        "bcbsma-std-covered-2026-07"
       ],
       "alternatives": [
         {
-          "drug": "Levalbuterol (Xopenex HFA)",
-          "note": "Non-preferred",
+          "drug": "Levalbuterol HCl / levalbuterol tartrate (generic Xopenex)",
+          "note": "Tier 1, no PA — same-tier alternative",
           "sourceIds": [
-            "bcbsma-medlookup"
+            "bcbsma-std-covered-2026-07"
           ]
         }
-      ]
+      ],
+      "tier": "Tier 1 (generic)"
     },
     {
       "payerId": "bcbsma",
       "classId": "ics",
       "preferredAgent": {
-        "inn": "Fluticasone propionate",
-        "brand": "Flovent HFA (authorized generic)",
+        "inn": "Fluticasone propionate HFA",
+        "brand": null,
         "genericAvailable": true,
-        "strength": "110 mcg",
+        "strength": "44 mcg/act",
         "sig": "2 puffs twice daily",
         "sigShort": "2 puffs BID",
         "plainSig": "Two puffs, morning and night, every day."
@@ -734,28 +762,42 @@
       "boglNote": null,
       "paRequired": [],
       "stepTherapy": null,
-      "verification": "example",
-      "verificationNote": "Illustrative — confirm the preferred ICS and any step therapy on the BCBSMA Medication Look-up (the asthma/COPD pharmacy policy PDF blocked automated reading).",
+      "verification": "verified",
+      "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List (effective July 2026, 'STEROID INHALANTS' section). Generic fluticasone propionate HFA, budesonide inhalation, beclomethasone dipropionate, and fluticasone furoate are all Tier 1 with no PA/QL/ST. Brand Asmanex HFA is Tier 2; brand Pulmicort/Pulmicort Flexhaler is Tier 2-3. No PA is required anywhere in this class.",
       "sourceIds": [
-        "bcbsma-medlookup",
-        "fda-firstgen-flovent"
+        "bcbsma-std-covered-2026-07"
       ],
-      "lastReviewed": "2026-06-22",
+      "lastReviewed": "2026-07-16",
       "coverageSourceIds": [
-        "bcbsma-medlookup"
+        "bcbsma-std-covered-2026-07"
       ],
       "restrictionSourceIds": [
-        "bcbsma-medlookup"
+        "bcbsma-std-covered-2026-07"
       ],
       "alternatives": [
         {
-          "drug": "Arnuity Ellipta",
-          "note": "Non-preferred",
+          "drug": "Budesonide (inhalation) / beclomethasone dipropionate / fluticasone furoate (generics)",
+          "note": "Tier 1, no PA — same-tier alternatives",
           "sourceIds": [
-            "bcbsma-medlookup"
+            "bcbsma-std-covered-2026-07"
+          ]
+        },
+        {
+          "drug": "Asmanex HFA (brand)",
+          "note": "Tier 2 — higher-cost alternative",
+          "sourceIds": [
+            "bcbsma-std-covered-2026-07"
+          ]
+        },
+        {
+          "drug": "Pulmicort / Pulmicort Flexhaler (brand)",
+          "note": "Tier 2/3 — higher-cost alternative",
+          "sourceIds": [
+            "bcbsma-std-covered-2026-07"
           ]
         }
-      ]
+      ],
+      "tier": "Tier 1 (generic)"
     },
     {
       "payerId": "bcbsma",
@@ -773,67 +815,88 @@
       "boglNote": null,
       "paRequired": [],
       "stepTherapy": null,
-      "verification": "example",
-      "verificationNote": "Illustrative; Wixela Inhub is the FDA generic of Advair Diskus. Confirm the preferred combo on the BCBSMA Medication Look-up.",
+      "verification": "verified",
+      "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List (effective July 2026, 'SYMPATHOMIMETICS' section). Confirms Wixela Inhub (generic Advair Diskus) at all three strengths is Tier 1, no PA — matches the prior illustrative pick exactly. Generic budesonide-formoterol (Breyna) is also Tier 1. Breo Ellipta is Tier 2, confirming the prior 'non-preferred' alternative note.",
       "sourceIds": [
-        "bcbsma-medlookup",
-        "fda-wixela"
+        "bcbsma-std-covered-2026-07"
       ],
-      "lastReviewed": "2026-06-22",
+      "lastReviewed": "2026-07-16",
       "coverageSourceIds": [
-        "bcbsma-medlookup"
+        "bcbsma-std-covered-2026-07"
       ],
       "restrictionSourceIds": [
-        "bcbsma-medlookup"
+        "bcbsma-std-covered-2026-07"
       ],
       "alternatives": [
         {
-          "drug": "Breo Ellipta",
-          "note": "Non-preferred",
+          "drug": "Budesonide-formoterol (generic Symbicort / Breyna)",
+          "note": "Tier 1, no PA — same-tier alternative",
           "sourceIds": [
-            "bcbsma-medlookup"
+            "bcbsma-std-covered-2026-07"
+          ]
+        },
+        {
+          "drug": "Breo Ellipta (brand)",
+          "note": "Tier 2 — higher-cost alternative",
+          "sourceIds": [
+            "bcbsma-std-covered-2026-07"
           ]
         }
-      ]
+      ],
+      "tier": "Tier 1 (generic)"
     },
     {
       "payerId": "bcbsma",
       "classId": "lama",
       "preferredAgent": {
         "inn": "Tiotropium",
-        "brand": "Spiriva Respimat",
+        "brand": "Spiriva HandiHaler",
         "genericAvailable": false,
-        "strength": "2.5 mcg",
-        "sig": "2 inhalations once daily",
-        "sigShort": "2 inh daily",
-        "plainSig": "Two breaths in, once a day, same time each day."
+        "strength": "18 mcg capsule",
+        "sig": "1 capsule inhaled once daily via HandiHaler device",
+        "sigShort": "1 cap inh daily",
+        "plainSig": "Inhale one capsule, once a day, same time each day."
       },
       "boglActive": false,
       "boglNote": null,
       "paRequired": [],
       "stepTherapy": null,
-      "verification": "example",
-      "verificationNote": "Illustrative — LAMA is COPD-indicated. Confirm the preferred agent on the BCBSMA Medication Look-up.",
+      "verification": "verified",
+      "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List (effective July 2026, 'BRONCHODILATORS - ANTICHOLINERGICS' section). Corrects the prior illustrative pick: Spiriva HandiHaler (capsule device) is Tier 1 with no generic tiotropium capsule listed on this formulary, while Spiriva Respimat (soft-mist device) is Tier 2 — the plan steers to the cheaper capsule device, not the Respimat this cell previously assumed. Generic umeclidinium bromide (Incruse Ellipta equivalent) is a same-tier (Tier 1) alternative. No PA required anywhere in this class; boglActive stays false since no generic tiotropium (any device) is listed.",
       "sourceIds": [
-        "bcbsma-medlookup",
-        "dailymed-spiriva"
+        "bcbsma-std-covered-2026-07"
       ],
-      "lastReviewed": "2026-06-22",
+      "lastReviewed": "2026-07-16",
       "coverageSourceIds": [
-        "bcbsma-medlookup"
+        "bcbsma-std-covered-2026-07"
       ],
       "restrictionSourceIds": [
-        "bcbsma-medlookup"
+        "bcbsma-std-covered-2026-07"
       ],
       "alternatives": [
         {
-          "drug": "Yupelri (revefenacin)",
-          "note": "Non-preferred",
+          "drug": "Umeclidinium bromide (generic Incruse Ellipta)",
+          "note": "Tier 1, no PA — same-tier alternative",
           "sourceIds": [
-            "bcbsma-medlookup"
+            "bcbsma-std-covered-2026-07"
+          ]
+        },
+        {
+          "drug": "Spiriva Respimat (brand, soft-mist device)",
+          "note": "Tier 2 — higher-cost, different device",
+          "sourceIds": [
+            "bcbsma-std-covered-2026-07"
+          ]
+        },
+        {
+          "drug": "Yupelri (revefenacin, nebulized)",
+          "note": "Tier 2 — higher-cost alternative",
+          "sourceIds": [
+            "bcbsma-std-covered-2026-07"
           ]
         }
-      ]
+      ],
+      "tier": "Tier 1 (brand — no generic listed)"
     },
     {
       "payerId": "tufts",
