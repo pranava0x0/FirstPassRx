@@ -529,3 +529,14 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   `drug_tier` label even names the statewide tier ("State PDL Non-Preferred"), so one MCO's export also
   reveals what the shared PDL does for every sibling MCO. Blob is byte-identical across payers pointing
   at the same FBO number, so committing it costs ~nothing (git dedups by sha).
+- **A spawn_task chip's background session lands its own worktree/branch — fold it into the active
+  PR with `git cherry-pick`, don't open a second PR.** A UI bug flagged mid-session (the `roleOf()`
+  false-"Generic"-badge bug above) was spun off as a background task; it landed 2 commits on
+  `jam/quizzical-mahavira-84cc82` in its own worktree, sharing the same base commit as the active
+  session's branch. `git merge-base` confirmed the shared base, so `git cherry-pick <sha1> <sha2>`
+  applied both cleanly with zero conflicts — cheaper and cleaner than merging or opening a rival PR.
+  After tests passed (307/307, +2 for the new regression test) and the branch was pushed, removed
+  the now-redundant worktree (`git worktree remove`) and deleted the local branch (`git branch -D`).
+  Also: `.claude/launch.json`'s dev-server preview should set `"autoPort": true` on every
+  configuration — a fixed port hard-fails when a concurrent session's dev server already holds it,
+  which is common when multiple worktrees/spawn_task sessions run against this repo at once.

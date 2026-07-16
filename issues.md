@@ -577,3 +577,16 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   pass. **Open follow-up: GoodRx is still pending for the majority of rules added across this
   entire day's sweep** (access was erratic all session — CAPTCHA-walled, briefly recovered for a
   handful of lookups, then blocked again) — revisit in a future session, not by guessing prices.
+- **2026-07-16 (cont. 4) · `roleOf()` false-"Generic"-badge bug fixed; consolidated via cherry-pick
+  from a parallel spawn_task session.** The bug flagged above (bare `.includes('generic')` substring
+  match false-badging "no generic exists" text) was fixed in a separate background session spun off
+  earlier: `roleOf()` now uses `/(?<!\bno )generic/` (negative lookbehind) instead of a bare
+  substring check, shipped with a new `PrescribeOptions.test.tsx` (regression coverage for both the
+  bug case and the true-positive case). That session also independently fixed an unrelated dev-
+  server annoyance — `.claude/launch.json`'s preview config hard-failed when port 5173 was already
+  bound by another concurrent session in the same worktree setup; added `"autoPort": true` so the
+  preview tool reassigns a free port instead of blocking. Both commits were on a separate branch/
+  worktree (`jam/quizzical-mahavira-84cc82`) sharing the same base commit as this session's branch;
+  cherry-picked both cleanly (no conflicts) into `jam/uat-data-gaps-backlog-fb1d83`, then removed
+  the now-redundant worktree and deleted the branch. `npm test` 307/307 (up from 305 — the new
+  regression test). _Fixed._

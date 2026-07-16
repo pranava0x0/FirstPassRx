@@ -177,7 +177,10 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
     preference, menopause-HT alternative misclassifications). Also surfaced and worked around a
     live UI bug (`roleOf()` in `PrescribeOptions.tsx` false-"Generic"-badges any alternative whose
     text contains the substring "generic", even in "no generic exists" — spun off as its own task
-    rather than patched per-record).
+    rather than patched per-record). **FIXED 2026-07-16** in a parallel spawn_task session
+    (`roleOf()` now requires "generic" not be preceded by "no " via a negative lookbehind regex,
+    with a regression test); cherry-picked into this branch alongside an unrelated `autoPort` dev-
+    server fix from the same background session — see issues.md.
   - **AARP Medicare Rx Preferred (UHC PDP) extraction is incomplete — 5 cells, still open.**
     `md-inhalers` (ics, lama) + `md-diabetes` (glp1, sglt2, insulin), all payer `medicare-partd`.
     Fetched via curl with a browser UA (plain WebFetch 403'd) but the PDF only partially
