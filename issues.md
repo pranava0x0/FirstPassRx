@@ -537,3 +537,43 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   (Premarin brand confirmed carried at $192.85 mid-search, but the exact Cost Plus slug wasn't
   captured before the session's tool access degraded — needs a quick re-confirm, not a fresh
   search). Logged as an open follow-up, not guessed at.
+- **2026-07-16 (cont. 3) · closed the remaining menopause-HT gap to zero (76 → 0 unmatched);
+  caught and fixed 2 real embedded-substring mispricing bugs via a full-formulary audit.** User
+  said "keep going." Confirmed the last unconfirmed items by direct Cost Plus search: Menest,
+  Estratest/EEMT/Covaryx, Estring, Prefest, Abigale, estropipate all genuinely not carried.
+  Closed 3 real, previously-uncounted gaps: (1) Abigale/Gallifrey/Zafemy are branded-generic
+  manufacturer names for the *same* estradiol/norethindrone acetate combo as Activella (added to
+  that existing, already-priced rule — a real find, not a new lookup); (2) "norethindrone 5 mg
+  tablet" is the acetate-salt strength without the word "acetate" in the source phrasing
+  (broadened the existing norethindrone-acetate rule, real price $8.48/$33.50); (3) the Premarin
+  rule only matched "conjugated estrogen" in that literal word order, so "estrogens conjugated"
+  (reversed, used by several sources) fell through entirely — broadened the regex AND corrected a
+  stale "Cost Plus doesn't carry it" comment (true for the old rule's 0.625mg citation, false for
+  the 0.3mg product, which is real and now priced at $192.85). Added 15 explicit "not carried,
+  GoodRx-slug-only" rules for the confirmed-absent menopause-HT products (Evamist, Depo-Estradiol,
+  Crinone, Femring, Endometrin, injectable/vaginal progesterone, Intrarosa, Osphena, Menest family,
+  Angeliq, Bijuva, Prefest, Estring, estradiol valerate IM, estropipate) instead of leaving them to
+  the fallback slug guesser. **`KNOWN_UNPRICED_GAP` reached 0 — every one of the 1,973 covered
+  drug names in the live formulary now has an explicit cash-link rule** (down from 575 this
+  morning).
+  **Then a UI verification pass (clicking through md-menopause's Combination pill class) caught a
+  real, live mispricing bug**: "estradiol / drospirenone (generic of Angeliq)" was rendering the
+  *Divigel gel* price ($42.11/$26.85) instead of no price. Root cause: "Angeliq" contains the
+  literal substring "gel" (an-GEL-iq) and the estradiol-gel rule's bare (non-word-bounded) "gel"
+  alternation matched it. Fixed with a word boundary (`\bgel\b`). Ran a systematic audit of every
+  short (3–6 char) bare alternation token across all of `cash.ts` against every real formulary
+  drug-name string, checking for the same embedded-substring pattern — found a **second, more
+  severe instance already shipped this session**: the new estropipate rule's bare "ogen" trigger
+  (meant to catch the brand name "Ogen") matched the substring "ogen" embedded in "estrogen"/
+  "estrogens" everywhere, silently shadowing the correctly-priced Prempro/Premphase/Duavee/
+  Premarin rules for any string mentioning "estrogens" not already caught by a more specific rule
+  earlier in the array — e.g. "conjugated estrogens (Premarin)" was resolving to the *wrong*,
+  unpriced estropipate rule instead of its own real $192.85 price. Fixed the same way (`\bogen\b`).
+  Added 2 new regression tests (4 total assertions) covering both bugs by name, per this project's
+  "every fix ships with a regression test" rule — a future rule addition that reintroduces a bare
+  short substring trigger will now fail loudly instead of silently shadowing an unrelated,
+  correctly-priced rule.
+  `npm test` (29/29 cash tests, 305/305 total), `typecheck`, `validate-prices`, and `trace` all
+  pass. **Open follow-up: GoodRx is still pending for the majority of rules added across this
+  entire day's sweep** (access was erratic all session — CAPTCHA-walled, briefly recovered for a
+  handful of lookups, then blocked again) — revisit in a future session, not by guessing prices.

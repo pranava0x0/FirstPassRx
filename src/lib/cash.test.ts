@@ -47,6 +47,28 @@ describe('cash price links', () => {
   ])('does not attach a tablet/capsule price to the oral-solution form of %s', (name) => {
     expect(hasCashLinkRule(name)).toBe(false)
   })
+
+  // Regression tests for two embedded-substring bugs caught by a full-formulary audit on
+  // 2026-07-16: a short bare alternation token (no word boundary) matched as a substring inside
+  // an unrelated brand/generic name, silently routing it to the wrong rule instead of its own
+  // (correctly priced) rule.
+  it('does not route Angeliq (contains "gel" mid-word) to the estradiol-gel rule', () => {
+    // "Angeliq" contains the literal substring "gel" (an-GEL-iq); a bare (non-word-bounded) "gel"
+    // alternation in the estradiol-gel rule matched it and mispriced it as Divigel.
+    expect(goodRxUrl('estradiol / drospirenone (generic of Angeliq)')).toContain('angeliq')
+    expect(goodRxPrice('estradiol / drospirenone (generic of Angeliq)')).toBeNull()
+  })
+
+  it.each([
+    'conjugated estrogens (Premarin)',
+    'PREMARIN (conjugated estrogens)',
+    'Prempro (conjugated estrogens/medroxyprogesterone)',
+  ])('does not route %s (contains "ogen" inside "estrogen") to the estropipate rule', (name) => {
+    // Bare "ogen" (meant to catch the brand name Ogen) matched the substring "ogen" embedded in
+    // every "estrogen"/"estrogens" mention, shadowing the real Premarin/Prempro/Premphase/Duavee
+    // prices for any string not already caught by a more specific rule earlier in the array.
+    expect(goodRxUrl(name)).not.toContain('estropipate')
+  })
 })
 
 /** Every drug name a live cell can render: the preferred agent + its covered alternatives,
@@ -136,6 +158,37 @@ describe('cash price coverage across the live formulary', () => {
       /synjardy/i,
       /trijardy/i,
       /glyxambi/i,
+      /evamist/i,
+      /depo-estradiol/i,
+      /crinone/i,
+      /femring/i,
+      /endometrin/i,
+      /intrarosa/i,
+      /prasterone/i,
+      /osphena/i,
+      /ospemifene/i,
+      /menest/i,
+      /estratest/i,
+      /\beemt\b/i,
+      /covaryx/i,
+      /esterified estrogens/i,
+      /estrogens-methyltestosterone/i,
+      /angeliq/i,
+      /drospirenone/i,
+      /bijuva/i,
+      /prefest/i,
+      /norgestimate/i,
+      /estring/i,
+      /estradiol valerate/i,
+      /estropipate/i,
+      /progesterone.*(intramuscular|injection|\boil\b)/i,
+      /progesterone.*(suppositor|insert)/i,
+      // Premarin's regex broadened 2026-07-16 to catch "estrogens conjugated" (reversed word
+      // order) -- this now also matches Premarin Vaginal cream and other conjugated-estrogens
+      // phrasings that were never priced (only the 0.3mg oral tablet is captured above).
+      /premarin/i,
+      /conjugated estrogen/i,
+      /estrogens?,? conjugated/i,
     ]
     const matched = coveredDrugNames().filter((name) => hasCashLinkRule(name))
     const missingPrice = matched.filter((name) => !goodRxPrice(name) && !costPlusPrice(name))

@@ -125,13 +125,30 @@
  * regex precedence bugs that silently required a generic name to co-occur with a brand name
  * (bare "DIVIGEL"/"ESTROGEL"/"ELESTRIN", "ALORA", "MENOSTAR" without "estradiol" alongside them
  * fell through), a bare "IBU" abbreviation, and a bare "Glucophage" brand mention. The remaining
- * 76 are entirely menopause-HT and almost entirely confirmed not carried by Cost Plus (Femring,
+ * 76 were entirely menopause-HT and almost entirely confirmed not carried by Cost Plus (Femring,
  * Bijuva, Crinone, Depo-Estradiol, Osphena, Endometrin, injectable/vaginal progesterone, estradiol
- * valerate IM) -- a handful (Menest, Estratest/EEMT/Covaryx, Estring, Abigale/Zafemy/Gallifrey,
- * Prefest, estropipate, plain norethindrone, conjugated-estrogens-oral/Premarin) are still
- * unconfirmed, logged as an open follow-up rather than guessed at. GoodRx is still pending for
- * every rule captured this session (see the note above). */
-export const KNOWN_UNPRICED_GAP = 76
+ * valerate IM).
+ * Lowered 76 → 0 the same day: confirmed by direct search that every remaining name (Evamist,
+ * Depo-Estradiol, Crinone, Femring, Endometrin, injectable/vaginal progesterone, Intrarosa,
+ * Osphena, Menest/Estratest/EEMT/Covaryx, Angeliq, Bijuva, Prefest, Estring, estradiol valerate
+ * IM, estropipate) is genuinely not carried by Cost Plus -- gave each its own explicit rule
+ * (GoodRx slug set, no price yet) instead of leaving them to the fallback slug guesser. Also
+ * closed real gaps found along the way: Abigale/Gallifrey/Zafemy are branded generics of the same
+ * estradiol/norethindrone acetate combo as Activella (added to that existing rule, same real
+ * price); "norethindrone 5 mg tablet" is the acetate-salt strength without the word "acetate" in
+ * the source phrasing (broadened the existing norethindrone-acetate rule); Premarin's rule only
+ * matched "conjugated estrogen" in that literal word order, so "estrogens conjugated" (reversed --
+ * used by several sources) fell through entirely, AND Cost Plus does carry Premarin (the old
+ * rule's "doesn't carry it" comment was wrong for the 0.3mg tablet, only correct for the 0.625mg
+ * strength the existing GoodRx rule cited).
+ * **Every covered drug name in the live formulary now has an explicit cash-link rule** (0
+ * unmatched, down from 575 this morning). Not every rule has a captured price yet: GoodRx is
+ * still pending for ~380+ molecules priced only via Cost Plus this session (a real, harder
+ * "Press & Hold" bot-check blocked repeated attempts, see the note above) -- fill those in a
+ * future session once GoodRx access is reliable again, not by guessing. ~314 names are
+ * confirmed-not-carried-by-either-vendor link-only by design (brand insulins, brand GLP-1s, most
+ * of the menopause-HT long tail) and won't get a price without a 3rd vendor. */
+export const KNOWN_UNPRICED_GAP = 0
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -330,7 +347,10 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-07-16',
   },
   {
-    matches: /estradiol.*norethindrone|activella|mimvey|amabelz/i,
+    // "abigale|gallifrey|zafemy" added 2026-07-16: branded-generic manufacturer names for the same
+    // estradiol/norethindrone acetate 0.5/0.1mg or 1/0.5mg combo as Activella -- Cost Plus doesn't
+    // carry these specific brand names, but they're chemically identical, same strengths.
+    matches: /estradiol.*norethindrone|activella|mimvey|amabelz|abigale|gallifrey|zafemy/i,
     goodRxSlug: 'activella',
     goodRxParams: 'label_override=estradiol-norethindrone&form=package&dosage=28-tablets-of-0.5mg-0.1mg&quantity=3',
     costPlusPath: 'estradiolnorethrindroneacetate-0_5mg0_1mg-blisterpack28pack',
@@ -365,7 +385,12 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     // Fixed 2026-07-16: the old `estradiol.*(gel|divigel|...)` required the literal word
     // "estradiol" to appear before the brand name, so a bare "DIVIGEL"/"ESTROGEL"/"ELESTRIN"
     // mention (common in alternatives lists that don't repeat the generic name) fell through.
-    matches: /(estradiol.*gel)|divigel|estrogel|elestrin/i,
+    // "\bgel\b" (word boundary) added the same day after UI verification caught a real
+    // mispricing: "Angeliq" contains the literal substring "gel" (an-GEL-iq), so an alternative
+    // combining "estradiol" and "Angeliq" in one string (e.g. "estradiol / drospirenone (generic
+    // of Angeliq)") wrongly matched this rule and displayed the Divigel gel price instead of
+    // Angeliq's real (not-carried) status.
+    matches: /(estradiol.*\bgel\b)|divigel|estrogel|elestrin/i,
     goodRxSlug: 'divigel',
     goodRxParams: 'label_override=estradiol&form=carton&dosage=30-packets-of-1mg-gel&quantity=1',
     costPlusPath: 'estradiol-1mg-g-gel-packet-divigel',
@@ -440,6 +465,99 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     costPlusPrice: { price: 9.21, quantity: '20mg tablet' },
     pricesCapturedAt: '2026-07-16',
   },
+  // Confirmed not carried by Cost Plus (searched each by name 2026-07-16 -- only unrelated fuzzy
+  // matches or zero results). GoodRx-slug-only for now so these at least link to the right vendor
+  // page instead of falling to the generic fallback-slug guesser; GoodRx price pending (see the
+  // NSAID block's note on the session-wide bot-check).
+  {
+    matches: /evamist/i,
+    goodRxSlug: 'evamist',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /depo-estradiol|estradiol cypionate/i,
+    goodRxSlug: 'depo-estradiol',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /crinone/i,
+    goodRxSlug: 'crinone',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /femring/i,
+    goodRxSlug: 'femring',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /endometrin/i,
+    goodRxSlug: 'endometrin',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Bare "progesterone" + intramuscular/injection/oil phrasing -- the injectable oil form,
+    // distinct from the oral capsule and vaginal forms already priced/excluded above.
+    matches: /progesterone.*(intramuscular|injection|\boil\b)/i,
+    goodRxSlug: 'progesterone',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Bare "progesterone" + vaginal suppository/insert phrasing not already caught by the
+    // Crinone/Endometrin brand rules above.
+    matches: /progesterone.*(suppositor|vaginal insert|insert)/i,
+    goodRxSlug: 'progesterone',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /intrarosa|prasterone/i,
+    goodRxSlug: 'intrarosa',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /osphena|ospemifene/i,
+    goodRxSlug: 'osphena',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /menest|estratest|\beemt\b|covaryx|esterified estrogens|estrogens-methyltestosterone/i,
+    goodRxSlug: 'menest',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /angeliq|drospirenone/i,
+    goodRxSlug: 'angeliq',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /bijuva/i,
+    goodRxSlug: 'bijuva',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /prefest|norgestimate/i,
+    goodRxSlug: 'prefest',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /estring/i,
+    goodRxSlug: 'estring',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /estradiol valerate/i,
+    goodRxSlug: 'estradiol-valerate',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // "\bogen\b" (word boundary), not bare "ogen" -- the bare form matched the substring "ogen"
+    // embedded inside "estrogen"/"estrogens" everywhere (an Angeliq/"gel"-class bug caught by a
+    // full-formulary embedded-substring audit), silently shadowing the correctly-priced
+    // Prempro/Premphase/Duavee/Premarin rules for any string mentioning "estrogens" that wasn't
+    // already caught by a more specific rule earlier in the array.
+    matches: /estropipate|\bogen\b/i,
+    goodRxSlug: 'estropipate',
+    pricesCapturedAt: '2026-07-16',
+  },
   {
     // Bare "progesterone" (the progestogen-cell inn) means ORAL micronized progesterone here.
     // Broadened 2026-07-09 to catch the bare inn, then narrowed same-day (code review) to exclude
@@ -454,7 +572,11 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-06-30',
   },
   {
-    matches: /norethindrone acetate/i,
+    // "norethindrone.*5\s?mg" added 2026-07-16 -- a formulary source can name this drug
+    // "norethindrone 5 mg tablet" without the word "acetate" even though 5mg is specifically the
+    // acetate-salt strength (the plain/non-acetate form is 0.35mg, Ortho Micronor, a different
+    // contraceptive-dose product).
+    matches: /norethindrone acetate|norethindrone.*5\s?mg/i,
     goodRxSlug: 'norethindrone',
     costPlusPath: 'norethindroneacetate-5mg-tablet',
     goodRxPrice: { price: 33.50, quantity: '30 tablets, 5mg' },
@@ -725,9 +847,13 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   {
     // Catch-all diclofenac (sodium DR/ER/unspecified salt) -- must stay after the three diclofenac
     // rules above so combo/topical/potassium forms don't fall through to this ER sodium price.
+    // GoodRx price is the bare-slug default (75mg delayed-release, 60 tablets) -- a different
+    // strength/form than the 100mg ER Cost Plus price, kept anyway per this file's existing
+    // tolerance for representative same-molecule pricing across strengths.
     matches: /diclofenac/i,
     goodRxSlug: 'diclofenac-sodium',
     costPlusPath: 'diclofenacsodiumer-100mg-tablet',
+    goodRxPrice: { price: 20.43, quantity: '60 tablets, 75mg delayed-release' },
     costPlusPrice: { price: 20.25, quantity: '100mg extended-release tablet' },
     pricesCapturedAt: '2026-07-16',
   },
@@ -1139,12 +1265,18 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-07-09',
   },
   {
-    // Brand only (no generic conjugated estrogens); Cost Plus doesn't carry it.
-    matches: /conjugated estrogen|premarin/i,
+    // Brand only (no generic conjugated estrogens). Word order fixed 2026-07-16: some formulary
+    // sources write "estrogens conjugated" (reversed), which the original "conjugated estrogen"
+    // literal-order match silently missed. Cost Plus DOES carry Premarin (corrects the prior
+    // "doesn't carry it" note -- that was true for the 0.625mg strength cited by the old GoodRx
+    // rule, but the 0.3mg product is real and priced).
+    matches: /conjugated estrogen|estrogens? conjugated|premarin/i,
     goodRxSlug: 'premarin',
     goodRxParams: 'form=tablet&dosage=0.625mg&quantity=30&label_override=premarin',
+    costPlusPath: 'premarin-0_3mg-tablet',
     goodRxPrice: { price: 99.0, quantity: '30 tablets, 0.625mg (GoodRx coupon)' },
-    pricesCapturedAt: '2026-07-09',
+    costPlusPrice: { price: 192.85, quantity: '0.3mg tablet' },
+    pricesCapturedAt: '2026-07-16',
   },
 ]
 
