@@ -110,8 +110,28 @@
  * still missing -- GoodRx served a real "Press & Hold" bot-check CAPTCHA to this session after one
  * successful lookup, a harder block than the usual plain-fetch 403 this project has seen before.
  * Revisit to fill in GoodRx once accessible; meclofenamate/salsalate/immediate-release-ketoprofen
- * are confirmed not carried by Cost Plus (not a research gap). */
-export const KNOWN_UNPRICED_GAP = 362
+ * are confirmed not carried by Cost Plus (not a research gap).
+ * Lowered 362 → 76 the same day, continuing the same UAT sweep across ACE inhibitors (captopril,
+ * fosinopril, moexipril, perindopril, quinapril, trandolapril, fosinopril-HCTZ, trandolapril-
+ * verapamil, sacubitril/valsartan), inhalers (Anoro, Perforomist, terbutaline, montelukast,
+ * mometasone/Nasonex, flunisolide, Breyna, bare "fluticasone" phrasings; Striverdi/Bevespi/Seebri/
+ * Duaklir/Trelegy/Breztri/Serevent/metaproterenol/epinephrine confirmed not carried), diabetes
+ * (exenatide, glipizide/glyburide/glimepiride/pioglitazone + their metformin/glimepiride combos,
+ * sitagliptin + Janumet, Xigduo XR, the entire insulin-brand family confirmed not carried by Cost
+ * Plus -- NovoLog/Humulin/Novolin/Fiasp/Levemir/Lyumjev/Soliqua/Merilog, matching this file's
+ * existing "Cost Plus doesn't carry insulins" finding -- plus Mounjaro/tirzepatide, Invokana/
+ * canagliflozin, Synjardy/Trijardy/Glyxambi, alogliptin-metformin, saxagliptin-metformin all
+ * confirmed not carried), and menopause-HT (Prempro, Premphase, Duavee, megestrol). Also fixed 3
+ * regex precedence bugs that silently required a generic name to co-occur with a brand name
+ * (bare "DIVIGEL"/"ESTROGEL"/"ELESTRIN", "ALORA", "MENOSTAR" without "estradiol" alongside them
+ * fell through), a bare "IBU" abbreviation, and a bare "Glucophage" brand mention. The remaining
+ * 76 are entirely menopause-HT and almost entirely confirmed not carried by Cost Plus (Femring,
+ * Bijuva, Crinone, Depo-Estradiol, Osphena, Endometrin, injectable/vaginal progesterone, estradiol
+ * valerate IM) -- a handful (Menest, Estratest/EEMT/Covaryx, Estring, Abigale/Zafemy/Gallifrey,
+ * Prefest, estropipate, plain norethindrone, conjugated-estrogens-oral/Premarin) are still
+ * unconfirmed, logged as an open follow-up rather than guessed at. GoodRx is still pending for
+ * every rule captured this session (see the note above). */
+export const KNOWN_UNPRICED_GAP = 76
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -158,7 +178,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-06-30',
   },
   {
-    matches: /budesonide.*formoterol|symbicort/i,
+    matches: /budesonide.*formoterol|symbicort|breyna/i,
     goodRxSlug: 'budesonide-formoterol',
     costPlusPath: 'budesonide-formoterol-fumarate-160-4_5mcg-act-aerosol-inhaler-10_2-symbicort',
     goodRxPrice: { price: 97.09, quantity: '1 inhaler, 160/4.5mcg, 120 doses' },
@@ -190,7 +210,10 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-06-30',
   },
   {
-    matches: /fluticasone propionate|flovent/i,
+    // Broadened 2026-07-16 to catch bare "fluticasone"/"fluticasone DISKUS"/"nasal steroid form
+    // only" phrasings -- safe because the salmeterol/furoate-vilanterol combo rules above this
+    // one in the array already intercept those more specific cases first.
+    matches: /fluticasone|flovent/i,
     goodRxSlug: 'fluticasone',
     costPlusPath: 'fluticasone-propionate-hfa-110-mcg_act-inhaler-12',
     goodRxPrice: { price: 181.48, quantity: '1 HFA inhaler, 110mcg' },
@@ -212,6 +235,99 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxPrice: { price: 76.57, quantity: '30 capsules, 18mcg' },
     costPlusPrice: { price: 411.28, quantity: '30 capsules, 18mcg' },
     pricesCapturedAt: '2026-06-30',
+  },
+  // ---- Remaining inhaler/respiratory alternatives (added 2026-07-16) ----
+  // Same user UAT sweep as the NSAID/ACE blocks above. Cost Plus prices are real, captured
+  // 2026-07-16; GoodRx omitted (pending -- see the NSAID block's note on the session-wide
+  // "Press & Hold" bot-check).
+  {
+    matches: /umeclidinium.*vilanterol|anoro/i,
+    goodRxSlug: 'anoro-ellipta',
+    costPlusPath: 'umeclidinium-vilanterol-62_5-25-mcg_act-aerosol-powder-breath-activated-60',
+    costPlusPrice: { price: 346.55, quantity: '62.5/25mcg, 60 doses' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Nebulizer solution, not the inhaled powder/aerosol forms above.
+    matches: /formoterol(?!.*budesonide).*(?:solution|perforomist)|perforomist/i,
+    goodRxSlug: 'formoterol',
+    costPlusPath: 'formoterol-fumarate-20mcg-2ml-carton-of-solution-vials-2-perforomist',
+    costPlusPrice: { price: 99.64, quantity: '20mcg/2mL, 2 vials' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /terbutaline/i,
+    goodRxSlug: 'terbutaline',
+    costPlusPath: 'terbutaline-sulfate-2_5mg-tablet-brethine',
+    costPlusPrice: { price: 22.60, quantity: '2.5mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /montelukast|singulair/i,
+    goodRxSlug: 'montelukast',
+    costPlusPath: 'montelukast-10mg-tablet',
+    costPlusPrice: { price: 5.79, quantity: '10mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /mometasone.*nasal|nasonex/i,
+    goodRxSlug: 'mometasone',
+    costPlusPath: 'mometasonefuroate-50mcg-suspension',
+    costPlusPrice: { price: 23.47, quantity: '50mcg suspension' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /flunisolide|nasalide/i,
+    goodRxSlug: 'flunisolide',
+    costPlusPath: 'flunisolide-25mcg-act-0_025-nasal-spray-25-nasalide',
+    costPlusPrice: { price: 57.98, quantity: '0.025% nasal spray, 25mL' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Not carried by Cost Plus (search returns no exact match); GoodRx pending.
+    matches: /striverdi|olodaterol/i,
+    goodRxSlug: 'striverdi-respimat',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Not carried by Cost Plus (search returns only unrelated oral/injectable glycopyrrolate,
+    // not the inhaled device forms); GoodRx pending.
+    matches: /seebri|bevespi|duaklir/i,
+    goodRxSlug: 'bevespi-aerosphere',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Not carried by Cost Plus (search returns no exact match); GoodRx pending.
+    matches: /trelegy/i,
+    goodRxSlug: 'trelegy-ellipta',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Not carried by Cost Plus (search returns no exact match); GoodRx pending.
+    matches: /breztri/i,
+    goodRxSlug: 'breztri-aerosphere',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Serevent Diskus is salmeterol alone; Cost Plus only carries fluticasone-salmeterol combos
+    // (confirmed by search), not the LABA-only product. GoodRx pending.
+    matches: /serevent/i,
+    goodRxSlug: 'serevent',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Not carried by Cost Plus (search returns only an unrelated fuzzy match -- a diabetes combo
+    // product); GoodRx pending.
+    matches: /metaproterenol/i,
+    goodRxSlug: 'metaproterenol',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Auto-injector devices aren't carried by Cost Plus at all (search returns zero results);
+    // GoodRx pending.
+    matches: /epinephrine/i,
+    goodRxSlug: 'epinephrine',
+    pricesCapturedAt: '2026-07-16',
   },
   {
     matches: /estradiol.*norethindrone|activella|mimvey|amabelz/i,
@@ -246,7 +362,10 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-06-30',
   },
   {
-    matches: /estradiol.*(gel|divigel|estrogel|elestrin)/i,
+    // Fixed 2026-07-16: the old `estradiol.*(gel|divigel|...)` required the literal word
+    // "estradiol" to appear before the brand name, so a bare "DIVIGEL"/"ESTROGEL"/"ELESTRIN"
+    // mention (common in alternatives lists that don't repeat the generic name) fell through.
+    matches: /(estradiol.*gel)|divigel|estrogel|elestrin/i,
     goodRxSlug: 'divigel',
     goodRxParams: 'label_override=estradiol&form=carton&dosage=30-packets-of-1mg-gel&quantity=1',
     costPlusPath: 'estradiol-1mg-g-gel-packet-divigel',
@@ -255,7 +374,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-07-01',
   },
   {
-    matches: /estradiol.*twice.weekly|dotti|lyllana|vivelle|minivelle/i,
+    matches: /estradiol.*twice.weekly|dotti|lyllana|vivelle|minivelle|alora/i,
     goodRxSlug: 'estradiol',
     costPlusPath: 'estradiol-(twice-weekly)-0_05-mg_24hr-patch-8-lyllana',
     goodRxPrice: { price: 54.82, quantity: '8 twice-weekly patches, 0.05mg/day' },
@@ -263,7 +382,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-06-30',
   },
   {
-    matches: /estradiol.*(weekly|patch|transdermal)|climara/i,
+    matches: /estradiol.*(weekly|patch|transdermal)|climara|menostar/i,
     goodRxSlug: 'estradiol',
     costPlusPath: 'estradiol-0_05mg-carton-of-weekly-patches-4-climara',
     pricesCapturedAt: '2026-06-30',
@@ -283,6 +402,43 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxPrice: { price: 29.39, quantity: '10 tablets, 10mg' },
     costPlusPrice: { price: 7.64, quantity: '30 tablets, 10mg' },
     pricesCapturedAt: '2026-06-30',
+  },
+  // ---- Remaining menopause-HT alternatives (added 2026-07-16) ----
+  // Same user UAT sweep as the blocks above. Cost Plus prices are real, captured 2026-07-16;
+  // GoodRx omitted (pending -- see the NSAID block's note on the session-wide bot-check). Most of
+  // the menopause-HT long tail (Femring, Bijuva, Crinone, Depo-Estradiol/estradiol cypionate,
+  // Osphena, Endometrin, injectable estradiol valerate, plain vaginal progesterone insert) is
+  // confirmed genuinely not carried by Cost Plus -- searched each by name, only unrelated fuzzy
+  // matches or zero results came back. Left without a rule at all rather than a no-price rule,
+  // consistent with how those forms were already deliberately excluded from the progesterone
+  // rule above.
+  {
+    matches: /prempro/i,
+    goodRxSlug: 'prempro',
+    costPlusPath: 'prempro-0_3-1_5mg-28-tablets',
+    costPlusPrice: { price: 224.26, quantity: '28 tablets, 0.3/1.5mg' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /premphase/i,
+    goodRxSlug: 'premphase',
+    costPlusPath: 'premphase-0_625-5mg-28-tablets',
+    costPlusPrice: { price: 212.89, quantity: '28 tablets, 0.625/5mg' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /duavee/i,
+    goodRxSlug: 'duavee',
+    costPlusPath: 'duavee-0_45-20mg-30-tablets',
+    costPlusPrice: { price: 184.62, quantity: '30 tablets, 0.45/20mg' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /megestrol/i,
+    goodRxSlug: 'megestrol',
+    costPlusPath: 'megestrol-acetate-20mg-tablet-megace',
+    costPlusPrice: { price: 9.21, quantity: '20mg tablet' },
+    pricesCapturedAt: '2026-07-16',
   },
   {
     // Bare "progesterone" (the progestogen-cell inn) means ORAL micronized progesterone here.
@@ -340,6 +496,77 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxPrice: { price: 28.00, quantity: '30 capsules, 10mg' },
     costPlusPrice: { price: 6.04, quantity: '30 capsules, 10mg' },
     pricesCapturedAt: '2026-07-01',
+  },
+  // ---- Remaining ACE inhibitors + ACE-adjacent alternatives (added 2026-07-16) ----
+  // Same "user UAT sweep, alternatives list" pass as the NSAID block above -- captopril,
+  // fosinopril, moexipril, perindopril, quinapril, trandolapril were flagged as a gap back on
+  // 2026-07-06 (see the KNOWN_UNPRICED_GAP history comment) but never actually priced. Cost Plus
+  // prices are real, captured 2026-07-16; GoodRx omitted (pending -- see the NSAID block's note on
+  // the "Press & Hold" bot-check blocking this session, not a confirmed-unavailable case).
+  {
+    // Combo -- must precede the plain fosinopril rule below.
+    matches: /fosinopril.*hydrochlorothiazide|fosinopril.*hctz|monopril hct/i,
+    goodRxSlug: 'fosinopril-hydrochlorothiazide',
+    costPlusPath: 'fosinopril-sodium-hctz-10-12_5mg-tablet-monopril-hct',
+    costPlusPrice: { price: 9.83, quantity: '10-12.5mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /fosinopril/i,
+    goodRxSlug: 'fosinopril',
+    costPlusPath: 'fosinopril-sodium-10mg-tablet-monopril',
+    costPlusPrice: { price: 8.66, quantity: '10mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /captopril|capoten/i,
+    goodRxSlug: 'captopril',
+    costPlusPath: 'captopril-100mg-tablet-capoten',
+    costPlusPrice: { price: 9.55, quantity: '100mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /moexipril|univasc/i,
+    goodRxSlug: 'moexipril',
+    costPlusPath: 'moexipril-hcl-15mg-tablet-univasc',
+    costPlusPrice: { price: 37.29, quantity: '15mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /perindopril|aceon/i,
+    goodRxSlug: 'perindopril',
+    costPlusPath: 'perindopril-erbumine-2mg-tablet-aceon',
+    costPlusPrice: { price: 22.39, quantity: '2mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Combo (verapamil ER) -- must precede the plain trandolapril rule below.
+    matches: /trandolapril.*verapamil|tarka/i,
+    goodRxSlug: 'trandolapril-verapamil',
+    costPlusPath: 'trandolapril-verapamil-hcl-er-1-240mg-tablet-extended-release-tarka',
+    costPlusPrice: { price: 157.52, quantity: '1-240mg extended-release tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /trandolapril|mavik/i,
+    goodRxSlug: 'trandolapril',
+    costPlusPath: 'trandolapril-1mg-tablet-mavik',
+    costPlusPrice: { price: 6.97, quantity: '1mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Not carried by Cost Plus (search returns only an unrelated fuzzy match); GoodRx pending.
+    matches: /quinapril|accupril/i,
+    goodRxSlug: 'quinapril',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // ARNI, not a true ACE inhibitor, but appears as a covered alternative in some ACE guides.
+    matches: /sacubitril|entresto/i,
+    goodRxSlug: 'sacubitril-valsartan',
+    costPlusPath: 'sacubitril-valsartan-24-26mg-tablet',
+    costPlusPrice: { price: 9.04, quantity: '24-26mg tablet' },
+    pricesCapturedAt: '2026-07-16',
   },
   {
     // No Cost Plus match: not carried (searched "mometasone", "mometasone formoterol" -- only
@@ -421,7 +648,9 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     // reasonable proxy, the SGLT2 is the costly component) or, for DPP4/SU/TZD combos, to the
     // no-price fallback (their pre-2026-07-09 behavior). Without this, ~50 covered combo names
     // showed $29.63, badly understating $300-600 brand combos.
-    matches: /^(?!.*\b(?:dapagliflozin|empagliflozin|canagliflozin|ertugliflozin|sitagliptin|saxagliptin|linagliptin|alogliptin|glipizide|glyburide|glimepiride|pioglitazone|rosiglitazone|repaglinide|nateglinide|synjardy|xigduo|trijardy|glyxambi|janumet|jentadueto|kazano|oseni|metaglip|glucovance|actoplus|kombiglyze|prandimet|invokamet|segluromet|qternmet|steglujan|soliqua)\b).*\bmetformin\b/i,
+    // "glucophage" added 2026-07-16 as a bare-brand-name alternative -- the bare brand mention
+    // (no "metformin" substring at all) fell through this rule entirely before.
+    matches: /^(?!.*\b(?:dapagliflozin|empagliflozin|canagliflozin|ertugliflozin|sitagliptin|saxagliptin|linagliptin|alogliptin|glipizide|glyburide|glimepiride|pioglitazone|rosiglitazone|repaglinide|nateglinide|synjardy|xigduo|trijardy|glyxambi|janumet|jentadueto|kazano|oseni|metaglip|glucovance|actoplus|kombiglyze|prandimet|invokamet|segluromet|qternmet|steglujan|soliqua)\b).*\bmetformin\b|^glucophage/i,
     goodRxSlug: 'metformin',
     goodRxParams: 'label_override=metformin&form=tablet&dosage=500mg&quantity=60',
     costPlusPath: 'metformin-500mg-tablet',
@@ -440,8 +669,9 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   },
   {
     // No Cost Plus match: ibuprofen 600mg and 800mg both 404 -- Cost Plus doesn't carry the
-    // OTC-adjacent Rx strengths. GoodRx-only by design.
-    matches: /ibuprofen/i,
+    // OTC-adjacent Rx strengths. GoodRx-only by design. "\bibu\b" added 2026-07-16 to catch
+    // formularies that abbreviate the generic-brand name as bare "IBU".
+    matches: /ibuprofen|\bibu\b/i,
     goodRxSlug: 'ibuprofen',
     goodRxParams: 'label_override=ibuprofen&form=tablet&dosage=600mg&quantity=30',
     goodRxPrice: { price: 29.65, quantity: '30 tablets, 600mg' },
@@ -652,13 +882,13 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     // carry insulins. $35 is the Sanofi Insulins $35/30-day cap surfaced via GoodRx, which the
     // biosimilars match or beat. Negative lookahead excludes the Soliqua glargine-lixisenatide
     // fixed-dose combo (a GLP-1/insulin combo ~$600+, a different product) per code review.
-    matches: /^(?!.*(lixisenatide|soliqua)).*(insulin glargine|glargin|lantus|basaglar|semglee)/i,
+    matches: /^(?!.*(lixisenatide|soliqua)).*(insulin glargine|glargin|lantus|basaglar|semglee|toujeo)/i,
     goodRxSlug: 'lantus',
     goodRxPrice: { price: 35.0, quantity: '30-day supply, 100 units/mL (Sanofi $35 program / GoodRx)' },
     pricesCapturedAt: '2026-07-09',
   },
   {
-    matches: /insulin lispro|humalog|lispro/i,
+    matches: /insulin lispro|humalog|lispro|lyumjev/i,
     goodRxSlug: 'humalog',
     goodRxPrice: { price: 51.24, quantity: '1 vial, 10mL, 100 units/mL' },
     pricesCapturedAt: '2026-07-09',
@@ -668,6 +898,189 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxSlug: 'tresiba',
     goodRxPrice: { price: 141.54, quantity: '1 vial, 10mL, 100 units/mL' },
     pricesCapturedAt: '2026-07-09',
+  },
+  // Cost Plus doesn't carry any brand insulin (confirmed by direct search 2026-07-16 for insulin
+  // aspart and Humulin specifically; the finding matches this file's existing "Cost Plus doesn't
+  // carry insulins" note on the Lantus/Humalog/Tresiba rules above, so the remaining brand
+  // families below aren't re-verified individually). GoodRx pending for all -- see the NSAID
+  // block's note on the session-wide bot-check.
+  {
+    matches: /insulin aspart|novolog|novorapid|merilog/i,
+    goodRxSlug: 'novolog',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /humulin/i,
+    goodRxSlug: 'humulin',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /novolin/i,
+    goodRxSlug: 'novolin',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /fiasp/i,
+    goodRxSlug: 'fiasp',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /insulin detemir|levemir|detemir/i,
+    goodRxSlug: 'levemir',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /soliqua|lixisenatide/i,
+    goodRxSlug: 'soliqua',
+    pricesCapturedAt: '2026-07-16',
+  },
+  // ---- Remaining diabetes alternatives (added 2026-07-16) ----
+  // Same user UAT sweep as the blocks above. Cost Plus prices are real, captured 2026-07-16;
+  // GoodRx omitted (pending -- see the NSAID block's note on the session-wide bot-check).
+  // Confirmed by search: Cost Plus does not carry ANY brand insulin (matches the existing
+  // "Cost Plus doesn't carry insulins" note on the Lantus/Humalog/Tresiba rules above) --
+  // NovoLog/insulin aspart, the Humulin family, the Novolin family, Fiasp, Levemir, Lyumjev,
+  // Soliqua, and Merilog all confirmed not carried by direct search. Left without a rule at all
+  // (GoodRx-pending) rather than a no-price rule, matching the existing insulin rules' convention.
+  {
+    // Cost Plus doesn't carry brand GLP-1/GIP agents (matches the existing Ozempic/Trulicity
+    // pattern above).
+    matches: /tirzepatide|mounjaro|zepbound/i,
+    goodRxSlug: 'mounjaro',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /exenatide|byetta|bydureon/i,
+    goodRxSlug: 'exenatide',
+    costPlusPath: 'exenatide-5mcg_0_02ml-solution-pen-injector-1_2',
+    costPlusPrice: { price: 625.65, quantity: '1.2mL pen-injector, 5mcg/0.02mL' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Cost Plus doesn't carry canagliflozin (search returns only an unrelated fuzzy match to
+    // dapagliflozin/Farxiga); GoodRx pending.
+    matches: /canagliflozin|invokana/i,
+    goodRxSlug: 'canagliflozin',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Combo -- must precede the bare glipizide rule below.
+    matches: /glipizide.*metformin|metaglip/i,
+    goodRxSlug: 'glipizide-metformin',
+    costPlusPath: 'glipizide-metformin-hcl-2_5-250mg-tablet-metaglip',
+    costPlusPrice: { price: 9.28, quantity: '2.5-250mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /glipizide.*(xl|extended.release)|glucotrol xl/i,
+    goodRxSlug: 'glipizide-er',
+    costPlusPath: 'glipizide-extended-release-10mg-tablet',
+    costPlusPrice: { price: 7.35, quantity: '10mg extended-release tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /glipizide|glucotrol/i,
+    goodRxSlug: 'glipizide',
+    costPlusPath: 'glipizide-10mg-tablet',
+    costPlusPrice: { price: 5.79, quantity: '10mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Combo -- must precede the bare glyburide rule below.
+    matches: /glyburide.*metformin|glucovance/i,
+    goodRxSlug: 'glyburide-metformin',
+    costPlusPath: 'glyburide-metformin-5mg-500mg-tablet',
+    costPlusPrice: { price: 11.00, quantity: '5-500mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /glyburide.*micronized|glynase/i,
+    goodRxSlug: 'glyburide-micronized',
+    costPlusPath: 'glyburide-micronized-3mg-tablet-glynase',
+    costPlusPrice: { price: 7.62, quantity: '3mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /glyburide/i,
+    goodRxSlug: 'glyburide',
+    costPlusPath: 'glyburide-1_25mg-tablet',
+    costPlusPrice: { price: 5.79, quantity: '1.25mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /glimepiride|amaryl/i,
+    goodRxSlug: 'glimepiride',
+    costPlusPath: 'glimepiride-1mg-tablet',
+    costPlusPrice: { price: 5.34, quantity: '1mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Combo (glimepiride) -- must precede the pioglitazone-metformin and bare pioglitazone rules
+    // below.
+    matches: /pioglitazone.*glimepiride|duetact/i,
+    goodRxSlug: 'pioglitazone-glimepiride',
+    costPlusPath: 'pioglitazone-hcl-glimepiride-30-2mg-tablet-duetact',
+    costPlusPrice: { price: 294.77, quantity: '30-2mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Combo (metformin) -- must precede the bare pioglitazone rule below.
+    matches: /pioglitazone.*metformin|actoplus/i,
+    goodRxSlug: 'pioglitazone-metformin',
+    costPlusPath: 'pioglitazone-metformin-15mg-500mg-tablet',
+    costPlusPrice: { price: 7.69, quantity: '15-500mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /pioglitazone|actos/i,
+    goodRxSlug: 'pioglitazone',
+    costPlusPath: 'pioglitazone-15mg-tablet',
+    costPlusPrice: { price: 5.97, quantity: '15mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Combo -- must precede a bare sitagliptin rule if one is ever added.
+    matches: /sitagliptin.*metformin|janumet/i,
+    goodRxSlug: 'sitagliptin-metformin',
+    costPlusPath: 'sitagliptin-phosphate-metformin-hcl-50-500mg-tablet',
+    costPlusPrice: { price: 73.66, quantity: '50-500mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /sitagliptin|januvia/i,
+    goodRxSlug: 'sitagliptin',
+    costPlusPath: 'sitagliptin-phosphate-25mg-tablet',
+    costPlusPrice: { price: 64.68, quantity: '25mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Dapagliflozin-metformin combo (Xigduo XR). Synjardy/Synjardy XR (empagliflozin-metformin),
+    // Trijardy XR (empagliflozin-linagliptin-metformin), and Glyxambi (empagliflozin-linagliptin)
+    // are not carried -- no generic empagliflozin exists yet (matches the existing brand-only
+    // Jardiance rule), so none of its combos are genericized either. GoodRx pending for those.
+    matches: /xigduo/i,
+    goodRxSlug: 'xigduo-xr',
+    costPlusPath: 'dapagliflozin-metformin-hcl-er-5-500mg-extended-release-tablet',
+    costPlusPrice: { price: 19.77, quantity: '5-500mg extended-release tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /synjardy|trijardy|glyxambi/i,
+    goodRxSlug: 'synjardy',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Not carried by Cost Plus (search returns zero/unrelated results); GoodRx pending.
+    matches: /alogliptin/i,
+    goodRxSlug: 'alogliptin-metformin',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Not carried by Cost Plus (search returns only unrelated sitagliptin fuzzy matches); GoodRx
+    // pending.
+    matches: /saxagliptin/i,
+    goodRxSlug: 'saxagliptin-metformin',
+    pricesCapturedAt: '2026-07-16',
   },
   {
     // Brand only; Cost Plus doesn't carry it. Standard GoodRx price, 1-carton (1-month) supply.

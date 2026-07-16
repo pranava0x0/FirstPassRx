@@ -496,3 +496,44 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   don't just retry blindly, wait a session or more; (2) the remaining ~362-name gap outside NSAIDs
   (per the user's stated order: NSAIDs first, then "alternatives shown in the UI" broadly, then
   evaluate an exhaustive pass) — see backlog.md.
+- **2026-07-16 (cont. 2) · continued the alternatives-list price-fill sweep across ACE inhibitors,
+  inhalers, diabetes, and menopause-HT; `KNOWN_UNPRICED_GAP` 362 → 76 (87% total reduction from
+  the original 575).** User said "DO IT" to continue past NSAIDs into the rest of the app. Worked
+  topic by topic, same regex-rule approach: ACE inhibitors (captopril, fosinopril, moexipril,
+  perindopril, trandolapril, their HCTZ/verapamil combos, sacubitril/valsartan — quinapril
+  confirmed not carried by Cost Plus) and inhalers (Anoro, Perforomist, terbutaline, montelukast,
+  Nasonex, flunisolide, Breyna) are now **fully resolved, zero gap remaining in either topic**.
+  Diabetes closed the largest chunk: glipizide/glyburide/glimepiride/pioglitazone and their
+  metformin/glimepiride combos, sitagliptin + Janumet, exenatide, Xigduo XR all priced; confirmed
+  **the entire insulin brand family (NovoLog, Humulin, Novolin, Fiasp, Levemir, Lyumjev, Soliqua,
+  Merilog) is not carried by Cost Plus** — consistent with this file's pre-existing "Cost Plus
+  doesn't carry insulins" finding on the Lantus/Humalog/Tresiba rules, so not re-verified
+  drug-by-drug beyond confirming insulin aspart and Humulin directly; same for Mounjaro/
+  tirzepatide, Invokana/canagliflozin, Synjardy/Trijardy/Glyxambi (no generic empagliflozin
+  exists), and alogliptin-/saxagliptin-metformin. Menopause-HT closed Prempro/Premphase/Duavee/
+  megestrol; the rest (Femring, Bijuva, Crinone, Depo-Estradiol, Osphena, Endometrin, injectable/
+  vaginal progesterone, estradiol valerate IM) confirmed not carried by direct search — this topic
+  now holds all 76 remaining gap names.
+  Along the way, found and fixed **3 pre-existing regex precedence bugs** unrelated to this
+  session's new drugs: `estradiol.*(gel|divigel|estrogel|elestrin)` required the literal word
+  "estradiol" to appear before the brand name, so bare "DIVIGEL"/"ESTROGEL"/"ELESTRIN" mentions
+  (no "estradiol" in the same string) fell through — same issue on the twice-weekly-patch rule
+  (missing "alora") and weekly-patch rule (missing "menostar"). Also added a bare "\bibu\b"
+  abbreviation to the ibuprofen rule and a bare "glucophage" brand mention to the metformin rule —
+  both real formulary phrasings that had zero rule despite the underlying molecule already being
+  priced under its generic name.
+  GoodRx access was highly inconsistent this session: fully CAPTCHA-walled at the start (matches
+  the earlier NSAID entry), then recovered mid-session for a run of ~15 successful lookups, then
+  the classifier infrastructure itself (not GoodRx) intermittently denied browser tool calls with
+  "Stage 2 classifier error" for stretches of several consecutive attempts — retried each until it
+  cleared rather than working around it, per the tool's own guidance. All 44 new Cost Plus prices
+  this pass are real, captured live 2026-07-16; GoodRx remains pending for all of them (same
+  "pending, not confirmed-unavailable" distinction as the NSAID entry). `npm test` (25/25 cash
+  tests, 301/301 total), `typecheck`, and `validate-prices` all pass.
+  **Remaining 76-name gap is now 100% menopause-HT**, and almost entirely confirmed not carried by
+  Cost Plus (see above). A handful are still genuinely unconfirmed (not yet searched or the search
+  was interrupted by tool flakiness): Menest, Estratest/EEMT/Covaryx, Estring, Abigale/Zafemy/
+  Gallifrey, Prefest, estropipate, plain norethindrone 5mg, and conjugated-estrogens-oral/Premarin
+  (Premarin brand confirmed carried at $192.85 mid-search, but the exact Cost Plus slug wasn't
+  captured before the session's tool access degraded — needs a quick re-confirm, not a fresh
+  search). Logged as an open follow-up, not guessed at.
