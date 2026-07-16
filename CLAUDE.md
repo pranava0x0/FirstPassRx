@@ -486,6 +486,15 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   sitagliptin|glipizide|pioglitazone|synjardy|xigduo|...)\b).*\bmetformin\b/i` so combos fall
   through to the SGLT2 rules (a reasonable proxy — the SGLT2 is the costly component) or the no-price
   fallback. Same trap applies to any single-agent matcher whose drug appears in fixed-dose combos.
+- **The mirror-image of the above: adding a new combo rule at the array's tail doesn't fix
+  anything if an existing single-agent rule for its component molecule still sits earlier.**
+  `CASH_LINK_RULES` is matched with `.find()` (first match wins), so appending new `xigduo`/
+  `synjardy` combo rules after the pre-existing `dapagliflozin`/`empagliflozin` single-agent rules
+  left them fully dead — `"XIGDUO XR"` still resolved to plain dapagliflozin. A code-review pass
+  caught it the same day it shipped. When adding ANY new rule whose match string is a superset or
+  variant of an existing rule's, grep every existing rule for the new rule's component molecule
+  names first, and insert the new rule *above* any rule it could collide with — appending to the
+  end is only safe when nothing upstream could also match the new pattern.
 - **GoodRx exact-dosage deep links still work by guessing params, but two 2026 quirks:** (1) the
   Ozempic page has migrated to the new *oral* semaglutide tablet as its default and gates the
   injectable pen behind a client-side "Switch" control that `?form=pen` no longer overrides — capture

@@ -69,6 +69,26 @@ describe('cash price links', () => {
     // prices for any string not already caught by a more specific rule earlier in the array.
     expect(goodRxUrl(name)).not.toContain('estropipate')
   })
+
+  // Regression tests for two rule-shadowing bugs (a broader/earlier rule intercepting a
+  // narrower/later one; .find() returns first match) caught by code review on 2026-07-16.
+  it('does not route Arnuity Ellipta (fluticasone furoate) to the bare fluticasone-propionate rule', () => {
+    // The bare "fluticasone" rule (broadened 2026-07-16 to catch DISKUS/nasal-only phrasings) sat
+    // before the Arnuity rule in the array, so "ARNUITY ELLIPTA (fluticasone furoate)" resolved to
+    // fluticasone propionate HFA pricing instead of its own (unpriced, link-only) Arnuity rule.
+    expect(goodRxUrl('ARNUITY ELLIPTA (fluticasone furoate)')).toContain('arnuity')
+    expect(costPlusUrl('ARNUITY ELLIPTA (fluticasone furoate)')).toBeNull()
+  })
+
+  it.each([
+    ['XIGDUO XR (dapagliflozin-metformin)', 'xigduo'],
+    ['SYNJARDY (empagliflozin-metformin)', 'synjardy'],
+  ])('routes %s to its own combo rule, not the single-agent SGLT2 rule', (name, expectedSlug) => {
+    // The single-agent dapagliflozin/empagliflozin rules sat before the Xigduo/Synjardy combo
+    // rules in the array, so a combo name matched (and was priced/linked as) the single agent --
+    // e.g. Xigduo XR resolving to plain dapagliflozin at $8.35 instead of the $19.77 combo price.
+    expect(goodRxUrl(name)).toContain(expectedSlug)
+  })
 })
 
 /** Every drug name a live cell can render: the preferred agent + its covered alternatives,

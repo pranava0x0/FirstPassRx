@@ -227,9 +227,20 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-06-30',
   },
   {
+    // No Cost Plus match: searched "fluticasone furoate" -- only the furoate/vilanterol (Breo)
+    // combo and fluticasone propionate forms are carried, not standalone furoate (Arnuity Ellipta).
+    // Must sit after the Breo rule above (a real Breo match also contains "fluticasone furoate")
+    // but before the bare "fluticasone" rule below, which would otherwise catch "fluticasone
+    // furoate" (Arnuity) itself since it has no furoate-specific exclusion.
+    matches: /arnuity|fluticasone furoate/i,
+    goodRxSlug: 'arnuity-ellipta',
+    goodRxPrice: { price: 137.1, quantity: '1 inhaler, 100mcg, 30 blisters' },
+    pricesCapturedAt: '2026-07-06',
+  },
+  {
     // Broadened 2026-07-16 to catch bare "fluticasone"/"fluticasone DISKUS"/"nasal steroid form
-    // only" phrasings -- safe because the salmeterol/furoate-vilanterol combo rules above this
-    // one in the array already intercept those more specific cases first.
+    // only" phrasings -- safe because the salmeterol/furoate-vilanterol/furoate-alone rules above
+    // this one in the array already intercept those more specific cases first.
     matches: /fluticasone|flovent/i,
     goodRxSlug: 'fluticasone',
     costPlusPath: 'fluticasone-propionate-hfa-110-mcg_act-inhaler-12',
@@ -707,16 +718,6 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-07-06',
   },
   {
-    // No Cost Plus match: searched "fluticasone furoate" -- only the furoate/vilanterol (Breo)
-    // combo and fluticasone propionate forms are carried, not standalone furoate (Arnuity Ellipta).
-    // Order matters: must sit after the Breo rule above so a real Breo match (which also contains
-    // "fluticasone furoate") is caught by that more specific vilanterol-qualified rule first.
-    matches: /arnuity|fluticasone furoate/i,
-    goodRxSlug: 'arnuity-ellipta',
-    goodRxPrice: { price: 137.1, quantity: '1 inhaler, 100mcg, 30 blisters' },
-    pricesCapturedAt: '2026-07-06',
-  },
-  {
     // No Cost Plus match: searched "revefenacin" -- no medications found.
     matches: /yupelri|revefenacin/i,
     goodRxSlug: 'yupelri',
@@ -983,6 +984,26 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-07-16',
   },
   {
+    // Combo rules must sit ABOVE the single-agent dapagliflozin/empagliflozin rules below --
+    // "XIGDUO XR (dapagliflozin-metformin)" also matches /dapagliflozin|farxiga/i, so the single-
+    // agent rule would otherwise shadow this one (first match wins; see the metformin negative-
+    // lookahead rule above for the same class of bug this ordering avoids).
+    // Dapagliflozin-metformin combo (Xigduo XR). Synjardy/Synjardy XR (empagliflozin-metformin),
+    // Trijardy XR (empagliflozin-linagliptin-metformin), and Glyxambi (empagliflozin-linagliptin)
+    // are not carried -- no generic empagliflozin exists yet (matches the existing brand-only
+    // Jardiance rule), so none of its combos are genericized either. GoodRx pending for those.
+    matches: /xigduo/i,
+    goodRxSlug: 'xigduo-xr',
+    costPlusPath: 'dapagliflozin-metformin-hcl-er-5-500mg-extended-release-tablet',
+    costPlusPrice: { price: 19.77, quantity: '5-500mg extended-release tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /synjardy|trijardy|glyxambi/i,
+    goodRxSlug: 'synjardy',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
     // Cost Plus slug carries the salt + brand suffix (dapagliflozin-propanediol-...-farxiga), not
     // the plain generic-name pattern -- see CLAUDE.md's Cost Plus slug scar tissue.
     matches: /dapagliflozin|farxiga/i,
@@ -1177,22 +1198,6 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxSlug: 'sitagliptin',
     costPlusPath: 'sitagliptin-phosphate-25mg-tablet',
     costPlusPrice: { price: 64.68, quantity: '25mg tablet' },
-    pricesCapturedAt: '2026-07-16',
-  },
-  {
-    // Dapagliflozin-metformin combo (Xigduo XR). Synjardy/Synjardy XR (empagliflozin-metformin),
-    // Trijardy XR (empagliflozin-linagliptin-metformin), and Glyxambi (empagliflozin-linagliptin)
-    // are not carried -- no generic empagliflozin exists yet (matches the existing brand-only
-    // Jardiance rule), so none of its combos are genericized either. GoodRx pending for those.
-    matches: /xigduo/i,
-    goodRxSlug: 'xigduo-xr',
-    costPlusPath: 'dapagliflozin-metformin-hcl-er-5-500mg-extended-release-tablet',
-    costPlusPrice: { price: 19.77, quantity: '5-500mg extended-release tablet' },
-    pricesCapturedAt: '2026-07-16',
-  },
-  {
-    matches: /synjardy|trijardy|glyxambi/i,
-    goodRxSlug: 'synjardy',
     pricesCapturedAt: '2026-07-16',
   },
   {

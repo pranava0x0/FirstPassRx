@@ -590,3 +590,24 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   cherry-picked both cleanly (no conflicts) into `jam/uat-data-gaps-backlog-fb1d83`, then removed
   the now-redundant worktree and deleted the branch. `npm test` 307/307 (up from 305 — the new
   regression test). _Fixed._
+- **2026-07-16 (cont. 5) · code review (single-pass, per user request to keep agent count low)
+  caught 2 real rule-shadowing bugs in this session's own cash.ts additions.** `CASH_LINK_RULES`
+  is matched with `.find()` — first match wins — so a broader/earlier rule silently shadows a
+  narrower/later one for the same class of reason as the gel/ogen embedded-substring bugs above,
+  just via rule *order* instead of an unbounded token: (1) the bare `fluticasone` rule (broadened
+  this session, line ~233) sat before the Arnuity Ellipta rule (`fluticasone furoate`, no
+  vilanterol), so `"ARNUITY ELLIPTA (fluticasone furoate)"` resolved to fluticasone-propionate HFA
+  pricing ($185.03) instead of its own unpriced link-only Arnuity rule — moved the Arnuity block
+  above the bare-fluticasone rule (same fix shape as the existing Breo-before-bare-fluticasone
+  ordering already in the file); (2) the new Xigduo/Synjardy combo rules (added this session) sat
+  *after* the pre-existing single-agent `dapagliflozin`/`empagliflozin` rules, so
+  `"XIGDUO XR (dapagliflozin-metformin)"` resolved to plain dapagliflozin ($8.35) instead of the
+  $19.77 combo price, and Synjardy/Trijardy/Glyxambi similarly fell through to Jardiance — moved
+  both combo rules above the single-agent SGLT2 rules. Added 3 new regression tests
+  (`cash.test.ts`) naming both bugs by example string, matching this project's existing pattern.
+  **Lesson: `hasCashLinkRule`'s coverage check (`KNOWN_UNPRICED_GAP`) only proves *some* rule
+  matched, not the *correct* one — a combo/brand-variant name silently resolving to the wrong,
+  earlier rule passes that gate cleanly.** Any future addition of a combo or brand-specific rule
+  must be checked against every existing single-agent rule for its component molecules, and placed
+  above them in the array, not just added at the array's tail. `npm test` 310/310, `typecheck` and
+  `validate-prices` clean. _Fixed._
