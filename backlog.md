@@ -86,25 +86,14 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
     generics with real GoodRx/Cost Plus prices worth capturing at gather time) and *unsourced
     dosage* (see the two items below). Capture cash rules and dose provenance as each new guide
     ships, not as a later backfill, so the debt doesn't keep growing per the pattern in `cash.ts`.
-- **Close the cash-price gap (user flagged directly 2026-07-06; re-flagged 2026-07-09).**
-  `src/lib/cash.ts`'s `KNOWN_UNPRICED_GAP` is now 1088 covered-drug *names* (of 1951) with no
-  explicit GoodRx/Cost Plus rule. The 2026-07-09 validation run measured the gap the way it
-  actually matters to a user — **per *cell*, on the headline `preferredAgent`, not on the long tail
-  of alternatives/brand variants**: 177 of 510 cells (35%) have a preferred agent with no captured
-  cash price, and they are almost entirely two classes repeated across all 5 states:
-  **diabetes 136 cells (metformin, glp1, sglt2, insulin — all 5 states, 100% unpriced)** and
-  **NSAIDs 34 cells (all 5 states)**, plus 7 stragglers (menopause vaginal estradiol ×4, LAMA
-  inhalers ×2, oral estrogen ×1). So ~12 distinct drugs — metformin, dulaglutide/Trulicity,
-  semaglutide/Ozempic+Rybelsus, empagliflozin/Jardiance, dapagliflozin/Farxiga, insulin
-  glargine/Lantus, naproxen, ibuprofen, meloxicam, celecoxib, diclofenac, etodolac — cover
-  essentially the whole preferred-agent gap. Fixing the *preferred-agent* prices first is the
-  highest-leverage move: it's what the UI shows as the recommendation. Do it like the state-data
-  work: real browser session (GoodRx/Cost Plus both block plain fetch — see CLAUDE.md), guess
-  GoodRx exact-dosage params directly, `costplusdrugs.com/medications/?query=<generic>` for the
-  Cost Plus slug (mind the salt-suffix + hydration-race gotchas in CLAUDE.md). Not every drug has a
-  Cost Plus match (documented for the ma-inhalers specialty devices) — record the "not carried"
-  outcome in the rule comment either way. Refresh these numbers with the esbuild/`hasCashLinkRule`
-  scratch query used in the 2026-07-09 run, or `cash.test.ts`'s `coveredDrugNames()` helper.
+- **Close the cash-price gap — DONE, confirmed by 2026-07-16 UAT (user flagged directly
+  2026-07-06; re-flagged 2026-07-09; closed by PR #12).** Re-ran the per-*cell* sweep (every
+  guide record's `preferredAgent.inn`/`brand` against `hasCashLinkRule`): **0/510 cells now have
+  an unpriced preferred agent** (was 177/510 on 2026-07-09). The diabetes (136) and NSAID (34)
+  cells that made up the bulk of the old gap are fully priced. What's left is only the long tail:
+  `KNOWN_UNPRICED_GAP` in `src/lib/cash.ts` is still 575 covered-drug *names* with no explicit
+  rule, but those are all `alternatives`/brand-variant entries the UI doesn't recommend, not
+  headline picks — no longer worth chasing ahead of other gaps below.
 - **Redesign the omni-search.** The drug search bar (`src/components/Search.tsx`) is parked
   (removed from the App render) pending a rethink. Wanted: layperson synonyms ("HRT", "estrogen
   patch", "rescue spray") mapping to classes/molecules, search scoped to or across guides, and a
@@ -122,18 +111,35 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   manage HRT (not a closeable gap — it's a carve-out). Pull the other HealthChoice MCO formularies
   (Maryland Physicians Care, Wellpoint/Amerigroup, Aetna Better Health, UnitedHealthcare Community
   Plan, CareFirst Community Health Plan) so a Medicaid member can pick their actual MCO.
-- **Finish verifying the `partial` / `example` cells — LARGELY DONE 2026-07-10.** Tufts (4),
-  Harvard Pilgrim (4), MGB SABA (1), and MassHealth ICS (1) are now `verified` against the live
-  formulary PDFs / MHDL Table 23 (several inferred picks were corrected — see the 2026-07-10 issues.md
-  entry). ma-inhalers is now **16 verified / 4 example**. The 4 remaining `example` cells are **BCBS
-  MA (Standard Control / CVS Caremark)** only: bluecrossma.org 403s WebFetch and curl, and the
-  "Focused" PDF extracts as a character-fragmented alphabetical index with no usable tier column. To
-  close these, drive the CVS Caremark medication-lookup via the in-app browser tool (per-drug tier
-  reads) — the last honest path; don't fabricate tiers from the unreadable source. LOW priority (4
-  cells, honestly labeled). Across all 25 guides: 463 verified / 38 partial / 9 example remain (the
-  38 partial are mostly MD-Medicaid-FFS structural gaps and a handful of commercial cells; the 9
-  example are 4 BCBS-MA + 5 NYRx menopause-HT open-benefit cells that are a legitimate "no PDL
-  entry = unrestricted" state, not extraction failures).
+- **Finish verifying the `partial` / `example` cells — refreshed by the 2026-07-16 UAT.** Current
+  state (`npm run validate-coverage`): **472 verified / 29 partial / 9 example** of 510 cells (was
+  463/38/9 on 2026-07-10 — the VA Aetna Better Health re-verify, see issues.md 2026-07-11, closed
+  9 of the old 38). Pulled every non-verified cell's guide/payer/class/note to find the real
+  clusters — this is 4 root causes, not 38 scattered one-offs:
+  - **BCBS Massachusetts blocks automated reading — 15/38 cells (40% of the whole remaining gap),
+    across every one of the 5 MA guides.** `ma-inhalers` (4 example: saba/ics/icslaba/lama),
+    `ma-ace` (1 partial), `ma-diabetes` (4: metformin/glp1/sglt2/insulin), `ma-menopause` (5:
+    est-td/est-oral/progestogen/vaginal/combo), `ma-nsaids` (1). bluecrossma.org 403s WebFetch and
+    curl, and the "Focused" PDF extracts as a character-fragmented alphabetical index with no
+    usable tier column. The last honest path is the CVS Caremark medication-lookup tool driven
+    per-drug via the in-app browser — worth doing as one batch covering all 5 MA guides at once
+    (one blocked source, not 5 separate investigations). LOW priority individually (honestly
+    labeled today) but HIGH leverage since one fix closes 40% of the gap.
+  - **AARP Medicare Rx Preferred (UHC PDP) extraction is incomplete — 5/38 cells.**
+    `md-inhalers` (ics, lama) + `md-diabetes` (glp1, sglt2, insulin), all payer `medicare-partd`.
+    Fetched via curl with a browser UA (plain WebFetch 403'd) but the PDF only partially
+    extracted. Re-attempt with a dedicated PDF-reading tool before concluding it's unreadable —
+    same "looks dead but isn't" pattern the NYRx PDL hit (see CLAUDE.md).
+  - **Structural carve-outs — 12/38 cells, not closeable, already correctly labeled.** MD Medicaid
+    FFS doesn't manage menopause HT as a PDL category (`md-menopause` mdmedicaid × 5); VA's
+    statewide PDL likewise doesn't manage oral estrogen (`va-menopause` va-medicaid-ffs +
+    aetna-better-health × 2, matching FFS twins); NY Medicaid's PA column uses an undocumented `G`
+    code (`ny-menopause` × 5 example — logged in issues.md, blocked on the eMedNY code legend).
+    Leave as-is; these are honest "no PDL entry" states, not extraction failures.
+  - **6 standalone cells worth individual re-checks:** `il-nsaids` il-medicaid nsaid-oral (already
+    re-read once, still partial — check what specifically is missing before re-reading again),
+    `md-inhalers` cigna (ics), `md-ace` aetna (ace-inhibitor), `ma-menopause` mgb (vaginal),
+    `il-inhalers` wellcare-value-script (ics), `il-diabetes` aetna-better-health-il (glp1).
 - **Biologics & non-inhaler class** (currently a disabled tab). Omalizumab (Xolair, now with the
   Omlyclo biosimilar), mepolizumab, benralizumab, dupilumab, tezepelumab — specialty-pharmacy /
   buy-and-bill with their own PA pathway. Cite FDA + manufacturer; the sources research already
