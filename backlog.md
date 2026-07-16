@@ -86,14 +86,41 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
     generics with real GoodRx/Cost Plus prices worth capturing at gather time) and *unsourced
     dosage* (see the two items below). Capture cash rules and dose provenance as each new guide
     ships, not as a later backfill, so the debt doesn't keep growing per the pattern in `cash.ts`.
-- **Close the cash-price gap — DONE, confirmed by 2026-07-16 UAT (user flagged directly
-  2026-07-06; re-flagged 2026-07-09; closed by PR #12).** Re-ran the per-*cell* sweep (every
-  guide record's `preferredAgent.inn`/`brand` against `hasCashLinkRule`): **0/510 cells now have
-  an unpriced preferred agent** (was 177/510 on 2026-07-09). The diabetes (136) and NSAID (34)
-  cells that made up the bulk of the old gap are fully priced. What's left is only the long tail:
-  `KNOWN_UNPRICED_GAP` in `src/lib/cash.ts` is still 575 covered-drug *names* with no explicit
-  rule, but those are all `alternatives`/brand-variant entries the UI doesn't recommend, not
-  headline picks — no longer worth chasing ahead of other gaps below.
+- **Close the cash-price gap on the *headline* recommendation — DONE.** The per-*cell* sweep
+  (every guide record's `preferredAgent.inn`/`brand` against `hasCashLinkRule`) confirms **0/510
+  cells have an unpriced preferred agent**. What's left is the `alternatives`-list long tail — see
+  below, now an active work item (user re-flagged directly 2026-07-16 with a screenshot of unpriced
+  NSAID alternatives, and asked for a full sweep + a check of competing cash-price vendors).
+- **Close the cash-price gap on `alternatives` lists — IN PROGRESS, NSAIDs done 2026-07-16.**
+  `KNOWN_UNPRICED_GAP` in `src/lib/cash.ts`: **575 → 362** covered-drug names with no explicit
+  rule. Scope check first (script in issues.md's 2026-07-16 entry): 3,079 distinct name strings
+  referenced across all 25 guides, but the vast majority are just dozens-per-molecule verbatim
+  phrasing variants (one per source PDF), not real distinct drugs — fix in `cash.ts`'s regex
+  rules, never by editing the data strings directly. User's chosen sequencing (of 3 options
+  offered): **(1) NSAIDs fully first — DONE**, all ~19 real NSAID molecules now have a rule with a
+  real Cost Plus price (celecoxib, diclofenac ×4 sub-forms, etodolac, flurbiprofen, indomethacin,
+  ketoprofen ×2 sub-forms, ketorolac, meclofenamate, mefenamic acid, nabumetone, oxaprozin,
+  piroxicam, sulindac, diflunisal, tolmetin, salsalate, aspirin) — meclofenamate/salsalate/
+  immediate-release-ketoprofen confirmed genuinely not carried by Cost Plus. **(2) next: "the
+  alternatives shown in the UI" broadly** (the ~343 remaining names across all non-NSAID guides —
+  diabetes/menopause-HT/ACE-inhibitor/inhaler alternatives), same regex-rule-not-per-string
+  approach. **(3) then evaluate the fully exhaustive pass** (the deeper `paRequired`/reject-list
+  names, lower priority since `coveredDrugNames()` — what the test suite and UI both actually
+  render — never counts those).
+  - **GoodRx blocker, not yet resolved:** served a real "Press & Hold" bot-check CAPTCHA to the
+    2026-07-16 session after exactly one successful lookup — a harder block than the plain-fetch
+    403 this project has hit before (that one a real browser session always cleared). Did not
+    attempt to solve/route around the CAPTCHA. All 17 NSAID Cost Plus prices are real and captured
+    (2026-07-16); GoodRx prices for the same 17 are pending, explicitly marked in code comments as
+    "blocked this session," not confirmed-unavailable. **Retry GoodRx for these 19 molecules in a
+    future session** before assuming it's permanently blocked — this project's GoodRx access has
+    recovered from every prior block.
+  - **3rd cash-price vendor (SingleCare) — researched, deferred.** User asked whether to add a
+    fallback vendor for what Cost Plus doesn't carry. SingleCare is the strongest candidate (no
+    membership fee, more pharmacies than Cost Plus, commonly recommended as "the best fallback
+    when GoodRx doesn't work"); Amazon Pharmacy RxPass ($5/mo flat fee, Prime-gated) and RxSaver/
+    WellRx are secondary options. User's call: decide after the alternatives-list price-fill gap
+    is further along, not now.
 - **Redesign the omni-search.** The drug search bar (`src/components/Search.tsx`) is parked
   (removed from the App render) pending a rethink. Wanted: layperson synonyms ("HRT", "estrogen
   patch", "rescue spray") mapping to classes/molecules, search scoped to or across guides, and a

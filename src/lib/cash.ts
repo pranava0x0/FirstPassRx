@@ -98,8 +98,20 @@
  * estradiol/progesterone combo as the 100mg oral capsule; (2) the glargine rule matched the Soliqua
  * glargine-lixisenatide fixed-dose combo and priced it as Lantus $35. Both now excluded via negative
  * lookahead so they fall through instead of showing a confident wrong price. Again all
- * preferred-agent cells still price; the raise is dropped alternatives-list mispricings. */
-export const KNOWN_UNPRICED_GAP = 575
+ * preferred-agent cells still price; the raise is dropped alternatives-list mispricings.
+ * Lowered 575 → 362 on 2026-07-16: added rules for the ~19 "second-tier" oral NSAID molecules
+ * (celecoxib, diclofenac potassium/sodium-ER/topical/misoprostol-combo, etodolac, flurbiprofen,
+ * indomethacin, ketoprofen/ketoprofen-ER, ketorolac, meclofenamate, mefenamic acid, nabumetone,
+ * oxaprozin, piroxicam, sulindac, diflunisal, tolmetin, salsalate, aspirin) that had zero
+ * cash-link rule at all -- referenced under ~200 different verbatim phrasings across the 5 NSAID
+ * guides (one per source PDF's own wording for the same drug), the same "new guide surfaces a new
+ * long tail" pattern as every raise above, just discovered via a user UAT screenshot instead of a
+ * new-guide merge. Cost Plus prices are real (captured 2026-07-16); GoodRx prices are mostly
+ * still missing -- GoodRx served a real "Press & Hold" bot-check CAPTCHA to this session after one
+ * successful lookup, a harder block than the usual plain-fetch 403 this project has seen before.
+ * Revisit to fill in GoodRx once accessible; meclofenamate/salsalate/immediate-release-ketoprofen
+ * are confirmed not carried by Cost Plus (not a research gap). */
+export const KNOWN_UNPRICED_GAP = 362
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -443,6 +455,176 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxPrice: { price: 19.61, quantity: '30 tablets, 15mg' },
     costPlusPrice: { price: 5.38, quantity: '30 tablets, 15mg' },
     pricesCapturedAt: '2026-07-09',
+  },
+  // ---- Remaining oral NSAID alternatives (added 2026-07-16) ----
+  // The 2026-07-16 UAT found ~19 real NSAID molecules (celecoxib + the "second-tier" oral NSAIDs)
+  // with zero cash-link rule at all, referenced under ~200 different verbatim phrasings across the
+  // 5 NSAID guides' alternatives lists (one per source PDF's own wording). Cost Plus prices below
+  // are real, captured 2026-07-16 off a real browser session. GoodRx prices are OMITTED, not
+  // confirmed-unavailable -- GoodRx's bot-check (a real "Press & Hold" CAPTCHA, not the usual
+  // plain-fetch 403) blocked this session's attempts after one successful lookup (celecoxib:
+  // $21.41, 30x200mg, standard price). Revisit to fill these in; do not treat the omission as
+  // "Cost Plus only by design" the way the ibuprofen rule above is.
+  {
+    // Combo product -- must precede the plain diclofenac rule below (its name always contains
+    // "diclofenac").
+    matches: /diclofenac.*misoprostol|arthrotec/i,
+    goodRxSlug: 'arthrotec',
+    costPlusPath: 'diclofenac-misoprostol-50-0_2mg-tablet-delayed-release-arthrotec',
+    costPlusPrice: { price: 16.83, quantity: '50-0.2mg tablets, delayed release' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Topical/gel forms (Voltaren Gel, Pennsaid) are a distinct product from the oral tablet --
+    // must precede the plain diclofenac rule below.
+    matches: /diclofenac.*(gel|topical|patch|solution)|voltaren gel|pennsaid/i,
+    goodRxSlug: 'diclofenac',
+    costPlusPath: 'diclofenac-sodium-0_10-solution-dropper-5-voltaren',
+    costPlusPrice: { price: 9.02, quantity: '5mL dropper, 0.10% solution' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Diclofenac potassium (immediate-release, Cataflam/Zipsor/Lofena family) -- must precede the
+    // plain diclofenac rule below since "potassium" is more specific.
+    matches: /diclofenac potassium/i,
+    goodRxSlug: 'diclofenac-potassium',
+    costPlusPath: 'diclofenacpotassium-50mg-tablet',
+    costPlusPrice: { price: 7.14, quantity: '30 tablets, 50mg' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Catch-all diclofenac (sodium DR/ER/unspecified salt) -- must stay after the three diclofenac
+    // rules above so combo/topical/potassium forms don't fall through to this ER sodium price.
+    matches: /diclofenac/i,
+    goodRxSlug: 'diclofenac-sodium',
+    costPlusPath: 'diclofenacsodiumer-100mg-tablet',
+    costPlusPrice: { price: 20.25, quantity: '100mg extended-release tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /celecoxib|celebrex/i,
+    goodRxSlug: 'celecoxib',
+    goodRxParams: 'label_override=celecoxib&form=capsule&dosage=200mg&quantity=30',
+    costPlusPath: 'celecoxib-100mg-capsule',
+    goodRxPrice: { price: 21.41, quantity: '30 capsules, 200mg' },
+    costPlusPrice: { price: 5.83, quantity: '30 capsules, 100mg' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /etodolac|lodine/i,
+    goodRxSlug: 'etodolac',
+    costPlusPath: 'etodolac-200mg-capsule',
+    costPlusPrice: { price: 10.14, quantity: '200mg capsule' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /flurbiprofen|ansaid|lurbiro/i,
+    goodRxSlug: 'flurbiprofen',
+    costPlusPath: 'flurbiprofen-100mg-tablet-ansaid',
+    costPlusPrice: { price: 14.80, quantity: '100mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Immediate-release only -- Cost Plus's indomethacin ER (75mg) is a separate, unpriced product.
+    matches: /indomethacin|indocin/i,
+    goodRxSlug: 'indomethacin',
+    costPlusPath: 'indomethacin-25mg-capsule',
+    costPlusPrice: { price: 7.79, quantity: '25mg capsule' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Extended-release only -- must precede the plain ketoprofen rule below. Cost Plus doesn't
+    // carry the immediate-release 50/75mg capsule at all (confirmed by search), only this ER form,
+    // which is priced much higher -- do not let the bare "ketoprofen" rule below inherit this price.
+    matches: /ketoprofen.*(er|extended)/i,
+    goodRxSlug: 'ketoprofen',
+    costPlusPath: 'ketoprofen-200-mg-capsule-extended-release-24-hour',
+    costPlusPrice: { price: 170.98, quantity: '200mg extended-release capsule' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Immediate-release: Cost Plus doesn't carry it (confirmed by search) -- GoodRx-link-only for
+    // now (see the block comment above; this is a tool-outage gap, not a confirmed unavailability).
+    matches: /ketoprofen/i,
+    goodRxSlug: 'ketoprofen',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /ketorolac|toradol/i,
+    goodRxSlug: 'ketorolac',
+    costPlusPath: 'KetorolacTromethamine-10mg-Tablet',
+    costPlusPrice: { price: 6.72, quantity: '10mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /nabumetone|relafen/i,
+    goodRxSlug: 'nabumetone',
+    costPlusPath: 'nabumetone-500mg-tablet',
+    costPlusPrice: { price: 7.14, quantity: '500mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /oxaprozin|daypro|coxanto/i,
+    goodRxSlug: 'oxaprozin',
+    costPlusPath: 'oxaprozin-600mg-tablet-daypro',
+    costPlusPrice: { price: 12.07, quantity: '600mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /piroxicam|feldene/i,
+    goodRxSlug: 'piroxicam',
+    costPlusPath: 'piroxicam-10mg-capsule-feldene',
+    costPlusPrice: { price: 7.76, quantity: '10mg capsule' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /sulindac|clinoril/i,
+    goodRxSlug: 'sulindac',
+    costPlusPath: 'sulindac-150mg-tablet-clinoril',
+    costPlusPrice: { price: 9.97, quantity: '150mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /mefenamic acid|ponstel/i,
+    goodRxSlug: 'mefenamic-acid',
+    costPlusPath: 'mefenamic-acid-250mg-capsule-ponstel',
+    costPlusPrice: { price: 21.56, quantity: '250mg capsule' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /diflunisal|dolobid/i,
+    goodRxSlug: 'diflunisal',
+    costPlusPath: 'diflunisal-500mg-tablet-dolobid',
+    costPlusPrice: { price: 27.94, quantity: '500mg tablet' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /tolmetin|tolectin/i,
+    goodRxSlug: 'tolmetin',
+    costPlusPath: 'tolmetin-sodium-400mg-capsule-tolectin-ds',
+    costPlusPrice: { price: 114.19, quantity: '400mg capsule' },
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Not carried by Cost Plus (confirmed by search -- returns only an unrelated fuzzy match).
+    // GoodRx-link-only for now; see the block comment above.
+    matches: /meclofenamate|meclomen/i,
+    goodRxSlug: 'meclofenamate',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Not carried by Cost Plus (confirmed by search -- returns only an unrelated fuzzy match).
+    // GoodRx-link-only for now; see the block comment above.
+    matches: /salsalate/i,
+    goodRxSlug: 'salsalate',
+    pricesCapturedAt: '2026-07-16',
+  },
+  {
+    matches: /\baspirin\b/i,
+    goodRxSlug: 'aspirin',
+    costPlusPath: 'aspirin-low-dose-81mg-tablet-delayed-release-aspirin-low-dose',
+    costPlusPrice: { price: 5.21, quantity: '81mg delayed-release tablet' },
+    pricesCapturedAt: '2026-07-16',
   },
   {
     // Cost Plus slug carries the salt + brand suffix (dapagliflozin-propanediol-...-farxiga), not

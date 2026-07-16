@@ -91,7 +91,21 @@ describe('cash price coverage across the live formulary', () => {
     // had 0.05mg out of stock at capture time -- link-only by design, not a bug. Covers the brand
     // (Climara/Menostar/Alora) and generic "estradiol transdermal/patch" phrasings that fall to
     // this rule. Alora added 2026-07-07 (VA gather) -- same brand family, no separate price rule.
-    const KNOWN_PRICE_UNAVAILABLE = [/climara/i, /menostar/i, /evamist/i, /alora/i, /estradiol transdermal(?! system)/i]
+    // meclofenamate/salsalate: confirmed not carried by Cost Plus (search returns only an
+    // unrelated fuzzy match); GoodRx pending -- a real "Press & Hold" bot-check blocked repeated
+    // attempts in the 2026-07-16 session after one successful lookup. Bare "ketoprofen" (not ER):
+    // Cost Plus only carries the 200mg extended-release capsule, not the immediate-release
+    // 50/75mg one; GoodRx pending for the same reason.
+    const KNOWN_PRICE_UNAVAILABLE = [
+      /climara/i,
+      /menostar/i,
+      /evamist/i,
+      /alora/i,
+      /estradiol transdermal(?! system)/i,
+      /meclofenamate/i,
+      /salsalate/i,
+      /ketoprofen/i,
+    ]
     const matched = coveredDrugNames().filter((name) => hasCashLinkRule(name))
     const missingPrice = matched.filter((name) => !goodRxPrice(name) && !costPlusPrice(name))
     const unexpected = missingPrice.filter((name) => !KNOWN_PRICE_UNAVAILABLE.some((re) => re.test(name)))

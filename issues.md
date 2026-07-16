@@ -464,3 +464,35 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   (every cell in the guide, not just bcbsma's); `ma-menopause` stays `mixed` (MGB's 1 `vaginal` cell
   is still `partial`, unrelated payer). `npm test`/`typecheck`/`validate-coverage`/`trace`/
   `validate-prices` all pass; per-cell cash-price gap stays 0/510. _Fixed (this commit)._
+- **2026-07-16 (cont.) · user UAT screenshot caught the NSAID alternatives-list cash-price gap;
+  ~19 real molecules had zero cash-link rule, referenced under ~200 verbatim phrasings.** User
+  screenshotted `il-nsaids` alternatives (Etodolac, Flurbiprofen, Indomethacin) rendering with a
+  GoodRx box but no Cost Plus box, and asked for a full sweep of every combination plus a check of
+  competing cash-price vendors. Measured the real scope: 3,079 distinct drug-name strings
+  referenced across all 25 guides (preferred agent + alternatives + paRequired), only 1,271 with
+  both vendor prices. Scoped to NSAIDs first per the user's explicit pick (of 3 options offered) to
+  finish one topic fully before widening. The 213 unmatched NSAID-guide alternative-list names
+  collapsed to ~19 real molecules referenced under wildly different verbatim phrasing per source
+  PDF (e.g. "Etodolac (capsule, tablet, extended-release)" vs "etodolac cap/tab (generic Lodine)"
+  vs "etodolac oral capsule/tablet 200-500 mg" — all the same drug). Added regex-based rules for
+  all 19 (celecoxib, diclofenac potassium/sodium-ER/topical/misoprostol-combo as 4 distinct
+  sub-rules ordered specific-before-general, etodolac, flurbiprofen, indomethacin, ketoprofen +
+  ketoprofen-ER as 2 distinct sub-rules, ketorolac, meclofenamate, mefenamic acid, nabumetone,
+  oxaprozin, piroxicam, sulindac, diflunisal, tolmetin, salsalate, aspirin) instead of editing 200+
+  individual data strings — the fix belongs in `cash.ts`'s matching layer, not the data.
+  `KNOWN_UNPRICED_GAP` dropped 575 → 362. **GoodRx blocked this browser session with a real
+  "Press & Hold" bot-check CAPTCHA** (not the usual plain-fetch 403 documented elsewhere in
+  CLAUDE.md) after exactly one successful lookup (celecoxib, $21.41) — did not attempt to solve or
+  route around it (bypassing bot-detection is off-limits regardless of context). All 17 Cost Plus
+  prices captured are real, from a live browser session 2026-07-16; GoodRx prices are omitted, not
+  fabricated, with an explicit code comment distinguishing "pending, blocked this session" from the
+  2 molecules (meclofenamate, salsalate) and 1 form (immediate-release ketoprofen) Cost Plus
+  genuinely doesn't carry (confirmed by search). `npm test` (25/25 cash tests, 301/301 total),
+  `typecheck`, `validate-prices`, and `trace` all pass. Also researched competing cash-price
+  vendors per the user's ask (SingleCare, Amazon Pharmacy RxPass, RxSaver/WellRx) — SingleCare is
+  the strongest 3rd-vendor candidate (no membership fee, more pharmacies than Cost Plus) but the
+  user deferred that decision until the price-fill gap is further along. **Open follow-ups, in
+  priority order:** (1) retry GoodRx for these 19 NSAID molecules once the bot-check clears —
+  don't just retry blindly, wait a session or more; (2) the remaining ~362-name gap outside NSAIDs
+  (per the user's stated order: NSAIDs first, then "alternatives shown in the UI" broadly, then
+  evaluate an exhaustive pass) — see backlog.md.
