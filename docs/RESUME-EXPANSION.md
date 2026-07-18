@@ -87,7 +87,43 @@ npm run data:split          # regenerate generated/ chunks after editing formula
 npm run archive-sources     # snapshot cited sources + manifest — run right after every merge
 ```
 
+## Decided taxonomies (Step 1, 2026-07-18)
+
+Not standalone JSON — schema only allows `classes` inside a guide, so these are wording/shape
+decisions to reuse verbatim when authoring each guide's `classes` array (mirrors `nsaid-oral`/
+`ace-inhibitor`'s single-class shape and `va-diabetes`'s multi-class shape).
+
+- **SSRIs — one class, `ssri-oral`.** Covers fluoxetine, sertraline, citalopram, escitalopram,
+  paroxetine, fluvoxamine.
+  - name: "Oral SSRIs" · shortName: "SSRI" · plainName: "Antidepressant (SSRI)"
+  - description: "Selective serotonin reuptake inhibitors (fluoxetine, sertraline, citalopram,
+    escitalopram, paroxetine, fluvoxamine) — first-line oral therapy for major depressive disorder
+    and anxiety disorders."
+  - plainDescription: "A daily pill for depression or anxiety that works by increasing serotonin
+    levels."
+  - indication: "Major depressive disorder & anxiety disorders"
+  - topicId: `ssris`, topic: "SSRIs", classNoun: "Prescription type", unitNoun: "medication"
+    (mirrors `ace-inhibitors`/`nsaids` topic shape)
+
+- **Osteoporosis — five classes** (mirrors `va-diabetes`'s multi-class shape):
+  1. `oral-bisphosphonate` — alendronate, risedronate, ibandronate. "Oral bisphosphonates" /
+     "Bone-strengthening pill" / first-line oral therapy for osteoporosis.
+  2. `iv-bisphosphonate` — zoledronic acid (Reclast). "IV bisphosphonate" / "Once-yearly bone
+     infusion" / for patients who can't tolerate oral bisphosphonates or need stronger therapy.
+  3. `rankl-inhibitor` — denosumab (Prolia). "RANKL inhibitor" / "Twice-yearly bone injection" /
+     alternative to bisphosphonates, especially with renal impairment.
+  4. `anabolic` — teriparatide, abaloparatide, romosozumab. "Anabolic bone-building agent" /
+     "Daily/monthly bone-building injection" / severe osteoporosis or bisphosphonate failure.
+  5. `serm` — raloxifene. "SERM" / "Bone + breast-cancer-risk pill" / postmenopausal women who
+     can't use estrogen or bisphosphonates.
+  - topicId: `osteoporosis`, topic: "Osteoporosis", classNoun: "Prescription type", unitNoun:
+    "medication"
+
 ## Progress ledger (update after every chunk)
 - 2026-07-09 — Cash-price gap for existing diabetes/NSAID/straggler guides CLOSED (`cash.ts`,
-  `KNOWN_UNPRICED_GAP` 1088→575). Backlog scoped. Expansion NOT started. **Next: Step 1 (SSRI +
-  osteoporosis taxonomies).**
+  `KNOWN_UNPRICED_GAP` 1088→575). Backlog scoped. Expansion NOT started.
+- 2026-07-18 (scheduled run) — Step 1 taxonomies decided (SSRI single-class, osteoporosis
+  5-class), recorded above. Starting Step 3 proof guide: **NY SSRIs (`ny-ssris`)**, reusing NY's
+  existing 5-payer roster (ny-medicaid, ny-excellus-bcbs, ny-uhc-commercial, ny-anthem-bcbs,
+  ny-excellus-medicare). **Next: gather via `formulary-gather.js`, merge, validate, STOP for user
+  review before scaling.**
