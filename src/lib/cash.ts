@@ -147,8 +147,13 @@
  * "Press & Hold" bot-check blocked repeated attempts, see the note above) -- fill those in a
  * future session once GoodRx access is reliable again, not by guessing. ~314 names are
  * confirmed-not-carried-by-either-vendor link-only by design (brand insulins, brand GLP-1s, most
- * of the menopause-HT long tail) and won't get a price without a 3rd vendor. */
-export const KNOWN_UNPRICED_GAP = 0
+ * of the menopause-HT long tail) and won't get a price without a 3rd vendor.
+ * 2026-07-18: +33 for the new `ny-ssris` guide (sertraline/citalopram/escitalopram/fluoxetine/
+ * paroxetine/fluvoxamine name variants across 5 payers) -- a scheduled/headless run has no human
+ * to clear GoodRx's "Press & Hold" bot-check, so no cash-link rules were added this session (see
+ * backlog.md). All 33 are cheap, long-generic SSRIs a future browser session should price
+ * quickly, same pattern as the diabetes/NSAID gap closure. */
+export const KNOWN_UNPRICED_GAP = 33
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
