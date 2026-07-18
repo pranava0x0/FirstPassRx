@@ -86,6 +86,20 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
     generics with real GoodRx/Cost Plus prices worth capturing at gather time) and *unsourced
     dosage* (see the two items below). Capture cash rules and dose provenance as each new guide
     ships, not as a later backfill, so the debt doesn't keep growing per the pattern in `cash.ts`.
+  - **PROOF GUIDE SHIPPED 2026-07-18 (scheduled run): `ny-ssris`.** SSRI single-class taxonomy
+    decided (`docs/RESUME-EXPANSION.md`), gathered via `formulary-gather.js` across NY's existing
+    5-payer roster (2-concurrent chunked), merged, all validation green (`npm test`/`trace`/
+    `validate-coverage`/`archive-sources`), verified rendering in the browser. Sertraline preferred
+    across all 5 payers (4 verified, 1 partial — Excellus Medicare's PDL doesn't itself rank the 4
+    tied Tier-1 generics). **Cash-price gap opened, not yet closed**: `KNOWN_UNPRICED_GAP` in
+    `src/lib/cash.ts` bumped 0→33 for the 33 SSRI name variants (sertraline/citalopram/
+    escitalopram/fluoxetine/paroxetine/fluvoxamine × 5 payers' naming) — a scheduled/headless run
+    has no human to clear GoodRx's "Press & Hold" bot-check (confirmed live: `goodrx.com/sertraline`
+    returned the challenge page), so no cash-link rules were added. These are cheap, long-generic
+    SSRIs — a future interactive session with real Chrome extension access should knock this out
+    quickly, same as the diabetes/NSAID gap closure pattern. Per this backlog's original scoping
+    note, this is stop-and-review — do NOT scale to the remaining ~30 guides without the user
+    approving this proof guide first.
 - **Close the cash-price gap on the *headline* recommendation — DONE.** The per-*cell* sweep
   (every guide record's `preferredAgent.inn`/`brand` against `hasCashLinkRule`) confirms **0/510
   cells have an unpriced preferred agent**. What's left is the `alternatives`-list long tail — see

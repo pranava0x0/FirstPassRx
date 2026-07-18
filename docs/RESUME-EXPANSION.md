@@ -123,7 +123,19 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
 - 2026-07-09 — Cash-price gap for existing diabetes/NSAID/straggler guides CLOSED (`cash.ts`,
   `KNOWN_UNPRICED_GAP` 1088→575). Backlog scoped. Expansion NOT started.
 - 2026-07-18 (scheduled run) — Step 1 taxonomies decided (SSRI single-class, osteoporosis
-  5-class), recorded above. Starting Step 3 proof guide: **NY SSRIs (`ny-ssris`)**, reusing NY's
-  existing 5-payer roster (ny-medicaid, ny-excellus-bcbs, ny-uhc-commercial, ny-anthem-bcbs,
-  ny-excellus-medicare). **Next: gather via `formulary-gather.js`, merge, validate, STOP for user
-  review before scaling.**
+  5-class), recorded above. **Step 3 proof guide SHIPPED: `ny-ssris`.** Gathered via
+  `formulary-gather.js` (5 payers, chunked ≤2 concurrent, ~459K subagent tokens, 0 errors),
+  merged into `formulary.json`, all checks green (`npm test`, `typecheck`, `trace`,
+  `validate-coverage`, `archive-sources`), verified live in the browser (NY → SSRIs renders
+  Sertraline as preferred with correct alternatives/PA/excluded items). One data-quality fix
+  applied during merge: 6 of NY Medicaid's `paRequired` reasons used "non-preferred" language that
+  tripped the schema's cost-sharing-vs-barrier heuristic — reworded (not reclassified; NYRx's PDL
+  is a binary Preferred/Non-Preferred format where non-preferred genuinely triggers PA, per the
+  established convention documented in CLAUDE.md). Cash prices NOT captured — GoodRx bot-blocked
+  this headless run (confirmed live), so `KNOWN_UNPRICED_GAP` bumped 0→33 and the gap logged to
+  `backlog.md` for a future interactive session. Committed in 4 chunks (taxonomy decision, guide
+  merge, cash-gap bump, source archive) — pushed to `main`.
+  **STOPPING HERE per the user's explicit gate — do not scale to the remaining ~30 guides without
+  the user reviewing this proof guide and approving.** Next session: if approved, proceed to Step 2
+  (PA/AL/CA payer-roster discovery) and Step 4 (scale remaining state×topic combinations, one
+  state-all-topics gather at a time).
