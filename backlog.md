@@ -220,6 +220,40 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## Medium
 
+- **Candidate topics for a future expansion round, beyond SSRIs/osteoporosis (already scoped in
+  `docs/RESUME-EXPANSION.md`) — surfaced by a 2026-07-19 scheduled-run web-search sweep (research
+  only, no data gathered, no agents spawned).** Ranked by how much real-world PA friction they carry
+  (source: web search, not gathered/cited formulary data — treat as a shortlist to scope, not a
+  claim about any specific payer):
+  - **GLP-1s for weight-loss/obesity indication (Wegovy/Zepbound/Saxenda) — distinct from the
+    existing `glp1` diabetes class.** Same molecules, different indication and a much harsher PA
+    gate (BMI threshold + documented prior weight-loss attempts almost everywhere it's covered at
+    all). Coverage is unusually state-variable and currently in flux — KFF reports only 13 state
+    Medicaid FFS programs cover it for obesity as of Jan 2026, and CA/NH/PA/SC *dropped* coverage
+    since Oct 2025 (notable: PA and CA are both already on this project's new-state list for other
+    topics, so this could piggyback on their existing payer-roster discovery). CMS's new BALANCE
+    model (opt-in for states, May 2026–Jan 2027) may reshape this fast — check the coverage
+    landscape again before scoping, not just the search snapshot above, given how fast it's moving.
+  - **ADHD stimulants (methylphenidate/amphetamine salts + non-stimulant guanfacine/atomoxetine).**
+    Every state Medicaid program covers at least one stimulant, but PA-for-brand/ER and step-therapy
+    rules vary widely, and Schedule II status adds its own friction (e.g. Florida requires PA on all
+    Schedule II ADHD drugs). Likely a clean single-class or two-class taxonomy (stimulant + non-
+    stimulant) similar in shape to `ssri-oral`.
+  - **DOAC anticoagulants (apixaban/Eliquis, rivaroxaban/Xarelto, + warfarin as the old-line
+    comparator).** High-volume, chronic, PDL-driven — same shape as ACE inhibitors, likely a quick
+    single-class guide reusing the `ny-ace`/`va-ace` taxonomy pattern.
+  - Not pursued further this run per the standing gate: the SSRI proof guide (`ny-ssris`) is still
+    awaiting the user's review before *any* further scaling, per `docs/RESUME-EXPANSION.md`'s
+    explicit stop-and-report instruction — these are ideas to scope next, not started.
+- **Existing-guide depth gaps (`partial`/`example` cells), from the 2026-07-19 `validate-coverage`
+  run — worth a verification pass before/alongside adding new topics/states:** `ny-menopause` (5
+  `example` cells — the only guide with any `example`-quality data left), `md-menopause` (5
+  `partial`), `md-inhalers` (3 `partial`), `md-diabetes` (3 `partial`), `va-menopause` (2 `partial`),
+  `md-ace` (1 `partial`), `il-nsaids` (1 `partial`), `il-inhalers` (1 `partial`), `il-diabetes` (1
+  `partial`), `ma-menopause` (1 `partial`), `ny-ssris` (1 `partial` — the proof guide itself). None
+  of these fail `validate()` (partial/example are valid states), but they're the cells a future
+  "verify the soft spots" pass (same shape as PR #13's MA/VA/IL/NY soft-cell sweep) should target
+  first, cheaper than gathering a brand-new topic.
 - **PR #6 review nitpicks, deferred rather than blocking merge.** From the two-persona review
   (SW engineer + data reviewer) of the state/topic-picker split and NY/IL NSAID guides:
   - `Controls.tsx`'s state/topic segmented tablists omit `aria-controls` (unlike the existing class

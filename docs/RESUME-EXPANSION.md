@@ -139,3 +139,15 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   the user reviewing this proof guide and approving.** Next session: if approved, proceed to Step 2
   (PA/AL/CA payer-roster discovery) and Step 4 (scale remaining state×topic combinations, one
   state-all-topics gather at a time).
+- 2026-07-19 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working
+  tree clean, `main` up to date with `origin/main`, `ny-ssris` proof guide unchanged since the last
+  run — no user approval had landed (non-interactive run, nothing to approve against). Re-ran
+  `npm run validate-coverage` to confirm current state (26/306 state×topic cells, 46 states with
+  zero guides — matches the known, already-scoped gap, nothing new broken). Per the task's fallback
+  instruction, spent the run on research instead of scaling: web-searched for additional
+  therapeutic-area candidates beyond SSRIs/osteoporosis (GLP-1 weight-loss as a distinct indication
+  from the existing diabetes `glp1` class, ADHD stimulants, DOAC anticoagulants) and logged existing
+  `partial`/`example` cell gaps across shipped guides — both recorded in `backlog.md` (Medium) as
+  scoping ideas, not started. No data gathered, no agents/Workflows spawned, no branches created.
+  **Still stopped here pending the user's review of `ny-ssris`.** Next session: if approved, proceed
+  to Step 2 (PA/AL/CA payer-roster discovery) and Step 4 (scale remaining state×topic combinations).
