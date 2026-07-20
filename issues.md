@@ -415,6 +415,25 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   center / provider manual) — if `G` ≠ prior-authorization, all 5 upgrade to verified citing the CSV;
   the `vaginal` + `combo` cells (uniform `PA=0`) are already safe to upgrade whenever a future pass
   adds the CSV as a source. _Open (blocked on code legend)._
+  **2026-07-20 (scheduled run) — still open, but the unblock path is now concrete.** Re-checked both
+  documents the earlier note named: `FormularyFileInfo.pdf` (fetched fresh, read via the PDF tool
+  page-by-page, not just WebFetch's text extraction) confirms it's genuinely a COBOL copybook for a
+  *different* file (the binary NDC-flag export) with no PA code legend anywhere in its 7 pages — the
+  block is real, not a "looks dead but isn't" false negative. A WebSearch answer claiming `G` = "PA
+  required if non-preferred OR clinical criteria/step-therapy not met" surfaced but traces to no
+  identifiable eMedNY-specific source, so per this repo's own rule (AI-synthesized values are
+  provisional, verify against a primary source) it is **not** being used to upgrade the cells — logged
+  here only as an unverified lead, not fact. Separately fetched NYRx's own July 16 2026 "Preferred
+  Drug Quick List" (`newyork.fhsc.com/downloads/providers/nyrx_pdp_pdl.pdf` mirror), which confirms the
+  general framework (preferred drugs generally don't need PA unless flagged CC/ST/DO/F-Q-D/BLTG/CDRP)
+  but uses a different code system than the flattened CSV's `0/G/N` and still doesn't define `G`
+  directly — so it doesn't resolve this either. What it DID surface: the live NYRx Education &
+  Outreach Call Center contact info, dated fresh (1-833-967-7310,
+  NYRxEO@primetherapeutics.com, 8am-5pm ET M-F) — replaces the generic "call center" placeholder in
+  the original note with an actual number to call. Next session with phone/interactive access: call
+  and ask specifically "does PA code G mean prior authorization is required on the flattened NDC
+  formulary export" — a 2-minute call likely closes this vs. more web research, which has now dead-
+  ended twice on the same two documents.
 - **2026-07-16 · data (coverage gap) · BCBS MA (`bcbsma`) 15/15 cells across all 5 MA guides upgraded
   partial/example → verified; the payer's `pbm: "CVS Caremark"` field and its actual source document
   had been mismatched.** The 2026-07-16 UAT found bcbsma's `ma-inhalers` cells cited its own

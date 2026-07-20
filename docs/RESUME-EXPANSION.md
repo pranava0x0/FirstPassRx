@@ -151,3 +151,19 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   scoping ideas, not started. No data gathered, no agents/Workflows spawned, no branches created.
   **Still stopped here pending the user's review of `ny-ssris`.** Next session: if approved, proceed
   to Step 2 (PA/AL/CA payer-roster discovery) and Step 4 (scale remaining state×topic combinations).
+- 2026-07-20 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working
+  tree clean, `main` up to date with `origin/main`, `npm run validate-coverage` still 26/306 (no
+  drift since 2026-07-19) — no user approval had landed (non-interactive run, nothing to approve
+  against). Per the fallback instruction, spent the run on two research threads instead of scaling:
+  (1) chased the `ny-menopause` eMedNY PA-code block from `issues.md` — fetched both documents the
+  prior note pointed at with a dedicated PDF-reading tool (not just WebFetch text extraction) to
+  rule out a "looks dead but isn't" false negative; confirmed the block is real (neither document
+  defines the flattened CSV's `G` code), but surfaced the live NYRx call center contact info
+  (1-833-967-7310) as a concrete next unblock step for an interactive session — logged to
+  `issues.md`; (2) added one new candidate topic to `backlog.md` not already logged on 2026-07-19:
+  CGRP migraine inhibitors, backed by both an AJMC MCO-survey stat (96% require trial-and-failure)
+  and this project's own freshly-fetched NYRx PDL (which flags the CGRP class with F/Q/D and ST
+  criteria the plain triptans don't carry). No data gathered, no agents/Workflows spawned, no
+  branches created — this run's changes are `issues.md` + `backlog.md` + this ledger entry only.
+  **Still stopped here pending the user's review of `ny-ssris`.** Next session: if approved, proceed
+  to Step 2 (PA/AL/CA payer-roster discovery) and Step 4 (scale remaining state×topic combinations).

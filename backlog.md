@@ -242,6 +242,18 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   - **DOAC anticoagulants (apixaban/Eliquis, rivaroxaban/Xarelto, + warfarin as the old-line
     comparator).** High-volume, chronic, PDL-driven — same shape as ACE inhibitors, likely a quick
     single-class guide reusing the `ny-ace`/`va-ace` taxonomy pattern.
+  - **CGRP inhibitors for chronic migraine (Aimovig/Ajovy/Emgality/Nurtec/Qulipta/Ubrelvy) —
+    added 2026-07-20, unusually high, well-documented PA friction.** An AJMC-published MCO survey
+    found 96% of surveyed Medicaid MCOs require a documented trial-and-failure of ≥1 non-CGRP
+    prophylactic before approving a CGRP antagonist, and most require 2+ prior agents; 69% also
+    layer step therapy through a cheaper nonspecialty drug first. This project's own primary source
+    corroborates it directly — NYRx's July 16 2026 Preferred Drug Quick List (fetched this session,
+    see issues.md) flags Aimovig/Ajovy/Emgality/Qulipta/Ubrelvy with F/Q/D (frequency/quantity/
+    duration) limits and Qulipta/Ubrelvy additionally with ST (step therapy), while ordinary
+    oral migraine triptans carry no such flags — a clean, sourced contrast for a guide's PA-barrier
+    story. Likely taxonomy: one `cgrp-inhibitor` class (the 4-5 injectable/oral CGRP mAbs/gepants)
+    reusing the `ssri-oral` single-class shape; consider a second `triptan` class as the cheap
+    first-line comparator if a payer's own PDL treats them as a step.
   - Not pursued further this run per the standing gate: the SSRI proof guide (`ny-ssris`) is still
     awaiting the user's review before *any* further scaling, per `docs/RESUME-EXPANSION.md`'s
     explicit stop-and-report instruction — these are ideas to scope next, not started.
