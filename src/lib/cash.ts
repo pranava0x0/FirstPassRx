@@ -171,8 +171,10 @@
  * cash-link-rule pass as the SSRI gap above.
  * 2026-07-21 (cont.): +30 for `ma-osteoporosis` (257 total), same reason -- more free-text
  * alternative-name variants of the same osteoporosis molecules across MassHealth/BCBSMA/Tufts/
- * Harvard Pilgrim/MGB. */
-export const KNOWN_UNPRICED_GAP = 257
+ * Harvard Pilgrim/MGB.
+ * 2026-07-21 (cont.): +35 for `md-osteoporosis` (292 total), same reason -- 8 payers' worth of
+ * denosumab-biosimilar and teriparatide/abaloparatide/romosozumab name variants. */
+export const KNOWN_UNPRICED_GAP = 292
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
