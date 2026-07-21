@@ -158,8 +158,13 @@
  * molecules; deferred to one consolidated cash-link-rule pass (backlog.md) rather than guessing
  * mid-expansion, since the same 6 molecule names recur across every state.
  * 2026-07-21 (cont.): +42 for `md-ssris` (102 total), same reason.
- * 2026-07-21 (cont.): +35 for `va-ssris` (137 total), same reason. */
-export const KNOWN_UNPRICED_GAP = 137
+ * 2026-07-21 (cont.): +35 for `va-ssris` (137 total), same reason.
+ * 2026-07-21 (cont.): +57 for `il-ssris` (194 total), same reason. SSRI expansion (ny/ma/md/va/il)
+ * now complete; a future browser session should add ~6 broad regex cash-link rules (one per
+ * molecule: sertraline/citalopram/escitalopram/fluoxetine/paroxetine/fluvoxamine) to collapse
+ * most of this 194 in one pass, same as the metformin/lisinopril-family rules already do for
+ * their molecules -- see backlog.md. */
+export const KNOWN_UNPRICED_GAP = 194
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake

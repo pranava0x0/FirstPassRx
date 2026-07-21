@@ -38,6 +38,7 @@ describe('guides + global meta', () => {
       'ma-ssris',
       'md-ssris',
       'va-ssris',
+      'il-ssris',
     ])
   })
 
