@@ -556,3 +556,20 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   Also: `.claude/launch.json`'s dev-server preview should set `"autoPort": true` on every
   configuration — a fixed port hard-fails when a concurrent session's dev server already holds it,
   which is common when multiple worktrees/spawn_task sessions run against this repo at once.
+- **A new topic's gather can't blindly reuse a prior topic's payer roster metadata (`formularyUrl`/
+  `formularyId`) — verify each payer's document is actually shared across topics before copying.**
+  When scaffolding `ma-osteoporosis` from `ma-ssris`'s 5-payer roster (2026-07-21), 4 of 5 MA payers
+  publish one PDF covering every drug class (safe to reuse `formularyUrl` verbatim), but MassHealth's
+  MHDL splits every drug class into its own numbered table (`pubtheradetail.do?id=23` = respiratory
+  agents, `id=49` = osteoporosis) — the gather agent caught the mismatch itself via WebSearch and
+  cited the right table, but the *payer object's* UI-facing `formularyUrl`/`formularyId` still needed
+  a manual post-merge fix since the merge script had copied it from the SSRI guide unchanged. Fix
+  applied to the reusable merge script: sync `payer.formularyUrl` to whatever the checkpoint's own
+  `primarySource.url` actually says, every time, rather than trusting the source guide's copy.
+- **A `formulary-gather.js` invocation can hit the session usage limit before any agent starts** (not
+  a per-agent rate-limit) — the whole chunk fails instantly with `You've hit your session limit ·
+  resets <time> (America/New_York)`, zero checkpoint files written. Same lever as the rate-limit
+  case (docs/agent-runs.md #10): check current time against the stated reset before retrying: if
+  the reset has already passed, an immediate retry with byte-identical `args` succeeds (confirmed
+  2026-07-21, `ma-osteoporosis` — failed at a "resets 4:30am" message when the actual time was
+  already 7:31am, retried immediately and got all 5 payers clean).
