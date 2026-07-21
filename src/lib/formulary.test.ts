@@ -35,6 +35,7 @@ describe('guides + global meta', () => {
       'il-diabetes',
       'il-menopause',
       'ny-ssris',
+      'ma-ssris',
     ])
   })
 

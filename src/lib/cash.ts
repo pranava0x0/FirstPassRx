@@ -152,8 +152,12 @@
  * paroxetine/fluvoxamine name variants across 5 payers) -- a scheduled/headless run has no human
  * to clear GoodRx's "Press & Hold" bot-check, so no cash-link rules were added this session (see
  * backlog.md). All 33 are cheap, long-generic SSRIs a future browser session should price
- * quickly, same pattern as the diabetes/NSAID gap closure. */
-export const KNOWN_UNPRICED_GAP = 33
+ * quickly, same pattern as the diabetes/NSAID gap closure.
+ * 2026-07-21: +27 for `ma-ssris` (60 total) -- same 6 SSRI molecules, more free-text alternative-
+ * name variants per payer. The SSRI expansion to MD/VA/IL will add more variants of these same
+ * molecules; deferred to one consolidated cash-link-rule pass (backlog.md) rather than guessing
+ * mid-expansion, since the same 6 molecule names recur across every state. */
+export const KNOWN_UNPRICED_GAP = 60
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
