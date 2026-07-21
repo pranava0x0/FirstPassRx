@@ -100,6 +100,16 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
     quickly, same as the diabetes/NSAID gap closure pattern. Per this backlog's original scoping
     note, this is stop-and-review — do NOT scale to the remaining ~30 guides without the user
     approving this proof guide first.
+  - **GATE CLEARED, SSRIs scaled 2026-07-21** (explicit user instruction: "do the SSRI expansion
+    work"). All 5 states now have `*-ssris` guides (`ma-ssris`, `md-ssris`, `va-ssris`, `il-ssris`
+    added). `KNOWN_UNPRICED_GAP` reached 194 across the SSRI expansion.
+  - **Osteoporosis scaled to 4/5 states 2026-07-21.** 5-class taxonomy shipped as
+    `ny-osteoporosis` (5 payers), `ma-osteoporosis` (5), `md-osteoporosis` (8), `va-osteoporosis`
+    (8) — all fully validated/traced/archived, NY+MD browser-verified. `KNOWN_UNPRICED_GAP` now
+    327. **`il-osteoporosis` (8 payers) is the one remaining gap** — deferred, not started, per
+    explicit user instruction to stop spinning up new agents this session. Next session: gather
+    it reusing `il-ssris`'s roster, same shape as MD/VA. See `docs/RESUME-EXPANSION.md`'s ledger
+    for full detail.
 - **Close the cash-price gap on the *headline* recommendation — DONE.** The per-*cell* sweep
   (every guide record's `preferredAgent.inn`/`brand` against `hasCashLinkRule`) confirms **0/510
   cells have an unpriced preferred agent**. What's left is the `alternatives`-list long tail — see
