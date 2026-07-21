@@ -39,6 +39,7 @@ describe('guides + global meta', () => {
       'md-ssris',
       'va-ssris',
       'il-ssris',
+      'ny-osteoporosis',
     ])
   })
 
