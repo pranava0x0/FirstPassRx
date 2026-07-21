@@ -220,6 +220,14 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## Medium
 
+- **SSRI cash-price gap (194 name variants, `KNOWN_UNPRICED_GAP`) — add ~6 broad per-molecule
+  regex rules.** The 2026-07-21 SSRI expansion (NY/MA/MD/VA/IL, 34 payers total) shipped without
+  new cash-link rules — same 6 SSRI molecules (sertraline, citalopram, escitalopram, fluoxetine,
+  paroxetine, fluvoxamine) recur across every state with different free-text phrasing per payer
+  (e.g. "citalopram oral tablet/solution" vs. "Citalopram (Celexa) oral tablet/solution"), so a
+  single broad regex per molecule (same pattern as the existing `metformin`/`lisinopril`-family
+  rules in `src/lib/cash.ts`) should collapse most of this 194 in one browser session — see the
+  dated history comment in `cash.ts` for the running total by guide.
 - **Candidate topics for a future expansion round, beyond SSRIs/osteoporosis (already scoped in
   `docs/RESUME-EXPANSION.md`) — surfaced by a 2026-07-19 scheduled-run web-search sweep (research
   only, no data gathered, no agents spawned).** Ranked by how much real-world PA friction they carry

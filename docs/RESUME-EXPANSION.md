@@ -167,3 +167,26 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   branches created — this run's changes are `issues.md` + `backlog.md` + this ledger entry only.
   **Still stopped here pending the user's review of `ny-ssris`.** Next session: if approved, proceed
   to Step 2 (PA/AL/CA payer-roster discovery) and Step 4 (scale remaining state×topic combinations).
+- 2026-07-21 — **Gate cleared by explicit user instruction ("do the SSRI expansion work").**
+  Scaled SSRIs to the 4 remaining existing states — `ma-ssris` (5 payers), `md-ssris` (8),
+  `va-ssris` (8), `il-ssris` (8) — reusing each state's existing payer roster from its ACE
+  guide. Gathered via `formulary-gather.js`, one state at a time, chunked ≤2 concurrent (one
+  `masshealth` agent failure — an OAuth token revocation, not a data issue — recovered with a
+  single retry agent). Every payer verified/partial off its own formulary; several binary-PDL
+  Medicaid payers per state needed the established "non-preferred wording ≠ cost-tier" reword
+  (caught by a pre-merge regex check for VA/IL, by the failing schema test for MA/MD) before the
+  guide would validate. `KNOWN_UNPRICED_GAP` bumped incrementally 33→60→102→137→194 (one bump per
+  state's commit); no new cash-link rules added (deferred to backlog.md — same 6 molecules recur
+  in every state, worth one consolidated regex pass). Updated `src/lib/formulary.test.ts`'s
+  hardcoded guide-id list after each merge (the concrete "validation script" that needed updating
+  for new guides). All of `npm test`/`typecheck`/`trace`/`validate-coverage`/`archive-sources`
+  green after each state; verified live in the browser (VA → SSRIs renders Zoloft/sertraline
+  correctly with alternatives and the one PA-required cell). National grid moved 26/306 → 30/306.
+  Also cleaned up 8 stale local/remote branches this session — investigated each one (dates,
+  diffstat, and targeted content checks like `KNOWN_UNPRICED_GAP` values and `boglActive` states)
+  and confirmed every one was a strictly-earlier, already-superseded snapshot of work that had
+  since been redone directly on `main` (squash-merged PRs #6/#11 the branches didn't know about,
+  plus independent re-fixes of the same BOGL/cash bugs) — none had unique content, so none were
+  cherry-picked; all deleted outright rather than merged. **Next session (SSRIs now shipped
+  everywhere): proceed to osteoporosis for all 5 states, then Step 2 (PA/AL/CA payer-roster
+  discovery).**
