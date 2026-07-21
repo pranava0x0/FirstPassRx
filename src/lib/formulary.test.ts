@@ -42,6 +42,7 @@ describe('guides + global meta', () => {
       'ny-osteoporosis',
       'ma-osteoporosis',
       'md-osteoporosis',
+      'va-osteoporosis',
     ])
   })
 
