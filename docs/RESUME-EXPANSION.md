@@ -190,3 +190,26 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   cherry-picked; all deleted outright rather than merged. **Next session (SSRIs now shipped
   everywhere): proceed to osteoporosis for all 5 states, then Step 2 (PA/AL/CA payer-roster
   discovery).**
+- 2026-07-21 (later same day, scheduled run continued interactively) — **Osteoporosis scaled to
+  4 of 5 existing states: `ny-osteoporosis` (5 payers), `ma-osteoporosis` (5), `md-osteoporosis`
+  (8), `va-osteoporosis` (8).** Gathered one state at a time via `formulary-gather.js`, chunked
+  ≤2 concurrent (one MA invocation failed instantly on a session-limit reset that had already
+  passed — immediate retry with identical args succeeded). Every payer verified/partial off its
+  own formulary; ~63 total `paRequired` reasons across the 4 states needed the established
+  reword-not-reclassify fix (binary/tiered PDL wording tripping the cost-tier-vs-barrier
+  heuristic) — all confirmed genuine PA/step barriers, none were cost-tier-only. `KNOWN_UNPRICED_GAP`
+  bumped 194→227→257→292→327 (one bump per state's commit). Fixed a real merge-script bug found
+  during MA's merge (payer `formularyUrl`/`formularyId` blindly copied from the SSRI guide can go
+  stale when a payer splits its formulary by topic-specific table, e.g. MassHealth's MHDL) — the
+  merge script now syncs `formularyUrl` to whatever the checkpoint's own `primarySource.url` says,
+  which auto-fixed 4 more stale landing-page URLs during MD/VA merges with zero manual patching.
+  All of `npm test`/`typecheck`/`trace`/`validate-coverage`/`archive-sources` green after each
+  state; NY and MD verified live in the browser. National grid moved 30/306 → 34/357 (the
+  denominator grew because osteoporosis added a 7th topic column). Also fixed an unrelated CSS bug
+  (`.recommendation-hero` was double-applying section-spacing on top of the shared `.doc > *`
+  divider convention, the only section in the document doing so) — see `src/index.css`.
+  **`il-osteoporosis` (8 payers) deliberately NOT started — user explicitly said stop spinning up
+  new agents this session.** That is the one remaining gap to complete osteoporosis's 5-state
+  footprint (matching SSRIs' full coverage). Next session: gather `il-osteoporosis` reusing
+  `il-ssris`'s 8-payer roster (same shape as this session's other 3 multi-payer states), then
+  proceed to Step 2 (PA/AL/CA payer-roster discovery) for the new-state expansion.
