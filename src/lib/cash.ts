@@ -157,8 +157,9 @@
  * name variants per payer. The SSRI expansion to MD/VA/IL will add more variants of these same
  * molecules; deferred to one consolidated cash-link-rule pass (backlog.md) rather than guessing
  * mid-expansion, since the same 6 molecule names recur across every state.
- * 2026-07-21 (cont.): +42 for `md-ssris` (102 total), same reason. */
-export const KNOWN_UNPRICED_GAP = 102
+ * 2026-07-21 (cont.): +42 for `md-ssris` (102 total), same reason.
+ * 2026-07-21 (cont.): +35 for `va-ssris` (137 total), same reason. */
+export const KNOWN_UNPRICED_GAP = 137
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
