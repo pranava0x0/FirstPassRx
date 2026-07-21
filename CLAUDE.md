@@ -67,6 +67,7 @@ Never blindly write code.
 - **Resume/backfill merges with on-disk output.** A `--missing-only` run must merge new records with existing *before* writing, or a capped partial run drops everything done earlier. Keep a progress manifest (per partition: `last_run`, `count`, `next_target`) so a new session resumes without re-deriving progress. Distinguish a closeable gap from a permanent source-side dead-end — don't re-run enrichment for data upstream will never give; mark it a known structural gap.
 - **Verify files are really on disk before debugging a "code" bug.** Cloud-sync (iCloud / Dropbox / OneDrive) can leave dataless placeholders that read empty / NUL while the inode reports the right size — and `git status` calls them *clean* because it trusts its stat-cache and never reads the bytes. The symptoms masquerade as code bugs (`ERR_INVALID_PACKAGE_CONFIG`, every route 500s, multi-minute boots, `page 2.tsx` conflict-copies). Fix: delete the file *then* `git checkout` (a plain checkout no-ops on a "clean" placeholder); better, move the repo out of the synced folder.
 - **Key file-backed caches on a signature, not a TTL.** For a cache fronting a local file, key on `(mtime_ns, size)` instead of a fixed `ttl=`; it busts the instant the file changes and serves indefinitely otherwise. A time-based TTL either serves stale data or churns needlessly.
+- **A web-fetch tool's own "I can't read this" message isn't proof the source is unreadable — check what it already saved.** An AI-summarization fetch step can choke on a PDF ("corrupted or encoded... binary data") even on a small, well-formed file (confirmed on 135KB/313KB PDFs, not just huge ones); the tool result still names the local path where it saved the raw bytes before giving up on summarizing them. Read that path directly (native PDF support) before concluding the source needs a different fetch method or is unreachable.
 
 ---
 
@@ -364,6 +365,12 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   text; a naive fetch alone would have wrongly concluded the source was unreadable. For any future
   large-PDF formulary source, try a dedicated PDF tool before downgrading verification to
   `partial`/`example` on the assumption the document is unreachable.
+  **Confirmed 2026-07-20 this isn't a "large PDF" problem specifically:** two small eMedNY PDFs
+  (135KB/7pp, 313KB/20pp — `FormularyFileInfo.pdf`, the NYRx Preferred Drug Quick List) hit the
+  identical WebFetch "corrupted/binary data" false-negative. No separate PDF tool was even needed —
+  WebFetch's own tool result names the local path it already saved the raw bytes to; plain `Read` on
+  that path pulled full text both times. Check the saved path before reaching for a dedicated PDF
+  tool or concluding the source is dead.
 - **A brand-new state (no `state-index.json` entry, no existing guide) needs its Medicaid
   administrator/PDL identity discovered from scratch via live search — never assume the agency name
   from training data.** Illinois HFS's PDL and pharmacy-benefit structure (administered directly, no
