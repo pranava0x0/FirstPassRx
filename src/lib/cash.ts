@@ -176,8 +176,13 @@
  * denosumab-biosimilar and teriparatide/abaloparatide/romosozumab name variants.
  * 2026-07-21 (cont.): +35 for `va-osteoporosis` (327 total), same reason -- 8 more payers'
  * worth of biosimilar/brand name variants (Bildyos, Bilprevda, Jubbonti, Stoboclo, Conexxence,
- * Enoby, Bosaya, Ospomyv). */
-export const KNOWN_UNPRICED_GAP = 327
+ * Enoby, Bosaya, Ospomyv).
+ * 2026-07-22: +12 for `il-osteoporosis` (339 total) -- 8th and final osteoporosis-guide payer
+ * roster (il-medicaid/aetna-better-health-il/bcbs-community-il/countycare/meridian/molina-il/
+ * bcbs-illinois-commercial/wellcare-value-script), same headless-run GoodRx bot-block. Completes
+ * osteoporosis's 5-state footprint (matching SSRIs). Deferred to the same future consolidated
+ * cash-link-rule pass as the SSRI gap above. */
+export const KNOWN_UNPRICED_GAP = 339
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
