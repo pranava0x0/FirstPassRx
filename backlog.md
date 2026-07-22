@@ -106,10 +106,53 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   - **Osteoporosis scaled to 4/5 states 2026-07-21.** 5-class taxonomy shipped as
     `ny-osteoporosis` (5 payers), `ma-osteoporosis` (5), `md-osteoporosis` (8), `va-osteoporosis`
     (8) — all fully validated/traced/archived, NY+MD browser-verified. `KNOWN_UNPRICED_GAP` now
-    327. **`il-osteoporosis` (8 payers) is the one remaining gap** — deferred, not started, per
-    explicit user instruction to stop spinning up new agents this session. Next session: gather
-    it reusing `il-ssris`'s roster, same shape as MD/VA. See `docs/RESUME-EXPANSION.md`'s ledger
-    for full detail.
+    327.
+  - **`il-osteoporosis` shipped 2026-07-22 — osteoporosis now complete across all 5 existing
+    states, matching SSRIs' full coverage.** Gathered via `formulary-gather.js` (8 payers reusing
+    `il-ssris`'s roster, chunked ≤2 concurrent, zero agent failures, ~1.1M tokens). 89 `paRequired`
+    reasons across 5 payers needed the established reword-not-reclassify fix; the one commercial
+    payer (`bcbs-illinois-commercial`) had already correctly modeled its real tiered items as
+    `alternatives`. `KNOWN_UNPRICED_GAP` 327→339. All of `npm test`/`typecheck`/`trace`/
+    `validate-coverage`/`archive-sources` green, verified live in browser. National grid moved
+    34/357 → 35/357. See `docs/RESUME-EXPANSION.md`'s ledger for full detail.
+  - **Step 2 (PA/AL/CA payer discovery) partially started 2026-07-22 — new-state PDL identities
+    confirmed via live search, full payer rosters NOT yet built.** Findings, none yet committed to
+    `state-index.json`:
+    - **Pennsylvania**: DHS runs one **Statewide Preferred Drug List** (papdl.com) that applies to
+      BOTH the FFS delivery system AND every HealthChoices/Community HealthChoices MCO — i.e. a
+      single shared PDL like NY's NYRx, not per-MCO formularies. Current version: "Pennsylvania PDL
+      2026" v10, effective January 2026, hosted at papdl.com (direct PDF link pattern:
+      `/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-<mmyyyy>-v<N>.pdf`). MCO roster for the
+      guide's payer list still needs picking (10 Physical HealthChoices MCOs + 3 CHC MCOs — probably
+      pick the 2-3 largest of each, not all 13, matching other states' payer-count norm).
+    - **Alabama**: genuinely simpler than any state gathered so far — Medicaid operates almost
+      entirely **fee-for-service, with no MCO contracts for the general adult population**
+      (confirmed via search, not assumed). One statewide PDL (`medicaid.alabama.gov`), updated
+      quarterly (Jan/Apr/Jul/Oct), P&T-committee-driven. A future AL guide likely needs a much
+      shorter payer list than other states: AL Medicaid FFS + a couple commercial/Medicare Part D
+      plans, not 8 MCOs.
+    - **California**: confirmed as predicted — **Medi-Cal Rx is a single statewide FFS pharmacy
+      carve-out** (DHCS-administered) covering all Medi-Cal beneficiaries regardless of which
+      managed-care plan they're enrolled in for other benefits (carved out since 2022-01-01). The
+      **Medi-Cal Rx Contract Drugs List (CDL)**, effective **2026-07-01**, is the authoritative PDL
+      — confirmed live and current via direct fetch. Spot-checked the two topics already scoped:
+      all 6 SSRI molecules (citalopram/escitalopram/fluoxetine/fluvoxamine/paroxetine/sertraline)
+      and the oral-bisphosphonate class (alendronate/ibandronate/risedronate) plus raloxifene
+      (SERM) appear unrestricted (no PA/step asterisk) in the base CDL — a good sign for a future
+      CA gather. Did NOT confirm denosumab (RANKL) or the anabolic-agent class (teriparatide/
+      abaloparatide/romosozumab) in this pass — not spotted in the sampled sections, may be billed
+      as a medical benefit rather than through the retail pharmacy CDL, matching the IV/injectable
+      pattern seen in every other state's osteoporosis gather; needs confirming before a CA
+      osteoporosis guide is built.
+    - **CAUTION for next session**: confirming the CA CDL was live cost far more context than
+      intended — the `WebFetch` tool returned the *entire* 242-page PDF as inline document content
+      rather than a summary (see the new CLAUDE.md scar-tissue note on this). For any future
+      large-PDF confirmation, use a page-range-limited read or `curl`+`grep` for the specific
+      keyword instead of a blanket `WebFetch` on a URL suspected to serve a large PDF.
+    - **Not yet done for any of the 3 new states**: full payer-roster JSON entries in
+      `state-index.json`, per-payer formulary URL verification via live fetch, or any actual
+      drug-class data gather. This is still a substantial next-session task before a single
+      guide can be built for PA, AL, or CA.
 - **Close the cash-price gap on the *headline* recommendation — DONE.** The per-*cell* sweep
   (every guide record's `preferredAgent.inn`/`brand` against `hasCashLinkRule`) confirms **0/510
   cells have an unpriced preferred agent**. What's left is the `alternatives`-list long tail — see

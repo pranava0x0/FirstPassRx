@@ -213,3 +213,34 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   footprint (matching SSRIs' full coverage). Next session: gather `il-osteoporosis` reusing
   `il-ssris`'s 8-payer roster (same shape as this session's other 3 multi-payer states), then
   proceed to Step 2 (PA/AL/CA payer-roster discovery) for the new-state expansion.
+- 2026-07-22 (scheduled run) — **`il-osteoporosis` shipped, osteoporosis now complete across all
+  5 existing states.** Gathered via `formulary-gather.js` (8 payers reusing `il-ssris`'s roster,
+  chunked ≤2 concurrent, zero agent failures, ~1.1M tokens, 40 cells: 27 verified, 13 partial —
+  IV-bisphosphonate medical-benefit absence again the majority partial cause, same as every prior
+  state). 89 `paRequired` reasons across 5 payers needed the reword-not-reclassify fix (binary
+  Preferred/Non-Preferred wording); one commercial payer (`bcbs-illinois-commercial`) had already
+  correctly modeled its genuine tiered cost-share items as `alternatives`, not `paRequired`. A
+  follow-up copy-polish commit fixed 42 reasons reading "Listed restricted on..." (grammatically
+  awkward from the mechanical reword) to "Restricted on...". `KNOWN_UNPRICED_GAP` 327→339. All of
+  `npm test`/`typecheck`/`trace`/`validate-coverage`/`archive-sources` green; verified live in
+  browser (IL → Osteoporosis renders alendronate sodium as preferred with correct PA-required
+  list). National grid moved 34/357 → 35/357. Committed in 3 chunks (guide merge, copy polish,
+  archived sources).
+  **Then started Step 2 (PA/AL/CA payer discovery) — confirmed PDL identities via live search for
+  all 3 new states, but did NOT build full payer rosters or gather any drug data:**
+  - **PA**: one Statewide PDL (papdl.com) covers FFS + every HealthChoices/CHC MCO, like NY's
+    NYRx — not per-MCO formularies. Current version "PA PDL 2026 v10", effective Jan 2026.
+  - **AL**: genuinely simpler than any state gathered so far — almost entirely FFS, **no MCO
+    contracts for the general adult population** (confirmed, not assumed) — one statewide PDL,
+    updated quarterly.
+  - **CA**: confirmed as predicted — Medi-Cal Rx is a single statewide FFS carve-out (DHCS), CDL
+    effective 2026-07-01 confirmed live. Spot-checked: all 6 SSRI molecules and oral-bisphosphonate
+    + SERM classes appear unrestricted in the base CDL (good sign); denosumab/anabolic classes NOT
+    confirmed in this pass (may be medical-benefit, needs checking before a CA osteoporosis guide).
+  - **Confirming the CA CDL cost far more context than intended** — `WebFetch` returned the entire
+    242-page PDF inline instead of a summary (new CLAUDE.md scar-tissue entry added on this).
+    Stopped Step 2 research here rather than compound the cost with PA/AL payer-roster building.
+  **Next session: build full payer-roster entries in `state-index.json` for PA/AL/CA (with live
+  per-payer formulary URL verification), confirm CA's denosumab/anabolic coverage mechanism, then
+  proceed to Step 3/4 (gather + merge) for the new states** — no guide data has been gathered for
+  any of the 3 new states yet, this remains a substantial next-session task.

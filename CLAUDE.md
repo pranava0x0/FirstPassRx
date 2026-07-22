@@ -573,3 +573,15 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   the reset has already passed, an immediate retry with byte-identical `args` succeeds (confirmed
   2026-07-21, `ma-osteoporosis` — failed at a "resets 4:30am" message when the actual time was
   already 7:31am, retried immediately and got all 5 payers clean).
+- **A plain `WebFetch` on a large government PDF can dump the ENTIRE document into context as
+  inline content, not a summary — a new, worse variant of the existing "looks dead but isn't"
+  pattern.** Confirming the Medi-Cal Rx Contract Drugs List (242 pages) was live and current for
+  the CA new-state-discovery pass (2026-07-22) cost an enormous, unplanned amount of context: the
+  tool result came back as the full extracted PDF text spread across dozens of `<document>` blocks
+  in the very next turn, not the "processed by a small fast model" summary the tool's own
+  description promises. This differs from the earlier-documented failure mode (WebFetch claiming
+  "corrupted/binary data" on a readable PDF) — here the fetch *worked* but skipped summarization
+  entirely and attached the raw document. For any future large-PDF confirmation (verifying a PDL is
+  live/current, checking an effective date), prefer a narrower probe: `curl` + `grep` for a specific
+  keyword/date, or a page-range-limited read, rather than a blanket `WebFetch` on a URL suspected to
+  serve a large PDF — there's no way to know in advance whether WebFetch will summarize or dump.
