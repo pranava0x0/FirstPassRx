@@ -204,6 +204,21 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
 
 ## Open
 
+- **2026-07-23 · process (archive-sources) · medicaid.alabama.gov 403s/fails the archiver's fetch
+  even though the gather agent read the same PDFs successfully via curl.** `npm run archive-sources`
+  reported 2 fetch failures after the `al-ssris` merge: `al-medicaid-ssris-source-2026-07` (the PDL
+  Thera PDF) and the `state-al-*` entry backing `state-index.json`'s Alabama Medicaid PDL page —
+  both on `medicaid.alabama.gov`. The gather agent's own verification note for `al-medicaid`
+  independently flagged "WebFetch itself hit an SSL cert error on the payer's HTML landing page,"
+  so this is the same domain exhibiting two different access problems to two different tools
+  (WebFetch during gather, the archiver's fetch afterward) — consistent with a real, non-standard
+  TLS/cert config on that host rather than a transient blip. Root cause: **external site
+  config**, not a code bug — the archiver already logs-and-skips per CLAUDE.md convention rather
+  than crashing (exit 0, 300 archived / 3 unreachable total this run). The guide data itself is
+  unaffected (the al-medicaid `ssri-oral` record is `verified`, read directly off the same PDF via
+  curl with a browser User-Agent during gather) — this only affects provenance archival, not the
+  shipped drug data. _Open — re-run `npm run archive-sources` in a future session; if it keeps
+  failing, try the archiver with a browser User-Agent/cert workaround for this one host._
 - **2026-07-01 · process (data gathering) · VA diabetes re-gather (chunked ≤2 concurrent) hit
   transient connection failures, not rate-limiting.** Resuming the `va-diabetes-gather` Workflow
   (run `wf_20cee55f-82a`) to pick up the remaining 7 of 8 payers failed all 7 with
