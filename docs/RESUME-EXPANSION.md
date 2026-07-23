@@ -244,3 +244,41 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   per-payer formulary URL verification), confirm CA's denosumab/anabolic coverage mechanism, then
   proceed to Step 3/4 (gather + merge) for the new states** — no guide data has been gathered for
   any of the 3 new states yet, this remains a substantial next-session task.
+- 2026-07-23 (scheduled run) — **Step 2 (PA/AL/CA payer-roster discovery) completed and merged into
+  `state-index.json`.** All 3 states now have live-verified payer rosters (`src/data/state-index.json`,
+  now 6 states total: NY/VA/DC/PA/AL/CA), same shape as NY/VA (`plans[]` with name/kind/pbm/
+  formularyUrl/formularyLabel/effectiveDate). No guide data gathered this session — this was
+  metadata-only discovery, all via inline `WebSearch`/`WebFetch` (no agents/Workflows spawned).
+  - **PA (7 payers)**: confirmed via the official June-2026 PA Medicaid Managed Care Directory PDF
+    (another confirmed instance of the "WebFetch says corrupted/binary, but the saved local path
+    reads fine" pattern — see CLAUDE.md) that Physical HealthChoices + Community HealthChoices (CHC)
+    MCOs all ride the one Statewide PDL (papdl.com); rostered 1 FFS PDL + Keystone First + UPMC for
+    You + PA Health and Wellness (all MCOs sharing the PDL) + AmeriHealth Caritas CHC + 2 commercial
+    payers with independently-sourced formularies (Independence Blue Cross's Select Drug Program PDF,
+    Highmark BCBS). Deliberately shipped 7 payers, not a forced 8th — no defensible source found for
+    a PA Medicare Part D representative in this pass rather than fabricate one.
+  - **AL (3 payers)**: confirms the ledger's "genuinely simpler" read — one FFS PDL administered
+    directly by the Alabama Medicaid Agency (no PBM name could be confirmed via search; recorded
+    honestly as "no contracted PBM identified" rather than guessed) + BCBS Alabama commercial
+    (Prime Therapeutics, dominant ~90%-share carrier, real 2026 4-tier formulary PDF found) + BCBS
+    Alabama's Blue Advantage Medicare Part D formulary.
+  - **CA (3 payers)**: confirmed Medi-Cal Rx is the single statewide FFS carve-out (DHCS + Magellan
+    Health) exactly as predicted, plus Kaiser Permanente (CA's largest integrated commercial HMO) and
+    Anthem Blue Cross of California commercial. **Resolved the open item from 2026-07-22**: live
+    search of Blue Shield of CA's own Medi-Cal medical/UM-criteria pages confirms denosumab (Prolia +
+    biosimilars), romosozumab (Evenity), and teriparatide (Forteo) are ALL covered as Medi-Cal Rx
+    PHARMACY-benefit line items (with PA criteria), not carved out to medical-only — so a future
+    `ca-osteoporosis` guide can cover all 5 classes, not just oral-bisphosphonate/SERM. Did **not**
+    re-fetch the 242-page CDL PDF itself this session (the thing that blew up context on 2026-07-22)
+    — used the denosumab/romosozumab/teriparatide-specific search snippets instead, which was
+    sufficient to confirm coverage without the cost.
+  - `npm test` (390/390), `typecheck`, `validate-coverage` all green — new states integrate cleanly,
+    validate-coverage's payer-roster cross-check now covers 6 states.
+  - **Did NOT start Step 3 (proof gather for a PA/AL/CA guide)** — payer-roster discovery alone was
+    a full session's worth of research given the WebFetch-PDF-dump risk in this domain; scaling to
+    an actual data gather is real Workflow/agent work (chunked ≤2 concurrent) that deserves its own
+    session, not tacked onto a research pass. **Next session: pick ONE new-state guide to prove
+    (recommend AL SSRIs — smallest roster at 3 payers, cheapest to verify end-to-end), gather via
+    `formulary-gather.js`, merge, validate, and report before scaling further** — the existing
+    "one guide as proof first" gate the user set for SSRIs/osteoporosis in 2026-07-09 should apply
+    to each brand-new state the same way it applied to each new topic.

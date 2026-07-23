@@ -230,6 +230,144 @@
           "fetchedOk": true
         }
       ]
+    },
+    {
+      "code": "PA",
+      "name": "Pennsylvania",
+      "note": "Medical Assistance (Medicaid) FFS, HealthChoices, and Community HealthChoices (CHC) MCOs ALL follow one Statewide Preferred Drug List (papdl.com) with identical preferred agents and PA criteria — the MCOs may add a Supplemental Formulary for non-PDL drugs but never override a PDL preference. Physical HealthChoices runs in 5 regional zones (Southeast/Southwest/Lehigh-Capital/Northwest/Northeast); most MCOs cover multiple zones.",
+      "plans": [
+        {
+          "name": "PA Medical Assistance Statewide Preferred Drug List (Fee-for-Service)",
+          "kind": "Medicaid (FFS)",
+          "pbm": "OptumRx, Inc. (negotiates supplemental rebates / P&T support for DHS)",
+          "formularyUrl": "https://www.papdl.com/preferred-drug-list.html",
+          "formularyLabel": "PA Statewide Preferred Drug List (PDL)",
+          "effectiveDate": "2026-01-01",
+          "fetchedOk": true
+        },
+        {
+          "name": "Keystone First (HealthChoices Medicaid MCO) — AmeriHealth Caritas, largest Southeast zone MCO",
+          "kind": "Medicaid MCO",
+          "pbm": "PerformRx — follows the PA Statewide PDL",
+          "formularyUrl": "https://www.papdl.com/preferred-drug-list.html",
+          "formularyLabel": "PA Statewide PDL (Keystone First follows DHS PDL + Supplemental Formulary)",
+          "effectiveDate": "2026-01-01",
+          "fetchedOk": true
+        },
+        {
+          "name": "UPMC for You, Inc. (HealthChoices Medicaid MCO) — all 5 zones",
+          "kind": "Medicaid MCO",
+          "pbm": "Express Scripts (ESI) — follows the PA Statewide PDL",
+          "formularyUrl": "https://www.papdl.com/preferred-drug-list.html",
+          "formularyLabel": "PA Statewide PDL (UPMC for You follows DHS PDL + Supplemental Formulary)",
+          "effectiveDate": "2026-01-01",
+          "fetchedOk": true
+        },
+        {
+          "name": "PA Health and Wellness (HealthChoices Medicaid MCO) — Centene, all 5 zones",
+          "kind": "Medicaid MCO",
+          "pbm": "Express Scripts — follows the PA Statewide PDL",
+          "formularyUrl": "https://www.papdl.com/preferred-drug-list.html",
+          "formularyLabel": "PA Statewide PDL (PA Health and Wellness follows DHS PDL + Supplemental Formulary)",
+          "effectiveDate": "2026-01-01",
+          "fetchedOk": true
+        },
+        {
+          "name": "AmeriHealth Caritas Community HealthChoices (CHC) — dual-eligible / LTSS MCO",
+          "kind": "Medicaid MCO",
+          "pbm": "PerformRx — follows the PA Statewide PDL",
+          "formularyUrl": "https://www.papdl.com/preferred-drug-list.html",
+          "formularyLabel": "PA Statewide PDL (AmeriHealth Caritas CHC follows DHS PDL + Supplemental Formulary)",
+          "effectiveDate": "2026-01-01",
+          "fetchedOk": true
+        },
+        {
+          "name": "Independence Blue Cross (Commercial) — dominant Southeast PA / Philadelphia carrier",
+          "kind": "Commercial",
+          "pbm": "FutureScripts (IBX's PBM subsidiary)",
+          "formularyUrl": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+          "formularyLabel": "IBX Select Drug Program® Formulary",
+          "effectiveDate": "2026-04-01",
+          "fetchedOk": true
+        },
+        {
+          "name": "Highmark Blue Cross Blue Shield (Commercial) — dominant Western & Central PA carrier",
+          "kind": "Commercial",
+          "pbm": "Prime Therapeutics (Highmark is a Prime owner-member Blue plan)",
+          "formularyUrl": "https://www.highmark.com/member/bcbs/medical-drug-formulary",
+          "formularyLabel": "Highmark BCBS Commercial Drug Formulary (Essential / Comprehensive)",
+          "effectiveDate": "2026-01-01",
+          "fetchedOk": true
+        }
+      ]
+    },
+    {
+      "code": "AL",
+      "name": "Alabama",
+      "note": "Genuinely simpler than every other state indexed so far: Alabama Medicaid runs almost entirely Fee-for-Service with NO managed care organization contracts for the general adult population (confirmed via live search, not assumed) — one statewide PDL, updated quarterly (Jan/Apr/Jul/Oct), administered directly by the Alabama Medicaid Agency rather than through a named contracted PBM.",
+      "plans": [
+        {
+          "name": "Alabama Medicaid Agency Preferred Drug List (Fee-for-Service, statewide — no MCO contracts)",
+          "kind": "Medicaid (FFS)",
+          "pbm": "Administered directly by the Alabama Medicaid Agency, Clinical Services and Support Division (no contracted PBM identified)",
+          "formularyUrl": "https://medicaid.alabama.gov/content/4.0_programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List.aspx",
+          "formularyLabel": "Alabama Medicaid Agency Preferred Drug List (PDL Reference Tool, quarterly)",
+          "effectiveDate": "2026-01-01",
+          "fetchedOk": true
+        },
+        {
+          "name": "Blue Cross and Blue Shield of Alabama (Commercial) — dominant statewide carrier",
+          "kind": "Commercial",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+          "formularyLabel": "BCBS Alabama Standardized Source+Rx 4-Tier Prescription Drug List",
+          "effectiveDate": "2026-06-01",
+          "fetchedOk": true
+        },
+        {
+          "name": "BCBS Alabama Blue Advantage (Medicare Advantage / Part D)",
+          "kind": "Medicare",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+          "formularyLabel": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)",
+          "effectiveDate": "2026-02-01",
+          "fetchedOk": true
+        }
+      ]
+    },
+    {
+      "code": "CA",
+      "name": "California",
+      "note": "Pharmacy is carved OUT of Medi-Cal managed care into one statewide FFS carve-out, Medi-Cal Rx (DHCS-run, Magellan Health as vendor/PBM), since 1/1/2022 — same NYRx-style consolidation pattern as New York. Every Medi-Cal MCO's members use the Medi-Cal Rx Contract Drugs List (CDL) regardless of which plan they're enrolled in, so ONE Medicaid entry covers the whole state. Confirmed live: denosumab (Prolia/biosimilars), romosozumab (Evenity), and teriparatide (Forteo) are all covered as Medi-Cal Rx PHARMACY-benefit line items with PA criteria — not carved to medical-only — so a CA osteoporosis guide can cover all 5 classes.",
+      "plans": [
+        {
+          "name": "Medi-Cal Rx — California Medicaid Pharmacy Program (Fee-for-Service carve-out, statewide)",
+          "kind": "Medicaid (FFS)",
+          "pbm": "Magellan Health (Magellan Medicaid Administration; DHCS vendor)",
+          "formularyUrl": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+          "formularyLabel": "Medi-Cal Rx Contract Drugs List (CDL)",
+          "effectiveDate": "2026-04-01",
+          "fetchedOk": true
+        },
+        {
+          "name": "Kaiser Permanente (Commercial HMO) — largest integrated CA commercial carrier",
+          "kind": "Commercial",
+          "pbm": "Internal (Kaiser Foundation Health Plan formulary; closed integrated pharmacy)",
+          "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+          "formularyLabel": "Kaiser Permanente 2026 California Commercial HMO Formulary",
+          "effectiveDate": "2026-06-02",
+          "fetchedOk": true
+        },
+        {
+          "name": "Anthem Blue Cross of California (Commercial)",
+          "kind": "Commercial",
+          "pbm": "CarelonRx",
+          "formularyUrl": "https://www.anthem.com/ca/pharmacy-information/drug-list-formulary",
+          "formularyLabel": "Anthem Blue Cross California Drug List (Select Drug List)",
+          "effectiveDate": "2026-01-01",
+          "fetchedOk": true
+        }
+      ]
     }
   ]
 }
