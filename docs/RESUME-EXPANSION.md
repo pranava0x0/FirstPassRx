@@ -282,3 +282,24 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
     `formulary-gather.js`, merge, validate, and report before scaling further** — the existing
     "one guide as proof first" gate the user set for SSRIs/osteoporosis in 2026-07-09 should apply
     to each brand-new state the same way it applied to each new topic.
+- 2026-07-23 (same day, continued) — **Step 3 proof guide for the new-state expansion SHIPPED:
+  `al-ssris`.** Gathered via `formulary-gather.js` (3 payers — Alabama Medicaid PDL, BCBS Alabama
+  commercial, BCBS Alabama Blue Advantage Medicare Part D — chunked ≤2 concurrent, 0 agent errors,
+  ~307K subagent tokens), merged into `formulary.json`, all checks green (`npm test` 398/398,
+  `typecheck`, `trace`, `validate-coverage`, `archive-sources`), verified live in the browser
+  (AL → SSRIs renders sertraline as preferred with correct alternatives/PA-required list). One
+  data-quality fix during merge: 6 of the Alabama Medicaid PDL's brand-name `paRequired` reasons
+  used the phrase "non-preferred-brand rule," which tripped the schema's cost-sharing-vs-barrier
+  heuristic even though these are genuine PA barriers (not cost-tier-only) — reworded to
+  "brand-restriction rule," same reword-not-reclassify pattern established for the binary-PDL
+  Medicaid states. `KNOWN_UNPRICED_GAP` bumped 339→351 (headless run, GoodRx/Cost Plus stayed
+  bot-blocked as expected). National grid moved 35/357 → 36/357. One open item logged to
+  `issues.md`: `medicaid.alabama.gov` fails the archiver's fetch (SSL/cert issue independently
+  flagged by the gather agent too) even though the gather itself read the same PDFs fine via curl
+  — non-blocking, provenance-only gap, doesn't affect the shipped guide data.
+  **STOPPING HERE per the same "one guide as proof first" gate — do not scale PA/AL/CA to their
+  remaining 20 guides (7 topics × 3 states, minus the 1 shipped) without the user reviewing this
+  proof guide and approving**, exactly as was done for `ny-ssris` on 2026-07-18. Next session: if
+  approved, scale AL's remaining 6 topics (reusing its 3-payer roster, now the cheapest state in
+  the dataset to gather), then PA and CA (7 payers and 3 payers respectively, per the rosters
+  shipped earlier today).
