@@ -66301,6 +66301,395 @@
           "lastReviewed": "2026-07-21"
         }
       ]
+    },
+    {
+      "id": "al-ssris",
+      "label": "AL · SSRIs",
+      "stateCode": "AL",
+      "region": "Alabama",
+      "topicId": "ssris",
+      "topic": "SSRIs",
+      "classNoun": "Prescription type",
+      "unitNoun": "medication",
+      "tagline": "",
+      "dataStatus": "verified",
+      "lastUpdated": "2026-07-23",
+      "capturedAt": "2026-07-23",
+      "payers": [
+        {
+          "id": "al-medicaid",
+          "name": "Alabama Medicaid Agency (Fee-for-Service, statewide -- no MCO contracts)",
+          "shortName": "AL Medicaid FFS",
+          "pbm": "Administered directly by the Alabama Medicaid Agency (no contracted PBM identified)",
+          "formularyUrl": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Thera_3-16-26.pdf",
+          "sourceIds": [
+            "al-medicaid-ssris-source-2026-07"
+          ],
+          "productName": "Alabama Medicaid Agency Preferred Drug List by Therapeutic Category",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "Alabama Medicaid Agency Preferred Drug List by Therapeutic Category, effective 2026-04-01"
+        },
+        {
+          "id": "bcbs-al-commercial",
+          "name": "Blue Cross and Blue Shield of Alabama (Commercial)",
+          "shortName": "BCBS Alabama",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+          "sourceIds": [
+            "bcbs-al-commercial-ssris-source-2026-07"
+          ],
+          "productName": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx1.0 Prescription Drug List",
+          "marketSegment": "commercial-employer",
+          "formularyId": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx1.0 Prescription Drug List, effective 2026-07-01"
+        },
+        {
+          "id": "bcbs-al-medicare",
+          "name": "BCBS Alabama Blue Advantage (Medicare Advantage / Part D)",
+          "shortName": "Blue Advantage AL",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+          "sourceIds": [
+            "bcbs-al-medicare-ssris-source-2026-07"
+          ],
+          "productName": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)",
+          "marketSegment": "medicare-part-d",
+          "formularyId": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs), effective 2026-01-20"
+        }
+      ],
+      "classes": [
+        {
+          "id": "ssri-oral",
+          "name": "Oral SSRIs",
+          "shortName": "SSRI",
+          "plainName": "Antidepressant (SSRI)",
+          "description": "Selective serotonin reuptake inhibitors (fluoxetine, sertraline, citalopram, escitalopram, paroxetine, fluvoxamine) — first-line oral therapy for major depressive disorder and anxiety disorders.",
+          "plainDescription": "A daily pill for depression or anxiety that works by increasing serotonin levels.",
+          "indication": "Major depressive disorder & anxiety disorders",
+          "sourceIds": [
+            "al-medicaid-ssris-source-2026-07"
+          ]
+        }
+      ],
+      "references": [
+        {
+          "id": "al-medicaid-ssris-source-2026-07",
+          "label": "Alabama Medicaid Agency Preferred Drug List by Therapeutic Category",
+          "publisher": "Alabama Medicaid Agency",
+          "type": "gov",
+          "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Thera_3-16-26.pdf",
+          "effectiveDate": "2026-04-01",
+          "accessed": "2026-07-23"
+        },
+        {
+          "id": "bcbs-al-commercial-ssris-source-2026-07",
+          "label": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx1.0 Prescription Drug List",
+          "publisher": "Prime Therapeutics LLC (for Blue Cross and Blue Shield of Alabama)",
+          "type": "payer",
+          "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+          "effectiveDate": "2026-07-01",
+          "accessed": "2026-07-23"
+        },
+        {
+          "id": "bcbs-al-medicare-ssris-source-2026-07",
+          "label": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)",
+          "publisher": "Blue Advantage (BCBS Alabama Medicare)",
+          "type": "payer",
+          "url": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+          "effectiveDate": "2026-01-20",
+          "accessed": "2026-07-23"
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Prior authorization (PA)",
+          "short": "Insurer sign-off first",
+          "definition": "Insurer sign-off needed before the drug is covered."
+        },
+        {
+          "term": "Step therapy",
+          "short": "Try a preferred drug first",
+          "definition": "Must fail a preferred drug first before the plan covers this one."
+        }
+      ],
+      "records": [
+        {
+          "payerId": "al-medicaid",
+          "classId": "ssri-oral",
+          "preferredAgent": {
+            "inn": "Sertraline",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "50 mg",
+            "sig": "1 tablet by mouth once daily",
+            "sigShort": "1 tab QD",
+            "plainSig": "One pill, once a day."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "Citalopram (tablet, oral solution)",
+              "note": "Covered generic, preferred, no PA -- listed under the Antidepressants category alongside sertraline.",
+              "sourceIds": [
+                "al-medicaid-ssris-source-2026-07"
+              ]
+            },
+            {
+              "drug": "Escitalopram (tablet, oral solution)",
+              "note": "Covered generic, preferred, no PA -- listed under the Antidepressants category alongside sertraline.",
+              "sourceIds": [
+                "al-medicaid-ssris-source-2026-07"
+              ]
+            },
+            {
+              "drug": "Fluoxetine (capsule, tablet, oral solution)",
+              "note": "Covered generic, preferred, no PA -- listed under the Antidepressants category alongside sertraline.",
+              "sourceIds": [
+                "al-medicaid-ssris-source-2026-07"
+              ]
+            },
+            {
+              "drug": "Paroxetine (immediate-release tablet, suspension)",
+              "note": "Covered generic, preferred, no PA -- listed under the Antidepressants category alongside sertraline.",
+              "sourceIds": [
+                "al-medicaid-ssris-source-2026-07"
+              ]
+            },
+            {
+              "drug": "Fluvoxamine (immediate-release tablet)",
+              "note": "Covered generic, preferred, no PA -- listed under the Antidepressants category alongside sertraline.",
+              "sourceIds": [
+                "al-medicaid-ssris-source-2026-07"
+              ]
+            },
+            {
+              "drug": "Sertraline oral concentrate",
+              "note": "Covered generic solution form, preferred, no PA -- distinct from the capsule form, which does require PA.",
+              "sourceIds": [
+                "al-medicaid-ssris-source-2026-07"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Sertraline capsule",
+              "outcome": "pa",
+              "reason": "The PDL's Antidepressants entry explicitly carves out generic sertraline capsules as requiring PA, while all other covered generic antidepressants (including sertraline tablets) are preferred without one.",
+              "sourceIds": [
+                "al-medicaid-ssris-source-2026-07"
+              ]
+            },
+            {
+              "drug": "Zoloft (sertraline brand)",
+              "outcome": "pa",
+              "reason": "Not listed among the PDL's brand-preferred products; a covered generic (sertraline tablet) is preferred instead, so the brand requires PA under the PDL's standard brand-restriction rule.",
+              "sourceIds": [
+                "al-medicaid-ssris-source-2026-07"
+              ]
+            },
+            {
+              "drug": "Prozac (fluoxetine brand)",
+              "outcome": "pa",
+              "reason": "Not listed among the PDL's brand-preferred products; a covered generic (fluoxetine) is preferred instead, so the brand requires PA under the PDL's standard brand-restriction rule.",
+              "sourceIds": [
+                "al-medicaid-ssris-source-2026-07"
+              ]
+            },
+            {
+              "drug": "Celexa (citalopram brand)",
+              "outcome": "pa",
+              "reason": "Not listed among the PDL's brand-preferred products; a covered generic (citalopram) is preferred instead, so the brand requires PA under the PDL's standard brand-restriction rule.",
+              "sourceIds": [
+                "al-medicaid-ssris-source-2026-07"
+              ]
+            },
+            {
+              "drug": "Lexapro (escitalopram brand)",
+              "outcome": "pa",
+              "reason": "Not listed among the PDL's brand-preferred products; a covered generic (escitalopram) is preferred instead, so the brand requires PA under the PDL's standard brand-restriction rule.",
+              "sourceIds": [
+                "al-medicaid-ssris-source-2026-07"
+              ]
+            },
+            {
+              "drug": "Paxil / Paxil CR (paroxetine brand)",
+              "outcome": "pa",
+              "reason": "Not listed among the PDL's brand-preferred products; a covered generic (paroxetine) is preferred instead, so the brand requires PA under the PDL's standard brand-restriction rule.",
+              "sourceIds": [
+                "al-medicaid-ssris-source-2026-07"
+              ]
+            },
+            {
+              "drug": "Luvox (fluvoxamine brand)",
+              "outcome": "pa",
+              "reason": "Not listed among the PDL's brand-preferred products; a covered generic (fluvoxamine) is preferred instead, so the brand requires PA under the PDL's standard brand-restriction rule.",
+              "sourceIds": [
+                "al-medicaid-ssris-source-2026-07"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "tier": "Preferred (no PA) for all covered generic forms except sertraline capsules",
+          "verification": "verified",
+          "verificationNote": "Fetched both current Alabama Medicaid Agency PDL documents directly (WebFetch itself hit an SSL cert error on the payer's HTML landing page, so a WebSearch located the two live PDF documents on medicaid.alabama.gov, which were downloaded with curl and read locally via PyMuPDF -- the state-index.json entry for al-medicaid already had the correct formularyUrl for the PDL landing page, confirming payer identity). The 'PREFERRED DRUG LIST BY THERAPEUTIC CATEGORY' document (4.3.7_PDL_Thera_3-16-26.pdf, page 1) states 'Effective 04/01/2026' and lists the Antidepressants category verbatim as: 'All covered generics (generic desvenlafaxine ER [Khedezla] and sertraline capsules require a PA)' -- this is read directly and verbatim, confirming that all covered generic SSRI forms (fluoxetine, sertraline tablets/solution, citalopram, escitalopram, paroxetine, fluvoxamine) are preferred without PA, with the single named exception of sertraline capsules (the desvenlafaxine carve-out is an SNRI, not an SSRI, so it is not included in this record). The companion alphabetical PDL (4.3.7_PDL_Alpha_1-1-26.pdf, single page, 'Effective 01/01/2026') lists every brand-preferred product statewide and contains zero SSRI brand names, confirming no brand SSRI is PDL-preferred. Choosing sertraline as THE single 'preferred agent' for this app's schema (vs. the other five equally-preferred molecules) is an editorial choice matching this repo's established convention for the ssri-oral class in every other state gathered so far (NY, MA, MD, VA, IL), not something the AL PDL itself singles out. The brand-requires-PA conclusion for each named brand (Zoloft, Prozac, Celexa, Lexapro, Paxil, Luvox) is inferred from the document's own stated general rule ('Brand preferred drugs, generics... are available without prior approval. If a non-preferred drug is ordered, the practitioner will need to obtain prior authorization') combined with the alphabetical PDL's confirmation that no SSRI brand appears on the brand-preferred list -- not an itemized per-brand PA table in the source, hence 'verified' for the preferred agent and its one named restriction, with the brand list treated as a standard, well-documented convention rather than a fabricated guess.",
+          "sourceIds": [
+            "al-medicaid-ssris-source-2026-07"
+          ],
+          "coverageSourceIds": [
+            "al-medicaid-ssris-source-2026-07"
+          ],
+          "restrictionSourceIds": [
+            "al-medicaid-ssris-source-2026-07"
+          ],
+          "lastReviewed": "2026-07-23"
+        },
+        {
+          "payerId": "bcbs-al-commercial",
+          "classId": "ssri-oral",
+          "preferredAgent": {
+            "inn": "sertraline",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "50 mg",
+            "sig": "Sertraline 50 mg tablet, take 1 tablet by mouth once daily",
+            "sigShort": "Sertraline 50mg PO qDay",
+            "plainSig": "Take one 50 mg tablet by mouth once a day."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "citalopram hydrobromide oral solution/tablet (Celexa)",
+              "note": "Tier 1, dispensing limit applies, no PA/step therapy",
+              "sourceIds": [
+                "bcbs-al-commercial-ssris-source-2026-07"
+              ]
+            },
+            {
+              "drug": "escitalopram oxalate oral solution/tablet (Lexapro)",
+              "note": "Tier 1, dispensing limit applies, no PA/step therapy",
+              "sourceIds": [
+                "bcbs-al-commercial-ssris-source-2026-07"
+              ]
+            },
+            {
+              "drug": "fluoxetine hcl capsule/solution/tablet (Prozac), 10-40 mg",
+              "note": "Tier 1, dispensing limit applies, no PA/step therapy",
+              "sourceIds": [
+                "bcbs-al-commercial-ssris-source-2026-07"
+              ]
+            },
+            {
+              "drug": "fluvoxamine maleate tablet, 25-100 mg",
+              "note": "Tier 1, dispensing limit applies, no PA/step therapy",
+              "sourceIds": [
+                "bcbs-al-commercial-ssris-source-2026-07"
+              ]
+            },
+            {
+              "drug": "paroxetine hcl tablet (Paxil), 10-40 mg",
+              "note": "Tier 1, dispensing limit applies, no PA/step therapy",
+              "sourceIds": [
+                "bcbs-al-commercial-ssris-source-2026-07"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "FLUOXETINE DR - fluoxetine hcl delayed-release capsule 90 mg (once-weekly formulation)",
+              "outcome": "pa",
+              "reason": "Tier 3 with both Prior Authorization and Step Therapy bullets marked on this specific once-weekly delayed-release formulation, distinct from the Tier 1 standard-release fluoxetine capsules/tablets/solution which carry no restriction",
+              "sourceIds": [
+                "bcbs-al-commercial-ssris-source-2026-07"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "tier": "Tier 1 - primarily generics and select brands",
+          "verification": "verified",
+          "verificationNote": "Fetched the exact cited PDF (myprime.com 2026_AL_4T_Standardized_Source+Rx_1.0.pdf); WebFetch's built-in extraction returned only corrupted/binary stream text (this repo's known large-PDF extraction gap), so the tool's own saved local copy was re-read directly with PyMuPDF (fitz) instead, per the existing CLAUDE.md guidance to check the saved path before concluding a source is unreadable. Page 1 (193-page document) confirms the title 'Blue Cross and Blue Shield of Alabama Standardized Source+Rx1.0 Prescription Drug List, July 2026' with footer code '4157-W AL HIM (c) Prime Therapeutics LLC 07/26', naming Prime Therapeutics LLC as the PBM providing pharmacy benefit management for Blue Cross and Blue Shield of Alabama -- matching the payer and PBM named in the task; 07/26 (July 2026) used as effectiveDate. Page 3 (printed page II) defines the four-tier legend verbatim: 'Tier 1 - primarily generics and select brands / Tier 2 - primarily preferred brands / Tier 3 - primarily non-preferred brands / Tier 4 - primarily specialty', and page 5 (printed page IV) defines the Prior Authorization / Step Therapy / Dispensing Limit dot-column system used throughout the drug tables. The 'ANTIDEPRESSANTS' section under 'Central Nervous System Drugs' (PDF pages 75-77, printed pages 67-69) was located via full-text search for each SSRI generic name and read verbatim, including a coordinate-level check of each bullet's x-position against the seven-column header (Drug Tier / Prior Authorization / Step Therapy / Dispensing Limits / ACA Preventive / Limited Distribution) to correctly distinguish which column each row's dot belongs to (the page's tight column spacing makes plain text extraction ambiguous about which UM flag a dot represents without this check). All six target SSRI molecules are listed as lower-case generics with reference brand names in parentheses, Tier 1, with a single dot confirmed (by x-position, ~x=531-540 vs the Dispensing Limits header at x=526-540) to sit in the Dispensing Limits column only -- not Prior Authorization (x=486-500) or Step Therapy (x=506-520): citalopram hydrobromide oral solution/tablet (Celexa), escitalopram oxalate oral solution/tablet (Lexapro), fluoxetine hcl capsule/solution/tablet (Prozac) at standard strengths 10-40mg, fluvoxamine maleate tablet 25-100mg, paroxetine hcl tablet (Paxil) 10-40mg, and sertraline hcl oral concentrate/tablet (Zoloft) 25-100mg. The only PA+Step-flagged item found in the SSRI-relevant text was 'FLUOXETINE DR - fluoxetine hcl cap delayed release 90 mg', Tier 3, confirmed by the same x-position check to carry dots in both the Prior Authorization and Step Therapy columns (x~486-500 and x~506-520 respectively on the right-hand sub-table) -- this is a distinct once-weekly delayed-release product line, not the standard fluoxetine capsules/tablets. Sertraline tablet was selected as the representative preferred agent (50mg, once daily) per this repo's existing ssri-oral convention across every other payer in this dataset (all six molecules are equally Tier 1 with only a dispensing-limit flag, so the source does not itself rank one above the others); the 50mg strength and once-daily sig are standard prescribing convention, not stated in the drug list itself (which lists drug name, tier, and UM flags only, no dosing guidance). No class-wide step-therapy criterion (e.g. 'PA required if 2+ concurrent agents') appears anywhere in the Antidepressants section.",
+          "sourceIds": [
+            "bcbs-al-commercial-ssris-source-2026-07"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-commercial-ssris-source-2026-07"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-commercial-ssris-source-2026-07"
+          ],
+          "lastReviewed": "2026-07-23"
+        },
+        {
+          "payerId": "bcbs-al-medicare",
+          "classId": "ssri-oral",
+          "preferredAgent": {
+            "inn": "Sertraline",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "50 mg",
+            "sig": "1 tablet by mouth once daily",
+            "sigShort": "1 tab QD",
+            "plainSig": "One pill, once a day."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "Citalopram hydrobromide (tablet, 10/20/40 mg; oral solution)",
+              "note": "Tier 1 - Preferred Generic tablet, no PA, quantity limit 45 tabs/30 days (30 tabs/30 days at 40 mg). Oral solution is Tier 3, QL 600 mL/30 days.",
+              "sourceIds": [
+                "bcbs-al-medicare-ssris-source-2026-07"
+              ]
+            },
+            {
+              "drug": "Escitalopram oxalate (tablet, 5/10/20 mg; oral solution)",
+              "note": "Tier 1 - Preferred Generic tablet, no PA, quantity limit 45 tabs/30 days (30 tabs/30 days at 20 mg). Oral solution is Tier 4, QL 600 mL/30 days.",
+              "sourceIds": [
+                "bcbs-al-medicare-ssris-source-2026-07"
+              ]
+            },
+            {
+              "drug": "Fluoxetine hcl (capsule, 10/20/40 mg; solution)",
+              "note": "Tier 1 - Preferred Generic capsule, no PA, quantity limit 60-120 capsules/30 days depending on strength. Solution is Tier 3, QL 600 mL/30 days.",
+              "sourceIds": [
+                "bcbs-al-medicare-ssris-source-2026-07"
+              ]
+            },
+            {
+              "drug": "Paroxetine hcl (tablet, 10/20/30/40 mg; oral suspension)",
+              "note": "Tier 2 - Generic, no PA, quantity limits 30-60 tabs/30 days depending on strength. Flagged '#' High Risk Medication (HRM) for patients over 65 per plan legend. Oral suspension is Tier 4, QL 900 mL/30 days.",
+              "sourceIds": [
+                "bcbs-al-medicare-ssris-source-2026-07"
+              ]
+            },
+            {
+              "drug": "Fluvoxamine maleate (tablet, 25/50/100 mg)",
+              "note": "Tier 3 - Preferred Brand tier (generic drug placed here), no PA, quantity limit 30-90 tabs/30 days depending on strength.",
+              "sourceIds": [
+                "bcbs-al-medicare-ssris-source-2026-07"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "tier": "Tier 1 - Preferred Generic",
+          "verification": "verified",
+          "verificationNote": "Read directly from the Blue Advantage Choice 2026 Formulary PDF (H0104_CHF26_C, formulary updated 01/20/2026, Approved Formulary ID 00026212_V10), fetched from the exact URL provided. Cover page (p.1) confirms publisher (Blue Advantage/BCBS Alabama Medicare) and revision date. The tier-legend/abbreviation key on p.10 (vi) confirms Tier 1=Preferred Generic, Tier 2=Generic, Tier 3=Preferred Brand, Tier 4=Non-Preferred, Tier 5=Specialty, and that PA/QL/ST/# are the only requirement codes used. The 'Antidepressants' subsection spans pp.25-26 of the drug list and was read in full: every oral SSRI molecule (citalopram, escitalopram, fluoxetine, sertraline, paroxetine, fluvoxamine) appears only as generic entries -- no brand-name SSRI (Celexa/Lexapro/Prozac/Zoloft/Paxil/Luvox) is listed anywhere in the formulary, confirming no BOGL and no non-formulary/PA/step-therapy barrier exists for any SSRI molecule on this plan; every listed strength/form carries only a Quantity Limit (QL), never PA or ST. Sertraline 25/50/100 mg tablets are the only SSRI at Tier 1 with no HRM flag, selected as the representative preferred pick (citalopram, escitalopram, and fluoxetine tablets/capsules sit at the identical Tier 1 with no PA either, captured as equally-preferred alternatives). The exact QL figures for every strength were read verbatim from the table, not inferred. The only inferred element is the sig/plainSig phrasing (standard once-daily oral dosing for the 50 mg strength), which is clinical convention rather than formulary-stated text.",
+          "sourceIds": [
+            "bcbs-al-medicare-ssris-source-2026-07"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-medicare-ssris-source-2026-07"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-medicare-ssris-source-2026-07"
+          ],
+          "lastReviewed": "2026-07-23"
+        }
+      ]
     }
   ]
 }

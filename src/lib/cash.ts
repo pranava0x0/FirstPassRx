@@ -181,8 +181,11 @@
  * roster (il-medicaid/aetna-better-health-il/bcbs-community-il/countycare/meridian/molina-il/
  * bcbs-illinois-commercial/wellcare-value-script), same headless-run GoodRx bot-block. Completes
  * osteoporosis's 5-state footprint (matching SSRIs). Deferred to the same future consolidated
- * cash-link-rule pass as the SSRI gap above. */
-export const KNOWN_UNPRICED_GAP = 339
+ * cash-link-rule pass as the SSRI gap above.
+ * 2026-07-23: +12 for `al-ssris` (351 total) -- first new-state guide (Alabama), 3 payers
+ * (al-medicaid/bcbs-al-commercial/bcbs-al-medicare), headless run so GoodRx/Cost Plus stayed
+ * bot-blocked same as every prior scheduled-run gather. */
+export const KNOWN_UNPRICED_GAP = 351
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
