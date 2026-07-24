@@ -318,6 +318,21 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   - Not pursued further this run per the standing gate: the SSRI proof guide (`ny-ssris`) is still
     awaiting the user's review before *any* further scaling, per `docs/RESUME-EXPANSION.md`'s
     explicit stop-and-report instruction — these are ideas to scope next, not started.
+  - **Re-verified 2026-07-24 (scheduled run):** the CA/PA GLP-1-weight-loss coverage drop above is
+    still current — a Stateline piece from 2026-04-30 confirms both states (plus NH and SC)
+    eliminated Medicaid FFS coverage for the obesity indication over budget strain, with MA and RI
+    now "considering" the same cut. No change to the scoping note above; still worth flagging in a
+    future `pa`/`ca` guide's PA-barrier narrative if that class ever gets built (state dropped
+    coverage entirely ≠ ordinary PA friction, a stronger and more citable story).
+- **Candidate 4th new state (after PA/AL/CA finish): Texas — surfaced 2026-07-24 (scheduled-run
+  web-search, research only, no data gathered).** Texas Medicaid runs one **single statewide PDL**
+  (Vendor Drug Program, `txvendordrug.com`, published every Jan/Jul — current edition effective
+  2026-01-30) that every Medicaid/CHIP MCO must follow, same "one shared PDL, not per-MCO
+  formularies" shape as NY/PA/AL/CA already in this project — meaning payer-roster discovery would
+  be unusually cheap (one PDL + a couple commercial/Medicare Part D payers, not 8 independent MCO
+  formularies). Texas also has the 2nd-largest Medicaid population in the country after CA, so it's
+  a high-value target once the current PA/AL/CA new-state gate clears. Not started — no
+  `state-index.json` entry, no payer verification, no guide data.
 - **Existing-guide depth gaps (`partial`/`example` cells), from the 2026-07-19 `validate-coverage`
   run — worth a verification pass before/alongside adding new topics/states:** `ny-menopause` (5
   `example` cells — the only guide with any `example`-quality data left), `md-menopause` (5

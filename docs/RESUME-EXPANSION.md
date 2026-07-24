@@ -303,3 +303,20 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   approved, scale AL's remaining 6 topics (reusing its 3-payer roster, now the cheapest state in
   the dataset to gather), then PA and CA (7 payers and 3 payers respectively, per the rosters
   shipped earlier today).
+- 2026-07-24 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working
+  tree clean, `main` up to date with `origin/main`, `npm run validate-coverage` unchanged at
+  36/357 since the 2026-07-23 `al-ssris` merge — no drift, no user approval had landed (non-
+  interactive run, nothing to approve against). Tried the browser preview tool to see if cash
+  prices could be captured for `al-ssris`'s known gap; it errored immediately (safety classifier
+  unavailable in this run), confirming the standing "no real browser in a headless/scheduled run"
+  constraint still holds — did not attempt cash-price work. Per the fallback instruction, spent the
+  run on web research instead of scaling: (1) re-verified the 2026-07-19-logged CA/PA Medicaid
+  GLP-1-weight-loss coverage drop is still current (Stateline, 2026-04-30) — no change, logged as a
+  confirmation in `backlog.md`; (2) surfaced a new candidate 4th new state, **Texas** — single
+  statewide PDL (Vendor Drug Program) that every MCO must follow, same cheap-to-roster shape as
+  NY/PA/AL/CA, 2nd-largest Medicaid population nationally — logged to `backlog.md`, not started
+  (no `state-index.json` entry, no payer verification, no data). No data gathered, no agents/
+  Workflows spawned, no branches created — this run's changes are `backlog.md` +
+  this ledger entry only.
+  **Still stopped here pending the user's review of `al-ssris`.** Next session: if approved, scale
+  AL's remaining 6 topics, then PA and CA, per the plan above.
