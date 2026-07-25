@@ -320,3 +320,23 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   this ledger entry only.
   **Still stopped here pending the user's review of `al-ssris`.** Next session: if approved, scale
   AL's remaining 6 topics, then PA and CA, per the plan above.
+- 2026-07-25 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working
+  tree clean, `main` up to date with `origin/main`, `npm run validate-coverage` unchanged at
+  36/357 since the 2026-07-23 `al-ssris` merge — no drift, no user approval had landed (non-
+  interactive run, nothing to approve against). Per the fallback instruction, spent the run on two
+  research threads instead of scaling, both logged to `backlog.md`: (1) re-checked the 2026-07-24
+  Texas candidate-state note — `txvendordrug.com`'s own news feed confirms the semi-annual Medicaid
+  PDL update actually published 2026-07-24 (the day before this check) as scheduled, so a future TX
+  gather should cite that fresh July edition rather than the January one originally noted; the
+  specific news-page URL 403'd `WebFetch`, not chased further since the PDL identity/cadence was
+  already well-confirmed; (2) identified a real, previously-unlogged gap: the existing
+  "existing-guide depth gaps" backlog item dated 2026-07-19 predates the osteoporosis expansion and
+  was missing its 48 `partial` cells entirely — broke them down by class via a direct read of
+  `formulary.json` (iv-bisphosphonate 22/48, rankl-inhibitor 14/48, anabolic 9/48, serm 2/48,
+  oral-bisphosphonate 1/48) and logged the rollup, flagging that these likely mirror the existing
+  menopause-HT structural medical-benefit carve-outs (already correctly labeled, not closeable)
+  rather than being a genuine gather gap — worth confirming before spending a verification pass on
+  them. No data gathered, no agents/Workflows spawned, no branches created — this run's changes are
+  `backlog.md` + this ledger entry only.
+  **Still stopped here pending the user's review of `al-ssris`.** Next session: if approved, scale
+  AL's remaining 6 topics, then PA and CA, per the plan above.

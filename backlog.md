@@ -333,6 +333,14 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   formularies). Texas also has the 2nd-largest Medicaid population in the country after CA, so it's
   a high-value target once the current PA/AL/CA new-state gate clears. Not started — no
   `state-index.json` entry, no payer verification, no guide data.
+  - **Re-checked 2026-07-25 (scheduled run): the semi-annual PDL refresh landed right on schedule.**
+    `txvendordrug.com`'s own news feed confirms the July 2026 semi-annual Medicaid PDL update was
+    published 2026-07-24 (one day before this check), incorporating the January and April 2026 DUR
+    Board recommendations — so a future TX gather should cite this fresh July edition, not the
+    January one referenced in the initial 2026-07-24 note. The specific news-page URL 403'd
+    `WebFetch` (server-side block, not the usual PDF-dump issue); the PDL identity/cadence itself is
+    already well-confirmed via the site's own formulary/PDL pages, so this wasn't chased further —
+    still research-only, no `state-index.json` entry, no payer verification, no guide data.
 - **Existing-guide depth gaps (`partial`/`example` cells), from the 2026-07-19 `validate-coverage`
   run — worth a verification pass before/alongside adding new topics/states:** `ny-menopause` (5
   `example` cells — the only guide with any `example`-quality data left), `md-menopause` (5
@@ -342,6 +350,25 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   of these fail `validate()` (partial/example are valid states), but they're the cells a future
   "verify the soft spots" pass (same shape as PR #13's MA/VA/IL/NY soft-cell sweep) should target
   first, cheaper than gathering a brand-new topic.
+  - **Updated 2026-07-25 (scheduled run) — this list predates the osteoporosis expansion (shipped
+    2026-07-21/22) and is now missing its largest chunk of `partial` cells.** Current
+    `npm run validate-coverage` + a direct read of `formulary.json` shows **48 `partial` cells
+    across the 5 osteoporosis guides**, none previously logged here: `il-osteoporosis` (13:
+    iv-bisphosphonate 5, rankl-inhibitor 4, anabolic 3, serm 1), `md-osteoporosis` (12:
+    iv-bisphosphonate 6, rankl-inhibitor 4, anabolic 2), `va-osteoporosis` (12: iv-bisphosphonate 5,
+    anabolic 4, rankl-inhibitor 2, oral-bisphosphonate 1), `ny-osteoporosis` (6: iv-bisphosphonate 4,
+    rankl-inhibitor 1, serm 1), `ma-osteoporosis` (5: rankl-inhibitor 3, iv-bisphosphonate 2). The
+    per-guide ledger entries in `docs/RESUME-EXPANSION.md` already named the root cause in passing
+    ("IV-bisphosphonate medical-benefit absence again the majority partial cause") but never rolled
+    it up here — **iv-bisphosphonate (zoledronic acid) alone accounts for 22/48**, consistent with
+    every state's IV/injectable classes structurally sitting outside a retail-pharmacy PDL (same
+    carve-out pattern as the pre-existing menopause `example`/`partial` cells above), followed by
+    rankl-inhibitor (14/48) and anabolic (9/48) — both plausibly the same medical-benefit carve-out
+    for denosumab/teriparatide/romosozumab injectables. `serm`/`oral-bisphosphonate` are nearly
+    clean (2/48, 1/48) since those are ordinary oral retail drugs. Worth confirming whether these are
+    genuine structural carve-outs (like MD/VA/NY's menopause gaps, already correctly labeled
+    `partial` and not closeable) before spending a verification pass on them — if so, this may be a
+    labeling/documentation task (note the carve-out explicitly per-cell) rather than a re-gather.
 - **PR #6 review nitpicks, deferred rather than blocking merge.** From the two-persona review
   (SW engineer + data reviewer) of the state/topic-picker split and NY/IL NSAID guides:
   - `Controls.tsx`'s state/topic segmented tablists omit `aria-controls` (unlike the existing class
