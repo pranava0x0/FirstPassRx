@@ -68629,6 +68629,401 @@
           "lastReviewed": "2026-07-25"
         }
       ]
+    },
+    {
+      "id": "al-ace",
+      "label": "AL · ACE Inhibitors",
+      "stateCode": "AL",
+      "region": "Alabama",
+      "topicId": "ace-inhibitors",
+      "topic": "ACE Inhibitors",
+      "classNoun": "Prescription type",
+      "unitNoun": "medication",
+      "tagline": "",
+      "dataStatus": "verified",
+      "lastUpdated": "2026-07-25",
+      "capturedAt": "2026-07-25",
+      "payers": [
+        {
+          "id": "al-medicaid",
+          "name": "Alabama Medicaid Agency (Fee-for-Service, statewide -- no MCO contracts)",
+          "shortName": "AL Medicaid FFS",
+          "pbm": "Administered directly by the Alabama Medicaid Agency (no contracted PBM identified)",
+          "formularyUrl": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_7-1-26.pdf",
+          "sourceIds": [
+            "al-medicaid-ace-source-202607"
+          ],
+          "productName": "Alabama Medicaid Agency Preferred Drug List (PDL) Reference Tool",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "Alabama Medicaid Agency Preferred Drug List (PDL) Reference Tool, effective 2026-07-01"
+        },
+        {
+          "id": "bcbs-al-commercial",
+          "name": "Blue Cross and Blue Shield of Alabama (Commercial)",
+          "shortName": "BCBS Alabama",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+          "sourceIds": [
+            "bcbs-al-commercial-ace-source-202607"
+          ],
+          "productName": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List July 2026 (2026 Plan Year)",
+          "marketSegment": "commercial-employer",
+          "formularyId": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List July 2026 (2026 Plan Year), effective 2026-07-01"
+        },
+        {
+          "id": "bcbs-al-medicare",
+          "name": "BCBS Alabama Blue Advantage (Medicare Advantage / Part D)",
+          "shortName": "Blue Advantage AL",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+          "sourceIds": [
+            "bcbs-al-medicare-ace-source-202607"
+          ],
+          "productName": "Blue Advantage Choice 2026 Formulary — List of Covered Drugs (H0104_CHF26_C, Approved Formulary ID: 00026212_V10)",
+          "marketSegment": "medicare-part-d",
+          "formularyId": "Blue Advantage Choice 2026 Formulary — List of Covered Drugs (H0104_CHF26_C, Approved Formulary ID: 00026212_V10), effective 2026-01-20"
+        }
+      ],
+      "classes": [
+        {
+          "id": "ace-inhibitor",
+          "name": "ACE inhibitors",
+          "shortName": "ACE inhibitor",
+          "plainName": "Blood pressure pill (ACE)",
+          "description": "Angiotensin-converting-enzyme inhibitors (lisinopril, enalapril, benazepril, ramipril, etc.) -- first-line oral therapy for hypertension and heart failure.",
+          "plainDescription": "A common daily pill for high blood pressure or heart failure.",
+          "indication": "Hypertension & heart failure",
+          "sourceIds": [
+            "al-medicaid-ace-source-202607",
+            "bcbs-al-commercial-ace-source-202607",
+            "bcbs-al-medicare-ace-source-202607"
+          ]
+        }
+      ],
+      "references": [
+        {
+          "id": "al-medicaid-ace-source-202607",
+          "label": "Alabama Medicaid Agency Preferred Drug List (PDL) Reference Tool",
+          "publisher": "Alabama Medicaid Agency",
+          "type": "gov",
+          "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_7-1-26.pdf",
+          "effectiveDate": "2026-07-01",
+          "accessed": "2026-07-25"
+        },
+        {
+          "id": "bcbs-al-commercial-ace-source-202607",
+          "label": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List July 2026 (2026 Plan Year)",
+          "publisher": "Blue Cross and Blue Shield of Alabama (pharmacy benefit administered by Prime Therapeutics LLC)",
+          "type": "payer",
+          "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+          "effectiveDate": "2026-07-01",
+          "accessed": "2026-07-25"
+        },
+        {
+          "id": "bcbs-al-medicare-ace-source-202607",
+          "label": "Blue Advantage Choice 2026 Formulary — List of Covered Drugs (H0104_CHF26_C, Approved Formulary ID: 00026212_V10)",
+          "publisher": "Blue Cross and Blue Shield of Alabama (Blue Advantage Medicare)",
+          "type": "payer",
+          "url": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+          "effectiveDate": "2026-01-20",
+          "accessed": "2026-07-25"
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Prior authorization (PA)",
+          "short": "Insurer sign-off first",
+          "definition": "Insurer sign-off needed before the drug is covered."
+        },
+        {
+          "term": "Step therapy",
+          "short": "Try a preferred drug first",
+          "definition": "Must fail a preferred drug first before the plan covers this one."
+        }
+      ],
+      "records": [
+        {
+          "payerId": "al-medicaid",
+          "classId": "ace-inhibitor",
+          "preferredAgent": {
+            "inn": "lisinopril",
+            "brand": "Zestril",
+            "genericAvailable": true,
+            "strength": "10 mg tablet",
+            "sig": "Take 1 tablet by mouth once daily",
+            "sigShort": "1 tab PO daily",
+            "plainSig": "Take one tablet by mouth every day."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "enalapril (Epaned, generic available)",
+              "note": "preferred, no PA",
+              "sourceIds": [
+                "al-medicaid-ace-source-202607"
+              ]
+            },
+            {
+              "drug": "benazepril (Lotensin, generic available)",
+              "note": "preferred, no PA",
+              "sourceIds": [
+                "al-medicaid-ace-source-202607"
+              ]
+            },
+            {
+              "drug": "quinapril (Accupril, generic available)",
+              "note": "preferred, no PA",
+              "sourceIds": [
+                "al-medicaid-ace-source-202607"
+              ]
+            },
+            {
+              "drug": "lisinopril-hydrochlorothiazide (Zestoretic, generic available)",
+              "note": "preferred combo, no PA",
+              "sourceIds": [
+                "al-medicaid-ace-source-202607"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "captopril",
+              "outcome": "pa",
+              "reason": "Restricted generic; PA required.",
+              "sourceIds": [
+                "al-medicaid-ace-source-202607"
+              ]
+            },
+            {
+              "drug": "fosinopril",
+              "outcome": "pa",
+              "reason": "Restricted generic; PA required.",
+              "sourceIds": [
+                "al-medicaid-ace-source-202607"
+              ]
+            },
+            {
+              "drug": "moexipril",
+              "outcome": "pa",
+              "reason": "Restricted generic; PA required.",
+              "sourceIds": [
+                "al-medicaid-ace-source-202607"
+              ]
+            },
+            {
+              "drug": "perindopril",
+              "outcome": "pa",
+              "reason": "Restricted generic; PA required.",
+              "sourceIds": [
+                "al-medicaid-ace-source-202607"
+              ]
+            },
+            {
+              "drug": "ramipril",
+              "outcome": "pa",
+              "reason": "Restricted generic; PA required despite being a common first-line ACE inhibitor elsewhere.",
+              "sourceIds": [
+                "al-medicaid-ace-source-202607"
+              ]
+            },
+            {
+              "drug": "trandolapril",
+              "outcome": "pa",
+              "reason": "Restricted generic; PA required.",
+              "sourceIds": [
+                "al-medicaid-ace-source-202607"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "tier": "Preferred Brand/Generic - no PA",
+          "verification": "verified",
+          "verificationNote": "Read directly from the 'ACE Inhibitors' subsection (page 10 of the PDF) of Alabama Medicaid's PDL Reference Tool, effective 07/01/2026. Quinapril, enalapril, benazepril, and lisinopril (plus their HCTZ combinations and brand equivalents Accupril/Epaned/Lotensin/Zestril/Zestoretic/Accuretic/Lotensin HCT) are in the Preferred Generic column (no PA); captopril, fosinopril, moexipril, perindopril, ramipril, and trandolapril (plus combos) are in the Non-Preferred/PA-Required column with no accompanying brand.",
+          "sourceIds": [
+            "al-medicaid-ace-source-202607"
+          ],
+          "coverageSourceIds": [
+            "al-medicaid-ace-source-202607"
+          ],
+          "restrictionSourceIds": [
+            "al-medicaid-ace-source-202607"
+          ],
+          "lastReviewed": "2026-07-25"
+        },
+        {
+          "payerId": "bcbs-al-commercial",
+          "classId": "ace-inhibitor",
+          "preferredAgent": {
+            "inn": "lisinopril",
+            "brand": "Zestril",
+            "genericAvailable": true,
+            "strength": "10 mg oral tablet",
+            "sig": "lisinopril tab 10 mg, take 1 tablet by mouth once daily",
+            "sigShort": "1 tab PO qday",
+            "plainSig": "Take one 10 mg tablet by mouth once a day."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "enalapril maleate",
+              "note": "Tier 1, generic, no PA",
+              "sourceIds": [
+                "bcbs-al-commercial-ace-source-202607"
+              ]
+            },
+            {
+              "drug": "benazepril HCl",
+              "note": "Tier 1, generic, no PA",
+              "sourceIds": [
+                "bcbs-al-commercial-ace-source-202607"
+              ]
+            },
+            {
+              "drug": "ramipril",
+              "note": "Tier 1, generic, no PA",
+              "sourceIds": [
+                "bcbs-al-commercial-ace-source-202607"
+              ]
+            },
+            {
+              "drug": "fosinopril sodium",
+              "note": "Tier 1, generic, no PA",
+              "sourceIds": [
+                "bcbs-al-commercial-ace-source-202607"
+              ]
+            },
+            {
+              "drug": "captopril",
+              "note": "Tier 1, generic, no PA",
+              "sourceIds": [
+                "bcbs-al-commercial-ace-source-202607"
+              ]
+            },
+            {
+              "drug": "quinapril HCl",
+              "note": "Tier 1, generic, no PA",
+              "sourceIds": [
+                "bcbs-al-commercial-ace-source-202607"
+              ]
+            },
+            {
+              "drug": "moexipril HCl",
+              "note": "Tier 1, generic, no PA",
+              "sourceIds": [
+                "bcbs-al-commercial-ace-source-202607"
+              ]
+            },
+            {
+              "drug": "trandolapril",
+              "note": "Tier 1, generic, no PA",
+              "sourceIds": [
+                "bcbs-al-commercial-ace-source-202607"
+              ]
+            },
+            {
+              "drug": "perindopril erbumine",
+              "note": "Tier 1, generic, no PA",
+              "sourceIds": [
+                "bcbs-al-commercial-ace-source-202607"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "tier": "Tier 1 - primarily generics and select brands",
+          "verification": "verified",
+          "verificationNote": "Read pages 52-56 (printed pages 45-49) of the PDF, CARDIOVASCULAR AGENTS / ANTIHYPERTENSIVES section, position-parsed. Every ACE inhibitor found (lisinopril, enalapril, benazepril, ramipril, fosinopril, captopril, quinapril, moexipril, trandolapril, perindopril, plus their thiazide combinations) is Tier 1 with zero dots in any PA/Step/Dispensing/ACA/Limited-Distribution column - this is an unusually clean, unrestricted class on this formulary.",
+          "sourceIds": [
+            "bcbs-al-commercial-ace-source-202607"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-commercial-ace-source-202607"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-commercial-ace-source-202607"
+          ],
+          "lastReviewed": "2026-07-25"
+        },
+        {
+          "payerId": "bcbs-al-medicare",
+          "classId": "ace-inhibitor",
+          "preferredAgent": {
+            "inn": "lisinopril",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "10 mg tablet",
+            "sig": "lisinopril 10 mg tab, take 1 tablet by mouth once daily",
+            "sigShort": "10mg PO daily",
+            "plainSig": "Take one 10 mg tablet by mouth once a day."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "enalapril maleate tab",
+              "note": "Tier 1, generic, no PA",
+              "sourceIds": [
+                "bcbs-al-medicare-ace-source-202607"
+              ]
+            },
+            {
+              "drug": "benazepril hcl tab",
+              "note": "Tier 1, generic, no PA",
+              "sourceIds": [
+                "bcbs-al-medicare-ace-source-202607"
+              ]
+            },
+            {
+              "drug": "ramipril cap",
+              "note": "Tier 1, generic, no PA",
+              "sourceIds": [
+                "bcbs-al-medicare-ace-source-202607"
+              ]
+            },
+            {
+              "drug": "fosinopril sodium tab",
+              "note": "Tier 1, generic, no PA",
+              "sourceIds": [
+                "bcbs-al-medicare-ace-source-202607"
+              ]
+            },
+            {
+              "drug": "quinapril hcl tab",
+              "note": "Tier 1, generic, no PA",
+              "sourceIds": [
+                "bcbs-al-medicare-ace-source-202607"
+              ]
+            },
+            {
+              "drug": "captopril tab",
+              "note": "Tier 1, generic, no PA",
+              "sourceIds": [
+                "bcbs-al-medicare-ace-source-202607"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "tier": "Tier 1 (Preferred Generic)",
+          "verification": "verified",
+          "verificationNote": "Read verbatim from the cardiovascular/'ACE Inhibitors' portion of the formulary (pdf pages ~30-31, printed pages 15-17): lisinopril, enalapril, benazepril, ramipril, fosinopril, quinapril, and captopril tablets/capsules are all listed at Tier 1 with no Requirements/Limits column entry, i.e. no PA/QL/ST. No brand-name ACE inhibitor (Prinivil, Zestril, Vasotec, Lotensin, Altace) is listed separately — all are fully generic.",
+          "sourceIds": [
+            "bcbs-al-medicare-ace-source-202607"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-medicare-ace-source-202607"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-medicare-ace-source-202607"
+          ],
+          "lastReviewed": "2026-07-25"
+        }
+      ]
     }
   ]
 }

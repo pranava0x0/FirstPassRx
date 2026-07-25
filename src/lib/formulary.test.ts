@@ -47,6 +47,7 @@ describe('guides + global meta', () => {
       'al-ssris',
       'al-inhalers',
       'al-menopause',
+      'al-ace',
     ])
   })
 
