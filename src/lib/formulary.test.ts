@@ -46,6 +46,7 @@ describe('guides + global meta', () => {
       'va-osteoporosis',
       'al-ssris',
       'al-inhalers',
+      'al-menopause',
     ])
   })
 
