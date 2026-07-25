@@ -219,6 +219,11 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   curl with a browser User-Agent during gather) — this only affects provenance archival, not the
   shipped drug data. _Open — re-run `npm run archive-sources` in a future session; if it keeps
   failing, try the archiver with a browser User-Agent/cert workaround for this one host._
+  **Recurred 2026-07-25** after the AL topic scale-up (6 new guides): `al-medicaid-inhalers-source-202607`
+  and `al-medicaid-osteoporosis-source-202607` both failed the same way (`state-al-d93bd270aa58f7fe`
+  also unreachable) — same host, same non-standard TLS/cert config, still not blocking (all AL
+  Medicaid cells shipped `verified`/`partial` off curl-fetched PDFs during gather). Confirms this is
+  a stable, recurring host-level issue rather than a one-off blip.
 - **2026-07-01 · process (data gathering) · VA diabetes re-gather (chunked ≤2 concurrent) hit
   transient connection failures, not rate-limiting.** Resuming the `va-diabetes-gather` Workflow
   (run `wf_20cee55f-82a`) to pick up the remaining 7 of 8 payers failed all 7 with
