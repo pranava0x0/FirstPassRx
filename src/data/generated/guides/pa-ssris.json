@@ -1,0 +1,518 @@
+{
+  "id": "pa-ssris",
+  "label": "PA · SSRIs",
+  "stateCode": "PA",
+  "region": "Pennsylvania",
+  "topicId": "ssris",
+  "topic": "SSRIs",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-07-25",
+  "capturedAt": "2026-07-25",
+  "payers": [
+    {
+      "id": "pa-medicaid",
+      "name": "PA Medical Assistance Statewide Preferred Drug List (Fee-for-Service)",
+      "shortName": "PA Medicaid FFS",
+      "pbm": "OptumRx, Inc. (negotiates supplemental rebates / P&T support for DHS)",
+      "productName": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026 v11",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026 v11, effective 2026-01-01",
+      "formularyUrl": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-PDL-v11.pdf",
+      "sourceIds": [
+        "pa-medicaid-ssris-source-2026-07"
+      ]
+    },
+    {
+      "id": "ibx-commercial",
+      "name": "Independence Blue Cross (Commercial)",
+      "shortName": "Independence Blue Cross",
+      "pbm": "FutureScripts (IBX's PBM subsidiary)",
+      "productName": "Select Drug Program® Formulary",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Select Drug Program® Formulary, effective 2026-07-01",
+      "formularyUrl": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "sourceIds": [
+        "ibx-commercial-ssris-source-2026-07"
+      ]
+    },
+    {
+      "id": "highmark-bcbs",
+      "name": "Highmark Blue Cross Blue Shield (Commercial)",
+      "shortName": "Highmark BCBS",
+      "pbm": "Prime Therapeutics (Highmark is a Prime owner-member Blue plan)",
+      "productName": "Highmark Comprehensive Formulary (Drug Search)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Highmark Comprehensive Formulary (Drug Search), effective 2026-07-24",
+      "formularyUrl": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7cantidepressant+-+selective+serotonin+reuptake+inhibitors+(ssris)",
+      "sourceIds": [
+        "highmark-bcbs-ssris-source-2026-07"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "ssri-oral",
+      "name": "Oral SSRIs",
+      "shortName": "SSRI",
+      "plainName": "Antidepressant (SSRI)",
+      "description": "Selective serotonin reuptake inhibitors (fluoxetine, sertraline, citalopram, escitalopram, paroxetine, fluvoxamine) — first-line oral therapy for major depressive disorder and anxiety disorders.",
+      "plainDescription": "A daily pill for depression or anxiety that works by increasing serotonin levels.",
+      "indication": "Major depressive disorder & anxiety disorders",
+      "sourceIds": [
+        "pa-medicaid-ssris-source-2026-07"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "id": "pa-medicaid-ssris-source-2026-07",
+      "label": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026 v11",
+      "publisher": "Pennsylvania Department of Human Services",
+      "type": "gov",
+      "url": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-PDL-v11.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-07-25"
+    },
+    {
+      "id": "ibx-commercial-ssris-source-2026-07",
+      "label": "Select Drug Program® Formulary",
+      "publisher": "Independence Blue Cross",
+      "type": "payer",
+      "url": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-07-25"
+    },
+    {
+      "id": "highmark-bcbs-ssris-source-2026-07",
+      "label": "Highmark Comprehensive Formulary (Drug Search)",
+      "publisher": "Highmark Blue Cross Blue Shield / Prime Therapeutics (via Managed Markets Insight and Technology, LLC Formulary Navigator)",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7cantidepressant+-+selective+serotonin+reuptake+inhibitors+(ssris)",
+      "effectiveDate": "2026-07-24",
+      "accessed": "2026-07-25"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ],
+  "records": [
+    {
+      "payerId": "pa-medicaid",
+      "classId": "ssri-oral",
+      "preferredAgent": {
+        "inn": "sertraline",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg",
+        "sig": "1 tablet by mouth once daily",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "Citalopram (10 mg/5 mL Solution, Tablet)",
+          "note": "preferred, no PA",
+          "sourceIds": [
+            "pa-medicaid-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Escitalopram Tablet (generic)",
+          "note": "preferred, no PA",
+          "sourceIds": [
+            "pa-medicaid-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Fluoxetine (Capsule, Solution, Tablet)",
+          "note": "preferred, no PA",
+          "sourceIds": [
+            "pa-medicaid-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Fluvoxamine Tablet (generic)",
+          "note": "preferred, no PA",
+          "sourceIds": [
+            "pa-medicaid-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Paroxetine Tablet (generic)",
+          "note": "preferred, no PA",
+          "sourceIds": [
+            "pa-medicaid-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Sertraline Concentrate Solution",
+          "note": "preferred, no PA",
+          "sourceIds": [
+            "pa-medicaid-ssris-source-2026-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Celexa Tablet (brand citalopram)",
+          "outcome": "nonformulary",
+          "reason": "restricted on the PDL; generic Citalopram Tablet is preferred instead",
+          "sourceIds": [
+            "pa-medicaid-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Citalopram Capsule, Citalopram 20 mg/10 mL Solution",
+          "outcome": "nonformulary",
+          "reason": "restricted on the PDL; the tablet and 10mg/5mL solution are preferred instead",
+          "sourceIds": [
+            "pa-medicaid-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Escitalopram Solution",
+          "outcome": "nonformulary",
+          "reason": "restricted on the PDL; the tablet form is preferred instead",
+          "sourceIds": [
+            "pa-medicaid-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Fluoxetine DR Capsule",
+          "outcome": "nonformulary",
+          "reason": "restricted on the PDL; immediate-release capsule, solution, and tablet forms are preferred instead",
+          "sourceIds": [
+            "pa-medicaid-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Fluvoxamine ER Capsule",
+          "outcome": "nonformulary",
+          "reason": "restricted on the PDL; the immediate-release tablet is preferred instead",
+          "sourceIds": [
+            "pa-medicaid-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Lexapro Tablet (brand escitalopram)",
+          "outcome": "nonformulary",
+          "reason": "restricted on the PDL; generic Escitalopram Tablet is preferred instead",
+          "sourceIds": [
+            "pa-medicaid-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Paxil Tablet, Paxil CR Tablet (brand paroxetine)",
+          "outcome": "nonformulary",
+          "reason": "restricted on the PDL; generic Paroxetine Tablet is preferred instead",
+          "sourceIds": [
+            "pa-medicaid-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Paroxetine Suspension, Paroxetine CR/ER Tablet, Paroxetine Mesylate Capsule",
+          "outcome": "nonformulary",
+          "reason": "restricted on the PDL; only the plain paroxetine tablet is preferred",
+          "sourceIds": [
+            "pa-medicaid-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Sertraline Capsule",
+          "outcome": "nonformulary",
+          "reason": "restricted on the PDL; the tablet and concentrate solution forms are preferred instead",
+          "sourceIds": [
+            "pa-medicaid-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Zoloft Tablet, Zoloft Concentrate Solution (brand sertraline)",
+          "outcome": "nonformulary",
+          "reason": "restricted on the PDL; generic Sertraline Tablet/Concentrate Solution are preferred instead",
+          "sourceIds": [
+            "pa-medicaid-ssris-source-2026-07"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "tier": "PDL-preferred (generic, no PA)",
+      "verification": "verified",
+      "verificationNote": "Read directly from the PA DHS Statewide PDL effective January 2026 v11, 'ANTIDEPRESSANTS, SSRIs' section (PDF page 9). Preferred: Citalopram 10mg/5mL Solution, Citalopram Tablet, Escitalopram Tablet, Fluoxetine Capsule, Fluoxetine Solution, Fluoxetine Tablet, Fluvoxamine Tablet, Paroxetine Tablet, Sertraline Concentrate Solution, Sertraline Tablet. Non-preferred: Celexa Tablet, Citalopram Capsule, Citalopram 20mg/10mL Solution, Escitalopram Solution, Fluoxetine DR Capsule, Fluvoxamine ER Capsule, Lexapro Tablet, Paroxetine Suspension, Paroxetine CR/ER Tablet, Paroxetine Mesylate Capsule, Paxil Tablet, Paxil CR Tablet, Sertraline Capsule, Zoloft Concentrate Solution, Zoloft Tablet. All statuses read verbatim -- every generic tablet/standard-formulation SSRI (all six named in the class definition: fluoxetine, sertraline, citalopram, escitalopram, paroxetine, fluvoxamine) is clean-preferred in its plain tablet/capsule/solution form, while every named brand and every extended-release/alternate formulation is non-preferred. Sertraline was selected as the representative preferred pick per this app's existing SSRI convention (matches the pick already used for other states' Medicaid PDLs in this dataset). Representative strength/sig/plain-language directions for sertraline 50mg are the app's standard convention values, consistent with other states' SSRI records; the PDL itself lists only drug/form/status, not dosing.",
+      "sourceIds": [
+        "pa-medicaid-ssris-source-2026-07"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-ssris-source-2026-07"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-ssris-source-2026-07"
+      ],
+      "lastReviewed": "2026-07-25"
+    },
+    {
+      "payerId": "ibx-commercial",
+      "classId": "ssri-oral",
+      "preferredAgent": {
+        "inn": "sertraline",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50mg tablet",
+        "sig": "Take 1 tablet (50mg) by mouth once daily",
+        "sigShort": "50mg PO qDay",
+        "plainSig": "Take one tablet by mouth once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "citalopram (generic)",
+          "note": "Low Cost Generic (LCG) tier, no PA",
+          "sourceIds": [
+            "ibx-commercial-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "escitalopram (generic)",
+          "note": "Low Cost Generic (LCG) tier, no PA",
+          "sourceIds": [
+            "ibx-commercial-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "fluoxetine (generic)",
+          "note": "Generic, no PA (standard capsule/tablet strengths)",
+          "sourceIds": [
+            "ibx-commercial-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "paroxetine (generic)",
+          "note": "Generic, no PA",
+          "sourceIds": [
+            "ibx-commercial-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "fluvoxamine (generic)",
+          "note": "Generic, no PA",
+          "sourceIds": [
+            "ibx-commercial-ssris-source-2026-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Zoloft (brand sertraline)",
+          "outcome": "pa",
+          "reason": "Restricted brand; PA required",
+          "sourceIds": [
+            "ibx-commercial-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Sertraline Caps 150mg, 200mg",
+          "outcome": "pa",
+          "reason": "Restricted high-dose capsule formulation; PA required",
+          "sourceIds": [
+            "ibx-commercial-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Celexa (brand citalopram)",
+          "outcome": "pa",
+          "reason": "Restricted brand; PA required",
+          "sourceIds": [
+            "ibx-commercial-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Citalopram 30mg Cap",
+          "outcome": "pa",
+          "reason": "Restricted specific capsule product; PA required",
+          "sourceIds": [
+            "ibx-commercial-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Lexapro (brand escitalopram)",
+          "outcome": "pa",
+          "reason": "Restricted brand; PA required",
+          "sourceIds": [
+            "ibx-commercial-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Escitalopram cap 15mg",
+          "outcome": "pa",
+          "reason": "Restricted specific capsule product; PA required",
+          "sourceIds": [
+            "ibx-commercial-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Prozac (brand fluoxetine)",
+          "outcome": "pa",
+          "reason": "Restricted brand; PA required",
+          "sourceIds": [
+            "ibx-commercial-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "fluoxetine oral solution",
+          "outcome": "pa",
+          "reason": "Restricted liquid formulation; PA required",
+          "sourceIds": [
+            "ibx-commercial-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Paxil CR",
+          "outcome": "pa",
+          "reason": "Restricted brand extended-release; PA required",
+          "sourceIds": [
+            "ibx-commercial-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Paxil Tab/Susp (brand paroxetine)",
+          "outcome": "pa",
+          "reason": "Restricted brand; PA required",
+          "sourceIds": [
+            "ibx-commercial-ssris-source-2026-07"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "tier": "Low Cost Generic",
+      "verification": "verified",
+      "verificationNote": "Read verbatim from the 'MENTAL HEALTH & NEUROLOGICAL MEDS' section (PDF pages 29-38, effective July 1, 2026). 'sertraline', 'citalopram', and 'escitalopram' are all Low Cost Generic (LCG) tier with no restriction; 'fluoxetine', 'paroxetine', and 'fluvoxamine' are Generic (G) tier with no restriction (standard strengths). All brand products (Zoloft, Celexa, Lexapro, Prozac, Paxil CR/Tab) and specific high-dose/liquid formulations are confirmed NPD or G+PA directly from the table.",
+      "sourceIds": [
+        "ibx-commercial-ssris-source-2026-07"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-ssris-source-2026-07"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-ssris-source-2026-07"
+      ],
+      "lastReviewed": "2026-07-25"
+    },
+    {
+      "payerId": "highmark-bcbs",
+      "classId": "ssri-oral",
+      "preferredAgent": {
+        "inn": "sertraline",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "oral tablet 50 mg",
+        "sig": "Take 1 tablet (50mg) by mouth once daily",
+        "sigShort": "50mg PO qDay",
+        "plainSig": "Take one tablet by mouth once a day, at the same time each day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "citalopram (generic tablet, 10/20/40mg)",
+          "note": "Tier 1 generic, Low-Cost Generic Rx, no PA",
+          "sourceIds": [
+            "highmark-bcbs-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "escitalopram (generic tablet, 5/10/20mg)",
+          "note": "Tier 1 generic, no PA (quantity limit applies)",
+          "sourceIds": [
+            "highmark-bcbs-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "fluoxetine (generic capsule, 10/20/40mg)",
+          "note": "Tier 1 generic, Low-Cost Generic Rx, no PA",
+          "sourceIds": [
+            "highmark-bcbs-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "fluvoxamine (generic tablet)",
+          "note": "Tier 1 generic, no PA",
+          "sourceIds": [
+            "highmark-bcbs-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "paroxetine HCl (generic immediate-release tablet)",
+          "note": "Tier 1 generic, Low-Cost Generic Rx, no PA",
+          "sourceIds": [
+            "highmark-bcbs-ssris-source-2026-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "fluoxetine tablet (as opposed to the Tier-1 capsule) or delayed-release 90mg capsule",
+          "outcome": "nonformulary",
+          "reason": "Tier 3/non-formulary despite being generic; the capsule form at standard strengths is preferred",
+          "sourceIds": [
+            "highmark-bcbs-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "citalopram capsule / escitalopram capsule (as opposed to the Tier-1 tablet)",
+          "outcome": "pa",
+          "reason": "Tier 3/non-formulary, QL, and PA required despite being generic; the tablet form is preferred",
+          "sourceIds": [
+            "highmark-bcbs-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "paroxetine HCl extended-release tablet (generic Paxil CR)",
+          "outcome": "pa",
+          "reason": "Tier 3/non-formulary and PA required despite being generic",
+          "sourceIds": [
+            "highmark-bcbs-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Celexa / Lexapro / Paxil / Paxil CR / Prozac / Zoloft (brand-name SSRIs)",
+          "outcome": "pa",
+          "reason": "Tier 3/non-formulary and requires prior authorization; the corresponding generic is preferred",
+          "sourceIds": [
+            "highmark-bcbs-ssris-source-2026-07"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "tier": "Tier 1 / Formulary Generic Drug",
+      "verification": "verified",
+      "verificationNote": "Read live from the Highmark Comprehensive Formulary search tool (siteCode=8103967260; Formulary Effective Date 07/24/2026). Searched 'sertraline', opened the class listing for 'Central Nervous System Agents | Antidepressant - Selective Serotonin Reuptake Inhibitors (SSRIs)' (52 rows) and read every row. Standard tablet/capsule forms of all five generic SSRIs (sertraline, citalopram, escitalopram, fluoxetine, fluvoxamine, paroxetine) are Tier 1, mostly with a Low-Cost Generic Rx flag and no PA (escitalopram tablet has a quantity limit but no PA). A dosage-form quirk was confirmed directly from the source: fluoxetine TABLETS are Tier 3/non-formulary while fluoxetine CAPSULES at the same strengths are Tier 1, and citalopram/escitalopram CAPSULES are Tier 3+PA while their TABLET forms are Tier 1 — captured as separate paRequired entries rather than folded into the clean generic pick. Every brand name (Celexa, Lexapro, Paxil, Paxil CR, Prozac, Zoloft) is Tier 3/non-formulary with an explicit PA icon. Confirmed vs inferred: all tiers/PA/QL icons directly read from the live tool.",
+      "sourceIds": [
+        "highmark-bcbs-ssris-source-2026-07"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-ssris-source-2026-07"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-ssris-source-2026-07"
+      ],
+      "lastReviewed": "2026-07-25"
+    }
+  ]
+}
