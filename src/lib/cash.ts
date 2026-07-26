@@ -188,8 +188,11 @@
  * 2026-07-25: +10 for AL's remaining 6 topics (al-inhalers/al-menopause/al-ace/al-diabetes/
  * al-nsaids/al-osteoporosis, 361 total) -- same 3-payer AL roster, same headless-run GoodRx/Cost
  * Plus block. Osteoporosis's bisphosphonate/denosumab/teriparatide brand-name variants account for
- * the jump; the other 5 AL topics' drug names mostly matched existing molecule-family regex rules. */
-export const KNOWN_UNPRICED_GAP = 361
+ * the jump; the other 5 AL topics' drug names mostly matched existing molecule-family regex rules.
+ * 2026-07-26: +16 for `pa-ssris` (377 total) -- first Pennsylvania guide (proof guide for the
+ * PA new-state expansion), 3 payers (pa-medicaid/ibx-commercial/highmark-bcbs), headless run so
+ * GoodRx/Cost Plus stayed bot-blocked same as every prior scheduled-run gather. */
+export const KNOWN_UNPRICED_GAP = 377
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
