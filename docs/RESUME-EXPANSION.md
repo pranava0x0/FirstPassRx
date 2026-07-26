@@ -340,3 +340,44 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   `backlog.md` + this ledger entry only.
   **Still stopped here pending the user's review of `al-ssris`.** Next session: if approved, scale
   AL's remaining 6 topics, then PA and CA, per the plan above.
+- 2026-07-25 (later, interactive session — retroactively logged 2026-07-26, this entry was missed
+  in the session that did the work) — **Gate cleared by explicit user instruction; AL scaled to
+  its remaining 6 topics, AL now complete across all 7 topics (SSRIs + the original 5 + osteoporosis).**
+  Shipped `al-inhalers`, `al-menopause`, `al-ace`, `al-diabetes`, `al-nsaids`, `al-osteoporosis`
+  (commits `ca9950a`..`0c212c0`), reusing AL's 3-payer roster. `KNOWN_UNPRICED_GAP` bumped
+  351→361. Sources archived (`84d0ed6`, `146ed2d`) with the recurring `medicaid.alabama.gov`
+  fetch-failure logged again (known SSL/cert issue, non-blocking). The same session also started
+  a **PA all-topics gather** (`data-gathering/pa-all-topics-2026-07-25/`) — 3 of PA's 7 payers
+  (pa-medicaid, ibx-commercial, highmark-bcbs) fully gathered across all 21 classes (all 7
+  topics) — but the session ended before any of it was merged into `formulary.json`. Those
+  checkpoint files survived on disk (this repo is worked in directly, not a cleaned-up worktree)
+  and were recovered by the next run below.
+- 2026-07-26 (scheduled run) — **Confirmed AL's completion (above) was real but never logged —
+  backfilled the ledger entry.** `git log`/`validate-coverage` showed AL fully scaled and pushed
+  to `main` (main/`expand/pa-ca-topics`/`origin/main` all at the same commit, nothing to
+  integrate). **Shipped `pa-ssris` — Pennsylvania's proof guide, the new-state gate for PA** —
+  by recovering the already-gathered checkpoint data in `data-gathering/pa-all-topics-2026-07-25/`
+  (pa-medicaid/ibx-commercial/highmark-bcbs `*-ssri-oral.json`) rather than re-fetching: **zero
+  new agent calls**. Reworded 17 `paRequired` reasons that used "non-preferred" language (PA
+  Medicaid's binary PDL + IBX's tiered formulary) per the established reword-not-reclassify
+  pattern — genuine PA barriers, not cost-tier-only. `KNOWN_UNPRICED_GAP` bumped 361→377
+  (headless run, GoodRx/Cost Plus stayed bot-blocked). All of `npm test` (454/454), `typecheck`,
+  `trace`, `validate-coverage`, `archive-sources` green; verified live in the browser (PA now
+  appears in the state picker, SSRIs renders sertraline preferred with correct
+  alternatives/PA-required list for all 3 payers). National grid moved 42/357 → 43/357, 6→7
+  jurisdictions covered. Committed in 3 chunks (guide merge + test-id list, cash-gap bump, source
+  archive).
+  **STOPPING HERE per the same "one guide as proof first" gate applied to `ny-ssris` and
+  `al-ssris`** — do not scale PA's remaining 20 guides (7 topics − 1 shipped) without the user
+  reviewing `pa-ssris` and approving, even though most of the underlying data is already sitting
+  gathered and checkpointed. **Head start for next session, if approved:** PA's other 20 classes
+  (inhalers ×4, ace ×1, diabetes ×4, menopause ×5, nsaids ×1, osteoporosis ×5 = 20) are **already
+  fully gathered and verified for the same 3 payers** in
+  `data-gathering/pa-all-topics-2026-07-25/` — merging them costs zero new agent calls, only the
+  same reword-and-merge mechanics used for `pa-ssris`. The 4 PA Medicaid MCOs that share the
+  Statewide PDL (Keystone First, UPMC for You, PA Health and Wellness, AmeriHealth Caritas CHC)
+  were never gathered — same "MCO rides the same statewide PDL as FFS, don't re-fetch identical
+  content" judgment call already applied to NY's Healthfirst/Fidelis/MetroPlus (see
+  `validate-coverage`'s own roster-cross-check commentary) — PA guides ship with 3 payers, not 7,
+  consistent with that precedent. After PA: CA (3-payer roster already in `state-index.json`,
+  cheapest state to gather next, no data gathered yet).

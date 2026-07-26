@@ -153,6 +153,17 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
       `state-index.json`, per-payer formulary URL verification via live fetch, or any actual
       drug-class data gather. This is still a substantial next-session task before a single
       guide can be built for PA, AL, or CA.
+  - **UPDATE 2026-07-23 through 2026-07-26 — superseded, see `docs/RESUME-EXPANSION.md`'s ledger
+    for full detail:** PA/AL/CA payer rosters are now all in `state-index.json`. **AL is complete
+    across all 7 topics** (`al-ssris`, `al-inhalers`, `al-menopause`, `al-ace`, `al-diabetes`,
+    `al-nsaids`, `al-osteoporosis` — 3-payer roster, `KNOWN_UNPRICED_GAP` reached 361). **PA has
+    its first guide, `pa-ssris`** (proof guide for the new-state gate, 3 payers, shipped
+    2026-07-26 by recovering an already-gathered-but-unmerged checkpoint from
+    `data-gathering/pa-all-topics-2026-07-25/` — zero new agent calls). PA's other 20 classes (all
+    remaining 6 topics) are **already fully gathered for the same 3 payers** in that checkpoint
+    directory, ready to merge for free once the user approves scaling past `pa-ssris`. CA remains
+    fully unstarted (roster only, no data gathered). Stopped per the same proof-guide-first gate
+    applied to every prior new topic/state.
 - **Close the cash-price gap on the *headline* recommendation — DONE.** The per-*cell* sweep
   (every guide record's `preferredAgent.inn`/`brand` against `hasCashLinkRule`) confirms **0/510
   cells have an unpriced preferred agent**. What's left is the `alternatives`-list long tail — see
