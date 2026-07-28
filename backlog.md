@@ -380,6 +380,19 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
     genuine structural carve-outs (like MD/VA/NY's menopause gaps, already correctly labeled
     `partial` and not closeable) before spending a verification pass on them — if so, this may be a
     labeling/documentation task (note the carve-out explicitly per-cell) rather than a re-gather.
+  - **Audited 2026-07-28 (scheduled run) — confirmed genuine, one cell fixed.** Read every
+    osteoporosis `partial` cell's `verificationNote` directly (no agents, no new gathers): the
+    overwhelming majority are already-exhaustive, well-cited medical-benefit/Part-B carve-out
+    confirmations (cross-checked against payer PA-criteria docs, NYS DOH's practitioner-
+    administered-drug list, Part D "B/D" coding conventions) — genuinely not closeable via a
+    retail-pharmacy PDL re-read, matching the menopause-HT precedent exactly. One cell WAS
+    fixable: `md-osteoporosis` mdmedicaid/rankl-inhibitor was held `partial` only pending
+    denosumab-biosimilar strength disambiguation (60mg Prolia vs. 120mg Xgeva) — one `WebSearch`
+    resolved it, cell upgraded to `verified` (commit `15cd119`). New, previously-unlogged finding:
+    **`al-osteoporosis`'s `al-medicaid` payer has zero osteoporosis-agent mentions in either
+    published AL Medicaid PDL document, across every class** (oral-bisphosphonate/anabolic/serm) —
+    a distinct "whole therapeutic area absent from the PDL" gap type, not the injectable-carve-out
+    pattern seen elsewhere; already correctly documented, not a research failure.
 - **PR #6 review nitpicks, deferred rather than blocking merge.** From the two-persona review
   (SW engineer + data reviewer) of the state/topic-picker split and NY/IL NSAID guides:
   - `Controls.tsx`'s state/topic segmented tablists omit `aria-controls` (unlike the existing class

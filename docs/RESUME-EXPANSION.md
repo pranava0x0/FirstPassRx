@@ -381,3 +381,30 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   `validate-coverage`'s own roster-cross-check commentary) — PA guides ship with 3 payers, not 7,
   consistent with that precedent. After PA: CA (3-payer roster already in `state-index.json`,
   cheapest state to gather next, no data gathered yet).
+- 2026-07-28 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working
+  tree clean, `main` up to date with `origin/main`, `npm run validate-coverage` unchanged at
+  43/357 since the 2026-07-26 `pa-ssris` merge — no drift, no user approval had landed (non-
+  interactive run, nothing to approve against). The already-gathered `data-gathering/pa-all-
+  topics-2026-07-25/` checkpoint (20 classes, 3 payers) survived on disk and remains ready to
+  merge for free once approved. Per the fallback instruction, spent the run auditing the existing
+  osteoporosis `partial` cells (48 cells logged 2026-07-25) instead of scaling or open-ended
+  web research: read every partial cell's `verificationNote` directly from `formulary.json`
+  (no agents) and confirmed the overwhelming majority (iv-bisphosphonate, most rankl-inhibitor/
+  anabolic) are genuine, already-exhaustively-documented medical-benefit/Part-B carve-outs — not
+  extraction failures, not closeable without a fundamentally different sourcing approach
+  (medical-benefit policy documents, which a couple of gathers already checked). Found one real,
+  fixable case: `md-osteoporosis` mdmedicaid/rankl-inhibitor was held at `partial` solely because
+  the source PDL didn't disambiguate whether "Jubbonti/Stoboclo/Bildyos/Conexxence" are 60mg
+  Prolia-strength (osteoporosis) or 120mg Xgeva-strength (oncology) biosimilars — one inline
+  `WebSearch` (AJMC's FDA-approval coverage) confirmed all four are 60mg Prolia-referencing
+  products, so the cell upgraded `partial`→`verified` (commit `15cd119`). Also surfaced a second,
+  distinct finding not previously logged: **`al-osteoporosis`'s `al-medicaid` payer has zero
+  osteoporosis-agent mentions across BOTH published Alabama Medicaid PDL documents, for every
+  class** (oral-bisphosphonate/anabolic/serm all partial for this exact reason) — a whole-
+  therapeutic-area PDL gap distinct from the injectable/medical-benefit carve-out pattern seen
+  everywhere else, already correctly documented in the existing verificationNotes. `npm test`
+  (454/454), `typecheck`, `trace`, `validate-coverage`, `archive-sources` all green after the fix;
+  AJMC's own page 403'd the archiver's fetch (bot-protected, citation stands, archive entry
+  recorded unreachable, same category as GoodRx/Cost Plus). Committed in 2 chunks (data fix,
+  source archive). **Still stopped here pending the user's review of `pa-ssris`.** Next session:
+  if approved, merge PA's remaining 20 gathered-and-checkpointed classes, then CA.
