@@ -408,3 +408,35 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   recorded unreachable, same category as GoodRx/Cost Plus). Committed in 2 chunks (data fix,
   source archive). **Still stopped here pending the user's review of `pa-ssris`.** Next session:
   if approved, merge PA's remaining 20 gathered-and-checkpointed classes, then CA.
+- 2026-07-29 (scheduled run) — **Gate still active, correctly did not scale new guides.** Confirmed
+  working tree clean, `main` up to date with `origin/main`, `npm run validate-coverage` unchanged
+  at 43/357 since the 2026-07-26 `pa-ssris` merge — no drift, no user approval had landed
+  (non-interactive run, nothing to approve against). Audited a dozen not-yet-individually-reviewed
+  `partial`/`example` cells (md-menopause, il-nsaids, md-ace, ma-menopause, il-inhalers,
+  il-diabetes, ny-ssris, ma-ssris) by reading their `verificationNote`s directly — unlike the
+  2026-07-28 osteoporosis audit, found none were a quick one-search fix like the `md-osteoporosis`
+  rankl-inhibitor case; each is either a genuinely blocked source (ny-menopause's eMedNY PA-code
+  legend, already logged and dead-ended twice) or a real source-level ambiguity (tied Tier-1
+  SSRIs, OCR-split NDC rows, PA table-id mismatches) needing a payer call or a different source,
+  not more web research. Not logged as new findings since none were actionable.
+  **Did real, in-scope work instead of pure research: closed a chunk of the SSRI cash-price gap.**
+  The browser preview tool worked today (unusual for a scheduled run — GoodRx wasn't bot-blocked
+  at the start of the session, unlike 2026-07-24's immediate error). This isn't "scaling" under
+  the proof-guide gate (no new formulary data gathered, no new guide/state) — it closes an
+  already-known, already-permitted gap in guides shipped weeks ago, flagged as future work in the
+  2026-07-21 `cash.ts` history comment. Added 6 broad SSRI molecule cash-link rules
+  (sertraline/citalopram/escitalopram/fluoxetine/paroxetine/fluvoxamine, real GoodRx + Cost Plus
+  Drugs prices, captured 2026-07-29) to `src/lib/cash.ts` — collapses every SSRI name variant
+  across all 7 shipped SSRI guides (NY/MA/MD/VA/IL/AL/PA) in one pass, the same molecule-family-
+  regex leverage the metformin/lisinopril rules already have. GoodRx served a "Press & Hold"
+  bot-check partway through (paroxetine/fluvoxamine came back Cost-Plus-only, consistent with the
+  documented intermittent block). `KNOWN_UNPRICED_GAP` lowered 377→155 (a real coverage
+  improvement, not a ceiling raise). `npm test` (454/454), `typecheck`, `validate-prices` all
+  green; verified live in the browser dev server (NY → SSRIs renders sertraline/citalopram/
+  escitalopram/fluoxetine with correct GoodRx+Cost Plus prices, paroxetine Cost-Plus-only as
+  expected).
+  **Still stopped here pending the user's review of `pa-ssris`; the PA/CA scaling work is
+  unchanged from the 2026-07-26 entry.** Next session: if approved, merge PA's remaining 20
+  gathered-and-checkpointed classes, then CA. If a browser is available again, osteoporosis's
+  molecule families (bisphosphonates/denosumab/teriparatide/raloxifene) are the next cash-price
+  target — same collapse-many-guides-in-one-pass leverage as this session's SSRI rules.

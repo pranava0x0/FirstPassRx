@@ -284,14 +284,23 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## Medium
 
-- **SSRI cash-price gap (194 name variants, `KNOWN_UNPRICED_GAP`) — add ~6 broad per-molecule
-  regex rules.** The 2026-07-21 SSRI expansion (NY/MA/MD/VA/IL, 34 payers total) shipped without
-  new cash-link rules — same 6 SSRI molecules (sertraline, citalopram, escitalopram, fluoxetine,
-  paroxetine, fluvoxamine) recur across every state with different free-text phrasing per payer
-  (e.g. "citalopram oral tablet/solution" vs. "Citalopram (Celexa) oral tablet/solution"), so a
-  single broad regex per molecule (same pattern as the existing `metformin`/`lisinopril`-family
-  rules in `src/lib/cash.ts`) should collapse most of this 194 in one browser session — see the
-  dated history comment in `cash.ts` for the running total by guide.
+- **SSRI cash-price gap — CLOSED 2026-07-29 (scheduled run).** A real browser session was
+  available (rare for a scheduled run); added the 6 broad per-molecule regex rules this item
+  called for (sertraline, citalopram, escitalopram, fluoxetine, paroxetine, fluvoxamine — real
+  GoodRx + Cost Plus Drugs prices, `src/lib/cash.ts`). Collapsed every SSRI name variant across
+  all 7 shipped SSRI guides (NY/MA/MD/VA/IL/AL/PA) in one pass. `KNOWN_UNPRICED_GAP` 377→155.
+  GoodRx bot-blocked partway through (paroxetine/fluvoxamine are Cost-Plus-only) — not a gap in
+  this item's scope, just an incomplete GoodRx side; revisit those 2 molecules' GoodRx price if a
+  future session has clean access.
+- **Osteoporosis cash-price gap — same shape as the SSRI item above, not yet started.** The
+  osteoporosis molecule families (oral/IV bisphosphonates — alendronate/risedronate/ibandronate/
+  zoledronic acid; denosumab + biosimilars; teriparatide/abaloparatide/romosozumab; raloxifene)
+  recur across all 5 shipped osteoporosis guides (NY/MA/MD/VA/IL) the same way the 6 SSRI
+  molecules did — a handful of broad per-molecule regex rules (same `metformin`/`lisinopril`-
+  family pattern) should collapse most of the remaining `KNOWN_UNPRICED_GAP` (155) in one future
+  browser session. Biosimilar brand-name variants (Jubbonti/Stoboclo/Bildyos/Conexxence/etc., see
+  the 2026-07-28 `md-osteoporosis` data-quality note) will need their own regex alternation since
+  they don't share a stem with "denosumab."
 - **Candidate topics for a future expansion round, beyond SSRIs/osteoporosis (already scoped in
   `docs/RESUME-EXPANSION.md`) — surfaced by a 2026-07-19 scheduled-run web-search sweep (research
   only, no data gathered, no agents spawned).** Ranked by how much real-world PA friction they carry

@@ -191,8 +191,18 @@
  * the jump; the other 5 AL topics' drug names mostly matched existing molecule-family regex rules.
  * 2026-07-26: +16 for `pa-ssris` (377 total) -- first Pennsylvania guide (proof guide for the
  * PA new-state expansion), 3 payers (pa-medicaid/ibx-commercial/highmark-bcbs), headless run so
- * GoodRx/Cost Plus stayed bot-blocked same as every prior scheduled-run gather. */
-export const KNOWN_UNPRICED_GAP = 377
+ * GoodRx/Cost Plus stayed bot-blocked same as every prior scheduled-run gather.
+ * Lowered 377 → 155 on 2026-07-29: a real browser session was available this scheduled run (rare
+ * for a headless/scheduled invocation -- GoodRx wasn't bot-blocked at the start of the session).
+ * Added the 6 broad SSRI molecule rules flagged as future work in the 2026-07-21 note above
+ * (sertraline/citalopram/escitalopram/fluoxetine/paroxetine/fluvoxamine), which collapsed every
+ * SSRI name variant across all 7 shipped SSRI guides (NY/MA/MD/VA/IL/AL/PA) in one pass -- the
+ * same molecule-family-regex leverage the metformin/lisinopril rules already have. GoodRx served
+ * a "Press & Hold" bot-check partway through (paroxetine/fluvoxamine came back Cost-Plus-only);
+ * osteoporosis's molecule families (bisphosphonates/denosumab/teriparatide/raloxifene, flagged in
+ * the same 2026-07-21 note) remain unpriced -- a good target for the next session with browser
+ * access. */
+export const KNOWN_UNPRICED_GAP = 155
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -1326,6 +1336,64 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxPrice: { price: 99.0, quantity: '30 tablets, 0.625mg (GoodRx coupon)' },
     costPlusPrice: { price: 192.85, quantity: '0.3mg tablet' },
     pricesCapturedAt: '2026-07-16',
+  },
+
+  // ---- SSRIs (added 2026-07-29) ----
+  // Closes the KNOWN_UNPRICED_GAP opened 2026-07-18 when ny-ssris shipped with zero cash-link
+  // rules (headless run, GoodRx bot-blocked). A real browser session was available this run;
+  // captured GoodRx + Cost Plus for all 6 SSRI molecules, which prices every ssri-oral cell
+  // across all 7 shipped SSRI guides (NY/MA/MD/VA/IL/AL/PA) at once -- one drug-name universe
+  // shared by every state's guide. Escitalopram's word boundary correctly excludes it from the
+  // citalopram rule below (no \b between "es" and "citalopram").
+  {
+    matches: /\bsertraline\b|\bzoloft\b/i,
+    goodRxSlug: 'sertraline',
+    costPlusPath: 'sertraline-50mg-tablet',
+    goodRxPrice: { price: 22.45, quantity: '30 tablets, 50mg' },
+    costPlusPrice: { price: 5.69, quantity: '30 tablets, 50mg' },
+    pricesCapturedAt: '2026-07-29',
+  },
+  {
+    matches: /\bcitalopram\b|\bcelexa\b/i,
+    goodRxSlug: 'citalopram',
+    costPlusPath: 'CitalopramHydrobromide-10mg-Tablet',
+    goodRxPrice: { price: 29.23, quantity: '30 tablets, 20mg' },
+    costPlusPrice: { price: 5.45, quantity: '30 tablets, 10mg' },
+    pricesCapturedAt: '2026-07-29',
+  },
+  {
+    matches: /\bescitalopram\b|\blexapro\b/i,
+    goodRxSlug: 'escitalopram',
+    costPlusPath: 'EscitalopramOxalate-10mg-Tablet',
+    goodRxPrice: { price: 29.45, quantity: '30 tablets, 10mg' },
+    costPlusPrice: { price: 6.24, quantity: '30 tablets, 10mg' },
+    pricesCapturedAt: '2026-07-29',
+  },
+  {
+    matches: /\bfluoxetine\b|\bprozac\b/i,
+    goodRxSlug: 'fluoxetine',
+    costPlusPath: 'fluoxetine-10mg-capsule',
+    goodRxPrice: { price: 26.43, quantity: '30 capsules, 20mg' },
+    costPlusPrice: { price: 5.38, quantity: '30 capsules, 10mg' },
+    pricesCapturedAt: '2026-07-29',
+  },
+  {
+    // GoodRx served a "Press & Hold" bot-check for this molecule this session (same intermittent
+    // block documented elsewhere in this file) -- Cost Plus only, not a research gap.
+    matches: /\bparoxetine\b|\bpaxil\b/i,
+    goodRxSlug: 'paroxetine',
+    costPlusPath: 'paroxetine-10mg-tablet',
+    costPlusPrice: { price: 5.66, quantity: '30 tablets, 10mg' },
+    pricesCapturedAt: '2026-07-29',
+  },
+  {
+    // Same GoodRx bot-check as paroxetine above. Cost Plus's lowest listed strength for this
+    // molecule is 100mg (25mg/50mg also sold, not captured this pass).
+    matches: /\bfluvoxamine\b|\bluvox\b/i,
+    goodRxSlug: 'fluvoxamine',
+    costPlusPath: 'fluvoxaminemaleate-100mg-tablet',
+    costPlusPrice: { price: 8.55, quantity: '30 tablets, 100mg' },
+    pricesCapturedAt: '2026-07-29',
   },
 ]
 
