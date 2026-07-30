@@ -440,3 +440,33 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   gathered-and-checkpointed classes, then CA. If a browser is available again, osteoporosis's
   molecule families (bisphosphonates/denosumab/teriparatide/raloxifene) are the next cash-price
   target — same collapse-many-guides-in-one-pass leverage as this session's SSRI rules.
+- 2026-07-30 (scheduled run) — **Gate still active, correctly did not scale new guides.** Confirmed
+  working tree clean, `main` up to date with `origin/main`, `npm run validate-coverage` unchanged
+  at 43/357 since the 2026-07-26 `pa-ssris` merge — no drift, no user approval had landed
+  (non-interactive run, nothing to approve against). The already-gathered `data-gathering/pa-all-
+  topics-2026-07-25/` checkpoint (20 classes, 3 payers) survived on disk and remains ready to merge
+  for free once approved.
+  **Did real, in-scope work instead of pure research, same category as 2026-07-29: closed part of
+  the osteoporosis cash-price gap flagged as the next target in that session's note.** A real
+  browser session was available again. Checked Cost Plus Drugs' bone-health category directly (only
+  2 of the 5 osteoporosis molecule families are stocked there — alendronate and raloxifene; the
+  other 3 are specialty injectables/infusions Cost Plus doesn't carry). Added both as broad
+  molecule-family cash-link rules (`src/lib/cash.ts`): alendronate (GoodRx ~$29.30 for 4×70mg,
+  Cost+ ~$7.38 for 30×10mg) and raloxifene (GoodRx ~$31.86, Cost+ ~$8.42, both 30×60mg) — prices
+  every oral-bisphosphonate and serm preferred-agent cell across all 5 shipped osteoporosis guides
+  (NY/MA/MD/VA/IL) in one pass. GoodRx then hit a session-wide "Access to this page has been
+  denied" block (harder than the milder intermittent "Press & Hold" check documented elsewhere)
+  before the 3 remaining molecules (zoledronic acid/Reclast, denosumab/Prolia + biosimilars,
+  teriparatide/Forteo + abaloparatide/Tymlos) could be attempted — logged to `backlog.md` with a
+  new observation: those 3 are physician-administered infusions/injections, so a plain GoodRx
+  retail-cash price may not even be the right number to show (worth checking manufacturer
+  copay-card pages instead, same pattern as the existing Ozempic-pen rule) once GoodRx access is
+  clean again. `KNOWN_UNPRICED_GAP` lowered 155→129 (verified via `node scripts/validate-prices.mjs`
+  — 129/129 known-gap drugs unpriced, matching the new ceiling exactly). `npm test` (454/454),
+  `typecheck`, `validate-prices` all green; verified live in the dev-server browser (NY →
+  Osteoporosis renders alendronate with both prices on oral-bisphosphonate, raloxifene with both
+  prices on serm).
+  **Still stopped here pending the user's review of `pa-ssris`; the PA/CA scaling work is
+  unchanged from the 2026-07-26 entry.** Next session: if approved, merge PA's remaining 20
+  gathered-and-checkpointed classes, then CA. If a browser is available again, the 3 remaining
+  osteoporosis specialty-injectable molecules (above) are the next cash-price target.
