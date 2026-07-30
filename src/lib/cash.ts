@@ -201,8 +201,16 @@
  * a "Press & Hold" bot-check partway through (paroxetine/fluvoxamine came back Cost-Plus-only);
  * osteoporosis's molecule families (bisphosphonates/denosumab/teriparatide/raloxifene, flagged in
  * the same 2026-07-21 note) remain unpriced -- a good target for the next session with browser
- * access. */
-export const KNOWN_UNPRICED_GAP = 155
+ * access.
+ * Lowered 155 → 129 on 2026-07-30: another real browser session was available. Added alendronate
+ * (oral-bisphosphonate) and raloxifene (serm) -- the two osteoporosis preferred-agent molecules
+ * Cost Plus actually carries (checked its bone-health category directly: no listing for zoledronic
+ * acid/Reclast, denosumab/Prolia, teriparatide/Forteo, or abaloparatide/Tymlos -- specialty
+ * infusions/injectables, not stocked). GoodRx then hit a session-wide "Access to this page has been
+ * denied" block (not per-page, like the intermittent "Press & Hold" check -- every subsequent
+ * lookup failed) before those 4 specialty-injectable molecules could even attempt a GoodRx-only
+ * capture -- logged to backlog.md as the remaining osteoporosis cash-price gap. */
+export const KNOWN_UNPRICED_GAP = 129
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -1394,6 +1402,33 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     costPlusPath: 'fluvoxaminemaleate-100mg-tablet',
     costPlusPrice: { price: 8.55, quantity: '30 tablets, 100mg' },
     pricesCapturedAt: '2026-07-29',
+  },
+
+  // ---- Osteoporosis oral agents (added 2026-07-30) ----
+  // Prices the oral-bisphosphonate and serm preferred-agent cells across all 5 osteoporosis guides
+  // (NY/MA/MD/VA/IL). The other 3 classes' preferred agents (zoledronic acid/Reclast infusion,
+  // denosumab/Prolia, teriparatide/Forteo, abaloparatide/Tymlos) are specialty injectables/infusions
+  // with no Cost Plus listing (checked -- Cost Plus's bone-health category carries only alendronate
+  // and raloxifene) and GoodRx bot-blocked this session (global "Access to this page has been
+  // denied" after ~2 successful lookups, not a per-page block) before they could be captured --
+  // logged to backlog.md as the remaining osteoporosis cash-price gap for a future browser session.
+  {
+    matches: /\balendronate\b|\bfosamax\b/i,
+    goodRxSlug: 'alendronate',
+    goodRxParams: 'dosage=70mg&form=tablet&quantity=4&label_override=alendronate',
+    costPlusPath: 'alendronate-10mg-tablet',
+    goodRxPrice: { price: 29.3, quantity: '4 tablets, 70mg (once-weekly dosing)' },
+    costPlusPrice: { price: 7.38, quantity: '30 tablets, 10mg (daily-dosing strength)' },
+    pricesCapturedAt: '2026-07-30',
+  },
+  {
+    matches: /\braloxifene\b|\bevista\b/i,
+    goodRxSlug: 'raloxifene',
+    goodRxParams: 'dosage=60mg&form=tablet&quantity=30&label_override=raloxifene',
+    costPlusPath: 'raloxifenehcl-60mg-tablet',
+    goodRxPrice: { price: 31.86, quantity: '30 tablets, 60mg' },
+    costPlusPrice: { price: 8.42, quantity: '30 tablets, 60mg' },
+    pricesCapturedAt: '2026-07-30',
   },
 ]
 
