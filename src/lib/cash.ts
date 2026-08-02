@@ -209,8 +209,19 @@
  * infusions/injectables, not stocked). GoodRx then hit a session-wide "Access to this page has been
  * denied" block (not per-page, like the intermittent "Press & Hold" check -- every subsequent
  * lookup failed) before those 4 specialty-injectable molecules could even attempt a GoodRx-only
- * capture -- logged to backlog.md as the remaining osteoporosis cash-price gap. */
-export const KNOWN_UNPRICED_GAP = 129
+ * capture -- logged to backlog.md as the remaining osteoporosis cash-price gap.
+ * Lowered 129 → 90 on 2026-08-02: another real browser session was available, no vendor block at
+ * the start. Added denosumab/Prolia (rankl-inhibitor) -- GoodRx's bare `prolia` slug landed on the
+ * exact right product by default (1 syringe, 60 mg/mL, osteoporosis strength), unlike Reclast (see
+ * next). GoodRx then hit the same session-wide "Access to this page has been denied" block as
+ * 2026-07-30, this time after only 2 lookups: (1) Prolia (captured, correct strength) and (2)
+ * zoledronic acid/Reclast, which the bare slug defaulted to the WRONG product (4mg/5mL Zometa
+ * oncology-dosing vial, not the 5mg/100mL Reclast once-yearly osteoporosis infusion -- different
+ * drug/price in practice) -- that wrong-strength price was discarded, not shipped. Teriparatide/
+ * Forteo and abaloparatide/Tymlos were never reached before the block. Remaining gap: zoledronic
+ * acid/Reclast (needs the Edit-flow or a correct dosage param, not the bare slug -- see
+ * backlog.md), teriparatide/Forteo, abaloparatide/Tymlos. */
+export const KNOWN_UNPRICED_GAP = 90
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -1429,6 +1440,20 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxPrice: { price: 31.86, quantity: '30 tablets, 60mg' },
     costPlusPrice: { price: 8.42, quantity: '30 tablets, 60mg' },
     pricesCapturedAt: '2026-07-30',
+  },
+  {
+    // Prolia + every denosumab biosimilar (Jubbonti/Wyost/Stoboclo/Osenvelt/Conexxence/Bomyntra/
+    // Bildyos/Bosaya/Enoby/Ospomyv/Osvyrti/Xbryk/Jubereq/Ponlimsi/Xtrenbo/Bilprevda) share one
+    // 60 mg/mL osteoporosis-strength price -- the bare `goodrx.com/prolia` slug landed on the exact
+    // right product (1 syringe, 60 mg/mL) by default, no params needed. Excludes Xgeva: same
+    // molecule but a different 120 mg/1.7 mL oncology-dosing product at a different price point, not
+    // the osteoporosis rankl-inhibitor cell. No Cost Plus listing (checked its bone-health category
+    // 2026-07-30 -- doesn't carry any of the 3 specialty injectables/infusions in this class).
+    matches:
+      /^(?!.*\bxgeva\b).*(?:\bdenosumab\b|\bprolia\b|\bjubbonti\b|\bwyost\b|\bstoboclo\b|\bosenvelt\b|\bconexxence\b|\bbomyntra\b|\bbildyos\b|\bbosaya\b|\benoby\b|\bospomyv\b|\bosvyrti\b|\bxbryk\b|\bjubereq\b|\bponlimsi\b|\bxtrenbo\b|\bbilprevda\b)/i,
+    goodRxSlug: 'prolia',
+    goodRxPrice: { price: 1832.87, quantity: '1 syringe, 60mg/mL (osteoporosis dose; standard GoodRx price)' },
+    pricesCapturedAt: '2026-08-02',
   },
 ]
 
