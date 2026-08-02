@@ -470,3 +470,33 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   unchanged from the 2026-07-26 entry.** Next session: if approved, merge PA's remaining 20
   gathered-and-checkpointed classes, then CA. If a browser is available again, the 3 remaining
   osteoporosis specialty-injectable molecules (above) are the next cash-price target.
+- 2026-08-02 (scheduled run) — **Gate still active, correctly did not scale new guides.** Confirmed
+  working tree clean, `main` up to date with `origin/main`, `npm run validate-coverage` unchanged
+  at 43/357 since the 2026-07-26 `pa-ssris` merge — no drift, no user approval had landed
+  (non-interactive run, nothing to approve against). The already-gathered `data-gathering/pa-all-
+  topics-2026-07-25/` checkpoint (20 classes, 3 payers) survived on disk and remains ready to merge
+  for free once approved.
+  **Committed an untracked leftover found at session start**: `scripts/gap-report.mjs`, a complete
+  and working offline gap-prioritization script (created 2026-07-30, never committed) that
+  automates the manual "eyeball formulary.json" audits several past sessions did by hand — ranks
+  unpriced-molecule stems by cell count and buckets `partial`/`example` cells by cause, pure data
+  analysis, no network calls, no agent spawn. Verified it runs correctly before committing.
+  **Did real, in-scope work instead of pure research, same category as 2026-07-29/07-30: closed
+  part of the remaining osteoporosis cash-price gap.** A real browser session was available with no
+  vendor block at the start. Added denosumab/Prolia + every biosimilar name variant
+  (rankl-inhibitor, GoodRx ~$1,832.87 for 1 syringe 60mg/mL — the bare `goodrx.com/prolia` slug
+  landed on the exact right osteoporosis-strength product by default) to `src/lib/cash.ts`.
+  `KNOWN_UNPRICED_GAP` 129→90. GoodRx then hit the same session-wide access-denied block as
+  2026-07-30, this time after only 2 lookups — the 2nd lookup (zoledronic acid/Reclast) landed on
+  the WRONG product via the bare slug (4mg/5mL Zometa oncology vial instead of the 5mg/100mL
+  Reclast osteoporosis infusion), so that price was discarded rather than shipped incorrectly.
+  Teriparatide/Forteo and abaloparatide/Tymlos were never reached. Full gap and the Reclast
+  wrong-strength trap logged to `backlog.md`. `npm test` (454/454), `typecheck`, `validate-prices`
+  all green; verified live in the dev-server browser (NY → Osteoporosis → RANKL INHIBITOR renders
+  Prolia with the correct GoodRx price). Committed in 2 chunks (gap-report script, cash rule +
+  backlog/ledger notes).
+  **Still stopped here pending the user's review of `pa-ssris`; the PA/CA scaling work is
+  unchanged from the 2026-07-26 entry.** Next session: if approved, merge PA's remaining 20
+  gathered-and-checkpointed classes, then CA. If a browser is available again, zoledronic
+  acid/Reclast (use the Edit-flow or a correct dosage param, not the bare slug) and
+  teriparatide/Forteo + abaloparatide/Tymlos are the next cash-price target.

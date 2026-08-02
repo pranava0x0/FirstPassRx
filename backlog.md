@@ -292,24 +292,25 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   GoodRx bot-blocked partway through (paroxetine/fluvoxamine are Cost-Plus-only) — not a gap in
   this item's scope, just an incomplete GoodRx side; revisit those 2 molecules' GoodRx price if a
   future session has clean access.
-- **Osteoporosis cash-price gap — PARTIALLY CLOSED 2026-07-30 (scheduled run).** A real browser
-  session was available again. Added the 2 oral osteoporosis molecules Cost Plus Drugs actually
-  stocks (checked its bone-health category directly): alendronate (oral-bisphosphonate preferred
-  agent, GoodRx ~$29.30 / Cost+ ~$7.38) and raloxifene (serm preferred agent, GoodRx ~$31.86 /
-  Cost+ ~$8.42), both `src/lib/cash.ts`, verified live in the browser. `KNOWN_UNPRICED_GAP`
-  155→129. **Still open**: the 3 specialty injectable/infusion molecules — zoledronic acid/Reclast
-  (iv-bisphosphonate), denosumab/Prolia + biosimilars (rankl-inhibitor), teriparatide/Forteo +
-  abaloparatide/Tymlos (anabolic) — none are Cost Plus items, and GoodRx hit a session-wide
-  "Access to this page has been denied" block (not the milder per-page "Press & Hold" check) right
-  after the 2 oral rules were captured, before any of these 3 could be attempted. These are also
-  the same 3 classes carrying most of the guides' `partial` cells (medical-benefit/Part-B
+- **Osteoporosis cash-price gap — FURTHER CLOSED 2026-08-02 (scheduled run), 2 of 3 remaining
+  molecules still open.** A real browser session was available at the start (no vendor block).
+  Added denosumab/Prolia + every biosimilar name variant (rankl-inhibitor preferred agent, GoodRx
+  ~$1,832.87 for 1 syringe 60mg/mL, `src/lib/cash.ts`) — the bare `goodrx.com/prolia` slug landed
+  on the exact right osteoporosis-strength product by default, verified live in the browser.
+  `KNOWN_UNPRICED_GAP` 129→90. **GoodRx then hit the same session-wide "Access to this page has
+  been denied" block as 2026-07-30, this time after only 2 lookups** — zoledronic acid/Reclast was
+  the 2nd lookup and its bare slug defaulted to the WRONG product (4mg/5mL Zometa oncology-dosing
+  vial, not the 5mg/100mL Reclast once-yearly osteoporosis infusion — a real dosage-form mismatch,
+  same trap class as the GoodRx bare-slug-picks-wrong-strength note in CLAUDE.md); that wrong price
+  was discarded, not shipped. **Still open**: zoledronic acid/Reclast (iv-bisphosphonate — needs the
+  Edit-flow or a correct `dosage=5mg&quantity=100` -style param, not the bare slug) and
+  teriparatide/Forteo + abaloparatide/Tymlos (anabolic — never reached before the block). These 3
+  are also the same classes carrying most of the guides' `partial` cells (medical-benefit/Part-B
   carve-outs per the 2026-07-25/07-28 audits) — a plain GoodRx consumer-cash price may not even be
   the right price to show for a physician-administered infusion/injection the same way it is for a
   take-home pill; worth checking each drug's own manufacturer copay-card page (same pattern already
   used for the Ozempic pen: NovoCare $199) rather than assuming GoodRx retail applies once GoodRx
-  access is clean again. Biosimilar brand-name variants (Jubbonti/Stoboclo/Bildyos/Conexxence/etc.,
-  see the 2026-07-28 `md-osteoporosis` data-quality note) will need their own regex alternation
-  since they don't share a stem with "denosumab" once that molecule is tackled.
+  access is clean again.
 - **Candidate topics for a future expansion round, beyond SSRIs/osteoporosis (already scoped in
   `docs/RESUME-EXPANSION.md`) — surfaced by a 2026-07-19 scheduled-run web-search sweep (research
   only, no data gathered, no agents spawned).** Ranked by how much real-world PA friction they carry
