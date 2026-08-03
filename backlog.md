@@ -311,6 +311,28 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   take-home pill; worth checking each drug's own manufacturer copay-card page (same pattern already
   used for the Ozempic pen: NovoCare $199) rather than assuming GoodRx retail applies once GoodRx
   access is clean again.
+  - **Checked 2026-08-03 (scheduled run) — GoodRx hard-blocked immediately this session** ("Access
+    to this page has been denied" on the very first lookup, worse than 2026-08-02's 2-lookup grace
+    period). Cost Plus Drugs was not re-checked — already confirmed 2026-07-30 not to carry any of
+    these 3 molecules. Pivoted to the manufacturer-copay-card idea this item itself suggested:
+    **Forteo's own site (`forteo.lilly.com`) advertises "Pay as little as $4 per month" — but its
+    own terms explicitly restrict the card to patients "enrolled in a commercial drug insurance
+    plan with coverage for Forteo" and explicitly exclude anyone on Medicaid/Medicare/any government
+    program.** This is a copay-*reduction* card for the already-insured, not a cash/self-pay price —
+    fundamentally different from the Ozempic-pen (NovoCare $199) and Jardiance/Lantus precedents
+    this item cited, which are real list/cash prices usable by an uninsured or self-pay patient.
+    Shipping the $4 figure as a "cash price" would misrepresent it — a self-pay patient without
+    commercial insurance cannot use it at all. **Did not add a cash-link rule for Forteo** to avoid
+    that misrepresentation. Tymlos's patient site (`tymlos.com`) has no pricing information on its
+    homepage and its `/savings-support` path 404s (needs the real path, not found this session);
+    Reclast's own manufacturer domain no longer resolves (`reclast.com` — expected, it's long
+    genericized, Novartis has no reason to maintain a branded patient site for it anymore). **Net:
+    all 3 remaining osteoporosis molecules stay unpriced.** No cash rule added, `KNOWN_UNPRICED_GAP`
+    unchanged at 90. Recommendation for a future session: before trusting any manufacturer "savings
+    card" page as a cash-price source, check its own eligibility terms for a commercial-insurance
+    requirement — several major manufacturer copay cards are structurally unusable by the cash-pay
+    patient this feature is meant to help, so they're not a valid GoodRx-price substitute even when
+    they show a small headline number.
 - **Candidate topics for a future expansion round, beyond SSRIs/osteoporosis (already scoped in
   `docs/RESUME-EXPANSION.md`) — surfaced by a 2026-07-19 scheduled-run web-search sweep (research
   only, no data gathered, no agents spawned).** Ranked by how much real-world PA friction they carry

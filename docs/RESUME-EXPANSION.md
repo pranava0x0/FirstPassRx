@@ -500,3 +500,27 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   gathered-and-checkpointed classes, then CA. If a browser is available again, zoledronic
   acid/Reclast (use the Edit-flow or a correct dosage param, not the bare slug) and
   teriparatide/Forteo + abaloparatide/Tymlos are the next cash-price target.
+- 2026-08-03 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working
+  tree clean, `main` up to date with `origin/main`, `npm run validate-coverage` unchanged at
+  43/357 since the 2026-07-26 `pa-ssris` merge — no drift, no user approval had landed (non-
+  interactive run, nothing to approve against). The already-gathered `data-gathering/pa-all-
+  topics-2026-07-25/` checkpoint (20 classes, 3 payers) survived on disk and remains ready to merge
+  for free once approved.
+  **Attempted the 3 remaining osteoporosis cash-price molecules (the named next target from
+  2026-08-02), came up empty but for a real reason, not idleness.** GoodRx was hard-blocked
+  immediately this session ("Access to this page has been denied" on the very first lookup,
+  zoledronic acid — worse than 2026-08-02's 2-lookup grace period before the block hit). Cost Plus
+  Drugs wasn't re-checked (already confirmed 2026-07-30 not to carry any of the 3). Pivoted to
+  manufacturer copay-card pages per the backlog's own suggestion: Forteo's site
+  (`forteo.lilly.com`) advertises "$4/month" but its own eligibility terms restrict the card to
+  patients with commercial insurance and explicitly exclude Medicaid/Medicare enrollees — a copay-
+  reduction card for the already-insured, not a cash/self-pay price, so shipping it as a
+  `cash.ts` rule would misrepresent it to the uninsured user this feature serves. Did not add it.
+  Tymlos's patient site has no pricing on its homepage and its savings-support path 404s; Reclast's
+  manufacturer domain no longer resolves (long-genericized). **Net: no cash rule added,
+  `KNOWN_UNPRICED_GAP` unchanged at 90.** Full reasoning logged to `backlog.md` so a future session
+  doesn't re-attempt the same Forteo card under the mistaken belief it's a valid GoodRx substitute.
+  **Still stopped here pending the user's review of `pa-ssris`.** Next session: if approved, merge
+  PA's remaining 20 gathered-and-checkpointed classes, then CA. If GoodRx access is clean again,
+  retry zoledronic acid/Reclast with a correct dosage param (not the bare slug, which picked the
+  wrong oncology-dose product on 2026-08-02).
