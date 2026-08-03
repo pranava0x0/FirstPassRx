@@ -204,6 +204,31 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
 
 ## Open
 
+- **2026-08-03 · test (scripts/trace-sources.mjs) · live drift pass reports 6 "dead" + 5 "drifted"
+  sources that are all real, live, unchanged pages — 100% false positives from three specific
+  hosts.** Ran `npm run trace:live` as part of a scheduled refresh; it flagged
+  `mhdl.pharmacy.services.conduent.com/MHDL/pubtheradetail.do?id=11,18,23`, `.../pubpa.do?...`, and
+  `.../pubdruglist.do?index=P...` (4 DEAD-by-timeout + 1 DRIFT), `massgeneralbrighamhealthplan.org/
+  providers/pharmacy-guidelines/commercial` (1 DEAD-by-fetch-failure), and two
+  `client.formularynavigator.com/Search.aspx?...` search-results URLs (2 DRIFT, 9/9 and 1/5 claim
+  terms "not found"). Verified all 7 of these (the 2 remaining DRIFT hits, `bcbsma-std-removals` and
+  `carefirst-exchange-2026`, are PDFs and were only reachability-checked, not content-diffed) by
+  loading each in a real logged-in Chrome session (`claude-in-chrome` MCP, per user request) — every
+  single one rendered its real, correct, unchanged content (MassHealth Table 11/18/23 PA criteria,
+  the MHDL A-Z drug list including the exact HRT drug names the trace claims went missing, both
+  FormularyNavigator search-results tables with all expected SSRI/PTH-analog rows present, and the
+  MGB pharmacy-guidelines landing page). Root cause: **test/tooling bug**, not data drift —
+  `mhdl.pharmacy.services.conduent.com` and `massgeneralbrighamhealthplan.org` reject or time out
+  the script's plain Node `fetch()` (same "looks dead but isn't" bot/host-gating pattern already
+  documented in CLAUDE.md for GoodRx/Cost Plus/`fm.formularynavigator.com`/`uhcprovider.com` — this
+  extends the pattern to 3 more hosts), and `client.formularynavigator.com/Search.aspx` renders its
+  results table client-side via JS, so a plain fetch only ever sees the empty shell and every claim
+  term looks "not found" regardless of whether the page actually changed. This makes the live drift
+  report's dead/drift counts unreliable specifically for these 3 hosts — a real drift there would be
+  silently indistinguishable from this noise. _Open — see backlog.md for the fix (extend
+  `trace-sources.mjs`'s existing BLOCKED-host allowlist, same shape as the GoodRx/Cost Plus handling
+  in `validate-prices.mjs`, to cover these 3 hosts so future runs don't need a manual browser
+  re-check to clear them)._
 - **2026-07-23 · process (archive-sources) · medicaid.alabama.gov 403s/fails the archiver's fetch
   even though the gather agent read the same PDFs successfully via curl.** `npm run archive-sources`
   reported 2 fetch failures after the `al-ssris` merge: `al-medicaid-ssris-source-2026-07` (the PDL

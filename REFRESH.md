@@ -61,4 +61,21 @@ If the user then wants the gaps *filled*, hand off to the `formulary-data` skill
 
 ## Learned patterns (append dated entries)
 
-- (none yet)
+- **2026-08-03: `trace:live`'s dead/drift signal is unreliable for 3 specific hosts —
+  `mhdl.pharmacy.services.conduent.com`, `massgeneralbrighamhealthplan.org`, and
+  `client.formularynavigator.com/Search.aspx`.** All 11 dead/drift hits from this run's
+  `npm run trace:live` on these hosts turned out to be live, unchanged, correct pages once checked
+  in a real logged-in Chrome session — plain `fetch()` gets timed out/blocked on the first two, and
+  the third renders its results table client-side via JS so a plain fetch only ever sees an empty
+  shell. Same "looks dead but isn't" pattern as GoodRx/Cost Plus/`fm.formularynavigator.com`/
+  `uhcprovider.com` (see CLAUDE.md). Until `trace-sources.mjs` gets a host allowlist for these (see
+  backlog.md), treat any DEAD/DRIFT hit on these 3 hosts as needing a real-browser spot-check before
+  logging it as a real gap — see issues.md's 2026-08-03 entry for the full verification.
+- **2026-08-03: `npm run validate-links` is a separate, older script
+  (`scripts/validate-links.cjs`) from `npm run validate-prices:live` — don't confuse the two.**
+  `validate-links` re-derives GoodRx slugs naively from raw drug names (ignoring the real per-dosage
+  `goodRxParams` logic in `src/lib/cash.ts`) and HEAD-checks ~2240 URLs with no rate-limit-aware
+  batching, taking several minutes and producing mostly-noise output (many "checked" URLs don't
+  match any real `CASH_LINK_RULE`). `validate-prices:live` is the accurate, current source of truth
+  (215 URLs pulled from the actual rule table). See backlog.md — `validate-links.cjs` is a cleanup
+  candidate.

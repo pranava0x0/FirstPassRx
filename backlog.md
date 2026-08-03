@@ -2,7 +2,31 @@
 
 Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
+> New items added 2026-08-03 (post-refresh idea pass) carry explicit **Impact / Effort / Cost**
+> tags so the tier placement is auditable. The existing pre-2026-08-03 log below is a rich,
+> load-bearing history (dated milestones interleaved with still-open follow-ups on the same
+> multi-session epics) — left as-is rather than re-triaged line-by-line, since splitting "done" from
+> "open" inside those entries would lose context a future session needs. Flag if a full re-triage
+> pass is wanted.
+
 ## High
+
+- **Formulary change-history / diff view.** `formulary.json` is git-versioned and every guide
+  already carries `capturedAt`/`lastReviewed` dates, but there's no user-facing way to see "this
+  drug moved from preferred to non-preferred as of July 2026" — exactly the surprise that causes the
+  PA round-trip this app exists to prevent. Build a per-plan/per-class changelog by diffing
+  `git log -p -- src/data/formulary.json` snapshots (no new data infra needed) and surface it as a
+  small "What changed" panel or page. **Impact: high** (directly serves the core value prop —
+  prescribers get burned by formularies changing quarter to quarter without notice). **Effort:
+  medium** (diffing logic + a new UI surface; data already exists). **Cost: zero** (static, no
+  backend).
+- **Multi-class "patient med list" working session.** A prescriber managing a patient on multiple
+  drug classes at once (e.g. diabetes + hypertension + menopause HT — common polypharmacy) currently
+  has to look up each class separately with no combined view per payer. Let them build a short
+  working list of classes and see the whole picture — preferred agent + barriers — for one payer at
+  once. **Impact: high** (matches a real, common clinical workflow beyond single-class lookup).
+  **Effort: high** (new UI paradigm, session state across classes). **Cost: zero** (client-side
+  only, no backend).
 
 - **Every prescription type should have data for every state selected — DONE for the 5 originally
   listed states (user priority, 2026-07-05; scoped 2026-07-06; completed 2026-07-07).** The
@@ -284,6 +308,36 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## Medium
 
+- **Fix `trace-sources.mjs` false-positive dead/drift detection on 3 known-good hosts.**
+  `mhdl.pharmacy.services.conduent.com`, `massgeneralbrighamhealthplan.org`, and
+  `client.formularynavigator.com/Search.aspx` all flagged DEAD or DRIFT in the 2026-08-03
+  `trace:live` run despite serving real, unchanged, correct content when checked in a real browser
+  (see issues.md's 2026-08-03 entry) — two are bot/host-gated against a plain `fetch()`, one
+  JS-renders its results client-side. Extend the script with a known-host allowlist (same shape as
+  `validate-prices.mjs`'s existing GoodRx/Cost Plus BLOCKED-is-expected handling) so future runs
+  don't report false gaps needing a manual browser re-check every time. **Impact: medium** (removes
+  recurring false-alarm noise from the quarterly refresh report, and a real drift on these hosts is
+  currently indistinguishable from this noise). **Effort: low** (a host-match list + a new
+  "known-gated, not counted as drift" status, mirroring existing code). **Cost: zero**.
+- **CSV/bulk export of a payer's full formulary grid.** A clinic's EHR or pharmacy-ops team
+  importing formulary data into their own system currently has to copy cells by hand. Add a
+  download-as-CSV button per payer (the data is already structured JSON — just needs a serializer).
+  **Impact: medium** (serves a practice-ops audience beyond the point-of-care lookup). **Effort:
+  low** (client-side CSV serialization + a button). **Cost: zero**.
+- **Pin/star favorite payers in the plan picker (localStorage).** Prescribers typically work with
+  the same 2-3 payers repeatedly; let them star a payer so the picker defaults to their common ones
+  instead of the full alphabetical list every time. **Impact: medium** (daily-use quality-of-life
+  for repeat users). **Effort: low** (localStorage + picker sort). **Cost: zero**.
+- **Cmd+K quick-switch command palette for class/payer.** A keyboard-driven jump between drug class
+  and payer would speed up rapid lookups during a busy clinic day, especially for power users
+  (pharmacists checking many cells back-to-back). **Impact: medium** (efficiency for high-frequency
+  users). **Effort: low-medium** (a searchable overlay + keybinding). **Cost: zero**.
+- **Document a stable JSON API contract for EHR/CDS integration.** The formulary data is already
+  static JSON served from GitHub Pages; formalizing a versioned schema doc (what fields are stable,
+  what's guide-scoped vs. global) would let a clinic's engineering team pull this into their own
+  EHR's clinical decision support without scraping the rendered HTML. **Impact: medium** (opens an
+  integration path — audience is EHR/CDS developers, not the direct prescriber user). **Effort:
+  low** (mostly documentation; data shape is already stable). **Cost: zero**.
 - **SSRI cash-price gap — CLOSED 2026-07-29 (scheduled run).** A real browser session was
   available (rare for a scheduled run); added the 6 broad per-molecule regex rules this item
   called for (sertraline, citalopram, escitalopram, fluoxetine, paroxetine, fluvoxamine — real
@@ -575,6 +629,14 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## Low
 
+- **Remove or rewrite `scripts/validate-links.cjs`.** It predates `validate-prices.mjs`, re-derives
+  GoodRx slugs naively from raw drug names instead of the real per-dosage `goodRxParams` logic in
+  `src/lib/cash.ts`, and HEAD-checks ~2240 URLs with no batching (several minutes, mostly noise —
+  see REFRESH.md's 2026-08-03 learned-pattern entry). `validate-prices.mjs --live` (215 URLs, pulled
+  from the actual `CASH_LINK_RULES`) is the accurate, current replacement. **Impact: low** (pure
+  maintenance — no user-facing effect). **Effort: low** (delete the script + its `npm run` alias, or
+  fold any unique check it does into `validate-prices.mjs`). **Cost: zero** (net negative
+  maintenance cost today — it burns CI/refresh time for redundant, less-accurate signal).
 - **`goodRxParams` as structured fields.** `src/lib/cash.ts`'s exact-dosage deep links are hand-
   written query strings (`label_override=...&form=...&dosage=...`); worth turning into a
   `{form, dosage, quantity}` object + one shared builder once a 4th/5th rule needs the same
