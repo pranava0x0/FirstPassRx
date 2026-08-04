@@ -524,3 +524,31 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   PA's remaining 20 gathered-and-checkpointed classes, then CA. If GoodRx access is clean again,
   retry zoledronic acid/Reclast with a correct dosage param (not the bare slug, which picked the
   wrong oncology-dose product on 2026-08-02).
+- 2026-08-04 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working
+  tree clean, `main` up to date with `origin/main`, `npm run validate-coverage` unchanged at
+  43/357 since the 2026-07-26 `pa-ssris` merge — no drift, no user approval had landed (non-
+  interactive run, nothing to approve against). The already-gathered `data-gathering/pa-all-
+  topics-2026-07-25/` checkpoint (20 classes, 3 payers) survived on disk and remains ready to merge
+  for free once approved.
+  Audited a handful of the smaller `partial`-cell buckets flagged by `scripts/gap-report.mjs`
+  (`md-osteoporosis/anabolic`'s "OCR/table-extraction" tag, `va-menopause/est-oral`'s "needs manual
+  read" tag, `md-inhalers/ics`'s "access blocked" tag) — all three were already thoroughly
+  documented, genuine source-side gaps (403-blocked payer PDFs falling back to search-cache
+  extraction, no verbatim strength stated in a source PDL), not quick fixes; none re-bucketed.
+  GoodRx was session-wide "Access to this page has been denied" blocked from the very first lookup
+  (3rd consecutive scheduled run with this exact block, following 2026-08-02/08-03) — no GoodRx
+  price captured.
+  **Did find one real, in-scope fix: a routine re-check of Cost Plus Drugs' catalog (last checked
+  2026-07-30) turned up a genuine catalog change** — Cost Plus now carries teriparatide (generic
+  for Forteo), which it did not on 2026-07-30. Confirmed via a real product page
+  (`costplusdrugs.com/medications/teriparatide-560-mcg_2_24ml-solution-pen-injector-2_24/`,
+  $775.15/pen, 560 mcg/2.24 mL). Added a Cost-Plus-only cash-link rule covering the generic/Forteo/
+  Bonsity name variants (`src/lib/cash.ts`), `KNOWN_UNPRICED_GAP` 90 → 78. Abaloparatide/Tymlos and
+  zoledronic acid/Reclast re-confirmed still absent from Cost Plus's catalog. `npm test` (454/454),
+  `typecheck`, `validate-prices` all green; verified live in the dev-server browser (MD →
+  Osteoporosis → Anabolic → Priority Partners renders Forteo/teriparatide with the Cost+ price).
+  Committed in 1 chunk.
+  **Still stopped here pending the user's review of `pa-ssris`.** Next session: if approved, merge
+  PA's remaining 20 gathered-and-checkpointed classes, then CA. If GoodRx access is clean again,
+  the remaining osteoporosis cash-price gap is zoledronic acid/Reclast (needs a correct dosage
+  param, not the bare slug) and abaloparatide/Tymlos.
