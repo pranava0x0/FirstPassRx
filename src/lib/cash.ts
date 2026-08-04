@@ -220,8 +220,14 @@
  * drug/price in practice) -- that wrong-strength price was discarded, not shipped. Teriparatide/
  * Forteo and abaloparatide/Tymlos were never reached before the block. Remaining gap: zoledronic
  * acid/Reclast (needs the Edit-flow or a correct dosage param, not the bare slug -- see
- * backlog.md), teriparatide/Forteo, abaloparatide/Tymlos. */
-export const KNOWN_UNPRICED_GAP = 90
+ * backlog.md), teriparatide/Forteo, abaloparatide/Tymlos.
+ * Lowered 90 → 78 on 2026-08-04: GoodRx was session-wide blocked from the first lookup (no grace
+ * period at all this time), but a routine re-check of Cost Plus Drugs' catalog (last checked
+ * 2026-07-30) found it had added teriparatide/Forteo/Bonsity since then -- a real catalog change,
+ * not a missed search. Cost-Plus-only rule added (see below), same shape as the paroxetine/
+ * fluvoxamine SSRI rules. Remaining gap: zoledronic acid/Reclast, abaloparatide/Tymlos -- neither
+ * is Cost-Plus-carried (re-confirmed 2026-08-04) and GoodRx access is still needed for both. */
+export const KNOWN_UNPRICED_GAP = 78
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -1454,6 +1460,22 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxSlug: 'prolia',
     goodRxPrice: { price: 1832.87, quantity: '1 syringe, 60mg/mL (osteoporosis dose; standard GoodRx price)' },
     pricesCapturedAt: '2026-08-02',
+  },
+  {
+    // Teriparatide/Forteo/Bonsity (anabolic) -- Cost Plus's catalog picked this molecule up
+    // sometime between 2026-07-30 (confirmed absent) and 2026-08-04 (confirmed present), same
+    // 560 mcg/2.24 mL pen strength every formulary cell in this class prescribes. Covers the
+    // generic ("teriparatide"), originator brand (Forteo), and the Pfizer authorized-generic-style
+    // brand (Bonsity) name variants seen across the shipped osteoporosis guides. GoodRx was
+    // session-wide "Access to this page has been denied" blocked from the first lookup this
+    // session (harder than 2026-08-02's 2-lookup grace period), so no GoodRx price this pass --
+    // Cost-Plus-only, same pattern as the paroxetine/fluvoxamine SSRI rules. Abaloparatide/Tymlos
+    // (a related but distinct anabolic) still has no Cost Plus listing -- checked separately.
+    matches: /\bteriparatide\b|\bforteo\b|\bbonsity\b/i,
+    goodRxSlug: 'teriparatide',
+    costPlusPath: 'teriparatide-560-mcg_2_24ml-solution-pen-injector-2_24',
+    costPlusPrice: { price: 775.15, quantity: '1 pen-injector, 560 mcg/2.24 mL' },
+    pricesCapturedAt: '2026-08-04',
   },
 ]
 
