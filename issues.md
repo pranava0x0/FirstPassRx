@@ -675,3 +675,17 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   must be checked against every existing single-agent rule for its component molecules, and placed
   above them in the array, not just added at the array's tail. `npm test` 310/310, `typecheck` and
   `validate-prices` clean. _Fixed._
+
+- **2026-08-05 · `ResultCard.tsx`'s "In plan" hero badge silently said "covered" for drugs with a
+  real coverage restriction — code bug, fixed.** The badge rendered `record.tier ?? 'covered'`,
+  ignoring `preferredRestriction` entirely. `preferredRestriction`'s own doc comment in
+  `src/types/formulary.ts` already states the UI "must NOT claim the plan covers this drug without
+  prior authorization — even the first-pass pick needs sign-off," but the most prominent element on
+  the page did exactly that whenever a source didn't state a formal tier (58 records across the
+  dataset have `preferredRestriction` set with `tier: null`). Caught during live-browser
+  verification of the CA osteoporosis merge (`kaiser-permanente-ca`/`rankl-inhibitor`: denosumab/
+  Prolia has zero line items anywhere on Kaiser's own pharmacy formulary — `preferredRestriction`
+  said so, the badge said "covered"). Fixed: the badge now reads "restricted — see coverage detail"
+  when `tier` is null but `preferredRestriction` is set. Regression test added
+  (`ResultCard.test.tsx`, new file) covering all 3 cases: tier stated, no tier + restriction, no
+  tier + no restriction. `npm test` 561/561. _Fixed._

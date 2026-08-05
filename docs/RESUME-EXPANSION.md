@@ -644,3 +644,58 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   states with zero guides at all — a much larger scope decision than anything scoped so far in this
   ledger, worth an explicit conversation with the user about which states/topics matter next rather
   than picking one unilaterally.
+- 2026-08-05 (same session, continued — user said "finish CA and then make sure that no
+  combination of data is missing any cost+ or goodrx data") — **Gate cleared by explicit user
+  instruction; CA scaled to its remaining 6 topics, CA now complete across all 7 topics** (matching
+  AL and PA's full footprint). Gathered via a fresh `formulary-gather.js` run (3 payers × 20
+  classes each off one fetch per payer, chunked ≤2 concurrent, 0 agent errors, ~662K subagent
+  tokens, ~26 min). Zero reword-not-reclassify fixes needed — every CA payer states its PA/step
+  policy unambiguously, matching `ca-ssris`'s finding; this state's payers simply don't use the
+  ambiguous binary-PDL "non-preferred" phrasing that's needed the fix everywhere else. Fixed one
+  real BOGL bug (`kaiser-permanente-ca/anabolic`: `boglActive` set despite Kaiser's own note
+  confirming it doesn't carry generic teriparatide) and normalized one "not applicable" placeholder
+  (`kaiser-permanente-ca/combo`: no combo product carried at all — replaced blank dosing fields
+  with the same real clinical strength/sig every other guide's combo class uses, keeping the
+  "genuinely uncovered" finding in `preferredRestriction`/`paRequired` where it belongs).
+  **Then closed the cash-price gap as far as this session's tool access allowed** (the user's
+  second ask). GoodRx was session-wide "Access to this page has been denied" blocked from the first
+  lookup — 5th consecutive session with this exact block. Cost Plus Drugs was accessible: confirmed
+  real prices for risedronate/Actonel (30 tablets, 5mg daily-dose, $31.54) and ibandronate/Boniva
+  (dose-pack of 3, 150mg once-monthly, $8.51) — both collapse across every osteoporosis guide
+  shipped so far. The ibandronate rule required a route-of-administration exclusion (iv/injection/
+  injectable/syringe/vial) since several covered names explicitly describe IV ibandronate, a real,
+  distinct, Cost-Plus-uncarried product — pricing those as the cheap oral tablet would have been a
+  mispricing bug, same category as the Reclast/Zometa and Respimat/HandiHaler traps. Also fixed a
+  narrow coverage-match gap (not a pricing gap): PA's bare "Norethindrone Tablet (generic)"
+  phrasing, safely broadened since this app has no contraception class. `KNOWN_UNPRICED_GAP`
+  90 → 29 → 33 (dropped sharply after the risedronate/ibandronate/norethindrone fixes, then rose
+  slightly as CA's own new alternatives-list phrasings were checked — 2 were real pre-existing gaps
+  closed via regex broadening — bare "estradiol (vaginal)"/"Estradiol vaginal" without a form word,
+  and a plain "estradiol N mg ... tablets" phrasing lacking "oral" — and 2 were genuinely new,
+  confirmed-not-Cost-Plus-carried drugs: fenoprofen/Nalfon and plain regular human insulin).
+  Remaining gap, all confirmed not-Cost-Plus-carried this session and GoodRx-blocked: zoledronic
+  acid/Reclast, pamidronate (IV only), abaloparatide/Tymlos, romosozumab/Evenity, etidronate
+  disodium, VoSpire ER, Apidra/Admelog insulin brands, plus intentionally-excluded IV-route
+  ibandronate mentions.
+  **Live-browser verification of the CA merge surfaced a real, pre-existing UI correctness bug,
+  not introduced by this session but first exposed by it**: `ResultCard.tsx`'s prominent "In plan:
+  X" badge fell back to the bare literal "covered" whenever a record had no `tier`, even when
+  `preferredRestriction` explained the drug isn't actually covered cleanly (as with
+  `kaiser-permanente-ca/rankl-inhibitor` — denosumab/Prolia has no line item anywhere on Kaiser's
+  formulary at all, yet the badge said "covered"). The honest caveat only surfaced if the user
+  expanded the collapsed "Coverage detail" section below — the type definition's own doc comment
+  for `preferredRestriction` explicitly says the UI "must NOT claim the plan covers this drug
+  without prior authorization," so this was a real violation of an already-stated invariant.
+  Affects 58 existing records across the whole dataset, not just CA. Fixed (`ResultCard.tsx`) with
+  a 3-case regression test (`ResultCard.test.tsx`, new file).
+  `npm test` (561/561), `typecheck`, `trace` (0 broken sources), `validate-prices` (33/33 matching
+  the new ceiling), `validate-coverage` all green; verified live in the dev-server browser across
+  all 3 CA payers and multiple classes, including the fixed "In plan" badge. National grid moved
+  50/357 → 56/357, still 8/51 jurisdictions covered (CA already counted from `ca-ssris`).
+  Committed in 5 chunks (guide merge, cash-price fixes, ResultCard bug fix + test, source archive).
+  **Next session: 43 states still have zero guides — a genuinely large scope decision.** The user
+  was asked (end of the prior entry) for a prioritization axis and hasn't yet answered; don't pick
+  a state unilaterally. Also flagged, not yet actioned: dosing-caveat fields for renal/hepatic
+  cutoffs (bisphosphonates/metformin/SGLT2/ACE-inhibitors have real clinical cutoffs this app
+  doesn't surface at all today) and the `sources/` directory's growing size (now ~900MB+,
+  Git LFS flagged in backlog.md as the fix once it becomes a real clone-time problem).
