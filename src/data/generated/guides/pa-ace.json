@@ -1,0 +1,512 @@
+{
+  "id": "pa-ace",
+  "label": "PA · ACE Inhibitors",
+  "stateCode": "PA",
+  "region": "Pennsylvania",
+  "topicId": "ace-inhibitors",
+  "topic": "ACE Inhibitors",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-08-05",
+  "capturedAt": "2026-07-25",
+  "payers": [
+    {
+      "id": "pa-medicaid",
+      "name": "PA Medical Assistance Statewide Preferred Drug List (Fee-for-Service)",
+      "shortName": "PA Medicaid FFS",
+      "pbm": "OptumRx, Inc. (negotiates supplemental rebates / P&T support for DHS)",
+      "productName": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026 v11",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026 v11, effective 2026-01-01",
+      "formularyUrl": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-PDL-v11.pdf",
+      "sourceIds": [
+        "pa-medicaid-ace-source-2026-07"
+      ]
+    },
+    {
+      "id": "ibx-commercial",
+      "name": "Independence Blue Cross (Commercial)",
+      "shortName": "Independence Blue Cross",
+      "pbm": "FutureScripts (IBX's PBM subsidiary)",
+      "productName": "Select Drug Program® Formulary",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Select Drug Program® Formulary, effective 2026-07-01",
+      "formularyUrl": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "sourceIds": [
+        "ibx-commercial-ace-source-2026-07"
+      ]
+    },
+    {
+      "id": "highmark-bcbs",
+      "name": "Highmark Blue Cross Blue Shield (Commercial)",
+      "shortName": "Highmark BCBS",
+      "pbm": "Prime Therapeutics (Highmark is a Prime owner-member Blue plan)",
+      "productName": "Highmark Comprehensive Formulary (Drug Search)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Highmark Comprehensive Formulary (Drug Search), effective 2026-07-24",
+      "formularyUrl": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260",
+      "sourceIds": [
+        "highmark-bcbs-ace-ace-inhibitor-source-2026-07"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "ace-inhibitor",
+      "name": "ACE inhibitors",
+      "shortName": "ACE inhibitor",
+      "plainName": "Blood pressure pill (ACE)",
+      "description": "Angiotensin-converting-enzyme inhibitors (lisinopril, enalapril, benazepril, ramipril, etc.) -- first-line oral therapy for hypertension and heart failure.",
+      "plainDescription": "A common daily pill for high blood pressure or heart failure.",
+      "indication": "Hypertension & heart failure",
+      "sourceIds": [
+        "pa-medicaid-ace-source-2026-07"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "id": "pa-medicaid-ace-source-2026-07",
+      "label": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026 v11",
+      "publisher": "Pennsylvania Department of Human Services",
+      "type": "gov",
+      "url": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-PDL-v11.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-07-25"
+    },
+    {
+      "id": "ibx-commercial-ace-source-2026-07",
+      "label": "Select Drug Program® Formulary",
+      "publisher": "Independence Blue Cross",
+      "type": "payer",
+      "url": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-07-25"
+    },
+    {
+      "id": "highmark-bcbs-ace-ace-inhibitor-source-2026-07",
+      "label": "Highmark Comprehensive Formulary (Drug Search), Ace Inhibitors class results",
+      "publisher": "Highmark Blue Cross Blue Shield / Prime Therapeutics (via Managed Markets Insight and Technology, LLC Formulary Navigator)",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=cardiovascular+therapy+agents%7cace+inhibitors",
+      "effectiveDate": "2026-07-24",
+      "accessed": "2026-07-25"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ],
+  "records": [
+    {
+      "payerId": "pa-medicaid",
+      "classId": "ace-inhibitor",
+      "preferredAgent": {
+        "inn": "lisinopril",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Take one tablet by mouth once daily",
+        "sigShort": "10mg PO once daily",
+        "plainSig": "Take one tablet by mouth once a day, at the same time each day, to control blood pressure or protect the heart."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "Benazepril Tablet (generic)",
+          "note": "preferred, no PA",
+          "sourceIds": [
+            "pa-medicaid-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Captopril Tablet (generic)",
+          "note": "preferred, no PA",
+          "sourceIds": [
+            "pa-medicaid-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Enalapril Tablet (generic)",
+          "note": "preferred, no PA",
+          "sourceIds": [
+            "pa-medicaid-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Fosinopril Tablet (generic)",
+          "note": "preferred, no PA",
+          "sourceIds": [
+            "pa-medicaid-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Quinapril Tablet (generic)",
+          "note": "preferred, no PA",
+          "sourceIds": [
+            "pa-medicaid-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Ramipril Capsule (generic)",
+          "note": "preferred, no PA",
+          "sourceIds": [
+            "pa-medicaid-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Trandolapril Tablet (generic)",
+          "note": "preferred, no PA",
+          "sourceIds": [
+            "pa-medicaid-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Lisinopril-Hydrochlorothiazide / Benazepril-Hydrochlorothiazide / Candesartan / Enalapril-Hydrochlorothiazide / Fosinopril-Hydrochlorothiazide Tablet (combo products)",
+          "note": "preferred, no PA",
+          "sourceIds": [
+            "pa-medicaid-ace-source-2026-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Zestril (brand lisinopril)",
+          "outcome": "nonformulary",
+          "reason": "listed restricted; generic Lisinopril Tablet is preferred instead",
+          "sourceIds": [
+            "pa-medicaid-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Zestoretic (brand lisinopril-hydrochlorothiazide)",
+          "outcome": "nonformulary",
+          "reason": "listed restricted; generic combination is preferred instead",
+          "sourceIds": [
+            "pa-medicaid-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Lotensin (brand benazepril)",
+          "outcome": "nonformulary",
+          "reason": "listed restricted; generic Benazepril Tablet is preferred instead",
+          "sourceIds": [
+            "pa-medicaid-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Lotensin HCT (brand benazepril-hydrochlorothiazide)",
+          "outcome": "nonformulary",
+          "reason": "listed restricted",
+          "sourceIds": [
+            "pa-medicaid-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Accupril (brand quinapril)",
+          "outcome": "nonformulary",
+          "reason": "listed restricted; generic Quinapril Tablet is preferred instead",
+          "sourceIds": [
+            "pa-medicaid-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Quinapril-Hydrochlorothiazide Tablet",
+          "outcome": "nonformulary",
+          "reason": "listed restricted",
+          "sourceIds": [
+            "pa-medicaid-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Moexipril Tablet (generic)",
+          "outcome": "nonformulary",
+          "reason": "listed restricted on the PDL -- no ACE inhibitor in this molecule is preferred",
+          "sourceIds": [
+            "pa-medicaid-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Perindopril Tablet (generic)",
+          "outcome": "nonformulary",
+          "reason": "listed restricted on the PDL",
+          "sourceIds": [
+            "pa-medicaid-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Captopril-Hydrochlorothiazide Tablet",
+          "outcome": "nonformulary",
+          "reason": "listed restricted",
+          "sourceIds": [
+            "pa-medicaid-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Qbrelis Solution (lisinopril oral solution)",
+          "outcome": "nonformulary",
+          "reason": "listed restricted (age exemption <9 applies); tablet form is preferred instead",
+          "sourceIds": [
+            "pa-medicaid-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Enalapril Solution / Epaned Solution (enalapril oral solution, generic and brand)",
+          "outcome": "nonformulary",
+          "reason": "listed restricted (age exemption <9 applies); tablet form is preferred instead",
+          "sourceIds": [
+            "pa-medicaid-ace-source-2026-07"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "tier": "PDL-preferred (generic, no PA)",
+      "verification": "verified",
+      "verificationNote": "Read directly from the PA DHS Statewide PDL effective January 2026 v11, 'ANGIOTENSIN MODULATORS' section (PDF pages 5-6, which combines ACE inhibitors, ARBs, and the ARNI Entresto in one preferred/non-preferred pair). ACE-inhibitor-specific preferred items: Benazepril Tablet, Benazepril-Hydrochlorothiazide Tablet, Captopril Tablet, Enalapril Tablet, Enalapril-Hydrochlorothiazide Tablet, Fosinopril Tablet, Fosinopril-Hydrochlorothiazide Tablet, Lisinopril Tablet, Lisinopril-Hydrochlorothiazide Tablet, Quinapril Tablet, Ramipril Capsule, Trandolapril Tablet. ACE-inhibitor-specific non-preferred items: Accupril, Accuretic (a combination product not separately confirmed), Captopril-Hydrochlorothiazide Tablet, Enalapril Solution (age exemption <9), Epaned Solution (age exemption <9), Lotensin, Lotensin HCT, Moexipril Tablet, Perindopril Tablet, Qbrelis Solution (age exemption <9), Quinapril-Hydrochlorothiazide Tablet, Zestoretic, Zestril. All ARB-only items (losartan, valsartan, olmesartan, candesartan, irbesartan, telmisartan and their combinations) and the ARNI Entresto were excluded from this ACE-inhibitor-specific record. Lisinopril was selected as the class's representative preferred pick per this app's existing ACE-inhibitor convention (most commonly prescribed agent); every generic ACE-inhibitor tablet/capsule listed is equally preferred, and every named brand and oral-solution formulation is non-preferred. Representative strength/sig/plain-language directions for lisinopril 10mg are standard FDA label dosing, inferred (the PDL lists only drug/form/status, not dosing).",
+      "sourceIds": [
+        "pa-medicaid-ace-source-2026-07"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-ace-source-2026-07"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-ace-source-2026-07"
+      ],
+      "lastReviewed": "2026-07-25"
+    },
+    {
+      "payerId": "ibx-commercial",
+      "classId": "ace-inhibitor",
+      "preferredAgent": {
+        "inn": "lisinopril",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10mg tablet",
+        "sig": "Take 1 tablet (10mg) by mouth once daily",
+        "sigShort": "10mg PO qDay",
+        "plainSig": "Take one tablet by mouth once a day, usually in the morning."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "enalapril (generic)",
+          "note": "Generic, no PA",
+          "sourceIds": [
+            "ibx-commercial-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "ramipril (generic)",
+          "note": "Generic, no PA",
+          "sourceIds": [
+            "ibx-commercial-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "benazepril (generic)",
+          "note": "Generic, no PA",
+          "sourceIds": [
+            "ibx-commercial-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "fosinopril (generic)",
+          "note": "Generic, no PA",
+          "sourceIds": [
+            "ibx-commercial-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "quinapril (generic)",
+          "note": "Low Cost Generic (LCG), no PA",
+          "sourceIds": [
+            "ibx-commercial-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "captopril (generic)",
+          "note": "Generic, no PA",
+          "sourceIds": [
+            "ibx-commercial-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "moexipril (generic)",
+          "note": "Generic, no PA",
+          "sourceIds": [
+            "ibx-commercial-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "perindopril (generic)",
+          "note": "Generic, no PA",
+          "sourceIds": [
+            "ibx-commercial-ace-source-2026-07"
+          ]
+        },
+        {
+          "drug": "trandolapril (generic)",
+          "note": "Generic, no PA",
+          "sourceIds": [
+            "ibx-commercial-ace-source-2026-07"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "tier": "Low Cost Generic",
+      "verification": "verified",
+      "verificationNote": "Read verbatim from the 'HEART, BLOOD PRESSURE, & CHOLESTEROL MEDS' section (PDF pages 44-46, effective July 1, 2026). 'lisinopril' and 'lisinopril/HCTZ' are Low Cost Generic (LCG) tier with no PA/QL; quinapril is also LCG; benazepril, enalapril, fosinopril, moexipril, perindopril, ramipril, captopril, and trandolapril are all Generic (G) tier with no restriction. No brand-name ACE inhibitor (Prinivil, Zestril, Vasotec, Altace, Lotensin, Accupril, Mavik, Univasc, Aceon) appears anywhere in the document — confirmed by full-text search of the extracted PDF — so this is a fully clean, unrestricted generic class with no PA-required items.",
+      "sourceIds": [
+        "ibx-commercial-ace-source-2026-07"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-ace-source-2026-07"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-ace-source-2026-07"
+      ],
+      "lastReviewed": "2026-07-25"
+    },
+    {
+      "payerId": "highmark-bcbs",
+      "classId": "ace-inhibitor",
+      "preferredAgent": {
+        "inn": "lisinopril",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "oral tablet 10 mg",
+        "sig": "Take 1 tablet (10mg) by mouth once daily",
+        "sigShort": "10mg PO qDay",
+        "plainSig": "Take one tablet by mouth once a day, usually in the morning."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "enalapril maleate (generic tablet)",
+          "note": "Tier 1 generic, no PA",
+          "sourceIds": [
+            "highmark-bcbs-ace-ace-inhibitor-source-2026-07"
+          ]
+        },
+        {
+          "drug": "ramipril (generic)",
+          "note": "Tier 1 generic, no PA",
+          "sourceIds": [
+            "highmark-bcbs-ace-ace-inhibitor-source-2026-07"
+          ]
+        },
+        {
+          "drug": "quinapril (generic)",
+          "note": "Tier 1 generic, no PA",
+          "sourceIds": [
+            "highmark-bcbs-ace-ace-inhibitor-source-2026-07"
+          ]
+        },
+        {
+          "drug": "benazepril (generic)",
+          "note": "Tier 1 generic, no PA",
+          "sourceIds": [
+            "highmark-bcbs-ace-ace-inhibitor-source-2026-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "captopril (generic)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3/non-formulary despite being generic",
+          "sourceIds": [
+            "highmark-bcbs-ace-ace-inhibitor-source-2026-07"
+          ]
+        },
+        {
+          "drug": "fosinopril (generic)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3/non-formulary despite being generic",
+          "sourceIds": [
+            "highmark-bcbs-ace-ace-inhibitor-source-2026-07"
+          ]
+        },
+        {
+          "drug": "moexipril (generic)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3/non-formulary despite being generic",
+          "sourceIds": [
+            "highmark-bcbs-ace-ace-inhibitor-source-2026-07"
+          ]
+        },
+        {
+          "drug": "perindopril erbumine (generic)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3/non-formulary despite being generic",
+          "sourceIds": [
+            "highmark-bcbs-ace-ace-inhibitor-source-2026-07"
+          ]
+        },
+        {
+          "drug": "trandolapril (generic)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3/non-formulary despite being generic",
+          "sourceIds": [
+            "highmark-bcbs-ace-ace-inhibitor-source-2026-07"
+          ]
+        },
+        {
+          "drug": "enalapril maleate oral solution / Epaned",
+          "outcome": "pa",
+          "reason": "Tier 3/non-formulary and requires prior authorization plus a quantity limit (liquid dosage form)",
+          "sourceIds": [
+            "highmark-bcbs-ace-ace-inhibitor-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Qbrelis (lisinopril oral solution)",
+          "outcome": "pa",
+          "reason": "Tier 3/non-formulary and requires prior authorization",
+          "sourceIds": [
+            "highmark-bcbs-ace-ace-inhibitor-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Accupril / Altace / Lotensin / Vasotec / Zestril (brand-name ACE inhibitors)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3/non-formulary; the corresponding generic is preferred",
+          "sourceIds": [
+            "highmark-bcbs-ace-ace-inhibitor-source-2026-07"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "tier": "Tier 1 / Formulary Generic Drug",
+      "verification": "verified",
+      "verificationNote": "Read live from the Highmark Comprehensive Formulary search tool (client.formularynavigator.com, siteCode=8103967260; footer shows Formulary Id 24651, Formulary Effective Date 07/24/2026, Updated 07/2026). Opened the full class listing for 'Cardiovascular Therapy Agents | Ace Inhibitors' (58 rows across all strengths) and read every row's tier/PA/QL icons directly. Tier 1/no-PA generics: lisinopril, enalapril maleate (tablet), ramipril, quinapril, benazepril. Despite being generic, captopril, fosinopril, moexipril, perindopril, and trandolapril are Tier 3/non-formulary with no PA icon shown (classified nonformulary); enalapril oral solution and Qbrelis (lisinopril solution) are Tier 3 with an explicit PA icon plus QL. Every brand name (Accupril, Altace, Lotensin, Vasotec, Zestril) is Tier 3/non-formulary with no PA icon. All tier/PA/QL values directly read from the live tool; no separate written step-therapy statement appeared on the class page.",
+      "sourceIds": [
+        "highmark-bcbs-ace-ace-inhibitor-source-2026-07"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-ace-ace-inhibitor-source-2026-07"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-ace-ace-inhibitor-source-2026-07"
+      ],
+      "lastReviewed": "2026-07-25"
+    }
+  ]
+}

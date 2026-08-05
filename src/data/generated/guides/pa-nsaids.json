@@ -1,0 +1,654 @@
+{
+  "id": "pa-nsaids",
+  "label": "PA · NSAIDs",
+  "stateCode": "PA",
+  "region": "Pennsylvania",
+  "topicId": "nsaids",
+  "topic": "NSAIDs",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-08-05",
+  "capturedAt": "2026-07-25",
+  "payers": [
+    {
+      "id": "pa-medicaid",
+      "name": "PA Medical Assistance Statewide Preferred Drug List (Fee-for-Service)",
+      "shortName": "PA Medicaid FFS",
+      "pbm": "OptumRx, Inc. (negotiates supplemental rebates / P&T support for DHS)",
+      "productName": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026 v11",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026 v11, effective 2026-01-01",
+      "formularyUrl": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-PDL-v11.pdf",
+      "sourceIds": [
+        "pa-medicaid-nsaids-source-2026-07"
+      ]
+    },
+    {
+      "id": "ibx-commercial",
+      "name": "Independence Blue Cross (Commercial)",
+      "shortName": "Independence Blue Cross",
+      "pbm": "FutureScripts (IBX's PBM subsidiary)",
+      "productName": "Select Drug Program® Formulary",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Select Drug Program® Formulary, effective 2026-07-01",
+      "formularyUrl": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "sourceIds": [
+        "ibx-commercial-nsaids-source-2026-07"
+      ]
+    },
+    {
+      "id": "highmark-bcbs",
+      "name": "Highmark Blue Cross Blue Shield (Commercial)",
+      "shortName": "Highmark BCBS",
+      "pbm": "Prime Therapeutics (Highmark is a Prime owner-member Blue plan)",
+      "productName": "Highmark Comprehensive Formulary (Drug Search)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Highmark Comprehensive Formulary (Drug Search), effective 2026-07-24",
+      "formularyUrl": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260",
+      "sourceIds": [
+        "highmark-bcbs-nsaids-nsaid-oral-source-2026-07"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "nsaid-oral",
+      "name": "Oral NSAIDs",
+      "shortName": "NSAID",
+      "plainName": "Anti-inflammatory pain reliever",
+      "description": "Oral nonsteroidal anti-inflammatory drugs (naproxen, ibuprofen, meloxicam, celecoxib, diclofenac, etc.) — first-line therapy for musculoskeletal pain and inflammation.",
+      "plainDescription": "A pill that reduces pain, swelling, and inflammation — commonly used for joint and muscle pain.",
+      "indication": "Musculoskeletal pain & inflammation (e.g. osteoarthritis, back pain)",
+      "sourceIds": [
+        "pa-medicaid-nsaids-source-2026-07"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "id": "pa-medicaid-nsaids-source-2026-07",
+      "label": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026 v11",
+      "publisher": "Pennsylvania Department of Human Services",
+      "type": "gov",
+      "url": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-PDL-v11.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-07-25"
+    },
+    {
+      "id": "ibx-commercial-nsaids-source-2026-07",
+      "label": "Select Drug Program® Formulary",
+      "publisher": "Independence Blue Cross",
+      "type": "payer",
+      "url": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-07-25"
+    },
+    {
+      "id": "highmark-bcbs-nsaids-nsaid-oral-source-2026-07",
+      "label": "Highmark Comprehensive Formulary (Drug Search), Nsaid Analgesics Cox Non-Specific - Propionic Acid Derivatives class results",
+      "publisher": "Highmark Blue Cross Blue Shield / Prime Therapeutics (via Managed Markets Insight and Technology, LLC Formulary Navigator)",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=analgesic%2c+anti-inflammatory+or+antipyretic%7cnsaid+analgesics+(cox+non-specific)+-+propionic+acid+derivatives",
+      "effectiveDate": "2026-07-24",
+      "accessed": "2026-07-25"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ],
+  "records": [
+    {
+      "payerId": "pa-medicaid",
+      "classId": "nsaid-oral",
+      "preferredAgent": {
+        "inn": "naproxen",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "250, 375, or 500 mg tablet",
+        "sig": "Take 250-500 mg by mouth twice daily with food",
+        "sigShort": "250-500mg PO BID w/ food",
+        "plainSig": "Take one tablet by mouth twice a day with food, as your doctor directs, for pain or inflammation."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "Ibuprofen (Capsule, Chewable Tablet, Suspension, 200/400/600/800mg Tablet)",
+          "note": "preferred, no PA",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Meloxicam Tablet (generic)",
+          "note": "preferred, no PA -- only the tablet form; meloxicam capsule requires PA",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Celecoxib Capsule (generic)",
+          "note": "preferred, no PA -- brand Celebrex requires PA",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Diclofenac Sodium DR/EC Tablet (generic Voltaren EC), Diclofenac Sodium 1% Gel, Diclofenac Sodium 1.5% Topical Solution Drop, Diclofenac Sodium-Misoprostol Tablet",
+          "note": "preferred, no PA -- oral and topical diclofenac forms",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Nabumetone Tablet (generic)",
+          "note": "preferred, no PA",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Sulindac Tablet (generic)",
+          "note": "preferred, no PA",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Piroxicam Capsule (generic)",
+          "note": "preferred, no PA",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Flurbiprofen Tablet (generic)",
+          "note": "preferred, no PA",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Indomethacin Capsule / ER Capsule (generic)",
+          "note": "preferred, no PA",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Ketorolac Tablet (generic)",
+          "note": "preferred, no PA",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "EC-Naproxen Tablet (generic Naprosyn EC), Naproxen DR Tablet, Naproxen Sodium (220mg Capsule/Tablet, 275mg Tablet, DS 550mg Tablet)",
+          "note": "preferred, no PA -- additional naproxen strengths/salts",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Celebrex Capsule (brand celecoxib)",
+          "outcome": "nonformulary",
+          "reason": "listed restricted; generic Celecoxib Capsule is preferred instead",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Meloxicam Capsule",
+          "outcome": "nonformulary",
+          "reason": "listed restricted; only the tablet form is preferred",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Diclofenac Potassium (Capsule, Tablet, Powder Packet), Lofena Tablet",
+          "outcome": "nonformulary",
+          "reason": "listed restricted; only the diclofenac sodium DR/EC tablet and topical forms are preferred",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Diclofenac Epolamine Patch, Diclofenac Sodium 2% Topical Solution Pump, Diclofenac Sodium ER 24HR (generic Voltaren-XR)",
+          "outcome": "nonformulary",
+          "reason": "listed restricted forms; the 1% gel and 1.5% solution drop are preferred instead",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Arthrotec Tablet (brand diclofenac/misoprostol)",
+          "outcome": "nonformulary",
+          "reason": "listed restricted; the generic Diclofenac Sodium-Misoprostol Tablet is preferred instead",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Etodolac (Capsule, Tablet, ER Tablet)",
+          "outcome": "nonformulary",
+          "reason": "listed restricted on the PDL",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Fenoprofen Capsule, Fenopron Capsule, Nalfon Capsule/Tablet",
+          "outcome": "nonformulary",
+          "reason": "listed restricted",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Ketoprofen Capsule / ER Capsule, Kiprofen Capsule",
+          "outcome": "nonformulary",
+          "reason": "listed restricted",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Naprelan CR Tablet, Naproxen Sodium CR/ER Tablet (generic Naprelan CR)",
+          "outcome": "nonformulary",
+          "reason": "listed restricted; immediate-release naproxen forms are preferred instead",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Naprosyn Suspension, Naproxen Suspension",
+          "outcome": "nonformulary",
+          "reason": "listed restricted; tablet forms are preferred instead",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Naproxen-Esomeprazole DR Tablet (generic Vimovo)",
+          "outcome": "nonformulary",
+          "reason": "listed restricted",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Oxaprozin Tablet",
+          "outcome": "nonformulary",
+          "reason": "listed restricted",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Pennsaid Pump (diclofenac topical)",
+          "outcome": "nonformulary",
+          "reason": "listed restricted; the topical solution drop form is preferred instead",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Meclofenamate Capsule, Mefenamic Acid Capsule",
+          "outcome": "nonformulary",
+          "reason": "listed restricted",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Relafen DS Tablet (double-strength nabumetone)",
+          "outcome": "nonformulary",
+          "reason": "listed restricted; standard-strength Nabumetone Tablet is preferred instead",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Tolmetin Sodium (Capsule, Tablet), Tolectin Tablet, Tolectin DS Capsule",
+          "outcome": "nonformulary",
+          "reason": "listed restricted",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Diflunisal Tablet, Dolobid Tablet",
+          "outcome": "nonformulary",
+          "reason": "listed restricted",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Elyxyb Solution (celecoxib oral solution)",
+          "outcome": "nonformulary",
+          "reason": "listed restricted; the capsule form is preferred instead",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Ibuprofen-Famotidine Tablet (combo)",
+          "outcome": "nonformulary",
+          "reason": "listed restricted",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Indomethacin Rectal Suppository, Indomethacin Suspension",
+          "outcome": "nonformulary",
+          "reason": "listed restricted; the capsule forms are preferred instead",
+          "sourceIds": [
+            "pa-medicaid-nsaids-source-2026-07"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "tier": "PDL-preferred -- preferred generic/brand, no PA required",
+      "verification": "verified",
+      "verificationNote": "Read directly from the PA DHS Statewide PDL effective January 2026 v11, 'NSAIDs' section (PDF pages 40-41). Preferred column includes Celecoxib Capsule, Diclofenac Sodium 1% Gel, Diclofenac Sodium 1.5% Topical Solution Drop, Diclofenac Sodium DR/EC Tablet (generic Voltaren EC), Diclofenac Sodium-Misoprostol Tablet, EC-Naproxen Tablet (generic Naprosyn EC), Flurbiprofen Tablet, Ibuprofen (Capsule, Chewable, Suspension, Suspension Drop, 200/400/600/800mg Tablet), Indomethacin Capsule/ER Capsule, Ketorolac Tablet, Meloxicam Tablet, Nabumetone Tablet, Naproxen (250/375/500mg Tablet), Naproxen DR Tablet, Naproxen Sodium (220mg Capsule/Tablet generic Aleve, 275mg Tablet generic Anaprox, DS 550mg Tablet generic Anaprox DS), Piroxicam Capsule, Sulindac Tablet. Non-preferred column includes Arthrotec Tablet, Celebrex Capsule, Diclofenac Epolamine Patch, Diclofenac Potassium (Capsule/Powder Packet/Tablet), Diclofenac Sodium 2% Topical Solution Pump, Diclofenac Sodium ER 24HR (generic Voltaren-XR), Diflunisal Tablet, Dolobid Tablet, Elyxyb Solution, Etodolac (Capsule/Tablet/ER), Fenoprofen Capsule, Fenopron Capsule, Ibuprofen-Famotidine Tablet, Indomethacin Rectal Suppository, Indomethacin Suspension, Ketoprofen Capsule/ER Capsule, Kiprofen Capsule, Lofena Tablet, Meclofenamate Capsule, Mefenamic Acid Capsule, Meloxicam Capsule, Nalfon Capsule/Tablet, Naprelan CR Tablet, Naprosyn Suspension, Naproxen Suspension, Naproxen-Esomeprazole DR Tablet, Naproxen Sodium CR/ER Tablet (generic Naprelan CR), Oxaprozin Tablet, Pennsaid Pump, Relafen DS Tablet, Tolectin Tablet, Tolectin DS Capsule, Tolmetin Sodium (Capsule/Tablet). All statuses read verbatim off two consecutive PDF pages. Naproxen was selected as the representative preferred pick to match the class definition's stated agent order (naproxen, ibuprofen, meloxicam, celecoxib, diclofenac); all five named agents are clean-preferred generics. The PDL does not state a class-specific PA sentence for NSAIDs beyond the document-wide 'non-preferred agents require prior authorization' rule, so the PA determination itself follows that standard convention rather than a quoted class-specific sentence.",
+      "sourceIds": [
+        "pa-medicaid-nsaids-source-2026-07"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-nsaids-source-2026-07"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-nsaids-source-2026-07"
+      ],
+      "lastReviewed": "2026-07-25"
+    },
+    {
+      "payerId": "ibx-commercial",
+      "classId": "nsaid-oral",
+      "preferredAgent": {
+        "inn": "meloxicam",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "15mg tablet",
+        "sig": "Take 1 tablet (15mg) by mouth once daily with food",
+        "sigShort": "15mg PO qDay w/food",
+        "plainSig": "Take one tablet by mouth once a day with food."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "ibuprofen (generic)",
+          "note": "Low Cost Generic (LCG) tier, no PA — same best tier as meloxicam",
+          "sourceIds": [
+            "ibx-commercial-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "naproxen sodium (generic)",
+          "note": "Generic, no PA",
+          "sourceIds": [
+            "ibx-commercial-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "celecoxib (generic)",
+          "note": "Generic, no PA",
+          "sourceIds": [
+            "ibx-commercial-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "diclofenac potassium / sodium DR / sodium ER (generic)",
+          "note": "Generic, no PA",
+          "sourceIds": [
+            "ibx-commercial-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "diclofenac/misoprostol (generic)",
+          "note": "Generic, no PA",
+          "sourceIds": [
+            "ibx-commercial-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Feldene (piroxicam brand)",
+          "note": "Non-preferred (NPD), no PA listed",
+          "sourceIds": [
+            "ibx-commercial-nsaids-source-2026-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Ibuprofen tab 300mg (specific branded product)",
+          "outcome": "pa",
+          "reason": "Restricted specific product/strength; PA required",
+          "sourceIds": [
+            "ibx-commercial-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "meloxicam capsule",
+          "outcome": "pa",
+          "reason": "Restricted capsule formulation; PA required",
+          "sourceIds": [
+            "ibx-commercial-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Mobic (brand meloxicam)",
+          "outcome": "pa",
+          "reason": "Restricted brand; PA required",
+          "sourceIds": [
+            "ibx-commercial-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Celebrex (brand celecoxib)",
+          "outcome": "pa",
+          "reason": "Restricted brand; PA required",
+          "sourceIds": [
+            "ibx-commercial-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "naproxen sodium ER 750mg",
+          "outcome": "pa",
+          "reason": "Restricted specific strength; PA required",
+          "sourceIds": [
+            "ibx-commercial-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "naproxen sodium suspension",
+          "outcome": "pa",
+          "reason": "Restricted liquid formulation; PA required",
+          "sourceIds": [
+            "ibx-commercial-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Naprosyn / EC-Naprosyn / Naprelan / Anaprox DS (brand naproxen products)",
+          "outcome": "pa",
+          "reason": "Restricted brand; PA required",
+          "sourceIds": [
+            "ibx-commercial-nsaids-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Diclofenac solution 2%",
+          "outcome": "pa",
+          "reason": "Restricted; PA + QL required",
+          "sourceIds": [
+            "ibx-commercial-nsaids-source-2026-07"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "tier": "Low Cost Generic",
+      "verification": "verified",
+      "verificationNote": "Read verbatim from the 'MUSCULOSKELETAL, ARTHRITIS, & PAIN MEDS' section (PDF pages 60-63, effective July 1, 2026). 'ibuprofen' and 'meloxicam tab' are both Low Cost Generic (LCG) tier with no restriction — the two cheapest-tier oral NSAIDs on the formulary; meloxicam was selected as the single preferred pick given its once-daily dosing convention, with ibuprofen listed as an equally-open alternative. naproxen sodium, celecoxib, and diclofenac (potassium/DR/ER) are all confirmed Generic (G) tier with no restriction. All PA-required specific strengths/formulations and brand products (Mobic, Celebrex, Naprosyn family) confirmed directly from the table.",
+      "sourceIds": [
+        "ibx-commercial-nsaids-source-2026-07"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-nsaids-source-2026-07"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-nsaids-source-2026-07"
+      ],
+      "lastReviewed": "2026-07-25"
+    },
+    {
+      "payerId": "highmark-bcbs",
+      "classId": "nsaid-oral",
+      "preferredAgent": {
+        "inn": "naproxen",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "oral tablet 500 mg",
+        "sig": "Take 1 tablet (500mg) by mouth twice daily with food",
+        "sigShort": "500mg PO BID w/ food",
+        "plainSig": "Take one tablet twice a day with food to protect your stomach."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "ibuprofen (generic, 400/600/800mg tablet)",
+          "note": "Tier 1 generic, Low-Cost Generic Rx, no PA",
+          "sourceIds": [
+            "highmark-bcbs-nsaids-nsaid-oral-source-2026-07"
+          ]
+        },
+        {
+          "drug": "meloxicam (generic)",
+          "note": "Tier 1 generic, Low-Cost Generic Rx, no PA",
+          "sourceIds": [
+            "highmark-bcbs-nsaids-nsaid-oral-source-2026-07"
+          ]
+        },
+        {
+          "drug": "celecoxib (generic)",
+          "note": "Tier 1 generic, no PA",
+          "sourceIds": [
+            "highmark-bcbs-nsaids-nsaid-oral-source-2026-07"
+          ]
+        },
+        {
+          "drug": "diclofenac sodium delayed-release (generic)",
+          "note": "Tier 1 generic, no PA",
+          "sourceIds": [
+            "highmark-bcbs-nsaids-nsaid-oral-source-2026-07"
+          ]
+        },
+        {
+          "drug": "naproxen sodium (generic tablet, 275/550mg)",
+          "note": "Tier 1 generic, no PA",
+          "sourceIds": [
+            "highmark-bcbs-nsaids-nsaid-oral-source-2026-07"
+          ]
+        },
+        {
+          "drug": "oxaprozin (generic tablet)",
+          "note": "Tier 1 generic, no PA",
+          "sourceIds": [
+            "highmark-bcbs-nsaids-nsaid-oral-source-2026-07"
+          ]
+        },
+        {
+          "drug": "ketoprofen (generic capsule, 50/75mg)",
+          "note": "Tier 1 generic, no PA",
+          "sourceIds": [
+            "highmark-bcbs-nsaids-nsaid-oral-source-2026-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "ibuprofen 300mg tablet or naproxen suspension",
+          "outcome": "pa",
+          "reason": "Tier 3/non-formulary, QL, and PA required despite being generic — an uncommon strength/form",
+          "sourceIds": [
+            "highmark-bcbs-nsaids-nsaid-oral-source-2026-07"
+          ]
+        },
+        {
+          "drug": "naproxen/naproxen-sodium extended-release or delayed-release formulations",
+          "outcome": "pa",
+          "reason": "Tier 3/non-formulary and PA required",
+          "sourceIds": [
+            "highmark-bcbs-nsaids-nsaid-oral-source-2026-07"
+          ]
+        },
+        {
+          "drug": "fenoprofen / ketoprofen ER / flurbiprofen (generic)",
+          "outcome": "pa",
+          "reason": "Tier 3/non-formulary and PA required despite being generic",
+          "sourceIds": [
+            "highmark-bcbs-nsaids-nsaid-oral-source-2026-07"
+          ]
+        },
+        {
+          "drug": "oxaprozin capsule (as opposed to the Tier-1 tablet)",
+          "outcome": "pa",
+          "reason": "Tier 3/non-formulary, Specialty Tier, and PA required",
+          "sourceIds": [
+            "highmark-bcbs-nsaids-nsaid-oral-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Naprosyn / EC-Naprosyn / Anaprox DS / Daypro / Nalfon / Orudis (brand-name propionic-acid NSAIDs)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3/non-formulary; the corresponding generic is preferred",
+          "sourceIds": [
+            "highmark-bcbs-nsaids-nsaid-oral-source-2026-07"
+          ]
+        },
+        {
+          "drug": "naproxen-esomeprazole (Vimovo-type combo)",
+          "outcome": "pa",
+          "reason": "Tier 3/non-formulary, Specialty Tier, and PA required",
+          "sourceIds": [
+            "highmark-bcbs-nsaids-nsaid-oral-source-2026-07"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "tier": "Tier 1 / Formulary Generic Drug",
+      "verification": "verified",
+      "verificationNote": "Read live from the Highmark Comprehensive Formulary search tool (siteCode=8103967260; Formulary Effective Date 07/24/2026). Confirmed Tier 1/no-PA status directly from the 'Analgesic, Anti-Inflammatory or Antipyretic | NSAID Analgesics (COX Non-Specific) - Propionic Acid Derivatives' class listing (42 rows, naproxen/naproxen sodium/ibuprofen/ketoprofen/oxaprozin tablet all Tier 1) and by individually opening the Oxicam Derivatives class (meloxicam 15mg tablet, Tier 1/Low-Cost Generic Rx), the COX-2 Selective Inhibitors class (celecoxib 200mg capsule, Tier 1), and the Acetic Acid Derivatives class (diclofenac sodium DR 50mg tablet, Tier 1). Uncommon strengths/forms of otherwise-Tier-1 generics (e.g. ibuprofen 300mg, naproxen suspension, oxaprozin capsule) and combination/ER/DR products fall to Tier 3 with PA; all named brand products (Naprosyn family, Anaprox DS, Daypro, Nalfon, Orudis) are Tier 3/non-formulary with no PA icon. Confirmed vs inferred: all tiers/PA icons directly read across the four classes checked.",
+      "sourceIds": [
+        "highmark-bcbs-nsaids-nsaid-oral-source-2026-07"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-nsaids-nsaid-oral-source-2026-07"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-nsaids-nsaid-oral-source-2026-07"
+      ],
+      "lastReviewed": "2026-07-25"
+    }
+  ]
+}
