@@ -235,8 +235,24 @@
  * abaloparatide/Tymlos and romosozumab/Evenity (already-known gaps, now also appearing as PA
  * alternatives), VoSpire ER, Apidra/Admelog (rapid-acting insulin brand variants), and a plain
  * "Norethindrone Tablet (generic)" phrasing. Headless run, no browser access -- logged the
- * molecule-family targets to backlog.md rather than guessing prices. */
-export const KNOWN_UNPRICED_GAP = 90
+ * molecule-family targets to backlog.md rather than guessing prices.
+ * Lowered 90 → 29 on 2026-08-05 (same day, later): fixed the "Norethindrone Tablet (generic)"
+ * gap by narrowly broadening the existing norethindrone-acetate rule (this app has no
+ * contraception class, so a bare "norethindrone tablet" here is always the endometrial-protection
+ * acetate dose). Added real Cost Plus prices for risedronate/Actonel (30 tablets, 5mg daily-dose,
+ * $31.54) and ibandronate/Boniva (dose-pack of 3, 150mg once-monthly, $8.51) -- both collapse
+ * across every osteoporosis guide shipped so far, not just PA. GoodRx was session-wide "Access to
+ * this page has been denied" blocked from the first lookup (5th consecutive session with this
+ * exact block), so both are Cost-Plus-only this pass. The ibandronate rule excludes any name
+ * mentioning iv/injection/injectable/syringe/vial -- several covered names explicitly describe IV
+ * ibandronate (a real, distinct, unpriced product Cost Plus does not carry), and pricing those as
+ * the cheap oral tablet would have been a route-of-administration mispricing bug, same category as
+ * the Reclast/Zometa and Respimat/HandiHaler traps already documented in CLAUDE.md. Remaining gap,
+ * all confirmed not-Cost-Plus-carried this session, GoodRx-blocked: zoledronic acid/Reclast,
+ * pamidronate (IV only), abaloparatide/Tymlos, romosozumab/Evenity, etidronate disodium, VoSpire
+ * ER, Apidra/Admelog (rapid-acting insulin brands), and IV-route ibandronate mentions (intentional
+ * exclusion, see above). */
+export const KNOWN_UNPRICED_GAP = 29
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -674,8 +690,13 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     // "norethindrone.*5\s?mg" added 2026-07-16 -- a formulary source can name this drug
     // "norethindrone 5 mg tablet" without the word "acetate" even though 5mg is specifically the
     // acetate-salt strength (the plain/non-acetate form is 0.35mg, Ortho Micronor, a different
-    // contraceptive-dose product).
-    matches: /norethindrone acetate|norethindrone.*5\s?mg/i,
+    // contraceptive-dose product). "norethindrone tablet \(generic\)" added 2026-08-05 -- PA
+    // Medicaid's PDL lists a bare "Norethindrone Tablet" alongside "Gallifrey Tablet (norethindrone
+    // acetate, brand)" in its PROGESTATIONAL AGENTS section (no strength stated); this app has no
+    // contraception class, so every real occurrence of standalone norethindrone here is the
+    // endometrial-protection acetate-salt dose, not the 0.35mg contraceptive product -- if a future
+    // source names the 0.35mg product this bare, re-narrow this alternation.
+    matches: /norethindrone acetate|norethindrone.*5\s?mg|norethindrone tablet \(generic\)/i,
     goodRxSlug: 'norethindrone',
     costPlusPath: 'norethindroneacetate-5mg-tablet',
     goodRxPrice: { price: 33.50, quantity: '30 tablets, 5mg' },
@@ -1485,6 +1506,36 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     costPlusPath: 'teriparatide-560-mcg_2_24ml-solution-pen-injector-2_24',
     costPlusPrice: { price: 775.15, quantity: '1 pen-injector, 560 mcg/2.24 mL' },
     pricesCapturedAt: '2026-08-04',
+  },
+  {
+    // Risedronate/Actonel oral-bisphosphonate -- Cost Plus carries the daily-dose 5mg strength
+    // (30 tablets) as the representative price, same convention as alendronate/raloxifene above.
+    // GoodRx session-wide blocked ("Access to this page has been denied" from the first lookup),
+    // Cost-Plus-only this pass. Atelvia (delayed-release 35mg weekly) is a distinct product with
+    // its own price ($101.53/4 tablets) -- not folded into this rule since no covered drug name in
+    // this dataset specifically names Atelvia yet; revisit if one does.
+    matches: /\brisedronate\b|\bactonel\b/i,
+    goodRxSlug: 'risedronate',
+    costPlusPath: 'risedronate-sodium-5mg-tablet-actonel',
+    costPlusPrice: { price: 31.54, quantity: '30 tablets, 5mg (daily-dosing strength)' },
+    pricesCapturedAt: '2026-08-05',
+  },
+  {
+    // Ibandronate/Boniva oral-bisphosphonate -- Cost Plus's only listing is the once-monthly 150mg
+    // dose-pack-of-3 (a 3-month supply, oral tablet). GoodRx session-wide blocked, Cost-Plus-only
+    // this pass. Route-of-administration exclusion: several covered names explicitly describe IV/
+    // injectable ibandronate ("ibandronate IV (injectable)", "Ibandronate Syringe, Ibandronate
+    // Vial", "ibandronate sodium (oral and IV, generic Boniva)") -- Cost Plus does not carry that
+    // formulation (confirmed 2026-08-05, only the oral dose-pack appears), so pricing those as the
+    // cheap oral tablet would misrepresent a different, unpriced product. Excludes any name
+    // mentioning iv/injection/injectable/syringe/vial; those fall through to the unpriced gap
+    // instead. Same route-mismatch caution as the Reclast/Zometa and Respimat/HandiHaler traps
+    // documented in CLAUDE.md.
+    matches: /^(?!.*\b(?:iv|injection|injectable|syringe|vial)\b).*(?:\bibandronate\b|\bboniva\b)/i,
+    goodRxSlug: 'ibandronate',
+    costPlusPath: 'ibandronate-sodium-150mg-tablet-dose-pack-3-boniva',
+    costPlusPrice: { price: 8.51, quantity: '1 dose pack of 3 tablets, 150mg (3-month supply)' },
+    pricesCapturedAt: '2026-08-05',
   },
 ]
 
