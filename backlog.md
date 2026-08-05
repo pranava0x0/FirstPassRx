@@ -11,6 +11,20 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## High
 
+- **Cash-price gap opened by the 2026-08-05 PA scale-up (`KNOWN_UNPRICED_GAP` 78→90).** PA's
+  osteoporosis alternatives introduced 3 molecule families with no cash-link rule yet:
+  risedronate (Actonel/Atelvia — appears as an EXCLUDED alternative on `pa-medicaid/oral-
+  bisphosphonate`), ibandronate (Boniva — same cell, and on `pa-medicaid/iv-bisphosphonate` as an
+  injectable form), pamidronate (IV bisphosphonate, `pa-medicaid/iv-bisphosphonate`). Also a
+  handful of one-off unpriced names: abaloparatide/Tymlos and romosozumab/Evenity (already-known
+  gaps, now also PA alternatives), VoSpire ER, Apidra/Admelog (rapid-acting insulin brand
+  variants), "Norethindrone Tablet (generic)". Needs a real browser session (GoodRx/Cost Plus
+  bot-block plain fetch) — same molecule-family-regex leverage as the existing alendronate/
+  raloxifene/denosumab/teriparatide rules in `src/lib/cash.ts`, would collapse across every
+  osteoporosis guide shipped so far, not just PA. **Impact: medium** (osteoporosis is now a
+  7-state topic; every unpriced cell is a dead end for the uninsured-cash-price user). **Effort:
+  low** (same rule-authoring pattern as every prior cash-price session, once a browser is
+  available). **Cost: zero** (no API cost, just vendor bot-block risk).
 - **Formulary change-history / diff view.** `formulary.json` is git-versioned and every guide
   already carries `capturedAt`/`lastReviewed` dates, but there's no user-facing way to see "this
   drug moved from preferred to non-preferred as of July 2026" — exactly the surprise that causes the

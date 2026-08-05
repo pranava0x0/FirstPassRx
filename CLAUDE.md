@@ -318,7 +318,14 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   connection drop, not against the directory outliving the session. Don't treat an unmerged
   checkpoint as durable state referenced from committed docs across sessions — either merge it into
   `formulary.json` promptly, or note in the backlog that the checkpoint may need re-gathering from
-  scratch next time, not "resume from disk."
+  scratch next time, not "resume from disk." **Before concluding a referenced checkpoint is gone,
+  check the main checkout's `data-gathering/` directory, not just the current worktree's.** A
+  2026-08-05 session started in a fresh worktree, found `data-gathering/pa-all-topics-2026-07-25/`
+  missing there, and initially assumed it needed a full re-gather — but the original 2026-07-25
+  gather had run directly against `/Users/pranava/Projects/FirstPassRx` (the main checkout, not a
+  worktree), so all 68 checkpoint files were still sitting there untouched. `git worktree list` +
+  `ls <main-checkout>/data-gathering/` costs nothing and can turn a "re-gather from scratch" task
+  back into a free recovery.
 - **`validate()`'s count-floor (every payer × active class must have a cell) means a guide can't be
   committed with partial payer coverage.** Adding a new multi-payer guide (e.g. VA diabetes: 8
   payers × 4 classes) can't be merged into `src/data/formulary.json` piecemeal as each payer's

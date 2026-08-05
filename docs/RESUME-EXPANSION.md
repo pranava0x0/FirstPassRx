@@ -552,3 +552,62 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   PA's remaining 20 gathered-and-checkpointed classes, then CA. If GoodRx access is clean again,
   the remaining osteoporosis cash-price gap is zoledronic acid/Reclast (needs a correct dosage
   param, not the bare slug) and abaloparatide/Tymlos.
+- 2026-08-05 (interactive session) — **Gate cleared by explicit user instruction ("grab the
+  rest"); PA scaled to its remaining 20 classes, PA now complete across all 7 topics** (matching
+  AL's full footprint). Shipped `pa-inhalers` (12 records), `pa-ace` (3), `pa-diabetes` (12),
+  `pa-menopause` (15), `pa-nsaids` (3), `pa-osteoporosis` (15) — 60 records total, all 3 payers ×
+  20 classes.
+  **Important correction to this ledger's own standing assumption**: the `data-gathering/pa-all-
+  topics-2026-07-25/` checkpoint was NOT available in this session's worktree — gitignored
+  checkpoints only live in the worktree that wrote them (per the existing CLAUDE.md scar tissue),
+  and this session started in a fresh worktree. It was NOT lost, though: the checkpoint was still
+  sitting on disk in the **main checkout** (`/Users/pranava/Projects/FirstPassRx/data-gathering/`,
+  not the worktree), because that gather was run directly against the main checkout back on
+  2026-07-25. Recovered all 68 files from there — zero new agent calls, exactly as this ledger
+  assumed, just from a different path than expected. **Lesson for future sessions**: when a
+  checkpoint referenced by this ledger isn't in the current worktree, check the main checkout's
+  `data-gathering/` before concluding it needs re-gathering — it may simply be sitting in whichever
+  location originally ran the gather.
+  Wrote a one-off Python merge script (scratchpad only, not committed — same as every prior
+  session's `merge_state()`-style script) that: reused each topic's class taxonomy verbatim from
+  `il-<topic>` (the reference guide for that shape), built one reference per (payer, topic) for
+  pa-medicaid/ibx-commercial (single static PDF covers every topic), and one reference **per
+  class** for highmark-bcbs (its FormularyNavigator search URL is genuinely class-specific — 19 of
+  20 classes had a distinct deep-link, confirmed by diffing every checkpoint's `primarySource.url`
+  before assuming one shared URL). Applied the established reword-not-reclassify fix to 218
+  `paRequired` reasons using "non-preferred" wording (all confirmed genuine PA barriers, matching
+  every prior state's pattern).
+  **Caught and fixed 3 real schema bugs in the checkpoint data itself** (not merge-script bugs) via
+  `npm test`'s validate() failing loud, exactly as designed: (1) `pa-medicaid/lama`'s preferred
+  agent (Spiriva Respimat, correctly genericAvailable:false) had `boglActive:true` left set from a
+  class-wide reversed-BOGL note that explicitly named a *different* product (Spiriva HandiHaler) as
+  the one affected — same soft-mist-device-has-no-generic nuance as the 2026-07-11 VA fix in
+  CLAUDE.md; (2) `pa-medicaid/glp1` had the identical pattern (Ozempic preferred, boglNote about
+  Victoza) — both corrected to `boglActive:false`; (3) `pa-medicaid/sglt2` had `boglActive:true`
+  with `brand:null` even though its own boglNote named "Farxiga" as the brand being beaten by
+  generic dapagliflozin — filled in the missing brand rather than disabling the (real) BOGL,
+  confirmed against the sibling `ibx-commercial/sglt2` record in the same guide which already had
+  `brand:"Farxiga"` correctly set.
+  **Cash-price gap**: PA's osteoporosis alternatives introduced 3 molecule families
+  (risedronate/Actonel, ibandronate/Boniva, pamidronate) never seen in any prior guide, plus a few
+  one-off names (VoSpire ER, Apidra/Admelog insulin, a bare "Norethindrone Tablet (generic)"
+  phrasing). `KNOWN_UNPRICED_GAP` raised 78→90 (headless session, no browser price capture
+  attempted for the new names — logged to `backlog.md` as the next cash-price target alongside the
+  already-known zoledronic acid/Reclast and abaloparatide/Tymlos gaps). One genuine link-only-rule
+  gap also surfaced and was fixed at the test level: "Estradiol Patch (Once-Weekly, generic)"
+  matched the existing price-less `estradiol.*(weekly|patch|transdermal)` rule but wasn't yet in
+  `cash.test.ts`'s `KNOWN_PRICE_UNAVAILABLE` list (added `/estradiol patch/i`, consistent with that
+  rule's existing documented link-only status).
+  `npm test` (502/502), `typecheck`, `trace` (0 broken sources), `validate-prices` (90/90 matching
+  the new ceiling), `validate-coverage` all green; verified live in the dev-server browser (PA →
+  Osteoporosis renders alendronate/PA-Medicaid with correct GoodRx+Cost Plus prices and the
+  risedronate-family exclusion reworded to "restricted"; PA → Osteoporosis → RANKL INHIBITOR/
+  Highmark renders Prolia with the correct GoodRx price and a class-specific source citation;
+  PA → Osteoporosis → IV BISPHOSPHONATE/Highmark correctly cites the separate medical-policy
+  document, not the pharmacy-formulary search). Updated `src/lib/formulary.test.ts`'s hardcoded
+  guide-id list with the 6 new ids. National grid moved 43/357 → 49/357, verified-only 25→30.
+  **Next session: California is next** (3-payer roster already in `state-index.json` from
+  2026-07-23, cheapest state to gather, but has zero guides yet — needs its own proof guide first,
+  same "one guide as proof" gate applied to every other new state/topic). If GoodRx/Cost Plus
+  access is available, the accumulated osteoporosis cash-price gap (zoledronic acid, abaloparatide,
+  risedronate, ibandronate, pamidronate, romosozumab) is the next pricing target.
