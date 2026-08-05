@@ -114,6 +114,9 @@
     
 
 
+<script>(function(){var c=window.ContextHub||{};try{Object.defineProperty(window,'ContextHub',{value:c,writable:true,configurable:false,enumerable:true});}catch(e){window.ContextHub=c;}})();</script>
+
+
 <link rel="preconnect" href="https://prod.ui.search.optum.com" crossorigin/>
 <link rel="dns-prefetch" href="https://prod.ui.search.optum.com"/>
 <link rel="preconnect" href="https://assets.adobedtm.com" crossorigin/>
@@ -123,6 +126,8 @@
 <link rel="preconnect" href="https://dpm.demdex.net" crossorigin/>
 <link rel="dns-prefetch" href="https://dpm.demdex.net"/>
 <link rel="dns-prefetch" href="https://cdn.jsdelivr.net"/>
+<link rel="preconnect" href="https://edge.adobedc.net" crossorigin/>
+<link rel="dns-prefetch" href="https://edge.adobedc.net"/>
 
 
 
@@ -139,12 +144,12 @@
 
 
     
-        <link rel="preload" href="/etc.clientlibs/dmp/clientlibs/clientlib-optum.lc-775faf619df510c75db5fa92e4949ec2-lc.min.css" as="style"/>
-        <link rel="stylesheet" href="/etc.clientlibs/dmp/clientlibs/clientlib-optum.lc-775faf619df510c75db5fa92e4949ec2-lc.min.css"/>
+        <link rel="preload" href="/etc.clientlibs/dmp/clientlibs/clientlib-optum.lc-755ce8de2d2ef5eb01efe4553110c1c1-lc.min.css" as="style"/>
+        <link rel="stylesheet" href="/etc.clientlibs/dmp/clientlibs/clientlib-optum.lc-755ce8de2d2ef5eb01efe4553110c1c1-lc.min.css"/>
     
     <noscript>
         
-            <link rel="stylesheet" href="/etc.clientlibs/dmp/clientlibs/clientlib-optum.lc-775faf619df510c75db5fa92e4949ec2-lc.min.css"/>
+            <link rel="stylesheet" href="/etc.clientlibs/dmp/clientlibs/clientlib-optum.lc-755ce8de2d2ef5eb01efe4553110c1c1-lc.min.css"/>
         
     </noscript>
 
@@ -329,8 +334,19 @@
 		</script>
 
 
+
+
+<link rel="preload" href="//assets.adobedtm.com/512027f42d3c/d52f6c362542/launch-e8eea2d81161.min.js" as="script" crossorigin="anonymous"/>
+<script src="//assets.adobedtm.com/512027f42d3c/d52f6c362542/launch-e8eea2d81161.min.js" async crossorigin="anonymous"></script>
+
+
 <script>
-	document.addEventListener("DOMContentLoaded", function(){
+	/*LCP optimisation: fire page-track immediately during head parsing (not on DOMContentLoaded).
+	  getText() returns '' because body elements don't exist yet — message and headLine DOM-fallbacks
+	  are analytics-only fields; Adobe Target personalisation does not depend on them.
+	  The empty-string trade-off is acceptable in exchange for starting the Alloy interact
+	  request (edge.adobedc.net) as early as possible, removing it from the LCP critical path. */
+	(function(){
 	function getVal(id) {
 		const el = document.getElementById(id);
 		return el ? el.value : '';
@@ -573,7 +589,7 @@
                 }
         });
 	}
-});
+	})();
 </script>
 <script>
 	let targetPrehidingSnippetVariable = ".o5-homepage-hero__container";
@@ -710,8 +726,6 @@
       });
 </script>
 
-
-<script src="//assets.adobedtm.com/512027f42d3c/d52f6c362542/launch-e8eea2d81161.min.js" async crossorigin="anonymous"></script>
 
 
     
@@ -1580,7 +1594,7 @@
 
 
     
-<script>window.ContextHub = window.ContextHub || {};</script>
+<script>(function(){var c=window.ContextHub||{};try{Object.defineProperty(window,'ContextHub',{value:c,writable:true,configurable:false,enumerable:true});}catch(e){window.ContextHub=c;}})();</script>
     
 <script type="text/javascript">
             (function() {
@@ -1608,7 +1622,12 @@
 <script>
 window.addEventListener('unhandledrejection', function(event) {
     var msg = event && event.reason && (event.reason.message || event.reason.toString() || '');
-    if (msg.indexOf('[alloy]') !== -1 && msg.indexOf('sendEvent failed') !== -1) {
+    var isAlloySendEvent = msg.indexOf('[alloy]') !== -1 && msg.indexOf('sendEvent') !== -1;
+    var isNetworkFailure = msg.indexOf('Failed to fetch') !== -1
+        || msg.indexOf('Network request failed') !== -1
+        || msg.indexOf('NetworkError') !== -1
+        || msg.indexOf('Load failed') !== -1;
+    if (isAlloySendEvent && isNetworkFailure) {
         event.preventDefault();
     }
 });
@@ -1617,18 +1636,18 @@ window.addEventListener('unhandledrejection', function(event) {
     
     
     
-        <link rel="preload" href="/etc.clientlibs/dmp/clientlibs/clientlib-react.lc-d2cd67c988a90bf312b1ae510e17d70f-lc.min.css" as="style"/>
-        <link rel="stylesheet" href="/etc.clientlibs/dmp/clientlibs/clientlib-react.lc-d2cd67c988a90bf312b1ae510e17d70f-lc.min.css"/>
+        <link rel="preload" href="/etc.clientlibs/dmp/clientlibs/clientlib-react.lc-b8fe43f2d65d1d0741802def93231ff0-lc.min.css" as="style"/>
+        <link rel="stylesheet" href="/etc.clientlibs/dmp/clientlibs/clientlib-react.lc-b8fe43f2d65d1d0741802def93231ff0-lc.min.css"/>
     
     <noscript>
         
-            <link rel="stylesheet" href="/etc.clientlibs/dmp/clientlibs/clientlib-react.lc-d2cd67c988a90bf312b1ae510e17d70f-lc.min.css"/>
+            <link rel="stylesheet" href="/etc.clientlibs/dmp/clientlibs/clientlib-react.lc-b8fe43f2d65d1d0741802def93231ff0-lc.min.css"/>
         
     </noscript>
 
     
-    <script defer src="/etc.clientlibs/dmp/clientlibs/clientlib-react.lc-9b604544d3aaca273b9353ddfdb09003-lc.min.js"></script>
-<script defer src="/etc.clientlibs/dmp/clientlibs/clientlib-optum.lc-02af8460b3a569416aab5198a5f711ed-lc.min.js"></script>
+    <script defer src="/etc.clientlibs/dmp/clientlibs/clientlib-react.lc-f1f971d611adaafaa15411b28fa2a0d2-lc.min.js"></script>
+<script defer src="/etc.clientlibs/dmp/clientlibs/clientlib-optum.lc-f2a3974a671cc707984b0629036e6244-lc.min.js"></script>
 
 
 
