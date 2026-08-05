@@ -709,3 +709,14 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   the class of bug `hasCashLinkRule`'s coverage check (`KNOWN_UNPRICED_GAP`) cannot catch, since it
   only proves *some* rule matched, not the *correct* one (documented lesson from 2026-07-16).
   2 new regression tests added (`cash.test.ts`), `npm test` 566/566. _Fixed._
+
+- **2026-08-05 (code review, Codex bot) · a bare `\brisedronate\b` regex priced the Atelvia
+  delayed-release variant as the plain 5mg-daily product — real bug, fixed same day it shipped.**
+  Codex's automated review of PR #16 caught it directly: the rule's own comment said Atelvia
+  "should not be folded into" the 5mg-daily rule (a distinct $101.53/4-tablet product, already
+  researched and priced the same session), but the regex did exactly that — every covered name
+  mentioning "delayed-release"/"Atelvia"/"DR"/"TBEC" also contains the word "risedronate" and
+  matched the bare rule first (`.find()` returns first match). Fixed by adding a dedicated
+  Atelvia/delayed-release rule (`/atelvia|delayed.release|\bdr\/ec\b|\btbec\b/i`) positioned
+  before the bare rule, using the real Cost Plus price already captured. 3 new regression tests.
+  `npm test` 570/570. _Fixed._

@@ -1539,12 +1539,28 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-08-04',
   },
   {
+    // Atelvia/delayed-release risedronate -- a genuinely different product (35mg once-weekly
+    // delayed-release tablet) with its own real Cost Plus price, captured the same session as the
+    // bare risedronate rule below. Caught by Codex review 2026-08-05: the original bare
+    // `\brisedronate\b` rule's own comment said Atelvia "should not be folded into" the 5mg-daily
+    // rule, but the regex did exactly that -- every covered name mentioning "delayed-release" or
+    // "Atelvia" also contains the word "risedronate" and matched the bare rule first, showing the
+    // $31.54/30-tablet-5mg price for a 4-tablet/35mg-DR product. Placed before the bare rule so
+    // Atelvia/DR names route here instead. Multi-strength alternatives that mention
+    // "delayed-release" alongside other strengths (e.g. "risedronate sodium (35 mg weekly, 5 mg
+    // daily, 150 mg monthly, delayed-release 35 mg)") are inherently ambiguous about which single
+    // strength to represent -- treated as DR since that's the most specific term present.
+    matches: /atelvia|delayed.release|\bdr\/ec\b|\btbec\b/i,
+    goodRxSlug: 'atelvia',
+    costPlusPath: 'risedronate-sodium-35mg-tablet-atelvia',
+    costPlusPrice: { price: 101.53, quantity: '4 tablets, 35mg delayed-release (once-weekly dosing)' },
+    pricesCapturedAt: '2026-08-05',
+  },
+  {
     // Risedronate/Actonel oral-bisphosphonate -- Cost Plus carries the daily-dose 5mg strength
     // (30 tablets) as the representative price, same convention as alendronate/raloxifene above.
     // GoodRx session-wide blocked ("Access to this page has been denied" from the first lookup),
-    // Cost-Plus-only this pass. Atelvia (delayed-release 35mg weekly) is a distinct product with
-    // its own price ($101.53/4 tablets) -- not folded into this rule since no covered drug name in
-    // this dataset specifically names Atelvia yet; revisit if one does.
+    // Cost-Plus-only this pass. The Atelvia/delayed-release rule above claims that variant first.
     matches: /\brisedronate\b|\bactonel\b/i,
     goodRxSlug: 'risedronate',
     costPlusPath: 'risedronate-sodium-5mg-tablet-actonel',

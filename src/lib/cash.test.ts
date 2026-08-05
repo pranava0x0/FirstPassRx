@@ -114,6 +114,22 @@ describe('cash price links', () => {
       expect(goodRxPrice(name)?.price).toBe(61.49)
     },
   )
+
+  it.each([
+    'risedronate delayed-release (dr/ec) 35mg',
+    'Atelvia (brand risedronate DR)',
+    'ATELVIA (brand delayed-release risedronate, tbec 35mg)',
+  ])('prices %s as the Atelvia delayed-release product, not the bare 5mg-daily rule', (name) => {
+    // Caught by Codex review 2026-08-05: the bare risedronate rule's own comment said Atelvia
+    // "should not be folded into" the 5mg-daily rule, but every DR/Atelvia name also contains the
+    // word "risedronate" and matched the bare rule first anyway -- $31.54/30-tablet-5mg instead of
+    // the DR product's real $101.53/4-tablet-35mg price.
+    expect(costPlusPrice(name)?.price).toBe(101.53)
+  })
+
+  it('still prices plain risedronate/Actonel mentions at the 5mg-daily rate', () => {
+    expect(costPlusPrice('risedronate (Actonel) tablets')?.price).toBe(31.54)
+  })
 })
 
 /** Every drug name a live cell can render: the preferred agent + its covered alternatives,
