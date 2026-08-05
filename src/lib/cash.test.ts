@@ -89,6 +89,31 @@ describe('cash price links', () => {
     // e.g. Xigduo XR resolving to plain dapagliflozin at $8.35 instead of the $19.77 combo price.
     expect(goodRxUrl(name)).toContain(expectedSlug)
   })
+
+  // Regression tests for 2 more rule-shadowing bugs, caught 2026-08-05 by a full-formulary sweep
+  // (not the CA/PA merges' original bugs, but found in passing while verifying today's other
+  // regex broadenings didn't shadow anything).
+  it.each(['ESTRING (estradiol vaginal ring 2 mg)', 'IMVEXXY (estradiol vaginal insert)', 'Femring (higher-systemic-dose estradiol vaginal ring)'])(
+    'does not route %s to the Vagifem/vaginal-tablet rule',
+    (name) => {
+      // Broadening the vaginal-tablet rule to catch a bare "Estradiol vaginal" (no "tablet"/
+      // "insert" word) also caught Estring/Femring/Imvexxy ring/insert product names, which
+      // contain "estradiol vaginal" as a substring too -- they'd have gotten the tablet rule's
+      // $90.88 GoodRx price instead of their own correct (link-only or differently-priced) rules.
+      expect(goodRxUrl(name)).not.toContain('vagifem')
+    },
+  )
+
+  it.each(['Norethindrone ac-eth estradiol oral tablet 0.5-2.5 mg-mcg or 1-5 mg-mcg', 'norethindrone-eth estradiol oral tablet'])(
+    'routes %s to the norethindrone/ethinyl-estradiol combo rule, not plain oral estradiol',
+    (name) => {
+      // Sources abbreviate "ethinyl" to "eth"/"ac-eth"; neither abbreviation contains the literal
+      // phrase "ethinyl estradiol" the combo rule required, so both fell through to the plain
+      // oral-estradiol rule and were priced as single-agent estradiol ($34.18) instead of the
+      // combo's real price ($61.49).
+      expect(goodRxPrice(name)?.price).toBe(61.49)
+    },
+  )
 })
 
 /** Every drug name a live cell can render: the preferred agent + its covered alternatives,

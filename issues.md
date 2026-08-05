@@ -689,3 +689,23 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   when `tier` is null but `preferredRestriction` is set. Regression test added
   (`ResultCard.test.tsx`, new file) covering all 3 cases: tier stated, no tier + restriction, no
   tier + no restriction. `npm test` 561/561. _Fixed._
+
+- **2026-08-05 (code review pass) · adversarial review of this PR's own diff caught 2 real
+  regex-shadowing mispricing bugs — one self-introduced, one pre-existing — via a full-formulary
+  sweep against the real `cash.ts` functions (not hand-copied regex).** (1) Self-introduced: the
+  vaginal-estradiol broadening (this same session, closing CA's cash-price gap) used a lookahead
+  scoped only to text *after* "vaginal" to exclude cream mentions — but Estring/Femring/Imvexxy
+  brand names sit *before* "vaginal" in their strings ("IMVEXXY (estradiol vaginal insert)"), so
+  the lookahead never saw them and they got the Vagifem-tablet rule's $90.88 price instead of
+  their own (correct) rules. Fixed by anchoring the exclusion at the start of the whole string via
+  `^(?!.*...)` so it scans everywhere. (2) Pre-existing, unrelated to this session's other edits:
+  sources abbreviate "ethinyl" to "eth"/"ac-eth" ("norethindrone-eth estradiol", "Norethindrone
+  ac-eth estradiol oral tablet") — neither contains the literal phrase "ethinyl estradiol" the
+  norethindrone/estradiol combo rule required, so both fell through to the plain oral-estradiol
+  rule and were priced as single-agent estradiol ($34.18) instead of the combo's real price
+  ($61.49). Both confirmed via a temporary sweep test (not committed) that ran the actual
+  `hasCashLinkRule`/`goodRxPrice`/`costPlusPrice` functions against every covered name touching
+  estradiol/norethindrone/risedronate/ibandronate, not just hand-picked examples — this is exactly
+  the class of bug `hasCashLinkRule`'s coverage check (`KNOWN_UNPRICED_GAP`) cannot catch, since it
+  only proves *some* rule matched, not the *correct* one (documented lesson from 2026-07-16).
+  2 new regression tests added (`cash.test.ts`), `npm test` 566/566. _Fixed._

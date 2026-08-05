@@ -482,7 +482,15 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-07-01',
   },
   {
-    matches: /ethinyl estradiol.*norethindrone|norethindrone.*ethinyl estradiol|jinteli|fyavolv|femhrt/i,
+    // "norethindrone[-\s]?(?:ac[-\s]?)?eth\b" added 2026-08-05 -- found via a full-formulary sweep
+    // this session (not the original bug being fixed, but caught in passing): several sources
+    // abbreviate "ethinyl" to "eth" or "ac-eth" ("norethindrone-eth estradiol", "Norethindrone
+    // ac-eth estradiol oral tablet") -- none contain the literal phrase "ethinyl estradiol" this
+    // rule otherwise requires, so they fell through to the plain oral-estradiol rule below and got
+    // priced as single-agent estradiol ($34.18/$6.77) instead of this combo product's real price
+    // -- a mispricing bug that predates this session's other edits.
+    matches:
+      /ethinyl estradiol.*norethindrone|norethindrone.*ethinyl estradiol|jinteli|fyavolv|femhrt|norethindrone[-\s]?(?:ac[-\s]?)?eth\b/i,
     goodRxSlug: 'jinteli',
     costPlusPath: 'norethindrone-acetate-ethinyl-estradiol-1mg-5mcg-pack-of-tablets-90-fyavolv',
     goodRxPrice: { price: 61.49, quantity: '28 tablets, 1mg/5mcg' },
@@ -492,9 +500,15 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   {
     // Broadened 2026-08-05: several sources describe this product without the word "tablet"/
     // "insert" right after "vaginal" -- a bare "Estradiol vaginal" (pre-existing, several NY
-    // guides) or CA's "estradiol (vaginal)" INN-field phrasing. Excludes any mention of "cream"
-    // anywhere after "vaginal" so it doesn't shadow the distinct vaginal-cream rule below.
-    matches: /estradiol vaginal\b(?!.*cream)|estradiol \(vaginal\)|vagifem|yuvafem/i,
+    // guides) or CA's "estradiol (vaginal)" INN-field phrasing. First draft of this broadening
+    // (word-boundary + a lookahead scoped only to text AFTER "vaginal") shadowed Estring/Femring/
+    // Imvexxy -- e.g. "IMVEXXY (estradiol vaginal insert)" has the brand name BEFORE "vaginal", so
+    // a lookahead anchored at the match point never saw it, and the string wrongly got this rule's
+    // Vagifem-tablet price instead of falling through to Estring/Femring/Imvexxy's own (correct,
+    // separate) rules further down. Fixed by anchoring the exclusion at the START of the whole
+    // string via `^(?!.*...)` so it scans everywhere, not just after the "vaginal" match point.
+    matches:
+      /^(?!.*\b(?:cream|ring|imvexxy|estring|femring)\b).*estradiol vaginal\b|estradiol \(vaginal\)|vagifem|yuvafem/i,
     goodRxSlug: 'vagifem',
     costPlusPath: 'estradiol-10mcg-vaginaltablet8pack',
     goodRxPrice: { price: 90.88, quantity: '24 inserts, 10mcg' },
