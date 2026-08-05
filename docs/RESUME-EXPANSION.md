@@ -611,3 +611,36 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   same "one guide as proof" gate applied to every other new state/topic). If GoodRx/Cost Plus
   access is available, the accumulated osteoporosis cash-price gap (zoledronic acid, abaloparatide,
   risedronate, ibandronate, pamidronate, romosozumab) is the next pricing target.
+- 2026-08-05 (same session, continued — user said "keep going") — **California's proof guide
+  SHIPPED: `ca-ssris`, the new-state gate for CA.** Gathered fresh via `formulary-gather.js`
+  (3 payers — Medi-Cal Rx, Kaiser Permanente, Anthem BCBS California — chunked ≤2 concurrent,
+  0 agent errors, ~307K subagent tokens, all 3 citing fresh 2026-08 documents). No reword-not-
+  reclassify fixes needed this time: every payer either states PA/step criteria explicitly or
+  explicitly disclaims them (Kaiser's own formulary states verbatim "does not have a requirement
+  for PA" / "does not have a requirement for Step Therapy") — the first new-state gather where zero
+  paRequired reasons needed the binary-PDL reword fix. Medi-Cal Rx's CDL is a flat covered/
+  restricted list, not a ranked PDL, so it doesn't itself name a "preferred" SSRI among the six —
+  sertraline was picked by first-line convention (same as every other payer's ssri-oral record) and
+  flagged `verification: partial` for that inference, matching this project's standing rule that an
+  inference gets marked, not silently presented as read-verbatim.
+  One metadata fix applied during merge: Anthem's `state-index.json` `formularyUrl` was the landing
+  page (`anthem.com/ca/pharmacy-information/drug-list-formulary`), which timed out twice for the
+  gather agent — it found the real document via a FormularyNavigator-hosted PDF instead. Synced
+  `state-index.json` to the real URL (same "sync to what the gather actually fetched" fix as the
+  MassHealth MHDL case in CLAUDE.md), so a future CA gather doesn't re-hit the same timeout.
+  Cash-price gap: **zero new gap** — all 6 SSRI molecule names already matched the existing broad
+  SSRI cash-link rules from 2026-07-29, `KNOWN_UNPRICED_GAP` unchanged at 90.
+  `npm test` (510/510), `typecheck`, `trace` (0 broken sources), `validate-prices` (90/90,
+  unchanged), `validate-coverage` all green; verified live in the dev-server browser (CA → SSRIs
+  renders sertraline preferred with correct GoodRx+Cost Plus prices for both Medi-Cal Rx and Kaiser
+  Permanente, Kaiser's 6 excluded brand alternatives render with the payer's own no-PA-requirement
+  language intact). National grid moved 49/357 → 50/357, 7→8 jurisdictions covered. Committed in 4
+  chunks (guide merge + test-id list, state-index URL sync, source archive).
+  **Next session: California's remaining 6 topics** (inhalers/ace/diabetes/menopause/nsaids/
+  osteoporosis, same "one guide as proof, then scale" gate that applied to every prior new state —
+  AL and PA both scaled their remaining topics only after this proof-guide step). No checkpoint
+  exists yet for CA's other topics — this would be a fresh gather, not a free merge, same shape as
+  today's `ca-ssris` run (3 payers, ≤2 concurrent chunks). After CA: the national grid still has 43
+  states with zero guides at all — a much larger scope decision than anything scoped so far in this
+  ledger, worth an explicit conversation with the user about which states/topics matter next rather
+  than picking one unilaterally.
