@@ -144,6 +144,7 @@ describe('cash price coverage across the live formulary', () => {
       /evamist/i,
       /alora/i,
       /estradiol transdermal(?! system)/i,
+      /estradiol patch/i,
       /meclofenamate/i,
       /salsalate/i,
       /ketoprofen/i,

@@ -226,8 +226,17 @@
  * 2026-07-30) found it had added teriparatide/Forteo/Bonsity since then -- a real catalog change,
  * not a missed search. Cost-Plus-only rule added (see below), same shape as the paroxetine/
  * fluvoxamine SSRI rules. Remaining gap: zoledronic acid/Reclast, abaloparatide/Tymlos -- neither
- * is Cost-Plus-carried (re-confirmed 2026-08-04) and GoodRx access is still needed for both. */
-export const KNOWN_UNPRICED_GAP = 78
+ * is Cost-Plus-carried (re-confirmed 2026-08-04) and GoodRx access is still needed for both.
+ * Raised 78 → 90 on 2026-08-05: merging PA's remaining 20 classes (inhalers/ace/diabetes/
+ * menopause/nsaids/osteoporosis) introduced 3 osteoporosis molecule families never seen in any
+ * prior guide's alternatives lists -- risedronate (Actonel/Atelvia), ibandronate (Boniva), and
+ * pamidronate (IV) -- none had an explicit cash-link rule yet (only alendronate/zoledronic
+ * acid/denosumab/teriparatide/raloxifene do). Also added a handful of one-off new names:
+ * abaloparatide/Tymlos and romosozumab/Evenity (already-known gaps, now also appearing as PA
+ * alternatives), VoSpire ER, Apidra/Admelog (rapid-acting insulin brand variants), and a plain
+ * "Norethindrone Tablet (generic)" phrasing. Headless run, no browser access -- logged the
+ * molecule-family targets to backlog.md rather than guessing prices. */
+export const KNOWN_UNPRICED_GAP = 90
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
