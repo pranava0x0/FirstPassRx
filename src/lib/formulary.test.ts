@@ -59,6 +59,12 @@ describe('guides + global meta', () => {
       'pa-nsaids',
       'pa-osteoporosis',
       'ca-ssris',
+      'ca-inhalers',
+      'ca-ace',
+      'ca-diabetes',
+      'ca-menopause',
+      'ca-nsaids',
+      'ca-osteoporosis',
     ])
   })
 
