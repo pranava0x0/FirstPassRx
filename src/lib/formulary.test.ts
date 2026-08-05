@@ -58,6 +58,7 @@ describe('guides + global meta', () => {
       'pa-menopause',
       'pa-nsaids',
       'pa-osteoporosis',
+      'ca-ssris',
     ])
   })
 
