@@ -699,3 +699,38 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   cutoffs (bisphosphonates/metformin/SGLT2/ACE-inhibitors have real clinical cutoffs this app
   doesn't surface at all today) and the `sources/` directory's growing size (now ~900MB+,
   Git LFS flagged in backlog.md as the fix once it becomes a real clone-time problem).
+- 2026-08-05 (scheduled run, same day as the CA-completion session above) — **Gate still active,
+  correctly did not scale new states/topics.** Confirmed working tree clean, `main` up to date with
+  `origin/main`, `npm test` (570/570), `npm run validate-coverage` unchanged at 56/357 (8/51
+  jurisdictions) since the CA merge earlier today — the 43-states-with-zero-guides prioritization
+  decision the user was asked about is still unanswered, so no state was picked unilaterally.
+  Attempted the cash-price gap next (permitted in-scope work, not "scaling"): GoodRx was
+  session-wide "Access to this page has been denied" blocked on the very first lookup (zoledronic
+  acid) — 6th consecutive session with this exact block, did not attempt to bypass the Press & Hold
+  bot-check. Re-checked Cost Plus Drugs' full bone-health category (11 products, 2 pages) directly —
+  unchanged since 2026-07-30/08-04: still only alendronate/raloxifene/ibandronate/risedronate/
+  teriparatide among osteoporosis agents; zoledronic acid, abaloparatide, pamidronate, denosumab,
+  romosozumab, and etidronate are still not carried. `KNOWN_UNPRICED_GAP` unchanged at 33.
+  Per the task's fallback instruction, spent the remainder auditing previously-un-individually-
+  read `partial` cells flagged by `scripts/gap-report.mjs` (il-osteoporosis/serm,
+  ny-osteoporosis/serm, va-osteoporosis/oral-bisphosphonate, pa-osteoporosis/iv-bisphosphonate +
+  rankl-inhibitor, al-nsaids/nsaid-oral, al-menopause/progestogen, ca-ssris/ssri-oral,
+  ca-menopause/combo) by reading each `verificationNote` directly (no agents) — every one was
+  already an exhaustively-documented, genuine structural absence (drug confirmed absent from the
+  source PDL/formulary via full-text search, or a physician-administered medical-benefit carve-out),
+  not an extraction failure or quick fix; none re-bucketed, no new backlog items logged since
+  restating an already-documented conclusion isn't a new finding.
+  Two web searches for new candidate topics/states (per the task's fallback instruction, no
+  agents): (1) statins — found 2026 state PDLs exist (MI, DE, NY) but no compelling PA-barrier
+  story (statins are typically unrestricted first-line generics, unlike the existing GLP-1/ADHD/
+  DOAC/CGRP candidates already logged 2026-07-19/07-20, which each have a real PA-friction angle) —
+  not added to backlog, wouldn't serve this app's core "avoid a PA denial" value prop; (2)
+  re-verified Texas Vendor Drug Program (the standing candidate 4th-new-state) is still on its
+  known semi-annual cadence — the 2026-07-24 update the 2026-07-25 entry flagged as scheduled did
+  publish on time, next one expected ~January 2027 — no change to the existing recommendation.
+  No data gathered, no agents/Workflows spawned, no branches created, no commits from this run's
+  research (this ledger entry is the only change). **Still stopped here pending the user's answer
+  on the 43-state prioritization axis.** Next session: if the user answers, scale the chosen
+  state(s); if GoodRx access is clean again, the remaining osteoporosis cash-price gap (zoledronic
+  acid — needs a correct dosage param, not the bare slug — abaloparatide, pamidronate, romosozumab,
+  etidronate) is the next pricing target.
