@@ -251,8 +251,16 @@
  * all confirmed not-Cost-Plus-carried this session, GoodRx-blocked: zoledronic acid/Reclast,
  * pamidronate (IV only), abaloparatide/Tymlos, romosozumab/Evenity, etidronate disodium, VoSpire
  * ER, Apidra/Admelog (rapid-acting insulin brands), and IV-route ibandronate mentions (intentional
- * exclusion, see above). */
-export const KNOWN_UNPRICED_GAP = 29
+ * exclusion, see above).
+ * 29 → 33 on 2026-08-05 (same day, later, after ca-* guides merged): closed 2 pre-existing gaps
+ * that CA happened to newly exercise (a bare "Estradiol vaginal"/"estradiol (vaginal)" phrasing
+ * with no "tablet"/"insert" word -- broadened the existing Yuvafem/vaginal-insert rule; a plain
+ * "estradiol N mg ... tablets" phrasing lacking the word "oral" -- broadened the existing oral
+ * rule). Two genuinely new, confirmed-not-Cost-Plus-carried gaps: fenoprofen (Nalfon, an NSAID)
+ * and plain regular human insulin (Humulin R/Novolin R-equivalent) -- both searched directly,
+ * neither returned a real product. Net: 35 raw CA-introduced unmatched names → 33 after the two
+ * regex fixes. */
+export const KNOWN_UNPRICED_GAP = 33
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -482,7 +490,11 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-06-30',
   },
   {
-    matches: /estradiol vaginal (tablet|insert)|vagifem|yuvafem/i,
+    // Broadened 2026-08-05: several sources describe this product without the word "tablet"/
+    // "insert" right after "vaginal" -- a bare "Estradiol vaginal" (pre-existing, several NY
+    // guides) or CA's "estradiol (vaginal)" INN-field phrasing. Excludes any mention of "cream"
+    // anywhere after "vaginal" so it doesn't shadow the distinct vaginal-cream rule below.
+    matches: /estradiol vaginal\b(?!.*cream)|estradiol \(vaginal\)|vagifem|yuvafem/i,
     goodRxSlug: 'vagifem',
     costPlusPath: 'estradiol-10mcg-vaginaltablet8pack',
     goodRxPrice: { price: 90.88, quantity: '24 inserts, 10mcg' },
@@ -528,7 +540,12 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-06-30',
   },
   {
-    matches: /estradiol oral|estrace|^estradiol$/i,
+    // "estradiol.*mg.*tablet" added 2026-08-05 -- CA's "estradiol 0.5 mg / 2 mg / 10 mcg tablets"
+    // phrasing lacks the word "oral" but is clearly an oral tablet strength listing (0.5mg/2mg are
+    // oral doses; 10mcg is likely a co-listed vaginal strength, but the dominant, representative
+    // form here is oral). Safe this late in the rule order -- every vaginal/patch/gel/transdermal/
+    // combo rule above already claims anything route-specific first.
+    matches: /estradiol oral|estrace|^estradiol$|estradiol.*\bmg\b.*tablet/i,
     goodRxSlug: 'estradiol',
     costPlusPath: 'estradiol-1mg-tablet',
     goodRxPrice: { price: 34.18, quantity: '90 tablets, 1mg' },
