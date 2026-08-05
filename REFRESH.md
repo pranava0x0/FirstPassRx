@@ -71,6 +71,12 @@ If the user then wants the gaps *filled*, hand off to the `formulary-data` skill
   `uhcprovider.com` (see CLAUDE.md). Until `trace-sources.mjs` gets a host allowlist for these (see
   backlog.md), treat any DEAD/DRIFT hit on these 3 hosts as needing a real-browser spot-check before
   logging it as a real gap — see issues.md's 2026-08-03 entry for the full verification.
+- **2026-08-05: `validate-links` flagged `hfs.illinois.gov/.../preferreddruglistprocess.html` as a
+  404 dead link — a false positive, another instance of the "looks dead, isn't" host pattern.** A
+  browser-UA `curl` got a clean 200. This script's plain fetch (no browser UA) is blocked by hosts
+  that a real UA sails through; treat any single dead-link hit from `validate-links` on a
+  government/payer host as needing this spot-check before logging it as a real gap, same as the
+  3 hosts already listed above for `trace:live`.
 - **2026-08-03: `npm run validate-links` is a separate, older script
   (`scripts/validate-links.cjs`) from `npm run validate-prices:live` — don't confuse the two.**
   `validate-links` re-derives GoodRx slugs naively from raw drug names (ignoring the real per-dosage

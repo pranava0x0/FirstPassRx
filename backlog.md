@@ -11,6 +11,43 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## High
 
+- **Remaining osteoporosis/insulin cash-price gap (`KNOWN_UNPRICED_GAP` = 33, as of 2026-08-05).**
+  Risedronate, ibandronate, and the "Norethindrone Tablet" coverage gap flagged 2026-08-05 (PA
+  scale-up) are now CLOSED — real Cost Plus prices captured the same day. What's left, all
+  confirmed not-Cost-Plus-carried and GoodRx-blocked (session-wide "Access to this page has been
+  denied," 5th consecutive session with this exact block): zoledronic acid/Reclast (needs the
+  Edit-flow or a correct dosage param, not the bare slug — the bare slug landed on the WRONG
+  oncology-dose product on 2026-08-02), pamidronate (IV only), abaloparatide/Tymlos, romosozumab/
+  Evenity, etidronate disodium, VoSpire ER, Apidra/Admelog (rapid-acting insulin brands), and
+  intentionally-excluded IV-route ibandronate mentions (real, distinct, unpriced product — priced
+  as the oral tablet would be a route-of-administration mispricing bug, see `cash.ts`'s
+  ibandronate rule comment). **Impact: medium** (osteoporosis is now a 7-state topic; every
+  unpriced cell is a dead end for the uninsured-cash-price user). **Effort: low** (same
+  rule-authoring pattern as every prior cash-price session, once GoodRx access is clean again — try
+  manufacturer/copay-card pages only if they're genuine cash prices, not insurance-gated coupons;
+  see the 2026-08-03 ledger entry's Forteo-card rejection for why that distinction matters).
+  **Cost: zero** (no API cost, just vendor bot-block risk).
+- **Dosing-caveat field for clinically sharp renal/hepatic/age cutoffs.** The app currently shows
+  exactly one static adult `sig`/`sigShort`/`plainSig` per (payer, class) cell with no way to flag
+  that a drug is contraindicated or needs dose reduction below a specific threshold — metformin
+  (eGFR cutoff), bisphosphonates (CrCl <30–35 contraindicated — directly relevant now that
+  risedronate/ibandronate/alendronate all ship across 7 osteoporosis-topic states), SGLT2
+  inhibitors, ACE inhibitors, and insulin titration all have real, guideline-stated cutoffs this
+  app doesn't surface anywhere. Not a dosing calculator (out of scope — `RxSig.tsx` already frames
+  the sig as an editable starting point a clinician adjusts, a deliberate design choice worth
+  keeping) — just a short, sourced flag (e.g. "Avoid if eGFR <30") on `PreferredAgent`, same "show
+  the data, not a black-box score" principle the rest of the app follows. **Impact: medium**
+  (patient-safety-adjacent, but only for a bounded set of ~6-8 classes with real cutoffs).
+  **Effort: medium** (new optional schema field + UI treatment + sourcing each cutoff from the FDA
+  label, one class at a time — start with osteoporosis given the CrCl relevance). **Cost: zero.**
+- **National coverage: 43 states still have zero guides — needs an explicit prioritization
+  decision, not an assumed default.** Flagged 2026-08-05 after CA shipped; the user was asked which
+  axis to prioritize by (Medicaid population size, single-statewide-PDL states first — cheaper/
+  less error-prone than fragmented per-MCO states, Texas already flagged as a strong candidate on
+  this basis — or a specific state list) and hasn't answered yet. Don't pick unilaterally next
+  session; this is a genuinely large scope call (43 × 7 possible guides) that deserves the same
+  "ask before scaling" treatment already applied to every state/topic gate in
+  `docs/RESUME-EXPANSION.md`.
 - **Formulary change-history / diff view.** `formulary.json` is git-versioned and every guide
   already carries `capturedAt`/`lastReviewed` dates, but there's no user-facing way to see "this
   drug moved from preferred to non-preferred as of July 2026" — exactly the surprise that causes the
@@ -629,6 +666,12 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## Low
 
+- **`docs/agent-runs.md`'s "Running total across all sessions" hasn't been reconciled since the
+  2026-07-06 narrative, despite ~15+ more dated Workflow rows added since.** Noticed 2026-08-05
+  while appending that session's own rows. Not a data-loss problem (every individual row is a real,
+  dated record) — just a rollup that needs a full pass over every row since 07-06 to recompute
+  accurately, which wasn't worth guessing at inline. Low priority: the per-run rows are the load-
+  bearing content; the aggregate is a nice-to-have summary stat.
 - **Remove or rewrite `scripts/validate-links.cjs`.** It predates `validate-prices.mjs`, re-derives
   GoodRx slugs naively from raw drug names instead of the real per-dosage `goodRxParams` logic in
   `src/lib/cash.ts`, and HEAD-checks ~2240 URLs with no batching (several minutes, mostly noise —

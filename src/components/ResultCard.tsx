@@ -95,7 +95,10 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
           ) : null}
           <div className="recommendation-hero__meta">
             <span className="recommendation-hero__cost">
-              In plan: <b>{record.tier ?? 'covered'}</b>
+              In plan:{' '}
+              <b>
+                {record.tier ?? (record.preferredRestriction ? 'restricted — see coverage detail' : 'covered')}
+              </b>
             </span>
           </div>
           <CashPriceBoxes

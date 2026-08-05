@@ -53,6 +53,7 @@ Never blindly write code.
 - **Tree-shake and code-split.** Lazy-load what a page needs; don't bundle every controller everywhere.
 - **Benchmark against best-in-class.** If the simplest site in the org is orders of magnitude lighter, review the build.
 - **Document subsystems.** A `docs/` folder noting non-obvious subsystems, decisions, and correct CLI invocations. One line prevents repeated mistakes.
+- **A doc comment stating an invariant doesn't enforce it — grep every consumer against the sibling field it's supposed to gate.** A type's field comment said "the UI must NOT claim X without confirming Y," but the UI's most prominent element still rendered a bare fallback (`tier ?? 'covered'`) whenever the tier was unset, ignoring a sibling `preferredRestriction` field entirely — 58 records across the dataset silently violated an invariant that was already written down, in the same file, next to the field. Stating a rule in a comment is not the same as a consumer respecting it; when adding an invariant like this, grep for every read site of the "default" field and confirm each one actually checks the sibling that's supposed to override it.
 
 ---
 
@@ -68,6 +69,7 @@ Never blindly write code.
 - **Verify files are really on disk before debugging a "code" bug.** Cloud-sync (iCloud / Dropbox / OneDrive) can leave dataless placeholders that read empty / NUL while the inode reports the right size — and `git status` calls them *clean* because it trusts its stat-cache and never reads the bytes. The symptoms masquerade as code bugs (`ERR_INVALID_PACKAGE_CONFIG`, every route 500s, multi-minute boots, `page 2.tsx` conflict-copies). Fix: delete the file *then* `git checkout` (a plain checkout no-ops on a "clean" placeholder); better, move the repo out of the synced folder.
 - **Key file-backed caches on a signature, not a TTL.** For a cache fronting a local file, key on `(mtime_ns, size)` instead of a fixed `ttl=`; it busts the instant the file changes and serves indefinitely otherwise. A time-based TTL either serves stale data or churns needlessly.
 - **A web-fetch tool's own "I can't read this" message isn't proof the source is unreadable — check what it already saved.** An AI-summarization fetch step can choke on a PDF ("corrupted or encoded... binary data") even on a small, well-formed file (confirmed on 135KB/313KB PDFs, not just huge ones); the tool result still names the local path where it saved the raw bytes before giving up on summarizing them. Read that path directly (native PDF support) before concluding the source needs a different fetch method or is unreachable.
+- **Before concluding a referenced local checkpoint is gone, check the primary/canonical environment, not just the current isolated one.** A gitignored checkpoint directory referenced by a resumable-session ledger looked missing in a fresh git worktree (isolated environments don't share gitignored files) — but the gather that produced it had run directly against the main checkout, not a worktree, and all the files were still sitting there untouched. `git worktree list` plus a look in each listed path's equivalent directory costs nothing and can turn an assumed "re-do the expensive work" into a free recovery.
 
 ---
 
@@ -318,7 +320,14 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   connection drop, not against the directory outliving the session. Don't treat an unmerged
   checkpoint as durable state referenced from committed docs across sessions — either merge it into
   `formulary.json` promptly, or note in the backlog that the checkpoint may need re-gathering from
-  scratch next time, not "resume from disk."
+  scratch next time, not "resume from disk." **Before concluding a referenced checkpoint is gone,
+  check the main checkout's `data-gathering/` directory, not just the current worktree's.** A
+  2026-08-05 session started in a fresh worktree, found `data-gathering/pa-all-topics-2026-07-25/`
+  missing there, and initially assumed it needed a full re-gather — but the original 2026-07-25
+  gather had run directly against `/Users/pranava/Projects/FirstPassRx` (the main checkout, not a
+  worktree), so all 68 checkpoint files were still sitting there untouched. `git worktree list` +
+  `ls <main-checkout>/data-gathering/` costs nothing and can turn a "re-gather from scratch" task
+  back into a free recovery.
 - **`validate()`'s count-floor (every payer × active class must have a cell) means a guide can't be
   committed with partial payer coverage.** Adding a new multi-payer guide (e.g. VA diabetes: 8
   payers × 4 classes) can't be merged into `src/data/formulary.json` piecemeal as each payer's

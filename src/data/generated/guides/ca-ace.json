@@ -1,0 +1,394 @@
+{
+  "id": "ca-ace",
+  "label": "CA · ACE Inhibitors",
+  "stateCode": "CA",
+  "region": "California",
+  "topicId": "ace-inhibitors",
+  "topic": "ACE Inhibitors",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-08-05",
+  "capturedAt": "2026-08-05",
+  "payers": [
+    {
+      "id": "medi-cal-rx",
+      "name": "Medi-Cal Rx — California Medicaid Pharmacy Program (Fee-for-Service carve-out, statewide)",
+      "shortName": "Medi-Cal Rx",
+      "pbm": "Magellan Health (Magellan Medicaid Administration; DHCS vendor)",
+      "productName": "Medi-Cal Rx Contract Drugs List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Medi-Cal Rx Contract Drugs List, effective 2026-08-01",
+      "formularyUrl": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "sourceIds": [
+        "medi-cal-rx-ace-source-2026-08"
+      ]
+    },
+    {
+      "id": "kaiser-permanente-ca",
+      "name": "Kaiser Permanente (Commercial HMO)",
+      "shortName": "Kaiser Permanente",
+      "pbm": "Internal (Kaiser Foundation Health Plan formulary; closed integrated pharmacy)",
+      "productName": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs), effective 2026-08-04",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "sourceIds": [
+        "kaiser-permanente-ca-ace-source-2026-08"
+      ]
+    },
+    {
+      "id": "anthem-bcbs-ca",
+      "name": "Anthem Blue Cross of California (Commercial)",
+      "shortName": "Anthem Blue Cross CA",
+      "pbm": "CarelonRx",
+      "productName": "2026 California Select Drug List - Four Tier",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 California Select Drug List - Four Tier, effective 2026-08-01",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "sourceIds": [
+        "anthem-bcbs-ca-ace-source-2026-08"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "ace-inhibitor",
+      "name": "ACE inhibitors",
+      "shortName": "ACE inhibitor",
+      "plainName": "Blood pressure pill (ACE)",
+      "description": "Angiotensin-converting-enzyme inhibitors (lisinopril, enalapril, benazepril, ramipril, etc.) -- first-line oral therapy for hypertension and heart failure.",
+      "plainDescription": "A common daily pill for high blood pressure or heart failure.",
+      "indication": "Hypertension & heart failure",
+      "sourceIds": [
+        "medi-cal-rx-ace-source-2026-08"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "id": "medi-cal-rx-ace-source-2026-08",
+      "label": "Medi-Cal Rx Contract Drugs List",
+      "publisher": "California Department of Health Care Services (DHCS) / Medi-Cal Rx (Magellan Medicaid Administration)",
+      "type": "gov",
+      "url": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "effectiveDate": "2026-08-01",
+      "accessed": "2026-08-05"
+    },
+    {
+      "id": "kaiser-permanente-ca-ace-source-2026-08",
+      "label": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "publisher": "Kaiser Permanente / Kaiser Foundation Health Plan",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "effectiveDate": "2026-08-04",
+      "accessed": "2026-08-05"
+    },
+    {
+      "id": "anthem-bcbs-ca-ace-source-2026-08",
+      "label": "2026 California Select Drug List - Four Tier",
+      "publisher": "Anthem Blue Cross of California / CarelonRx",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "effectiveDate": "2026-08-01",
+      "accessed": "2026-08-05"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ],
+  "records": [
+    {
+      "payerId": "medi-cal-rx",
+      "classId": "ace-inhibitor",
+      "preferredAgent": {
+        "inn": "lisinopril",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Take 1 tablet (10 mg) by mouth once daily",
+        "sigShort": "10mg PO QD",
+        "plainSig": "Take one 10 mg tablet by mouth once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "Benazepril HCl",
+          "note": "covered, no PA",
+          "sourceIds": [
+            "medi-cal-rx-ace-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Enalapril maleate",
+          "note": "covered, no PA",
+          "sourceIds": [
+            "medi-cal-rx-ace-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Captopril",
+          "note": "covered, no PA",
+          "sourceIds": [
+            "medi-cal-rx-ace-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Fosinopril sodium",
+          "note": "covered, no PA",
+          "sourceIds": [
+            "medi-cal-rx-ace-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Moexipril HCl",
+          "note": "covered, no PA",
+          "sourceIds": [
+            "medi-cal-rx-ace-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Perindopril erbumine",
+          "note": "covered, no PA",
+          "sourceIds": [
+            "medi-cal-rx-ace-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Quinapril HCl",
+          "note": "covered, no PA",
+          "sourceIds": [
+            "medi-cal-rx-ace-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Ramipril",
+          "note": "covered, no PA",
+          "sourceIds": [
+            "medi-cal-rx-ace-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Trandolapril",
+          "note": "covered, no PA",
+          "sourceIds": [
+            "medi-cal-rx-ace-source-2026-08"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "tier": null,
+      "verification": "verified",
+      "verificationNote": "Read from 'Diuretics and Cardiovascular: Antihypertensive' (CDL pp. 126-134), effective 08/01/2026. Every ACE inhibitor entry checked — Benazepril, Captopril, Enalapril, Fosinopril, Lisinopril, Moexipril, Perindopril, Quinapril, Ramipril, Trandolapril, and their HCTZ combinations — carries no asterisk and no UM Type code in the standard tablet rows (only the pediatric oral-solution formulations of Amlodipine/Benazepril, Enalapril, and Lisinopril carry an 'AL' age-limit restriction, which doesn't apply to the standard adult tablet forms). Lisinopril was selected as preferred as the most commonly prescribed first-line ACE inhibitor; the CDL itself makes no preferred/non-preferred distinction among them — all are equally open. Sig/strength are standard prescribing convention, not printed verbatim in the CDL.",
+      "sourceIds": [
+        "medi-cal-rx-ace-source-2026-08"
+      ],
+      "coverageSourceIds": [
+        "medi-cal-rx-ace-source-2026-08"
+      ],
+      "restrictionSourceIds": [
+        "medi-cal-rx-ace-source-2026-08"
+      ],
+      "lastReviewed": "2026-08-05"
+    },
+    {
+      "payerId": "kaiser-permanente-ca",
+      "classId": "ace-inhibitor",
+      "preferredAgent": {
+        "inn": "lisinopril",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Take 10 mg by mouth once daily; titrate per blood pressure/renal function (typical starting dose for hypertension — individualize)",
+        "sigShort": "10 mg PO once daily",
+        "plainSig": "One pill, once a day, at the same time each day. Your prescriber may raise or lower the dose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "benazepril hydrochloride 5/10/20/40 mg tablets",
+          "note": "Tier 1, generic, no restriction — second ACE inhibitor option",
+          "sourceIds": [
+            "kaiser-permanente-ca-ace-source-2026-08"
+          ]
+        },
+        {
+          "drug": "lisinopril-hydrochlorothiazide combination tablets",
+          "note": "Tier 1, generic, no restriction — for patients needing a diuretic added",
+          "sourceIds": [
+            "kaiser-permanente-ca-ace-source-2026-08"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "enalapril (oral tablet)",
+          "outcome": "nonformulary",
+          "reason": "Not listed as an oral tablet; only injectable enalaprilat solution (a medical-benefit drug) appears",
+          "sourceIds": [
+            "kaiser-permanente-ca-ace-source-2026-08"
+          ]
+        },
+        {
+          "drug": "ramipril",
+          "outcome": "nonformulary",
+          "reason": "Not listed anywhere in the formulary",
+          "sourceIds": [
+            "kaiser-permanente-ca-ace-source-2026-08"
+          ]
+        },
+        {
+          "drug": "captopril",
+          "outcome": "nonformulary",
+          "reason": "Not listed anywhere in the formulary",
+          "sourceIds": [
+            "kaiser-permanente-ca-ace-source-2026-08"
+          ]
+        },
+        {
+          "drug": "quinapril, fosinopril, moexipril, perindopril, trandolapril",
+          "outcome": "nonformulary",
+          "reason": "None of these ACE inhibitors appear anywhere in the formulary",
+          "sourceIds": [
+            "kaiser-permanente-ca-ace-source-2026-08"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "tier": "Tier 1 - generic",
+      "verification": "verified",
+      "verificationNote": "Read directly from the Kaiser Permanente 2026 Northern California Commercial HMO Formulary PDF (effective 08/04/2026), CARDIOVASCULAR DRUGS > RENIN-ANGIOTENSIN-ALDOSTERONE SYSTEM INHIBITORS section, printed page 41 (PDF p.42): only 'benazepril hcl' (four strengths) and 'lisinopril' (six strengths) plus 'lisinopril-hydrochlorothiazide' (three strengths) are listed, all Tier 1 with no codes; also 'enalaprilat soln 1.25 mg/ml' Tier 1 tagged 'MB' (medical-benefit, professionally administered). Confirmed via full-text search of the entire 145-page document that oral enalapril, ramipril, captopril, quinapril, fosinopril, moexipril, and perindopril/trandolapril do not appear anywhere — Kaiser's internal ACE inhibitor formulary is narrowed to just lisinopril and benazepril, an unusually short list versus most external PDLs.",
+      "sourceIds": [
+        "kaiser-permanente-ca-ace-source-2026-08"
+      ],
+      "coverageSourceIds": [
+        "kaiser-permanente-ca-ace-source-2026-08"
+      ],
+      "restrictionSourceIds": [
+        "kaiser-permanente-ca-ace-source-2026-08"
+      ],
+      "lastReviewed": "2026-08-05"
+    },
+    {
+      "payerId": "anthem-bcbs-ca",
+      "classId": "ace-inhibitor",
+      "preferredAgent": {
+        "inn": "lisinopril",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Take 1 tablet (10 mg) by mouth once daily",
+        "sigShort": "10 mg PO once daily",
+        "plainSig": "One pill, once a day, for blood pressure or heart health."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "benazepril hcl oral tablet (5/10/20/40 mg)",
+          "note": "Tier 1, generic, no PA/ST",
+          "sourceIds": [
+            "anthem-bcbs-ca-ace-source-2026-08"
+          ]
+        },
+        {
+          "drug": "enalapril maleate oral tablet (2.5/5/10/20 mg)",
+          "note": "Tier 1, generic, no PA/ST",
+          "sourceIds": [
+            "anthem-bcbs-ca-ace-source-2026-08"
+          ]
+        },
+        {
+          "drug": "fosinopril sodium oral tablet (10/20/40 mg)",
+          "note": "Tier 1, generic, no PA/ST",
+          "sourceIds": [
+            "anthem-bcbs-ca-ace-source-2026-08"
+          ]
+        },
+        {
+          "drug": "quinapril hcl oral tablet (5/10/20/40 mg)",
+          "note": "Tier 1, generic, no PA/ST",
+          "sourceIds": [
+            "anthem-bcbs-ca-ace-source-2026-08"
+          ]
+        },
+        {
+          "drug": "ramipril oral capsule (1.25/2.5/5/10 mg)",
+          "note": "Tier 1, generic, no PA/ST",
+          "sourceIds": [
+            "anthem-bcbs-ca-ace-source-2026-08"
+          ]
+        },
+        {
+          "drug": "trandolapril oral tablet (1/2/4 mg)",
+          "note": "Tier 1, generic, no PA/ST",
+          "sourceIds": [
+            "anthem-bcbs-ca-ace-source-2026-08"
+          ]
+        },
+        {
+          "drug": "ACE inhibitor + hydrochlorothiazide combinations (benazepril-, enalapril-, fosinopril-, lisinopril-, quinapril-HCTZ)",
+          "note": "Tier 1, generic, no PA/ST — combo antihypertensive products",
+          "sourceIds": [
+            "anthem-bcbs-ca-ace-source-2026-08"
+          ]
+        },
+        {
+          "drug": "amlodipine besylate-benazepril hcl oral capsule",
+          "note": "Tier 1, generic, no PA/ST — ACE inhibitor/CCB combo",
+          "sourceIds": [
+            "anthem-bcbs-ca-ace-source-2026-08"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "captopril",
+          "outcome": "nonformulary",
+          "reason": "Not listed anywhere in the 116-page document; a full-text search for 'captopril' returned zero hits.",
+          "sourceIds": [
+            "anthem-bcbs-ca-ace-source-2026-08"
+          ]
+        },
+        {
+          "drug": "moexipril (Univasc)",
+          "outcome": "nonformulary",
+          "reason": "Not listed anywhere in the document; a full-text search for 'moexipril' and 'univasc' returned zero hits.",
+          "sourceIds": [
+            "anthem-bcbs-ca-ace-source-2026-08"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "tier": "Tier 1 - lowest cost share (generic)",
+      "verification": "verified",
+      "verificationNote": "Read directly from the '2026 California Select Drug List, Four Tier' PDF, effective 08/01/2026 (see saba checkpoint for full source-verification detail). Read the *ACE INHIBITORS* subsection under *ANTIHYPERTENSIVES* (PDF pages 38-40): every strength of benazepril, enalapril, fosinopril, lisinopril, quinapril, ramipril, and trandolapril is listed at Tier 1 with only QL (or DO for the lowest ramipril strength) codes — no PA/ST anywhere in this subsection, confirmed verbatim line-by-line. The adjoining *ACE INHIBITORS & THIAZIDE/THIAZIDE-LIKE* and *ACE INHIBITOR & CALCIUM CHANNEL BLOCKER COMBINATIONS* subsections (same pages) are likewise all Tier 1, QL-only, no PA/ST. Coverage Requirements and Limits column codes read directly off the document's own KEY (PDF page 14) and the repeated footer legend on every content page: PA=prior authorization, ST=step therapy, QL=quantity limit, DO=dose optimization, BE=benefit exclusion, LD=limited distribution, SP=specialty pharmacy, $0=preventive drug ($0 cost share for qualifying members). Tier 1=lowest cost share (usually generic), Tier 2=higher cost share (preferred brand or newer generic), Tier 3=higher still, Tier 4=highest cost share (specialty). lisinopril 10 mg was selected as the single preferred pick to report (matching this project's other payer ace-inhibitor records) since the source itself does not rank among the seven Tier-1 ACE inhibitors — they are formulary-equivalent. A full-text search of all 116 pages for 'captopril', 'moexipril', and 'univasc' returned zero hits, so their non-formulary status is inferred from absence in an otherwise complete, alphabetically organized drug list.",
+      "sourceIds": [
+        "anthem-bcbs-ca-ace-source-2026-08"
+      ],
+      "coverageSourceIds": [
+        "anthem-bcbs-ca-ace-source-2026-08"
+      ],
+      "restrictionSourceIds": [
+        "anthem-bcbs-ca-ace-source-2026-08"
+      ],
+      "lastReviewed": "2026-08-05"
+    }
+  ]
+}

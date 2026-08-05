@@ -675,3 +675,48 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   must be checked against every existing single-agent rule for its component molecules, and placed
   above them in the array, not just added at the array's tail. `npm test` 310/310, `typecheck` and
   `validate-prices` clean. _Fixed._
+
+- **2026-08-05 · `ResultCard.tsx`'s "In plan" hero badge silently said "covered" for drugs with a
+  real coverage restriction — code bug, fixed.** The badge rendered `record.tier ?? 'covered'`,
+  ignoring `preferredRestriction` entirely. `preferredRestriction`'s own doc comment in
+  `src/types/formulary.ts` already states the UI "must NOT claim the plan covers this drug without
+  prior authorization — even the first-pass pick needs sign-off," but the most prominent element on
+  the page did exactly that whenever a source didn't state a formal tier (58 records across the
+  dataset have `preferredRestriction` set with `tier: null`). Caught during live-browser
+  verification of the CA osteoporosis merge (`kaiser-permanente-ca`/`rankl-inhibitor`: denosumab/
+  Prolia has zero line items anywhere on Kaiser's own pharmacy formulary — `preferredRestriction`
+  said so, the badge said "covered"). Fixed: the badge now reads "restricted — see coverage detail"
+  when `tier` is null but `preferredRestriction` is set. Regression test added
+  (`ResultCard.test.tsx`, new file) covering all 3 cases: tier stated, no tier + restriction, no
+  tier + no restriction. `npm test` 561/561. _Fixed._
+
+- **2026-08-05 (code review pass) · adversarial review of this PR's own diff caught 2 real
+  regex-shadowing mispricing bugs — one self-introduced, one pre-existing — via a full-formulary
+  sweep against the real `cash.ts` functions (not hand-copied regex).** (1) Self-introduced: the
+  vaginal-estradiol broadening (this same session, closing CA's cash-price gap) used a lookahead
+  scoped only to text *after* "vaginal" to exclude cream mentions — but Estring/Femring/Imvexxy
+  brand names sit *before* "vaginal" in their strings ("IMVEXXY (estradiol vaginal insert)"), so
+  the lookahead never saw them and they got the Vagifem-tablet rule's $90.88 price instead of
+  their own (correct) rules. Fixed by anchoring the exclusion at the start of the whole string via
+  `^(?!.*...)` so it scans everywhere. (2) Pre-existing, unrelated to this session's other edits:
+  sources abbreviate "ethinyl" to "eth"/"ac-eth" ("norethindrone-eth estradiol", "Norethindrone
+  ac-eth estradiol oral tablet") — neither contains the literal phrase "ethinyl estradiol" the
+  norethindrone/estradiol combo rule required, so both fell through to the plain oral-estradiol
+  rule and were priced as single-agent estradiol ($34.18) instead of the combo's real price
+  ($61.49). Both confirmed via a temporary sweep test (not committed) that ran the actual
+  `hasCashLinkRule`/`goodRxPrice`/`costPlusPrice` functions against every covered name touching
+  estradiol/norethindrone/risedronate/ibandronate, not just hand-picked examples — this is exactly
+  the class of bug `hasCashLinkRule`'s coverage check (`KNOWN_UNPRICED_GAP`) cannot catch, since it
+  only proves *some* rule matched, not the *correct* one (documented lesson from 2026-07-16).
+  2 new regression tests added (`cash.test.ts`), `npm test` 566/566. _Fixed._
+
+- **2026-08-05 (code review, Codex bot) · a bare `\brisedronate\b` regex priced the Atelvia
+  delayed-release variant as the plain 5mg-daily product — real bug, fixed same day it shipped.**
+  Codex's automated review of PR #16 caught it directly: the rule's own comment said Atelvia
+  "should not be folded into" the 5mg-daily rule (a distinct $101.53/4-tablet product, already
+  researched and priced the same session), but the regex did exactly that — every covered name
+  mentioning "delayed-release"/"Atelvia"/"DR"/"TBEC" also contains the word "risedronate" and
+  matched the bare rule first (`.find()` returns first match). Fixed by adding a dedicated
+  Atelvia/delayed-release rule (`/atelvia|delayed.release|\bdr\/ec\b|\btbec\b/i`) positioned
+  before the bare rule, using the real Cost Plus price already captured. 3 new regression tests.
+  `npm test` 570/570. _Fixed._

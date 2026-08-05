@@ -89,6 +89,47 @@ describe('cash price links', () => {
     // e.g. Xigduo XR resolving to plain dapagliflozin at $8.35 instead of the $19.77 combo price.
     expect(goodRxUrl(name)).toContain(expectedSlug)
   })
+
+  // Regression tests for 2 more rule-shadowing bugs, caught 2026-08-05 by a full-formulary sweep
+  // (not the CA/PA merges' original bugs, but found in passing while verifying today's other
+  // regex broadenings didn't shadow anything).
+  it.each(['ESTRING (estradiol vaginal ring 2 mg)', 'IMVEXXY (estradiol vaginal insert)', 'Femring (higher-systemic-dose estradiol vaginal ring)'])(
+    'does not route %s to the Vagifem/vaginal-tablet rule',
+    (name) => {
+      // Broadening the vaginal-tablet rule to catch a bare "Estradiol vaginal" (no "tablet"/
+      // "insert" word) also caught Estring/Femring/Imvexxy ring/insert product names, which
+      // contain "estradiol vaginal" as a substring too -- they'd have gotten the tablet rule's
+      // $90.88 GoodRx price instead of their own correct (link-only or differently-priced) rules.
+      expect(goodRxUrl(name)).not.toContain('vagifem')
+    },
+  )
+
+  it.each(['Norethindrone ac-eth estradiol oral tablet 0.5-2.5 mg-mcg or 1-5 mg-mcg', 'norethindrone-eth estradiol oral tablet'])(
+    'routes %s to the norethindrone/ethinyl-estradiol combo rule, not plain oral estradiol',
+    (name) => {
+      // Sources abbreviate "ethinyl" to "eth"/"ac-eth"; neither abbreviation contains the literal
+      // phrase "ethinyl estradiol" the combo rule required, so both fell through to the plain
+      // oral-estradiol rule and were priced as single-agent estradiol ($34.18) instead of the
+      // combo's real price ($61.49).
+      expect(goodRxPrice(name)?.price).toBe(61.49)
+    },
+  )
+
+  it.each([
+    'risedronate delayed-release (dr/ec) 35mg',
+    'Atelvia (brand risedronate DR)',
+    'ATELVIA (brand delayed-release risedronate, tbec 35mg)',
+  ])('prices %s as the Atelvia delayed-release product, not the bare 5mg-daily rule', (name) => {
+    // Caught by Codex review 2026-08-05: the bare risedronate rule's own comment said Atelvia
+    // "should not be folded into" the 5mg-daily rule, but every DR/Atelvia name also contains the
+    // word "risedronate" and matched the bare rule first anyway -- $31.54/30-tablet-5mg instead of
+    // the DR product's real $101.53/4-tablet-35mg price.
+    expect(costPlusPrice(name)?.price).toBe(101.53)
+  })
+
+  it('still prices plain risedronate/Actonel mentions at the 5mg-daily rate', () => {
+    expect(costPlusPrice('risedronate (Actonel) tablets')?.price).toBe(31.54)
+  })
 })
 
 /** Every drug name a live cell can render: the preferred agent + its covered alternatives,
@@ -144,6 +185,7 @@ describe('cash price coverage across the live formulary', () => {
       /evamist/i,
       /alora/i,
       /estradiol transdermal(?! system)/i,
+      /estradiol patch/i,
       /meclofenamate/i,
       /salsalate/i,
       /ketoprofen/i,

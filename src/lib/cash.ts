@@ -226,8 +226,41 @@
  * 2026-07-30) found it had added teriparatide/Forteo/Bonsity since then -- a real catalog change,
  * not a missed search. Cost-Plus-only rule added (see below), same shape as the paroxetine/
  * fluvoxamine SSRI rules. Remaining gap: zoledronic acid/Reclast, abaloparatide/Tymlos -- neither
- * is Cost-Plus-carried (re-confirmed 2026-08-04) and GoodRx access is still needed for both. */
-export const KNOWN_UNPRICED_GAP = 78
+ * is Cost-Plus-carried (re-confirmed 2026-08-04) and GoodRx access is still needed for both.
+ * Raised 78 → 90 on 2026-08-05: merging PA's remaining 20 classes (inhalers/ace/diabetes/
+ * menopause/nsaids/osteoporosis) introduced 3 osteoporosis molecule families never seen in any
+ * prior guide's alternatives lists -- risedronate (Actonel/Atelvia), ibandronate (Boniva), and
+ * pamidronate (IV) -- none had an explicit cash-link rule yet (only alendronate/zoledronic
+ * acid/denosumab/teriparatide/raloxifene do). Also added a handful of one-off new names:
+ * abaloparatide/Tymlos and romosozumab/Evenity (already-known gaps, now also appearing as PA
+ * alternatives), VoSpire ER, Apidra/Admelog (rapid-acting insulin brand variants), and a plain
+ * "Norethindrone Tablet (generic)" phrasing. Headless run, no browser access -- logged the
+ * molecule-family targets to backlog.md rather than guessing prices.
+ * Lowered 90 → 29 on 2026-08-05 (same day, later): fixed the "Norethindrone Tablet (generic)"
+ * gap by narrowly broadening the existing norethindrone-acetate rule (this app has no
+ * contraception class, so a bare "norethindrone tablet" here is always the endometrial-protection
+ * acetate dose). Added real Cost Plus prices for risedronate/Actonel (30 tablets, 5mg daily-dose,
+ * $31.54) and ibandronate/Boniva (dose-pack of 3, 150mg once-monthly, $8.51) -- both collapse
+ * across every osteoporosis guide shipped so far, not just PA. GoodRx was session-wide "Access to
+ * this page has been denied" blocked from the first lookup (5th consecutive session with this
+ * exact block), so both are Cost-Plus-only this pass. The ibandronate rule excludes any name
+ * mentioning iv/injection/injectable/syringe/vial -- several covered names explicitly describe IV
+ * ibandronate (a real, distinct, unpriced product Cost Plus does not carry), and pricing those as
+ * the cheap oral tablet would have been a route-of-administration mispricing bug, same category as
+ * the Reclast/Zometa and Respimat/HandiHaler traps already documented in CLAUDE.md. Remaining gap,
+ * all confirmed not-Cost-Plus-carried this session, GoodRx-blocked: zoledronic acid/Reclast,
+ * pamidronate (IV only), abaloparatide/Tymlos, romosozumab/Evenity, etidronate disodium, VoSpire
+ * ER, Apidra/Admelog (rapid-acting insulin brands), and IV-route ibandronate mentions (intentional
+ * exclusion, see above).
+ * 29 → 33 on 2026-08-05 (same day, later, after ca-* guides merged): closed 2 pre-existing gaps
+ * that CA happened to newly exercise (a bare "Estradiol vaginal"/"estradiol (vaginal)" phrasing
+ * with no "tablet"/"insert" word -- broadened the existing Yuvafem/vaginal-insert rule; a plain
+ * "estradiol N mg ... tablets" phrasing lacking the word "oral" -- broadened the existing oral
+ * rule). Two genuinely new, confirmed-not-Cost-Plus-carried gaps: fenoprofen (Nalfon, an NSAID)
+ * and plain regular human insulin (Humulin R/Novolin R-equivalent) -- both searched directly,
+ * neither returned a real product. Net: 35 raw CA-introduced unmatched names → 33 after the two
+ * regex fixes. */
+export const KNOWN_UNPRICED_GAP = 33
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -449,7 +482,15 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-07-01',
   },
   {
-    matches: /ethinyl estradiol.*norethindrone|norethindrone.*ethinyl estradiol|jinteli|fyavolv|femhrt/i,
+    // "norethindrone[-\s]?(?:ac[-\s]?)?eth\b" added 2026-08-05 -- found via a full-formulary sweep
+    // this session (not the original bug being fixed, but caught in passing): several sources
+    // abbreviate "ethinyl" to "eth" or "ac-eth" ("norethindrone-eth estradiol", "Norethindrone
+    // ac-eth estradiol oral tablet") -- none contain the literal phrase "ethinyl estradiol" this
+    // rule otherwise requires, so they fell through to the plain oral-estradiol rule below and got
+    // priced as single-agent estradiol ($34.18/$6.77) instead of this combo product's real price
+    // -- a mispricing bug that predates this session's other edits.
+    matches:
+      /ethinyl estradiol.*norethindrone|norethindrone.*ethinyl estradiol|jinteli|fyavolv|femhrt|norethindrone[-\s]?(?:ac[-\s]?)?eth\b/i,
     goodRxSlug: 'jinteli',
     costPlusPath: 'norethindrone-acetate-ethinyl-estradiol-1mg-5mcg-pack-of-tablets-90-fyavolv',
     goodRxPrice: { price: 61.49, quantity: '28 tablets, 1mg/5mcg' },
@@ -457,7 +498,17 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-06-30',
   },
   {
-    matches: /estradiol vaginal (tablet|insert)|vagifem|yuvafem/i,
+    // Broadened 2026-08-05: several sources describe this product without the word "tablet"/
+    // "insert" right after "vaginal" -- a bare "Estradiol vaginal" (pre-existing, several NY
+    // guides) or CA's "estradiol (vaginal)" INN-field phrasing. First draft of this broadening
+    // (word-boundary + a lookahead scoped only to text AFTER "vaginal") shadowed Estring/Femring/
+    // Imvexxy -- e.g. "IMVEXXY (estradiol vaginal insert)" has the brand name BEFORE "vaginal", so
+    // a lookahead anchored at the match point never saw it, and the string wrongly got this rule's
+    // Vagifem-tablet price instead of falling through to Estring/Femring/Imvexxy's own (correct,
+    // separate) rules further down. Fixed by anchoring the exclusion at the START of the whole
+    // string via `^(?!.*...)` so it scans everywhere, not just after the "vaginal" match point.
+    matches:
+      /^(?!.*\b(?:cream|ring|imvexxy|estring|femring)\b).*estradiol vaginal\b|estradiol \(vaginal\)|vagifem|yuvafem/i,
     goodRxSlug: 'vagifem',
     costPlusPath: 'estradiol-10mcg-vaginaltablet8pack',
     goodRxPrice: { price: 90.88, quantity: '24 inserts, 10mcg' },
@@ -503,7 +554,12 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-06-30',
   },
   {
-    matches: /estradiol oral|estrace|^estradiol$/i,
+    // "estradiol.*mg.*tablet" added 2026-08-05 -- CA's "estradiol 0.5 mg / 2 mg / 10 mcg tablets"
+    // phrasing lacks the word "oral" but is clearly an oral tablet strength listing (0.5mg/2mg are
+    // oral doses; 10mcg is likely a co-listed vaginal strength, but the dominant, representative
+    // form here is oral). Safe this late in the rule order -- every vaginal/patch/gel/transdermal/
+    // combo rule above already claims anything route-specific first.
+    matches: /estradiol oral|estrace|^estradiol$|estradiol.*\bmg\b.*tablet/i,
     goodRxSlug: 'estradiol',
     costPlusPath: 'estradiol-1mg-tablet',
     goodRxPrice: { price: 34.18, quantity: '90 tablets, 1mg' },
@@ -665,8 +721,13 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     // "norethindrone.*5\s?mg" added 2026-07-16 -- a formulary source can name this drug
     // "norethindrone 5 mg tablet" without the word "acetate" even though 5mg is specifically the
     // acetate-salt strength (the plain/non-acetate form is 0.35mg, Ortho Micronor, a different
-    // contraceptive-dose product).
-    matches: /norethindrone acetate|norethindrone.*5\s?mg/i,
+    // contraceptive-dose product). "norethindrone tablet \(generic\)" added 2026-08-05 -- PA
+    // Medicaid's PDL lists a bare "Norethindrone Tablet" alongside "Gallifrey Tablet (norethindrone
+    // acetate, brand)" in its PROGESTATIONAL AGENTS section (no strength stated); this app has no
+    // contraception class, so every real occurrence of standalone norethindrone here is the
+    // endometrial-protection acetate-salt dose, not the 0.35mg contraceptive product -- if a future
+    // source names the 0.35mg product this bare, re-narrow this alternation.
+    matches: /norethindrone acetate|norethindrone.*5\s?mg|norethindrone tablet \(generic\)/i,
     goodRxSlug: 'norethindrone',
     costPlusPath: 'norethindroneacetate-5mg-tablet',
     goodRxPrice: { price: 33.50, quantity: '30 tablets, 5mg' },
@@ -1476,6 +1537,52 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     costPlusPath: 'teriparatide-560-mcg_2_24ml-solution-pen-injector-2_24',
     costPlusPrice: { price: 775.15, quantity: '1 pen-injector, 560 mcg/2.24 mL' },
     pricesCapturedAt: '2026-08-04',
+  },
+  {
+    // Atelvia/delayed-release risedronate -- a genuinely different product (35mg once-weekly
+    // delayed-release tablet) with its own real Cost Plus price, captured the same session as the
+    // bare risedronate rule below. Caught by Codex review 2026-08-05: the original bare
+    // `\brisedronate\b` rule's own comment said Atelvia "should not be folded into" the 5mg-daily
+    // rule, but the regex did exactly that -- every covered name mentioning "delayed-release" or
+    // "Atelvia" also contains the word "risedronate" and matched the bare rule first, showing the
+    // $31.54/30-tablet-5mg price for a 4-tablet/35mg-DR product. Placed before the bare rule so
+    // Atelvia/DR names route here instead. Multi-strength alternatives that mention
+    // "delayed-release" alongside other strengths (e.g. "risedronate sodium (35 mg weekly, 5 mg
+    // daily, 150 mg monthly, delayed-release 35 mg)") are inherently ambiguous about which single
+    // strength to represent -- treated as DR since that's the most specific term present.
+    matches: /atelvia|delayed.release|\bdr\/ec\b|\btbec\b/i,
+    goodRxSlug: 'atelvia',
+    costPlusPath: 'risedronate-sodium-35mg-tablet-atelvia',
+    costPlusPrice: { price: 101.53, quantity: '4 tablets, 35mg delayed-release (once-weekly dosing)' },
+    pricesCapturedAt: '2026-08-05',
+  },
+  {
+    // Risedronate/Actonel oral-bisphosphonate -- Cost Plus carries the daily-dose 5mg strength
+    // (30 tablets) as the representative price, same convention as alendronate/raloxifene above.
+    // GoodRx session-wide blocked ("Access to this page has been denied" from the first lookup),
+    // Cost-Plus-only this pass. The Atelvia/delayed-release rule above claims that variant first.
+    matches: /\brisedronate\b|\bactonel\b/i,
+    goodRxSlug: 'risedronate',
+    costPlusPath: 'risedronate-sodium-5mg-tablet-actonel',
+    costPlusPrice: { price: 31.54, quantity: '30 tablets, 5mg (daily-dosing strength)' },
+    pricesCapturedAt: '2026-08-05',
+  },
+  {
+    // Ibandronate/Boniva oral-bisphosphonate -- Cost Plus's only listing is the once-monthly 150mg
+    // dose-pack-of-3 (a 3-month supply, oral tablet). GoodRx session-wide blocked, Cost-Plus-only
+    // this pass. Route-of-administration exclusion: several covered names explicitly describe IV/
+    // injectable ibandronate ("ibandronate IV (injectable)", "Ibandronate Syringe, Ibandronate
+    // Vial", "ibandronate sodium (oral and IV, generic Boniva)") -- Cost Plus does not carry that
+    // formulation (confirmed 2026-08-05, only the oral dose-pack appears), so pricing those as the
+    // cheap oral tablet would misrepresent a different, unpriced product. Excludes any name
+    // mentioning iv/injection/injectable/syringe/vial; those fall through to the unpriced gap
+    // instead. Same route-mismatch caution as the Reclast/Zometa and Respimat/HandiHaler traps
+    // documented in CLAUDE.md.
+    matches: /^(?!.*\b(?:iv|injection|injectable|syringe|vial)\b).*(?:\bibandronate\b|\bboniva\b)/i,
+    goodRxSlug: 'ibandronate',
+    costPlusPath: 'ibandronate-sodium-150mg-tablet-dose-pack-3-boniva',
+    costPlusPrice: { price: 8.51, quantity: '1 dose pack of 3 tablets, 150mg (3-month supply)' },
+    pricesCapturedAt: '2026-08-05',
   },
 ]
 

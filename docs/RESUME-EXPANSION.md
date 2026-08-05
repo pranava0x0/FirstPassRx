@@ -552,3 +552,150 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   PA's remaining 20 gathered-and-checkpointed classes, then CA. If GoodRx access is clean again,
   the remaining osteoporosis cash-price gap is zoledronic acid/Reclast (needs a correct dosage
   param, not the bare slug) and abaloparatide/Tymlos.
+- 2026-08-05 (interactive session) — **Gate cleared by explicit user instruction ("grab the
+  rest"); PA scaled to its remaining 20 classes, PA now complete across all 7 topics** (matching
+  AL's full footprint). Shipped `pa-inhalers` (12 records), `pa-ace` (3), `pa-diabetes` (12),
+  `pa-menopause` (15), `pa-nsaids` (3), `pa-osteoporosis` (15) — 60 records total, all 3 payers ×
+  20 classes.
+  **Important correction to this ledger's own standing assumption**: the `data-gathering/pa-all-
+  topics-2026-07-25/` checkpoint was NOT available in this session's worktree — gitignored
+  checkpoints only live in the worktree that wrote them (per the existing CLAUDE.md scar tissue),
+  and this session started in a fresh worktree. It was NOT lost, though: the checkpoint was still
+  sitting on disk in the **main checkout** (`/Users/pranava/Projects/FirstPassRx/data-gathering/`,
+  not the worktree), because that gather was run directly against the main checkout back on
+  2026-07-25. Recovered all 68 files from there — zero new agent calls, exactly as this ledger
+  assumed, just from a different path than expected. **Lesson for future sessions**: when a
+  checkpoint referenced by this ledger isn't in the current worktree, check the main checkout's
+  `data-gathering/` before concluding it needs re-gathering — it may simply be sitting in whichever
+  location originally ran the gather.
+  Wrote a one-off Python merge script (scratchpad only, not committed — same as every prior
+  session's `merge_state()`-style script) that: reused each topic's class taxonomy verbatim from
+  `il-<topic>` (the reference guide for that shape), built one reference per (payer, topic) for
+  pa-medicaid/ibx-commercial (single static PDF covers every topic), and one reference **per
+  class** for highmark-bcbs (its FormularyNavigator search URL is genuinely class-specific — 19 of
+  20 classes had a distinct deep-link, confirmed by diffing every checkpoint's `primarySource.url`
+  before assuming one shared URL). Applied the established reword-not-reclassify fix to 218
+  `paRequired` reasons using "non-preferred" wording (all confirmed genuine PA barriers, matching
+  every prior state's pattern).
+  **Caught and fixed 3 real schema bugs in the checkpoint data itself** (not merge-script bugs) via
+  `npm test`'s validate() failing loud, exactly as designed: (1) `pa-medicaid/lama`'s preferred
+  agent (Spiriva Respimat, correctly genericAvailable:false) had `boglActive:true` left set from a
+  class-wide reversed-BOGL note that explicitly named a *different* product (Spiriva HandiHaler) as
+  the one affected — same soft-mist-device-has-no-generic nuance as the 2026-07-11 VA fix in
+  CLAUDE.md; (2) `pa-medicaid/glp1` had the identical pattern (Ozempic preferred, boglNote about
+  Victoza) — both corrected to `boglActive:false`; (3) `pa-medicaid/sglt2` had `boglActive:true`
+  with `brand:null` even though its own boglNote named "Farxiga" as the brand being beaten by
+  generic dapagliflozin — filled in the missing brand rather than disabling the (real) BOGL,
+  confirmed against the sibling `ibx-commercial/sglt2` record in the same guide which already had
+  `brand:"Farxiga"` correctly set.
+  **Cash-price gap**: PA's osteoporosis alternatives introduced 3 molecule families
+  (risedronate/Actonel, ibandronate/Boniva, pamidronate) never seen in any prior guide, plus a few
+  one-off names (VoSpire ER, Apidra/Admelog insulin, a bare "Norethindrone Tablet (generic)"
+  phrasing). `KNOWN_UNPRICED_GAP` raised 78→90 (headless session, no browser price capture
+  attempted for the new names — logged to `backlog.md` as the next cash-price target alongside the
+  already-known zoledronic acid/Reclast and abaloparatide/Tymlos gaps). One genuine link-only-rule
+  gap also surfaced and was fixed at the test level: "Estradiol Patch (Once-Weekly, generic)"
+  matched the existing price-less `estradiol.*(weekly|patch|transdermal)` rule but wasn't yet in
+  `cash.test.ts`'s `KNOWN_PRICE_UNAVAILABLE` list (added `/estradiol patch/i`, consistent with that
+  rule's existing documented link-only status).
+  `npm test` (502/502), `typecheck`, `trace` (0 broken sources), `validate-prices` (90/90 matching
+  the new ceiling), `validate-coverage` all green; verified live in the dev-server browser (PA →
+  Osteoporosis renders alendronate/PA-Medicaid with correct GoodRx+Cost Plus prices and the
+  risedronate-family exclusion reworded to "restricted"; PA → Osteoporosis → RANKL INHIBITOR/
+  Highmark renders Prolia with the correct GoodRx price and a class-specific source citation;
+  PA → Osteoporosis → IV BISPHOSPHONATE/Highmark correctly cites the separate medical-policy
+  document, not the pharmacy-formulary search). Updated `src/lib/formulary.test.ts`'s hardcoded
+  guide-id list with the 6 new ids. National grid moved 43/357 → 49/357, verified-only 25→30.
+  **Next session: California is next** (3-payer roster already in `state-index.json` from
+  2026-07-23, cheapest state to gather, but has zero guides yet — needs its own proof guide first,
+  same "one guide as proof" gate applied to every other new state/topic). If GoodRx/Cost Plus
+  access is available, the accumulated osteoporosis cash-price gap (zoledronic acid, abaloparatide,
+  risedronate, ibandronate, pamidronate, romosozumab) is the next pricing target.
+- 2026-08-05 (same session, continued — user said "keep going") — **California's proof guide
+  SHIPPED: `ca-ssris`, the new-state gate for CA.** Gathered fresh via `formulary-gather.js`
+  (3 payers — Medi-Cal Rx, Kaiser Permanente, Anthem BCBS California — chunked ≤2 concurrent,
+  0 agent errors, ~307K subagent tokens, all 3 citing fresh 2026-08 documents). No reword-not-
+  reclassify fixes needed this time: every payer either states PA/step criteria explicitly or
+  explicitly disclaims them (Kaiser's own formulary states verbatim "does not have a requirement
+  for PA" / "does not have a requirement for Step Therapy") — the first new-state gather where zero
+  paRequired reasons needed the binary-PDL reword fix. Medi-Cal Rx's CDL is a flat covered/
+  restricted list, not a ranked PDL, so it doesn't itself name a "preferred" SSRI among the six —
+  sertraline was picked by first-line convention (same as every other payer's ssri-oral record) and
+  flagged `verification: partial` for that inference, matching this project's standing rule that an
+  inference gets marked, not silently presented as read-verbatim.
+  One metadata fix applied during merge: Anthem's `state-index.json` `formularyUrl` was the landing
+  page (`anthem.com/ca/pharmacy-information/drug-list-formulary`), which timed out twice for the
+  gather agent — it found the real document via a FormularyNavigator-hosted PDF instead. Synced
+  `state-index.json` to the real URL (same "sync to what the gather actually fetched" fix as the
+  MassHealth MHDL case in CLAUDE.md), so a future CA gather doesn't re-hit the same timeout.
+  Cash-price gap: **zero new gap** — all 6 SSRI molecule names already matched the existing broad
+  SSRI cash-link rules from 2026-07-29, `KNOWN_UNPRICED_GAP` unchanged at 90.
+  `npm test` (510/510), `typecheck`, `trace` (0 broken sources), `validate-prices` (90/90,
+  unchanged), `validate-coverage` all green; verified live in the dev-server browser (CA → SSRIs
+  renders sertraline preferred with correct GoodRx+Cost Plus prices for both Medi-Cal Rx and Kaiser
+  Permanente, Kaiser's 6 excluded brand alternatives render with the payer's own no-PA-requirement
+  language intact). National grid moved 49/357 → 50/357, 7→8 jurisdictions covered. Committed in 4
+  chunks (guide merge + test-id list, state-index URL sync, source archive).
+  **Next session: California's remaining 6 topics** (inhalers/ace/diabetes/menopause/nsaids/
+  osteoporosis, same "one guide as proof, then scale" gate that applied to every prior new state —
+  AL and PA both scaled their remaining topics only after this proof-guide step). No checkpoint
+  exists yet for CA's other topics — this would be a fresh gather, not a free merge, same shape as
+  today's `ca-ssris` run (3 payers, ≤2 concurrent chunks). After CA: the national grid still has 43
+  states with zero guides at all — a much larger scope decision than anything scoped so far in this
+  ledger, worth an explicit conversation with the user about which states/topics matter next rather
+  than picking one unilaterally.
+- 2026-08-05 (same session, continued — user said "finish CA and then make sure that no
+  combination of data is missing any cost+ or goodrx data") — **Gate cleared by explicit user
+  instruction; CA scaled to its remaining 6 topics, CA now complete across all 7 topics** (matching
+  AL and PA's full footprint). Gathered via a fresh `formulary-gather.js` run (3 payers × 20
+  classes each off one fetch per payer, chunked ≤2 concurrent, 0 agent errors, ~662K subagent
+  tokens, ~26 min). Zero reword-not-reclassify fixes needed — every CA payer states its PA/step
+  policy unambiguously, matching `ca-ssris`'s finding; this state's payers simply don't use the
+  ambiguous binary-PDL "non-preferred" phrasing that's needed the fix everywhere else. Fixed one
+  real BOGL bug (`kaiser-permanente-ca/anabolic`: `boglActive` set despite Kaiser's own note
+  confirming it doesn't carry generic teriparatide) and normalized one "not applicable" placeholder
+  (`kaiser-permanente-ca/combo`: no combo product carried at all — replaced blank dosing fields
+  with the same real clinical strength/sig every other guide's combo class uses, keeping the
+  "genuinely uncovered" finding in `preferredRestriction`/`paRequired` where it belongs).
+  **Then closed the cash-price gap as far as this session's tool access allowed** (the user's
+  second ask). GoodRx was session-wide "Access to this page has been denied" blocked from the first
+  lookup — 5th consecutive session with this exact block. Cost Plus Drugs was accessible: confirmed
+  real prices for risedronate/Actonel (30 tablets, 5mg daily-dose, $31.54) and ibandronate/Boniva
+  (dose-pack of 3, 150mg once-monthly, $8.51) — both collapse across every osteoporosis guide
+  shipped so far. The ibandronate rule required a route-of-administration exclusion (iv/injection/
+  injectable/syringe/vial) since several covered names explicitly describe IV ibandronate, a real,
+  distinct, Cost-Plus-uncarried product — pricing those as the cheap oral tablet would have been a
+  mispricing bug, same category as the Reclast/Zometa and Respimat/HandiHaler traps. Also fixed a
+  narrow coverage-match gap (not a pricing gap): PA's bare "Norethindrone Tablet (generic)"
+  phrasing, safely broadened since this app has no contraception class. `KNOWN_UNPRICED_GAP`
+  90 → 29 → 33 (dropped sharply after the risedronate/ibandronate/norethindrone fixes, then rose
+  slightly as CA's own new alternatives-list phrasings were checked — 2 were real pre-existing gaps
+  closed via regex broadening — bare "estradiol (vaginal)"/"Estradiol vaginal" without a form word,
+  and a plain "estradiol N mg ... tablets" phrasing lacking "oral" — and 2 were genuinely new,
+  confirmed-not-Cost-Plus-carried drugs: fenoprofen/Nalfon and plain regular human insulin).
+  Remaining gap, all confirmed not-Cost-Plus-carried this session and GoodRx-blocked: zoledronic
+  acid/Reclast, pamidronate (IV only), abaloparatide/Tymlos, romosozumab/Evenity, etidronate
+  disodium, VoSpire ER, Apidra/Admelog insulin brands, plus intentionally-excluded IV-route
+  ibandronate mentions.
+  **Live-browser verification of the CA merge surfaced a real, pre-existing UI correctness bug,
+  not introduced by this session but first exposed by it**: `ResultCard.tsx`'s prominent "In plan:
+  X" badge fell back to the bare literal "covered" whenever a record had no `tier`, even when
+  `preferredRestriction` explained the drug isn't actually covered cleanly (as with
+  `kaiser-permanente-ca/rankl-inhibitor` — denosumab/Prolia has no line item anywhere on Kaiser's
+  formulary at all, yet the badge said "covered"). The honest caveat only surfaced if the user
+  expanded the collapsed "Coverage detail" section below — the type definition's own doc comment
+  for `preferredRestriction` explicitly says the UI "must NOT claim the plan covers this drug
+  without prior authorization," so this was a real violation of an already-stated invariant.
+  Affects 58 existing records across the whole dataset, not just CA. Fixed (`ResultCard.tsx`) with
+  a 3-case regression test (`ResultCard.test.tsx`, new file).
+  `npm test` (561/561), `typecheck`, `trace` (0 broken sources), `validate-prices` (33/33 matching
+  the new ceiling), `validate-coverage` all green; verified live in the dev-server browser across
+  all 3 CA payers and multiple classes, including the fixed "In plan" badge. National grid moved
+  50/357 → 56/357, still 8/51 jurisdictions covered (CA already counted from `ca-ssris`).
+  Committed in 5 chunks (guide merge, cash-price fixes, ResultCard bug fix + test, source archive).
+  **Next session: 43 states still have zero guides — a genuinely large scope decision.** The user
+  was asked (end of the prior entry) for a prioritization axis and hasn't yet answered; don't pick
+  a state unilaterally. Also flagged, not yet actioned: dosing-caveat fields for renal/hepatic
+  cutoffs (bisphosphonates/metformin/SGLT2/ACE-inhibitors have real clinical cutoffs this app
+  doesn't surface at all today) and the `sources/` directory's growing size (now ~900MB+,
+  Git LFS flagged in backlog.md as the fix once it becomes a real clone-time problem).
