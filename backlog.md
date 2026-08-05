@@ -666,6 +666,12 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## Low
 
+- **`docs/agent-runs.md`'s "Running total across all sessions" hasn't been reconciled since the
+  2026-07-06 narrative, despite ~15+ more dated Workflow rows added since.** Noticed 2026-08-05
+  while appending that session's own rows. Not a data-loss problem (every individual row is a real,
+  dated record) — just a rollup that needs a full pass over every row since 07-06 to recompute
+  accurately, which wasn't worth guessing at inline. Low priority: the per-run rows are the load-
+  bearing content; the aggregate is a nice-to-have summary stat.
 - **Remove or rewrite `scripts/validate-links.cjs`.** It predates `validate-prices.mjs`, re-derives
   GoodRx slugs naively from raw drug names instead of the real per-dosage `goodRxParams` logic in
   `src/lib/cash.ts`, and HEAD-checks ~2240 URLs with no batching (several minutes, mostly noise —
