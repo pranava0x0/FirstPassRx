@@ -458,6 +458,21 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
     story. Likely taxonomy: one `cgrp-inhibitor` class (the 4-5 injectable/oral CGRP mAbs/gepants)
     reusing the `ssri-oral` single-class shape; consider a second `triptan` class as the cheap
     first-line comparator if a payer's own PDL treats them as a step.
+  - **Buprenorphine / medication for opioid use disorder (MOUD) — added 2026-08-06, unusually
+    strong PA-friction story, distinct from every candidate above (life-safety urgency, not
+    convenience/cost).** Published research (Penn LDI, U. South Carolina Arnold School, JAMA
+    Network Open) documents that 32 of 50 states' Medicaid programs require PA for at least one
+    buprenorphine formulation, and 15 states require it even for buprenorphine-naloxone
+    (Suboxone) — the standard first-line MOUD product; FFS programs require PA more often
+    (64.1%) than MCOs (42.3%). Medicare has already eliminated PA for buprenorphine while many
+    state Medicaid plans still require it, a clean, citable contrast this app's PA-appeal-letter
+    feature is well-suited to address (delaying MOUD access has documented overdose-risk
+    consequences, unlike a delayed SSRI refill). Likely taxonomy: one `buprenorphine` class
+    (buprenorphine-naloxone film/tablet as the preferred first-line agent, buprenorphine
+    mono-product and extended-release injectable Sublocade as alternatives), single-class shape
+    like `ssri-oral`/`ace-inhibitor`. Research only this session — no data gathered, no agents
+    spawned; needs the same per-payer PA-criteria verification as every other topic before
+    scoping into a guide.
   - Not pursued further this run per the standing gate: the SSRI proof guide (`ny-ssris`) is still
     awaiting the user's review before *any* further scaling, per `docs/RESUME-EXPANSION.md`'s
     explicit stop-and-report instruction — these are ideas to scope next, not started.

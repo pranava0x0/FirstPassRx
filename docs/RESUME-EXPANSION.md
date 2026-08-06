@@ -734,3 +734,37 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   state(s); if GoodRx access is clean again, the remaining osteoporosis cash-price gap (zoledronic
   acid — needs a correct dosage param, not the bare slug — abaloparatide, pamidronate, romosozumab,
   etidronate) is the next pricing target.
+- 2026-08-06 (scheduled run) — **Gate still active, correctly did not scale new states/topics.**
+  Confirmed working tree clean, `main` up to date with `origin/main`, `npm test` (570/570),
+  `npm run validate-coverage` unchanged at 56/357 (8/51 jurisdictions) since the 2026-08-05 CA
+  merge — no drift, no user answer on the 43-state prioritization axis, no state picked
+  unilaterally.
+  Attempted the cash-price gap next (permitted in-scope work): GoodRx presented a "Press & Hold"
+  bot-check on the very first lookup (zoledronic acid) — a milder state than the last 6 sessions'
+  hard "Access to this page has been denied" block, the underlying drug page (title, "Generic
+  Reclast and Zometa", Specialty Drug tag) had actually loaded behind the modal this time. Did
+  **not** click Press & Hold — completing a bot-detection challenge to bypass it is out of scope
+  regardless of project convention, so this counts as blocked, same outcome as prior sessions just
+  a different-looking wall. Re-checked Cost Plus Drugs' bone-health category (11 products, 2 pages,
+  read directly via the browser) — byte-for-byte the same catalog as 2026-08-05: alendronate,
+  calcitonin, Duavee, ibandronate, oxaprozin, Premphase, Prempro, raloxifene, risedronate ×2,
+  teriparatide. Zoledronic acid, abaloparatide, pamidronate, denosumab, romosozumab, and etidronate
+  still absent. `KNOWN_UNPRICED_GAP` unchanged at 33.
+  Per the fallback instruction, spent the remainder on fresh web research rather than re-reading
+  `verificationNote`s already exhaustively audited 2026-07-28/07-29/08-05 (diminishing returns —
+  those passes consistently found genuine structural gaps, not extraction failures). One new
+  candidate topic surfaced and logged to `backlog.md`, not yet logged in any prior session:
+  **buprenorphine / medication for opioid use disorder (MOUD)**. Published research (Penn LDI, USC
+  Arnold School, JAMA Network Open) documents 32/50 state Medicaid programs require PA for at least
+  one buprenorphine formulation and 15 require it even for the first-line buprenorphine-naloxone
+  combination (Suboxone); FFS programs require PA more often than MCOs (64.1% vs. 42.3%); Medicare
+  has already dropped PA for buprenorphine while many state Medicaid plans haven't — an unusually
+  strong, well-documented PA-friction story (and higher-stakes than the existing GLP-1/ADHD/DOAC/
+  CGRP candidates, given the overdose-risk cost of a delayed MOUD fill). Likely a single
+  `buprenorphine` class, same shape as `ssri-oral`. Research only — no data gathered, no agents
+  spawned, not started.
+  No data gathered, no agents/Workflows spawned, no branches created. Committed 1 chunk (backlog +
+  this ledger entry). **Still stopped here pending the user's answer on the 43-state prioritization
+  axis.** Next session: if the user answers, scale the chosen state(s); if GoodRx access is clean
+  again (no bot-check at all, not just a milder one), the remaining osteoporosis cash-price gap
+  (zoledronic acid, abaloparatide, pamidronate, romosozumab, etidronate) is the next pricing target.
