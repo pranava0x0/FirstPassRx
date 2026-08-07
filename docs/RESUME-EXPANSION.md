@@ -768,3 +768,28 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   axis.** Next session: if the user answers, scale the chosen state(s); if GoodRx access is clean
   again (no bot-check at all, not just a milder one), the remaining osteoporosis cash-price gap
   (zoledronic acid, abaloparatide, pamidronate, romosozumab, etidronate) is the next pricing target.
+- 2026-08-07 (scheduled run) — **Gate still active, correctly did not scale new states/topics.**
+  Confirmed working tree clean, `main` up to date with `origin/main`, `npm test` (570/570),
+  `npm run validate-coverage` unchanged at 56/357 (8/51 jurisdictions) since the 2026-08-05 CA
+  merge — no drift, still no user answer on the 43-state prioritization axis, no state picked
+  unilaterally.
+  Attempted the cash-price gap next (permitted in-scope work): GoodRx presented the same
+  "Press & Hold" bot-check as 2026-08-06 on the very first lookup (zoledronic acid) — did not
+  click through it (out of scope regardless of project convention). Re-checked Cost Plus Drugs'
+  bone-health category (page 1, same 10 products) — byte-for-byte unchanged since 2026-08-05/08-06:
+  zoledronic acid, abaloparatide, pamidronate, denosumab, romosozumab, and etidronate still absent.
+  `KNOWN_UNPRICED_GAP` unchanged at 33.
+  Spent the remainder developing the 2026-08-06 buprenorphine/MOUD candidate rather than
+  re-reading already-exhausted `verificationNote`s: checked Cost Plus Drugs' cash-price
+  feasibility for it directly (a check the 2026-08-06 entry hadn't done). Result: Cost Plus does
+  **not** carry buprenorphine or buprenorphine-naloxone at all — its "Opioid Dependence" category
+  only stocks naloxone/Narcan-generic and naltrexone/ReVia-generic (overdose-reversal and
+  non-opioid-antagonist drugs, not MOUD itself), and a direct site search for "buprenorphine"
+  returned zero results. Logged to `backlog.md`: if this topic is ever scoped, its cash-price
+  story would depend entirely on GoodRx (not confirmed this session — GoodRx was bot-blocked
+  throughout), unlike SSRIs/osteoporosis where Cost Plus backstops several molecules.
+  No data gathered, no agents/Workflows spawned, no branches created. Committed 1 chunk (backlog +
+  this ledger entry). **Still stopped here pending the user's answer on the 43-state prioritization
+  axis.** Next session: if the user answers, scale the chosen state(s); if GoodRx access is clean
+  again (no bot-check at all), the remaining osteoporosis cash-price gap (zoledronic acid,
+  abaloparatide, pamidronate, romosozumab, etidronate) is the next pricing target.

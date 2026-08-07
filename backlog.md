@@ -473,6 +473,14 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
     like `ssri-oral`/`ace-inhibitor`. Research only this session — no data gathered, no agents
     spawned; needs the same per-payer PA-criteria verification as every other topic before
     scoping into a guide.
+  - **Cash-price feasibility check, 2026-08-07: Cost Plus Drugs does NOT carry buprenorphine or
+    buprenorphine-naloxone (Suboxone) at all** — confirmed via both its "Opioid Dependence"
+    category (2 products: naloxone/Narcan generic $61.36, naltrexone/ReVia generic $22.94 — the
+    overdose-reversal and non-opioid-antagonist drugs, not MOUD itself) and a direct site search
+    for "buprenorphine" ("No Medications Found"). If this topic is ever scoped, its cash-price
+    fallback would rely entirely on GoodRx (unconfirmed this session — GoodRx was bot-blocked at
+    the time of this check); worth confirming GoodRx carries it before promising a cash-price
+    story alongside the PA-barrier one.
   - Not pursued further this run per the standing gate: the SSRI proof guide (`ny-ssris`) is still
     awaiting the user's review before *any* further scaling, per `docs/RESUME-EXPANSION.md`'s
     explicit stop-and-report instruction — these are ideas to scope next, not started.
