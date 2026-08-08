@@ -793,3 +793,37 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   axis.** Next session: if the user answers, scale the chosen state(s); if GoodRx access is clean
   again (no bot-check at all), the remaining osteoporosis cash-price gap (zoledronic acid,
   abaloparatide, pamidronate, romosozumab, etidronate) is the next pricing target.
+- 2026-08-08 (scheduled run) — **Gate still active, correctly did not scale new states/topics.**
+  Confirmed working tree clean, `main` up to date with `origin/main`, `npm test` (570/570),
+  `npm run validate-coverage` unchanged at 56/357 (8/51 jurisdictions) since the 2026-08-05 CA
+  merge — no drift, still no user answer on the 43-state prioritization axis, no state picked
+  unilaterally.
+  Attempted the cash-price gap next (permitted in-scope work): GoodRx presented the "Press & Hold"
+  bot-check again on the very first lookup (zoledronic acid) — 7th consecutive scheduled run with
+  a GoodRx block, did not click through it (out of scope regardless of project convention).
+  Re-checked Cost Plus Drugs individually for the 3 still-open molecule families (zoledronic acid,
+  abaloparatide, romosozumab) plus pamidronate — all confirmed still not carried, byte-for-byte
+  unchanged since 2026-07-30. `KNOWN_UNPRICED_GAP` unchanged at 33.
+  Audited a fresh batch of `partial`-cell `verificationNote`s not read verbatim in any prior
+  session's ledger entry — the "biosimilar/strength ambiguity" gap-report bucket (`ma-osteoporosis/
+  bcbsma` rankl-inhibitor: a genuine arbitrary tie-break between two formulary-equivalent
+  denosumab biosimilars, not an extraction issue) and 10 "other/needs manual read" cells spanning
+  md-menopause/mdmedicaid (est-td, progestogen, vaginal — MD Medicaid FFS simply doesn't manage
+  this class as a PDL category), md-diabetes/md-inhalers/medicare-partd (glp1, sglt2, ics, lama —
+  all verbatim-sourced from the AARP Medicare Rx Preferred PDF, partial for documented reasons
+  unrelated to extraction quality), md-inhalers/cigna (ics), md-ace/aetna, and al-menopause/
+  al-medicaid (progestogen — genuine absence of a standalone progestogen-only line item from both
+  current Alabama PDL documents). None were quick fixes like the 2026-07-28 `md-osteoporosis`
+  case; all already correctly documented as structural/source-level gaps, not extraction failures.
+  No new backlog items from this audit (restating already-correct conclusions isn't a new finding).
+  One fresh, non-duplicative research finding, logged to `backlog.md`: a follow-up search on the
+  2026-08-06 buprenorphine/MOUD candidate found a materially more current PA-removal figure (Penn
+  LDI, 2024: 39/50 states have now removed PA for the transmucosal buprenorphine-naloxone
+  combination specifically) than the Nov 2020–Mar 2021 snapshot the original note cited — the
+  PA-barrier story for that candidate is still real but narrower than previously stated; flagged so
+  a future scoping pass doesn't cite the stale "32 of 50" figure unchanged.
+  No data gathered, no agents/Workflows spawned, no branches created. Committed 1 chunk (backlog +
+  this ledger entry). **Still stopped here pending the user's answer on the 43-state prioritization
+  axis.** Next session: if the user answers, scale the chosen state(s); if GoodRx access is clean
+  again (no bot-check at all), the remaining osteoporosis cash-price gap (zoledronic acid,
+  abaloparatide, pamidronate, romosozumab, etidronate) is the next pricing target.

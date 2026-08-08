@@ -481,6 +481,18 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
     fallback would rely entirely on GoodRx (unconfirmed this session — GoodRx was bot-blocked at
     the time of this check); worth confirming GoodRx carries it before promising a cash-price
     story alongside the PA-barrier one.
+  - **PA-friction story refined 2026-08-08 (scheduled run) — more recent data than the 2026-08-06
+    note's, worth using instead if this topic is scoped.** A follow-up WebSearch (Penn LDI) surfaces
+    a materially better 2024 figure than the Nov 2020–Mar 2021 snapshot originally cited: **39 of 50
+    states have since removed PA for the transmucosal buprenorphine-naloxone combination product**
+    specifically (up from the ~35 states implied by the original "15 states still require it for
+    the first-line combo" stat) — real, documented progress, not a stale number. The PA-barrier
+    story is still real and citable (the remaining ~11 states, plus PA on non-combo formulations
+    like buprenorphine mono-product and the Sublocade injectable, which this search didn't
+    specifically re-confirm) but is narrower than the 2026-08-06 note implies; a future scoping pass
+    should re-verify the current state list before citing "32 of 50" as if unchanged since 2020-21 —
+    it likely overstates the gap now. GoodRx cash-price feasibility still unconfirmed (blocked again
+    this session too, 7th consecutive scheduled run).
   - Not pursued further this run per the standing gate: the SSRI proof guide (`ny-ssris`) is still
     awaiting the user's review before *any* further scaling, per `docs/RESUME-EXPANSION.md`'s
     explicit stop-and-report instruction — these are ideas to scope next, not started.
