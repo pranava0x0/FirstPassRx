@@ -594,3 +594,29 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   live/current, checking an effective date), prefer a narrower probe: `curl` + `grep` for a specific
   keyword/date, or a page-range-limited read, rather than a blanket `WebFetch` on a URL suspected to
   serve a large PDF — there's no way to know in advance whether WebFetch will summarize or dump.
+- **GoodRx's bare-slug default product resolution is non-deterministic session-to-session, not a
+  one-time bug — always pin explicit dosage/form/quantity params for a drug with more than one real
+  strength on the market, even after a session sees the bare slug "work."** `goodrx.com/zoledronic-
+  acid` landed on the WRONG 4mg oncology-dose product on 2026-08-02, then on the CORRECT 5mg/100mL
+  osteoporosis dose on 2026-08-09 — same slug, same drug, different session, different default.
+  Confirms the params-pinning fix already used elsewhere in `cash.ts` (e.g. the alendronate/
+  raloxifene rules) is load-bearing, not just defensive style — don't skip it because "the bare slug
+  looked fine this time."
+- **GoodRx's "Physician-administered" page tag (vs. "Specialty Drug") reliably signals there is NO
+  retail/pharmacy cash price to capture at all — check this before concluding a molecule is merely
+  bot-blocked.** Confirmed 2026-08-09: romosozumab/Evenity and pamidronate both load a normal GoodRx
+  page with drug info, but neither has a "Choose pharmacy"/"Standard GoodRx price" panel — the page
+  itself states the drug is physician-administered (buy-and-bill only), so a self-pay retail price
+  structurally doesn't exist. Zoledronic acid/Reclast, by contrast, is also professionally
+  administered but IS tagged "Specialty Drug" and DOES get a real pharmacy dispensing price. Don't
+  keep retrying a "Physician-administered"-tagged drug in future sessions hoping for a price — the
+  tag itself is the answer, not a temporary block.
+- **`scripts/validate-prices.mjs`'s "covered drug names" set is narrower than it looks — mirror its
+  exact computation before hand-predicting a `KNOWN_UNPRICED_GAP` number, don't reimplement from
+  memory.** It only counts `preferredAgent.inn`, `preferredAgent.brand`, and `alternatives[].drug`
+  for non-`comingSoon` classes — it deliberately excludes `paRequired[].drug` entirely. An ad-hoc
+  script that also counted `paRequired` names (2026-08-09) produced 156 "unmatched" names against
+  the real script's 21 for the identical rule set — a 7x overcount that would have led to shipping
+  the wrong ceiling value. When you need this number before running the real script (e.g. to decide
+  whether a new rule is worth adding), copy the covered-set-building loop verbatim rather than
+  guessing which record fields count.
