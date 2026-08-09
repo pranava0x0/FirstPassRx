@@ -11,22 +11,26 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## High
 
-- **Remaining osteoporosis/insulin cash-price gap (`KNOWN_UNPRICED_GAP` = 33, as of 2026-08-05).**
-  Risedronate, ibandronate, and the "Norethindrone Tablet" coverage gap flagged 2026-08-05 (PA
-  scale-up) are now CLOSED — real Cost Plus prices captured the same day. What's left, all
-  confirmed not-Cost-Plus-carried and GoodRx-blocked (session-wide "Access to this page has been
-  denied," 5th consecutive session with this exact block): zoledronic acid/Reclast (needs the
-  Edit-flow or a correct dosage param, not the bare slug — the bare slug landed on the WRONG
-  oncology-dose product on 2026-08-02), pamidronate (IV only), abaloparatide/Tymlos, romosozumab/
-  Evenity, etidronate disodium, VoSpire ER, Apidra/Admelog (rapid-acting insulin brands), and
-  intentionally-excluded IV-route ibandronate mentions (real, distinct, unpriced product — priced
-  as the oral tablet would be a route-of-administration mispricing bug, see `cash.ts`'s
-  ibandronate rule comment). **Impact: medium** (osteoporosis is now a 7-state topic; every
-  unpriced cell is a dead end for the uninsured-cash-price user). **Effort: low** (same
-  rule-authoring pattern as every prior cash-price session, once GoodRx access is clean again — try
-  manufacturer/copay-card pages only if they're genuine cash prices, not insurance-gated coupons;
-  see the 2026-08-03 ledger entry's Forteo-card rejection for why that distinction matters).
-  **Cost: zero** (no API cost, just vendor bot-block risk).
+- **Remaining osteoporosis/insulin cash-price gap (`KNOWN_UNPRICED_GAP` = 21, as of 2026-08-09).**
+  **2026-08-09 update: zoledronic acid/Reclast and abaloparatide/Tymlos are now CLOSED** — GoodRx
+  access recovered mid-session (after 7 consecutive blocked sessions) and both got real prices:
+  zoledronic acid $81.49 (correct 5mg/100mL osteoporosis dose this time, pinned with explicit
+  params so a future session's default can't drift back to the wrong 4mg oncology dose seen
+  2026-08-02) and abaloparatide/Tymlos $3,030 (correct 80mcg/dose pen strength). **Also resolved,
+  not just blocked: romosozumab/Evenity and pamidronate genuinely have NO GoodRx retail price to
+  capture** — both are "Physician-administered"-tagged pages with no pharmacy dispensing panel at
+  all (confirmed by loading both live), unlike zoledronic acid which still gets a specialty-pharmacy
+  price despite also being professionally administered. This is a structural fact, not a research
+  gap — don't keep re-attempting these two. What's left, all confirmed not-Cost-Plus-carried:
+  etidronate disodium (GoodRx re-blocked before it was reached this session — still worth trying),
+  VoSpire ER, Apidra/Admelog (rapid-acting insulin brands), plain human insulin, fenoprofen tablets,
+  and intentionally-excluded IV-route ibandronate/pamidronate/zoledronic-4mg mentions (real,
+  distinct, unpriced products — priced as the wrong route/dose would be a mispricing bug, see
+  `cash.ts`'s rule comments). **Impact: low now** (down from medium — the two highest-relevance
+  molecules, an infusion and a self-injectable pen a patient might actually cash-shop for, are
+  priced; what's left is either structurally unpriceable or a handful of insulin-brand/one-off
+  names). **Effort: low** (etidronate is the only real "try again" item; the rest need no further
+  action). **Cost: zero.**
 - **Dosing-caveat field for clinically sharp renal/hepatic/age cutoffs.** The app currently shows
   exactly one static adult `sig`/`sigShort`/`plainSig` per (payer, class) cell with no way to flag
   that a drug is contraindicated or needs dose reduction below a specific threshold — metformin
@@ -424,6 +428,23 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
     requirement — several major manufacturer copay cards are structurally unusable by the cash-pay
     patient this feature is meant to help, so they're not a valid GoodRx-price substitute even when
     they show a small headline number.
+  - **CLOSED for 2 of the last 3 molecules, 2026-08-09 (scheduled run).** GoodRx access recovered
+    mid-session (intermittently — started blocked, cleared, re-blocked again later) after 7
+    straight sessions of a hard block. Zoledronic acid/Reclast: the bare slug resolved to the
+    CORRECT osteoporosis dose this time (5mg/100mL, not the 4mg oncology dose from 2026-08-02) —
+    captured $81.49 and pinned it with explicit `dosage=5mg%2F100ml&form=solution&quantity=1`
+    params so a future default drift can't silently ship the wrong number again. Abaloparatide/
+    Tymlos: bare slug landed directly on the correct FDA-labeled 80mcg/dose pen, $3,030. Romosozumab/
+    Evenity and pamidronate were also loaded live this session and turned out to be a genuine dead
+    end, not a blocked one: both pages are tagged "Physician-administered" with **no pharmacy price
+    panel at all** (no "Choose pharmacy," no "Standard GoodRx price") — confirming this backlog
+    item's own 2026-08-02 hypothesis that a plain retail-cash price may not be the right thing to
+    show for a fully buy-and-bill infusion/injection. Unlike Forteo's copay card (rejected
+    2026-08-03), this isn't a misleading-number problem, it's simply no number exists — no rule
+    added for either, and none should be added later unless GoodRx changes how it lists these drugs.
+    Etidronate disodium (a 4th, less-common molecule surfaced by 2026-08-05's PA scale-up, not one
+    of the original 3) was never reached before GoodRx re-blocked partway through the session — the
+    one remaining "worth retrying" item. `KNOWN_UNPRICED_GAP` 33→21.
 - **Candidate topics for a future expansion round, beyond SSRIs/osteoporosis (already scoped in
   `docs/RESUME-EXPANSION.md`) — surfaced by a 2026-07-19 scheduled-run web-search sweep (research
   only, no data gathered, no agents spawned).** Ranked by how much real-world PA friction they carry

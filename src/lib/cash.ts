@@ -259,8 +259,19 @@
  * rule). Two genuinely new, confirmed-not-Cost-Plus-carried gaps: fenoprofen (Nalfon, an NSAID)
  * and plain regular human insulin (Humulin R/Novolin R-equivalent) -- both searched directly,
  * neither returned a real product. Net: 35 raw CA-introduced unmatched names → 33 after the two
- * regex fixes. */
-export const KNOWN_UNPRICED_GAP = 33
+ * regex fixes.
+ * 2026-08-09 (scheduled run): GoodRx access recovered mid-session after 7 consecutive sessions of
+ * a hard block (started blocked, cleared after a couple of retries, then re-blocked again later in
+ * the session -- confirmed intermittent, not a clean recovery). Captured 2 of the 3 remaining
+ * osteoporosis specialty-injectable prices: zoledronic acid/Reclast ($81.49, correct 5mg/100mL
+ * osteoporosis dose this time, not the wrong 4mg oncology dose GoodRx defaulted to on 2026-08-02 --
+ * pinned with explicit params so a future session's default can't drift back) and abaloparatide/
+ * Tymlos ($3,030, correct FDA-labeled 80mcg/dose pen strength). Romosozumab/Evenity and pamidronate
+ * confirmed to have NO real GoodRx retail price at all (both "Physician-administered" tagged pages
+ * with no pharmacy-price panel) -- not a research gap, a structural fact about how these
+ * buy-and-bill-only infusions are actually dispensed; no rule added for either rather than fabricate
+ * a number. Etidronate disodium never reached before GoodRx re-blocked. */
+export const KNOWN_UNPRICED_GAP = 21
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -1584,7 +1595,42 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     costPlusPrice: { price: 8.51, quantity: '1 dose pack of 3 tablets, 150mg (3-month supply)' },
     pricesCapturedAt: '2026-08-05',
   },
+  {
+    // Zoledronic acid/Reclast (iv-bisphosphonate) -- GoodRx access recovered this session after 7
+    // consecutive sessions of a hard block. The bare `goodrx.com/zoledronic-acid` slug resolved to
+    // the correct osteoporosis-strength product this time ("Zoledronic Acid 100mL of 5mg/100mL, 1
+    // bottle of infusion") -- explicit params pin that exact strength/quantity down regardless, so
+    // a future session's default doesn't drift back to the WRONG oncology-dose product (4mg/5mL
+    // Zometa-equivalent) the way the bare slug did on 2026-08-02. Excludes any covered name that
+    // explicitly states the 4mg oncology/Paget's/malignancy dose or names Zometa -- those are a
+    // real, distinct, unpriced product (see the "Zoledronic acid 4 mg" MassHealth alternative,
+    // billed as MB/hospital-administered for Paget's/malignancy, not this osteoporosis price). No
+    // Cost Plus listing (checked its bone-health category repeatedly since 2026-07-30, unchanged).
+    matches: /^(?!.*\b(?:zometa|4\s*mg|oncology|malignan)\b).*(?:\bzoledronic acid\b|\breclast\b)/i,
+    goodRxSlug: 'zoledronic-acid',
+    goodRxParams: 'dosage=5mg%2F100ml&form=solution&quantity=1&label_override=zoledronic-acid',
+    goodRxPrice: { price: 81.49, quantity: '1 bottle, 5mg/100mL IV infusion (once-yearly osteoporosis dose)' },
+    pricesCapturedAt: '2026-08-09',
+  },
+  {
+    // Abaloparatide/Tymlos (anabolic) -- same GoodRx-access recovery as zoledronic acid above. The
+    // bare `goodrx.com/abaloparatide` slug landed directly on the Tymlos page at its correct FDA-
+    // labeled strength (80 mcg/dose pen, 1.56 mL), no wrong-product risk observed. No Cost Plus
+    // listing (checked its bone-health category repeatedly since 2026-07-30, unchanged).
+    matches: /\babaloparatide\b|\btymlos\b/i,
+    goodRxSlug: 'abaloparatide',
+    goodRxPrice: { price: 3030, quantity: '1 pen, 1.56mL of 80mcg/dose (standard GoodRx price)' },
+    pricesCapturedAt: '2026-08-09',
+  },
 ]
+// Romosozumab/Evenity and pamidronate were checked this same session (2026-08-09) but deliberately
+// left with NO cash-link rule: both GoodRx pages are tagged "Physician-administered" with no
+// "Choose pharmacy"/retail price panel at all (unlike zoledronic acid above, which still gets a
+// specialty-pharmacy dispensing price despite also being professionally administered) -- there is
+// no real self-pay retail price to show for a true buy-and-bill-only infusion, so a fabricated
+// number would misrepresent how these drugs are actually obtained. Etidronate disodium was not
+// reached before GoodRx re-blocked ("Access to this page has been denied") partway through this
+// session. See backlog.md for the current state of all three.
 
 function fallbackSlug(name: string): string {
   return name.toLowerCase().replace(/\(.*?\)/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')

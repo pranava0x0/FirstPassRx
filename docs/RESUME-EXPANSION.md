@@ -552,6 +552,38 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   PA's remaining 20 gathered-and-checkpointed classes, then CA. If GoodRx access is clean again,
   the remaining osteoporosis cash-price gap is zoledronic acid/Reclast (needs a correct dosage
   param, not the bare slug) and abaloparatide/Tymlos.
+- 2026-08-09 (scheduled run) — **Gate still active, correctly did not scale new states/topics.**
+  Confirmed working tree clean, `main` up to date with `origin/main`, `npm test` (570/570),
+  `npm run validate-coverage` unchanged at 56/357 (8/51 jurisdictions) since the 2026-08-05 CA
+  merge — no drift, still no user answer on the 43-state prioritization axis, no state picked
+  unilaterally. The already-gathered `data-gathering/pa-all-topics-2026-07-25/` checkpoint (20
+  classes, 3 payers) was not re-checked this session but is assumed still ready to merge for free
+  once approved (per every prior entry since 2026-07-26).
+  **Did real, in-scope work instead of pure research: closed most of the remaining osteoporosis
+  cash-price gap.** GoodRx access recovered mid-session — after 7 consecutive scheduled runs with a
+  hard "Access to this page has been denied"/"Press & Hold" block, this session started blocked too
+  but cleared after a couple of retries (then re-blocked again later, confirming it's genuinely
+  intermittent, not a clean recovery). Captured real prices for zoledronic acid/Reclast ($81.49 —
+  the bare slug resolved to the CORRECT 5mg/100mL osteoporosis dose this time, not the wrong 4mg
+  oncology dose it defaulted to on 2026-08-02; pinned with explicit dosage/form/quantity params so a
+  future session's default can't silently drift back) and abaloparatide/Tymlos ($3,030, correct FDA-
+  labeled 80mcg/dose pen). Also resolved — not just blocked — the other two of the original 3
+  open molecules: romosozumab/Evenity and pamidronate both loaded live but are tagged "Physician-
+  administered" with no pharmacy dispensing/price panel at all, confirming there is no real retail
+  cash price to capture for either (a structural fact, not a research gap; no rule added, and none
+  should be added later on this basis). Etidronate disodium (a 4th molecule surfaced later, by the
+  2026-08-05 PA scale-up) was never reached before GoodRx re-blocked. `KNOWN_UNPRICED_GAP` 33→21.
+  `npm test` (570/570), `typecheck`, `validate-prices` (21/21 matching the new ceiling), `trace` all
+  green; verified live in the dev-server browser (NY → Osteoporosis → IV BISPHOSPHONATE renders
+  zoledronic acid with the new GoodRx price; NY → Osteoporosis → ANABOLIC AGENT renders the
+  abaloparatide/Tymlos alternative with its new GoodRx price). Committed in 1 chunk (cash rules +
+  backlog/ledger notes).
+  **Still stopped here pending the user's answer on the 43-state prioritization axis.** Next
+  session: if the user answers, scale the chosen state(s); if approved, merge PA's remaining 20
+  gathered-and-checkpointed classes, then CA. If GoodRx access is clean again, etidronate disodium
+  is the only remaining "worth retrying" cash-price gap in osteoporosis — everything else left
+  unpriced is either a structural dead end (romosozumab, pamidronate) or a minor insulin-brand/
+  one-off long tail.
 - 2026-08-05 (interactive session) — **Gate cleared by explicit user instruction ("grab the
   rest"); PA scaled to its remaining 20 classes, PA now complete across all 7 topics** (matching
   AL's full footprint). Shipped `pa-inhalers` (12 records), `pa-ace` (3), `pa-diabetes` (12),
