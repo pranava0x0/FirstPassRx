@@ -130,6 +130,21 @@ describe('cash price links', () => {
   it('still prices plain risedronate/Actonel mentions at the 5mg-daily rate', () => {
     expect(costPlusPrice('risedronate (Actonel) tablets')?.price).toBe(31.54)
   })
+
+  it('prices the correct osteoporosis-dose zoledronic acid/Reclast, not the oncology dose', () => {
+    expect(goodRxPrice('zoledronic acid')?.price).toBe(81.49)
+    expect(goodRxPrice('Reclast (brand zoledronic acid)')?.price).toBe(81.49)
+    // The 4mg/5mL oncology-dosing formulation (Paget's disease/malignancy) is a real, distinct,
+    // unpriced product -- pricing it at the 5mg/100mL osteoporosis rate would be a dosage mismatch.
+    expect(goodRxPrice('Zoledronic acid 4 mg')).toBeNull()
+    expect(goodRxPrice('zoledronic acid intravenous solution 4 mg/5 mL (Zometa-equivalent)')).toBeNull()
+  })
+
+  it('prices abaloparatide/Tymlos without colliding with the teriparatide/Forteo rule', () => {
+    expect(goodRxPrice('abaloparatide (Tymlos)')?.price).toBe(3030)
+    expect(goodRxPrice('teriparatide (Forteo)')).toBeNull()
+    expect(costPlusPrice('teriparatide (Forteo)')?.price).toBe(775.15)
+  })
 })
 
 /** Every drug name a live cell can render: the preferred agent + its covered alternatives,
