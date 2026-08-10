@@ -859,3 +859,34 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   axis.** Next session: if the user answers, scale the chosen state(s); if GoodRx access is clean
   again (no bot-check at all), the remaining osteoporosis cash-price gap (zoledronic acid,
   abaloparatide, pamidronate, romosozumab, etidronate) is the next pricing target.
+- 2026-08-10 (scheduled run) — **Gate still active, correctly did not scale new states/topics.**
+  Confirmed working tree clean, `main` up to date with `origin/main`, `npm test` (572/572),
+  `npm run validate-coverage` unchanged at 56/357 (8/51 jurisdictions) since the 2026-08-05 CA
+  merge — no drift, still no user answer on the 43-state prioritization axis, no state picked
+  unilaterally.
+  Attempted the cash-price gap next (permitted in-scope work): GoodRx presented the same
+  "Press & Hold" bot-check on the very first lookup (etidronate) — 8th consecutive scheduled run
+  with a GoodRx block, did not click through it (out of scope regardless of project convention).
+  Confirmed via the search UI that Cost Plus Drugs still has zero results for "etidronate"
+  (unchanged from every prior check). **A second GoodRx attempt later in the session cleared the
+  block and resolved etidronate for good, not just temporarily**: the page for "Etidronate 200mg
+  (30 tablets)" — the only strength/form match — states verbatim "has been discontinued by the
+  manufacturer and is no longer available." Same category as the 2026-08-09 romosozumab/pamidronate
+  finding: a structural dead end, not a research gap — logged to `backlog.md` so no future session
+  keeps retrying this molecule. GoodRx re-blocked immediately on the next page load (drug-info
+  page), so no other price was captured this session. `KNOWN_UNPRICED_GAP` unchanged at 21 (no rule
+  added — there is nothing to price).
+  Also audited 6 previously-unread `partial`-cell `verificationNote`s from the gap-report's
+  remaining buckets (`il-osteoporosis/anabolic` ×3 payers, `ny-osteoporosis/rankl-inhibitor`,
+  `va-osteoporosis/rankl-inhibitor` ×2 payers, `va-osteoporosis/anabolic` ×4 payers,
+  `md-diabetes/insulin`) — all were already exhaustively documented (full-text PDF searches
+  confirming genuine absence from a payer's PDL, cross-referenced against sibling MCO/statewide
+  documents, or an explicit inference flagged as such) with no quick fix available; none re-bucketed,
+  no new backlog items (restating an already-correct conclusion isn't a new finding, per the
+  established 2026-07-29 convention).
+  No data gathered, no agents/Workflows spawned, no branches created. Committed 1 chunk (backlog +
+  this ledger entry). **Still stopped here pending the user's answer on the 43-state prioritization
+  axis.** Next session: if the user answers, scale the chosen state(s); if GoodRx access is clean
+  again, the remaining osteoporosis/insulin cash-price gap (VoSpire ER, Apidra/Admelog, plain human
+  insulin, fenoprofen) is what's left to try — everything else (zoledronic acid, abaloparatide,
+  romosozumab, pamidronate, etidronate) is now a confirmed structural dead end, not worth retrying.

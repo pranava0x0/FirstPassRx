@@ -21,14 +21,17 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   capture** — both are "Physician-administered"-tagged pages with no pharmacy dispensing panel at
   all (confirmed by loading both live), unlike zoledronic acid which still gets a specialty-pharmacy
   price despite also being professionally administered. This is a structural fact, not a research
-  gap — don't keep re-attempting these two. What's left, all confirmed not-Cost-Plus-carried:
-  etidronate disodium (GoodRx re-blocked before it was reached this session — still worth trying),
-  VoSpire ER, Apidra/Admelog (rapid-acting insulin brands), plain human insulin, fenoprofen tablets,
-  and intentionally-excluded IV-route ibandronate/pamidronate/zoledronic-4mg mentions (real,
-  distinct, unpriced products — priced as the wrong route/dose would be a mispricing bug, see
-  `cash.ts`'s rule comments). **Impact: low now** (down from medium — the two highest-relevance
-  molecules, an infusion and a self-injectable pen a patient might actually cash-shop for, are
-  priced; what's left is either structurally unpriceable or a handful of insulin-brand/one-off
+  gap — don't keep re-attempting these two. **2026-08-10 update: etidronate disodium is ALSO now
+  resolved, not just blocked — GoodRx's own page states "Etidronate 200mg (30 tablets)... has been
+  discontinued by the manufacturer and is no longer available"** (confirmed live before GoodRx
+  re-blocked on a follow-up page load). Same category as romosozumab/pamidronate: a structural dead
+  end, not a research gap — don't keep retrying this molecule either. What's left, all confirmed
+  not-Cost-Plus-carried: VoSpire ER, Apidra/Admelog (rapid-acting insulin brands), plain human
+  insulin, fenoprofen tablets, and intentionally-excluded IV-route ibandronate/pamidronate/
+  zoledronic-4mg mentions (real, distinct, unpriced products — priced as the wrong route/dose would
+  be a mispricing bug, see `cash.ts`'s rule comments). **Impact: low now** (down from medium — the
+  two highest-relevance molecules, an infusion and a self-injectable pen a patient might actually
+  cash-shop for, are priced; what's left is either structurally unpriceable or a handful of insulin-brand/one-off
   names). **Effort: low** (etidronate is the only real "try again" item; the rest need no further
   action). **Cost: zero.**
 - **Dosing-caveat field for clinically sharp renal/hepatic/age cutoffs.** The app currently shows
