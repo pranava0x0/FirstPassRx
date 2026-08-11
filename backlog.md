@@ -11,18 +11,22 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## High
 
-- **Remaining osteoporosis/insulin cash-price gap (`KNOWN_UNPRICED_GAP` = 16, as of 2026-08-11).**
-  **2026-08-11 update: closed 4 more items.** Insulin Regular, Human/Novolin R got a real GoodRx
-  price ($60.90); a bare "Admelog (rapid-acting)" name variant and VoSpire ER/albuterol-ER-tablet
-  and Apidra/glulisine now resolve to a rule (2 link-only, since GoodRx blocked before a price
-  could be captured and Cost Plus doesn't carry any of them — confirmed via live search this
-  session). Also found and fixed a real mispricing bug while investigating the VoSpire ER gap: the
-  bare albuterol-inhaler rule was silently pricing the oral ER tablet as the $41.45 HFA inhaler —
-  see `issues.md` 2026-08-11 entry. What's left: pamidronate (9 cells, IV only, no oral form
-  exists), romosozumab, ibandronate (non-oral variants), zoledronic acid 4mg (oncology dose,
-  intentionally excluded from the 5mg osteoporosis-dose rule), etidronate (confirmed discontinued
-  by manufacturer, structural dead end, don't retry), fenoprofen (confirmed not Cost-Plus-carried,
-  GoodRx pending). Original entry follows, kept for history:
+- **Remaining osteoporosis cash-price gap (`KNOWN_UNPRICED_GAP` = 15, as of 2026-08-11) — down to
+  pure structural dead ends.** **2026-08-11 update: closed 5 more items, GoodRx was fully
+  accessible for most of this session (no bot-check).** Insulin Regular, Human/Novolin R got a
+  real GoodRx price ($60.90); fenoprofen got a real GoodRx price ($86.32, Cost Plus confirmed not
+  carrying it); a bare "Admelog (rapid-acting)" name variant now matches the existing lispro rule;
+  VoSpire ER/albuterol-ER-tablet and Apidra/glulisine now resolve to a link-only rule (GoodRx
+  blocked those 2 specific lookups mid-session — genuinely intermittent, not a session-wide block,
+  since Novolin R and fenoprofen worked cleanly around the same time). Also found and fixed a real
+  mispricing bug while investigating the VoSpire ER gap: the bare albuterol-inhaler rule was
+  silently pricing the oral ER tablet as the $41.45 HFA inhaler — see `issues.md` 2026-08-11 entry.
+  **What's left is now entirely structural** (not worth another research pass — see `cash.ts`
+  comments for each): pamidronate (9 cells, IV-only, no oral form exists), romosozumab (confirmed
+  physician-administered, no pharmacy price panel), ibandronate non-oral variants (IV route, real
+  distinct product Cost Plus doesn't carry), zoledronic acid 4mg (oncology dose, intentionally
+  excluded from the 5mg osteoporosis-dose rule to avoid the Reclast/Zometa mispricing trap),
+  etidronate (confirmed discontinued by manufacturer). Original entry follows, kept for history:
   **2026-08-09 update: zoledronic acid/Reclast and abaloparatide/Tymlos are now CLOSED** — GoodRx
   access recovered mid-session (after 7 consecutive blocked sessions) and both got real prices:
   zoledronic acid $81.49 (correct 5mg/100mL osteoporosis dose this time, pinned with explicit

@@ -890,3 +890,41 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   again, the remaining osteoporosis/insulin cash-price gap (VoSpire ER, Apidra/Admelog, plain human
   insulin, fenoprofen) is what's left to try — everything else (zoledronic acid, abaloparatide,
   romosozumab, pamidronate, etidronate) is now a confirmed structural dead end, not worth retrying.
+- 2026-08-11 (scheduled run) — **Gate still active, correctly did not scale new states/topics.**
+  Confirmed working tree clean, `main` up to date with `origin/main`, `npm test` (572/572),
+  `npm run validate-coverage` unchanged at 56/357 (8/51 jurisdictions) since the 2026-08-05 CA
+  merge — no drift, still no user answer on the 43-state prioritization axis, no state picked
+  unilaterally. The already-gathered `data-gathering/pa-all-topics-2026-07-25/` checkpoint was not
+  re-checked this session (assumed status unchanged, per every entry since 2026-07-26).
+  **Did real, in-scope work: closed the remaining osteoporosis/insulin cash-price gap down to pure
+  structural dead ends.** GoodRx was mostly accessible this session (unlike the last several
+  consecutive blocked/bot-checked runs) — 2 specific lookups (VoSpire ER, Apidra) hit a
+  "Press & Hold"/hard-block wall, but Novolin R and Fenoprofen resolved cleanly around the same
+  time, confirming the block is per-lookup/intermittent, not session-wide. Captured real GoodRx
+  prices for Insulin Regular, Human/Novolin R ($60.90/vial) and fenoprofen ($86.32/30 capsules,
+  Cost Plus confirmed not carrying it via live search); shipped link-only rules for VoSpire ER
+  (albuterol ER tablet) and Apidra/glulisine (both GoodRx-blocked this session, Cost Plus doesn't
+  carry either); fixed a bare "Admelog (rapid-acting)" name variant to match the existing
+  Humalog/lispro rule (no new price needed). **Also found and fixed a real, live mispricing bug
+  while investigating the VoSpire ER gap**: the bare `/albuterol|.../i` rule was silently pricing
+  PA's "albuterol sulfate ER tablet (generic)" (an oral extended-release tablet, `alternatives[]`
+  in `ibx-commercial-inhalers` — a live-priced row) as the $41.45 HFA inhaler — same
+  shadowing-order trap as the previously-documented Atelvia/Reclast/Respimat fixes, caught by
+  testing `hasCashLinkRule` against the real covered-name string rather than assuming the gap
+  report's clean numbers meant no other bugs existed. Fixed with a dedicated rule positioned
+  before the bare one. `KNOWN_UNPRICED_GAP` 21→15. `npm test` (572/572), `typecheck`,
+  `validate-prices` (15/15 matching the new ceiling) all green; verified live in the dev-server
+  browser (PA → Inhalers → Independence Blue Cross renders the VoSpire ER alternative as a
+  link-only row with no price, no longer the wrong $41.45; CA → Diabetes → Insulin renders
+  "Insulin Regular, Human" with the new $60.90 GoodRx price). `npm run archive-sources` run after
+  the merge to snapshot the new GoodRx source URLs. Committed in 3 chunks (cash rules + bug fix,
+  fenoprofen rule, backlog/issues/ledger notes).
+  **What's left in the cash-price gap is now entirely structural, not worth another research
+  pass**: pamidronate (IV-only, no oral form), romosozumab (confirmed physician-administered, no
+  pharmacy price panel), ibandronate non-oral variants (IV route, Cost Plus doesn't carry),
+  zoledronic acid 4mg (oncology dose, intentionally excluded from the 5mg osteoporosis rule),
+  etidronate (confirmed discontinued by manufacturer). **Still stopped here pending the user's
+  answer on the 43-state prioritization axis.** Next session: if the user answers, scale the
+  chosen state(s); if approved, merge PA's remaining 20 gathered-and-checkpointed classes, then
+  CA. The cash-price gap no longer needs a "check GoodRx again" ritual each session — everything
+  left is a dead end.

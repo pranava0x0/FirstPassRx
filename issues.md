@@ -732,12 +732,13 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   confidently wrong number. Fixed by adding a dedicated `/vospire|albuterol.*\bER\b/i` rule
   positioned before the bare rule (`src/lib/cash.ts`); shipped link-only (no confirmed price —
   Cost Plus doesn't carry it, GoodRx blocked before a price could be captured this session).
-  Also closed 3 other cash-price gap items same session: real GoodRx price for "Insulin Regular,
+  Also closed 4 other cash-price gap items same session: real GoodRx prices for "Insulin Regular,
   Human (rDNA origin)" (Novolin R, $60.90/vial, broadened the existing link-only `novolin` rule)
-  and 2 correctness-only fixes reusing already-captured prices — a bare `Admelog (rapid-acting)`
-  name variant (no literal "lispro" in the string) now matches the existing Humalog/lispro rule,
-  and a new link-only `apidra|glulisine` rule for Apidra (a distinct insulin, previously
-  unmatched). `KNOWN_UNPRICED_GAP` 21→16. `npm test` 572/572, `typecheck`, `validate-prices`
-  (16/16 matching new ceiling) all green; verified live in the dev-server browser (PA → Inhalers →
-  Independence Blue Cross renders the VoSpire ER alternative link-only, no price; CA → Diabetes →
-  Insulin renders "Insulin Regular, Human" with the new $60.90 GoodRx price). _Fixed._
+  and fenoprofen ($86.32/30 capsules, Cost Plus confirmed not carrying it via live search), plus 2
+  correctness-only fixes reusing already-captured prices — a bare `Admelog (rapid-acting)` name
+  variant (no literal "lispro" in the string) now matches the existing Humalog/lispro rule, and a
+  new link-only `apidra|glulisine` rule for Apidra (a distinct insulin, previously unmatched).
+  `KNOWN_UNPRICED_GAP` 21→15. `npm test` 572/572, `typecheck`, `validate-prices` (15/15 matching
+  new ceiling) all green; verified live in the dev-server browser (PA → Inhalers → Independence
+  Blue Cross renders the VoSpire ER alternative link-only, no price; CA → Diabetes → Insulin
+  renders "Insulin Regular, Human" with the new $60.90 GoodRx price). _Fixed._
