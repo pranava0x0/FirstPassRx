@@ -271,7 +271,7 @@
  * with no pharmacy-price panel) -- not a research gap, a structural fact about how these
  * buy-and-bill-only infusions are actually dispensed; no rule added for either rather than fabricate
  * a number. Etidronate disodium never reached before GoodRx re-blocked. */
-export const KNOWN_UNPRICED_GAP = 16
+export const KNOWN_UNPRICED_GAP = 15
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -1036,6 +1036,13 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     costPlusPath: 'etodolac-200mg-capsule',
     costPlusPrice: { price: 10.14, quantity: '200mg capsule' },
     pricesCapturedAt: '2026-07-16',
+  },
+  {
+    // Confirmed 2026-08-11: Cost Plus doesn't carry fenoprofen at all (search returns no results).
+    matches: /fenoprofen|nalfon/i,
+    goodRxSlug: 'fenoprofen',
+    goodRxPrice: { price: 86.32, quantity: '30 capsules, 400mg' },
+    pricesCapturedAt: '2026-08-11',
   },
   {
     matches: /flurbiprofen|ansaid|lurbiro/i,
