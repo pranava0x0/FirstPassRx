@@ -720,3 +720,24 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   Atelvia/delayed-release rule (`/atelvia|delayed.release|\bdr\/ec\b|\btbec\b/i`) positioned
   before the bare rule, using the real Cost Plus price already captured. 3 new regression tests.
   `npm test` 570/570. _Fixed._
+
+- **2026-08-11 (scheduled run) · a bare `/albuterol|.../i` regex priced oral extended-release
+  albuterol tablets (VoSpire ER) as if they were the $41.45 HFA metered-dose inhaler — real bug,
+  found while investigating the cash-price gap, fixed same day.** Root cause: **code bug** — same
+  shadowing-order class as the Atelvia/Reclast/Respimat traps already documented above; the
+  covered-name string `"albuterol sulfate ER tablet (generic)"` (PA's `ibx-commercial-inhalers`
+  guide, `alternatives[]` — a live-priced row, not a `paRequired` row the UI skips pricing for)
+  contains "albuterol" and matched the bare inhaler rule first. An oral tablet and an HFA inhaler
+  are different products/routes; pricing the tablet as the inhaler would have shown a real user a
+  confidently wrong number. Fixed by adding a dedicated `/vospire|albuterol.*\bER\b/i` rule
+  positioned before the bare rule (`src/lib/cash.ts`); shipped link-only (no confirmed price —
+  Cost Plus doesn't carry it, GoodRx blocked before a price could be captured this session).
+  Also closed 3 other cash-price gap items same session: real GoodRx price for "Insulin Regular,
+  Human (rDNA origin)" (Novolin R, $60.90/vial, broadened the existing link-only `novolin` rule)
+  and 2 correctness-only fixes reusing already-captured prices — a bare `Admelog (rapid-acting)`
+  name variant (no literal "lispro" in the string) now matches the existing Humalog/lispro rule,
+  and a new link-only `apidra|glulisine` rule for Apidra (a distinct insulin, previously
+  unmatched). `KNOWN_UNPRICED_GAP` 21→16. `npm test` 572/572, `typecheck`, `validate-prices`
+  (16/16 matching new ceiling) all green; verified live in the dev-server browser (PA → Inhalers →
+  Independence Blue Cross renders the VoSpire ER alternative link-only, no price; CA → Diabetes →
+  Insulin renders "Insulin Regular, Human" with the new $60.90 GoodRx price). _Fixed._
