@@ -266,6 +266,14 @@ describe('cash price coverage across the live formulary', () => {
       /premarin/i,
       /conjugated estrogen/i,
       /estrogens?,? conjugated/i,
+      // 2026-08-11: VoSpire ER / oral extended-release albuterol tablet (Cost Plus doesn't carry
+      // it, GoodRx blocked before a price could be captured) and Apidra/glulisine (Cost Plus
+      // doesn't carry any insulin, GoodRx blocked) -- both link-only rules added this session,
+      // see cash.ts.
+      /vospire/i,
+      /albuterol.*\bER\b/i,
+      /apidra/i,
+      /glulisine/i,
     ]
     const matched = coveredDrugNames().filter((name) => hasCashLinkRule(name))
     const missingPrice = matched.filter((name) => !goodRxPrice(name) && !costPlusPrice(name))

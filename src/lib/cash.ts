@@ -271,7 +271,7 @@
  * with no pharmacy-price panel) -- not a research gap, a structural fact about how these
  * buy-and-bill-only infusions are actually dispensed; no rule added for either rather than fabricate
  * a number. Etidronate disodium never reached before GoodRx re-blocked. */
-export const KNOWN_UNPRICED_GAP = 21
+export const KNOWN_UNPRICED_GAP = 16
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -308,6 +308,18 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxPrice: { price: 34.43, quantity: '25 vials, 0.63mg/3mL' },
     costPlusPrice: { price: 14.64, quantity: 'box of 25 vials, 0.63mg/3mL' },
     pricesCapturedAt: '2026-07-01',
+  },
+  {
+    // VoSpire ER / oral extended-release albuterol tablet -- a genuinely different product
+    // (oral tablet, not an HFA inhaler) from the bare albuterol rule below. Placed first so it
+    // doesn't fall through to the inhaler price, same mispricing-trap shape as the Atelvia/
+    // Reclast/Respimat fixes documented in issues.md. Cost Plus doesn't carry it (confirmed
+    // 2026-08-11 search); GoodRx blocked before a price could be captured this session --
+    // link-only for now, see KNOWN_PRICE_UNAVAILABLE in cash.test.ts.
+    matches: /vospire|albuterol.*\bER\b/i,
+    goodRxSlug: 'albuterol',
+    goodRxParams: 'label_override=vospire-er&form=tablet-extended-release',
+    pricesCapturedAt: '2026-08-11',
   },
   {
     matches: /albuterol|proair|ventolin|proventil/i,
@@ -1186,10 +1198,23 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-07-09',
   },
   {
-    matches: /insulin lispro|humalog|lispro|lyumjev/i,
+    // "admelog" added 2026-08-11 -- Admelog is insulin lispro (Humalog's follow-on/biosimilar);
+    // most covered-name variants already spell out "insulin lispro" and matched here already, but
+    // a bare "Admelog (rapid-acting)" phrasing (no "lispro" in the string) fell through to no
+    // rule at all. Same Humalog price used as the molecule proxy, consistent with every other
+    // Admelog variant already priced this way in this file.
+    matches: /insulin lispro|humalog|lispro|lyumjev|admelog/i,
     goodRxSlug: 'humalog',
     goodRxPrice: { price: 51.24, quantity: '1 vial, 10mL, 100 units/mL' },
     pricesCapturedAt: '2026-07-09',
+  },
+  {
+    // Apidra (insulin glulisine) -- a distinct rapid-acting insulin, not lispro or aspart. Cost
+    // Plus doesn't carry any insulin (see note below); GoodRx blocked before a price could be
+    // captured this session -- link-only for now.
+    matches: /insulin glulisine|glulisine|apidra/i,
+    goodRxSlug: 'apidra',
+    pricesCapturedAt: '2026-08-11',
   },
   {
     matches: /insulin degludec|degludec|tresiba/i,
@@ -1213,9 +1238,13 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-07-16',
   },
   {
-    matches: /novolin/i,
-    goodRxSlug: 'novolin',
-    pricesCapturedAt: '2026-07-16',
+    // Broadened 2026-08-11 to also catch "Insulin Regular, Human (rDNA origin)" phrasing (Medi-Cal
+    // Rx's CDL wording for the same drug Novolin R brands) -- real GoodRx standard price captured
+    // this session (novolin-r slug resolved cleanly, no bot-check).
+    matches: /novolin|insulin regular,? human/i,
+    goodRxSlug: 'novolin-r',
+    goodRxPrice: { price: 60.9, quantity: '1 vial, 10mL, 100 units/mL' },
+    pricesCapturedAt: '2026-08-11',
   },
   {
     matches: /fiasp/i,
