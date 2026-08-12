@@ -535,6 +535,36 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   - Not pursued further this run per the standing gate: the SSRI proof guide (`ny-ssris`) is still
     awaiting the user's review before *any* further scaling, per `docs/RESUME-EXPANSION.md`'s
     explicit stop-and-report instruction — these are ideas to scope next, not started.
+  - **Atypical antipsychotics — added 2026-08-12 (scheduled run), strong well-documented PA-friction
+    story, real piggyback angle onto states already in this dataset.** AJMC-published research: more
+    than one-third of state Medicaid programs (and Medicare Part D plans) require PA or another
+    restriction for at least one atypical antipsychotic; 37% of prescriptions rejected at the pharmacy
+    for a formulary/PA reason are abandoned and never picked up. **Colorado, Florida, California,
+    Illinois, and Wisconsin are named as the most-restrictive states** — CA and IL are already fully
+    built out in this dataset (7 topics each), so a future `ca-antipsychotics`/`il-antipsychotics`
+    guide could cite payer rosters already gathered and verified, no new payer-discovery cost. Since
+    2015, 31 state Medicaid programs added PA specifically for antipsychotics prescribed to
+    Medicaid-enrolled youth — a second, narrower angle (pediatric PA) worth noting if the guide scopes
+    that population separately. Likely taxonomy: one `atypical-antipsychotic` class (risperidone,
+    olanzapine, quetiapine, aripiprazole, ziprasidone as the generic-available first-line agents;
+    newer brands like Vraylar/Rexulti/Caplyta as PA-heavy alternatives), single-class shape like
+    `ssri-oral`. Cash-price feasibility not checked this session. Research only — no data gathered,
+    no agents spawned.
+  - **PrEP (HIV pre-exposure prophylaxis) — added 2026-08-12 (scheduled run), a different kind of
+    story than every other candidate: PA is arguably *illegal* here but still happens.** The ACA
+    requires ACA-marketplace and Medicaid-expansion plans to cover any USPSTF Grade-A preventive
+    service — which includes PrEP — with zero cost-sharing and (per patient-advocacy commentary to
+    CMS on its 2026 National Coverage Determination) no PA/step-therapy barrier at all. Yet provider
+    surveys still find PA cited as a major (38%) or moderate (37%) barrier to prescribing it in
+    practice — a "should be free and frictionless, but isn't" narrative distinct from every other
+    candidate topic logged so far (which are all "genuinely allowed to have PA"). Complicating factor
+    for this app's model: PrEP is arguably being denied PA *illegally* in some of these cases, which
+    is a different, more legally-loaded story than "plan X requires step therapy on drug Y" — worth
+    flagging to the user explicitly before scoping, not a purely mechanical taxonomy decision like the
+    other candidates. Only 3 real products exist (Truvada/emtricitabine-tenofovir DF generic,
+    Descovy/emtricitabine-tenofovir AF, Apretude injectable) — a very small, cheap-to-gather class if
+    pursued. Not added to the main candidate list above pending that explicit flag. Research only —
+    no data gathered, no agents spawned.
   - **Re-verified 2026-07-24 (scheduled run):** the CA/PA GLP-1-weight-loss coverage drop above is
     still current — a Stateline piece from 2026-04-30 confirms both states (plus NH and SC)
     eliminated Medicaid FFS coverage for the obesity indication over budget strain, with MA and RI

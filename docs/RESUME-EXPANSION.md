@@ -928,3 +928,38 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   chosen state(s); if approved, merge PA's remaining 20 gathered-and-checkpointed classes, then
   CA. The cash-price gap no longer needs a "check GoodRx again" ritual each session — everything
   left is a dead end.
+- 2026-08-12 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working
+  tree clean, `main` up to date with `origin/main`, `npm test` (572/572), `npm run
+  validate-coverage` unchanged at 56/357 (8/51 jurisdictions) since the 2026-08-05 CA merge — no
+  drift, still no user answer on the 43-state prioritization axis, no state picked unilaterally.
+  Both PA (7 topics) and CA (7 topics) confirmed fully complete from prior sessions — nothing left
+  to merge for either.
+  Ran `node scripts/gap-report.mjs` to check for anything newly closeable: cash-price gap unchanged
+  at 15 unpriced names, all previously confirmed structural dead ends (pamidronate/romosozumab/
+  ibandronate-IV/zoledronic-4mg/etidronate). Read the 4 verificationNotes behind the gap-report's
+  "payer document access blocked" bucket (`md-inhalers` ics+lama, `md-diabetes` sglt2, all
+  `medicare-partd`/AARP Rx Preferred) directly — the bucket label is a false positive from the
+  script's coarse keyword match: each note documents a *successful* curl+PyMuPDF fetch (plain
+  WebFetch 403'd, curl with a browser UA got HTTP 200) with full verbatim table text quoted; the
+  `partial` status is because picking a single "preferred" agent among several identically-tiered
+  options is an inference, not because the source was unreachable. Not closeable further without a
+  fundamentally different signal (the plan's own document simply doesn't rank within a tier).
+  Spent the remainder on two fresh web-research threads (no agents), logged to `backlog.md`,
+  distinct from every previously-logged candidate (GLP-1/ADHD/DOAC/CGRP/buprenorphine/Texas):
+  (1) **atypical antipsychotics** — AJMC-sourced: >1/3 of state Medicaid programs restrict at least
+  one atypical antipsychotic, 37% of PA-rejected prescriptions are abandoned at the pharmacy; the
+  5 most-restrictive states named are CO/FL/CA/IL/WI — CA and IL are already fully built out in
+  this dataset, so a future guide could reuse their existing payer rosters at zero discovery cost;
+  (2) **PrEP (HIV pre-exposure prophylaxis)** — a structurally different story than every other
+  candidate: ACA Grade-A preventive-service rules arguably prohibit PA/cost-sharing for it
+  entirely, yet 38% of providers still cite PA as a major real-world barrier — flagged as needing
+  an explicit conversation with the user before scoping (a "PA may be happening illegally here" claim
+  is more legally loaded than this project's usual "plan X requires step therapy" framing), not
+  silently added to the standard candidate list.
+  No data gathered, no agents/Workflows spawned, no branches created. Committed 1 chunk (backlog +
+  this ledger entry). **Still stopped here pending the user's answer on the 43-state prioritization
+  axis.** Next session: if the user answers, scale the chosen state(s); the cash-price gap and the
+  existing partial-cell audits are both at diminishing returns — a fresh research pass on a new
+  candidate topic (per this session's two additions, or the 6 already logged) is now the more
+  productive use of an unscaled scheduled run than re-checking GoodRx or re-reading already-audited
+  verificationNotes.
