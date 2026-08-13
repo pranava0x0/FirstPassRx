@@ -963,3 +963,32 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   candidate topic (per this session's two additions, or the 6 already logged) is now the more
   productive use of an unscaled scheduled run than re-checking GoodRx or re-reading already-audited
   verificationNotes.
+- 2026-08-13 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working
+  tree clean, `main` up to date with `origin/main`, `npm test` (572/572), `npm run
+  validate-coverage` unchanged at 56/357 (8/51 jurisdictions) since the 2026-08-05 CA merge — no
+  drift, still no user answer on the 43-state prioritization axis, no state picked unilaterally.
+  Ran `scripts/gap-report.mjs`: cash-price gap unchanged at 15 unpriced names, all previously
+  confirmed structural dead ends (pamidronate/romosozumab/ibandronate-IV/zoledronic-4mg/etidronate)
+  — nothing newly closeable, matching the 2026-08-12 assessment that this line of inquiry is
+  exhausted.
+  **Developed the 2026-08-12 atypical-antipsychotics candidate further, per the fallback
+  instruction's "identify missing data" framing — same pattern as how buprenorphine's Cost Plus
+  feasibility got checked the session after it was first surfaced.** The live browser was available
+  (with the by-now-familiar Cost Plus hydration race and a couple of intermittent safety-classifier
+  timeouts on `navigate`/`javascript_tool`, both cleared on retry — no new failure modes). Paged
+  through Cost Plus Drugs' full "Mental Health" category (10 pages, ~95 products, via JS-driven
+  pagination clicks since `read_page` returned an empty tree this session — `get_page_text` after
+  each click was the reliable read). Result logged to `backlog.md`: all 7 major oral atypical
+  antipsychotics (aripiprazole, olanzapine, quetiapine, risperidone, ziprasidone, lurasidone,
+  paliperidone ER) are stocked as cheap generics ($5.34–$23.77), plus several typicals (haloperidol,
+  chlorpromazine, fluphenazine, perphenazine) useful for `alternatives[]`. Only clozapine is absent
+  (clinically expected — REMS neutrophil-monitoring requirement, not a catalog gap to chase). This
+  is the strongest cash-price story of any candidate topic logged so far in this ledger, stronger
+  than SSRIs/osteoporosis were at their own proof-guide stage.
+  No data gathered, no agents/Workflows spawned, no branches created. Committed 1 chunk (backlog +
+  this ledger entry). **Still stopped here pending the user's answer on the 43-state prioritization
+  axis.** Next session: if the user answers, scale the chosen state(s) — atypical antipsychotics is
+  now the best-developed candidate topic (real PA-friction research + confirmed strong cash-price
+  coverage + CA/IL payer rosters already built), worth surfacing to the user explicitly as a
+  recommendation alongside the standing PA/CA-scale-remaining-topics option, next time this ledger's
+  gate is reviewed.

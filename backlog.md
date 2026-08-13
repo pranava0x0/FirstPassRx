@@ -550,6 +550,24 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
     newer brands like Vraylar/Rexulti/Caplyta as PA-heavy alternatives), single-class shape like
     `ssri-oral`. Cash-price feasibility not checked this session. Research only — no data gathered,
     no agents spawned.
+    - **Cash-price feasibility confirmed 2026-08-13 (scheduled run) — unusually strong, better than
+      any other candidate topic checked so far.** Paged through Cost Plus Drugs' full "Mental Health"
+      category (10 pages, ~95 products) via the live browser. All 7 major oral atypical antipsychotics
+      are stocked as cheap generics: aripiprazole/Abilify $7.76, olanzapine/Zyprexa $6.72,
+      quetiapine/Seroquel $5.97, risperidone/Risperdal $5.34, ziprasidone/Geodon $8.52,
+      lurasidone/Latuda $11.37, paliperidone ER/Invega $23.77 (all "Home Delivery" tier prices).
+      Several first-generation/typical antipsychotics also present (haloperidol $5.78, chlorpromazine
+      $9.42, fluphenazine $6.76-9.55, perphenazine $6.86) — useful if the guide's `alternatives[]`
+      needs older agents too. Only real gap: **clozapine is absent from the catalog** (confirmed by
+      its alphabetical absence between Clonidine and Doxepin) — clinically expected, since clozapine
+      requires REMS-mandated absolute-neutrophil-count monitoring most cash pharmacies can't support,
+      not a Cost Plus omission to chase. Net: unlike buprenorphine/MOUD (zero Cost Plus coverage,
+      confirmed 2026-08-07) or the osteoporosis specialty injectables (all absent), this candidate
+      would ship with real, cheap cash prices for every first-line agent on day one — the strongest
+      cash-price story of any candidate topic logged in this backlog. GoodRx not checked this pass
+      (Cost Plus alone was decisive); would still be worth checking for brand-name PA alternatives
+      (Vraylar/Rexulti/Caplyta) if the guide is ever scoped, since those are unlikely to be
+      Cost-Plus-carried at a meaningful discount.
   - **PrEP (HIV pre-exposure prophylaxis) — added 2026-08-12 (scheduled run), a different kind of
     story than every other candidate: PA is arguably *illegal* here but still happens.** The ACA
     requires ACA-marketplace and Medicaid-expansion plans to cover any USPSTF Grade-A preventive
