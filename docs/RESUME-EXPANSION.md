@@ -992,3 +992,39 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   coverage + CA/IL payer rosters already built), worth surfacing to the user explicitly as a
   recommendation alongside the standing PA/CA-scale-remaining-topics option, next time this ledger's
   gate is reviewed.
+- 2026-08-14 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working
+  tree clean, `main` up to date with `origin/main`, `npm test` (572/572), `npm run
+  validate-coverage` unchanged at 56/357 (8/51 jurisdictions) since the 2026-08-05 CA merge — no
+  drift, still no user answer on the 43-state prioritization axis, no state picked unilaterally.
+  Both PA and CA reconfirmed fully complete (7/7 topics each) from prior sessions.
+  Ran `scripts/gap-report.mjs`: cash-price gap unchanged at 15 unpriced names, all previously
+  confirmed structural dead ends. Cross-checked the "other / needs manual read" bucket's specific
+  cells against every prior ledger entry to find any genuinely unread ones — found and read 5 not
+  explicitly quoted before (`il-nsaids/nsaid-oral`, `il-inhalers/ics`, `il-diabetes/glp1`,
+  `ma-ssris/ssri-oral`, and re-confirmed all 5 `ny-menopause` classes read in full): all are the
+  same already-documented structural gaps (NY menopause's eMedNY PA-code-legend absence dead-ended
+  twice since 2026-07-20; MassHealth's MHDL host still unreachable by any fetch method since
+  2026-07-25; IL's Wellcare/Aetna PDLs genuinely lack the specific product/dose in question). None
+  closeable, none re-bucketed, no new backlog items — matches the diminishing-returns pattern noted
+  since 2026-08-08.
+  **Did the most valuable available work instead of repeating the same audit pattern: consolidated
+  7 candidate topics accumulated across 6 separate sessions (2026-07-19 through 2026-08-13 —
+  GLP-1 weight-loss, ADHD stimulants, DOAC anticoagulants, CGRP migraine inhibitors, buprenorphine/
+  MOUD, atypical antipsychotics, PrEP) into a single ranked scorecard in `backlog.md`**, since no
+  prior session had compared them side-by-side and a future scoping decision would otherwise
+  require re-reading ~120 lines of interleaved history. Ranked by PA-friction evidence strength +
+  confirmed cash-price feasibility + incremental gather cost; explicitly names atypical
+  antipsychotics as the best-supported next candidate if the user approves scaling. Also ran one
+  fresh WebSearch pair (epinephrine auto-injectors/EpiPen) per the fallback instruction's "search
+  for new ideas" framing — found a materially weaker PA-friction story than every existing
+  candidate (newest quantified stat is 2017-era "3-5 states"; modern sources describe Medicaid
+  coverage as usually low/no-copay) — logged as considered-and-set-aside in the scorecard rather
+  than added as an 8th candidate, to avoid diluting the list with a weak entry.
+  No data gathered, no agents/Workflows spawned, no branches created. Committed 1 chunk
+  (`backlog.md` scorecard + this ledger entry). **Still stopped here pending the user's answer on
+  the 43-state prioritization axis.** Next session: if the user answers, scale the chosen state(s);
+  atypical antipsychotics remains the top recommendation if a new topic (rather than a new state)
+  is what gets approved. The cash-price gap and partial-cell audits are both now fully exhausted —
+  a future unscaled session's highest-value use is either developing one of the 7 scorecarded
+  candidates further (e.g. checking cash-price feasibility for CGRP/DOAC/ADHD, still unconfirmed)
+  or waiting for the user's prioritization answer, not repeating audits already run 3+ times.

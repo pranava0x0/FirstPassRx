@@ -468,6 +468,25 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   only, no data gathered, no agents spawned).** Ranked by how much real-world PA friction they carry
   (source: web search, not gathered/cited formulary data — treat as a shortlist to scope, not a
   claim about any specific payer):
+  - **Scorecard added 2026-08-14 (scheduled run) — 7 candidates have now accumulated across 6
+    sessions (2026-07-19 through 2026-08-13) with no side-by-side comparison; consolidating so the
+    next session that scopes one doesn't have to re-read the full history below.** Ranked by
+    strength of PA-friction evidence + confirmed cash-price feasibility + incremental gather cost
+    (reuse of an existing payer roster vs. fresh discovery):
+    | Candidate | PA-friction evidence | Cash-price story | Gather cost |
+    |---|---|---|---|
+    | **Atypical antipsychotics** | Strong (>1/3 states restrict, 37% pharmacy abandonment; CO/FL/CA/IL/WI named worst) | **Strongest of any candidate** — all 7 oral generics confirmed Cost Plus-stocked $5-24 | Low — CA & IL rosters already built |
+    | **Buprenorphine/MOUD** | Strong but narrowing (39/50 states now PA-free for the first-line combo, down from the original ~35-state gap) | None — confirmed zero Cost Plus coverage; GoodRx unconfirmed | Medium — needs fresh roster per state |
+    | **CGRP migraine inhibitors** | Strong (96% of MCOs require trial-and-failure; this project's own NYRx fetch corroborates F/Q/D+ST flags) | Not checked | Medium |
+    | **PrEP** | Strong but legally fraught — PA may be unlawful under ACA Grade-A coverage, a different framing than every other candidate; flagged for explicit user sign-off before scoping | Not checked | Low — only 3 products |
+    | **GLP-1 weight-loss (vs. existing diabetes `glp1`)** | Real but volatile — coverage is actively being dropped (CA/PA/NH/SC since Oct 2025) and CMS's BALANCE model could reshape it again before a guide ships | Not checked | Low — CA/PA rosters already built |
+    | **ADHD stimulants** | Moderate (every state covers ≥1, but PA/step rules vary; Schedule II adds friction) | Not checked | Low |
+    | **DOAC anticoagulants** | Moderate (chronic, PDL-driven, but less friction-heavy than the others) | Not checked | Low — reuses `ace-inhibitor` taxonomy shape |
+    | ~~EpiPen/epinephrine auto-injectors~~ | **Considered and set aside 2026-08-14** — the only quantified PA-restriction stat found is a 2017-era report ("at least 3-5 states"); modern coverage is described as "usually covered with little or no copay," a much weaker friction story than any candidate above. Cost-disparity story (brand $650-814 vs. generic $340-400) is real but doesn't fit this app's PA-barrier framing as well. Not added to the ranked list. |  |  |
+
+    **If/when the user approves scaling past the current gate, atypical antipsychotics is the
+    single best-supported next candidate** — strongest cash-price story of any topic checked, a
+    real PA-friction citation, and zero new payer-discovery cost in 2 of this project's 6 states.
   - **GLP-1s for weight-loss/obesity indication (Wegovy/Zepbound/Saxenda) — distinct from the
     existing `glp1` diabetes class.** Same molecules, different indication and a much harsher PA
     gate (BMI threshold + documented prior weight-loss attempts almost everywhere it's covered at
