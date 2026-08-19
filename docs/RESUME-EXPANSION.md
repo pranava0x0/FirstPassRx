@@ -1028,3 +1028,46 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   a future unscaled session's highest-value use is either developing one of the 7 scorecarded
   candidates further (e.g. checking cash-price feasibility for CGRP/DOAC/ADHD, still unconfirmed)
   or waiting for the user's prioritization answer, not repeating audits already run 3+ times.
+- 2026-08-18 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working
+  tree clean, `main` up to date with `origin/main`, `npm test` (572/572), `npm run
+  validate-coverage` unchanged at 56/357 (8/51 jurisdictions) since the 2026-08-05 CA merge — no
+  drift, still no user answer on the 43-state prioritization axis, no state picked unilaterally.
+  Both PA and CA reconfirmed fully complete (7/7 topics each). `scripts/gap-report.mjs`: cash-price
+  gap unchanged at 15 unpriced names, all previously confirmed structural dead ends — nothing newly
+  closeable.
+  **Closed out the "still unconfirmed" cash-price column the 2026-08-14 scorecard left open for 3
+  of the 7 candidate topics** (ADHD stimulants, DOAC anticoagulants, CGRP migraine inhibitors) —
+  the explicitly-flagged next step from that entry. Checked each against Cost Plus Drugs directly
+  (real browser session; GoodRx was hard-blocked from the first lookup this session, "Access to
+  this page has been denied," consistent with most sessions since 2026-08-02, so only Cost Plus
+  could be confirmed):
+  - **ADHD stimulants — weak.** Cost Plus's own ADHD category page lists only 2 products, both
+    non-stimulants (atomoxetine/Strattera-generic, clonidine ER/Kapvay-generic); a direct search for
+    methylphenidate returns zero matches. This is a structural DEA mail-order restriction on
+    Schedule II controlled substances, not a catalog gap a future recheck would close. A guide's
+    actual preferred agent (almost certainly a stimulant) would have no Cost Plus backstop at all.
+  - **DOAC anticoagulants — mixed, with a real trap to flag if ever scoped.** Warfarin is a cheap
+    generic ($6.62/30ct 10mg). Apixaban/Eliquis has no generic yet — only the brand, at a real but
+    non-cheap manufacturer-subsidized cash price ($345/60ct 2.5mg). Rivaroxaban has a generic, but
+    Cost Plus stocks it **only at 2.5mg** (the antiplatelet/vascular-protection dose), not the
+    standard 15mg/20mg therapeutic anticoagulation strength a preferred-agent cell would need — same
+    dose-mismatch trap class as the Reclast/Zometa and Respimat/HandiHaler cash-pricing bugs already
+    documented in CLAUDE.md. Flagged explicitly in `backlog.md` so a future gather doesn't silently
+    price a 20mg cell off the 2.5mg product.
+  - **CGRP migraine inhibitors — weak.** Zero CGRP mAbs/gepants anywhere in Cost Plus's catalog
+    (checked both pages of the full "Migraines" category — only triptans, topiramate, propranolol,
+    divalproex, dihydroergotamine; a direct search for rimegepant/Nurtec returns no match). Same
+    category as romosozumab/buprenorphine: expensive, patent-protected specialty drugs a
+    generics-focused cash pharmacy doesn't stock.
+  Updated `backlog.md`'s scorecard table with all 3 verdicts plus a closing note: every one of the
+  7 candidate topics now has a cash-price verdict, atypical antipsychotics remains the clear top
+  recommendation (only candidate with a *strong* cash-price story), no further Cost Plus research
+  needed on this list until the user picks one to scope. No data gathered, no agents/Workflows
+  spawned, no branches created, no formulary.json changes — this run's changes are `backlog.md` +
+  this ledger entry only, committed in 1 chunk.
+  **Still stopped here pending the user's answer on the 43-state prioritization axis.** Next
+  session: if the user answers, scale the chosen state(s) — if a new topic is what gets approved,
+  atypical antipsychotics is ready to scope with no further research needed. The cash-price gap,
+  partial-cell audits, and now the candidate-topic scorecard are all fully exhausted lines of
+  inquiry — a future unscaled session should either wait for the user's answer or do a genuinely
+  fresh web-search sweep for an 8th candidate not yet logged, not repeat any audit above.
