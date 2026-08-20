@@ -1108,3 +1108,33 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   the candidate-topic scorecard are all exhausted lines of inquiry for now — a future unscaled
   session should wait for the user's answer, re-run the freshness check once guides approach 90
   days, or do a fresh web-search sweep for a 9th candidate not yet logged.
+- 2026-08-20 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working
+  tree clean, `main` up to date with `origin/main`, `npm test` (572/572), `npm run
+  validate-coverage` unchanged at 56/357 (8/51 jurisdictions) since the 2026-08-05 CA merge — no
+  drift, still no user answer on the 43-state prioritization axis, no state picked unilaterally.
+  `scripts/gap-report.mjs`: cash-price gap unchanged at 15 unpriced names (pamidronate 9 cells,
+  romosozumab 4, ibandronate-IV 3, zoledronic-4mg 2, etidronate 1) — all previously confirmed
+  structural dead ends (no oral form / physician-administered / discontinued), nothing newly
+  closeable; verification gap unchanged at 92 non-verified cells across 53 (guide, class) pairs,
+  dominated by the same medical-benefit/Part-B carve-out and PDL-section-absent buckets audited
+  exhaustively in prior sessions.
+  **Fresh web-research pass for a 9th candidate topic, per the fallback instruction — this time the
+  finding was a disqualification, not an addition.** Investigated hepatitis C direct-acting
+  antivirals (sofosbuvir/velpatasvir and siblings): real PA-friction history, but the story is
+  actively *weakening* (34 states have now removed PA for most patients per HepVu/stateofhepc.org's
+  DAA-accessibility grading, same declining trajectory already logged for buprenorphine) — and,
+  decisively, the cash price disqualifies it outright: even the discounted generic runs
+  **~$6,700–$7,800 for a 28-tablet course** (GoodRx/SingleCare/Rx.com cross-checked, all in the same
+  range), three orders of magnitude above every other candidate or shipped topic in this dataset.
+  Logged as considered-and-set-aside in `backlog.md`'s scorecard (matching the EpiPen precedent) —
+  PCSK9 inhibitors and atypical antipsychotics remain the two ready-to-scope co-favorites, unchanged
+  by this finding.
+  No data gathered, no agents/Workflows spawned, no branches created, no `formulary.json` changes —
+  this run's changes are `backlog.md` + this ledger entry, committed in 1 chunk.
+  **Still stopped here pending the user's answer on the 43-state prioritization axis.** Next
+  session: if the user answers, scale the chosen state(s) — PCSK9 inhibitors and atypical
+  antipsychotics are both ready to scope with no further research needed. The cash-price gap,
+  partial-cell audits, guide-freshness, and the candidate-topic scorecard remain exhausted lines of
+  inquiry — a future unscaled session should wait for the user's answer, re-check guide freshness
+  once guides cross 90 days (`md-menopause`/`va-diabetes` first, ~2026-09-25 to 2026-09-30), or do a
+  fresh web-search sweep for a 10th candidate not yet logged.
