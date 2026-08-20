@@ -1071,3 +1071,40 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   partial-cell audits, and now the candidate-topic scorecard are all fully exhausted lines of
   inquiry — a future unscaled session should either wait for the user's answer or do a genuinely
   fresh web-search sweep for an 8th candidate not yet logged, not repeat any audit above.
+- 2026-08-19 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working
+  tree clean, `main` up to date with `origin/main`, `npm test` (572/572), `npm run
+  validate-coverage` unchanged at 56/357 (8/51 jurisdictions) since the 2026-08-05 CA merge — no
+  drift, still no user answer on the 43-state prioritization axis, no state picked unilaterally.
+  `scripts/gap-report.mjs`: cash-price gap unchanged at 15 unpriced names, all previously confirmed
+  structural dead ends — nothing newly closeable.
+  **New check, not run in any prior session of this ledger: guide-freshness audit.** Computed days-
+  since-`capturedAt` for all 56 shipped guides against the 90-day staleness threshold already named
+  in `backlog.md`'s freshness-badge idea — zero guides are stale (oldest is `md-menopause` at 53
+  days, shipped 2026-06-28). Nothing needs re-verification yet; worth repeating this specific check
+  again once guides start crossing 90 days (`md-menopause`/`va-diabetes` will be first, in ~37/42
+  days from today).
+  **Did a genuinely fresh web-research pass for a new candidate topic, per the fallback
+  instruction — surfaced an 8th candidate, not logged in any prior session:** PCSK9 inhibitors
+  (evolocumab/Repatha, alirocumab/Praluent) for high cholesterol. Sourced research (AHA
+  *Circulation: Cardiovascular Quality and Outcomes*, Amgen/JMCP analyses) shows the single
+  strongest PA-friction stat of any of the 8 candidates now on the scorecard: PA required for
+  82-97% of new prescriptions, 30-79% initial rejection (vs. 3.5-14.7% for other cardiometabolic
+  drugs), 34.7% patient abandonment (up to 75% for high-copay patients). Then confirmed real
+  cash-price feasibility with the live browser (GoodRx was accessible this session, no bot-check):
+  Repatha $239/mo and Praluent $225/carton are genuine self-pay GoodRx coupons redeemable at
+  ordinary retail chains, with no commercial-insurance eligibility gate excluding Medicaid/
+  uninsured patients — unlike the Forteo manufacturer copay card rejected 2026-08-03 for exactly
+  that reason. Cost Plus Drugs does not carry either molecule (confirmed via in-app search, both
+  "No Results") — GoodRx-only, but *confirmed* working, not "unconfirmed" like ADHD/DOAC/CGRP.
+  Logged as a new scorecard row and co-favorite (alongside atypical antipsychotics) in
+  `backlog.md`. No data gathered, no agents/Workflows spawned, no branches created, no
+  `formulary.json` changes — this run's changes are `backlog.md` + this ledger entry, committed in
+  1 chunk.
+  **Still stopped here pending the user's answer on the 43-state prioritization axis.** Next
+  session: if the user answers, scale the chosen state(s) — if a new topic is what gets approved,
+  PCSK9 inhibitors (strongest PA-friction stat + confirmed cash price) and atypical antipsychotics
+  (broadest cash-price coverage, zero new payer-discovery cost in CA/IL) are both ready to scope
+  with no further research needed. The cash-price gap, partial-cell audits, guide-freshness, and
+  the candidate-topic scorecard are all exhausted lines of inquiry for now — a future unscaled
+  session should wait for the user's answer, re-run the freshness check once guides approach 90
+  days, or do a fresh web-search sweep for a 9th candidate not yet logged.

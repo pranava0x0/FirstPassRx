@@ -486,17 +486,19 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
     | **PrEP** | Strong but legally fraught — PA may be unlawful under ACA Grade-A coverage, a different framing than every other candidate; flagged for explicit user sign-off before scoping | Not checked | Low — only 3 products |
     | **GLP-1 weight-loss (vs. existing diabetes `glp1`)** | Real but volatile — coverage is actively being dropped (CA/PA/NH/SC since Oct 2025) and CMS's BALANCE model could reshape it again before a guide ships | Not checked | Low — CA/PA rosters already built |
     | ~~EpiPen/epinephrine auto-injectors~~ | **Considered and set aside 2026-08-14** — the only quantified PA-restriction stat found is a 2017-era report ("at least 3-5 states"); modern coverage is described as "usually covered with little or no copay," a much weaker friction story than any candidate above. Cost-disparity story (brand $650-814 vs. generic $340-400) is real but doesn't fit this app's PA-barrier framing as well. Not added to the ranked list. |  |  |
+    | **PCSK9 inhibitors (evolocumab/Repatha, alirocumab/Praluent) for high cholesterol** | **Added 2026-08-19 — strongest PA-friction stat of any candidate on this list.** Sourced research (AHA *Circulation: Cardio Quality & Outcomes*, Amgen/JMCP analyses): PA required for **82-97% of new prescriptions**; **30-79% initial rejection rate** depending on payer type/era (vs. 3.5-14.7% for other cardiometabolic drugs — a huge relative gap); **34.7% patient abandonment** overall, ranging 7.5% (no copay) to 75% (>$350 copay). A 2019 published outcomes study directly links delayed/denied access to worse cardiovascular events. | **Real, confirmed 2026-08-19 — a genuine self-pay GoodRx coupon, not a copay-card trap.** GoodRx: Repatha $239/mo (list $645.69), Praluent $225/carton (list $598.41) — both are standard "self-pay patients only" GoodRx coupons redeemable at ordinary retail chains (CVS, Walgreens, Costco, etc.), with no commercial-insurance eligibility gate excluding Medicaid/uninsured patients (unlike the rejected Forteo copay-card precedent from 2026-08-03). Cost Plus Drugs does **not** carry either molecule (confirmed via in-app search, both "No Results") — GoodRx-only, same caveat as ADHD/DOAC, but here the GoodRx price is already confirmed working, not "unconfirmed." | Low — reuses the `ace-inhibitor`/`ssri-oral` single-class taxonomy shape (one `pcsk9-inhibitor` class, likely with statins as the cheap first-line comparator in `alternatives[]`); no new states needed, any existing state's roster works. |
 
-    **If/when the user approves scaling past the current gate, atypical antipsychotics remains the
-    single best-supported next candidate** — strongest cash-price story of any topic checked (all 7
-    generics Cost Plus-stocked $5-24), a real PA-friction citation, and zero new payer-discovery cost
-    in 2 of this project's 6 states. **2026-08-18 update: the 3 previously-unconfirmed candidates
-    (ADHD, DOAC, CGRP) are now all checked against Cost Plus** — none beat atypical antipsychotics on
-    cash-price strength; ADHD and CGRP are structurally weak (DEA-restricted / patent-protected,
-    respectively) and DOAC is real but carries a real dose-mismatch trap to design around if ever
-    scoped. This closes out the "still unconfirmed" cash-price gap the 2026-08-14 scorecard flagged —
-    every one of the 7 candidates now has a cash-price verdict; no further Cost Plus research needed
-    on this list until the user picks one to scope.
+    **If/when the user approves scaling past the current gate, PCSK9 inhibitors and atypical
+    antipsychotics are now co-favorites** — PCSK9 has the single strongest PA-friction citation of
+    any of the 8 candidates (82-97% PA rate, up to 79% rejection) *and* a confirmed real cash price
+    (not just "unconfirmed" like ADHD/DOAC/CGRP), while atypical antipsychotics still has the
+    broadest cash-price coverage (7 distinct generics, not just 2 drugs) and zero new payer-discovery
+    cost in CA/IL. Either is ready to scope with no further research needed. **2026-08-18 update: the
+    3 previously-unconfirmed candidates (ADHD, DOAC, CGRP) are now all checked against Cost Plus** —
+    ADHD and CGRP are structurally weak (DEA-restricted / patent-protected, respectively) and DOAC is
+    real but carries a real dose-mismatch trap to design around if ever scoped. Every one of the now
+    8 candidates has a cash-price verdict; no further Cost Plus/GoodRx research needed on this list
+    until the user picks one to scope.
   - **GLP-1s for weight-loss/obesity indication (Wegovy/Zepbound/Saxenda) — distinct from the
     existing `glp1` diabetes class.** Same molecules, different indication and a much harsher PA
     gate (BMI threshold + documented prior weight-loss attempts almost everywhere it's covered at
