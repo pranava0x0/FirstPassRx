@@ -83436,6 +83436,325 @@
           "lastReviewed": "2026-08-05"
         }
       ]
+    },
+    {
+      "id": "al-doac",
+      "label": "AL · DOAC Anticoagulants",
+      "stateCode": "AL",
+      "region": "Alabama",
+      "topicId": "doac",
+      "topic": "DOAC Anticoagulants",
+      "classNoun": "Prescription type",
+      "unitNoun": "medication",
+      "tagline": "",
+      "dataStatus": "verified",
+      "lastUpdated": "2026-08-21",
+      "capturedAt": "2026-08-21",
+      "payers": [
+        {
+          "id": "al-medicaid",
+          "name": "Alabama Medicaid Agency (Fee-for-Service, statewide -- no MCO contracts)",
+          "shortName": "AL Medicaid FFS",
+          "pbm": "Administered directly by the Alabama Medicaid Agency (no contracted PBM identified)",
+          "formularyUrl": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_7-1-26.pdf",
+          "sourceIds": [
+            "al-medicaid-doac-source-202608"
+          ],
+          "productName": "Alabama Medicaid Agency Preferred Drug List (PDL) Reference Tool",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "Alabama Medicaid Agency Preferred Drug List (PDL) Reference Tool, effective 2026-07-01"
+        },
+        {
+          "id": "bcbs-al-commercial",
+          "name": "Blue Cross and Blue Shield of Alabama (Commercial)",
+          "shortName": "BCBS Alabama",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+          "sourceIds": [
+            "bcbs-al-commercial-doac-source-202608"
+          ],
+          "productName": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List August 2026 (2026 Plan Year)",
+          "marketSegment": "commercial-employer",
+          "formularyId": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List August 2026 (2026 Plan Year), effective 2026-08-01"
+        },
+        {
+          "id": "bcbs-al-medicare",
+          "name": "BCBS Alabama Blue Advantage (Medicare Advantage / Part D)",
+          "shortName": "Blue Advantage AL",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+          "sourceIds": [
+            "bcbs-al-medicare-doac-source-202608"
+          ],
+          "productName": "Blue Advantage Choice 2026 Formulary — List of Covered Drugs (H0104_CHF26_C, Approved Formulary ID: 00026212_V10)",
+          "marketSegment": "medicare-part-d",
+          "formularyId": "Blue Advantage Choice 2026 Formulary — List of Covered Drugs (H0104_CHF26_C, Approved Formulary ID: 00026212_V10), effective 2026-01-20"
+        }
+      ],
+      "classes": [
+        {
+          "id": "doac-anticoagulant",
+          "name": "Oral Anticoagulants (DOACs)",
+          "shortName": "DOAC",
+          "plainName": "Blood thinner",
+          "description": "Direct oral anticoagulants (apixaban, rivaroxaban, dabigatran, edoxaban) — first-line therapy for stroke prevention in atrial fibrillation and treatment/prevention of venous thromboembolism, largely supplanting warfarin.",
+          "plainDescription": "A daily pill that prevents dangerous blood clots and stroke.",
+          "indication": "Atrial fibrillation & venous thromboembolism (DVT/PE) prevention and treatment",
+          "sourceIds": [
+            "al-medicaid-doac-source-202608",
+            "bcbs-al-commercial-doac-source-202608",
+            "bcbs-al-medicare-doac-source-202608"
+          ]
+        }
+      ],
+      "references": [
+        {
+          "id": "al-medicaid-doac-source-202608",
+          "label": "Alabama Medicaid Agency Preferred Drug List (PDL) Reference Tool",
+          "publisher": "Alabama Medicaid Agency",
+          "type": "gov",
+          "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_7-1-26.pdf",
+          "effectiveDate": "2026-07-01",
+          "accessed": "2026-08-21"
+        },
+        {
+          "id": "bcbs-al-commercial-doac-source-202608",
+          "label": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List August 2026 (2026 Plan Year)",
+          "publisher": "Blue Cross and Blue Shield of Alabama (pharmacy benefit administered by Prime Therapeutics LLC)",
+          "type": "payer",
+          "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+          "effectiveDate": "2026-08-01",
+          "accessed": "2026-08-21"
+        },
+        {
+          "id": "bcbs-al-medicare-doac-source-202608",
+          "label": "Choice 2026 Formulary — List of Covered Drugs (H0104_CHF26_C, Approved Formulary ID: 00026212_V10)",
+          "publisher": "Blue Cross and Blue Shield of Alabama (Blue Advantage Medicare)",
+          "type": "payer",
+          "url": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+          "effectiveDate": "2026-01-20",
+          "accessed": "2026-08-21"
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Prior authorization (PA)",
+          "short": "Insurer sign-off first",
+          "definition": "Insurer sign-off needed before the drug is covered."
+        },
+        {
+          "term": "Step therapy",
+          "short": "Try a preferred drug first",
+          "definition": "Must fail a preferred drug first before the plan covers this one."
+        }
+      ],
+      "records": [
+        {
+          "payerId": "al-medicaid",
+          "classId": "doac-anticoagulant",
+          "preferredAgent": {
+            "inn": "apixaban",
+            "brand": "Eliquis",
+            "genericAvailable": false,
+            "strength": "5 mg tablet (2.5 mg tablet for dose-reduced patients)",
+            "sig": "Take 5 mg by mouth twice daily; reduce to 2.5 mg twice daily if patient meets 2 of 3: age >=80 years, body weight <=60 kg, or serum creatinine >=1.5 mg/dL",
+            "sigShort": "Apixaban 5mg PO BID (2.5mg BID if dose-reduction criteria met)",
+            "plainSig": "Take one 5 mg tablet by mouth twice a day, morning and evening. Your doctor may lower this to 2.5 mg twice a day depending on your age, weight, and kidney function."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": "Not a brand-over-generic case -- no AB-rated generic apixaban is listed anywhere in this PDL, so Eliquis is preferred simply because it is the only apixaban product on the market as of this revision, not because the state chose brand over an available generic.",
+          "alternatives": [
+            {
+              "drug": "rivaroxaban (generic)",
+              "note": "Preferred, no PA required -- AB-rated generic for Xarelto",
+              "sourceIds": [
+                "al-medicaid-doac-source-202608"
+              ]
+            },
+            {
+              "drug": "dabigatran (generic capsule)",
+              "note": "Preferred, no PA required -- AB-rated generic for Pradaxa capsule",
+              "sourceIds": [
+                "al-medicaid-doac-source-202608"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Xarelto (rivaroxaban brand)",
+              "outcome": "pa",
+              "reason": "Restricted brand; PA required -- an AB-rated generic (rivaroxaban) exists and is preferred instead.",
+              "sourceIds": [
+                "al-medicaid-doac-source-202608"
+              ]
+            },
+            {
+              "drug": "Pradaxa (capsule, dabigatran brand)",
+              "outcome": "pa",
+              "reason": "Restricted brand; PA required -- an AB-rated generic (dabigatran) exists and is preferred instead.",
+              "sourceIds": [
+                "al-medicaid-doac-source-202608"
+              ]
+            },
+            {
+              "drug": "edoxaban (Savaysa)",
+              "outcome": "pa",
+              "reason": "Restricted brand; PA required -- no generic edoxaban exists, and it is not the state's preferred DOAC.",
+              "sourceIds": [
+                "al-medicaid-doac-source-202608"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "tier": "Preferred Brand — No PA Required",
+          "verification": "verified",
+          "verificationNote": "Read directly from page 11 of the Alabama Medicaid Agency 'Preferred Drug List (PDL) Reference Tool,' Cardiovascular Health category, 'Oral Anticoagulants' section, in the 3-column No-PA-Brand / No-PA-Generic / PA-Required table format used throughout the document. Effective date 07/01/2026 confirmed in the footer of page 11 and the cover/table of contents. Confirmed verbatim: Eliquis and Pradaxa (pellets) sit in the No-PA Preferred Brand column; rivaroxaban, warfarin, and dabigatran sit in the No-PA Preferred Generic column; Xarelto, Pradaxa (capsule), and Savaysa sit in the PA-Required column (asterisks on Xarelto/Pradaxa capsule confirm a generic exists in at least one dosage form for each). Eliquis has no paired generic entry anywhere in the table, confirming apixaban remains brand-only in this payer's formulary as of this revision. Warfarin, though listed in the same section as a preferred no-PA generic, is a vitamin K antagonist rather than a DOAC and is out of scope for this class, so it is omitted from alternatives. The document lists only drug/brand names with no strengths/quantities/directions, so the 5mg BID (2.5mg BID dose-reduced) strength/sig reflects standard FDA-label dosing for nonvalvular AFib/VTE, not a value read verbatim from the source.",
+          "sourceIds": [
+            "al-medicaid-doac-source-202608"
+          ],
+          "coverageSourceIds": [
+            "al-medicaid-doac-source-202608"
+          ],
+          "restrictionSourceIds": [
+            "al-medicaid-doac-source-202608"
+          ],
+          "lastReviewed": "2026-08-21"
+        },
+        {
+          "payerId": "bcbs-al-commercial",
+          "classId": "doac-anticoagulant",
+          "preferredAgent": {
+            "inn": "apixaban",
+            "brand": "Eliquis",
+            "genericAvailable": false,
+            "strength": "5 mg tablet (standard twice-daily AFib/VTE treatment dose; also covered at 2.5 mg tab, and 0.5 mg/1.5 mg/2 mg oral-suspension packs)",
+            "sig": "Take 1 tablet (5 mg) by mouth twice daily",
+            "sigShort": "1 tab PO BID",
+            "plainSig": "Take one 5 mg tablet by mouth two times a day."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "alternatives": [
+            {
+              "drug": "dabigatran etexilate mesylate (generic Pradaxa) cap 75 mg / 110 mg / 150 mg",
+              "note": "Tier 1 generic, no PA/step — lowest-cost DOAC on this formulary and the only one with a generic at all therapeutic strengths",
+              "sourceIds": [
+                "bcbs-al-commercial-doac-source-202608"
+              ]
+            },
+            {
+              "drug": "rivaroxaban (Xarelto) tab 10 mg / 15 mg / 20 mg",
+              "note": "Tier 2 brand, no PA/step — these are the therapeutic AFib/VTE doses and are brand-only on this formulary; the generic rivaroxaban line exists only at the 2.5 mg antiplatelet dose and as a 1 mg/mL oral suspension, not at 10/15/20 mg",
+              "sourceIds": [
+                "bcbs-al-commercial-doac-source-202608"
+              ]
+            },
+            {
+              "drug": "PRADAXA (dabigatran etexilate mesylate) brand cap/pellet pack, all strengths",
+              "note": "Tier 3 brand, no PA/step — covered but non-preferred cost-sharing since the generic equivalent (Tier 1) is available",
+              "sourceIds": [
+                "bcbs-al-commercial-doac-source-202608"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "edoxaban (Savaysa)",
+              "outcome": "nonformulary",
+              "reason": "Does not appear anywhere in the 194-page BCBS AL Standardized Source+Rx 1.0 (August 2026) drug list -- confirmed via full-document text search for both \"edoxaban\" and \"Savaysa\" (zero matches); not a covered DOAC on this formulary.",
+              "sourceIds": [
+                "bcbs-al-commercial-doac-source-202608"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "tier": "Tier 2 — preferred brand (no generic apixaban exists on this formulary)",
+          "verification": "verified",
+          "verificationNote": "Read directly off the BCBS AL Standardized Source+Rx 1.0 Prescription Drug List, August 2026 (2026 Plan Year), published by Prime Therapeutics LLC. Confirmed the ANTICOAGULANTS subsection under Hematological Agents (PDF pages 113-115) both by raw text extraction and by rendering the pages to images and reading the Drug Tier / PA / Step Therapy / Dispensing Limits column grid directly. Apixaban is listed only under the Eliquis brand at Tier 2 with a Dispensing-Limits-only flag (no PA, no step) for every strength -- no generic apixaban line exists anywhere in the document. Dabigatran has a true generic (Tier 1) alongside the Pradaxa brand (Tier 3), both Dispensing-Limits-only. Rivaroxaban's generic exists ONLY at 2.5 mg tab and 1 mg/mL suspension (Tier 1); the therapeutic 10/15/20 mg doses appear only under the Xarelto brand (Tier 2). No DOAC line item carries a PA or step-therapy flag. Edoxaban/Savaysa returned zero matches in a full-document search, confirming true non-formulary status. Apixaban's designation as the class's single 'preferred' pick reflects standard-of-care first-line DOAC selection per current clinical guidelines, since the source applies no PA/step-based steering across the class and does not itself label any one DOAC 'preferred' -- the only inferred element in an otherwise directly-read record.",
+          "sourceIds": [
+            "bcbs-al-commercial-doac-source-202608"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-commercial-doac-source-202608"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-commercial-doac-source-202608"
+          ],
+          "lastReviewed": "2026-08-21"
+        },
+        {
+          "payerId": "bcbs-al-medicare",
+          "classId": "doac-anticoagulant",
+          "preferredAgent": {
+            "inn": "apixaban",
+            "brand": "Eliquis",
+            "genericAvailable": false,
+            "strength": "5 mg tablet (standard treatment dose for AFib stroke prevention and VTE treatment)",
+            "sig": "apixaban (Eliquis) 5 mg tablet, take 1 tablet by mouth twice daily",
+            "sigShort": "1 tab PO BID",
+            "plainSig": "Take one 5 mg tablet by mouth two times a day."
+          },
+          "preferredRestriction": "Quantity limit of 74 tablets per 30 days (covers standard BID dosing with a small buffer); no prior authorization or step therapy required.",
+          "boglActive": false,
+          "boglNote": "No generic apixaban exists on the market (single-source brand), so this is not a case of brand being favored over an available generic -- Eliquis is simply the only apixaban product.",
+          "alternatives": [
+            {
+              "drug": "rivaroxaban (Xarelto brand) tab 10 mg, 20 mg",
+              "note": "Tier 3 (Preferred Brand), QL 30 tablets/30 days, no PA. This is the standard AFib/VTE therapeutic dose. Only the 2.5 mg strength of rivaroxaban has a generic on this formulary -- the 10/20 mg treatment-dose Xarelto has no generic listed, so brand is the only option at these strengths.",
+              "sourceIds": [
+                "bcbs-al-medicare-doac-source-202608"
+              ]
+            },
+            {
+              "drug": "rivaroxaban (generic) tab 2.5 mg",
+              "note": "Tier 3, QL 60 tablets/30 days, no PA. IMPORTANT: 2.5 mg is the LOW antiplatelet/CAD-PAD dose (used with aspirin), NOT the 15/20 mg therapeutic anticoagulation dose for AFib/VTE -- not interchangeable with the treatment-dose Xarelto above.",
+              "sourceIds": [
+                "bcbs-al-medicare-doac-source-202608"
+              ]
+            },
+            {
+              "drug": "rivaroxaban (Xarelto) starter pack 15 mg & 20 mg (VTE treatment initiation pack)",
+              "note": "Tier 3, QL 51 tablets/30 days, no PA -- covers the 15 mg BID x21-day loading phase before transition to 20 mg daily maintenance.",
+              "sourceIds": [
+                "bcbs-al-medicare-doac-source-202608"
+              ]
+            },
+            {
+              "drug": "dabigatran etexilate mesylate (generic Pradaxa) cap 75 mg, 110 mg, 150 mg",
+              "note": "Tier 4 (Non-Preferred Drug), QL varies by strength, no PA. Higher cost-sharing tier than apixaban or rivaroxaban despite being generic, but still covered with no additional restriction.",
+              "sourceIds": [
+                "bcbs-al-medicare-doac-source-202608"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "edoxaban (Savaysa)",
+              "outcome": "nonformulary",
+              "reason": "Not listed anywhere in the 2026 Blue Advantage Choice formulary (116-page document, searched in full) -- absent from both the Blood Products and Modifiers drug-class section and the alphabetical drug index. Not a covered Part D drug under this plan.",
+              "sourceIds": [
+                "bcbs-al-medicare-doac-source-202608"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "tier": "Tier 3 — Preferred Brand",
+          "verification": "verified",
+          "verificationNote": "Fetched the exact cited URL directly (curl with browser User-Agent, HTTP 200). Confirmed document identity via its own cover page: 'Choice 2026 Formulary', 'BlueCross BlueShield of Alabama', 'H0104_CHF26_C', 'Approved Formulary ID: 00026212_V10', updated 01/20/2026. Read the tier-legend page (Tier 1=Preferred Generic, Tier 2=Generic, Tier 3=Preferred Brand, Tier 4=Non-Preferred Drug, Tier 5=Specialty) and the full 'Blood Products and Modifiers' drug-class table verbatim: dabigatran (generic, Tier 4), apixaban/Eliquis (brand only, Tier 3), rivaroxaban/Xarelto (generic only at the 2.5 mg antiplatelet dose at Tier 3; brand-only at the 10/20 mg treatment dose, also Tier 3). Full-document text searches for apixaban/rivaroxaban/dabigatran/edoxaban/savaysa confirm edoxaban has zero matches anywhere -- non-formulary, not an extraction miss. No PA or step-therapy symbol appears on any DOAC line item, only QL (quantity limit) codes. Apixaban's designation as the single 'preferred' agent is a clinical inference from tier placement and guideline-preferred status, since this Part D formulary does not itself designate one DOAC 'preferred' beyond tier assignment -- the one inferred judgment call in an otherwise directly-read record.",
+          "sourceIds": [
+            "bcbs-al-medicare-doac-source-202608"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-medicare-doac-source-202608"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-medicare-doac-source-202608"
+          ],
+          "lastReviewed": "2026-08-21"
+        }
+      ]
     }
   ]
 }
