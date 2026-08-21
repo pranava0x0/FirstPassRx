@@ -119,6 +119,26 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   - topicId: `osteoporosis`, topic: "Osteoporosis", classNoun: "Prescription type", unitNoun:
     "medication"
 
+- **DOAC anticoagulants — one class, `doac-anticoagulant` (decided 2026-08-21, user picked this
+  candidate out of the OB/GYN-contraceptives / ortho-muscle-relaxants / cardiothoracic-DOAC set of
+  3 options offered).** Covers apixaban, rivaroxaban, dabigatran, edoxaban; warfarin goes in
+  `alternatives[]` as the old-line comparator, not a preferred candidate (DOACs are first-line in
+  current guidelines). Mirrors `ace-inhibitor`/`ssri-oral`'s single-class shape.
+  - name: "Oral Anticoagulants (DOACs)" · shortName: "DOAC" · plainName: "Blood thinner"
+  - description: "Direct oral anticoagulants (apixaban, rivaroxaban, dabigatran, edoxaban) —
+    first-line therapy for stroke prevention in atrial fibrillation and treatment/prevention of
+    venous thromboembolism, largely supplanting warfarin."
+  - plainDescription: "A daily pill that prevents dangerous blood clots and stroke."
+  - indication: "Atrial fibrillation & venous thromboembolism (DVT/PE) prevention and treatment"
+  - topicId: `doac`, topic: "DOAC Anticoagulants", classNoun: "Prescription type", unitNoun:
+    "medication"
+  - **Known cash-price trap (from `backlog.md`'s 2026-08-18 Cost Plus check) — do NOT reuse
+    naively**: apixaban/Eliquis has no generic yet (brand-only, ~$345/60ct); rivaroxaban's generic
+    is stocked on Cost Plus **only at 2.5mg** (antiplatelet dose), not the 15/20mg therapeutic
+    anticoagulation strength a preferred-agent cell will actually need — same dose-mismatch class as
+    the Reclast/Zometa and Respimat/HandiHaler bugs. Ship without a rivaroxaban cash rule unless the
+    2026-08-21+ gather confirms a 15/20mg product specifically.
+
 ## Progress ledger (update after every chunk)
 - 2026-07-09 — Cash-price gap for existing diabetes/NSAID/straggler guides CLOSED (`cash.ts`,
   `KNOWN_UNPRICED_GAP` 1088→575). Backlog scoped. Expansion NOT started.
