@@ -2347,6 +2347,114 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+</script>
+
+
+<!-- IA caching issue -->
+<script>
+// Check for Provider Accounts page
+if(typeof searchScreen !== 'undefined'  && searchScreen === 'provider' ){
+	const providerAcclinks = document.querySelectorAll(".main-menu a");
+	providerAcclinks.forEach(function (menuLink) {
+		const text = menuLink.textContent.trim();
+		if (text === "Provider Accounts") {
+				
+			// Add the custom onclick event listener
+			menuLink.addEventListener('click', function(event) {
+				const backLinks = document.querySelectorAll("#content .padding-vertical a");
+				
+				backLinks.forEach(function (backLink) {
+					const backText = backLink.textContent.trim();
+					if (backText === "< Back to Search providers") {
+						//link.remove();
+						//Completely remove the href attribute
+						console.log("Completely remove the href attribute....");
+						menuLink.removeAttribute('href');
+						
+						// Prevents the browser from following the link if it still exists
+						console.log("Prevents the browser from following the link if it still exists");
+						event.preventDefault(); 
+				
+						console.log("backLink is clicked"+backLink.textContent);
+						backLink.click();
+						return;
+					}
+				});
+			});
+			return;
+		}
+	});	
+	
+}
+
+
+// check for Billing Agency Accounts page
+if(typeof searchScreen !== 'undefined'  && searchScreen === 'billingAgency'){
+	const providerAcclinks = document.querySelectorAll(".main-menu a");
+	providerAcclinks.forEach(function (menuLink) {
+		const text = menuLink.textContent.trim();
+		if (text === "Billing Agency Accounts") {
+				
+			// Add the custom onclick event listener
+			menuLink.addEventListener('click', function(event) {
+				const backLinks = document.querySelectorAll("#content .padding-vertical a");
+				
+				backLinks.forEach(function (backLink) {
+					const backText = backLink.textContent.trim();
+					// Check for Back to Search billing agencies link
+					if (backText === "< Back to Search billing agencies") {
+
+						//link.remove();
+						//Completely remove the href attribute
+						menuLink.removeAttribute('href');
+						
+						// Prevents the browser from following the link if it still exists
+						event.preventDefault(); 
+				
+						console.log("backLink is clicked"+backLink.textContent);
+						backLink.click();
+						return;
+					}
+				});
+			});
+			return;
+		}
+	});	
+	
+}
+
+// check for User Accounts page
+if(typeof searchScreen !== 'undefined'  && searchScreen === 'user'){
+	const providerAcclinks = document.querySelectorAll(".main-menu a");
+	providerAcclinks.forEach(function (menuLink) {
+		const text = menuLink.textContent.trim();
+		if (text === "User Accounts") {
+				
+			// Add the custom onclick event listener
+			menuLink.addEventListener('click', function(event) {
+				const backLinks = document.querySelectorAll("#content .padding-vertical a");
+				
+				backLinks.forEach(function (backLink) {
+					const backText = backLink.textContent.trim();
+					// Check for Back to Search users link 
+					if (backText === "< Back to Search users") {
+						//link.remove();
+						// Completely remove the href attribute
+						menuLink.removeAttribute('href');
+						
+						// Prevents the browser from following the link if it still exists
+						event.preventDefault(); 
+				
+						console.log("backLink is clicked"+backLink.textContent);
+						backLink.click();
+						return;
+					}
+				});
+			});
+			return;
+		}
+	});		
+}
 </script></footer>
 	</div>
 	<div id="page-loader" class="loader full-page"></div>
