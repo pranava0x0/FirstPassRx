@@ -1138,3 +1138,28 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   inquiry — a future unscaled session should wait for the user's answer, re-check guide freshness
   once guides cross 90 days (`md-menopause`/`va-diabetes` first, ~2026-09-25 to 2026-09-30), or do a
   fresh web-search sweep for a 10th candidate not yet logged.
+- 2026-08-21 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working
+  tree clean, `main` up to date with `origin/main`. `npm test` briefly showed 2 timeout failures
+  when run concurrently with `validate-coverage` (resource contention, not a regression) — a clean
+  solo run passed 572/572. `npm run validate-coverage` unchanged at 56/357 (8/51 jurisdictions),
+  `scripts/gap-report.mjs` unchanged (cash gap 15, verification gap 92) — no drift since 2026-08-05/
+  08-11, still no user answer on the 43-state prioritization axis, no state picked unilaterally.
+  **Ran a genuinely new research thread instead of repeating the exhausted cash-price/partial-cell
+  audits or adding an 11th candidate topic to an already-9-deep scorecard: broadened the
+  "cheap single-statewide-PDL state" search beyond Texas alone**, since every prior session that
+  touched new-state candidates only ever named Texas. Surfaced Washington (uniform Apple Health PDL
+  across every MCO + FFS, newly rolled out through 2026) and South Carolina (single state-directed
+  PDL binding all MCOs + FFS effective 2026-07-01) as 2 more states sharing the same cheap-to-gather
+  shape as NY/PA/AL/CA/TX. Also caught a correction worth recording: Louisiana looked like an
+  obvious single-PBM candidate from general knowledge, but its own health department confirms it
+  phased that model OUT effective 2025-10-01 — it's fragmented per-MCO again now, not a cheap pick.
+  Ruled out North Dakota as an FFS-only candidate (its expansion population is BCBS-ND managed care,
+  not pure FFS). All logged to `backlog.md` as a ranked candidate-state list (Texas still top pick,
+  WA/SC as backups) for whenever the user answers the prioritization question. No data gathered, no
+  agents/Workflows spawned, no branches created, no `formulary.json` changes — this run's changes
+  are `backlog.md` + this ledger entry, committed in 1 chunk.
+  **Still stopped here pending the user's answer on the 43-state prioritization axis.** Next
+  session: if the user answers, scale the chosen state(s) or topic — Texas/WA/SC (states) and
+  PCSK9 inhibitors/atypical antipsychotics (topics) are all ready to scope with no further research
+  needed. Every other standing line of inquiry (cash-price gap, partial-cell audits, guide
+  freshness) remains exhausted for now.

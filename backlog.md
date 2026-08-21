@@ -638,6 +638,39 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
     `WebFetch` (server-side block, not the usual PDF-dump issue); the PDL identity/cadence itself is
     already well-confirmed via the site's own formulary/PDL pages, so this wasn't chased further —
     still research-only, no `state-index.json` entry, no payer verification, no guide data.
+  - **2026-08-21 (scheduled run): broadened the "cheap single-statewide-PDL state" search beyond
+    Texas alone — surfaced 2 more real candidates plus one correction, research only, no data
+    gathered.** Prior sessions only ever named Texas as the standing 4th-new-state pick; this pass
+    asked which *other* of the 43 zero-guide states share the same "one PDL, MCOs ride it" shape
+    that made NY/PA/AL/CA cheap to gather, so the user has a menu when they answer the
+    prioritization question, not a single option.
+    - **Washington** now runs a genuinely uniform Apple Health PDL across every Medicaid MCO + FFS
+      (`fm.formularynavigator.com/FBO/4/Washington_PDL_English.pdf`, plan effective dates rolling
+      through 2026 — April/May/July editions found across different MCO-hosted copies of the same
+      PDL) — same "one canonical PDL document, MCOs cite it" shape as PA's Statewide PDL. Payer
+      roster would still need each MCO's own name/contact (Molina, CHPW, UnitedHealthcare Community
+      Plan, etc. all confirmed hosting the identical PDL) but the *drug policy* research is a single
+      source, not per-MCO. Newly-implemented-in-2026 makes it topical.
+    - **South Carolina** adopted a single state-directed PDL binding all MCOs + FFS effective
+      2026-07-01, per `scdhhs.sc.gov` — same shape again. Not yet cross-checked against a live
+      MCO roster the way WA/TX have been; would need that pass before scoping.
+    - **Correction, not an addition: Louisiana is DOWNGRADED, not a candidate.** Louisiana ran a
+      single statewide PBM (cheap to gather) 2019–2025, but **`ldh.la.gov`'s own PBM-transition
+      page confirms the state phased it out effective 2025-10-01** — each Healthy Louisiana MCO now
+      manages its own pharmacy benefit/PBM independently again, the same fragmented-per-MCO shape as
+      NY/VA/MD/MA/IL (8-payer gathers), not the cheap single-PDL shape. Never previously logged in
+      this project as a candidate, so no prior note to retract, but worth recording so a future
+      session doesn't assume "Louisiana" from a stale general-knowledge impression of single-PBM
+      Medicaid states.
+    - **Ruled out: North Dakota is NOT FFS-only** (a hypothesis worth checking, since ND is
+      sometimes cited nationally for carving pharmacy fully into FFS) — ND's Medicaid expansion
+      population is managed by a BCBS-ND MCO; only traditional (non-expansion) Medicaid is FFS/PCCM.
+      Not simpler than the states already in this dataset; not added as a candidate.
+    - **Updated candidate-state ranking for the next time the user answers the prioritization
+      question**: Texas (2nd-largest Medicaid population, single PDL, already well-scoped) remains
+      the top pick; Washington and South Carolina are now backup options with the same cheap-gather
+      shape if Texas isn't wanted for some reason. Still entirely research — no `state-index.json`
+      entries, no payer verification, no guide data for any of the three.
 - **Existing-guide depth gaps (`partial`/`example` cells), from the 2026-07-19 `validate-coverage`
   run — worth a verification pass before/alongside adding new topics/states:** `ny-menopause` (5
   `example` cells — the only guide with any `example`-quality data left), `md-menopause` (5
