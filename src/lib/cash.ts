@@ -270,8 +270,15 @@
  * confirmed to have NO real GoodRx retail price at all (both "Physician-administered" tagged pages
  * with no pharmacy-price panel) -- not a research gap, a structural fact about how these
  * buy-and-bill-only infusions are actually dispensed; no rule added for either rather than fabricate
- * a number. Etidronate disodium never reached before GoodRx re-blocked. */
-export const KNOWN_UNPRICED_GAP = 15
+ * a number. Etidronate disodium never reached before GoodRx re-blocked.
+ * Raised 15 → 20 on 2026-08-21 when the new `al-doac` guide shipped (3 payers, DOAC
+ * anticoagulants, the cardiothoracic-prescriptions expansion's proof guide). Apixaban/Eliquis
+ * and dabigatran/Pradaxa generic both got real prices (see the rules above); rivaroxaban was
+ * deliberately left unpriced -- its generic is sold only at the 2.5mg antiplatelet dose on both
+ * GoodRx and Cost Plus, not the 15/20mg therapeutic dose this guide's cells describe, the same
+ * dose-mismatch trap already documented for Reclast/Zometa and Respimat/HandiHaler. Edoxaban/
+ * Savaysa (confirmed non-formulary on all 3 AL payers) rounds out the remaining gap. */
+export const KNOWN_UNPRICED_GAP = 20
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -1658,7 +1665,41 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxPrice: { price: 3030, quantity: '1 pen, 1.56mL of 80mcg/dose (standard GoodRx price)' },
     pricesCapturedAt: '2026-08-09',
   },
+  {
+    // Apixaban/Eliquis (DOAC) -- brand-only, no generic on the market as of this capture (the
+    // al-doac proof guide's gather confirmed this across all 3 AL payers). Both prices are for
+    // the correct 5mg/60ct standard AFib/VTE treatment dose -- unlike rivaroxaban below, Cost
+    // Plus's Eliquis listing has both 2.5mg and 5mg strengths, so no dose-mismatch trap here.
+    // Cost Plus price is a manufacturer-subsidized (Bristol Myers Squibb) direct-to-patient rate.
+    matches: /\bapixaban\b|\beliquis\b/i,
+    goodRxSlug: 'eliquis',
+    goodRxParams: 'label_override=apixaban&form=tablet&dosage=5mg&quantity=60',
+    costPlusPath: 'eliquis-5mg-bottle-of-60-tablets-60-eliquis',
+    goodRxPrice: { price: 347.76, quantity: '60 tablets, 5mg (standard GoodRx price)' },
+    costPlusPrice: { price: 345.0, quantity: '60 tablets, 5mg (manufacturer-subsidized direct-to-patient price)' },
+    pricesCapturedAt: '2026-08-21',
+  },
+  {
+    // Dabigatran/Pradaxa generic (DOAC) -- true AB-rated generic available at all 3 therapeutic
+    // strengths (75/110/150mg), unlike rivaroxaban's generic below which is only sold at the
+    // low antiplatelet dose. Cost Plus's price calculator shows one flat price across all 3
+    // strengths. GoodRx re-blocked ("Access to this page has been denied") before a price could
+    // be captured this session -- Cost-Plus-only for now.
+    matches: /\bdabigatran\b|\bpradaxa\b/i,
+    goodRxSlug: 'pradaxa',
+    costPlusPath: 'dabigatran-etexilate-mesylate-75mg-bottle-of-capsules-60-pradaxa',
+    costPlusPrice: { price: 19.28, quantity: '60 capsules, 75mg (generic for Pradaxa; 110mg/150mg priced the same per Cost Plus’s calculator)' },
+    pricesCapturedAt: '2026-08-21',
+  },
 ]
+// Rivaroxaban (generic) was deliberately NOT priced this session (al-doac gather, 2026-08-21):
+// its generic is stocked on both GoodRx and Cost Plus only at the LOW 2.5mg antiplatelet dose,
+// not the 15/20mg therapeutic anticoagulation dose the guide's preferred/alternative cells
+// actually describe -- same dose-mismatch trap class as the Reclast/Zometa and Respimat/
+// HandiHaler bugs already fixed in this file. Brand Xarelto at the correct 10/15/20mg doses was
+// not checked (GoodRx blocked partway through the session). Edoxaban/Savaysa is confirmed
+// non-formulary on all 3 AL payers gathered so far, so pricing it is moot for this guide, but it
+// may still need a rule if a future state's guide covers it. See backlog.md.
 // Romosozumab/Evenity and pamidronate were checked this same session (2026-08-09) but deliberately
 // left with NO cash-link rule: both GoodRx pages are tagged "Physician-administered" with no
 // "Choose pharmacy"/retail price panel at all (unlike zoledronic acid above, which still gets a
