@@ -1183,3 +1183,47 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   PCSK9 inhibitors/atypical antipsychotics (topics) are all ready to scope with no further research
   needed. Every other standing line of inquiry (cash-price gap, partial-cell audits, guide
   freshness) remains exhausted for now.
+- 2026-08-21 (interactive session, later same day) — **Gate cleared by explicit user instruction —
+  a new specialty-prescriptions axis, not the state axis.** User asked for "common prescriptions
+  for OBGYNs/Orthos/Cardiothoracics"; offered 3 candidate topics (OB/GYN hormonal contraceptives,
+  ortho muscle relaxants, cardiothoracic DOAC anticoagulants) with tradeoffs before touching any
+  data, per CLAUDE.md's "ask for options first on non-trivial tasks." User picked **DOAC
+  anticoagulants only** — OB/GYN and ortho remain unscoped, not rejected.
+  **Shipped `al-doac` — the proof guide for this new topic**, reusing Alabama's existing 3-payer
+  roster (cheapest in the dataset) rather than opening new payer-discovery work. Decided the
+  `doac-anticoagulant` single-class taxonomy (recorded above, in "Decided taxonomies") before
+  gathering, including the known rivaroxaban dose-mismatch trap from `backlog.md`'s 2026-08-18
+  Cost Plus check so the gather agents were warned in advance rather than finding it cold. Gathered
+  via `formulary-gather.js` (3 payers, chunked ≤2 concurrent, 0 agent errors, ~339K subagent
+  tokens). All 3 payers verified: apixaban/Eliquis is the de facto preferred agent everywhere
+  (brand-only, no generic exists on the market yet); rivaroxaban and dabigatran generics are
+  covered alternatives; edoxaban/Savaysa needs PA or is non-formulary depending on payer. Reworded
+  3 Alabama Medicaid `paRequired` reasons that quoted the PDL's own "Non-Preferred Brand or PA
+  Generic" column name verbatim — same reword-not-reclassify fix applied to every prior binary-PDL
+  Medicaid payer, genuine PA barriers, not cost-tier-only.
+  **Closed most of the new cash-price gap in the same session** (real browser access, though GoodRx
+  intermittently blocked as usual): apixaban/Eliquis priced on both GoodRx ($347.76) and Cost Plus
+  ($345.00, a Bristol Myers Squibb-subsidized direct-to-patient rate) at the correct 5mg/60ct
+  standard AFib/VTE dose — confirmed Cost Plus stocks Eliquis at both 2.5mg and 5mg, so unlike
+  rivaroxaban there's no dose-mismatch trap here. dabigatran/Pradaxa generic priced on Cost Plus
+  ($19.28/60×75mg, same price across all 3 therapeutic strengths per its own price calculator);
+  GoodRx re-blocked ("Access to this page has been denied") before that lookup. Rivaroxaban was
+  deliberately left unpriced — confirmed via live Cost Plus + GoodRx checks that both vendors sell
+  its generic only at the 2.5mg antiplatelet dose, never the 15/20mg therapeutic dose this guide's
+  cells describe. `KNOWN_UNPRICED_GAP` 15→20 (net: 11 new names from the guide, 2 rules closing 6
+  of them). `npm test` (580/580), `typecheck`, `trace` (0 broken sources), `validate-coverage` all
+  green; `npm run archive-sources` run (2 of 3 new sources archived; `al-medicaid-doac-source-
+  202608` hit the same recurring `medicaid.alabama.gov` SSL/cert fetch failure logged in every
+  prior AL session — non-blocking, the gather itself read the PDF fine via curl). Could **not**
+  verify live in the dev-server browser — this session is flagged unattended for dev-server
+  startup purposes even though a user message opened it, so `preview_start` refused; relied on the
+  automated suite instead. National grid moved 56/357 → 57/408 (denominator grew because DOAC
+  anticoagulants added an 8th topic column), 8/51 jurisdictions unchanged (AL already counted).
+  Committed in 3 chunks (guide merge + test-id list, cash rules + gap bump, source archive).
+  **STOPPING HERE per the same "one guide as proof first" gate applied to every prior new topic —
+  do not scale DOACs to the remaining 7 states (PA/CA/NY/MA/MD/VA/IL, all with existing rosters
+  ready to reuse) without the user reviewing `al-doac` and approving.** OB/GYN and ortho remain
+  fully unscoped (no taxonomy decided, no payer work started) — next session should ask the user
+  which of the 3 original candidates (if any) to develop next, rather than assuming. The 43-state
+  prioritization axis from the standing scheduled-run gate is a separate, still-unanswered
+  question — this session's work doesn't resolve it.
