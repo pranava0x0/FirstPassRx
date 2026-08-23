@@ -516,7 +516,43 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
     stimulant) similar in shape to `ssri-oral`.
   - **DOAC anticoagulants (apixaban/Eliquis, rivaroxaban/Xarelto, + warfarin as the old-line
     comparator).** High-volume, chronic, PDL-driven — same shape as ACE inhibitors, likely a quick
-    single-class guide reusing the `ny-ace`/`va-ace` taxonomy pattern.
+    single-class guide reusing the `ny-ace`/`va-ace` taxonomy pattern. **Update 2026-08-21: user
+    picked this one — `al-doac` shipped as the proof guide (see `docs/RESUME-EXPANSION.md`), gated
+    pending review before scaling to the remaining 7 states. OB/GYN and ortho below remain
+    unscoped, not rejected.**
+  - **OB/GYN hormonal contraceptives — investigated 2026-08-23 (scheduled run), PA-friction story
+    is weak; flag before anyone scopes this.** One of the 3 candidates offered to the user on
+    2026-08-21 alongside DOAC (which they picked instead). A targeted web search this session
+    found the opposite of what every other candidate on this list has: KFF's state Medicaid survey
+    reports **no states requiring prior authorization on long-acting reversible contraceptives**,
+    and the 2026 policy trend is toward *reducing* friction (OTC pill access expanding, states
+    mandating extended 12-month supply dispensing) rather than adding it. This app's whole framing
+    is "PA blocked you, here's the cash workaround" — a drug class with essentially no PA barrier
+    to document doesn't fit that shape, the same reason EpiPen and Hepatitis C DAAs were set aside
+    above. Not fully disqualified (short-acting oral pills specifically weren't broken out from
+    LARCs in this search, and a payer-by-payer PDL check could still surface real step-therapy
+    rules this survey-level search missed) but the ceiling looks low. If ever scoped, verify
+    against actual PDLs rather than the survey-level framing above before investing gather time.
+  - **Ortho muscle relaxants (cyclobenzaprine, methocarbamol, tizanidine, baclofen, carisoprodol)
+    — investigated 2026-08-23 (scheduled run), moderate/real but unquantified friction, plus a cash-
+    price nuance worth flagging.** The other of the 3 candidates offered 2026-08-21. Confirmed real
+    PA/step-therapy gates exist — an Iowa Medicaid/Amerigroup PA form and Michigan Medicaid's 2026
+    PDL both require documented trial-and-failure of **at least 3 preferred muscle relaxants**
+    before a non-preferred one is covered — but no aggregate PA-rate or rejection-rate stat like
+    PCSK9's 82-97% or CGRP's 96% turned up in this pass (unlike those two, this looks like a real
+    but second-tier friction story). **Cash-price nuance distinct from every other candidate:**
+    cyclobenzaprine and methocarbamol are both long-genericized, typically-under-$10 cash generics
+    (unconfirmed this session — no live browser — but consistent with general market knowledge) —
+    if that holds, the PA barrier may not hurt as much as it does for PCSK9/CGRP/atypical
+    antipsychotics, since a patient blocked by step therapy can plausibly just self-pay for the
+    cheap preferred-equivalent instead of needing this app's cash-workaround value prop at all.
+    Worth confirming actual cash prices (live browser) before scoping — a class that's already
+    cheap everywhere is a weaker fit for this app than one where the cash gap is real.
+  - **Neither OB/GYN nor ortho developed further than the above — still unscoped pending the user's
+    choice.** Given today's findings, if the user wants a 2nd topic from that original 3-option set,
+    ortho muscle relaxants is the stronger candidate of the two (real, if unquantified, PA gate);
+    OB/GYN contraceptives would need a payer-level PDL check to overcome the weak survey-level
+    signal before it's worth gathering.
   - **CGRP inhibitors for chronic migraine (Aimovig/Ajovy/Emgality/Nurtec/Qulipta/Ubrelvy) —
     added 2026-07-20, unusually high, well-documented PA friction.** An AJMC-published MCO survey
     found 96% of surveyed Medicaid MCOs require a documented trial-and-failure of ≥1 non-CGRP

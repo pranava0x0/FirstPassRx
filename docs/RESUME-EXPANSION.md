@@ -1227,3 +1227,41 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   which of the 3 original candidates (if any) to develop next, rather than assuming. The 43-state
   prioritization axis from the standing scheduled-run gate is a separate, still-unanswered
   question — this session's work doesn't resolve it.
+- 2026-08-23 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working
+  tree clean, `main` up to date with `origin/main`, `npm test` (580/580), `npm run
+  validate-coverage` unchanged at 57/408 (8/51 jurisdictions) since the 2026-08-21 `al-doac` merge
+  — no drift, no user approval had landed for either `al-doac` (new topic) or the 43-state
+  prioritization axis (non-interactive run, nothing to approve against). `scripts/gap-report.mjs`:
+  cash-price gap unchanged at 20 unpriced names (pamidronate 9 cells, rivaroxaban 5, romosozumab 4,
+  ibandronate 3, zoledronic-4mg 2, etidronate 1 — all previously confirmed structural dead ends or
+  the known rivaroxaban dose-mismatch trap), verification gap unchanged at 92 non-verified cells
+  across 53 (guide, class) pairs. Guide-freshness check: oldest guide (`md-menopause`) is 57 days
+  old, still under the 90-day threshold — nothing due for re-verification yet (next due ~2026-09-25
+  for `md-menopause`/`va-diabetes`).
+  **Instead of repeating an already-exhausted audit or adding an unrequested 10th candidate topic,
+  developed the two candidates the user themselves raised on 2026-08-21 but didn't pick** (OB/GYN
+  hormonal contraceptives, ortho muscle relaxants — offered alongside DOAC, "unscoped, not
+  rejected" per that session's note) via 3 targeted `WebSearch` calls, no agents, no browser:
+  - **OB/GYN contraceptives — weak PA-friction story.** KFF's state Medicaid survey found no
+    states requiring PA on LARCs, and the 2026 trend (OTC pill access, mandated 12-month supply)
+    is toward *less* friction, not more — the same shape that got EpiPen and Hepatitis C DAAs set
+    aside earlier in this ledger. Not fully disqualified (oral pills weren't broken out from LARCs
+    in this search-level pass) but the ceiling looks low without a payer-level PDL check.
+  - **Ortho muscle relaxants — real but unquantified, plus a cash-price nuance.** Confirmed real
+    step-therapy gates (Iowa Medicaid/Amerigroup PA form + Michigan's 2026 PDL both require trial-
+    and-failure of ≥3 preferred agents before a non-preferred one is covered), but no aggregate
+    PA-rate stat like PCSK9's 82-97% or CGRP's 96% turned up — a real but second-tier friction
+    story. Flagged a nuance distinct from every other candidate: cyclobenzaprine/methocarbamol are
+    typically cheap (<$10) generics, which could undercut this app's core value prop (a patient
+    blocked by step therapy could plausibly just self-pay for the cheap preferred agent instead) —
+    unconfirmed this session (no live browser), worth checking before scoping.
+  Both logged to `backlog.md` under the existing candidate-topic scorecard, with a closing note
+  that ortho is the stronger of the two if the user still wants a 2nd topic from that original set.
+  No data gathered, no agents/Workflows spawned, no branches created, no `formulary.json` changes —
+  this run's changes are `backlog.md` + this ledger entry, committed in 1 chunk.
+  **Still stopped here pending the user's review of `al-doac` and a choice on OB/GYN vs. ortho (if
+  either) vs. scaling to more states/topics generally.** Next session: if the user answers either
+  open question, scale accordingly. Otherwise: Texas/WA/SC (states) and PCSK9 inhibitors/atypical
+  antipsychotics (topics, from the original 8-candidate scorecard) remain ready to scope with no
+  further research needed; the cash-price gap, verification-cell audits, and guide freshness are
+  all exhausted for now.
