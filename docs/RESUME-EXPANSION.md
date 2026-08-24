@@ -1265,3 +1265,32 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   antipsychotics (topics, from the original 8-candidate scorecard) remain ready to scope with no
   further research needed; the cash-price gap, verification-cell audits, and guide freshness are
   all exhausted for now.
+- 2026-08-24 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working
+  tree clean, `main` up to date with `origin/main`, `npm test` (580/580), `npm run
+  validate-coverage` unchanged at 57/408 (8/51 jurisdictions) since the 2026-08-21 `al-doac` merge —
+  no drift, no user approval had landed for either `al-doac` or the 43-state prioritization axis
+  (non-interactive run, nothing to approve against). `scripts/gap-report.mjs` unchanged (cash gap
+  20, verification gap 92) — nothing newly closeable. Guide-freshness check: oldest guide
+  (`md-menopause`) now 58 days old, still under the 90-day threshold.
+  **Resolved the one open question flagged at the end of the 2026-08-23 entry: whether ortho
+  muscle relaxants' cash price undercuts this app's value prop.** Live Cost Plus Drugs check (real
+  browser, no bot-block on this domain) for all 4 non-controlled ortho muscle relaxants:
+  cyclobenzaprine $5.55, methocarbamol $5.97, tizanidine $5.38, baclofen $5.52 (all home-delivery
+  generics); carisoprodol isn't carried at all (Schedule IV, same DEA mail-order restriction
+  pattern already confirmed for ADHD stimulants 2026-08-18). Verdict: **disqualifying** — a patient
+  blocked by step therapy on a non-preferred muscle relaxant can trivially self-pay ~$5-6/month for
+  the plan's preferred agent instead, so despite a real, confirmed step-therapy gate (Iowa/Michigan
+  PDLs, 2026-08-23) there's no meaningful "PA denial forces an expensive choice" story. Ortho now
+  joins EpiPen/Hepatitis-C-DAA in the set-aside bucket; combined with OB/GYN's already-weak
+  PA-friction story (2026-08-23), **neither of the two candidates the user raised on 2026-08-21 but
+  didn't pick is worth scoping** — updated `backlog.md` accordingly. PCSK9 inhibitors and atypical
+  antipsychotics remain the only two topic candidates ready to scope with no further research
+  needed.
+  No data gathered, no agents/Workflows spawned, no branches created, no `formulary.json` changes —
+  this run's changes are `backlog.md` + this ledger entry, committed in 1 chunk.
+  **Still stopped here pending the user's review of `al-doac` and the 43-state prioritization axis.**
+  Next session: if the user answers either open question, scale accordingly. Otherwise: Texas/WA/SC
+  (states) and PCSK9 inhibitors/atypical antipsychotics (topics) remain ready to scope with no
+  further research needed; the cash-price gap, verification-cell audits, guide freshness, and now
+  the OB/GYN/ortho question are all exhausted lines of inquiry — a future unscaled session should
+  wait for the user's answer or do a fresh web-search sweep for a topic/state not yet logged.

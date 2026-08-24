@@ -534,25 +534,27 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
     rules this survey-level search missed) but the ceiling looks low. If ever scoped, verify
     against actual PDLs rather than the survey-level framing above before investing gather time.
   - **Ortho muscle relaxants (cyclobenzaprine, methocarbamol, tizanidine, baclofen, carisoprodol)
-    — investigated 2026-08-23 (scheduled run), moderate/real but unquantified friction, plus a cash-
-    price nuance worth flagging.** The other of the 3 candidates offered 2026-08-21. Confirmed real
-    PA/step-therapy gates exist — an Iowa Medicaid/Amerigroup PA form and Michigan Medicaid's 2026
-    PDL both require documented trial-and-failure of **at least 3 preferred muscle relaxants**
-    before a non-preferred one is covered — but no aggregate PA-rate or rejection-rate stat like
-    PCSK9's 82-97% or CGRP's 96% turned up in this pass (unlike those two, this looks like a real
-    but second-tier friction story). **Cash-price nuance distinct from every other candidate:**
-    cyclobenzaprine and methocarbamol are both long-genericized, typically-under-$10 cash generics
-    (unconfirmed this session — no live browser — but consistent with general market knowledge) —
-    if that holds, the PA barrier may not hurt as much as it does for PCSK9/CGRP/atypical
-    antipsychotics, since a patient blocked by step therapy can plausibly just self-pay for the
-    cheap preferred-equivalent instead of needing this app's cash-workaround value prop at all.
-    Worth confirming actual cash prices (live browser) before scoping — a class that's already
-    cheap everywhere is a weaker fit for this app than one where the cash gap is real.
-  - **Neither OB/GYN nor ortho developed further than the above — still unscoped pending the user's
-    choice.** Given today's findings, if the user wants a 2nd topic from that original 3-option set,
-    ortho muscle relaxants is the stronger candidate of the two (real, if unquantified, PA gate);
-    OB/GYN contraceptives would need a payer-level PDL check to overcome the weak survey-level
-    signal before it's worth gathering.
+    — investigated 2026-08-23 (PA-friction), cash-price nuance CONFIRMED 2026-08-24 (scheduled
+    run) and it disqualifies the class.** The other of the 3 candidates offered 2026-08-21.
+    2026-08-23 confirmed real PA/step-therapy gates exist (Iowa Medicaid/Amerigroup PA form,
+    Michigan Medicaid's 2026 PDL — both require documented trial-and-failure of ≥3 preferred
+    agents) but flagged the cash-price question as unconfirmed. 2026-08-24 checked Cost Plus Drugs
+    live for all 4 non-controlled agents: **cyclobenzaprine $5.55, methocarbamol $5.97, tizanidine
+    $5.38, baclofen $5.52 — all home-delivery, all under $6/month.** Carisoprodol isn't carried at
+    all (Schedule IV, same DEA mail-order restriction pattern already confirmed for ADHD
+    stimulants). This is cheaper than most insurance copays, let alone cash pay for a
+    PCSK9/CGRP/antipsychotic — a patient blocked by step therapy on a non-preferred muscle relaxant
+    can trivially self-pay ~$5-6 for whichever agent the plan actually prefers, so there's no real
+    "PA denial forces an expensive choice" story here despite the genuine step-therapy gate.
+    **Set aside, same bucket as EpiPen/Hepatitis-C-DAA** — not a good fit for this app's core
+    cash-workaround value prop. Do not re-investigate without a new angle (e.g. carisoprodol's
+    controlled-substance status specifically, if that's ever a story worth telling).
+  - **Neither OB/GYN nor ortho is a strong candidate as of 2026-08-24 — both effectively
+    set aside.** OB/GYN's PA-friction story was weak from the start (2026-08-23); ortho's cash-price
+    nuance (2026-08-24) now disqualifies it too. If the user wants a 2nd topic from the original
+    3-candidate set offered 2026-08-21, neither OB/GYN nor ortho holds up — PCSK9 inhibitors and
+    atypical antipsychotics (from the separate 9-candidate scorecard below) remain the two
+    genuinely strong ready-to-scope topics.
   - **CGRP inhibitors for chronic migraine (Aimovig/Ajovy/Emgality/Nurtec/Qulipta/Ubrelvy) —
     added 2026-07-20, unusually high, well-documented PA friction.** An AJMC-published MCO survey
     found 96% of surveyed Medicaid MCOs require a documented trial-and-failure of ≥1 non-CGRP
