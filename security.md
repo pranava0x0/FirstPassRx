@@ -68,3 +68,23 @@ Mitigations applied at scaffold time:
 
 Refresh this sweep on the next trigger (new dependency add/upgrade, CDN asset, GitHub Action,
 fetched install script) or if > 7 days old.
+
+### 2026-08-25 — routine re-sweep before `npm ci` (PA-drafting research ship)
+
+Source: `https://pranava0x0.github.io/vibe-coding-security/llms-ctx.txt` (fetched 2026-08-25).
+
+Triggered by: `npm ci` for the test run in the pa-drafting-research worktree (previous sweep
+2026-07-01 was past the 7-day window). No new dependencies added this session — the PA-form
+work used stdlib + already-present system tools only (pypdf/PyMuPDF are user-level Python
+packages, not project deps).
+
+**Result: clean for this tree.** Lockfile greps confirm zero hits for every active-campaign
+scope (Mini Shai-Hulud `@tanstack`/`@antv`/`@mistralai`/`@uipath`, echarts-for-react,
+timeago.js, size-sensor, canvas-nest, react-big-calendar, @react-native-aria). Name-matched
+advisories checked against our actual stack:
+- React2Shell (CVE-2025-55182) — RCE in React *Server Components*; this is a client-only
+  static Vite SPA (react 18.3.1, no RSC, no Next.js, GitHub Pages) — vector absent.
+- Vitest Browser Mode CDP RCE (CVE-2026-53633) — we run vitest 4.1.9 in jsdom mode; Browser
+  Mode/CDP proxy never enabled — not applicable (dev-time only regardless).
+- Vite dev-server file-read CVEs (2026-04) — vite pinned 8.0.16 (post-advisory line);
+  dev-server is localhost-only in this workflow.
