@@ -1,0 +1,105 @@
+{
+ "templateId": "ma-inhalers/ics/fluticasone-propionate-hfa",
+ "description": "Per-payer PA drafting template for one (state, medication) vertical: Massachusetts x fluticasone propionate HFA (generic Flovent HFA, inhaled corticosteroid). Field names under prefill/clinical reference the real AcroForm field names in the captured blank forms (../forms/). valueSource legend: 'app' = derivable now from formulary.json + this template; 'practiceProfile' = prescriber identity saved locally in the browser (localStorage, never sent anywhere); 'patient' = per-patient data typed at draft time and never persisted; 'clinical' = the medical-necessity answers only the prescriber can give.",
+ "capturedAt": "2026-08-24",
+ "guideId": "ma-inhalers",
+ "classId": "ics",
+ "medication": {
+  "inn": "fluticasone propionate",
+  "dosageForm": "HFA inhalation aerosol (MDI)",
+  "brandContext": "Generic of Flovent HFA (brand discontinued Jan 2024; authorized generic by Prasco). Strengths 44/110/220 mcg per actuation.",
+  "typicalSig": "88-220 mcg (1-2 puffs) twice daily; 1 inhaler (~10.6 g) per 30 days"
+ },
+ "payers": {
+  "masshealth": {
+   "paStatus": "step",
+   "scope": "Members >= 12 years (aerosol); all ages for powder. MHDL Table 23 + Inhaled Respiratory Agents PA form.",
+   "form": {
+    "file": "../forms/masshealth-inhaled-respiratory-pa-2026-07.pdf",
+    "title": "MassHealth Inhaled Respiratory Agents Prior Authorization Request",
+    "effective": "2026-07-01",
+    "fillable": true,
+    "registry": "../masshealth-pa-form-registry-2026-08-24.json"
+   },
+   "submission": {
+    "ffs": {"channel": "fax", "value": "877-208-7428", "org": "MassHealth Drug Utilization Review Program", "phone": "800-745-7318"},
+    "mcoNote": "Same form; MCO/ACPP routing is printed on form page 1 (Tufts Health Together -> point32health.promptpa.com / fax 617-673-0939; MGB Health Plan -> CoverMyMeds/OptumRx / fax 844-403-1029; WellSense -> wellsense.org portal / fax 833-951-1680; Fallon + HNE -> CoverMyMeds/OptumRx)."
+   },
+   "prefill": [
+    {"field": "fluticasone propionate inhalation aerosol ≥ 12", "type": "checkbox", "value": true, "valueSource": "app"},
+    {"field": "Dose and frequency of medication requested", "type": "text", "valueSource": "app", "example": "110 mcg, 2 inhalations twice daily"},
+    {"field": "Number of inhalers/month", "type": "text", "valueSource": "app", "example": "1"},
+    {"field": "Asthma (Specify severity below)", "type": "checkbox", "valueSource": "clinical", "note": "indication + severity checkboxes (Intermittent/Mild/Moderate/Severe Persistent)"},
+    {"field": "Last name / First name / MI / Date of birth / Member ID / demographics block", "type": "text", "valueSource": "patient"},
+    {"field": "Prescriber block (Last name*, First name*, NPI*, Telephone No*, Fax No*, address, e-mail)", "type": "text", "valueSource": "practiceProfile"},
+    {"field": "Plan Contact Information", "type": "radio", "valueSource": "app", "note": "select the member's MassHealth plan; drives where the form is faxed"}
+   ],
+   "clinicalQuestions": [
+    {"section": "IV", "question": "Has the member had a trial with two inhaled corticosteroids?", "yesPath": "List drug, dates/duration, and outcome (adverse reaction / inadequate response) for each trial in Section XI", "noPath": "Document a contraindication to all other inhaled corticosteroids", "appAssist": "The app pre-lists this plan's no-PA ICS options as the expected trial drugs: budesonide inhalation powder (Pulmicort Flexhaler), mometasone (Asmanex), fluticasone furoate (Arnuity, brand preferred)"},
+    {"section": "XII", "question": "Step-therapy exception (four statutory questions: contraindication/harm, expected ineffectiveness, prior trial of same-class alternative, stability on current drug)", "appAssist": "Only needed when bypassing the Section IV trial requirement; mirrors MA step-therapy law and Section F of the commercial standard form"}
+   ],
+   "attestation": "Signature under 130 CMR 450.204 (pains and penalties of perjury). Hand-signed scan or DocuSign/Adobe Sign image; typed text signature NOT acceptable.",
+   "fieldNameCaveat": "Repeated Yes/No checkboxes are named 'Yes Please list the dates/duration...' with _N suffixes; map suffix -> section by widget position before programmatic fill (resolved for the draft in ../drafts/)."
+  },
+  "bcbsma": {
+   "paStatus": "none",
+   "note": "Fluticasone propionate HFA is the PREFERRED Tier-1 ICS on BCBSMA Standard Control (July 2026) - no PA exists to draft. The app's job for this payer is the inverse: tell the prescriber no form is needed. If another ICS is blocked, the vehicle is the MA Standard Form via BCBSMA's eForm (see ../forms/bcbsma-ma-standard-pa-form-2024-01.pdf + bcbsma-eform-instructions.pdf).",
+   "form": {"file": "../forms/bcbsma-ma-standard-pa-form-2024-01.pdf", "title": "MA Standard Form (April 2024 v1.0, BCBSMA-branded)", "fillable": true}
+  },
+  "tufts": {
+   "paStatus": "step",
+   "scope": "Fluticasone propionate HFA is Tier 3 with step therapy (+ age limit: covered without step only through age 6) on Value Direct 3-Tier 2026.",
+   "form": {
+    "file": "../forms/tufts-ma-standard-pa-form-2024-02.pdf",
+    "title": "Massachusetts Standard Form for Medication Prior Authorization Requests (February 2024 v1.0, Tufts-branded)",
+    "fillable": true
+   },
+   "submission": {
+    "portal": "point32health.promptpa.com",
+    "epa": "CoverMyMeds (go.covermymeds.com/OptumRx) or Surescripts, via EMR",
+    "fax": "617-673-0988 (pre-printed in Section A of the Tufts-branded form, with phone 888-884-2404)",
+    "mail": "Harvard Pilgrim Health Care/Tufts Health Plan, Pharmacy Utilization Management Department, 1 Wellness Way, Canton, MA 02021-1166"
+   },
+   "prefill": [
+    {"field": "Prior Authorization Step Therapy Formulary Exception", "type": "checkbox", "value": true, "valueSource": "app"},
+    {"field": "Medication Being Requested", "type": "text", "value": "Fluticasone propionate HFA inhalation aerosol", "valueSource": "app"},
+    {"field": "Strength", "type": "text", "valueSource": "app", "example": "110 mcg/actuation"},
+    {"field": "Quantity", "type": "text", "valueSource": "app", "example": "1 inhaler (10.6 g) / 30 days"},
+    {"field": "Dosing Schedule", "type": "text", "valueSource": "app", "example": "2 inhalations twice daily"},
+    {"field": "Section A destination (plan name/phone/fax)", "type": "text", "valueSource": "app", "note": "the form itself says payers 'may prepopulate Section A' - the app does the same"},
+    {"field": "Prescribing Clinician / Specialty / NPI / Phone / Secure Fax / POC block", "type": "text", "valueSource": "practiceProfile"},
+    {"field": "Patient Name / DOB / Member ID / sex assigned at birth / current gender", "type": "text+checkbox", "valueSource": "patient"}
+   ],
+   "clinicalQuestions": [
+    {"section": "F", "question": "Step-therapy exception: any of the four statutory outs (contraindication/harm; expected ineffectiveness; prior same-class trial discontinued for inefficacy/adverse event; stable on requested drug)", "appAssist": "Pre-lists the plan's preferred lower-step ICS agents to name in the prior-trial answer: beclomethasone HFA (QVAR generic, Tier 2 preferred), Arnuity Ellipta / QVAR RediHaler (Tier 2)"},
+    {"section": "G", "question": "Primary diagnosis + ICD (e.g. J45.40 moderate persistent asthma), previous-therapies table (drug/strength/dates/failure), labs if relevant", "appAssist": "Previous-therapies rows seeded with the plan's own preferred alternatives, prescriber fills dates/outcomes"}
+   ]
+  },
+  "harvardpilgrim": {
+   "paStatus": "step",
+   "scope": "Same Point32 pharmacy UM as Tufts; fluticasone propionate HFA Tier 3 + step therapy (+ age limit max 6) on HPHC Select 3T 2026.",
+   "form": {"file": "../forms/hphc-ma-standard-pa-form-2024-02.pdf", "title": "MA Standard Form (February 2024 v1.0, HPHC-branded)", "fillable": true},
+   "submission": {"sameAs": "tufts", "legacyFax": "617-673-0988 (printed on the 2019 RxUM legacy copy)"},
+   "prefillNote": "Identical 133-field template as the Tufts copy - one field map serves both Point32 lines."
+  },
+  "mgb": {
+   "paStatus": "pa",
+   "scope": "PA for members >= 12 (covered without PA through age 11). Criteria policy effective 2025-09-10.",
+   "criteria": {
+    "policy": "../forms/mgb-fluticasone-hfa-pa-policy-2025-09.pdf",
+    "approvalPaths": [
+     "New member continuity: enrolled within last 90 days and already on the drug (samples/PAP excluded)",
+     "Asthma diagnosis AND inadequate response/adverse reaction/contraindication to BOTH Arnuity Ellipta and QVAR RediHaler",
+     "Asthma diagnosis AND documented need for MDI + spacer (physical dexterity, inspiratory flow, or cognitive status)"
+    ],
+    "approvalDuration": "12 months (initial and reauth)"
+   },
+   "form": {"title": "Standard Prior Authorization Form (MA standard family) per MGB commercial pharmacy guidelines", "note": "MGB does not publish its own drug-specific request form for this policy; the MA Standard Form + the policy's criteria is the paper path"},
+   "submission": {"epa": "CoverMyMeds (go.covermymeds.com/OptumRx)", "fax": "844-403-1029", "phone": "800-711-4555", "benefit": "pharmacy (OptumRx)"}
+  }
+ },
+ "sources": [
+  {"claim": "Per-payer PA/step status for fluticasone propionate HFA", "source": "src/data/formulary.json ma-inhalers ICS records (verified cells, lastReviewed 2026-07-10/16)"},
+  {"claim": "Form identity, criteria text, and submission channels", "source": "../forms/manifest.json (per-form validation evidence, captured 2026-08-24)"}
+ ]
+}
