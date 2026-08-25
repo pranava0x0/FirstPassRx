@@ -620,3 +620,35 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   the wrong ceiling value. When you need this number before running the real script (e.g. to decide
   whether a new rule is worth adding), copy the covered-set-building loop verbatim rather than
   guessing which record fields count.
+- **AcroForm field NAMES in real-world government/payer fillable PDFs lie — fill by widget
+  position, verify by render, never by name alone.** (Universal lesson, mirrored from
+  coding-best-practices/CLAUDE.md, 2026-08-25.) MassHealth's own Inhaled Respiratory Agents PA
+  form has "No" checkboxes named `Yes Please list the dates/duration…`, its Member ID field named
+  `Date of birth` and its DOB field named `MI`, and all three outcome checkboxes (Adverse/
+  Inadequate/Other) named `Adverse reaction_N`; the MA standard form shares one field name
+  (`undefined_5`) between two different questions, so setting it answers both. Reliable loop:
+  dump widget page+`/Rect` per field with pypdf (resolve `/Parent` for names; read `/AP` `/N`
+  keys for the real radio export states — irregular: `/0`…`/5`, `/On` beside `/`, `/True1`/
+  `/False1`, `/Sometimes_7`), map name→meaning by position against the page text, fill, then
+  render the filled page and LOOK at it. The position-verified field maps for the MA pilot live
+  in `docs/pa-drafting/templates/`; the PDF_Tools `fill_pdf` MCP also misreports every radio
+  option as "Yes" — set radios via pypdf (`/V` on the group + `/AS` on the matching kid) instead.
+- **The PDF_Tools MCP is sandboxed to ~/Documents, ~/Downloads, ~/Desktop — repo/worktree paths
+  are refused.** Pattern that works: a `~/Downloads/firstpassrx-pa-workbench/` scratch dir, copy
+  PDFs in, operate, copy outputs back into the repo. Its `fetch_pdf_from_url` runs on the user's
+  machine and is a NEW fetch tier for the "looks blocked but isn't" family: mass.gov 403s
+  WebFetch AND serves an HTML interstitial to curl-with-browser-UA, but `fetch_pdf_from_url`
+  gets the real PDF — and so does a plain **Node fetch** with a browser UA
+  (`scripts/validate-pa-forms.mjs --live` gets 200 + correct bytes from mass.gov). Fetch-tier
+  rankings are per-host (GoodRx: Node fetch fails, browser works; mass.gov: curl fails, Node
+  fetch works) — try the next tier before declaring a source dead, and record which tier worked.
+- **MassHealth publishes one numbered fillable PA form per drug class on the MHDL — the index is
+  scrapeable and the forms revise on a months-scale cadence.** Index:
+  `mhdl.pharmacy.services.conduent.com/MHDL/pubpa.do?category=Prior+Authorization+Forms+for+Pharmacy+Services`
+  (plain curl+browser-UA works); each entry links `pubdownloadpa.do?id=N` with DOC and PDF ids
+  paired (PDF usually N+1). The full 77-form registry (class → ids + effective dates) is
+  archived at `docs/pa-drafting/masshealth-pa-form-registry-2026-08-24.json`; the
+  inhaled-respiratory form went Rev. 01/26 → 07/01/26 inside six months, so any template built
+  on a form needs `npm run validate-pa-forms:live` (sha256 drift check) in the refresh ritual.
+  Note the plan-routing table printed on every MassHealth PA form's page 1 is itself the
+  authoritative per-MCO submission-channel source (faxes, portals) — no separate hunt needed.
