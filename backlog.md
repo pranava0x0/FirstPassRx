@@ -11,6 +11,27 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## High
 
+- **PA-drafting MVP — MassHealth inhalers (Phase 1 of `docs/pa-drafting/README.md`).** The
+  2026-08-24 research run proved the whole chain for one vertical (MA × fluticasone propionate
+  HFA): every MA payer's intake is a public fillable AcroForm, the blank forms + sha256 manifest
+  + a position-verified field map are committed under `docs/pa-drafting/`, and two filled sample
+  drafts demonstrate the output. Phase 1 = a "Draft the PA form" button on `paRequired` cells for
+  the `ma-inhalers` guide: pdf-lib (already advisory-swept 2026-07-01) fills the MassHealth
+  Inhaled Respiratory Agents form client-side, practice profile in localStorage, patient fields
+  never persisted. UX spec, data model (`pa-forms-registry.json` shape), and honesty rules are in
+  the README §8; `npm run validate-pa-forms[:live]` guards the captured forms against drift.
+  **Impact: high** (turns the app's "PA blocks you" verdict into the artifact that unblocks).
+  **Effort: medium** (one payer, one form, the drawer UX mirrors the appeal-letter flow).
+- **Verify 211 CMR 52.00 (eff. 2026-06-05) against the MA commercial cells before trusting or
+  extending them.** The amended DOI regs eliminate PA on medications for "certain chronic
+  conditions" (asthma named in the Healey announcement) at fully-insured commercial carriers —
+  which could quietly void the step-therapy edits our verified `ma-inhalers` cells record for
+  Tufts/Harvard Pilgrim/MGB (their own 2026 formulary PDFs, re-read in July, still list the
+  edits; lag vs. renewal-date vs. out-of-scope is unresolved — see
+  `docs/pa-drafting/notes/payer-regulatory-landscape.md` §4.2, flagged UNVERIFIED). One
+  per-carrier check (formulary reissue or carrier bulletin) settles whether (a) existing MA
+  commercial cells need re-verification and (b) the PA-drafting Phase 2 (MA standard form for
+  commercial) still has demand. MassHealth is untouched by the regs either way.
 - **Remaining osteoporosis cash-price gap (`KNOWN_UNPRICED_GAP` = 15, as of 2026-08-11) — down to
   pure structural dead ends.** **2026-08-11 update: closed 5 more items, GoodRx was fully
   accessible for most of this session (no bot-check).** Insulin Regular, Human/Novolin R got a
@@ -887,7 +908,19 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   (`lib/letterPdf.ts`, jspdf@4.2.1 lazy-loaded on click, shipped 2026-07-01); what remains is
   filling a payer's *official* appeal-form PDF (some plans require their form, not a letter).
   Needs a per-payer PDF form template — jspdf can't fill AcroForms, so that phase wants pdf-lib
-  instead (advisory-swept clean 2026-07-01 alongside jspdf).
+  instead (advisory-swept clean 2026-07-01 alongside jspdf). **2026-08-24 update: the AcroForm
+  fill approach is now proven end-to-end by the PA-drafting research** (`docs/pa-drafting/` —
+  captured forms, field maps, two filled drafts); whatever ships first between this and the
+  PA-request drafter should establish the shared `pa-forms-registry.json` + pdf-lib plumbing
+  the other reuses.
+- **Dynamic per-medication PA generation — stacked per drug, dosage-aware.** (User ask,
+  2026-08-24.) Beyond the Phase-1 single-template MVP: every `paRequired` drug in a guide gets
+  its own draft generator, parameterized by the strength/quantity the prescriber selects (the
+  existing per-cell `strength`/`sig` data seeds the defaults). For MA inhalers, dosage does not
+  change which form or criteria apply (44/110/220 mcg share one checkbox), so the dropdown only
+  rewrites Section D text — but verify that assumption per class before generalizing: it breaks
+  where strength changes the criteria (e.g. GLP-1 titration steps, insulin concentrations).
+  Registry shape already anticipates this (`docs/pa-drafting/README.md` §8 data model).
 
 ## Low
 
