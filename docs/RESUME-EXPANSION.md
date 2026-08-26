@@ -1294,3 +1294,39 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   further research needed; the cash-price gap, verification-cell audits, guide freshness, and now
   the OB/GYN/ortho question are all exhausted lines of inquiry — a future unscaled session should
   wait for the user's answer or do a fresh web-search sweep for a topic/state not yet logged.
+- 2026-08-26 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working
+  tree clean, `main` up to date with `origin/main` (note: a same-day-prior interactive session had
+  merged `docs/pa-drafting/` PR #17, a separate PA-request-drafting feature outside this ledger's
+  scope — not touched this run). `npm test` (580/580), `npm run validate-coverage` unchanged at
+  57/408 (8/51 jurisdictions) since the 2026-08-21 `al-doac` merge — no drift, no user approval had
+  landed for `al-doac` or the 43-state prioritization axis (non-interactive run, nothing to approve
+  against). `scripts/gap-report.mjs` unchanged (cash gap 20 unpriced names, verification gap 92
+  cells across 53 (guide,class) pairs) — nothing newly closeable.
+  **Checked the 3 `partial`/`example` cells that postdate the last per-cell audit (2026-07-29 covered
+  md-menopause/il-nsaids/md-ace/ma-menopause/il-inhalers/il-diabetes/ny-ssris/ma-ssris, before CA
+  existed): `ca-ssris/ssri-oral`, `ca-menopause/combo`, `al-menopause/progestogen`.** All three read
+  as genuine, already-exhaustive primary-source reads where the *drug itself* is confirmed covered
+  but the source doesn't rank one agent as "preferred" (CA's Medi-Cal Rx CDL is a flat covered/
+  restricted list, not a tiered PDL) or doesn't carry the exact product class at all (Kaiser NorCal's
+  145-page formulary has zero single-tablet oral HRT combo products, only contraceptive-dose
+  norethindrone combos under a different section) — not extraction failures, not one-more-search-away
+  from closing. No new backlog items needed; none of the 3 were previously flagged as open questions,
+  but none turned out actionable either.
+  Tried a live cash-price recheck for the known rivaroxaban 15/20mg-vs-2.5mg dose-mismatch gap
+  (worth retrying periodically per the teriparatide-catalog-change precedent from 2026-08-04): GoodRx
+  hard-blocked immediately ("Access to this page has been denied"), and Cost Plus Drugs' search page
+  failed to hydrate a query-string search this session (`?query=rivaroxaban` redirected to the bare
+  medications page with an empty product grid, then the tab rendered blank/0x0 on a second load) —
+  a new, different failure mode than the documented hydration-race note in CLAUDE.md, not chased
+  further since this exact molecule/dose combination is already a confirmed structural dead end from
+  2026-08-18. No price added, `KNOWN_UNPRICED_GAP`/cash gap unchanged at 20.
+  No data gathered, no agents/Workflows spawned, no branches created, no `formulary.json` changes —
+  this run's changes are this ledger entry only, committed in 1 chunk.
+  **Still stopped here pending the user's review of `al-doac` and the 43-state prioritization axis.**
+  Next session: if the user answers either open question, scale accordingly. Otherwise: Texas/WA/SC
+  (states) and PCSK9 inhibitors/atypical antipsychotics (topics) remain ready to scope with no
+  further research needed. The cash-price gap, verification-cell audits (now including the 3 CA/AL
+  cells checked here), guide freshness, and the OB/GYN/ortho question are all exhausted lines of
+  inquiry — a future unscaled session should wait for the user's answer, re-check guide freshness
+  once guides cross 90 days, or do a fresh web-search sweep for a topic/state not yet logged rather
+  than re-running any audit above.
