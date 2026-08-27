@@ -970,3 +970,13 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   history. Not urgent today, but worth moving to Git LFS (or an external bucket, keeping only
   `sources/manifest.json` committed to the main repo) if the directory keeps scaling with new
   states — flagged by the PR #11 data review.
+- **Spot-check other states' direct-PDF citation URLs for the same filename-rotation dead-link
+  pattern found in MD (2026-08-27).** Maryland's Medicaid PDL PDF was renamed 3 times in 8 weeks,
+  404ing every previously-cited link across 7 guides even though the content was unchanged — the
+  90-day elapsed-time freshness check never catches this since it only measures guide age, not
+  whether the cited URL still resolves. `npm run archive-sources` (which already re-fetches every
+  cited URL) is the real detector and should surface any state where this has already happened; a
+  future session should read its "unreachable"/failed-fetch output for non-AL entries (AL's
+  `medicaid.alabama.gov` SSL failures are a separate, already-logged issue) rather than re-deriving
+  which states are affected from scratch. Medium priority — link rot degrades citation
+  trustworthiness but doesn't affect the shipped drug-coverage data itself.

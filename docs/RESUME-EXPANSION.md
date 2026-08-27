@@ -1330,3 +1330,35 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   inquiry — a future unscaled session should wait for the user's answer, re-check guide freshness
   once guides cross 90 days, or do a fresh web-search sweep for a topic/state not yet logged rather
   than re-running any audit above.
+- 2026-08-27 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working
+  tree clean, `main` up to date with `origin/main`, `npm test` (580/580), `npm run validate-coverage`
+  unchanged at 57/408 (8/51 jurisdictions) since the 2026-08-21 `al-doac` merge — no drift, no user
+  approval had landed for `al-doac` or the 43-state prioritization axis (non-interactive run, nothing
+  to approve against). `scripts/gap-report.mjs` unchanged (cash gap 20, verification gap 92) — no
+  audit re-run, per the 2026-08-26 note that every standing line of inquiry was already exhausted.
+  **Did a genuinely new check instead of repeating an exhausted audit: verified currency of a shipped
+  source citation rather than only counting elapsed days against the 90-day heuristic** — every prior
+  freshness entry checked "how many days old is the oldest guide" but never re-fetched the actual
+  cited document to see if the source itself had moved. Picked `md-menopause` (2026-06-27, oldest
+  guide, 61 days) and re-searched Maryland's own PDL page: found the cited
+  `PDL-1-1-2026-update-3-26-2026.pdf` now 404s — MD DHS has rotated the PDL filename at least twice
+  since gather time (→ `PDL-7.1.2026-Final-v5.pdf`, cited by 5 sibling MD guides and also now dead, →
+  `PDL-updated-8-6-2026.pdf`, the current live document). Downloaded the current PDL + DAW6 list with
+  `pymupdf` (no `pdftotext` on this machine) and grep-verified the substantive facts every affected MD
+  guide's `verificationNote` already claims are unchanged: menopause-HT terms still absent from the
+  PDL entirely, and the bone-resorption/SGLT2/SSRI rows match the existing verificationNote prose
+  near-verbatim — confirming this is a pure link-rot fix, not a data correction, so no guide content
+  needed re-verification. Fixed 8 dead `references[].url` entries across `md-menopause`, `md-ace`,
+  `md-diabetes`, `md-inhalers`, `md-nsaids`, `md-ssris` (2 refs) and `md-osteoporosis`, plus
+  `md-osteoporosis`'s stray direct-PDF `payer.formularyUrl` (pointed at the stable landing page like
+  every sibling MD guide already does). `npm test` (580/580), `typecheck`, `trace`, `data:split`, and
+  `archive-sources` all green — the 8 fixed sources now archive cleanly at the correct byte size
+  (788KB PDL / 111KB DAW6) instead of failing. Committed in 2 chunks (formulary.json + generated
+  chunks; source archive refresh) and pushed to `main`.
+  **Still stopped here pending the user's review of `al-doac` and the 43-state prioritization axis.**
+  Next session: if the user answers either open question, scale accordingly. Otherwise: Texas/WA/SC
+  (states) and PCSK9 inhibitors/atypical antipsychotics (topics) remain ready to scope. New
+  standing-check idea from this session, worth periodic repeats rather than a one-time fix: spot-check
+  one or two other states' cited direct-PDF URLs (not just MD) for the same filename-rotation dead-link
+  pattern — government PDL hosts appear to rename these files on every republish with no stable
+  permalink, so this class of drift will recur.

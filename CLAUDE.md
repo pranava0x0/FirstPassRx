@@ -642,6 +642,18 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   (`scripts/validate-pa-forms.mjs --live` gets 200 + correct bytes from mass.gov). Fetch-tier
   rankings are per-host (GoodRx: Node fetch fails, browser works; mass.gov: curl fails, Node
   fetch works) — try the next tier before declaring a source dead, and record which tier worked.
+- **A state PDL's direct-PDF URL is not a stable permalink — it can rot well inside the 90-day
+  freshness window, even while the underlying content is unchanged.** Maryland DHS renamed its
+  Medicaid PDL PDF 3 times in 8 weeks (`PDL-1-1-2026-update-3-26-2026.pdf` →
+  `PDL-7.1.2026-Final-v5.pdf` → `PDL-updated-8-6-2026.pdf`), 404ing every previously-cited direct
+  link across 7 shipped guides while the document's actual class-level content (menopause-HT
+  absence, SGLT2/SSRI/bone-resorption rows) stayed byte-for-byte the same per `grep` re-check. The
+  routine 90-day elapsed-time freshness check never catches this — it only measures the guide's age,
+  not whether the cited URL still resolves. `npm run archive-sources`/`trace:live` are the actual
+  detectors for this; a direct spot-`curl` (or WebFetch) on a handful of cited PDF URLs per state,
+  independent of the elapsed-time heuristic, is worth doing periodically. Fix is link-only (update
+  `references[].url`/`accessed`/`payer.formularyUrl`) — don't re-verify or re-stamp the guide's
+  drug-level data unless the re-fetched document's content actually differs.
 - **MassHealth publishes one numbered fillable PA form per drug class on the MHDL — the index is
   scrapeable and the forms revise on a months-scale cadence.** Index:
   `mhdl.pharmacy.services.conduent.com/MHDL/pubpa.do?category=Prior+Authorization+Forms+for+Pharmacy+Services`
