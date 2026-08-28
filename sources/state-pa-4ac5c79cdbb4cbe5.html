@@ -155,12 +155,12 @@
 
 
     
-        <link rel="preload" href="/etc.clientlibs/dmp/clientlibs/clientlib-optum.lc-7060b1ad6ba48afec2408ab3dadccff9-lc.min.css" as="style"/>
-        <link rel="stylesheet" href="/etc.clientlibs/dmp/clientlibs/clientlib-optum.lc-7060b1ad6ba48afec2408ab3dadccff9-lc.min.css"/>
+        <link rel="preload" href="/etc.clientlibs/dmp/clientlibs/clientlib-optum.lc-8ebd7aa89c257b8054884d2380c22873-lc.min.css" as="style"/>
+        <link rel="stylesheet" href="/etc.clientlibs/dmp/clientlibs/clientlib-optum.lc-8ebd7aa89c257b8054884d2380c22873-lc.min.css"/>
     
     <noscript>
         
-            <link rel="stylesheet" href="/etc.clientlibs/dmp/clientlibs/clientlib-optum.lc-7060b1ad6ba48afec2408ab3dadccff9-lc.min.css"/>
+            <link rel="stylesheet" href="/etc.clientlibs/dmp/clientlibs/clientlib-optum.lc-8ebd7aa89c257b8054884d2380c22873-lc.min.css"/>
         
     </noscript>
 
@@ -627,6 +627,10 @@
 			targetPrehidingSnippetVariable = "a[href='#resources']";
 			targetPrehidingSnippetTime = 2750;
 		}
+		if(window.location.pathname.indexOf("/customer-support/pharmacy-support.html") !== -1 || window.location.pathname.indexOf("/customer-support/financial-account-support.html") !== -1){
+			targetPrehidingSnippetVariable = "#main-content .container .aem-Grid";
+		}
+
 	}
 	try {
 		const url = new URL(window.location.href);
@@ -1636,7 +1640,9 @@
     
 <script>
 window.addEventListener('unhandledrejection', function(event) {
-    var msg = event && event.reason && (event.reason.message || event.reason.toString() || '');
+    // Coerce to a string unconditionally. A promise can reject with no reason
+    var reason = event && event.reason;
+    var msg = String((reason && (reason.message || reason)) || '');
     var isAlloySendEvent = msg.indexOf('[alloy]') !== -1 && msg.indexOf('sendEvent') !== -1;
     var isNetworkFailure = msg.indexOf('Failed to fetch') !== -1
         || msg.indexOf('Network request failed') !== -1
@@ -1651,18 +1657,18 @@ window.addEventListener('unhandledrejection', function(event) {
     
     
     
-        <link rel="preload" href="/etc.clientlibs/dmp/clientlibs/clientlib-react.lc-62a25013a0bd5e6badd88c1883308429-lc.min.css" as="style"/>
-        <link rel="stylesheet" href="/etc.clientlibs/dmp/clientlibs/clientlib-react.lc-62a25013a0bd5e6badd88c1883308429-lc.min.css"/>
+        <link rel="preload" href="/etc.clientlibs/dmp/clientlibs/clientlib-react.lc-b62593fc1ebc20c8fbc5838ae047c6ac-lc.min.css" as="style"/>
+        <link rel="stylesheet" href="/etc.clientlibs/dmp/clientlibs/clientlib-react.lc-b62593fc1ebc20c8fbc5838ae047c6ac-lc.min.css"/>
     
     <noscript>
         
-            <link rel="stylesheet" href="/etc.clientlibs/dmp/clientlibs/clientlib-react.lc-62a25013a0bd5e6badd88c1883308429-lc.min.css"/>
+            <link rel="stylesheet" href="/etc.clientlibs/dmp/clientlibs/clientlib-react.lc-b62593fc1ebc20c8fbc5838ae047c6ac-lc.min.css"/>
         
     </noscript>
 
     
-    <script defer src="/etc.clientlibs/dmp/clientlibs/clientlib-react.lc-9a2265ac85defeb29fa29a7a64bffcb6-lc.min.js"></script>
-<script defer src="/etc.clientlibs/dmp/clientlibs/clientlib-optum.lc-92219bd94e2c3e3ba4dcc705e4316ff7-lc.min.js"></script>
+    <script defer src="/etc.clientlibs/dmp/clientlibs/clientlib-react.lc-a1ff18c90e5d2224fe013646b413a184-lc.min.js"></script>
+<script defer src="/etc.clientlibs/dmp/clientlibs/clientlib-optum.lc-3b7e5ad5c83a5c3e9db5dbc00dfa7bdd-lc.min.js"></script>
 
 
 
