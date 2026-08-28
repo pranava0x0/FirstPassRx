@@ -368,6 +368,40 @@
           "fetchedOk": true
         }
       ]
+    },
+    {
+      "code": "TX",
+      "name": "Texas",
+      "note": "Texas Medicaid's pharmacy benefit runs through the statewide Vendor Drug Program (VDP) Preferred Drug List, which every Medicaid/CHIP managed care organization is contractually required to follow (\"HHSC requires managed care organizations to adhere to the Medicaid and CHIP formularies\") — same single-statewide-PDL shape as NY/PA/AL/CA, confirmed via live search and a live document fetch, not assumed. The VDP publishes semi-annually (Jan/Jul); the July 24, 2026 PDL (revised Aug 21, 2026 for off-cycle changes) is current as of this capture. txvendordrug.com blocks plain curl/WebFetch (403) but is reachable via a real browser session — same fetch-tier-dependent pattern as GoodRx/Cost Plus Drugs.",
+      "plans": [
+        {
+          "name": "Texas Medicaid Vendor Drug Program Preferred Drug List (Fee-for-Service, statewide — binding on all Medicaid/CHIP MCOs)",
+          "kind": "Medicaid (FFS)",
+          "pbm": "Texas Health and Human Services Commission (HHSC) Vendor Drug Program",
+          "formularyUrl": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+          "formularyLabel": "Texas Medicaid Preferred Drug List (July 24, 2026, revised Aug 21, 2026)",
+          "effectiveDate": "2026-07-24",
+          "fetchedOk": true
+        },
+        {
+          "name": "Blue Cross and Blue Shield of Texas (Commercial) — dominant statewide carrier",
+          "kind": "Commercial",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+          "formularyLabel": "BCBS Texas Performance Drug List (July 2026)",
+          "effectiveDate": "2026-07-01",
+          "fetchedOk": true
+        },
+        {
+          "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+          "kind": "Medicare",
+          "pbm": "Humana Pharmacy Solutions",
+          "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+          "formularyLabel": "Humana Premier Rx Plan (PDP) 2026 Prescription Drug Guide",
+          "effectiveDate": "2026-07-05",
+          "fetchedOk": true
+        }
+      ]
     }
   ]
 }
