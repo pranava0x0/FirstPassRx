@@ -1362,3 +1362,32 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   one or two other states' cited direct-PDF URLs (not just MD) for the same filename-rotation dead-link
   pattern — government PDL hosts appear to rename these files on every republish with no stable
   permalink, so this class of drift will recur.
+- 2026-08-28 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working tree
+  clean, `main` up to date with `origin/main`, `npm test` (580/580), `npm run validate-coverage`
+  unchanged at 57/408 (8/51 jurisdictions) since the 2026-08-21 `al-doac` merge — no drift, no user
+  approval had landed for `al-doac` or the 43-state prioritization axis (non-interactive run, nothing
+  to approve against). `scripts/gap-report.mjs` unchanged (cash gap 20, verification gap 92).
+  **Followed through on the 2026-08-27 entry's own suggestion: extended the link-rot spot check from
+  just MD to all 8 shipped states.** Extracted every distinct direct-PDF URL cited anywhere in
+  `formulary.json` (`references[].url` and `payer.formularyUrl`) — 50 distinct URLs spanning
+  MA/MD/NY/VA/IL/AL/PA/CA — and curl-checked each with a browser UA (1.5s spacing, per network-ethics
+  rule). Result: **48/50 return 200 clean, zero new dead links found.** The 2 exceptions are both
+  already-documented, non-blocking: (1) `medicaid.alabama.gov`'s two PDL PDFs — the known SSL/cert
+  fetch failure logged repeatedly since 2026-07-23, unrelated to content freshness (the gather agents
+  read the same PDFs fine via curl/browser at gather time); (2) a single curl 403 on Aetna Better
+  Health IL's `ABHIL_Formulary.pdf` — checked `sources/manifest.json` before treating this as a new
+  finding, and the archiver's own Node-fetch-based `last_verified` timestamp shows a clean 200 fetch
+  of the identical byte content (same sha256) as recently as 2026-08-27T07:44Z, one day before this
+  check — same fetch-tier-dependent "looks blocked but isn't" pattern already documented in CLAUDE.md
+  (curl vs. Node `fetch()` get different bot-protection treatment from the same host), not real rot.
+  No `formulary.json` changes needed — MD's 2026-08-27 fix was the only real link rot in the dataset;
+  every other state's citations are still pointing at live documents. No data gathered, no agents/
+  Workflows spawned, no branches created — this run's changes are this ledger entry only, committed
+  in 1 chunk.
+  **Still stopped here pending the user's review of `al-doac` and the 43-state prioritization axis.**
+  Next session: if the user answers either open question, scale accordingly. Otherwise: Texas/WA/SC
+  (states) and PCSK9 inhibitors/atypical antipsychotics (topics) remain ready to scope with no
+  further research needed. The full-dataset link-rot sweep done here confirms the dataset is
+  currently clean of citation drift beyond the already-known Alabama SSL issue — a future session
+  should re-run this same 50-URL check periodically (e.g. monthly) rather than per-state ad hoc,
+  since it's now cheap (one script, ~90s) and covers everything at once.
