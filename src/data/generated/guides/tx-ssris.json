@@ -1,0 +1,463 @@
+{
+  "id": "tx-ssris",
+  "label": "TX · SSRIs",
+  "stateCode": "TX",
+  "region": "Texas",
+  "topicId": "ssris",
+  "topic": "SSRIs",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-08-28",
+  "capturedAt": "2026-08-28",
+  "classes": [
+    {
+      "id": "ssri-oral",
+      "name": "Oral SSRIs",
+      "shortName": "SSRI",
+      "plainName": "Antidepressant (SSRI)",
+      "description": "Selective serotonin reuptake inhibitors (fluoxetine, sertraline, citalopram, escitalopram, paroxetine, fluvoxamine) — first-line oral therapy for major depressive disorder and anxiety disorders.",
+      "plainDescription": "A daily pill for depression or anxiety that works by increasing serotonin levels.",
+      "indication": "Major depressive disorder & anxiety disorders",
+      "sourceIds": [
+        "tx-medicaid-ssris-source-2026-08"
+      ]
+    }
+  ],
+  "payers": [
+    {
+      "id": "tx-medicaid",
+      "name": "Texas Medicaid Vendor Drug Program (Fee-for-Service, statewide PDL binding on all MCOs)",
+      "shortName": "TX Medicaid FFS",
+      "pbm": "Texas Health and Human Services Commission (HHSC) Vendor Drug Program",
+      "formularyUrl": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "sourceIds": [
+        "tx-medicaid-ssris-source-2026-08"
+      ],
+      "productName": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria, effective 2026-07-24"
+    },
+    {
+      "id": "bcbs-tx-commercial",
+      "name": "Blue Cross and Blue Shield of Texas (Commercial)",
+      "shortName": "BCBS Texas",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "sourceIds": [
+        "bcbs-tx-commercial-ssris-source-2026-08"
+      ],
+      "productName": "Performance Drug List, July 2026",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Performance Drug List, July 2026, effective 2026-07-01"
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-ssris-source-2026-08"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402, effective 2026-08-01"
+    }
+  ],
+  "references": [
+    {
+      "id": "tx-medicaid-ssris-source-2026-08",
+      "label": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria",
+      "publisher": "Texas Health and Human Services Commission (HHSC) Vendor Drug Program",
+      "type": "gov",
+      "url": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "effectiveDate": "2026-07-24",
+      "accessed": "2026-08-28"
+    },
+    {
+      "id": "bcbs-tx-commercial-ssris-source-2026-08",
+      "label": "Performance Drug List, July 2026",
+      "publisher": "Blue Cross and Blue Shield of Texas / Prime Therapeutics LLC",
+      "type": "payer",
+      "url": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-08-28"
+    },
+    {
+      "id": "humana-premier-rx-pdp-ssris-source-2026-08",
+      "label": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "publisher": "Humana Inc.",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-08-01",
+      "accessed": "2026-08-28"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ],
+  "records": [
+    {
+      "payerId": "tx-medicaid",
+      "classId": "ssri-oral",
+      "preferredAgent": {
+        "inn": "sertraline",
+        "brand": "Zoloft",
+        "genericAvailable": true,
+        "strength": "50 mg tablet",
+        "sig": "Sertraline 50 mg tablet, take 1 tablet by mouth once daily",
+        "sigShort": "1 tab PO daily",
+        "plainSig": "One 50 mg tablet by mouth, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "Citalopram oral tablet/solution",
+          "note": "Preferred, no PA (Celexa brand itself is non-preferred; the citalopram 30 mg capsule strength is also non-preferred)",
+          "sourceIds": [
+            "tx-medicaid-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Escitalopram oral tablet (incl. Lexapro brand)",
+          "note": "Preferred, no PA; escitalopram capsule and oral-solution forms are non-preferred",
+          "sourceIds": [
+            "tx-medicaid-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Fluoxetine oral capsule/solution (incl. Prozac brand)",
+          "note": "Preferred, no PA; fluoxetine tablets and the delayed-release (DR) capsule are non-preferred",
+          "sourceIds": [
+            "tx-medicaid-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Fluvoxamine (immediate-release)",
+          "note": "Preferred, no PA; fluvoxamine ER is non-preferred",
+          "sourceIds": [
+            "tx-medicaid-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Paroxetine oral tablet (Paxil-equivalent generic)",
+          "note": "Preferred, no PA; the Paxil and Paxil CR brand products, paroxetine CR, and paroxetine (Brisdelle) are non-preferred",
+          "sourceIds": [
+            "tx-medicaid-ssris-source-2026-08"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Celexa (citalopram brand)",
+          "outcome": "pa",
+          "reason": "Not listed among the PDL's preferred citalopram forms; requires PA under the PDL's standard brand-restriction rule since generic citalopram tablets/solution are preferred instead.",
+          "sourceIds": [
+            "tx-medicaid-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Citalopram 30 mg capsules",
+          "outcome": "pa",
+          "reason": "This capsule strength is excluded from the PDL's preferred citalopram list; requires PA since the tablet/solution forms of citalopram are preferred instead.",
+          "sourceIds": [
+            "tx-medicaid-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Escitalopram oral capsule/solution",
+          "outcome": "pa",
+          "reason": "This formulation is excluded from the PDL's preferred escitalopram list; requires PA since only the escitalopram tablet is preferred.",
+          "sourceIds": [
+            "tx-medicaid-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Fluoxetine delayed-release (DR) capsules",
+          "outcome": "pa",
+          "reason": "This once-weekly delayed-release formulation is excluded from the PDL's preferred fluoxetine list; requires PA.",
+          "sourceIds": [
+            "tx-medicaid-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Fluoxetine tablets",
+          "outcome": "pa",
+          "reason": "This tablet formulation is excluded from the PDL's preferred fluoxetine list; requires PA since only fluoxetine capsules/solution are preferred.",
+          "sourceIds": [
+            "tx-medicaid-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Fluvoxamine ER",
+          "outcome": "pa",
+          "reason": "This extended-release formulation is excluded from the PDL's preferred fluvoxamine list; requires PA since only immediate-release fluvoxamine is preferred.",
+          "sourceIds": [
+            "tx-medicaid-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Paroxetine (Brisdelle)",
+          "outcome": "pa",
+          "reason": "This product is excluded from the PDL's preferred paroxetine list; requires PA.",
+          "sourceIds": [
+            "tx-medicaid-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Paroxetine CR",
+          "outcome": "pa",
+          "reason": "This controlled-release formulation is excluded from the PDL's preferred paroxetine list; requires PA.",
+          "sourceIds": [
+            "tx-medicaid-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Paxil (paroxetine brand)",
+          "outcome": "pa",
+          "reason": "Not listed among the PDL's preferred paroxetine forms; requires PA under the PDL's standard brand-restriction rule since generic paroxetine is preferred instead.",
+          "sourceIds": [
+            "tx-medicaid-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Paxil CR (paroxetine brand)",
+          "outcome": "pa",
+          "reason": "This brand/formulation is excluded from the PDL's preferred paroxetine list; requires PA.",
+          "sourceIds": [
+            "tx-medicaid-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Sertraline capsules",
+          "outcome": "pa",
+          "reason": "This capsule formulation is excluded from the PDL's preferred sertraline list; requires PA since sertraline tablets and oral concentrate are preferred instead.",
+          "sourceIds": [
+            "tx-medicaid-ssris-source-2026-08"
+          ]
+        }
+      ],
+      "stepTherapy": "Class-wide PDL non-preferred PA criteria (not a strict step-therapy fail-first rule): a client must meet at least one of the following to get a non-preferred SSRI approved -- non-preferred drug usage prior to inpatient facility discharge, stability on the non-preferred drug, complication risk from switching off the non-preferred drug, documented treatment failure with preferred drugs within any subclass, contraindication or allergic reaction to preferred drugs, or treatment of stage-four advanced/metastatic cancer and associated conditions.",
+      "tier": "PDL preferred (fee-for-service Medicaid; no dollar copay tiers -- 'preferred' means dispensed without PDL prior authorization)",
+      "verification": "verified",
+      "verificationNote": "Fetched the cited PDF directly (a plain curl/WebFetch on this URL returned HTTP 403; the file was retrieved via an authenticated browser session that resolved with HTTP 200, reassembled from base64 chunks, and validated as a genuine 88-page PDF matching the source's own page count). Page 1 confirms the document title 'Preferred Drug List -- Texas Health and Human Services -- Texas Medicaid, Effective July 24, 2026' and the table of contents (page 5) lists 'ANTIDEPRESSANTS, SSRIs' at page 22, matching the task's supplied source and effective date. Page 22's 'ANTIDEPRESSANTS, SSRIs' section was read verbatim: the PREFERRED AGENTS column lists citalopram tablets/solution, escitalopram tablets, fluoxetine capsules/solution, fluvoxamine, Lexapro (escitalopram), paroxetine (Paxil-equivalent generic), Prozac (fluoxetine), and sertraline concentration/tablets plus the Zoloft brand of the same; the NON-PREFERRED AGENTS column lists Celexa (citalopram brand), citalopram 30mg capsules, escitalopram capsules/solution, fluoxetine DR capsules, fluoxetine tablets, fluvoxamine ER, paroxetine (Brisdelle), paroxetine CR, Paxil, Paxil CR, and sertraline capsules. The page-level PA CRITERIA block (client must meet at least one of six listed conditions to get a non-preferred SSRI approved) was read verbatim and is transcribed into stepTherapy. Page 3 confirms non-preferred PDL status itself triggers PDL prior authorization ('Drugs identified as non-preferred require a PDL prior authorization'). All six SSRI molecules (citalopram, escitalopram, fluoxetine, fluvoxamine, paroxetine, sertraline) are on the preferred list in at least one common oral form, with no restriction on the preferred form itself. Sertraline (tablet form) was selected as the representative single preferred agent because it is the most broadly first-line-prescribed generic SSRI in clinical practice, matching this repo's established ssri-oral convention across every other payer already gathered (VA Medicaid FFS, MD payers, etc.) -- this single-agent selection among five/six clinically-tied, equally-unrestricted SSRIs is an inference, not something the source itself ranks. The 50 mg strength and once-daily sig are standard prescribing convention, not stated in the PDL (which lists drug/formulation names and preferred/non-preferred status only, no dosing guidance). No quantity-limit or clinical-PA codes are shown in this class's table (unlike some other states' PDLs), so preferredRestriction is null.",
+      "sourceIds": [
+        "tx-medicaid-ssris-source-2026-08"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-ssris-source-2026-08"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-ssris-source-2026-08"
+      ],
+      "lastReviewed": "2026-08-28"
+    },
+    {
+      "payerId": "bcbs-tx-commercial",
+      "classId": "ssri-oral",
+      "preferredAgent": {
+        "inn": "Sertraline",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg",
+        "sig": "1 tablet by mouth once daily",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "Citalopram (tablet)",
+          "note": "Tier 1 - preferred generic, no PA/ST/QL. Oral solution 10mg/5ml is Tier 2 (non-preferred generic) but still covered.",
+          "sourceIds": [
+            "bcbs-tx-commercial-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Escitalopram (tablet)",
+          "note": "Tier 1 - preferred generic, no PA/ST/QL. Oral solution 5mg/5ml is Tier 2 (non-preferred generic) but still covered.",
+          "sourceIds": [
+            "bcbs-tx-commercial-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Fluoxetine (capsule 10/20/40mg, tablet 10mg)",
+          "note": "Tier 1 - preferred generic, no PA/ST/QL. Tablet 20mg and oral solution 20mg/5ml are Tier 2 (non-preferred generic) but still covered.",
+          "sourceIds": [
+            "bcbs-tx-commercial-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Paroxetine (tablet, Paxil)",
+          "note": "Tier 1 - preferred generic, no PA/ST/QL.",
+          "sourceIds": [
+            "bcbs-tx-commercial-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Fluvoxamine (tablet 25mg, 50mg)",
+          "note": "Tier 1 - preferred generic, no PA/ST/QL. Tablet 100mg is Tier 2 (non-preferred generic) but still covered.",
+          "sourceIds": [
+            "bcbs-tx-commercial-ssris-source-2026-08"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Fluoxetine DR (delayed-release capsule 90mg, once-weekly)",
+          "outcome": "step",
+          "reason": "This once-weekly delayed-release formulation carries a step-therapy requirement (\"ST\") in the Requirements/Limits column, distinct from the standard immediate-release fluoxetine capsule/tablet formulations, which are preferred without one.",
+          "sourceIds": [
+            "bcbs-tx-commercial-ssris-source-2026-08"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "tier": "Tier 1 - Preferred Generic",
+      "verification": "verified",
+      "verificationNote": "Fetched the BCBS Texas Performance Drug List PDF directly (WebFetch's AI summarizer could not parse the compressed PDF text stream, but it saved the raw 3.07MB PDF file to a local path -- per the project's known 'looks dead but isn't' pattern, opened that saved file directly with a local PDF library instead of re-fetching). Cover page confirms title 'Performance Drug List, July 2026', publisher line '41722-T TX (c) Prime Therapeutics LLC 07/26', and every page header reads '2026 Blue Cross and Blue Shield of Texas July 2026 Performance Drug List', matching this exact payer (BCBS Texas commercial, PBM Prime Therapeutics). Read the legend on printed pages I-VI (PDF page indices 1-6, 'How to use this list' and 'Coverage considerations' sections): lower-case bold 'p' = Preferred Generic (Tier 1), lower-case 'np' = Non-Preferred Generic (Tier 2), CAPS 'P' = Preferred Brand (Tier 3), CAPS 'NP' = Non-Preferred Brand (Tier 4); 'PA'/'ST'/'QL' in the Requirements/Limits column flag prior authorization, step therapy, and quantity limits respectively, defined on printed page IV. Read the CENTRAL NERVOUS SYSTEM DRUGS > ANTIDEPRESSANTS section verbatim on printed pages 46-47 (PDF page indices 55-56). Confirmed exactly as listed: citalopram hydrobromide tab 10/20/40mg (Celexa) = p; citalopram oral soln 10mg/5ml = np; escitalopram oxalate tab 5/10/20mg (Lexapro) = p; escitalopram oxalate soln 5mg/5ml = np; fluoxetine hcl cap 10/20/40mg (Prozac) = p; fluoxetine hcl tab 10mg = p; fluoxetine hcl tab 20mg = np; fluoxetine hcl solution 20mg/5ml = np; FLUOXETINE DR (delayed-release cap 90mg) = NP, ST; fluvoxamine maleate tab 25/50mg = p; fluvoxamine maleate tab 100mg = np; paroxetine hcl tab 10/20/30/40mg (Paxil) = p; sertraline hcl tab 25/50/100mg (Zoloft) = p; sertraline hcl oral concentrate 20mg/ml = np. No PA, ST, or QL notation appears next to any of the six 'p' (Tier 1) oral SSRI entries, so none of them carries a preferred-agent restriction and there is no class-wide step-therapy criterion for the standard tablet/capsule forms. Preferred agent chosen as sertraline (most commonly prescribed first-line SSRI per standard clinical guidelines, matching the convention used for other payers in this dataset); citalopram, escitalopram, fluoxetine, paroxetine, and fluvoxamine are all equally Tier 1 preferred per the source and listed as alternatives, since the document does not single out one SSRI over another. Dose/sig (sertraline 50mg once daily) is standard first-line dosing convention, not itself stated in the drug list (which lists drug names, tier letters, and Requirements/Limits only, no sig text). The document states member payment tiers as a description (up to six tiers: Preferred Generic/Non-Preferred Generic/Preferred Brand/Non-Preferred Brand/Preferred Specialty/Non-Preferred Specialty) but does not publish dollar copay amounts in this PDF, consistent with 'tier' reflecting the letter-coded tier only.",
+      "sourceIds": [
+        "bcbs-tx-commercial-ssris-source-2026-08"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-ssris-source-2026-08"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-ssris-source-2026-08"
+      ],
+      "lastReviewed": "2026-08-28"
+    },
+    {
+      "payerId": "humana-premier-rx-pdp",
+      "classId": "ssri-oral",
+      "preferredAgent": {
+        "inn": "Sertraline",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg",
+        "sig": "1 tablet by mouth once daily",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "Citalopram (tablet)",
+          "note": "Tier 1 - Preferred Generic, no PA; the 10 mg/5 mL solution form is Tier 4.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Escitalopram oxalate (tablet)",
+          "note": "Tier 1 - Preferred Generic (5/10/20 mg tablet), no PA; the 15 mg capsule and 5 mg/5 mL solution forms are Tier 4.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Fluoxetine (capsule)",
+          "note": "Tier 1 - Preferred Generic (10/20/40 mg capsule), no PA, quantity limits apply; tablet form is Tier 2 and the 20 mg/5 mL solution is Tier 3.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Paroxetine hcl (tablet)",
+          "note": "Tier 2 - Generic, no PA; the ER tablet and oral suspension forms are Tier 4 with quantity limits.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Fluvoxamine (tablet)",
+          "note": "Tier 2 - Generic, no PA; quantity limit of 90 per 30 days.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-ssris-source-2026-08"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Zoloft (sertraline brand)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on the 2026 Humana Formulary drug list; generic sertraline is the covered form. A generic exists, so branded fill would require a formulary exception.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Prozac (fluoxetine brand)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on the 2026 Humana Formulary drug list; generic fluoxetine is the covered form.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Celexa (citalopram brand)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on the 2026 Humana Formulary drug list; generic citalopram is the covered form.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Lexapro (escitalopram brand)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on the 2026 Humana Formulary drug list; generic escitalopram is the covered form.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Paxil / Paxil CR (paroxetine brand)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on the 2026 Humana Formulary drug list; generic paroxetine is the covered form.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-ssris-source-2026-08"
+          ]
+        },
+        {
+          "drug": "Luvox / Luvox CR (fluvoxamine brand)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on the 2026 Humana Formulary drug list; generic fluvoxamine is the covered form.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-ssris-source-2026-08"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "tier": "Tier 1 - Preferred Generic",
+      "verification": "verified",
+      "verificationNote": "Read directly from the 'Humana Premier Rx Plan (PDP) Formulary 26402' 2026 Prescription Drug Guide (Y0040_PDG26_FINAL_5C_C 20260005PDG2640226C_v15), cover page states 'Updated 08/01/2026'. The Antidepressants section spans pages 22-23 of the PDF (labeled '2026 HUMANA FORMULARY UPDATED 08/01/2026'), which lists all six named SSRI generics (citalopram, escitalopram oxalate, fluoxetine, fluvoxamine, paroxetine hcl, sertraline) with exact tier numbers and utilization-management codes (MO/QL only -- no PA or ST flags on any dosage form of any of the six generics). Confirmed: sertraline tablet (25/50/100 mg), citalopram tablet, escitalopram tablet, and fluoxetine capsule are all Tier 1 - Preferred Generic (definition read from page 5: 'Generic or brand drugs that are available at the lowest cost share for the plan'); paroxetine tablet and fluvoxamine tablet are Tier 2 - Generic; less-common dosage forms (solutions, ER tablets, capsules of escitalopram/paroxetine) sit at Tier 3 or Tier 4. Sertraline 50 mg tablet was picked as the single preferred agent to match this app's convention (see ny-medicaid-ssris) since the document itself does not single out one SSRI over the others -- all four Tier-1 generics are equally 'preferred' by tier placement. The paRequired brand-name entries (Zoloft, Prozac, Celexa, Lexapro, Paxil, Luvox) are an inference, not an explicit non-formulary listing: full-text search of all 108 PDF pages confirmed none of those six brand names appear anywhere in the document, and this Humana guide is framed as an exhaustive 'list of covered drugs' (page 10), so absence from that list means the brand is not covered absent a formulary exception -- standard for a Part D plan once an AB-rated generic exists. No class-wide step-therapy criterion for SSRIs was found anywhere in the document.",
+      "sourceIds": [
+        "humana-premier-rx-pdp-ssris-source-2026-08"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-ssris-source-2026-08"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-ssris-source-2026-08"
+      ],
+      "lastReviewed": "2026-08-28"
+    }
+  ]
+}
