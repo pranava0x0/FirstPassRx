@@ -664,3 +664,16 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   on a form needs `npm run validate-pa-forms:live` (sha256 drift check) in the refresh ritual.
   Note the plan-routing table printed on every MassHealth PA form's page 1 is itself the
   authoritative per-MCO submission-channel source (faxes, portals) — no separate hunt needed.
+- **`txvendordrug.com` (Texas Medicaid's Vendor Drug Program) joins the "looks blocked but isn't"
+  list, but at the whole-domain level, and it needed the real browser tool specifically — neither
+  plain `curl` nor WebFetch got through.** Confirmed 2026-08-28 scaffolding Texas as a new state:
+  every page and every direct PDF on the domain (including the guessed-URL July 2026 PDL,
+  `2026-0724-preferred-drug-list.pdf`) 403'd both a browser-UA `curl` and `WebFetch`, but the
+  in-app Browser tool's real session read the page text and PDF cleanly. The current PDL isn't
+  linked as a direct `.pdf` href from the "Preferred Drugs" page at all — the visible "July 24,
+  2026, PDL" link goes to a news announcement page with no PDF link on it either; the real file
+  lives at a guessable `sites/default/files/docs/YYYY-MMDD-preferred-drug-list.pdf` pattern
+  (confirmed against the one known-good Jan-2026 link already present in search results) and had
+  to be found by pattern-matching, not by following a link. Texas Medicaid's PDL is otherwise the
+  same single-statewide-PDL shape as NY/PA/AL/CA — every Medicaid/CHIP MCO is contractually
+  required to follow it, so no separate MCO rostering is needed.

@@ -1391,3 +1391,39 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   currently clean of citation drift beyond the already-known Alabama SSL issue — a future session
   should re-run this same 50-URL check periodically (e.g. monthly) rather than per-state ad hoc,
   since it's now cheap (one script, ~90s) and covers everything at once.
+- 2026-08-28 (same day, interactive session — user said "you decide" in response to the two open
+  questions from the scheduled run above) — **Gate cleared by explicit user instruction; reviewed
+  and approved `al-doac` (3/3 payers verified, apixaban/Eliquis correctly preferred respecting the
+  known no-generic trap, reasonable PA/alternative counts); picked Texas as the next new state**
+  (the pre-scoped favorite — single statewide PDL like NY/PA/AL/CA, 2nd-largest Medicaid
+  population). **Built TX's payer roster via live discovery** (not from memory, per the standing
+  MCO-churn rule): confirmed Texas Medicaid's pharmacy benefit runs one statewide Vendor Drug
+  Program PDL binding on every Medicaid/CHIP MCO (live search + a live document fetch), rostered 3
+  payers — TX Medicaid VDP (FFS), BCBS Texas commercial (Performance Drug List, Prime
+  Therapeutics), Humana Premier Rx Plan (national standalone Part D PDP) — added to
+  `state-index.json`, committed separately. Discovered `txvendordrug.com` blocks both curl and
+  WebFetch at the whole-domain level and needed the real browser tool to read at all, including
+  finding the current PDL's direct-PDF URL by pattern-guessing since the site's own "Preferred
+  Drugs" page doesn't link it directly — new CLAUDE.md scar-tissue entry.
+  **Shipped `tx-ssris`, Texas's proof guide, the new-state gate for TX.** Gathered via
+  `formulary-gather.js` (3 payers, chunked ≤2 concurrent, 0 agent errors, ~341K subagent tokens).
+  All 3 payers fully verified, sertraline preferred at every payer. Reworded 12 `paRequired`
+  reasons that used "non-preferred"/tier-adjacent wording tripping the schema's
+  cost-sharing-vs-barrier heuristic (TX Medicaid's binary PDL, 11 reasons; one BCBS TX
+  step-therapy-flagged formulation, 1 reason) — all confirmed genuine PA/step barriers, not
+  cost-tier-only, per the established reword-not-reclassify pattern. Zero new cash-price gap — all
+  six SSRI molecule names already matched the existing broad SSRI cash-link rules from 2026-07-29.
+  `npm test` (588/588), `typecheck`, `trace` (0 broken sources), `validate-coverage`,
+  `validate-prices` (20/20 unchanged) all green. **Live-browser verification was skipped this
+  session** — the dev-server preview tool refused to launch ("Dev servers can't be started from
+  unattended sessions"), even though the user was actively present; relied on the full test suite
+  (schema validation included) as the verification signal instead, consistent with prior headless
+  scheduled-run practice. National grid moved 8/51 → 9/51 jurisdictions covered. Committed in 3
+  chunks (state-index roster, guide merge + test-id list, source archive refresh) and pushed to
+  `main`.
+  **STOPPING HERE per the same "one guide as proof first" gate applied to `ny-ssris`, `al-ssris`,
+  `pa-ssris`, and `ca-ssris`** — do not scale TX's remaining 6 topics without the user reviewing
+  `tx-ssris` and approving, even though "you decide" cleared the *state-selection* question. Next
+  session: if approved, scale TX's remaining 6 topics (reusing its 3-payer roster), then move to
+  WA/SC (the other two pre-scoped state candidates) or PCSK9 inhibitors/atypical antipsychotics
+  (the two pre-scoped topic candidates) per the user's next steer.
