@@ -521,6 +521,27 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
     real but carries a real dose-mismatch trap to design around if ever scoped. Every one of the now
     8 candidates has a cash-price verdict; no further Cost Plus/GoodRx research needed on this list
     until the user picks one to scope.
+  - **Autoimmune biologics (adalimumab/Humira + biosimilars) for RA/psoriasis/IBD — researched
+    2026-08-30 (scheduled run), closing the open question left at the top of this file since
+    2026-07-07 ("decide whether the disabled `biologics` tab extends to autoimmune conditions or
+    stays respiratory-only").** PA-friction evidence is real but generic and unquantified — every
+    source found describes biologics as near-universally PA-gated (virtually all Medicaid/
+    commercial payers require it, most now layer a "biosimilar-first" step before the reference
+    product) but no source produced a hard rejection-rate stat comparable to PCSK9's 82-97%/
+    30-79% or CGRP's 96%; one state-level study found only a 24% *relative increase* in denied
+    claims after a new PA policy, a much weaker number. **Cash-price story is real but the
+    weakest-dollar-amount "yes" on this list**: Boehringer's adalimumab-adbm (unbranded Cyltezo
+    biosimilar) sells through a GoodRx partnership at **$550 per two-pack/month** — a genuine
+    self-pay-only coupon (confirmed: "you are not using commercial or government insurance" is a
+    condition of the price, same self-pay-only shape as the PCSK9 coupons, not a commercially-
+    insured-only copay-card trap like the rejected Forteo precedent) — vs. Humira's ~$6,922/month
+    list price, a 92% discount. But $550/month is far above every other shipped or favored
+    candidate (SSRI/PCSK9/antipsychotic generics all run $5-240/month) — a real but much less
+    compelling "cash workaround" for an uninsured patient than this app's existing value prop.
+    **Verdict: weaker than PCSK9/atypical antipsychotics, not disqualified like Hep C DAAs or
+    ortho.** Worth scoping only after both current co-favorites are exhausted, and only with a
+    payer-level PA-criteria check (not this search-level pass) to find a real friction stat before
+    committing. Not started — no taxonomy decided, no payer roster built, no data gathered.
   - **GLP-1s for weight-loss/obesity indication (Wegovy/Zepbound/Saxenda) — distinct from the
     existing `glp1` diabetes class.** Same molecules, different indication and a much harsher PA
     gate (BMI threshold + documented prior weight-loss attempts almost everywhere it's covered at

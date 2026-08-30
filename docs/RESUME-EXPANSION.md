@@ -1427,3 +1427,32 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   session: if approved, scale TX's remaining 6 topics (reusing its 3-payer roster), then move to
   WA/SC (the other two pre-scoped state candidates) or PCSK9 inhibitors/atypical antipsychotics
   (the two pre-scoped topic candidates) per the user's next steer.
+- 2026-08-30 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working
+  tree clean, `main` up to date with `origin/main`, `npm test` (588/588), `npm run
+  validate-coverage` unchanged at 58/408 (9/51 jurisdictions) since the 2026-08-28 `tx-ssris`
+  merge — no drift, no user approval had landed for `tx-ssris` or the remaining open questions
+  (non-interactive run, nothing to approve against). `scripts/gap-report.mjs` unchanged (cash gap
+  20 unpriced names, verification gap 92 cells) — every bucket already confirmed a structural dead
+  end in prior sessions (physician-administered pamidronate/romosozumab, dose-mismatch
+  rivaroxaban, medical-benefit carve-outs). Guide freshness: oldest guide (`md-menopause`,
+  2026-06-27) is 64 days old, still under the 90-day threshold — nothing due for re-verification.
+  **Did a genuinely new piece of research rather than repeating an exhausted audit: closed the
+  open "decide whether the disabled `biologics` tab extends to autoimmune conditions" question
+  that had sat unaddressed at the top of `backlog.md` since 2026-07-07.** Web-searched Medicaid/
+  commercial PA policy for adalimumab (Humira) and biosimilar cash pricing (no agents, no
+  browser). Verdict logged to `backlog.md`: real but generic PA friction (no quantified
+  rejection-rate stat as strong as PCSK9's 82-97%/CGRP's 96%) and a real self-pay-only GoodRx
+  cash price for the adalimumab-adbm biosimilar ($550/2-pack/month, 92% off Humira's ~$6,922 list,
+  confirmed cash-paying-patients-only via the program's own terms — not a Forteo-style
+  insured-only copay trap) — but $550/month is far pricier than every other shipped/favored
+  candidate ($5-240/month), so it's a weaker "cash workaround" story than this app's core value
+  prop delivers elsewhere. Ranked below PCSK9/atypical antipsychotics, not disqualified outright.
+  No data gathered, no agents/Workflows spawned, no branches created, no `formulary.json`
+  changes — this run's changes are `backlog.md` + this ledger entry, committed in 1 chunk.
+  **Still stopped here pending the user's review of `tx-ssris` and the standing open questions
+  (43-state prioritization, PCSK9 vs. antipsychotics vs. now-deprioritized autoimmune biologics
+  as the next topic).** Next session: if the user answers any open question, scale accordingly.
+  Otherwise: TX's remaining 6 topics, WA/SC (states), and PCSK9/atypical antipsychotics (topics)
+  remain ready to scope with no further research needed — the cash-price gap, verification-cell
+  audits, guide freshness, and now the autoimmune-biologics question are all exhausted lines of
+  inquiry.
