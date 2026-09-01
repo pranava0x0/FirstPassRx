@@ -748,6 +748,24 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
     - **South Carolina** adopted a single state-directed PDL binding all MCOs + FFS effective
       2026-07-01, per `scdhhs.sc.gov` — same shape again. Not yet cross-checked against a live
       MCO roster the way WA/TX have been; would need that pass before scoping.
+      - **Cross-checked 2026-09-01 (scheduled run): SC is now fully confirmed and ready to scope,
+        same readiness level as WA/TX — research only, no `state-index.json` entry, no data
+        gathered.** Live-verified via `scdhhs.gov`: the single PDL actually took effect **2024-07-01**
+        (not 2026-07-01 as the note above stated — a live SCDHHS communications page,
+        "Implementation of a Single Preferred Drug List," gives the real date; correcting the record
+        here rather than propagating the wrong year). SCDHHS's own pharmacy portal
+        (`southcarolina.fhsc.com/providers/pdl.asp`) hosts the live PDL, currently on its
+        "Effective August 1, 2026" edition — confirms the document is actively maintained, not
+        stale. Confirmed the 5-MCO roster by name (SCDHHS partners with exactly 5, statewide, no
+        new plans being enrolled per a 2024-11-02 freeze): **Absolute Total Care** (Centene),
+        **Healthy Blue of SC** (BlueChoice/Elevance), **First Choice by Select Health**
+        (AmeriHealth Caritas), **Humana Healthy Horizons in SC**, **Molina Healthcare of SC** — same
+        "one PDL, MCOs ride it, roster is name/contact only" shape already exploited for NY/PA's
+        Medicaid MCOs (validate-coverage's own precedent for not re-fetching identical per-MCO PDL
+        content). SC is now interchangeable with WA/TX in cost/readiness — the only remaining
+        candidate-state research task before any of the three could be scoped is picking a
+        commercial/Medicare Part D payer or two to round out the roster (same step PA/AL/CA/TX all
+        needed), not a Medicaid-side unknown anymore.
     - **Correction, not an addition: Louisiana is DOWNGRADED, not a candidate.** Louisiana ran a
       single statewide PBM (cheap to gather) 2019–2025, but **`ldh.la.gov`'s own PBM-transition
       page confirms the state phased it out effective 2025-10-01** — each Healthy Louisiana MCO now
@@ -761,10 +779,13 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
       population is managed by a BCBS-ND MCO; only traditional (non-expansion) Medicaid is FFS/PCCM.
       Not simpler than the states already in this dataset; not added as a candidate.
     - **Updated candidate-state ranking for the next time the user answers the prioritization
-      question**: Texas (2nd-largest Medicaid population, single PDL, already well-scoped) remains
-      the top pick; Washington and South Carolina are now backup options with the same cheap-gather
-      shape if Texas isn't wanted for some reason. Still entirely research — no `state-index.json`
-      entries, no payer verification, no guide data for any of the three.
+      question**: Texas (2nd-largest Medicaid population, single PDL, already well-scoped, and
+      already shipped a proof guide — `tx-ssris`) remains the top pick since it's furthest along;
+      Washington and South Carolina are now both fully-confirmed backup options with the identical
+      cheap-gather shape (as of 2026-09-01, SC's 5-MCO roster and single-PDL identity are both
+      live-verified, matching WA's prior confirmation) if the user wants either instead. Still
+      entirely research for WA/SC — no `state-index.json` entries, no payer verification beyond
+      MCO names, no guide data for either.
 - **Existing-guide depth gaps (`partial`/`example` cells), from the 2026-07-19 `validate-coverage`
   run — worth a verification pass before/alongside adding new topics/states:** `ny-menopause` (5
   `example` cells — the only guide with any `example`-quality data left), `md-menopause` (5

@@ -1484,3 +1484,32 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   checks per remaining molecule — further retries should wait for a specific trigger (a GoodRx/
   Cost Plus catalog change, same as the 2026-08-04 teriparatide precedent) rather than a routine
   re-check.
+- 2026-09-01 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working
+  tree clean, `main` up to date with `origin/main`, `npm test` (588/588), `npm run
+  validate-coverage` unchanged at 58/408 (9/51 jurisdictions) since the 2026-08-28 `tx-ssris`
+  merge — no drift, no user approval had landed for `tx-ssris` or the standing open questions
+  (non-interactive run, nothing to approve against). `scripts/gap-report.mjs` unchanged (cash gap
+  20 unpriced names, verification gap 92 cells) — per 2026-08-31's note the cash-price checks are
+  confirmed stable and shouldn't be re-run without a specific trigger, so skipped that this
+  session rather than repeating it.
+  **Closed the one remaining piece of state-candidate research: cross-checked South Carolina's
+  MCO roster live (web search only, no agents), the pass the 2026-08-21 entry flagged as still
+  needed.** Confirmed SC's 5-MCO Medicaid roster by name (Absolute Total Care/Centene, Healthy
+  Blue of SC/Elevance, First Choice by Select Health/AmeriHealth Caritas, Humana Healthy Horizons
+  in SC, Molina Healthcare of SC — no new plans being enrolled since a 2024-11-02 freeze) and the
+  single statewide PDL identity (`southcarolina.fhsc.com/providers/pdl.asp`, currently on its
+  Aug-1-2026 edition — actively maintained). Also corrected a factual error sitting in `backlog.md`
+  since 2026-08-21: the single-PDL effective date is **2024-07-01**, not "2026-07-01" as previously
+  recorded (found via SCDHHS's own "Implementation of a Single Preferred Drug List" page) — fixed
+  in place rather than left to propagate. **SC is now exactly as scoping-ready as WA/TX** — the
+  only remaining candidate-state axis is the user picking one, not further research. No data
+  gathered, no agents/Workflows spawned, no branches created, no `formulary.json` changes — this
+  run's changes are `backlog.md` + this ledger entry, committed in 1 chunk.
+  **Still stopped here pending the user's review of `tx-ssris` and the standing open questions
+  (43-state prioritization — now TX/WA/SC all fully scoped and ready; PCSK9 vs. atypical
+  antipsychotics vs. autoimmune biologics as the next topic).** Next session: if the user answers
+  any open question, scale accordingly. Otherwise, every state/topic candidate is now fully
+  researched with nothing left to scope — a future unscaled session should prefer re-checking
+  guide freshness (oldest guide `md-menopause` will cross the 90-day threshold around
+  2026-09-25) or a fresh web-search sweep for a not-yet-logged candidate over re-treading any
+  audit above.
