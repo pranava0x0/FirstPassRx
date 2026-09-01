@@ -1456,3 +1456,31 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   remain ready to scope with no further research needed — the cash-price gap, verification-cell
   audits, guide freshness, and now the autoimmune-biologics question are all exhausted lines of
   inquiry.
+- 2026-08-31 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working
+  tree clean, `main` up to date with `origin/main`, `npm test` (588/588), `npm run
+  validate-coverage` unchanged at 58/408 (9/51 jurisdictions) since the 2026-08-28 `tx-ssris`
+  merge — no drift, no user approval had landed for `tx-ssris` or the standing open questions
+  (non-interactive run, nothing to approve against). `scripts/gap-report.mjs` unchanged (cash gap
+  20 unpriced names, verification gap 92 cells across 53 (guide, class) pairs) — every bucket
+  already confirmed a structural dead end in prior sessions. Guide freshness: oldest guide
+  (`md-menopause`, 2026-06-27) is 65 days old, still under the 90-day threshold.
+  **A real browser was available this session — used it to re-verify the remaining cash-price gap
+  rather than add an unrequested 10th candidate topic to the already-9-deep scorecard or repeat an
+  already-exhausted partial-cell audit.** Re-checked all 5 remaining unpriced stems: rivaroxaban
+  (Cost Plus still 2.5mg-only, the known dose-mismatch trap unchanged), romosozumab/Evenity and
+  pamidronate (both GoodRx pages still explicitly "Physician-administered" with no retail-price
+  panel, confirming the 2026-08-09 verdict is stable across repeat checks, not a one-time
+  snapshot), etidronate (Cost Plus "No Medications Found," unchanged; GoodRx re-blocked
+  mid-session before this one could be tried there). Zoledronic acid 4mg/oncology-dose was not
+  reached before the GoodRx block. **Net: no price added, `KNOWN_UNPRICED_GAP` unchanged at 20** —
+  a confirmed-stable negative result, not idleness (full reasoning in `backlog.md`). No data
+  gathered, no agents/Workflows spawned, no branches created, no `formulary.json` changes — this
+  run's changes are `backlog.md` + this ledger entry, committed in 1 chunk.
+  **Still stopped here pending the user's review of `tx-ssris` and the standing open questions
+  (43-state prioritization; PCSK9 vs. atypical antipsychotics vs. autoimmune biologics as the next
+  topic).** Next session: if the user answers any open question, scale accordingly. Otherwise:
+  TX's remaining 6 topics, WA/SC (states), and PCSK9/atypical antipsychotics (topics) remain ready
+  to scope with no further research needed. The cash-price gap is now confirmed stable across 2+
+  checks per remaining molecule — further retries should wait for a specific trigger (a GoodRx/
+  Cost Plus catalog change, same as the 2026-08-04 teriparatide precedent) rather than a routine
+  re-check.

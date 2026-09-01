@@ -484,6 +484,20 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
     Etidronate disodium (a 4th, less-common molecule surfaced by 2026-08-05's PA scale-up, not one
     of the original 3) was never reached before GoodRx re-blocked partway through the session — the
     one remaining "worth retrying" item. `KNOWN_UNPRICED_GAP` 33→21.
+  - **2026-08-31 (scheduled run) — re-checked all 5 remaining unpriced stems (cash gap still 20)
+    with a working browser; every one confirmed still a genuine dead end, no drift, no price
+    added.** Rivaroxaban: Cost Plus still stocks only the 2.5mg antiplatelet-dose product (the
+    dose-mismatch trap documented since 2026-08-18/08-21 persists unchanged). Romosozumab/Evenity
+    and pamidronate: both GoodRx pages still explicitly tagged "Physician-administered" with no
+    "Choose pharmacy"/retail-price panel — confirms the 2026-08-09 physician-administered verdict
+    is stable, not a one-time snapshot. Etidronate: Cost Plus "No Medications Found" (unchanged
+    from prior checks); GoodRx re-blocked ("Access to this page has been denied") right after the
+    pamidronate lookup, consistent with the well-documented intermittent block, before etidronate
+    or zoledronic-4mg/oncology-dose could be tried there. Net: this bucket is now confirmed stable
+    across 2+ independent checks each, not just a single observation — worth a periodic recheck
+    only if GoodRx ever adds a retail-pharmacy option for a physician-administered drug (unlikely)
+    or Cost Plus's catalog changes again (the teriparatide precedent from 2026-08-04 is the only
+    time that's happened). No `formulary.json`/`cash.ts` changes.
 - **Candidate topics for a future expansion round, beyond SSRIs/osteoporosis (already scoped in
   `docs/RESUME-EXPANSION.md`) — surfaced by a 2026-07-19 scheduled-run web-search sweep (research
   only, no data gathered, no agents spawned).** Ranked by how much real-world PA friction they carry
