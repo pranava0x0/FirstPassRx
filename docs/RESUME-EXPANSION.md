@@ -1513,3 +1513,29 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   guide freshness (oldest guide `md-menopause` will cross the 90-day threshold around
   2026-09-25) or a fresh web-search sweep for a not-yet-logged candidate over re-treading any
   audit above.
+- 2026-09-03 (scheduled run) — **Gate still active, correctly did not scale.** Confirmed working
+  tree clean, `main` up to date with `origin/main`, `npm run validate-coverage` unchanged at
+  58/408 (9/51 jurisdictions) since the 2026-08-28 `tx-ssris` merge — no drift, no user approval
+  had landed for `tx-ssris` or the standing open questions (non-interactive run, nothing to
+  approve against). `npm test` showed 2 failures on the first run (`ma-menopause` PA-item test,
+  an App.test.tsx PA-letter test) — both were 5-second timeouts under environment load, not
+  assertion failures; re-ran each in isolation and both passed clean (58/58 and 1/1), confirming
+  test-infra flakiness, not a real regression. Guide freshness: oldest guide (`md-menopause`,
+  2026-06-27) is 68 days old, still under the 90-day threshold.
+  **Did the fresh web-search sweep the 2026-09-01 entry recommended, rather than re-treading an
+  exhausted audit: surfaced Ohio as a 5th confirmed cheap-to-gather candidate state**, beyond the
+  existing TX/WA/SC trio. Ohio has run a Single Pharmacy Benefit Manager (Gainwell, since 2022)
+  with one Unified Preferred Drug List binding every Medicaid MCO — same shape as PA/WA/SC, ~3M+
+  enrollment (higher-value than AL), current UPDL document actively maintained (a 2026-09-15
+  scheduled PDL change surfaced in the same search, confirming currency). Logged to `backlog.md`
+  with the same depth as the WA/SC discovery entries — Medicaid-side PDL identity confirmed, MCO
+  roster count and a commercial/Part D payer still need a live cross-check before scoping, same
+  next-step gap PA/AL/CA/TX/WA/SC all had at this stage. No data gathered, no agents/Workflows
+  spawned, no branches created, no `formulary.json` changes — this run's changes are
+  `backlog.md` + this ledger entry, committed in 1 chunk.
+  **Still stopped here pending the user's review of `tx-ssris` and the standing open questions
+  (43-state prioritization — TX/WA/SC/OH all scoped or ready-to-scope; PCSK9 vs. atypical
+  antipsychotics vs. autoimmune biologics as the next topic).** Next session: if the user answers
+  any open question, scale accordingly. Otherwise: guide freshness is the next thing due (around
+  2026-09-25), or cross-check Ohio's exact MCO roster count + a commercial payer (the one
+  remaining research gap on the new 5th candidate) rather than re-treading any exhausted audit.

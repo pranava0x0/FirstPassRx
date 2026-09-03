@@ -786,6 +786,24 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
       live-verified, matching WA's prior confirmation) if the user wants either instead. Still
       entirely research for WA/SC — no `state-index.json` entries, no payer verification beyond
       MCO names, no guide data for either.
+    - **5th candidate found 2026-09-03 (scheduled run): Ohio — a genuinely clean single-PDL state,
+      research only, no data gathered.** Ohio has run a **Single Pharmacy Benefit Manager (SPBM)**
+      model since 2022: Gainwell Technologies administers pharmacy for every Medicaid managed-care
+      plan (CareSource, Buckeye/Centene, Molina, UnitedHealthcare Community Plan, Humana Healthy
+      Horizons, AmeriHealth Caritas) off one **Unified Preferred Drug List (UPDL)** — same "one
+      canonical PDL document, MCOs ride it" shape as PA/WA/SC, and Ohio Medicaid's enrollment
+      (~3M+) makes it a higher-value target than AL, comparable to PA. The current UPDL PDF
+      (`dam.assets.ohio.gov/.../20260401_UPDL_FINAL.pdf`, dated 2026-04-01) is actively maintained —
+      a same-search hit named a scheduled 2026-09-15 PDL change (non-preferred infliximab biosimilars
+      being dropped), confirming the document is a live, currently-revised source, not stale.
+      Payer roster would need each MCO's name/contact (6 confirmed above) plus a commercial/Part D
+      payer or two, same next-step shape PA/AL/CA/TX/WA/SC all needed. Not yet cross-checked against
+      a live MCO roster the way WA/SC have been (no confirmation of exactly how many MCOs Ohio
+      currently contracts, beyond the 6 named above) — that pass, plus building the
+      `state-index.json` entry, is the next research step if this candidate is picked. Ranking:
+      slots in behind WA/SC (which are fully roster-confirmed) but ahead of an entirely fresh,
+      unresearched state — Ohio's Medicaid-side identity is confirmed, only the exact roster count
+      and a commercial payer are outstanding.
 - **Existing-guide depth gaps (`partial`/`example` cells), from the 2026-07-19 `validate-coverage`
   run — worth a verification pass before/alongside adding new topics/states:** `ny-menopause` (5
   `example` cells — the only guide with any `example`-quality data left), `md-menopause` (5
