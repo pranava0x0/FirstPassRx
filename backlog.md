@@ -1054,3 +1054,38 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   `medicaid.alabama.gov` SSL failures are a separate, already-logged issue) rather than re-deriving
   which states are affected from scratch. Medium priority — link rot degrades citation
   trustworthiness but doesn't affect the shipped drug-coverage data itself.
+- **(medium) New candidate — perioperative/pre-post-surgery heart & lung medication management,
+  starting with New York — asked by the user 2026-09-07, not yet scoped.** Distinct from every
+  existing candidate on the cardiothoracic-expansion scorecard above (DOAC anticoagulants, PCSK9
+  inhibitors): this is about the medications a surgical patient's cardiopulmonary status is managed
+  on/around an operation, not a chronic outpatient class. No taxonomy decided yet — plausible
+  sub-classes include perioperative beta-blockers (continuation vs. new-start, per ACC/AHA
+  perioperative guidelines), statins for cardiac-risk reduction around surgery, DOAC/anticoagulant
+  *bridging* protocols (distinct question from the `doac-anticoagulant` outpatient class above —
+  this is about holding/restarting timing around a procedure, which may not even be a
+  formulary/PA-restriction question the way this app's existing guides are shaped), and pre-op
+  pulmonary optimization (bronchodilators/inhaled steroids, reusing the existing inhaler classes'
+  taxonomy). Open questions before scoping: (1) does this fit the app's existing "formulary PA
+  barrier + cash workaround" shape at all, or is perioperative medication management more of a
+  clinical-protocol question than an insurance-coverage one — worth a research pass to check
+  whether there's a real PA-friction story here before building anything; (2) if it does fit, which
+  sub-class(es) to build first. Not started — no research, no payer work, no data gathered.
+- **(medium) Systemic: `preferredRestriction` is populated with QL/PV/tier-only text (no real PA/
+  step barrier) in ~168 records across 20+ already-shipped guides, not just `ny-doac`** —
+  discovered auditing the `ny-doac` PR (2026-09-08, Codex review) after finding 3 of 5 new NY DOAC
+  records had this exact issue. `ResultCard` renders "even this first-pass pick needs plan
+  sign-off" whenever `preferredRestriction` is truthy, regardless of whether the text describes a
+  real barrier or just says "no PA/step required" — self-contradictory and misleading. Confirmed
+  present in (at least) `va-diabetes`, `ny-nsaids`, `il-nsaids`, `va-ace`, `ny-inhalers`,
+  `ny-menopause`, `ny-diabetes`, `md-inhalers`, `md-diabetes`, `va-inhalers`, `va-menopause`,
+  `va-nsaids`, `il-inhalers`, `il-ace`, `il-diabetes`, `il-menopause`, `il-ssris`,
+  `il-osteoporosis`, `ny-osteoporosis`, `ma-osteoporosis`, `md-osteoporosis`, `va-osteoporosis`,
+  `al-inhalers`, `al-menopause`, `al-diabetes`, `pa-inhalers`, `pa-diabetes`, `pa-menopause`,
+  `pa-osteoporosis`, `ca-diabetes`, and `al-doac` (the DOAC proof guide itself) — this is dataset-
+  wide, not a `ny-doac`-specific bug. Fixing it means either (a) a data-only pass nulling out
+  `preferredRestriction` on every QL/PV-only record (~168 edits, mechanical but needs per-record
+  judgment on what counts as "real"), or (b) a `ResultCard` copy/logic fix that only shows the
+  "needs sign-off" branch for a genuine PA/step outcome — worth deciding which before starting.
+  Not started; `ny-doac`'s own 3 instances were fixed as part of that PR's review, so this item is
+  scoped to the other ~165 pre-existing instances plus (if going with option b) the component
+  logic itself.

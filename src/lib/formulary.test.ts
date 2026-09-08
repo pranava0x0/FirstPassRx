@@ -67,6 +67,7 @@ describe('guides + global meta', () => {
       'ca-osteoporosis',
       'al-doac',
       'tx-ssris',
+      'ny-doac',
     ])
   })
 

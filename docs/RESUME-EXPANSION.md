@@ -1539,3 +1539,56 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   any open question, scale accordingly. Otherwise: guide freshness is the next thing due (around
   2026-09-25), or cross-check Ohio's exact MCO roster count + a commercial payer (the one
   remaining research gap on the new 5th candidate) rather than re-treading any exhausted audit.
+- 2026-09-07 (interactive session) — **Gate cleared by explicit user instruction — user asked to
+  "drive down backlog, starting with heart meds (new york first then go to the rest)."** DOAC
+  anticoagulants ("blood thinners") was the only backlog item matching "heart meds," and it had
+  been explicitly gated since 2026-08-21 pending review of `al-doac` before scaling to the
+  remaining 7 states (PA/CA/NY/MA/MD/VA/IL) — this instruction is that approval, scoped to start
+  with NY.
+  **Shipped `ny-doac` — the first DOAC scale-out state past the `al-doac` proof guide.** Reused
+  NY's existing 5-payer roster (ny-medicaid/ny-excellus-bcbs/ny-uhc-commercial/ny-anthem-bcbs/
+  ny-excellus-medicare, already built for `ny-ace`/`ny-ssris`/etc.) and the `doac-anticoagulant`
+  single-class taxonomy from `al-doac` verbatim — no new payer discovery needed. Gathered all 5
+  payers via individual Agent calls chunked to the 2-concurrent cap (not the Workflow tool, since
+  the user hadn't opted into multi-agent orchestration this session). All 5 records verified (4
+  `verified`, 1 `partial` — UHC's edoxaban-absence inference). One real finding: NY Medicaid's
+  binary PDL genuinely has FOUR co-preferred DOACs (apixaban, dabigatran, warfarin, rivaroxaban-
+  brand) rather than one clear top pick — apixaban was selected as the representative
+  `preferredAgent` per guideline-preferred first-line status, with the other three recorded as
+  alternatives. Hit and fixed one validator false-positive: NY Medicaid's non-preferred→PA-required
+  paRequired reasons tripped the `/non-preferred/i` cost-sharing heuristic even though NY's binary
+  PDL makes non-preferred genuinely mean PA-required (same reword-not-reclassify case as every
+  other Medicaid MCO's PDL in this dataset) — reworded the 5 reason strings to avoid the trigger
+  phrase without changing their meaning, per CLAUDE.md's payer-wording-determines-reword-vs-
+  reclassify rule.
+  Added a real cash-price rule for warfarin (live-verified via browser: GoodRx $29.34, Cost Plus
+  $6.62, both 30ct/10mg — matches the $6.62 figure backlog.md had already cited from the 2026-08-18
+  DOAC-candidate research) — closes 3 of the 11 new unmatched name variants `ny-doac` introduced.
+  The remaining 8 are all rivaroxaban/Xarelto name-string variants and fall into the same
+  deliberate structural gap `al-doac` already documented (generic rivaroxaban only sold at the
+  2.5mg antiplatelet dose, not the 15/20mg therapeutic dose these cells describe) — bumped
+  `KNOWN_UNPRICED_GAP` 20 → 28 with a comment explaining the split. `npm run data:split`, full
+  `npm test` (596/596), `npm run validate-coverage` (58/408 → 59/408, 9/51 jurisdictions unchanged
+  since NY was already counted), and `npm run archive-sources` (5 new NY DOAC sources archived
+  clean) all run. Verified end-to-end in the dev preview: state/topic/payer pickers all correctly
+  surface `ny-doac`, cash prices render, PA-required items show their reworded reasons.
+  A stray Python one-liner meant as a no-op guard accidentally appended a duplicate JSON document
+  to `formulary.json` mid-session (opened the file in 'a' mode after already writing it in 'w'
+  mode) — caught immediately by `git diff --stat` showing 533 insertions instead of the expected
+  ~530, and by `json.load` raising `JSONDecodeError: Extra data`. Fixed by truncating to the first
+  valid JSON document (`json.JSONDecoder().raw_decode`) before any test ran. No corrupted state
+  was ever committed. Scar tissue for next time: never open a just-written file in append mode as
+  a "belt and suspenders" step — it doesn't no-op, it duplicates.
+  **User separately asked (mid-gather) to also scope "other heart / lung medications for pre/post
+  surgery, starting with New York"** — a new candidate topic not yet in `backlog.md` under any
+  name (perioperative cardiopulmonary medication management is a distinct clinical bucket from
+  DOACs, statins/PCSK9, or the existing inhaler classes). Logged to `backlog.md` as a new entry
+  pending scoping (needs a taxonomy decision — e.g., perioperative beta-blockers, statins for
+  cardiac-risk reduction, anticoagulation bridging protocols, and pre-op pulmonary
+  optimization/bronchodilator classes are all plausible sub-classes and PA-friction/cash-price
+  evidence hasn't been checked for any of them) — not started this session; DOAC state-by-state
+  scale-out continues to take priority per the user's explicit "finish state first, then go state
+  by state" sequencing instruction.
+  **STOPPING HERE after NY per the user's own "state by state, to save tokens" instruction — do
+  not gather PA/CA/MA/MD/VA/IL in the same turn.** Next state in the `al-doac` gate's original
+  order: PA.
