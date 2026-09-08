@@ -75,6 +75,17 @@ if (!sourceGuide) {
   )
   process.exit(1)
 }
+// The whole point of --state is to say which state this gather is for -- if it doesn't match the
+// reused guide's own stateCode (a typo'd --reuse-payers-from, or a guide from another state), fail
+// loud instead of silently launching an expensive gather for the wrong state's payers.
+if (args.state.trim().toUpperCase() !== sourceGuide.stateCode.toUpperCase()) {
+  console.error(
+    `--state ${args.state} does not match guide "${args.reusePayersFrom}"'s stateCode ` +
+      `"${sourceGuide.stateCode}" (region "${sourceGuide.region}"). Pass --state ${sourceGuide.stateCode} ` +
+      `or double-check --reuse-payers-from.`,
+  )
+  process.exit(1)
+}
 
 const today = args.today || new Date().toISOString().slice(0, 10)
 

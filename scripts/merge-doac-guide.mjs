@@ -86,14 +86,22 @@ if (!fs.existsSync(checkpointDir)) {
 
 const expectedPayerIds = payerGuide.payers.map((p) => p.id)
 const checkpointsByPayer = new Map()
+let skippedOtherClasses = 0
 for (const file of fs.readdirSync(checkpointDir)) {
   if (!file.endsWith('.json')) continue
   const data = JSON.parse(fs.readFileSync(path.join(checkpointDir, file), 'utf8'))
+  // A stamp directory can hold checkpoints for OTHER classes too -- build-gather-args.mjs's
+  // repeated --class-id lets one gather cover several classes from the same payers in one pass
+  // (see agent-runs.md lever #7). Skip anything that isn't this class rather than aborting the
+  // whole merge on it.
   if (data.classId !== CLASS_ID) {
-    console.error(`${file}: classId "${data.classId}" != expected "${CLASS_ID}" -- aborting.`)
-    process.exit(1)
+    skippedOtherClasses++
+    continue
   }
   checkpointsByPayer.set(data.payerId, data)
+}
+if (skippedOtherClasses > 0) {
+  console.log(`Skipped ${skippedOtherClasses} checkpoint(s) for other classes in this stamp directory.`)
 }
 
 const missing = expectedPayerIds.filter((id) => !checkpointsByPayer.has(id))
@@ -160,6 +168,13 @@ for (const payerId of expectedPayerIds) {
   })
 }
 
+// Derive from the actual per-record verification, not a blind 'verified' -- a checkpoint that
+// came back 'partial'/'example' must not silently inflate validate-coverage.mjs's full-depth
+// count (it treats a guide as full-depth only when every record is 'verified' AND
+// dataStatus === 'verified'). Matches the convention every other multi-verification guide in
+// formulary.json already follows (dataStatus: 'mixed' whenever any record isn't 'verified').
+const dataStatus = newRecords.every((r) => r.verification === 'verified') ? 'verified' : 'mixed'
+
 const newGuide = {
   id: args.guideId,
   label: args.label,
@@ -170,7 +185,7 @@ const newGuide = {
   classNoun: 'Prescription type',
   unitNoun: 'medication',
   tagline: '',
-  dataStatus: 'verified',
+  dataStatus,
   lastUpdated: today,
   capturedAt: today,
   payers: newPayers,
