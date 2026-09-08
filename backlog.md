@@ -1070,3 +1070,22 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   clinical-protocol question than an insurance-coverage one — worth a research pass to check
   whether there's a real PA-friction story here before building anything; (2) if it does fit, which
   sub-class(es) to build first. Not started — no research, no payer work, no data gathered.
+- **(medium) Systemic: `preferredRestriction` is populated with QL/PV/tier-only text (no real PA/
+  step barrier) in ~168 records across 20+ already-shipped guides, not just `ny-doac`** —
+  discovered auditing the `ny-doac` PR (2026-09-08, Codex review) after finding 3 of 5 new NY DOAC
+  records had this exact issue. `ResultCard` renders "even this first-pass pick needs plan
+  sign-off" whenever `preferredRestriction` is truthy, regardless of whether the text describes a
+  real barrier or just says "no PA/step required" — self-contradictory and misleading. Confirmed
+  present in (at least) `va-diabetes`, `ny-nsaids`, `il-nsaids`, `va-ace`, `ny-inhalers`,
+  `ny-menopause`, `ny-diabetes`, `md-inhalers`, `md-diabetes`, `va-inhalers`, `va-menopause`,
+  `va-nsaids`, `il-inhalers`, `il-ace`, `il-diabetes`, `il-menopause`, `il-ssris`,
+  `il-osteoporosis`, `ny-osteoporosis`, `ma-osteoporosis`, `md-osteoporosis`, `va-osteoporosis`,
+  `al-inhalers`, `al-menopause`, `al-diabetes`, `pa-inhalers`, `pa-diabetes`, `pa-menopause`,
+  `pa-osteoporosis`, `ca-diabetes`, and `al-doac` (the DOAC proof guide itself) — this is dataset-
+  wide, not a `ny-doac`-specific bug. Fixing it means either (a) a data-only pass nulling out
+  `preferredRestriction` on every QL/PV-only record (~168 edits, mechanical but needs per-record
+  judgment on what counts as "real"), or (b) a `ResultCard` copy/logic fix that only shows the
+  "needs sign-off" branch for a genuine PA/step outcome — worth deciding which before starting.
+  Not started; `ny-doac`'s own 3 instances were fixed as part of that PR's review, so this item is
+  scoped to the other ~165 pre-existing instances plus (if going with option b) the component
+  logic itself.

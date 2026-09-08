@@ -19,7 +19,6 @@
       "aka": "NYRx — NYS Medicaid Pharmacy Program (Fee-for-Service); covers every NY Medicaid Managed Care plan's pharmacy benefit statewide since the April 1, 2023 pharmacy carve-out",
       "pbm": "Prime Therapeutics / FHSC (NYRx fiscal agent)",
       "formularyUrl": "https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf",
-      "paPolicyUrl": "https://www.health.ny.gov/health_care/medicaid/program/pharmacy/program_info.htm",
       "sourceIds": [
         "ny-medicaid-doac-source-202609"
       ],
@@ -272,7 +271,7 @@
         "sigShort": "Rivaroxaban 20mg PO QDay w/ food",
         "plainSig": "Take one 20 mg tablet by mouth once a day, with your evening meal, to help prevent stroke."
       },
-      "preferredRestriction": "Quantity limit (QL) applies and it is on the Preventive Drug List (PV) for eligible high-deductible plans; no prior authorization or step therapy is listed for it.",
+      "preferredRestriction": null,
       "boglActive": false,
       "boglNote": null,
       "alternatives": [
@@ -310,7 +309,7 @@
       ],
       "stepTherapy": null,
       "tier": "Tier 1 (most cost-effective generic tier, per the guide's own 3-tier description)",
-      "verification": "verified",
+      "verification": "partial",
       "verificationNote": "Fetched the cited FormularyNavigator PDF directly (fm.formularynavigator.com/FBO/251/..., 144 pages, 6.5MB) via curl with a browser User-Agent (fm.formularynavigator.com is known to 403 WebFetch's safe-browsing check but serves the real file to a plain browser-UA request). Page 1 confirms the title '2026 Individual & Family Metal Plans Base, Simply Blue Plus and College Blue Plans Formulary Guide (2981)' and publisher ExcellusBCBS.com, a nonprofit independent licensee of the Blue Cross Blue Shield Association; page 5's header states 'CURRENT AS OF 9/1/2026'. Page 4 gives the abbreviation key (MS/PA/PV/QL/S/ST) and the 3-tier definitions (Tier 1 = most cost-effective generics, Tier 2 = preferred brand with clinical/value advantage, Tier 3 = all other brand/generic, often with more cost-effective alternatives). Page 83 lists the 'DIRECT FACTOR XA INHIBITORS' section verbatim: ELIQUIS (Tier 2, QL;PV), ELIQUIS DVT-PE TREAT 30D START (Tier 2, QL;PV), ELIQUIS SPRINKLE (Tier 2, QL;PV), rivaroxaban generic (Tier 1, QL;PV), XARELTO (Tier 2, QL;PV), XARELTO DVT-PE TREAT 30D START (Tier 2, PV). Page 85 lists 'THROMBIN INHIBITOR - SELECTIVE DIRECT AND REVERSIBLE': dabigatran etexilate generic (Tier 3, QL;PV). A full-document keyword scan across all 144 extracted pages found zero occurrences of 'apixaban' as a standalone generic line (only the ELIQUIS brand line exists — no generic apixaban entry on this formulary as of the 9/1/2026 revision, despite generic apixaban being FDA-approved and on the market) and zero occurrences of 'edoxaban' or 'savaysa' anywhere in the document, confirming edoxaban is non-formulary. All of this is read directly (verified), not inferred: tier numbers, restriction codes, and the section headings are transcribed as printed. The choice of 'preferred agent' (generic rivaroxaban, Tier 1, no PA) versus treating apixaban/Eliquis as co-preferred is a light editorial judgment layered on top of directly-read tier data — the source itself does not use the word 'preferred' next to a specific agent, it only assigns tiers — so this single judgment call is the 'partial' component within an otherwise verified record. Representative strength/sig (20 mg once daily with food) reflects rivaroxaban's standard FDA-labeled dosing for the most common DOAC indication (nonvalvular atrial fibrillation stroke prevention), not a value stated in the formulary guide itself, which lists only product names/tiers/restriction codes with no dosing directions.",
       "sourceIds": [
         "ny-excellus-bcbs-doac-source-202609"
@@ -420,7 +419,7 @@
         "sigShort": "1 tab PO BID",
         "plainSig": "Take one 5 mg tablet by mouth two times a day."
       },
-      "preferredRestriction": "Quantity limit (QL) noted on every Eliquis product line; no prior authorization or step therapy flag appears on the drug list.",
+      "preferredRestriction": null,
       "boglActive": false,
       "boglNote": "Not a brand-over-generic case -- no generic apixaban line appears anywhere in this 82-page drug list, so Eliquis is listed simply because it is the only apixaban product on the market as reflected in this document, not because the plan chose brand over an available generic.",
       "alternatives": [
@@ -484,7 +483,7 @@
         "sigShort": "5mg PO BID",
         "plainSig": "Take one 5 mg tablet by mouth, twice a day, about 12 hours apart"
       },
-      "preferredRestriction": "Quantity limit only, no PA/step therapy: 74 tablets per 30 days for the 5 mg strength (60 EA/30 days for 2.5 mg tablets; separate lower QLs apply to the DVT-PE starter pack and the oral-suspension/sprinkle formulations).",
+      "preferredRestriction": null,
       "boglActive": false,
       "boglNote": null,
       "alternatives": [

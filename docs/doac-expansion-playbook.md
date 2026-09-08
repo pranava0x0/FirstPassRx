@@ -79,6 +79,28 @@ NY first, then "the rest"; no ordering was specified among PA/CA/MA/MD/VA/IL.
    into `alternatives` if the payer's *own* document structure is a genuine multi-tier commercial
    cost-share list with no PA/step criteria stated (the `bcbs-illinois-commercial` precedent).
 
+4a. **`preferredRestriction` is for a REAL barrier on the preferred agent (PA/step) — never for a
+   quantity limit (QL) or Preventive-Drug-List (PV) flag alone.** Codex's review of `ny-doac`
+   caught 3 of 5 records where a gather agent had put "Quantity limit only, no PA/step" text
+   directly into `preferredRestriction` — the field's mere truthiness makes `ResultCard` render
+   "even this first-pass pick needs plan sign-off," which reads as self-contradictory (and simply
+   wrong) when the restriction text itself says no sign-off is needed. Set `preferredRestriction:
+   null` whenever the only flag is QL/PV/tier — that detail is still preserved in
+   `verificationNote` and (for alternatives) each item's `note`. **This exact pattern already
+   exists in ~168 pre-existing records across 20+ shipped guides** (confirmed via a one-off audit
+   2026-09-08) — that's a pre-existing, dataset-wide issue out of scope for a single state's DOAC
+   merge; don't try to fix it globally mid-PR, but don't add new instances either. See `backlog.md`
+   for the systemic cleanup entry.
+
+4b. **Drop `paPolicyUrl` when reusing a payer object from another topic's guide** — it is
+   frequently topic-specific (e.g. a menopause guide's Cigna payer carries an *estrogen-patch* PA
+   policy URL) and `buildAppealLetter()` cites it verbatim in generated appeal letters. The
+   checkpoint schema has no field to supply a DOAC-correct replacement, so `merge-doac-guide.mjs`
+   now strips it rather than risk citing a wrong-topic policy link in a future state's guide
+   (caught by Codex review before it could affect a real state — `--reuse-payers-from ny-ace`
+   didn't trigger it since `ny-medicaid`'s `paPolicyUrl` happened to be topic-neutral, but
+   `md-ace`'s Cigna payer would have).
+
 5. **Run the full check**:
    ```bash
    npm run data:split

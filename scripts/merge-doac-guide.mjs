@@ -130,8 +130,15 @@ for (const payerId of expectedPayerIds) {
   classSourceIds.push(sourceId)
 
   const basePayer = payerGuide.payers.find((p) => p.id === payerId)
+  // Drop paPolicyUrl when copying payer metadata from another topic's guide: it is frequently
+  // topic-specific (e.g. an estrogen-patch PA policy on a menopause guide's Cigna payer object)
+  // and buildAppealLetter() cites it verbatim in generated appeal letters. The checkpoint schema
+  // has no field to supply a DOAC-correct replacement, so omit it rather than carry over a
+  // mismatched policy link -- reintroduce it explicitly if a future checkpoint schema adds a
+  // per-class PA policy URL.
+  const { paPolicyUrl: _droppedPaPolicyUrl, ...basePayerWithoutPaPolicy } = basePayer
   newPayers.push({
-    ...basePayer,
+    ...basePayerWithoutPaPolicy,
     sourceIds: [sourceId],
     formularyUrl: src.url,
     formularyId: src.effectiveDate ? `${src.label}, effective ${src.effectiveDate}` : src.label,
