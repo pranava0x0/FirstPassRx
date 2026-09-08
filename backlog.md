@@ -1054,3 +1054,19 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   `medicaid.alabama.gov` SSL failures are a separate, already-logged issue) rather than re-deriving
   which states are affected from scratch. Medium priority — link rot degrades citation
   trustworthiness but doesn't affect the shipped drug-coverage data itself.
+- **(medium) New candidate — perioperative/pre-post-surgery heart & lung medication management,
+  starting with New York — asked by the user 2026-09-07, not yet scoped.** Distinct from every
+  existing candidate on the cardiothoracic-expansion scorecard above (DOAC anticoagulants, PCSK9
+  inhibitors): this is about the medications a surgical patient's cardiopulmonary status is managed
+  on/around an operation, not a chronic outpatient class. No taxonomy decided yet — plausible
+  sub-classes include perioperative beta-blockers (continuation vs. new-start, per ACC/AHA
+  perioperative guidelines), statins for cardiac-risk reduction around surgery, DOAC/anticoagulant
+  *bridging* protocols (distinct question from the `doac-anticoagulant` outpatient class above —
+  this is about holding/restarting timing around a procedure, which may not even be a
+  formulary/PA-restriction question the way this app's existing guides are shaped), and pre-op
+  pulmonary optimization (bronchodilators/inhaled steroids, reusing the existing inhaler classes'
+  taxonomy). Open questions before scoping: (1) does this fit the app's existing "formulary PA
+  barrier + cash workaround" shape at all, or is perioperative medication management more of a
+  clinical-protocol question than an insurance-coverage one — worth a research pass to check
+  whether there's a real PA-friction story here before building anything; (2) if it does fit, which
+  sub-class(es) to build first. Not started — no research, no payer work, no data gathered.

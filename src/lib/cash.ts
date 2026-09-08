@@ -277,8 +277,17 @@
  * deliberately left unpriced -- its generic is sold only at the 2.5mg antiplatelet dose on both
  * GoodRx and Cost Plus, not the 15/20mg therapeutic dose this guide's cells describe, the same
  * dose-mismatch trap already documented for Reclast/Zometa and Respimat/HandiHaler. Edoxaban/
- * Savaysa (confirmed non-formulary on all 3 AL payers) rounds out the remaining gap. */
-export const KNOWN_UNPRICED_GAP = 20
+ * Savaysa (confirmed non-formulary on all 3 AL payers) rounds out the remaining gap.
+ * Raised 20 → 28 on 2026-09-07 when `ny-doac` shipped (the first DOAC scale-out state past the
+ * `al-doac` proof guide). Warfarin now has a real rule (live-verified: GoodRx $29.34/CVS-anchored,
+ * Cost Plus $6.62, both 30ct/10mg) closing 3 name variants ("warfarin", "warfarin sodium oral",
+ * "jantoven"). The remaining 8 are all rivaroxaban/Xarelto name variants this guide's alternatives
+ * introduce ("Xarelto (rivaroxaban) tablet", "XARELTO (brand rivaroxaban)", bare "rivaroxaban",
+ * etc.) -- same deliberate structural gap as al-doac's rivaroxaban above (generic only sold at the
+ * 2.5mg antiplatelet dose, not the 15/20mg therapeutic dose these cells describe); adding a rule
+ * for brand Xarelto at the correct dose remains open (GoodRx blocked partway through the al-doac
+ * session and wasn't rechecked here) -- see backlog.md. */
+export const KNOWN_UNPRICED_GAP = 28
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -1690,6 +1699,18 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     costPlusPath: 'dabigatran-etexilate-mesylate-75mg-bottle-of-capsules-60-pradaxa',
     costPlusPrice: { price: 19.28, quantity: '60 capsules, 75mg (generic for Pradaxa; 110mg/150mg priced the same per Cost Plus’s calculator)' },
     pricesCapturedAt: '2026-08-21',
+  },
+  {
+    // Warfarin (generic for Coumadin) -- the old-line comparator/alternative in the DOAC class,
+    // surfaced first by the ny-doac guide (2026-09-07); no dose-mismatch trap, a true AB-rated
+    // generic at the standard 10mg anticoagulation dose on both sources.
+    matches: /\bwarfarin\b|\bjantoven\b/i,
+    goodRxSlug: 'warfarin',
+    goodRxParams: 'label_override=warfarin&form=tablet&dosage=10mg&quantity=30',
+    costPlusPath: 'warfarin-10mg-tablet',
+    goodRxPrice: { price: 29.34, quantity: '30 tablets, 10mg (standard GoodRx price)' },
+    costPlusPrice: { price: 6.62, quantity: '30 tablets, 10mg' },
+    pricesCapturedAt: '2026-09-07',
   },
 ]
 // Rivaroxaban (generic) was deliberately NOT priced this session (al-doac gather, 2026-08-21):
