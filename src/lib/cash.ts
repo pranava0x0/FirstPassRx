@@ -286,8 +286,16 @@
  * etc.) -- same deliberate structural gap as al-doac's rivaroxaban above (generic only sold at the
  * 2.5mg antiplatelet dose, not the 15/20mg therapeutic dose these cells describe); adding a rule
  * for brand Xarelto at the correct dose remains open (GoodRx blocked partway through the al-doac
- * session and wasn't rechecked here) -- see backlog.md. */
-export const KNOWN_UNPRICED_GAP = 28
+ * session and wasn't rechecked here) -- see backlog.md.
+ * Raised 28 → 33 on 2026-09-10 when `pa-doac` shipped (2nd DOAC scale-out state, reusing PA's
+ * existing 3-payer roster from `pa-ace`/etc.). Apixaban, dabigatran, and warfarin all matched
+ * existing rules with zero new gap. The 5 new unmatched names are all more rivaroxaban/Xarelto
+ * and edoxaban/Savaysa name-string variants -- PA Medicaid's PDL has an unusual dose-split
+ * pattern (brand Xarelto preferred at standard 10/15/20mg AF/VTE strengths, generic rivaroxaban
+ * preferred only at the 2.5mg antiplatelet dose) that produces several new distinct strings, but
+ * it's the exact same already-documented structural gap as al-doac/ny-doac (rivaroxaban's generic
+ * still isn't sold at the therapeutic dose on GoodRx/Cost Plus) -- no new dead end. */
+export const KNOWN_UNPRICED_GAP = 33
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
