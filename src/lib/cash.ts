@@ -294,8 +294,17 @@
  * pattern (brand Xarelto preferred at standard 10/15/20mg AF/VTE strengths, generic rivaroxaban
  * preferred only at the 2.5mg antiplatelet dose) that produces several new distinct strings, but
  * it's the exact same already-documented structural gap as al-doac/ny-doac (rivaroxaban's generic
- * still isn't sold at the therapeutic dose on GoodRx/Cost Plus) -- no new dead end. */
-export const KNOWN_UNPRICED_GAP = 33
+ * still isn't sold at the therapeutic dose on GoodRx/Cost Plus) -- no new dead end.
+ * Raised 33 → 34 on 2026-09-10 when `ca-doac` shipped (3rd DOAC scale-out state). Notably, Anthem
+ * BCBS California's own formulary tier places generic rivaroxaban 20mg (the standard AF/VTE
+ * therapeutic dose, not the 2.5mg antiplatelet dose) as its PREFERRED agent -- the first payer in
+ * the dataset where rivaroxaban is the top pick rather than just a restricted alternative, adding
+ * one new bare "rivaroxaban" name string to the gap. This raises the priority of the existing
+ * rivaroxaban-dose-mismatch backlog item: if a future browser session finds a 15/20mg generic
+ * rivaroxaban product on GoodRx/Cost Plus, it would now price a PREFERRED-agent cell, not just an
+ * alternative. Kaiser Permanente CA prefers generic dabigatran (already priced); Medi-Cal Rx's
+ * apixaban pick matched the existing rule -- both added zero new gap. */
+export const KNOWN_UNPRICED_GAP = 34
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
