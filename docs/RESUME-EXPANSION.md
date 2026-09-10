@@ -1539,6 +1539,49 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   any open question, scale accordingly. Otherwise: guide freshness is the next thing due (around
   2026-09-25), or cross-check Ohio's exact MCO roster count + a commercial payer (the one
   remaining research gap on the new 5th candidate) rather than re-treading any exhausted audit.
+- 2026-09-10 (scheduled run) — **Continued the DOAC state-by-state scale-out per the user's own
+  standing "state by state, to save tokens" instruction from 2026-09-07 — this is in-scope
+  approved work, not a new gate to clear.** On arrival, found `origin/main` 4 commits ahead of the
+  last logged run (`dfe83bb`, 2026-09-03): the 2026-09-07 interactive session (retroactively
+  logged, PR #18) had already shipped `ny-doac` and cleared the DOAC-scaling gate. Fast-forwarded,
+  confirmed `npm test` green (596/596) before starting, deleted the now-fully-merged
+  `jam/backlog-heart-meds-fae8a2` branch (local + remote).
+  **Shipped `pa-doac` — Pennsylvania's DOAC guide, 2nd state past the `al-doac` proof guide**,
+  per `docs/doac-expansion-playbook.md`'s recipe (built last session, worked exactly as written).
+  Reused PA's existing 3-payer roster (`pa-medicaid`, `ibx-commercial`, `highmark-bcbs`, already
+  built for `pa-ace`/etc.) and the `doac-anticoagulant` class from `al-doac`. Gathered via 3
+  individual `Agent` calls chunked to the 2-concurrent cap (2 then 1), all 3 fully verified —
+  apixaban/Eliquis preferred at every payer, all 3 with visible effective dates read directly off
+  each payer's own document. One real, specific finding: **PA Medicaid's PDL splits rivaroxaban by
+  dose** — brand Xarelto is the covered/preferred option at standard AF/VTE treatment strengths
+  (all except 2.5mg) while the *generic* tablet at those same strengths requires PA, and the
+  pattern flips at the 2.5mg antiplatelet dose (generic preferred, brand restricted) — the inverse
+  of the usual brand-vs-generic direction, confirmed directly off the PDL's own table rather than
+  assumed. Dabigatran shows the same reversed pattern (generic capsule preferred, brand Pradaxa
+  restricted) at 2 of 3 payers; Highmark's own live FormularyNavigator tool instead shows
+  dabigatran and edoxaban both non-formulary (needs a prescriber exception) while treating
+  apixaban/rivaroxaban as equally-tiered covered alternatives — three genuinely different PDL
+  shapes across 3 payers in one state, not a copy-paste result. Reworded one IBX `paRequired`
+  reason that quoted the payer's own "Non-Preferred Drug (NPD)" tier name verbatim (a real PA
+  barrier, not cost-tier-only) — same reword-not-reclassify pattern the playbook's own step 4
+  anticipated.
+  Closed zero new cash-price gap but confirmed none was needed: apixaban/dabigatran/warfarin all
+  matched existing broad DOAC cash-link rules with zero new names. `KNOWN_UNPRICED_GAP` bumped
+  28→33 — the 5 new unmatched names are all more rivaroxaban/Xarelto and edoxaban/Savaysa
+  name-string variants from PA's dose-split PDL, the exact same already-documented structural gap
+  as al-doac/ny-doac (rivaroxaban's generic still isn't sold at the therapeutic dose on GoodRx/Cost
+  Plus), not a new dead end. `npm test` (604/604), `typecheck`, `trace` (0 broken sources, PA's own
+  DOAC sources archived clean with no new drift), `validate-coverage` (60/408, 9/51 jurisdictions
+  unchanged — PA already counted) all green. Could not verify live in the dev-server browser (this
+  scheduled run had no browser access); relied on the full automated suite (schema validation
+  included) as the verification signal, consistent with prior headless-run practice. Committed in
+  3 chunks (guide merge + test-id list, cash-gap bump, source archive) and pushed to `main`. Updated
+  `docs/doac-expansion-playbook.md`'s remaining-states table (PA row removed, CA marked next-up).
+  **Continuing state-by-state per the user's standing instruction — next state: CA** (cheapest
+  remaining at 3 payers, no new-state discovery risk, per the playbook's own table). MA/MD/VA/IL
+  remain after that. The 43-state prioritization axis and PCSK9/antipsychotics/autoimmune-biologics
+  topic choice are unrelated open questions, still unanswered — this session's DOAC work doesn't
+  resolve them, and a future session should keep treating them as separate from the DOAC scale-out.
 - 2026-09-07 (interactive session) — **Gate cleared by explicit user instruction — user asked to
   "drive down backlog, starting with heart meds (new york first then go to the rest)."** DOAC
   anticoagulants ("blood thinners") was the only backlog item matching "heart meds," and it had
