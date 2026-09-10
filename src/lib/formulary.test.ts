@@ -69,6 +69,7 @@ describe('guides + global meta', () => {
       'tx-ssris',
       'ny-doac',
       'pa-doac',
+      'ca-doac',
     ])
   })
 

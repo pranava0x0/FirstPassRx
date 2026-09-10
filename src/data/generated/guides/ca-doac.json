@@ -1,0 +1,292 @@
+{
+  "id": "ca-doac",
+  "label": "CA · DOAC Anticoagulants",
+  "stateCode": "CA",
+  "region": "California",
+  "topicId": "doac",
+  "topic": "DOAC Anticoagulants",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-09-10",
+  "capturedAt": "2026-09-10",
+  "payers": [
+    {
+      "id": "medi-cal-rx",
+      "name": "Medi-Cal Rx — California Medicaid Pharmacy Program (Fee-for-Service carve-out, statewide)",
+      "shortName": "Medi-Cal Rx",
+      "pbm": "Magellan Health (Magellan Medicaid Administration; DHCS vendor)",
+      "productName": "Medi-Cal Rx Contract Drugs List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Medi-Cal Rx Contract Drugs List, effective 2026-09-01",
+      "formularyUrl": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "sourceIds": [
+        "medi-cal-rx-doac-source-202609"
+      ]
+    },
+    {
+      "id": "kaiser-permanente-ca",
+      "name": "Kaiser Permanente (Commercial HMO)",
+      "shortName": "Kaiser Permanente",
+      "pbm": "Internal (Kaiser Foundation Health Plan formulary; closed integrated pharmacy)",
+      "productName": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs), effective 2026-09-01",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "sourceIds": [
+        "kaiser-permanente-ca-doac-source-202609"
+      ]
+    },
+    {
+      "id": "anthem-bcbs-ca",
+      "name": "Anthem Blue Cross of California (Commercial)",
+      "shortName": "Anthem Blue Cross CA",
+      "pbm": "CarelonRx",
+      "productName": "2026 California Select Drug List - Four Tier",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 California Select Drug List - Four Tier, effective 2026-09-01",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "sourceIds": [
+        "anthem-bcbs-ca-doac-source-202609"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "doac-anticoagulant",
+      "name": "Oral Anticoagulants (DOACs)",
+      "shortName": "DOAC",
+      "plainName": "Blood thinner",
+      "description": "Direct oral anticoagulants (apixaban, rivaroxaban, dabigatran, edoxaban) — first-line therapy for stroke prevention in atrial fibrillation and treatment/prevention of venous thromboembolism, largely supplanting warfarin.",
+      "plainDescription": "A daily pill that prevents dangerous blood clots and stroke.",
+      "indication": "Atrial fibrillation & venous thromboembolism (DVT/PE) prevention and treatment",
+      "sourceIds": [
+        "medi-cal-rx-doac-source-202609",
+        "kaiser-permanente-ca-doac-source-202609",
+        "anthem-bcbs-ca-doac-source-202609"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "id": "medi-cal-rx-doac-source-202609",
+      "label": "Medi-Cal Rx Contract Drugs List",
+      "publisher": "California Department of Health Care Services (DHCS)",
+      "type": "payer",
+      "url": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "effectiveDate": "2026-09-01",
+      "accessed": "2026-09-10"
+    },
+    {
+      "id": "kaiser-permanente-ca-doac-source-202609",
+      "label": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "publisher": "Kaiser Foundation Health Plan, Inc. (Kaiser Permanente)",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "effectiveDate": "2026-09-01",
+      "accessed": "2026-09-10"
+    },
+    {
+      "id": "anthem-bcbs-ca-doac-source-202609",
+      "label": "2026 California Select Drug List - Four Tier",
+      "publisher": "Anthem Blue Cross (California)",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "effectiveDate": "2026-09-01",
+      "accessed": "2026-09-10"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ],
+  "records": [
+    {
+      "payerId": "medi-cal-rx",
+      "classId": "doac-anticoagulant",
+      "preferredAgent": {
+        "inn": "apixaban",
+        "brand": "Eliquis",
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "Take 1 tablet (5 mg) by mouth twice daily.",
+        "sigShort": "apixaban 5 mg tab, 1 tab PO BID",
+        "plainSig": "Take one 5 mg tablet by mouth twice a day, about 12 hours apart."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "Rivaroxaban (Xarelto)",
+          "note": "Covered on the CDL (tablets 2.5/10/15/20 mg, plus starter pack and oral suspension); labeler-restricted (LR) to NDC labeler code 50458 (Janssen) only, otherwise no separate PA needed.",
+          "sourceIds": [
+            "medi-cal-rx-doac-source-202609"
+          ]
+        },
+        {
+          "drug": "Dabigatran Etexilate Mesylate (Pradaxa)",
+          "note": "Covered on the CDL (capsules 75/110/150 mg) with no LR, QL, or Code I authorization symbol listed for this entry.",
+          "sourceIds": [
+            "medi-cal-rx-doac-source-202609"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Edoxaban (Savaysa)",
+          "outcome": "nonformulary",
+          "reason": "Does not appear anywhere on the Medi-Cal Rx Contract Drugs List; per the CDL's general provisions, a legend drug not listed on the CDL may be covered only subject to authorization from a Medi-Cal consultant.",
+          "sourceIds": [
+            "medi-cal-rx-doac-source-202609"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "tier": null,
+      "verification": "partial",
+      "verificationNote": "Read directly from the downloaded 'Medi-Cal Rx Contract Drugs List' PDF (241 pages, cover states 'September 1, 2026', every page footer confirms '09/01/2026'), 'Blood Modifiers: Anticoagulants' section, pages 84-86. Confirmed verbatim: Apixaban (tablets 2.5/5 mg, tablets-for-suspension, starter pack, sprinkle capsule) is marked with '*' (Code I -- per page 4's general provisions, this requires authorization under CCR Title 22 Section 51003 UNLESS dispensed under the conditions specified in the CDL) and 'LR' restricted to NDC labeler code 00003 only; Rivaroxaban (tablets 2.5/10/15/20 mg, starter pack, suspension) carries the identical '*'/LR pattern restricted to NDC labeler code 50458 only; Dabigatran Etexilate Mesylate (capsules 75/110/150 mg) has no restriction codes at all in the UM Type or Code I columns; Warfarin is listed separately, also unrestricted. A full-document keyword search (all 241 pages, extracted with pypdf) confirmed edoxaban/Savaysa does not appear anywhere in the CDL, i.e. it is not a covered formulary agent. Inferred rather than source-stated: the CDL does not rank any one DOAC as 'preferred' -- it is a flat covered/restricted list, consistent with the shape already seen in this repo's ca-ssris/ca-menopause guides -- so apixaban was chosen as preferredAgent per the AHA/ACC guideline first-line-DOAC standard, not because the source itself designates it preferred. The brand names Eliquis/Xarelto are not used anywhere in the CDL (it lists only generic/INN names); genericAvailable reflects known nationwide FDA generic-apixaban availability, not a CDL statement. Because the LR restricts each drug to a single NDC labeler code (00003 = Bristol-Myers Squibb for apixaban, 50458 = Janssen for rivaroxaban) without the document ever using the words 'brand' or 'generic', it was not possible to conclusively determine from this source alone whether the restriction functions as a brand-required rule (BOGL) or a generic-manufacturer-specific rule -- boglActive is left false rather than asserting a brand requirement the document does not explicitly state. Since dispensing under the correct labeler code avoids the Section 51003 authorization trigger entirely, this LR/Code-I pattern was treated as a billing-level restriction rather than a genuine clinical PA barrier, so preferredRestriction is null for apixaban (and the equivalent restriction on rivaroxaban was kept in the alternatives note rather than paRequired). No quantity limit (QL) or class-wide step-therapy criterion was found for any DOAC in this section.",
+      "sourceIds": [
+        "medi-cal-rx-doac-source-202609"
+      ],
+      "coverageSourceIds": [
+        "medi-cal-rx-doac-source-202609"
+      ],
+      "restrictionSourceIds": [
+        "medi-cal-rx-doac-source-202609"
+      ],
+      "lastReviewed": "2026-09-10"
+    },
+    {
+      "payerId": "kaiser-permanente-ca",
+      "classId": "doac-anticoagulant",
+      "preferredAgent": {
+        "inn": "dabigatran etexilate mesylate",
+        "brand": "Pradaxa",
+        "genericAvailable": true,
+        "strength": "150 mg capsule",
+        "sig": "Take 1 capsule (150 mg) by mouth twice daily",
+        "sigShort": "150mg PO BID",
+        "plainSig": "Take one 150 mg capsule by mouth twice a day, about 12 hours apart (e.g., morning and evening)."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "warfarin sodium",
+          "note": "Not a DOAC (vitamin K antagonist), but the only other Tier 1 oral anticoagulant on this formulary, no PA — requires routine INR monitoring and has more diet/drug interactions than the DOAC.",
+          "sourceIds": [
+            "kaiser-permanente-ca-doac-source-202609"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "apixaban (Eliquis)",
+          "outcome": "nonformulary",
+          "reason": "Does not appear anywhere on Kaiser's closed commercial formulary (confirmed by full-document search of all 154 pages, drug-listing tables and alphabetical index alike). Coverage requires a Kaiser physician to submit a medical-necessity formulary exception request; Kaiser Foundation Health Plan states it does not use a standard PA process.",
+          "sourceIds": [
+            "kaiser-permanente-ca-doac-source-202609"
+          ]
+        },
+        {
+          "drug": "rivaroxaban (Xarelto)",
+          "outcome": "nonformulary",
+          "reason": "Does not appear anywhere on Kaiser's closed commercial formulary (confirmed by full-document search). Coverage requires a Kaiser physician to submit a medical-necessity formulary exception request; Kaiser Foundation Health Plan states it does not use a standard PA process.",
+          "sourceIds": [
+            "kaiser-permanente-ca-doac-source-202609"
+          ]
+        },
+        {
+          "drug": "edoxaban (Savaysa)",
+          "outcome": "nonformulary",
+          "reason": "Does not appear anywhere on Kaiser's closed commercial formulary (confirmed by full-document search). Coverage requires a Kaiser physician to submit a medical-necessity formulary exception request; Kaiser Foundation Health Plan states it does not use a standard PA process.",
+          "sourceIds": [
+            "kaiser-permanente-ca-doac-source-202609"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "tier": "Tier 1 (generic)",
+      "verification": "verified",
+      "verificationNote": "Fetched the cited PDF directly (200 OK, 154 pages; cover page reads 'KAISER PERMANENTE: 2026 NORTHERN CALIFORNIA COMMERCIAL HMO FORMULARY... THIS FORMULARY WAS UPDATED ON: 09/01/2026', publisher Kaiser Foundation Health Plan). Read PDF page 36 (document page 35 of 145) under the 'ANTITHROMBOTIC AGENTS' heading (heading itself appears at the bottom of the prior page): 'dabigatran etexilate mesylate caps 75/110/150 mg' is listed in lowercase (= generic per the formulary's own Definitions section) at Tier 1 with no entry in the Requirements/Limits column (no QL, no MB, no other flag) -- confirming preferredRestriction is genuinely null, not just an omitted QL. 'warfarin sodium tabs' (all strengths) is likewise Tier 1 with no restriction flag on the same/adjacent page. A programmatic full-text search across all 154 pages (both the drug-listing tables, pages ~10-105, and the alphabetical brand/generic index, pages ~106-145) for 'apixaban', 'eliquis', 'rivaroxaban', 'xarelto', 'edoxaban', and 'savaysa' returned zero matches for any of the six terms -- none of these three DOACs (brand or generic name) appear anywhere in the document. Read the formulary's Definitions section (PDF pages 5-7) verbatim: it explicitly states 'Kaiser Foundation Health Plan does not have a requirement for PA' and 'does not have a requirement for Step Therapy', and defines a 'Nonformulary drug' as one 'not listed on the health plan's formulary,' covered only when a Kaiser (or authorized referral) doctor submits an exception request establishing medical necessity. This is the basis for tagging apixaban/rivaroxaban/edoxaban as 'nonformulary' rather than 'pa' -- Kaiser's own document disclaims a conventional PA mechanism, so 'nonformulary' + exception-request is the accurate real-world barrier. The only inferred (not formulary-stated) values are the representative strength/sig for dabigatran: the formulary lists drug name, strength, tier, and requirement codes only, never prescribing directions, so the 150mg-BID sig reflects standard FDA-labeled dabigatran dosing for nonvalvular AFib with normal renal function, not text printed in the source.",
+      "sourceIds": [
+        "kaiser-permanente-ca-doac-source-202609"
+      ],
+      "coverageSourceIds": [
+        "kaiser-permanente-ca-doac-source-202609"
+      ],
+      "restrictionSourceIds": [
+        "kaiser-permanente-ca-doac-source-202609"
+      ],
+      "lastReviewed": "2026-09-10"
+    },
+    {
+      "payerId": "anthem-bcbs-ca",
+      "classId": "doac-anticoagulant",
+      "preferredAgent": {
+        "inn": "rivaroxaban",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg oral tablet",
+        "sig": "Take 20 mg by mouth once daily with the evening meal.",
+        "sigShort": "rivaroxaban 20mg tab, 1 tab PO qPM w/ food, #30, 3 refills",
+        "plainSig": "Take one 20 mg tablet by mouth once a day in the evening, with food."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "apixaban (Eliquis)",
+          "note": "Tier 3, brand only (no separate generic apixaban entry on this formulary); no PA/step listed, quantity limit applies",
+          "sourceIds": [
+            "anthem-bcbs-ca-doac-source-202609"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "dabigatran (Pradaxa)",
+          "outcome": "nonformulary",
+          "reason": "Not listed anywhere in the 2026 CA Select Four-Tier drug list's Anticoagulants section or its A-Z index; this direct thrombin inhibitor has no formulary entry at all under this plan",
+          "sourceIds": [
+            "anthem-bcbs-ca-doac-source-202609"
+          ]
+        },
+        {
+          "drug": "edoxaban (Savaysa)",
+          "outcome": "nonformulary",
+          "reason": "Not listed anywhere in the 2026 CA Select Four-Tier drug list's Anticoagulants section or its A-Z index; this Factor Xa inhibitor has no formulary entry at all under this plan",
+          "sourceIds": [
+            "anthem-bcbs-ca-doac-source-202609"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "tier": "Tier 2 - drugs with a higher cost share than Tier 1 (generic rivaroxaban); Eliquis/apixaban sits at Tier 3",
+      "verification": "verified",
+      "verificationNote": "Read directly off page 25 (PDF page index 25, printed page 26) of the fetched PDF, under the header '*ANTICOAGULANTS* - DRUGS FOR THE BLOOD' > '*DIRECT FACTOR XA INHIBITORS*** - DRUGS TO PREVENT BLOOD CLOTS'. Confirmed line items: 'rivaroxaban oral tablet — Tier 2 QL (2 tablets per 1 day)', 'ELIQUIS ORAL TABLET 5 MG (apixaban) — Tier 3 QL (74 tablets per 30 days)' plus other Eliquis strengths/forms all at Tier 3, and 'warfarin sodium — Tier 1' under the separate Coumarin Anticoagulants heading (not a DOAC, included for context only). Neither dabigatran/Pradaxa nor edoxaban/Savaysa appear anywhere in the document — confirmed via full-text search of all 116 pages for 'dabigatran', 'pradaxa', 'edoxaban', and 'savaysa' (zero hits) and cross-checked against the document's own alphabetical drug index (pages 96-116), which also has no entries for either drug. Neither the Factor Xa Inhibitors line items nor the section header carry a PA or ST flag in this table (only QL codes appear), consistent with the document's own legend on the same page ('PA=Prior Authorization ... ST=Step Therapy' listed as possible per-line codes, none printed next to rivaroxaban or Eliquis). Document cover page reads 'Last Updated: September 1, 2026' and every content page footer reads 'Effective 09012026', so the effective date is directly confirmed, not inferred. The preferred-agent selection (rivaroxaban over Eliquis) is inferred from tier placement (Tier 2 vs Tier 3, per this plan's own tier definitions on page 9: Tier 1 = lowest cost share, Tier 2 = higher than Tier 1, Tier 3 = higher than Tier 2) rather than an explicit 'preferred agent' label in the source, since ANOC-style commercial formularies of this kind signal preference through tier rather than a named preferred-agent column. Sig/dosing (20 mg once daily with evening meal) is standard rivaroxaban labeling, not stated in the formulary itself, which lists coverage/tier/QL only, not clinical dosing instructions.",
+      "sourceIds": [
+        "anthem-bcbs-ca-doac-source-202609"
+      ],
+      "coverageSourceIds": [
+        "anthem-bcbs-ca-doac-source-202609"
+      ],
+      "restrictionSourceIds": [
+        "anthem-bcbs-ca-doac-source-202609"
+      ],
+      "lastReviewed": "2026-09-10"
+    }
+  ]
+}
