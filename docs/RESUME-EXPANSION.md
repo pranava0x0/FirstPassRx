@@ -1577,11 +1577,31 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   included) as the verification signal, consistent with prior headless-run practice. Committed in
   3 chunks (guide merge + test-id list, cash-gap bump, source archive) and pushed to `main`. Updated
   `docs/doac-expansion-playbook.md`'s remaining-states table (PA row removed, CA marked next-up).
-  **Continuing state-by-state per the user's standing instruction — next state: CA** (cheapest
-  remaining at 3 payers, no new-state discovery risk, per the playbook's own table). MA/MD/VA/IL
-  remain after that. The 43-state prioritization axis and PCSK9/antipsychotics/autoimmune-biologics
-  topic choice are unrelated open questions, still unanswered — this session's DOAC work doesn't
-  resolve them, and a future session should keep treating them as separate from the DOAC scale-out.
+  **Continued to a 2nd state in the same session: shipped `ca-doac`** (3 payers: medi-cal-rx,
+  kaiser-permanente-ca, anthem-bcbs-ca, reusing `ca-ace`'s roster). Genuinely three different
+  preferred agents across the three payers, not a copy-paste result: Medi-Cal Rx's CDL is a flat
+  covered/restricted list with no explicit preference ranking (matches the pre-existing
+  `ca-ssris`/`ca-menopause` pattern) so apixaban was picked per AHA/ACC first-line-DOAC guidance
+  and marked `partial`; Kaiser Permanente's closed formulary explicitly prefers generic dabigatran
+  (`verified`, Tier 1, no restriction); Anthem BCBS CA's own tier structure prefers generic
+  rivaroxaban 20mg — the therapeutic AF/VTE dose, not the antiplatelet dose (`verified`). Avoided
+  the known Medi-Cal Rx 241-page-PDF context-blowup (2026-07-22 scar tissue) by instructing the
+  gather agent up front to `curl` the PDF to disk and keyword-search the local text rather than
+  blind-`WebFetch` it — worked cleanly, zero context blowup this time. `KNOWN_UNPRICED_GAP` bumped
+  33→34 (one new bare "rivaroxaban" name string from Anthem's preferred-agent pick) — flagged as
+  raising the backlog priority of the existing rivaroxaban dose-mismatch gap, since it would now
+  price a *preferred*-agent cell rather than just an alternative if ever closed. `npm test`
+  (612/612), `typecheck`, `trace` (0 broken sources), `validate-coverage` (61/408, still 9/51
+  jurisdictions — CA already counted) all green; `npm run archive-sources` archived all 3 new CA
+  DOAC sources clean. Committed in 3 chunks (guide merge + test-id list, cash-gap bump, source
+  archive) and pushed to `main`. Updated `docs/doac-expansion-playbook.md`'s table again (CA row
+  removed, MA marked next-up).
+  **Stopping here after 2 states (PA, CA) in this one session** — consistent with the spirit of
+  the user's 2026-09-07 "state by state, to save tokens" pacing instruction, even though this was
+  an unattended scheduled run rather than the interactive session that instruction was given in.
+  Next session: continue with MA (5-payer roster, smallest of the remaining 4), then MD/VA/IL. The
+  43-state prioritization axis and PCSK9/antipsychotics/autoimmune-biologics topic choice remain
+  unrelated, still-unanswered open questions — this session's DOAC work doesn't resolve them.
 - 2026-09-07 (interactive session) — **Gate cleared by explicit user instruction — user asked to
   "drive down backlog, starting with heart meds (new york first then go to the rest)."** DOAC
   anticoagulants ("blood thinners") was the only backlog item matching "heart meds," and it had

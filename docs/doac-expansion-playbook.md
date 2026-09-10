@@ -14,15 +14,14 @@ re-discovering it. `--reuse-payers-from` below names the anchor guide `build-gat
 
 | State | `--reuse-payers-from` | Payers | New guide id |
 | --- | --- | --- | --- |
-| CA | `ca-ace` | 3 (medi-cal-rx, kaiser-permanente-ca, anthem-bcbs-ca) | `ca-doac` |
 | MA | `ma-ace` | 5 (masshealth, bcbsma, tufts, harvardpilgrim, mgb) | `ma-doac` |
 | MD | `md-ace` | 8 (mdmedicaid, carefirst, kpmidatlantic, priority-partners, uhc-md, cigna, aetna, medicare-partd) | `md-doac` |
 | VA | `va-ace` | 8 (va-medicaid-ffs, anthem-healthkeepers-plus, sentara-community, uhc-community, aetna-better-health, anthem-commercial, sentara-commercial, wellcare-value-script) | `va-doac` |
 | IL | `il-ace` | 8 (il-medicaid, aetna-better-health-il, bcbs-community-il, countycare, meridian, molina-il, bcbs-illinois-commercial, wellcare-value-script) | `il-doac` |
 
-`al-doac`, `ny-doac`, and `pa-doac` (shipped 2026-09-10) are done. Order is not load-bearing — the
-user asked for NY first, then "the rest"; no ordering was specified among CA/MA/MD/VA/IL. Next up:
-CA (cheapest remaining, 3-payer roster, no new-state discovery risk).
+`al-doac`, `ny-doac`, `pa-doac`, and `ca-doac` (shipped 2026-09-10) are done. Order is not
+load-bearing — the user asked for NY first, then "the rest"; no ordering was specified among
+MA/MD/VA/IL. Next up: MA (5-payer roster, smallest of the remaining 4).
 
 ## Per-state recipe
 
