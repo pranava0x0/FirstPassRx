@@ -303,8 +303,15 @@
  * rivaroxaban-dose-mismatch backlog item: if a future browser session finds a 15/20mg generic
  * rivaroxaban product on GoodRx/Cost Plus, it would now price a PREFERRED-agent cell, not just an
  * alternative. Kaiser Permanente CA prefers generic dabigatran (already priced); Medi-Cal Rx's
- * apixaban pick matched the existing rule -- both added zero new gap. */
-export const KNOWN_UNPRICED_GAP = 34
+ * apixaban pick matched the existing rule -- both added zero new gap.
+ * Raised 34 → 40 on 2026-09-17 when `ma-doac` shipped (4th DOAC scale-out state, MA). All 6 new
+ * unmatched names are more rivaroxaban/Xarelto name-string variants (MassHealth's Table 58 and
+ * BCBS MA's own July-2026 formulary both list several distinct rivaroxaban/Xarelto SKUs -- starter
+ * pack, oral suspension, 2.5mg tablet, standard tablets) -- the exact same already-documented
+ * structural gap as al-doac/ny-doac/pa-doac/ca-doac (generic rivaroxaban still isn't sold at the
+ * 15/20mg therapeutic dose on GoodRx/Cost Plus), not a new dead end. Apixaban/Eliquis and
+ * dabigatran/warfarin all matched the existing broad DOAC cash-link rules with zero new gap. */
+export const KNOWN_UNPRICED_GAP = 40
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
