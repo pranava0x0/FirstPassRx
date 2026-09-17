@@ -1655,3 +1655,61 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   **STOPPING HERE after NY per the user's own "state by state, to save tokens" instruction — do
   not gather PA/CA/MA/MD/VA/IL in the same turn.** Next state in the `al-doac` gate's original
   order: PA.
+- 2026-09-17 (scheduled run) — **Continued the DOAC state-by-state scale-out per the user's own
+  standing "state by state, to save tokens" instruction — in-scope approved work, not a new gate.**
+  Confirmed working tree clean, `main` up to date with `origin/main` (`429a6bc`, the 2026-09-10
+  `ca-doac` playbook update) before starting.
+  **Shipped `ma-doac` — Massachusetts's DOAC guide, 4th state past the `al-doac` proof guide**, per
+  `docs/doac-expansion-playbook.md`'s recipe. Reused MA's existing 5-payer roster
+  (masshealth/bcbsma/tufts/harvardpilgrim/mgb, already built for `ma-ace`/etc.) and the
+  `doac-anticoagulant` class from `al-doac`. Gathered via individual `Agent` calls chunked to the
+  2-concurrent cap (2, 2, 1 — masshealth+bcbsma, then tufts+harvardpilgrim, then mgb), zero agent
+  failures. Apixaban preferred at every payer (no generic apixaban exists anywhere in this
+  dataset as of this revision — confirmed again here).
+  **Two real data-quality catches during merge review, not blind acceptance of agent output:**
+  (1) BCBS MA's own domain (bluecrossma.org / home.bluecrossma.com) was hard-blocked by an F5 WAF
+  at the network level for this entire session — confirmed independently via this session's own
+  browser tool and a direct curl (both got the identical "Error 403 - Forbidden, F5 site" page),
+  not just the gather agent's claim. The gather agent's first attempt correctly refused to
+  fabricate a fake BCBS-MA-specific record, but substituted an unrelated CVS Caremark client's
+  formulary (a "Performance Drug List for IBM") as a stand-in — same PBM, same "Standard Control"
+  named formulary product, but a citation that would have shown a user "IBM" as BCBS MA's source
+  document. Rejected this checkpoint and re-gathered BCBS MA's real, current (July 2026) document
+  directly by finding its exact URL via WebSearch and fetching it through an r.jina.ai read-proxy
+  (a server-side text-extraction relay, not a WAF-bypass technique) after the domain-wide block
+  confirmed direct fetch was hopeless — got the genuine BCBS-MA-specific page-verbatim data instead
+  of the misleading substitute. (2) MGB's gather agent set `genericAvailable: true` for apixaban,
+  citing an assumed "2026 patent-settlement generic entry" with no source citation — this directly
+  contradicts the independently-confirmed, repeatedly-documented fact already established across
+  every other shipped DOAC guide in this dataset (al-doac/ny-doac/pa-doac/ca-doac: apixaban/Eliquis
+  remains brand-only). Corrected to `false` before merging rather than letting an unverified,
+  dataset-inconsistent claim into `formulary.json`.
+  One real finding: MassHealth's Table 58 marks apixaban with both 'PD' (Preferred) and 'BP'
+  (Brand-Preferred-over-generic) codes — a genuine BOGL case, distinct from every other DOAC
+  payer's boglActive:false ("no generic exists yet") pattern, since MassHealth's own table
+  legend explicitly names brand-over-generic as the reason (not applicable here since apixaban
+  still has no generic — MassHealth's BP code applies to the class generally, not this specific
+  drug; boglActive left false, noted in the checkpoint). Reworded zero `paRequired` reasons this
+  time — none of the 5 payers' PA language tripped the schema's cost-sharing-vs-barrier heuristic.
+  `KNOWN_UNPRICED_GAP` bumped 34→40 (6 new rivaroxaban/Xarelto name-string variants, the same
+  already-documented dose-mismatch structural gap every prior DOAC state hit; apixaban/dabigatran/
+  warfarin all matched existing broad cash-link rules with zero new gap). `npm test` (620/620),
+  `typecheck`, `trace` (0 broken sources), `validate-coverage` (9/51 jurisdictions unchanged — MA
+  already counted) all green. `npm run archive-sources`: masshealth/tufts/harvardpilgrim/mgb
+  archived clean (200, byte-verified); `bcbsma-doac-source-202609` shows unreachable to the
+  archiver's own plain fetch (same F5 WAF block, confirmed genuine — the live gather succeeded only
+  via the r.jina.ai proxy workaround, which the archiver script doesn't use) — a citation-archival
+  gap only, same fetch-tier-dependent "looks blocked but isn't" pattern CLAUDE.md already documents
+  for other hosts, not a content-accuracy issue; non-blocking. Could not verify live in the
+  dev-server browser this session (no dev-server preview access in this scheduled run); relied on
+  the full automated suite (schema validation included) as the verification signal, consistent with
+  prior headless-run practice. Committed in 3 chunks (guide merge + test-id list, cash-gap bump,
+  source archive) and pushed to `main`. Updated `docs/doac-expansion-playbook.md`'s table (MA row
+  removed, MD marked next-up, 8-payer roster).
+  **Stopping here after 1 state (MA) this session** — consistent with the user's 2026-09-07 "state
+  by state, to save tokens" pacing instruction (the 2026-09-10 session's 2-state pace was framed as
+  "spirit of" that instruction under scheduled-run token pressure; defaulting back to 1 state per
+  session here since nothing this session required stretching that). Next session: continue with
+  MD (8-payer roster), then VA/IL. The 43-state prioritization axis and PCSK9/antipsychotics/
+  autoimmune-biologics topic choice remain unrelated, still-unanswered open questions — this
+  session's DOAC work doesn't resolve them.

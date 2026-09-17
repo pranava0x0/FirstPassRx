@@ -19,9 +19,9 @@ re-discovering it. `--reuse-payers-from` below names the anchor guide `build-gat
 | VA | `va-ace` | 8 (va-medicaid-ffs, anthem-healthkeepers-plus, sentara-community, uhc-community, aetna-better-health, anthem-commercial, sentara-commercial, wellcare-value-script) | `va-doac` |
 | IL | `il-ace` | 8 (il-medicaid, aetna-better-health-il, bcbs-community-il, countycare, meridian, molina-il, bcbs-illinois-commercial, wellcare-value-script) | `il-doac` |
 
-`al-doac`, `ny-doac`, `pa-doac`, and `ca-doac` (shipped 2026-09-10) are done. Order is not
-load-bearing — the user asked for NY first, then "the rest"; no ordering was specified among
-MA/MD/VA/IL. Next up: MA (5-payer roster, smallest of the remaining 4).
+`al-doac`, `ny-doac`, `pa-doac`, `ca-doac` (shipped 2026-09-10), and `ma-doac` (shipped
+2026-09-17) are done. Order is not load-bearing — the user asked for NY first, then "the rest";
+no ordering was specified among MD/VA/IL. Next up: MD (8-payer roster).
 
 ## Per-state recipe
 
