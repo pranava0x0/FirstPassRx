@@ -70,6 +70,7 @@ describe('guides + global meta', () => {
       'ny-doac',
       'pa-doac',
       'ca-doac',
+      'ma-doac',
     ])
   })
 
