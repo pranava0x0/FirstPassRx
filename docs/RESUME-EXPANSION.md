@@ -1713,3 +1713,42 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   MD (8-payer roster), then VA/IL. The 43-state prioritization axis and PCSK9/antipsychotics/
   autoimmune-biologics topic choice remain unrelated, still-unanswered open questions — this
   session's DOAC work doesn't resolve them.
+- 2026-09-21 (interactive session) — **Continued the DOAC state-by-state scale-out per the user's
+  own standing "state by state, to save tokens" instruction, in response to "burn down the
+  backlog... start with heart related things" — in-scope approved work, not a new gate.** Confirmed
+  working tree clean, `main` up to date with `origin/main` before starting.
+  **Shipped `md-doac` — Maryland's DOAC guide, 5th state past the `al-doac` proof guide.** Reused
+  MD's existing 8-payer roster (mdmedicaid/carefirst/kpmidatlantic/priority-partners/uhc-md/cigna/
+  aetna/medicare-partd, already built for `md-ace`/etc.) and the `doac-anticoagulant` class from
+  `al-doac`. Gathered via individual `Agent` calls chunked to the 2-concurrent cap (4 chunks of 2,
+  zero agent failures) — not the Workflow tool, since the user hadn't opted into multi-agent
+  orchestration this session. 7 of 8 records verified; Aetna is `partial` (its own drug guide has
+  no numbered tier system at all — brand-in-CAPS/generic-lowercase only — and its separate
+  precertification/step-therapy list couldn't be located).
+  **One real, non-copy-paste finding: Kaiser Permanente Mid-Atlantic doesn't cover apixaban at
+  all.** Confirmed absent via full-text search of its entire 47-page Marketplace formulary (DC/MD/
+  VA) — every other MD payer, and every payer in every prior DOAC state, prefers apixaban/Eliquis.
+  Kaiser's preferred agent is instead bare generic rivaroxaban (once-daily dosing beats twice-daily
+  dabigatran, the only other option Kaiser covers), a deliberate clinical-convenience inference
+  since Kaiser's own document doesn't rank rivaroxaban over dabigatran either. Reworded zero
+  `paRequired` reasons — none of the 8 payers' PA language tripped the non-preferred/higher-tier
+  validator heuristic this time. `KNOWN_UNPRICED_GAP` bumped 40→48 (8 new rivaroxaban/Xarelto
+  name-string variants, the same already-documented dose-mismatch structural gap every prior DOAC
+  state hit; apixaban/dabigatran/warfarin all matched existing broad cash-link rules with zero new
+  gap). `npm test` (628/628), `typecheck`, `trace` (0 broken sources), `validate-coverage` (63/408,
+  9/51 jurisdictions unchanged — MD already counted for its other 7 topics) all green. `npm run
+  archive-sources`: all 8 new MD DOAC sources archived clean (200, real PDFs); the rest of the
+  diff is routine drift from the archiver's full-dataset re-verification sweep, consistent with
+  every prior archive-sources commit in this project's history. Could not verify live in the
+  dev-server browser this session (no preview access); relied on the full automated suite as the
+  verification signal. Committed in 3 chunks (guide merge + test-id list + regenerated SEO files,
+  cash-gap bump, source archive). Updated `docs/doac-expansion-playbook.md`'s table (MD row
+  removed, VA marked next-up).
+  **Same session also shipped the site's discoverability files** (`robots.txt`, `sitemap.xml`,
+  and a self-regenerating `llms.txt` — see `scripts/build-seo.mjs`, wired into `predev`/`prebuild`
+  and gated by `pretest`), since the previous `llms.txt` still described the 2-guide MVP against a
+  live app with 62+ guides.
+  **Stopping here after 1 state (MD) this session**, consistent with the established one-state
+  pace. Next session: continue with VA (8-payer roster), then IL. The 43-state prioritization axis
+  and PCSK9/antipsychotics/autoimmune-biologics topic choice remain unrelated, still-unanswered
+  open questions — this session's DOAC work doesn't resolve them.
