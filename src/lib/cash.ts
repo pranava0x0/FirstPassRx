@@ -310,8 +310,15 @@
  * pack, oral suspension, 2.5mg tablet, standard tablets) -- the exact same already-documented
  * structural gap as al-doac/ny-doac/pa-doac/ca-doac (generic rivaroxaban still isn't sold at the
  * 15/20mg therapeutic dose on GoodRx/Cost Plus), not a new dead end. Apixaban/Eliquis and
- * dabigatran/warfarin all matched the existing broad DOAC cash-link rules with zero new gap. */
-export const KNOWN_UNPRICED_GAP = 40
+ * dabigatran/warfarin all matched the existing broad DOAC cash-link rules with zero new gap.
+ * Raised 40 → 48 on 2026-09-21 when `md-doac` shipped (5th DOAC scale-out state, MD, 8 payers).
+ * All 8 new unmatched names are again more rivaroxaban/Xarelto name-string variants -- the same
+ * already-documented dose-mismatch structural gap. Kaiser Permanente Mid-Atlantic is notable as
+ * the first payer where apixaban/Eliquis isn't covered at all (confirmed absent from its 47-page
+ * formulary), so its preferred agent is bare "rivaroxaban" -- a string already in the gap since
+ * ca-doac, adding zero new names. Apixaban/Eliquis, dabigatran/Pradaxa, and warfarin/Jantoven
+ * across the other 7 MD payers all matched the existing broad DOAC cash-link rules. */
+export const KNOWN_UNPRICED_GAP = 48
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
