@@ -8,25 +8,45 @@
 
 ## The app
 
-- [FirstPassRx](https://pranava0x0.github.io/FirstPassRx/): pick an insurance plan and a drug class.
-  A toggle switches between two guides:
-  - Massachusetts inhalers — MassHealth, Blue Cross Blue Shield MA, Tufts, Harvard Pilgrim, Mass
-    General Brigham; classes SABA (rescue), ICS, ICS/LABA, LAMA.
-  - Maryland menopause hormone therapy — Maryland Medicaid, CareFirst, Kaiser Mid-Atlantic, Johns
-    Hopkins Priority Partners, UnitedHealthcare, Cigna, Aetna, Medicare Part D; classes transdermal
-    estrogen, oral estrogen, progestogen, vaginal estrogen.
+[FirstPassRx](https://pranava0x0.github.io/FirstPassRx/): pick a state, a therapeutic area, an insurance plan, and a drug class.
+62 plan × drug-class guides are live across 9 states and 8 therapeutic areas as of 2026-09-21:
+
+- **Alabama (AL)**: ACE Inhibitors, DOAC Anticoagulants, Diabetes, Inhalers, Menopause HT, NSAIDs, Osteoporosis, SSRIs
+- **California (CA)**: ACE Inhibitors, DOAC Anticoagulants, Diabetes, Inhalers, Menopause HT, NSAIDs, Osteoporosis, SSRIs
+- **Illinois (IL)**: ACE Inhibitors, Diabetes, Inhalers, Menopause HT, NSAIDs, Osteoporosis, SSRIs
+- **Massachusetts (MA)**: ACE Inhibitors, DOAC Anticoagulants, Diabetes, Inhalers, Menopause HT, NSAIDs, Osteoporosis, SSRIs
+- **Maryland (MD)**: ACE Inhibitors, Diabetes, Inhalers, Menopause HT, NSAIDs, Osteoporosis, SSRIs
+- **New York (NY)**: ACE Inhibitors, DOAC Anticoagulants, Diabetes, Inhalers, Menopause HT, NSAIDs, Osteoporosis, SSRIs
+- **Pennsylvania (PA)**: ACE Inhibitors, DOAC Anticoagulants, Diabetes, Inhalers, Menopause HT, NSAIDs, Osteoporosis, SSRIs
+- **Texas (TX)**: SSRIs
+- **Virginia (VA)**: ACE Inhibitors, Diabetes, Inhalers, Menopause HT, NSAIDs, Osteoporosis, SSRIs
+
+Every guide result shows the preferred (formulary-first) agent, covered alternatives, drugs that
+require prior authorization and why, cost under the plan vs. cash-pay price, and a link to the
+payer's own source document for every claim.
 
 ## Data and provenance
 
-- [State · plan · PBM · formulary map](https://github.com/pranava0x0/FirstPassRx/blob/main/docs/formulary-map.md): every plan's published formulary link for MA, MD, NY, VA, DC.
+- [State · plan · PBM · formulary map](https://github.com/pranava0x0/FirstPassRx/blob/main/docs/formulary-map.md): every plan's published formulary source.
 - [Formulary data (formulary.json)](https://github.com/pranava0x0/FirstPassRx/blob/main/src/data/formulary.json): one record per plan × class, each with sources and a verification state.
 - [Data sources and verification states](https://github.com/pranava0x0/FirstPassRx/blob/main/data-sources.md)
 - [Source code](https://github.com/pranava0x0/FirstPassRx)
+- [Sitemap](https://pranava0x0.github.io/FirstPassRx/sitemap.xml) — every guide as a direct `?guide=<id>` link.
+
+## Attribution
+
+- Formulary and preferred-drug-list data is drawn from each payer's or state Medicaid agency's own
+  published document (PDL, formulary PDF, or provider portal), cited per record — see the sources
+  above for the exact link and capture date behind every claim.
+- Cash prices link out to [GoodRx](https://www.goodrx.com) and [Cost Plus Drugs](https://costplusdrugs.com);
+  GoodRx and Cost Plus Drugs are trademarks of their respective owners, unaffiliated with this project.
+  Prices are snapshots as of the date shown on each result and can change — the linked page is the
+  source of truth, not this app.
+- This project is independent and not affiliated with, endorsed by, or sponsored by any payer, PBM,
+  state Medicaid agency, GoodRx, or Cost Plus Drugs.
 
 ## Scope and caveats
 
-- Drug-level data is live for Massachusetts inhalers and Maryland menopause hormone therapy. New
-  York, Virginia, and DC currently have formulary links only (drug-level data pending).
 - Every cell declares a verification state — verified (read off the cited document), partial (right
   formulary cited, exact value inferred), or example (unconfirmed) — and links its source.
 - Not medical advice and not a substitute for the plan's current formulary or clinical judgment.
