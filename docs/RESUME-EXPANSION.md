@@ -1792,3 +1792,32 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   **Stopping here after 1 state (VA)** per the one-state-per-session pacing. Next session: `il-doac`
   (8-payer roster from `il-ace`), the last DOAC state; then the standing open questions (43-state
   prioritization, PCSK9 vs. antipsychotics vs. autoimmune biologics) remain user decisions.
+- 2026-09-24 (same scheduled run, continued) — **Shipped `il-doac` — Illinois, the 7th and last DOAC
+  state; the DOAC scale-out is now complete (al/ny/pa/ca/ma/md/va/il).** Went to a 2nd state in the
+  same run (the 2026-09-10 run set that precedent) since VA came in at ~960K subagent tokens with no
+  failures. Reused IL's 8-payer roster from `il-ace`. Gathered 7 payers via individual `Agent` calls
+  chunked ≤2 concurrent (2, 2, 2, 1; zero failures, ~855K subagent tokens); the 8th,
+  `wellcare-value-script`, **reuses the VA checkpoint verbatim** — it is one national Part D PDP
+  formulary PDF (same URL, same sha256), so a second agent would have re-read identical bytes.
+  All 8 records `verified`.
+  **Real findings:** (1) Illinois is the first state where Eliquis itself carries a PA flag at
+  several payers: IL Medicaid FFS lists Eliquis and Xarelto as "Preferred With PA", Meridian marks
+  both "P + PA", Molina marks Eliquis "PA (eligible for auto-approval)" and Xarelto plain PA — so
+  `preferredRestriction` is set (a real barrier, not a QL) on those 3 records, and Xarelto sits in
+  `paRequired`. Aetna, BCBS Community, CountyCare and BCBSIL commercial have Eliquis clean. (2)
+  Generic dabigatran is PA-gated at every IL Medicaid payer (unlike VA's MCOs, where it's clean).
+  (3) Stale-URL catches: the roster's BCBS Community URL still served a May 2025 edition (current
+  one is `bcbsil.com/il/documents/medicaid/bcchp/...`, where Eliquis is clean, not PA); CountyCare's
+  Q1 2026 PDF was superseded by Q3; Meridian's roster URL was Dec 2024 — the merge script synced
+  `payer.formularyUrl` to each checkpoint's `primarySource.url`, so all three now point at the
+  current documents. (4) Unresolved: Meridian's own pharmacy page says mail order runs through
+  Express Scripts, not the Envolve PBM in our roster metadata — not verified, logged here only.
+  Reworded zero `paRequired` reasons. `KNOWN_UNPRICED_GAP` 54→60: 4 rivaroxaban/Xarelto variants
+  (same documented gap) plus 2 genuinely new names, enoxaparin/fondaparinux injectable
+  alternatives at CountyCare/BCBSIL — logged to `backlog.md` (needs a browser). `npm test`
+  (644/644), `typecheck`, `trace`, `validate-coverage` (65/408 cells, 9/51 jurisdictions — IL
+  already counted) all green; `archive-sources` archived all 7 new IL DOAC sources (Molina dedups
+  to an existing blob; Meridian's PDF is 25 MB, a new blob). Committed in 4 chunks (guide, gap bump,
+  sources, docs). No dev-server browser verification (scheduled run).
+  **DOAC scale-out complete.** Remaining open questions are unchanged and user-owned: the 43-state
+  prioritization axis, and PCSK9 vs. antipsychotics vs. autoimmune biologics as the next topic.

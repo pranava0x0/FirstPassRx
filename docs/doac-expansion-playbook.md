@@ -12,15 +12,12 @@ rule and `docs/agent-runs.md` cost lever #9, reuse that roster's payer metadata 
 re-discovering it. `--reuse-payers-from` below names the anchor guide `build-gather-args.mjs` /
 `merge-doac-guide.mjs` should read from:
 
-| State | `--reuse-payers-from` | Payers | New guide id |
-| --- | --- | --- | --- |
-| MA | `ma-ace` | 5 (masshealth, bcbsma, tufts, harvardpilgrim, mgb) | `ma-doac` |
-| MD | `md-ace` | 8 (mdmedicaid, carefirst, kpmidatlantic, priority-partners, uhc-md, cigna, aetna, medicare-partd) | `md-doac` |
-| IL | `il-ace` | 8 (il-medicaid, aetna-better-health-il, bcbs-community-il, countycare, meridian, molina-il, bcbs-illinois-commercial, wellcare-value-script) | `il-doac` |
+(All rows shipped; the table is retired. Reuse the recipe below for any *new* state by pointing
+`--reuse-payers-from` at that state's `<st>-ace` guide.)
 
-`al-doac`, `ny-doac`, `pa-doac`, `ca-doac` (shipped 2026-09-10), `ma-doac` (shipped 2026-09-17),
-and `md-doac` (shipped 2026-09-21), and `va-doac` (shipped 2026-09-24) are done. Order is not load-bearing — the user asked for NY
-first, then "the rest"; no ordering was specified among the last few. Next up: IL (8-payer roster), the last DOAC state.
+`al-doac`, `ny-doac`, `pa-doac`, `ca-doac` (shipped 2026-09-10), `ma-doac` (2026-09-17),
+`md-doac` (2026-09-21), `va-doac` and `il-doac` (both 2026-09-24) are done -- **the DOAC scale-out is complete across all 7 states**. Order is not load-bearing — the user asked for NY
+first, then "the rest"; no ordering was specified among the last few. Nothing remains in this table.
 
 ## Per-state recipe
 
