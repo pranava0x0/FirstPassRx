@@ -1104,3 +1104,20 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   the other 4 new names are rivaroxaban/Xarelto variants). Needs a browser session: GoodRx
   enoxaparin (pin syringe strength + quantity params, not the bare slug) and fondaparinux; check
   Cost Plus's catalog too. Small win (2 names) — do alongside the next cash-price sweep.
+
+- **[Medium] Freshness re-check due for NY guides + oldest guides (surfaced 2026-09-24 web pass).**
+  A search hit shows the NYRx Medicaid PDL (`newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf`)
+  now reads "Revised: September 14, 2026" — newer than the July 2026 revision the `ny-*` Medicaid
+  cells were verified against. Diff the class rows for the 8 NY topics against the new revision
+  (curl + keyword search, not a blind WebFetch on the PDF) before the next quarter. Separately, the
+  oldest guides (`md-menopause`, `va-diabetes`, captured 2026-06-27) cross the 90-day threshold on
+  2026-09-25 — next scheduled run should start there.
+- **[Low] Candidate topics surfaced 2026-09-24, both weak — recorded so they aren't re-searched.**
+  (1) **Levothyroxine (Synthroid/Levoxyl/Unithroid vs. generic):** the friction is brand-vs-generic
+  (a BOGL-style story the app already models) rather than PA; every Medicaid PDL sampled lists
+  generic levothyroxine as clean Tier 1 and brand Synthroid as restricted/"E" — cash price is a
+  trivial $4-15 generic, so little user value. (2) **Antiepileptics:** the American Academy of
+  Neurology opposes PA on anticonvulsants, and NC/other states carve seizure diagnoses out of
+  trial-of-preferred rules, so the PA-barrier framing is weakest exactly where the drug class is
+  highest-stakes; MA added PA for topiramate XR sprinkle (2026-01-05) only. Neither beats PCSK9 /
+  atypical antipsychotics on the existing scorecard. Research only; not started.
