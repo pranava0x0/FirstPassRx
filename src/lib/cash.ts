@@ -317,8 +317,13 @@
  * the first payer where apixaban/Eliquis isn't covered at all (confirmed absent from its 47-page
  * formulary), so its preferred agent is bare "rivaroxaban" -- a string already in the gap since
  * ca-doac, adding zero new names. Apixaban/Eliquis, dabigatran/Pradaxa, and warfarin/Jantoven
- * across the other 7 MD payers all matched the existing broad DOAC cash-link rules. */
-export const KNOWN_UNPRICED_GAP = 48
+ * across the other 7 MD payers all matched the existing broad DOAC cash-link rules.
+ * Raised 48 → 54 on 2026-09-24 when `va-doac` shipped (6th DOAC scale-out state, VA, 8 payers).
+ * All 6 new unmatched names are more rivaroxaban/Xarelto name-string variants (starter pack, oral
+ * suspension, 2.5mg generic, standard-strength tablets across the Cardinal Care MCOs' PDLs) -- the
+ * same already-documented dose-mismatch structural gap. Apixaban/Eliquis, dabigatran/Pradaxa and
+ * warfarin/Jantoven matched the existing broad DOAC cash-link rules with zero new gap. */
+export const KNOWN_UNPRICED_GAP = 54
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
