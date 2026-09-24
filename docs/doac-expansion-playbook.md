@@ -16,12 +16,11 @@ re-discovering it. `--reuse-payers-from` below names the anchor guide `build-gat
 | --- | --- | --- | --- |
 | MA | `ma-ace` | 5 (masshealth, bcbsma, tufts, harvardpilgrim, mgb) | `ma-doac` |
 | MD | `md-ace` | 8 (mdmedicaid, carefirst, kpmidatlantic, priority-partners, uhc-md, cigna, aetna, medicare-partd) | `md-doac` |
-| VA | `va-ace` | 8 (va-medicaid-ffs, anthem-healthkeepers-plus, sentara-community, uhc-community, aetna-better-health, anthem-commercial, sentara-commercial, wellcare-value-script) | `va-doac` |
 | IL | `il-ace` | 8 (il-medicaid, aetna-better-health-il, bcbs-community-il, countycare, meridian, molina-il, bcbs-illinois-commercial, wellcare-value-script) | `il-doac` |
 
 `al-doac`, `ny-doac`, `pa-doac`, `ca-doac` (shipped 2026-09-10), `ma-doac` (shipped 2026-09-17),
-and `md-doac` (shipped 2026-09-21) are done. Order is not load-bearing — the user asked for NY
-first, then "the rest"; no ordering was specified among MD/VA/IL. Next up: VA (8-payer roster).
+and `md-doac` (shipped 2026-09-21), and `va-doac` (shipped 2026-09-24) are done. Order is not load-bearing — the user asked for NY
+first, then "the rest"; no ordering was specified among the last few. Next up: IL (8-payer roster), the last DOAC state.
 
 ## Per-state recipe
 

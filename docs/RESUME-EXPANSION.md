@@ -1752,3 +1752,43 @@ decisions to reuse verbatim when authoring each guide's `classes` array (mirrors
   pace. Next session: continue with VA (8-payer roster), then IL. The 43-state prioritization axis
   and PCSK9/antipsychotics/autoimmune-biologics topic choice remain unrelated, still-unanswered
   open questions — this session's DOAC work doesn't resolve them.
+- 2026-09-24 (scheduled run) — **Continued the DOAC state-by-state scale-out per the standing
+  "state by state, to save tokens" instruction — in-scope approved work, not a new gate.** Started
+  by fast-forwarding `main` 6 commits (the 2026-09-21 `md-doac` session had shipped and updated the
+  playbook but the branch hadn't reached the local checkout). Working tree clean before starting.
+  **Shipped `va-doac` — Virginia's DOAC guide, 6th state past the `al-doac` proof guide.** Reused
+  VA's existing 8-payer roster (va-medicaid-ffs, anthem-healthkeepers-plus, sentara-community,
+  uhc-community, aetna-better-health, anthem-commercial, sentara-commercial, wellcare-value-script)
+  and the `doac-anticoagulant` class from `al-doac`. Gathered via individual `Agent` calls chunked
+  to the 2-concurrent cap (4 chunks of 2, zero agent failures, ~960K subagent tokens total). 6 of 8
+  records `verified`; `anthem-commercial` (apixaban-as-preferred is inferred from the list having no
+  preference marker — Eliquis is Tier 3 there, tied with brand Xarelto, above Tier 1-2 generic
+  rivaroxaban and warfarin) is `partial`; `anthem-healthkeepers-plus` is `verified` but carries a
+  caveat about a conflict inside its own materials.
+  **Real, non-copy-paste findings:** (1) VA's statewide PDL treats DOACs differently from the
+  MCO documents that supposedly follow it — the FFS PDL (eff. 2026-08-01) lists neither Savaysa nor
+  generic dabigatran and puts brand Pradaxa on PA, while the Aetna/UHC/Sentara MCO documents all list
+  generic dabigatran as covered with no PA (only brand Pradaxa restricted). Anthem HealthKeepers
+  Plus's own search tool marks generic dabigatran "Non-Preferred" (no PA icon) while the PDL page
+  bundled with the same formulary lists it as preferred; recorded as an alternative with the
+  conflict stated in the note. The two statewide-PDL versions in play (7/1/26 v3 vs 8/1/26) may
+  simply differ — not resolvable from documents alone. (2) Generic rivaroxaban is on PA at every
+  Cardinal Care MCO while brand Xarelto is preferred (same inverse-of-usual pattern as PA Medicaid).
+  (3) Aetna's NDC export flags `prior_authorization: false` on every row, including the
+  "State PDL Non-Preferred" ones; the `pa` outcomes are inferred from the binary statewide-PDL
+  structure and the verificationNote says so. (4) The Wellcare Value Script PDF at the URL cited by
+  earlier guides is now the 09/01/2026 revision (footer), while older Wellcare guides cite the same
+  URL as "updated 07/01/2026" — the archived-source sha256 matches the manifest, so the earlier
+  guides' effective-date text may be stale; not chased this run (logged to `backlog.md`).
+  Reworded zero `paRequired` reasons. `KNOWN_UNPRICED_GAP` bumped 48→54 (6 new
+  rivaroxaban/Xarelto name-string variants, the same documented dose-mismatch gap; apixaban/
+  dabigatran/warfarin matched existing rules with zero new gap). `npm test` (636/636), `typecheck`,
+  `trace` (0 broken sources), `validate-coverage` (64/408, 9/51 jurisdictions — VA already counted)
+  all green; `npm run archive-sources` archived all 8 new VA DOAC sources (Aetna's 27 MB export
+  dedups to the same blob as its earlier archives). Could not verify live in a dev-server browser
+  (scheduled run); relied on the automated suite. Committed in 3 chunks (guide merge + test-id list
+  + regenerated SEO files, cash-gap bump, source archive). Updated the DOAC playbook (VA row
+  removed, IL marked next).
+  **Stopping here after 1 state (VA)** per the one-state-per-session pacing. Next session: `il-doac`
+  (8-payer roster from `il-ace`), the last DOAC state; then the standing open questions (43-state
+  prioritization, PCSK9 vs. antipsychotics vs. autoimmune biologics) remain user decisions.

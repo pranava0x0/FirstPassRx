@@ -1089,3 +1089,11 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   Not started; `ny-doac`'s own 3 instances were fixed as part of that PR's review, so this item is
   scoped to the other ~165 pre-existing instances plus (if going with option b) the component
   logic itself.
+
+- **[Low] Wellcare Value Script: stale "updated 07/01/2026" effective-date text in older guides
+  (found 2026-09-24 gathering `va-doac`).** The PDF at `fm.formularynavigator.com/FBO/67/2_6T_Enhanced_PDP_Comp_Form_26195.pdf`
+  now carries a 09/01/2026 footer revision, but earlier Wellcare records cited the same URL with
+  "updated 07/01/2026" (sha256 in `sources/manifest.json` matched, so the file changed under a
+  stable URL or the earlier note misread the footer). A date-only fix: re-read the footer against
+  the archived bytes and correct `effectiveDate`/`verificationNote` in the affected guides — drug-
+  level data likely unchanged but worth one spot-check of a preferred-agent row per guide.
