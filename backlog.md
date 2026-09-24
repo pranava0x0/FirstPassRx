@@ -1097,3 +1097,10 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   stable URL or the earlier note misread the footer). A date-only fix: re-read the footer against
   the archived bytes and correct `effectiveDate`/`verificationNote` in the affected guides — drug-
   level data likely unchanged but worth one spot-check of a preferred-agent row per guide.
+
+- **[Low] Cash prices for enoxaparin / fondaparinux (found 2026-09-24 gathering `il-doac`).**
+  Two injectable-anticoagulant name strings entered the covered set as `alternatives[]` on
+  `il-doac` (CountyCare, BCBS Illinois commercial) and are unpriced (`KNOWN_UNPRICED_GAP` 54→60,
+  the other 4 new names are rivaroxaban/Xarelto variants). Needs a browser session: GoodRx
+  enoxaparin (pin syringe strength + quantity params, not the bare slug) and fondaparinux; check
+  Cost Plus's catalog too. Small win (2 names) — do alongside the next cash-price sweep.

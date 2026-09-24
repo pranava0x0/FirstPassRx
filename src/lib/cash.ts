@@ -322,8 +322,13 @@
  * All 6 new unmatched names are more rivaroxaban/Xarelto name-string variants (starter pack, oral
  * suspension, 2.5mg generic, standard-strength tablets across the Cardinal Care MCOs' PDLs) -- the
  * same already-documented dose-mismatch structural gap. Apixaban/Eliquis, dabigatran/Pradaxa and
- * warfarin/Jantoven matched the existing broad DOAC cash-link rules with zero new gap. */
-export const KNOWN_UNPRICED_GAP = 54
+ * warfarin/Jantoven matched the existing broad DOAC cash-link rules with zero new gap.
+ * Raised 54 → 60 on 2026-09-24 when `il-doac` shipped (7th and last DOAC scale-out state, IL, 8
+ * payers). 4 of the 6 new names are more rivaroxaban/Xarelto variants (same dose-mismatch gap);
+ * the other 2 are new: CountyCare and BCBSIL list injectable enoxaparin/fondaparinux as
+ * alternatives (VTE/bridging, not oral DOACs). No price captured -- headless run, no browser;
+ * logged to backlog.md. Apixaban/Eliquis, dabigatran/Pradaxa and warfarin matched existing rules. */
+export const KNOWN_UNPRICED_GAP = 60
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
