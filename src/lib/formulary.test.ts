@@ -72,6 +72,7 @@ describe('guides + global meta', () => {
       'ca-doac',
       'ma-doac',
       'md-doac',
+      'va-doac',
     ])
   })
 
