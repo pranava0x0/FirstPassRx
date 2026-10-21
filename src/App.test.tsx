@@ -306,4 +306,12 @@ describe('FirstPassRx app', () => {
     expect(card.querySelector('.pa-builder__letter')?.textContent).toMatch(/DIAGNOSIS: J45\.40/)
     expect(window.localStorage.getItem('fprx:last-pick') ?? '').not.toMatch(/J45/)
   })
+
+  // Codex review on PR 19: the aka (e.g. "statewide PDL binds every Medicaid MCO") was only a
+  // tooltip after the picker compaction, invisible on touch devices.
+  it('shows the plan alias / coverage scope as visible text', async () => {
+    window.history.replaceState({}, '', '/?guide=pa-ssris&plan=pa-medicaid')
+    render(<App />)
+    expect(await screen.findByText(/every Pennsylvania Medicaid managed care plan statewide/)).toBeVisible()
+  })
 })

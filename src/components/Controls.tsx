@@ -139,12 +139,15 @@ export function Controls({
                       href={payer.formularyUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      title={`Official formulary${payer.aka ? ` (${payer.aka})` : ''}`}
+                      title="Official plan formulary"
                     >
                       source plan &#8599;
                     </a>
                   </>
                 ) : null}
+                {/* Who the plan also covers (e.g. every Medicaid MCO under a statewide PDL) must
+                    stay visible: a tooltip never shows on a phone. */}
+                {payer.aka ? <span className="plan-note__aka">{payer.aka}</span> : null}
               </p>
             )}
           </section>
