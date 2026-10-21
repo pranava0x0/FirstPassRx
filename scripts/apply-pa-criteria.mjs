@@ -19,6 +19,14 @@ for (const file of files) {
   const f = JSON.parse(readFileSync(file, 'utf8'))
   let applied = 0
   const unmatched = []
+  // One criteria set per drug: a drug listed in two sets would be silently overwritten.
+  const seen = new Set()
+  for (const set of f.sets ?? [])
+    for (const drug of set.drugs ?? []) {
+      const key = `${set.guideId}|${set.classId}|${drug}`
+      if (seen.has(key)) throw new Error(`${file}: "${drug}" is in more than one set for ${set.guideId}/${set.classId}`)
+      seen.add(key)
+    }
   for (const set of f.sets ?? []) {
     if (set.criteriaMode !== 'any' && set.criteriaMode !== 'all') throw new Error(`${file}: bad criteriaMode`)
     const criteria = (set.criteria ?? []).map((c) => String(c).trim()).filter(Boolean)
