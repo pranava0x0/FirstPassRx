@@ -16,19 +16,24 @@
 // before it's ever written to disk, so this can't recur silently regardless of whether whoever's
 // committing remembers to grep first.
 //
-// Usage:  node scripts/archive-sources.mjs [--timeout=30000]   (npm run archive-sources)
+// Usage:  node scripts/archive-sources.mjs [--timeout=30000] [--only=<id-or-url-substring>]
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync } from 'node:fs'
+import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync, mkdtempSync, rmSync } from 'node:fs'
+import { execFileSync } from 'node:child_process'
+import { tmpdir } from 'node:os'
 import { createHash } from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { stateSourceId } from './source-id.mjs'
+import { hostPolicy } from './source-hosts.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const SRC_DIR = join(ROOT, 'sources')
 const MANIFEST = join(SRC_DIR, 'manifest.json')
 const args = process.argv.slice(2)
 const TIMEOUT = Number((args.find((a) => a.startsWith('--timeout=')) || '').split('=')[1]) || 30000
+// --only=<substring>: archive just the targets whose id or URL contains it (targeted re-runs).
+const ONLY = (args.find((a) => a.startsWith('--only=')) || '').split('=')[1] || ''
 const UA =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) ' +
   'Chrome/124.0 Safari/537.36 FirstPassRx-source-archiver/1.0'
@@ -120,7 +125,40 @@ for (const id of Object.keys(manifest.entries)) {
 }
 if (pruned) console.log(`  (pruned ${pruned} manifest entr${pruned === 1 ? 'y' : 'ies'} no longer in the current target set)`)
 
+// Some government hosts fail Node's fetch but serve curl fine: medicaid.alabama.gov omits its
+// intermediate certificate (Node: UNABLE_TO_VERIFY_LEAF_SIGNATURE, even with --use-system-ca;
+// macOS curl completes the chain) and its IPv6 route hangs. For browser-only hosts, retry a
+// transport failure once with `curl -4`. Certificate verification stays ON.
+function curlBytes(url) {
+  const dir = mkdtempSync(join(tmpdir(), 'fprx-archive-'))
+  const out = join(dir, 'body')
+  try {
+    const meta = execFileSync(
+      'curl',
+      ['-4', '-sSL', '-A', UA, '--max-time', String(Math.round(TIMEOUT / 1000)), '-o', out, '-w', '%{http_code}\t%{content_type}\t%{url_effective}', url],
+      { encoding: 'utf8' },
+    )
+    const [code, type, finalUrl] = meta.split('\t')
+    const status = Number(code)
+    return { status, ok: status >= 200 && status < 300, type: type || '', finalUrl: finalUrl || url, buf: readFileSync(out), method: 'curl -4 (browser UA)' }
+  } catch (e) {
+    return { status: 0, ok: false, type: '', finalUrl: url, buf: null, error: `curl: ${e.message.split('\n')[0]}` }
+  } finally {
+    rmSync(dir, { recursive: true, force: true })
+  }
+}
+
 async function fetchBytes(url) {
+  const r = await fetchBytesNode(url)
+  // Transport failure on a known browser-only host, or a bot/auth block anywhere: one curl retry.
+  if ((r.error && hostPolicy(url).browserOnly) || r.status === 401 || r.status === 403) {
+    const c = curlBytes(url)
+    if (c.ok) return c
+  }
+  return r
+}
+
+async function fetchBytesNode(url) {
   const ctrl = new AbortController()
   const timer = setTimeout(() => ctrl.abort(), TIMEOUT)
   try {
@@ -148,7 +186,7 @@ async function mapLimit(items, limit, fn) {
   return out
 }
 
-const items = [...targets.values()]
+const items = [...targets.values()].filter((t) => !ONLY || t.id.includes(ONLY) || t.url.includes(ONLY))
 let saved = 0
 let drifted = 0
 let failed = 0
@@ -190,7 +228,7 @@ await mapLimit(items, 5, async (t) => {
     label: t.label,
     url: t.url,
     final_url: r.finalUrl !== t.url ? r.finalUrl : undefined,
-    method: 'GET (browser UA)',
+    method: r.method ?? 'GET (browser UA)',
     http_status: r.status,
     content_type: r.type.split(';')[0],
     bytes: cleanBuf.length,
