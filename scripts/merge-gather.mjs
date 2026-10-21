@@ -32,10 +32,11 @@ const taxonomy = JSON.parse(readFileSync(join(DIR, 'taxonomy.json'), 'utf8'))
 const source = data.guides.find((g) => g.id === PAYERS_FROM)
 if (!source) throw new Error(`no guide ${PAYERS_FROM}`)
 if (source.stateCode !== STATE) throw new Error(`${PAYERS_FROM} is ${source.stateCode}, not ${STATE}`)
-source.payers = source.payers.filter((p) => !EXCLUDE.has(p.id))
+// A filtered COPY: never mutate the source guide, which is written back with the file.
+const sourcePayers = source.payers.filter((p) => !EXCLUDE.has(p.id))
 
 const checkpoints = new Map()
-for (const p of source.payers) {
+for (const p of sourcePayers) {
   const file = join(DIR, `${p.id}.json`)
   if (existsSync(file)) checkpoints.set(p.id, JSON.parse(readFileSync(file, 'utf8')))
 }
@@ -51,7 +52,7 @@ for (const [topicId, topic] of Object.entries(taxonomy.topics)) {
   }
   const classIds = topic.classes.map((c) => c.id)
   const missing = []
-  for (const p of source.payers) {
+  for (const p of sourcePayers) {
     const cp = checkpoints.get(p.id)
     for (const cid of classIds) {
       if (!cp?.records?.some((r) => r.classId === cid)) missing.push(`${p.id}/${cid}`)
@@ -64,7 +65,7 @@ for (const [topicId, topic] of Object.entries(taxonomy.topics)) {
 
   const records = []
   const refs = new Map()
-  for (const p of source.payers) {
+  for (const p of sourcePayers) {
     const cp = checkpoints.get(p.id)
     for (const r of cp.references) refs.set(r.id, r)
     for (const cid of classIds) records.push({ ...cp.records.find((r) => r.classId === cid), payerId: p.id })
@@ -81,7 +82,7 @@ for (const [topicId, topic] of Object.entries(taxonomy.topics)) {
     sourceIds: [records.find((r) => r.classId === c.id).coverageSourceIds[0]],
   }))
   // Payer sourceIds must resolve inside this guide: point each at its own checkpoint reference.
-  const payers = source.payers.map((p) => {
+  const payers = sourcePayers.map((p) => {
     const { paSubmission, ...rest } = p // channels were verified per guide; don't copy unchecked
     void paSubmission
     // Link the payer to the document this gather actually read, not the source guide's (a
@@ -116,7 +117,7 @@ for (const [topicId, topic] of Object.entries(taxonomy.topics)) {
       { term: 'Step therapy', short: 'Try a preferred drug first', definition: 'Must fail a preferred drug first before the plan covers this one.' },
     ],
   })
-  report.push(`merge ${guideId}: ${source.payers.length} payers × ${classIds.length} classes, ${verified}/${records.length} verified`)
+  report.push(`merge ${guideId}: ${sourcePayers.length} payers × ${classIds.length} classes, ${verified}/${records.length} verified`)
 }
 
 console.log(report.join('\n'))
