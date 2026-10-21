@@ -130,6 +130,9 @@ function validate(data: Formulary): void {
           if (p.criteria) {
             if (!p.criteria.length || p.criteria.some((c) => !c?.trim()))
               problems.push(`${G} ${at}: paRequired[${j}] has empty criteria`)
+            // The builder's "any one path" vs "all required" logic hinges on this; never default it.
+            if (p.criteriaMode !== 'any' && p.criteriaMode !== 'all')
+              problems.push(`${G} ${at}: paRequired[${j}] criteria need criteriaMode "any" or "all"`)
             if (!p.criteriaSourceIds?.length)
               problems.push(`${G} ${at}: paRequired[${j}] criteria have no criteriaSourceIds`)
             checkSources(p.criteriaSourceIds || [], `${at} paRequired[${j}] criteria`)

@@ -379,4 +379,14 @@ describe('PA criteria and submission validation', () => {
     r.paRequired[0] = { ...r.paRequired[0]!, criteria: ['Something'], criteriaSourceIds: [] }
     expect(() => buildGuideView(g)).toThrow(/criteria have no criteriaSourceIds/)
   })
+
+  // Codex review, PR 21: a missing/misspelled mode silently became "any".
+  it('rejects plan criteria without an exact criteriaMode', () => {
+    for (const mode of [undefined, 'ANY', 'some']) {
+      const g = base()
+      const r = g.records.find((x) => x.paRequired.length > 0)!
+      r.paRequired[0] = { ...r.paRequired[0]!, criteria: ['Something'], criteriaMode: mode as 'any', criteriaSourceIds: [g.references[0]!.id] }
+      expect(() => buildGuideView(g)).toThrow(/criteriaMode "any" or "all"/)
+    }
+  })
 })

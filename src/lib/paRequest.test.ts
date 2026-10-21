@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import type { ClassMeta, FormularyRecord, PaItem, PayerMeta } from '../types/formulary'
 import { buildPaRequest, emptyPaRequest, paChecklist, preferredAlternatives, responseClock, submissionLine } from './paRequest'
-import { ICD10_BY_CLASS, icd10For } from './icd10'
+import { ICD10_BY_CLASS, ICD10_RELEASE, icd10For } from './icd10'
 import data from '../data/formulary.json'
 
 const record: FormularyRecord = {
@@ -186,5 +186,9 @@ describe('ICD-10 suggestions', () => {
       for (const o of opts) expect(o.code).toMatch(/^[A-TV-Z]\d{2}(\.[0-9A-Z]{1,4})?$/)
     // N18.3 is a non-billable category since FY2021 (Sonnet review); stage-specific codes only.
     expect(Object.values(ICD10_BY_CLASS).flat().some((o) => o.code === 'N18.3')).toBe(false)
+  })
+  it('records which official release the list was checked against', () => {
+    expect(ICD10_RELEASE.version).toMatch(/FY20\d\d/)
+    expect(ICD10_RELEASE.source).toMatch(/^https:\/\/www\.cms\.gov\//)
   })
 })
