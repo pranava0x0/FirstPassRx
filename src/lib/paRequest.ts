@@ -207,12 +207,16 @@ export function buildPaRequest(
   payer: PayerMeta,
   drugClass: ClassMeta,
   input: PaRequestInput,
+  /** Source URLs for the routing and criteria lines, so the copied letter keeps provenance. */
+  sourceUrls: { submission?: string[]; criteria?: string[] } = {},
 ): string {
   const lines: string[] = [
     input.expedited ? 'EXPEDITED REVIEW REQUESTED' : 'Standard review',
     `To: ${payer.name}${payer.pbm ? ` (pharmacy benefit: ${payer.pbm})` : ''} — Pharmacy Prior Authorization`,
     `Plan: ${payer.productName} (${payer.formularyId})`,
-    ...(payer.paSubmission ? [`Send to: ${submissionLine(payer)}`] : []),
+    ...(payer.paSubmission
+      ? [`Send to: ${submissionLine(payer)}${sourceUrls.submission?.length ? ` (source: ${sourceUrls.submission.join(', ')})` : ''}`]
+      : []),
     'Date: [Date]',
     '',
     'Patient: [Patient name] · DOB: [DOB] · Member ID: [Member ID]',
@@ -239,6 +243,7 @@ export function buildPaRequest(
       const evidence = c.status === 'met' ? ` — ${fill(c.evidence, '[chart evidence: dates, values]')}` : ''
       lines.push(`${i + 1}. ${c.text}: ${status}${evidence}`)
     })
+    if (sourceUrls.criteria?.length) lines.push(`Criteria source: ${sourceUrls.criteria.join(', ')}`)
     lines.push('')
   }
 

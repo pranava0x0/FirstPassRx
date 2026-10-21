@@ -326,6 +326,11 @@ describe('FirstPassRx app', () => {
     expect(card.querySelector('.pa-criteria')).toHaveTextContent(/BOTH Arnuity Ellipta and QVAR RediHaler/)
     expect(card.querySelector('.pa-builder__send-line')).toHaveTextContent('fax 844-403-1029')
     expect(card.querySelector('datalist option[value^="J45.40"]')).not.toBeNull()
+    // Provenance (Codex review, PR 21): routing numbers, criteria, and ICD list each link a source.
+    expect(card.querySelector('.pa-builder__send .pa-builder__source a')?.getAttribute('href')).toMatch(/massgeneralbrighamhealthplan\.org/)
+    expect(card.querySelector('.pa-criteria .pa-builder__source a')).not.toBeNull()
+    expect(within(card).getByRole('link', { name: /CMS code file/ })).toHaveAttribute('href', expect.stringMatching(/cms\.gov/))
+    expect(card.querySelector('.pa-builder__letter')?.textContent).toMatch(/Send to: fax 844-403-1029.*\(source: https:/)
     await user.selectOptions(within(card).getByLabelText(/Criterion 2: met or not/), 'met')
     await user.type(within(card).getByLabelText(/Chart evidence for criterion 2/), 'QVAR 3/2025 and Arnuity 1/2026, poor control')
     expect(within(card).getByText(/1 of 5/)).toBeInTheDocument()

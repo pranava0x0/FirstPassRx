@@ -12,7 +12,7 @@ import {
   type PaRequestInput,
   type StepOutcome,
 } from '../lib/paRequest'
-import { icd10For } from '../lib/icd10'
+import { ICD10_RELEASE, icd10For } from '../lib/icd10'
 import { downloadLetterPdf } from '../lib/letterPdf'
 import { useCopyToClipboard } from '../lib/clipboard'
 
@@ -31,7 +31,9 @@ export function PaRequest({
   payer: PayerMeta
   drugClass: ClassMeta
 }) {
-  const { stateCode } = useGuide()
+  const { stateCode, resolveSources } = useGuide()
+  const submissionSources = resolveSources(payer.paSubmission?.sourceIds ?? [])
+  const criteriaSources = resolveSources(item.criteriaSourceIds ?? [])
   const [input, setInput] = useState<PaRequestInput>(() => emptyPaRequest(record, item))
   const [pdfError, setPdfError] = useState(false)
   const { copied, copy } = useCopyToClipboard()
@@ -40,8 +42,12 @@ export function PaRequest({
   const listId = `icd10-${record.payerId}-${record.classId}`.replace(/\W+/g, '-')
   const doneCount = checklist.filter((c) => c.done).length
   const letter = useMemo(
-    () => buildPaRequest(record, item, payer, drugClass, input),
-    [record, item, payer, drugClass, input],
+    () =>
+      buildPaRequest(record, item, payer, drugClass, input, {
+        submission: submissionSources.map((x) => x.url),
+        criteria: criteriaSources.map((x) => x.url),
+      }),
+    [record, item, payer, drugClass, input, submissionSources, criteriaSources],
   )
   const set = (patch: Partial<PaRequestInput>) => setInput((cur) => ({ ...cur, ...patch }))
   const setCriterion = (i: number, patch: { status?: CriterionStatus; evidence?: string }) =>
@@ -71,6 +77,7 @@ export function PaRequest({
               ))}
           </p>
           {payer.paSubmission.note ? <p className="pa-builder__send-note">{payer.paSubmission.note}</p> : null}
+          <SourceLine sources={submissionSources} />
         </div>
       ) : null}
       <p className="pa-builder__clock">{responseClock(payer, stateCode)}</p>
@@ -99,6 +106,7 @@ export function PaRequest({
               ? 'This plan approves when ALL of these are met'
               : 'This plan approves when ANY ONE of these is met'}
           </legend>
+          <SourceLine sources={criteriaSources} />
           {input.criteria.map((c, i) => (
             <div key={c.text} className="pa-step">
               <p className="pa-step__drug pa-criteria__text">{c.text}</p>
@@ -143,6 +151,14 @@ export function PaRequest({
             </datalist>
           ) : null}
         </label>
+        {icdOptions.length ? (
+          <p className="pa-field__hint pa-field--wide">
+            Suggestions: {ICD10_RELEASE.version} ·{' '}
+            <a href={ICD10_RELEASE.source} target="_blank" rel="noopener noreferrer">
+              CMS code file &#8599;
+            </a>
+          </p>
+        ) : null}
         <label className="pa-field pa-field--wide">
           <span>Strength, form, directions</span>
           <input
@@ -245,5 +261,23 @@ export function PaRequest({
       ) : null}
       <p className="pa-builder__privacy">Nothing you type is saved or sent. It stays on this page.</p>
     </div>
+  )
+}
+
+/** Compact "Source: <label> ↗" line so routing numbers and criteria trace to the plan's document. */
+function SourceLine({ sources }: { sources: { id: string; url: string; label: string }[] }) {
+  if (sources.length === 0) return null
+  return (
+    <p className="pa-builder__source">
+      Source:{' '}
+      {sources.map((src, i) => (
+        <span key={src.id}>
+          {i > 0 ? ' · ' : null}
+          <a href={src.url} target="_blank" rel="noopener noreferrer">
+            {src.label} &#8599;
+          </a>
+        </span>
+      ))}
+    </p>
   )
 }

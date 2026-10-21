@@ -169,6 +169,15 @@ describe('submission channel', () => {
     expect(submissionLine(p)).toBe('fax 877-208-7428 · portal example.org · phone 800-745-7318')
     expect(buildPaRequest(record, item, p, drugClass, emptyPaRequest(record, item))).toMatch(/^Send to: fax 877-208-7428/m)
   })
+  it('keeps the source URLs for routing and criteria in the letter', () => {
+    const p = { ...payer('medicaid-ffs'), paSubmission: { fax: '877-208-7428', sourceIds: ['x'] } }
+    const letter = buildPaRequest(record, criteriaItem, p, drugClass, emptyPaRequest(record, criteriaItem), {
+      submission: ['https://example.org/form.pdf'],
+      criteria: ['https://example.org/policy.pdf'],
+    })
+    expect(letter).toMatch(/Send to: fax 877-208-7428 \(source: https:\/\/example\.org\/form\.pdf\)/)
+    expect(letter).toMatch(/Criteria source: https:\/\/example\.org\/policy\.pdf/)
+  })
   it('omits the line when the plan has no published channel', () => {
     expect(buildPaRequest(record, item, payer('medicaid-ffs'), drugClass, emptyPaRequest(record, item))).not.toMatch(/Send to:/)
   })
