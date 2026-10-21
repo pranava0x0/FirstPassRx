@@ -56,10 +56,10 @@ const LIPIDS: Icd10Option[] = [
   { code: 'I25.10', label: 'Atherosclerotic heart disease of native coronary artery without angina pectoris' },
 ]
 const OBESITY: Icd10Option[] = [
-  { code: 'E66.9', label: 'Obesity, unspecified' },
-  { code: 'E66.01', label: 'Morbid (severe) obesity due to excess calories' },
-  { code: 'Z68.35', label: 'Body mass index [BMI] 35.0-35.9, adult' },
-  { code: 'Z68.41', label: 'Body mass index [BMI] 40.0-44.9, adult' },
+  // BMI codes (Z68.*) may only accompany a reportable diagnosis such as obesity (ICD-10-CM
+  // guidelines), so they are named in the label as the second code, never offered alone.
+  { code: 'E66.9', label: 'Obesity, unspecified (add the BMI code, Z68.30-Z68.45, as a second diagnosis)' },
+  { code: 'E66.01', label: 'Morbid (severe) obesity due to excess calories (add the BMI code, e.g. Z68.41)' },
 ]
 const MIGRAINE: Icd10Option[] = [
   { code: 'G43.909', label: 'Migraine, unspecified, not intractable, without status migrainosus' },

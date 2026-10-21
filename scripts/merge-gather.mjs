@@ -78,7 +78,11 @@ for (const [topicId, topic] of Object.entries(taxonomy.topics)) {
     ...r.sourceIds, ...r.coverageSourceIds, ...r.restrictionSourceIds,
     ...(r.alternatives ?? []).flatMap((a) => a.sourceIds),
     ...r.paRequired.flatMap((x) => [...x.sourceIds, ...(x.criteriaSourceIds ?? [])]),
+    ...(r.preferredCriteriaSourceIds ?? []),
   ]))
+  // Fail before anything is written if a record cites a reference no checkpoint carries.
+  const missing = [...usedRefIds].filter((id) => !refs.has(id))
+  if (missing.length) throw new Error(`${guideId}: unresolved sourceIds ${missing.join(', ')}`)
   const references = [...refs.values()].filter((r) => usedRefIds.has(r.id))
   // Class metadata cites the first payer's reference that the class's own records use.
   const classes = topic.classes.map((c) => ({

@@ -229,6 +229,12 @@ describe('preferredNeedsPa', () => {
     ['QL (quantity limit)', false],
     [undefined, false],
   ])('%s -> %s', (note, want) => expect(preferredNeedsPa(r(note))).toBe(want))
+  it('follows an explicit preferredPaRequired over the restriction text', () => {
+    const brandOnly = 'The brand-name product carries "#" (brand requires PA); the generic tablet is covered without PA.'
+    expect(preferredNeedsPa(r(brandOnly))).toBe(true)
+    expect(preferredNeedsPa(r(brandOnly, { preferredPaRequired: false }))).toBe(false)
+    expect(preferredNeedsPa(r('QL only', { preferredPaRequired: true }))).toBe(true)
+  })
   it('is false for a no-covered-option record', () => {
     expect(preferredNeedsPa(r('PA required', { noCoveredAgent: true }))).toBe(false)
   })

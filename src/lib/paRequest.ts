@@ -26,6 +26,7 @@ function affirmativeRestriction(note: string): string {
 
 export function preferredNeedsPa(record: FormularyRecord): boolean {
   if (record.noCoveredAgent) return false
+  if (record.preferredPaRequired !== undefined) return record.preferredPaRequired
   if (record.preferredCriteria?.length) return true
   // "Clinical criteria apply" (NC, DC, NY Medicaid) is a plan review of the pick, same as a PA.
   return /\b(PA|prior auth\w*|step therapy|step|authorization|TAR|exception|clinical criteria)\b/i.test(
