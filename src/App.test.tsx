@@ -20,17 +20,28 @@ function agentHeading() {
  * clicking it, the same way a real user's click would simply land after the button re-enables.
  */
 async function switchGuide(user: ReturnType<typeof userEvent.setup>, stateName: RegExp, topicName: RegExp) {
-  await user.click(screen.getByRole('tab', { name: stateName }))
-  await waitFor(() => expect(screen.getByRole('tab', { name: topicName })).toBeEnabled())
-  await user.click(screen.getByRole('tab', { name: topicName }))
+  const stateSelect = screen.getByLabelText(/^State$/) as HTMLSelectElement
+  const stateOpt = [...stateSelect.options].find((o) => stateName.test(o.textContent ?? ''))!
+  await user.selectOptions(stateSelect, stateOpt.value)
+  await waitFor(() => expect(screen.getByLabelText(/^Condition$/)).toBeEnabled())
+  const topicSelect = screen.getByLabelText(/^Condition$/) as HTMLSelectElement
+  const topicOpt = [...topicSelect.options].find((o) => topicName.test(o.textContent ?? ''))!
+  await user.selectOptions(topicSelect, topicOpt.value)
   await waitFor(() => {
-    expect(screen.getByRole('tab', { name: topicName })).toHaveAttribute('aria-selected', 'true')
+    expect(topicSelect.value).toBe(topicOpt.value)
     expect(screen.queryByText(/^Loading$/)).not.toBeInTheDocument()
   })
 }
 
+/** Selected option text of a labelled select. */
+function selectedText(label: RegExp) {
+  const el = screen.getByLabelText(label) as HTMLSelectElement
+  return el.options[el.selectedIndex]?.textContent ?? ''
+}
+
 describe('FirstPassRx app', () => {
   beforeEach(() => {
+    window.localStorage.clear()
     window.history.replaceState({}, '', '/')
   })
   it('renders the masthead and the persistent reference-only disclaimer', () => {
@@ -73,7 +84,8 @@ describe('FirstPassRx app', () => {
   it('lists reject drugs with reasons and disables the biologics tab', async () => {
     const user = userEvent.setup()
     render(<App />)
-    expect(screen.getByText(/Levalbuterol \(Xopenex HFA\)/)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 5, name: /Levalbuterol \(Xopenex HFA\)/ })).toBeInTheDocument()
+    expect(document.querySelector('.pa-summary')).toHaveTextContent(/Needs plan approval:.*Levalbuterol/)
     expect(screen.getAllByText(/PA Required/i).length).toBeGreaterThan(0)
     const biologics = screen.getByRole('tab', { name: /biologics/i })
     expect(biologics).toHaveAttribute('aria-disabled', 'true')
@@ -87,7 +99,7 @@ describe('FirstPassRx app', () => {
     Object.defineProperty(navigator, 'clipboard', { value: { writeText }, configurable: true })
     render(<App />)
 
-    const rejectCard = screen.getByText(/Levalbuterol \(Xopenex HFA\)/).closest('.rx-option-card')
+    const rejectCard = screen.getByRole('heading', { level: 5, name: /Levalbuterol \(Xopenex HFA\)/ }).closest('.rx-option-card')
     expect(rejectCard).not.toBeNull()
     const within_ = within(rejectCard as HTMLElement)
     await user.click(within_.getByRole('button', { name: /draft appeal letter/i }))
@@ -175,13 +187,13 @@ describe('FirstPassRx app', () => {
     const user = userEvent.setup()
     render(<App />)
     // Default guide is MA inhalers.
-    expect(screen.getByRole('tab', { name: /Inhalers/i })).toHaveAttribute('aria-selected', 'true')
+    expect(selectedText(/^Condition$/)).toMatch(/Inhalers/i)
     expect(agentHeading()).toHaveTextContent('Ventolin HFA')
 
     await switchGuide(user, /Maryland/i, /Menopause HT/i)
 
     // Masthead, class legend, plan list, and the result all swap to the menopause guide.
-    expect(screen.getByRole('tab', { name: /Menopause HT/i })).toHaveAttribute('aria-selected', 'true')
+    expect(selectedText(/^Condition$/)).toMatch(/Menopause HT/i)
     expect(screen.getByText(/Prescription type/i, { selector: 'h2' })).toBeInTheDocument()
     expect(screen.getByRole('option', { name: /Maryland Medicaid/i })).toBeInTheDocument()
     expect(agentHeading()).toHaveTextContent(/Estradiol/i)
@@ -193,8 +205,8 @@ describe('FirstPassRx app', () => {
     window.history.replaceState({}, '', '/?guide=va-diabetes')
     render(<App />)
     expect(await screen.findByRole('option', { name: /Virginia Medicaid/i })).toBeInTheDocument()
-    expect(screen.getByRole('tab', { name: /Virginia/i })).toHaveAttribute('aria-selected', 'true')
-    expect(screen.getByRole('tab', { name: /^Diabetes$/i })).toHaveAttribute('aria-selected', 'true')
+    expect(selectedText(/^State$/)).toMatch(/Virginia/i)
+    expect(selectedText(/^Condition$/)).toMatch(/^Diabetes$/i)
   })
 
   // The "Not covered yet" empty state (App.tsx's `!activeGuideId` branch) is real defensive code,
@@ -242,5 +254,54 @@ describe('FirstPassRx app', () => {
     expect(screen.getByText(/Verified against/i)).toBeInTheDocument()
     await switchGuide(user, /Maryland/i, /Menopause HT/i)
     expect(screen.getByText(/Partially verified/i)).toBeInTheDocument()
+  })
+
+  it('switching to a state without the current condition jumps to one it has, and marks the rest "not yet"', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    const stateSelect = screen.getByLabelText(/^State$/) as HTMLSelectElement
+    await user.selectOptions(stateSelect, 'TX')
+    await waitFor(() => expect(selectedText(/^Condition$/)).toMatch(/SSRIs/))
+    expect(screen.getByRole('option', { name: /Inhalers \(not yet\)/ })).toBeDisabled()
+    expect(screen.queryByText(/Not covered yet/)).not.toBeInTheDocument()
+  })
+
+  it('keeps the plan and class in the URL and restores them from a shared link', async () => {
+    const user = userEvent.setup()
+    const { unmount } = render(<App />)
+    await user.click(screen.getByRole('tab', { name: /Daily combo controller/ }))
+    await waitFor(() => expect(window.location.search).toMatch(/class=icslaba/))
+    expect(window.location.search).toMatch(/guide=ma-inhalers/)
+    const link = window.location.search
+    unmount()
+    window.localStorage.clear()
+    window.history.replaceState({}, '', '/' + link)
+    render(<App />)
+    expect(screen.getByRole('tab', { name: /Daily combo controller/ })).toHaveAttribute('aria-selected', 'true')
+  })
+
+  it('remembers the last plan on this device when there is no link', async () => {
+    const { unmount } = render(<App />)
+    const plan = screen.getByLabelText(/select insurance plan/i) as HTMLSelectElement
+    const second = plan.options[1]!.value
+    fireEvent.change(plan, { target: { value: second } })
+    await waitFor(() => expect(window.localStorage.getItem('fprx:last-pick')).toContain(second))
+    unmount()
+    window.history.replaceState({}, '', '/')
+    render(<App />)
+    await waitFor(() => expect((screen.getByLabelText(/select insurance plan/i) as HTMLSelectElement).value).toBe(second))
+  })
+
+  it('builds a prescriber PA request with a reviewer checklist, without storing input', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    const card = document.querySelector('.rx-option-card.is-barrier') as HTMLElement
+    await user.click(within(card).getByRole('button', { name: /request pa/i }))
+    expect(within(card).getByText(/0 of 4/)).toBeInTheDocument()
+    await user.type(within(card).getByLabelText(/Diagnosis/), 'J45.40 moderate persistent asthma')
+    expect(within(card).getByText(/1 of 4/)).toBeInTheDocument()
+    expect(within(card).getByText(/42 U\.S\.C/)).toBeInTheDocument()
+    expect(card.querySelector('.pa-builder__letter')?.textContent).toMatch(/DIAGNOSIS: J45\.40/)
+    expect(window.localStorage.getItem('fprx:last-pick') ?? '').not.toMatch(/J45/)
   })
 })
