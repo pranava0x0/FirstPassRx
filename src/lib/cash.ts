@@ -479,7 +479,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   },
   {
     // Immediate-release mixed amphetamine salts; Adderall XR / Mydayis are different products.
-    matches: /^(?!.*(\bXR\b|extended|mydayis|\bER\b)).*(amphetamine.?dextroamphetamine|dextroamphetamine.?amphetamine|mixed amphetamine|adderall)/i,
+    matches: /^(?!.*(\bXR\b|extended|mydayis|\bER\b)).*(amphetamine.?dextroamphetamine|dextroamphetamine.?amphetamine|mixed amphetamine|amphetamine salt|adderall)/i,
     goodRxSlug: 'amphetamine-dextroamphetamine',
     goodRxParams: 'label_override=amphetamine-dextroamphetamine&form=tablet&dosage=10mg&quantity=60',
     goodRxPrice: { price: 32.31, quantity: '60 tablets, 10mg IR' },

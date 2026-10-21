@@ -145,7 +145,7 @@ export function PrescribeOptions({
 }
 
 /** Toggle that reveals a pre-filled, editable, copyable PA appeal letter for one blocked drug. */
-function AppealAction({
+export function AppealAction({
   record,
   item,
   payer,

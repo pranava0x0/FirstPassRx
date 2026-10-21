@@ -144,6 +144,11 @@ export interface FormularyRecord {
    * Omit when the preferred agent ships clean.
    */
   preferredRestriction?: string
+  /** The plan's own approval criteria for the preferred agent when it carries a restriction (same
+   *  rules as PaItem.criteria: answerable statements, an exact mode, and a source). */
+  preferredCriteria?: string[]
+  preferredCriteriaMode?: 'any' | 'all'
+  preferredCriteriaSourceIds?: string[]
   /**
    * True when NO drug in this class appears on the plan's list: either a documented exclusion
    * (e.g. weight-loss drugs) or a class the list doesn't manage (some Medicaid PDLs). preferredAgent

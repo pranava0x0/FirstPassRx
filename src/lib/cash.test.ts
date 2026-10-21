@@ -336,6 +336,10 @@ describe('methylphenidate prices only the captured forms', () => {
     '%s has no borrowed price',
     (name) => expect(goodRxPrice(name)).toBeNull(),
   )
+  it('mixed amphetamine salts IR phrasings share the captured price', () => {
+    expect(goodRxPrice('Amphetamine salt combination (immediate-release)')?.price).toBe(32.31)
+    expect(goodRxPrice('Adderall XR (amphetamine salt combination ER)')).toBeNull()
+  })
   it('phentermine capsules never borrow the tablet price', () => {
     expect(goodRxPrice('Phentermine HCl oral capsule')).toBeNull()
     expect(goodRxPrice('Phentermine HCl')?.price).toBe(21.52)

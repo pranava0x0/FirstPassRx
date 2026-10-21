@@ -2,7 +2,7 @@ import type { FormularyRecord, PayerMeta } from '../types/formulary'
 import { useGuide } from '../lib/formulary'
 import { goodRxUrl, costPlusUrl, goodRxPrice, costPlusPrice, pricesCapturedAt } from '../lib/cash'
 import { BoglBanner } from './BoglBanner'
-import { PrescribeOptions } from './PrescribeOptions'
+import { AppealAction, PrescribeOptions } from './PrescribeOptions'
 import { Citations } from './Citations'
 import { GlossaryTerm } from './GlossaryTerm'
 import { CashPriceBoxes } from './CashPriceBoxes'
@@ -20,7 +20,8 @@ function readableGenericName(name: string): string {
 }
 
 export function ResultCard({ record, payer, panelId, labelId }: Props) {
-  const { resolveSources, capturedAt, unitNoun } = useGuide()
+  const { resolveSources, capturedAt, unitNoun, getClass } = useGuide()
+  const drugClass = getClass(record.classId)
   const agent = record.preferredAgent
   const sources = resolveSources(record.sourceIds)
   const coverageSources = resolveSources(record.coverageSourceIds)
@@ -123,6 +124,23 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
             costPlus={costPlusPoint}
             capturedAt={pricesAsOf}
           />
+          {/* Even the first-pass pick needs plan sign-off here: offer the PA request on it too. */}
+          {record.preferredRestriction && drugClass ? (
+            <AppealAction
+              record={record}
+              payer={payer}
+              drugClass={drugClass}
+              item={{
+                drug: displayName,
+                outcome: 'pa',
+                reason: record.preferredRestriction,
+                sourceIds: record.restrictionSourceIds,
+                criteria: record.preferredCriteria,
+                criteriaMode: record.preferredCriteriaMode,
+                criteriaSourceIds: record.preferredCriteriaSourceIds,
+              }}
+            />
+          ) : null}
         </div>
         )}
 

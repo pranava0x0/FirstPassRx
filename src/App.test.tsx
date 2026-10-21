@@ -359,4 +359,13 @@ describe('FirstPassRx app', () => {
     await waitFor(() => expect(window.location.search).toBe('?guide=ma-inhalers&plan=mgb&class=ics'))
     expect((screen.getByLabelText(/select insurance plan/i) as HTMLSelectElement).value).toBe('mgb')
   })
+
+  it('offers a PA request on the recommended drug itself when it needs plan approval', async () => {
+    const user = userEvent.setup()
+    window.history.replaceState({}, '', '/?guide=ma-lipids&plan=masshealth&class=pcsk9')
+    render(<App />)
+    const hero = (await screen.findByRole('heading', { level: 3, name: 'Repatha' })).closest('.recommendation-hero') as HTMLElement
+    await user.click(within(hero).getByRole('button', { name: /request pa/i }))
+    expect(hero.querySelector('.pa-builder__letter')?.textContent).toMatch(/REQUEST: prior authorization for Repatha/)
+  })
 })
