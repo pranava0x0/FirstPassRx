@@ -14,7 +14,7 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "typecheck": "tsc -b --noEmit",
-    "pretest": "node scripts/split-formulary.mjs --check && node scripts/build-seo.mjs --check",
+    "pretest": "for f in scripts/*.mjs; do node --check \"$f\" || exit 1; done && node scripts/split-formulary.mjs --check && node scripts/build-seo.mjs --check",
     "test": "vitest run",
     "test:watch": "vitest",
     "trace": "node scripts/trace-sources.mjs",

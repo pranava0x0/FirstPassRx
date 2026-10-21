@@ -177,6 +177,18 @@ describe('guides + global meta', () => {
       'mi-lipids',
       'mi-weight',
       'mi-migraine',
+      'ga-inhalers',
+      'ga-menopause',
+      'ga-ace',
+      'ga-diabetes',
+      'ga-nsaids',
+      'ga-osteoporosis',
+      'ga-doac',
+      'ga-ssris',
+      'ga-adhd',
+      'ga-lipids',
+      'ga-weight',
+      'ga-migraine',
     ])
   })
 
