@@ -134796,6 +134796,3089 @@
           "definition": "Must fail a preferred drug first before the plan covers this one."
         }
       ]
+    },
+    {
+      "id": "tx-adhd",
+      "label": "TX · ADHD",
+      "stateCode": "TX",
+      "region": "Texas",
+      "topicId": "adhd",
+      "topic": "ADHD",
+      "classNoun": "Prescription type",
+      "unitNoun": "medication",
+      "tagline": "",
+      "dataStatus": "mixed",
+      "lastUpdated": "2026-10-21",
+      "capturedAt": "2026-10-21",
+      "payers": [
+        {
+          "id": "tx-medicaid",
+          "name": "Texas Medicaid Vendor Drug Program (Fee-for-Service, statewide PDL binding on all MCOs)",
+          "shortName": "TX Medicaid FFS",
+          "pbm": "Texas Health and Human Services Commission (HHSC) Vendor Drug Program",
+          "formularyUrl": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "productName": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria, effective July 24, 2026"
+        },
+        {
+          "id": "bcbs-tx-commercial",
+          "name": "Blue Cross and Blue Shield of Texas (Commercial)",
+          "shortName": "BCBS Texas",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "productName": "Performance Drug List, July 2026",
+          "marketSegment": "commercial-employer",
+          "formularyId": "Performance Drug List, July 2026 (Blue Cross and Blue Shield of Texas, 2026 commercial formulary)"
+        },
+        {
+          "id": "humana-premier-rx-pdp",
+          "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+          "shortName": "Humana Premier Rx (PDP)",
+          "pbm": "Humana Pharmacy Solutions",
+          "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+          "marketSegment": "medicare-part-d",
+          "formularyId": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402"
+        }
+      ],
+      "classes": [
+        {
+          "id": "stimulant-mph",
+          "name": "Methylphenidate stimulants",
+          "shortName": "MPH",
+          "plainName": "Methylphenidate (Ritalin/Concerta type)",
+          "description": "CNS stimulants in the methylphenidate family: methylphenidate IR/ER (Ritalin, Concerta, Metadate, Aptensio, Jornay PM, Quillichew, Cotempla), dexmethylphenidate IR/ER (Focalin), serdexmethylphenidate/dexmethylphenidate (Azstarys), methylphenidate patch (Daytrana).",
+          "plainDescription": "A stimulant pill or patch for ADHD from the Ritalin/Concerta family.",
+          "indication": "ADHD",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "id": "stimulant-amph",
+          "name": "Amphetamine stimulants",
+          "shortName": "AMPH",
+          "plainName": "Amphetamine (Adderall/Vyvanse type)",
+          "description": "CNS stimulants in the amphetamine family: mixed amphetamine salts IR/ER (Adderall, Adderall XR, Mydayis), lisdexamfetamine (Vyvanse, capsule and chewable), dextroamphetamine (Dexedrine, Zenzedi, Xelstrym patch), amphetamine sulfate (Evekeo), amphetamine ER (Adzenys, Dyanavel).",
+          "plainDescription": "A stimulant for ADHD from the Adderall/Vyvanse family.",
+          "indication": "ADHD",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "id": "adhd-nonstimulant",
+          "name": "Non-stimulant ADHD agents",
+          "shortName": "NON-STIM",
+          "plainName": "Non-stimulant",
+          "description": "Non-stimulant ADHD agents: atomoxetine (Strattera), viloxazine ER (Qelbree), guanfacine ER (Intuniv), clonidine ER (Kapvay).",
+          "plainDescription": "A daily ADHD medicine that is not a stimulant.",
+          "indication": "ADHD",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "records": [
+        {
+          "classId": "stimulant-mph",
+          "preferredAgent": {
+            "inn": "Methylphenidate (immediate-release)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "standard label dosing",
+            "sig": "As directed by prescriber (PDL does not state dose; standard label dosing)",
+            "sigShort": "As directed",
+            "plainSig": "Take as your prescriber directs."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred on PDL (no tier stated)",
+          "alternatives": [
+            {
+              "drug": "CONCERTA (methylphenidate ER)",
+              "note": "Preferred brand, no PA (page 80)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "DAYTRANA (methylphenidate patch)",
+              "note": "Preferred brand, no PA (page 80)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "JORNAY PM (methylphenidate ER)",
+              "note": "Preferred brand, no PA (page 80)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "FOCALIN XR (dexmethylphenidate ER)",
+              "note": "Preferred brand, no PA (page 80)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Dexmethylphenidate ER and IR (generic)",
+              "note": "Preferred generic, no PA (page 80)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "RITALIN LA (methylphenidate ER)",
+              "note": "Preferred brand, no PA (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "METHYLIN (methylphenidate) solution",
+              "note": "Preferred, no PA (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "QUILLICHEW ER (methylphenidate chewable ER)",
+              "note": "Preferred, no PA (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "QUILLIVANT XR (methylphenidate) suspension",
+              "note": "Preferred, no PA (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "APTENSIO XR (methylphenidate)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 80)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "AZSTARYS (serdexmethylphenidate/dexmethylphenidate)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 80)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "COTEMPLA XR ODT (methylphenidate)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 80)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "FOCALIN (dexmethylphenidate) IR brand",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Methylphenidate ER (generic)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Methylphenidate LA (generic)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Methylphenidate CD (generic)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Methylphenidate chewable tablets (generic)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Methylphenidate patch (generic)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Methylphenidate solution (generic)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "RELEXXII (methylphenidate)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "RITALIN (methylphenidate) IR brand",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "noCoveredAgent": false,
+          "verification": "verified",
+          "verificationNote": "Read PDL pp.80-81 (stimulants table). Two-column layout: preferred = left column, non-preferred = right column, confirmed by x-position on the page. Generic methylphenidate IR and dexmethylphenidate ER/IR are preferred (p.80-81). Class PA criteria (p.80): at least one of treatment failure with preferred drugs, contraindication, allergic reaction, or stage-four cancer. The PDL footer states that listing a brand or generic name includes all dosage forms (p.80). CONCERTA is a preferred brand while generic methylphenidate ER needs PA; the preferred pick is the IR generic, so boglActive is false. The PDL states no tiers. Judgment call: preferred pick is generic IR (cheapest no-PA generic), not a brand. [Sonnet check 2026-10-21: the 'ADHD Agents' clinical PA on p.81 sits over the non-stimulant table; the PDL does not make clear whether it also covers the stimulant rows, so no stimulant preferred-pick restriction is recorded. Confirm with the plan.]",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "tx-medicaid"
+        },
+        {
+          "classId": "stimulant-amph",
+          "preferredAgent": {
+            "inn": "Amphetamine salt combination (immediate-release)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "standard label dosing",
+            "sig": "As directed by prescriber (PDL does not state dose; standard label dosing)",
+            "sigShort": "As directed",
+            "plainSig": "Take as your prescriber directs."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred on PDL (no tier stated)",
+          "alternatives": [
+            {
+              "drug": "ADDERALL (amphetamine salt combination) brand",
+              "note": "Preferred brand, no PA (page 80)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "ADDERALL XR (amphetamine salt combination ER) brand",
+              "note": "Preferred brand, no PA (page 80)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Amphetamine salt combination ER (generic)",
+              "note": "Preferred generic, no PA (page 80)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "DEXEDRINE (dextroamphetamine)",
+              "note": "Preferred brand, no PA (page 80)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Dextroamphetamine IR (generic)",
+              "note": "Preferred generic, no PA (page 80)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "DYANAVEL XR (amphetamine) suspension",
+              "note": "Preferred, no PA (page 80)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "VYVANSE (lisdexamfetamine) capsule",
+              "note": "Preferred brand, no PA for ADHD; clinical PA (binge eating disorder criteria) applies to drugs marked * (pages 80-81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "VYVANSE (lisdexamfetamine) chewable tablets",
+              "note": "Preferred brand; marked *, so the binge eating disorder clinical PA applies (pages 80-81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "ADZENYS XR ODT (amphetamine)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 80)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Amphetamine ER ODT (Adzenys ODT)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 80)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Amphetamine salt combination ER (AG)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 80)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Amphetamine sulfate (generic)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 80)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "DYANAVEL XR (amphetamine) tablets",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "EVEKEO (amphetamine)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "lisdexamfetamine (generic of VYVANSE, marked *)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "MYDAYIS (amphetamine salt combination ER)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "DESOXYN (methamphetamine)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 80)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Methamphetamine (generic)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Dextroamphetamine ER (generic)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 80)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Dextroamphetamine solution (generic)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 80)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "PROCENTRA (dextroamphetamine)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "XELSTRYM (dextroamphetamine) transdermal",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "ZENZEDI (dextroamphetamine)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "noCoveredAgent": false,
+          "verification": "verified",
+          "verificationNote": "Read PDL pp.80-81 (stimulants table, two-column layout; preferred = left column, non-preferred = right column, confirmed by x-position). Preferred generics: amphetamine salt combination ER/IR and dextroamphetamine IR. VYVANSE capsule and chewable are preferred brands, marked * (binge eating disorder clinical PA, p.80). Generic lisdexamfetamine is non-preferred, so this is a brand-over-generic case, but the preferred pick is the generic amphetamine salts, so boglActive is false; AB-rating is not stated in the PDL. Judgment call: DESOXYN and methamphetamine are included as amphetamine-family ADHD stimulants on the PDL even though the class description does not name them. The PDL states no tiers. [Sonnet check 2026-10-21: the 'ADHD Agents' clinical PA on p.81 sits over the non-stimulant table; the PDL does not make clear whether it also covers the stimulant rows, so no stimulant preferred-pick restriction is recorded. Confirm with the plan.]",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "tx-medicaid"
+        },
+        {
+          "classId": "adhd-nonstimulant",
+          "preferredAgent": {
+            "inn": "Atomoxetine",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "standard label dosing",
+            "sig": "As directed by prescriber (PDL does not state dose; standard label dosing)",
+            "sigShort": "As directed",
+            "plainSig": "Take as your prescriber directs."
+          },
+          "preferredRestriction": "Clinical PA 'ADHD Agents' applies to all drugs in this table (page 81), so preferred status does not waive it. Confirm with the plan.",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred on PDL (no tier stated)",
+          "alternatives": [
+            {
+              "drug": "Clonidine ER (generic)",
+              "note": "Preferred generic (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Guanfacine ER (generic)",
+              "note": "Preferred generic (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "QELBREE (viloxazine)",
+              "note": "Preferred brand (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "INTUNIV (guanfacine ER) brand",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "ONYDA XR (clonidine ER) suspension",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "STRATTERA (atomoxetine) brand",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 81)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "noCoveredAgent": false,
+          "verification": "verified",
+          "verificationNote": "Read PDL p.81 (non-stimulant table). Preferred: atomoxetine, clonidine ER, guanfacine ER (generics) and QELBREE. Non-preferred: INTUNIV, ONYDA XR, STRATTERA. The PDL lists the 'ADHD Agents' clinical PA as applying to all drugs in this table (p.81), so it is recorded as a preferred-pick restriction. Judgment call: the clinical PA block sits over the non-stimulant table, not the stimulant rows above it. [Sonnet check 2026-10-21: re-read pp.57-58 / p.81: clinical PA stated as applying to all PCSK9 inhibitors / all drugs in the non-stimulant table; preferredRestriction confirmed.]",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "tx-medicaid"
+        },
+        {
+          "classId": "stimulant-mph",
+          "preferredAgent": {
+            "inn": "Methylphenidate hydrochloride",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "10 mg tablet (immediate release)",
+            "sig": "As directed by prescriber (standard label dosing; sig not printed on plan list)",
+            "sigShort": "As directed",
+            "plainSig": "Take as your doctor directs."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred Generic (Tier 1)",
+          "alternatives": [
+            {
+              "drug": "Dexmethylphenidate hydrochloride tablet 2.5 mg, 5 mg",
+              "note": "Preferred generic (p), QL 240 / 120 tablets per 30 days (PDF p.60)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Methylphenidate HCl ER osmotic tablet 18, 27, 36, 54 mg (Concerta generic)",
+              "note": "Non-preferred generic (np), QL (PDF p.61)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Methylphenidate HCl ER 24-hr capsule 10, 20, 30, 40 mg; ER tablet 10, 20 mg",
+              "note": "Non-preferred generic (np), QL (PDF p.61)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Methylphenidate HCl chewable tablet 2.5, 5, 10 mg; oral solution 5 mg/5 mL, 10 mg/5 mL",
+              "note": "Non-preferred generic (np), QL (PDF p.61)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Dexmethylphenidate HCl ER capsule 5-40 mg (Focalin XR ref)",
+              "note": "Non-preferred generic (np), QL (PDF p.60)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Methylphenidate HCl tablet 5 mg",
+              "note": "Preferred generic (p), QL 360 tablets per 30 days (PDF p.61)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Daytrana (methylphenidate patch)",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Azstarys (serdexmethylphenidate/dexmethylphenidate)",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Cotempla XR-ODT",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "QuilliChew ER",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Jornay PM",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Aptensio XR",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Preferred pick: methylphenidate HCl 10 mg IR tablet, preferred generic (p) with Ritalin as reference brand (not covered per PDF p.2). QL 180 tablets/30 days (PDF p.61). Brand Concerta-reference ER generic listed np. Sig not printed; standard label dosing. Exclusions taken from PDF p.2 ('Drugs that are not shown are not covered'). PDF page numbers used throughout (printed page = PDF page minus 10 on drug-list pages).",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "bcbs-tx-commercial"
+        },
+        {
+          "classId": "stimulant-amph",
+          "preferredAgent": {
+            "inn": "Amphetamine-dextroamphetamine (mixed amphetamine salts)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "5 mg tablet (immediate release)",
+            "sig": "As directed by prescriber (standard label dosing; sig not printed on plan list)",
+            "sigShort": "As directed",
+            "plainSig": "Take as your doctor directs."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred Generic (Tier 1) for 5 mg strength only",
+          "alternatives": [
+            {
+              "drug": "Amphetamine-dextroamphetamine tablet 7.5, 10, 12.5, 15, 20, 30 mg",
+              "note": "Non-preferred generic (np), QL 60-180 tablets per 30 days (PDF p.60)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Amphetamine-dextroamphetamine ER capsule 5-30 mg (Adderall XR ref)",
+              "note": "Non-preferred generic (np), QL 30-60 capsules per 30 days (PDF p.60)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Lisdexamfetamine dimesylate capsule 10-70 mg (Vyvanse ref)",
+              "note": "Non-preferred generic (np), QL 30 capsules per 30 days (PDF p.61)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Lisdexamfetamine dimesylate chewable tablet 10-60 mg (Vyvanse ref)",
+              "note": "Non-preferred generic (np), QL 30 tablets per 30 days (PDF p.61)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Dextroamphetamine sulfate tablet 5, 10 mg; ER capsule 5, 10, 15 mg; oral solution 5 mg/5 mL",
+              "note": "Non-preferred generic (np), QL (PDF p.60-61)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Mydayis (mixed amphetamine salts ER)",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Adzenys XR-ODT / Dyanavel XR (amphetamine ER)",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Evekeo (amphetamine sulfate)",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Xelstrym (dextroamphetamine patch)",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Zenzedi (dextroamphetamine)",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Preferred pick: amphetamine-dextroamphetamine 5 mg tablet, the only strength listed as preferred generic (p, Adderall reference), QL 180 tablets/30 days (PDF p.60). Higher strengths are non-preferred generics (np) and are covered; they are listed as alternatives. The 5 mg strength is a low starting strength, so a patient on a higher dose will need a non-preferred strength. Sig not printed; standard label dosing. [Sonnet check 2026-10-21: corrected the alternative's QL range to 60-180 (30 mg tablet is QL 60, PDF p.60). PDF p.2 confirmed to say all covered drugs are shown and drugs not shown are not covered, supporting the nonformulary entries; p.3 adds that unlisted drugs may be checked with the plan.]",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "bcbs-tx-commercial"
+        },
+        {
+          "classId": "adhd-nonstimulant",
+          "preferredAgent": {
+            "inn": "Guanfacine hydrochloride extended-release",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "1 mg extended-release tablet (2 mg, 3 mg, 4 mg also preferred)",
+            "sig": "As directed by prescriber (standard label dosing; sig not printed on plan list)",
+            "sigShort": "As directed",
+            "plainSig": "Take as your doctor directs."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred Generic (Tier 1)",
+          "alternatives": [
+            {
+              "drug": "Atomoxetine HCl capsule 10, 18, 25, 40, 60, 80, 100 mg (Strattera ref)",
+              "note": "Non-preferred generic (np), QL 30-120 capsules per 30 days, no PA printed (PDF p.60)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Clonidine HCl ER tablet 0.1 mg (Kapvay ref)",
+              "note": "Non-preferred generic (np), QL 120 tablets per 30 days (PDF p.60)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Qelbree (viloxazine ER)",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Preferred pick: guanfacine ER tablet, preferred generic (p, Intuniv reference, not covered), 1 mg listed first; 2 mg and 3 mg also p. QL 30 tablets/30 days for 1 mg and 4 mg; 90 tablets for 2 mg; 60 for 3 mg (PDF p.61). Atomoxetine and clonidine ER are covered non-preferred generics with no PA printed. Sig not printed; standard label dosing.",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "bcbs-tx-commercial"
+        },
+        {
+          "classId": "stimulant-mph",
+          "preferredAgent": {
+            "inn": "Methylphenidate HCl (immediate-release)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "5 mg, 10 mg, 20 mg tablet",
+            "sig": "As directed per FDA label (dose not stated in document)",
+            "sigShort": "Per label",
+            "plainSig": "Taken by mouth as your doctor directs."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 3 (per document)",
+          "alternatives": [
+            {
+              "drug": "Dexmethylphenidate IR tablet (2.5 mg, 5 mg, 10 mg)",
+              "note": "Tier 3, QL 60 per 30 days (page 51)",
+              "sourceIds": [
+                "humana-premier-rx-pdp-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Methylphenidate HCl ER tablet (10 mg, 20 mg)",
+              "note": "Tier 3, QL 180 per 30 days (10 mg) / 90 per 30 days (20 mg) (page 52)",
+              "sourceIds": [
+                "humana-premier-rx-pdp-newtopics-2026-10"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "Methylphenidate IR tablet chosen as the lowest-barrier generic with no PA (all three methylphenidate-family generics listed carry Tier 3 and QL only). Document shows: methylphenidate HCl 5/10/20 mg tablet, Tier 3, QL 90 per 30 days (page 52); dexmethylphenidate tablet, Tier 3, QL 60 per 30 days (page 51); methylphenidate HCl ER tablets 10 mg and 20 mg, Tier 3 (page 52). Not listed in the document: Concerta, Ritalin, Focalin, Daytrana, Azstarys, Jornay PM, Aptensio and other brands; not assessed (document does not state it is a complete list). Strengths and sig are not printed for these lines; sig is standard label dosing. QL is not a PA barrier and is not in preferredRestriction. [Sonnet check 2026-10-21: spot-checked tiers and QL against pp.46-52; no change.]",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "humana-premier-rx-pdp"
+        },
+        {
+          "classId": "stimulant-amph",
+          "preferredAgent": {
+            "inn": "Dextroamphetamine-amphetamine (mixed salts, immediate-release)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "5 mg to 20 mg, 30 mg tablet",
+            "sig": "As directed per FDA label (dose not stated in document)",
+            "sigShort": "Per label",
+            "plainSig": "Taken by mouth as your doctor directs."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 3 (per document)",
+          "alternatives": [
+            {
+              "drug": "Dextroamphetamine-amphetamine ER capsule (5 mg, 10 mg, 15 mg)",
+              "note": "Tier 3, QL 30 per 30 days (page 51)",
+              "sourceIds": [
+                "humana-premier-rx-pdp-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Dextroamphetamine-amphetamine ER capsule (20 mg, 25 mg, 30 mg)",
+              "note": "Tier 3, QL 60 per 30 days (page 51)",
+              "sourceIds": [
+                "humana-premier-rx-pdp-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Dextroamphetamine-amphetamine IR tablet (30 mg)",
+              "note": "Tier 3, QL 60 per 30 days (page 51)",
+              "sourceIds": [
+                "humana-premier-rx-pdp-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Dextroamphetamine sulfate IR tablet (2.5 mg to 30 mg)",
+              "note": "Tier 4, QL (page 51)",
+              "sourceIds": [
+                "humana-premier-rx-pdp-newtopics-2026-10"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "Mixed-salts IR tablet chosen as the lowest-barrier generic with no PA. Document lines on page 51: dextroamphetamine-amphetamine tablet 5/7.5/10/12.5/15/20 mg, Tier 3, QL 90 per 30 days; ER capsules and 30 mg tablet as listed in alternatives. Not listed in the document: Adderall, Adderall XR, Mydayis, Vyvanse (lisdexamfetamine), Evekeo, Zenzedi, Adzenys, Dyanavel, Xelstrym; not assessed. Strengths and sig are not printed for the preferred line; sig is standard label dosing. QL is not a PA barrier.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "humana-premier-rx-pdp"
+        },
+        {
+          "classId": "adhd-nonstimulant",
+          "preferredAgent": {
+            "inn": "Guanfacine ER",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "1 mg, 2 mg, 3 mg, 4 mg ER tablet",
+            "sig": "As directed per FDA label (dose not stated in document)",
+            "sigShort": "Per label",
+            "plainSig": "Taken by mouth as your doctor directs."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 2 (per document)",
+          "alternatives": [
+            {
+              "drug": "Atomoxetine capsule (10 mg to 100 mg)",
+              "note": "Tier 4, QL 60 per 30 days (10-40 mg) / 30 per 30 days (60-100 mg) (page 51)",
+              "sourceIds": [
+                "humana-premier-rx-pdp-newtopics-2026-10"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "Guanfacine ER tablet (page 52: Tier 2, QL 30 per 30 days) chosen as the lowest-tier non-stimulant with no PA. Atomoxetine capsules (page 51) are covered at Tier 4 and are listed as an alternative. Not on this list: Qelbree (viloxazine), Kapvay (clonidine ER), Intuniv brand. The guanfacine 1 mg and 2 mg IR tablet (page 47, Tier 2) and clonidine IR tablets and patch (pages 46-47) are not ADHD extended-release products and are excluded from alternatives. Not assessed: brands absent from the document. Sig is standard label dosing.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "humana-premier-rx-pdp"
+        }
+      ],
+      "references": [
+        {
+          "id": "tx-medicaid-newtopics-2026-10",
+          "label": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria, effective July 24, 2026",
+          "publisher": "Texas Health and Human Services (Texas Medicaid Vendor Drug Program, txvendordrug.com)",
+          "type": "gov",
+          "url": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+          "effectiveDate": "2026-07-24",
+          "accessed": "2026-10-21"
+        },
+        {
+          "id": "bcbs-tx-commercial-newtopics-2026-10",
+          "label": "Performance Drug List, July 2026 (Blue Cross and Blue Shield of Texas, 2026 commercial formulary)",
+          "publisher": "Blue Cross and Blue Shield of Texas (Prime Therapeutics LLC)",
+          "type": "payer",
+          "url": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+          "accessed": "2026-10-21"
+        },
+        {
+          "id": "humana-premier-rx-pdp-newtopics-2026-10",
+          "label": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+          "publisher": "Humana",
+          "type": "payer",
+          "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+          "effectiveDate": "2026-09-02",
+          "accessed": "2026-10-21"
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Prior authorization (PA)",
+          "short": "Insurer sign-off first",
+          "definition": "Insurer sign-off needed before the drug is covered."
+        },
+        {
+          "term": "Step therapy",
+          "short": "Try a preferred drug first",
+          "definition": "Must fail a preferred drug first before the plan covers this one."
+        }
+      ]
+    },
+    {
+      "id": "tx-lipids",
+      "label": "TX · Cholesterol",
+      "stateCode": "TX",
+      "region": "Texas",
+      "topicId": "lipids",
+      "topic": "Cholesterol",
+      "classNoun": "Prescription type",
+      "unitNoun": "medication",
+      "tagline": "",
+      "dataStatus": "mixed",
+      "lastUpdated": "2026-10-21",
+      "capturedAt": "2026-10-21",
+      "payers": [
+        {
+          "id": "tx-medicaid",
+          "name": "Texas Medicaid Vendor Drug Program (Fee-for-Service, statewide PDL binding on all MCOs)",
+          "shortName": "TX Medicaid FFS",
+          "pbm": "Texas Health and Human Services Commission (HHSC) Vendor Drug Program",
+          "formularyUrl": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "productName": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria, effective July 24, 2026"
+        },
+        {
+          "id": "bcbs-tx-commercial",
+          "name": "Blue Cross and Blue Shield of Texas (Commercial)",
+          "shortName": "BCBS Texas",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "productName": "Performance Drug List, July 2026",
+          "marketSegment": "commercial-employer",
+          "formularyId": "Performance Drug List, July 2026 (Blue Cross and Blue Shield of Texas, 2026 commercial formulary)"
+        },
+        {
+          "id": "humana-premier-rx-pdp",
+          "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+          "shortName": "Humana Premier Rx (PDP)",
+          "pbm": "Humana Pharmacy Solutions",
+          "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+          "marketSegment": "medicare-part-d",
+          "formularyId": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402"
+        }
+      ],
+      "classes": [
+        {
+          "id": "statin",
+          "name": "Statins",
+          "shortName": "STATIN",
+          "plainName": "Statin",
+          "description": "HMG-CoA reductase inhibitors: atorvastatin (Lipitor), rosuvastatin (Crestor, Ezallor), simvastatin (Zocor), pravastatin, lovastatin (Altoprev), pitavastatin (Livalo, Zypitamag), fluvastatin, and statin combinations (Vytorin, Roszet).",
+          "plainDescription": "A daily pill that lowers LDL cholesterol.",
+          "indication": "Hyperlipidemia / ASCVD risk reduction",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "id": "ezetimibe",
+          "name": "Ezetimibe & other non-statin oral agents",
+          "shortName": "EZE",
+          "plainName": "Ezetimibe / non-statin pill",
+          "description": "Non-statin oral LDL-lowering agents: ezetimibe (Zetia), bempedoic acid (Nexletol) and bempedoic acid/ezetimibe (Nexlizet).",
+          "plainDescription": "A cholesterol pill used with or instead of a statin.",
+          "indication": "Hyperlipidemia",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "id": "pcsk9",
+          "name": "PCSK9 inhibitors & siRNA",
+          "shortName": "PCSK9",
+          "plainName": "Injectable LDL lowerer (PCSK9)",
+          "description": "Injectable PCSK9-pathway agents: evolocumab (Repatha), alirocumab (Praluent), inclisiran (Leqvio).",
+          "plainDescription": "An injection every 2 weeks to 6 months that strongly lowers LDL cholesterol.",
+          "indication": "Hyperlipidemia / ASCVD",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "records": [
+        {
+          "classId": "statin",
+          "preferredAgent": {
+            "inn": "Atorvastatin",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "standard label dosing",
+            "sig": "As directed by prescriber (PDL does not state dose; standard label dosing)",
+            "sigShort": "As directed",
+            "plainSig": "Take as your prescriber directs."
+          },
+          "preferredRestriction": "Clinical PA 'Duplicate Therapy' applies to all drugs in the statin class (page 58), so preferred status does not waive it. Confirm with the plan.",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred on PDL (no tier stated)",
+          "alternatives": [
+            {
+              "drug": "Rosuvastatin (generic)",
+              "note": "Preferred generic, no PA (page 58)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Simvastatin (generic)",
+              "note": "Preferred generic, no PA (page 58)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Pravastatin (generic)",
+              "note": "Preferred generic, no PA (page 58)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Lovastatin (generic)",
+              "note": "Preferred generic, no PA (page 58)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "LIPITOR (atorvastatin) brand",
+              "note": "Preferred brand, no PA (page 58)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "ALTOPREV (lovastatin)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 58)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "ATORVALIQ suspension (atorvastatin)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 58)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "CRESTOR (rosuvastatin) brand",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 58)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "EZALLOR SPRINKLE (rosuvastatin)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 58)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Fluvastatin (generic)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 58)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Fluvastatin ER (generic)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 58)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "LESCOL XL (fluvastatin)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 58)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "LIVALO (pitavastatin)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 58)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Pitavastatin (generic)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 58)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "ZOCOR (simvastatin) brand",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 58)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "ZYPITAMAG (pitavastatin)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 58)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "CADUET (atorvastatin/amlodipine)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 58)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Atorvastatin/amlodipine (generic)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 58)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Simvastatin/ezetimibe (generic)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 58)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "VYTORIN (simvastatin/ezetimibe)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 58)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "noCoveredAgent": false,
+          "verification": "verified",
+          "verificationNote": "Read PDL p.58 (lipotropics, statins; statin PA criteria listed above the table: treatment failure with at least two preferred drugs for 120+ days combined, contraindication, allergic reaction, stage-four cancer, duplicate therapy, or no preferred option in class). Preferred statins with no PA: atorvastatin, LIPITOR, lovastatin, pravastatin, rosuvastatin, simvastatin. Preferred pick is generic atorvastatin (judgment call on cost and volume; PDL states no tiers). All statin combinations (CADUET, VYTORIN, and generics) are non-preferred. Roszet is not on the PDL and is not inferred excluded. [Sonnet check 2026-10-21: PDL p.58 states the 'Duplicate Therapy' clinical PA applies to all drugs in the statin class; added to preferredRestriction.]",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "tx-medicaid"
+        },
+        {
+          "classId": "ezetimibe",
+          "preferredAgent": {
+            "inn": "Ezetimibe",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "standard label dosing",
+            "sig": "As directed by prescriber (PDL does not state dose; standard label dosing)",
+            "sigShort": "As directed",
+            "plainSig": "Take as your prescriber directs."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred on PDL (no tier stated)",
+          "alternatives": [],
+          "paRequired": [
+            {
+              "drug": "ZETIA (ezetimibe) brand",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 57)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "NEXLETOL (bempedoic acid)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list); bempedoic acid subclass has no preferred option (page 57)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "NEXLIZET (bempedoic acid/ezetimibe)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list); bempedoic acid subclass has no preferred option (page 57)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "noCoveredAgent": false,
+          "verification": "verified",
+          "verificationNote": "Read PDL p.57. Ezetimibe generic is preferred (no PA) under cholesterol absorption inhibitors. ZETIA brand is non-preferred. NEXLETOL and NEXLIZET sit under the ATP-citrate lyase inhibitor subclass, which has no preferred option (PA criteria on p.57). The preferred column for that subclass is empty. The PDL lists no other covered oral non-statin agent in this class.",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "tx-medicaid"
+        },
+        {
+          "classId": "pcsk9",
+          "preferredAgent": {
+            "inn": "Evolocumab (Repatha)",
+            "brand": "REPATHA",
+            "genericAvailable": false,
+            "strength": "standard label dosing",
+            "sig": "Injection; dose per label (PDL does not state dose)",
+            "sigShort": "As directed",
+            "plainSig": "Take as your prescriber directs."
+          },
+          "preferredRestriction": "PDL PA block for PCSK9 inhibitors (pages 57-58): client must meet at least one criterion (trial of atorvastatin, rosuvastatin and ezetimibe; concurrent statin therapy; contraindication or allergy to preferred drugs; stage-four cancer; or no preferred option in class). Clinical PA 'Hyperlipidemia agents' applies to all PCSK9 inhibitors. Confirm with the plan.",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred on PDL (no tier stated)",
+          "alternatives": [
+            {
+              "drug": "PRALUENT (alirocumab)",
+              "note": "Preferred brand (page 58); subject to the same PCSK9 PA block",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "noCoveredAgent": false,
+          "verification": "verified",
+          "verificationNote": "Read PDL pp.57-58. REPATHA and PRALUENT are both in the preferred column for PCSK9 inhibitors (p.58). The PA criteria block for this section (p.57-58) lists criteria: trial of atorvastatin, rosuvastatin and ezetimibe; concurrent atorvastatin or rosuvastatin therapy; contraindication or allergy to preferred drugs; stage-four cancer; or no preferred option in class. A clinical PA ('Hyperlipidemia agents') is listed for all PCSK9 inhibitors. Read literally, preferred status does not waive these. Judgment call: both agents are in the preferred column, so the PA block is recorded as a restriction, not as paRequired. INCLISIRAN (Leqvio) does not appear on the PDL; it is not inferred excluded. [Sonnet check 2026-10-21: re-read pp.57-58 / p.81: clinical PA stated as applying to all PCSK9 inhibitors / all drugs in the non-stimulant table; preferredRestriction confirmed.]",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "tx-medicaid"
+        },
+        {
+          "classId": "statin",
+          "preferredAgent": {
+            "inn": "Atorvastatin",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "40 mg",
+            "sig": "1 tablet by mouth once daily (standard label dosing; sig not printed on plan list)",
+            "sigShort": "1 tab QD",
+            "plainSig": "One pill, once a day."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred Generic (Tier 1)",
+          "alternatives": [
+            {
+              "drug": "Rosuvastatin calcium tablet 5, 10, 20, 40 mg (Crestor ref)",
+              "note": "Preferred generic (p), no PA printed (PDF p.45)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Pravastatin sodium tablet 10, 20, 40, 80 mg",
+              "note": "Preferred generic (p), ACA preventive (AC) flag (PDF p.45)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Simvastatin tablet 5, 10, 20, 40, 80 mg (Zocor ref)",
+              "note": "Preferred generic (p), no PA printed (PDF p.45-46)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Lovastatin tablet 10, 20, 40 mg",
+              "note": "Preferred generic (p), ACA preventive (AC) flag on 20 and 40 mg (PDF p.45)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Ezetimibe-simvastatin tablet 10-10 to 10-80 mg (Vytorin ref)",
+              "note": "Non-preferred generic (np), no PA printed (PDF p.45)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Pitavastatin (Livalo, Zypitamag)",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Fluvastatin",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Altoprev (lovastatin ER)",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Ezallor (rosuvastatin sprinkle)",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Roszet (rosuvastatin-ezetimibe)",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Preferred pick: atorvastatin 40 mg, preferred generic (p, Lipitor reference not covered per PDF p.2 and p.3), flagged 'AC' (ACA preventive, PDF p.45). Per PDF p.6, AC products may carry limited or $0 cost-sharing only when ACA conditions are met; this is not applied as a general $0 claim. Sig not printed; standard label dosing. Exclusions from PDF p.2 statement. Statin-combination Vytorin is listed np and kept as an alternative.",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "bcbs-tx-commercial"
+        },
+        {
+          "classId": "ezetimibe",
+          "preferredAgent": {
+            "inn": "Ezetimibe",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "10 mg",
+            "sig": "1 tablet by mouth once daily (standard label dosing; sig not printed on plan list)",
+            "sigShort": "1 tab QD",
+            "plainSig": "One pill, once a day."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred Generic (Tier 1)",
+          "alternatives": [],
+          "paRequired": [
+            {
+              "drug": "Nexletol (bempedoic acid 180 mg)",
+              "outcome": "pa",
+              "reason": "PA required; QL 30 tablets per 30 days (PDF p.45)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Nexlizet (bempedoic acid-ezetimibe 180-10 mg)",
+              "outcome": "pa",
+              "reason": "PA required; QL 30 tablets per 30 days (PDF p.45)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Preferred pick: ezetimibe 10 mg, preferred generic (p, Zetia reference not covered per PDF p.2). No other covered non-statin oral agent is listed besides the PA-restricted bempedoic acid products. Sig not printed; standard label dosing.",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "bcbs-tx-commercial"
+        },
+        {
+          "classId": "pcsk9",
+          "preferredAgent": {
+            "inn": "Evolocumab",
+            "brand": "Repatha",
+            "genericAvailable": false,
+            "strength": "140 mg/mL prefilled syringe",
+            "sig": "140 mg subcutaneously every 2 weeks or 420 mg monthly (standard label dosing; sig not printed on plan list)",
+            "sigShort": "Inject SC per label",
+            "plainSig": "A shot under the skin, as your doctor directs."
+          },
+          "preferredRestriction": "PA required; QL 6 syringes per 28 days (PDF p.45)",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred Brand (Tier 3)",
+          "alternatives": [],
+          "paRequired": [
+            {
+              "drug": "Repatha SureClick autoinjector (evolocumab 140 mg/mL)",
+              "outcome": "pa",
+              "reason": "PA required; QL 6 pens per 28 days (PDF p.45)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Praluent (alirocumab)",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Leqvio (inclisiran)",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Only covered PCSK9 agent is Repatha (preferred brand, P), which requires PA (PDF p.45). Praluent and Leqvio are not listed. Repatha SureClick is the same drug in a different device and carries the same PA. Sig not printed; standard label dosing.",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "bcbs-tx-commercial"
+        },
+        {
+          "classId": "statin",
+          "preferredAgent": {
+            "inn": "Atorvastatin",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "10 mg, 20 mg, 40 mg, 80 mg tablet",
+            "sig": "As directed per FDA label (dose not stated in document)",
+            "sigShort": "Per label",
+            "plainSig": "Taken by mouth as your doctor directs."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1 (per document)",
+          "alternatives": [
+            {
+              "drug": "Rosuvastatin tablet (5 mg to 40 mg)",
+              "note": "Tier 1, no PA or QL listed (page 50)",
+              "sourceIds": [
+                "humana-premier-rx-pdp-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Simvastatin tablet (5 mg to 80 mg)",
+              "note": "Tier 1, no PA or QL listed (page 50)",
+              "sourceIds": [
+                "humana-premier-rx-pdp-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Pravastatin tablet (10 mg to 80 mg)",
+              "note": "Tier 1, no PA or QL listed (page 49)",
+              "sourceIds": [
+                "humana-premier-rx-pdp-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Lovastatin tablet (10 mg, 20 mg, 40 mg)",
+              "note": "Tier 1, no PA or QL listed (page 48)",
+              "sourceIds": [
+                "humana-premier-rx-pdp-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Ezetimibe-simvastatin tablet (10/10 mg to 10/80 mg)",
+              "note": "Tier 3, QL 30 per 30 days (page 47)",
+              "sourceIds": [
+                "humana-premier-rx-pdp-newtopics-2026-10"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "Atorvastatin chosen as the preferred statin: Tier 1 with no PA, QL or step listed (page 46, strengths 10/20/40/80 mg). Other generic statins listed at Tier 1 are alternatives. Not listed in the document: Lipitor, Crestor, Zocor, Livalo, Zypitamag, Ezallor, Altoprev, fluvastatin, Vytorin and Roszet brands; not assessed (document does not state a complete list). No PA or step therapy is printed for any statin line. Sig is standard label dosing; the document prints no sig. [Sonnet check 2026-10-21: spot-checked tiers and QL against pp.46-52; no change.]",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "humana-premier-rx-pdp"
+        },
+        {
+          "classId": "ezetimibe",
+          "preferredAgent": {
+            "inn": "Ezetimibe",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "10 mg tablet",
+            "sig": "As directed per FDA label (dose not stated in document)",
+            "sigShort": "Per label",
+            "plainSig": "Taken by mouth as your doctor directs."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 3 (per document)",
+          "alternatives": [],
+          "paRequired": [
+            {
+              "drug": "Nexletol (bempedoic acid)",
+              "outcome": "pa",
+              "reason": "PA required (page 49)",
+              "sourceIds": [
+                "humana-premier-rx-pdp-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Nexlizet (bempedoic acid/ezetimibe)",
+              "outcome": "pa",
+              "reason": "PA required (page 49)",
+              "sourceIds": [
+                "humana-premier-rx-pdp-newtopics-2026-10"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "Ezetimibe 10 mg is listed at Tier 3 with QL 30 per 30 days and no PA (page 47). The document lists generic ezetimibe at Tier 3, not Tier 1; recorded as stated. Bempedoic acid products (Nexletol, Nexlizet, both Tier 3, PA and QL 30 per 30 days, page 49) are PA-restricted and listed in paRequired. Not listed in the document: Zetia brand, Roszet, Vytorin brand (ezetimibe-simvastatin generic is on the statin record); not assessed. Sig is standard label dosing.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "humana-premier-rx-pdp"
+        },
+        {
+          "classId": "pcsk9",
+          "preferredAgent": {
+            "inn": "Evolocumab",
+            "brand": "Repatha",
+            "genericAvailable": false,
+            "strength": "140 mg/mL (SureClick pen, syringe); 420 mg/3.5 mL (Pushtronex wearable injector)",
+            "sig": "As directed per FDA label (dose not stated in document)",
+            "sigShort": "Per label",
+            "plainSig": "An injection your doctor prescribes to lower LDL cholesterol."
+          },
+          "preferredRestriction": "PA required (page 50); QL 3 per 28 days for SureClick and syringe (3.5 per 28 days for Pushtronex)",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 3 (per document)",
+          "alternatives": [],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "Repatha is the only PCSK9-pathway agent listed (page 50, Tier 3, PA and QL on all three presentations). It is the only candidate, so it is the preferred pick despite the PA. Not listed in the document: Praluent (alirocumab) and Leqvio (inclisiran); not assessed, so this cell is partial and no barrier is inferred for them. Sig is standard label dosing.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "humana-premier-rx-pdp"
+        }
+      ],
+      "references": [
+        {
+          "id": "tx-medicaid-newtopics-2026-10",
+          "label": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria, effective July 24, 2026",
+          "publisher": "Texas Health and Human Services (Texas Medicaid Vendor Drug Program, txvendordrug.com)",
+          "type": "gov",
+          "url": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+          "effectiveDate": "2026-07-24",
+          "accessed": "2026-10-21"
+        },
+        {
+          "id": "bcbs-tx-commercial-newtopics-2026-10",
+          "label": "Performance Drug List, July 2026 (Blue Cross and Blue Shield of Texas, 2026 commercial formulary)",
+          "publisher": "Blue Cross and Blue Shield of Texas (Prime Therapeutics LLC)",
+          "type": "payer",
+          "url": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+          "accessed": "2026-10-21"
+        },
+        {
+          "id": "humana-premier-rx-pdp-newtopics-2026-10",
+          "label": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+          "publisher": "Humana",
+          "type": "payer",
+          "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+          "effectiveDate": "2026-09-02",
+          "accessed": "2026-10-21"
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Prior authorization (PA)",
+          "short": "Insurer sign-off first",
+          "definition": "Insurer sign-off needed before the drug is covered."
+        },
+        {
+          "term": "Step therapy",
+          "short": "Try a preferred drug first",
+          "definition": "Must fail a preferred drug first before the plan covers this one."
+        }
+      ]
+    },
+    {
+      "id": "tx-weight",
+      "label": "TX · Weight loss",
+      "stateCode": "TX",
+      "region": "Texas",
+      "topicId": "weight",
+      "topic": "Weight loss",
+      "classNoun": "Prescription type",
+      "unitNoun": "medication",
+      "tagline": "",
+      "dataStatus": "mixed",
+      "lastUpdated": "2026-10-21",
+      "capturedAt": "2026-10-21",
+      "payers": [
+        {
+          "id": "tx-medicaid",
+          "name": "Texas Medicaid Vendor Drug Program (Fee-for-Service, statewide PDL binding on all MCOs)",
+          "shortName": "TX Medicaid FFS",
+          "pbm": "Texas Health and Human Services Commission (HHSC) Vendor Drug Program",
+          "formularyUrl": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "productName": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria, effective July 24, 2026"
+        },
+        {
+          "id": "bcbs-tx-commercial",
+          "name": "Blue Cross and Blue Shield of Texas (Commercial)",
+          "shortName": "BCBS Texas",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "productName": "Performance Drug List, July 2026",
+          "marketSegment": "commercial-employer",
+          "formularyId": "Performance Drug List, July 2026 (Blue Cross and Blue Shield of Texas, 2026 commercial formulary)"
+        },
+        {
+          "id": "humana-premier-rx-pdp",
+          "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+          "shortName": "Humana Premier Rx (PDP)",
+          "pbm": "Humana Pharmacy Solutions",
+          "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+          "marketSegment": "medicare-part-d",
+          "formularyId": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402"
+        }
+      ],
+      "classes": [
+        {
+          "id": "aom-glp1",
+          "name": "GLP-1-based anti-obesity medications",
+          "shortName": "GLP-1 AOM",
+          "plainName": "GLP-1 for weight loss",
+          "description": "Injectable or oral GLP-1/GIP agents labeled for chronic weight management (NOT their diabetes-labeled versions): semaglutide (Wegovy, including Wegovy tablets), tirzepatide (Zepbound), liraglutide (Saxenda). Many plans exclude weight-loss drugs entirely; an exclusion is a valid finding (outcome nonformulary).",
+          "plainDescription": "A weekly shot (or daily pill) for weight loss, like Wegovy or Zepbound.",
+          "indication": "Chronic weight management (obesity)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "id": "aom-oral",
+          "name": "Oral anti-obesity medications",
+          "shortName": "ORAL AOM",
+          "plainName": "Weight-loss pill",
+          "description": "Oral anti-obesity agents: phentermine (Adipex-P, Lomaira), phentermine/topiramate ER (Qsymia), naltrexone/bupropion ER (Contrave), orlistat (Xenical). Many plans exclude weight-loss drugs; an exclusion is a valid finding (outcome nonformulary).",
+          "plainDescription": "A pill for weight loss, like phentermine or Contrave.",
+          "indication": "Chronic weight management (obesity)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "records": [
+        {
+          "classId": "aom-glp1",
+          "preferredAgent": {
+            "inn": "Semaglutide (weight management)",
+            "brand": "WEGOVY",
+            "genericAvailable": false,
+            "strength": "standard label dosing",
+            "sig": "Coverage not listed on this PDL; standard label dosing",
+            "sigShort": "As directed",
+            "plainSig": "Take as your prescriber directs."
+          },
+          "preferredRestriction": "No weight-loss GLP-1 (Wegovy, Zepbound, Saxenda) appears on this PDL (searched, none listed). The PDL does not state it is a complete coverage list; it directs readers to the Texas Medicaid Formulary search to verify coverage. Coverage unconfirmed; confirm there.",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Not listed on PDL",
+          "alternatives": [],
+          "paRequired": [],
+          "stepTherapy": null,
+          "noCoveredAgent": true,
+          "verification": "partial",
+          "verificationNote": "Searched the full PDL (88 pp.) for Wegovy, Zepbound, Saxenda, liraglutide, tirzepatide, semaglutide, and weight/obesity terms. No weight-management GLP-1 is listed. The diabetes-labeled GLP-1s (OZEMPIC, RYBELSUS, VICTOZA, MOUNJARO, TRULICITY, p.49) do not count for this class. No exclusion is inferred: the PDL page footer only says to verify coverage in the Medicaid Formulary search, and does not state whether the list is complete. Coverage is unconfirmed. [Sonnet check 2026-10-21: removed the unsupported claim that the PDL footer says the list is not complete; the footer (e.g. p.27, p.80) only points to the Formulary search.]",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "tx-medicaid"
+        },
+        {
+          "classId": "aom-oral",
+          "preferredAgent": {
+            "inn": "Phentermine (weight management)",
+            "brand": "ADIPEX-P",
+            "genericAvailable": true,
+            "strength": "standard label dosing",
+            "sig": "Coverage not listed on this PDL; standard label dosing",
+            "sigShort": "As directed",
+            "plainSig": "Take as your prescriber directs."
+          },
+          "preferredRestriction": "No oral weight-loss drug (phentermine, Qsymia, Contrave, orlistat) appears on this PDL (searched, none listed). The PDL does not state it is a complete coverage list; it directs readers to the Texas Medicaid Formulary search to verify coverage. Coverage unconfirmed; confirm there.",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Not listed on PDL",
+          "alternatives": [],
+          "paRequired": [],
+          "stepTherapy": null,
+          "noCoveredAgent": true,
+          "verification": "partial",
+          "verificationNote": "Searched the full PDL for phentermine, Adipex-P, Lomaira, Qsymia (phentermine/topiramate), Contrave (naltrexone/bupropion), orlistat/Xenical, and weight terms. None is listed. Topamax (topiramate), Wellbutrin (bupropion), and Vivitrol (naltrexone) are listed but are not the weight-management combinations. No exclusion is inferred: the PDL page footer only says to verify coverage in the Medicaid Formulary search, and does not state whether the list is complete. Coverage is unconfirmed. [Sonnet check 2026-10-21: removed the unsupported claim that the PDL footer says the list is not complete; the footer (e.g. p.27, p.80) only points to the Formulary search.]",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "tx-medicaid"
+        },
+        {
+          "classId": "aom-glp1",
+          "preferredAgent": {
+            "inn": "Semaglutide (weight management)",
+            "brand": "Wegovy",
+            "genericAvailable": false,
+            "strength": "Auto-injector pens 0.25 mg/0.5 mL up to 2.4 mg/0.75 mL",
+            "sig": "Inject subcutaneously once weekly, dose escalated per label (standard label dosing; sig not printed on plan list)",
+            "sigShort": "Inject weekly",
+            "plainSig": "A weekly shot for weight loss, as your doctor directs."
+          },
+          "preferredRestriction": "PA required; group-specific coverage ('+'); QL 8 pens/180 days at lowest strengths, 4 pens/28 days at 1.7-2.4 mg (PDF p.62)",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred Brand (Tier 3), group-specific ('+')",
+          "alternatives": [],
+          "paRequired": [
+            {
+              "drug": "Zepbound (tirzepatide, weight management) auto-injector",
+              "outcome": "pa",
+              "reason": "PA required; group-specific coverage ('+'); QL 4 pens per 28 days (PDF p.62)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Saxenda (liraglutide, weight management) pen",
+              "outcome": "pa",
+              "reason": "PA required; group-specific coverage ('+'); QL 15 mL per 30 days (PDF p.61)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Wegovy tablets (semaglutide, weight management) 1.5, 4, 9, 25 mg",
+              "outcome": "pa",
+              "reason": "PA required; group-specific coverage ('+'); QL (PDF p.62)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Wegovy HD (semaglutide 7.2 mg/0.75 mL)",
+              "outcome": "pa",
+              "reason": "PA required; group-specific coverage ('+'); QL 4 pens per 28 days (PDF p.62)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "All GLP-1 weight-management agents on the list carry PA and group-specific coverage ('+', PDF p.3 key). Wegovy injection was chosen as the preferred pick because it is listed first among the P+ PA products; this is a tie-break, not a volume claim. Diabetes-labeled Ozempic, Mounjaro and Rybelsus are not used for this class. Note the plan's Wegovy tablets are the same brand and listed under paRequired. [Sonnet check 2026-10-21: strength text corrected to the printed pen presentations (PDF p.62). Spot-checked Wegovy P+ PA QL and Saxenda np+ PA on pp.61-62.]",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "bcbs-tx-commercial"
+        },
+        {
+          "classId": "aom-oral",
+          "preferredAgent": {
+            "inn": "Phentermine HCl (weight management)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "37.5 mg tablet",
+            "sig": "1 tablet by mouth once daily (standard label dosing; sig not printed on plan list)",
+            "sigShort": "1 tab QD",
+            "plainSig": "One pill, once a day, as your doctor directs."
+          },
+          "preferredRestriction": "Group-specific coverage ('+'); QL 30 tablets per 30 days (PDF p.61)",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred Generic (Tier 1), group-specific ('+')",
+          "alternatives": [
+            {
+              "drug": "Phentermine HCl capsule 15 mg, 30 mg",
+              "note": "Preferred generic (p+), QL 30 capsules per 30 days (PDF p.61)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Phentermine HCl tablet 8 mg",
+              "note": "Non-preferred generic (np+), QL 90 tablets per 30 days (PDF p.61)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Orlistat 120 mg capsule (Xenical ref)",
+              "outcome": "pa",
+              "reason": "PA required; group-specific coverage ('+'); QL 90 capsules per 30 days (PDF p.61-62)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Qsymia (phentermine-topiramate ER capsule)",
+              "outcome": "pa",
+              "reason": "PA required; group-specific coverage ('+'); QL 30 capsules per 30 days (PDF p.61)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Contrave (naltrexone-bupropion ER)",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Preferred pick: phentermine 37.5 mg tablet, preferred generic (p+, Adipex-P reference not covered), no PA printed. Coverage is group-specific ('+'), so confirm the member's group covers weight-loss drugs (PDF p.3 key, p.5 coverage note on weight-loss exclusions). Sig not printed; standard label dosing.",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "bcbs-tx-commercial"
+        },
+        {
+          "classId": "aom-glp1",
+          "preferredAgent": {
+            "inn": "Semaglutide (weight management)",
+            "brand": "Wegovy",
+            "genericAvailable": false,
+            "strength": "Standard label dosing",
+            "sig": "As directed per FDA label (weight management; dose not stated in document)",
+            "sigShort": "Per label",
+            "plainSig": "Taken as your doctor directs."
+          },
+          "preferredRestriction": "No weight-loss GLP-1 appears on this plan's 2026 list (Wegovy, Zepbound, Saxenda absent); coverage likely excluded (confirm with plan). Part D generally excludes weight-loss drugs; the document does not state this exclusion.",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Not on plan list",
+          "alternatives": [],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "Weight-loss GLP-1s are not on this plan's list. Wegovy, Zepbound and Saxenda do not appear anywhere in the document (full text searched). Mounjaro (page 43) and Ozempic (page 44) are listed under the Blood Glucose Regulators category (page 42) with PA and QL; the document does not give them a weight-management indication, so they are not treated as covered weight-loss options. The document contains no statement that it is a complete list, so absence is recorded as a finding to confirm, not a stated exclusion.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "noCoveredAgent": true,
+          "payerId": "humana-premier-rx-pdp"
+        },
+        {
+          "classId": "aom-oral",
+          "preferredAgent": {
+            "inn": "Phentermine (weight management)",
+            "brand": "Adipex-P",
+            "genericAvailable": true,
+            "strength": "Standard label dosing",
+            "sig": "As directed per FDA label (weight management; dose not stated in document)",
+            "sigShort": "Per label",
+            "plainSig": "Taken as your doctor directs."
+          },
+          "preferredRestriction": "No oral weight-loss agent appears on this plan's 2026 list (phentermine, Qsymia, Contrave, orlistat absent); coverage likely excluded (confirm with plan). Part D generally excludes weight-loss drugs; the document does not state this exclusion.",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Not on plan list",
+          "alternatives": [],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "No phentermine, phentermine/topiramate (Qsymia), naltrexone/bupropion ER (Contrave) or orlistat (Xenical) line appears in the document (full text searched). Lines that look similar but are not weight-loss agents: naltrexone 50 mg tablet (anti-addiction, Tier 2, page 13), bupropion SR/ER (smoking deterrent, Tier 3, pages 13 and 21-22), topiramate tablet and solution (anticonvulsant, page 20). The document contains no statement that it is a complete list, so absence is recorded as a finding to confirm, not a stated exclusion.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "noCoveredAgent": true,
+          "payerId": "humana-premier-rx-pdp"
+        }
+      ],
+      "references": [
+        {
+          "id": "tx-medicaid-newtopics-2026-10",
+          "label": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria, effective July 24, 2026",
+          "publisher": "Texas Health and Human Services (Texas Medicaid Vendor Drug Program, txvendordrug.com)",
+          "type": "gov",
+          "url": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+          "effectiveDate": "2026-07-24",
+          "accessed": "2026-10-21"
+        },
+        {
+          "id": "bcbs-tx-commercial-newtopics-2026-10",
+          "label": "Performance Drug List, July 2026 (Blue Cross and Blue Shield of Texas, 2026 commercial formulary)",
+          "publisher": "Blue Cross and Blue Shield of Texas (Prime Therapeutics LLC)",
+          "type": "payer",
+          "url": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+          "accessed": "2026-10-21"
+        },
+        {
+          "id": "humana-premier-rx-pdp-newtopics-2026-10",
+          "label": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+          "publisher": "Humana",
+          "type": "payer",
+          "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+          "effectiveDate": "2026-09-02",
+          "accessed": "2026-10-21"
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Prior authorization (PA)",
+          "short": "Insurer sign-off first",
+          "definition": "Insurer sign-off needed before the drug is covered."
+        },
+        {
+          "term": "Step therapy",
+          "short": "Try a preferred drug first",
+          "definition": "Must fail a preferred drug first before the plan covers this one."
+        }
+      ]
+    },
+    {
+      "id": "tx-migraine",
+      "label": "TX · Migraine",
+      "stateCode": "TX",
+      "region": "Texas",
+      "topicId": "migraine",
+      "topic": "Migraine",
+      "classNoun": "Prescription type",
+      "unitNoun": "medication",
+      "tagline": "",
+      "dataStatus": "mixed",
+      "lastUpdated": "2026-10-21",
+      "capturedAt": "2026-10-21",
+      "payers": [
+        {
+          "id": "tx-medicaid",
+          "name": "Texas Medicaid Vendor Drug Program (Fee-for-Service, statewide PDL binding on all MCOs)",
+          "shortName": "TX Medicaid FFS",
+          "pbm": "Texas Health and Human Services Commission (HHSC) Vendor Drug Program",
+          "formularyUrl": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "productName": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria, effective July 24, 2026"
+        },
+        {
+          "id": "bcbs-tx-commercial",
+          "name": "Blue Cross and Blue Shield of Texas (Commercial)",
+          "shortName": "BCBS Texas",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "productName": "Performance Drug List, July 2026",
+          "marketSegment": "commercial-employer",
+          "formularyId": "Performance Drug List, July 2026 (Blue Cross and Blue Shield of Texas, 2026 commercial formulary)"
+        },
+        {
+          "id": "humana-premier-rx-pdp",
+          "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+          "shortName": "Humana Premier Rx (PDP)",
+          "pbm": "Humana Pharmacy Solutions",
+          "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+          "marketSegment": "medicare-part-d",
+          "formularyId": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402"
+        }
+      ],
+      "classes": [
+        {
+          "id": "triptan",
+          "name": "Triptans",
+          "shortName": "TRIPTAN",
+          "plainName": "Triptan (acute)",
+          "description": "Acute migraine 5-HT1B/1D agonists: sumatriptan (tablet, nasal, injection; Imitrex, Tosymra, Zembrace), rizatriptan (Maxalt, MLT), zolmitriptan (Zomig), eletriptan (Relpax), naratriptan, almotriptan, frovatriptan, sumatriptan/naproxen (Treximet).",
+          "plainDescription": "A pill (or spray/shot) taken when a migraine starts.",
+          "indication": "Acute migraine",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "id": "gepant-acute",
+          "name": "Acute CGRP antagonists (gepants) & ditans",
+          "shortName": "GEPANT",
+          "plainName": "Gepant (Nurtec/Ubrelvy)",
+          "description": "Acute CGRP receptor antagonists and ditans: rimegepant (Nurtec ODT, also preventive), ubrogepant (Ubrelvy), zavegepant nasal (Zavzpret), lasmiditan (Reyvow).",
+          "plainDescription": "A newer migraine pill (or nasal spray) for when triptans don't work or aren't safe.",
+          "indication": "Acute migraine",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "id": "cgrp-preventive",
+          "name": "CGRP preventives",
+          "shortName": "CGRP PREV",
+          "plainName": "Migraine preventive (CGRP)",
+          "description": "Migraine-preventive CGRP agents: erenumab (Aimovig), fremanezumab (Ajovy), galcanezumab (Emgality), eptinezumab (Vyepti, IV), atogepant (Qulipta, oral).",
+          "plainDescription": "A monthly shot (or daily pill) that prevents migraines.",
+          "indication": "Migraine prevention",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "records": [
+        {
+          "classId": "triptan",
+          "preferredAgent": {
+            "inn": "Sumatriptan (tablets)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "standard label dosing",
+            "sig": "As directed by prescriber (PDL does not state dose; standard label dosing)",
+            "sigShort": "As directed",
+            "plainSig": "Take as your prescriber directs."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred on PDL (no tier stated)",
+          "alternatives": [
+            {
+              "drug": "Sumatriptan nasal spray (generic)",
+              "note": "Preferred generic, no PA (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "IMITREX (sumatriptan) injection kit",
+              "note": "Preferred brand, no PA (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "MAXALT MLT (rizatriptan)",
+              "note": "Preferred brand, no PA (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Naratriptan (generic)",
+              "note": "Preferred generic, no PA (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "RELPAX (eletriptan)",
+              "note": "Preferred brand, no PA (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Rizatriptan (generic)",
+              "note": "Preferred generic, no PA (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "FROVA (frovatriptan)",
+              "note": "Preferred brand, no PA (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Zolmitriptan tablets (generic)",
+              "note": "Preferred generic, no PA (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Almotriptan (generic)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Eletriptan (generic)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Frovatriptan (generic)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "IMITREX (sumatriptan) tablets brand",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "MAXALT (rizatriptan) tablets brand",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "ONZETRA XSAIL (sumatriptan)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Sumatriptan injection kit and vial (generic)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Sumatriptan/naproxen (generic)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "SYMBRAVO (meloxicam/rizatriptan)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "TOSYMRA (sumatriptan)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "TREXIMET (sumatriptan/naproxen)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "ZEMBRACE SYMTOUCH (sumatriptan)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Zolmitriptan nasal and ODT (generic)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "ZOMIG (zolmitriptan) nasal and tablets",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "noCoveredAgent": false,
+          "verification": "verified",
+          "verificationNote": "Read PDL p.27 (antimigraine agents, triptans). Preferred generic sumatriptan tablets, no PA. Preferred triptans: sumatriptan tablets and nasal, zolmitriptan tablets, rizatriptan, naratriptan, and the brands IMITREX injection kit, MAXALT MLT, RELPAX, and FROVA. The clinical PA 'may apply' (triptans and CGRP subclasses) is noted on p.27 but was not recorded as a preferred-pick restriction, because the PDL says 'may apply' and not 'applies to all'. The PDL states no tiers.",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "tx-medicaid"
+        },
+        {
+          "classId": "gepant-acute",
+          "preferredAgent": {
+            "inn": "Ubrogepant (Ubrelvy)",
+            "brand": "UBRELVY",
+            "genericAvailable": false,
+            "strength": "standard label dosing",
+            "sig": "Oral; standard label dosing (PDL does not state dose)",
+            "sigShort": "As directed",
+            "plainSig": "Take as your prescriber directs."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred on PDL (no tier stated)",
+          "alternatives": [
+            {
+              "drug": "NURTEC ODT (rimegepant)",
+              "note": "Preferred brand, no PA (page 28)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "REYVOW (lasmiditan)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 28)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "ZAVZPRET (zavegepant) nasal",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 28)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "noCoveredAgent": false,
+          "verification": "verified",
+          "verificationNote": "Read PDL pp.27-28 (antimigraine agents, non-triptans). Preferred: UBRELVY (ubrogepant) and NURTEC ODT (rimegepant). Non-preferred: REYVOW and ZAVZPRET. The clinical PA 'may apply' note for the acute CGRP subclass (p.27) is not recorded as a restriction. Judgment call: UBRELVY is the preferred pick (first listed; the PDL states no tier, so NURTEC ODT is an equal alternative). NURTEC is also a preventive but is counted only in the acute class here.",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "tx-medicaid"
+        },
+        {
+          "classId": "cgrp-preventive",
+          "preferredAgent": {
+            "inn": "Erenumab (Aimovig)",
+            "brand": "AIMOVIG",
+            "genericAvailable": false,
+            "strength": "standard label dosing",
+            "sig": "Injection; dose per label (PDL does not state dose)",
+            "sigShort": "As directed",
+            "plainSig": "Take as your prescriber directs."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred on PDL (no tier stated)",
+          "alternatives": [
+            {
+              "drug": "AJOVY (fremanezumab-vfrm)",
+              "note": "Preferred brand, no PA (page 27)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "EMGALITY (galcanezumab-gnlm)",
+              "note": "Preferred brand, no PA for migraine prevention (page 28)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "QULIPTA (atogepant)",
+              "note": "Preferred oral brand, no PA (page 28)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "EMGALITY 100 mg (cluster headache)",
+              "outcome": "pa",
+              "reason": "PA required (not on the preferred list) (page 28)",
+              "sourceIds": [
+                "tx-medicaid-newtopics-2026-10"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "noCoveredAgent": false,
+          "verification": "verified",
+          "verificationNote": "Read PDL pp.27-28. Preferred: AIMOVIG, AJOVY, EMGALITY (galcanezumab-gnlm), and QULIPTA (atogepant, oral). Non-preferred: EMGALITY 100 mg for cluster headache (a separate indication). VYEPTI (eptinezumab, IV) does not appear on the PDL and is not inferred excluded. Judgment call: AIMOVIG is the preferred pick (first listed; the PDL states no tier). The clinical PA 'may apply' note for the CGRP prophylaxis subclass (p.27) is not recorded as a restriction.",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "tx-medicaid"
+        },
+        {
+          "classId": "triptan",
+          "preferredAgent": {
+            "inn": "Sumatriptan succinate",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "50 mg tablet",
+            "sig": "1 tablet by mouth at migraine onset; may repeat per label (standard label dosing; sig not printed on plan list)",
+            "sigShort": "1 tab at onset",
+            "plainSig": "One pill when a migraine starts, as your doctor directs."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred Generic (Tier 1)",
+          "alternatives": [
+            {
+              "drug": "Rizatriptan benzoate tablet 5, 10 mg (Maxalt ref)",
+              "note": "Preferred generic (p), QL 18 tablets per 30 days (PDF p.69)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Rizatriptan benzoate ODT 5, 10 mg (Maxalt-MLT ref)",
+              "note": "Preferred generic (p), QL 18 tablets per 30 days (PDF p.69)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Eletriptan HBr tablet 20, 40 mg (Relpax ref)",
+              "note": "Non-preferred generic (np), QL 18 tablets per 30 days (PDF p.69)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Naratriptan tablet 1, 2.5 mg",
+              "note": "Non-preferred generic (np), QL 18 tablets per 30 days (PDF p.69)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Zolmitriptan tablet 2.5, 5 mg (Zomig ref)",
+              "note": "Non-preferred generic (np), QL 18 tablets per 30 days (PDF p.69)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Sumatriptan nasal spray 5, 20 mg (Imitrex ref)",
+              "note": "Non-preferred generic (np), QL 12 inhalers per 30 days (PDF p.69)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Sumatriptan injection 6 mg/0.5 mL (vial and auto-injector)",
+              "note": "Non-preferred generic (np), QL 12 per 30 days (PDF p.69)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Tosymra (sumatriptan nasal)",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Zembrace SymTouch (sumatriptan injection)",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Treximet (sumatriptan-naproxen)",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Almotriptan",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Frovatriptan",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Preferred pick: sumatriptan 50 mg tablet, preferred generic (p, Imitrex reference not covered), QL 18 tablets per 30 days (PDF p.69). Sig not printed; standard label dosing. Rizatriptan tablets/ODT are also preferred generics. The class's covered triptans carry no PA printed. Excluded triptans are from absence, which PDF p.2 states is complete.",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "bcbs-tx-commercial"
+        },
+        {
+          "classId": "gepant-acute",
+          "preferredAgent": {
+            "inn": "Rimegepant",
+            "brand": "Nurtec ODT",
+            "genericAvailable": false,
+            "strength": "75 mg orally disintegrating tablet",
+            "sig": "1 tablet (75 mg) dissolved on the tongue at migraine onset; max 1 per 24 hours (standard label dosing; sig not printed on plan list)",
+            "sigShort": "1 ODT at onset",
+            "plainSig": "One melt-away tablet when a migraine starts, as your doctor directs."
+          },
+          "preferredRestriction": "PA required; QL 54 tablets per 90 days (PDF p.69)",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred Brand (Tier 3)",
+          "alternatives": [],
+          "paRequired": [
+            {
+              "drug": "Ubrelvy (ubrogepant 50 mg, 100 mg)",
+              "outcome": "pa",
+              "reason": "PA required; QL 16 tablets per 30 days (PDF p.69)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Reyvow (lasmiditan 50, 100 mg)",
+              "outcome": "pa",
+              "reason": "PA required; QL 8 tablets per 30 days (PDF p.69)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Zavzpret (zavegepant nasal)",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Every covered acute gepant/ditan (Nurtec ODT, Ubrelvy, Reyvow) is marked P with PA on PDF p.69; Zavzpret is not listed (PDF p.2 states unlisted drugs are not covered). With all agents needing PA, Nurtec ODT is the pick as the more commonly prescribed acute gepant (QL 54 tablets/90 days). [Sonnet check 2026-10-21: preferred pick changed from Ubrelvy to Nurtec ODT; Ubrelvy moved to paRequired.]",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "bcbs-tx-commercial"
+        },
+        {
+          "classId": "cgrp-preventive",
+          "preferredAgent": {
+            "inn": "Erenumab-aooe",
+            "brand": "Aimovig",
+            "genericAvailable": false,
+            "strength": "70 mg/mL auto-injector",
+            "sig": "70 mg subcutaneously once monthly (standard label dosing; sig not printed on plan list)",
+            "sigShort": "Inject monthly",
+            "plainSig": "A monthly shot to prevent migraines, as your doctor directs."
+          },
+          "preferredRestriction": "PA required; QL 1 injection device per 28 days (PDF p.69)",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred Brand (Tier 3)",
+          "alternatives": [],
+          "paRequired": [
+            {
+              "drug": "Ajovy (fremanezumab-vfrm 225 mg/1.5 mL autoinjector and syringe)",
+              "outcome": "pa",
+              "reason": "PA required; QL 3 devices or syringes per 84 days (PDF p.69)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Emgality (galcanezumab-gnlm 120 mg/mL and 100 mg/mL)",
+              "outcome": "pa",
+              "reason": "PA required; QL per 28 or 180 days (PDF p.69)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Qulipta (atogepant 10, 30, 60 mg)",
+              "outcome": "pa",
+              "reason": "PA required; QL 30 tablets per 30 days (PDF p.69)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Vyepti (eptinezumab, IV)",
+              "outcome": "nonformulary",
+              "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+              "sourceIds": [
+                "bcbs-tx-commercial-newtopics-2026-10"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "All covered CGRP preventives require PA (PDF p.69). Aimovig was chosen as the preferred pick because it is listed first among P PA products; this is a tie-break, not a prescribing-volume claim. Vyepti is absent from the list. Sig not printed; standard label dosing.",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "bcbs-tx-commercial"
+        },
+        {
+          "classId": "triptan",
+          "preferredAgent": {
+            "inn": "Sumatriptan succinate",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "50 mg tablet (25 mg and 100 mg also listed)",
+            "sig": "As directed per FDA label (dose not stated in document)",
+            "sigShort": "Per label",
+            "plainSig": "Taken by mouth as your doctor directs."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 2 (per document)",
+          "alternatives": [
+            {
+              "drug": "Rizatriptan tablet (5 mg, 10 mg)",
+              "note": "Tier 2, QL 12 per 30 days (page 26)",
+              "sourceIds": [
+                "humana-premier-rx-pdp-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Rizatriptan ODT (5 mg, 10 mg)",
+              "note": "Tier 3, QL 12 per 30 days (page 26)",
+              "sourceIds": [
+                "humana-premier-rx-pdp-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Naratriptan tablet (1 mg, 2.5 mg)",
+              "note": "Tier 3, QL 9 per 30 days (page 26)",
+              "sourceIds": [
+                "humana-premier-rx-pdp-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Eletriptan tablet (20 mg, 40 mg)",
+              "note": "Tier 4, QL 9 per 30 days (page 25)",
+              "sourceIds": [
+                "humana-premier-rx-pdp-newtopics-2026-10"
+              ]
+            },
+            {
+              "drug": "Sumatriptan succinate pen injector (4 mg, 6 mg)",
+              "note": "Tier 4, QL 6 per 30 days (page 26)",
+              "sourceIds": [
+                "humana-premier-rx-pdp-newtopics-2026-10"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "Sumatriptan tablet chosen as the lowest-tier triptan with no PA (page 26: Tier 2, QL 9 per 30 days). Other triptans listed are alternatives. Not listed in the document: Imitrex, Tosymra, Zembrace, Maxalt brand, Zomig, Relpax brand, almotriptan, frovatriptan, Treximet (sumatriptan/naproxen); not assessed. Dihydroergotamine spray (page 25, PA) and ergotamine-caffeine (page 26) are not triptans and are not listed. Sig is standard label dosing; the document prints no sig.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "humana-premier-rx-pdp"
+        },
+        {
+          "classId": "gepant-acute",
+          "preferredAgent": {
+            "inn": "Ubrogepant",
+            "brand": "Ubrelvy",
+            "genericAvailable": false,
+            "strength": "50 mg, 100 mg tablet",
+            "sig": "As directed per FDA label (dose not stated in document)",
+            "sigShort": "Per label",
+            "plainSig": "A pill taken when a migraine starts, as your doctor directs."
+          },
+          "preferredRestriction": "PA required (page 26); QL 16 tablets per 30 days",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 3 (per document)",
+          "alternatives": [],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "Ubrelvy is the only acute gepant listed (page 26, Tier 3, PA and QL). It is the preferred pick because it is the only candidate, despite the PA. Not listed in the document: Nurtec ODT (rimegepant), Zavzpret (zavegepant nasal), Reyvow (lasmiditan); not assessed, so no barrier is inferred for them. Sig is standard label dosing.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "humana-premier-rx-pdp"
+        },
+        {
+          "classId": "cgrp-preventive",
+          "preferredAgent": {
+            "inn": "Atogepant",
+            "brand": "Qulipta",
+            "genericAvailable": false,
+            "strength": "60 mg tablet (10 mg and 30 mg also listed)",
+            "sig": "As directed per FDA label (dose not stated in document)",
+            "sigShort": "Per label",
+            "plainSig": "Taken by mouth as your doctor directs."
+          },
+          "preferredRestriction": "PA required (page 26); QL 30 tablets per 30 days",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 4 (per document)",
+          "alternatives": [],
+          "paRequired": [
+            {
+              "drug": "Emgality (galcanezumab) pen or syringe",
+              "outcome": "pa",
+              "reason": "PA required (page 26)",
+              "sourceIds": [
+                "humana-premier-rx-pdp-newtopics-2026-10"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "Qulipta (oral) chosen over Emgality (injection) as the lower-burden preferred pick: both are Tier 4 and PA-restricted (page 26), so the choice is a judgment call; the oral product is recorded here as preferred. Strength 60 mg is the standard label preventive dose; the document lists 10, 30 and 60 mg tablets without a dosing instruction. Not listed in the document: Aimovig (erenumab), Ajovy (fremanezumab), Vyepti (eptinezumab, IV); not assessed, so no barrier is inferred for them. Emgality is PA-restricted and listed in paRequired.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "coverageSourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "restrictionSourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ],
+          "lastReviewed": "2026-10-21",
+          "payerId": "humana-premier-rx-pdp"
+        }
+      ],
+      "references": [
+        {
+          "id": "tx-medicaid-newtopics-2026-10",
+          "label": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria, effective July 24, 2026",
+          "publisher": "Texas Health and Human Services (Texas Medicaid Vendor Drug Program, txvendordrug.com)",
+          "type": "gov",
+          "url": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+          "effectiveDate": "2026-07-24",
+          "accessed": "2026-10-21"
+        },
+        {
+          "id": "bcbs-tx-commercial-newtopics-2026-10",
+          "label": "Performance Drug List, July 2026 (Blue Cross and Blue Shield of Texas, 2026 commercial formulary)",
+          "publisher": "Blue Cross and Blue Shield of Texas (Prime Therapeutics LLC)",
+          "type": "payer",
+          "url": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+          "accessed": "2026-10-21"
+        },
+        {
+          "id": "humana-premier-rx-pdp-newtopics-2026-10",
+          "label": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+          "publisher": "Humana",
+          "type": "payer",
+          "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+          "effectiveDate": "2026-09-02",
+          "accessed": "2026-10-21"
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Prior authorization (PA)",
+          "short": "Insurer sign-off first",
+          "definition": "Insurer sign-off needed before the drug is covered."
+        },
+        {
+          "term": "Step therapy",
+          "short": "Try a preferred drug first",
+          "definition": "Must fail a preferred drug first before the plan covers this one."
+        }
+      ]
     }
   ]
 }

@@ -358,8 +358,9 @@
  * MD new-topic guides dropped Cigna (only its not-yet-effective 2027 list is posted) (−).
  * 763 → 721: Texas gained its 7 original topics (inhalers … DOACs) for 3 payers (+), offset by
  * new prices for amphetamine sulfate, dextroamphetamine, phendimetrazine and orlistat, and
- * link-only Qulipta/Praluent rules (−). */
-export const KNOWN_UNPRICED_GAP = 721
+ * link-only Qulipta/Praluent rules (−).
+ * 721 → 771: the four new topics shipped for TX (3 payers). */
+export const KNOWN_UNPRICED_GAP = 771
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake

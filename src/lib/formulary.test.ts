@@ -113,6 +113,10 @@ describe('guides + global meta', () => {
       'tx-nsaids',
       'tx-osteoporosis',
       'tx-doac',
+      'tx-adhd',
+      'tx-lipids',
+      'tx-weight',
+      'tx-migraine',
     ])
   })
 
