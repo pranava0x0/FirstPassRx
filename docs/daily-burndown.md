@@ -73,6 +73,9 @@ Each item fits roughly one 20-minute run. Bigger items are split.
 1. **TX: 7 missing topics from the Texas Vendor Drug Program PDL.** `tx-ssris` exists with 3
    payers (TX Medicaid, BCBS TX commercial, Humana Premier Rx PDP). The TX PDL is one document
    covering every topic (fetch via the real browser, see CLAUDE.md `txvendordrug.com` note).
+   **All 3 payer documents are already cached** (`sources/tx-medicaid-ssris-source-2026-08.pdf`,
+   `bcbs-tx-commercial-ssris-source-2026-08.pdf`, `humana-premier-rx-pdp-ssris-source-2026-08.pdf`
+   — the SSRI-named files are whole formularies), so no fetch or browser is needed.
    Split: run A = TX Medicaid all 7 topics from the PDL (inline); run B = BCBS TX + Humana PDP
    (2 Haiku agents, one per payer document, all 7 topics each); run C = merge 7 guides + Sonnet
    check. Payoff: 1 → 8 TX guides.
