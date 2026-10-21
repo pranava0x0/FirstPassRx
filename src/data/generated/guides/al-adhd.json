@@ -1,0 +1,975 @@
+{
+  "id": "al-adhd",
+  "label": "AL · ADHD",
+  "stateCode": "AL",
+  "region": "Alabama",
+  "topicId": "adhd",
+  "topic": "ADHD",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-21",
+  "capturedAt": "2026-10-21",
+  "payers": [
+    {
+      "id": "al-medicaid",
+      "name": "Alabama Medicaid Agency (Fee-for-Service, statewide -- no MCO contracts)",
+      "shortName": "AL Medicaid FFS",
+      "pbm": "Administered directly by the Alabama Medicaid Agency (no contracted PBM identified)",
+      "formularyUrl": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_7-1-26.pdf",
+      "sourceIds": [
+        "al-medicaid-newtopics-2026-10-ref"
+      ],
+      "productName": "Alabama Medicaid Agency Preferred Drug List by Therapeutic Category",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Alabama Medicaid Agency Preferred Drug List (PDL) Reference Tool"
+    },
+    {
+      "id": "bcbs-al-commercial",
+      "name": "Blue Cross and Blue Shield of Alabama (Commercial)",
+      "shortName": "BCBS Alabama",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+      "sourceIds": [
+        "bcbs-al-commercial-newtopics-2026-10"
+      ],
+      "productName": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx1.0 Prescription Drug List",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (September 2026)"
+    },
+    {
+      "id": "bcbs-al-medicare",
+      "name": "BCBS Alabama Blue Advantage (Medicare Advantage / Part D)",
+      "shortName": "Blue Advantage AL",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+      "sourceIds": [
+        "bcbs-al-medicare-newtopics-2026-10"
+      ],
+      "productName": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "stimulant-mph",
+      "name": "Methylphenidate stimulants",
+      "shortName": "MPH",
+      "plainName": "Methylphenidate (Ritalin/Concerta type)",
+      "description": "CNS stimulants in the methylphenidate family: methylphenidate IR/ER (Ritalin, Concerta, Metadate, Aptensio, Jornay PM, Quillichew, Cotempla), dexmethylphenidate IR/ER (Focalin), serdexmethylphenidate/dexmethylphenidate (Azstarys), methylphenidate patch (Daytrana).",
+      "plainDescription": "A stimulant pill or patch for ADHD from the Ritalin/Concerta family.",
+      "indication": "ADHD",
+      "sourceIds": [
+        "al-medicaid-newtopics-2026-10-ref"
+      ]
+    },
+    {
+      "id": "stimulant-amph",
+      "name": "Amphetamine stimulants",
+      "shortName": "AMPH",
+      "plainName": "Amphetamine (Adderall/Vyvanse type)",
+      "description": "CNS stimulants in the amphetamine family: mixed amphetamine salts IR/ER (Adderall, Adderall XR, Mydayis), lisdexamfetamine (Vyvanse, capsule and chewable), dextroamphetamine (Dexedrine, Zenzedi, Xelstrym patch), amphetamine sulfate (Evekeo), amphetamine ER (Adzenys, Dyanavel).",
+      "plainDescription": "A stimulant for ADHD from the Adderall/Vyvanse family.",
+      "indication": "ADHD",
+      "sourceIds": [
+        "al-medicaid-newtopics-2026-10-ref"
+      ]
+    },
+    {
+      "id": "adhd-nonstimulant",
+      "name": "Non-stimulant ADHD agents",
+      "shortName": "NON-STIM",
+      "plainName": "Non-stimulant",
+      "description": "Non-stimulant ADHD agents: atomoxetine (Strattera), viloxazine ER (Qelbree), guanfacine ER (Intuniv), clonidine ER (Kapvay).",
+      "plainDescription": "A daily ADHD medicine that is not a stimulant.",
+      "indication": "ADHD",
+      "sourceIds": [
+        "al-medicaid-newtopics-2026-10-ref"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "stimulant-mph",
+      "preferredAgent": {
+        "inn": "Methylphenidate ER",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Standard label dosing (strength not stated in PDL)",
+        "sig": "As directed per FDA label (dose not stated in PDL)",
+        "sigShort": "Per label",
+        "plainSig": "Taken by mouth as your doctor directs."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred generic (no PA)",
+      "alternatives": [
+        {
+          "drug": "Concerta (methylphenidate ER)",
+          "note": "Preferred brand (no PA)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Methylphenidate (IR, generic)",
+          "note": "Preferred generic (no PA)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Ritalin (methylphenidate IR)",
+          "note": "Preferred brand (no PA)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Daytrana (methylphenidate patch)",
+          "note": "Preferred brand (no PA)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Focalin XR (dexmethylphenidate ER)",
+          "note": "Preferred brand (no PA)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Dexmethylphenidate IR (generic)",
+          "note": "Preferred generic (no PA)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Dexmethylphenidate ER (generic)",
+          "note": "Preferred generic (no PA)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Methylphenidate transdermal patch (generic of Daytrana)",
+          "outcome": "pa",
+          "reason": "PA required (generic patch; page 9 and thera page 2)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref",
+            "al-medicaid-newtopics-2026-10-thera"
+          ]
+        },
+        {
+          "drug": "Focalin (dexmethylphenidate IR brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Methylin (methylphenidate brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Ritalin LA (methylphenidate ER brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Relexxi ER (methylphenidate ER brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Aptensio XR (methylphenidate ER brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Cotempla XR (methylphenidate ODT brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Quillichew ER (methylphenidate chewable brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Quillivant XR (methylphenidate suspension brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Jornay PM (methylphenidate ER brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Azstarys (serdexmethylphenidate/dexmethylphenidate)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read ref PDL p.9 (07/01/2026) column-positioned via pypdf x-coordinates (preferred brand x=32, preferred generic x=199, PA column x=404) and thera PDL p.1-2 (04/01/2026). Thera p.2 confirms generic methylphenidate transdermal patch requires PA. Preferred pick is judgment: generic methylphenidate ER chosen as the lowest-cost once-daily generic; generic IR is equally covered with no PA. Strengths and sig not stated in PDL. Metadate, Adzenys/Cotempla generic status not listed as separate lines and are not claimed.",
+      "sourceIds": [
+        "al-medicaid-newtopics-2026-10-ref",
+        "al-medicaid-newtopics-2026-10-thera"
+      ],
+      "coverageSourceIds": [
+        "al-medicaid-newtopics-2026-10-ref",
+        "al-medicaid-newtopics-2026-10-thera"
+      ],
+      "restrictionSourceIds": [
+        "al-medicaid-newtopics-2026-10-ref"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "al-medicaid"
+    },
+    {
+      "classId": "stimulant-amph",
+      "preferredAgent": {
+        "inn": "Amphetamine-dextroamphetamine (mixed salts, IR)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Standard label dosing (strength not stated in PDL)",
+        "sig": "As directed per FDA label (dose not stated in PDL)",
+        "sigShort": "Per label",
+        "plainSig": "Taken by mouth as your doctor directs."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred generic (no PA)",
+      "alternatives": [
+        {
+          "drug": "Adderall XR (amphetamine-dextroamphetamine ER brand)",
+          "note": "Preferred brand (no PA)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref",
+            "al-medicaid-newtopics-2026-10-thera"
+          ]
+        },
+        {
+          "drug": "Vyvanse capsules (lisdexamfetamine brand)",
+          "note": "Preferred brand (no PA); generic lisdexamfetamine capsules require PA (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref",
+            "al-medicaid-newtopics-2026-10-thera"
+          ]
+        },
+        {
+          "drug": "Amphetamine-dextroamphetamine ER (generic)",
+          "note": "Preferred generic (no PA)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Lisdexamfetamine dimesylate chewable (generic)",
+          "note": "Preferred generic (no PA)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Amphetamine sulfate (generic of Evekeo)",
+          "note": "Preferred generic (no PA)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Dextroamphetamine (generic)",
+          "note": "Preferred generic (no PA)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Dextroamphetamine-amphetamine ER (generic of Mydayis)",
+          "note": "Preferred generic (no PA)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Methamphetamine (generic)",
+          "note": "Preferred generic (no PA); Desoxyn brand not listed",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Adderall (amphetamine-dextroamphetamine IR brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Lisdexamfetamine dimesylate capsules (generic of Vyvanse)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (generic capsules; thera page 2 and ref page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref",
+            "al-medicaid-newtopics-2026-10-thera"
+          ]
+        },
+        {
+          "drug": "Vyvanse Chewable Tablets (lisdexamfetamine brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Evekeo (amphetamine sulfate brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Zenzedi (dextroamphetamine brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Dexedrine (dextroamphetamine brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "ProCentra (dextroamphetamine brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Mydayis ER (dextroamphetamine-amphetamine ER brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Adzenys XR-ODT (amphetamine ER ODT brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Dyanavel XR (amphetamine ER brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Xelstrym (dextroamphetamine patch brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read ref PDL p.9 (07/01/2026) with x-coordinates confirming columns, and thera PDL p.2 (04/01/2026) which lists Vyvanse capsules and Adderall XR as preferred brands and states generic lisdexamfetamine capsules require PA. Preferred pick (generic IR mixed salts) is judgment: cheapest covered generic, no PA. Methamphetamine added as an amphetamine-family covered generic. Strengths and sig not stated in PDL. [Sonnet check 2026-10-21: Vyvanse alternative note now records that the brand is preferred over the PA-column generic capsules (same-product brand preference); not BOGL for the chosen mixed-salts pick.]",
+      "sourceIds": [
+        "al-medicaid-newtopics-2026-10-ref",
+        "al-medicaid-newtopics-2026-10-thera"
+      ],
+      "coverageSourceIds": [
+        "al-medicaid-newtopics-2026-10-ref",
+        "al-medicaid-newtopics-2026-10-thera"
+      ],
+      "restrictionSourceIds": [
+        "al-medicaid-newtopics-2026-10-ref",
+        "al-medicaid-newtopics-2026-10-thera"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "al-medicaid"
+    },
+    {
+      "classId": "adhd-nonstimulant",
+      "preferredAgent": {
+        "inn": "Atomoxetine",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Standard label dosing (strength not stated in PDL)",
+        "sig": "As directed per FDA label (dose not stated in PDL)",
+        "sigShort": "Per label",
+        "plainSig": "Taken by mouth as your doctor directs."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred generic (no PA)",
+      "alternatives": [
+        {
+          "drug": "Guanfacine ER (generic)",
+          "note": "Preferred generic (no PA)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Clonidine ER (generic)",
+          "note": "Preferred generic (no PA)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Strattera (atomoxetine brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Intuniv (guanfacine ER brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Qelbree ER (viloxazine brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 9)",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read ref PDL p.9 (07/01/2026) with x-coordinate column check. Generic atomoxetine, guanfacine ER and clonidine ER are preferred generics; Strattera, Intuniv and Qelbree are PA-column brands. Kapvay brand and viloxazine generic are not listed and are not claimed. Preferred pick (atomoxetine) is judgment: a covered, no-PA generic non-stimulant.",
+      "sourceIds": [
+        "al-medicaid-newtopics-2026-10-ref"
+      ],
+      "coverageSourceIds": [
+        "al-medicaid-newtopics-2026-10-ref"
+      ],
+      "restrictionSourceIds": [
+        "al-medicaid-newtopics-2026-10-ref"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "al-medicaid"
+    },
+    {
+      "classId": "stimulant-mph",
+      "noCoveredAgent": false,
+      "preferredAgent": {
+        "inn": "Methylphenidate hydrochloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet (immediate release)",
+        "sig": "1 tablet by mouth twice daily (standard label dosing; the list does not print a sig)",
+        "sigShort": "1 tab BID",
+        "plainSig": "One pill, twice a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Methylphenidate ER osmotic tablet 18-54 mg (Concerta generic)",
+          "note": "Tier 1 generic (PDF p. 87)",
+          "sourceIds": [
+            "bcbs-al-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate ER capsule 10-60 mg (Metadate CD / Ritalin LA type)",
+          "note": "Tier 1 generic (PDF p. 87)",
+          "sourceIds": [
+            "bcbs-al-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate chewable 2.5-10 mg; oral solution",
+          "note": "Tier 1 generic (PDF p. 87)",
+          "sourceIds": [
+            "bcbs-al-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dexmethylphenidate tablet 2.5-10 mg (Focalin)",
+          "note": "Tier 1 generic (PDF p. 86)",
+          "sourceIds": [
+            "bcbs-al-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dexmethylphenidate ER capsule 5-40 mg (Focalin XR generic)",
+          "note": "Tier 1 generic (PDF p. 86)",
+          "sourceIds": [
+            "bcbs-al-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Concerta (brand methylphenidate ER)",
+          "note": "Tier 3 covered brand; generic is Tier 1 (PDF p. 86)",
+          "sourceIds": [
+            "bcbs-al-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Focalin XR (brand dexmethylphenidate ER)",
+          "note": "Tier 3 covered brand; generic is Tier 1 (PDF p. 86)",
+          "sourceIds": [
+            "bcbs-al-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Azstarys (serdexmethylphenidate-dexmethylphenidate)",
+          "note": "Tier 2 covered brand (PDF p. 85)",
+          "sourceIds": [
+            "bcbs-al-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp. 84-88 (CNS section, ADHD stimulants) with pdfplumber, mapping dot glyphs to the PA/Step/Dispensing Limits/Limited Distribution columns by x-position (column headers verified). Methylphenidate IR tablet is Tier 1 with a Dispensing Limits dot only (quantity limit, not PA or step; not counted as paRequired). Concerta and Focalin XR brands are Tier 3 while generics are Tier 1, so no BOGL. Sig is standard label dosing, not printed in the document.",
+      "sourceIds": [
+        "bcbs-al-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "bcbs-al-commercial"
+    },
+    {
+      "classId": "stimulant-amph",
+      "noCoveredAgent": false,
+      "preferredAgent": {
+        "inn": "Amphetamine-dextroamphetamine (mixed amphetamine salts)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet (immediate release)",
+        "sig": "1 tablet by mouth twice daily (standard label dosing; the list does not print a sig)",
+        "sigShort": "1 tab BID",
+        "plainSig": "One pill, twice a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Lisdexamfetamine dimesylate capsule/chewable (Vyvanse generic)",
+          "note": "Tier 1 generic (PDF p. 87)",
+          "sourceIds": [
+            "bcbs-al-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dextroamphetamine sulfate tablet 5-10 mg",
+          "note": "Tier 1 generic (PDF p. 86)",
+          "sourceIds": [
+            "bcbs-al-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dextroamphetamine sulfate ER capsule 5-15 mg (Dexedrine)",
+          "note": "Tier 1 generic (PDF p. 86)",
+          "sourceIds": [
+            "bcbs-al-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Amphetamine-dextroamphetamine ER capsule 5-30 mg (Adderall XR generic)",
+          "note": "Tier 1 generic (PDF p. 85)",
+          "sourceIds": [
+            "bcbs-al-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Vyvanse (brand lisdexamfetamine)",
+          "note": "Tier 2 covered brand (PDF p. 88)",
+          "sourceIds": [
+            "bcbs-al-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Adderall (brand)",
+          "note": "Tier 3 covered brand; generic is Tier 1 (PDF p. 84)",
+          "sourceIds": [
+            "bcbs-al-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Adderall XR (brand)",
+          "note": "Tier 3 covered brand; generic is Tier 1 (PDF p. 84)",
+          "sourceIds": [
+            "bcbs-al-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp. 84-88. Mixed amphetamine salts generic IR tablet is Tier 1 with only a Dispensing Limits dot (quantity limit, not PA or step). Brand Adderall is Tier 3 while generic is Tier 1, so no BOGL. Mydayis, Evekeo, Adzenys, Dyanavel, Zenzedi and Xelstrym are not in the document body. Sig is standard label dosing.",
+      "sourceIds": [
+        "bcbs-al-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "bcbs-al-commercial"
+    },
+    {
+      "classId": "adhd-nonstimulant",
+      "noCoveredAgent": false,
+      "preferredAgent": {
+        "inn": "Atomoxetine hydrochloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "40 mg capsule (plan covers 10-100 mg; strength is prescriber-chosen)",
+        "sig": "1 capsule by mouth once daily in the morning (standard label dosing; the list does not print a sig)",
+        "sigShort": "1 cap QD",
+        "plainSig": "One capsule, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Guanfacine ER tablet 1-4 mg (Intuniv generic)",
+          "note": "Tier 1 generic (PDF p. 86-87)",
+          "sourceIds": [
+            "bcbs-al-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Clonidine ER tablet 0.1 mg (12-hr)",
+          "note": "Tier 1 generic (PDF p. 86)",
+          "sourceIds": [
+            "bcbs-al-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp. 85-87. Atomoxetine generic capsules are Tier 1 with only a Dispensing Limits dot. Viloxazine (Qelbree), clonidine ER (Kapvay brand) and Intuniv brand are not separately listed in the document; Intuniv appears as a generic line with reference brand. Sig is standard label dosing. [Sonnet check 2026-10-21: removed the \"Strattera brand covered\" alternative: the document lists only generic atomoxetine capsules (Strattera appears as a reference name in parentheses), so no brand line is covered/priced.]",
+      "sourceIds": [
+        "bcbs-al-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "bcbs-al-commercial"
+    },
+    {
+      "classId": "stimulant-mph",
+      "preferredAgent": {
+        "inn": "Methylphenidate hydrochloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet (listed: 5, 10, 20 mg)",
+        "sig": "Take by mouth as directed by prescriber (standard label dosing; dose not printed in document)",
+        "sigShort": "As directed",
+        "plainSig": "Take it as your doctor tells you."
+      },
+      "preferredRestriction": "PA required (PDF p. 57). Quantity limit 90 tablets/30 days.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Methylphenidate HCl extended-release tablet 10, 20 mg",
+          "outcome": "pa",
+          "reason": "PA and quantity limit required; Tier 4 (PDF p. 57)",
+          "sourceIds": [
+            "bcbs-al-medicare-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate HCl oral solution 5, 10 mg/5 mL",
+          "outcome": "pa",
+          "reason": "PA and quantity limit required; Tier 4 (PDF p. 57)",
+          "sourceIds": [
+            "bcbs-al-medicare-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dexmethylphenidate HCl tablet 2.5, 5, 10 mg",
+          "outcome": "pa",
+          "reason": "PA and quantity limit required; Tier 3 (PDF p. 57)",
+          "sourceIds": [
+            "bcbs-al-medicare-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p. 57 (Central Nervous System Agents). Methylphenidate IR tablet 5/10/20 mg is Tier 3, PA, QL 90 tabs/30 days; ER tablet and solution are Tier 4, PA, QL; dexmethylphenidate is Tier 3, PA, QL. Every methylphenidate-family line needs PA, so the IR tablet is picked as the lowest-tier option. Brand names Ritalin, Concerta, Focalin, Azstarys, Daytrana, Cotempla, Quillichew, Jornay PM, Aptensio, Metadate do not appear in the text; not treated as excluded because the document tells members to ask Member Services about drugs not included. Sig is standard label dosing, not printed in the document.",
+      "sourceIds": [
+        "bcbs-al-medicare-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-medicare-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-medicare-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "bcbs-al-medicare"
+    },
+    {
+      "classId": "stimulant-amph",
+      "preferredAgent": {
+        "inn": "Amphetamine-dextroamphetamine (mixed amphetamine salts)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet (listed: 5, 7.5, 10, 12.5, 15, 30 mg; 20 mg on a separate line)",
+        "sig": "Take by mouth as directed by prescriber, usually 1 tablet once or twice daily (standard label dosing; dose not printed in document)",
+        "sigShort": "As directed",
+        "plainSig": "Take it as your doctor tells you."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3",
+      "alternatives": [
+        {
+          "drug": "Amphetamine-dextroamphetamine extended-release capsule 5 mg",
+          "note": "Tier 3, QL 30 caps/30 days, no PA (PDF p. 56)",
+          "sourceIds": [
+            "bcbs-al-medicare-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Amphetamine-dextroamphetamine tablet 20 mg",
+          "note": "Tier 3, QL 90 tabs/30 days, no PA (PDF p. 56)",
+          "sourceIds": [
+            "bcbs-al-medicare-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Amphetamine-dextroamphetamine extended-release capsule 10, 15, 20, 25, 30 mg",
+          "note": "Tier 4, QL 30 caps/30 days, no PA (PDF p. 56)",
+          "sourceIds": [
+            "bcbs-al-medicare-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dextroamphetamine sulfate tablet 5, 10 mg",
+          "note": "Tier 4, QL, no PA (PDF p. 57)",
+          "sourceIds": [
+            "bcbs-al-medicare-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zenzedi (dextroamphetamine sulfate) tablet 5, 10 mg",
+          "note": "Brand; Tier 4, QL, no PA (PDF p. 58)",
+          "sourceIds": [
+            "bcbs-al-medicare-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp. 56-58. Generic amphetamine-dextroamphetamine tablet (5-30 mg) is Tier 3 with QL 60 tabs/30 days and no PA, the only no-PA, lowest-tier stimulant pick in the class. Lisdexamfetamine (Vyvanse), Adderall, Adzenys, Dyanavel, Evekeo, Mydayis, Xelstrym do not appear in the text. Tier 3 is the document's own label; the legend calls Tier 3 Preferred Brand. Sig is standard label dosing, not printed in the document.",
+      "sourceIds": [
+        "bcbs-al-medicare-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-medicare-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-medicare-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "bcbs-al-medicare"
+    },
+    {
+      "classId": "adhd-nonstimulant",
+      "preferredAgent": {
+        "inn": "Guanfacine (extended-release)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "1 mg extended-release tablet (listed: 1, 2, 3, 4 mg)",
+        "sig": "1 tablet by mouth once daily (standard label dosing; not printed in document)",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3",
+      "alternatives": [
+        {
+          "drug": "Atomoxetine HCl capsule 10, 18, 25, 40 mg",
+          "note": "Tier 4, QL 60 caps/30 days, no PA (PDF p. 56)",
+          "sourceIds": [
+            "bcbs-al-medicare-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Atomoxetine HCl capsule 60, 80, 100 mg",
+          "note": "Tier 4, QL 30 caps/30 days, no PA (PDF p. 56)",
+          "sourceIds": [
+            "bcbs-al-medicare-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Clonidine HCl extended-release tablet 0.1 mg",
+          "note": "Tier 4, QL 120 tabs/30 days, no PA (PDF p. 57)",
+          "sourceIds": [
+            "bcbs-al-medicare-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read PDF pp. 56-57. Guanfacine ER tablet 1-4 mg is Tier 3, QL 30 tabs/30 days, no PA; it carries the document's '#' High Risk Medication marker (legend: may be unsafe over age 65, alternatives may exist). Atomoxetine and clonidine ER are Tier 4 with QL, no PA. Qelbree (viloxazine), Intuniv, Kapvay brand names do not appear in the text; not treated as excluded. Guanfacine IR and clonidine IR tablets on the list are hypertension products and were not used. Partial because the list may not be complete; sig is standard label dosing.",
+      "sourceIds": [
+        "bcbs-al-medicare-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-medicare-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-medicare-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "bcbs-al-medicare"
+    }
+  ],
+  "references": [
+    {
+      "id": "al-medicaid-newtopics-2026-10-ref",
+      "label": "Alabama Medicaid Agency Preferred Drug List (PDL) Reference Tool",
+      "publisher": "Alabama Medicaid Agency",
+      "type": "gov",
+      "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_7-1-26.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "al-medicaid-newtopics-2026-10-thera",
+      "label": "Alabama Medicaid Agency Preferred Drug List by Therapeutic Category",
+      "publisher": "Alabama Medicaid Agency",
+      "type": "gov",
+      "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Thera_3-16-26.pdf",
+      "effectiveDate": "2026-04-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "bcbs-al-commercial-newtopics-2026-10",
+      "label": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (September 2026)",
+      "publisher": "Blue Cross and Blue Shield of Alabama (PBM: Prime Therapeutics)",
+      "type": "payer",
+      "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+      "effectiveDate": "2026-09",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "bcbs-al-medicare-newtopics-2026-10",
+      "label": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)",
+      "publisher": "Blue Cross and Blue Shield of Alabama",
+      "type": "payer",
+      "url": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+      "effectiveDate": "2026-01-20",
+      "accessed": "2026-10-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}
