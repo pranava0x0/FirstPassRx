@@ -784,4 +784,6 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   (plus 59 HTML pages, which change on every fetch and are noise, and the DC PDL, re-read today
   for the DC guides). The Anthem guides in those states were gathered from the earlier bytes;
   re-check the cited classes against the new files. Root cause: source reissue, not a code bug.
-  _Open._
+  _Fixed 2026-10-21:_ all 99 Anthem NY/VA/CA records re-checked against the 10/1/2026 files; 7
+  real changes applied (Mounjaro now listed with PA in NY and VA, sumatriptan auto-injector gained
+  step therapy in NY/VA/CA, Breztri Tier 3 -> 2), plus one older VA mis-tier fixed.
