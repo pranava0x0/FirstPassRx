@@ -1,6 +1,8 @@
 import { describe, it, expect } from 'vitest'
 import type { ClassMeta, FormularyRecord, PaItem, PayerMeta } from '../types/formulary'
-import { buildPaRequest, emptyPaRequest, paChecklist, preferredAlternatives, responseClock } from './paRequest'
+import { buildPaRequest, emptyPaRequest, paChecklist, preferredAlternatives, responseClock, submissionLine } from './paRequest'
+import { ICD10_BY_CLASS, icd10For } from './icd10'
+import data from '../data/formulary.json'
 
 const record: FormularyRecord = {
   payerId: 'p',
@@ -124,5 +126,65 @@ describe('buildPaRequest', () => {
     expect(letter).toMatch(/DIAGNOSIS: E11\.65/)
     expect(letter).toMatch(/1\. Jardiance: Not tried yet\n/)
     expect(letter).not.toMatch(/ignored/)
+  })
+})
+
+const criteriaItem: PaItem = {
+  ...item,
+  criteria: ['New to plan in last 90 days and on the drug', 'Asthma AND failed both preferred ICS'],
+  criteriaMode: 'any',
+  criteriaSourceIds: ['x'],
+}
+
+describe('plan criteria crosswalk', () => {
+  it('adds a criteria checklist item only when the plan criteria are known', () => {
+    expect(paChecklist(emptyPaRequest(record, item)).some((c) => c.id === 'criteria')).toBe(false)
+    expect(paChecklist(emptyPaRequest(record, criteriaItem)).some((c) => c.id === 'criteria')).toBe(true)
+  })
+
+  it('"any" needs one criterion met WITH evidence; "all" needs every one', () => {
+    const base = emptyPaRequest(record, criteriaItem)
+    const oneNoEvidence = { ...base, criteria: base.criteria.map((c, i) => (i === 1 ? { ...c, status: 'met' as const } : c)) }
+    expect(paChecklist(oneNoEvidence, 'any').find((c) => c.id === 'criteria')?.done).toBe(false)
+    const one = { ...base, criteria: base.criteria.map((c, i) => (i === 1 ? { ...c, status: 'met' as const, evidence: 'QVAR 2025, Arnuity 2026' } : c)) }
+    expect(paChecklist(one, 'any').find((c) => c.id === 'criteria')?.done).toBe(true)
+    expect(paChecklist(one, 'all').find((c) => c.id === 'criteria')?.done).toBe(false)
+  })
+
+  it('puts the plan criteria right after the diagnosis, before the step log', () => {
+    const letter = buildPaRequest(record, criteriaItem, payer('commercial-employer'), drugClass, emptyPaRequest(record, criteriaItem))
+    const dx = letter.indexOf('DIAGNOSIS:')
+    const crit = letter.indexOf("PLAN'S APPROVAL CRITERIA (any one qualifies)")
+    const steps = letter.indexOf("PLAN'S PREFERRED ALTERNATIVES")
+    expect(dx).toBeGreaterThan(-1)
+    expect(crit).toBeGreaterThan(dx)
+    expect(steps).toBeGreaterThan(crit)
+    expect(letter).toMatch(/1\. New to plan in last 90 days and on the drug: \[met \/ not met\]/)
+  })
+})
+
+describe('submission channel', () => {
+  it('names every published channel and goes in the letter header', () => {
+    const p = { ...payer('medicaid-ffs'), paSubmission: { fax: '877-208-7428', phone: '800-745-7318', portal: 'example.org', sourceIds: ['x'] } }
+    expect(submissionLine(p)).toBe('fax 877-208-7428 · portal example.org · phone 800-745-7318')
+    expect(buildPaRequest(record, item, p, drugClass, emptyPaRequest(record, item))).toMatch(/^Send to: fax 877-208-7428/m)
+  })
+  it('omits the line when the plan has no published channel', () => {
+    expect(buildPaRequest(record, item, payer('medicaid-ffs'), drugClass, emptyPaRequest(record, item))).not.toMatch(/Send to:/)
+  })
+})
+
+describe('ICD-10 suggestions', () => {
+  it('has suggestions for every active drug class in the dataset', () => {
+    const missing = new Set<string>()
+    for (const g of (data as { guides: { classes: { id: string; comingSoon?: boolean }[] }[] }).guides)
+      for (const c of g.classes) if (!c.comingSoon && icd10For(c.id).length === 0) missing.add(c.id)
+    expect([...missing]).toEqual([])
+  })
+  it('lists only well-formed, complete-looking codes', () => {
+    for (const opts of Object.values(ICD10_BY_CLASS))
+      for (const o of opts) expect(o.code).toMatch(/^[A-TV-Z]\d{2}(\.[0-9A-Z]{1,4})?$/)
+    // N18.3 is a non-billable category since FY2021 (Sonnet review); stage-specific codes only.
+    expect(Object.values(ICD10_BY_CLASS).flat().some((o) => o.code === 'N18.3')).toBe(false)
   })
 })

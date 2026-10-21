@@ -82,6 +82,13 @@ function validate(data: Formulary): void {
 
     guide.payers.forEach((p) => {
       checkSources(p.sourceIds, `payer ${p.id}`)
+      if (p.paSubmission) {
+        const sub = p.paSubmission
+        if (!sub.fax && !sub.phone && !sub.portal && !sub.epa)
+          problems.push(`${G} payer ${p.id}: paSubmission names no channel`)
+        if (!sub.sourceIds?.length) problems.push(`${G} payer ${p.id}: paSubmission has no sourceIds`)
+        checkSources(sub.sourceIds || [], `payer ${p.id} paSubmission`)
+      }
       if (!p.productName || !p.marketSegment || !p.formularyId)
         problems.push(`${G} payer ${p.id}: missing exact productName/marketSegment/formularyId`)
     })
@@ -120,6 +127,13 @@ function validate(data: Formulary): void {
             problems.push(`${G} ${at}: paRequired[${j}] is covered/cost-sharing, not a barrier`)
           checkSources(p.sourceIds || [], `${at} paRequired[${j}]`)
           if (!p.sourceIds?.length) problems.push(`${G} ${at}: paRequired[${j}] has no sourceIds`)
+          if (p.criteria) {
+            if (!p.criteria.length || p.criteria.some((c) => !c?.trim()))
+              problems.push(`${G} ${at}: paRequired[${j}] has empty criteria`)
+            if (!p.criteriaSourceIds?.length)
+              problems.push(`${G} ${at}: paRequired[${j}] criteria have no criteriaSourceIds`)
+            checkSources(p.criteriaSourceIds || [], `${at} paRequired[${j}] criteria`)
+          }
         })
       if (r.alternatives !== undefined) {
         if (!Array.isArray(r.alternatives)) problems.push(`${G} ${at}: alternatives is not an array`)

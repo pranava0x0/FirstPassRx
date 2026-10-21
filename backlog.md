@@ -15,7 +15,11 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   (2026-10-21) State-first, payer-major, local `sources/` cache first. Next: TX 1 → 8 topics, then
   ADHD stimulants and statins/PCSK9 state by state. Keep that file's queue as the single ordered
   list for data work; this backlog holds product/design items.
-- **PA request builder, phase 2: plan-specific criteria per drug.** (2026-10-21) Phase 1 shipped
+- **PA request builder, phase 2: plan-specific criteria per drug.** (2026-10-21) **Schema + UI
+  shipped** (`PaItem.criteria`/`criteriaMode`/`criteriaSourceIds`, `PayerMeta.paSubmission`, ICD-10
+  suggestions in `src/lib/icd10.ts`); data so far = MA inhalers only (4 payers' send-to channels,
+  MGB's fluticasone HFA criteria). Filling the rest is data work, queued in
+  `docs/daily-burndown.md`. Original note: Phase 1 shipped
   (`src/components/PaRequest.tsx`): generic 4-item reviewer checklist, preferred-drug step log,
   reviewer-ordered letter, response clock by plan type. Phase 2: store each `paRequired` item's
   own criteria (age, diagnosis, labs, "tried X for N days") from the payer's PA policy so the
@@ -23,10 +27,11 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   crosswalk table. Research: reviewers score against criteria, and "lack of information" is a top
   denial reason (BCBS TN PA report; AmeriHealth Caritas LA documentation guidance). **Impact:
   high. Effort: medium per topic** (criteria live in the same PDL/PA docs we already cache).
-- **PA request: ICD-10 picker per topic, with label-mismatch warning.** (2026-10-21) A short
+- **PA request: ICD-10 label-mismatch warning.** (2026-10-21) The per-class suggestion list
+  shipped; still open: warn when a typed code doesn't match the drug's labeled indication. A short
   curated code list per class (e.g. asthma J45.x, COPD J44.x, T2D E11.x) instead of free text;
   warn when the code doesn't match the drug's labeled indication. **Impact: high. Effort: low.**
-- **PA request: practice profile + submission channel.** (2026-10-21) Optional prescriber
+- **PA request: practice profile.** (2026-10-21; submission channel shipped for MA inhalers) Optional prescriber
   name/NPI/phone/fax saved in localStorage (never patient data), and per payer the PA intake
   (fax, portal, CoverMyMeds/Surescripts) so the output ends with "send to: …". MassHealth's
   routing table is already in `docs/pa-drafting/`. **Impact: medium-high. Effort: medium.**

@@ -355,3 +355,28 @@ describe('VA diabetes guide specifics', () => {
     }
   })
 })
+
+describe('PA criteria and submission validation', () => {
+  const base = () => structuredClone((rawData as unknown as Formulary).guides.find((g) => g.id === 'ma-inhalers')!)
+
+  it('ships MA inhaler submission channels and MGB criteria that validate', () => {
+    const g = base()
+    expect(g.payers.find((p) => p.id === 'masshealth')?.paSubmission?.fax).toBe('877-208-7428')
+    const mgbIcs = g.records.find((r) => r.payerId === 'mgb' && r.classId === 'ics')!
+    expect(mgbIcs.paRequired[0]!.criteria?.length).toBe(3)
+    expect(() => buildGuideView(g)).not.toThrow()
+  })
+
+  it('rejects a submission channel with no source', () => {
+    const g = base()
+    g.payers[0]!.paSubmission = { fax: '555-0100', sourceIds: [] }
+    expect(() => buildGuideView(g)).toThrow(/paSubmission has no sourceIds/)
+  })
+
+  it('rejects plan criteria with no criteria source', () => {
+    const g = base()
+    const r = g.records.find((x) => x.paRequired.length > 0)!
+    r.paRequired[0] = { ...r.paRequired[0]!, criteria: ['Something'], criteriaSourceIds: [] }
+    expect(() => buildGuideView(g)).toThrow(/criteria have no criteriaSourceIds/)
+  })
+})
