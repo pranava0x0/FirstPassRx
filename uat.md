@@ -36,3 +36,6 @@ and update `uat/interaction_costs.json`.
   went 5→6 (a select pick counts 2 taps), but the picker no longer grows with the state count
   (10 states was already a full phone screen of buttons), and a remembered last pick makes the
   common repeat visit 0.
+- **2026-10-21 (evening)** — Re-ran after the picker grew to 12 conditions and every state got all
+  12 topics: every task identical to the morning numbers (mobile: preferred 0, PA list 1, PA draft
+  4, switch state+condition+plan 6). The select-based picker absorbed 3× the guides with no cost.
