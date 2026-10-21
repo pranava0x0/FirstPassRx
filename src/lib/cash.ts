@@ -332,8 +332,11 @@
  * `ma-weight`, `ma-migraine`, 5 payers each): every stimulant, statin, PCSK9, weight-loss, triptan,
  * gepant and CGRP name is new to this file, so none has a cash-link rule yet. Declared here rather
  * than hidden; capturing prices for each guide's preferred agents (browser session) is queued in
- * docs/daily-burndown.md. Lower this as rules land. */
-export const KNOWN_UNPRICED_GAP = 233
+ * docs/daily-burndown.md. Lower this as rules land.
+ * Raised 233 → 397 the same day when the same four topics shipped for NY (`ny-adhd`, `ny-lipids`,
+ * `ny-weight`, `ny-migraine`, 5 payers): each payer's own long tail of stimulant, statin, PCSK9,
+ * triptan, gepant and CGRP name variants. Same declared gap, same queued fix. */
+export const KNOWN_UNPRICED_GAP = 397
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake

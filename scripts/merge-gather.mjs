@@ -85,7 +85,8 @@ for (const [topicId, topic] of Object.entries(taxonomy.topics)) {
     const cited = records.filter((r) => r.payerId === p.id).flatMap((r) => r.coverageSourceIds)
     const topId = [...new Set(cited)].sort((a, b) => cited.filter((x) => x === b).length - cited.filter((x) => x === a).length)[0]
     const primary = refs.get(topId)
-    return { ...rest, formularyUrl: primary.url, sourceIds: [primary.id] }
+    // formularyId too: the copied one names the source guide's document (Codex review, PR 22).
+    return { ...rest, formularyId: primary.label, formularyUrl: primary.url, sourceIds: [primary.id] }
   })
   const verified = records.filter((r) => r.verification === 'verified').length
   data.guides.push({

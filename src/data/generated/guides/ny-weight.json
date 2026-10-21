@@ -1,0 +1,659 @@
+{
+  "id": "ny-weight",
+  "label": "NY · Weight loss",
+  "stateCode": "NY",
+  "region": "New York",
+  "topicId": "weight",
+  "topic": "Weight loss",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-21",
+  "capturedAt": "2026-10-21",
+  "payers": [
+    {
+      "id": "ny-medicaid",
+      "name": "New York Medicaid (NYRx)",
+      "shortName": "NY Medicaid",
+      "aka": "NYRx — NYS Medicaid Pharmacy Program (Fee-for-Service); covers every NY Medicaid Managed Care plan's pharmacy benefit statewide since the April 1, 2023 pharmacy carve-out",
+      "pbm": "Prime Therapeutics / FHSC (NYRx fiscal agent)",
+      "formularyUrl": "https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf",
+      "paPolicyUrl": "https://www.health.ny.gov/health_care/medicaid/program/pharmacy/program_info.htm",
+      "sourceIds": [
+        "ny-medicaid-newtopics-2026-10"
+      ],
+      "productName": "NYRx — NY Medicaid Pharmacy Program (Fee-for-Service, statewide)",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "NYRx, the Medicaid Drug Program: Preferred Drug List (Preferred Drug Program), revised September 14, 2026"
+    },
+    {
+      "id": "ny-excellus-bcbs",
+      "name": "Excellus BlueCross BlueShield (Commercial / Individual & Family)",
+      "shortName": "Excellus BCBS",
+      "pbm": "Express Scripts (ESI)",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/251/Excellus_2026_Metal_Plans_Base___Simply_Blue_Plus___College_Blue_Plans_Formulary_Guide_2981_v26.pdf",
+      "sourceIds": [
+        "ny-excellus-bcbs-newtopics-2026-10"
+      ],
+      "productName": "Excellus BlueCross BlueShield 2026 Individual & Family Metal Plans (Base / Simply Blue Plus / College Blue) -- Commercial Exchange",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "2026 Individual & Family Metal Plans, Base, Simply Blue Plus and College Blue Plans Formulary Guide (2981)"
+    },
+    {
+      "id": "ny-uhc-commercial",
+      "name": "UnitedHealthcare (Commercial)",
+      "shortName": "UHC Commercial",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "sourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "productName": "UnitedHealthcare 2026 Commercial Prescription Drug List (CT/NJ/NY footprint)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 Prescription Drug List (PDL), UnitedHealthcare, effective January 1, 2026"
+    },
+    {
+      "id": "ny-anthem-bcbs",
+      "name": "Anthem Blue Cross and Blue Shield of New York (Commercial)",
+      "shortName": "Anthem BCBS NY",
+      "pbm": "CarelonRx",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_3_Tier_NY_ABS_IND.pdf",
+      "sourceIds": [
+        "ny-anthem-bcbs-newtopics-2026-10"
+      ],
+      "productName": "Anthem BCBS New York 2026 Select Drug List -- Three-Tier (Individual/HIX Marketplace)",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "Select Drug List, Three Tier Drug Plan (NY Marketplace, IND), current as of 9/1/2026"
+    },
+    {
+      "id": "ny-excellus-medicare",
+      "name": "Excellus Medicare BlueActive (PPO)",
+      "shortName": "Excellus Medicare",
+      "pbm": "Express Scripts (Medicare Part D)",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/251/Excellus_Medicare_5T_DP_even.pdf",
+      "sourceIds": [
+        "ny-excellus-medicare-newtopics-2026-10"
+      ],
+      "productName": "Excellus Medicare BlueActive (PPO) 2026 Medicare Advantage Part D Formulary",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Excellus BlueCross BlueShield 2026 Formulary (List of Covered Drugs), Medicare BlueActive (PPO) and other Medicare plans, formulary updated 09/01/2026"
+    }
+  ],
+  "classes": [
+    {
+      "id": "aom-glp1",
+      "name": "GLP-1-based anti-obesity medications",
+      "shortName": "GLP-1 AOM",
+      "plainName": "GLP-1 for weight loss",
+      "description": "Injectable or oral GLP-1/GIP agents labeled for chronic weight management (NOT their diabetes-labeled versions): semaglutide (Wegovy, including Wegovy tablets), tirzepatide (Zepbound), liraglutide (Saxenda). Many plans exclude weight-loss drugs entirely; an exclusion is a valid finding (outcome nonformulary).",
+      "plainDescription": "A weekly shot (or daily pill) for weight loss, like Wegovy or Zepbound.",
+      "indication": "Chronic weight management (obesity)",
+      "sourceIds": [
+        "ny-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "aom-oral",
+      "name": "Oral anti-obesity medications",
+      "shortName": "ORAL AOM",
+      "plainName": "Weight-loss pill",
+      "description": "Oral anti-obesity agents: phentermine (Adipex-P, Lomaira), phentermine/topiramate ER (Qsymia), naltrexone/bupropion ER (Contrave), orlistat (Xenical). Many plans exclude weight-loss drugs; an exclusion is a valid finding (outcome nonformulary).",
+      "plainDescription": "A pill for weight loss, like phentermine or Contrave.",
+      "indication": "Chronic weight management (obesity)",
+      "sourceIds": [
+        "ny-medicaid-newtopics-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "aom-glp1",
+      "preferredAgent": {
+        "inn": "Semaglutide",
+        "brand": "Wegovy",
+        "genericAvailable": false,
+        "strength": "2.4 mg/dose pen",
+        "sig": "Inject 2.4 mg under the skin once weekly",
+        "sigShort": "2.4 mg SC weekly",
+        "plainSig": "A shot once a week."
+      },
+      "preferredRestriction": "Covered with clinical criteria (DUR table, page 75): diagnosis of cardiovascular disease; BMI of 40 kg/m2 or greater; participation in lifestyle modifications supporting cardiovascular health; two treatment attempts per lifetime.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Covered with clinical criteria (DUR, page 75); no preferred/non-preferred status",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Zepbound (tirzepatide, brand)",
+          "outcome": "pa",
+          "reason": "Clinical criteria under NYRx DUR (page 75): diagnosis of obstructive sleep apnea; BMI of 40 kg/m2 or greater; lifestyle modifications; two treatment attempts per lifetime",
+          "sourceIds": [
+            "ny-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": "No step therapy listed. Lifetime quantity limit of two treatment attempts (page 75).",
+      "verification": "partial",
+      "verificationNote": "Read NYRx PDL page 75 (Drug Utilization Review table), where Wegovy and Zepbound are listed with clinical criteria. Wegovy is chosen as the pick because it is listed first and its criteria are the same barrier level as Zepbound; this is a judgment call, not a PDL designation. Saxenda (liraglutide) and Wegovy tablets do not appear on this PDL; the PDL is not complete (page 1), so their coverage is not determined here. [Sonnet check 2026-10-21: spot-checked page 75: Wegovy BMI>=40, CVD diagnosis, lifestyle, 2 lifetime attempts; Zepbound OSA - match.]",
+      "sourceIds": [
+        "ny-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ny-medicaid"
+    },
+    {
+      "classId": "aom-oral",
+      "preferredAgent": {
+        "inn": "Phentermine",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "37.5 mg",
+        "sig": "1 tablet by mouth once daily before breakfast (reference dosing)",
+        "sigShort": "1 tab QAM",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": "No oral anti-obesity agent appears on this PDL, so coverage is not determined from this document. The PDL is not a complete list of covered drugs (page 1). Confirm with NYRx.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not listed on this PDL",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read full NYRx PDL text for phentermine, phentermine/topiramate (Qsymia), naltrexone/bupropion (Contrave), and orlistat (Xenical). None appears. Because the PDL states that not all covered drugs appear in it (page 1), this is an absence, not a documented exclusion. Phentermine is a reference drug only; it is not presented as covered. Sig is a reference dose, not a PDL field.",
+      "sourceIds": [
+        "ny-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "noCoveredAgent": true,
+      "payerId": "ny-medicaid"
+    },
+    {
+      "classId": "aom-glp1",
+      "preferredAgent": {
+        "inn": "Foundayo",
+        "brand": "Foundayo",
+        "genericAvailable": false,
+        "strength": "Per prescriber (oral)",
+        "sig": "Oral GLP-1 agent, dose per prescriber and labeling",
+        "sigShort": "Oral daily (per Rx)",
+        "plainSig": "A daily pill for weight loss."
+      },
+      "preferredRestriction": "PA required; quantity limit applies (page 129)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read directly from page 129 (ANTI-OBESITY - GLP-1 RECEPTOR AGONISTS): FOUNDAYO is tier 3, PA and QL. It is the only GLP-1 weight-loss agent listed. The INN orforglipron is not printed in the document; it is supplied from drug knowledge for the brand Foundayo and should be confirmed. Wegovy (semaglutide), Zepbound (tirzepatide) and Saxenda (liraglutide) do not appear. The document states it lists the most commonly prescribed drugs only (page 3), so they are left out, not marked nonformulary; coverage for them is unconfirmed with the plan. [Sonnet check 2026-10-21: Verified FOUNDAYO is printed on page 129 (tier 3, PA; QL) under ANTI-OBESITY GLP-1 receptor agonists. The document does not print an INN, so the inn field now states the brand only (previous orforglipron supplied from memory, unconfirmed). Absence of Wegovy/Zepbound/Saxenda stays unmarked (page 3: lists only the most commonly prescribed drugs).]",
+      "sourceIds": [
+        "ny-excellus-bcbs-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-excellus-bcbs-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-excellus-bcbs-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ny-excellus-bcbs"
+    },
+    {
+      "classId": "aom-oral",
+      "preferredAgent": {
+        "inn": "Phentermine hydrochloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "37.5 mg (tablet)",
+        "sig": "1 tablet by mouth once daily in the morning, before breakfast",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Benzphetamine",
+          "note": "Tier 1 (page 129)",
+          "sourceIds": [
+            "ny-excellus-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Diethylpropion",
+          "note": "Tier 1 (page 129)",
+          "sourceIds": [
+            "ny-excellus-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Phentermine oral capsule",
+          "note": "Tier 1 (page 129)",
+          "sourceIds": [
+            "ny-excellus-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Phendimetrazine tartrate",
+          "note": "Tier 3 (page 129)",
+          "sourceIds": [
+            "ny-excellus-bcbs-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Phentermine-topiramate ER (generic Qsymia type)",
+          "outcome": "pa",
+          "reason": "PA required; quantity limit also applies (page 129)",
+          "sourceIds": [
+            "ny-excellus-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Orlistat (generic)",
+          "outcome": "pa",
+          "reason": "PA required; quantity limit also applies (page 129)",
+          "sourceIds": [
+            "ny-excellus-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Xenical (brand orlistat)",
+          "outcome": "pa",
+          "reason": "PA required; quantity limit also applies (page 129)",
+          "sourceIds": [
+            "ny-excellus-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Contrave (naltrexone-bupropion ER)",
+          "outcome": "pa",
+          "reason": "PA required; quantity limit also applies (page 129)",
+          "sourceIds": [
+            "ny-excellus-bcbs-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from page 129 (WEIGHT LOSS/GAIN AGENTS: anorexiants, fat absorption, GLP-1 and opioid-antagonist/NDRI sections). Preferred pick is phentermine 37.5 mg tablet: tier 1, no PA, no QL. Lomaira and Adipex-P brand names do not appear; generic phentermine does. Strength and sig are standard labeling.",
+      "sourceIds": [
+        "ny-excellus-bcbs-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-excellus-bcbs-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-excellus-bcbs-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ny-excellus-bcbs"
+    },
+    {
+      "classId": "aom-glp1",
+      "preferredAgent": {
+        "inn": "Semaglutide",
+        "brand": "Wegovy",
+        "genericAvailable": false,
+        "strength": "2.4 mg",
+        "sig": "2.4 mg by subcutaneous injection once weekly (chronic weight management labeling)",
+        "sigShort": "2.4 mg SC weekly",
+        "plainSig": "A weekly shot for weight loss."
+      },
+      "preferredRestriction": "No weight-loss GLP-1 (Wegovy, Zepbound, Saxenda) appears on this plan's 2026 PDL; coverage likely excluded (confirm with plan)",
+      "boglActive": false,
+      "boglNote": null,
+      "noCoveredAgent": true,
+      "tier": "Not listed on this PDL",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched full PDL text for Wegovy, Zepbound, Saxenda, semaglutide, tirzepatide, liraglutide, and weight/obesity terms. No weight-management GLP-1 is listed. Diabetes-labeled GLP-1s appear on p.31 (Ozempic PA+QL, Rybelsus PA+QL, Trulicity PA+QL, Mounjaro PA+QL, generic liraglutide 18 mg/3 mL pen PA+QL) and are not counted as weight-loss coverage. The document says it is not a complete list, so absence is recorded as not listed, not as nonformulary. Confirm with plan.",
+      "sourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ny-uhc-commercial"
+    },
+    {
+      "classId": "aom-oral",
+      "preferredAgent": {
+        "inn": "Phentermine hydrochloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "37.5 mg",
+        "sig": "37.5 mg by mouth once daily before breakfast (label)",
+        "sigShort": "37.5 mg QD",
+        "plainSig": "One small pill once a day, in the morning."
+      },
+      "preferredRestriction": "No oral weight-loss agent (phentermine, phentermine/topiramate, naltrexone/bupropion, orlistat) appears on this plan's 2026 PDL; coverage likely excluded (confirm with plan)",
+      "boglActive": false,
+      "boglNote": null,
+      "noCoveredAgent": true,
+      "tier": "Not listed on this PDL",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched full PDL text for phentermine, Adipex, Lomaira, Qsymia (phentermine/topiramate), Contrave (naltrexone/bupropion), orlistat/Xenical, diethylpropion, phendimetrazine, benzphetamine: none listed. The document says it is not a complete list, so absence is recorded as not listed, not as nonformulary. Confirm with plan.",
+      "sourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ny-uhc-commercial"
+    },
+    {
+      "payerId": "ny-anthem-bcbs",
+      "classId": "aom-glp1",
+      "preferredAgent": {
+        "inn": "Semaglutide",
+        "brand": "Wegovy",
+        "genericAvailable": false,
+        "strength": "2.4 mg weekly pen (reference product for this class)",
+        "sig": "Inject 2.4 mg under the skin once weekly, per labeled titration",
+        "sigShort": "SubQ weekly (weight)",
+        "plainSig": "A weekly shot under the skin for weight loss, as your doctor directs."
+      },
+      "preferredRestriction": "No weight-loss GLP-1 appears on this plan's 2026 list; coverage likely excluded (confirm with plan).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not listed",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Wegovy (semaglutide) for chronic weight management, including Wegovy tablets",
+          "outcome": "nonformulary",
+          "reason": "Not on list (p. 2 completeness statement). Only Ozempic (diabetes label) is listed (p. 23).",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zepbound (tirzepatide) for chronic weight management",
+          "outcome": "nonformulary",
+          "reason": "Not on list (completeness statement p. 2).",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Full-text search of the list for semaglutide, Wegovy, Ozempic, tirzepatide, Zepbound, liraglutide and Saxenda. Diabetes-labeled GLP-1s appear on p. 23 (Ozempic 0.25 to 2 mg/dose pens, Tier 2 PA; QL; generic liraglutide pen, Tier 2 PA; QL). They are not used as weight-management alternatives. Weight-management products are absent. Wegovy is the class reference agent; the barrier is exclusion, not PA. Partial because no covered agent exists in the class; the exclusion is the document's own completeness claim. [Sonnet check 2026-10-21: removed the Saxenda nonformulary item: the list does not state whether the liraglutide pen on p. 23 (Tier 2 PA; QL, diabetes incretin section) is the diabetes or the weight-management product (generic weight-management liraglutide exists), so absence of Saxenda is not established. Wegovy/Zepbound nonformulary kept (names absent from a list that states it is complete, p. 2).]",
+      "sourceIds": [
+        "ny-anthem-bcbs-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-anthem-bcbs-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-anthem-bcbs-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "noCoveredAgent": true
+    },
+    {
+      "payerId": "ny-anthem-bcbs",
+      "classId": "aom-oral",
+      "preferredAgent": {
+        "inn": "Phendimetrazine tartrate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "tablet (strength not stated on plan list)",
+        "sig": "As directed by prescriber (strength not stated on plan list)",
+        "sigShort": "PO as directed",
+        "plainSig": "A pill for weight loss, taken as your doctor directs."
+      },
+      "preferredRestriction": "PA required (Tier 1; QL). Phendimetrazine is the only oral anti-obesity agent listed.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (PA)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Phentermine HCl (generic), Adipex-P, Lomaira",
+          "outcome": "nonformulary",
+          "reason": "Not on list (completeness statement p. 2).",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Qsymia (phentermine/topiramate ER)",
+          "outcome": "nonformulary",
+          "reason": "Not on list (completeness statement p. 2).",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Contrave (naltrexone/bupropion ER)",
+          "outcome": "nonformulary",
+          "reason": "Not on list (p. 2 completeness statement). Naltrexone 50 mg tablet and bupropion SR/XL on the list are not weight-loss products and are not placed here.",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Orlistat (generic), Xenical",
+          "outcome": "nonformulary",
+          "reason": "Not on list (completeness statement p. 2).",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from the non-amphetamine anorexiant line, p. 8: phendimetrazine tartrate oral tablet, Tier 1, PA; QL. It is covered only with PA and is the preferred pick. Strength is not stated on the list. Phentermine, Qsymia, Contrave and orlistat are absent per completeness statement (p. 2). Phendimetrazine is not named in the taxonomy's class description but is a non-amphetamine oral anti-obesity agent, so it is placed here.",
+      "sourceIds": [
+        "ny-anthem-bcbs-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-anthem-bcbs-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-anthem-bcbs-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21"
+    },
+    {
+      "classId": "aom-glp1",
+      "preferredAgent": {
+        "inn": "Semaglutide",
+        "brand": "Wegovy",
+        "genericAvailable": false,
+        "strength": "2.4 mg (reference drug; not on formulary)",
+        "sig": "Inject 2.4 mg subcutaneously once weekly (reference label dose)",
+        "sigShort": "2.4 mg SC weekly",
+        "plainSig": "A shot once a week."
+      },
+      "preferredRestriction": "No weight-loss-labeled product appears on this plan's 2026 formulary (full document searched). Medicare Part D generally excludes drugs used only for weight loss (not stated in this document), so coverage is expected to be excluded (confirm with plan).",
+      "noCoveredAgent": true,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not covered (no weight-loss product listed)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Tirzepatide (Zepbound)",
+          "outcome": "nonformulary",
+          "reason": "Not on the 2026 formulary; the document defines the formulary as the list of covered drugs (pages 3 and 6). The document does not state a weight-loss exclusion.",
+          "sourceIds": [
+            "ny-excellus-medicare-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Liraglutide (Saxenda)",
+          "outcome": "nonformulary",
+          "reason": "Not on the 2026 formulary; the document defines the formulary as the list of covered drugs (pages 3 and 6). The document does not state a weight-loss exclusion.",
+          "sourceIds": [
+            "ny-excellus-medicare-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched the full document text for Wegovy, Zepbound, Saxenda, semaglutide, tirzepatide, liraglutide. None appear as weight-loss products. Ozempic, Trulicity and oral semaglutide appear only as diabetes-labeled products and were NOT treated as weight-loss coverage. The document does not state the weight-loss exclusion itself; the exclusion is from Medicare Part D rules, not from this file (not verified here, no network fetch). Reference drug Wegovy is kept only for the class schema. [Sonnet check 2026-10-21: reworded nonformulary reasons: pages 3 and 6 define the formulary as a list of covered drugs (so absence supports nonformulary) but do not state a weight-loss exclusion; softened the \"by law\" claim to \"generally\".]",
+      "sourceIds": [
+        "ny-excellus-medicare-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-excellus-medicare-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-excellus-medicare-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ny-excellus-medicare"
+    },
+    {
+      "classId": "aom-oral",
+      "preferredAgent": {
+        "inn": "Phentermine HCl",
+        "brand": "Adipex-P",
+        "genericAvailable": true,
+        "strength": "37.5 mg (reference drug; not on formulary)",
+        "sig": "Take 1 tablet by mouth once daily before breakfast (reference label dose)",
+        "sigShort": "1 tab QD AM",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": "No weight-loss-labeled product appears on this plan's 2026 formulary (full document searched). Medicare Part D generally excludes drugs used only for weight loss (not stated in this document), so coverage is expected to be excluded (confirm with plan).",
+      "noCoveredAgent": true,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not covered (no weight-loss product listed)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Phentermine-topiramate ER (Qsymia)",
+          "outcome": "nonformulary",
+          "reason": "Not on the 2026 formulary; the document defines the formulary as the list of covered drugs (pages 3 and 6). The document does not state a weight-loss exclusion.",
+          "sourceIds": [
+            "ny-excellus-medicare-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Naltrexone-bupropion ER (Contrave)",
+          "outcome": "nonformulary",
+          "reason": "Not on the 2026 formulary; the document defines the formulary as the list of covered drugs (pages 3 and 6). The document does not state a weight-loss exclusion.",
+          "sourceIds": [
+            "ny-excellus-medicare-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Orlistat (Xenical)",
+          "outcome": "nonformulary",
+          "reason": "Not on the 2026 formulary; the document defines the formulary as the list of covered drugs (pages 3 and 6). The document does not state a weight-loss exclusion.",
+          "sourceIds": [
+            "ny-excellus-medicare-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched the full document text for phentermine, Adipex-P, Lomaira, Qsymia, Contrave, orlistat and Xenical. None appear. Naltrexone (opioid use) and bupropion (smoking deterrent) are listed only for other indications, so they are not counted as weight-loss coverage. The weight-loss exclusion is from Medicare Part D rules, not stated in this file (not verified here, no network fetch). Phentermine is kept as the reference drug only. [Sonnet check 2026-10-21: reworded nonformulary reasons: pages 3 and 6 define the formulary as a list of covered drugs (so absence supports nonformulary) but do not state a weight-loss exclusion; softened the \"by law\" claim to \"generally\".]",
+      "sourceIds": [
+        "ny-excellus-medicare-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-excellus-medicare-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-excellus-medicare-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ny-excellus-medicare"
+    }
+  ],
+  "references": [
+    {
+      "id": "ny-medicaid-newtopics-2026-10",
+      "label": "NYRx, the Medicaid Drug Program: Preferred Drug List (Preferred Drug Program), revised September 14, 2026",
+      "publisher": "New York State Department of Health / NYRx (Medicaid pharmacy program)",
+      "type": "gov",
+      "url": "https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf",
+      "effectiveDate": "2026-09-14",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "ny-excellus-bcbs-newtopics-2026-10",
+      "label": "2026 Individual & Family Metal Plans, Base, Simply Blue Plus and College Blue Plans Formulary Guide (2981)",
+      "publisher": "Excellus BlueCross BlueShield",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/251/Excellus_2026_Metal_Plans_Base___Simply_Blue_Plus___College_Blue_Plans_Formulary_Guide_2981_v26.pdf",
+      "effectiveDate": "2026-09-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "ny-uhc-commercial-newtopics-2026-10",
+      "label": "2026 Prescription Drug List (PDL), UnitedHealthcare, effective January 1, 2026",
+      "publisher": "UnitedHealthcare",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "ny-anthem-bcbs-newtopics-2026-10",
+      "label": "Select Drug List, Three Tier Drug Plan (NY Marketplace, IND), current as of 9/1/2026",
+      "publisher": "Anthem Blue Cross and Blue Shield (NY)",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_3_Tier_NY_ABS_IND.pdf",
+      "effectiveDate": "2026-09-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "ny-excellus-medicare-newtopics-2026-10",
+      "label": "Excellus BlueCross BlueShield 2026 Formulary (List of Covered Drugs), Medicare BlueActive (PPO) and other Medicare plans, formulary updated 09/01/2026",
+      "publisher": "Excellus BlueCross BlueShield",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/251/Excellus_Medicare_5T_DP_even.pdf",
+      "effectiveDate": "2026-09-01",
+      "accessed": "2026-10-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}
