@@ -302,9 +302,11 @@ describe('FirstPassRx app', () => {
     render(<App />)
     const card = document.querySelector('.rx-option-card.is-barrier') as HTMLElement
     await user.click(within(card).getByRole('button', { name: /request pa/i }))
-    expect(within(card).getByText(/0 of 4/)).toBeInTheDocument()
+    // The total depends on whether the plan's own criteria exist for this drug (4 or 5 items).
+    const total = Number(card.querySelector('.pa-builder__score b')?.textContent?.match(/of (\d+)/)?.[1])
+    expect(within(card).getByText(new RegExp(`0 of ${total}`))).toBeInTheDocument()
     await user.type(within(card).getByLabelText(/Diagnosis/), 'J45.40 moderate persistent asthma')
-    expect(within(card).getByText(/1 of 4/)).toBeInTheDocument()
+    expect(within(card).getByText(new RegExp(`1 of ${total}`))).toBeInTheDocument()
     expect(within(card).getByText(/42 U\.S\.C/)).toBeInTheDocument()
     expect(card.querySelector('.pa-builder__letter')?.textContent).toMatch(/DIAGNOSIS: J45\.40/)
     expect(window.localStorage.getItem('fprx:last-pick') ?? '').not.toMatch(/J45/)
