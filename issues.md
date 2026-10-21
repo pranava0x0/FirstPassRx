@@ -204,6 +204,11 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
 
 ## Open
 
+- **2026-10-21 · data (IL) · two IL Medicaid MCO sources are stale lists.** Meridian's cited PDL is
+  dated December 1, 2024 and Blue Cross Community Health Plans' drug list says "Effective May 2025"
+  (cover still shows 2022–2023). Both back the existing `il-*` guides and the new IL topics. Find
+  each plan's current list and re-verify those cells. _Open._
+
 - **2026-10-21 · data (MD) · the cited Cigna "Value 4-Tier" URL now serves the list for coverage
   starting 2027-01-01 (last updated 09/01/2026).** It is the full drug list ("Specialty" in its header
   is a catalog code, not a specialty-only scope — an earlier note here said otherwise and was
