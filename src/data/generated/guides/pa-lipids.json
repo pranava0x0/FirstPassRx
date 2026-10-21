@@ -1,0 +1,997 @@
+{
+  "id": "pa-lipids",
+  "label": "PA · Cholesterol",
+  "stateCode": "PA",
+  "region": "Pennsylvania",
+  "topicId": "lipids",
+  "topic": "Cholesterol",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-21",
+  "capturedAt": "2026-10-21",
+  "payers": [
+    {
+      "id": "pa-medicaid",
+      "aka": "Statewide PDL binds fee-for-service and every Pennsylvania Medicaid managed care plan statewide (Physical HealthChoices + Community HealthChoices): same preferred/non-preferred status and PA criteria; each MCO runs its own PA intake (DHS MA Bulletin 2022-12-09)",
+      "name": "PA Medical Assistance Statewide Preferred Drug List (Fee-for-Service)",
+      "shortName": "PA Medicaid FFS",
+      "pbm": "OptumRx, Inc. (negotiates supplemental rebates / P&T support for DHS)",
+      "productName": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026 v11",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Pennsylvania Statewide Preferred Drug List (PDL), Effective January 2026, v11",
+      "formularyUrl": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-PDL-v11.pdf",
+      "sourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "ibx-commercial",
+      "name": "Independence Blue Cross (Commercial)",
+      "shortName": "Independence Blue Cross",
+      "pbm": "FutureScripts (IBX's PBM subsidiary)",
+      "productName": "Select Drug Program® Formulary",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Select Drug Program® Formulary (eFFective July 1, 2026)",
+      "formularyUrl": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "sourceIds": [
+        "ibx-commercial-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "highmark-bcbs",
+      "name": "Highmark Blue Cross Blue Shield (Commercial)",
+      "shortName": "Highmark BCBS",
+      "pbm": "Prime Therapeutics (Highmark is a Prime owner-member Blue plan)",
+      "productName": "Highmark Comprehensive Formulary (Drug Search)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Highmark Comprehensive Formulary - Drug Search (therapeutic-class pages; formulary effective 10/16/2026)",
+      "formularyUrl": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260",
+      "sourceIds": [
+        "highmark-bcbs-newtopics-2026-10"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "statin",
+      "name": "Statins",
+      "shortName": "STATIN",
+      "plainName": "Statin",
+      "description": "HMG-CoA reductase inhibitors: atorvastatin (Lipitor), rosuvastatin (Crestor, Ezallor), simvastatin (Zocor), pravastatin, lovastatin (Altoprev), pitavastatin (Livalo, Zypitamag), fluvastatin, and statin combinations (Vytorin, Roszet).",
+      "plainDescription": "A daily pill that lowers LDL cholesterol.",
+      "indication": "Hyperlipidemia / ASCVD risk reduction",
+      "sourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "ezetimibe",
+      "name": "Ezetimibe & other non-statin oral agents",
+      "shortName": "EZE",
+      "plainName": "Ezetimibe / non-statin pill",
+      "description": "Non-statin oral LDL-lowering agents: ezetimibe (Zetia), bempedoic acid (Nexletol) and bempedoic acid/ezetimibe (Nexlizet).",
+      "plainDescription": "A cholesterol pill used with or instead of a statin.",
+      "indication": "Hyperlipidemia",
+      "sourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "pcsk9",
+      "name": "PCSK9 inhibitors & siRNA",
+      "shortName": "PCSK9",
+      "plainName": "Injectable LDL lowerer (PCSK9)",
+      "description": "Injectable PCSK9-pathway agents: evolocumab (Repatha), alirocumab (Praluent), inclisiran (Leqvio).",
+      "plainDescription": "An injection every 2 weeks to 6 months that strongly lowers LDL cholesterol.",
+      "indication": "Hyperlipidemia / ASCVD",
+      "sourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "statin",
+      "preferredAgent": {
+        "inn": "Atorvastatin",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "40 mg (standard label dosing; PDL does not print strength)",
+        "sig": "1 tablet by mouth once daily (standard label dosing)",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Agents (PDL; no tier numbers)",
+      "alternatives": [
+        {
+          "drug": "Rosuvastatin",
+          "note": "Preferred, QL only (p.37)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Simvastatin",
+          "note": "Preferred, QL only (p.37)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pravastatin",
+          "note": "Preferred, QL only (p.37)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lovastatin",
+          "note": "Preferred, QL only (p.37)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Lipitor (atorvastatin) tablet, brand",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Crestor (rosuvastatin) tablet, brand; Ezallor Sprinkle capsule",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zocor (simvastatin) tablet, brand; Flolipid suspension",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Livalo (pitavastatin) and Zypitamag tablets, brand; generic pitavastatin tablet",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluvastatin capsule, fluvastatin ER tablet, Lescol XL tablet",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Altoprev (lovastatin ER) tablet",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Vytorin (ezetimibe-simvastatin) tablet, brand and generic ezetimibe-simvastatin tablet",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from PDL p.37 (Lipotropics, Statins). Preferred statins are atorvastatin, rosuvastatin, simvastatin, pravastatin and lovastatin generics, all QL only. Non-preferred entries show QL only in the flag column; the PA requirement applies from the page footer rule ('Non-preferred agents require prior authorization'). Roszet is not on the PDL and is not inferred as excluded. Strength and sig are standard label dosing.",
+      "sourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "classId": "ezetimibe",
+      "preferredAgent": {
+        "inn": "Ezetimibe",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg (standard label dosing; PDL does not print strength)",
+        "sig": "1 tablet by mouth once daily (standard label dosing)",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Agents (PDL; no tier numbers)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Zetia (ezetimibe) tablet, brand",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Nexletol (bempedoic acid) tablet",
+          "outcome": "pa",
+          "reason": "PA required (listed on the preferred side with PA flag, p.37)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Nexlizet (bempedoic acid/ezetimibe) tablet",
+          "outcome": "pa",
+          "reason": "PA required (listed on the preferred side with PA flag, p.37)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from PDL p.37. Generic ezetimibe tablet is the only no-PA non-statin oral LDL agent (QL only). Nexletol and Nexlizet are on the preferred side but carry a PA flag, so they are recorded as paRequired. Strength and sig are standard label dosing.",
+      "sourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "classId": "pcsk9",
+      "preferredAgent": {
+        "inn": "Evolocumab",
+        "brand": "Repatha SureClick",
+        "genericAvailable": false,
+        "strength": "140 mg/mL autoinjector",
+        "sig": "Inject 140 mg under the skin every 2 weeks, or 420 mg once monthly (standard label dosing)",
+        "sigShort": "SC q2wk",
+        "plainSig": "A shot every 2 weeks to lower cholesterol."
+      },
+      "preferredRestriction": "PA required (listed on the preferred side with PA flag, p.37)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Agents (PDL; no tier numbers)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Praluent (alirocumab) pen, brand",
+          "outcome": "pa",
+          "reason": "PA required (listed on the preferred side with PA flag, p.37)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Leqvio (inclisiran) syringe",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from PDL p.37. Repatha (SureClick, Pushtronex, Syringe) and Praluent are preferred-side entries with a PA flag; no PCSK9-pathway agent is no-PA. Repatha chosen as the pick (most common, 140 mg q2w label dosing; PDL does not print strength or sig). Leqvio is non-preferred and recorded as PA by the footer rule.",
+      "sourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "classId": "statin",
+      "preferredAgent": {
+        "inn": "Atorvastatin",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Standard label dosing (strength not printed in plan document)",
+        "sig": "As directed by prescriber, once daily per standard label dosing",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day, or as your doctor tells you."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Generic (G)",
+      "alternatives": [
+        {
+          "drug": "Rosuvastatin (generic)",
+          "note": "Generic tier, no PA listed (PDF p.45)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Simvastatin (generic)",
+          "note": "Low-Cost Generic tier, no PA listed (PDF p.45); the LCG incentive is not available on every plan (PDF p.3)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pravastatin (generic)",
+          "note": "Generic tier, no PA listed (PDF p.44)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lovastatin (generic)",
+          "note": "Generic tier, no PA listed (PDF p.43)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluvastatin sodium (generic)",
+          "note": "Generic tier, no PA listed (PDF p.42)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ezetimibe/simvastatin (generic)",
+          "note": "Generic tier, no PA listed (PDF p.42)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pravachol (pravastatin, brand)",
+          "note": "NPD tier, no PA listed (PDF p.44)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Lipitor (brand)",
+          "outcome": "pa",
+          "reason": "PA applies (PDF p.43)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Crestor (brand)",
+          "outcome": "pa",
+          "reason": "PA applies (PDF p.41)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ezzalor Sprinkle Cap (rosuvastatin, as printed)",
+          "outcome": "pa",
+          "reason": "PA applies (PDF p.42)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Livalo (pitavastatin, brand)",
+          "outcome": "pa",
+          "reason": "PA applies (PDF p.43)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zypitamag (pitavastatin, brand)",
+          "outcome": "pa",
+          "reason": "PA applies (PDF p.46)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pitavastatin (generic)",
+          "outcome": "pa",
+          "reason": "PA applies (PDF p.44)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zocor (brand)",
+          "outcome": "pa",
+          "reason": "PA applies (PDF p.46)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lescol XL (fluvastatin, brand)",
+          "outcome": "pa",
+          "reason": "PA applies (PDF p.43)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Altoprev ER (lovastatin, brand)",
+          "outcome": "pa",
+          "reason": "PA applies (PDF p.40)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Atorvaliq oral suspension (atorvastatin, brand)",
+          "outcome": "pa",
+          "reason": "PA applies (PDF p.40)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Simvastatin oral suspension (as printed)",
+          "outcome": "pa",
+          "reason": "PA applies (PDF p.45)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Vytorin (ezetimibe/simvastatin, brand)",
+          "outcome": "pa",
+          "reason": "PA applies (PDF p.46)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Roszet (rosuvastatin/ezetimibe, brand)",
+          "outcome": "pa",
+          "reason": "PA applies (PDF p.45)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ezetimibe/atorvastatin (as printed)",
+          "outcome": "pa",
+          "reason": "PA applies (PDF p.42)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ezetimibe/rosuvastatin (as printed)",
+          "outcome": "pa",
+          "reason": "PA applies (PDF p.42)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from the drug tables (PDF pp. 40-46). Preferred pick is generic atorvastatin, Generic tier, no PA (PDF p.40). Strength not printed, so standard label dosing is stated. Judgment call: simvastatin is a Low-Cost Generic (cheaper tier) but is less commonly prescribed than atorvastatin, so it is listed as an alternative. Lovastatin 10, 20 and 40 mg is also on the $0 preventive list for CVD prevention (PDF p.5), which is not used as the preferred pick.",
+      "sourceIds": [
+        "ibx-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ibx-commercial"
+    },
+    {
+      "classId": "ezetimibe",
+      "preferredAgent": {
+        "inn": "Ezetimibe",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Standard label dosing (strength not printed in plan document)",
+        "sig": "As directed by prescriber, once daily per standard label dosing",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day, or as your doctor tells you."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Generic (G)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Zetia (ezetimibe, brand)",
+          "outcome": "pa",
+          "reason": "PA applies (PDF p.46)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Nexletol (bempedoic acid, brand)",
+          "outcome": "pa",
+          "reason": "PA applies; preferred brand tier (PDF p.43)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Nexlizet (bempedoic acid/ezetimibe, brand)",
+          "outcome": "pa",
+          "reason": "PA applies; preferred brand tier (PDF p.43)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from the drug tables (PDF pp. 42-46). Preferred pick is generic ezetimibe, Generic tier, no PA (PDF p.42). Strength not printed. No other covered non-statin oral LDL agent without PA is listed.",
+      "sourceIds": [
+        "ibx-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ibx-commercial"
+    },
+    {
+      "classId": "pcsk9",
+      "preferredAgent": {
+        "inn": "Evolocumab",
+        "brand": "Repatha",
+        "genericAvailable": false,
+        "strength": "Standard label dosing (strength not printed in plan document)",
+        "sig": "Subcutaneous injection per standard label dosing",
+        "sigShort": "SC inj per label",
+        "plainSig": "A shot under the skin, on the schedule your doctor sets."
+      },
+      "preferredRestriction": "PA required (PDF p.45); preferred brand tier",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Brand (PB)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Praluent (alirocumab, brand)",
+          "outcome": "pa",
+          "reason": "PA applies (PDF p.44)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Repatha (PB, PA) and Praluent (NPD, PA) read directly (PDF pp. 44-45). Leqvio (inclisiran) does not appear anywhere in the document under brand or generic name. The document states covered brand drugs not listed are available at the non-preferred cost-share (PDF p.2), so Leqvio is not inferred as excluded and is not placed in paRequired; its coverage and PA status are unconfirmed. Repatha chosen as the lowest-barrier listed option (PA only, no QL printed).",
+      "sourceIds": [
+        "ibx-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ibx-commercial"
+    },
+    {
+      "classId": "statin",
+      "preferredAgent": {
+        "inn": "Atorvastatin",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "40 mg",
+        "sig": "Take 1 tablet by mouth once daily (standard label dosing; the plan page does not print a sig)",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 / Formulary Generic Drug",
+      "alternatives": [
+        {
+          "drug": "Fluvastatin Capsule (20 mg, 40 mg)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluvastatin Tablet Extended Release 24 hr (80 mg)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lovastatin Tablet (10 mg, 20 mg, 40 mg)",
+          "note": "Tier 1 (generic); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pitavastatin Calcium Tablet (1 mg, 2 mg, 4 mg)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pravastatin Tablet (10 mg, 20 mg, 40 mg, 80 mg)",
+          "note": "Tier 1 (generic); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Rosuvastatin Tablet (10 mg, 20 mg, 40 mg, 5 mg)",
+          "note": "Tier 1 (generic); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Simvastatin Tablet (10 mg, 20 mg, 40 mg, 5 mg, 80 mg)",
+          "note": "Tier 1 (generic); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ezetimibe-Simvastatin Tablet (10-10 mg, 10-20 mg, 10-40 mg, 10-80 mg)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Altoprev Tablet Extended Release 24 hr (20 mg, 40 mg, 60 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Atorvaliq Suspension (20 mg/5 mL (4 mg/mL))",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Crestor Tablet (10 mg, 20 mg, 40 mg, 5 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ezallor Sprinkle Capsule, Sprinkle (10 mg, 20 mg, 40 mg, 5 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (tier not shown)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Flolipid Suspension (20 mg/5 mL (4 mg/mL), 40 mg/5 mL (8 mg/mL))",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lescol Xl Tablet Extended Release 24 hr (80 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lipitor Tablet (10 mg, 20 mg, 40 mg, 80 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Livalo Tablet (1 mg, 2 mg, 4 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zocor Tablet (10 mg, 20 mg, 40 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zypitamag Tablet (2 mg, 4 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ezetimibe-Rosuvastatin Tablet (10-10 mg, 10-20 mg, 10-40 mg, 10-5 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Roszet Tablet (10-10 mg, 10-20 mg, 10-40 mg, 10-5 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Vytorin 10-10 Tablet (10-10 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Vytorin 10-20 Tablet (10-20 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Vytorin 10-40 Tablet (10-40 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Vytorin 10-80 Tablet (10-80 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from Highmark Comprehensive Formulary drug-search pages for the HMG-CoA reductase inhibitor (statin) class and the statin/ezetimibe combination rows. Generic atorvastatin, rosuvastatin, simvastatin, pravastatin, lovastatin are Tier 1 with a quantity limit, no PA. Brand Lipitor, Crestor, Zocor, Livalo, Zypitamag, Altoprev, Vytorin, Roszet, and generic ezetimibe-rosuvastatin are PA-flagged. Generic pitavastatin and fluvastatin are Tier 3 with quantity limit, no PA. Strength and sig are a representative 40 mg dose at standard label dosing. [Sonnet check 2026-10-21: Highmark legend (re-read on the live site) defines Tier 3 as \"Non-Formulary Drug\" that closed-formulary members do not get, so \"covered, higher cost share\" was overstated and Tier 3 alternatives now carry that caveat. Spot-checked on the live site: Aimovig 140 mg/mL is Tier 2 + QL + PA; Concerta 18 mg is Tier 3 + QL, no PA; both match.]",
+      "sourceIds": [
+        "highmark-bcbs-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "highmark-bcbs"
+    },
+    {
+      "classId": "ezetimibe",
+      "preferredAgent": {
+        "inn": "Ezetimibe",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg",
+        "sig": "Take 1 tablet by mouth once daily (standard label dosing; the plan page does not print a sig)",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 / Formulary Generic Drug",
+      "alternatives": [
+        {
+          "drug": "Zetia Tablet (10 mg)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); no PA or QL flag",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Nexlizet Tablet (180-10 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Nexletol Tablet (180 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from Highmark Comprehensive Formulary drug-search pages for the selective cholesterol absorption inhibitor class and the ATP-citrate lyase (bempedoic acid) classes. Generic ezetimibe 10 mg is Tier 1 with no PA or QL flag. Brand Zetia is Tier 3 with no PA flag. Nexletol and Nexlizet are Tier 3 with PA. [Sonnet check 2026-10-21: Highmark legend (re-read on the live site) defines Tier 3 as \"Non-Formulary Drug\" that closed-formulary members do not get, so \"covered, higher cost share\" was overstated and Tier 3 alternatives now carry that caveat. Spot-checked on the live site: Aimovig 140 mg/mL is Tier 2 + QL + PA; Concerta 18 mg is Tier 3 + QL, no PA; both match.]",
+      "sourceIds": [
+        "highmark-bcbs-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "highmark-bcbs"
+    },
+    {
+      "classId": "pcsk9",
+      "preferredAgent": {
+        "inn": "Evolocumab",
+        "brand": "Repatha",
+        "genericAvailable": false,
+        "strength": "140 mg/mL SureClick pen",
+        "sig": "Inject 140 mg subcutaneously every 2 weeks, or 420 mg every month (standard label dosing; the plan page does not print a sig)",
+        "sigShort": "140 mg SC q2wk",
+        "plainSig": "A shot every 2 weeks."
+      },
+      "preferredRestriction": "PA required (Highmark PCSK9 Inhibitors policy, commercial; April 2026 update p.20: initial-authorization LDL-C threshold lowered from 90 to 70 for primary prevention)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 / Formulary Brand Drug",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Lerochol Subcutaneous Syringe (300 mg/1.2 mL)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Praluent Pen Subcutaneous Pen Injector (150 mg/mL, 75 mg/mL)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from Highmark Comprehensive Formulary drug-search pages for the PCSK9 inhibitor classes. Repatha (Sureclick, Syringe, Pushtronex) is Tier 2 with PA, quantity limit and day-supply limit; Praluent is Tier 3 with PA. Leqvio (inclisiran) and Vyepti do not appear in these PCSK9 pages and are not recorded as covered or excluded. The PA criteria come from the Highmark PCSK9 Inhibitors policy (Commercial and Healthcare Reform), as revised in the April 2026 Formulary Update, page 20: initial authorization LDL-C threshold lowered from 90 to 70 for the primary-prevention indication. Full criteria text was not read beyond that revision note. Brand is the preferred agent; no generic exists.",
+      "sourceIds": [
+        "highmark-bcbs-newtopics-2026-10",
+        "highmark-bcbs-newtopics-2026-10-update"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-newtopics-2026-10",
+        "highmark-bcbs-newtopics-2026-10-update"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "highmark-bcbs"
+    }
+  ],
+  "references": [
+    {
+      "id": "pa-medicaid-newtopics-2026-10",
+      "label": "Pennsylvania Statewide Preferred Drug List (PDL), Effective January 2026, v11",
+      "publisher": "Pennsylvania Department of Human Services",
+      "type": "gov",
+      "url": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-PDL-v11.pdf",
+      "effectiveDate": null,
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "ibx-commercial-newtopics-2026-10",
+      "label": "Select Drug Program® Formulary (eFFective July 1, 2026)",
+      "publisher": "Independence Blue Cross (PBM-administered Select Drug Program)",
+      "type": "payer",
+      "url": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "highmark-bcbs-newtopics-2026-10",
+      "label": "Highmark Comprehensive Formulary - Drug Search (therapeutic-class pages; formulary effective 10/16/2026)",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260",
+      "effectiveDate": "2026-10-16",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "highmark-bcbs-newtopics-2026-10-update",
+      "label": "Highmark Drug Formulary Update - April 2026 (published June 2026); Commercial prior authorization policy changes",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://providers.highmark.com/content/dam/highmark/en/providerresourcecenter/pdfs/all/documents/pdfs/policies-and-programs/formulary-updates/2026/drug-formulary-update-april-2026.pdf",
+      "effectiveDate": null,
+      "accessed": "2026-10-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

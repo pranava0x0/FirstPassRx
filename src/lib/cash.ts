@@ -344,8 +344,11 @@
  * Raised 267 → 293 the same day after Codex review: the methylphenidate ER/IR rules were narrowed
  * to the exact captured forms (osmotic ER tablet, plain IR tablet), so 26 other forms (capsules,
  * LA/CD/SR, suspensions, chewables, patches, branded ER products) are now honestly unpriced instead
- * of showing a tablet quote. */
-export const KNOWN_UNPRICED_GAP = 293
+ * of showing a tablet quote.
+ * Raised 293 → 388 the same day when the four topics shipped for PA and CA (3 payers each): more
+ * payer-specific long-tail names (branded ER stimulants, statin/ezetimibe combos, PCSK9/CGRP
+ * variants, Medi-Cal labeler-restricted entries). Declared; price capture stays queued. */
+export const KNOWN_UNPRICED_GAP = 388
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake

@@ -1,0 +1,1365 @@
+{
+  "id": "pa-adhd",
+  "label": "PA · ADHD",
+  "stateCode": "PA",
+  "region": "Pennsylvania",
+  "topicId": "adhd",
+  "topic": "ADHD",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-10-21",
+  "capturedAt": "2026-10-21",
+  "payers": [
+    {
+      "id": "pa-medicaid",
+      "aka": "Statewide PDL binds fee-for-service and every Pennsylvania Medicaid managed care plan statewide (Physical HealthChoices + Community HealthChoices): same preferred/non-preferred status and PA criteria; each MCO runs its own PA intake (DHS MA Bulletin 2022-12-09)",
+      "name": "PA Medical Assistance Statewide Preferred Drug List (Fee-for-Service)",
+      "shortName": "PA Medicaid FFS",
+      "pbm": "OptumRx, Inc. (negotiates supplemental rebates / P&T support for DHS)",
+      "productName": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026 v11",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Pennsylvania Statewide Preferred Drug List (PDL), Effective January 2026, v11",
+      "formularyUrl": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-PDL-v11.pdf",
+      "sourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "ibx-commercial",
+      "name": "Independence Blue Cross (Commercial)",
+      "shortName": "Independence Blue Cross",
+      "pbm": "FutureScripts (IBX's PBM subsidiary)",
+      "productName": "Select Drug Program® Formulary",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Select Drug Program® Formulary (eFFective July 1, 2026)",
+      "formularyUrl": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "sourceIds": [
+        "ibx-commercial-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "highmark-bcbs",
+      "name": "Highmark Blue Cross Blue Shield (Commercial)",
+      "shortName": "Highmark BCBS",
+      "pbm": "Prime Therapeutics (Highmark is a Prime owner-member Blue plan)",
+      "productName": "Highmark Comprehensive Formulary (Drug Search)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Highmark Comprehensive Formulary - Drug Search (therapeutic-class pages; formulary effective 10/16/2026)",
+      "formularyUrl": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260",
+      "sourceIds": [
+        "highmark-bcbs-newtopics-2026-10"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "stimulant-mph",
+      "name": "Methylphenidate stimulants",
+      "shortName": "MPH",
+      "plainName": "Methylphenidate (Ritalin/Concerta type)",
+      "description": "CNS stimulants in the methylphenidate family: methylphenidate IR/ER (Ritalin, Concerta, Metadate, Aptensio, Jornay PM, Quillichew, Cotempla), dexmethylphenidate IR/ER (Focalin), serdexmethylphenidate/dexmethylphenidate (Azstarys), methylphenidate patch (Daytrana).",
+      "plainDescription": "A stimulant pill or patch for ADHD from the Ritalin/Concerta family.",
+      "indication": "ADHD",
+      "sourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "stimulant-amph",
+      "name": "Amphetamine stimulants",
+      "shortName": "AMPH",
+      "plainName": "Amphetamine (Adderall/Vyvanse type)",
+      "description": "CNS stimulants in the amphetamine family: mixed amphetamine salts IR/ER (Adderall, Adderall XR, Mydayis), lisdexamfetamine (Vyvanse, capsule and chewable), dextroamphetamine (Dexedrine, Zenzedi, Xelstrym patch), amphetamine sulfate (Evekeo), amphetamine ER (Adzenys, Dyanavel).",
+      "plainDescription": "A stimulant for ADHD from the Adderall/Vyvanse family.",
+      "indication": "ADHD",
+      "sourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "adhd-nonstimulant",
+      "name": "Non-stimulant ADHD agents",
+      "shortName": "NON-STIM",
+      "plainName": "Non-stimulant",
+      "description": "Non-stimulant ADHD agents: atomoxetine (Strattera), viloxazine ER (Qelbree), guanfacine ER (Intuniv), clonidine ER (Kapvay).",
+      "plainDescription": "A daily ADHD medicine that is not a stimulant.",
+      "indication": "ADHD",
+      "sourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "stimulant-mph",
+      "preferredAgent": {
+        "inn": "Methylphenidate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "18 mg ER 24HR (PDL lists 18, 27, 36, 54 mg)",
+        "sig": "1 tablet by mouth once daily in the morning (standard label dosing; PDL does not print a sig)",
+        "sigShort": "1 tab QAM",
+        "plainSig": "One pill in the morning, once a day."
+      },
+      "preferredRestriction": "AR flag (p.53 legend: \"age restriction, clinical prior authorization required\"). The PDL prints no age cutoff, so the PA likely applies outside an unstated covered age range; confirm with DHS/MCO.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Agents (PDL; no tier numbers)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Concerta (methylphenidate ER 24HR) tablet, brand",
+          "outcome": "pa",
+          "reason": "AR flag: age restriction, clinical PA required per p.53 legend; the PDL prints no age cutoff [preferred side, p.53]",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate IR tablet and solution; generic Ritalin SR, Ritalin LA and Metadate CD ER products, generic Concerta ER 18/27/36/54 mg tablet",
+          "outcome": "pa",
+          "reason": "AR flag: age restriction, clinical PA required per p.53 legend; the PDL prints no age cutoff [p.53-54]",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dexmethylphenidate IR tablet and generic Focalin XR capsule",
+          "outcome": "pa",
+          "reason": "AR flag: age restriction, clinical PA required per p.53 legend; the PDL prints no age cutoff [preferred side, p.53]",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Quillichew ER chewable tablet; Quillivant XR suspension",
+          "outcome": "pa",
+          "reason": "AR flag: age restriction, clinical PA required per p.53 legend; the PDL prints no age cutoff [preferred side, p.54]",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Focalin (dexmethylphenidate) tablet and Focalin XR capsule, brand",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ritalin tablet, Ritalin LA capsule, Relexxii ER tablet, Methylin solution, methylphenidate chewable tablet and patch, Daytrana patch",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Aptensio XR, generic Aptensio XR (methylphenidate ER CSBP 40-60), generic Relexxii, Azstarys, Cotempla XR-ODT, Jornay PM, methylphenidate ER 24HR tablet (all strengths except 18/27/36/54 mg)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from PDL pp.53-54 (layout-mode text, two-column extraction). Every methylphenidate entry carries the AR flag, so the preferred pick needs clinical PA per the p.53 legend. The brief's 'preferred = no PA' convention does not hold for AR entries; recorded as the document states. Concerta brand is also on the preferred side next to generic methylphenidate ER 24HR; no DAW or brand-only language is printed, so boglActive is false. Strength and sig are standard label dosing (not printed on the PDL). Grouped paRequired entries by product family. [Sonnet check 2026-10-21: Legend re-read on p.53: \"AR = age restriction, clinical prior authorization required\" (no age cutoff printed anywhere on pp.53-54), so the AR reading as a clinical PA was kept but reworded as age-driven and the missing cutoff is stated rather than implying unconditional PA.] [Sonnet check 2026-10-21: p.54 shows generic Aptensio XR and generic Relexxii on the Non-Preferred side, but one paRequired entry listed them as preferred; corrected the entry names.]",
+      "sourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "classId": "stimulant-amph",
+      "preferredAgent": {
+        "inn": "Dextroamphetamine-amphetamine (mixed amphetamine salts)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg (standard label dosing; PDL does not print strength)",
+        "sig": "1 tablet by mouth once or twice daily (standard label dosing)",
+        "sigShort": "1 tab BID",
+        "plainSig": "One pill once or twice a day."
+      },
+      "preferredRestriction": "AR flag (p.53 legend: \"age restriction, clinical prior authorization required\"). The PDL prints no age cutoff, so the PA likely applies outside an unstated covered age range; confirm with DHS/MCO.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Agents (PDL; no tier numbers)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Adderall (brand) tablet and Adderall XR (brand) capsule",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lisdexamfetamine (generic Vyvanse) capsule; dextroamphetamine tablet, ER capsule and solution; generic Adderall XR and generic Mydayis capsules; Dyanavel XR suspension",
+          "outcome": "pa",
+          "reason": "AR flag: age restriction, clinical PA required per p.53 legend; the PDL prints no age cutoff [preferred side, p.53-54]",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Vyvanse (brand) capsule and chewable tablet; lisdexamfetamine chewable tablet",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Adzenys XR-ODT, Dyanavel XR tablet, Evekeo and generic amphetamine tablet, Dexedrine ER, Mydayis ER (brand), Xelstrym patch, Zenzedi tablet",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from PDL pp.53-54. Generic mixed amphetamine salts tablet chosen as the preferred pick (most commonly prescribed generic in class) despite AR flag; generic lisdexamfetamine capsule is also preferred. Brand Vyvanse, Adderall and Mydayis are non-preferred, so no brand-over-generic BOGL is set (boglActive false). Strength and sig are standard label dosing, not printed on the PDL. Grouped paRequired entries by product family. [Sonnet check 2026-10-21: Legend re-read on p.53: \"AR = age restriction, clinical prior authorization required\" (no age cutoff printed anywhere on pp.53-54), so the AR reading as a clinical PA was kept but reworded as age-driven and the missing cutoff is stated rather than implying unconditional PA.]",
+      "sourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "classId": "adhd-nonstimulant",
+      "preferredAgent": {
+        "inn": "Atomoxetine",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "40 mg",
+        "sig": "1 capsule by mouth once daily in the morning (standard label dosing)",
+        "sigShort": "1 cap QAM",
+        "plainSig": "One capsule in the morning, once a day."
+      },
+      "preferredRestriction": "AR flag (p.53 legend: \"age restriction, clinical prior authorization required\"). The PDL prints no age cutoff, so the PA likely applies outside an unstated covered age range; confirm with DHS/MCO.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Agents (PDL; no tier numbers)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Strattera (atomoxetine) capsule, brand",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Guanfacine ER tablet (generic Intuniv) and clonidine ER 0.1 mg tablet (generic Kapvay)",
+          "outcome": "pa",
+          "reason": "AR flag: age restriction, clinical PA required per p.53 legend; the PDL prints no age cutoff [preferred side, p.54]",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Intuniv ER (guanfacine ER 24HR) tablet, brand",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Qelbree ER (viloxazine) capsule",
+          "outcome": "pa",
+          "reason": "AR flag: age restriction, clinical PA required per p.53 legend; the PDL prints no age cutoff [preferred side, p.54]",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Onyda XR (clonidine ER) suspension",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list)",
+          "sourceIds": [
+            "pa-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from PDL pp.53-54. Atomoxetine generic capsule is the preferred pick; every non-stimulant entry on the PDL carries the AR flag (clinical PA per p.53 legend). Kapvay brand is not on the PDL and is not inferred as excluded. Strength and sig are standard label dosing, not printed on the PDL. [Sonnet check 2026-10-21: Legend re-read on p.53: \"AR = age restriction, clinical prior authorization required\" (no age cutoff printed anywhere on pp.53-54), so the AR reading as a clinical PA was kept but reworded as age-driven and the missing cutoff is stated rather than implying unconditional PA.]",
+      "sourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "classId": "stimulant-mph",
+      "preferredAgent": {
+        "inn": "Methylphenidate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Standard label dosing (strength not printed in plan document)",
+        "sig": "As directed by prescriber, per standard label dosing",
+        "sigShort": "per label",
+        "plainSig": "Take it the way your doctor tells you."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Generic (G)",
+      "alternatives": [
+        {
+          "drug": "Methylphenidate ER (generic Concerta-type tablet)",
+          "note": "Generic tier; quantity limit (QL) only, no PA listed (PDF p.35)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate ER (CD) and ER (LA) (generic)",
+          "note": "Generic tier; QL only, no PA listed (PDF p.35)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate patch (generic Daytrana)",
+          "note": "Generic tier; QL only, no PA listed (PDF p.35)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dexmethylphenidate ER and HCl (generic Focalin)",
+          "note": "Generic tier; QL only, no PA listed (PDF p.31)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Focalin IR (brand)",
+          "note": "NPD tier; QL only, no PA listed (PDF p.33)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylin (brand)",
+          "note": "NPD tier; QL only, no PA listed (PDF p.34)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Concerta (methylphenidate ER)",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.31)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ritalin LA and Ritalin Tab (brand)",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.37)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Daytrana (methylphenidate patch, brand)",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.31)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Cotempla XR-ODT",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.31)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "QuilliChew ER",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.37)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Quillivant XR",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.37)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Relexxii",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.37)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Focalin XR (brand)",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.33)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Metadate CD",
+          "outcome": "pa",
+          "reason": "PA, QL and MME limit apply (PDF p.34)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Jornay PM capsule",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.33)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Aptensio XR",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.29)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Adhansia XR capsule",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.29)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate ER (XR) (as printed in plan table)",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.35)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Azstarys (serdexmethylphenidate/dexmethylphenidate)",
+          "outcome": "pa",
+          "reason": "PA and QL apply; preferred brand tier (PDF p.29)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from the drug tables (PDF pp. 28-37; printed page = PDF page minus 1). Preferred pick is the generic methylphenidate IR tablet, Generic tier, QL only, no PA (PDF p.34). Strength and quantity limits are not printed in the table, so none are stated. Cumulative stimulant limit (PDF p.8): PA required above 72 mg/day methylphenidate (brand and generic). Every ADHD methylphenidate product on the list is either generic QL-only or NPD/PB with PA.",
+      "sourceIds": [
+        "ibx-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ibx-commercial"
+    },
+    {
+      "classId": "stimulant-amph",
+      "preferredAgent": {
+        "inn": "Mixed amphetamine salts (amphetamine aspartate/amphetamine sulfate/dextroamphetamine), IR tablet",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Standard label dosing (strength not printed in plan document)",
+        "sig": "As directed by prescriber, per standard label dosing",
+        "sigShort": "per label",
+        "plainSig": "Take it the way your doctor tells you."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Generic (G)",
+      "alternatives": [
+        {
+          "drug": "Lisdexamfetamine capsule/chewable (generic Vyvanse)",
+          "note": "Generic tier; QL only, no PA listed (PDF p.34)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Amphetamine-dextroamphetamine ER capsule (generic Adderall XR)",
+          "note": "Generic tier; QL only, no PA listed (PDF p.29)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Amphetamine sulfate tablet (generic)",
+          "note": "Generic tier; QL only, no PA listed (PDF p.29)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dextroamphetamine (generic)",
+          "note": "Generic tier; QL only, no PA listed (PDF p.31)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Procentra (dextroamphetamine oral solution, brand)",
+          "note": "NPD tier; QL only, no PA listed (PDF p.36)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Adderall IR (brand)",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.28)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Adderall XR (brand)",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.28)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Mydayis",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.35)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Adzenys ER suspension and Adzenys XR-ODT (brand)",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.29)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Amphetamine ER suspension and amphetamine ER tablet (as printed)",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.29)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Amphetamine ER tablet (generic for Adzenys XR)",
+          "outcome": "pa",
+          "reason": "PA and QL apply to the generic (PDF p.29)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Amphetamine tablet (generic Evekeo)",
+          "outcome": "pa",
+          "reason": "PA and QL apply to the generic (PDF p.29)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Evekeo ODT (brand)",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.32)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dyanavel XR (brand)",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.32)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dexedrine (brand)",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.31)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zenzedi (brand)",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.39)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Xelstrym patch (brand)",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.39)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Vyvanse (brand)",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.39)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from the drug tables (PDF pp. 28-39; printed page = PDF page minus 1). Preferred pick is the generic mixed amphetamine salts IR tablet, Generic tier, QL only, no PA (PDF p.28). Strength and quantity limits are not printed in the table, so none are stated. Cumulative stimulant limit (PDF p.8): PA required above 60 mg/day for amphetamine-dextroamphetamine and dextroamphetamine, and above 70 mg/day for lisdexamfetamine (brand and generic). Lisdexamfetamine generic is listed; Vyvanse brand is PA.",
+      "sourceIds": [
+        "ibx-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ibx-commercial"
+    },
+    {
+      "classId": "adhd-nonstimulant",
+      "preferredAgent": {
+        "inn": "Guanfacine extended-release",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Standard label dosing (strength not printed in plan document)",
+        "sig": "As directed by prescriber, once daily per standard label dosing",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day, or as your doctor tells you."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Generic (G)",
+      "alternatives": [
+        {
+          "drug": "Atomoxetine (generic Strattera)",
+          "note": "Generic tier; QL only, no PA listed (PDF p.29)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Strattera (atomoxetine, brand)",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.38)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Intuniv (guanfacine ER, brand)",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.33)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Kapvay (clonidine ER, brand)",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.33)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Clonidine ER 24-hour tablet (as printed)",
+          "outcome": "pa",
+          "reason": "PA applies (PDF p.41)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Qelbree (viloxazine ER, brand)",
+          "outcome": "pa",
+          "reason": "PA and QL apply (PDF p.37)",
+          "sourceIds": [
+            "ibx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from the drug tables (PDF pp. 29-41). Preferred pick is generic guanfacine ER, Generic tier, QL only, no PA (PDF p.33); the plan's maximum daily dose limit for guanfacine ER is 1 tablet per day (PDF p.7). Strength not printed, so standard label dosing is stated. Generic atomoxetine is covered (PDF p.29). Viloxazine (Qelbree) is PA.",
+      "sourceIds": [
+        "ibx-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ibx-commercial"
+    },
+    {
+      "classId": "stimulant-mph",
+      "preferredAgent": {
+        "inn": "Methylphenidate hydrochloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "36 mg extended-release tablet (24-hour)",
+        "sig": "Take 1 tablet by mouth once daily in the morning (standard label dosing; the plan page does not print a sig)",
+        "sigShort": "1 tab QAM",
+        "plainSig": "One pill in the morning."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 / Formulary Generic Drug",
+      "alternatives": [
+        {
+          "drug": "Concerta Tablet Extended Release 24Hr (18 mg, 27 mg, 36 mg, 54 mg)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Daytrana Transdermal Patch 24 Hour (10 mg/9 hr, 15 mg/9 hr, 20 mg/9 hr, 30 mg/9 hr)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dexmethylphenidate Capsule,Er Biphasic 50-50 (10 mg, 15 mg, 20 mg, 30 mg, 40 mg, 5 mg)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dexmethylphenidate Tablet (10 mg, 2.5 mg, 5 mg)",
+          "note": "Tier 1 (generic); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Focalin Tablet (10 mg, 2.5 mg, 5 mg)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Focalin Xr Capsule,Er Biphasic 50-50 (10 mg, 15 mg, 20 mg, 30 mg, 5 mg)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Metadate Er Tablet Extended Release (20 mg)",
+          "note": "Tier 1 (generic); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylin Solution (10 mg/5 mL, 5 mg/5 mL)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate HCl Cap,Er Sprinkle,Biphasic 40-60 (10 mg, 15 mg, 20 mg, 30 mg, 40 mg, 50 mg, 60 mg)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate HCl Capsule, Er Biphasic 30-70 (10 mg, 20 mg, 30 mg, 40 mg, 50 mg, 60 mg)",
+          "note": "Tier 1 (generic); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate HCl Capsule,Er Biphasic 50-50 (10 mg, 20 mg, 30 mg, 40 mg, 60 mg)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate HCl Solution (10 mg/5 mL, 5 mg/5 mL)",
+          "note": "Tier 1 (generic); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate HCl Tablet (10 mg, 20 mg, 5 mg)",
+          "note": "Tier 1 (generic); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate HCl Tablet Extended Release (10 mg, 20 mg)",
+          "note": "Tier 1 (generic); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate Transdermal Patch 24 Hour (10 mg/9 hr, 15 mg/9 hr, 20 mg/9 hr, 30 mg/9 hr)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Relexxii Tablet Extended Release 24Hr (18 mg, 27 mg, 36 mg, 54 mg)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ritalin La Capsule,Er Biphasic 50-50 (10 mg, 20 mg, 30 mg, 40 mg)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ritalin Tablet (10 mg, 20 mg, 5 mg)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Azstarys Capsule (26.1 mg- 5.2 mg, 39.2 mg- 7.8 mg, 52.3 mg- 10.4 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Cotempla Xr-Odt Tablet,Disinteg Er Biphase 24H (17.3 mg, 25.9 mg, 8.6 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Jornay Pm Capsule,Del Rel,Ext Rel Sprink (100 mg, 20 mg, 40 mg, 60 mg, 80 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Metadate Cd Capsule, Er Biphasic 30-70 (10 mg, 20 mg, 30 mg, 40 mg, 50 mg, 60 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate HCl Tablet Extended Release 24Hr (45 mg, 63 mg, 72 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate Tablet,Disinteg Er Biphase 24H (17.3 mg, 25.9 mg, 8.6 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Quillichew Er Tablet,Chew,Ir-Er.Biphasic24hr (20 mg, 30 mg, 40 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Relexxii Tablet Extended Release 24Hr (45 mg, 63 mg, 72 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from Highmark Comprehensive Formulary drug-search pages for the Stimulant-Type ADHD class (CNS Agents), formulary effective 10/16/2026. Generic methylphenidate ER 24-hour tablet (18/27/36/54 mg) is Tier 1 with a quantity limit and no PA; 45/63/72 mg strengths carry PA. Brand Concerta is Tier 3 with a quantity limit, no PA. Strength and sig are the representative 36 mg dose at standard label dosing (the page prints no sig). Plan's Tier 3 legend reads 'Non-Formulary Drug': not covered for members with a closed formulary, covered at a higher copay on open or 3-tier incentive designs (site legend). Brand-over-generic (BOGL) not triggered: generic is Tier 1, brand Tier 3. [Sonnet check 2026-10-21: Highmark legend (re-read on the live site) defines Tier 3 as \"Non-Formulary Drug\" that closed-formulary members do not get, so \"covered, higher cost share\" was overstated and Tier 3 alternatives now carry that caveat. Spot-checked on the live site: Aimovig 140 mg/mL is Tier 2 + QL + PA; Concerta 18 mg is Tier 3 + QL, no PA; both match.]",
+      "sourceIds": [
+        "highmark-bcbs-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "highmark-bcbs"
+    },
+    {
+      "classId": "stimulant-amph",
+      "preferredAgent": {
+        "inn": "Dextroamphetamine saccharate / amphetamine aspartate / dextroamphetamine sulfate / amphetamine sulfate (mixed amphetamine salts)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg immediate-release tablet",
+        "sig": "Take 1 tablet by mouth 1 to 2 times daily as directed (standard label dosing; the plan page does not print a sig)",
+        "sigShort": "1 tab 1-2x/day",
+        "plainSig": "One pill, once or twice a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 / Formulary Generic Drug",
+      "alternatives": [
+        {
+          "drug": "Adderall Tablet (10 mg, 12.5 mg, 15 mg, 20 mg, 30 mg, 5 mg, 7.5 mg)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Amphetamine Suspen, Ir - Er, Biphasic 24Hr (1.25 mg/mL)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dextroamphetamine Sulfate Capsule, Extended Release (10 mg, 15 mg, 5 mg)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dextroamphetamine Sulfate Tablet (10 mg, 15 mg, 2.5 mg, 20 mg, 30 mg, 5 mg, 7.5 mg)",
+          "note": "Tier 1 (generic), Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dextroamphetamine-Amphetamine Capsule, Er Triphasic 24 hr (12.5 mg, 25 mg, 37.5 mg, 50 mg)",
+          "note": "Tier 1 (generic); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dextroamphetamine-Amphetamine Capsule,Extended Release 24Hr (10 mg, 15 mg, 20 mg, 25 mg, 30 mg, 5 mg)",
+          "note": "Tier 1 (generic); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lisdexamfetamine Capsule (10 mg, 20 mg, 30 mg, 40 mg, 50 mg, 60 mg, 70 mg)",
+          "note": "Tier 1 (generic); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lisdexamfetamine Tablet,Chewable (10 mg, 20 mg, 30 mg, 40 mg, 50 mg, 60 mg)",
+          "note": "Tier 1 (generic); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zenzedi Tablet (10 mg, 5 mg)",
+          "note": "Tier 1 (generic); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dextroamphetamine Sulfate Solution (5 mg/5 mL)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); no PA or QL flag",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Procentra Solution (5 mg/5 mL)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Adderall Xr Capsule,Extended Release 24Hr (10 mg, 15 mg, 20 mg, 25 mg, 30 mg, 5 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Adzenys Xr-Odt Tablet,Disinteg Er Biphase 24H (12.5 mg, 15.7 mg, 18.8 mg, 3.1 mg, 6.3 mg, 9.4 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Amphetamine Tablet,Disinteg Er Biphase 24H (12.5 mg, 15.7 mg, 18.8 mg, 3.1 mg, 6.3 mg, 9.4 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Amphetamine Sulfate Tablet (10 mg, 5 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Desoxyn Tablet (5 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dexedrine Spansule Capsule, Extended Release (10 mg, 15 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dyanavel Xr Suspen, Ir - Er, Biphasic 24Hr (2.5 mg/mL)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dyanavel Xr Tablet, Ir - Er, Biphasic 24Hr (10 mg, 15 mg, 20 mg, 5 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Evekeo Tablet (10 mg, 5 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methamphetamine Tablet (5 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Mydayis Capsule, Er Triphasic 24 hr (12.5 mg, 25 mg, 37.5 mg, 50 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Vyvanse Capsule (10 mg, 20 mg, 30 mg, 40 mg, 50 mg, 60 mg, 70 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Vyvanse Tablet,Chewable (10 mg, 20 mg, 30 mg, 40 mg, 50 mg, 60 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Xelstrym Transdermal Patch 24 Hour (13.5 mg/9 Hour, 18 mg/9 Hour, 4.5 mg/9 Hour, 9 mg/9 Hour)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zenzedi Tablet (15 mg, 2.5 mg, 20 mg, 30 mg, 7.5 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from Highmark Comprehensive Formulary drug-search pages for the amphetamine-type ADHD classes (CNS Stimulant - Amphetamines, Amphetamine Combinations, Attention Deficit-Hyperactivity Therapy Stimulant-Type rows for amphetamine products). Generic mixed amphetamine salts IR and ER capsules are Tier 1 with a quantity limit, no PA. Generic lisdexamfetamine capsules and chewable tablets are Tier 1 with a quantity limit, no PA; the Vyvanse brand is Tier 3 with PA. Brand Adderall is Tier 3 with a quantity limit, no PA. Strength and sig are a representative 10 mg dose at standard label dosing (no sig printed on the plan page). [Sonnet check 2026-10-21: Highmark legend (re-read on the live site) defines Tier 3 as \"Non-Formulary Drug\" that closed-formulary members do not get, so \"covered, higher cost share\" was overstated and Tier 3 alternatives now carry that caveat. Spot-checked on the live site: Aimovig 140 mg/mL is Tier 2 + QL + PA; Concerta 18 mg is Tier 3 + QL, no PA; both match.]",
+      "sourceIds": [
+        "highmark-bcbs-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "highmark-bcbs"
+    },
+    {
+      "classId": "adhd-nonstimulant",
+      "preferredAgent": {
+        "inn": "Guanfacine",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "2 mg extended-release tablet (24-hour)",
+        "sig": "Take 1 tablet by mouth once daily (standard label dosing; the plan page does not print a sig)",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 / Formulary Generic Drug",
+      "alternatives": [
+        {
+          "drug": "Atomoxetine Capsule (10 mg, 100 mg, 18 mg, 25 mg, 40 mg, 60 mg, 80 mg)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); quantity limit only, no PA",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Clonidine HCl Tablet Extended Release 12 hr (0.1 mg)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); no PA or QL flag",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Atomoxetine Solution (4 mg/mL)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Specialty Tier, Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Atoncy Solution (4 mg/mL)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Specialty Tier, Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Qelbree Capsule,Extended Release 24Hr (100 mg, 150 mg, 200 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Strattera Capsule (10 mg, 100 mg, 18 mg, 25 mg, 40 mg, 60 mg, 80 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Intuniv Er Tablet Extended Release 24 hr (1 mg, 2 mg, 3 mg, 4 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Kapvay Tablet Extended Release 12 hr (0.1 mg)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Onyda Xr Suspension,Extend Release 24Hr (0.1 mg/mL)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Specialty Tier, Tier 3)",
+          "sourceIds": [
+            "highmark-bcbs-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from Highmark Comprehensive Formulary drug-search pages for the ADHD Nri-Type and Alpha-2 Receptor Agonist classes. Generic guanfacine ER 24-hour tablets (1-4 mg) are Tier 1 with a quantity limit, no PA. Intuniv brand, Strattera brand, Qelbree, Kapvay are PA-flagged (Tier 3). Generic atomoxetine capsules are Tier 3 with a quantity limit and no PA (covered at Tier 3 cost share). Generic clonidine ER 0.1 mg tablet is Tier 3 with no PA or QL flag. Strength and sig are a representative 2 mg dose at standard label dosing. [Sonnet check 2026-10-21: Highmark legend (re-read on the live site) defines Tier 3 as \"Non-Formulary Drug\" that closed-formulary members do not get, so \"covered, higher cost share\" was overstated and Tier 3 alternatives now carry that caveat. Spot-checked on the live site: Aimovig 140 mg/mL is Tier 2 + QL + PA; Concerta 18 mg is Tier 3 + QL, no PA; both match.]",
+      "sourceIds": [
+        "highmark-bcbs-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "highmark-bcbs"
+    }
+  ],
+  "references": [
+    {
+      "id": "pa-medicaid-newtopics-2026-10",
+      "label": "Pennsylvania Statewide Preferred Drug List (PDL), Effective January 2026, v11",
+      "publisher": "Pennsylvania Department of Human Services",
+      "type": "gov",
+      "url": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-PDL-v11.pdf",
+      "effectiveDate": null,
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "ibx-commercial-newtopics-2026-10",
+      "label": "Select Drug Program® Formulary (eFFective July 1, 2026)",
+      "publisher": "Independence Blue Cross (PBM-administered Select Drug Program)",
+      "type": "payer",
+      "url": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "highmark-bcbs-newtopics-2026-10",
+      "label": "Highmark Comprehensive Formulary - Drug Search (therapeutic-class pages; formulary effective 10/16/2026)",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260",
+      "effectiveDate": "2026-10-16",
+      "accessed": "2026-10-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}
