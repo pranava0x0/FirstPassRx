@@ -196,6 +196,10 @@ describe('cash price coverage across the live formulary', () => {
     // immediate-release 50/75mg one; GoodRx pending for the same reason.
     const KNOWN_PRICE_UNAVAILABLE = [
       /climara/i,
+      // 2026-10-21 new topics: brand weight-loss GLP-1s and CGRP/PCSK9 injectables show only
+      // manufacturer savings offers on GoodRx, not a cash price.
+      /wegovy|zepbound|saxenda|foundayo|weight management/i,
+      /nurtec|rimegepant|repatha|evolocumab|aimovig|erenumab|ajovy|fremanezumab|emgality|galcanezumab/i,
       /menostar/i,
       /levonorgestrel/i,
       /combipatch/i,
@@ -307,5 +311,20 @@ describe('distinct estradiol patch products stay unpriced', () => {
   })
   it('plain weekly patch keeps its captured price', () => {
     expect(goodRxPrice('Estradiol transdermal patch (weekly)')?.price).toBe(51.66)
+  })
+})
+
+// Weight-loss GLP-1s share an INN with diabetes products; a Wegovy cell once showed Ozempic's $199
+// and a Saxenda cell Victoza's $154 (found 2026-10-21). They must never borrow those prices.
+describe('weight-loss GLP-1s never borrow a diabetes product price', () => {
+  it.each(['Semaglutide (weight management)', 'semaglutide (Wegovy)', 'Wegovy', 'Liraglutide 3 mg (weight management)', 'Saxenda', 'Zepbound (tirzepatide)', 'Tirzepatide (weight management)'])(
+    '%s',
+    (name) => {
+      expect(goodRxPrice(name)).toBeNull()
+      expect(goodRxUrl(name)).not.toMatch(/ozempic|victoza|mounjaro/)
+    },
+  )
+  it('diabetes semaglutide keeps its Ozempic price', () => {
+    expect(goodRxPrice('Semaglutide (Ozempic)')).not.toBeNull()
   })
 })

@@ -335,8 +335,13 @@
  * docs/daily-burndown.md. Lower this as rules land.
  * Raised 233 → 397 the same day when the same four topics shipped for NY (`ny-adhd`, `ny-lipids`,
  * `ny-weight`, `ny-migraine`, 5 payers): each payer's own long tail of stimulant, statin, PCSK9,
- * triptan, gepant and CGRP name variants. Same declared gap, same queued fix. */
-export const KNOWN_UNPRICED_GAP = 397
+ * triptan, gepant and CGRP name variants. Same declared gap, same queued fix.
+ * Lowered 397 → 267 the same day: real-browser prices for atomoxetine, guanfacine ER, phentermine,
+ * ezetimibe, atorvastatin, sumatriptan, methylphenidate ER/IR, lisdexamfetamine, mixed amphetamine
+ * salts IR and Ubrelvy, plus link-only rules for the brand GLP-1 weight products and CGRP/PCSK9
+ * injectables (GoodRx shows only copay-card offers for those). Also fixed: weight-loss
+ * semaglutide/liraglutide cells were borrowing Ozempic's/Victoza's price via the shared INN. */
+export const KNOWN_UNPRICED_GAP = 267
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -365,6 +370,112 @@ interface CashLinkRule {
 }
 
 const CASH_LINK_RULES: CashLinkRule[] = [
+  // ---- ADHD / cholesterol / weight / migraine topics (added 2026-10-21, real browser session) ----
+  // Weight-loss GLP-1s share an INN with the diabetes products priced further down (semaglutide =
+  // Ozempic AND Wegovy; liraglutide = Victoza AND Saxenda; tirzepatide = Mounjaro AND Zepbound). The
+  // UI looks prices up by INN, so these must come FIRST or a Wegovy cell shows Ozempic's price.
+  // Weight-loss records carry "(weight management)" in the INN for exactly this reason. Link-only:
+  // GoodRx shows manufacturer savings offers for these brands, not a plain cash price.
+  { matches: /wegovy|semaglutide.*weight/i, goodRxSlug: 'wegovy', pricesCapturedAt: '2026-10-21' },
+  { matches: /zepbound|tirzepatide.*weight/i, goodRxSlug: 'zepbound', pricesCapturedAt: '2026-10-21' },
+  { matches: /saxenda|liraglutide.*weight/i, goodRxSlug: 'saxenda', pricesCapturedAt: '2026-10-21' },
+  { matches: /foundayo|orforglipron/i, goodRxSlug: 'foundayo', pricesCapturedAt: '2026-10-21' },
+  {
+    matches: /atomoxetine|strattera/i,
+    goodRxSlug: 'atomoxetine',
+    goodRxParams: 'label_override=atomoxetine&form=capsule&dosage=40mg&quantity=30',
+    goodRxPrice: { price: 33.76, quantity: '30 capsules, 40mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    matches: /guanfacine.*(extended|\bER\b|24)|intuniv/i,
+    goodRxSlug: 'guanfacine-er',
+    goodRxParams: 'label_override=guanfacine-er&form=tablet&dosage=1mg&quantity=30',
+    goodRxPrice: { price: 19.45, quantity: '30 tablets, 1mg ER' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    // Not the phentermine/topiramate combo (Qsymia), a different product.
+    matches: /^(?!.*(topiramate|qsymia)).*(phentermine|adipex|lomaira)/i,
+    goodRxSlug: 'phentermine',
+    goodRxParams: 'label_override=phentermine&form=tablet&dosage=37.5mg&quantity=30',
+    goodRxPrice: { price: 21.52, quantity: '30 tablets, 37.5mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    // Single-agent ezetimibe only; combos (Vytorin, Nexlizet, Roszet) are different products.
+    matches: /^(?!.*(simvastatin|vytorin|bempedoic|nexlizet|rosuvastatin|roszet|atorvastatin)).*(ezetimibe|zetia)/i,
+    goodRxSlug: 'ezetimibe',
+    goodRxParams: 'label_override=ezetimibe&form=tablet&dosage=10mg&quantity=30',
+    costPlusPath: 'ezetimibe-10mg-tablet',
+    goodRxPrice: { price: 16.0, quantity: '30 tablets, 10mg' },
+    costPlusPrice: { price: 6.38, quantity: '30 tablets, 10mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    // Single-agent atorvastatin only; Caduet (amlodipine/atorvastatin) is a different product.
+    matches: /^(?!.*(amlodipine|caduet|ezetimibe)).*(atorvastatin|lipitor)/i,
+    goodRxSlug: 'atorvastatin',
+    goodRxParams: 'label_override=atorvastatin&form=tablet&dosage=40mg&quantity=30',
+    costPlusPath: 'atorvastatin-40mg-tablet',
+    goodRxPrice: { price: 15.24, quantity: '30 tablets, 40mg' },
+    costPlusPrice: { price: 5.67, quantity: '30 tablets, 40mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    // Oral tablets only; nasal, injectable, and sumatriptan/naproxen (Treximet) differ in price.
+    matches: /^(?!.*(naproxen|treximet|nasal|spray|inject|auto|statdose|zembrace|tosymra|onzetra)).*sumatriptan/i,
+    goodRxSlug: 'sumatriptan',
+    goodRxParams: 'label_override=sumatriptan&form=tablet&dosage=50mg&quantity=9',
+    goodRxPrice: { price: 29.85, quantity: '9 tablets, 50mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    // Extended-release methylphenidate (Concerta-type, 18mg); not dexmethylphenidate (Focalin).
+    matches: /^(?!.*dexmethyl).*(methylphenidate.*(extended|\bER\b|osmotic|\bOSM\b|24)|concerta)/i,
+    goodRxSlug: 'methylphenidate-er',
+    goodRxParams: 'label_override=methylphenidate-er&form=tablet&dosage=18mg&quantity=30',
+    goodRxPrice: { price: 39.49, quantity: '30 tablets, 18mg ER' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    // Immediate-release methylphenidate; must stay below the ER rule above.
+    matches: /^(?!.*dexmethyl).*(methylphenidate|ritalin)/i,
+    goodRxSlug: 'methylphenidate',
+    goodRxParams: 'label_override=methylphenidate&form=tablet&dosage=10mg&quantity=60',
+    goodRxPrice: { price: 25.78, quantity: '60 tablets, 10mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    matches: /lisdexamfetamine|vyvanse/i,
+    goodRxSlug: 'lisdexamfetamine',
+    goodRxParams: 'label_override=lisdexamfetamine&form=capsule&dosage=30mg&quantity=30',
+    goodRxPrice: { price: 67.78, quantity: '30 capsules, 30mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    // Immediate-release mixed amphetamine salts; Adderall XR / Mydayis are different products.
+    matches: /^(?!.*(\bXR\b|extended|mydayis|\bER\b)).*(amphetamine.?dextroamphetamine|dextroamphetamine.?amphetamine|mixed amphetamine|adderall)/i,
+    goodRxSlug: 'amphetamine-dextroamphetamine',
+    goodRxParams: 'label_override=amphetamine-dextroamphetamine&form=tablet&dosage=10mg&quantity=60',
+    goodRxPrice: { price: 32.31, quantity: '60 tablets, 10mg IR' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    // Brand only (no generic exists); GoodRx standard cash price.
+    matches: /ubrogepant|ubrelvy/i,
+    goodRxSlug: 'ubrelvy',
+    goodRxParams: 'label_override=ubrelvy&form=tablet&dosage=50mg&quantity=16',
+    goodRxPrice: { price: 1818, quantity: '16 tablets, 50mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  // Brand injectables / ODT: GoodRx shows only manufacturer copay-card offers ("as low as $25"),
+  // not a cash price, so link-only rather than a misleading number.
+  { matches: /rimegepant|nurtec/i, goodRxSlug: 'nurtec', pricesCapturedAt: '2026-10-21' },
+  { matches: /evolocumab|repatha/i, goodRxSlug: 'repatha', pricesCapturedAt: '2026-10-21' },
+  { matches: /erenumab|aimovig/i, goodRxSlug: 'aimovig', pricesCapturedAt: '2026-10-21' },
+  { matches: /fremanezumab|ajovy/i, goodRxSlug: 'ajovy', pricesCapturedAt: '2026-10-21' },
+  { matches: /galcanezumab|emgality/i, goodRxSlug: 'emgality', pricesCapturedAt: '2026-10-21' },
   {
     matches: /\balbuterol sulfate solution|albuterol.*nebul/i,
     goodRxSlug: 'albuterol',
