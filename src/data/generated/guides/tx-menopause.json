@@ -1,0 +1,880 @@
+{
+  "id": "tx-menopause",
+  "label": "TX · Menopause HT",
+  "stateCode": "TX",
+  "region": "Texas",
+  "topicId": "menopause-ht",
+  "topic": "Menopause HT",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-21",
+  "capturedAt": "2026-10-21",
+  "payers": [
+    {
+      "id": "tx-medicaid",
+      "name": "Texas Medicaid Vendor Drug Program (Fee-for-Service, statewide PDL binding on all MCOs)",
+      "shortName": "TX Medicaid FFS",
+      "pbm": "Texas Health and Human Services Commission (HHSC) Vendor Drug Program",
+      "formularyUrl": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "productName": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria, effective 07/24/2026"
+    },
+    {
+      "id": "bcbs-tx-commercial",
+      "name": "Blue Cross and Blue Shield of Texas (Commercial)",
+      "shortName": "BCBS Texas",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "sourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "productName": "Performance Drug List, July 2026",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Performance Drug List, July 2026 (Blue Cross and Blue Shield of Texas; Prime Therapeutics)"
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402 (updated 09/02/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "est-td",
+      "name": "Estrogen — transdermal",
+      "shortName": "Estrogen (patch)",
+      "plainName": "Estrogen patch/gel",
+      "description": "Transdermal 17β-estradiol (patch, gel, or spray); skips first-pass hepatic metabolism, lower VTE risk than oral.",
+      "plainDescription": "An estrogen patch or gel absorbed through the skin — gentler on clot risk than pills.",
+      "indication": "Menopause vasomotor symptoms",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "est-oral",
+      "name": "Estrogen — oral",
+      "shortName": "Estrogen (oral)",
+      "plainName": "Estrogen pill",
+      "description": "Oral estradiol or conjugated estrogens; effective, but first-pass hepatic metabolism raises VTE/clot and stroke risk vs transdermal.",
+      "plainDescription": "An estrogen pill taken by mouth. Works well, but carries a higher clot risk than the patch.",
+      "indication": "Menopause vasomotor symptoms",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "progestogen",
+      "name": "Progestogen",
+      "shortName": "Progestogen",
+      "plainName": "Uterus-protecting hormone",
+      "description": "Progestogen added to systemic estrogen for endometrial protection in patients with an intact uterus; micronized progesterone preferred.",
+      "plainDescription": "Added to estrogen if you still have a uterus, to protect the uterine lining.",
+      "indication": "Endometrial protection",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "vaginal",
+      "name": "Vaginal (local) estrogen",
+      "shortName": "Vaginal estrogen",
+      "plainName": "Local vaginal estrogen",
+      "description": "Low-dose vaginal estradiol (cream, tablet, insert, or ring) for genitourinary syndrome of menopause; minimal systemic absorption.",
+      "plainDescription": "Low-dose estrogen placed vaginally for dryness and urinary symptoms (GSM).",
+      "indication": "GSM (local)",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "combo",
+      "name": "Estrogen–progestin (oral combo)",
+      "shortName": "Combo (oral)",
+      "plainName": "Combination pill",
+      "description": "A single oral tablet with both an estrogen and a progestin, for a person with an intact uterus; generic estradiol/norethindrone acetate is the usual first-pass.",
+      "plainDescription": "One pill that combines estrogen and the uterus-protecting hormone.",
+      "indication": "Menopause (intact uterus)",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "est-td",
+      "preferredAgent": {
+        "inn": "Estradiol",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.05 mg/24 hr patch (standard label dosing)",
+        "sig": "Apply 1 patch to skin twice weekly (standard label dosing)",
+        "sigShort": "1 patch 2x/week",
+        "plainSig": "An estrogen patch changed twice a week."
+      },
+      "preferredRestriction": "No product for this class appears on this PDL. The PDL is a subset of the Medicaid formulary, so coverage is not determined by this document; confirm in the Medicaid Formulary Drug Search.",
+      "boglActive": null,
+      "boglNote": null,
+      "tier": "Not listed on PDL",
+      "noCoveredAgent": true,
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched all 88 pages for estradiol, estrogen, progesterone, norethindrone, vaginal estrogen and the HT brand names. Estradiol appears only in Myfembree and Oriahnn (preferred on page 84, for uterine fibroid or endometriosis bleeding, not menopause HT) and megestrol appears only as a cachexia progestin (page 75). Neither is used as a menopause HT pick or alternative.",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "est-oral",
+      "preferredAgent": {
+        "inn": "Estradiol",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "1 mg tablet (standard label dosing)",
+        "sig": "1 tablet by mouth once daily (standard label dosing)",
+        "sigShort": "1 mg QD",
+        "plainSig": "An estrogen pill, once a day."
+      },
+      "preferredRestriction": "No product for this class appears on this PDL. The PDL is a subset of the Medicaid formulary, so coverage is not determined by this document; confirm in the Medicaid Formulary Drug Search.",
+      "boglActive": null,
+      "boglNote": null,
+      "tier": "Not listed on PDL",
+      "noCoveredAgent": true,
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched all 88 pages for estradiol, estrogen, progesterone, norethindrone, vaginal estrogen and the HT brand names. Estradiol appears only in Myfembree and Oriahnn (preferred on page 84, for uterine fibroid or endometriosis bleeding, not menopause HT) and megestrol appears only as a cachexia progestin (page 75). Neither is used as a menopause HT pick or alternative.",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "progestogen",
+      "preferredAgent": {
+        "inn": "Progesterone (micronized)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg capsule (standard label dosing)",
+        "sig": "1 capsule by mouth at bedtime (standard label dosing)",
+        "sigShort": "200 mg QHS",
+        "plainSig": "A uterus-protecting hormone taken at bedtime."
+      },
+      "preferredRestriction": "No product for this class appears on this PDL. The PDL is a subset of the Medicaid formulary, so coverage is not determined by this document; confirm in the Medicaid Formulary Drug Search.",
+      "boglActive": null,
+      "boglNote": null,
+      "tier": "Not listed on PDL",
+      "noCoveredAgent": true,
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched all 88 pages for estradiol, estrogen, progesterone, norethindrone, vaginal estrogen and the HT brand names. Estradiol appears only in Myfembree and Oriahnn (preferred on page 84, for uterine fibroid or endometriosis bleeding, not menopause HT) and megestrol appears only as a cachexia progestin (page 75). Neither is used as a menopause HT pick or alternative.",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "vaginal",
+      "preferredAgent": {
+        "inn": "Estradiol (vaginal)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mcg vaginal insert (standard label dosing)",
+        "sig": "Insert 1 vaginal insert nightly for 2 weeks, then twice weekly (standard label dosing)",
+        "sigShort": "10 mcg vaginal nightly x2wk",
+        "plainSig": "A low-dose estrogen placed in the vagina for dryness."
+      },
+      "preferredRestriction": "No product for this class appears on this PDL. The PDL is a subset of the Medicaid formulary, so coverage is not determined by this document; confirm in the Medicaid Formulary Drug Search.",
+      "boglActive": null,
+      "boglNote": null,
+      "tier": "Not listed on PDL",
+      "noCoveredAgent": true,
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched all 88 pages for estradiol, estrogen, progesterone, norethindrone, vaginal estrogen and the HT brand names. Estradiol appears only in Myfembree and Oriahnn (preferred on page 84, for uterine fibroid or endometriosis bleeding, not menopause HT) and megestrol appears only as a cachexia progestin (page 75). Neither is used as a menopause HT pick or alternative.",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "combo",
+      "preferredAgent": {
+        "inn": "Estradiol/norethindrone acetate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "1 mg/0.5 mg tablet (standard label dosing)",
+        "sig": "1 tablet by mouth once daily (standard label dosing)",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day with both estrogen and a uterus-protecting hormone."
+      },
+      "preferredRestriction": "No product for this class appears on this PDL. The PDL is a subset of the Medicaid formulary, so coverage is not determined by this document; confirm in the Medicaid Formulary Drug Search.",
+      "boglActive": null,
+      "boglNote": null,
+      "tier": "Not listed on PDL",
+      "noCoveredAgent": true,
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched all 88 pages for estradiol, estrogen, progesterone, norethindrone, vaginal estrogen and the HT brand names. Estradiol appears only in Myfembree and Oriahnn (preferred on page 84, for uterine fibroid or endometriosis bleeding, not menopause HT) and megestrol appears only as a cachexia progestin (page 75). Neither is used as a menopause HT pick or alternative.",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "est-td",
+      "preferredAgent": {
+        "inn": "Estradiol",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.05 mg/24 hr weekly patch",
+        "sig": "Apply 1 patch to clean, dry skin once weekly",
+        "sigShort": "1 patch weekly",
+        "plainSig": "A patch on your skin that you change once a week."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Non-Preferred Generic (Tier 2)",
+      "alternatives": [
+        {
+          "drug": "Estradiol transdermal patch twice weekly 0.05 mg/24 hr (generic, Vivelle-Dot reference)",
+          "note": "Non-Preferred Generic (Tier 2); QL 30 patches/30 days (PDF p.30)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Alora (estradiol patch twice weekly)",
+          "note": "Listed as NP (Non-Preferred Brand); QL (PDF p.30)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Menostar (estradiol patch weekly)",
+          "note": "Listed as NP (Non-Preferred Brand); QL (PDF p.30)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Estradiol gel 0.1% (generic, Divigel reference)",
+          "note": "Non-Preferred Generic (Tier 2) (PDF p.30)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Climara Pro (estradiol-levonorgestrel patch)",
+          "note": "Preferred Brand (Tier 3); combination product, not single-agent estradiol (PDF p.30)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p.30. The list has no Preferred single-agent transdermal estradiol: every single-agent patch and gel is np or NP. The lowest-tier covered option is the generic weekly patch. Climara Pro (estradiol-levonorgestrel) is a combination and not used as the pick. QL is a quantity limit, not a PA. Page numbers are PDF pages (printed page = PDF page minus 10). Sig/strength standard label dosing unless printed on the list.",
+      "sourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "est-oral",
+      "preferredAgent": {
+        "inn": "Estradiol",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "1 mg",
+        "sig": "1 tablet by mouth once daily",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Generic (Tier 1)",
+      "alternatives": [
+        {
+          "drug": "Conjugated estrogens (Premarin)",
+          "note": "Preferred Brand (Tier 3); tablets 0.3-1.25 mg (PDF p.30)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Conjugated estrogens (generic tablet)",
+          "note": "Non-Preferred Generic (Tier 2) (PDF p.30)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p.30. Generic oral estradiol tablets 0.5/1/2 mg are Preferred Generic (Tier 1) with no PA or step marker. Page numbers are PDF pages (printed page = PDF page minus 10). Sig/strength standard label dosing unless printed on the list.",
+      "sourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "progestogen",
+      "preferredAgent": {
+        "inn": "Progesterone",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "100 mg capsule",
+        "sig": "1 capsule by mouth once daily at bedtime",
+        "sigShort": "1 cap at bedtime",
+        "plainSig": "One capsule at bedtime, every day, to protect the uterine lining."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Generic (Tier 1)",
+      "alternatives": [
+        {
+          "drug": "Medroxyprogesterone acetate tablet 2.5/5/10 mg (Provera reference)",
+          "note": "Preferred Generic (Tier 1); not micronized progesterone (PDF p.32)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Progesterone 200 mg capsule",
+          "note": "Non-Preferred Generic (Tier 2) (PDF p.32)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Norethindrone acetate 5 mg (Aygestin reference)",
+          "note": "Non-Preferred Generic (Tier 2) (PDF p.32)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p.32. The list entry is 'progesterone cap 100 mg (Prometrium) p'. The list does not state micronization; the capsule is the Prometrium-equivalent product. Page numbers are PDF pages (printed page = PDF page minus 10). Sig/strength standard label dosing unless printed on the list.",
+      "sourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "vaginal",
+      "preferredAgent": {
+        "inn": "Estradiol",
+        "brand": "ESTRING",
+        "genericAvailable": false,
+        "strength": "2 mg vaginal ring (7.5 mcg/24 hr)",
+        "sig": "Insert 1 ring vaginally; replace every 90 days",
+        "sigShort": "1 ring q90 days",
+        "plainSig": "A soft ring placed in the vagina that releases a small dose of estrogen. Replaced every three months."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Brand (Tier 3)",
+      "alternatives": [
+        {
+          "drug": "Estradiol vaginal cream 0.01% (generic, Estrace reference)",
+          "note": "Non-Preferred Generic (Tier 2) (PDF p.54)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Estradiol vaginal tablet 10 mcg (generic, Vagifem reference)",
+          "note": "Non-Preferred Generic (Tier 2) (PDF p.54)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Conjugated estrogens vaginal cream (Premarin)",
+          "note": "Non-Preferred Brand (Tier 4) (PDF p.55)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp.54-55. ESTRING is the only Preferred local estrogen on the list, so it is the pick. The generic cream and 10 mcg tablet are Tier 2 alternatives. Progesterone vaginal insert (Endometrin) is a progestogen, not a vaginal estrogen, and is excluded. Page numbers are PDF pages (printed page = PDF page minus 10). Sig/strength standard label dosing unless printed on the list.",
+      "sourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "combo",
+      "preferredAgent": {
+        "inn": "Conjugated estrogens-medroxyprogesterone acetate",
+        "brand": "Prempro",
+        "genericAvailable": false,
+        "strength": "0.625 mg-2.5 mg tablet",
+        "sig": "1 tablet by mouth once daily",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day, that combines estrogen and a uterus-protecting progestin."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Brand (Tier 3)",
+      "alternatives": [
+        {
+          "drug": "Estradiol-norethindrone acetate 1 mg-0.5 mg (generic, Activella reference)",
+          "note": "Non-Preferred Generic (Tier 2) (PDF p.30); the class description's usual first-pass, but not the plan's preferred tier",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Estradiol-norethindrone acetate 0.5 mg-0.1 mg (generic)",
+          "note": "Non-Preferred Generic (Tier 2) (PDF p.30)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Norethindrone acetate-ethinyl estradiol 0.5 mg-2.5 mcg, 1 mg-5 mcg (generic)",
+          "note": "Non-Preferred Generic (Tier 2) (PDF p.30)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Premphase (conjugated estrogens-medroxyprogesterone, cyclic)",
+          "note": "Preferred Brand (Tier 3) (PDF p.30)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Angeliq (drospirenone-estradiol)",
+          "note": "Non-Preferred Brand (Tier 4) (PDF p.30)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p.30. The plan prefers Prempro (Preferred Brand) over the generic estradiol-norethindrone acetate (Non-Preferred Generic), so Prempro is the pick by the plan-preferred rule. Reviewer: this differs from the class description's 'usual first-pass'. Myfembree and Oriahnn (PA, fibroid/endometriosis indications) are excluded from this class. Page numbers are PDF pages (printed page = PDF page minus 10). Sig/strength standard label dosing unless printed on the list.",
+      "sourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "est-td",
+      "preferredAgent": {
+        "inn": "Estradiol",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.05 mg/24 hr weekly transdermal patch",
+        "sig": "Apply 1 patch to the skin once weekly (standard label dosing; not printed on the formulary)",
+        "sigShort": "1 patch weekly",
+        "plainSig": "One estrogen patch on the skin once a week."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 4, QL 4 per 28 days",
+      "alternatives": [
+        {
+          "drug": "Estradiol 0.025 to 0.1 mg/24 hr semiweekly patch (generic)",
+          "note": "Tier 4, QL 8 per 28 days (page 63)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "DOTTI (estradiol) 0.025 to 0.1 mg/24 hr semiweekly patch",
+          "note": "Tier 4, QL 8 per 28 days (page 62)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "LYLLANA (estradiol) 0.025 to 0.1 mg/24 hr semiweekly patch",
+          "note": "Tier 4, QL 8 per 28 days (page 65)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read page 63: estradiol 0.025 to 0.1 mg/24 hr weekly patch, Tier 4, QL 4 per 28 days, no PA/ST; 0.05 mg/24 hr is in the strength list. Semiweekly patches on pages 62, 63 and 65 are alternatives. No estradiol gel or spray appears on the list, so the class description's gel/spray forms are not covered as a finding. The strength chosen is a pick from the listed range, not a documented preference; sig is standard label dosing.",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "est-oral",
+      "preferredAgent": {
+        "inn": "Estradiol",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "1 mg tablet",
+        "sig": "Take 1 tablet by mouth once daily (standard label dosing; not printed on the formulary)",
+        "sigShort": "1 tab daily",
+        "plainSig": "One estrogen pill a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "PREMARIN (conjugated estrogens) 0.3 to 1.25 mg tablet",
+          "note": "Brand; Tier 4, Mail Order (page 66)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Conjugated estrogens 0.3 to 1.25 mg tablet (generic-labeled)",
+          "note": "Tier 4, Mail Order (page 62)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "MENEST (esterified estrogens) 0.3 to 2.5 mg tablet",
+          "note": "Tier 4, Mail Order (page 65)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "DUAVEE (conjugated estrogens-bazedoxifene) 0.45-20 mg tablet",
+          "outcome": "pa",
+          "reason": "PA required (page 62)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read page 63: estradiol 0.5, 1 and 2 mg tablet, Tier 1, Mail Order, no UM requirement. Estradiol 1 mg picked as the lowest-tier, no-restriction strength. Premarin, generic conjugated estrogens, Menest on pages 62, 65, 66 are covered at Tier 4 without UM. DUAVEE (page 62) carries PA and is listed as a barrier. Estradiol-norethindrone combos are on page 63 and are handled in the combo class.",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "progestogen",
+      "preferredAgent": {
+        "inn": "Progesterone (micronized)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "100 mg capsule",
+        "sig": "Take 1 capsule by mouth once daily as prescribed (standard label dosing; not printed on the formulary)",
+        "sigShort": "1 cap daily",
+        "plainSig": "A progesterone capsule taken daily to protect the uterine lining."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3",
+      "alternatives": [
+        {
+          "drug": "Medroxyprogesterone acetate 2.5, 5 or 10 mg tablet (generic)",
+          "note": "Tier 2, Mail Order (page 65)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Norethindrone acetate 5 mg tablet",
+          "note": "Tier 3, Mail Order (page 65); progestin, not micronized progesterone",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Progesterone micronized 100 mg vaginal insert",
+          "note": "Tier 4, Mail Order (page 66); insert form, route not stated on the line",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read page 66: progesterone micronized 100 mg and 200 mg capsules, Tier 3, no UM; 100 mg insert, Tier 4. Judgment call: medroxyprogesterone 2.5/5/10 mg (page 65) is Tier 2, which is cheaper than Tier 3. Micronized progesterone is kept as the pick because the class definition names it as the preferred progestogen. Sig is standard label dosing. Route for the insert is not printed on the line.",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "vaginal",
+      "preferredAgent": {
+        "inn": "Estradiol (vaginal)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.01% (0.1 mg/gram) vaginal cream",
+        "sig": "Apply intravaginally as prescribed (standard label dosing; route not printed on the formulary line)",
+        "sigShort": "Vaginal cream as directed",
+        "plainSig": "Low-dose estrogen cream placed in the vagina for dryness."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3",
+      "alternatives": [
+        {
+          "drug": "PREMARIN (conjugated estrogens) 0.625 mg/gram vaginal cream",
+          "note": "Brand; Tier 3 (page 66)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Estradiol 10 mcg tablet (vaginal insert, route per standard labeling)",
+          "note": "Tier 4, Mail Order (page 63)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "ESTRING (estradiol) 2 mg (7.5 mcg/24 hr) vaginal ring",
+          "note": "Tier 4, QL 1 per 90 days (page 63)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read page 63: estradiol 0.01% (0.1 mg/gram) cream, Tier 3, no UM. The formulary line does not print the route; the cream is identified by strength and dosage form, and vaginal use is the standard labeling for this product, so the route is inferred from labeling. Premarin vaginal cream (page 66) is Tier 3. The 10 mcg tablet is the vaginal insert form per standard labeling (route not printed).",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "combo",
+      "preferredAgent": {
+        "inn": "Estradiol-norethindrone acetate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "1 mg-0.5 mg tablet",
+        "sig": "Take 1 tablet by mouth once daily (continuous; standard label dosing, not printed on the formulary)",
+        "sigShort": "1 tab daily",
+        "plainSig": "One pill a day that combines estrogen with a uterus-protecting hormone."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2",
+      "alternatives": [
+        {
+          "drug": "MIMVEY (estradiol-norethindrone acetate) 1 mg-0.5 mg tablet",
+          "note": "Tier 2, Mail Order (page 65)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read page 63 (estradiol-norethindrone acetate 0.5-0.1 mg and 1-0.5 mg tablet, Tier 2, no UM) and page 65 (mimvey 1-0.5 mg, Tier 2). Estradiol-norethindrone acetate 1-0.5 mg picked as the preferred strength. The oral contraceptive estradiol combos on pages 62 to 66 (e.g., norethindrone acetate-ethinyl estradiol 1-20, 1.5-30) are contraceptives and excluded. Sig is standard label dosing.",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "tx-medicaid-newtopics-2026-10",
+      "label": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria, effective 07/24/2026",
+      "publisher": "Texas Health and Human Services Commission",
+      "type": "gov",
+      "url": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "effectiveDate": "2026-07-24",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "bcbs-tx-commercial-newtopics-2026-10",
+      "label": "Performance Drug List, July 2026 (Blue Cross and Blue Shield of Texas; Prime Therapeutics)",
+      "publisher": "Blue Cross and Blue Shield of Texas",
+      "type": "payer",
+      "url": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "humana-premier-rx-pdp-newtopics-2026-10",
+      "label": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402 (updated 09/02/2026)",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-09-02",
+      "accessed": "2026-10-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

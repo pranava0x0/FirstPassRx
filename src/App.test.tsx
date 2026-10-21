@@ -259,13 +259,15 @@ describe('FirstPassRx app', () => {
     expect(screen.getByText(/Partially verified/i)).toBeInTheDocument()
   })
 
-  it('switching to a state without the current condition jumps to one it has, and marks the rest "not yet"', async () => {
+  // Since 2026-10-21 every state has every topic, so the "jump to an available condition" /
+  // "(not yet)" path isn't reachable from the picker; this checks the condition is kept instead.
+  it('switching state keeps the current condition when the new state has it', async () => {
     const user = userEvent.setup()
     render(<App />)
     const stateSelect = screen.getByLabelText(/^State$/) as HTMLSelectElement
     await user.selectOptions(stateSelect, 'TX')
-    await waitFor(() => expect(selectedText(/^Condition$/)).toMatch(/SSRIs/))
-    expect(screen.getByRole('option', { name: /Inhalers \(not yet\)/ })).toBeDisabled()
+    await waitFor(() => expect(selectedText(/^State$/)).toMatch(/Texas/))
+    expect(selectedText(/^Condition$/)).toMatch(/Inhalers/)
     expect(screen.queryByText(/Not covered yet/)).not.toBeInTheDocument()
   })
 

@@ -355,8 +355,11 @@
  * Raised 534 → 645 when the four topics shipped for VA (8 payers). Same declared long tail.
  * Raised 645 → 760 when the four topics shipped for IL (8 payers). Same declared long tail.
  * 760 → 763 after Codex review: phentermine capsules no longer borrow the tablet price (+), and the
- * MD new-topic guides dropped Cigna (only its not-yet-effective 2027 list is posted) (−). */
-export const KNOWN_UNPRICED_GAP = 763
+ * MD new-topic guides dropped Cigna (only its not-yet-effective 2027 list is posted) (−).
+ * 763 → 721: Texas gained its 7 original topics (inhalers … DOACs) for 3 payers (+), offset by
+ * new prices for amphetamine sulfate, dextroamphetamine, phendimetrazine and orlistat, and
+ * link-only Qulipta/Praluent rules (−). */
+export const KNOWN_UNPRICED_GAP = 721
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -481,6 +484,38 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxPrice: { price: 32.31, quantity: '60 tablets, 10mg IR' },
     pricesCapturedAt: '2026-10-21',
   },
+  {
+    // Single-agent amphetamine sulfate IR tablets (Evekeo); not mixed salts (matched above) or ODT/ER.
+    matches: /^(?!.*(dextro|lisdex|mixed|aspartate|\bODT\b|\bXR\b|\bER\b|extended)).*(amphetamine sulfate|evekeo)/i,
+    goodRxSlug: 'amphetamine-sulfate',
+    goodRxParams: 'label_override=amphetamine-sulfate&form=tablet&dosage=10mg&quantity=60',
+    goodRxPrice: { price: 53.18, quantity: '60 tablets, 10mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    // Single-agent dextroamphetamine IR tablets; not combos, capsules (Spansule), patch, or solution.
+    matches: /^(?!.*(amphetamine[- ]?dextro|dextroamphetamine[- ]?amph|mixed|lisdex|capsule|spansule|\bER\b|extended|patch|xelstrym|solution|procentra)).*(dextroamphetamine|zenzedi)/i,
+    goodRxSlug: 'dextroamphetamine',
+    goodRxParams: 'label_override=dextroamphetamine&form=tablet&dosage=10mg&quantity=60',
+    goodRxPrice: { price: 43.23, quantity: '60 tablets, 10mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    matches: /phendimetrazine|bontril/i,
+    goodRxSlug: 'phendimetrazine',
+    goodRxParams: 'label_override=phendimetrazine&form=tablet&dosage=35mg&quantity=90',
+    goodRxPrice: { price: 32.51, quantity: '90 tablets, 35mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    // Prescription orlistat 120 mg (Xenical); OTC alli 60 mg is a different product.
+    matches: /^(?!.*(alli\b|60 ?mg)).*(orlistat|xenical)/i,
+    goodRxSlug: 'xenical',
+    goodRxPrice: { price: 664.88, quantity: '90 capsules, 120mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  { matches: /atogepant|qulipta/i, goodRxSlug: 'qulipta', pricesCapturedAt: '2026-10-21' },
+  { matches: /alirocumab|praluent/i, goodRxSlug: 'praluent', pricesCapturedAt: '2026-10-21' },
   {
     // Brand only (no generic exists); GoodRx standard cash price.
     matches: /ubrogepant|ubrelvy/i,

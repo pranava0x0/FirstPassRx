@@ -106,6 +106,13 @@ describe('guides + global meta', () => {
       'md-lipids',
       'md-weight',
       'md-migraine',
+      'tx-inhalers',
+      'tx-menopause',
+      'tx-ace',
+      'tx-diabetes',
+      'tx-nsaids',
+      'tx-osteoporosis',
+      'tx-doac',
     ])
   })
 

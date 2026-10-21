@@ -1,0 +1,830 @@
+{
+  "id": "tx-osteoporosis",
+  "label": "TX · Osteoporosis",
+  "stateCode": "TX",
+  "region": "Texas",
+  "topicId": "osteoporosis",
+  "topic": "Osteoporosis",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-21",
+  "capturedAt": "2026-10-21",
+  "payers": [
+    {
+      "id": "tx-medicaid",
+      "name": "Texas Medicaid Vendor Drug Program (Fee-for-Service, statewide PDL binding on all MCOs)",
+      "shortName": "TX Medicaid FFS",
+      "pbm": "Texas Health and Human Services Commission (HHSC) Vendor Drug Program",
+      "formularyUrl": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "productName": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria, effective 07/24/2026"
+    },
+    {
+      "id": "bcbs-tx-commercial",
+      "name": "Blue Cross and Blue Shield of Texas (Commercial)",
+      "shortName": "BCBS Texas",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "sourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "productName": "Performance Drug List, July 2026",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Performance Drug List, July 2026 (Blue Cross and Blue Shield of Texas; Prime Therapeutics)"
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402 (updated 09/02/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "oral-bisphosphonate",
+      "name": "Oral bisphosphonates",
+      "shortName": "Oral bisphosphonate",
+      "plainName": "Bone-strengthening pill",
+      "description": "Alendronate, risedronate, ibandronate — first-line oral therapy for osteoporosis.",
+      "plainDescription": "A weekly or monthly pill that slows bone loss.",
+      "indication": "Osteoporosis (first-line)",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "iv-bisphosphonate",
+      "name": "IV bisphosphonate",
+      "shortName": "IV bisphosphonate",
+      "plainName": "Once-yearly bone infusion",
+      "description": "Zoledronic acid (Reclast) — for patients who can't tolerate oral bisphosphonates or need stronger therapy.",
+      "plainDescription": "A once-a-year IV infusion that slows bone loss.",
+      "indication": "Osteoporosis (oral-intolerant or higher-risk)",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "rankl-inhibitor",
+      "name": "RANKL inhibitor",
+      "shortName": "RANKL inhibitor",
+      "plainName": "Twice-yearly bone injection",
+      "description": "Denosumab (Prolia) — alternative to bisphosphonates, especially with renal impairment.",
+      "plainDescription": "A shot every six months that slows bone loss.",
+      "indication": "Osteoporosis (bisphosphonate alternative)",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "anabolic",
+      "name": "Anabolic bone-building agent",
+      "shortName": "Anabolic agent",
+      "plainName": "Daily/monthly bone-building injection",
+      "description": "Teriparatide, abaloparatide, romosozumab — for severe osteoporosis or bisphosphonate failure.",
+      "plainDescription": "An injection that builds new bone rather than just slowing loss.",
+      "indication": "Severe osteoporosis / bisphosphonate failure",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "serm",
+      "name": "SERM",
+      "shortName": "SERM",
+      "plainName": "Bone + breast-cancer-risk pill",
+      "description": "Raloxifene — for postmenopausal women who can't use estrogen or bisphosphonates.",
+      "plainDescription": "A daily pill that helps bones and also lowers breast-cancer risk.",
+      "indication": "Postmenopausal osteoporosis (estrogen/bisphosphonate alternative)",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "oral-bisphosphonate",
+      "preferredAgent": {
+        "inn": "Alendronate sodium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "70 mg tablet (once weekly; standard label dosing)",
+        "sig": "1 tablet by mouth once weekly on an empty stomach with plain water (standard label dosing)",
+        "sigShort": "70 mg weekly",
+        "plainSig": "One pill once a week to slow bone loss. Take it on an empty stomach with plain water."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred",
+      "noCoveredAgent": false,
+      "alternatives": [
+        {
+          "drug": "Ibandronate tablets",
+          "note": "Preferred, no PA (page 35)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Actonel (risedronate)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 35)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Atelvia (risedronate DR)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 35)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Binosto (alendronic acid)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 35)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Fosamax (alendronate)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 35)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Fosamax Plus D (alendronate/vitamin D)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 35)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "risedronate (generic)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 35)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "alendronate solution",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 35)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL page 35 (Bisphosphonates). Generic alendronate tablets are preferred and brand Fosamax is not, so no BOGL flag. Strength and weekly sig are standard label dosing; the PDL names the drug only.",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "iv-bisphosphonate",
+      "preferredAgent": {
+        "inn": "Zoledronic acid",
+        "brand": "Reclast",
+        "genericAvailable": true,
+        "strength": "5 mg/100 mL infusion (standard label dosing)",
+        "sig": "Infuse 5 mg intravenously once yearly (standard label dosing)",
+        "sigShort": "5 mg IV yearly",
+        "plainSig": "A once-a-year IV infusion that slows bone loss."
+      },
+      "preferredRestriction": "No product for this class appears on this PDL. The PDL is a subset of the Medicaid formulary, so coverage is not determined by this document; confirm in the Medicaid Formulary Drug Search.",
+      "boglActive": null,
+      "boglNote": null,
+      "tier": "Not listed on PDL",
+      "noCoveredAgent": true,
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched pages 34-35 and the full PDL text for zoledronic acid, Reclast and other IV bisphosphonates; none appear. Physician-administered products may sit on the medical benefit rather than the pharmacy PDL; not determinable from this document.",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "rankl-inhibitor",
+      "preferredAgent": {
+        "inn": "Denosumab",
+        "brand": "Prolia",
+        "genericAvailable": false,
+        "strength": "60 mg/mL prefilled syringe (standard label dosing)",
+        "sig": "Inject 60 mg under the skin every 6 months (standard label dosing)",
+        "sigShort": "60 mg SC q6mo",
+        "plainSig": "A shot every six months that slows bone loss."
+      },
+      "preferredRestriction": "No product for this class appears on this PDL. The PDL is a subset of the Medicaid formulary, so coverage is not determined by this document; confirm in the Medicaid Formulary Drug Search.",
+      "boglActive": null,
+      "boglNote": null,
+      "tier": "Not listed on PDL",
+      "noCoveredAgent": true,
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched the full PDL text for denosumab, Prolia and biosimilar names; none appear. Physician-administered product, so it may sit on the medical benefit; not determinable from this document.",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "anabolic",
+      "preferredAgent": {
+        "inn": "Teriparatide",
+        "brand": "Forteo",
+        "genericAvailable": true,
+        "strength": "20 mcg/dose pen (standard label dosing)",
+        "sig": "Inject 20 mcg under the skin once daily (standard label dosing)",
+        "sigShort": "20 mcg SC daily",
+        "plainSig": "A daily self-injection that builds new bone."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": "Brand Forteo is preferred; generic teriparatide is listed as not preferred. Interchangeability/AB rating is not stated in this document, so no BOGL flag is set.",
+      "tier": "Preferred",
+      "noCoveredAgent": false,
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Bonsity (teriparatide)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 35)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "teriparatide (generic)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 35)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Evenity (romosozumab-aqqg)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 35)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Tymlos (abaloparatide)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 35)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL page 35 (Other bone resorption suppression agents). Calcitonin nasal is preferred on the same page but is not an anabolic agent, so it is excluded. Strength and sig are standard label dosing.",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "serm",
+      "preferredAgent": {
+        "inn": "Raloxifene hydrochloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "60 mg tablet (standard label dosing)",
+        "sig": "1 tablet by mouth once daily (standard label dosing)",
+        "sigShort": "60 mg QD",
+        "plainSig": "One pill a day that protects bone after menopause."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred",
+      "noCoveredAgent": false,
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Evista (raloxifene)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 35)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL page 35. Generic raloxifene is preferred; brand Evista is not. Strength and sig are standard label dosing.",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "oral-bisphosphonate",
+      "preferredAgent": {
+        "inn": "Alendronate sodium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "70 mg",
+        "sig": "1 tablet by mouth once weekly on an empty stomach with a full glass of plain water",
+        "sigShort": "1 tab weekly",
+        "plainSig": "One pill once a week, taken first thing in the morning with plain water."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Generic (Tier 1)",
+      "alternatives": [
+        {
+          "drug": "Alendronate sodium tablet 10/35 mg (generic)",
+          "note": "Preferred Generic (Tier 1) (PDF p.37)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ibandronate sodium tablet 150 mg (generic)",
+          "note": "Preferred Generic (Tier 1) (PDF p.38)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Risedronate sodium tablet 30/35/150 mg (generic, Actonel reference)",
+          "note": "Non-Preferred Generic (Tier 2) (PDF p.39)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp.37-39. Generic alendronate 70 mg (Fosamax reference) is Preferred Generic (Tier 1), no PA or step marker. Page numbers are PDF pages (printed page = PDF page minus 10). Sig/strength standard label dosing unless printed on the list.",
+      "sourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "iv-bisphosphonate",
+      "preferredAgent": {
+        "inn": "Zoledronic acid",
+        "brand": "Reclast",
+        "genericAvailable": true,
+        "strength": "5 mg/100 mL infusion",
+        "sig": "1 infusion intravenously once yearly, given by a health care professional",
+        "sigShort": "IV once yearly",
+        "plainSig": "A once-a-year IV infusion given at a clinic."
+      },
+      "preferredRestriction": "No zoledronic acid (Reclast or generic) appears on this plan's pharmacy drug list. The list states drugs administered by a health care professional are not covered under the pharmacy benefit (PDF p.7), and drugs not shown are not covered (PDF p.2). Coverage, if any, would be under the medical benefit; confirm with plan.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not listed on pharmacy benefit",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "No zoledronic acid product appears anywhere in the list (text search across all pages). The class has no covered agent on the pharmacy benefit. Reference drug kept as preferredAgent per the gather convention. Page numbers are PDF pages (printed page = PDF page minus 10). Sig/strength standard label dosing unless printed on the list.",
+      "sourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "noCoveredAgent": true,
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "rankl-inhibitor",
+      "preferredAgent": {
+        "inn": "Denosumab",
+        "brand": "Prolia",
+        "genericAvailable": false,
+        "strength": "60 mg/mL prefilled syringe",
+        "sig": "1 injection under the skin once every 6 months, given by a health care professional or as directed",
+        "sigShort": "SC every 6 months",
+        "plainSig": "A shot every six months that slows bone loss."
+      },
+      "preferredRestriction": "No denosumab (Prolia or Xgeva, or generic) appears on this plan's pharmacy drug list. The list states drugs not shown are not covered (PDF p.2); this product is typically given in a clinic setting, which the list excludes from the pharmacy benefit (PDF p.7). Coverage, if any, would be under the medical benefit; confirm with plan.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not listed on pharmacy benefit",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Text search for denosumab, Prolia, Xgeva returned no matches in the list. Class has no covered agent on the pharmacy benefit. Reference drug kept as preferredAgent per the gather convention. Page numbers are PDF pages (printed page = PDF page minus 10). Sig/strength standard label dosing unless printed on the list.",
+      "sourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "noCoveredAgent": true,
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "anabolic",
+      "preferredAgent": {
+        "inn": "Abaloparatide",
+        "brand": "Tymlos",
+        "genericAvailable": false,
+        "strength": "3120 mcg/1.56 mL pen (80 mcg daily dose)",
+        "sig": "Inject 80 mcg under the skin once daily",
+        "sigShort": "Daily injection",
+        "plainSig": "A daily bone-building injection."
+      },
+      "preferredRestriction": "PA required (PDF p.39). PA criteria are not printed in this list. Specialty drug (SP).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Specialty (Tier 5)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Teriparatide (generic, Forteo reference)",
+          "outcome": "pa",
+          "reason": "PA required (PDF p.39); Specialty (SP)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Romosozumab (Evenity)",
+          "outcome": "nonformulary",
+          "reason": "Not on this plan's list; the list states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p.39. Both covered anabolic agents require PA. Tymlos is the Preferred (P) product, so it is the pick. Romosozumab (Evenity) is absent. Teriparatide (np, PA) is the only other covered option. Yorvipath (PDF p.40) is a hypoparathyroidism product, not an osteoporosis agent, and is excluded. Page numbers are PDF pages (printed page = PDF page minus 10). Sig/strength standard label dosing unless printed on the list.",
+      "sourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "serm",
+      "preferredAgent": {
+        "inn": "Raloxifene hydrochloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "60 mg",
+        "sig": "1 tablet by mouth once daily",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day that helps bones and lowers breast-cancer risk."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Non-Preferred Generic (Tier 2)",
+      "alternatives": [
+        {
+          "drug": "Duavee (conjugated estrogens-bazedoxifene)",
+          "note": "Preferred Brand (Tier 3); estrogen-SERM combination for menopause (PDF p.30)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p.39. Raloxifene 60 mg (Evista reference) is the only single-agent SERM on the list, Non-Preferred Generic (Tier 2), with no PA or step marker. ACA preventive marker 'AC' is printed on the entry (legend PDF p.6). Duavee is a combination product and is listed as an alternative only. Page numbers are PDF pages (printed page = PDF page minus 10). Sig/strength standard label dosing unless printed on the list.",
+      "sourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "oral-bisphosphonate",
+      "preferredAgent": {
+        "inn": "Alendronate sodium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "70 mg tablet",
+        "sig": "Take 1 tablet by mouth once weekly on an empty stomach (standard label dosing; not printed on the formulary)",
+        "sigShort": "1 tab weekly",
+        "plainSig": "A once-a-week bone pill, taken on an empty stomach."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1, QL 4 per 28 days",
+      "alternatives": [
+        {
+          "drug": "Alendronate sodium 10 mg tablet",
+          "note": "Tier 1, QL 30 per 30 days (page 74)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Alendronate sodium 35 mg tablet",
+          "note": "Tier 1, QL 4 per 28 days (page 74)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ibandronate 150 mg tablet",
+          "note": "Tier 3, QL 1 per 28 days (page 74)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read page 74: alendronate 10 mg (Tier 1, QL 30 per 30 days), 35 mg and 70 mg (Tier 1, QL 4 per 28 days), no PA/ST; ibandronate 150 mg Tier 3 with QL. Risedronate does not appear on the list. Alendronate 70 mg weekly picked as the commonly prescribed Tier 1 no-PA strength. Sig is standard label dosing.",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "iv-bisphosphonate",
+      "preferredAgent": {
+        "inn": "Zoledronic acid (5 mg/100 mL)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg/100 mL infusion (piggyback)",
+        "sig": "Infuse 5 mg intravenously once yearly (standard label dosing; not printed on the formulary)",
+        "sigShort": "IV infusion once yearly",
+        "plainSig": "A once-a-year bone infusion given through a vein."
+      },
+      "preferredRestriction": "PA required (page 74); QL 100 per 365 days",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3, PA, QL 100 per 365 days",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read page 74: zoledronic acid-mannitol-water 5 mg/100 mL piggyback, Tier 3, PA, QL 100 per 365 days. It is the only IV bisphosphonate on the list; no brand Reclast line appears. Covered with PA, so the barrier is stated in preferredRestriction and no alternatives are listed. Sig is standard label dosing.",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "rankl-inhibitor",
+      "preferredAgent": {
+        "inn": "Denosumab",
+        "brand": "PROLIA",
+        "genericAvailable": false,
+        "strength": "60 mg/mL prefilled syringe",
+        "sig": "Inject 60 mg under the skin once every 6 months (standard label dosing; not printed on the formulary)",
+        "sigShort": "Injection every 6 months",
+        "plainSig": "A shot in the skin every six months to slow bone loss."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 4, MO, QL 1 per 180 days",
+      "alternatives": [
+        {
+          "drug": "ENOBY 60 mg/mL syringe (denosumab biosimilar)",
+          "note": "Tier 4, Mail Order, QL 1 per 180 days, no PA/ST (page 74)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read page 74: PROLIA 60 mg/mL syringe, Tier 4, Mail Order, QL 1 per 180 days, no PA/ST. ENOBY 60 mg/mL syringe (Tier 4, MO, QL 1 per 180 days) is also listed on page 74 as a denosumab biosimilar alternative. Sig is standard label dosing. [Sonnet check 2026-10-21: original note wrongly said no denosumab biosimilar was listed; ENOBY is on page 74 and was added to alternatives. Xgeva (page 74, DL Tier 5, PA) is the oncology product and is not in this class.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "anabolic",
+      "preferredAgent": {
+        "inn": "Teriparatide",
+        "brand": "FORTEO",
+        "genericAvailable": false,
+        "strength": "20 mcg/dose pen injector (560 mcg/2.24 mL)",
+        "sig": "Inject 20 mcg under the skin once daily (standard label dosing; not printed on the formulary)",
+        "sigShort": "Injection daily",
+        "plainSig": "A daily bone-building shot."
+      },
+      "preferredRestriction": "PA required (page 74); QL 2.24 per 28 days",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 5 (specialty), PA, QL 2.24 per 28 days",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read page 74: FORTEO 20 mcg/dose pen, Tier 5, PA, QL 2.24 per 28 days. It is the only anabolic line on the list. Abaloparatide (Tymlos) and romosozumab (Evenity) do not appear, and no generic teriparatide appears. The document does not say the list is complete, so these are not recorded as excluded; partial for that reason. Sig is standard label dosing.",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "serm",
+      "preferredAgent": {
+        "inn": "Raloxifene",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "60 mg tablet",
+        "sig": "Take 1 tablet by mouth once daily (standard label dosing; not printed on the formulary)",
+        "sigShort": "1 tab daily",
+        "plainSig": "A daily bone pill that also lowers breast cancer risk."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3, QL 30 per 30 days",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read page 66: raloxifene 60 mg tablet, Tier 3, QL 30 per 30 days, no PA/ST. Evista does not appear on the list. Sig is standard label dosing.",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "tx-medicaid-newtopics-2026-10",
+      "label": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria, effective 07/24/2026",
+      "publisher": "Texas Health and Human Services Commission",
+      "type": "gov",
+      "url": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "effectiveDate": "2026-07-24",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "bcbs-tx-commercial-newtopics-2026-10",
+      "label": "Performance Drug List, July 2026 (Blue Cross and Blue Shield of Texas; Prime Therapeutics)",
+      "publisher": "Blue Cross and Blue Shield of Texas",
+      "type": "payer",
+      "url": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "humana-premier-rx-pdp-newtopics-2026-10",
+      "label": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402 (updated 09/02/2026)",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-09-02",
+      "accessed": "2026-10-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

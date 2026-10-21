@@ -199,6 +199,7 @@ describe('cash price coverage across the live formulary', () => {
       // 2026-10-21 new topics: brand weight-loss GLP-1s and CGRP/PCSK9 injectables show only
       // manufacturer savings offers on GoodRx, not a cash price.
       /wegovy|zepbound|saxenda|foundayo|weight management/i,
+      /qulipta|atogepant|praluent|alirocumab/i,
       /nurtec|rimegepant|repatha|evolocumab|aimovig|erenumab|ajovy|fremanezumab|emgality|galcanezumab/i,
       /menostar/i,
       /levonorgestrel/i,
