@@ -204,6 +204,17 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
 
 ## Open
 
+- **2026-10-21 · data (IL) · Aetna Better Health of Illinois formulary PDF changed since archive.**
+  The archiver re-fetched it (2269 KB) with a new sha256 (`[DRIFT: content changed]` on all 7
+  `aetna-better-health-il-*` sources); the cited URL is unchanged, so the plan reissued it. Re-read
+  it for the 7 IL guides' Aetna cells before the next IL refresh. _Open._
+- **2026-10-21 · data (MA) · `bcbsma-ssris-source-2026-07` is HTTP 404.** The other BCBS MA 2026
+  lists (e.g. `bcbsma-std-covered-2026-07`) still resolve. Re-point the `ma-ssris` BCBS MA cell to
+  the live covered-medication list after confirming its SSRI rows. _Open._
+- **2026-10-21 · tooling · two sources still fail the archiver:** `aetna-better-health-pharmacy-page-2026`
+  (VA landing page, 403 even to curl) and `highmark-bcbs-osteoporosis-iv-bisphosphonate-source-2026-07`
+  (connection fails). _Open._
+
 - **2026-08-03 · test (scripts/trace-sources.mjs) · live drift pass reports 6 "dead" + 5 "drifted"
   sources that are all real, live, unchanged pages — 100% false positives from three specific
   hosts.** Ran `npm run trace:live` as part of a scheduled refresh; it flagged
@@ -241,8 +252,11 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   than crashing (exit 0, 300 archived / 3 unreachable total this run). The guide data itself is
   unaffected (the al-medicaid `ssri-oral` record is `verified`, read directly off the same PDF via
   curl with a browser User-Agent during gather) — this only affects provenance archival, not the
-  shipped drug data. _Open — re-run `npm run archive-sources` in a future session; if it keeps
-  failing, try the archiver with a browser User-Agent/cert workaround for this one host._
+  shipped drug data. _Fixed 2026-10-21: the host omits its intermediate certificate (Node fetch:
+  `UNABLE_TO_VERIFY_LEAF_SIGNATURE`, even with `--use-system-ca`; macOS curl completes the chain)
+  and its IPv6 route hangs. `archive-sources.mjs` now retries with `curl -4` (verification on) for
+  browser-only hosts and any 401/403; 9/10 AL entries archive. The last is the same PDF, live in
+  Chrome (200, 666 KB), and failed only because the host throttles bursts; re-run it alone later._
   **Recurred 2026-07-25** after the AL topic scale-up (6 new guides): `al-medicaid-inhalers-source-202607`
   and `al-medicaid-osteoporosis-source-202607` both failed the same way (`state-al-d93bd270aa58f7fe`
   also unreachable) — same host, same non-standard TLS/cert config, still not blocking (all AL
