@@ -554,7 +554,8 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   // (estradiol + norethindrone, transdermal, not the Activella tablet), and Menostar (0.014 mg,
   // not 0.05 mg). Link-only until their own prices are captured (Codex review, PR 20).
   {
-    matches: /climara pro|levonorgestrel/i,
+    // Estradiol + levonorgestrel only; ethinyl estradiol/levonorgestrel is a contraceptive (Twirla).
+    matches: /climara pro|(?<!ethinyl )estradiol.*levonorgestrel/i,
     goodRxSlug: 'climara-pro',
     pricesCapturedAt: '2026-10-21',
   },
@@ -654,11 +655,24 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     // Stock" that day, so per this file's convention its price is omitted. Cells whose inn says only
     // "transdermal patch" (frequency in the strength text) land here; a month of twice-weekly
     // patches prices about the same ($54.82 above).
-    matches: /estradiol.*(weekly|patch|transdermal)|climara/i,
+    // Generic estradiol patches only. Brand Climara, Evamist spray, gels/emulsions, and
+    // contraceptive ethinyl-estradiol patches are different products (Codex review, PR 20) and
+    // fall to the link-only rules right below.
+    matches: /^(?!\s*climara\b)(?!.*\b(?:brand|spray|evamist|gel|emulsion|ethinyl|contraceptive|twirla|xulane)\b).*estradiol.*(?:weekly|patch|transdermal)/i,
     goodRxSlug: 'estradiol',
     goodRxParams: 'label_override=estradiol&form=carton&dosage=4-once-weekly-patches-of-0.05mg-day&quantity=1',
     costPlusPath: 'estradiol-0_05mg-carton-of-weekly-patches-4-climara',
     goodRxPrice: { price: 51.66, quantity: '4 once-weekly patches, 0.05mg/day (1 carton)' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    matches: /climara/i,
+    goodRxSlug: 'climara',
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    matches: /evamist|estradiol.*spray/i,
+    goodRxSlug: 'evamist',
     pricesCapturedAt: '2026-10-21',
   },
   {
