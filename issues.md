@@ -204,12 +204,11 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
 
 ## Open
 
-- **2026-10-21 · data (MD) · the cached `cigna-value4t-2026` source is now Cigna's 28-page
-  "Value 4-Tier *Specialty*" list for 2027, not the full 2026 Value 4-Tier PDL.** The URL
-  (`cigna.com/.../value-4-tier-spec.pdf`) serves a different document than the existing `md-*`
-  Cigna cells were gathered from, and a new-topic gather from it wrongly concluded everyday
-  generics were absent. Re-point every `md-*` Cigna cell at the full Value 4-Tier PDL (being
-  re-gathered for the new topics) and re-verify the old topics' Cigna cells. _Open._
+- **2026-10-21 · data (MD) · the cited Cigna "Value 4-Tier" URL now serves the list for coverage
+  starting 2027-01-01 (last updated 09/01/2026).** It is the full drug list ("Specialty" in its header
+  is a catalog code, not a specialty-only scope — an earlier note here said otherwise and was
+  wrong). Existing `md-*` Cigna cells were gathered from the 2026 version at the same URL; spot-check
+  them against the 2027 list before the next MD refresh, and note the effective-date change. _Open._
 
 - **2026-10-21 · data (MA) · 6 MassHealth MHDL table pages changed since last archive.** The
   `--only=mhdl…/pubtheradetail.do` re-archive reported `DRIFT` on 6 tables cited by existing MA
