@@ -1,0 +1,1056 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Google Tag Manager -->
+  <script nonce="PckrDoPtnlmPzldtLWVp2A==">(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-5KNSV593');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="LrMCwJZXBRy17wmaMND2LBBTtZyWwT2OAfaOUmwV">
+
+  <title>Drug Search</title>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <!-- Styles -->
+  <link href="/css/app.css?id=bf1e5852aa015c9dffa3f471c194a627" rel="stylesheet">
+</head>
+<body class=	body-article
+>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5KNSV593" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+<div id="app">
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+          aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="http://www.hfs.illinois.gov" target="_blank"><img
+            src="https://ilpriorauth.com/img/HFSLogoHorizontalWhiteText.png" alt="Drug Search" /></a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right navbar-sec">
+          <li class="nav-separator">-----------------------------------</li>
+          <li><a href="https://ilpriorauth.com"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+
+                  <li><a href="https://hfs.illinois.gov/"  target="_blank"><span
+          class="glyphicon glyphicon-link" aria-hidden="true"></span> HFS Home</a></li>
+              <li><a href="https://www2.illinois.gov/sites/gov/Pages/default.aspx"  target="_blank"><span
+          class="glyphicon glyphicon-user" aria-hidden="true"></span> JB Pritzker, Governor</a></li>
+      
+                  </ul>
+        <ul class="nav navbar-nav navbar-main">
+                            <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+          aria-expanded="false">GENERAL INFORMATION <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+                  <li><a href="https://hfs.illinois.gov/medicalproviders/pharmacy/preferred.html"  target="_blank">Preferred Drug List (PDL)</a></li>
+                <li><a href="https://hfs.illinois.gov/medicalproviders/pharmacy.html"  target="_blank">Pharmacy Home Page</a></li>
+                <li><a href="https://hfs.illinois.gov/medicalproviders/pharmacy/illinoisrx.html"  target="_blank">Illinois Rx Portal Home Page (PBMS)</a></li>
+                </ul>
+        </li>
+                                <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+          aria-expanded="false">FORMS / CRITERIA <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+                  <li><a href="https://hfs.illinois.gov/content/dam/soi/en/web/hfs/sitecollectiondocuments/hfs1409x.pdf"  target="_blank">General PA Form*</a></li>
+                <li><a href="https://uofi.box.com/v/ADHDMedicationPriorAuthForm"  target="_blank">Adult ADHD Medication PA Form*</a></li>
+                <li><a href="https://hfs.illinois.gov/content/dam/soi/en/web/hfs/sitecollectiondocuments/hfsweb029.pdf"  target="_blank">Four Prescription Policy Form*</a></li>
+                <li><a href="https://hfs.illinois.gov/content/dam/soi/en/web/hfs/sitecollectiondocuments/rtspbms27163082ar416.pdf"  target="_blank">Refill Too Soon (RTS) Form*</a></li>
+                <li><a href="https://hfs.illinois.gov/content/dam/soi/en/web/hfs/sitecollectiondocuments/tpl2617hfsweb043n416.pdf"  target="_blank">Third Party Liability (TPL) Form*</a></li>
+                <li><a href="https://hfs.illinois.gov/content/dam/soi/en/web/hfs/sitecollectiondocuments/hfsweb031.pdf"  target="_blank">Blood Factor Form*</a></li>
+                <li><a href="https://hfs.illinois.gov/medicalproviders/pharmacy/criteriaandforms.html"  target="_blank">Special PA Forms*</a></li>
+                <li><a href="https://ilpriorauth.com/pages/14"  target="_blank">Criteria*</a></li>
+                </ul>
+        </li>
+                                                      </ul>
+      </div>
+    </div>
+    <!-- Search -->
+    	<div class="header-container-sec">
+		<div class="container">
+	        <search :is_main="false" :param_search_term="''" :param_search_key="''"></search>
+		</div>
+	</div>
+  </nav>
+
+  <!-- Content -->
+  		<div class="container">
+			<div class="col-md-12">
+				<div class="search-results-container hidden">
+					<search-results :is_main="false" :alternatives="{&quot;4&quot;:{&quot;title&quot;:&quot;Preferred&quot;,&quot;color&quot;:&quot;success&quot;},&quot;8&quot;:{&quot;title&quot;:&quot;Non-Preferred&quot;,&quot;color&quot;:&quot;danger&quot;},&quot;11&quot;:{&quot;title&quot;:&quot;Preferred, needs PA&quot;,&quot;color&quot;:&quot;warning&quot;}}"></search-results>
+				 	<div id="disclaimers" class="alert alert-info alert-dismissible text-j" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<p>
+                This site is designed to provide information regarding Illinois Medicaid Fee-For-Service covered drugs. The search function contains prescription and select OTC medications covered by Medicaid, including those that require prior authorization. For additional information please call 1-800-252-8942.
+            </p>
+            <p>
+                It is important to note that individual client eligibility may limit coverage for some drug categories.
+            </p>
+            <p>
+                <strong>Please Note:</strong> This site should be used for reference only; it is not to be used to verify payment of a particular product by Illinois Department of Healthcare and Family Services. It is intended as an education and information resource.
+            </p>
+				 	</div>
+				</div>
+									<div class="article-container">
+						<!-- Content -->
+				 			<h1 class="title">Formal Criteria for the Illinois Medicaid Fee-For-Service (FFS) Program</h1>
+	<p>Disclaimer: Any medication or drug class not listed on this page has non-sharable internal criteria or is reviewed on a case-by-case basis by a clinical pharmacist.</p>
+<p>The DOC hyperlinks in the tables below provide access to the full criteria documents. These links will direct you to a Box.com folder maintained by the University of Illinois Chicago - Retzky College of Pharmacy for secure document storage.</p>
+<h2>Individual Medications</h2>
+<div style="overflow-x: auto; width: 100%; margin-bottom: 18px;">
+<table style="width: 100%; border-collapse: collapse; min-width: 560px;" border="1" width="589" cellspacing="0" cellpadding="0"><colgroup><col style="width: 39.9684%;"><col style="width: 15.0079%;"><col style="width: 15.0079%;"><col style="width: 15.0079%;"><col style="width: 15.0079%;"></colgroup>
+<thead>
+<tr>
+<td valign="top">
+<p><strong>Medication: Brand (generic)</strong></p>
+</td>
+<td valign="top">
+<p><strong>Criteria (DOC)</strong></p>
+</td>
+<td valign="top">
+<p><strong>Program</strong></p>
+</td>
+<td valign="top">
+<p><strong>Effective</strong></p>
+</td>
+<td valign="top">
+<p><strong>Status</strong></p>
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td valign="top">
+<p>Adakveo (crizanlizumab)</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/wxws664n58aqto0r4fa6wutiavqmv95y" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>10-07-2022</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Agamree (vamorolone)</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/bfcy4uleb1fzse9d5vlhj0j016kv0ty6" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>04-03-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Brinsupri (brensocatib)</p>
+</td>
+<td>
+<p><a href="https://uofi.box.com/s/d9ulyg2fpzw2gbhgzaxlae3mo35sh8i9"><span style="text-decoration: underline;">DOC</span></a></p>
+</td>
+<td>
+<p>FFS</p>
+</td>
+<td>
+<p>08/25/2026</p>
+</td>
+<td>
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Casgevy (exagamglogene autotemcel)</p>
+</td>
+<td>
+<p><a href="https://uofi.box.com/s/4wz4khda4mnqth2r9f4xx8gbavkjc27y" target="_blank" rel="noopener">DOC</a></p>
+</td>
+<td>
+<p>FFS/MCO</p>
+</td>
+<td>
+<p>01-01-2026</p>
+</td>
+<td>
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Duvyzat (givinostat)</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/ebbvn7dcft3fbn4ght3zpq3lvkw4ry1l" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>11-14-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Ebglyss (lebrikizumab)</p>
+</td>
+<td valign="top">
+<p>&nbsp;</p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>04-03-2025</p>
+</td>
+<td valign="top">
+<p>Update in Process</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Imcivree (setmelanotide)</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/j39rwzkpcsdwgtnvy8f27swonmks1y1f" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>10-01-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Journavx (suzetrigine)</p>
+</td>
+<td>
+<p><a href="https://uofi.box.com/s/o0o3k352gct0ogmknshnjs288tc17m7b"><span style="text-decoration: underline;">DOC</span></a></p>
+</td>
+<td>
+<p>FFS</p>
+</td>
+<td>
+<p>07-29-2026</p>
+</td>
+<td>
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Leqembi (lecanemab)</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/uwj06h6tp97ogj92d4idj7acyayf7hen" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>03-14-2023</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Lyfgenia (lovotibeglogene autotemcel)</p>
+</td>
+<td>
+<p><a href="https://uofi.box.com/s/iacoqv9tgzgwi2eud7wtpxjjkfcecri9" target="_blank" rel="noopener">DOC</a></p>
+</td>
+<td>
+<p>FFS/MCO</p>
+</td>
+<td>
+<p>01-01-2026</p>
+</td>
+<td>
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Ocrevus (ocrelizumab)</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/hjn5ttg9gp1rifrm5hbp2s93hlngqexw" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>04-03-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Ohtuvayre (ensifentrine)</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/jvevbyzgqz37gr9hsr4zpdbuv91cbjk9" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>04-29-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Radicava (edaravone)</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/3xmojhrx5hsovbqq0b11ybjr5japdm55" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>05-05-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Sensipar (cinacalcet)</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/h5jiml5975w0xwl7nnhjvbstme4l35oc" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>08-12-2022</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Spinraza (nusinersen)</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/qnqb3u9fmgvkqs3y78c5nv5nk0yrbfeh" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>04-03-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Vyjuvek (beremagene geperpavec-svdt)</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/0aimjfrsauw93s43fxo02uyfhtz3uzlp" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>01-01-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>YCANTH (cantharidin)</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/9ed169hscx1cyfq9fv9fyh3fzbwcke0j" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>01-21-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Zolgensma (onasemnogene abeparvovec-xioi)</p>
+</td>
+<td valign="top"><a href="https://uofi.box.com/s/8vw6dsiklgmknck9b90adexsivm6lyq5" target="_blank" rel="noopener">DOC</a></td>
+<td valign="top">FFS</td>
+<td valign="top">
+<p>01-01-2026</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2>Drug Classes</h2>
+<div style="overflow-x: auto; width: 100%; margin-bottom: 18px;">
+<table style="width: 100%; border-collapse: collapse; min-width: 560px;" border="1" width="589" cellspacing="0" cellpadding="0"><colgroup> <col style="width: 40%;"> <col style="width: 15%;"> <col style="width: 15%;"> <col style="width: 15%;"> <col style="width: 15%;"> </colgroup>
+<thead>
+<tr>
+<td valign="top">
+<p><strong>Drug Class</strong></p>
+</td>
+<td valign="top">
+<p><strong>Criteria (DOC)</strong></p>
+</td>
+<td valign="top">
+<p><strong>Program</strong></p>
+</td>
+<td valign="top">
+<p><strong>Effective</strong></p>
+</td>
+<td valign="top">
+<p><strong>Status</strong></p>
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td valign="top">
+<p>ADHD in Adults <u>&gt;</u> 19 years old</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/ov9e1r4ke6pdobikw4spbteetejsf8ge" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>04-14-2023</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>ADHD in Children/Adolescents &lt; 19 years old</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/u4t8xl66r7c3tahnq7g5uev0yb95hm78" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>08-12-2022</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Atypical Antipsychotic Medications in Children &lt; 8 years old</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/wx6e74ihdd30i4w3182u1ccvulx5ecya" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>05-01-2023</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Cystic Fibrosis Transmembrane Conductance Regulator (CFTR) Modulators</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/icb70gqwo4fwxjyn4mgepga1r5owy3vr" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>02-12-2026</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Continuous Glucose Monitors (CGM)</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/deyy8jba8lg0uczo3krwgk5o0yrgaykc" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>12-01-2024</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Calcitonin-gene-related peptide (CGRP) antagonists</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/kx0yxdmy7krvv152i4mrnl4wqjvd450m" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>04-03-2026</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Glucagon-like Peptide-1 Receptor Agonist (GLP-1 RA) and Glucose-dependent Insulinotropic Polypeptide (GIP) Receptor Agonist</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/bnr41bhwex0wl1nyytyr8t04843q9a8u" target="_blank" rel="noopener">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>10-01-2026</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Hereditary Angioedema (HAE) Agents</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/qdhjmk94n2wgt58posuavhf84ba823i4" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>09-07-2022</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Potassium Exchange Resins</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/zkhsdh30qfxlrdndet1fjidnjzzpqjbw" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>01-12-2024</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Long-acting Injectable (LAI) Antipsychotics</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/xlh45x3527pr61wt5d5bm5dk3rktszhy" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>05-22-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Oral Isotretinoin Agents</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/wlag5pso0lr8uyva27t64u98onoslk6t" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>05-17-2023</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Proprotein Convertase Subtilisin Kexin Type 9 (PCSK9) Inhibitors</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/ojixzqe2f0cel2u1as5bq4cg9cqos523" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>03-09-2023</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Proton Pump Inhibitors (PPIs)</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/k6kgrr0f0gx5okznjm9e5kvkopj9x2gy" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>01-21-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Pulmonary Fibrosis Agents</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/rwdjf74noj4uo9g5j1r766q3qikq0zlc" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>05-05-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Testosterone (injectable and transdermal) Agents</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/e7t77r6d53jhvfw5n5jjk0at5jbt6mqe" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>12-22-2022</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Vesicular Monoamine Transporter 2 (VMAT2) Inhibitors</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/ydp9y48876m84uwoyjr0t1mxwe6rg3pf" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>04-03-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2>Antihemophilic Agents</h2>
+<div style="overflow-x: auto; width: 100%; margin-bottom: 18px;">
+<table style="width: 100%; border-collapse: collapse; min-width: 560px;" border="1" width="589" cellspacing="0" cellpadding="0"><colgroup> <col style="width: 40%;"> <col style="width: 15%;"> <col style="width: 15%;"> <col style="width: 15%;"> <col style="width: 15%;"> </colgroup>
+<thead>
+<tr>
+<td valign="top">
+<p><strong>Medication</strong></p>
+</td>
+<td valign="top">
+<p><strong>Criteria (DOC)</strong></p>
+</td>
+<td valign="top">
+<p><strong>Program</strong></p>
+</td>
+<td valign="top">
+<p><strong>Effective</strong></p>
+</td>
+<td valign="top">
+<p><strong>Status</strong></p>
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td valign="top">
+<p>CORIFACT: (Factor XIII Concentrate (Human))</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/6cqwr33vy3wfddros1dfesbjlirx2znf" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>10-31-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Factor VIII (recombinant), Long-Acting Agents</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/5103fuum16q1xes5gbpjdkvcsds4qgq3" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>10-31-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Factor VIII/VWF Complex Agents</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/c0r27belgcdl20sqeec2077o6c8m8jpu" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>10-31-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Factor IX (recombinant) Agents</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/i08cdluw1nuabtxl187pp75toj6gg7lz" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>10-31-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Hemlibra (emicizumab-kxwh)</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/p7rpbs3ow8abygu9abdi23cfdxzej1ih" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>10-31-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Hemofil M: (Antihemophilic Factor VIII (Human), Method M)</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/n9hh0q88p531zn2v55xwg9i8pke9dwci" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>10-31-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Hympavzi: (marstacimab-hncq)</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/1miue0vvv71fw1268labw29klfbpf2vh" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>10-31-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Koāte (Antihemophilic Factor (Human))</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/4r1z4kyd6dkgz4p3zonm4drhzp2lub3u" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>10-31-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>NovoSeven RT: (coagulation Factor VIIa (recombinant))</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/1jtyhq4rgkbmh73a0ra0z7gvs0apesik" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>10-31-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Qfitlia: (fitusiran)&nbsp;&nbsp;</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/1u1qv6agz8qmudqfivtsv3y833qlje36" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>10-31-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Sevenfact: (coagulation Factor VIIa (recombinant)-jncw)</p>
+</td>
+<td valign="top">
+<p><a href="https://uofi.box.com/s/d4twiz5kp9dapl8fqk25w6vh9rgmdzgn" target="_blank" rel="noopener noreferrer">DOC</a></p>
+</td>
+<td valign="top">
+<p>FFS</p>
+</td>
+<td valign="top">
+<p>10-31-2025</p>
+</td>
+<td valign="top">
+<p>Published</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h2>Illinois Medicaid Managed Care Organizations (MCOs)</h2>
+<p>Below are the four statewide, one Cook County only, managed care health plans under the Illinois Medicaid program, each of which publishes its own prior-authorization/criteria webpage:</p>
+<ul>
+<li style="margin-bottom: 1em;"><a href="https://client.formularynavigator.com/Search.aspx?siteCode=9001945511" target="_blank" rel="noopener noreferrer">Aetna Better Health of Illinois</a></li>
+<li style="margin-bottom: 1em;"><a href="https://www.myprime.com/en/forms/coverage-determination/prior-authorization.html" target="_blank" rel="noopener noreferrer">Blue Cross Community Health Plan</a></li>
+<li style="margin-bottom: 1em;"><a href="https://countycare.com/providers/medical-drug-policies-for-prior-authorization/" target="_blank" rel="noopener noreferrer">CountyCare Health Plan</a></li>
+<li style="margin-bottom: 1em;"><a href="https://www.ilmeridian.com/providers/resources/clinical-payment-policies.html" target="_blank" rel="noopener noreferrer">Meridian Health Plan of Illinois</a></li>
+<li style="margin-bottom: 1em;"><a href="https://www.molinahealthcare.com/providers/il/medicaid/resource/Molina-Medical-Coverage-Guidelines.aspx" target="_blank" rel="noopener noreferrer">Molina Healthcare</a></li>
+</ul>
+</div>
+					</div>
+							</div>
+		</div>		
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-content">
+      <div class="container">
+        <div class="hidden-lg col-md-1 hidden-sm"></div>
+                        <div class="col-lg-3 col-md-2 col-sm-6">
+          <h2 class="footer-list-title">Stay informed</h2>
+          <ul class="footer-list">
+                  <li><a href="https://hfs.illinois.gov/medicalproviders/pharmacy/preferred/notify.html"  target="_blank">Preferred Drug List (PDL) E-mail Notification Request</a></li>
+                <li><a href="https://www.illinois.gov/hfs/MedicalProviders/notices/Pages/ProviderEmailSubscribe.aspx"  target="_blank">Provider Notice Email Notification</a></li>
+                <li><a href="https://hfs.illinois.gov/info/legal/hfsprivacy.html"  target="_blank">HFS Privacy</a></li>
+                  </ul>
+        </div>
+                          <div class="col-lg-3 col-md-2 col-sm-6">
+          <h2 class="footer-list-title">About</h2>
+          <ul class="footer-list">
+                  <li><a href="https://hfs.illinois.gov/about/about.html"  target="_blank">About Us -  Illinois Department of Healthcare and Family Services (HFS)</a></li>
+                <li><a href="https://hfs.illinois.gov/about.html"  target="_blank">About HFS Overview</a></li>
+                  </ul>
+        </div>
+                          <div class="col-lg-3 col-md-2 col-sm-6">
+          <h2 class="footer-list-title">Helpful links</h2>
+          <ul class="footer-list">
+                  <li><a href="mailto:hfs.webmaster@illinois.gov" >Contact Us</a></li>
+                  </ul>
+        </div>
+                  <div class="col-lg-3 col-md-4 col-sm-6 hidden-xs">
+          <div class="logo">
+            <img src="https://ilpriorauth.com/img/HFSLogoHorizontalWhiteText.png" alt="Drug Search" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <div class="container">
+        <div class="col-lg-6 col-md-12">
+          &copy; 2026 Illinois Department of Healthcare and Family Services
+          <span class="pipe-separator">|</span>
+          <a href="https://ilpriorauth.com/disclaimer">Disclaimer</a>
+        </div>
+        <div class="col-lg-6 hidden-md hidden-sm hidden-xs">
+          <span class="pull-right">This website was designed to work best with <strong>Google Chrome</strong> or
+            <strong>Mozilla Firefox</strong></span>
+        </div>
+        <div class="hidden-lg col-md-12">
+          This website was designed to work best with <strong>Google Chrome</strong> or <strong>Mozilla
+            Firefox</strong>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+</div>
+<script src="/js/app.js?id=942cff9af937b72dff8653f837fd35aa"></script>
+<script nonce="PckrDoPtnlmPzldtLWVp2A==">
+  $(function () {
+    function footerAlign() {
+      $('footer').css('display', 'block');
+      $('footer').css('height', 'auto');
+      var footerHeight = $('footer').outerHeight();
+      $('body').css('padding-bottom', footerHeight);
+      $('footer').css('height', footerHeight);
+    }
+
+    footerAlign();
+
+    $(window).resize(function () {
+      footerAlign();
+    });
+  });
+</script>
+    <script nonce="PckrDoPtnlmPzldtLWVp2A==">
+        $(function() {
+        	$('.article-container table').addClass('table table-bordered table-striped');
+        });
+	</script>
+</body>
+
+</html>
