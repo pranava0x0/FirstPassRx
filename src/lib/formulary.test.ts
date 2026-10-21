@@ -94,6 +94,10 @@ describe('guides + global meta', () => {
       'al-lipids',
       'al-weight',
       'al-migraine',
+      'md-adhd',
+      'md-lipids',
+      'md-weight',
+      'md-migraine',
     ])
   })
 

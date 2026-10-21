@@ -348,8 +348,9 @@
  * Raised 293 → 388 the same day when the four topics shipped for PA and CA (3 payers each): more
  * payer-specific long-tail names (branded ER stimulants, statin/ezetimibe combos, PCSK9/CGRP
  * variants, Medi-Cal labeler-restricted entries). Declared; price capture stays queued.
- * Raised 388 → 441 when the four topics shipped for AL (3 payers). Same declared long tail. */
-export const KNOWN_UNPRICED_GAP = 441
+ * Raised 388 → 441 when the four topics shipped for AL (3 payers). Same declared long tail.
+ * Raised 441 → 524 when the four topics shipped for MD (8 payers). Same declared long tail. */
+export const KNOWN_UNPRICED_GAP = 524
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
