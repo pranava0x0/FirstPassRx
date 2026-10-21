@@ -124,7 +124,9 @@ describe('buildAppealLetter', () => {
     )
     expect(letter).toContain('1. Symbicort — [dates tried and outcome')
     expect(letter).toContain('2. Wixela Inhub — [dates tried and outcome')
-    expect(letter).toContain('3. Advair HFA — [dates tried and outcome')
+    // An alternative the plan doesn't mark preferred (tiered, non-preferred, unlabeled) is not
+    // presented as one (Codex review, PR 19).
+    expect(letter).not.toContain('Advair HFA')
   })
 
   it('still includes the preferred agent when the cell lists no additional alternatives', () => {

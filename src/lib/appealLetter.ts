@@ -1,4 +1,5 @@
 import type { ClassMeta, FormularyRecord, PaItem, PayerMeta } from '../types/formulary'
+import { preferredAlternatives } from './paRequest'
 
 const BARRIER_LABEL: Record<PaItem['outcome'], string> = {
   pa: 'prior authorization',
@@ -78,11 +79,9 @@ export function buildAppealLetter(
   // The tried-and-failed list is the strongest medical-necessity argument. Pre-fill it with the
   // plan's own preferred alternatives for this class so the reviewer sees their formulary's
   // agents addressed one by one; the patient/prescriber fills in dates and outcomes.
-  const preferredName = record.preferredAgent.brand ?? record.preferredAgent.inn
-  const altNames = [preferredName, ...(record.alternatives ?? []).map((a) => a.drug)].filter(
-    (name, index, names) =>
-      names.findIndex((candidate) => candidate.toLowerCase() === name.toLowerCase()) === index,
-  )
+  // Only drugs the plan itself marks preferred; `alternatives` also holds higher-tier and
+  // non-preferred covered drugs, which the letter must not call "preferred".
+  const altNames = preferredAlternatives(record, item)
   lines.push(
     "The plan's preferred alternatives for this drug class, and why each was not effective or " +
       'not clinically appropriate for me (dates and outcomes below; clinical detail is in the ' +
