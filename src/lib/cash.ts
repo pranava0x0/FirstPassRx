@@ -549,6 +549,25 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxSlug: 'epinephrine',
     pricesCapturedAt: '2026-07-16',
   },
+  // Distinct patch products that the broad estradiol-patch and Activella rules below would
+  // otherwise swallow and misprice: Climara Pro (estradiol + levonorgestrel), CombiPatch
+  // (estradiol + norethindrone, transdermal, not the Activella tablet), and Menostar (0.014 mg,
+  // not 0.05 mg). Link-only until their own prices are captured (Codex review, PR 20).
+  {
+    matches: /climara pro|levonorgestrel/i,
+    goodRxSlug: 'climara-pro',
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    matches: /combipatch|estradiol.*norethindrone.*(transdermal|patch)/i,
+    goodRxSlug: 'combipatch',
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    matches: /menostar/i,
+    goodRxSlug: 'menostar',
+    pricesCapturedAt: '2026-10-21',
+  },
   {
     // "abigale|gallifrey|zafemy" added 2026-07-16: branded-generic manufacturer names for the same
     // estradiol/norethindrone acetate 0.5/0.1mg or 1/0.5mg combo as Activella -- Cost Plus doesn't
@@ -635,7 +654,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     // Stock" that day, so per this file's convention its price is omitted. Cells whose inn says only
     // "transdermal patch" (frequency in the strength text) land here; a month of twice-weekly
     // patches prices about the same ($54.82 above).
-    matches: /estradiol.*(weekly|patch|transdermal)|climara|menostar/i,
+    matches: /estradiol.*(weekly|patch|transdermal)|climara/i,
     goodRxSlug: 'estradiol',
     goodRxParams: 'label_override=estradiol&form=carton&dosage=4-once-weekly-patches-of-0.05mg-day&quantity=1',
     costPlusPath: 'estradiol-0_05mg-carton-of-weekly-patches-4-climara',

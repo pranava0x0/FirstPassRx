@@ -197,6 +197,9 @@ describe('cash price coverage across the live formulary', () => {
     const KNOWN_PRICE_UNAVAILABLE = [
       /climara/i,
       /menostar/i,
+      /levonorgestrel/i,
+      /combipatch/i,
+      /norethindrone.*(transdermal|patch)/i,
       /evamist/i,
       /alora/i,
       /estradiol transdermal(?! system)/i,
@@ -279,5 +282,19 @@ describe('cash price coverage across the live formulary', () => {
     const missingPrice = matched.filter((name) => !goodRxPrice(name) && !costPlusPrice(name))
     const unexpected = missingPrice.filter((name) => !KNOWN_PRICE_UNAVAILABLE.some((re) => re.test(name)))
     expect(unexpected).toEqual([])
+  })
+})
+
+// Codex review, PR 20: combo and low-dose patches must not inherit the plain 0.05 mg price.
+describe('distinct estradiol patch products stay unpriced', () => {
+  it.each(['CLIMARA PRO', 'CLIMARA PRO (estradiol-levonorgestrel patch)', 'CombiPatch (estradiol/norethindrone acetate transdermal)', 'Menostar (estradiol 0.014 mg/day)'])(
+    '%s has no borrowed price',
+    (name) => {
+      expect(goodRxPrice(name)).toBeNull()
+      expect(costPlusPrice(name)).toBeNull()
+    },
+  )
+  it('plain weekly patch keeps its captured price', () => {
+    expect(goodRxPrice('Estradiol transdermal patch (weekly)')?.price).toBe(51.66)
   })
 })
