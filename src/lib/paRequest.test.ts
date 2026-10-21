@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import type { ClassMeta, FormularyRecord, PaItem, PayerMeta } from '../types/formulary'
-import { preferredNeedsPa, buildPaRequest, emptyPaRequest, paChecklist, preferredAlternatives, responseClock, submissionLine } from './paRequest'
+import { preferredNeedsPa, preferredOutcome, buildPaRequest, emptyPaRequest, paChecklist, preferredAlternatives, responseClock, submissionLine } from './paRequest'
 import { ICD10_BY_CLASS, ICD10_RELEASE, icd10For } from './icd10'
 import data from '../data/formulary.json'
 
@@ -222,9 +222,22 @@ describe('preferredNeedsPa', () => {
     ['Quantity limit 60 per 30 days; no PA', false],
     ['No PA, no quantity limit stated.', false],
     ['Age 6-18 only', false],
+    ['PA required for members age 25 and older; no PA under 25', true],
+    ['Quantity limit (QL) applies; no PA or step therapy required for the plain naproxen tablet.', false],
     [undefined, false],
   ])('%s -> %s', (note, want) => expect(preferredNeedsPa(r(note))).toBe(want))
   it('is false for a no-covered-option record', () => {
     expect(preferredNeedsPa(r('PA required', { noCoveredAgent: true }))).toBe(false)
   })
+})
+
+describe('preferredOutcome', () => {
+  const r = (preferredRestriction: string) => ({ ...record, preferredRestriction }) as FormularyRecord
+  it.each([
+    ['PA required (Table 13)', 'pa'],
+    ['Step therapy: metformin first', 'step'],
+    ['Non-formulary: exception required', 'nonformulary'],
+    ['Not on the CDL: TAR required', 'nonformulary'],
+    ['Step therapy and PA required', 'pa'],
+  ])('%s -> %s', (note, want) => expect(preferredOutcome(r(note))).toBe(want))
 })

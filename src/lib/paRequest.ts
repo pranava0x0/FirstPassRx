@@ -18,12 +18,26 @@ import type { ClassMeta, FormularyRecord, PaItem, PayerMeta } from '../types/for
  * exception), as opposed to a note about a quantity, age or group limit, or an explicit "no PA".
  * Only then is a PA request offered on the recommendation.
  */
+// Drop negated clauses ("no PA under 25", "no PA or step therapy required for the plain tablet")
+// so a note that requires sign-off for one group and not another still counts as requiring it.
+function affirmativeRestriction(note: string): string {
+  return note.replace(/\b(no|not|without)\s+[^;.,]*?(PA|prior auth\w*|step therapy|authorization)[^;.,]*/gi, ' ')
+}
+
 export function preferredNeedsPa(record: FormularyRecord): boolean {
   if (record.noCoveredAgent) return false
   if (record.preferredCriteria?.length) return true
-  const note = record.preferredRestriction ?? ''
-  if (/\b(no|not|without)\s+(PA|prior auth\w*|step therapy)\b|PA not required|no restriction/i.test(note)) return false
-  return /\b(PA|prior auth\w*|step therapy|step|authorization|TAR|exception)\b/i.test(note)
+  return /\b(PA|prior auth\w*|step therapy|step|authorization|TAR|exception)\b/i.test(
+    affirmativeRestriction(record.preferredRestriction ?? ''),
+  )
+}
+
+/** The kind of sign-off the preferred agent's restriction asks for. */
+export function preferredOutcome(record: FormularyRecord): PaItem['outcome'] {
+  const note = affirmativeRestriction(record.preferredRestriction ?? '')
+  if (/\b(exception|non-?formulary|TAR)\b/i.test(note)) return 'nonformulary'
+  if (/\bstep\b/i.test(note) && !/\b(PA|prior auth\w*|authorization)\b/i.test(note)) return 'step'
+  return 'pa'
 }
 
 export type StepOutcome =

@@ -3,7 +3,7 @@ import { useGuide } from '../lib/formulary'
 import { goodRxUrl, costPlusUrl, goodRxPrice, costPlusPrice, pricesCapturedAt } from '../lib/cash'
 import { BoglBanner } from './BoglBanner'
 import { AppealAction, PrescribeOptions } from './PrescribeOptions'
-import { preferredNeedsPa } from '../lib/paRequest'
+import { preferredNeedsPa, preferredOutcome } from '../lib/paRequest'
 import { Citations } from './Citations'
 import { GlossaryTerm } from './GlossaryTerm'
 import { CashPriceBoxes } from './CashPriceBoxes'
@@ -133,7 +133,7 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
               drugClass={drugClass}
               item={{
                 drug: displayName,
-                outcome: 'pa',
+                outcome: preferredOutcome(record),
                 reason: record.preferredRestriction,
                 sourceIds: record.restrictionSourceIds,
                 criteria: record.preferredCriteria,
