@@ -353,8 +353,10 @@
  * Raised 524 → 534 after Codex review: the lisdexamfetamine price now applies to capsules only, so
  * chewable-tablet entries are honestly unpriced.
  * Raised 534 → 645 when the four topics shipped for VA (8 payers). Same declared long tail.
- * Raised 645 → 760 when the four topics shipped for IL (8 payers). Same declared long tail. */
-export const KNOWN_UNPRICED_GAP = 760
+ * Raised 645 → 760 when the four topics shipped for IL (8 payers). Same declared long tail.
+ * 760 → 763 after Codex review: phentermine capsules no longer borrow the tablet price (+), and the
+ * MD new-topic guides dropped Cigna (only its not-yet-effective 2027 list is posted) (−). */
+export const KNOWN_UNPRICED_GAP = 763
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -409,7 +411,8 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   },
   {
     // Not the phentermine/topiramate combo (Qsymia), a different product.
-    matches: /^(?!.*(topiramate|qsymia)).*(phentermine|adipex|lomaira)/i,
+    // Tablets only; capsules (15/30/37.5 mg) are priced differently (Codex review, PR 22).
+    matches: /^(?!.*(topiramate|qsymia|capsule)).*(phentermine|adipex|lomaira)/i,
     goodRxSlug: 'phentermine',
     goodRxParams: 'label_override=phentermine&form=tablet&dosage=37.5mg&quantity=30',
     goodRxPrice: { price: 21.52, quantity: '30 tablets, 37.5mg' },

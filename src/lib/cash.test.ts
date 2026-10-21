@@ -335,6 +335,10 @@ describe('methylphenidate prices only the captured forms', () => {
     '%s has no borrowed price',
     (name) => expect(goodRxPrice(name)).toBeNull(),
   )
+  it('phentermine capsules never borrow the tablet price', () => {
+    expect(goodRxPrice('Phentermine HCl oral capsule')).toBeNull()
+    expect(goodRxPrice('Phentermine HCl')?.price).toBe(21.52)
+  })
   it('lisdexamfetamine chewables never borrow the capsule price', () => {
     expect(goodRxPrice('Lisdexamfetamine chewable tablet (generic Vyvanse chewable)')).toBeNull()
     expect(goodRxPrice('Lisdexamfetamine dimesylate')?.price).toBe(67.78)

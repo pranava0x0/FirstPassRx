@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Fold per-payer gather checkpoints into whole new guides in src/data/formulary.json.
 //
-//   node scripts/merge-gather.mjs --dir=data-gathering/<stamp> --state=MA --payers-from=ma-ssris [--dry-run]
+//   node scripts/merge-gather.mjs --dir=data-gathering/<stamp> --state=MA --payers-from=ma-ssris [--exclude-payers=a,b] [--dry-run]
 //
 // <dir>/taxonomy.json defines topics -> classes (see data-gathering/*/taxonomy.json). Each
 // <dir>/<payerId>.json holds { payerId, references[], records[] } for every class it covers
@@ -19,6 +19,8 @@ const DIR = arg('dir')
 const STATE = arg('state')
 const PAYERS_FROM = arg('payers-from')
 const DRY = process.argv.includes('--dry-run')
+// --exclude-payers=a,b: leave payers out of the new guides (e.g. only a not-yet-effective list exists).
+const EXCLUDE = new Set((arg('exclude-payers') || '').split(',').filter(Boolean))
 if (!DIR || !STATE || !PAYERS_FROM) {
   console.error('usage: --dir=<checkpoint dir> --state=<XX> --payers-from=<existing guide id> [--dry-run]')
   process.exit(2)
@@ -30,6 +32,7 @@ const taxonomy = JSON.parse(readFileSync(join(DIR, 'taxonomy.json'), 'utf8'))
 const source = data.guides.find((g) => g.id === PAYERS_FROM)
 if (!source) throw new Error(`no guide ${PAYERS_FROM}`)
 if (source.stateCode !== STATE) throw new Error(`${PAYERS_FROM} is ${source.stateCode}, not ${STATE}`)
+source.payers = source.payers.filter((p) => !EXCLUDE.has(p.id))
 
 const checkpoints = new Map()
 for (const p of source.payers) {
