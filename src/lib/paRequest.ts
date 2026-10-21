@@ -70,7 +70,8 @@ const SAYS_NOT_PREFERRED = /\bnon-?\s?preferred\b|\bnot preferred\b/i
  */
 export function preferredAlternatives(record: FormularyRecord, item: PaItem): string[] {
   const names = [
-    record.preferredAgent.brand ?? record.preferredAgent.inn,
+    // A noCoveredAgent record's preferredAgent is only a class reference, not plan-preferred.
+    ...(record.noCoveredAgent ? [] : [record.preferredAgent.brand ?? record.preferredAgent.inn]),
     ...(record.alternatives ?? [])
       .filter((a) => SAYS_PREFERRED.test(a.note ?? '') && !SAYS_NOT_PREFERRED.test(a.note ?? ''))
       .map((a) => a.drug),

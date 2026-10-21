@@ -98,7 +98,7 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
         <div className="recommendation-hero">
           <div className="recommendation-hero__label">FIRST-PASS RECOMMENDED</div>
           <h3 className="recommendation-hero__name">{displayName}</h3>
-          {agent.brand ? (
+          {agent.brand && !agent.inn.toLowerCase().startsWith(agent.brand.toLowerCase()) ? (
             <p className="recommendation-hero__generic">Also called: {readableGenericName(agent.inn)}</p>
           ) : null}
           <div className="recommendation-hero__meta">

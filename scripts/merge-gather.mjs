@@ -67,7 +67,8 @@ for (const [topicId, topic] of Object.entries(taxonomy.topics)) {
   }
   const usedRefIds = new Set(records.flatMap((r) => [
     ...r.sourceIds, ...r.coverageSourceIds, ...r.restrictionSourceIds,
-    ...(r.alternatives ?? []).flatMap((a) => a.sourceIds), ...r.paRequired.flatMap((x) => x.sourceIds),
+    ...(r.alternatives ?? []).flatMap((a) => a.sourceIds),
+    ...r.paRequired.flatMap((x) => [...x.sourceIds, ...(x.criteriaSourceIds ?? [])]),
   ]))
   const references = [...refs.values()].filter((r) => usedRefIds.has(r.id))
   // Class metadata cites the first payer's reference that the class's own records use.

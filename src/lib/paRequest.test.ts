@@ -55,6 +55,14 @@ describe('preferredAlternatives', () => {
   })
 })
 
+describe('preferredAlternatives on a no-covered-option record', () => {
+  // Codex review, PR 22: the reference drug was listed as a plan-preferred prerequisite.
+  it('omits the reference-only agent', () => {
+    const r = { ...record, noCoveredAgent: true, preferredRestriction: 'none listed' } as FormularyRecord
+    expect(preferredAlternatives(r, item)).not.toContain('Jardiance')
+  })
+})
+
 describe('paChecklist', () => {
   it('starts with nothing done and fills in as the reviewer items are answered', () => {
     const input = emptyPaRequest(record, item)
