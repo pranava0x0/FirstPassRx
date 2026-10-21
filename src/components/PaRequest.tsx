@@ -7,9 +7,12 @@ import {
   emptyPaRequest,
   paChecklist,
   responseClock,
+  submissionLine,
+  type CriterionStatus,
   type PaRequestInput,
   type StepOutcome,
 } from '../lib/paRequest'
+import { ICD10_RELEASE, icd10For } from '../lib/icd10'
 import { downloadLetterPdf } from '../lib/letterPdf'
 import { useCopyToClipboard } from '../lib/clipboard'
 
@@ -28,17 +31,30 @@ export function PaRequest({
   payer: PayerMeta
   drugClass: ClassMeta
 }) {
-  const { stateCode } = useGuide()
+  const { stateCode, resolveSources } = useGuide()
+  const submissionSources = resolveSources(payer.paSubmission?.sourceIds ?? [])
+  const criteriaSources = resolveSources(item.criteriaSourceIds ?? [])
   const [input, setInput] = useState<PaRequestInput>(() => emptyPaRequest(record, item))
   const [pdfError, setPdfError] = useState(false)
   const { copied, copy } = useCopyToClipboard()
-  const checklist = paChecklist(input)
+  const checklist = paChecklist(input, item.criteriaMode ?? 'any')
+  const icdOptions = icd10For(record.classId)
+  const listId = `icd10-${record.payerId}-${record.classId}`.replace(/\W+/g, '-')
   const doneCount = checklist.filter((c) => c.done).length
   const letter = useMemo(
-    () => buildPaRequest(record, item, payer, drugClass, input),
-    [record, item, payer, drugClass, input],
+    () =>
+      buildPaRequest(record, item, payer, drugClass, input, {
+        submission: submissionSources.map((x) => x.url),
+        criteria: criteriaSources.map((x) => x.url),
+      }),
+    [record, item, payer, drugClass, input, submissionSources, criteriaSources],
   )
   const set = (patch: Partial<PaRequestInput>) => setInput((cur) => ({ ...cur, ...patch }))
+  const setCriterion = (i: number, patch: { status?: CriterionStatus; evidence?: string }) =>
+    setInput((cur) => ({
+      ...cur,
+      criteria: cur.criteria.map((c, j) => (j === i ? { ...c, ...patch } : c)),
+    }))
   const setStep = (i: number, patch: { outcome?: StepOutcome; detail?: string }) =>
     setInput((cur) => ({
       ...cur,
@@ -47,6 +63,23 @@ export function PaRequest({
 
   return (
     <div className="pa-builder">
+      {payer.paSubmission ? (
+        <div className="pa-builder__send">
+          <p className="pa-builder__send-label">Send to</p>
+          <p className="pa-builder__send-line">
+            {submissionLine(payer)
+              .split(' · ')
+              .map((part, i) => (
+                <span key={part}>
+                  {i > 0 ? ' · ' : null}
+                  <span className="pa-builder__channel">{part}</span>
+                </span>
+              ))}
+          </p>
+          {payer.paSubmission.note ? <p className="pa-builder__send-note">{payer.paSubmission.note}</p> : null}
+          <SourceLine sources={submissionSources} />
+        </div>
+      ) : null}
       <p className="pa-builder__clock">{responseClock(payer, stateCode)}</p>
 
       <div className="pa-builder__check" aria-live="polite">
@@ -66,16 +99,66 @@ export function PaRequest({
         </ul>
       </div>
 
+      {input.criteria.length > 0 ? (
+        <fieldset className="pa-steps pa-criteria">
+          <legend>
+            {item.criteriaMode === 'all'
+              ? 'This plan approves when ALL of these are met'
+              : 'This plan approves when ANY ONE of these is met'}
+          </legend>
+          <SourceLine sources={criteriaSources} />
+          {input.criteria.map((c, i) => (
+            <div key={c.text} className="pa-step">
+              <p className="pa-step__drug pa-criteria__text">{c.text}</p>
+              <select
+                aria-label={`Criterion ${i + 1}: met or not`}
+                value={c.status}
+                onChange={(e) => setCriterion(i, { status: e.target.value as CriterionStatus })}
+              >
+                <option value="">Met?</option>
+                <option value="met">Met</option>
+                <option value="not-met">Not met</option>
+              </select>
+              {c.status === 'met' ? (
+                <input
+                  aria-label={`Chart evidence for criterion ${i + 1}`}
+                  value={c.evidence}
+                  onChange={(e) => setCriterion(i, { evidence: e.target.value })}
+                  placeholder="Where the chart shows it: dates, values"
+                  autoComplete="off"
+                />
+              ) : null}
+            </div>
+          ))}
+        </fieldset>
+      ) : null}
+
       <div className="pa-builder__grid">
         <label className="pa-field pa-field--wide">
           <span>Diagnosis (ICD-10)</span>
           <input
             value={input.diagnosis}
             onChange={(e) => set({ diagnosis: e.target.value })}
-            placeholder="e.g. E11.9 Type 2 diabetes"
+            placeholder={icdOptions[0] ? `e.g. ${icdOptions[0].code} ${icdOptions[0].label}` : 'ICD-10 code and description'}
             autoComplete="off"
+            list={icdOptions.length ? listId : undefined}
           />
+          {icdOptions.length ? (
+            <datalist id={listId}>
+              {icdOptions.map((o) => (
+                <option key={o.code} value={`${o.code} ${o.label}`} />
+              ))}
+            </datalist>
+          ) : null}
         </label>
+        {icdOptions.length ? (
+          <p className="pa-field__hint pa-field--wide">
+            Suggestions: {ICD10_RELEASE.version} ·{' '}
+            <a href={ICD10_RELEASE.source} target="_blank" rel="noopener noreferrer">
+              CMS code file &#8599;
+            </a>
+          </p>
+        ) : null}
         <label className="pa-field pa-field--wide">
           <span>Strength, form, directions</span>
           <input
@@ -178,5 +261,23 @@ export function PaRequest({
       ) : null}
       <p className="pa-builder__privacy">Nothing you type is saved or sent. It stays on this page.</p>
     </div>
+  )
+}
+
+/** Compact "Source: <label> ↗" line so routing numbers and criteria trace to the plan's document. */
+function SourceLine({ sources }: { sources: { id: string; url: string; label: string }[] }) {
+  if (sources.length === 0) return null
+  return (
+    <p className="pa-builder__source">
+      Source:{' '}
+      {sources.map((src, i) => (
+        <span key={src.id}>
+          {i > 0 ? ' · ' : null}
+          <a href={src.url} target="_blank" rel="noopener noreferrer">
+            {src.label} &#8599;
+          </a>
+        </span>
+      ))}
+    </p>
   )
 }

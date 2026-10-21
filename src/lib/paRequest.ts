@@ -36,7 +36,19 @@ export interface StepEntry {
   detail: string
 }
 
+export type CriterionStatus = '' | 'met' | 'not-met'
+
+export interface CriterionEntry {
+  /** The plan's criterion, verbatim from the data. */
+  text: string
+  status: CriterionStatus
+  /** Where the chart shows it: dates, values, note references. */
+  evidence: string
+}
+
 export interface PaRequestInput {
+  /** The plan's own approval criteria for this drug, when the policy has been read. */
+  criteria: CriterionEntry[]
   diagnosis: string
   /** Strength, form, directions. */
   regimen: string
@@ -73,6 +85,7 @@ export function preferredAlternatives(record: FormularyRecord, item: PaItem): st
 
 export function emptyPaRequest(record: FormularyRecord, item: PaItem): PaRequestInput {
   return {
+    criteria: (item.criteria ?? []).map((text) => ({ text, status: '' as CriterionStatus, evidence: '' })),
     diagnosis: '',
     regimen: '',
     quantity: '',
@@ -95,11 +108,31 @@ export interface ChecklistItem {
 const ICD10 = /\b[A-TV-Z]\d{2}(?:\.[0-9A-Z]{1,4})?\b/i
 
 /** What a reviewer needs on first pass; each item is something we can see in the input. */
-export function paChecklist(input: PaRequestInput): ChecklistItem[] {
+/** Met-with-evidence count needed: one criterion for "any", every one for "all". */
+function criteriaDone(input: PaRequestInput, mode: 'any' | 'all'): boolean {
+  const met = input.criteria.filter((c) => c.status === 'met' && c.evidence.trim() !== '')
+  return mode === 'all' ? met.length === input.criteria.length : met.length >= 1
+}
+
+export function paChecklist(input: PaRequestInput, criteriaMode: 'any' | 'all' = 'any'): ChecklistItem[] {
   const stepsAnswered =
     input.steps.length > 0 &&
     input.steps.every((s) => s.outcome !== '' && (s.outcome === 'not-tried' || s.detail.trim() !== ''))
+  const planCriteria: ChecklistItem[] =
+    input.criteria.length > 0
+      ? [
+          {
+            id: 'criteria',
+            label:
+              criteriaMode === 'all'
+                ? "Every one of this plan's criteria shown as met, with chart evidence"
+                : "At least one of this plan's approval paths shown as met, with chart evidence",
+            done: criteriaDone(input, criteriaMode),
+          },
+        ]
+      : []
   return [
+    ...planCriteria,
     {
       id: 'diagnosis',
       label: 'Diagnosis with an ICD-10 code',
@@ -151,6 +184,20 @@ const BARRIER: Record<PaItem['outcome'], string> = {
   nonformulary: 'a formulary exception',
 }
 
+/** One line naming every intake channel the plan publishes, e.g. "fax 877-208-7428 · phone …". */
+export function submissionLine(payer: PayerMeta): string {
+  const sub = payer.paSubmission
+  if (!sub) return ''
+  return [
+    sub.fax ? `fax ${sub.fax}` : '',
+    sub.portal ? `portal ${sub.portal}` : '',
+    sub.epa ? `ePA ${sub.epa}` : '',
+    sub.phone ? `phone ${sub.phone}` : '',
+  ]
+    .filter(Boolean)
+    .join(' · ')
+}
+
 const fill = (value: string, placeholder: string) => (value.trim() !== '' ? value.trim() : placeholder)
 
 /** Letter of medical necessity in reviewer order. Blank inputs stay as [bracketed] placeholders. */
@@ -160,11 +207,16 @@ export function buildPaRequest(
   payer: PayerMeta,
   drugClass: ClassMeta,
   input: PaRequestInput,
+  /** Source URLs for the routing and criteria lines, so the copied letter keeps provenance. */
+  sourceUrls: { submission?: string[]; criteria?: string[] } = {},
 ): string {
   const lines: string[] = [
     input.expedited ? 'EXPEDITED REVIEW REQUESTED' : 'Standard review',
     `To: ${payer.name}${payer.pbm ? ` (pharmacy benefit: ${payer.pbm})` : ''} — Pharmacy Prior Authorization`,
     `Plan: ${payer.productName} (${payer.formularyId})`,
+    ...(payer.paSubmission
+      ? [`Send to: ${submissionLine(payer)}${sourceUrls.submission?.length ? ` (source: ${sourceUrls.submission.join(', ')})` : ''}`]
+      : []),
     'Date: [Date]',
     '',
     'Patient: [Patient name] · DOB: [DOB] · Member ID: [Member ID]',
@@ -179,6 +231,21 @@ export function buildPaRequest(
     `Drug class: ${drugClass.name}`,
     '',
   ]
+
+  if (input.criteria.length > 0) {
+    lines.push(
+      item.criteriaMode === 'all'
+        ? "PLAN'S APPROVAL CRITERIA (all required) — addressed:"
+        : "PLAN'S APPROVAL CRITERIA (any one qualifies) — addressed:",
+    )
+    input.criteria.forEach((c, i) => {
+      const status = c.status === 'met' ? 'MET' : c.status === 'not-met' ? 'Not met' : '[met / not met]'
+      const evidence = c.status === 'met' ? ` — ${fill(c.evidence, '[chart evidence: dates, values]')}` : ''
+      lines.push(`${i + 1}. ${c.text}: ${status}${evidence}`)
+    })
+    if (sourceUrls.criteria?.length) lines.push(`Criteria source: ${sourceUrls.criteria.join(', ')}`)
+    lines.push('')
+  }
 
   if (input.steps.length > 0) {
     lines.push("PLAN'S PREFERRED ALTERNATIVES — each addressed:")

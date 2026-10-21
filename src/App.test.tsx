@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { render, screen, within, fireEvent, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { StrictMode } from 'react'
 import App from './App'
 
 /** The preferred-agent name is the level-3 heading in the recommendation hero box. */
@@ -313,5 +314,39 @@ describe('FirstPassRx app', () => {
     window.history.replaceState({}, '', '/?guide=pa-ssris&plan=pa-medicaid')
     render(<App />)
     expect(await screen.findByText(/every Pennsylvania Medicaid managed care plan statewide/)).toBeVisible()
+  })
+
+  it('PA request shows the plan criteria, ICD-10 suggestions, and where to send it (MGB ICS)', async () => {
+    const user = userEvent.setup()
+    window.history.replaceState({}, '', '/?guide=ma-inhalers&plan=mgb&class=ics')
+    render(<App />)
+    const card = (await screen.findByRole('heading', { level: 5, name: /Fluticasone propionate HFA/ })).closest('.rx-option-card') as HTMLElement
+    await user.click(within(card).getByRole('button', { name: /request pa/i }))
+    expect(within(card).getByText(/approves when ANY ONE/)).toBeInTheDocument()
+    expect(card.querySelector('.pa-criteria')).toHaveTextContent(/BOTH Arnuity Ellipta and QVAR RediHaler/)
+    expect(card.querySelector('.pa-builder__send-line')).toHaveTextContent('fax 844-403-1029')
+    expect(card.querySelector('datalist option[value^="J45.40"]')).not.toBeNull()
+    // Provenance (Codex review, PR 21): routing numbers, criteria, and ICD list each link a source.
+    expect(card.querySelector('.pa-builder__send .pa-builder__source a')?.getAttribute('href')).toMatch(/massgeneralbrighamhealthplan\.org/)
+    expect(card.querySelector('.pa-criteria .pa-builder__source a')).not.toBeNull()
+    expect(within(card).getByRole('link', { name: /CMS code file/ })).toHaveAttribute('href', expect.stringMatching(/cms\.gov/))
+    expect(card.querySelector('.pa-builder__letter')?.textContent).toMatch(/Send to: fax 844-403-1029.*\(source: https:/)
+    await user.selectOptions(within(card).getByLabelText(/Criterion 2: met or not/), 'met')
+    await user.type(within(card).getByLabelText(/Chart evidence for criterion 2/), 'QVAR 3/2025 and Arnuity 1/2026, poor control')
+    expect(within(card).getByText(/1 of 5/)).toBeInTheDocument()
+    expect(card.querySelector('.pa-builder__letter')?.textContent).toMatch(/2\. Asthma diagnosis.*: MET — QVAR 3\/2025/)
+  })
+
+  // Regression: under StrictMode the init effect ran twice and re-read a URL the sync effect had
+  // already overwritten with the default plan, so a shared default-guide link lost its plan.
+  it('keeps a shared link\'s plan and class under StrictMode', async () => {
+    window.history.replaceState({}, '', '/?guide=ma-inhalers&plan=mgb&class=ics')
+    render(
+      <StrictMode>
+        <App />
+      </StrictMode>,
+    )
+    await waitFor(() => expect(window.location.search).toBe('?guide=ma-inhalers&plan=mgb&class=ics'))
+    expect((screen.getByLabelText(/select insurance plan/i) as HTMLSelectElement).value).toBe('mgb')
   })
 })

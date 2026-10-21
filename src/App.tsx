@@ -63,12 +63,17 @@ export default function App() {
     return { guideId: defaultGuideId }
   }
 
+  // Read once: effects can run twice (StrictMode) and the URL sync below rewrites the URL, so a
+  // second read would see our own write instead of the link the user opened.
+  const [initialPick] = useState(getInitialPick)
   const [selection, setSelection] = useState(() => {
     const guide = getDefaultGuideView()
+    const payerOk = initialPick.guideId === guide.id && guide.payers.some((p) => p.id === initialPick.payerId)
+    const classOk = initialPick.guideId === guide.id && guide.activeClasses.some((c) => c.id === initialPick.classId)
     return {
       guide,
-      payerId: guide.payers[0]!.id as PayerId,
-      classId: guide.activeClasses[0]!.id as ClassId,
+      payerId: (payerOk ? initialPick.payerId : guide.payers[0]!.id) as PayerId,
+      classId: (classOk ? initialPick.classId : guide.activeClasses[0]!.id) as ClassId,
     }
   })
   const { guide, payerId, classId } = selection
@@ -89,13 +94,10 @@ export default function App() {
 
   // False until a linked/remembered guide has finished loading, so the URL/storage sync below
   // can't overwrite a shared link with the default guide during that first fetch.
-  const hydrated = useRef(false)
+  const hydrated = useRef(initialPick.guideId === defaultGuideId)
 
   useEffect(() => {
-    const initial = getInitialPick()
-    hydrated.current = initial.guideId === defaultGuideId
-    if (initial.guideId !== defaultGuideId) void switchGuide(initial.guideId, false, initial)
-    else applyPick(guide, initial)
+    if (initialPick.guideId !== defaultGuideId) void switchGuide(initialPick.guideId, false, initialPick)
   }, [])
 
   // Keep the plan + class in the URL (shareable, survives reload) and remember the pick on
@@ -110,18 +112,6 @@ export default function App() {
     if (url.toString() !== window.location.href) window.history.replaceState({}, '', url.toString())
     writeLastPick({ guideId: guide.id, payerId, classId })
   }, [guide.id, payerId, classId, activeGuideId])
-
-  /** Apply a remembered plan/class to an already-loaded guide, ignoring ids it doesn't have. */
-  function applyPick(view: typeof guide, pick: Pick) {
-    const payerOk = pick.payerId && view.payers.some((p) => p.id === pick.payerId)
-    const classOk = pick.classId && view.activeClasses.some((c) => c.id === pick.classId)
-    if (!payerOk && !classOk) return
-    setSelection((current) => ({
-      ...current,
-      payerId: payerOk ? (pick.payerId as PayerId) : current.payerId,
-      classId: classOk ? (pick.classId as ClassId) : current.classId,
-    }))
-  }
 
   // Changing state keeps the condition when that state has it; otherwise jump to the state's
   // first available condition instead of landing on an empty "not covered" page.
