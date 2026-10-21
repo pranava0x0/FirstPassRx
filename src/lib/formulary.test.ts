@@ -374,6 +374,14 @@ describe('noCoveredAgent', () => {
       expect(r.boglActive).toBe(false)
     }
   })
+  it('never indexes the reference drug as a preferred search result', () => {
+    const g = buildGuideView(view())
+    const flagged = g.records.filter((r) => r.noCoveredAgent)
+    for (const r of flagged) {
+      const hits = g.searchFormulary(r.preferredAgent.inn.split(' ')[0]!, 200)
+      expect(hits.some((h) => h.kind === 'preferred' && h.payerId === r.payerId && h.classId === r.classId)).toBe(false)
+    }
+  })
   it('rejects a flagged cell with no reason', () => {
     const g = view()
     const r = g.records.find((x) => x.noCoveredAgent)!

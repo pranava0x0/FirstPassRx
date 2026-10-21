@@ -328,3 +328,16 @@ describe('weight-loss GLP-1s never borrow a diabetes product price', () => {
     expect(goodRxPrice('Semaglutide (Ozempic)')).not.toBeNull()
   })
 })
+
+// Codex review, PR 22: methylphenidate rules priced other dosage forms with tablet quotes.
+describe('methylphenidate prices only the captured forms', () => {
+  it.each(['Methylphenidate ER (generic Ritalin LA)', 'Methylphenidate ER capsule', 'Onyda XR (methylphenidate ER suspension)', 'Methylphenidate transdermal patch (Daytrana)', 'Methylphenidate oral solution', 'Methylphenidate chewable tablet', 'Ritalin LA', 'Dexmethylphenidate ER'])(
+    '%s has no borrowed price',
+    (name) => expect(goodRxPrice(name)).toBeNull(),
+  )
+  it('prices osmotic ER tablets and plain IR tablets', () => {
+    expect(goodRxPrice('Methylphenidate hydrochloride extended-release (osmotic)')?.price).toBe(39.49)
+    expect(goodRxPrice('Methylphenidate ER (osmotic tablet)')?.price).toBe(39.49)
+    expect(goodRxPrice('Methylphenidate hydrochloride')?.price).toBe(25.78)
+  })
+})

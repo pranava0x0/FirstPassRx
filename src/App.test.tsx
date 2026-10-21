@@ -321,6 +321,7 @@ describe('FirstPassRx app', () => {
     render(<App />)
     expect(await screen.findByText('NO COVERED OPTION FOUND')).toBeInTheDocument()
     expect(screen.queryByText('FIRST-PASS RECOMMENDED')).not.toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: '4. Coverage' })).toBeInTheDocument()
   })
 
   it('PA request shows the plan criteria, ICD-10 suggestions, and where to send it (MGB ICS)', async () => {

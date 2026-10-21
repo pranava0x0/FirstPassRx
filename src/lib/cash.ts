@@ -340,8 +340,12 @@
  * ezetimibe, atorvastatin, sumatriptan, methylphenidate ER/IR, lisdexamfetamine, mixed amphetamine
  * salts IR and Ubrelvy, plus link-only rules for the brand GLP-1 weight products and CGRP/PCSK9
  * injectables (GoodRx shows only copay-card offers for those). Also fixed: weight-loss
- * semaglutide/liraglutide cells were borrowing Ozempic's/Victoza's price via the shared INN. */
-export const KNOWN_UNPRICED_GAP = 267
+ * semaglutide/liraglutide cells were borrowing Ozempic's/Victoza's price via the shared INN.
+ * Raised 267 → 293 the same day after Codex review: the methylphenidate ER/IR rules were narrowed
+ * to the exact captured forms (osmotic ER tablet, plain IR tablet), so 26 other forms (capsules,
+ * LA/CD/SR, suspensions, chewables, patches, branded ER products) are now honestly unpriced instead
+ * of showing a tablet quote. */
+export const KNOWN_UNPRICED_GAP = 293
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -432,7 +436,9 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   },
   {
     // Extended-release methylphenidate (Concerta-type, 18mg); not dexmethylphenidate (Focalin).
-    matches: /^(?!.*dexmethyl).*(methylphenidate.*(extended|\bER\b|osmotic|\bOSM\b|24)|concerta)/i,
+    // Only the captured product: osmotic ER tablets (Concerta and its generic). Capsules, LA/CD/SR,
+    // suspensions, chewables, patches, and other branded ER forms differ (Codex review, PR 22).
+    matches: /^(?!.*(dexmethyl|capsule|\bLA\b|\bCD\b|\bSR\b|suspension|solution|chew|patch|transdermal|daytrana|onyda|quilli|cotempla|aptensio|jornay|adhansia|relexxii|metadate|ritalin)).*(methylphenidate.*(extended|\bER\b|osmotic|\bOSM\b|24)|concerta)/i,
     goodRxSlug: 'methylphenidate-er',
     goodRxParams: 'label_override=methylphenidate-er&form=tablet&dosage=18mg&quantity=30',
     goodRxPrice: { price: 39.49, quantity: '30 tablets, 18mg ER' },
@@ -440,7 +446,8 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   },
   {
     // Immediate-release methylphenidate; must stay below the ER rule above.
-    matches: /^(?!.*dexmethyl).*(methylphenidate|ritalin)/i,
+    // Only plain immediate-release tablets; every other methylphenidate form stays unpriced.
+    matches: /^(?!.*(dexmethyl|extended|\bER\b|\bXR\b|\bLA\b|\bCD\b|\bSR\b|osmotic|\bOSM\b|\b24|capsule|suspension|solution|chew|patch|transdermal|daytrana|concerta|metadate|methylin|quilli|cotempla|aptensio|jornay|relexxii|onyda|azstarys|adhansia)).*(methylphenidate|ritalin)/i,
     goodRxSlug: 'methylphenidate',
     goodRxParams: 'label_override=methylphenidate&form=tablet&dosage=10mg&quantity=60',
     goodRxPrice: { price: 25.78, quantity: '60 tablets, 10mg' },

@@ -221,15 +221,18 @@ export function buildGuideView(guide: Guide): GuideView {
 
   const searchIndex: IndexEntry[] = guide.records.flatMap((r) => {
     const a = r.preferredAgent
-    const entries: IndexEntry[] = [
-      {
-        payerId: r.payerId,
-        classId: r.classId,
-        drug: a.brand ? `${a.inn} (${a.brand})` : a.inn,
-        kind: 'preferred',
-        haystack: `${a.inn} ${a.brand ?? ''}`.toLowerCase(),
-      },
-    ]
+    // A noCoveredAgent record's preferredAgent is only a class reference; never index it as preferred.
+    const entries: IndexEntry[] = r.noCoveredAgent
+      ? []
+      : [
+          {
+            payerId: r.payerId,
+            classId: r.classId,
+            drug: a.brand ? `${a.inn} (${a.brand})` : a.inn,
+            kind: 'preferred',
+            haystack: `${a.inn} ${a.brand ?? ''}`.toLowerCase(),
+          },
+        ]
     for (const pa of r.paRequired) {
       entries.push({
         payerId: r.payerId,
