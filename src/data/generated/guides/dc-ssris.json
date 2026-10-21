@@ -1,0 +1,549 @@
+{
+  "id": "dc-ssris",
+  "label": "DC · SSRIs",
+  "stateCode": "DC",
+  "region": "District of Columbia",
+  "topicId": "ssris",
+  "topic": "SSRIs",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-10-21",
+  "capturedAt": "2026-10-21",
+  "payers": [
+    {
+      "id": "dc-medicaid",
+      "name": "DC Medicaid",
+      "shortName": "DC Medicaid",
+      "aka": "DC Medicaid fee-for-service and DC Healthcare Alliance (DHCF); DC Healthy Families MCOs run their own formularies",
+      "pbm": "Prime Therapeutics",
+      "productName": "DC Medicaid / DC Healthcare Alliance Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "District of Columbia Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "formularyUrl": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "sourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "amerihealth-caritas-dc",
+      "name": "AmeriHealth Caritas District of Columbia",
+      "shortName": "AmeriHealth Caritas DC",
+      "aka": "DC Healthy Families Medicaid MCO",
+      "pbm": "PerformRx",
+      "productName": "AmeriHealth Caritas DC drug formulary",
+      "marketSegment": "medicaid-mco",
+      "formularyId": "Drug Formulary (June 1, 2026 edition)",
+      "formularyUrl": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "sourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "carefirst",
+      "name": "CareFirst BlueCross BlueShield",
+      "shortName": "CareFirst",
+      "pbm": "CVS Caremark",
+      "formularyUrl": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "paPolicyUrl": "https://member.carefirst.com/carefirst-resources/pdf/drugs-requiring-prior-authorization-formulary-2.pdf",
+      "productName": "CareFirst individual and family Exchange Formulary 2",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "CareFirst Exchange Formulary 2026 (5-Tier)",
+      "sourceIds": [
+        "carefirst-ssris-source-2026-07"
+      ]
+    },
+    {
+      "id": "kpmidatlantic",
+      "name": "Kaiser Permanente Mid-Atlantic",
+      "shortName": "Kaiser MAS",
+      "pbm": "Kaiser Permanente (in-house)",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "productName": "Kaiser Mid-Atlantic Marketplace formulary",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "District of Columbia, Maryland, and Virginia Marketplace Formulary",
+      "sourceIds": [
+        "kpmidatlantic-ssris-source-2026-07"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "ssri-oral",
+      "name": "Oral SSRIs",
+      "shortName": "SSRI",
+      "plainName": "Antidepressant (SSRI)",
+      "description": "Selective serotonin reuptake inhibitors (fluoxetine, sertraline, citalopram, escitalopram, paroxetine, fluvoxamine) — first-line oral therapy for major depressive disorder and anxiety disorders.",
+      "plainDescription": "A daily pill for depression or anxiety that works by increasing serotonin levels.",
+      "indication": "Major depressive disorder & anxiety disorders",
+      "sourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "ssri-oral",
+      "preferredAgent": {
+        "inn": "Sertraline",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "tablet, standard label strength (not printed on PDL)",
+        "sig": "Standard label dosing (PDL does not print a sig)",
+        "sigShort": "Per label",
+        "plainSig": "One pill once a day, as your prescriber directs."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (no PA)",
+      "noCoveredAgent": false,
+      "alternatives": [
+        {
+          "drug": "Citalopram tablet",
+          "note": "Preferred (no PA) (page 14)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Citalopram solution",
+          "note": "Preferred (no PA) (page 14)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Escitalopram tablet",
+          "note": "Preferred (no PA) (page 14)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluoxetine capsule, solution and tablet",
+          "note": "Preferred (no PA) (page 14)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Paroxetine tablet",
+          "note": "Preferred (no PA) (page 14)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Zoloft (sertraline brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 14)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "sertraline capsule and solution",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 14)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lexapro (escitalopram brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 14)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "escitalopram 15 mg capsule",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 14)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "escitalopram solution",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 14)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Celexa tablet (citalopram brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 14)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "citalopram 30 mg capsule",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 14)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Paxil tablet and suspension",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 14)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Paxil CR",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 14)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "paroxetine CR",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 14)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "paroxetine suspension",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 14)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Prozac (fluoxetine brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 14)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "fluoxetine 60 mg capsule",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 14)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "fluoxetine DR (weekly)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 14)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "fluvoxamine",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 14)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "fluvoxamine ER",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 14)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL page 14 (Antidepressants: SSRIs). Preferred pick is generic sertraline tablet (no PA), the most commonly prescribed SSRI on this list. Brand Zoloft is PA while generic sertraline tablet is preferred, so no BOGL. Strength and sig are standard label dosing. Paroxetine (generic for Brisdelle) is PA and is not an oral SSRI pick.",
+      "sourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "ssri-oral",
+      "preferredAgent": {
+        "inn": "Sertraline hydrochloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet",
+        "sig": "Take 1 tablet by mouth once daily (standard label dosing)",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "F (formulary); QL 45 EA per 30 days",
+      "alternatives": [
+        {
+          "drug": "Citalopram hydrobromide oral tablet",
+          "note": "F; no PA printed (PDF p.88)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Escitalopram oxalate oral tablet",
+          "note": "F; no PA printed (PDF p.88)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluoxetine hcl oral capsule 10 and 40 mg; 20 mg",
+          "note": "F; QL 120 EA per 30 days for 20 mg (PDF p.88)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Paroxetine hcl oral tablet; paroxetine ER tablet",
+          "note": "F; QL on some strengths (PDF p.88)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluvoxamine maleate",
+          "note": "F; no PA printed (PDF p.88)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p.87-88 'Selective-Serotonin Reuptake Inhibitors'. All oral SSRIs listed are F with no PA. Zoloft, Lexapro, Celexa, Paxil brand names not printed; absence not treated as exclusion. Judgment: sertraline 50 mg chosen as a common, no-PA SSRI; the document does not rank SSRIs.",
+      "noCoveredAgent": false,
+      "sourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "ssri-oral",
+      "preferredAgent": {
+        "inn": "sertraline",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet",
+        "sig": "Sertraline HCl 50 mg tablet, take 1 tablet by mouth once daily",
+        "sigShort": "Sertraline 50mg PO qDay",
+        "plainSig": "Take one 50 mg tablet by mouth once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "citalopram (10/20/40 mg tab, oral solution)",
+          "note": "Tier 1 generic, no PA/ST/QL",
+          "sourceIds": [
+            "carefirst-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "escitalopram oxalate (5/10/20 mg tab, oral solution)",
+          "note": "Tier 1 generic, no PA/ST/QL",
+          "sourceIds": [
+            "carefirst-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "fluoxetine HCl (10/20/40 mg cap, 90 mg DR cap, oral solution)",
+          "note": "Tier 1 generic, no PA/ST/QL",
+          "sourceIds": [
+            "carefirst-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "paroxetine HCl (10/20/30/40 mg tab; 12.5/25/37.5 mg ER tab)",
+          "note": "Tier 1 generic, no PA/ST/QL",
+          "sourceIds": [
+            "carefirst-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "fluvoxamine maleate (25/50/100 mg tab; 100/150 mg ER cap)",
+          "note": "Tier 1 generic, no PA/ST/QL",
+          "sourceIds": [
+            "carefirst-ssris-source-2026-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "fluoxetine HCl tab 10 mg / 20 mg (Sarafem brand)",
+          "outcome": "nonformulary",
+          "reason": "Document states 'generic Sarafem not covered' directly on the fluoxetine 10mg/20mg tablet lines -- the Sarafem-branded fluoxetine product (marketed for PMDD) is excluded even though the equivalent generic fluoxetine tablet at the same strength is Tier 1 covered.",
+          "sourceIds": [
+            "carefirst-ssris-source-2026-07"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "tier": "Tier 1 - Generic Drugs",
+      "verification": "verified",
+      "verificationNote": "Fetched the cited PDF directly (WebFetch's built-in extraction returned only binary/metadata on this 236-page/2.6MB file, consistent with this repo's known large-PDF extraction gap, so the saved binary was re-read locally via the PDF-tools MCP's page-range and search functions instead). Page 1 confirms the document title 'CareFirst Exchange Formulary 2026' with 'Last updated 07/01/26' as a footer/header stamp -- used as effectiveDate. Page 2 confirms publisher CareFirst BlueCross BlueShield and the 5-tier legend (Tier 0 $0, Tier 1 Generic, Tier 2 Preferred Brand, Tier 3 Non-preferred Brand, Tier 4/5 Specialty); page 3 defines the PA/PA**/QL/ST/M/OTC restriction codes. This is the Exchange/individual-market formulary named in the task (explicitly scoped to individual/family plans, small-group <51 employees, and student health plans on page 1) -- matches the payer and PBM (CVS Caremark) named in the task. The Antidepressants section (alphabetical drug list, PDF pages 63-69, printed page numbers 61-67) was read via targeted keyword search plus full page reads rather than reading the whole 236-page document. All six oral SSRI molecules were confirmed verbatim, every strength/form line item Tier 1 with no PA/ST/QL code present: citalopram hydrobromide (oral solution 10mg/5ml; tabs 10/20/40mg, page 65), escitalopram oxalate (oral solution 5mg/5ml; tabs 5/10/20mg, page 67), fluoxetine HCl (caps 10/20/40mg, DR cap 90mg, solution 20mg/5ml, all Tier 1 no restriction; tabs 10mg/20mg also Tier 1 but carry the explicit annotation '(generic Sarafem not covered)' -- confirmed by direct text search for 'Sarafem', page 67), paroxetine HCl (tabs 10/20/30/40mg; ER tabs 12.5/25/37.5mg, page 69), fluvoxamine maleate (tabs 25/50/100mg; ER caps 100/150mg, page 63), and sertraline HCl (oral concentrate 20mg/ml; tabs 25/50/100mg, page 69). A full-text search across the document for every brand SSRI name (PROZAC, ZOLOFT, PAXIL, CELEXA, LEXAPRO) returned zero matches -- none appear anywhere in the formulary as distinct brand line items, so there is no brand-name entry to cite as a separate non-formulary product beyond the one explicit Sarafem annotation found. Sertraline tablet was selected as the representative preferred agent because it is the most broadly first-line-prescribed generic SSRI in clinical practice, not because the source ranks one SSRI above the other four Tier-1, no-restriction agents -- this single-agent selection among clinically-tied, equally-covered options is an inference, consistent with the convention used across every other payer in this dataset's ssri-oral class. The 50 mg strength and once-daily sig are standard prescribing convention, not stated in the drug list itself (which lists drug name, tier, and restriction codes only, no dosing guidance). No class-wide step-therapy or PA criterion appears anywhere in the antidepressants section for any of the six SSRI molecules. [Reused 2026-10-21 for DC: same document as the MD guide (the CareFirst exchange formulary and the Kaiser Mid-Atlantic marketplace formulary cover DC, MD and VA).]",
+      "sourceIds": [
+        "carefirst-ssris-source-2026-07"
+      ],
+      "coverageSourceIds": [
+        "carefirst-ssris-source-2026-07"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-ssris-source-2026-07"
+      ],
+      "lastReviewed": "2026-07-21",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "ssri-oral",
+      "preferredAgent": {
+        "inn": "Sertraline",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg",
+        "sig": "1 tablet by mouth once daily",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "Citalopram hydrobromide (tablet)",
+          "note": "Listed at Tier 1 (preferred generic) and Tier 3 (non-preferred, likely a specific strength or the oral solution) depending on strength/form; no PA, QL, or ST flag on any listing.",
+          "sourceIds": [
+            "kpmidatlantic-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Escitalopram oxalate (tablet)",
+          "note": "Listed at Tier 1 and Tier 3 depending on strength/form; no PA, QL, or ST flag on any listing.",
+          "sourceIds": [
+            "kpmidatlantic-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Fluoxetine HCl (capsule/tablet)",
+          "note": "Listed at Tier 1 and Tier 3 depending on strength/form; a separate PMDD-labeled fluoxetine HCl product is Tier 3. No PA, QL, or ST flag on any listing.",
+          "sourceIds": [
+            "kpmidatlantic-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Paroxetine HCl (immediate-release tablet)",
+          "note": "Listed at Tier 1 and Tier 3 depending on strength/form; a separate vasomotor-indication paroxetine mesylate product (Brisdelle-equivalent) is Tier 3. No PA, QL, or ST flag on any listing.",
+          "sourceIds": [
+            "kpmidatlantic-ssris-source-2026-07"
+          ]
+        },
+        {
+          "drug": "Fluvoxamine maleate (tablet)",
+          "note": "Listed at Tier 1 and Tier 3 depending on strength/form; no PA, QL, or ST flag on any listing.",
+          "sourceIds": [
+            "kpmidatlantic-ssris-source-2026-07"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "tier": "Tier 1 - most preferred generic drug (some strengths/forms fall to Tier 3, non-preferred)",
+      "verification": "verified",
+      "verificationNote": "Fetched the cited PDF directly (healthy.kaiserpermanente.org marketplace-formulary-mas-en.pdf, 47 pages, page 1 states 'District of Columbia, Maryland, and Virginia Marketplace Formulary Last Update: 06/02/2026'). Page 2 gives the tier key (Tier 1 = most preferred generic, Tier 2 = most preferred brand/higher-cost generic, Tier 3 = non-preferred, Tier 4 = specialty) and the restriction-code key (LD, OC, QL, PA, PRV, ST, MSD), confirmed again in the footer key on pages 22-25 (HC, OC, LD, PA, QL, MB, PREV, ST). Read the PSYCHOTHERAPEUTIC AGENTS section verbatim across pages 23-24 and found all six named oral SSRI molecules: citalopram hydrobromide (Tier 1, 3), escitalopram oxalate (Tier 1, 3), fluoxetine hcl (Tier 1, 3) plus a separate 'FLUOXETINE HCL (PMDD)' listing (Tier 3), fluvoxamine maleate (Tier 1, 3), paroxetine hcl (Tier 1, 3) plus a separate 'paroxetine mesylate (vasomotor)' listing (Tier 3), and sertraline hcl (Tier 1, 3) -- none carry a PA, QL, or ST suffix in the source text, confirmed directly, not inferred. No brand-name SSRI (Zoloft, Celexa, Lexapro, Prozac, Paxil, Luvox) appears anywhere in this section, consistent with the source's own statement that brand products are only listed in bold caps when a generic is not available -- since all six molecules have generics, the plan simply omits the brand line rather than flagging it non-formulary, so no paRequired entries were created for them. Sertraline was picked as the representative preferred agent per this app's existing cross-guide convention (same choice made for the MA and NY guides); the source itself does not name one single top pick within the class -- all six molecules get the identical Tier 1/Tier 3 split with no restrictions, so the 'preferred vs. alternative' split here is a convention choice, not a payer-stated ranking. This is flagged explicitly since it differs from a payer that names one true preferred SSRI. [Reused 2026-10-21 for DC: same document as the MD guide (the CareFirst exchange formulary and the Kaiser Mid-Atlantic marketplace formulary cover DC, MD and VA).]",
+      "sourceIds": [
+        "kpmidatlantic-ssris-source-2026-07"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-ssris-source-2026-07"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-ssris-source-2026-07"
+      ],
+      "lastReviewed": "2026-07-21",
+      "payerId": "kpmidatlantic"
+    }
+  ],
+  "references": [
+    {
+      "id": "dc-medicaid-newtopics-2026-10",
+      "label": "District of Columbia Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "publisher": "District of Columbia Department of Health Care Finance (DHCF)",
+      "type": "gov",
+      "url": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "effectiveDate": "2026-09-18",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "amerihealth-caritas-dc-newtopics-2026-10",
+      "label": "Drug Formulary (June 1, 2026 edition)",
+      "publisher": "AmeriHealth Caritas District of Columbia",
+      "type": "payer",
+      "url": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "effectiveDate": "2026-06-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "carefirst-ssris-source-2026-07",
+      "label": "CareFirst Exchange Formulary 2026 (5-Tier)",
+      "publisher": "CareFirst BlueCross BlueShield",
+      "type": "payer",
+      "url": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-07-21"
+    },
+    {
+      "id": "kpmidatlantic-ssris-source-2026-07",
+      "label": "District of Columbia, Maryland, and Virginia Marketplace Formulary",
+      "publisher": "Kaiser Permanente Mid-Atlantic",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "effectiveDate": "2026-06-02",
+      "accessed": "2026-07-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

@@ -364,8 +364,10 @@
  * amphetamine sulfate rules to their captured tablet forms; other forms are honestly unpriced.
  * 778 → 780: atomoxetine oral solution no longer matches the capsule rule. (The new form-conflict
  * guard in priceFor() suppresses ~80 more cross-form prices but keeps their links, so it doesn't
- * change this count.) */
-export const KNOWN_UNPRICED_GAP = 780
+ * change this count.)
+ * 780 → 802: District of Columbia added (12 guides; DC Medicaid and AmeriHealth Caritas DC are new
+ * documents, CareFirst and Kaiser Mid-Atlantic reuse the MD records). */
+export const KNOWN_UNPRICED_GAP = 802
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake

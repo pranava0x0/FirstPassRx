@@ -117,6 +117,18 @@ describe('guides + global meta', () => {
       'tx-lipids',
       'tx-weight',
       'tx-migraine',
+      'dc-inhalers',
+      'dc-menopause',
+      'dc-ace',
+      'dc-diabetes',
+      'dc-nsaids',
+      'dc-osteoporosis',
+      'dc-doac',
+      'dc-ssris',
+      'dc-adhd',
+      'dc-lipids',
+      'dc-weight',
+      'dc-migraine',
     ])
   })
 
