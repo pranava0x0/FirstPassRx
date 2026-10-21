@@ -333,7 +333,11 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   The 4th (rule 16, Climara 0.05mg weekly patch) stays unpriced on purpose: the only GoodRx page at
   that exact strength is the **brand** product ($75.07), while this rule's cells describe the
   *generic* — showing the brand price there would overstate what a generic fill actually costs, so
-  it's left link-only. Root cause: **research gap**, not a code bug. _Fixed (3/4); Climara open by design._
+  it's left link-only. Root cause: **research gap**, not a code bug. _Fixed (4/4) 2026-10-21: GoodRx
+  now lists the generic once-weekly 0.05mg patch ($51.66, exact-dose deep link), pricing 17
+  preferred-agent cells. The only preferred-agent cells still unpriced are 3 generic rivaroxaban
+  20mg cells: both vendors still sell generic rivaroxaban only at 2.5mg (rechecked 2026-10-21),
+  a structural gap, not a research one._
 - **2026-07-01 · process (data gathering) · 55-agent + 30-agent Workflow fan-outs hit heavy API
   rate-limiting.** Building the VA diabetes and NY ACE inhibitor guides, two Workflow scripts each
   fanned out one agent per (payer × class) — 55 agents for VA (10 payers × 4 classes + verify), 30

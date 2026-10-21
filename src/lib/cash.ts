@@ -628,10 +628,19 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-06-30',
   },
   {
+    // GoodRx now lists the GENERIC once-weekly 0.05mg patch (it had only brand Climara at this
+    // strength on 2026-06-30, which is why this rule was link-only). Exact-dose deep link read
+    // 2026-10-21 in a real browser: "4 once-weekly patches of 0.05mg/day (1 carton)", standard
+    // GoodRx price $51.66. Cost Plus lists the same generic at $35.12/4 but was "Temporarily Out of
+    // Stock" that day, so per this file's convention its price is omitted. Cells whose inn says only
+    // "transdermal patch" (frequency in the strength text) land here; a month of twice-weekly
+    // patches prices about the same ($54.82 above).
     matches: /estradiol.*(weekly|patch|transdermal)|climara|menostar/i,
     goodRxSlug: 'estradiol',
+    goodRxParams: 'label_override=estradiol&form=carton&dosage=4-once-weekly-patches-of-0.05mg-day&quantity=1',
     costPlusPath: 'estradiol-0_05mg-carton-of-weekly-patches-4-climara',
-    pricesCapturedAt: '2026-06-30',
+    goodRxPrice: { price: 51.66, quantity: '4 once-weekly patches, 0.05mg/day (1 carton)' },
+    pricesCapturedAt: '2026-10-21',
   },
   {
     // "estradiol.*mg.*tablet" added 2026-08-05 -- CA's "estradiol 0.5 mg / 2 mg / 10 mcg tablets"

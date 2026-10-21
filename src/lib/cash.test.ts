@@ -11,7 +11,7 @@ describe('cash price links', () => {
     ['Budesonide/formoterol', 'https://www.goodrx.com/budesonide-formoterol'],
     ['Advair Diskus (fluticasone/salmeterol)', 'https://www.goodrx.com/fluticasone-salmeterol'],
     ['Tiotropium', 'https://www.goodrx.com/tiotropium'],
-    ['Estradiol transdermal patch (weekly)', 'https://www.goodrx.com/estradiol'],
+    ['Estradiol transdermal patch (weekly)', 'https://www.goodrx.com/estradiol?label_override=estradiol&form=carton&dosage=4-once-weekly-patches-of-0.05mg-day&quantity=1'],
     ['Progesterone, micronized (oral)', 'https://www.goodrx.com/progesterone'],
     ['Lisinopril', 'https://www.goodrx.com/lisinopril?label_override=lisinopril&form=tablet&dosage=10mg&quantity=30'],
     ['Benazepril', 'https://www.goodrx.com/benazepril?label_override=benazepril&form=tablet&dosage=10mg&quantity=30'],
