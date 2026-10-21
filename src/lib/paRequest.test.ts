@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import type { ClassMeta, FormularyRecord, PaItem, PayerMeta } from '../types/formulary'
-import { buildPaRequest, emptyPaRequest, paChecklist, preferredAlternatives, responseClock, submissionLine } from './paRequest'
+import { preferredNeedsPa, buildPaRequest, emptyPaRequest, paChecklist, preferredAlternatives, responseClock, submissionLine } from './paRequest'
 import { ICD10_BY_CLASS, ICD10_RELEASE, icd10For } from './icd10'
 import data from '../data/formulary.json'
 
@@ -209,5 +209,22 @@ describe('ICD-10 suggestions', () => {
   it('records which official release the list was checked against', () => {
     expect(ICD10_RELEASE.version).toMatch(/FY20\d\d/)
     expect(ICD10_RELEASE.source).toMatch(/^https:\/\/www\.cms\.gov\//)
+  })
+})
+
+// Codex review, PR 22: a quantity limit or "no PA" note must not trigger a PA request.
+describe('preferredNeedsPa', () => {
+  const r = (preferredRestriction: string | undefined, extra = {}) => ({ ...record, preferredRestriction, ...extra }) as FormularyRecord
+  it.each([
+    ['PA required (Table 13)', true],
+    ['Step therapy: metformin first', true],
+    ['Not on the CDL: TAR required', true],
+    ['Quantity limit 60 per 30 days; no PA', false],
+    ['No PA, no quantity limit stated.', false],
+    ['Age 6-18 only', false],
+    [undefined, false],
+  ])('%s -> %s', (note, want) => expect(preferredNeedsPa(r(note))).toBe(want))
+  it('is false for a no-covered-option record', () => {
+    expect(preferredNeedsPa(r('PA required', { noCoveredAgent: true }))).toBe(false)
   })
 })

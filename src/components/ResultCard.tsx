@@ -3,6 +3,7 @@ import { useGuide } from '../lib/formulary'
 import { goodRxUrl, costPlusUrl, goodRxPrice, costPlusPrice, pricesCapturedAt } from '../lib/cash'
 import { BoglBanner } from './BoglBanner'
 import { AppealAction, PrescribeOptions } from './PrescribeOptions'
+import { preferredNeedsPa } from '../lib/paRequest'
 import { Citations } from './Citations'
 import { GlossaryTerm } from './GlossaryTerm'
 import { CashPriceBoxes } from './CashPriceBoxes'
@@ -125,7 +126,7 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
             capturedAt={pricesAsOf}
           />
           {/* Even the first-pass pick needs plan sign-off here: offer the PA request on it too. */}
-          {record.preferredRestriction && drugClass ? (
+          {preferredNeedsPa(record) && drugClass ? (
             <AppealAction
               record={record}
               payer={payer}

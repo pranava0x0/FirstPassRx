@@ -13,6 +13,19 @@ import type { ClassMeta, FormularyRecord, PaItem, PayerMeta } from '../types/for
  * Nothing here is stored or sent anywhere: the builder holds input in component state only.
  */
 
+/**
+ * Whether the preferred agent itself needs plan sign-off (PA, step therapy, an authorization or
+ * exception), as opposed to a note about a quantity, age or group limit, or an explicit "no PA".
+ * Only then is a PA request offered on the recommendation.
+ */
+export function preferredNeedsPa(record: FormularyRecord): boolean {
+  if (record.noCoveredAgent) return false
+  if (record.preferredCriteria?.length) return true
+  const note = record.preferredRestriction ?? ''
+  if (/\b(no|not|without)\s+(PA|prior auth\w*|step therapy)\b|PA not required|no restriction/i.test(note)) return false
+  return /\b(PA|prior auth\w*|step therapy|step|authorization|TAR|exception)\b/i.test(note)
+}
+
 export type StepOutcome =
   | ''
   | 'inadequate'
