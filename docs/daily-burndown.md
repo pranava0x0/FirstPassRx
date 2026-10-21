@@ -37,7 +37,8 @@ So:
 2. **Use the local source cache before the network.** `sources/` (gitignored, ~1.1 GB, 426
    documents as of 2026-10-21) holds raw bytes for every cited URL; `sources/manifest.json`
    maps URL → file + sha256. A new topic for a state whose payers are already archived is
-   `pdftotext` + `grep` on local files. No fetch, often no agent at all.
+   `pypdf` text extraction + a grep on local files (`pdftotext` isn't installed on this machine;
+   search brand names too, e.g. ELIQUIS, not just apixaban). No fetch, often no agent at all.
 3. **Statewide Medicaid PDLs first.** One PDL covers FFS and (usually) every MCO in the
    state (NY, PA, TX, AL, CA, MA, VA, IL so far). Mining a 150-page PDL by section heading is
    cheap (CLAUDE.md, IL HFS note).
