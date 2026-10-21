@@ -56,6 +56,21 @@ export interface PayerMeta {
   formularyId: string
   formularyUrl: string
   paPolicyUrl?: string
+  /** Where a pharmacy PA request for this plan goes. Only channels read off the plan's own form,
+   *  policy, or provider page; each needs sourceIds. Omit rather than guess. */
+  paSubmission?: PaSubmission
+  sourceIds: string[]
+}
+
+export interface PaSubmission {
+  fax?: string
+  phone?: string
+  /** Plan PA portal host/URL. */
+  portal?: string
+  /** Electronic PA network(s) the plan accepts, e.g. "CoverMyMeds (OptumRx)". */
+  epa?: string
+  /** One line of routing context, e.g. which MCOs use a different intake. */
+  note?: string
   sourceIds: string[]
 }
 
@@ -97,6 +112,13 @@ export interface PreferredAgent {
 export interface PaItem {
   drug: string
   sourceIds: string[]
+  /** The plan's own approval criteria for THIS drug, each a plain statement a prescriber can
+   *  answer ("Asthma diagnosis AND tried both Arnuity Ellipta and QVAR RediHaler"). From the
+   *  plan's PA policy; needs criteriaSourceIds. Omit when the policy hasn't been read. */
+  criteria?: string[]
+  /** Whether meeting ANY one criterion suffices ("any") or ALL are required ("all"). */
+  criteriaMode?: 'any' | 'all'
+  criteriaSourceIds?: string[]
   /** A true coverage barrier; covered higher-tier/non-preferred choices belong in alternatives. */
   outcome: 'pa' | 'step' | 'nonformulary'
   /** Short human-readable reason, e.g. "PA required" or "Non-formulary". */
