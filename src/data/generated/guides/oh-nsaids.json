@@ -1,0 +1,690 @@
+{
+  "id": "oh-nsaids",
+  "label": "OH · NSAIDs",
+  "stateCode": "OH",
+  "region": "Ohio",
+  "topicId": "nsaids",
+  "topic": "NSAIDs",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-10-21",
+  "capturedAt": "2026-10-21",
+  "payers": [
+    {
+      "id": "oh-medicaid",
+      "name": "Ohio Medicaid",
+      "shortName": "OH Medicaid",
+      "aka": "Ohio Department of Medicaid Unified Preferred Drug List: fee-for-service and every Medicaid managed care plan statewide (single PBM)",
+      "productName": "Ohio Medicaid Unified Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Unified Preferred Drug List (UPDL), Medicaid Fee-for-Service and Managed Care Plans, effective July 1, 2026",
+      "formularyUrl": "https://dam.assets.ohio.gov/image/upload/medicaid.ohio.gov/PHM/unified-pdl/20260701_UPDL_New_Version_APPROVED-FINAL.pdf",
+      "sourceIds": [
+        "oh-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "anthem-oh",
+      "name": "Anthem Blue Cross and Blue Shield (Ohio)",
+      "shortName": "Anthem OH",
+      "pbm": "CarelonRx",
+      "productName": "Anthem 2026 Select Drug List — Four Tier (Ohio individual)",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "Anthem Blue Cross and Blue Shield Select Drug List, Four Tier Drug Plan (Ohio, individual), current as of 10/1/2026",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_OH_IND.pdf",
+      "sourceIds": [
+        "anthem-oh-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "uhc-oh",
+      "name": "UnitedHealthcare (Commercial)",
+      "shortName": "UnitedHealthcare",
+      "aka": "National commercial PDL (same list in every state)",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "paPolicyUrl": "https://www.uhcprovider.com/en/resource-library/drug-lists-pharmacy.html",
+      "productName": "UnitedHealthcare 2026 Commercial PDL (base list)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "UnitedHealthcare 2026 Prescription Drug List (PDL)",
+      "paSubmission": {
+        "phone": "1-800-711-4555 (Optum Rx prior authorization team)",
+        "portal": "optumrx.com > Healthcare Professionals > Prior Authorizations",
+        "sourceIds": [
+          "uhc-oh-formulary-pa-intake-2026"
+        ]
+      },
+      "sourceIds": [
+        "uhc-md-nsaids-source-2026-07-07"
+      ]
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "paSubmission": {
+        "fax": "1-877-486-2621",
+        "note": "Part D coverage determination (PA / exception) request fax printed in the formulary.",
+        "sourceIds": [
+          "humana-premier-rx-pdp-formulary-pa-intake-2026"
+        ]
+      },
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402 (updated 09/02/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "nsaid-oral",
+      "name": "Oral NSAIDs",
+      "shortName": "NSAID",
+      "plainName": "Anti-inflammatory pain reliever",
+      "description": "Oral nonsteroidal anti-inflammatory drugs (naproxen, ibuprofen, meloxicam, celecoxib, diclofenac, etc.) — first-line therapy for musculoskeletal pain and inflammation.",
+      "plainDescription": "A pill that reduces pain, swelling, and inflammation — commonly used for joint and muscle pain.",
+      "indication": "Musculoskeletal pain & inflammation (e.g. osteoarthritis, back pain)",
+      "sourceIds": [
+        "oh-medicaid-newtopics-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "nsaid-oral",
+      "preferredAgent": {
+        "inn": "Meloxicam",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "15 mg tablet (standard label dosing; UPDL prints 'meloxicam tab' without strength)",
+        "sig": "1 tablet by mouth once daily (standard label dosing; not printed on the UPDL)",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day, with food."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (UPDL, no PA)",
+      "alternatives": [
+        {
+          "drug": "naproxen IR (tablet and suspension)",
+          "note": "Preferred, no PA for tablets; naproxen suspension carries a PA for age 12 and older (AR edit, p.15)",
+          "sourceIds": [
+            "oh-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "ibuprofen tablet 200, 400, 600, 800 mg",
+          "note": "Preferred, no PA",
+          "sourceIds": [
+            "oh-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "celecoxib capsule",
+          "note": "Preferred, no PA",
+          "sourceIds": [
+            "oh-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "nabumetone 500, 750 mg",
+          "note": "Preferred, no PA",
+          "sourceIds": [
+            "oh-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Elyxyb (celecoxib oral solution)",
+          "outcome": "pa",
+          "reason": "PA required (p. 15)",
+          "sourceIds": [
+            "oh-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "naproxen DR, EC, ER",
+          "outcome": "pa",
+          "reason": "PA required (p. 15)",
+          "sourceIds": [
+            "oh-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "ketoprofen IR, ER",
+          "outcome": "pa",
+          "reason": "PA required (p. 15)",
+          "sourceIds": [
+            "oh-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "diclofenac potassium",
+          "outcome": "pa",
+          "reason": "PA required (p. 15)",
+          "sourceIds": [
+            "oh-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Vyscoxa (celecoxib suspension)",
+          "outcome": "pa",
+          "reason": "PA required (p. 15)",
+          "sourceIds": [
+            "oh-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read UPDL p.15 (Analgesic Agents: NSAIDs). Meloxicam tablet is preferred with no PA. Strength and sig are standard label dosing. Non-preferred criteria: 30 days with 2 preferred drugs in the category and indicated for diagnosis. Ibuprofen 300 mg tablet is non-preferred. [Sonnet check: naproxen suspension AR (PA age 12+) edit added to the alternative note.]",
+      "sourceIds": [
+        "oh-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "oh-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "oh-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "oh-medicaid"
+    },
+    {
+      "classId": "nsaid-oral",
+      "preferredAgent": {
+        "inn": "naproxen",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "500 mg oral tablet (standard label dosing; strength not printed on list)",
+        "sig": "Take 1 tablet by mouth twice daily with food (standard label dosing)",
+        "sigShort": "1 tab PO BID w/ food",
+        "plainSig": "One pill with food, twice a day, for pain or swelling."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 QL",
+      "alternatives": [
+        {
+          "drug": "ibuprofen oral tablet 400, 600, 800 mg",
+          "note": "Tier 1 QL, no PA (page 11)",
+          "sourceIds": [
+            "anthem-oh-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "meloxicam oral tablet",
+          "note": "Tier 1 QL, no PA (page 11)",
+          "sourceIds": [
+            "anthem-oh-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "diclofenac potassium oral tablet 50 mg",
+          "note": "Tier 1 QL, no PA (page 10)",
+          "sourceIds": [
+            "anthem-oh-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "diclofenac sodium delayed-release oral tablet",
+          "note": "Tier 1 QL, no PA (page 10)",
+          "sourceIds": [
+            "anthem-oh-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "etodolac oral tablet",
+          "note": "Tier 1 QL, no PA (page 11)",
+          "sourceIds": [
+            "anthem-oh-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "nabumetone oral tablet",
+          "note": "Tier 1 QL, no PA (page 11)",
+          "sourceIds": [
+            "anthem-oh-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "TOLECTIN 600 (tolmetin) oral tablet",
+          "note": "Tier 2 QL, no PA (page 11)",
+          "sourceIds": [
+            "anthem-oh-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "celecoxib oral capsule",
+          "outcome": "step",
+          "reason": "Step: ST applies; Tier 2 QL (page 10)",
+          "sourceIds": [
+            "anthem-oh-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "diclofenac potassium oral capsule",
+          "outcome": "step",
+          "reason": "Step: ST applies; Tier 2 QL (page 10)",
+          "sourceIds": [
+            "anthem-oh-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "diclofenac-misoprostol oral tablet delayed release",
+          "outcome": "step",
+          "reason": "Step: ST applies; Tier 2 QL (page 10)",
+          "sourceIds": [
+            "anthem-oh-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read pages 10-11 and 12 (NSAIDs). Naproxen oral tablet is Tier 1 QL with no PA. The 375 mg delayed-release naproxen carries ST and was not chosen. Celecoxib (Tier 2 ST) and diclofenac-misoprostol (Tier 2 ST) are covered with step therapy. Strength and sig are standard label dosing.",
+      "sourceIds": [
+        "anthem-oh-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "anthem-oh-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "anthem-oh-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "anthem-oh"
+    },
+    {
+      "classId": "nsaid-oral",
+      "preferredAgent": {
+        "inn": "meloxicam",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "7.5 mg oral tablet (also 15 mg)",
+        "sig": "Take 1 tablet (7.5-15 mg) by mouth once daily for pain and inflammation",
+        "sigShort": "7.5-15mg PO daily",
+        "plainSig": "Take one tablet by mouth once a day, with food, to relieve pain and swelling."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "naproxen oral tablet (immediate and delayed release)",
+          "note": "Tier 1, preferred generic, no PA",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "ibuprofen oral tablet (400mg, 600mg, 800mg)",
+          "note": "Tier 1, preferred generic, no PA",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "diclofenac sodium oral",
+          "note": "Tier 1, preferred generic, no PA",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "nabumetone oral",
+          "note": "Tier 1, preferred generic, no PA",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "sulindac oral",
+          "note": "Tier 1, preferred generic, no PA",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "indomethacin oral capsule",
+          "note": "Tier 1, preferred generic, no PA",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "ketorolac tromethamine oral",
+          "note": "Tier 1, preferred generic, no PA (short-term use only)",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "celecoxib oral",
+          "note": "Tier 2, covered COX-2-selective alternative, no PA",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "naproxen sodium oral tablet (275mg, 550mg)",
+          "note": "Tier 2, covered alternative strength/salt form",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "etodolac",
+          "note": "Tier 2, covered alternative",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "oxaprozin oral tablet",
+          "note": "Tier 2, covered alternative",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "piroxicam oral",
+          "note": "Tier 2, covered alternative",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "indomethacin er",
+          "note": "Tier 2, covered alternative extended-release formulation",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "diclofenac sodium er (extended release)",
+          "note": "Tier 3; still covered, no PA flag -- higher cost-share than immediate-release diclofenac sodium at Tier 1.",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "diclofenac-misoprostol combination",
+          "note": "Tier 3; still covered combination product, no PA flag.",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "EC-NAPROSYN ORAL TABLET DELAYED RELEASE 375MG",
+          "note": "Tier 3; still covered brand delayed-release, no PA flag -- higher cost-share than generic ec-naproxen.",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "CELEBREX (brand celecoxib)",
+          "outcome": "pa",
+          "reason": "Marked \"E\" -- may be excluded from coverage or subject to PA; generic celecoxib is preferred",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "diclofenac potassium oral tablet 25mg",
+          "outcome": "pa",
+          "reason": "Marked \"E QL\" -- this specific strength requires PA while 50mg tablets are Tier 2 clean-covered",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "NAPROSYN (brand naproxen)",
+          "outcome": "pa",
+          "reason": "Marked \"E\" -- brand not preferred when generic naproxen is available at Tier 1",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "EC-NAPROSYN ORAL TABLET DELAYED RELEASE 500MG",
+          "outcome": "nonformulary",
+          "reason": "Tier 4 -- highest cost tier for this brand strength",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "ANAPROX DS (brand naproxen sodium)",
+          "outcome": "pa",
+          "reason": "Marked \"E\" -- brand not preferred vs. generic naproxen sodium",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "DAYPRO (brand oxaprozin)",
+          "outcome": "nonformulary",
+          "reason": "Tier 4 -- highest cost tier; generic oxaprozin covered at Tier 2 instead",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "FELDENE ORAL CAPSULE 20MG (brand piroxicam)",
+          "outcome": "nonformulary",
+          "reason": "Tier 4 -- highest cost tier; generic piroxicam covered at Tier 2 instead",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "LODINE / LOFENA (brand etodolac)",
+          "outcome": "pa",
+          "reason": "Marked \"E\" (LODINE) or \"E QL\" (LOFENA) -- brand not preferred vs. generic etodolac",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "RELAFEN DS (brand nabumetone)",
+          "outcome": "pa",
+          "reason": "Marked \"E\" -- brand not preferred vs. generic nabumetone",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "ibuprofen oral suspension 100mg/5ml",
+          "outcome": "pa",
+          "reason": "Marked \"E\" -- liquid formulation requires PA/exclusion review while tablet forms are Tier 1",
+          "sourceIds": [
+            "uhc-md-nsaids-source-2026-07-07"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "tier": "Tier 1 (lowest member cost) for meloxicam",
+      "verification": "verified",
+      "verificationNote": "Read directly from the UnitedHealthcare 2026 PDL, effective January 1, 2026, page 8 (Analgesics - Drugs for Pain and Inflammation). Confirmed: 'meloxicam oral tablet 1', 'naproxen oral tablet 1', 'naproxen oral tablet delayed release 1', 'ibuprofen oral tablet 400 mg, 600 mg, 800 mg 1', 'diclofenac sodium oral 1', 'nabumetone oral 1', 'sulindac oral 1', 'indomethacin oral capsule 1', 'ketorolac tromethamine oral 1', 'ec-naproxen 1' -- all Tier 1. Confirmed Tier 2: 'celecoxib oral 2', 'naproxen sodium oral tablet 275 mg, 550 mg 2', 'etodolac 2', 'oxaprozin oral tablet 2', 'piroxicam oral 2', 'indomethacin er 2', 'diclofenac potassium oral tablet 50 mg 2'. Confirmed PA/exclusion-flagged ('E'): 'CELEBREX E', 'NAPROSYN E', 'ANAPROX DS E', 'LODINE E', 'RELAFEN DS E', 'diclofenac potassium oral tablet 25 mg E QL', 'LOFENA E QL', 'ibuprofen oral suspension 100 mg/5ml E'. Confirmed Tier 3/4 non-preferred: 'diclofenac sodium er 3', 'diclofenac-misoprostol 3', 'EC-NAPROSYN ORAL TABLET DELAYED RELEASE 375 MG 3', 'EC-NAPROSYN ORAL TABLET DELAYED RELEASE 500 MG 4', 'DAYPRO 4', 'FELDENE ORAL CAPSULE 20 MG 4'. This class is entirely generic-dominated with no PA/step therapy on any Tier 1/2 generic -- consistent with oral NSAIDs being OTC-adjacent, low-cost first-line agents. Sig reflects standard meloxicam FDA-label dosing, not stated verbatim in the PDL. [Reused: same national UHC commercial PDL as the MD guide (2026-10-21); outside CT/NJ/NY its 'E' symbol means may be excluded]",
+      "sourceIds": [
+        "uhc-md-nsaids-source-2026-07-07"
+      ],
+      "coverageSourceIds": [
+        "uhc-md-nsaids-source-2026-07-07"
+      ],
+      "restrictionSourceIds": [
+        "uhc-md-nsaids-source-2026-07-07"
+      ],
+      "lastReviewed": "2026-07-07",
+      "payerId": "uhc-oh"
+    },
+    {
+      "classId": "nsaid-oral",
+      "preferredAgent": {
+        "inn": "Meloxicam",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "15 mg tablet",
+        "sig": "Take 1 tablet by mouth once daily (standard label dosing; not printed on the formulary)",
+        "sigShort": "1 tab daily",
+        "plainSig": "A once-a-day pill for joint and muscle pain and swelling."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1, QL 30 per 30 days",
+      "alternatives": [
+        {
+          "drug": "Naproxen 500 mg tablet",
+          "note": "Tier 1, Mail Order (page 12)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Naproxen 250 mg and 375 mg tablet",
+          "note": "Tier 1, Mail Order (page 12)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ibuprofen 400 mg tablet",
+          "note": "Tier 1, Mail Order (page 11)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ibuprofen 600 mg and 800 mg tablet",
+          "note": "Tier 1, Mail Order (page 11)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Nabumetone 500 mg and 750 mg tablet",
+          "note": "Tier 1, Mail Order (page 12)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Diclofenac sodium DR 25, 50, 75 mg tablet",
+          "note": "Tier 2 to 3, Mail Order (page 11)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Celecoxib 100 and 200 mg capsule",
+          "note": "Tier 2, Mail Order (page 11)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Indomethacin 25 and 50 mg capsule",
+          "note": "Tier 2, Mail Order (page 12)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read pages 11 and 12: meloxicam 7.5 mg (QL 60 per 30 days) and 15 mg (QL 30 per 30 days), Tier 1, no PA/ST; naproxen, ibuprofen, nabumetone at Tier 1 with no UM. Meloxicam 15 mg picked as a commonly prescribed Tier 1 no-PA agent; the document does not mark it preferred. Oral ketorolac (Tier 4, QL 20) and etodolac (Tier 3) are not picked. Topical diclofenac gel (page 53, PA) is outside the oral class. Sig is standard label dosing. [Reused: same national Humana Premier Rx PDP formulary as the TX guide (2026-10-21)]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "oh-medicaid-newtopics-2026-10",
+      "label": "Unified Preferred Drug List (UPDL), Medicaid Fee-for-Service and Managed Care Plans, effective July 1, 2026",
+      "publisher": "Ohio Department of Medicaid",
+      "type": "gov",
+      "url": "https://dam.assets.ohio.gov/image/upload/medicaid.ohio.gov/PHM/unified-pdl/20260701_UPDL_New_Version_APPROVED-FINAL.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "anthem-oh-newtopics-2026-10",
+      "label": "Anthem Blue Cross and Blue Shield Select Drug List, Four Tier Drug Plan (Ohio, individual), current as of 10/1/2026",
+      "publisher": "Anthem Blue Cross and Blue Shield",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_OH_IND.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "uhc-md-nsaids-source-2026-07-07",
+      "label": "UnitedHealthcare 2026 Prescription Drug List (PDL)",
+      "publisher": "UnitedHealthcare & affiliated companies",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-07-07"
+    },
+    {
+      "id": "humana-premier-rx-pdp-newtopics-2026-10",
+      "label": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402 (updated 09/02/2026)",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-09-02",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "uhc-oh-formulary-pa-intake-2026",
+      "label": "UnitedHealthcare Commercial Prescription Drug List (PDL), Effective January 1, 2026",
+      "publisher": "UnitedHealthcare",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "humana-premier-rx-pdp-formulary-pa-intake-2026",
+      "label": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "accessed": "2026-10-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}
