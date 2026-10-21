@@ -677,3 +677,13 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   to be found by pattern-matching, not by following a link. Texas Medicaid's PDL is otherwise the
   same single-statewide-PDL shape as NY/PA/AL/CA — every Medicaid/CHIP MCO is contractually
   required to follow it, so no separate MCO rostering is needed.
+- **2026-10-21: the user raised the cap for Haiku search/extract agents to 4 concurrent** ("for
+  the search, you can do them in batches of four"), with Sonnet for cross-checks and Opus
+  coordinating. The ≤2 rule above still applies to anything else, and drop back to 2 on the
+  first "temporarily limiting requests" error. The daily 5 PM run follows
+  `docs/daily-burndown.md`, which encodes this.
+- **The in-page UAT harness (`scripts/uat-interactions.js`) loads via Vite's `?raw` import and
+  runs each task in a same-origin iframe sized to the device.** Clear `localStorage` before each
+  task: the app now remembers the last plan, so a stale pick silently skews "cold start" counts.
+  Measure a tall target by its first ~160px, not its bottom edge, or an opened panel reads as
+  extra swipes.
