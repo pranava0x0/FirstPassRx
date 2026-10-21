@@ -70,45 +70,32 @@ ledger names the stamp so the next run resumes from disk instead of re-gathering
 
 ## Queue (top = next)
 
-Each item fits roughly one 20-minute run. Bigger items are split.
+Each item fits roughly one 20-minute run. Done items stay listed (struck) so the next run knows.
 
-1. **TX: 7 missing topics from the Texas Vendor Drug Program PDL.** `tx-ssris` exists with 3
-   payers (TX Medicaid, BCBS TX commercial, Humana Premier Rx PDP). The TX PDL is one document
-   covering every topic (fetch via the real browser, see CLAUDE.md `txvendordrug.com` note).
-   **All 3 payer documents are already cached** (`sources/tx-medicaid-ssris-source-2026-08.pdf`,
-   `bcbs-tx-commercial-ssris-source-2026-08.pdf`, `humana-premier-rx-pdp-ssris-source-2026-08.pdf`
-   — the SSRI-named files are whole formularies), so no fetch or browser is needed.
-   Split: run A = TX Medicaid all 7 topics from the PDL (inline); run B = BCBS TX + Humana PDP
-   (2 Haiku agents, one per payer document, all 7 topics each); run C = merge 7 guides + Sonnet
-   check. Payoff: 1 → 8 TX guides.
-2. **New topics to the other 8 states** (ADHD, cholesterol, weight loss, migraine; taxonomy and
-   MA proof shipped 2026-10-21 as `ma-adhd`/`ma-lipids`/`ma-weight`/`ma-migraine`). Reuse
-   `data-gathering/ma-new4-2026-10-21/taxonomy.json` + `BRIEF.md` (copy to a new stamp dir),
-   one Haiku agent per payer document (all 11 classes in one read), Sonnet cross-check, then
-   `node scripts/merge-gather.mjs --dir=… --state=XX --payers-from=<xx-ssris>`. One state per
-   run; cached `sources/` PDFs first. MA took ~5 agent runs + 1 check.
-   Then capture cash prices for each new guide's preferred agents (browser; `KNOWN_UNPRICED_GAP`
-   jumped 60 → 233 with MA).
-   Original item: **ADHD stimulants as a new topic (trend pick #1 among cheap generics).** Classes:
-   methylphenidate (IR/ER), amphetamine salts (IR/ER), lisdexamfetamine, non-stimulants
-   (atomoxetine, guanfacine ER, viloxazine). Author the class taxonomy once, then go state by
-   state from cached `sources/` documents, MA first (5 payers), then NY, MD, VA, IL, PA, AL,
-   CA, TX. One state per run.
-3. *(Folded into #2 on 2026-10-21: statins/PCSK9, GLP-1 weight loss, and CGRP migraine shipped
-   as the `lipids`, `weight`, and `migraine` topics.)*
-4. **PA criteria + send-to, one state per run** (schema shipped 2026-10-21; MA inhalers done).
-   For each payer: `paSubmission` (fax/phone/portal/ePA) from its PA form or provider page, and
-   for each `paRequired` item, `criteria` + `criteriaMode` from the payer's PA policy, verbatim
-   in substance, each with source ids. Medicaid first: one statewide PA criteria document covers
-   every class (e.g. MassHealth's MHDL tables, PA DHS's PDL clinical criteria). Verify every
-   number and criterion against the cached PDF text (pypdf) before merging; drop anything the
-   document doesn't say (the 2026-10-21 run dropped an unverified "CoverMyMeds" for MGB).
-5. **Partial → verified upgrades:** `il-osteoporosis` (13 partial), `ny-osteoporosis` (6),
-   `ny-menopause` (5 example). Re-read the payer's own document; cache first.
-6. **Cash-price gaps** (`KNOWN_UNPRICED_GAP`): needs the real browser (GoodRx/Cost Plus
-   block fetch). Only when Claude in Chrome is connected.
-7. **Product items** from backlog.md "High" (PA form fill for MassHealth, criteria checklist per
-   drug) only when the data queue is blocked.
+1. ~~TX: 7 missing topics~~ — done 2026-10-21 (all 9 states now have all 12 topics).
+2. ~~ADHD / cholesterol / weight / migraine in every state~~ — done 2026-10-21.
+3. **PA approval criteria per PA-blocked drug, one Medicaid payer per run.** Done 2026-10-21 for
+   the new topics: MassHealth, PA, NY (+ in flight: VA, TX, IL, MD, AL, Medi-Cal). Next: the
+   original 8 topics' PA-blocked drugs, then commercial plans' published policies. Method:
+   `data-gathering/pa-criteria-2026-10-21/{BRIEF.md,targets.json}` → Haiku extract → Sonnet
+   adjudicate against the CURRENT document (it caught outdated bulletins, draft handbooks,
+   wrong AND/OR logic, and generic form questions posing as criteria) →
+   `node scripts/apply-pa-criteria.mjs <file>`.
+4. **PA submission channels for the remaining commercial and Part D payers.** Medicaid done for
+   all 9 states; commercial done where the payer's own formulary prints them (UHC, Sentara,
+   IBX, Anthem CA, Cigna, AARP, Humana). Remaining payers print only "call the number on the ID
+   card"; look for each plan's provider PA page. Verify with Sonnet before applying
+   (`scripts/apply-pa-submission.mjs`); a wrong fax misroutes PHI.
+5. **Cash prices.** Every recommended pick now has a price or a link-only rule except generic
+   rivaroxaban 20 mg (not sold) and one unspecified guanfacine form. Next: the alternatives long
+   tail (`KNOWN_UNPRICED_GAP` 780). Needs the real browser.
+6. **Stale sources** (issues.md): Meridian (Dec 2024) and BCBS Community IL (May 2025) lists;
+   Cigna MD's URL now serves the 2027 list (re-add Cigna to the MD new-topic guides on
+   2027-01-01); Aetna IL reissued; BCBS MA SSRI 404; 6 MassHealth tables drifted.
+7. **Partial → verified upgrades:** `il-osteoporosis` (13 partial), `ny-osteoporosis` (6),
+   `ny-menopause` (5 example).
+8. **New states** (51 jurisdictions, 9 covered): pick by population; each new state costs a
+   payer-roster discovery plus one agent per payer for all 12 topics (~60–90 cells per payer).
 
 ## Ledger (append one line per run)
 
