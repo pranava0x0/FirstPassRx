@@ -40,7 +40,8 @@ for (const p of source.payers) {
 const today = new Date().toISOString().slice(0, 10)
 const report = []
 for (const [topicId, topic] of Object.entries(taxonomy.topics)) {
-  const guideId = `${STATE.toLowerCase()}-${topicId}`
+  // Optional topic.slug keeps ids consistent with existing guides (menopause-ht -> xx-menopause).
+  const guideId = `${STATE.toLowerCase()}-${topic.slug ?? topicId}`
   if (data.guides.some((g) => g.id === guideId)) {
     report.push(`skip ${guideId}: already exists`)
     continue

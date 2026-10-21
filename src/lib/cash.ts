@@ -351,8 +351,9 @@
  * Raised 388 → 441 when the four topics shipped for AL (3 payers). Same declared long tail.
  * Raised 441 → 524 when the four topics shipped for MD (8 payers). Same declared long tail.
  * Raised 524 → 534 after Codex review: the lisdexamfetamine price now applies to capsules only, so
- * chewable-tablet entries are honestly unpriced. */
-export const KNOWN_UNPRICED_GAP = 534
+ * chewable-tablet entries are honestly unpriced.
+ * Raised 534 → 645 when the four topics shipped for VA (8 payers). Same declared long tail. */
+export const KNOWN_UNPRICED_GAP = 645
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
