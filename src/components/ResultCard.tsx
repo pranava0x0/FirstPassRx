@@ -180,10 +180,15 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
                     <b>Doctor:</b> write <strong>{displayName}</strong> on the prescription, not
                     generic {genericBase} (the generic may need approval).
                   </li>
-                ) : record.preferredRestriction ? (
+                ) : record.preferredRestriction && preferredNeedsPa(record) ? (
                   <li>
                     <b>Doctor:</b> even this first-pass pick needs plan sign-off here:{' '}
                     {record.preferredRestriction}
+                  </li>
+                ) : record.preferredRestriction ? (
+                  <li>
+                    <b>Doctor:</b> this plan is likely to cover <strong>{displayName}</strong> without
+                    approval. Plan note: {record.preferredRestriction}
                   </li>
                 ) : (
                   <li>

@@ -224,6 +224,9 @@ describe('preferredNeedsPa', () => {
     ['Age 6-18 only', false],
     ['PA required for members age 25 and older; no PA under 25', true],
     ['Quantity limit (QL) applies; no PA or step therapy required for the plain naproxen tablet.', false],
+    ['Clinical criteria apply to all drugs in this class (PDL red note, page 19).', true],
+    ['Covered with clinical criteria (DUR table, page 75): BMI of 40 kg/m2 or greater', true],
+    ['QL (quantity limit)', false],
     [undefined, false],
   ])('%s -> %s', (note, want) => expect(preferredNeedsPa(r(note))).toBe(want))
   it('is false for a no-covered-option record', () => {
