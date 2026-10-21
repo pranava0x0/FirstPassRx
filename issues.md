@@ -778,3 +778,10 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   new ceiling) all green; verified live in the dev-server browser (PA → Inhalers → Independence
   Blue Cross renders the VoSpire ER alternative link-only, no price; CA → Diabetes → Insulin
   renders "Insulin Regular, Human" with the new $60.90 GoodRx price). _Fixed._
+
+- **2026-10-21 · sources · Anthem Select lists reissued (NY, VA, CA).** The archive run flagged
+  sha256 drift on `fm.formularynavigator.com/FBO/143/2026_Select_{3_Tier_NY_ABS,4_Tier_VA,4_Tier_CA}_IND.pdf`
+  (plus 59 HTML pages, which change on every fetch and are noise, and the DC PDL, re-read today
+  for the DC guides). The Anthem guides in those states were gathered from the earlier bytes;
+  re-check the cited classes against the new files. Root cause: source reissue, not a code bug.
+  _Open._
