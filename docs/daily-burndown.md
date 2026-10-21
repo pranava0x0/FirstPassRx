@@ -1,0 +1,101 @@
+# Daily burndown: the 5 PM run
+
+A scheduled session runs this file every day at 17:00 local time in the **main checkout**
+(`/Users/pranava/Projects/FirstPassRx`). Read it top to bottom, do one unit from the queue, and
+update the ledger at the bottom before stopping. Created 2026-10-21.
+
+## Time box (hard)
+
+- **20 minutes of wall-clock, total.** Note the start time in your first message.
+- **At 15 minutes, stop starting new work.** Decide: can the unit in hand reach a green
+  `npm test` + commit in the remaining 5? If yes, finish it. If no, write what's done to a
+  scratch checkpoint (see "Checkpoints"), log the resume point in the ledger, and stop.
+- Never leave `src/data/formulary.json` half-merged. A guide merges whole or not at all
+  (`validate()` count-floor: every payer × active class needs a cell).
+
+## Model roles
+
+| Role | Model | Use for | Concurrency |
+|---|---|---|---|
+| Coordinator | Opus (this session) | pick the unit, merge, test, commit, ledger | 1 |
+| Search / extract | Haiku | payer discovery, reading one payer's document for N classes, trend checks | ≤4 at once (user OK'd 2026-10-21). Drop to 2 on the first "limiting requests" error |
+| Cross-check | Sonnet | one adversarial pass over the merged cells before commit (drug/device sanity, BOGL device match, combo-drug traps; see CLAUDE.md) | 1 |
+
+Inline beats an agent for anything under ~3 tool calls: a grep in `sources/`, one PDF page read.
+
+## Token efficiency: why the queue is state-first
+
+Almost all the cost of a guide is **finding, fetching, and reading each payer's formulary
+document**. Extracting one more drug class from a document already open costs very little. A
+payer's formulary or a state PDL is **one document for every drug class**.
+
+So:
+
+1. **Work state-major, payer-major.** One agent per payer document, extracting *every* topic
+   still missing for that state in one read. Never one agent per (payer, class) cell. This is
+   the shape `.claude/workflows/formulary-gather.js` already takes.
+2. **Use the local source cache before the network.** `sources/` (gitignored, ~1.1 GB, 426
+   documents as of 2026-10-21) holds raw bytes for every cited URL; `sources/manifest.json`
+   maps URL → file + sha256. A new topic for a state whose payers are already archived is
+   `pdftotext` + `grep` on local files. No fetch, often no agent at all.
+3. **Statewide Medicaid PDLs first.** One PDL covers FFS and (usually) every MCO in the
+   state (NY, PA, TX, AL, CA, MA, VA, IL so far). Mining a 150-page PDL by section heading is
+   cheap (CLAUDE.md, IL HFS note).
+4. **A new topic is cheapest added state by state in states already covered**, because the
+   payer roster and documents are known. A brand-new state costs roster discovery plus every
+   payer fetch, so do it only when the queue's data items for covered states are done.
+
+## Checkpoints
+
+Gather output goes to `data-gathering/<stamp>/<payer>.json` in the main checkout (gitignored;
+survives between runs because this run always uses the main checkout, not a worktree). The
+ledger names the stamp so the next run resumes from disk instead of re-gathering.
+
+## Every run, in order
+
+1. `git fetch && git status`. If `main` is behind, `git pull --ff-only`. If there are
+   uncommitted changes you didn't make, stop and log it; don't touch them.
+2. `gh pr list --search "Daily burndown" --state open`. If an earlier burndown PR is still
+   open, check out its branch and keep stacking on it (don't fork a parallel branch off a
+   `main` that lacks that work). Otherwise `git checkout -b burndown/<YYYY-MM-DD>`.
+3. Read the ledger; take the first unchecked queue item (or resume the in-flight one).
+4. Do it. Commit at each green checkpoint.
+5. Before stopping: `npm test`, `npm run data:split` if data changed,
+   `npm run archive-sources` if new references were added, update the ledger.
+6. Push the branch and open (or update) a PR titled `Daily burndown <date>: <item>`. Do
+   **not** merge; the user reviews. Disclose models in the PR body per `~/Projects/CLAUDE.md` (no AI
+   co-author trailers).
+
+## Queue (top = next)
+
+Each item fits roughly one 20-minute run. Bigger items are split.
+
+1. **TX: 7 missing topics from the Texas Vendor Drug Program PDL.** `tx-ssris` exists with 3
+   payers (TX Medicaid, BCBS TX commercial, Humana Premier Rx PDP). The TX PDL is one document
+   covering every topic (fetch via the real browser, see CLAUDE.md `txvendordrug.com` note).
+   Split: run A = TX Medicaid all 7 topics from the PDL (inline); run B = BCBS TX + Humana PDP
+   (2 Haiku agents, one per payer document, all 7 topics each); run C = merge 7 guides + Sonnet
+   check. Payoff: 1 → 8 TX guides.
+2. **ADHD stimulants as a new topic (trend pick #1 among cheap generics).** Classes:
+   methylphenidate (IR/ER), amphetamine salts (IR/ER), lisdexamfetamine, non-stimulants
+   (atomoxetine, guanfacine ER, viloxazine). Author the class taxonomy once, then go state by
+   state from cached `sources/` documents, MA first (5 payers), then NY, MD, VA, IL, PA, AL,
+   CA, TX. One state per run.
+3. **Statins / PCSK9 as a new topic** (same state-by-state method). Classes: high-intensity
+   statin, moderate statin, ezetimibe, PCSK9 mAb, inclisiran.
+4. **GLP-1 for weight management as a class inside the existing diabetes topic**
+   (Wegovy, Zepbound, Saxenda). Payers are dropping or restricting obesity coverage in 2026.
+   Many will simply say "excluded"; that's a valid cell (`nonformulary`). One state per run.
+5. **CGRP migraine** (gepants + CGRP mAbs). Brand-heavy, more PA criteria per cell. Later.
+6. **Partial → verified upgrades:** `il-osteoporosis` (13 partial), `ny-osteoporosis` (6),
+   `ny-menopause` (5 example). Re-read the payer's own document; cache first.
+7. **Cash-price gaps** (`KNOWN_UNPRICED_GAP`): needs the real browser (GoodRx/Cost Plus
+   block fetch). Only when Claude in Chrome is connected.
+8. **Product items** from backlog.md "High" (PA form fill for MassHealth, criteria checklist per
+   drug) only when the data queue is blocked.
+
+## Ledger (append one line per run)
+
+| Date | Item | Result | Resume at |
+|---|---|---|---|
+| 2026-10-21 | Setup run (manual, 1 h) | New picker + PA request builder + UAT harness; PA MCO roster gaps 32 → 0; this plan | Queue #1 run A |

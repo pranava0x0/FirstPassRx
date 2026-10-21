@@ -11,6 +11,29 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## High
 
+- **Daily 5 PM burndown runs the data queue in [docs/daily-burndown.md](docs/daily-burndown.md).**
+  (2026-10-21) State-first, payer-major, local `sources/` cache first. Next: TX 1 → 8 topics, then
+  ADHD stimulants and statins/PCSK9 state by state. Keep that file's queue as the single ordered
+  list for data work; this backlog holds product/design items.
+- **PA request builder, phase 2: plan-specific criteria per drug.** (2026-10-21) Phase 1 shipped
+  (`src/components/PaRequest.tsx`): generic 4-item reviewer checklist, preferred-drug step log,
+  reviewer-ordered letter, response clock by plan type. Phase 2: store each `paRequired` item's
+  own criteria (age, diagnosis, labs, "tried X for N days") from the payer's PA policy so the
+  checklist names *this plan's* questions and the letter answers them in order, a criteria
+  crosswalk table. Research: reviewers score against criteria, and "lack of information" is a top
+  denial reason (BCBS TN PA report; AmeriHealth Caritas LA documentation guidance). **Impact:
+  high. Effort: medium per topic** (criteria live in the same PDL/PA docs we already cache).
+- **PA request: ICD-10 picker per topic, with label-mismatch warning.** (2026-10-21) A short
+  curated code list per class (e.g. asthma J45.x, COPD J44.x, T2D E11.x) instead of free text;
+  warn when the code doesn't match the drug's labeled indication. **Impact: high. Effort: low.**
+- **PA request: practice profile + submission channel.** (2026-10-21) Optional prescriber
+  name/NPI/phone/fax saved in localStorage (never patient data), and per payer the PA intake
+  (fax, portal, CoverMyMeds/Surescripts) so the output ends with "send to: …". MassHealth's
+  routing table is already in `docs/pa-drafting/`. **Impact: medium-high. Effort: medium.**
+- **UAT harness → CI.** (2026-10-21) `scripts/uat-interactions.js` runs in-page by hand. Wire a
+  headless run (Playwright, after the advisory sweep the dependency rule requires) that fails on
+  a budget in `uat/interaction_budgets.json`. **Impact: medium. Effort: low-medium.**
+
 - **PA-drafting MVP — MassHealth inhalers (Phase 1 of `docs/pa-drafting/README.md`).** The
   2026-08-24 research run proved the whole chain for one vertical (MA × fluticasone propionate
   HFA): every MA payer's intake is a public fillable AcroForm, the blank forms + sha256 manifest
@@ -387,6 +410,29 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   or specific molecules in the search index so patients without medical background find what they need.
 
 ## Medium
+
+- **Design ideas from the 2026-10-21 competitor scan** (Epocrates/MMIT coverage search,
+  Surescripts real-time benefit, CoverMyMeds, GoodRx provider mode, Latent Health):
+  1. *Coverage verdict chip at the top of each result:* "No PA" / "PA or step" / "Not covered" /
+     "Not in our data", glyph + word, never color alone (DESIGN.md). Surescripts and Epocrates
+     both lead with this.
+  2. *"Try first" ladder for step-therapy cells:* each rung a drug with its own status, preferred
+     on top, instead of separate alternatives and barriers lists.
+  3. *Pinned plans:* save 2–3 plans as chips under the picker (clinic payer mix) for one-tap
+     switching. The remembered last pick (shipped) is step one.
+  4. *One search box for "plan or drug"* (MMIT Coverage Search pattern), replacing the parked
+     omni-search. Matters once a state has 10+ plans.
+  5. *Tier chip with words* ("Tier 1 · lowest cost") wherever a numeric tier shows.
+  6. *Price beside coverage, with an "as of" date and a "no price yet" state* (partly there).
+  Skip: dashboards, accounts, PA status tracking (Cohere/CoverMyMeds), which need PHI and a server.
+- **Grouped plan picker once a state passes ~8 plans.** (2026-10-21) `<optgroup>` by market
+  segment (Medicaid / Commercial / Medicare Part D) in `#plan-select`. Cheap; do it with the first
+  state that crosses 8.
+- **Next topics by 2026 PA signal** (Haiku research 2026-10-21; ISPOR 2026 claims poster ranks
+  mental-health classes highest for utilization management): ADHD stimulants, statins/PCSK9,
+  GLP-1 for obesity, CGRP migraine, buprenorphine ER (Sublocade/Brixadi), testosterone,
+  lenacapavir PrEP. Order lives in `docs/daily-burndown.md`. x.com search gave thin signal
+  (page-text extraction returns one post per search); payer bulletins and ISPOR are better sources.
 
 - **Fix `trace-sources.mjs` false-positive dead/drift detection on 3 known-good hosts.**
   `mhdl.pharmacy.services.conduent.com`, `massgeneralbrighamhealthplan.org`, and
