@@ -80,7 +80,15 @@ Each item fits roughly one 20-minute run. Bigger items are split.
    Split: run A = TX Medicaid all 7 topics from the PDL (inline); run B = BCBS TX + Humana PDP
    (2 Haiku agents, one per payer document, all 7 topics each); run C = merge 7 guides + Sonnet
    check. Payoff: 1 → 8 TX guides.
-2. **ADHD stimulants as a new topic (trend pick #1 among cheap generics).** Classes:
+2. **New topics to the other 8 states** (ADHD, cholesterol, weight loss, migraine; taxonomy and
+   MA proof shipped 2026-10-21 as `ma-adhd`/`ma-lipids`/`ma-weight`/`ma-migraine`). Reuse
+   `data-gathering/ma-new4-2026-10-21/taxonomy.json` + `BRIEF.md` (copy to a new stamp dir),
+   one Haiku agent per payer document (all 11 classes in one read), Sonnet cross-check, then
+   `node scripts/merge-gather.mjs --dir=… --state=XX --payers-from=<xx-ssris>`. One state per
+   run; cached `sources/` PDFs first. MA took ~5 agent runs + 1 check.
+   Then capture cash prices for each new guide's preferred agents (browser; `KNOWN_UNPRICED_GAP`
+   jumped 60 → 233 with MA).
+   Original item: **ADHD stimulants as a new topic (trend pick #1 among cheap generics).** Classes:
    methylphenidate (IR/ER), amphetamine salts (IR/ER), lisdexamfetamine, non-stimulants
    (atomoxetine, guanfacine ER, viloxazine). Author the class taxonomy once, then go state by
    state from cached `sources/` documents, MA first (5 payers), then NY, MD, VA, IL, PA, AL,
@@ -103,3 +111,4 @@ Each item fits roughly one 20-minute run. Bigger items are split.
 | Date | Item | Result | Resume at |
 |---|---|---|---|
 | 2026-10-21 | Setup run (manual, 1 h) | New picker + PA request builder + UAT harness; PA MCO roster gaps 32 → 0; this plan | Queue #1 run A |
+| 2026-10-21 | Follow-up (manual) | PA criteria/ICD-10/send-to (PR #21); AL/MD archive + estradiol patch price (PR #20, merged); 4 new MA topics, 55 cells, 45 verified (this PR) | Queue #1 run A, or #2 for NY |

@@ -74,6 +74,10 @@ describe('guides + global meta', () => {
       'md-doac',
       'va-doac',
       'il-doac',
+      'ma-adhd',
+      'ma-lipids',
+      'ma-weight',
+      'ma-migraine',
     ])
   })
 
@@ -353,5 +357,23 @@ describe('VA diabetes guide specifics', () => {
     for (const r of va.records.filter((record) => record.boglActive)) {
       expect(r.preferredAgent.genericAvailable, `${r.payerId}/${r.classId}`).toBe(true)
     }
+  })
+})
+
+describe('noCoveredAgent', () => {
+  const view = () => structuredClone((rawData as unknown as Formulary).guides.find((g) => g.id === 'ma-weight')!)
+  it('ships flagged cells with a reason, never as BOGL', () => {
+    const flagged = view().records.filter((r) => r.noCoveredAgent)
+    expect(flagged.length).toBeGreaterThan(0)
+    for (const r of flagged) {
+      expect(r.preferredRestriction?.trim()).toBeTruthy()
+      expect(r.boglActive).toBe(false)
+    }
+  })
+  it('rejects a flagged cell with no reason', () => {
+    const g = view()
+    const r = g.records.find((x) => x.noCoveredAgent)!
+    r.preferredRestriction = ''
+    expect(() => buildGuideView(g)).toThrow(/noCoveredAgent needs a preferredRestriction/)
   })
 })

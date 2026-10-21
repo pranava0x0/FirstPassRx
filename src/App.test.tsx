@@ -314,4 +314,11 @@ describe('FirstPassRx app', () => {
     render(<App />)
     expect(await screen.findByText(/every Pennsylvania Medicaid managed care plan statewide/)).toBeVisible()
   })
+
+  it('says nothing is covered instead of recommending a drug the plan does not list', async () => {
+    window.history.replaceState({}, '', '/?guide=ma-weight&plan=tufts&class=aom-glp1')
+    render(<App />)
+    expect(await screen.findByText('NO COVERED OPTION FOUND')).toBeInTheDocument()
+    expect(screen.queryByText('FIRST-PASS RECOMMENDED')).not.toBeInTheDocument()
+  })
 })

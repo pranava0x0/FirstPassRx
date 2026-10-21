@@ -88,6 +88,13 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
           </p>
         </div>
 
+        {record.noCoveredAgent ? (
+          <div className="recommendation-hero recommendation-hero--none">
+            <div className="recommendation-hero__label">NO COVERED OPTION FOUND</div>
+            <h3 className="recommendation-hero__name">Nothing in this class is on the plan's list</h3>
+            <p className="recommendation-hero__generic">{record.preferredRestriction}</p>
+          </div>
+        ) : (
         <div className="recommendation-hero">
           <div className="recommendation-hero__label">FIRST-PASS RECOMMENDED</div>
           <h3 className="recommendation-hero__name">{displayName}</h3>
@@ -117,6 +124,7 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
             capturedAt={pricesAsOf}
           />
         </div>
+        )}
 
         {/* Q1 + Q2: what to prescribe + alternatives, with cost in plan vs cash. */}
         <PrescribeOptions record={record} source={primarySource} payer={payer} />
@@ -142,7 +150,12 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
                   <b>Patient:</b> ask the pharmacy to confirm this exact benefit product before the
                   prescription is sent.
                 </li>
-                {record.boglActive ? (
+                {record.noCoveredAgent ? (
+                  <li>
+                    <b>Doctor:</b> no drug in this class is on this plan's list. Ask the plan about a
+                    formulary exception, or compare cash prices.
+                  </li>
+                ) : record.boglActive ? (
                   <li>
                     <b>Doctor:</b> write <strong>{displayName}</strong> on the prescription, not
                     generic {genericBase} (the generic may need approval).

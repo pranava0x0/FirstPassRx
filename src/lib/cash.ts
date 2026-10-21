@@ -327,8 +327,13 @@
  * payers). 4 of the 6 new names are more rivaroxaban/Xarelto variants (same dose-mismatch gap);
  * the other 2 are new: CountyCare and BCBSIL list injectable enoxaparin/fondaparinux as
  * alternatives (VTE/bridging, not oral DOACs). No price captured -- headless run, no browser;
- * logged to backlog.md. Apixaban/Eliquis, dabigatran/Pradaxa and warfarin matched existing rules. */
-export const KNOWN_UNPRICED_GAP = 60
+ * logged to backlog.md. Apixaban/Eliquis, dabigatran/Pradaxa and warfarin matched existing rules.
+ * Raised 60 → 233 on 2026-10-21 when four NEW topics shipped for MA (`ma-adhd`, `ma-lipids`,
+ * `ma-weight`, `ma-migraine`, 5 payers each): every stimulant, statin, PCSK9, weight-loss, triptan,
+ * gepant and CGRP name is new to this file, so none has a cash-link rule yet. Declared here rather
+ * than hidden; capturing prices for each guide's preferred agents (browser session) is queued in
+ * docs/daily-burndown.md. Lower this as rules land. */
+export const KNOWN_UNPRICED_GAP = 233
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake

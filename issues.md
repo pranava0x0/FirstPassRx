@@ -204,6 +204,11 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
 
 ## Open
 
+- **2026-10-21 · data (MA) · 6 MassHealth MHDL table pages changed since last archive.** The
+  `--only=mhdl…/pubtheradetail.do` re-archive reported `DRIFT` on 6 tables cited by existing MA
+  guides. Could be a real MHDL revision or page noise (timestamps, session tokens); diff the
+  archived HTML text for drug/status changes before re-verifying `ma-*` cells. _Open._
+
 - **2026-10-21 · data (IL) · Aetna Better Health of Illinois formulary PDF changed since archive.**
   The archiver re-fetched it (2269 KB) with a new sha256 (`[DRIFT: content changed]` on all 7
   `aetna-better-health-il-*` sources); the cited URL is unchanged, so the plan reissued it. Re-read

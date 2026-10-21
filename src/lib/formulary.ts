@@ -109,6 +109,9 @@ function validate(data: Formulary): void {
       const a = r.preferredAgent
       if (!a || !a.inn || !a.strength || !a.sig || !a.sigShort || !a.plainSig)
         problems.push(`${G} ${at}: preferredAgent missing inn/strength/sig/sigShort/plainSig`)
+      if (r.noCoveredAgent && !r.preferredRestriction?.trim())
+        problems.push(`${G} ${at}: noCoveredAgent needs a preferredRestriction saying why`)
+      if (r.noCoveredAgent && r.boglActive) problems.push(`${G} ${at}: noCoveredAgent cannot be boglActive`)
       if (!Array.isArray(r.paRequired)) problems.push(`${G} ${at}: paRequired is not an array`)
       else
         r.paRequired.forEach((p, j) => {

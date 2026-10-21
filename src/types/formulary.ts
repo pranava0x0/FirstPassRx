@@ -122,6 +122,12 @@ export interface FormularyRecord {
    * Omit when the preferred agent ships clean.
    */
   preferredRestriction?: string
+  /**
+   * True when NO drug in this class appears on the plan's list (e.g. weight-loss drugs on a plan
+   * that excludes them). preferredAgent is then only the class's reference drug, and the UI must
+   * say nothing is covered rather than recommend it. Requires preferredRestriction (the why).
+   */
+  noCoveredAgent?: boolean
   boglActive: boolean
   boglNote: string | null
   /** Other covered agents in this class (the middle of the coverage ladder). Optional. */
