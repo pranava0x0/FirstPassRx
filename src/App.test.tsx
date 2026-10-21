@@ -204,6 +204,8 @@ describe('FirstPassRx app', () => {
   it('loads a non-default guide directly from the URL', async () => {
     window.history.replaceState({}, '', '/?guide=va-diabetes')
     render(<App />)
+    // The shared link must survive the first render, before the linked guide has loaded.
+    expect(window.location.search).toBe('?guide=va-diabetes')
     expect(await screen.findByRole('option', { name: /Virginia Medicaid/i })).toBeInTheDocument()
     expect(selectedText(/^State$/)).toMatch(/Virginia/i)
     expect(selectedText(/^Condition$/)).toMatch(/^Diabetes$/i)

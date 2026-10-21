@@ -87,8 +87,13 @@ export default function App() {
   const [topicId, setTopicId] = useState(defaultSummary.topicId)
   const activeGuideId = findGuideId(stateCode, topicId)
 
+  // False until a linked/remembered guide has finished loading, so the URL/storage sync below
+  // can't overwrite a shared link with the default guide during that first fetch.
+  const hydrated = useRef(false)
+
   useEffect(() => {
     const initial = getInitialPick()
+    hydrated.current = initial.guideId === defaultGuideId
     if (initial.guideId !== defaultGuideId) void switchGuide(initial.guideId, false, initial)
     else applyPick(guide, initial)
   }, [])
@@ -97,7 +102,7 @@ export default function App() {
   // this device. Only once the loaded guide matches the picker, so a half-switched state
   // never gets written.
   useEffect(() => {
-    if (activeGuideId === undefined || activeGuideId !== guide.id) return
+    if (!hydrated.current || activeGuideId === undefined || activeGuideId !== guide.id) return
     const url = new URL(window.location.href)
     url.searchParams.set('guide', guide.id)
     url.searchParams.set('plan', payerId)
@@ -180,6 +185,7 @@ export default function App() {
     } catch {
       if (request === guideRequest.current) setGuideLoadError(true)
     } finally {
+      hydrated.current = true
       if (request === guideRequest.current) setLoadingGuideId(null)
     }
   }
