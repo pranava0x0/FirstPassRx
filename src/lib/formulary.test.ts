@@ -459,3 +459,15 @@ describe('PA criteria and submission validation', () => {
     }
   })
 })
+
+// The 'Send to' note is shown to prescribers; research commentary leaked into it once (2026-10-21).
+describe('paSubmission notes read as routing guidance', () => {
+  it('contain no research/process commentary', () => {
+    const bad = (rawData as unknown as Formulary).guides.flatMap((g) =>
+      g.payers
+        .map((p) => p.paSubmission?.note ?? '')
+        .filter((n) => /cited (page|flyer|document)|so none is listed|evidence|the page (lists|does not)|not listed\./i.test(n)),
+    )
+    expect([...new Set(bad)]).toEqual([])
+  })
+})
