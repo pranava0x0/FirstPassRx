@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { costPlusUrl, goodRxUrl, hasCashLinkRule, goodRxPrice, costPlusPrice, pricesCapturedAt, KNOWN_UNPRICED_GAP } from './cash'
+import { costPlusUrl, goodRxUrl, hasCashLinkRule, goodRxPrice, costPlusPrice, pricesCapturedAt, priceSuppressedByForm, KNOWN_UNPRICED_GAP } from './cash'
 import rawData from '../data/formulary.json'
 import type { Formulary } from '../types/formulary'
 
@@ -285,7 +285,7 @@ describe('cash price coverage across the live formulary', () => {
     ]
     const matched = coveredDrugNames().filter((name) => hasCashLinkRule(name))
     const missingPrice = matched.filter((name) => !goodRxPrice(name) && !costPlusPrice(name))
-    const unexpected = missingPrice.filter((name) => !KNOWN_PRICE_UNAVAILABLE.some((re) => re.test(name)))
+    const unexpected = missingPrice.filter((name) => !priceSuppressedByForm(name) && !KNOWN_PRICE_UNAVAILABLE.some((re) => re.test(name)))
     expect(unexpected).toEqual([])
   })
 })
@@ -369,5 +369,33 @@ describe('form-specific prices for the new topics', () => {
     expect(goodRxPrice('Sumatriptan succinate')?.price).toBe(29.85)
     expect(goodRxPrice('Phendimetrazine tartrate')?.price).toBe(32.51)
     expect(goodRxPrice('Atorvastatin calcium')?.price).toBe(15.24)
+  })
+})
+
+// Dataset-wide guard (2026-10-21, after Codex flagged ~10 form mismatches one by one): a priced
+// match must not cross dosage forms. If the captured quantity is for tablets, a covered name that
+// says capsule/solution/patch/etc. is a different product and must not borrow the price.
+describe('no covered name borrows a price captured for a different dosage form', () => {
+  const FORMS: [RegExp, RegExp][] = [
+    [/\b(tablets?|tabs?)\b/i, /\b(capsules?|cp24|solution|suspension|patch|transdermal|injection|subcutaneous|cartridge|pen|syringe|spray|nasal|chewable|ODT|orally disintegrating|gel|cream)\b/i],
+    [/\b(capsules?|caps?)\b/i, /\b(tablets?|solution|suspension|patch|injection|chewable|ODT)\b/i],
+  ]
+  const ALL_GUIDES = true
+  it('holds for every covered drug name', () => {
+    const offenders: string[] = []
+    for (const g of (rawData as unknown as Formulary).guides) {
+      if (!ALL_GUIDES && !['adhd', 'lipids', 'weight', 'migraine'].includes(g.topicId)) continue
+      for (const r of g.records) {
+        const names = [r.preferredAgent.inn, ...(r.alternatives ?? []).map((a) => a.drug)]
+        for (const n of names) {
+          const q = goodRxPrice(n)?.quantity
+          if (!q) continue
+          for (const [captured, other] of FORMS) {
+            if (captured.test(q) && other.test(n) && !captured.test(n)) offenders.push(`${n} -> ${q}`)
+          }
+        }
+      }
+    }
+    expect([...new Set(offenders)]).toEqual([])
   })
 })

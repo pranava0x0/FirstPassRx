@@ -361,8 +361,11 @@
  * link-only Qulipta/Praluent rules (−).
  * 721 → 771: the four new topics shipped for TX (3 payers).
  * 771 → 778: Codex review narrowed sumatriptan, mixed-salts IR, phendimetrazine, atorvastatin and
- * amphetamine sulfate rules to their captured tablet forms; other forms are honestly unpriced. */
-export const KNOWN_UNPRICED_GAP = 778
+ * amphetamine sulfate rules to their captured tablet forms; other forms are honestly unpriced.
+ * 778 → 780: atomoxetine oral solution no longer matches the capsule rule. (The new form-conflict
+ * guard in priceFor() suppresses ~80 more cross-form prices but keeps their links, so it doesn't
+ * change this count.) */
+export const KNOWN_UNPRICED_GAP = 780
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -402,7 +405,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   { matches: /saxenda|liraglutide.*weight/i, goodRxSlug: 'saxenda', pricesCapturedAt: '2026-10-21' },
   { matches: /foundayo|orforglipron/i, goodRxSlug: 'foundayo', pricesCapturedAt: '2026-10-21' },
   {
-    matches: /atomoxetine|strattera/i,
+    matches: /^(?!.*(solution|suspension)).*(atomoxetine|strattera)/i,
     goodRxSlug: 'atomoxetine',
     goodRxParams: 'label_override=atomoxetine&form=capsule&dosage=40mg&quantity=30',
     goodRxPrice: { price: 33.76, quantity: '30 capsules, 40mg' },
@@ -2011,13 +2014,41 @@ export function costPlusUrl(name: string): string | null {
 }
 
 /** Snapshot GoodRx price for this drug, or null if no exact strength/form match was captured. */
+// Rules match by molecule name, but a price is captured for ONE dosage form. A covered name that
+// says it is a different form (oral solution vs tablets, vaginal cream vs tablets, Respimat vs
+// HandiHaler capsules, injection vs tablets) is a different product and must not show that price;
+// it keeps the link. Found 2026-10-21 by a dataset-wide test after ~80 names borrowed a tablet or
+// capsule quote. A name that also mentions the captured form (e.g. "10/20 mg tab, oral solution")
+// is not treated as a conflict.
+const TABLET = /\b(tablets?|tabs?)\b/i
+const CAPSULE = /\b(capsules?|caps?)\b/i
+const NOT_ORAL_SOLID =
+  /\b(solution|suspension|concentrate|elixir|syrup|liquid|patch|transdermal|injection|injectable|intramuscular|subcutaneous|cartridge|pen|syringe|vial|spray|nasal|cream|gel|ointment|ring|respimat|aerosol|chewable|odt|orally disintegrating|cp24)\b/i
+
+function formConflict(name: string, point: PricePoint): boolean {
+  const q = point.quantity
+  if (TABLET.test(q)) return !TABLET.test(name) && (NOT_ORAL_SOLID.test(name) || CAPSULE.test(name))
+  if (CAPSULE.test(q)) return !CAPSULE.test(name) && (NOT_ORAL_SOLID.test(name) || TABLET.test(name))
+  return false
+}
+
+/** True when a rule matches this name and has a price, but for a different dosage form. */
+export function priceSuppressedByForm(name: string): boolean {
+  const r = cashLinkRule(name)
+  return [r?.goodRxPrice, r?.costPlusPrice].some((p) => p !== undefined && formConflict(name, p))
+}
+
+function priceFor(name: string, point: PricePoint | undefined): PricePoint | null {
+  return point && !formConflict(name, point) ? point : null
+}
+
 export function goodRxPrice(name: string): PricePoint | null {
-  return cashLinkRule(name)?.goodRxPrice ?? null
+  return priceFor(name, cashLinkRule(name)?.goodRxPrice)
 }
 
 /** Snapshot Cost Plus Drugs price for this drug, or null if unavailable/out of stock at capture time. */
 export function costPlusPrice(name: string): PricePoint | null {
-  return cashLinkRule(name)?.costPlusPrice ?? null
+  return priceFor(name, cashLinkRule(name)?.costPlusPrice)
 }
 
 /** ISO date the prices above were captured, or null if this drug has no explicit cash-link rule. */
