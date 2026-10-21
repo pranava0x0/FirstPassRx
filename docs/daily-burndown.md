@@ -18,7 +18,7 @@ update the ledger at the bottom before stopping. Created 2026-10-21.
 | Role | Model | Use for | Concurrency |
 |---|---|---|---|
 | Coordinator | Opus (this session) | pick the unit, merge, test, commit, ledger | 1 |
-| Search / extract | Haiku | payer discovery, reading one payer's document for N classes, trend checks | ≤4 at once (user OK'd 2026-10-21). Drop to 2 on the first "limiting requests" error |
+| Search / extract | Haiku | payer discovery, reading one payer's document for N classes, trend checks | ≤4 at once (`.claude/agent-cap` = 4, set by the user 2026-10-21). Drop to 2 on the first "limiting requests" error |
 | Cross-check | Sonnet | one adversarial pass over the merged cells before commit (drug/device sanity, BOGL device match, combo-drug traps; see CLAUDE.md) | 1 |
 
 Inline beats an agent for anything under ~3 tool calls: a grep in `sources/`, one PDF page read.
@@ -56,15 +56,16 @@ ledger names the stamp so the next run resumes from disk instead of re-gathering
 
 1. `git fetch && git status`. If `main` is behind, `git pull --ff-only`. If there are
    uncommitted changes you didn't make, stop and log it; don't touch them.
-2. `gh pr list --search "Daily burndown" --state open`. If an earlier burndown PR is still
-   open, check out its branch and keep stacking on it (don't fork a parallel branch off a
-   `main` that lacks that work). Otherwise `git checkout -b burndown/<YYYY-MM-DD>`.
+2. **One rolling PR, never a new one per run** (user, 2026-10-21: "try not to have so many
+   PRs"). `gh pr list --state open --author @me`. If any open PR from this work exists (a
+   burndown PR or a manual follow-up branch), check out its branch, `git merge origin/main`,
+   and keep stacking on it. Only when none is open: `git checkout -b burndown/rolling`.
 3. Read the ledger; take the first unchecked queue item (or resume the in-flight one).
 4. Do it. Commit at each green checkpoint.
 5. Before stopping: `npm test`, `npm run data:split` if data changed,
    `npm run archive-sources` if new references were added, update the ledger.
-6. Push the branch and open (or update) a PR titled `Daily burndown <date>: <item>`. Do
-   **not** merge; the user reviews. Disclose models in the PR body per `~/Projects/CLAUDE.md` (no AI
+6. Push to that one branch. Open a PR only if none exists (title `Daily burndown (rolling)`),
+   otherwise update its description with today's ledger line. Do **not** merge; the user reviews. Disclose models in the PR body per `~/Projects/CLAUDE.md` (no AI
    co-author trailers).
 
 ## Queue (top = next)
