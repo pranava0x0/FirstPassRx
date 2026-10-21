@@ -25,7 +25,7 @@
         "phone": "(877) 309-9493",
         "portal": "https://paxpress.nypa.hidinc.com",
         "epa": "CoverMyMeds",
-        "note": "NYRx clinical call center takes phone and fax PA requests 24/7 (fax uses the appropriate PA form); submit one request only, no duplicates. eMedNY (1-800-343-9000) is for eligibility and claims, not PA. The 10/22/26 PA changes do not alter these channels.",
+        "note": "NYRx clinical call center, 24/7, phone or fax (with the matching PA form). Send one request only. eMedNY (1-800-343-9000) handles eligibility and claims, not PA.",
         "sourceIds": [
           "ny-medicaid-pa-intake-2026-10"
         ]
@@ -147,6 +147,18 @@
           "reason": "Clinical criteria under NYRx DUR (page 75): diagnosis of obstructive sleep apnea; BMI of 40 kg/m2 or greater; lifestyle modifications; two treatment attempts per lifetime",
           "sourceIds": [
             "ny-medicaid-newtopics-2026-10"
+          ],
+          "criteria": [
+            "Indication: moderate to severe obstructive sleep apnea (OSA). NYRx lists no other indication for Zepbound, such as weight loss alone.",
+            "BMI of 40 kg/m2 or higher at initiation of therapy.",
+            "Tried CPAP or currently using a CPAP device (rationale required if not).",
+            "Completed polysomnography or a home sleep apnea test (rationale required if not).",
+            "Referred for a nutrition consult, with at least 6 months of comprehensive lifestyle modification before starting, continuing throughout treatment.",
+            "Within the lifetime limit of two treatment attempts."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ny-medicaid-pa-criteria-pdl-2026-10"
           ]
         }
       ],
@@ -163,7 +175,18 @@
         "ny-medicaid-newtopics-2026-10"
       ],
       "lastReviewed": "2026-10-21",
-      "payerId": "ny-medicaid"
+      "payerId": "ny-medicaid",
+      "preferredCriteria": [
+        "Indication: established cardiovascular disease (form frames Wegovy as reducing major adverse cardiovascular events). NYRx lists no other indication, such as weight loss alone.",
+        "BMI of 40 kg/m2 or higher at initiation of therapy.",
+        "Adherent for at least 6 months before starting to CVD therapy: antihypertensive, lipid-lowering, and antithrombotic or platelet inhibitor (rationale accepted if not).",
+        "Prescriber attests comprehensive lifestyle modification (behavior change, reduced-calorie diet, more activity) began at least 6 months before starting and continues.",
+        "Within the lifetime limit of two treatment attempts."
+      ],
+      "preferredCriteriaMode": "all",
+      "preferredCriteriaSourceIds": [
+        "ny-medicaid-pa-criteria-pdl-2026-10"
+      ]
     },
     {
       "classId": "aom-oral",
@@ -675,6 +698,15 @@
       "type": "payer",
       "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
       "accessed": "2026-10-21"
+    },
+    {
+      "id": "ny-medicaid-pa-criteria-pdl-2026-10",
+      "label": "NYRx Preferred Drug List (revised 2026-09-14)",
+      "publisher": "NYRx, the Medicaid Pharmacy Program (Prime Therapeutics for NY State DOH)",
+      "type": "gov",
+      "url": "https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf",
+      "accessed": "2026-10-21",
+      "effectiveDate": "2026-09-14"
     }
   ],
   "glossary": [

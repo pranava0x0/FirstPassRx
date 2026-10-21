@@ -25,7 +25,7 @@
         "phone": "(877) 309-9493",
         "portal": "https://paxpress.nypa.hidinc.com",
         "epa": "CoverMyMeds",
-        "note": "NYRx clinical call center takes phone and fax PA requests 24/7 (fax uses the appropriate PA form); submit one request only, no duplicates. eMedNY (1-800-343-9000) is for eligibility and claims, not PA. The 10/22/26 PA changes do not alter these channels.",
+        "note": "NYRx clinical call center, 24/7, phone or fax (with the matching PA form). Send one request only. eMedNY (1-800-343-9000) handles eligibility and claims, not PA.",
         "sourceIds": [
           "ny-medicaid-pa-intake-2026-10"
         ]
@@ -280,6 +280,14 @@
           "reason": "PA required for this agent under NYRx PDP (page 16); step therapy applies",
           "sourceIds": [
             "ny-medicaid-newtopics-2026-10"
+          ],
+          "criteria": [
+            "Diagnosis is an FDA-approved or compendia-supported indication that Medicaid covers.",
+            "Acute migraine treatment: tried a product from the Antimigraine Agents-Triptan class first."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ny-medicaid-pa-criteria-pdl-2026-10"
           ]
         },
         {
@@ -288,6 +296,14 @@
           "reason": "PA required for this agent under NYRx PDP (page 16); step therapy applies",
           "sourceIds": [
             "ny-medicaid-newtopics-2026-10"
+          ],
+          "criteria": [
+            "Diagnosis is an FDA-approved or compendia-supported indication that Medicaid covers.",
+            "Acute migraine treatment: tried a product from the Antimigraine Agents-Triptan class first."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ny-medicaid-pa-criteria-pdl-2026-10"
           ]
         },
         {
@@ -296,6 +312,14 @@
           "reason": "PA required for this agent under NYRx PDP (page 16); step therapy applies",
           "sourceIds": [
             "ny-medicaid-newtopics-2026-10"
+          ],
+          "criteria": [
+            "Diagnosis is an FDA-approved or compendia-supported indication that Medicaid covers.",
+            "Acute migraine treatment: tried a product from the Antimigraine Agents-Triptan class first."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ny-medicaid-pa-criteria-pdl-2026-10"
           ]
         }
       ],
@@ -312,7 +336,15 @@
         "ny-medicaid-newtopics-2026-10"
       ],
       "lastReviewed": "2026-10-21",
-      "payerId": "ny-medicaid"
+      "payerId": "ny-medicaid",
+      "preferredCriteria": [
+        "Diagnosis is an FDA-approved or compendia-supported indication that Medicaid covers.",
+        "Acute migraine treatment: tried a product from the Antimigraine Agents-Triptan class first."
+      ],
+      "preferredCriteriaMode": "all",
+      "preferredCriteriaSourceIds": [
+        "ny-medicaid-pa-criteria-pdl-2026-10"
+      ]
     },
     {
       "classId": "cgrp-preventive",
@@ -360,6 +392,14 @@
           "reason": "Step: brand Qulipta is Preferred; trial of a preferred monoclonal antibody required first (page 16)",
           "sourceIds": [
             "ny-medicaid-newtopics-2026-10"
+          ],
+          "criteria": [
+            "Diagnosis is an FDA-approved or compendia-supported indication that Medicaid covers.",
+            "Tried a preferred CGRP monoclonal antibody first (preferred on the PDL: Aimovig, Ajovy, Emgality 120 mg)."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ny-medicaid-pa-criteria-pdl-2026-10"
           ]
         }
       ],
@@ -1428,6 +1468,15 @@
       "type": "payer",
       "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
       "accessed": "2026-10-21"
+    },
+    {
+      "id": "ny-medicaid-pa-criteria-pdl-2026-10",
+      "label": "NYRx Preferred Drug List (revised 2026-09-14)",
+      "publisher": "NYRx, the Medicaid Pharmacy Program (Prime Therapeutics for NY State DOH)",
+      "type": "gov",
+      "url": "https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf",
+      "accessed": "2026-10-21",
+      "effectiveDate": "2026-09-14"
     }
   ],
   "glossary": [
