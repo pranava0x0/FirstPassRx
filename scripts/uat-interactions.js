@@ -8,10 +8,12 @@
  *   swipes  vertical scrolls needed to bring the target fully on screen, in units of
  *           0.75 × viewport height, measured from the current scroll position
  *
- * No Playwright dependency: paste this file into the page (browser devtools, or the in-app
- * browser's javascript tool) at each viewport, then call `await runUat()`. It reloads state
- * between tasks by navigating with history.replaceState + a fresh render is NOT possible from
- * inside the page, so each task starts from the default guide via the UI itself.
+ * No Playwright dependency. With `npm run dev` open, run in the page console (or the in-app
+ * browser's JS tool):
+ *
+ *   eval((await import('/scripts/uat-interactions.js?raw')).default); await runUatAll()
+ *
+ * Every task runs in its own freshly loaded iframe at each device size, with storage cleared.
  *
  * Results go in uat/interaction_costs.json; budgets in uat/interaction_budgets.json.
  */
@@ -73,17 +75,6 @@
   const $ = (s) => document.querySelector(s)
   const byText = (sel, re) => [...document.querySelectorAll(sel)].find((e) => re.test(e.textContent))
 
-  // Reset to the default guide + top of page, as a cold arrival would see it.
-  async function cold() {
-    if (location.search) {
-      history.replaceState({}, '', location.pathname)
-    }
-    try { localStorage.clear() } catch {}
-    window.__fprxReset && window.__fprxReset()
-    window.scrollTo(0, 0)
-    await sleep(300)
-  }
-
   // Selecting state/topic/plan works with either the legacy button grid or the new selects.
   async function pickState(c, code, name) {
     const sel = $('#state-select')
@@ -143,19 +134,45 @@
     },
   }
 
-  window.runUat = async function runUat(only) {
-    const out = { viewport: { w: innerWidth, h: innerHeight }, swipe_fraction: SWIPE, tasks: {} }
-    for (const [id, t] of Object.entries(TASKS)) {
-      if (only && id !== only) continue
-      await cold()
-      const c = makeCounter()
-      try {
-        await t.run(c)
-        out.tasks[id] = { question: t.q, taps: c.taps, swipes: c.swipes, total: c.taps + c.swipes, path: c.path }
-      } catch (e) {
-        out.tasks[id] = { question: t.q, error: String(e), path: c.path }
+  /** Run ONE task in this (freshly loaded) page. Each task needs its own cold page load. */
+  window.runUatTask = async function runUatTask(id) {
+    const t = TASKS[id]
+    if (!t) throw new Error('unknown task ' + id)
+    const c = makeCounter()
+    try {
+      await t.run(c)
+      return { question: t.q, taps: c.taps, swipes: c.swipes, total: c.taps + c.swipes, path: c.path }
+    } catch (e) {
+      return { question: t.q, error: String(e), path: c.path }
+    }
+  }
+
+  /**
+   * From the top-level page: run every task at each device size, each in a brand-new
+   * same-origin iframe with storage cleared first, so no task inherits another's picks
+   * (the app remembers the last plan in localStorage and carries it in the URL).
+   */
+  window.runUatAll = async function runUatAll(
+    devices = { mobile: [375, 812], tablet: [820, 1180], desktop: [1366, 900] },
+  ) {
+    const src = (await import('/scripts/uat-interactions.js?raw')).default
+    const out = {}
+    for (const [device, [w, h]] of Object.entries(devices)) {
+      out[device] = {}
+      for (const id of Object.keys(TASKS)) {
+        try { localStorage.clear() } catch {}
+        const f = document.createElement('iframe')
+        f.style.cssText = `position:fixed;left:0;top:0;width:${w}px;height:${h}px;border:0;z-index:99999;background:#fff`
+        f.src = '/'
+        document.body.appendChild(f)
+        await new Promise((r) => (f.onload = r))
+        await sleep(900)
+        f.contentWindow.eval(src)
+        out[device][id] = await f.contentWindow.runUatTask(id)
+        f.remove()
       }
     }
+    try { localStorage.clear() } catch {}
     return out
   }
 })()

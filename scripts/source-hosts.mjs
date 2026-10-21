@@ -25,3 +25,12 @@ export function hostPolicy(url) {
   }
   return { browserOnly: matches(host, BROWSER_ONLY_HOSTS), jsRendered: matches(host, JS_RENDERED_HOSTS) }
 }
+
+/**
+ * True when a fetch result can't tell us whether the source is gone: a transport error/timeout,
+ * an auth or bot block, rate limiting, or a server error. A definitive 404/410 is NOT
+ * inconclusive, so a deleted source on a browser-only host still counts as dead.
+ */
+export function isInconclusive(status, error) {
+  return Boolean(error) || [401, 403, 429].includes(status) || status >= 500
+}

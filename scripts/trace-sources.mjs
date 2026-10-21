@@ -21,7 +21,7 @@
 import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
-import { hostPolicy } from './source-hosts.mjs'
+import { hostPolicy, isInconclusive } from './source-hosts.mjs'
 
 const HERE = dirname(fileURLToPath(import.meta.url))
 const DATA = join(HERE, '..', 'src', 'data', 'formulary.json')
@@ -199,7 +199,8 @@ if (LIVE) {
     const isPdf = /\.pdf($|\?)/i.test(r.url) || /application\/pdf/i.test(r.type)
     const policy = hostPolicy(r.url)
     let label
-    if (policy.browserOnly && (r.error || !r.ok)) {
+    // Only inconclusive outcomes get the browser-only pass; a definitive 404/410 is still DEAD.
+    if (policy.browserOnly && isInconclusive(r.status, r.error)) {
       label = c.yellow(`BROWSER-ONLY (${r.error ?? `HTTP ${r.status}`}; plain fetch can't reach this host — verify in a browser)`)
     } else if (r.error) {
       label = c.red(`DEAD (${r.error})`)

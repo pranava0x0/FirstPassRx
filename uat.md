@@ -7,13 +7,15 @@ Budgets: [uat/interaction_budgets.json](uat/interaction_budgets.json).
 
 ## How to run
 
-1. `npm run dev`, open the app in the in-app browser.
-2. In the page console (or the browser tool's JS runner), for each device size, load each task in
-   a same-origin iframe of that size, `eval` the harness source, and call `await runUat('<task>')`.
-   The runner used on 2026-10-21 is the `__uat(w, h)` snippet in that day's session: it clears
-   `localStorage` before each task (the app remembers the last pick) and reads the harness via
-   `import('/scripts/uat-interactions.js?raw')`.
-3. Compare totals to the budgets; update `uat/interaction_costs.json`.
+With `npm run dev` open in a browser, run in the page console (or the in-app browser's JS tool):
+
+```js
+eval((await import('/scripts/uat-interactions.js?raw')).default); await runUatAll()
+```
+
+Each task runs in its own freshly loaded, same-origin iframe at each device size, with
+`localStorage` cleared first (the app remembers the last plan). Compare totals to the budgets
+and update `uat/interaction_costs.json`.
 
 ## Tasks
 

@@ -47,11 +47,21 @@ export interface PaRequestInput {
   rationale: string
 }
 
-/** The plan's own preferred agents for this cell, in the order the reviewer will check them. */
+const SAYS_PREFERRED = /\bpreferred\b/i
+const SAYS_NOT_PREFERRED = /\bnon-?\s?preferred\b|\bnot preferred\b/i
+
+/**
+ * The plan's own preferred agents for this cell, in the order the reviewer will check them:
+ * the first-pass pick, then only those alternatives whose coverage note itself says
+ * "preferred". `alternatives` also holds higher-tier and non-preferred covered drugs, and
+ * presenting those as plan-preferred steps would misstate the plan.
+ */
 export function preferredAlternatives(record: FormularyRecord, item: PaItem): string[] {
   const names = [
     record.preferredAgent.brand ?? record.preferredAgent.inn,
-    ...(record.alternatives ?? []).map((a) => a.drug),
+    ...(record.alternatives ?? [])
+      .filter((a) => SAYS_PREFERRED.test(a.note ?? '') && !SAYS_NOT_PREFERRED.test(a.note ?? ''))
+      .map((a) => a.drug),
   ]
   const blocked = item.drug.toLowerCase()
   return names.filter(

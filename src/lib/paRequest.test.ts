@@ -7,9 +7,12 @@ const record: FormularyRecord = {
   classId: 'sglt2',
   preferredAgent: { inn: 'empagliflozin', brand: 'Jardiance', genericAvailable: false },
   alternatives: [
-    { drug: 'Farxiga', sourceIds: ['x'] },
-    { drug: 'jardiance', sourceIds: ['x'] },
-    { drug: 'Steglatro', sourceIds: ['x'] },
+    { drug: 'Farxiga', note: 'Preferred · no PA', sourceIds: ['x'] },
+    { drug: 'jardiance', note: 'preferred', sourceIds: ['x'] },
+    { drug: 'Steglatro', note: 'preferred', sourceIds: ['x'] },
+    { drug: 'Invokana', note: 'Tier 3', sourceIds: ['x'] },
+    { drug: 'Inpefa', note: 'Non-preferred, covered', sourceIds: ['x'] },
+    { drug: 'Brenzavvy', sourceIds: ['x'] },
   ],
   boglActive: false,
   boglNote: null,
@@ -39,6 +42,14 @@ const drugClass = { id: 'sglt2', name: 'SGLT2 inhibitor' } as ClassMeta
 describe('preferredAlternatives', () => {
   it('lists the plan preferred agents once each, never the blocked drug itself', () => {
     expect(preferredAlternatives(record, item)).toEqual(['Jardiance', 'Farxiga'])
+  })
+
+  // Codex review on PR 19: alternatives also hold higher-tier / non-preferred covered drugs.
+  it('never promotes a tiered, non-preferred, or unlabeled alternative to "plan preferred"', () => {
+    const names = preferredAlternatives(record, item)
+    expect(names).not.toContain('Invokana')
+    expect(names).not.toContain('Inpefa')
+    expect(names).not.toContain('Brenzavvy')
   })
 })
 
