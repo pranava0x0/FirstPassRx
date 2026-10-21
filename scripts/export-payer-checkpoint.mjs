@@ -7,7 +7,8 @@
 //     --as=uhc-fl --out=data-gathering/fl-old8-2026-10-21/uhc-fl.json --note="same national UHC PDL"
 //
 // Only reuse when the document is genuinely identical; say why in --note (appended to each
-// record's verificationNote). Records keep their sources and verification as checked.
+// record's verificationNote). Records keep their sources and verification as checked. Prose that
+// names the source state blocks the export until reviewed (--allow-state-text).
 import { readFileSync, writeFileSync } from 'node:fs'
 
 const arg = (n) => (process.argv.find((a) => a.startsWith(`--${n}=`)) || '').slice(n.length + 3)
@@ -45,6 +46,18 @@ for (const gid of GUIDES) {
     for (const id of ids) refs.set(id, byId.get(id))
     for (const id of rec.coverageSourceIds) cites.set(id, (cites.get(id) ?? 0) + 1)
   }
+}
+// Records gathered for one state often say so ("Maryland is not one of the three states...").
+// Refuse to export prose that names a source guide's state unless the caller has reviewed it and
+// passes --allow-state-text (after rewriting it for the target state).
+const regions = [...new Set(GUIDES.map((gid) => data.guides.find((x) => x.id === gid).region))]
+const stateHits = records.flatMap((r) =>
+  regions.filter((name) => JSON.stringify(r).includes(name)).map((name) => `${r.classId}: mentions ${name}`),
+)
+if (stateHits.length && !process.argv.includes('--allow-state-text')) {
+  console.error(`refusing: ${stateHits.length} record(s) carry source-state prose; rewrite them for the target state first, or pass --allow-state-text after review:`)
+  for (const h of stateHits.slice(0, 20)) console.error(`  - ${h}`)
+  process.exit(1)
 }
 const references = [...refs.keys()].sort((a, b) => (cites.get(b) ?? 0) - (cites.get(a) ?? 0)).map((k) => refs.get(k))
 writeFileSync(OUT, JSON.stringify({ payerId: AS, references, records }, null, 2) + '\n')

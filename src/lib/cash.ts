@@ -367,7 +367,7 @@
  * change this count.)
  * 780 → 802: District of Columbia added (12 guides; DC Medicaid and AmeriHealth Caritas DC are new
  * documents, CareFirst and Kaiser Mid-Atlantic reuse the MD records). */
-export const KNOWN_UNPRICED_GAP = 981
+export const KNOWN_UNPRICED_GAP = 1006
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -459,9 +459,11 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   },
   {
     // Extended-release methylphenidate (Concerta-type, 18mg); not dexmethylphenidate (Focalin).
-    // Only the captured product: osmotic ER tablets (Concerta and its generic). Capsules, LA/CD/SR,
-    // suspensions, chewables, patches, and other branded ER forms differ (Codex review, PR 22).
-    matches: /^(?!.*(dexmethyl|capsule|\bLA\b|\bCD\b|\bSR\b|suspension|solution|chew|patch|transdermal|daytrana|onyda|quilli|cotempla|aptensio|jornay|adhansia|relexxii|metadate|ritalin)).*(methylphenidate.*(extended|\bER\b|osmotic|\bOSM\b|24)|concerta)/i,
+    // Only the captured product: osmotic ER tablets (Concerta and its generic), so a name must say
+    // Concerta, osmotic/OSM/OROS, or 24-hour at Concerta strengths. Plain "ER", the 10/20 mg
+    // diffusion tablets, capsules, sprinkles, LA/CD/SR, liquids, chewables and patches differ
+    // (Codex review, PR 22).
+    matches: /^(?!.*(dexmethyl|capsule|\bcap\b|sprinkle|diffus|\bLA\b|\bCD\b|\bSR\b|suspension|solution|chew|patch|transdermal|daytrana|onyda|quilli|cotempla|aptensio|jornay|adhansia|relexxii|metadate|ritalin)).*(concerta|methylphenidate.*(osmotic|\bOSM\b|OROS|24[- ]?h(ou)?r?\b.*\b(18|27|36|54)\b))/i,
     goodRxSlug: 'methylphenidate-er',
     goodRxParams: 'label_override=methylphenidate-er&form=tablet&dosage=18mg&quantity=30',
     goodRxPrice: { price: 39.49, quantity: '30 tablets, 18mg ER' },

@@ -332,7 +332,7 @@ describe('weight-loss GLP-1s never borrow a diabetes product price', () => {
 
 // Codex review, PR 22: methylphenidate rules priced other dosage forms with tablet quotes.
 describe('methylphenidate prices only the captured forms', () => {
-  it.each(['Methylphenidate ER (generic Ritalin LA)', 'Methylphenidate ER capsule', 'Onyda XR (methylphenidate ER suspension)', 'Methylphenidate transdermal patch (Daytrana)', 'Methylphenidate oral solution', 'Methylphenidate chewable tablet', 'Ritalin LA', 'Dexmethylphenidate ER'])(
+  it.each(['Methylphenidate ER (generic Ritalin LA)', 'Methylphenidate ER capsule', 'Onyda XR (methylphenidate ER suspension)', 'Methylphenidate transdermal patch (Daytrana)', 'Methylphenidate oral solution', 'Methylphenidate chewable tablet', 'Ritalin LA', 'Dexmethylphenidate ER', 'Methylphenidate ER (diffusion) tablet 27, 36, 54 mg', 'Methylphenidate ER tablet 10 mg and 20 mg (generic)', 'Methylphenidate HCl Cap,Er Sprinkle,Biphasic 40-60 (10 mg, 15 mg)', 'Methylphenidate ER'])(
     '%s has no borrowed price',
     (name) => expect(goodRxPrice(name)).toBeNull(),
   )
@@ -351,6 +351,8 @@ describe('methylphenidate prices only the captured forms', () => {
   it('prices osmotic ER tablets and plain IR tablets', () => {
     expect(goodRxPrice('Methylphenidate hydrochloride extended-release (osmotic)')?.price).toBe(39.49)
     expect(goodRxPrice('Methylphenidate ER (osmotic tablet)')?.price).toBe(39.49)
+    expect(goodRxPrice('Methylphenidate ER 24 hr tablet 18 mg, 27 mg')?.price).toBe(39.49)
+    expect(goodRxPrice('Methylphenidate ER-OROS (generic Concerta)')?.price).toBe(39.49)
     expect(goodRxPrice('Methylphenidate hydrochloride')?.price).toBe(25.78)
   })
 })
