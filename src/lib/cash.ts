@@ -349,8 +349,10 @@
  * payer-specific long-tail names (branded ER stimulants, statin/ezetimibe combos, PCSK9/CGRP
  * variants, Medi-Cal labeler-restricted entries). Declared; price capture stays queued.
  * Raised 388 → 441 when the four topics shipped for AL (3 payers). Same declared long tail.
- * Raised 441 → 524 when the four topics shipped for MD (8 payers). Same declared long tail. */
-export const KNOWN_UNPRICED_GAP = 524
+ * Raised 441 → 524 when the four topics shipped for MD (8 payers). Same declared long tail.
+ * Raised 524 → 534 after Codex review: the lisdexamfetamine price now applies to capsules only, so
+ * chewable-tablet entries are honestly unpriced. */
+export const KNOWN_UNPRICED_GAP = 534
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -459,7 +461,8 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-21',
   },
   {
-    matches: /lisdexamfetamine|vyvanse/i,
+    // Capsules only; the chewable tablet is a separately priced form (Codex review, PR 22).
+    matches: /^(?!.*chew).*(lisdexamfetamine|vyvanse)/i,
     goodRxSlug: 'lisdexamfetamine',
     goodRxParams: 'label_override=lisdexamfetamine&form=capsule&dosage=30mg&quantity=30',
     goodRxPrice: { price: 67.78, quantity: '30 capsules, 30mg' },

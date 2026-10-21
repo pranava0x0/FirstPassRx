@@ -319,7 +319,7 @@ describe('FirstPassRx app', () => {
   it('says nothing is covered instead of recommending a drug the plan does not list', async () => {
     window.history.replaceState({}, '', '/?guide=ma-weight&plan=tufts&class=aom-glp1')
     render(<App />)
-    expect(await screen.findByText('NO COVERED OPTION FOUND')).toBeInTheDocument()
+    expect(await screen.findByText("NOT ON THE PLAN'S DRUG LIST")).toBeInTheDocument()
     expect(screen.queryByText('FIRST-PASS RECOMMENDED')).not.toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 2, name: '4. Coverage' })).toBeInTheDocument()
   })

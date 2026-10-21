@@ -90,8 +90,8 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
 
         {record.noCoveredAgent ? (
           <div className="recommendation-hero recommendation-hero--none">
-            <div className="recommendation-hero__label">NO COVERED OPTION FOUND</div>
-            <h3 className="recommendation-hero__name">Nothing in this class is on the plan's list</h3>
+            <div className="recommendation-hero__label">NOT ON THE PLAN'S DRUG LIST</div>
+            <h3 className="recommendation-hero__name">No drug in this class appears on the plan's list</h3>
             <p className="recommendation-hero__generic">{record.preferredRestriction}</p>
           </div>
         ) : (
@@ -152,8 +152,9 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
                 </li>
                 {record.noCoveredAgent ? (
                   <li>
-                    <b>Doctor:</b> no drug in this class is on this plan's list. Ask the plan about a
-                    formulary exception, or compare cash prices.
+                    <b>Doctor:</b> no drug in this class appears on this plan's list. That can mean an
+                    exclusion or a class the list doesn't manage; the note above says which. Confirm
+                    with the plan before requesting a formulary exception or using a cash price.
                   </li>
                 ) : record.boglActive ? (
                   <li>

@@ -335,6 +335,10 @@ describe('methylphenidate prices only the captured forms', () => {
     '%s has no borrowed price',
     (name) => expect(goodRxPrice(name)).toBeNull(),
   )
+  it('lisdexamfetamine chewables never borrow the capsule price', () => {
+    expect(goodRxPrice('Lisdexamfetamine chewable tablet (generic Vyvanse chewable)')).toBeNull()
+    expect(goodRxPrice('Lisdexamfetamine dimesylate')?.price).toBe(67.78)
+  })
   it('prices osmotic ER tablets and plain IR tablets', () => {
     expect(goodRxPrice('Methylphenidate hydrochloride extended-release (osmotic)')?.price).toBe(39.49)
     expect(goodRxPrice('Methylphenidate ER (osmotic tablet)')?.price).toBe(39.49)
