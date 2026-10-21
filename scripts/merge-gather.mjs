@@ -21,15 +21,19 @@ const PAYERS_FROM = arg('payers-from')
 const DRY = process.argv.includes('--dry-run')
 // --exclude-payers=a,b: leave payers out of the new guides (e.g. only a not-yet-effective list exists).
 const EXCLUDE = new Set((arg('exclude-payers') || '').split(',').filter(Boolean))
-if (!DIR || !STATE || !PAYERS_FROM) {
-  console.error('usage: --dir=<checkpoint dir> --state=<XX> --payers-from=<existing guide id> [--dry-run]')
+// --payers-file=<json> {region, payers:[...]} for a state with no guide yet (else --payers-from).
+const PAYERS_FILE = arg('payers-file')
+if (!DIR || !STATE || (!PAYERS_FROM && !PAYERS_FILE)) {
+  console.error('usage: --dir=<checkpoint dir> --state=<XX> (--payers-from=<guide id> | --payers-file=<json>) [--exclude-payers=a,b] [--dry-run]')
   process.exit(2)
 }
 
 const FORMULARY = 'src/data/formulary.json'
 const data = JSON.parse(readFileSync(FORMULARY, 'utf8'))
 const taxonomy = JSON.parse(readFileSync(join(DIR, 'taxonomy.json'), 'utf8'))
-const source = data.guides.find((g) => g.id === PAYERS_FROM)
+const source = PAYERS_FILE
+  ? { ...JSON.parse(readFileSync(PAYERS_FILE, 'utf8')), stateCode: STATE }
+  : data.guides.find((g) => g.id === PAYERS_FROM)
 if (!source) throw new Error(`no guide ${PAYERS_FROM}`)
 if (source.stateCode !== STATE) throw new Error(`${PAYERS_FROM} is ${source.stateCode}, not ${STATE}`)
 // A filtered COPY: never mutate the source guide, which is written back with the file.
