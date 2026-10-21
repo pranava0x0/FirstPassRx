@@ -354,3 +354,20 @@ describe('methylphenidate prices only the captured forms', () => {
     expect(goodRxPrice('Methylphenidate hydrochloride')?.price).toBe(25.78)
   })
 })
+
+// Codex review, PR 22: more dosage forms that must not borrow a tablet price.
+describe('form-specific prices for the new topics', () => {
+  it.each([
+    'Sumatriptan Succinate Subcutaneous Cartridge',
+    'Sumatriptan succinate subcutaneous solution',
+    'Amphetamine-dextroamphetamine CP24 capsule, 5/10/15/20/25/30 mg',
+    'Phendimetrazine Tartrate Capsule, Extended Release (105 mg)',
+    'Atorvastatin oral suspension (Atorvaliq)',
+    'Amphetamine sulfate ER oral suspension (Adzenys ER)',
+  ])('%s has no borrowed price', (name) => expect(goodRxPrice(name)).toBeNull())
+  it('the captured tablet forms keep their prices', () => {
+    expect(goodRxPrice('Sumatriptan succinate')?.price).toBe(29.85)
+    expect(goodRxPrice('Phendimetrazine tartrate')?.price).toBe(32.51)
+    expect(goodRxPrice('Atorvastatin calcium')?.price).toBe(15.24)
+  })
+})

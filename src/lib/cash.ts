@@ -359,8 +359,10 @@
  * 763 → 721: Texas gained its 7 original topics (inhalers … DOACs) for 3 payers (+), offset by
  * new prices for amphetamine sulfate, dextroamphetamine, phendimetrazine and orlistat, and
  * link-only Qulipta/Praluent rules (−).
- * 721 → 771: the four new topics shipped for TX (3 payers). */
-export const KNOWN_UNPRICED_GAP = 771
+ * 721 → 771: the four new topics shipped for TX (3 payers).
+ * 771 → 778: Codex review narrowed sumatriptan, mixed-salts IR, phendimetrazine, atorvastatin and
+ * amphetamine sulfate rules to their captured tablet forms; other forms are honestly unpriced. */
+export const KNOWN_UNPRICED_GAP = 778
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -434,7 +436,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   },
   {
     // Single-agent atorvastatin only; Caduet (amlodipine/atorvastatin) is a different product.
-    matches: /^(?!.*(amlodipine|caduet|ezetimibe)).*(atorvastatin|lipitor)/i,
+    matches: /^(?!.*(amlodipine|caduet|ezetimibe|suspension|atorvaliq)).*(atorvastatin|lipitor)/i,
     goodRxSlug: 'atorvastatin',
     goodRxParams: 'label_override=atorvastatin&form=tablet&dosage=40mg&quantity=30',
     costPlusPath: 'atorvastatin-40mg-tablet',
@@ -444,7 +446,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   },
   {
     // Oral tablets only; nasal, injectable, and sumatriptan/naproxen (Treximet) differ in price.
-    matches: /^(?!.*(naproxen|treximet|nasal|spray|inject|auto|statdose|zembrace|tosymra|onzetra)).*sumatriptan/i,
+    matches: /^(?!.*(naproxen|treximet|nasal|spray|inject|auto|statdose|zembrace|tosymra|onzetra|solution|cartridge|\bpen\b|subcutaneous|\bkit\b|syringe)).*sumatriptan/i,
     goodRxSlug: 'sumatriptan',
     goodRxParams: 'label_override=sumatriptan&form=tablet&dosage=50mg&quantity=9',
     goodRxPrice: { price: 29.85, quantity: '9 tablets, 50mg' },
@@ -479,7 +481,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   },
   {
     // Immediate-release mixed amphetamine salts; Adderall XR / Mydayis are different products.
-    matches: /^(?!.*(\bXR\b|extended|mydayis|\bER\b)).*(amphetamine.?dextroamphetamine|dextroamphetamine.?amphetamine|mixed amphetamine|amphetamine salt|adderall)/i,
+    matches: /^(?!.*(\bXR\b|extended|mydayis|\bER\b|capsule|\bCP24\b|\b24\b|24-hour)).*(amphetamine.?dextroamphetamine|dextroamphetamine.?amphetamine|mixed amphetamine|amphetamine salt|adderall)/i,
     goodRxSlug: 'amphetamine-dextroamphetamine',
     goodRxParams: 'label_override=amphetamine-dextroamphetamine&form=tablet&dosage=10mg&quantity=60',
     goodRxPrice: { price: 32.31, quantity: '60 tablets, 10mg IR' },
@@ -487,7 +489,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   },
   {
     // Single-agent amphetamine sulfate IR tablets (Evekeo); not mixed salts (matched above) or ODT/ER.
-    matches: /^(?!.*(dextro|lisdex|mixed|aspartate|\bODT\b|\bXR\b|\bER\b|extended)).*(amphetamine sulfate|evekeo)/i,
+    matches: /^(?!.*(dextro|lisdex|mixed|aspartate|\bODT\b|\bXR\b|\bER\b|extended|capsule|suspension|adzenys|dyanavel)).*(amphetamine sulfate|evekeo)/i,
     goodRxSlug: 'amphetamine-sulfate',
     goodRxParams: 'label_override=amphetamine-sulfate&form=tablet&dosage=10mg&quantity=60',
     goodRxPrice: { price: 53.18, quantity: '60 tablets, 10mg' },
@@ -502,7 +504,8 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-21',
   },
   {
-    matches: /phendimetrazine|bontril/i,
+    // 35 mg IR tablets only; the 105 mg extended-release capsule is a different product.
+    matches: /^(?!.*(capsule|extended|\bER\b|105)).*(phendimetrazine|bontril)/i,
     goodRxSlug: 'phendimetrazine',
     goodRxParams: 'label_override=phendimetrazine&form=tablet&dosage=35mg&quantity=90',
     goodRxPrice: { price: 32.51, quantity: '90 tablets, 35mg' },
