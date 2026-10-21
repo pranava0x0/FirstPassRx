@@ -76,8 +76,9 @@ Each item fits roughly one 20-minute run. Done items stay listed (struck) so the
 2. ~~ADHD / cholesterol / weight / migraine in every state~~ — done 2026-10-21.
 3. **PA approval criteria per PA-blocked drug, one Medicaid payer per run.** Done 2026-10-21 for
    the new topics in all 9 original states and for the original 8 topics in MA, PA, NY, AL, IL,
-   TX, MD (verified items only) and Medi-Cal (VA publishes none retrievable). Next: DC, FL, OH, NC
-   Medicaid, then commercial plans' published policies. Method:
+   TX, MD (verified items only) and Medi-Cal (VA publishes none retrievable). DC (GLP-1 only: DHCF's
+   general form has no criteria), FL and OH done 2026-10-21; NC's posted criteria are a 2024 DRAFT
+   (not applied) and the rest sit behind the MES login. Next: MI, then commercial plans' policies. Method:
    `data-gathering/pa-criteria-2026-10-21/{BRIEF.md,targets.json}` → Haiku extract → Sonnet
    adjudicate against the CURRENT document (it caught outdated bulletins, draft handbooks,
    wrong AND/OR logic, and generic form questions posing as criteria) →

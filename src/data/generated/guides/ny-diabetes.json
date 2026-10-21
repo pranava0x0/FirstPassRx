@@ -217,6 +217,15 @@
       "url": "https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf",
       "accessed": "2026-10-21",
       "effectiveDate": "2026-09-14"
+    },
+    {
+      "id": "ny-anthem-bcbs-select-2026-10",
+      "label": "Anthem Select Drug List, 3 Tier, New York individual (current as of 10/1/2026)",
+      "publisher": "Anthem Blue Cross and Blue Shield",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_3_Tier_NY_ABS_IND.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-21"
     }
   ],
   "glossary": [
@@ -1620,10 +1629,10 @@
       "paRequired": [
         {
           "drug": "Mounjaro / tirzepatide",
-          "outcome": "nonformulary",
-          "reason": "Brand and generic name absent from the entire 82-page document; not carried on this formulary",
+          "outcome": "pa",
+          "reason": "Tier 2; PA; QL (p. 23, list current as of 10/1/2026)",
           "sourceIds": [
-            "ny-anthem-bcbs-diabetes-source-2026-07"
+            "ny-anthem-bcbs-select-2026-10"
           ]
         },
         {
@@ -1654,7 +1663,7 @@
       "stepTherapy": null,
       "tier": "Tier 2 - higher cost share than Tier 1",
       "verification": "verified",
-      "verificationNote": "Read directly off page 23 of the fetched PDF, under *INCRETIN MIMETIC AGENTS (GLP-1 RECEPTOR AGONISTS)*, page footer 'Effective 07012026'. Exactly three products are listed in this subsection: liraglutide subcutaneous solution pen-injector, OZEMPIC in three dose-band SKUs, and TRULICITY subcutaneous solution auto-injector - all three at Tier 2 with 'PA; QL' in the Notes column, meaning every GLP-1 in this class requires prior authorization even at the preferred level (captured as preferredRestriction, not omitted). Searched the full document for 'tirzepatide' and 'MOUNJARO' - zero matches for either, confirming genuine absence rather than an extraction gap. Searched for 'VICTOZA' - zero matches, confirming only the generic-labeled liraglutide entry exists. Designating Trulicity/dulaglutide as the nominal 'preferred' pick is somewhat arbitrary since Ozempic and liraglutide carry an identical Tier 2/PA/QL profile with no tiebreaker language in the document; all three are effectively co-equal and captured as alternatives with the same restriction.",
+      "verificationNote": "Read directly off page 23 of the fetched PDF, under *INCRETIN MIMETIC AGENTS (GLP-1 RECEPTOR AGONISTS)*, page footer 'Effective 07012026'. Exactly three products are listed in this subsection: liraglutide subcutaneous solution pen-injector, OZEMPIC in three dose-band SKUs, and TRULICITY subcutaneous solution auto-injector - all three at Tier 2 with 'PA; QL' in the Notes column, meaning every GLP-1 in this class requires prior authorization even at the preferred level (captured as preferredRestriction, not omitted). Searched the full document for 'tirzepatide' and 'MOUNJARO' - zero matches for either, confirming genuine absence rather than an extraction gap. Searched for 'VICTOZA' - zero matches, confirming only the generic-labeled liraglutide entry exists. Designating Trulicity/dulaglutide as the nominal 'preferred' pick is somewhat arbitrary since Ozempic and liraglutide carry an identical Tier 2/PA/QL profile with no tiebreaker language in the document; all three are effectively co-equal and captured as alternatives with the same restriction. [Re-checked 2026-10-21 against the 10/1/2026 reissue: Mounjaro is now listed at Tier 2 with PA and QL (p. 23); earlier 'absent' reading applied to the 9/1/2026 list.]",
       "sourceIds": [
         "ny-anthem-bcbs-diabetes-source-2026-07"
       ],
