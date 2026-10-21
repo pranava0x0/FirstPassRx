@@ -707,3 +707,9 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   silently deleted Cigna from `md-ssris` and shipped a broken commit. `npm test` caught it only
   because `validate()` checks every record's payer exists — and `npx vitest` summary showed 162
   tests instead of ~1000; read the total, not just "passed".
+- **Correction (2026-10-21): "Ozempic tablets" (oral semaglutide 1.5 / 4 / 9 mg) is a real 2026
+  product.** The earlier note in this file (IL gather) called an "OZEMPIC TABS" PDL line a table
+  artifact because Ozempic had no tablet at the time; by October 2026 it appears in the DC PDL,
+  Florida Blue, Molina IL and IL HFS lists, and GoodRx's Ozempic page defaults to the tablet (see the
+  GoodRx note above). Treat it as a diabetes GLP-1 (never as weight-loss coverage). Re-check
+  "doesn't exist" drug-fact rules against current sources before telling agents to reject a line.
