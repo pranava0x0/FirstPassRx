@@ -93,24 +93,20 @@ Each item fits roughly one 20-minute run. Bigger items are split.
    (atomoxetine, guanfacine ER, viloxazine). Author the class taxonomy once, then go state by
    state from cached `sources/` documents, MA first (5 payers), then NY, MD, VA, IL, PA, AL,
    CA, TX. One state per run.
-3. **Statins / PCSK9 as a new topic** (same state-by-state method). Classes: high-intensity
-   statin, moderate statin, ezetimibe, PCSK9 mAb, inclisiran.
-4. **GLP-1 for weight management as a class inside the existing diabetes topic**
-   (Wegovy, Zepbound, Saxenda). Payers are dropping or restricting obesity coverage in 2026.
-   Many will simply say "excluded"; that's a valid cell (`nonformulary`). One state per run.
-5. **CGRP migraine** (gepants + CGRP mAbs). Brand-heavy, more PA criteria per cell. Later.
-6. **PA criteria + send-to, one state per run** (schema shipped 2026-10-21; MA inhalers done).
+3. *(Folded into #2 on 2026-10-21: statins/PCSK9, GLP-1 weight loss, and CGRP migraine shipped
+   as the `lipids`, `weight`, and `migraine` topics.)*
+4. **PA criteria + send-to, one state per run** (schema shipped 2026-10-21; MA inhalers done).
    For each payer: `paSubmission` (fax/phone/portal/ePA) from its PA form or provider page, and
    for each `paRequired` item, `criteria` + `criteriaMode` from the payer's PA policy, verbatim
    in substance, each with source ids. Medicaid first: one statewide PA criteria document covers
    every class (e.g. MassHealth's MHDL tables, PA DHS's PDL clinical criteria). Verify every
    number and criterion against the cached PDF text (pypdf) before merging; drop anything the
    document doesn't say (the 2026-10-21 run dropped an unverified "CoverMyMeds" for MGB).
-7. **Partial → verified upgrades:** `il-osteoporosis` (13 partial), `ny-osteoporosis` (6),
+5. **Partial → verified upgrades:** `il-osteoporosis` (13 partial), `ny-osteoporosis` (6),
    `ny-menopause` (5 example). Re-read the payer's own document; cache first.
-8. **Cash-price gaps** (`KNOWN_UNPRICED_GAP`): needs the real browser (GoodRx/Cost Plus
+6. **Cash-price gaps** (`KNOWN_UNPRICED_GAP`): needs the real browser (GoodRx/Cost Plus
    block fetch). Only when Claude in Chrome is connected.
-9. **Product items** from backlog.md "High" (PA form fill for MassHealth, criteria checklist per
+7. **Product items** from backlog.md "High" (PA form fill for MassHealth, criteria checklist per
    drug) only when the data queue is blocked.
 
 ## Ledger (append one line per run)
