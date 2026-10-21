@@ -225,10 +225,9 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   results table client-side via JS, so a plain fetch only ever sees the empty shell and every claim
   term looks "not found" regardless of whether the page actually changed. This makes the live drift
   report's dead/drift counts unreliable specifically for these 3 hosts — a real drift there would be
-  silently indistinguishable from this noise. _Open — see backlog.md for the fix (extend
-  `trace-sources.mjs`'s existing BLOCKED-host allowlist, same shape as the GoodRx/Cost Plus handling
-  in `validate-prices.mjs`, to cover these 3 hosts so future runs don't need a manual browser
-  re-check to clear them)._
+  silently indistinguishable from this noise. _Fixed 2026-10-21: `scripts/source-hosts.mjs` lists
+  browser-only hosts (fetch failure → BROWSER-ONLY, not DEAD) and JS-rendered hosts (content trace
+  skipped); `trace-sources.mjs` uses it; regression test `src/lib/source-hosts.test.ts`._
 - **2026-07-23 · process (archive-sources) · medicaid.alabama.gov 403s/fails the archiver's fetch
   even though the gather agent read the same PDFs successfully via curl.** `npm run archive-sources`
   reported 2 fetch failures after the `al-ssris` merge: `al-medicaid-ssris-source-2026-07` (the PDL
@@ -256,8 +255,8 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   85%-rate-limited 55-agent fan-out (see below), and not something the ≤2-concurrent cap was meant
   to fix. Root cause: **infra/connectivity**, not a code or scale bug. 1 of 8 payers (VA Medicaid
   FFS) completed successfully before the failures and is checkpointed at
-  `data-gathering/va-diabetes-2026-07-01/va-medicaid-ffs.json` (verified, all 4 classes). _Open —
-  see backlog.md for the resume plan._
+  `data-gathering/va-diabetes-2026-07-01/va-medicaid-ffs.json` (verified, all 4 classes). _Fixed:
+  `va-diabetes` shipped with all 8 payers (32 verified cells)._
 - **2026-07-01 · process (data gathering) · `data-gathering/` checkpoints referenced in
   backlog.md no longer existed on disk at the start of this session.** Both
   `data-gathering/va-diabetes-2026-07-01/` and `data-gathering/ny-ace-2026-07-01/`, which
@@ -269,22 +268,25 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   re-populated `data-gathering/va-diabetes-2026-07-01/` with 1 fresh, real payer checkpoint
   (`va-medicaid-ffs.json` — see the entry above); that directory is no longer empty as of this
   writing. `data-gathering/ny-ace-2026-07-01/` was **not** re-gathered this session and remains
-  empty/absent. _Open — NY ACE's other 5 payers still need a fresh gather; see backlog.md._
+  empty/absent. _Fixed: `ny-ace` shipped with 5 payers (all verified)._
 
 - **2026-06-28 · data (MA inhalers) · dead source citation.** `npm run trace:live` flags the MGB
   Fluticasone HFA PA Policy URL (`mgb-flut-hfa-pa`, cited by `mgb/ics`) as **HTTP 404** — the policy
   PDF moved on the MGB site. Root cause: **source drift** (the website changed), not a code bug.
   Fix: re-locate the current policy on the MGB pharmacy-policy index and update `meta.references`
-  for `mgb-flut-hfa-pa`. Out of this session's MD scope; logged for the MA pass. _Open._
+  for `mgb-flut-hfa-pa`. Out of this session's MD scope; logged for the MA pass. _Fixed: the cited
+  URL (`FluticasoneHFA_ComExch_Rx_09.01.2025.pdf`) returns 200 + a 175 KB PDF as of 2026-10-21._
 - **2026-06-28 · data (MA inhalers) · slow/JS-only sources.** `trace:live` also flags MassHealth
   PA-37 (timeout on the Conduent host) and the BCBS-MA / MassHealth-Table-23 / MGB-policy-index
   pages as content "drift" — they are JS-rendered portals, so the static HTML lacks the drug names.
-  Not broken, but un-traceable by static fetch; verify manually or via the source PDF. _Open._
+  Not broken, but un-traceable by static fetch; verify manually or via the source PDF. _Fixed
+  2026-10-21 by the host policy in `scripts/source-hosts.mjs` (see the 2026-08-03 entry)._
 - **2026-06-28 · CSS · dead rules after the result-card reflow.** The reflow (lead-with-table +
   appendix) orphaned several CSS rules now matched by nothing: `.cost-note*`, `.reject__intro`,
   `.coverage-panels` grid, `.coverage-panel--covered`, `.detail-stack` / `.detail-block` (RxSig moved
   into `.appendix__block`). Root cause: **refactor leftover** (not a runtime bug — harmless, just dead
-  code). Fix: prune in a CSS-cleanup pass; low priority. _Open._
+  code). Fix: prune in a CSS-cleanup pass; low priority. _Fixed 2026-10-21: removed 45 rules for 32
+  unused classes (−283 lines); dynamic `is-*`/`rx-tag--*` and the parked Search component's kept._
 - **2026-07-06 · data (cash prices) · NY payer-expansion added 64 more unpriced drug names.**
   Expanding `ny-ace`/`ny-nsaids` from 1→5 payers each surfaced each new payer's own long tail of
   ACE-inhibitor/NSAID brand and generic-form variants (ALTACE, VASOTEC, ZESTRIL, LOTENSIN family;
@@ -331,8 +333,8 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   returning per the `formulary-data` skill's design) instead of re-running — this is exactly the
   resilience the checkpoint-then-return pattern was built for. Result: shipped the one payer (NY
   Medicaid/NYRx) that had complete, dual-sourced data; held back VA and the other 5 NY payers
-  rather than fabricate or force incomplete cells past schema validation. _Open — remaining cells
-  need small-batch (≤2 concurrent) follow-up, see backlog.md._
+  rather than fabricate or force incomplete cells past schema validation. _Fixed: the VA and NY
+  guides later shipped complete via chunked gathers._
 - **2026-07-02 · process (data gathering) · VA diabetes gather: 2 of 8 payer agents died on the
   session usage limit; finished inline.** A fresh chunked Workflow (≤2 concurrent, 8 agents, one
   per payer) completed 6 payers cleanly; the final chunk (Sentara Commercial, Wellcare Value

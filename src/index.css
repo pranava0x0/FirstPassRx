@@ -147,33 +147,6 @@ button {
   color: var(--status-deny);
   font-size: 13px;
 }
-.masthead__subrow {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-top: 8px;
-}
-.masthead__stamp {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  text-transform: none;
-  color: var(--ink-muted);
-}
-.masthead__sub {
-  margin: 0;
-  font-size: 14.5px;
-  color: var(--ink-muted);
-  max-width: 60ch;
-}
-.masthead__audience {
-  margin: 8px 0 0;
-  font-size: 13px;
-  color: var(--ink);
-}
-.masthead__audience b {
-  font-weight: 500;
-}
 
 /* how-it-works disclosure */
 .how {
@@ -200,16 +173,6 @@ button {
 }
 .how[open] > summary::before {
   content: "▾";
-}
-.how__body {
-  margin: 8px 0 0;
-  font-size: 13.5px;
-  color: var(--ink-muted);
-  max-width: 66ch;
-}
-.how__body b {
-  font-weight: 500;
-  color: var(--ink);
 }
 
 .disclaimer-group {
@@ -365,16 +328,6 @@ button {
   border-top: 1px solid var(--rule-faint);
   margin: var(--section-spacing) 0;
 }
-.controls__legend {
-  display: block;
-  width: 100%;
-  margin: 0;
-  padding: 0 0 6px;
-  font-family: var(--font-serif);
-  font-size: clamp(18px, 4.5vw, 20px);
-  font-weight: 600;
-  color: var(--ink);
-}
 
 /* State + condition sit side by side as native selects: the OS picker is the best
    long-list chooser on a phone, and the pair costs one row instead of a screenful of
@@ -437,9 +390,6 @@ button {
   gap: 1px;
   background: var(--rule);
   border: 1px solid var(--rule);
-}
-.seg--spaced {
-  margin-top: 10px;
 }
 .seg__btn {
   min-height: 44px;
@@ -602,23 +552,6 @@ button {
 .recommendation-hero__cost b {
   color: var(--ink);
 }
-.recommendation-hero__cash {
-  display: flex;
-  gap: 8px;
-}
-.recommendation-hero__cash a {
-  color: var(--accent-deep);
-  font-weight: 500;
-}
-.agent__directions {
-  font-family: var(--font-sans);
-  font-size: 15px;
-  color: var(--ink);
-  margin: 8px 0 0;
-}
-.agent__directions b {
-  font-weight: 650;
-}
 .agent__plain {
   margin: 6px 0 0;
   font-size: 14px;
@@ -647,43 +580,6 @@ button {
 .patient-summary strong {
   font-weight: 650;
   color: var(--ink);
-}
-
-/* status stamps */
-.stamps {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.stamp {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-sans);
-  font-size: 13px;
-  letter-spacing: 0;
-  text-transform: none;
-  padding: 6px 9px;
-  border: 1.5px solid currentColor;
-  min-height: 32px;
-}
-.stamp--go {
-  color: var(--accent-deep);
-}
-.stamp--warn {
-  color: var(--status-warn);
-}
-.stamp--verify {
-  color: var(--ink-muted);
-}
-.stamp--verify.is-verified {
-  color: var(--accent-deep);
-}
-.stamp--verify.is-partial {
-  color: var(--status-warn);
-}
-.stamp--verify.is-example {
-  color: var(--status-deny);
 }
 
 /* BOGL banner */
@@ -783,57 +679,6 @@ button {
 }
 
 /* prior-auth reject list (ledger) */
-.reject__list {
-  list-style: none;
-  margin: 10px 0 0;
-  padding: 0;
-}
-.reject__row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  border-left: 3px solid var(--status-deny);
-  border-bottom: 1px solid var(--rule-faint);
-  padding: 9px 10px;
-  min-height: 40px;
-}
-.reject__row:last-child {
-  border-bottom: 0;
-}
-.reject__glyph {
-  color: var(--status-deny);
-  font-size: 13px;
-  flex: 0 0 auto;
-}
-.reject__drug {
-  flex: 1 1 auto;
-  min-width: 0;
-  font-size: 14px;
-  color: var(--ink);
-}
-.reject__reason {
-  font-size: 13px;
-  color: var(--status-deny);
-  flex: 0 0 190px;
-  text-align: right;
-}
-.reject__intro {
-  margin: 6px 0 0;
-  font-size: 13.5px;
-  color: var(--ink-muted);
-}
-.reject__none {
-  margin: 8px 0 0;
-  font-size: 13.5px;
-  color: var(--accent-deep);
-}
-.reject__head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  flex-wrap: wrap;
-}
 .appeal {
   margin-top: 10px;
   padding-top: 10px;
@@ -858,14 +703,6 @@ button {
   color: var(--paper);
   background: var(--accent-deep);
   border-color: var(--accent-deep);
-}
-.appeal-btn__chevron {
-  display: inline-block;
-  font-size: 10px;
-  transition: transform 0.15s ease;
-}
-.appeal-btn[aria-expanded='true'] .appeal-btn__chevron {
-  transform: rotate(180deg);
 }
 .appeal-panel {
   margin-top: 10px;
@@ -1144,72 +981,8 @@ button {
 }
 
 /* first-pass caption */
-.agent__why {
-  margin: 8px 0 0;
-  font-size: 13.5px;
-  color: var(--ink);
-}
 
 /* also-covered ladder (the middle rung) */
-.alts__list {
-  list-style: none;
-  margin: 10px 0 0;
-  padding: 0;
-}
-.alts__row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  border-left: 3px solid var(--accent);
-  border-bottom: 1px solid var(--rule-faint);
-  padding: 9px 10px;
-  min-height: 40px;
-}
-.alts__row:last-child {
-  border-bottom: 0;
-}
-.alts__glyph {
-  color: var(--accent);
-  font-size: 13px;
-  flex: 0 0 auto;
-}
-.alts__drug {
-  flex: 1 1 auto;
-  min-width: 0;
-  font-size: 14px;
-  color: var(--ink);
-}
-.alts__note {
-  font-size: 13px;
-  color: var(--accent-deep);
-  flex: 0 0 190px;
-  text-align: right;
-}
-.alts__none {
-  margin: 8px 0 0;
-  font-size: 13.5px;
-  color: var(--ink-muted);
-}
-
-/* coverage details: visible because this is the main patient action surface */
-.coverage-panels {
-  display: grid;
-  gap: 12px;
-}
-.coverage-panel {
-  border: 1px solid var(--rule);
-  background: var(--paper);
-  padding: 14px;
-}
-.coverage-panel--covered {
-  border-left: 4px solid var(--accent);
-}
-.coverage-panel--reject {
-  border-left: 4px solid var(--status-deny);
-}
-.coverage-panel .eyebrow {
-  margin: 0;
-}
 
 /* the "↗ source" link that ties a coverage claim to its cited formulary */
 .panel-cite {
@@ -1385,8 +1158,6 @@ button {
   border-color: var(--status-deny);
 }
 
-
-
 /* appendix: patient guidance, Rx text, full sources — collapsed by default */
 .appendix {
   border: 1px solid var(--rule);
@@ -1414,50 +1185,6 @@ button {
 }
 .appendix__block .eyebrow {
   margin: 0 0 4px;
-}
-
-/* secondary policy/source disclosure */
-.detail-stack {
-  display: grid;
-  gap: 8px;
-}
-.detail-block {
-  border: 1px solid var(--rule);
-  background: var(--paper);
-}
-.detail-block > summary {
-  padding: 12px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.2;
-}
-.detail-block > summary:hover {
-  background: var(--paper-shade);
-}
-.detail-block__body {
-  border-top: 1px solid var(--rule-faint);
-  padding: 12px;
-}
-.detail-block__body > section:first-child > .eyebrow,
-.detail-block__body > .eyebrow:first-child {
-  margin-top: 0;
-}
-.detail-count {
-  min-width: 28px;
-  height: 24px;
-  padding: 0 7px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--rule);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--ink-muted);
 }
 
 /* step therapy */
@@ -1594,20 +1321,6 @@ button {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-  }
-}
-
-@media (max-width: 520px) {
-  .alts__row,
-  .reject__row {
-    align-items: flex-start;
-    flex-wrap: wrap;
-  }
-  .alts__note,
-  .reject__reason {
-    flex-basis: 100%;
-    text-align: left;
-    padding-left: 23px;
   }
 }
 
