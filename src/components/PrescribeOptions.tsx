@@ -8,6 +8,7 @@ import { useCopyToClipboard } from '../lib/clipboard'
 import { SourceLink } from './SourceLink'
 import { CashPriceBoxes } from './CashPriceBoxes'
 import { AppealTips } from './AppealTips'
+import { PaRequest } from './PaRequest'
 
 /** Tag an option by what it is, read from the drug text / coverage note. */
 function roleOf(text: string): string {
@@ -77,7 +78,7 @@ export function PrescribeOptions({
   }
 
   return (
-    <section className="rx-options-stack" aria-label="Prescribing options">
+    <section id="rx-options" className="rx-options-stack" aria-label="Prescribing options">
       <div className="rx-options-stack__header">
         <h4 className="rx-options-stack__title">
           Alternatives
@@ -156,7 +157,8 @@ function AppealAction({
   drugClass: ClassMeta
 }) {
   const initial = buildAppealLetter(record, item, payer, drugClass)
-  const [open, setOpen] = useState(false)
+  const [mode, setMode] = useState<'request' | 'appeal' | null>(null)
+  const open = mode === 'appeal'
   const [value, setValue] = useState(initial)
   const [pdfError, setPdfError] = useState(false)
   const { copied, copy, reset } = useCopyToClipboard()
@@ -171,17 +173,29 @@ function AppealAction({
 
   return (
     <div className="appeal">
-      <button
-        type="button"
-        className="appeal-btn"
-        aria-expanded={open}
-        onClick={() => setOpen((v) => !v)}
-      >
-        {open ? 'Hide appeal letter' : 'Draft appeal letter'}
-        <span className="appeal-btn__chevron" aria-hidden="true">
-          &#9662;
-        </span>
-      </button>
+      <div className="appeal__buttons">
+        <button
+          type="button"
+          className="appeal-btn appeal-btn--primary pa-open-btn"
+          aria-expanded={mode === 'request'}
+          onClick={() => setMode((m) => (m === 'request' ? null : 'request'))}
+        >
+          {mode === 'request' ? 'Hide PA request' : 'Request PA'}
+          <span className="appeal-btn__who">prescriber</span>
+        </button>
+        <button
+          type="button"
+          className="appeal-btn"
+          aria-expanded={open}
+          onClick={() => setMode((m) => (m === 'appeal' ? null : 'appeal'))}
+        >
+          {open ? 'Hide appeal letter' : 'Draft appeal letter'}
+          <span className="appeal-btn__who">after a denial</span>
+        </button>
+      </div>
+      {mode === 'request' ? (
+        <PaRequest key={`${record.payerId}-${record.classId}-${item.drug}`} record={record} item={item} payer={payer} drugClass={drugClass} />
+      ) : null}
       {open ? (
         <div className="appeal-panel">
           <p className="appeal-panel__note">

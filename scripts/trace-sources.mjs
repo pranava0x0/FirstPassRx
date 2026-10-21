@@ -21,6 +21,7 @@
 import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
+import { hostPolicy, isInconclusive } from './source-hosts.mjs'
 
 const HERE = dirname(fileURLToPath(import.meta.url))
 const DATA = join(HERE, '..', 'src', 'data', 'formulary.json')
@@ -196,8 +197,12 @@ if (LIVE) {
   for (const r of results.sort((a, b) => a.url.localeCompare(b.url))) {
     const t = liveTargets.get(r.url)
     const isPdf = /\.pdf($|\?)/i.test(r.url) || /application\/pdf/i.test(r.type)
+    const policy = hostPolicy(r.url)
     let label
-    if (r.error) {
+    // Only inconclusive outcomes get the browser-only pass; a definitive 404/410 is still DEAD.
+    if (policy.browserOnly && isInconclusive(r.status, r.error)) {
+      label = c.yellow(`BROWSER-ONLY (${r.error ?? `HTTP ${r.status}`}; plain fetch can't reach this host — verify in a browser)`)
+    } else if (r.error) {
       label = c.red(`DEAD (${r.error})`)
       dead++
       if (STRICT) problems.push(`live: ${r.refId} unreachable (${r.error})`)
@@ -209,6 +214,8 @@ if (LIVE) {
       if (STRICT) problems.push(`live: ${r.refId} HTTP ${r.status}`)
     } else if (isPdf) {
       label = c.green('OK') + c.dim(' · PDF (reachable; content-trace needs a parser)')
+    } else if (r.text && policy.jsRendered) {
+      label = c.green(`OK (HTTP ${r.status})`) + c.dim(' · JS-rendered page; content not traceable by fetch')
     } else if (r.text) {
       // content trace: do the cited drug names still appear in the live HTML?
       const missing = [...t.citedTerms].filter((d) => coreToken(d) && !r.text.includes(coreToken(d)))

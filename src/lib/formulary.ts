@@ -300,13 +300,18 @@ function uniqueBy<T, K>(items: T[], key: (item: T) => K): T[] {
 export const stateOptions: StateOption[] = uniqueBy(
   guideOptions.map((g) => ({ code: g.stateCode, region: g.region })),
   (s) => s.code,
-)
+).sort((a, b) => a.region.localeCompare(b.region))
 
 /** Every prescription type that has at least one guide, in first-seen order — feeds the topic selector. */
 export const topicOptions: TopicOption[] = uniqueBy(
   guideOptions.map((g) => ({ id: g.topicId, label: g.topic })),
   (t) => t.id,
 )
+
+/** First topic (in topicOptions order) that has a guide for this state, if any. */
+export function firstTopicFor(stateCode: string): string | undefined {
+  return topicOptions.find((t) => findGuideId(stateCode, t.id) !== undefined)?.id
+}
 
 /** Resolves a (state, topic) pair to a guide id, or undefined if that combination isn't covered yet. */
 export function findGuideId(stateCode: string, topicId: string): string | undefined {

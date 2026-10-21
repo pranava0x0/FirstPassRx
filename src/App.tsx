@@ -4,6 +4,7 @@ import {
   GuideProvider,
   defaultGuideId,
   findGuideId,
+  firstTopicFor,
   getDefaultGuideView,
   guideOptions,
   loadGuideView,
@@ -17,17 +18,49 @@ import { ResultCard } from './components/ResultCard'
 // Note: the omni-search bar (src/components/Search.tsx) is parked pending a redesign — see backlog.md.
 
 const PANEL_ID = 'result-panel'
+const LAST_PICK_KEY = 'fprx:last-pick'
+
+interface Pick {
+  guideId: string
+  payerId?: string
+  classId?: string
+}
+
+// Browser storage can be missing or throw (private mode, blocked site data) — a lost
+// "remember my plan" must never break the page.
+function readLastPick(): Pick | null {
+  try {
+    const raw = window.localStorage.getItem(LAST_PICK_KEY)
+    if (!raw) return null
+    const parsed = JSON.parse(raw) as Partial<Pick>
+    return typeof parsed.guideId === 'string' ? (parsed as Pick) : null
+  } catch {
+    return null
+  }
+}
+
+function writeLastPick(pick: Pick): void {
+  try {
+    window.localStorage.setItem(LAST_PICK_KEY, JSON.stringify(pick))
+  } catch {
+    // Storage unavailable: the URL still carries the pick.
+  }
+}
 const tabId = (c: ClassId) => `tab-${c}`
 
 export default function App() {
-  function getInitialGuideId(): string {
-    if (typeof window === 'undefined') return defaultGuideId
+  // Where a returning prescriber left off: the URL wins (a shared link), then the last pick on
+  // this device (most prescribers repeat the same one or two plans all day), then the default.
+  function getInitialPick(): Pick {
+    if (typeof window === 'undefined') return { guideId: defaultGuideId }
     const params = new URLSearchParams(window.location.search)
     const gId = params.get('guide')
     if (gId && guideOptions.some((g) => g.id === gId)) {
-      return gId
+      return { guideId: gId, payerId: params.get('plan') ?? undefined, classId: params.get('class') ?? undefined }
     }
-    return defaultGuideId
+    const saved = readLastPick()
+    if (saved && guideOptions.some((g) => g.id === saved.guideId)) return saved
+    return { guideId: defaultGuideId }
   }
 
   const [selection, setSelection] = useState(() => {
@@ -54,10 +87,51 @@ export default function App() {
   const [topicId, setTopicId] = useState(defaultSummary.topicId)
   const activeGuideId = findGuideId(stateCode, topicId)
 
+  // False until a linked/remembered guide has finished loading, so the URL/storage sync below
+  // can't overwrite a shared link with the default guide during that first fetch.
+  const hydrated = useRef(false)
+
   useEffect(() => {
-    const initialGuideId = getInitialGuideId()
-    if (initialGuideId !== defaultGuideId) void switchGuide(initialGuideId, false)
+    const initial = getInitialPick()
+    hydrated.current = initial.guideId === defaultGuideId
+    if (initial.guideId !== defaultGuideId) void switchGuide(initial.guideId, false, initial)
+    else applyPick(guide, initial)
   }, [])
+
+  // Keep the plan + class in the URL (shareable, survives reload) and remember the pick on
+  // this device. Only once the loaded guide matches the picker, so a half-switched state
+  // never gets written.
+  useEffect(() => {
+    if (!hydrated.current || activeGuideId === undefined || activeGuideId !== guide.id) return
+    const url = new URL(window.location.href)
+    url.searchParams.set('guide', guide.id)
+    url.searchParams.set('plan', payerId)
+    url.searchParams.set('class', classId)
+    if (url.toString() !== window.location.href) window.history.replaceState({}, '', url.toString())
+    writeLastPick({ guideId: guide.id, payerId, classId })
+  }, [guide.id, payerId, classId, activeGuideId])
+
+  /** Apply a remembered plan/class to an already-loaded guide, ignoring ids it doesn't have. */
+  function applyPick(view: typeof guide, pick: Pick) {
+    const payerOk = pick.payerId && view.payers.some((p) => p.id === pick.payerId)
+    const classOk = pick.classId && view.activeClasses.some((c) => c.id === pick.classId)
+    if (!payerOk && !classOk) return
+    setSelection((current) => ({
+      ...current,
+      payerId: payerOk ? (pick.payerId as PayerId) : current.payerId,
+      classId: classOk ? (pick.classId as ClassId) : current.classId,
+    }))
+  }
+
+  // Changing state keeps the condition when that state has it; otherwise jump to the state's
+  // first available condition instead of landing on an empty "not covered" page.
+  function onState(code: string) {
+    setStateCode(code)
+    if (!findGuideId(code, topicId)) {
+      const fallback = firstTopicFor(code)
+      if (fallback) setTopicId(fallback)
+    }
+  }
 
   useEffect(() => {
     if (!activeGuideId) {
@@ -70,6 +144,8 @@ export default function App() {
       if (new URLSearchParams(window.location.search).has('guide')) {
         const url = new URL(window.location.href)
         url.searchParams.delete('guide')
+        url.searchParams.delete('plan')
+        url.searchParams.delete('class')
         window.history.replaceState({}, '', url.toString())
       }
       return
@@ -79,7 +155,7 @@ export default function App() {
 
   // Switching guide swaps the whole dataset (payers + classes differ), so reset the
   // selection to the new guide's defaults rather than carry a now-invalid payer/class.
-  async function switchGuide(id: string, updateUrl = true): Promise<void> {
+  async function switchGuide(id: string, updateUrl = true, pick?: Pick): Promise<void> {
     if (id === guide.id || loadingGuideId === id) return
     const request = ++guideRequest.current
     setLoadingGuideId(id)
@@ -87,10 +163,12 @@ export default function App() {
     try {
       const nextGuide = await loadGuideView(id)
       if (request !== guideRequest.current) return
+      const payerOk = pick?.payerId && nextGuide.payers.some((p) => p.id === pick.payerId)
+      const classOk = pick?.classId && nextGuide.activeClasses.some((c) => c.id === pick.classId)
       setSelection({
         guide: nextGuide,
-        payerId: nextGuide.payers[0]!.id,
-        classId: nextGuide.activeClasses[0]!.id,
+        payerId: payerOk ? (pick!.payerId as PayerId) : nextGuide.payers[0]!.id,
+        classId: classOk ? (pick!.classId as ClassId) : nextGuide.activeClasses[0]!.id,
       })
       // Move the tabs together with the content, never ahead of it (a no-op when this came
       // from the user picking these exact tabs; keeps them in sync on the initial URL load).
@@ -100,11 +178,14 @@ export default function App() {
       if (updateUrl) {
         const url = new URL(window.location.href)
         url.searchParams.set('guide', id)
+        url.searchParams.delete('plan')
+        url.searchParams.delete('class')
         window.history.pushState({}, '', url.toString())
       }
     } catch {
       if (request === guideRequest.current) setGuideLoadError(true)
     } finally {
+      hydrated.current = true
       if (request === guideRequest.current) setLoadingGuideId(null)
     }
   }
@@ -148,7 +229,7 @@ export default function App() {
             topicOptions={topicOptions}
             stateCode={stateCode}
             topicId={topicId}
-            onState={setStateCode}
+            onState={onState}
             onTopic={setTopicId}
             loadingGuideId={loadingGuideId}
             guideLoadError={guideLoadError}

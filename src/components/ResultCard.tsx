@@ -30,6 +30,7 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
   const goodRxPoint = goodRxPrice(agent.inn)
   const costPlusPoint = costPlusPrice(agent.inn)
   const pricesAsOf = pricesCapturedAt(agent.inn)
+  const blocked = (record.paRequired ?? []).map((r) => r.drug)
 
   // Clean lowercase generic name without salt/device suffixes, for the BOGL "write brand, not
   // generic X" copy (e.g. "Albuterol sulfate HFA" -> "albuterol").
@@ -101,6 +102,13 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
               </b>
             </span>
           </div>
+          {blocked.length > 0 ? (
+            <p className="pa-summary">
+              <b>Needs plan approval:</b> {blocked.slice(0, 3).join(', ')}
+              {blocked.length > 3 ? ` +${blocked.length - 3} more` : ''}{' '}
+              <a href="#rx-options">PA request ↓</a>
+            </p>
+          ) : null}
           <CashPriceBoxes
             goodRxHref={goodRxUrl(agent.inn)}
             goodRx={goodRxPoint}

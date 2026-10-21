@@ -1,7 +1,7 @@
 import type { KeyboardEvent } from 'react'
 import type { ClassId, PayerId } from '../types/formulary'
 import type { StateOption, TopicOption } from '../lib/formulary'
-import { useGuide } from '../lib/formulary'
+import { findGuideId, useGuide } from '../lib/formulary'
 
 interface Props {
   payerId: PayerId
@@ -56,83 +56,53 @@ export function Controls({
     document.getElementById(tabId(next.id))?.focus()
   }
 
-  const stateTabId = (code: string) => `state-tab-${code}`
-  const topicTabId = (id: string) => `topic-tab-${id}`
-
-  // Same roving-tabindex pattern as the class tabs above, over the state list instead.
-  function onStateKeyDown(e: KeyboardEvent<HTMLButtonElement>) {
-    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return
-    e.preventDefault()
-    const idx = stateOptions.findIndex((s) => s.code === stateCode)
-    if (idx === -1) return
-    const dir = e.key === 'ArrowRight' ? 1 : -1
-    const next = stateOptions[(idx + dir + stateOptions.length) % stateOptions.length]
-    if (!next) return
-    onState(next.code)
-    document.getElementById(stateTabId(next.code))?.focus()
-  }
-
-  // Same roving-tabindex pattern as the class tabs above, over the topic list instead.
-  function onTopicKeyDown(e: KeyboardEvent<HTMLButtonElement>) {
-    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return
-    e.preventDefault()
-    const idx = topicOptions.findIndex((t) => t.id === topicId)
-    if (idx === -1) return
-    const dir = e.key === 'ArrowRight' ? 1 : -1
-    const next = topicOptions[(idx + dir + topicOptions.length) % topicOptions.length]
-    if (!next) return
-    onTopic(next.id)
-    document.getElementById(topicTabId(next.id))?.focus()
-  }
+  const topicAvailable = (id: string) => findGuideId(stateCode, id) !== undefined
+  const loading = loadingGuideId !== null
 
   return (
     <div className="controls">
-      <section className="controls__group" aria-labelledby="sec-location-title">
-        <h2 id="sec-location-title" className="controls__legend eyebrow">1. State &amp; therapeutic area</h2>
-        <div className="seg" role="tablist" aria-label="State" aria-busy={loadingGuideId !== null}>
-          {stateOptions.map((s) => {
-            const selected = s.code === stateCode
-            return (
-              <button
-                key={s.code}
-                id={stateTabId(s.code)}
-                type="button"
-                className="seg__btn"
-                role="tab"
-                aria-selected={selected}
-                tabIndex={selected ? 0 : -1}
-                disabled={loadingGuideId !== null}
-                onClick={() => onState(s.code)}
-                onKeyDown={onStateKeyDown}
-              >
-                <span className="seg__abbr">{s.region}</span>
-              </button>
-            )
-          })}
+      <section className="controls__group picker" aria-label="State and condition" aria-busy={loading}>
+        <div className="picker__field">
+          <label htmlFor="state-select" className="picker__label">
+            State
+          </label>
+          <select
+            id="state-select"
+            className="plan-select"
+            value={stateCode}
+            disabled={loading}
+            onChange={(e) => onState(e.target.value)}
+          >
+            {stateOptions.map((s) => (
+              <option key={s.code} value={s.code}>
+                {s.region}
+              </option>
+            ))}
+          </select>
         </div>
-        <div className="seg seg--spaced" role="tablist" aria-label="Therapeutic area" aria-busy={loadingGuideId !== null}>
-          {topicOptions.map((t) => {
-            const selected = t.id === topicId
-            return (
-              <button
-                key={t.id}
-                id={topicTabId(t.id)}
-                type="button"
-                className="seg__btn"
-                role="tab"
-                aria-selected={selected}
-                tabIndex={selected ? 0 : -1}
-                disabled={loadingGuideId !== null}
-                onClick={() => onTopic(t.id)}
-                onKeyDown={onTopicKeyDown}
-              >
-                <span className="seg__abbr">{t.label}</span>
-              </button>
-            )
-          })}
+        <div className="picker__field">
+          <label htmlFor="topic-select" className="picker__label">
+            Condition
+          </label>
+          <select
+            id="topic-select"
+            className="plan-select"
+            value={topicId}
+            disabled={loading}
+            onChange={(e) => onTopic(e.target.value)}
+          >
+            {topicOptions.map((t) => {
+              const available = topicAvailable(t.id)
+              return (
+                <option key={t.id} value={t.id} disabled={!available}>
+                  {available ? t.label : `${t.label} (not yet)`}
+                </option>
+              )
+            })}
+          </select>
         </div>
         {guideLoadError ? (
-          <p className="guide-load-error" role="alert">
+          <p className="guide-load-error picker__wide" role="alert">
             This guide could not load. Check your connection and try again.
           </p>
         ) : null}
@@ -140,15 +110,13 @@ export function Controls({
 
       {hasGuide && (
         <>
-          <hr className="section-divider" />
-
-          <section className="controls__group" aria-labelledby="sec-plan-title">
-            <h2 id="sec-plan-title" className="controls__legend eyebrow">2. Insurance plan</h2>
-            <label htmlFor="plan-select" className="sr-only">
-              Select insurance plan
+          <section className="controls__group controls__group--plan">
+            <label htmlFor="plan-select" className="picker__label">
+              Insurance plan
             </label>
             <select
               id="plan-select"
+              aria-label="Select insurance plan"
               className="plan-select"
               value={payerId}
               onChange={(e) => onPayer(e.target.value as PayerId)}
@@ -161,11 +129,8 @@ export function Controls({
             </select>
             {payer && (
               <p className="plan-note">
-                {payer.productName} · {payer.formularyId}
-                {payer.aka || payer.pbm ? ' · ' : ''}
-                {payer.aka ? payer.aka : ''}
-                {payer.aka && payer.pbm ? ' · ' : ''}
-                {payer.pbm ? `PBM: ${payer.pbm}` : ''}
+                {payer.formularyId}
+                {payer.pbm ? ` · PBM: ${payer.pbm}` : ''}
                 {payer.formularyUrl ? (
                   <>
                     {' · '}
@@ -174,20 +139,21 @@ export function Controls({
                       href={payer.formularyUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      title="Official plan formulary page"
+                      title="Official plan formulary"
                     >
                       source plan &#8599;
                     </a>
                   </>
                 ) : null}
+                {/* Who the plan also covers (e.g. every Medicaid MCO under a statewide PDL) must
+                    stay visible: a tooltip never shows on a phone. */}
+                {payer.aka ? <span className="plan-note__aka">{payer.aka}</span> : null}
               </p>
             )}
           </section>
 
-          <hr className="section-divider" />
-
-          <section className="controls__group" aria-labelledby="sec-class-title">
-            <h2 id="sec-class-title" className="controls__legend eyebrow">3. {classNoun}</h2>
+          <section className="controls__group controls__group--class" aria-labelledby="sec-class-title">
+            <h2 id="sec-class-title" className="picker__label">{classNoun}</h2>
             <div className="seg" role="tablist" aria-label={classNoun}>
               {allClasses.map((c) => {
                 if (c.comingSoon) {
@@ -229,10 +195,7 @@ export function Controls({
               })}
             </div>
             {activeClass && (
-              <p className="seg__desc">
-                <span className="indication">{activeClass.plainName}</span>{' '}
-                {activeClass.plainDescription}
-              </p>
+              <p className="seg__desc">{activeClass.plainDescription}</p>
             )}
           </section>
         </>
