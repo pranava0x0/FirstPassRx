@@ -713,3 +713,28 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   Florida Blue, Molina IL and IL HFS lists, and GoodRx's Ozempic page defaults to the tablet (see the
   GoodRx note above). Treat it as a diabetes GLP-1 (never as weight-loss coverage). Re-check
   "doesn't exist" drug-fact rules against current sources before telling agents to reject a line.
+- **Deterministic audit loop (2026-10-22): extract → audit → agents review only flagged checks →
+  apply.** `python3 scripts/source_rows.py <url>` caches a cited formulary and extracts rows
+  (tier/PA/ST/QL by column; MassHealth HTML entity-safe); `node scripts/audit-cells.mjs --state=XX`
+  checks every preferred agent, PA item and alternative against those rows; reviewers write a fixes
+  file for `node scripts/apply-cell-fixes.mjs` (exact names, audit note, validated write). The first
+  MA run passed 1,832 of 2,020 checks and flagged 153 — reviewing 153 rows with the source text in
+  hand is far cheaper than re-gathering 305 cells. See docs/data-audit.md.
+- **Never strip HTML with a regex that treats "<" as a tag start.** The first MassHealth parse
+  dropped everything after a bare "<", so "PA - < 6 years" read as plain PA for every adult on
+  duloxetine, trazodone, alprazolam and gabapentin. Use html.parser/html.unescape on raw bytes.
+- **Copy-ready sigs come from one reviewed label table, not from gather agents.** Agents wrote
+  "standard label dosing" that was often a single fixed dose (10 mg zolpidem for women, 900 mg/day
+  gabapentin with no titration, Risperdal Consta without the 3-week oral overlap, aripiprazole 5 mg
+  for schizophrenia). `node scripts/apply-label-sigs.mjs --state=XX --topics=...` applies
+  scripts/data/label-sigs.json (first match wins; optional strength regex; unmatched listed).
+  Name a pick precisely ("...extended-release (XL)") — a bare or "XL/SR-type" name matched the
+  wrong formulation's row twice in one review.
+- **GoodRx: the in-app browser was blocked after one read on 2026-10-22; the user's Chrome session
+  read 28 pages cleanly.** Extract only the price with javascript_tool
+  (`/STANDARD GOODRX PRICE\s*\$\s*([\d,.]+)/`) and print `location.pathname` to catch redirects —
+  `metoprolol-tartrate` silently redirected to the ER page. Output containing `location.search` is
+  blocked by the tool's privacy filter. Each adalimumab biosimilar has its own GoodRx page.
+- **Archived HTML can carry live third-party tokens.** Box-hosted IL criteria pages embedded a
+  preview read token, a request token and signed avatar URLs; scripts/redact-secrets.mjs now masks
+  those shapes and a test scans every committed archive.

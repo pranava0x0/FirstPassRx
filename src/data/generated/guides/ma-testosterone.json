@@ -1,0 +1,759 @@
+{
+  "id": "ma-testosterone",
+  "label": "MA · Testosterone",
+  "stateCode": "MA",
+  "region": "Massachusetts",
+  "topicId": "testosterone",
+  "topic": "Testosterone",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-22",
+  "capturedAt": "2026-10-22",
+  "payers": [
+    {
+      "id": "masshealth",
+      "name": "MassHealth",
+      "shortName": "MassHealth",
+      "aka": "Massachusetts Medicaid",
+      "pbm": "Conduent (PBA)",
+      "formularyUrl": "https://mhdl.pharmacy.services.conduent.com/MHDL/pubtheradetail.do?id=91",
+      "paPolicyUrl": "https://mhdl.pharmacy.services.conduent.com/MHDL/pubpa.do?category=Prior+Authorization+Forms+for+Pharmacy+Services",
+      "productName": "MassHealth fee-for-service pharmacy benefit",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "MassHealth Drug List, Table 55: Androgens",
+      "sourceIds": [
+        "masshealth-next11-2026-10-t91"
+      ]
+    },
+    {
+      "id": "bcbsma",
+      "name": "Blue Cross Blue Shield of Massachusetts",
+      "shortName": "BCBS MA",
+      "aka": "Blue Cross",
+      "pbm": "CVS Caremark",
+      "formularyUrl": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-000720261-standard-control-with-advanced-control-specialty-formulary-comprehensive-covered-medication-list-july-2026.pdf",
+      "productName": "Standard Control with Advanced Control Specialty Formulary (CVS Caremark)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Standard Control with Advanced Control Specialty Formulary, Comprehensive Covered Medication List (effective 07/01/2026)",
+      "sourceIds": [
+        "bcbsma-next11-2026-10"
+      ]
+    },
+    {
+      "id": "tufts",
+      "name": "Tufts Health Plan",
+      "shortName": "Tufts",
+      "aka": "Point32Health",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://contenthub-aem.optumrx.com/content/dam/contenthub/rx-assets/en/documents/clients/harvard-pilgrim/p32-formulary-documents/2026/P32H-Value-Direct-3T-Comprehensive-Tufts.pdf",
+      "paPolicyUrl": "https://www.point32health.org/documents/hphc-ma-std-pa-form-medication",
+      "productName": "Tufts Value Direct 3-Tier",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Prescription drug list, Direct 3-Tier (effective Jan. 1, 2026; footers show last update 10/15/26); as of 10/15/26",
+      "sourceIds": [
+        "tufts-next11-2026-10"
+      ]
+    },
+    {
+      "id": "harvardpilgrim",
+      "name": "Harvard Pilgrim Health Care",
+      "shortName": "Harvard Pilgrim",
+      "aka": "Point32Health",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://contenthub-aem.optumrx.com/content/dam/contenthub/rx-assets/en/documents/clients/harvard-pilgrim/hphc-formulary-documents/2026-oe/HPHC-Select-3T-Comprehensive.pdf",
+      "paPolicyUrl": "https://www.point32health.org/documents/hphc-ma-std-pa-form-medication",
+      "productName": "Harvard Pilgrim Select 3-Tier",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Harvard Pilgrim Select 3-Tier 2026 Prescription Drug List (comprehensive), created Oct. 1, 2025; Last Update 10/15/26",
+      "sourceIds": [
+        "harvardpilgrim-next11-2026-10"
+      ]
+    },
+    {
+      "id": "mgb",
+      "name": "Mass General Brigham Health Plan",
+      "shortName": "MGB Health Plan",
+      "aka": "formerly AllWays / Neighborhood Health Plan",
+      "pbm": "Optum Rx",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/192/20266T.pdf",
+      "paPolicyUrl": "https://massgeneralbrighamhealthplan.org/providers/pharmacy-guidelines/commercial",
+      "productName": "MGB Health Plan 6-Tier commercial formulary",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Mass General Brigham Health Plan 2026 6 Tier Pharmacy Formulary (current as of 10/1/2026)",
+      "sourceIds": [
+        "mgb-next11-2026-10"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "testosterone",
+      "name": "Testosterone replacement",
+      "shortName": "TRT",
+      "plainName": "Testosterone gel, shot or pill",
+      "description": "Testosterone gel/solution (AndroGel, Testim, Fortesta, Vogelxo, generic 1%/1.62%), injections (cypionate, enanthate, Xyosted, Aveed undecanoate), patch (Androderm), oral undecanoate (Jatenzo, Tlando, Kyzatrex), nasal (Natesto), pellets (Testopel).",
+      "plainDescription": "Testosterone replacement for low testosterone, as a gel, shot or pill.",
+      "indication": "Male hypogonadism",
+      "sourceIds": [
+        "masshealth-next11-2026-10-t91"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone cypionate injection",
+        "brand": "Depo-Testosterone",
+        "genericAvailable": true,
+        "strength": "200 mg/mL (standard label strength; not printed in MHDL)",
+        "sig": "50-400 mg IM every 2 to 4 weeks, adjusted to keep morning testosterone in the normal range (label).",
+        "sigShort": "IM q2-4wk, dose per labs",
+        "plainSig": "A shot every 2 to 4 weeks; your prescriber sets the dose from blood tests."
+      },
+      "preferredRestriction": "PA required: appropriate diagnosis and two low total testosterone results (under 300 ng/dL) drawn within 3 months of each other, per MHDL androgen criteria",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "MHDL: PA",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Testosterone enanthate injection (Xyosted and generic)",
+          "outcome": "pa",
+          "reason": "PA at any age; Xyosted also needs a trial of testosterone cypionate and enanthate injection (or needle phobia plus two topical trials)",
+          "sourceIds": [
+            "masshealth-next11-2026-10-t91"
+          ],
+          "criteria": [
+            "Adult hypogonadism: two total testosterone levels under 300 ng/dL (3 months apart at most, within a year of the request); Xyosted also: failed cypionate and enanthate (90 days), or needle phobia plus two failed topicals.",
+            "Delayed puberty or pediatric hypogonadism: pediatric endocrinologist prescribing, Tanner stage I-II or other delayed-puberty signs, and one total testosterone below 300 ng/dL within a year.",
+            "Gender dysphoria, transgenderism, or therapy after gender reassignment surgery: diagnosis documented; testosterone levels not required."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "masshealth-pa-criteria-testosterone-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone undecanoate injection (Aveed)",
+          "outcome": "pa",
+          "reason": "PA required (MHDL 'PA'); provider-administered, medical benefit (MB) flag",
+          "sourceIds": [
+            "masshealth-next11-2026-10-t91"
+          ],
+          "criteria": [
+            "Adult hypogonadism: two total testosterone levels under 300 ng/dL (3 months apart at most, within a year of the request); failed cypionate and enanthate injections (90+ days).",
+            "Delayed puberty or pediatric hypogonadism: pediatric endocrinologist prescribing, Tanner stage I-II or other delayed-puberty signs, and one total testosterone below 300 ng/dL within a year.",
+            "Gender dysphoria, transgenderism, or therapy after gender reassignment surgery: diagnosis documented; testosterone levels not required."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "masshealth-pa-criteria-testosterone-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone undecanoate capsule (Jatenzo, Tlando)",
+          "outcome": "pa",
+          "reason": "PA required (MHDL 'PA')",
+          "sourceIds": [
+            "masshealth-next11-2026-10-t91"
+          ],
+          "criteria": [
+            "Adult hypogonadism: two total testosterone levels under 300 ng/dL (3 months apart at most, within a year of the request); failed two non-injectable products (90+ days) or contraindicated to all.",
+            "Delayed puberty or pediatric hypogonadism: pediatric endocrinologist prescribing, Tanner stage I-II or other delayed-puberty signs, and one total testosterone below 300 ng/dL within a year.",
+            "Gender dysphoria, transgenderism, or therapy after gender reassignment surgery: diagnosis documented; testosterone levels not required."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "masshealth-pa-criteria-testosterone-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone nasal gel (Natesto)",
+          "outcome": "pa",
+          "reason": "PA required (MHDL 'PA')",
+          "sourceIds": [
+            "masshealth-next11-2026-10-t91"
+          ],
+          "criteria": [
+            "Adult hypogonadism: two total testosterone levels under 300 ng/dL (3 months apart at most, within a year of the request).",
+            "Delayed puberty or pediatric hypogonadism: pediatric endocrinologist prescribing, Tanner stage I-II or other delayed-puberty signs, and one total testosterone below 300 ng/dL within a year.",
+            "Gender dysphoria, transgenderism, or therapy after gender reassignment surgery: diagnosis documented; testosterone levels not required."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "masshealth-pa-criteria-testosterone-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone intramuscular pellet (Testopel)",
+          "outcome": "pa",
+          "reason": "PA required (MHDL 'PA')",
+          "sourceIds": [
+            "masshealth-next11-2026-10-t91"
+          ],
+          "criteria": [
+            "Adult hypogonadism: two total testosterone levels under 300 ng/dL (3 months apart at most, within a year of the request).",
+            "Delayed puberty or pediatric hypogonadism: pediatric endocrinologist prescribing, Tanner stage I-II or other delayed-puberty signs, and one total testosterone below 300 ng/dL within a year.",
+            "Gender dysphoria, transgenderism, or therapy after gender reassignment surgery: diagnosis documented; testosterone levels not required."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "masshealth-pa-criteria-testosterone-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone 1% gel (Testim)",
+          "outcome": "pa",
+          "reason": "PA required (MHDL 'PA'; BP flag = brand preferred over generic equivalents)",
+          "sourceIds": [
+            "masshealth-next11-2026-10-t91"
+          ],
+          "criteria": [
+            "Adult hypogonadism: two total testosterone levels under 300 ng/dL (3 months apart at most, within a year of the request).",
+            "Delayed puberty or pediatric hypogonadism: pediatric endocrinologist prescribing, Tanner stage I-II or other delayed-puberty signs, and one total testosterone below 300 ng/dL within a year.",
+            "Gender dysphoria, transgenderism, or therapy after gender reassignment surgery: diagnosis documented; testosterone levels not required."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "masshealth-pa-criteria-testosterone-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone 1%/1.62% gel packet or pump (generic)",
+          "outcome": "pa",
+          "reason": "PA required (MHDL 'PA')",
+          "sourceIds": [
+            "masshealth-next11-2026-10-t91"
+          ],
+          "criteria": [
+            "Adult hypogonadism: two total testosterone levels under 300 ng/dL (3 months apart at most, within a year of the request).",
+            "Delayed puberty or pediatric hypogonadism: pediatric endocrinologist prescribing, Tanner stage I-II or other delayed-puberty signs, and one total testosterone below 300 ng/dL within a year.",
+            "Gender dysphoria, transgenderism, or therapy after gender reassignment surgery: diagnosis documented; testosterone levels not required."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "masshealth-pa-criteria-testosterone-2026-10"
+          ]
+        },
+        {
+          "drug": "Azmiro (testosterone cypionate)",
+          "outcome": "pa",
+          "reason": "PA required (MHDL 'PA'); two low-testosterone lab results under 300 ng/dL",
+          "sourceIds": [
+            "masshealth-next11-2026-10-t91"
+          ],
+          "criteria": [
+            "Adult hypogonadism: two total testosterone levels under 300 ng/dL (3 months apart at most, within a year of the request); failed or contraindicated to enanthate injection.",
+            "Delayed puberty or pediatric hypogonadism: pediatric endocrinologist prescribing, Tanner stage I-II or other delayed-puberty signs, and one total testosterone below 300 ng/dL within a year.",
+            "Gender dysphoria, transgenderism, or therapy after gender reassignment surgery: diagnosis documented; testosterone levels not required."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "masshealth-pa-criteria-testosterone-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": "Several androgen products require a trial or contraindication to testosterone cypionate injection and/or enanthate injection (MHDL Androgens criteria). Two dated lab tests (within 3 months, drawn within 1 year, total testosterone under 300 ng/dL) are required for the Azmiro criteria.",
+      "verification": "verified",
+      "verificationNote": "Testosterone cypionate chosen as preferred agent because other androgen criteria reference it as the baseline product. The cypionate-specific criteria paragraph was only partly read; the lab criteria shown are from the Azmiro paragraph and the general androgen language. Pediatric paragraphs (delayed puberty, hypogonadism under 18) exist but do not apply to adult preferred pick. Aveed carries the MB flag, so it may fall under the medical benefit. [Sonnet check 2026-10-22: Table 55 (id 91) criteria re-read: testosterone cypionate needs appropriate diagnosis and two total-testosterone results under 300 ng/dL dated at most 3 months apart and drawn within a year; SmartPA may auto-process with a history of hypogonadism claims. Depo-Testosterone and generic share one PA row. Pediatric hypogonadism and gender dysphoria have separate criteria. Chosen over oral methyltestosterone (plain PA, needs failed Jatenzo/Tlando plus two non-injectable trials). Upgraded to verified.] [2026-10-22 review: sig replaced with label dosing by indication/titration.]",
+      "sourceIds": [
+        "masshealth-next11-2026-10-t91"
+      ],
+      "coverageSourceIds": [
+        "masshealth-next11-2026-10-t91"
+      ],
+      "restrictionSourceIds": [
+        "masshealth-next11-2026-10-t91"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "masshealth",
+      "preferredCriteria": [
+        "Adult hypogonadism: two total testosterone levels under 300 ng/dL (3 months apart at most, within a year of the request).",
+        "Delayed puberty or pediatric hypogonadism: pediatric endocrinologist prescribing, Tanner stage I-II or other delayed-puberty signs, and one total testosterone below 300 ng/dL within a year.",
+        "Gender dysphoria, transgenderism, or therapy after gender reassignment surgery: diagnosis documented; testosterone levels not required."
+      ],
+      "preferredCriteriaMode": "any",
+      "preferredCriteriaSourceIds": [
+        "masshealth-pa-criteria-testosterone-2026-10"
+      ]
+    },
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone cypionate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/mL injection",
+        "sig": "50-400 mg IM every 2 to 4 weeks, adjusted to keep morning testosterone in the normal range (label).",
+        "sigShort": "IM q2-4wk, dose per labs",
+        "plainSig": "A shot every 2 to 4 weeks; your prescriber sets the dose from blood tests."
+      },
+      "preferredRestriction": "PA required (p. 28). The list prints no PA criteria.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Methyltestosterone capsules 10 mg and Methitest tablets 10 mg",
+          "note": "Tier 1 (generic), no PA (p. 28); oral methyltestosterone is rarely used for testosterone replacement (liver toxicity), so it is not the pick",
+          "sourceIds": [
+            "bcbsma-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Testosterone enanthate injection 200 mg/mL",
+          "outcome": "pa",
+          "reason": "PA required (p. 28)",
+          "sourceIds": [
+            "bcbsma-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Depo-Testosterone (testosterone cypionate) 100 and 200 mg/mL",
+          "outcome": "pa",
+          "reason": "PA required (p. 28); same drug as the pick, printed on its own row",
+          "sourceIds": [
+            "bcbsma-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone gel 1% and 1.62% and other generic gel/solution strengths",
+          "outcome": "pa",
+          "reason": "PA required (p. 28). The row also prints 'Except authorized generics for TESTIM and VOGELXO'; the list does not say whether those are exempt from PA or excluded, so confirm with the plan",
+          "sourceIds": [
+            "bcbsma-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Natesto nasal gel (brand)",
+          "outcome": "pa",
+          "reason": "PA required, Tier 2 brand (p. 28)",
+          "sourceIds": [
+            "bcbsma-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read p. 28. Methyltestosterone capsules (and Methitest tablets) are the only no-PA androgens on the list, so the preferred pick follows the no-PA rule. Judgment call: injectable testosterone is the more common first-line therapy and it carries PA here. Xyosted, Aveed, Jatenzo, Tlando, Kyzatrex, Androderm, Testopel and Azmiro are not printed; list is not complete, so unconfirmed. Injectable forms may be provider-administered and billed under the medical benefit, which the list does not state. [Sonnet check 2026-10-22: re-read p. 28. Pick changed from oral methyltestosterone (no PA but not a standard TRT product) to testosterone cypionate injection, the standard first-line product, with its PA in preferredRestriction. Methyltestosterone and Methitest moved to alternatives. Gel row 'Except authorized generics for TESTIM and VOGELXO' is unexplained, so partial. Cypionate may be self-injected or clinic-given; the list does not say.] [2026-10-22 review: sig replaced with label dosing by indication/titration.]",
+      "sourceIds": [
+        "bcbsma-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbsma-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbsma-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "bcbsma"
+    },
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone cypionate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/mL injection",
+        "sig": "50-400 mg IM every 2 to 4 weeks, adjusted to keep morning testosterone in the normal range (label).",
+        "sigShort": "IM q2-4wk, dose per labs",
+        "plainSig": "A shot every 2 to 4 weeks; your prescriber sets the dose from blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 ($)",
+      "alternatives": [
+        {
+          "drug": "Testosterone cypionate injection 100 mg/mL",
+          "note": "Tier 1 ($), no PA printed (p. 103)",
+          "sourceIds": [
+            "tufts-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone enanthate injection 200 mg/mL",
+          "note": "Tier 1 ($), no PA printed (p. 103)",
+          "sourceIds": [
+            "tufts-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone transdermal gel 1% and 1.62% (generic strengths)",
+          "note": "Tier 1 ($), no PA printed (p. 103)",
+          "sourceIds": [
+            "tufts-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone transdermal solution 30 mg/actuation",
+          "note": "Tier 1 ($), no PA printed (p. 103)",
+          "sourceIds": [
+            "tufts-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone transdermal gel 1.62% (20.25 mg/1.25 g and 40.5 mg/2.5 g)",
+          "note": "Tier 2 ($$), no PA printed (p. 103)",
+          "sourceIds": [
+            "tufts-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Kyzatrex (testosterone undecanoate) capsules",
+          "outcome": "pa",
+          "reason": "PA required (p. 103)",
+          "sourceIds": [
+            "tufts-next11-2026-10"
+          ],
+          "criteria": [
+            "Patient is 18 years of age or older",
+            "Documented diagnosis of ONE of: primary or hypogonadotropic hypogonadism, gender affirmation/post gender-affirming surgery, metastatic breast cancer, delayed puberty, or AIDS wasting syndrome",
+            "Inadequate response, intolerance, or contraindication to BOTH a generic testosterone intramuscular injection (e.g., cypionate) AND a generic testosterone topical gel or solution"
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "tufts-pa-criteria-testosterone-2026-10"
+          ]
+        },
+        {
+          "drug": "Methitest (methyltestosterone) tablets",
+          "outcome": "pa",
+          "reason": "PA required (p. 103)",
+          "sourceIds": [
+            "tufts-next11-2026-10"
+          ],
+          "criteria": [
+            "Path 1: diagnosis of hereditary angioedema (HAE)",
+            "Path 2, ALL of: hypogonadism, FTM gender dysphoria or metastatic breast cancer; age 18+; failed/intolerant/contraindicated to generic IM testosterone AND topical gel/solution; tablets: also methyltestosterone capsule"
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "tufts-pa-criteria-testosterone-2026-10-methyltestosterone"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read p. 103 (Hormonal Agents - Men's Health). Testosterone cypionate 200 mg/mL is Tier 1 with no PA or QL printed. Xyosted, Aveed, Jatenzo, Tlando, Natesto, Androderm, Fortesta, Testim, AndroGel and Testopel are not printed; unconfirmed, not nonformulary. Aveed and Testopel are provider-administered and may sit under the medical benefit, which this document does not show. [2026-10-22 review: sig replaced with label dosing by indication/titration.]",
+      "sourceIds": [
+        "tufts-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tufts-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tufts-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "tufts"
+    },
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone cypionate (intramuscular injection)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/mL",
+        "sig": "50-400 mg IM every 2 to 4 weeks, adjusted to keep morning testosterone in the normal range (label).",
+        "sigShort": "IM q2-4wk, dose per labs",
+        "plainSig": "A shot every 2 to 4 weeks; your prescriber sets the dose from blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Testosterone cypionate IM 100 mg/mL",
+          "note": "Tier 1, no PA or QL printed (p. 111)",
+          "sourceIds": [
+            "harvardpilgrim-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone enanthate IM 200 mg/mL",
+          "note": "Tier 1, no PA or QL printed (p. 111)",
+          "sourceIds": [
+            "harvardpilgrim-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone transdermal gel 1% and 1.62% (generic, 12.5 to 50 mg packets/pump)",
+          "note": "Tier 1, no PA or QL printed (p. 111)",
+          "sourceIds": [
+            "harvardpilgrim-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone transdermal gel 1.62% (20.25 mg/1.25 g, 40.5 mg/2.5 g)",
+          "note": "Tier 2, no PA or QL printed (p. 111)",
+          "sourceIds": [
+            "harvardpilgrim-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone transdermal solution 30 mg/actuation",
+          "note": "Tier 1, no PA or QL printed (p. 111)",
+          "sourceIds": [
+            "harvardpilgrim-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Kyzatrex (testosterone undecanoate oral capsules) 150, 200 mg",
+          "outcome": "pa",
+          "reason": "PA required (p. 110); Tier 3 brand",
+          "sourceIds": [
+            "harvardpilgrim-next11-2026-10"
+          ],
+          "criteria": [
+            "Patient is 18 years of age or older",
+            "Documented diagnosis of ONE of: primary or hypogonadotropic hypogonadism, gender affirmation/post gender-affirming surgery, metastatic breast cancer, delayed puberty, or AIDS wasting syndrome",
+            "Inadequate response, intolerance, or contraindication to BOTH a generic testosterone intramuscular injection (e.g., cypionate) AND a generic testosterone topical gel or solution"
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "harvardpilgrim-pa-criteria-testosterone-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read pp. 110-111 (Hormonal Agents, Men's Health). Testosterone cypionate 200 mg/mL chosen as the standard covered injectable: Tier 1, no PA or QL printed. Oral methyltestosterone (Methitest, p. 111, Tier 3, PA) is outside the class description and not chosen. C-III; no quantity limit printed, none recorded. Xyosted, Aveed, Jatenzo, Tlando, Testopel, Androderm and Natesto are not printed. Aveed and Testopel are provider-administered and may sit under the medical benefit; the document does not say. [2026-10-22 review: sig replaced with label dosing by indication/titration.]",
+      "sourceIds": [
+        "harvardpilgrim-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "harvardpilgrim-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "harvardpilgrim-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "harvardpilgrim"
+    },
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone cypionate",
+        "brand": "Depo-Testosterone",
+        "genericAvailable": true,
+        "strength": "200 mg/mL (100 mg/mL also listed)",
+        "sig": "50-400 mg IM every 2 to 4 weeks, adjusted to keep morning testosterone in the normal range (label).",
+        "sigShort": "IM q2-4wk, dose per labs",
+        "plainSig": "A shot every 2 to 4 weeks; your prescriber sets the dose from blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2",
+      "alternatives": [
+        {
+          "drug": "Testosterone enanthate IM solution",
+          "note": "Tier 2, no PA/QL printed (page 110)",
+          "sourceIds": [
+            "mgb-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone transdermal gel 1% (Testim row)",
+          "note": "Tier 2, no PA/QL printed (page 110)",
+          "sourceIds": [
+            "mgb-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone transdermal gel 1% pump (Vogelxo row)",
+          "note": "Tier 2, no PA/QL printed (page 110)",
+          "sourceIds": [
+            "mgb-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone transdermal gel 2%/1% (generic)",
+          "note": "Tier 2, no PA/QL printed (page 110)",
+          "sourceIds": [
+            "mgb-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Methyltestosterone oral (Methitest)",
+          "note": "Tier 3, no PA/QL printed (page 73); oral methyltestosterone is not the standard replacement product",
+          "sourceIds": [
+            "mgb-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Testosterone transdermal gel 1.62% pump (AndroGel)",
+          "outcome": "step",
+          "reason": "ST flag on list; step criteria not printed in this document (page 110)",
+          "sourceIds": [
+            "mgb-next11-2026-10"
+          ],
+          "criteria": [
+            "Inadequate response, adverse reaction, or contraindication to two different first-line testosterone agents",
+            "Inadequate response, adverse reaction, or contraindication to one second-line testosterone agent",
+            "Member new to the plan within the past 90 days and currently receiving the drug (samples and manufacturer assistance excluded)"
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "mgb-pa-criteria-testosterone-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone transdermal gel 1.62% 40.5 mg/2.5 g",
+          "outcome": "step",
+          "reason": "ST flag on list; step criteria not printed in this document (page 110)",
+          "sourceIds": [
+            "mgb-next11-2026-10"
+          ],
+          "criteria": [
+            "Inadequate response, adverse reaction, or contraindication to two different first-line testosterone agents",
+            "Inadequate response, adverse reaction, or contraindication to one second-line testosterone agent",
+            "Member new to the plan within the past 90 days and currently receiving the drug (samples and manufacturer assistance excluded)"
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "mgb-pa-criteria-testosterone-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone transdermal solution",
+          "outcome": "step",
+          "reason": "ST flag on list; step criteria not printed in this document (page 110)",
+          "sourceIds": [
+            "mgb-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": "Step therapy flag on AndroGel 1.62%, testosterone gel 40.5 mg/2.5 g and transdermal solution (page 110); criteria not printed in this document.",
+      "verification": "verified",
+      "verificationNote": "Testosterone cypionate row (page 110): Tier 2 with Depo-Testosterone brand on same row, no PA/ST/QL printed. Chosen as the standard injectable replacement product prescribers write. BOGL not set: brand and generic share one Tier 2 row. Aveed, Xyosted, Androderm, Jatenzo, Tlando, Kyzatrex, Natesto, Testopel are not on this list; not inferred excluded. Clinic-administered injection benefit not stated in this document. [Sonnet check 2026-10-22: Corrected: Methitest (methyltestosterone) IS on the list at Tier 3 (page 73), listed as an alternative but not picked; testosterone cypionate (Tier 2, no PA/ST/QL, page 110) stays the standard pick.] [2026-10-22 review: sig replaced with label dosing by indication/titration.]",
+      "sourceIds": [
+        "mgb-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "mgb-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "mgb-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "mgb"
+    }
+  ],
+  "references": [
+    {
+      "id": "masshealth-next11-2026-10-t91",
+      "label": "MassHealth Drug List, Table 55: Androgens",
+      "publisher": "MassHealth (MHDL, administered by Conduent)",
+      "type": "gov",
+      "url": "https://mhdl.pharmacy.services.conduent.com/MHDL/pubtheradetail.do?id=91",
+      "accessed": "2026-10-21",
+      "effectiveDate": "2026-10-05"
+    },
+    {
+      "id": "bcbsma-next11-2026-10",
+      "label": "Standard Control with Advanced Control Specialty Formulary, Comprehensive Covered Medication List (effective 07/01/2026)",
+      "publisher": "Blue Cross Blue Shield of Massachusetts (pharmacy benefit administered by CVS Caremark)",
+      "type": "payer",
+      "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-000720261-standard-control-with-advanced-control-specialty-formulary-comprehensive-covered-medication-list-july-2026.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "tufts-next11-2026-10",
+      "label": "Prescription drug list, Direct 3-Tier (effective Jan. 1, 2026; footers show last update 10/15/26); as of 10/15/26",
+      "publisher": "Tufts Health Plan (Point32Health), pharmacy benefit administered by OptumRx",
+      "type": "payer",
+      "url": "https://contenthub-aem.optumrx.com/content/dam/contenthub/rx-assets/en/documents/clients/harvard-pilgrim/p32-formulary-documents/2026/P32H-Value-Direct-3T-Comprehensive-Tufts.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "harvardpilgrim-next11-2026-10",
+      "label": "Harvard Pilgrim Select 3-Tier 2026 Prescription Drug List (comprehensive), created Oct. 1, 2025; Last Update 10/15/26",
+      "publisher": "Harvard Pilgrim Health Care (Point32Health), administered by Optum Rx",
+      "type": "payer",
+      "url": "https://contenthub-aem.optumrx.com/content/dam/contenthub/rx-assets/en/documents/clients/harvard-pilgrim/hphc-formulary-documents/2026-oe/HPHC-Select-3T-Comprehensive.pdf",
+      "effectiveDate": "2026-10-15",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "mgb-next11-2026-10",
+      "label": "Mass General Brigham Health Plan 2026 6 Tier Pharmacy Formulary (current as of 10/1/2026)",
+      "publisher": "Mass General Brigham Health Plan",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/192/20266T.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "mgb-pa-criteria-testosterone-2026-10",
+      "label": "MGB Pharmacy Policy: Testosterone step therapy (Commercial), effective 07/01/2026",
+      "publisher": "Mass General Brigham Health Plan",
+      "type": "payer",
+      "url": "https://resources.massgeneralbrighamhealthplan.org/pharmacy/PharmacyPolicies/CommercialPolicies/Testosterone_ST_ComExch_Rx_07.01.2026.pdf",
+      "accessed": "2026-10-21",
+      "effectiveDate": "2026-07-01"
+    },
+    {
+      "id": "tufts-pa-criteria-testosterone-2026-10",
+      "label": "Testosterone Products Pharmacy Medical Necessity Guideline (Kyzatrex; methyltestosterone), effective 06/09/2026",
+      "publisher": "Point32Health (Harvard Pilgrim / Tufts Health Plan)",
+      "type": "payer",
+      "url": "https://wwwassets.point32health.org/documents/testosterone-products-comm-pmng",
+      "accessed": "2026-10-21",
+      "effectiveDate": "2026-06-09"
+    },
+    {
+      "id": "tufts-pa-criteria-testosterone-2026-10-methyltestosterone",
+      "label": "Testosterone Products Pharmacy Medical Necessity Guideline (Kyzatrex; methyltestosterone), effective 06/09/2026",
+      "publisher": "Point32Health (Harvard Pilgrim / Tufts Health Plan)",
+      "type": "payer",
+      "url": "https://wwwassets.point32health.org/documents/testosterone-products-comm-pmng",
+      "accessed": "2026-10-21",
+      "effectiveDate": "2026-06-09"
+    },
+    {
+      "id": "harvardpilgrim-pa-criteria-testosterone-2026-10",
+      "label": "Testosterone Products Pharmacy Medical Necessity Guideline (Kyzatrex; methyltestosterone), effective 06/09/2026",
+      "publisher": "Point32Health (Harvard Pilgrim / Tufts Health Plan)",
+      "type": "payer",
+      "url": "https://wwwassets.point32health.org/documents/testosterone-products-comm-pmng",
+      "accessed": "2026-10-21",
+      "effectiveDate": "2026-06-09"
+    },
+    {
+      "id": "masshealth-pa-criteria-testosterone-2026-10",
+      "label": "MassHealth Drug List: Androgens, Section III Evaluation Criteria for Approval",
+      "publisher": "MassHealth (Massachusetts Medicaid)",
+      "type": "gov",
+      "url": "https://mhdl.pharmacy.services.conduent.com/MHDL/pubtheradetail.do?id=91",
+      "accessed": "2026-10-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

@@ -213,6 +213,17 @@ describe('guides + global meta', () => {
       'tn-lipids',
       'tn-weight',
       'tn-migraine',
+      'ma-antipsychotics',
+      'ma-antidepressants',
+      'ma-dermatology',
+      'ma-sleep-anxiety',
+      'ma-immunology',
+      'ma-pain',
+      'ma-testosterone',
+      'ma-oab',
+      'ma-hypertension',
+      'ma-hiv',
+      'ma-hepatitis-c',
     ])
   })
 

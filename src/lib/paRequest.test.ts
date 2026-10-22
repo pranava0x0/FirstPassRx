@@ -206,6 +206,30 @@ describe('ICD-10 suggestions', () => {
     // E78.01 is a non-billable header in FY2027 (split into E78.010/.011/.019).
     expect(Object.values(ICD10_BY_CLASS).flat().some((o) => o.code === 'E78.01')).toBe(false)
   })
+  it('suggests only diagnoses the requested drug is labeled for (Codex review, PR 23)', () => {
+    const codes = (cls: string, drug: string) => icd10For(cls, drug).map((o) => o.code)
+    expect(codes('antipsychotic-oral', 'Paliperidone ER (Invega)')).not.toContain('F33.1')
+    expect(codes('antipsychotic-oral', 'Clozapine tablet (generic)')).toEqual(['F20.9'])
+    expect(codes('il17-il23', 'Ixekizumab (Taltz)')).not.toContain('K50.90')
+    expect(codes('il17-il23', 'Ustekinumab-kfce')).toContain('K50.90')
+    expect(codes('jak-inhibitor', 'Tofacitinib')).not.toContain('L40.0')
+    expect(codes('antipsychotic-lai', 'Aristada (aripiprazole lauroxil)')).toEqual(['F20.9'])
+    expect(codes('antipsychotic-lai', 'Perseris (risperidone)')).toEqual(['F20.9'])
+    expect(codes('tnf-inhibitor', 'Enbrel (etanercept)')).not.toContain('K50.90')
+    expect(codes('tnf-inhibitor', 'Adalimumab-adaz')).toContain('K51.90')
+    expect(codes('tnf-inhibitor', 'Simponi Aria (golimumab IV)')).not.toContain('K51.90')
+  })
+  it('every JAK, IL-17/23 and TNF drug in the MA guides has its own diagnosis list', async () => {
+    const { default: raw } = await import('../data/formulary.json')
+    const unmapped = new Set<string>()
+    for (const g of (raw as unknown as { guides: { id: string; records: FormularyRecord[] }[] }).guides)
+      for (const r of g.records) {
+        if (!['jak-inhibitor', 'il17-il23', 'tnf-inhibitor'].includes(r.classId)) continue
+        for (const n of [r.preferredAgent.inn, ...r.paRequired.map((x) => x.drug), ...(r.alternatives ?? []).map((x) => x.drug)])
+          if (icd10For(r.classId, n) === ICD10_BY_CLASS[r.classId]) unmapped.add(n)
+      }
+    expect([...unmapped]).toEqual([])
+  })
   it('records which official release the list was checked against', () => {
     expect(ICD10_RELEASE.version).toMatch(/FY20\d\d/)
     expect(ICD10_RELEASE.source).toMatch(/^https:\/\/www\.cms\.gov\//)

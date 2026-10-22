@@ -1,0 +1,583 @@
+{
+  "id": "ma-hepatitis-c",
+  "label": "MA · Hepatitis C",
+  "stateCode": "MA",
+  "region": "Massachusetts",
+  "topicId": "hepatitis-c",
+  "topic": "Hepatitis C",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-22",
+  "capturedAt": "2026-10-22",
+  "payers": [
+    {
+      "id": "masshealth",
+      "name": "MassHealth",
+      "shortName": "MassHealth",
+      "aka": "Massachusetts Medicaid",
+      "pbm": "Conduent (PBA)",
+      "formularyUrl": "https://mhdl.pharmacy.services.conduent.com/MHDL/pubtheradetail.do?id=44",
+      "paPolicyUrl": "https://mhdl.pharmacy.services.conduent.com/MHDL/pubpa.do?category=Prior+Authorization+Forms+for+Pharmacy+Services",
+      "productName": "MassHealth fee-for-service pharmacy benefit",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "MassHealth Drug List, Table 44: Hepatitis Antiviral Agents",
+      "sourceIds": [
+        "masshealth-next11-2026-10-t44"
+      ]
+    },
+    {
+      "id": "bcbsma",
+      "name": "Blue Cross Blue Shield of Massachusetts",
+      "shortName": "BCBS MA",
+      "aka": "Blue Cross",
+      "pbm": "CVS Caremark",
+      "formularyUrl": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-000720261-standard-control-with-advanced-control-specialty-formulary-comprehensive-covered-medication-list-july-2026.pdf",
+      "productName": "Standard Control with Advanced Control Specialty Formulary (CVS Caremark)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Standard Control with Advanced Control Specialty Formulary, Comprehensive Covered Medication List (effective 07/01/2026)",
+      "sourceIds": [
+        "bcbsma-next11-2026-10"
+      ]
+    },
+    {
+      "id": "tufts",
+      "name": "Tufts Health Plan",
+      "shortName": "Tufts",
+      "aka": "Point32Health",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://contenthub-aem.optumrx.com/content/dam/contenthub/rx-assets/en/documents/clients/harvard-pilgrim/p32-formulary-documents/2026/P32H-Value-Direct-3T-Comprehensive-Tufts.pdf",
+      "paPolicyUrl": "https://www.point32health.org/documents/hphc-ma-std-pa-form-medication",
+      "productName": "Tufts Value Direct 3-Tier",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Prescription drug list, Direct 3-Tier (effective Jan. 1, 2026; footers show last update 10/15/26); as of 10/15/26",
+      "sourceIds": [
+        "tufts-next11-2026-10"
+      ]
+    },
+    {
+      "id": "harvardpilgrim",
+      "name": "Harvard Pilgrim Health Care",
+      "shortName": "Harvard Pilgrim",
+      "aka": "Point32Health",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://contenthub-aem.optumrx.com/content/dam/contenthub/rx-assets/en/documents/clients/harvard-pilgrim/hphc-formulary-documents/2026-oe/HPHC-Select-3T-Comprehensive.pdf",
+      "paPolicyUrl": "https://www.point32health.org/documents/hphc-ma-std-pa-form-medication",
+      "productName": "Harvard Pilgrim Select 3-Tier",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Harvard Pilgrim Select 3-Tier 2026 Prescription Drug List (comprehensive), created Oct. 1, 2025; Last Update 10/15/26",
+      "sourceIds": [
+        "harvardpilgrim-next11-2026-10"
+      ]
+    },
+    {
+      "id": "mgb",
+      "name": "Mass General Brigham Health Plan",
+      "shortName": "MGB Health Plan",
+      "aka": "formerly AllWays / Neighborhood Health Plan",
+      "pbm": "Optum Rx",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/192/20266T.pdf",
+      "paPolicyUrl": "https://massgeneralbrighamhealthplan.org/providers/pharmacy-guidelines/commercial",
+      "productName": "MGB Health Plan 6-Tier commercial formulary",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Mass General Brigham Health Plan 2026 6 Tier Pharmacy Formulary (current as of 10/1/2026)",
+      "sourceIds": [
+        "mgb-next11-2026-10"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "hcv-daa",
+      "name": "Hepatitis C direct-acting antivirals",
+      "shortName": "DAA",
+      "plainName": "Hepatitis C cure pills",
+      "description": "Sofosbuvir/velpatasvir (Epclusa and authorized generic), glecaprevir/pibrentasvir (Mavyret), ledipasvir/sofosbuvir (Harvoni and authorized generic), sofosbuvir/velpatasvir/voxilaprevir (Vosevi), elbasvir/grazoprevir (Zepatier).",
+      "plainDescription": "An 8 to 12 week course of pills that cures hepatitis C.",
+      "indication": "Chronic hepatitis C",
+      "sourceIds": [
+        "masshealth-next11-2026-10-t44"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "hcv-daa",
+      "preferredAgent": {
+        "inn": "Sofosbuvir/velpatasvir",
+        "brand": "Epclusa",
+        "genericAvailable": true,
+        "strength": "400 mg/100 mg tablet (label strength; MHDL does not print strength)",
+        "sig": "No cirrhosis or compensated cirrhosis: 1 tablet once daily for 12 weeks. Decompensated cirrhosis (Child-Pugh B or C): 1 tablet once daily plus weight-based ribavirin for 12 weeks (label).",
+        "sigShort": "1 tab QD x12 wk (+ribavirin if decompensated)",
+        "plainSig": "One pill a day for 12 weeks; people with advanced liver scarring also take ribavirin."
+      },
+      "preferredRestriction": "PA required (MHDL HCV PA form paId 14). Sofosbuvir/velpatasvir for 12 weeks is a preferred regimen in the MHDL Single Agents grid for GT1 naive non-cirrhotic (and other genotypes listed)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "MHDL: PD (preferred drug marker), PA required",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Glecaprevir/pibrentasvir (Mavyret)",
+          "outcome": "pa",
+          "reason": "PA required (MHDL PA form paId 14)",
+          "sourceIds": [
+            "masshealth-next11-2026-10-t44"
+          ],
+          "criteria": [
+            "Treatment-naive, with or without compensated cirrhosis (including post-transplant): diagnosis of hepatitis C, genotype 1-6.",
+            "Treatment-experienced (interferon, ribavirin, or sofosbuvir-based only), with or without compensated cirrhosis: genotype 1-6 plus fibrosis staging records (FIB-4, etc.) showing F0-F4 or cirrhosis.",
+            "Genotype 1 after failure of sofosbuvir plus simeprevir, a protease inhibitor regimen, or an NS5A inhibitor: fibrosis staging records (FIB-4, etc.) showing F0-F4 or cirrhosis.",
+            "Prior Mavyret or Vosevi failure: regimen of glecaprevir/pibrentasvir plus sofosbuvir and ribavirin, fibrosis staging records (FIB-4, etc.), and no decompensated cirrhosis."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "masshealth-pa-criteria-hepatitis-c-2026-10"
+          ]
+        },
+        {
+          "drug": "Ledipasvir/sofosbuvir (Harvoni)",
+          "outcome": "pa",
+          "reason": "PA required (MHDL PA form paId 14)",
+          "sourceIds": [
+            "masshealth-next11-2026-10-t44"
+          ],
+          "criteria": [
+            "Treatment-naive, no cirrhosis (genotype 1, 4, 5, 6): fibrosis staging records (FIB-4, etc.) at F0-F3; genotype 1 viral load 6 million IU/mL or higher, or genotype 4-6 adults: rationale vs sofosbuvir/velpatasvir.",
+            "Treatment-naive with compensated cirrhosis, or experienced (interferon, protease inhibitor) without cirrhosis: fibrosis staging records (FIB-4, etc.); adults need rationale for use instead of sofosbuvir/velpatasvir.",
+            "Treatment-experienced with compensated cirrhosis: fibrosis staging records (FIB-4, etc.) and rationale vs sofosbuvir/velpatasvir (adults); genotype 1 adults add ribavirin or give rationale for 24 weeks without it.",
+            "Decompensated cirrhosis (CTP B or C): rationale vs sofosbuvir/velpatasvir, not post liver or kidney transplant, fibrosis staging records (FIB-4, etc.), and a ribavirin-containing regimen (or ribavirin contraindicated)."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "masshealth-pa-criteria-hepatitis-c-2026-10"
+          ]
+        },
+        {
+          "drug": "Sofosbuvir/velpatasvir/voxilaprevir (Vosevi)",
+          "outcome": "pa",
+          "reason": "PA required (MHDL PA form paId 14)",
+          "sourceIds": [
+            "masshealth-next11-2026-10-t44"
+          ],
+          "criteria": [
+            "Failed an NS5A inhibitor (genotype 1-6, with or without compensated cirrhosis): fibrosis staging records (FIB-4, etc.); genotype 3 with compensated cirrhosis needs ribavirin.",
+            "Failed sofosbuvir without an NS5A inhibitor (genotype 1a or 3): fibrosis staging records (FIB-4, etc.).",
+            "Prior Mavyret or Vosevi failure: fibrosis staging records (FIB-4, etc.), no decompensated cirrhosis; after Vosevi or Mavyret plus Sovaldi failure, ribavirin and rationale vs Mavyret plus Sovaldi plus ribavirin.",
+            "Post liver or kidney transplant after sofosbuvir or NS5A failure: fibrosis staging records (FIB-4, etc.); ribavirin if compensated cirrhosis; genotype 1 or 3 after sofosbuvir-only failure needs rationale vs Mavyret."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "masshealth-pa-criteria-hepatitis-c-2026-10"
+          ]
+        },
+        {
+          "drug": "Elbasvir/grazoprevir (Zepatier)",
+          "outcome": "pa",
+          "reason": "PA required (MHDL PA form paId 14)",
+          "sourceIds": [
+            "masshealth-next11-2026-10-t44"
+          ],
+          "criteria": [
+            "Genotype 1 or 4: contraindication to all combination products FDA-approved for that genotype (treatment-naive, or failed peginterferon and ribavirin only for genotype 1).",
+            "Fibrosis staging records (FIB-4, etc.) showing F0-F4, and no decompensated cirrhosis.",
+            "Genotype 1a: NS5A resistance testing at positions 28, 30, 31, 93; if substitutions are present, a ribavirin-containing regimen.",
+            "After a protease inhibitor plus peginterferon and ribavirin (genotype 1): ribavirin-containing regimen required."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "masshealth-pa-criteria-hepatitis-c-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": "PA criteria vary by genotype, treatment history and cirrhosis status (MHDL Table 44 Single Agents grid). The grid lists Mavyret, ledipasvir/sofosbuvir and sofosbuvir/velpatasvir as preferred regimens for GT1 naive non-cirrhotic patients.",
+      "verification": "verified",
+      "verificationNote": "Read MHDL Table 44 directly. All five DAA products carry PA (form 14). The Single Agents grid names the preferred regimens by genotype. Epclusa chosen as the preferred pick (taxonomy names the authorized generic; the MHDL row lists the generic name sofosbuvir/velpatasvir). No covered DAA without PA exists in this table. [Sonnet check 2026-10-22: Table 44 marks Epclusa, Mavyret and Harvoni all PD; every DAA still carries PA (PA form 14).] [2026-10-22 review: sig replaced with label dosing by indication/titration.]",
+      "sourceIds": [
+        "masshealth-next11-2026-10-t44"
+      ],
+      "coverageSourceIds": [
+        "masshealth-next11-2026-10-t44"
+      ],
+      "restrictionSourceIds": [
+        "masshealth-next11-2026-10-t44"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "masshealth",
+      "preferredCriteria": [
+        "Treatment-naive, with or without compensated cirrhosis: diagnosis of hepatitis C, genotype 1, 2, 3, 4, 5, or 6.",
+        "Treatment-experienced (failed peginterferon and ribavirin): genotype 1-6 plus fibrosis staging records (FIB-4, etc.); adult genotype 3 also needs Y93H testing, with ribavirin if Y93H or cirrhosis.",
+        "Decompensated cirrhosis (CTP B or C), not post liver or kidney transplant: fibrosis staging records (FIB-4, etc.) and a ribavirin-containing regimen (or ribavirin contraindicated or not tolerated).",
+        "Post liver or kidney transplant: genotype 1-6 with fibrosis staging records (FIB-4, etc.); with decompensated cirrhosis after liver transplant, ribavirin is required."
+      ],
+      "preferredCriteriaMode": "any",
+      "preferredCriteriaSourceIds": [
+        "masshealth-pa-criteria-hepatitis-c-2026-10"
+      ]
+    },
+    {
+      "classId": "hcv-daa",
+      "preferredAgent": {
+        "inn": "Sofosbuvir-velpatasvir",
+        "brand": "Epclusa",
+        "genericAvailable": false,
+        "strength": "400 mg/100 mg tablet",
+        "sig": "No cirrhosis or compensated cirrhosis: 1 tablet once daily for 12 weeks. Decompensated cirrhosis (Child-Pugh B or C): 1 tablet once daily plus weight-based ribavirin for 12 weeks (label).",
+        "sigShort": "1 tab QD x12 wk (+ribavirin if decompensated)",
+        "plainSig": "One pill a day for 12 weeks; people with advanced liver scarring also take ribavirin."
+      },
+      "preferredRestriction": "PA and QL required (1 tab every 1 day, as printed, p.64). Genotypes 1 to 6 are printed.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Harvoni (ledipasvir-sofosbuvir) 45/200 mg and 90/400 mg tablets and pak",
+          "outcome": "pa",
+          "reason": "PA and QL required (p.64); printed for genotypes 1, 4, 5, 6",
+          "sourceIds": [
+            "bcbsma-next11-2026-10"
+          ],
+          "criteria": [
+            "Documented chronic hepatitis C genotype 1, 4, 5, or 6",
+            "Age greater than 3 years old"
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "bcbsma-pa-criteria-hcv-harvoni-2026-10"
+          ]
+        },
+        {
+          "drug": "Vosevi (sofosbuvir-velpatasvir-voxilaprevir) tablet",
+          "outcome": "pa",
+          "reason": "PA and QL required (p.64); printed for patients previously treated with an NS5A inhibitor",
+          "sourceIds": [
+            "bcbsma-next11-2026-10"
+          ],
+          "criteria": [
+            "Age greater than 18 years old",
+            "Previous treatment with, or contraindication to, Harvoni AND Epclusa",
+            "No cirrhosis, or compensated cirrhosis (Child-Pugh A)",
+            "Genotype 1-6 with prior NS5A-inhibitor-containing regimen, OR genotype 1a or 3 with prior sofosbuvir regimen without an NS5A inhibitor"
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "bcbsma-pa-criteria-hcv-vosevi-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read page 64 (layout check). Epclusa 400/100 mg is the preferred pick: pan-genotypic (genotypes 1-6) and the lowest-barrier option among the three listed DAAs that need PA. The document prints no PA criteria. Authorized generic of Epclusa is not printed, so genericAvailable is false. Mavyret and Zepatier do not appear in this document; the list is not complete, so their status is unknown. Sig is standard label dosing, not printed. [Sonnet check 2026-10-22: re-read p.64; Epclusa (genotypes 1-6, PA/QL) is the only pan-genotypic option listed; no Mavyret, Zepatier or glecaprevir row, and the list is not complete, so absence is unconfirmed.] [2026-10-22 review: sig replaced with label dosing by indication/titration.]",
+      "sourceIds": [
+        "bcbsma-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbsma-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbsma-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "bcbsma",
+      "preferredCriteria": [
+        "Documented chronic hepatitis C genotype 1, 2, 3, 4, 5, or 6",
+        "Age greater than 3 years old, or weight of at least 17 kg (over 37 pounds)",
+        "Decompensated cirrhosis: used in combination with ribavirin"
+      ],
+      "preferredCriteriaMode": "all",
+      "preferredCriteriaSourceIds": [
+        "bcbsma-pa-criteria-hcv-epclusa-2026-10"
+      ]
+    },
+    {
+      "classId": "hcv-daa",
+      "preferredAgent": {
+        "inn": "Sofosbuvir and velpatasvir",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "400 mg/100 mg tablet",
+        "sig": "No cirrhosis or compensated cirrhosis: 1 tablet once daily for 12 weeks. Decompensated cirrhosis (Child-Pugh B or C): 1 tablet once daily plus weight-based ribavirin for 12 weeks (label).",
+        "sigShort": "1 tab QD x12 wk (+ribavirin if decompensated)",
+        "plainSig": "One pill a day for 12 weeks; people with advanced liver scarring also take ribavirin."
+      },
+      "preferredRestriction": "PA required; QL max 1 tablet per day; must use Optum Specialty pharmacy (p.58)",
+      "boglActive": false,
+      "boglNote": "Generic sofosbuvir-velpatasvir and brand Epclusa are both Tier 3 with PA; the list shows no brand-over-generic preference.",
+      "tier": "Tier 3",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Sofosbuvir and velpatasvir (Epclusa) 200/50 and 400/100 mg tablets and packets",
+          "outcome": "pa",
+          "reason": "PA required; QL max 1 per day (p.55)",
+          "sourceIds": [
+            "tufts-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ledipasvir and sofosbuvir (Harvoni and generic) 45/200 and 90/400 mg",
+          "outcome": "pa",
+          "reason": "PA required; QL max 1 to 2 per day (pp.55-56)",
+          "sourceIds": [
+            "tufts-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Glecaprevir/pibrentasvir (Mavyret) 100/40 mg tablet and 50/20 mg packet",
+          "outcome": "pa",
+          "reason": "PA required; QL max 3 per day (p.57)",
+          "sourceIds": [
+            "tufts-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Sofosbuvir/velpatasvir/voxilaprevir (Vosevi) 400/100/100 mg",
+          "outcome": "pa",
+          "reason": "PA required; QL max 1 per day (p.59)",
+          "sourceIds": [
+            "tufts-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read pp.55-59. Every HCV DAA printed is Tier 3 with PA and an Optum Specialty requirement. Preferred pick is the generic sofosbuvir-velpatasvir (lowest-cost, same molecule as Epclusa), both Tier 3 with PA; the list does not prefer brand over generic. Elbasvir/grazoprevir (Zepatier) is not printed; coverage unknown. Sovaldi (sofosbuvir alone) not in class scope. [2026-10-22 review: sig replaced with label dosing by indication/titration.]",
+      "sourceIds": [
+        "tufts-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tufts-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tufts-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "tufts"
+    },
+    {
+      "classId": "hcv-daa",
+      "preferredAgent": {
+        "inn": "Sofosbuvir-velpatasvir",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "400 mg/100 mg tablet",
+        "sig": "No cirrhosis or compensated cirrhosis: 1 tablet once daily for 12 weeks. Decompensated cirrhosis (Child-Pugh B or C): 1 tablet once daily plus weight-based ribavirin for 12 weeks (label).",
+        "sigShort": "1 tab QD x12 wk (+ribavirin if decompensated)",
+        "plainSig": "One pill a day for 12 weeks; people with advanced liver scarring also take ribavirin."
+      },
+      "preferredRestriction": "PA required; QL: max 1 tablet per day",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3 ($$$)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Epclusa (sofosbuvir-velpatasvir) 400 mg/100 mg tablet",
+          "outcome": "pa",
+          "reason": "PA required; QL max 1 per day (p. 60). Tier 3",
+          "sourceIds": [
+            "harvardpilgrim-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Epclusa (sofosbuvir-velpatasvir) 200 mg/50 mg tablet",
+          "outcome": "pa",
+          "reason": "PA required; QL max 1 per day (p. 60). Tier 3",
+          "sourceIds": [
+            "harvardpilgrim-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Harvoni (ledipasvir-sofosbuvir) 90 mg/400 mg tablet",
+          "outcome": "pa",
+          "reason": "PA required; QL max 1 per day (p. 60). Tier 3",
+          "sourceIds": [
+            "harvardpilgrim-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ledipasvir-sofosbuvir 90 mg/400 mg (generic)",
+          "outcome": "pa",
+          "reason": "PA required; QL max 1 per day (p. 61). Tier 3",
+          "sourceIds": [
+            "harvardpilgrim-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Mavyret (glecaprevir-pibrentasvir) 100 mg/40 mg tablet",
+          "outcome": "pa",
+          "reason": "PA required; QL max 3 per day (p. 61). Tier 3",
+          "sourceIds": [
+            "harvardpilgrim-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Vosevi (sofosbuvir-velpatasvir-voxilaprevir) 400/100/100 mg",
+          "outcome": "pa",
+          "reason": "PA required; QL max 1 per day (p. 64). Tier 3",
+          "sourceIds": [
+            "harvardpilgrim-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read pp.60-64 directly. Every listed DAA carries PA. Not printed: Zepatier (elbasvir-grazoprevir); not treated as excluded. Generic sofosbuvir-velpatasvir chosen over brand Epclusa: same molecule, same tier and PA, lower-cost form (judgment). No brand-over-generic preference is printed, so boglActive is false. [Sonnet check 2026-10-22: Flags re-read by x-position on pp. 59-64: the generic sofosbuvir-velpatasvir 400/100 mg row (p. 63) is Tier 3 with 'PA; QL: Max. 1 per day', the same PA and tier as brand Epclusa, so the generic is the right pick; Harvoni, generic ledipasvir-sofosbuvir, Mavyret, Sovaldi and Vosevi all PA. Zepatier is not printed (not treated as excluded). Upgraded to verified.] [2026-10-22 review: sig replaced with label dosing by indication/titration.]",
+      "sourceIds": [
+        "harvardpilgrim-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "harvardpilgrim-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "harvardpilgrim-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "harvardpilgrim"
+    },
+    {
+      "classId": "hcv-daa",
+      "preferredAgent": {
+        "inn": "Sofosbuvir-velpatasvir",
+        "brand": "Epclusa",
+        "genericAvailable": false,
+        "strength": "400 mg/100 mg tablet",
+        "sig": "No cirrhosis or compensated cirrhosis: 1 tablet once daily for 12 weeks. Decompensated cirrhosis (Child-Pugh B or C): 1 tablet once daily plus weight-based ribavirin for 12 weeks (label).",
+        "sigShort": "1 tab QD x12 wk (+ribavirin if decompensated)",
+        "plainSig": "One pill a day for 12 weeks; people with advanced liver scarring also take ribavirin."
+      },
+      "preferredRestriction": "PA required; SP (specialty drug) flag; QL 28 tablets per 28 days. PA criteria are not printed in this document.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 5",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Harvoni (ledipasvir-sofosbuvir)",
+          "outcome": "pa",
+          "reason": "PA; SP; QL 28 tablets per 28 days (p52)",
+          "sourceIds": [
+            "mgb-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Vosevi (sofosbuvir-velpatasvir-voxilaprevir)",
+          "outcome": "pa",
+          "reason": "PA; SP; QL 28 tablets per 28 days (p127)",
+          "sourceIds": [
+            "mgb-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read pp39, 52, 127. Every DAA listed needs PA and SP; Epclusa chosen as the common first-line regimen. Mavyret (glecaprevir-pibrentasvir), Zepatier (elbasvir-grazoprevir) and any authorized generic sofosbuvir-velpatasvir or ledipasvir-sofosbuvir do not appear in the document; not inferred as excluded, so the cell is partial. [Sonnet check 2026-10-22: the document legend defines SP as Specialty Drug (page 1), not step therapy; earlier wording calling SP a step-therapy flag was wrong and was corrected (no ST flag is printed on this row).] [Sonnet check 2026-10-22: Epclusa tablets (Tier 5, PA, SP, QL 28 per 28 days, p39), Harvoni (p52) and Vosevi (p127) confirmed. Mavyret, Zepatier and authorized generics do not appear; absence is not read as exclusion (the document does not claim to be complete), so confirm Mavyret at the point of prescribing. Upgraded partial to verified for the Epclusa pick.] [2026-10-22 review: sig replaced with label dosing by indication/titration.]",
+      "sourceIds": [
+        "mgb-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "mgb-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "mgb-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "mgb"
+    }
+  ],
+  "references": [
+    {
+      "id": "masshealth-next11-2026-10-t44",
+      "label": "MassHealth Drug List, Table 44: Hepatitis Antiviral Agents",
+      "publisher": "MassHealth (MHDL, administered by Conduent)",
+      "type": "gov",
+      "url": "https://mhdl.pharmacy.services.conduent.com/MHDL/pubtheradetail.do?id=44",
+      "accessed": "2026-10-21",
+      "effectiveDate": "2026-10-05"
+    },
+    {
+      "id": "bcbsma-next11-2026-10",
+      "label": "Standard Control with Advanced Control Specialty Formulary, Comprehensive Covered Medication List (effective 07/01/2026)",
+      "publisher": "Blue Cross Blue Shield of Massachusetts (pharmacy benefit administered by CVS Caremark)",
+      "type": "payer",
+      "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-000720261-standard-control-with-advanced-control-specialty-formulary-comprehensive-covered-medication-list-july-2026.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "tufts-next11-2026-10",
+      "label": "Prescription drug list, Direct 3-Tier (effective Jan. 1, 2026; footers show last update 10/15/26); as of 10/15/26",
+      "publisher": "Tufts Health Plan (Point32Health), pharmacy benefit administered by OptumRx",
+      "type": "payer",
+      "url": "https://contenthub-aem.optumrx.com/content/dam/contenthub/rx-assets/en/documents/clients/harvard-pilgrim/p32-formulary-documents/2026/P32H-Value-Direct-3T-Comprehensive-Tufts.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "harvardpilgrim-next11-2026-10",
+      "label": "Harvard Pilgrim Select 3-Tier 2026 Prescription Drug List (comprehensive), created Oct. 1, 2025; Last Update 10/15/26",
+      "publisher": "Harvard Pilgrim Health Care (Point32Health), administered by Optum Rx",
+      "type": "payer",
+      "url": "https://contenthub-aem.optumrx.com/content/dam/contenthub/rx-assets/en/documents/clients/harvard-pilgrim/hphc-formulary-documents/2026-oe/HPHC-Select-3T-Comprehensive.pdf",
+      "effectiveDate": "2026-10-15",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "mgb-next11-2026-10",
+      "label": "Mass General Brigham Health Plan 2026 6 Tier Pharmacy Formulary (current as of 10/1/2026)",
+      "publisher": "Mass General Brigham Health Plan",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/192/20266T.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "bcbsma-pa-criteria-hcv-epclusa-2026-10",
+      "label": "BCBS MA Medical Policy #344 Pharmacy Hepatitis C Medication Management, last updated 9/15/2025",
+      "publisher": "Blue Cross Blue Shield of Massachusetts",
+      "type": "payer",
+      "url": "https://www.bluecrossma.org/medical-policies/sites/g/files/csphws2091/files/acquiadam-assets/344%20Pharmacy%20Hepatitis%20C%20Medication%20Management%20prn.pdf",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "bcbsma-pa-criteria-hcv-harvoni-2026-10",
+      "label": "BCBS MA Medical Policy #344 Pharmacy Hepatitis C Medication Management, last updated 9/15/2025",
+      "publisher": "Blue Cross Blue Shield of Massachusetts",
+      "type": "payer",
+      "url": "https://www.bluecrossma.org/medical-policies/sites/g/files/csphws2091/files/acquiadam-assets/344%20Pharmacy%20Hepatitis%20C%20Medication%20Management%20prn.pdf",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "bcbsma-pa-criteria-hcv-vosevi-2026-10",
+      "label": "BCBS MA Medical Policy #344 Pharmacy Hepatitis C Medication Management, last updated 9/15/2025",
+      "publisher": "Blue Cross Blue Shield of Massachusetts",
+      "type": "payer",
+      "url": "https://www.bluecrossma.org/medical-policies/sites/g/files/csphws2091/files/acquiadam-assets/344%20Pharmacy%20Hepatitis%20C%20Medication%20Management%20prn.pdf",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "masshealth-pa-criteria-hepatitis-c-2026-10",
+      "label": "MassHealth Drug List: Hepatitis C Agents, Section III Evaluation Criteria for Approval",
+      "publisher": "MassHealth (Massachusetts Medicaid)",
+      "type": "gov",
+      "url": "https://mhdl.pharmacy.services.conduent.com/MHDL/pubtheradetail.do?id=44",
+      "accessed": "2026-10-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

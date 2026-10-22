@@ -196,6 +196,12 @@ describe('cash price coverage across the live formulary', () => {
     // immediate-release 50/75mg one; GoodRx pending for the same reason.
     const KNOWN_PRICE_UNAVAILABLE = [
       /climara/i,
+      // 2026-10-22 MA next-11 topics: specialty brands and injectables with no plain cash price, and
+      // tofacitinib, whose Cost Plus price could not be re-verified.
+      /tofacitinib|xeljanz/i,
+      /sofosbuvir|epclusa|bictegravir|biktarvy|dupilumab|dupixent|ixekizumab|taltz/i,
+      /upadacitinib|rinvoq|suvorexant|belsomra|paliperidone|invega|risperdal consta|microsphere|glecaprevir|mavyret/i,
+      /adalimumab|humira|hadlima|hyrimoz|cyltezo|yusimry|simlandi|amjevita|ustekinumab|stelara|wezlana|selarsdi|pyzchiva|otulfi|imuldosa|yesintek|steqeyma/i,
       // 2026-10-21 new topics: brand weight-loss GLP-1s and CGRP/PCSK9 injectables show only
       // manufacturer savings offers on GoodRx, not a cash price.
       /wegovy|zepbound|saxenda|foundayo|weight management/i,
@@ -410,4 +416,57 @@ describe('form-conflicting names drop the captured product links', () => {
     expect(goodRxUrl(name)).not.toContain('?')
     expect(costPlusUrl(name)).toBeNull()
   })
+})
+
+// Found adding the MA dermatology and pain guides (2026-10-22): molecule-only rules borrowed prices.
+describe('topical mometasone and hydrocodone-ibuprofen do not borrow other products\' prices', () => {
+  it.each(['Mometasone furoate 0.1% cream', 'Mometasone furoate external', 'Hydrocodone and ibuprofen tablets'])(
+    '%s has no borrowed price',
+    (name) => expect(goodRxPrice(name)).toBeNull(),
+  )
+  it('the Asmanex inhaler and plain ibuprofen keep theirs', () => {
+    expect(goodRxPrice('Asmanex HFA (mometasone furoate)')).not.toBeNull()
+    expect(goodRxPrice('Ibuprofen 600 mg tablet')).not.toBeNull()
+  })
+})
+
+// 2026-10-22: the new single-agent HCTZ rule sits at the top of the list; ACE/HCTZ combinations
+// must keep falling through to their ACE-inhibitor rules.
+describe('HCTZ rule leaves ACE combinations alone', () => {
+  it.each(['benazepril-hydrochlorothiazide', 'Enalapril (and enalapril HCTZ) tablets', 'quinapril-hydrochlorothiazide'])(
+    '%s does not resolve to the HCTZ product',
+    (name) => expect(goodRxUrl(name)).not.toContain('/hydrochlorothiazide'),
+  )
+})
+
+// Codex review, PR 23: each adalimumab biosimilar links to its own GoodRx page, not Humira's.
+describe('adalimumab biosimilars keep their own cash links', () => {
+  it.each([['Adalimumab-adaz', 'hyrimoz'], ['Adalimumab-bwwd', 'hadlima'], ['Adalimumab-ryvk', 'simlandi'], ['Humira', 'humira']])(
+    '%s -> %s',
+    (name, slug) => expect(goodRxUrl(name)).toBe(`https://www.goodrx.com/${slug}`),
+  )
+})
+
+describe('ustekinumab biosimilars keep their own cash links', () => {
+  it.each([['Ustekinumab-kfce', 'yesintek'], ['Ustekinumab-ttwe', 'pyzchiva'], ['Stelara', 'stelara']])(
+    '%s -> %s',
+    (name, slug) => expect(goodRxUrl(name)).toBe(`https://www.goodrx.com/${slug}`),
+  )
+})
+
+// Code review, PR 23: molecule-substring matches priced the wrong product.
+describe('new-topic rules do not capture neighbouring products', () => {
+  it('metoprolol tartrate is not priced as succinate ER', () => {
+    expect(goodRxUrl('Metoprolol tartrate 25, 50 mg tablet')).toContain('/metoprolol?')
+    expect(goodRxUrl('Metoprolol succinate ER 50 mg')).toContain('/metoprolol-succinate-er')
+    // Brand-first names do not take the generic quote (code review round 2).
+    expect(goodRxPrice('Toprol XL (metoprolol succinate)')).toBeNull()
+    expect(goodRxPrice('Myrbetriq (mirabegron)')).toBeNull()
+    expect(goodRxPrice('Hydrocodone-acetaminophen 7.5/325 and 10/325 mg')).toBeNull()
+    expect(goodRxUrl('amlodipine-benazepril')).not.toContain('/benazepril')
+  })
+  it.each(['Desvenlafaxine ER (generic)', 'Pristiq (desvenlafaxine)', 'Levamlodipine 2.5, 5 mg tablets', 'Benzhydrocodone/acetaminophen (Apadaz)', 'Seroquel, Zyprexa, Risperdal (brands)'])(
+    '%s has no borrowed price',
+    (name) => expect(goodRxPrice(name)).toBeNull(),
+  )
 })

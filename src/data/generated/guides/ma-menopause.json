@@ -305,13 +305,6 @@
           ]
         },
         {
-          "drug": "estradiol-Climara patch",
-          "note": "Covered without PA per MHDL A-Z drug list",
-          "sourceIds": [
-            "masshealth-menopause-ht-source-2026-07-07"
-          ]
-        },
-        {
           "drug": "estradiol-Divigel (gel)",
           "note": "Covered without PA, A90 designation",
           "sourceIds": [
@@ -331,13 +324,20 @@
           "sourceIds": [
             "masshealth-menopause-ht-source-2026-07-07"
           ]
+        },
+        {
+          "drug": "Vivelle-Dot (brand estradiol patch)",
+          "note": "Covered without PA; BP flag (brand preferred) and M90, no \"#\" marker (MHDL A-Z row estradiol-Vivelle-Dot)",
+          "sourceIds": [
+            "masshealth-menopause-ht-source-2026-07-07"
+          ]
         }
       ],
       "paRequired": [
         {
-          "drug": "Vivelle-Dot (brand estradiol patch)",
+          "drug": "estradiol-Climara patch",
           "outcome": "pa",
-          "reason": "Brand-preferred-over-generic (BOGL) product; PA required per the \"BP\" marker interacting with the brand-vs-generic PA rule for this specific branded patch",
+          "reason": "Brand requires PA per the \"#\" marker (A-rated generic estradiol patch payable); MHDL A-Z row Climara shows M90, #",
           "sourceIds": [
             "masshealth-menopause-ht-source-2026-07-07"
           ]
@@ -346,7 +346,7 @@
       "stepTherapy": null,
       "tier": "No explicit dollar/tier language in MHDL; generic estradiol transdermal patch is covered without PA and carries mandatory 90-day supply (M90) or allowable 90-day (A90) designation depending on the specific product.",
       "verification": "verified",
-      "verificationNote": "Read directly from the MassHealth Drug List (MHDL) A-Z drug list, therapeutic class \"HORMONE REPLACEMENT THERAPY,\" accessed via the alphabetic index pages (pubdruglist.do?index=E and index=V) in the current session (2026-07-07). Confirmed generic estradiol transdermal patch entries (Alora, Climara, Divigel, generic gel, Elestrin, Estring, Evamist, Femring, Menostar, Minivelle) show no PA symbol, only M90/A90 supply designations, while Vivelle-Dot specifically shows \"BP, M90\" (brand preferred over generic). No dedicated PA-policy detail page exists for this class in the MHDL therapeutic-table list (Hormone Replacement Therapy is not among the ~84 numbered tables), consistent with it being a largely non-restricted class; this is inferred from the absence of any HRT-specific entry in the site's PA-forms directory (pubpa.do) combined with direct confirmation that individual patch products carry no PA marker. The 0.05mg twice-weekly strength/sig is a standard representative dose, not verbatim from the MHDL page (which documents coverage/PA status by product, not detailed dosing).",
+      "verificationNote": "Read directly from the MassHealth Drug List (MHDL) A-Z drug list, therapeutic class \"HORMONE REPLACEMENT THERAPY,\" accessed via the alphabetic index pages (pubdruglist.do?index=E and index=V) in the current session (2026-07-07). Confirmed generic estradiol transdermal patch entries (Alora, Climara, Divigel, generic gel, Elestrin, Estring, Evamist, Femring, Menostar, Minivelle) show no PA symbol, only M90/A90 supply designations, while Vivelle-Dot specifically shows \"BP, M90\" (brand preferred over generic). No dedicated PA-policy detail page exists for this class in the MHDL therapeutic-table list (Hormone Replacement Therapy is not among the ~84 numbered tables), consistent with it being a largely non-restricted class; this is inferred from the absence of any HRT-specific entry in the site's PA-forms directory (pubpa.do) combined with direct confirmation that individual patch products carry no PA marker. The 0.05mg twice-weekly strength/sig is a standard representative dose, not verbatim from the MHDL page (which documents coverage/PA status by product, not detailed dosing). [Audit 2026-10-22: Vivelle-Dot row shows no PA (BP, M90); record wrongly said PA] [Audit 2026-10-22: Climara row carries \"#\" (brand requires PA); record said covered without PA]",
       "sourceIds": [
         "masshealth-menopause-ht-source-2026-07-07"
       ],
@@ -872,13 +872,6 @@
             "bcbsma-std-covered-2026-07",
             "bcbsma-std-removals-2026-07"
           ]
-        },
-        {
-          "drug": "Conjugated estrogens vaginal cream (generic Premarin cream)",
-          "note": "Tier 1, no PA — same-tier alternative",
-          "sourceIds": [
-            "bcbsma-std-covered-2026-07"
-          ]
         }
       ],
       "paRequired": [
@@ -904,7 +897,7 @@
       "stepTherapy": null,
       "tier": "Tier 1 (generic)",
       "verification": "verified",
-      "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List and Comprehensive Drug Removal List (both effective July 2026). This corrects the prior cell: Imvexxy was marked nonformulary there, but the removal list explicitly names Imvexxy (alongside Vagifem) as the formulary option replacing removed Estring, Yuvafem, and Premarin Cream — moved from paRequired to alternatives. Generic estradiol vaginal cream remains the Tier 1, unrestricted preferred pick; Vagifem (brand tablet) is also Tier 1.",
+      "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List and Comprehensive Drug Removal List (both effective July 2026). This corrects the prior cell: Imvexxy was marked nonformulary there, but the removal list explicitly names Imvexxy (alongside Vagifem) as the formulary option replacing removed Estring, Yuvafem, and Premarin Cream — moved from paRequired to alternatives. Generic estradiol vaginal cream remains the Tier 1, unrestricted preferred pick; Vagifem (brand tablet) is also Tier 1. [Audit 2026-10-22: No conjugated-estrogen vaginal cream appears on the BCBS list and the removal list names Premarin Cream as removed; the same-tier alternative claim was unsupported]",
       "sourceIds": [
         "bcbsma-std-covered-2026-07",
         "bcbsma-std-removals-2026-07"
@@ -947,6 +940,14 @@
           "sourceIds": [
             "bcbsma-std-covered-2026-07"
           ]
+        },
+        {
+          "drug": "Duavee (conjugated estrogens/bazedoxifene, brand)",
+          "note": "Tier 2, no PA or step therapy printed (p.91)",
+          "sourceIds": [
+            "bcbsma-std-covered-2026-07",
+            "bcbsma-std-removals-2026-07"
+          ]
         }
       ],
       "paRequired": [
@@ -976,21 +977,12 @@
             "bcbsma-std-covered-2026-07",
             "bcbsma-std-removals-2026-07"
           ]
-        },
-        {
-          "drug": "Duavee (conjugated estrogens/bazedoxifene, brand)",
-          "outcome": "nonformulary",
-          "reason": "Not listed on the Comprehensive Covered Medication List.",
-          "sourceIds": [
-            "bcbsma-std-covered-2026-07",
-            "bcbsma-std-removals-2026-07"
-          ]
         }
       ],
       "stepTherapy": null,
       "tier": "Tier 1 (generic)",
       "verification": "verified",
-      "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List (effective July 2026, 'ESTROGEN COMBINATIONS' section). Confirms the prior partial finding: generic estradiol/norethindrone acetate tablet is Tier 1 unrestricted; Prempro/Premphase (brand) are Tier 2 covered. Activella, Angeliq, Bijuva, and Duavee do not appear on either the covered-medication list or the drug-removal list this quarter — absent from both, consistent with non-coverage, though (unlike the other corrections above) this one could not be cross-confirmed against an explicit removal entry naming them by name.",
+      "verificationNote": "Read directly off the CVS Caremark-administered BCBS MA Standard Control Comprehensive Covered Medication List (effective July 2026, 'ESTROGEN COMBINATIONS' section). Confirms the prior partial finding: generic estradiol/norethindrone acetate tablet is Tier 1 unrestricted; Prempro/Premphase (brand) are Tier 2 covered. Activella, Angeliq, Bijuva, and Duavee do not appear on either the covered-medication list or the drug-removal list this quarter — absent from both, consistent with non-coverage, though (unlike the other corrections above) this one could not be cross-confirmed against an explicit removal entry naming them by name. [Audit 2026-10-22: BCBS p91 lists DUAVEE TAB 0.45-20 at Tier 2 with no PA/ST; record said not listed]",
       "sourceIds": [
         "bcbsma-std-covered-2026-07",
         "bcbsma-std-removals-2026-07"
@@ -1183,22 +1175,20 @@
           "sourceIds": [
             "tufts-menopause-ht-source-2026-07-07"
           ]
-        }
-      ],
-      "paRequired": [
+        },
         {
           "drug": "progesterone vaginal insert 100 mg",
-          "outcome": "pa",
-          "reason": "Tier 3; restricted to infertility-benefit plans only ('This medication is only covered if your plan includes an infertility benefit'), must use Fuze Health specialty pharmacy — a coverage-gate, not the standard systemic-HRT indication.",
+          "note": "Tier 3, no PA or step therapy; covered only if the plan includes an infertility benefit, and must use Fuze Health (not an HRT indication)",
           "sourceIds": [
             "tufts-menopause-ht-source-2026-07-07"
           ]
         }
       ],
+      "paRequired": [],
       "stepTherapy": null,
       "tier": "Tier 1 - preferred generic",
       "verification": "verified",
-      "verificationNote": "Read directly from 'Hormonal Agents - Sex Hormones and Birth Control' (PDF pages 110-113, effective Jan. 1, 2026, 'Last Update: 06/15/26'). Generic 'progesterone oral capsule' (100/200 mg, i.e. micronized progesterone/generic Prometrium) is Tier 1 with no PA/ST/QL flag. 'medroxyprogesterone acetate oral tablet' (generic Provera) and 'norethindrone acetate oral tablet' are also both Tier 1, no PA. The only restricted item found in this class is the vaginal progesterone insert, which is Tier 3 and gated to infertility-benefit plans specifically (not the endometrial-protection indication being sourced here).",
+      "verificationNote": "Read directly from 'Hormonal Agents - Sex Hormones and Birth Control' (PDF pages 110-113, effective Jan. 1, 2026, 'Last Update: 06/15/26'). Generic 'progesterone oral capsule' (100/200 mg, i.e. micronized progesterone/generic Prometrium) is Tier 1 with no PA/ST/QL flag. 'medroxyprogesterone acetate oral tablet' (generic Provera) and 'norethindrone acetate oral tablet' are also both Tier 1, no PA. The only restricted item found in this class is the vaginal progesterone insert, which is Tier 3 and gated to infertility-benefit plans specifically (not the endometrial-protection indication being sourced here). [Audit 2026-10-22: Tufts p115: progesterone vaginal insert 100 mg is Tier 3 with no PA flag; the only condition is an infertility-benefit coverage gate and Fuze Health pharmacy, which is not a PA]",
       "sourceIds": [
         "tufts-menopause-ht-source-2026-07-07"
       ],
@@ -1865,7 +1855,7 @@
       ],
       "paRequired": [
         {
-          "drug": "norethindrone acetate (Aygestin)",
+          "drug": "Aygestin (brand name only; generic norethindrone acetate is listed)",
           "outcome": "nonformulary",
           "reason": "Brand not listed anywhere in the 2026 formulary document -- only the generic norethindrone acetate oral line is carried",
           "sourceIds": [
@@ -1876,7 +1866,7 @@
       "stepTherapy": null,
       "tier": "Tier 2 - preferred generic",
       "verification": "verified",
-      "verificationNote": "Read directly off the MGB Health Plan 2026 6-Tier Pharmacy Formulary PDF (fm.formularynavigator.com/FBO/192/20266T.pdf, header 'CURRENT AS OF 7/1/2026', PDF metadata mod date 2026-06-30). 'Progesterone Oral' (brand ref Prometrium) = Tier 2, no PA/ST/QL flag. 'medroxyPROGESTERone Acetate Oral' (brand ref Provera) = Tier 1, no restriction. 'Norethindrone Acetate Oral' (brand ref Gallifrey, a generic-name reference used by the FormularyNavigator tool, not a real trade name) = Tier 2, no restriction. Searched for 'Aygestin' with zero matches -- confirmed absent from the document (non-formulary), not a parsing gap. Micronized progesterone (Prometrium generic) was selected as the representative preferred agent per current clinical guidance favoring it for endometrial protection in patients on systemic estrogen with an intact uterus, even though the formulary itself does not explicitly designate one progestogen as preferred over another -- all three are similarly low-tier/unrestricted, so the clinical-preference ranking (not a formulary-stated ranking) is reflected in the ordering here.",
+      "verificationNote": "Read directly off the MGB Health Plan 2026 6-Tier Pharmacy Formulary PDF (fm.formularynavigator.com/FBO/192/20266T.pdf, header 'CURRENT AS OF 7/1/2026', PDF metadata mod date 2026-06-30). 'Progesterone Oral' (brand ref Prometrium) = Tier 2, no PA/ST/QL flag. 'medroxyPROGESTERone Acetate Oral' (brand ref Provera) = Tier 1, no restriction. 'Norethindrone Acetate Oral' (brand ref Gallifrey, a generic-name reference used by the FormularyNavigator tool, not a real trade name) = Tier 2, no restriction. Searched for 'Aygestin' with zero matches -- confirmed absent from the document (non-formulary), not a parsing gap. Micronized progesterone (Prometrium generic) was selected as the representative preferred agent per current clinical guidance favoring it for endometrial protection in patients on systemic estrogen with an intact uterus, even though the formulary itself does not explicitly designate one progestogen as preferred over another -- all three are similarly low-tier/unrestricted, so the clinical-preference ranking (not a formulary-stated ranking) is reflected in the ordering here. [Audit 2026-10-22: MGB p81 lists generic norethindrone acetate (Tier 2); only the Aygestin brand name is absent, so the item is renamed to say brand]",
       "sourceIds": [
         "mgb-menopause-ht-source-2026-07-07"
       ],
