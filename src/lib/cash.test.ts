@@ -438,3 +438,11 @@ describe('HCTZ rule leaves ACE combinations alone', () => {
     (name) => expect(goodRxUrl(name)).not.toContain('/hydrochlorothiazide'),
   )
 })
+
+// Codex review, PR 23: each adalimumab biosimilar links to its own GoodRx page, not Humira's.
+describe('adalimumab biosimilars keep their own cash links', () => {
+  it.each([['Adalimumab-adaz', 'hyrimoz'], ['Adalimumab-bwwd', 'hadlima'], ['Adalimumab-ryvk', 'simlandi'], ['Humira', 'humira']])(
+    '%s -> %s',
+    (name, slug) => expect(goodRxUrl(name)).toBe(`https://www.goodrx.com/${slug}`),
+  )
+})

@@ -716,7 +716,54 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /adalimumab|humira|hadlima|hyrimoz|cyltezo|yusimry|simlandi|amjevita/i,
+    matches: /adalimumab-adaz|hyrimoz/i,
+    goodRxSlug: 'hyrimoz',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /adalimumab-bwwd|hadlima/i,
+    goodRxSlug: 'hadlima',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /adalimumab-fkjp|hulio/i,
+    goodRxSlug: 'hulio',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /adalimumab-aacf|idacio/i,
+    goodRxSlug: 'idacio',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /adalimumab-ryvk|simlandi/i,
+    goodRxSlug: 'simlandi',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /adalimumab-adbm|cyltezo/i,
+    goodRxSlug: 'cyltezo',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /adalimumab-aaty|yuflyma/i,
+    goodRxSlug: 'yuflyma',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /adalimumab-atto|amjevita/i,
+    goodRxSlug: 'amjevita',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /adalimumab-aqvh|yusimry/i,
+    goodRxSlug: 'yusimry',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    // Each adalimumab biosimilar has its own GoodRx page (checked 2026-10-22); only Humira itself
+    // links to Humira. A bare "adalimumab" with no suffix falls through to the generic slug.
+    matches: /humira/i,
     goodRxSlug: 'humira',
     pricesCapturedAt: '2026-10-22',
   },

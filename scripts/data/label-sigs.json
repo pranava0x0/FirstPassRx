@@ -6,7 +6,7 @@
   "One small pill at bedtime when needed, only if you can sleep 7 or more hours."
  ],
  [
-  "bupropion.*\\bSR\\b",
+  "^(?!.*\\bXL\\b).*bupropion.*\\bSR\\b",
   "Start 150 mg by mouth once daily in the morning; after at least 3 days increase to 150 mg twice daily, at least 8 hours apart (label titration; max 400 mg/day).",
   "150 mg QAM x3d, then BID",
   "One pill each morning for the first 3 days, then one pill twice a day, at least 8 hours apart."
@@ -133,10 +133,16 @@
   "A shot every 2 to 4 weeks; your prescriber sets the dose from blood tests."
  ],
  [
-  "^oxybutynin chloride extended-release|^oxybutynin chloride$",
+  "oxybutynin.*(extended|\\bER\\b|\\bXL\\b)",
   "Extended-release: 5-10 mg once daily; increase by 5 mg weekly to max 30 mg/day (label).",
   "ER 5-10 mg QD",
   "One pill a day for an overactive bladder."
+ ],
+ [
+  "^oxybutynin",
+  "Immediate-release: 5 mg two to three times daily; max 5 mg four times daily (label).",
+  "5 mg BID-TID",
+  "One pill two or three times a day."
  ],
  [
   "^solifenacin",
