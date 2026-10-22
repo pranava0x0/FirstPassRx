@@ -213,6 +213,10 @@ describe('ICD-10 suggestions', () => {
     expect(codes('il17-il23', 'Ixekizumab (Taltz)')).not.toContain('K50.90')
     expect(codes('il17-il23', 'Ustekinumab-kfce')).toContain('K50.90')
     expect(codes('jak-inhibitor', 'Tofacitinib')).not.toContain('L40.0')
+    expect(codes('antipsychotic-lai', 'Aristada (aripiprazole lauroxil)')).toEqual(['F20.9'])
+    expect(codes('antipsychotic-lai', 'Perseris (risperidone)')).toEqual(['F20.9'])
+    expect(codes('tnf-inhibitor', 'Enbrel (etanercept)')).not.toContain('K50.90')
+    expect(codes('tnf-inhibitor', 'Adalimumab-adaz')).toContain('K51.90')
   })
   it('records which official release the list was checked against', () => {
     expect(ICD10_RELEASE.version).toMatch(/FY20\d\d/)

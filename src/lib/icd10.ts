@@ -119,7 +119,9 @@ export const ICD10_BY_CLASS: Record<string, Icd10Option[]> = {
     { code: 'F41.0', label: 'Panic disorder [episodic paroxysmal anxiety]' },
     { code: 'F41.9', label: 'Anxiety disorder, unspecified' },
   ],
-  'tnf-inhibitor': [...AUTOIMMUNE, { code: 'M45.9', label: 'Ankylosing spondylitis of unspecified sites in spine' }],
+  // Shared by every TNF agent (adalimumab, etanercept, certolizumab, golimumab); DRUG_ICD10 adds
+  // psoriasis/IBD per product (etanercept has no IBD indication).
+  'tnf-inhibitor': [AUTOIMMUNE[0], AUTOIMMUNE[1], { code: 'M45.9', label: 'Ankylosing spondylitis of unspecified sites in spine' }],
   // Shared by every IL-17 and IL-23 agent (ixekizumab, secukinumab, ustekinumab...): psoriasis and
   // PsA. Crohn's/UC are ustekinumab/risankizumab/guselkumab-only, so they are left out.
   'il17-il23': [AUTOIMMUNE[2], AUTOIMMUNE[1]],
@@ -231,11 +233,18 @@ const [SCZ, SCZA, BP, MDD] = PSYCHOSIS
  * requested drug is not labeled for (first match wins; matched against the PA item's drug text).
  */
 const DRUG_ICD10: [RegExp, Icd10Option[]][] = [
+  // Long-acting injectable brands first: several carry fewer indications than the oral molecule.
+  [/aristada|aripiprazole lauroxil|perseris|uzedy/i, [SCZ]],
+  [/maintena|asimtufii|risperdal consta|rykindo|microsphere/i, [SCZ, BP]],
   [/paliperidone|invega/i, [SCZ, SCZA]],
   [/aripiprazole|abilify|aristada|cariprazine|vraylar/i, [SCZ, BP, MDD]],
   [/brexpiprazole|rexulti/i, [SCZ, MDD]],
   [/quetiapine|seroquel|olanzapine|zyprexa|risperidone|risperdal|perseris|uzedy|rykindo|lurasidone|latuda|asenapine|ziprasidone|lumateperone|caplyta/i, [SCZ, BP]],
   [/upadacitinib|rinvoq/i, [RA, PSA, AS, UC, CD]],
+  [/adalimumab|humira|hadlima|hyrimoz|cyltezo|yusimry|simlandi|amjevita|hulio|idacio|yuflyma|infliximab|remicade|inflectra|renflexis|avsola|zymfentra/i, [RA, PSA, AS, PSO, CD, UC]],
+  [/etanercept|enbrel|erelzi|eticovo/i, [RA, PSA, AS, PSO]],
+  [/certolizumab|cimzia/i, [RA, PSA, AS, PSO, CD]],
+  [/golimumab|simponi/i, [RA, PSA, AS, UC]],
   [/deucravacitinib|sotyktu|apremilast|otezla/i, [PSO, PSA]],
   [/ustekinumab|stelara|wezlana|selarsdi|pyzchiva|otulfi|imuldosa|yesintek|steqeyma|starjemza|risankizumab|skyrizi|guselkumab|tremfya/i, [PSO, PSA, CD, UC]],
   [/secukinumab|cosentyx|ixekizumab|taltz|bimekizumab|bimzelx/i, [PSO, PSA, AS]],

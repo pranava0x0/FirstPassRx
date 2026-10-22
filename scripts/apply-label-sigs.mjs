@@ -37,7 +37,7 @@ for (const g of data.guides) {
       unmatched.push(`${g.id}/${r.payerId}/${r.classId}: ${a.inn}`)
       continue
     }
-    if (a.sig === rule.sig) continue
+    if (a.sig === rule.sig && a.sigShort === rule.sigShort && a.plainSig === rule.plainSig) continue
     Object.assign(a, { sig: rule.sig, sigShort: rule.sigShort, plainSig: rule.plainSig })
     updated++
   }
