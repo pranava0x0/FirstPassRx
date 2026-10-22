@@ -19,6 +19,10 @@ import { readFileSync } from 'node:fs'
 import { FORMULARY, writeValidatedFormulary } from './write-formulary.mjs'
 
 const files = process.argv.slice(2).filter((a) => !a.startsWith('--'))
+if (!files.length) {
+  console.error('usage: node scripts/apply-cell-fixes.mjs <fixes.json> [...] [--dry-run]')
+  process.exit(2)
+}
 const DRY = process.argv.includes('--dry-run')
 const today = new Date().toISOString().slice(0, 10)
 const data = JSON.parse(readFileSync(FORMULARY, 'utf8'))
@@ -55,8 +59,15 @@ for (const file of files) {
         else { problems.push(`${at}: not found`); continue }
         break
       }
-      case 'addAlternative': (r.alternatives ??= []).push(fx.item); break
-      case 'addPaRequired': r.paRequired.push(fx.item); break
+      // Adds are idempotent: re-running a fixes file must not duplicate items.
+      case 'addAlternative':
+        if ((r.alternatives ?? []).some((x) => x.drug === fx.item.drug)) continue
+        ;(r.alternatives ??= []).push(fx.item)
+        break
+      case 'addPaRequired':
+        if (r.paRequired.some((x) => x.drug === fx.item.drug)) continue
+        r.paRequired.push(fx.item)
+        break
       case 'editItem': {
         const list = pa >= 0 ? r.paRequired : alt >= 0 ? r.alternatives : null
         if (!list) { problems.push(`${at}: not found`); continue }
@@ -65,7 +76,7 @@ for (const file of files) {
       }
       default: problems.push(`${at}: unknown op`); continue
     }
-    r.verificationNote = `${r.verificationNote} [Audit ${today}: ${fx.why}]`
+    if (!r.verificationNote.includes(fx.why)) r.verificationNote = `${r.verificationNote} [Audit ${today}: ${fx.why}]`
     applied++
   }
 }

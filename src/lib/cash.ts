@@ -367,7 +367,7 @@
  * change this count.)
  * 780 → 802: District of Columbia added (12 guides; DC Medicaid and AmeriHealth Caritas DC are new
  * documents, CareFirst and Kaiser Mid-Atlantic reuse the MD records). */
-export const KNOWN_UNPRICED_GAP = 1550
+export const KNOWN_UNPRICED_GAP = 1573
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -400,7 +400,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   // read, then re-captured through Chrome (2026-10-22). Each rule is narrowed to the captured form. ----
   {
     // Immediate-release tablets only (Seroquel XR / quetiapine ER are priced differently).
-    matches: /^(?!.*(\b(ER|XR|extended)\b|zyprexa|risperdal|abilify)).*(quetiapine|seroquel)/i,
+    matches: /^(?!\s*seroquel)(?!.*\bbrand\b)(?!.*(\b(ER|XR|extended)\b|zyprexa|risperdal|abilify)).*(quetiapine)/i,
     goodRxSlug: 'quetiapine',
     goodRxParams: 'label_override=quetiapine&form=tablet&dosage=25mg&quantity=30',
     goodRxPrice: { price: 29.02, quantity: '30 tablets, 25mg' },
@@ -409,7 +409,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(maintena|asimtufii|aristada|lauroxil|inject|solution|odt|disintegrat|mycite|seroquel|zyprexa|risperdal)).*(aripiprazole|abilify)/i,
+    matches: /^(?!\s*abilify)(?!.*\bbrand\b)(?!.*(maintena|asimtufii|aristada|lauroxil|inject|solution|odt|disintegrat|mycite|seroquel|zyprexa|risperdal)).*(aripiprazole)/i,
     goodRxSlug: 'aripiprazole',
     goodRxParams: 'label_override=aripiprazole&form=tablet&dosage=5mg&quantity=30',
     goodRxPrice: { price: 17.26, quantity: '30 tablets, 5mg' },
@@ -418,7 +418,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(consta|microsphere|perseris|uzedy|rykindo|inject|solution|odt|disintegrat|extended|seroquel|zyprexa|abilify)).*(risperidone|risperdal)/i,
+    matches: /^(?!\s*risperdal)(?!.*\bbrand\b)(?!.*(consta|microsphere|perseris|uzedy|rykindo|inject|solution|odt|disintegrat|extended|seroquel|zyprexa|abilify)).*(risperidone)/i,
     goodRxSlug: 'risperidone',
     goodRxParams: 'label_override=risperidone&form=tablet&dosage=1mg&quantity=60',
     goodRxPrice: { price: 29.9, quantity: '60 tablets, 1mg' },
@@ -427,7 +427,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*drizalma).*(duloxetine|cymbalta)/i,
+    matches: /^(?!\s*cymbalta)(?!.*\bbrand\b)(?!.*drizalma).*(duloxetine)/i,
     goodRxSlug: 'duloxetine',
     goodRxParams: 'label_override=duloxetine&form=capsule&dosage=30mg&quantity=30',
     goodRxPrice: { price: 30.36, quantity: '30 capsules, 30mg' },
@@ -437,7 +437,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   },
   {
     // ER capsules only; venlafaxine ER tablets are a different, costlier product.
-    matches: /^(?!.*(tablet|desvenlafaxine|pristiq)).*(\bvenlafaxine.*(\bER\b|extended|\bXR\b)|effexor xr)/i,
+    matches: /^(?!\s*effexor)(?!.*\bbrand\b)(?!.*(tablet|desvenlafaxine|pristiq)).*(\bvenlafaxine.*(\bER\b|extended|\bXR\b))/i,
     goodRxSlug: 'venlafaxine-er',
     goodRxParams: 'label_override=venlafaxine-er&form=capsule&dosage=75mg&quantity=30',
     goodRxPrice: { price: 29.81, quantity: '30 capsules, 75mg ER' },
@@ -446,7 +446,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(forfivo|aplenzin|450)).*(bupropion.*\bXL\b|wellbutrin xl|bupropion.*extended-release \(XL)/i,
+    matches: /^(?!\s*wellbutrin)(?!.*\bbrand\b)(?!.*(forfivo|aplenzin|450)).*(bupropion.*\bXL\b|bupropion.*extended-release \(XL)/i,
     goodRxSlug: 'bupropion-xl',
     goodRxParams: 'label_override=bupropion-xl&form=tablet&dosage=150mg&quantity=30',
     goodRxPrice: { price: 29.81, quantity: '30 tablets, 150mg XL' },
@@ -455,7 +455,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /bupropion.*\bSR\b|wellbutrin sr/i,
+    matches: /^(?!\s*wellbutrin)(?!.*\bbrand\b).*bupropion.*\bSR\b/i,
     goodRxSlug: 'bupropion-sr',
     goodRxParams: 'label_override=bupropion-sr&form=tablet&dosage=150mg&quantity=60',
     goodRxPrice: { price: 31.02, quantity: '60 tablets, 150mg SR' },
@@ -464,7 +464,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(odt|disintegrat|soltab)).*(mirtazapine|remeron)/i,
+    matches: /^(?!\s*remeron)(?!.*\bbrand\b)(?!.*(odt|disintegrat|soltab)).*(mirtazapine)/i,
     goodRxSlug: 'mirtazapine',
     goodRxParams: 'label_override=mirtazapine&form=tablet&dosage=15mg&quantity=30',
     goodRxPrice: { price: 27.06, quantity: '30 tablets, 15mg' },
@@ -473,7 +473,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /trazodone/i,
+    matches: /^(?!\s*desyrel)(?!.*\bbrand\b).*trazodone/i,
     goodRxSlug: 'trazodone',
     goodRxParams: 'label_override=trazodone&form=tablet&dosage=50mg&quantity=30',
     goodRxPrice: { price: 13.91, quantity: '30 tablets, 50mg' },
@@ -483,7 +483,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   },
   {
     // Cream only (ointment, dental paste, injection and nasal forms differ).
-    matches: /triamcinolone.*cream/i,
+    matches: /^(?!\s*kenalog)(?!.*\bbrand\b).*triamcinolone.*cream/i,
     goodRxSlug: 'triamcinolone',
     goodRxParams: 'label_override=triamcinolone&form=tube-of-cream&dosage=30g-of-0.1&quantity=1',
     goodRxPrice: { price: 29.45, quantity: '1 tube, 30g of 0.1% cream' },
@@ -492,7 +492,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(capsule|oral|envarsus|astagraf|granule)).*(tacrolimus.*(ointment|topical)|protopic)/i,
+    matches: /^(?!\s*protopic)(?!.*\bbrand\b)(?!.*(capsule|oral|envarsus|astagraf|granule)).*(tacrolimus.*(ointment|topical))/i,
     goodRxSlug: 'tacrolimus',
     costPlusPath: 'tacrolimus-0_1-ointment-30g',
     costPlusPrice: { price: 23.06, quantity: '30 g tube, 0.1% ointment' },
@@ -506,7 +506,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(\bER\b|amrix|extended)).*cyclobenzaprine/i,
+    matches: /^(?!\s*flexeril)(?!.*\bbrand\b)(?!.*(\bER\b|amrix|extended)).*cyclobenzaprine/i,
     goodRxSlug: 'cyclobenzaprine',
     goodRxParams: 'label_override=cyclobenzaprine&form=tablet&dosage=5mg&quantity=30',
     goodRxPrice: { price: 10.18, quantity: '30 tablets, 5mg' },
@@ -515,7 +515,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(intrathecal|inject|solution|suspension|ozobax|fleqsuvy|lyvispah|granule)).*baclofen/i,
+    matches: /^(?!\s*lioresal)(?!.*\bbrand\b)(?!.*(intrathecal|inject|solution|suspension|ozobax|fleqsuvy|lyvispah|granule)).*baclofen/i,
     goodRxSlug: 'baclofen',
     goodRxParams: 'label_override=baclofen&form=tablet&dosage=5mg&quantity=90',
     goodRxPrice: { price: 31.16, quantity: '90 tablets, 5mg' },
@@ -524,7 +524,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(patch|gel|transdermal)).*(oxybutynin.*(\bER\b|extended)|ditropan xl)/i,
+    matches: /^(?!\s*ditropan)(?!.*\bbrand\b)(?!.*(patch|gel|transdermal)).*(oxybutynin.*(\bER\b|extended))/i,
     goodRxSlug: 'oxybutynin-er',
     goodRxParams: 'label_override=oxybutynin-er&form=tablet&dosage=10mg&quantity=30',
     goodRxPrice: { price: 29.81, quantity: '30 tablets, 10mg ER' },
@@ -533,7 +533,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(suspension|vesicare ls)).*(solifenacin|vesicare)/i,
+    matches: /^(?!\s*vesicare)(?!.*\bbrand\b)(?!.*(suspension|vesicare ls)).*(solifenacin)/i,
     goodRxSlug: 'solifenacin',
     goodRxParams: 'label_override=solifenacin&form=tablet&dosage=5mg&quantity=30',
     goodRxPrice: { price: 29.86, quantity: '30 tablets, 5mg' },
@@ -542,7 +542,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(granule|suspension)).*(mirabegron|myrbetriq)/i,
+    matches: /^(?!\s*myrbetriq)(?!.*\bbrand\b)(?!.*(granule|suspension)).*(mirabegron)/i,
     goodRxSlug: 'mirabegron',
     goodRxParams: 'label_override=mirabegron&form=tablet&dosage=25mg&quantity=30',
     goodRxPrice: { price: 121.1, quantity: '30 tablets, 25mg ER' },
@@ -551,7 +551,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(hydrochlorothiazide|hctz)).*(losartan|cozaar)/i,
+    matches: /^(?!\s*cozaar)(?!.*\bbrand\b)(?!.*(hydrochlorothiazide|hctz)).*(losartan)/i,
     goodRxSlug: 'losartan',
     goodRxParams: 'label_override=losartan&form=tablet&dosage=50mg&quantity=30',
     goodRxPrice: { price: 14.36, quantity: '30 tablets, 50mg' },
@@ -561,7 +561,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   },
   {
     // Single-agent amlodipine only; the many amlodipine combination pills are different products.
-    matches: /^(?!.*(benazepril|valsartan|olmesartan|telmisartan|atorvastatin|perindopril|celecoxib|lotrel|exforge|azor|twynsta|caduet|norliqva|katerzia|suspension|solution|levamlodipine|conjupri)).*(\bamlodipine|norvasc)/i,
+    matches: /^(?!\s*norvasc)(?!.*\bbrand\b)(?!.*(benazepril|valsartan|olmesartan|telmisartan|atorvastatin|perindopril|celecoxib|lotrel|exforge|azor|twynsta|caduet|norliqva|katerzia|suspension|solution|levamlodipine|conjupri)).*(\bamlodipine)/i,
     goodRxSlug: 'amlodipine',
     goodRxParams: 'label_override=amlodipine&form=tablet&dosage=5mg&quantity=30',
     goodRxPrice: { price: 14.31, quantity: '30 tablets, 5mg' },
@@ -570,7 +570,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(hydrochlorothiazide|hctz)).*(metoprolol succinate|\btoprol)/i,
+    matches: /^(?!\s*toprol)(?!.*\bbrand\b)(?!.*(hydrochlorothiazide|hctz)).*(metoprolol succinate|\btoprol)/i,
     goodRxSlug: 'metoprolol-succinate-er',
     goodRxParams: 'label_override=metoprolol-succinate-er&form=tablet&dosage=50mg&quantity=30',
     goodRxPrice: { price: 29.45, quantity: '30 tablets, 50mg ER' },
@@ -579,7 +579,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(hydrochlorothiazide|hctz|inject)).*(metoprolol tartrate|lopressor)/i,
+    matches: /^(?!\s*lopressor)(?!.*\bbrand\b)(?!.*(hydrochlorothiazide|hctz|inject)).*(metoprolol tartrate)/i,
     goodRxSlug: 'metoprolol',
     goodRxParams: 'label_override=metoprolol-tartrate&form=tablet&dosage=25mg&quantity=60',
     goodRxPrice: { price: 29.43, quantity: '60 tablets, 25mg' },
@@ -589,7 +589,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   },
   {
     // Single-agent HCTZ only; combinations are listed with their other component.
-    matches: /^(?!.*(lisinopril|losartan|valsartan|triamterene|olmesartan|irbesartan|telmisartan|candesartan|metoprolol|bisoprolol|spironolactone|amiloride|benazepril|enalapril|quinapril|fosinopril|captopril|moexipril|lisinopril|lotensin|vaseretic|accuretic|zestoretic|uniretic)).*\b(hydrochlorothiazide|HCTZ)\b/i,
+    matches: /^(?!\s*microzide)(?!.*\bbrand\b)(?!.*(lisinopril|losartan|valsartan|triamterene|olmesartan|irbesartan|telmisartan|candesartan|metoprolol|bisoprolol|spironolactone|amiloride|benazepril|enalapril|quinapril|fosinopril|captopril|moexipril|lisinopril|lotensin|vaseretic|accuretic|zestoretic|uniretic)).*\b(hydrochlorothiazide|HCTZ)\b/i,
     goodRxSlug: 'hydrochlorothiazide',
     goodRxParams: 'label_override=hydrochlorothiazide&form=tablet&dosage=25mg&quantity=30',
     goodRxPrice: { price: 23.42, quantity: '30 tablets, 25mg' },
@@ -598,7 +598,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(efavirenz|rilpivirine|elvitegravir|doravirine|alafenamide|bictegravir)).*(emtricitabine.*tenofovir disoproxil|truvada)/i,
+    matches: /^(?!\s*truvada)(?!.*\bbrand\b)(?!.*(efavirenz|rilpivirine|elvitegravir|doravirine|alafenamide|bictegravir)).*(emtricitabine.*tenofovir disoproxil)/i,
     goodRxSlug: 'emtricitabine-tenofovir',
     goodRxParams: 'label_override=emtricitabine-tenofovir&form=tablet&dosage=200mg-300mg&quantity=30',
     goodRxPrice: { price: 42.29, quantity: '30 tablets, 200/300mg' },
@@ -607,7 +607,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /efavirenz.*emtricitabine|atripla/i,
+    matches: /^(?!\s*atripla)(?!.*\bbrand\b).*efavirenz.*emtricitabine/i,
     goodRxSlug: 'efavirenz-emtricitabine-tenofovir',
     goodRxParams: 'label_override=efavirenz-emtricitabine-tenofovir&form=tablet&dosage=600mg-200mg-300mg&quantity=30',
     goodRxPrice: { price: 42.29, quantity: '30 tablets, 600/200/300mg' },
@@ -622,49 +622,49 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(\bER\b|\bCR\b|extended|\bSL\b|sublingual|edluar)).*(zolpidem|ambien)/i,
+    matches: /^(?!\s*ambien)(?!.*\bbrand\b)(?!.*(\bER\b|\bCR\b|extended|\bSL\b|sublingual|edluar)).*(zolpidem)/i,
     goodRxSlug: 'zolpidem',
     goodRxParams: 'label_override=zolpidem&form=tablet&dosage=5mg&quantity=30',
     goodRxPrice: { price: 29.45, quantity: '30 tablets, 5mg' },
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(\bER\b|\bXR\b|extended|odt|disintegrat)).*(alprazolam|xanax)/i,
+    matches: /^(?!\s*xanax)(?!.*\bbrand\b)(?!.*(\bER\b|\bXR\b|extended|odt|disintegrat)).*(alprazolam)/i,
     goodRxSlug: 'alprazolam',
     goodRxParams: 'label_override=alprazolam&form=tablet&dosage=0.5mg&quantity=60',
     goodRxPrice: { price: 19.17, quantity: '60 tablets, 0.5mg' },
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(inject|solution|\bER\b|extended|loreev)).*(lorazepam|ativan)/i,
+    matches: /^(?!\s*ativan)(?!.*\bbrand\b)(?!.*(inject|solution|\bER\b|extended|loreev)).*(lorazepam)/i,
     goodRxSlug: 'lorazepam',
     goodRxParams: 'label_override=lorazepam&form=tablet&dosage=0.5mg&quantity=60',
     goodRxPrice: { price: 27.5, quantity: '60 tablets, 0.5mg' },
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(ibuprofen|homatropine|chlorphen|guaifenesin|benzhydrocodone|apadaz|\bER\b|extended|2\.5)).*(\bhydrocodone.*acetaminophen|norco)/i,
+    matches: /^(?!\s*norco)(?!.*\bbrand\b)(?!.*(ibuprofen|homatropine|chlorphen|guaifenesin|benzhydrocodone|apadaz|\bER\b|extended|2\.5|7\.5|10\s?\/|10 ?mg)).*(\bhydrocodone.*acetaminophen)/i,
     goodRxSlug: 'hydrocodone-acetaminophen',
     goodRxParams: 'label_override=hydrocodone-acetaminophen&form=tablet&dosage=5mg-325mg&quantity=20',
     goodRxPrice: { price: 12.53, quantity: '20 tablets, 5mg/325mg' },
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(acetaminophen|\bER\b|extended|celecoxib)).*(tramadol|ultram)/i,
+    matches: /^(?!\s*ultram)(?!.*\bbrand\b)(?!.*(acetaminophen|\bER\b|extended|celecoxib)).*(tramadol)/i,
     goodRxSlug: 'tramadol',
     goodRxParams: 'label_override=tramadol&form=tablet&dosage=50mg&quantity=20',
     goodRxPrice: { price: 24.02, quantity: '20 tablets, 50mg' },
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(enacarbil|horizant|gralise|solution)).*(gabapentin|neurontin)/i,
+    matches: /^(?!\s*neurontin)(?!.*\bbrand\b)(?!.*(enacarbil|horizant|gralise|solution)).*(gabapentin)/i,
     goodRxSlug: 'gabapentin',
     goodRxParams: 'label_override=gabapentin&form=capsule&dosage=300mg&quantity=90',
     goodRxPrice: { price: 25.21, quantity: '90 capsules, 300mg' },
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /testosterone cypionate|depo-testosterone/i,
+    matches: /^(?!\s*depo-testosterone)(?!.*\bbrand\b).*testosterone cypionate/i,
     goodRxSlug: 'testosterone-cypionate',
     goodRxParams: 'label_override=testosterone-cypionate&form=vial&dosage=10ml-of-200mg-ml&quantity=1',
     goodRxPrice: { price: 62.73, quantity: '1 vial, 10ml of 200mg/ml' },
@@ -1468,7 +1468,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-07-01',
   },
   {
-    matches: /^(?!.*oral solution).*(?:benazepril|lotensin)/i,
+    matches: /^(?!.*(oral solution|amlodipine|lotrel)).*(?:benazepril|lotensin)/i,
     goodRxSlug: 'benazepril',
     goodRxParams: 'label_override=benazepril&form=tablet&dosage=10mg&quantity=30',
     costPlusPath: 'benazeprilhcl-10mg-tablet',

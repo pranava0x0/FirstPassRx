@@ -458,7 +458,12 @@ describe('ustekinumab biosimilars keep their own cash links', () => {
 describe('new-topic rules do not capture neighbouring products', () => {
   it('metoprolol tartrate is not priced as succinate ER', () => {
     expect(goodRxUrl('Metoprolol tartrate 25, 50 mg tablet')).toContain('/metoprolol?')
-    expect(goodRxUrl('Toprol XL (metoprolol succinate)')).toContain('/metoprolol-succinate-er')
+    expect(goodRxUrl('Metoprolol succinate ER 50 mg')).toContain('/metoprolol-succinate-er')
+    // Brand-first names do not take the generic quote (code review round 2).
+    expect(goodRxPrice('Toprol XL (metoprolol succinate)')).toBeNull()
+    expect(goodRxPrice('Myrbetriq (mirabegron)')).toBeNull()
+    expect(goodRxPrice('Hydrocodone-acetaminophen 7.5/325 and 10/325 mg')).toBeNull()
+    expect(goodRxUrl('amlodipine-benazepril')).not.toContain('/benazepril')
   })
   it.each(['Desvenlafaxine ER (generic)', 'Pristiq (desvenlafaxine)', 'Levamlodipine 2.5, 5 mg tablets', 'Benzhydrocodone/acetaminophen (Apadaz)', 'Seroquel, Zyprexa, Risperdal (brands)'])(
     '%s has no borrowed price',
