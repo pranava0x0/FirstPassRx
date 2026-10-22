@@ -229,6 +229,15 @@ describe('preferredNeedsPa', () => {
     ['QL (quantity limit)', false],
     [undefined, false],
   ])('%s -> %s', (note, want) => expect(preferredNeedsPa(r(note))).toBe(want))
+  it('dataset: picks whose note says the drug itself has no PA are flagged false', async () => {
+    const { default: raw } = await import('../data/formulary.json')
+    const find = (g: string, p: string, c: string) =>
+      (raw as unknown as { guides: { id: string; records: FormularyRecord[] }[] }).guides
+        .find((x) => x.id === g)!.records.find((x) => x.payerId === p && x.classId === c)!
+    // Codex review, PR 22: QL-only teriparatide and a step policy for other lines of business.
+    expect(preferredNeedsPa(find('md-osteoporosis', 'kpmidatlantic', 'anabolic'))).toBe(false)
+    expect(preferredNeedsPa(find('ny-osteoporosis', 'ny-excellus-bcbs', 'rankl-inhibitor'))).toBe(false)
+  })
   it('follows an explicit preferredPaRequired over the restriction text', () => {
     const brandOnly = 'The brand-name product carries "#" (brand requires PA); the generic tablet is covered without PA.'
     expect(preferredNeedsPa(r(brandOnly))).toBe(true)
