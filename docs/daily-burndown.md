@@ -78,7 +78,7 @@ Each item fits roughly one 20-minute run. Done items stay listed (struck) so the
    the new topics in all 9 original states and for the original 8 topics in MA, PA, NY, AL, IL,
    TX, MD (verified items only) and Medi-Cal (VA publishes none retrievable). DC (GLP-1 only: DHCF's
    general form has no criteria), FL and OH done 2026-10-21; NC's posted criteria are a 2024 DRAFT
-   (not applied) and the rest sit behind the MES login. Next: MI, then commercial plans' policies. Method:
+   (not applied) and the rest sit behind the MES login. MI, GA, WA, TN Medicaid not yet done (TennCare's 565-page criteria PDF is cached-friendly). Then commercial plans' policies. Method:
    `data-gathering/pa-criteria-2026-10-21/{BRIEF.md,targets.json}` → Haiku extract → Sonnet
    adjudicate against the CURRENT document (it caught outdated bulletins, draft handbooks,
    wrong AND/OR logic, and generic form questions posing as criteria) →
@@ -90,13 +90,13 @@ Each item fits roughly one 20-minute run. Done items stay listed (struck) so the
    (`scripts/apply-pa-submission.mjs`); a wrong fax misroutes PHI.
 5. **Cash prices.** Every recommended pick now has a price or a link-only rule except generic
    rivaroxaban 20 mg (not sold) and one unspecified guanfacine form. Next: the alternatives long
-   tail (`KNOWN_UNPRICED_GAP` 873). Needs the real browser.
+   tail (`KNOWN_UNPRICED_GAP` 1092). Needs the real browser.
 6. **Stale sources** (issues.md): Meridian (Dec 2024) and BCBS Community IL (May 2025) lists;
    Cigna MD's URL now serves the 2027 list (re-add Cigna to the MD new-topic guides on
    2027-01-01); Aetna IL reissued; BCBS MA SSRI 404; 6 MassHealth tables drifted.
 7. **Partial → verified upgrades:** `il-osteoporosis` (13 partial), `ny-osteoporosis` (6),
    `ny-menopause` (5 example).
-8. **New states** (51 jurisdictions; DC, FL, OH added 2026-10-21, NC in flight = 13): pick by population; each new state costs a
+8. **New states** (51 jurisdictions; DC, FL, OH, NC, MI, GA, WA, TN added 2026-10-21 = 17): pick by population; each new state costs a
    payer-roster discovery plus one agent per payer for all 12 topics (~60–90 cells per payer).
 
 ## Ledger (append one line per run)
@@ -107,3 +107,4 @@ Each item fits roughly one 20-minute run. Done items stay listed (struck) so the
 | 2026-10-21 | Follow-up (manual) | PA criteria/ICD-10/send-to (PR #21); AL/MD archive + estradiol patch price (PR #20, merged); 4 new MA topics, 55 cells, 45 verified (this PR) | Queue #1 run A, or #2 for NY |
 | 2026-10-21 | #2 NY (manual, 4 agents) | `ny-adhd/lipids/weight/migraine`: 55 cells, 36 verified; added to rolling PR #22 | #2 next state (MD or VA), or #1 TX |
 | 2026-10-21 | #8 new states (manual, 5.5 h run, ≤4 agents) | DC, FL, OH: 12 guides × 4 payers each (UHC and Humana PDP reused from checked records); PA criteria for the original topics in 8 states; one rolling PR #22 | NC merge, then GA/MI by population |
+| 2026-10-21 | #8 new states, cont. (manual, ≤4 agents) | NC, MI, GA, WA, TN (12 guides each); Anthem NY/VA/CA reissue applied; PA criteria OH/FL/DC; three Codex rounds fixed | Next state by population (NJ needs per-MCO lists; AZ, IN, KY have single PDLs), or #3 criteria for MI/GA/WA/TN |
