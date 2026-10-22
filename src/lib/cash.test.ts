@@ -411,3 +411,15 @@ describe('form-conflicting names drop the captured product links', () => {
     expect(costPlusUrl(name)).toBeNull()
   })
 })
+
+// Found adding the MA dermatology and pain guides (2026-10-22): molecule-only rules borrowed prices.
+describe('topical mometasone and hydrocodone-ibuprofen do not borrow other products\' prices', () => {
+  it.each(['Mometasone furoate 0.1% cream', 'Mometasone furoate external', 'Hydrocodone and ibuprofen tablets'])(
+    '%s has no borrowed price',
+    (name) => expect(goodRxPrice(name)).toBeNull(),
+  )
+  it('the Asmanex inhaler and plain ibuprofen keep theirs', () => {
+    expect(goodRxPrice('Asmanex HFA (mometasone furoate)')).not.toBeNull()
+    expect(goodRxPrice('Ibuprofen 600 mg tablet')).not.toBeNull()
+  })
+})

@@ -367,7 +367,7 @@
  * change this count.)
  * 780 → 802: District of Columbia added (12 guides; DC Medicaid and AmeriHealth Caritas DC are new
  * documents, CareFirst and Kaiser Mid-Atlantic reuse the MD records). */
-export const KNOWN_UNPRICED_GAP = 1092
+export const KNOWN_UNPRICED_GAP = 1713
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -1182,7 +1182,9 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   {
     // No Cost Plus match: searched "mometasone" -- only topical/nasal forms carried, not the
     // Twisthaler. Doesn't collide with the Dulera rule above (that one requires "...formoterol").
-    matches: /asmanex|mometasone furoate/i,
+    // Inhaler only: topical mometasone (cream/ointment/lotion/solution, "0.1%", "external") is a
+    // different product and must not take the inhaler price (found adding MA dermatology, 2026-10-22).
+    matches: /^(?!.*(cream|ointment|lotion|topical|external|0\.1 ?%|solution|nasal)).*(asmanex|mometasone furoate)/i,
     goodRxSlug: 'asmanex',
     goodRxPrice: { price: 143.06, quantity: '1 inhaler, 220mcg, 60 doses' },
     pricesCapturedAt: '2026-07-06',
@@ -1241,7 +1243,9 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     // No Cost Plus match: ibuprofen 600mg and 800mg both 404 -- Cost Plus doesn't carry the
     // OTC-adjacent Rx strengths. GoodRx-only by design. "\bibu\b" added 2026-07-16 to catch
     // formularies that abbreviate the generic-brand name as bare "IBU".
-    matches: /ibuprofen|\bibu\b/i,
+    // Plain ibuprofen only: hydrocodone/ibuprofen and ibuprofen/famotidine (Duexis) are different
+    // products (found adding MA pain, 2026-10-22).
+    matches: /^(?!.*(hydrocodone|famotidine|duexis|oxycodone)).*(ibuprofen|\bibu\b)/i,
     goodRxSlug: 'ibuprofen',
     goodRxParams: 'label_override=ibuprofen&form=tablet&dosage=600mg&quantity=30',
     goodRxPrice: { price: 29.65, quantity: '30 tablets, 600mg' },
