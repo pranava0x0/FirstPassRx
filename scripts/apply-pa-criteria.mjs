@@ -8,7 +8,8 @@
 // paRequired items whose drug string matches exactly get criteria; a "[preferred] …" target sets
 // the record's preferredCriteria (only when the preferred agent carries a restriction). Anything
 // unmatched is reported, never guessed.
-import { readFileSync, writeFileSync } from 'node:fs'
+import { readFileSync } from 'node:fs'
+import { writeValidatedFormulary } from './write-formulary.mjs'
 
 const files = process.argv.slice(2).filter((a) => !a.startsWith('--'))
 const DRY = process.argv.includes('--dry-run')
@@ -66,5 +67,5 @@ for (const file of files) {
   console.log(`${f.payerId}: criteria on ${applied} item(s); unmatched ${unmatched.length}`)
   for (const u of unmatched.slice(0, 15)) console.log(`  - ${u}`)
 }
-if (!DRY) writeFileSync(FORMULARY, JSON.stringify(data, null, 2) + '\n')
-console.log(DRY ? '(dry run: nothing written)' : `wrote ${FORMULARY}`)
+if (DRY) console.log('(dry run: nothing written)')
+else writeValidatedFormulary(data)

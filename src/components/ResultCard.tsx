@@ -92,8 +92,8 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
 
         {record.noCoveredAgent ? (
           <div className="recommendation-hero recommendation-hero--none">
-            <div className="recommendation-hero__label">NOT ON THE PLAN'S DRUG LIST</div>
-            <h3 className="recommendation-hero__name">No drug in this class appears on the plan's list</h3>
+            <div className="recommendation-hero__label">NO COVERED OPTION</div>
+            <h3 className="recommendation-hero__name">No drug in this class is covered on this plan's list</h3>
             <p className="recommendation-hero__generic">{record.preferredRestriction}</p>
           </div>
         ) : (
@@ -171,8 +171,8 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
                 </li>
                 {record.noCoveredAgent ? (
                   <li>
-                    <b>Doctor:</b> no drug in this class appears on this plan's list. That can mean an
-                    exclusion or a class the list doesn't manage; the note above says which. Confirm
+                    <b>Doctor:</b> no drug in this class is covered on this plan's list: it is either
+                    listed as excluded or not listed at all; the note above says which. Confirm
                     with the plan before requesting a formulary exception or using a cash price.
                   </li>
                 ) : record.boglActive ? (
@@ -206,7 +206,7 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
               </p>
               {record.noCoveredAgent ? (
                 <p className="step__body step__body--none">
-                  Not applicable: no drug in this class is on this plan's list.
+                  Not applicable: no drug in this class is covered on this plan's list.
                 </p>
               ) : record.stepTherapy ? (
                 <p className="step__body">{record.stepTherapy}</p>

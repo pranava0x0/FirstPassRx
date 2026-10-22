@@ -9,7 +9,8 @@
 // every drug class, so one verified file fills that payer's "Send to" in all of its state's guides.
 // The reference is added to each guide (sourceIds are guide-scoped). Existing paSubmission values
 // that were verified per guide are left alone unless --overwrite is passed.
-import { readFileSync, writeFileSync } from 'node:fs'
+import { readFileSync } from 'node:fs'
+import { writeValidatedFormulary } from './write-formulary.mjs'
 
 const files = process.argv.slice(2).filter((a) => !a.startsWith('--'))
 const DRY = process.argv.includes('--dry-run')
@@ -49,5 +50,5 @@ for (const file of files) {
   }
   console.log(`${s.state} ${s.payerId}: applied to ${applied} guide(s)${kept ? `, kept existing in ${kept}` : ''}`)
 }
-if (!DRY) writeFileSync(FORMULARY, JSON.stringify(data, null, 2) + '\n')
-console.log(DRY ? '(dry run: nothing written)' : `wrote ${FORMULARY}`)
+if (DRY) console.log('(dry run: nothing written)')
+else writeValidatedFormulary(data)

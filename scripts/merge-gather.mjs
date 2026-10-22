@@ -11,7 +11,7 @@
 // A topic is merged only when EVERY payer has a record for EVERY class in it: validate()'s
 // count floor rejects partial guides, and a half-merged guide is worse than none (CLAUDE.md).
 // Topics that fall short are reported and skipped. Existing guide ids are never overwritten.
-import { spawnSync } from 'node:child_process'
+import { writeValidatedFormulary } from './write-formulary.mjs'
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
 
@@ -130,17 +130,5 @@ for (const [topicId, topic] of Object.entries(taxonomy.topics)) {
 }
 
 console.log(report.join('\n'))
-if (!DRY) {
-  // Run the app's full validate() (it executes when formulary.test.ts loads) against the merged
-  // file, and put the original back if it fails, so a malformed checkpoint never lands.
-  const original = readFileSync(FORMULARY, 'utf8')
-  writeFileSync(FORMULARY, JSON.stringify(data, null, 2) + '\n')
-  const check = spawnSync('npx', ['vitest', 'run', 'src/lib/formulary.test.ts', '-t', '__validate_only__', '--passWithNoTests'], { encoding: 'utf8' })
-  if (check.status !== 0) {
-    writeFileSync(FORMULARY, original)
-    console.error((check.stdout + check.stderr).split('\n').filter((l) => / - guide |Invalid formulary/.test(l)).slice(0, 30).join('\n'))
-    console.error(`validation failed: ${FORMULARY} left unchanged`)
-    process.exit(1)
-  }
-}
-console.log(DRY ? '(dry run: nothing written)' : `wrote ${FORMULARY} (validated)`)
+if (DRY) console.log('(dry run: nothing written)')
+else writeValidatedFormulary(data)
