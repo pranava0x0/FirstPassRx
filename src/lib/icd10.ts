@@ -118,7 +118,9 @@ export const ICD10_BY_CLASS: Record<string, Icd10Option[]> = {
     { code: 'F41.9', label: 'Anxiety disorder, unspecified' },
   ],
   'tnf-inhibitor': [...AUTOIMMUNE, { code: 'M45.9', label: 'Ankylosing spondylitis of unspecified sites in spine' }],
-  'il17-il23': AUTOIMMUNE.slice(1),
+  // Shared by every IL-17 and IL-23 agent (ixekizumab, secukinumab, ustekinumab...): psoriasis and
+  // PsA. Crohn's/UC are ustekinumab/risankizumab/guselkumab-only, so they are left out.
+  'il17-il23': [AUTOIMMUNE[2], AUTOIMMUNE[1]],
   // Tofacitinib and upadacitinib (the MA picks) are labeled for RA, PsA, AS and UC -- not plaque
   // psoriasis; Crohn's is upadacitinib-only, so it is left out of the class-wide list.
   'jak-inhibitor': [AUTOIMMUNE[0], AUTOIMMUNE[1], AUTOIMMUNE[4], { code: 'M45.9', label: 'Ankylosing spondylitis of unspecified sites in spine' }],
