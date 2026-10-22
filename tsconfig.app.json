@@ -23,5 +23,7 @@
 
     "types": ["vite/client", "vitest/globals", "@testing-library/jest-dom"]
   },
-  "include": ["src"]
+  "include": ["src"],
+  // Node-only test of a scripts/ module (Buffer, node:fs); the app config has no @types/node.
+  "exclude": ["src/lib/redactSecrets.test.ts"]
 }

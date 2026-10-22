@@ -134,7 +134,8 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
               item={{
                 drug: displayName,
                 outcome: preferredOutcome(record),
-                reason: record.preferredRestriction,
+                // preferredPaRequired can flag a PA the restriction text doesn't spell out.
+                reason: record.preferredRestriction ?? (preferredOutcome(record) === 'step' ? 'Step therapy required' : 'PA required'),
                 sourceIds: record.restrictionSourceIds,
                 criteria: record.preferredCriteria,
                 criteriaMode: record.preferredCriteriaMode,

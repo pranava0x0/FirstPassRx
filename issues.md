@@ -4,6 +4,14 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
 
 ## Fixed
 
+- **2026-10-22 · build (deploy) · the live site stopped updating after PR #21.** The Deploy to
+  GitHub Pages runs for PR #22 and PR #23 failed at Build: `tsc -b` found 49 type errors
+  (`noUncheckedIndexedAccess` on `AUTOIMMUNE[n]`/`PSYCHOSIS` destructuring in `src/lib/icd10.ts`,
+  an optional `preferredRestriction` passed as `PaItem.reason` in `ResultCard.tsx`, and a Node-only
+  test with no `@types/node`). Root cause: **test bug** — `npm test` ran vitest only, which strips
+  types, so both PRs merged green. Fixed: named ICD-10 constants, a PA/step fallback reason, the
+  node test excluded from the app tsconfig, and `npm test` now runs `tsc -b --noEmit` first.
+
 - **2026-07-08 · code (scripts/archive-sources.mjs) · two real bugs caught by PR review on the
   redaction feature, both fixed same-day.** (1) **Fixed-length redaction could corrupt binary
   files**: the original `redactSecrets()` replaced a matched secret with the literal string
