@@ -206,6 +206,14 @@ describe('ICD-10 suggestions', () => {
     // E78.01 is a non-billable header in FY2027 (split into E78.010/.011/.019).
     expect(Object.values(ICD10_BY_CLASS).flat().some((o) => o.code === 'E78.01')).toBe(false)
   })
+  it('suggests only diagnoses the requested drug is labeled for (Codex review, PR 23)', () => {
+    const codes = (cls: string, drug: string) => icd10For(cls, drug).map((o) => o.code)
+    expect(codes('antipsychotic-oral', 'Paliperidone ER (Invega)')).not.toContain('F33.1')
+    expect(codes('antipsychotic-oral', 'Iloperidone (Fanapt)')).toEqual(['F20.9'])
+    expect(codes('il17-il23', 'Ixekizumab (Taltz)')).not.toContain('K50.90')
+    expect(codes('il17-il23', 'Ustekinumab-kfce')).toContain('K50.90')
+    expect(codes('jak-inhibitor', 'Tofacitinib')).not.toContain('L40.0')
+  })
   it('records which official release the list was checked against', () => {
     expect(ICD10_RELEASE.version).toMatch(/FY20\d\d/)
     expect(ICD10_RELEASE.source).toMatch(/^https:\/\/www\.cms\.gov\//)

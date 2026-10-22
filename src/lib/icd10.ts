@@ -101,8 +101,10 @@ const OAB: Icd10Option[] = [
 ]
 
 export const ICD10_BY_CLASS: Record<string, Icd10Option[]> = {
-  'antipsychotic-oral': PSYCHOSIS,
-  'antipsychotic-lai': PSYCHOSIS.slice(0, 3),
+  // Class-wide lists hold only what every agent in the class is labeled for; DRUG_ICD10 below adds
+  // each drug's other indications (paliperidone is not labeled for bipolar or MDD).
+  'antipsychotic-oral': PSYCHOSIS.slice(0, 1),
+  'antipsychotic-lai': PSYCHOSIS.slice(0, 1),
   snri: [...DEPRESSION, { code: 'F41.1', label: 'Generalized anxiety disorder' }, { code: 'E11.42', label: 'Type 2 diabetes mellitus with diabetic polyneuropathy' }, { code: 'M79.7', label: 'Fibromyalgia' }],
   bupropion: DEPRESSION,
   'antidepressant-other': DEPRESSION,
@@ -216,6 +218,30 @@ export const ICD10_BY_CLASS: Record<string, Icd10Option[]> = {
   ],
 }
 
-export function icd10For(classId: string): Icd10Option[] {
-  return ICD10_BY_CLASS[classId] ?? []
+const RA = AUTOIMMUNE[0]
+const PSA = AUTOIMMUNE[1]
+const PSO = AUTOIMMUNE[2]
+const CD = AUTOIMMUNE[3]
+const UC = AUTOIMMUNE[4]
+const AS: Icd10Option = { code: 'M45.9', label: 'Ankylosing spondylitis of unspecified sites in spine' }
+const [SCZ, SCZA, BP, MDD] = PSYCHOSIS
+
+/**
+ * Per-drug lists, checked before the class list, so the PA builder never suggests a diagnosis the
+ * requested drug is not labeled for (first match wins; matched against the PA item's drug text).
+ */
+const DRUG_ICD10: [RegExp, Icd10Option[]][] = [
+  [/paliperidone|invega/i, [SCZ, SCZA]],
+  [/aripiprazole|abilify|aristada|cariprazine|vraylar/i, [SCZ, BP, MDD]],
+  [/brexpiprazole|rexulti/i, [SCZ, MDD]],
+  [/quetiapine|seroquel|olanzapine|zyprexa|risperidone|risperdal|perseris|uzedy|rykindo|lurasidone|latuda|asenapine|ziprasidone|lumateperone|caplyta/i, [SCZ, BP]],
+  [/upadacitinib|rinvoq/i, [RA, PSA, AS, UC, CD]],
+  [/deucravacitinib|sotyktu|apremilast|otezla/i, [PSO, PSA]],
+  [/ustekinumab|stelara|wezlana|selarsdi|pyzchiva|otulfi|imuldosa|yesintek|steqeyma|starjemza|risankizumab|skyrizi|guselkumab|tremfya/i, [PSO, PSA, CD, UC]],
+  [/secukinumab|cosentyx|ixekizumab|taltz|bimekizumab|bimzelx/i, [PSO, PSA, AS]],
+]
+
+export function icd10For(classId: string, drug?: string): Icd10Option[] {
+  const byDrug = drug ? DRUG_ICD10.find(([re]) => re.test(drug)) : undefined
+  return byDrug?.[1] ?? ICD10_BY_CLASS[classId] ?? []
 }

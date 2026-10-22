@@ -38,7 +38,7 @@ export function PaRequest({
   const [pdfError, setPdfError] = useState(false)
   const { copied, copy } = useCopyToClipboard()
   const checklist = paChecklist(input, item.criteriaMode ?? 'any')
-  const icdOptions = icd10For(record.classId)
+  const icdOptions = icd10For(record.classId, item.drug)
   const listId = `icd10-${record.payerId}-${record.classId}`.replace(/\W+/g, '-')
   const doneCount = checklist.filter((c) => c.done).length
   const letter = useMemo(

@@ -382,7 +382,7 @@ function slimRow(r, src) {
 
 /** Run one claim against every extractable source for the item. */
 function runCheck({ kind, drug, claim, urls, index }) {
-  const check = { kind, drug, claim: claim.expect, sources: urls, status: 'SKIPPED', reason: '', matched: [], targets: [] }
+  const check = { kind, drug, claim: claim.expect, sources: urls, status: 'SKIPPED', reason: '', matched: [], fingerprint: [], targets: [] }
   if (NONSPECIFIC_RE.test(drug)) return { ...check, reason: 'non-specific drug text (class/other)' }
   const sources = urls.map((u) => loadSource(u, index)).filter(Boolean)
   if (!sources.length) return { ...check, reason: 'no extractable source rows (unsupported layout or fetch failed)' }
@@ -446,6 +446,8 @@ function runCheck({ kind, drug, claim, urls, index }) {
     }
     perTarget.push({ status, reason, verdicts, via: res.via, name: res.target.label })
     check.matched.push(...verdicts.slice(0, 6).map((v) => ({ target: res.target.label, verdict: v.status, ...v.row })))
+    // The report shows at most 6 rows per target, but acceptance fingerprints every matched row.
+    check.fingerprint.push(...verdicts.map((v) => v.row.raw))
   }
   check.status = worst(perTarget.map((p) => p.status))
   const top = perTarget.find((p) => p.status === check.status)
@@ -526,7 +528,7 @@ for (const g of guides) {
     }
     for (const c of checks) {
       if (c.status === 'OK' || c.status === 'SKIPPED') continue
-      const key = acceptKey({ guide: g.id, payer: rec.payerId, class: rec.classId, kind: c.kind, drug: c.drug, status: c.status, raw: c.matched.map((m) => m.raw).join(' || ') })
+      const key = acceptKey({ guide: g.id, payer: rec.payerId, class: rec.classId, kind: c.kind, drug: c.drug, status: c.status, raw: (c.fingerprint ?? []).join(' || ') })
       if (accepted.has(key)) Object.assign(c, { status: 'ACCEPTED', reason: `reviewed false positive (${c.status}): ${c.reason}` })
     }
     cells.push({
@@ -606,7 +608,7 @@ if (args['accept-remaining']) {
   for (const c of cells)
     for (const ch of c.checks)
       if (!['OK', 'SKIPPED', 'ACCEPTED'].includes(ch.status))
-        add.push({ guide: c.guide, payer: c.payer, class: c.class, kind: ch.kind, drug: ch.drug, status: ch.status, raw: ch.matched.map((m) => m.raw).join(' || '), reason: ch.reason, reviewed: today })
+        add.push({ guide: c.guide, payer: c.payer, class: c.class, kind: ch.kind, drug: ch.drug, status: ch.status, raw: (ch.fingerprint ?? []).join(' || '), reason: ch.reason, reviewed: today })
   writeFileSync(ACCEPTED_FILE, JSON.stringify([...acceptedList, ...add], null, 1) + '\n')
   console.log(`accepted ${add.length} reviewed checks -> ${ACCEPTED_FILE}`)
 }

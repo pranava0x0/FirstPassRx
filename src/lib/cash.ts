@@ -643,7 +643,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(ibuprofen|homatropine|chlorphen|guaifenesin|\bER\b|extended)).*(hydrocodone.*acetaminophen|norco)/i,
+    matches: /^(?!.*(ibuprofen|homatropine|chlorphen|guaifenesin|\bER\b|extended|2\.5)).*(hydrocodone.*acetaminophen|norco)/i,
     goodRxSlug: 'hydrocodone-acetaminophen',
     goodRxParams: 'label_override=hydrocodone-acetaminophen&form=tablet&dosage=5mg-325mg&quantity=20',
     goodRxPrice: { price: 12.53, quantity: '20 tablets, 5mg/325mg' },
