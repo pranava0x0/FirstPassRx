@@ -742,3 +742,6 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   deploy failed at `tsc -b` and the live site froze at PR #21 for a day.** `npm test` now runs
   `tsc -b --noEmit` first. If the site looks stale, check `gh run list` for a red "Deploy to
   GitHub Pages" before suspecting caching.
+- **The agent-cap hook reads `.claude/agent-cap` relative to the shell's working directory.** A
+  `cd data-gathering/<stamp>` in a Bash call silently dropped the cap to the default 2 for the next
+  Agent launch. Keep the shell at the repo root (use paths, not `cd`) during a gather.
