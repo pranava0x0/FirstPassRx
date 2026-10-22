@@ -453,7 +453,11 @@ function runCheck({ kind, drug, claim, urls, index }) {
   const top = perTarget.find((p) => p.status === check.status)
   check.reason = top.reason
   const notFound = results.filter((x) => !x.rows.length && x.via === 'primary')
-  if (notFound.length && check.status === 'OK') check.reason += ` (partial: no row for ${notFound.map((x) => x.target.label).join(', ')})`
+  // A multi-product string where some products have no source row is not "OK": flag it for review.
+  if (notFound.length && check.status === 'OK') {
+    check.status = 'AMBIGUOUS'
+    check.reason = `partial match: no source row for ${notFound.map((x) => x.target.label).join(', ')}`
+  }
   if (claim.expect === 'absent' && check.status === 'FLAG_MISMATCH') check.reason = 'record says not on list, but a source row lists it'
   return check
 }

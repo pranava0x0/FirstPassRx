@@ -508,10 +508,10 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   {
     matches: /^(?!.*(\bER\b|amrix|extended)).*cyclobenzaprine/i,
     goodRxSlug: 'cyclobenzaprine',
-    goodRxParams: 'label_override=cyclobenzaprine&form=tablet&dosage=10mg&quantity=30',
-    goodRxPrice: { price: 29.22, quantity: '30 tablets, 10mg' },
-    costPlusPath: 'cyclobenzaprine-10mg-tablet',
-    costPlusPrice: { price: 5.55, quantity: '30 tablets, 10mg' },
+    goodRxParams: 'label_override=cyclobenzaprine&form=tablet&dosage=5mg&quantity=30',
+    goodRxPrice: { price: 10.18, quantity: '30 tablets, 5mg' },
+    costPlusPath: 'cyclobenzaprine-5mg-tablet',
+    costPlusPrice: { price: 5.34, quantity: '30 tablets, 5mg' },
     pricesCapturedAt: '2026-10-22',
   },
   {

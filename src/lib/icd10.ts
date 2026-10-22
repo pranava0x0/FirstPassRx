@@ -251,6 +251,8 @@ const DRUG_ICD10: [RegExp, Icd10Option[]][] = [
   [/adalimumab|humira|hadlima|hyrimoz|cyltezo|yusimry|simlandi|amjevita|hulio|idacio|yuflyma|infliximab|remicade|inflectra|renflexis|avsola|zymfentra/i, [RA, PSA, AS, PSO, CD, UC]],
   [/etanercept|enbrel|erelzi|eticovo/i, [RA, PSA, AS, PSO]],
   [/certolizumab|cimzia/i, [RA, PSA, AS, PSO, CD]],
+  // Simponi Aria (IV) has no UC indication; subcutaneous Simponi does.
+  [/simponi aria|golimumab.*(\bIV\b|intravenous|aria)/i, [RA, PSA, AS]],
   [/golimumab|simponi/i, [RA, PSA, AS, UC]],
   [/deucravacitinib|sotyktu|apremilast|otezla/i, [PSO, PSA]],
   [/ustekinumab|stelara|wezlana|selarsdi|pyzchiva|otulfi|imuldosa|yesintek|steqeyma|starjemza|risankizumab|skyrizi|guselkumab|tremfya/i, [PSO, PSA, CD, UC]],

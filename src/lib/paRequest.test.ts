@@ -217,6 +217,7 @@ describe('ICD-10 suggestions', () => {
     expect(codes('antipsychotic-lai', 'Perseris (risperidone)')).toEqual(['F20.9'])
     expect(codes('tnf-inhibitor', 'Enbrel (etanercept)')).not.toContain('K50.90')
     expect(codes('tnf-inhibitor', 'Adalimumab-adaz')).toContain('K51.90')
+    expect(codes('tnf-inhibitor', 'Simponi Aria (golimumab IV)')).not.toContain('K51.90')
   })
   it('every JAK, IL-17/23 and TNF drug in the MA guides has its own diagnosis list', async () => {
     const { default: raw } = await import('../data/formulary.json')
