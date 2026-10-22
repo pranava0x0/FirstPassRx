@@ -196,6 +196,12 @@ describe('cash price coverage across the live formulary', () => {
     // immediate-release 50/75mg one; GoodRx pending for the same reason.
     const KNOWN_PRICE_UNAVAILABLE = [
       /climara/i,
+      // 2026-10-22 MA next-11 topics: GoodRx blocked after one read, and Cost Plus does not carry
+      // these (controlled substances, injectables, specialty brands) or the price was unverifiable.
+      /tofacitinib|xeljanz|zolpidem|ambien|alprazolam|xanax|lorazepam|ativan|hydrocodone|norco|tramadol|ultram|gabapentin|neurontin/i,
+      /testosterone cypionate|depo-testosterone|sofosbuvir|epclusa|bictegravir|biktarvy|dupilumab|dupixent|ixekizumab|taltz/i,
+      /upadacitinib|rinvoq|suvorexant|belsomra|paliperidone|invega|risperdal consta|microsphere|glecaprevir|mavyret/i,
+      /adalimumab|humira|hadlima|hyrimoz|cyltezo|yusimry|simlandi|amjevita|ustekinumab|stelara|wezlana|selarsdi|pyzchiva|otulfi|imuldosa|yesintek|steqeyma/i,
       // 2026-10-21 new topics: brand weight-loss GLP-1s and CGRP/PCSK9 injectables show only
       // manufacturer savings offers on GoodRx, not a cash price.
       /wegovy|zepbound|saxenda|foundayo|weight management/i,
@@ -422,4 +428,13 @@ describe('topical mometasone and hydrocodone-ibuprofen do not borrow other produ
     expect(goodRxPrice('Asmanex HFA (mometasone furoate)')).not.toBeNull()
     expect(goodRxPrice('Ibuprofen 600 mg tablet')).not.toBeNull()
   })
+})
+
+// 2026-10-22: the new single-agent HCTZ rule sits at the top of the list; ACE/HCTZ combinations
+// must keep falling through to their ACE-inhibitor rules.
+describe('HCTZ rule leaves ACE combinations alone', () => {
+  it.each(['benazepril-hydrochlorothiazide', 'Enalapril (and enalapril HCTZ) tablets', 'quinapril-hydrochlorothiazide'])(
+    '%s does not resolve to the HCTZ product',
+    (name) => expect(goodRxUrl(name)).not.toContain('/hydrochlorothiazide'),
+  )
 })

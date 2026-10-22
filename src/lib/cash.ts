@@ -367,7 +367,7 @@
  * change this count.)
  * 780 → 802: District of Columbia added (12 guides; DC Medicaid and AmeriHealth Caritas DC are new
  * documents, CareFirst and Kaiser Mid-Atlantic reuse the MD records). */
-export const KNOWN_UNPRICED_GAP = 1713
+export const KNOWN_UNPRICED_GAP = 1547
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -396,6 +396,279 @@ interface CashLinkRule {
 }
 
 const CASH_LINK_RULES: CashLinkRule[] = [
+  // ---- MA next-11 topics (added 2026-10-22): Cost Plus via browser; GoodRx blocked after one
+  // read, so GoodRx is link-only except quetiapine. Each rule is narrowed to the captured form. ----
+  {
+    // Immediate-release tablets only (Seroquel XR / quetiapine ER are priced differently).
+    matches: /^(?!.*\b(ER|XR|extended)\b).*(quetiapine|seroquel)/i,
+    goodRxSlug: 'quetiapine',
+    goodRxParams: 'label_override=quetiapine&form=tablet&dosage=25mg&quantity=30',
+    goodRxPrice: { price: 29.02, quantity: '30 tablets, 25mg' },
+    costPlusPath: 'QuetiapineFumarate-25mg-Tablet',
+    costPlusPrice: { price: 5.34, quantity: '30 tablets, 25mg' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /^(?!.*(maintena|asimtufii|aristada|lauroxil|inject|solution|odt|disintegrat|mycite)).*(aripiprazole|abilify)/i,
+    goodRxSlug: 'aripiprazole',
+    costPlusPath: 'aripiprazole-5mg-tablet',
+    costPlusPrice: { price: 6.93, quantity: '30 tablets, 5mg' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /^(?!.*(consta|microsphere|perseris|uzedy|rykindo|inject|solution|odt|disintegrat|extended)).*(risperidone|risperdal)/i,
+    goodRxSlug: 'risperidone',
+    costPlusPath: 'Risperidone-1mg-Tablet',
+    costPlusPrice: { price: 6.52, quantity: '60 tablets, 1mg' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /^(?!.*drizalma).*(duloxetine|cymbalta)/i,
+    goodRxSlug: 'duloxetine',
+    costPlusPath: 'duloxetinedelayedreleasedr-30mg-capsule',
+    costPlusPrice: { price: 5.9, quantity: '30 capsules, 30mg' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    // ER capsules only; venlafaxine ER tablets are a different, costlier product.
+    matches: /^(?!.*tablet).*(venlafaxine.*(\bER\b|extended|\bXR\b)|effexor xr)/i,
+    goodRxSlug: 'venlafaxine-er',
+        costPlusPath: 'venlafaxineextendedreleaseer-75mg-capsule',
+    costPlusPrice: { price: 6.0, quantity: '30 capsules, 75mg ER' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /^(?!.*(forfivo|aplenzin|450)).*(bupropion.*\bXL\b|wellbutrin xl|bupropion.*extended-release \(XL)/i,
+    goodRxSlug: 'bupropion-xl',
+    costPlusPath: 'bupropionxl-150mg-tablet',
+    costPlusPrice: { price: 6.0, quantity: '30 tablets, 150mg XL' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /bupropion.*\bSR\b|wellbutrin sr/i,
+    goodRxSlug: 'bupropion-sr',
+    costPlusPath: 'BupropionHCLSustainedReleaseSR-150mg-Tablet',
+    costPlusPrice: { price: 6.86, quantity: '60 tablets, 150mg SR' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /^(?!.*(odt|disintegrat|soltab)).*(mirtazapine|remeron)/i,
+    goodRxSlug: 'mirtazapine',
+    costPlusPath: 'mirtazapine-15mg-tablet',
+    costPlusPrice: { price: 5.8, quantity: '30 tablets, 15mg' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /trazodone/i,
+    goodRxSlug: 'trazodone',
+    costPlusPath: 'trazodone-50mg-tablet',
+    costPlusPrice: { price: 5.45, quantity: '30 tablets, 50mg' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    // Cream only (ointment, dental paste, injection and nasal forms differ).
+    matches: /triamcinolone.*cream/i,
+    goodRxSlug: 'triamcinolone',
+        costPlusPath: 'triamcinolone-acetonide-0_1-tube-of-cream-30g',
+    costPlusPrice: { price: 6.72, quantity: '30 g tube, 0.1% cream' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /^(?!.*(capsule|oral|envarsus|astagraf|granule)).*(tacrolimus.*(ointment|topical)|protopic)/i,
+    goodRxSlug: 'tacrolimus',
+    costPlusPath: 'tacrolimus-0_1-ointment-30g',
+    costPlusPrice: { price: 23.06, quantity: '30 g tube, 0.1% ointment' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /clindamycin.*benzoyl|benzoyl.*clindamycin/i,
+    goodRxSlug: 'clindamycin-benzoyl-peroxide',
+    costPlusPath: 'clindamycin-phosphate-benzoyl-peroxide-1_2-5-gel',
+    costPlusPrice: { price: 14.41, quantity: '45 g, 1.2%/5% gel' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /^(?!.*(\bER\b|amrix|extended)).*cyclobenzaprine/i,
+    goodRxSlug: 'cyclobenzaprine',
+    costPlusPath: 'cyclobenzaprine-10mg-tablet',
+    costPlusPrice: { price: 5.55, quantity: '30 tablets, 10mg' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /^(?!.*(intrathecal|inject|solution|suspension|ozobax|fleqsuvy|lyvispah|granule)).*baclofen/i,
+    goodRxSlug: 'baclofen',
+    costPlusPath: 'baclofen-10mg-tablet',
+    costPlusPrice: { price: 6.56, quantity: '90 tablets, 10mg' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /^(?!.*(patch|gel|transdermal)).*(oxybutynin.*(\bER\b|extended)|ditropan xl)/i,
+    goodRxSlug: 'oxybutynin-er',
+    costPlusPath: 'oxybutyninextendedreleaseer-10mg-tablet',
+    costPlusPrice: { price: 6.14, quantity: '30 tablets, 10mg ER' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /^(?!.*(suspension|vesicare ls)).*(solifenacin|vesicare)/i,
+    goodRxSlug: 'solifenacin',
+    costPlusPath: 'solifenacinsuccinate-5mg-tablet',
+    costPlusPrice: { price: 6.07, quantity: '30 tablets, 5mg' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /^(?!.*(granule|suspension)).*(mirabegron|myrbetriq)/i,
+    goodRxSlug: 'mirabegron',
+    costPlusPath: 'mirabegron-er-25-mg-tablet-extended-release-24-hour',
+    costPlusPrice: { price: 230.49, quantity: '30 tablets, 25mg ER' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /^(?!.*(hydrochlorothiazide|hctz)).*(losartan|cozaar)/i,
+    goodRxSlug: 'losartan',
+    costPlusPath: 'losartan-50mg-tablet',
+    costPlusPrice: { price: 5.52, quantity: '30 tablets, 50mg' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    // Single-agent amlodipine only; the many amlodipine combination pills are different products.
+    matches: /^(?!.*(benazepril|valsartan|olmesartan|telmisartan|atorvastatin|perindopril|celecoxib|lotrel|exforge|azor|twynsta|caduet|norliqva|katerzia|suspension|solution)).*(amlodipine|norvasc)/i,
+    goodRxSlug: 'amlodipine',
+        costPlusPath: 'amlodipine-5mg-tablet',
+    costPlusPrice: { price: 5.21, quantity: '30 tablets, 5mg' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /^(?!.*(hydrochlorothiazide|hctz)).*(metoprolol succinate|toprol)/i,
+    goodRxSlug: 'metoprolol-succinate-er',
+    costPlusPath: 'metoprololextendedreleaseer-50mg-tablet',
+    costPlusPrice: { price: 5.52, quantity: '30 tablets, 50mg ER' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /^(?!.*(hydrochlorothiazide|hctz|inject)).*(metoprolol tartrate|lopressor)/i,
+    goodRxSlug: 'metoprolol-tartrate',
+    costPlusPath: 'metoprolol-tartrate-25mg-tablet',
+    costPlusPrice: { price: 5.56, quantity: '60 tablets, 25mg' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    // Single-agent HCTZ only; combinations are listed with their other component.
+    matches: /^(?!.*(lisinopril|losartan|valsartan|triamterene|olmesartan|irbesartan|telmisartan|candesartan|metoprolol|bisoprolol|spironolactone|amiloride|benazepril|enalapril|quinapril|fosinopril|captopril|moexipril|lisinopril|lotensin|vaseretic|accuretic|zestoretic|uniretic)).*\b(hydrochlorothiazide|HCTZ)\b/i,
+    goodRxSlug: 'hydrochlorothiazide',
+        costPlusPath: 'hydrochlorothiazide-25mg-tablet',
+    costPlusPrice: { price: 5.24, quantity: '30 tablets, 25mg' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /^(?!.*(efavirenz|rilpivirine|elvitegravir|doravirine|alafenamide|bictegravir)).*(emtricitabine.*tenofovir disoproxil|truvada)/i,
+    goodRxSlug: 'emtricitabine-tenofovir-df',
+    costPlusPath: 'emtricitabine-tenofovir-df-200mg-300mg-bottle-of-tablets',
+    costPlusPrice: { price: 13.99, quantity: '30 tablets, 200/300mg' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /efavirenz.*emtricitabine|atripla/i,
+    goodRxSlug: 'efavirenz-emtricitabine-tenofovir-df',
+    costPlusPath: 'efavirenz-emtricitab-tenofo-df-600-200-300mg-bottle-of-tablets-30-atripla',
+    costPlusPrice: { price: 16.4, quantity: '30 tablets, 600/200/300mg' },
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    // Cost Plus listed generic tofacitinib at a price that could not be re-verified; link only.
+    matches: /^(?!.*(\bXR\b|extended|solution)).*(tofacitinib|xeljanz)/i,
+    goodRxSlug: 'xeljanz',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /^(?!.*(\bER\b|\bCR\b|extended|\bSL\b|sublingual|edluar)).*(zolpidem|ambien)/i,
+    goodRxSlug: 'zolpidem',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /^(?!.*(\bER\b|\bXR\b|extended|odt|disintegrat)).*(alprazolam|xanax)/i,
+    goodRxSlug: 'alprazolam',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /^(?!.*(inject|solution|\bER\b|extended|loreev)).*(lorazepam|ativan)/i,
+    goodRxSlug: 'lorazepam',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /^(?!.*(ibuprofen|homatropine|chlorphen|guaifenesin|\bER\b|extended)).*(hydrocodone.*acetaminophen|norco)/i,
+    goodRxSlug: 'hydrocodone-acetaminophen',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /^(?!.*(acetaminophen|\bER\b|extended|celecoxib)).*(tramadol|ultram)/i,
+    goodRxSlug: 'tramadol',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /^(?!.*(enacarbil|horizant|gralise|solution)).*(gabapentin|neurontin)/i,
+    goodRxSlug: 'gabapentin',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /testosterone cypionate|depo-testosterone/i,
+    goodRxSlug: 'testosterone-cypionate',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /sofosbuvir.*velpatasvir(?!.*voxilaprevir)|epclusa/i,
+    goodRxSlug: 'epclusa',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /bictegravir|biktarvy/i,
+    goodRxSlug: 'biktarvy',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /dupilumab|dupixent/i,
+    goodRxSlug: 'dupixent',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /ixekizumab|taltz/i,
+    goodRxSlug: 'taltz',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /upadacitinib|rinvoq/i,
+    goodRxSlug: 'rinvoq',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /suvorexant|belsomra/i,
+    goodRxSlug: 'belsomra',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /paliperidone palmitate|invega sustenna/i,
+    goodRxSlug: 'invega-sustenna',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /risperidone.*(microsphere|extended-release injectable)|risperdal consta/i,
+    goodRxSlug: 'risperdal-consta',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /glecaprevir|mavyret/i,
+    goodRxSlug: 'mavyret',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /adalimumab|humira|hadlima|hyrimoz|cyltezo|yusimry|simlandi|amjevita/i,
+    goodRxSlug: 'humira',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /ustekinumab|stelara|wezlana|selarsdi|pyzchiva|otulfi|imuldosa|yesintek|steqeyma/i,
+    goodRxSlug: 'stelara',
+    pricesCapturedAt: '2026-10-22',
+  },
   // ---- ADHD / cholesterol / weight / migraine topics (added 2026-10-21, real browser session) ----
   // Weight-loss GLP-1s share an INN with the diabetes products priced further down (semaglutide =
   // Ozempic AND Wegovy; liraglutide = Victoza AND Saxenda; tirzepatide = Mounjaro AND Zepbound). The
