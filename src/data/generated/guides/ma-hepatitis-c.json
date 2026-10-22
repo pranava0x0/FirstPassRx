@@ -125,6 +125,16 @@
           "reason": "PA required (MHDL PA form paId 14)",
           "sourceIds": [
             "masshealth-next11-2026-10-t44"
+          ],
+          "criteria": [
+            "Treatment-naive, with or without compensated cirrhosis (including post-transplant): diagnosis of hepatitis C, genotype 1-6.",
+            "Treatment-experienced (interferon, ribavirin, or sofosbuvir-based only), with or without compensated cirrhosis: genotype 1-6 plus fibrosis staging records (FIB-4, etc.) showing F0-F4 or cirrhosis.",
+            "Genotype 1 after failure of sofosbuvir plus simeprevir, a protease inhibitor regimen, or an NS5A inhibitor: fibrosis staging records (FIB-4, etc.) showing F0-F4 or cirrhosis.",
+            "Prior Mavyret or Vosevi failure: regimen of glecaprevir/pibrentasvir plus sofosbuvir and ribavirin, fibrosis staging records (FIB-4, etc.), and no decompensated cirrhosis."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "masshealth-pa-criteria-hepatitis-c-2026-10"
           ]
         },
         {
@@ -133,6 +143,16 @@
           "reason": "PA required (MHDL PA form paId 14)",
           "sourceIds": [
             "masshealth-next11-2026-10-t44"
+          ],
+          "criteria": [
+            "Treatment-naive, no cirrhosis (genotype 1, 4, 5, 6): fibrosis staging records (FIB-4, etc.) at F0-F3; genotype 1 viral load 6 million IU/mL or higher, or genotype 4-6 adults: rationale vs sofosbuvir/velpatasvir.",
+            "Treatment-naive with compensated cirrhosis, or experienced (interferon, protease inhibitor) without cirrhosis: fibrosis staging records (FIB-4, etc.); adults need rationale for use instead of sofosbuvir/velpatasvir.",
+            "Treatment-experienced with compensated cirrhosis: fibrosis staging records (FIB-4, etc.) and rationale vs sofosbuvir/velpatasvir (adults); genotype 1 adults add ribavirin or give rationale for 24 weeks without it.",
+            "Decompensated cirrhosis (CTP B or C): rationale vs sofosbuvir/velpatasvir, not post liver or kidney transplant, fibrosis staging records (FIB-4, etc.), and a ribavirin-containing regimen (or ribavirin contraindicated)."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "masshealth-pa-criteria-hepatitis-c-2026-10"
           ]
         },
         {
@@ -141,6 +161,16 @@
           "reason": "PA required (MHDL PA form paId 14)",
           "sourceIds": [
             "masshealth-next11-2026-10-t44"
+          ],
+          "criteria": [
+            "Failed an NS5A inhibitor (genotype 1-6, with or without compensated cirrhosis): fibrosis staging records (FIB-4, etc.); genotype 3 with compensated cirrhosis needs ribavirin.",
+            "Failed sofosbuvir without an NS5A inhibitor (genotype 1a or 3): fibrosis staging records (FIB-4, etc.).",
+            "Prior Mavyret or Vosevi failure: fibrosis staging records (FIB-4, etc.), no decompensated cirrhosis; after Vosevi or Mavyret plus Sovaldi failure, ribavirin and rationale vs Mavyret plus Sovaldi plus ribavirin.",
+            "Post liver or kidney transplant after sofosbuvir or NS5A failure: fibrosis staging records (FIB-4, etc.); ribavirin if compensated cirrhosis; genotype 1 or 3 after sofosbuvir-only failure needs rationale vs Mavyret."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "masshealth-pa-criteria-hepatitis-c-2026-10"
           ]
         },
         {
@@ -149,6 +179,16 @@
           "reason": "PA required (MHDL PA form paId 14)",
           "sourceIds": [
             "masshealth-next11-2026-10-t44"
+          ],
+          "criteria": [
+            "Genotype 1 or 4: contraindication to all combination products FDA-approved for that genotype (treatment-naive, or failed peginterferon and ribavirin only for genotype 1).",
+            "Fibrosis staging records (FIB-4, etc.) showing F0-F4, and no decompensated cirrhosis.",
+            "Genotype 1a: NS5A resistance testing at positions 28, 30, 31, 93; if substitutions are present, a ribavirin-containing regimen.",
+            "After a protease inhibitor plus peginterferon and ribavirin (genotype 1): ribavirin-containing regimen required."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "masshealth-pa-criteria-hepatitis-c-2026-10"
           ]
         }
       ],
@@ -165,7 +205,17 @@
         "masshealth-next11-2026-10-t44"
       ],
       "lastReviewed": "2026-10-21",
-      "payerId": "masshealth"
+      "payerId": "masshealth",
+      "preferredCriteria": [
+        "Treatment-naive, with or without compensated cirrhosis: diagnosis of hepatitis C, genotype 1, 2, 3, 4, 5, or 6.",
+        "Treatment-experienced (failed peginterferon and ribavirin): genotype 1-6 plus fibrosis staging records (FIB-4, etc.); adult genotype 3 also needs Y93H testing, with ribavirin if Y93H or cirrhosis.",
+        "Decompensated cirrhosis (CTP B or C), not post liver or kidney transplant: fibrosis staging records (FIB-4, etc.) and a ribavirin-containing regimen (or ribavirin contraindicated or not tolerated).",
+        "Post liver or kidney transplant: genotype 1-6 with fibrosis staging records (FIB-4, etc.); with decompensated cirrhosis after liver transplant, ribavirin is required."
+      ],
+      "preferredCriteriaMode": "any",
+      "preferredCriteriaSourceIds": [
+        "masshealth-pa-criteria-hepatitis-c-2026-10"
+      ]
     },
     {
       "classId": "hcv-daa",
@@ -507,6 +557,14 @@
       "publisher": "Blue Cross Blue Shield of Massachusetts",
       "type": "payer",
       "url": "https://www.bluecrossma.org/medical-policies/sites/g/files/csphws2091/files/acquiadam-assets/344%20Pharmacy%20Hepatitis%20C%20Medication%20Management%20prn.pdf",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "masshealth-pa-criteria-hepatitis-c-2026-10",
+      "label": "MassHealth Drug List: Hepatitis C Agents, Section III Evaluation Criteria for Approval",
+      "publisher": "MassHealth (Massachusetts Medicaid)",
+      "type": "gov",
+      "url": "https://mhdl.pharmacy.services.conduent.com/MHDL/pubtheradetail.do?id=44",
       "accessed": "2026-10-21"
     }
   ],
