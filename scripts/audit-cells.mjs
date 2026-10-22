@@ -572,7 +572,7 @@ const overall = tally(() => 'ALL').get('ALL')
 const flagged = cells
   .map((c) => ({
     c,
-    score: c.checks.filter((x) => x.status === 'FLAG_MISMATCH').length * 100 + c.checks.filter((x) => x.status === 'AGE_QUALIFIED').length * 10 + c.checks.filter((x) => x.status === 'AMBIGUOUS').length,
+    score: c.checks.filter((x) => x.status === 'FLAG_MISMATCH').length * 100 + c.checks.filter((x) => x.status === 'AGE_QUALIFIED').length * 10 + c.checks.filter((x) => x.status === 'NOT_FOUND').length * 5 + c.checks.filter((x) => x.status === 'AMBIGUOUS').length,
   }))
   .filter((x) => x.score > 0)
   .sort((a, b) => b.score - a.score)

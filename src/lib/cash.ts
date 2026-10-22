@@ -517,10 +517,10 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   {
     matches: /^(?!.*(intrathecal|inject|solution|suspension|ozobax|fleqsuvy|lyvispah|granule)).*baclofen/i,
     goodRxSlug: 'baclofen',
-    goodRxParams: 'label_override=baclofen&form=tablet&dosage=10mg&quantity=90',
-    goodRxPrice: { price: 16.88, quantity: '90 tablets, 10mg' },
-    costPlusPath: 'baclofen-10mg-tablet',
-    costPlusPrice: { price: 6.56, quantity: '90 tablets, 10mg' },
+    goodRxParams: 'label_override=baclofen&form=tablet&dosage=5mg&quantity=90',
+    goodRxPrice: { price: 31.16, quantity: '90 tablets, 5mg' },
+    costPlusPath: 'baclofen-5mg-tablet',
+    costPlusPrice: { price: 5.79, quantity: '30 tablets, 5mg' },
     pricesCapturedAt: '2026-10-22',
   },
   {
