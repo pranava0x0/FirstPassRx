@@ -196,10 +196,10 @@ describe('cash price coverage across the live formulary', () => {
     // immediate-release 50/75mg one; GoodRx pending for the same reason.
     const KNOWN_PRICE_UNAVAILABLE = [
       /climara/i,
-      // 2026-10-22 MA next-11 topics: GoodRx blocked after one read, and Cost Plus does not carry
-      // these (controlled substances, injectables, specialty brands) or the price was unverifiable.
-      /tofacitinib|xeljanz|zolpidem|ambien|alprazolam|xanax|lorazepam|ativan|hydrocodone|norco|tramadol|ultram|gabapentin|neurontin/i,
-      /testosterone cypionate|depo-testosterone|sofosbuvir|epclusa|bictegravir|biktarvy|dupilumab|dupixent|ixekizumab|taltz/i,
+      // 2026-10-22 MA next-11 topics: specialty brands and injectables with no plain cash price, and
+      // tofacitinib, whose Cost Plus price could not be re-verified.
+      /tofacitinib|xeljanz/i,
+      /sofosbuvir|epclusa|bictegravir|biktarvy|dupilumab|dupixent|ixekizumab|taltz/i,
       /upadacitinib|rinvoq|suvorexant|belsomra|paliperidone|invega|risperdal consta|microsphere|glecaprevir|mavyret/i,
       /adalimumab|humira|hadlima|hyrimoz|cyltezo|yusimry|simlandi|amjevita|ustekinumab|stelara|wezlana|selarsdi|pyzchiva|otulfi|imuldosa|yesintek|steqeyma/i,
       // 2026-10-21 new topics: brand weight-loss GLP-1s and CGRP/PCSK9 injectables show only
