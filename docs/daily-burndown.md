@@ -18,7 +18,7 @@ update the ledger at the bottom before stopping. Created 2026-10-21.
 | Role | Model | Use for | Concurrency |
 |---|---|---|---|
 | Coordinator | Opus (this session) | pick the unit, merge, test, commit, ledger | 1 |
-| Search / extract | Haiku | payer discovery, reading one payer's document for N classes, trend checks | ≤4 at once (user OK'd 2026-10-21). Drop to 2 on the first "limiting requests" error |
+| Search / extract | Haiku | payer discovery, reading one payer's document for N classes, trend checks | ≤4 at once (`.claude/agent-cap` = 4, set by the user 2026-10-21). Drop to 2 on the first "limiting requests" error |
 | Cross-check | Sonnet | one adversarial pass over the merged cells before commit (drug/device sanity, BOGL device match, combo-drug traps; see CLAUDE.md) | 1 |
 
 Inline beats an agent for anything under ~3 tool calls: a grep in `sources/`, one PDF page read.
@@ -56,57 +56,55 @@ ledger names the stamp so the next run resumes from disk instead of re-gathering
 
 1. `git fetch && git status`. If `main` is behind, `git pull --ff-only`. If there are
    uncommitted changes you didn't make, stop and log it; don't touch them.
-2. `gh pr list --search "Daily burndown" --state open`. If an earlier burndown PR is still
-   open, check out its branch and keep stacking on it (don't fork a parallel branch off a
-   `main` that lacks that work). Otherwise `git checkout -b burndown/<YYYY-MM-DD>`.
+2. **One rolling PR, never a new one per run** (user, 2026-10-21: "try not to have so many
+   PRs"). `gh pr list --state open --author @me`. If any open PR from this work exists (a
+   burndown PR or a manual follow-up branch), check out its branch, `git merge origin/main`,
+   and keep stacking on it. Only when none is open: `git checkout -b burndown/rolling`.
 3. Read the ledger; take the first unchecked queue item (or resume the in-flight one).
 4. Do it. Commit at each green checkpoint.
 5. Before stopping: `npm test`, `npm run data:split` if data changed,
    `npm run archive-sources` if new references were added, update the ledger.
-6. Push the branch and open (or update) a PR titled `Daily burndown <date>: <item>`. Do
-   **not** merge; the user reviews. Disclose models in the PR body per `~/Projects/CLAUDE.md` (no AI
+6. Push to that one branch. Open a PR only if none exists (title `Daily burndown (rolling)`),
+   otherwise update its description with today's ledger line. Do **not** merge; the user reviews. Disclose models in the PR body per `~/Projects/CLAUDE.md` (no AI
    co-author trailers).
 
 ## Queue (top = next)
 
-Each item fits roughly one 20-minute run. Bigger items are split.
+Each item fits roughly one 20-minute run. Done items stay listed (struck) so the next run knows.
 
-1. **TX: 7 missing topics from the Texas Vendor Drug Program PDL.** `tx-ssris` exists with 3
-   payers (TX Medicaid, BCBS TX commercial, Humana Premier Rx PDP). The TX PDL is one document
-   covering every topic (fetch via the real browser, see CLAUDE.md `txvendordrug.com` note).
-   **All 3 payer documents are already cached** (`sources/tx-medicaid-ssris-source-2026-08.pdf`,
-   `bcbs-tx-commercial-ssris-source-2026-08.pdf`, `humana-premier-rx-pdp-ssris-source-2026-08.pdf`
-   — the SSRI-named files are whole formularies), so no fetch or browser is needed.
-   Split: run A = TX Medicaid all 7 topics from the PDL (inline); run B = BCBS TX + Humana PDP
-   (2 Haiku agents, one per payer document, all 7 topics each); run C = merge 7 guides + Sonnet
-   check. Payoff: 1 → 8 TX guides.
-2. **ADHD stimulants as a new topic (trend pick #1 among cheap generics).** Classes:
-   methylphenidate (IR/ER), amphetamine salts (IR/ER), lisdexamfetamine, non-stimulants
-   (atomoxetine, guanfacine ER, viloxazine). Author the class taxonomy once, then go state by
-   state from cached `sources/` documents, MA first (5 payers), then NY, MD, VA, IL, PA, AL,
-   CA, TX. One state per run.
-3. **Statins / PCSK9 as a new topic** (same state-by-state method). Classes: high-intensity
-   statin, moderate statin, ezetimibe, PCSK9 mAb, inclisiran.
-4. **GLP-1 for weight management as a class inside the existing diabetes topic**
-   (Wegovy, Zepbound, Saxenda). Payers are dropping or restricting obesity coverage in 2026.
-   Many will simply say "excluded"; that's a valid cell (`nonformulary`). One state per run.
-5. **CGRP migraine** (gepants + CGRP mAbs). Brand-heavy, more PA criteria per cell. Later.
-6. **PA criteria + send-to, one state per run** (schema shipped 2026-10-21; MA inhalers done).
-   For each payer: `paSubmission` (fax/phone/portal/ePA) from its PA form or provider page, and
-   for each `paRequired` item, `criteria` + `criteriaMode` from the payer's PA policy, verbatim
-   in substance, each with source ids. Medicaid first: one statewide PA criteria document covers
-   every class (e.g. MassHealth's MHDL tables, PA DHS's PDL clinical criteria). Verify every
-   number and criterion against the cached PDF text (pypdf) before merging; drop anything the
-   document doesn't say (the 2026-10-21 run dropped an unverified "CoverMyMeds" for MGB).
+1. ~~TX: 7 missing topics~~ — done 2026-10-21 (all 9 states now have all 12 topics).
+2. ~~ADHD / cholesterol / weight / migraine in every state~~ — done 2026-10-21.
+3. **PA approval criteria per PA-blocked drug, one Medicaid payer per run.** Done 2026-10-21 for
+   the new topics in all 9 original states and for the original 8 topics in MA, PA, NY, AL, IL,
+   TX, MD (verified items only) and Medi-Cal (VA publishes none retrievable). DC (GLP-1 only: DHCF's
+   general form has no criteria), FL and OH done 2026-10-21; NC's posted criteria are a 2024 DRAFT
+   (not applied) and the rest sit behind the MES login. MI, GA, WA, TN Medicaid not yet done (TennCare's 565-page criteria PDF is cached-friendly). Then commercial plans' policies. Method:
+   `data-gathering/pa-criteria-2026-10-21/{BRIEF.md,targets.json}` → Haiku extract → Sonnet
+   adjudicate against the CURRENT document (it caught outdated bulletins, draft handbooks,
+   wrong AND/OR logic, and generic form questions posing as criteria) →
+   `node scripts/apply-pa-criteria.mjs <file>`.
+4. **PA submission channels for the remaining commercial and Part D payers.** Medicaid done for
+   all 9 states; commercial done where the payer's own formulary prints them (UHC, Sentara,
+   IBX, Anthem CA, Cigna, AARP, Humana). Remaining payers print only "call the number on the ID
+   card"; look for each plan's provider PA page. Verify with Sonnet before applying
+   (`scripts/apply-pa-submission.mjs`); a wrong fax misroutes PHI.
+5. **Cash prices.** Every recommended pick now has a price or a link-only rule except generic
+   rivaroxaban 20 mg (not sold) and one unspecified guanfacine form. Next: the alternatives long
+   tail (`KNOWN_UNPRICED_GAP` 1092). Needs the real browser.
+6. **Stale sources** (issues.md): Meridian (Dec 2024) and BCBS Community IL (May 2025) lists;
+   Cigna MD's URL now serves the 2027 list (re-add Cigna to the MD new-topic guides on
+   2027-01-01); Aetna IL reissued; BCBS MA SSRI 404; 6 MassHealth tables drifted.
 7. **Partial → verified upgrades:** `il-osteoporosis` (13 partial), `ny-osteoporosis` (6),
-   `ny-menopause` (5 example). Re-read the payer's own document; cache first.
-8. **Cash-price gaps** (`KNOWN_UNPRICED_GAP`): needs the real browser (GoodRx/Cost Plus
-   block fetch). Only when Claude in Chrome is connected.
-9. **Product items** from backlog.md "High" (PA form fill for MassHealth, criteria checklist per
-   drug) only when the data queue is blocked.
+   `ny-menopause` (5 example).
+8. **New states** (51 jurisdictions; DC, FL, OH, NC, MI, GA, WA, TN added 2026-10-21 = 17): pick by population; each new state costs a
+   payer-roster discovery plus one agent per payer for all 12 topics (~60–90 cells per payer).
 
 ## Ledger (append one line per run)
 
 | Date | Item | Result | Resume at |
 |---|---|---|---|
 | 2026-10-21 | Setup run (manual, 1 h) | New picker + PA request builder + UAT harness; PA MCO roster gaps 32 → 0; this plan | Queue #1 run A |
+| 2026-10-21 | Follow-up (manual) | PA criteria/ICD-10/send-to (PR #21); AL/MD archive + estradiol patch price (PR #20, merged); 4 new MA topics, 55 cells, 45 verified (this PR) | Queue #1 run A, or #2 for NY |
+| 2026-10-21 | #2 NY (manual, 4 agents) | `ny-adhd/lipids/weight/migraine`: 55 cells, 36 verified; added to rolling PR #22 | #2 next state (MD or VA), or #1 TX |
+| 2026-10-21 | #8 new states (manual, 5.5 h run, ≤4 agents) | DC, FL, OH: 12 guides × 4 payers each (UHC and Humana PDP reused from checked records); PA criteria for the original topics in 8 states; one rolling PR #22 | NC merge, then GA/MI by population |
+| 2026-10-21 | #8 new states, cont. (manual, ≤4 agents) | NC, MI, GA, WA, TN (12 guides each); Anthem NY/VA/CA reissue applied; PA criteria OH/FL/DC; three Codex rounds fixed | Next state by population (NJ needs per-MCO lists; AZ, IN, KY have single PDLs), or #3 criteria for MI/GA/WA/TN |

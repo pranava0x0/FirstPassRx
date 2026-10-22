@@ -23,6 +23,14 @@
       "productName": "Maryland Medicaid fee-for-service pharmacy benefit",
       "marketSegment": "medicaid-ffs",
       "formularyId": "Maryland PDL 2026",
+      "paSubmission": {
+        "fax": "1-866-440-9345",
+        "phone": "833-325-0105",
+        "note": "Fee-for-service only; HealthChoice MCO members go through their MCO. The fax is Conduent's prior-authorization line; the phone is the Office of Pharmacy Services general line. Don't use the older 2014 PA form's numbers.",
+        "sourceIds": [
+          "mdmedicaid-pa-intake-2026-10"
+        ]
+      },
       "sourceIds": [
         "mdmedicaid-osteoporosis-source-2026-07"
       ]
@@ -80,6 +88,13 @@
       "productName": "UnitedHealthcare 2026 Commercial PDL (base list)",
       "marketSegment": "commercial-employer",
       "formularyId": "Commercial PDL Jan 2026",
+      "paSubmission": {
+        "phone": "1-800-711-4555 (Optum Rx prior authorization team)",
+        "portal": "optumrx.com > Healthcare Professionals > Prior Authorizations",
+        "sourceIds": [
+          "uhc-md-formulary-pa-intake-2026"
+        ]
+      },
       "sourceIds": [
         "uhc-md-osteoporosis-source-2026-07"
       ]
@@ -95,6 +110,12 @@
       "productName": "Cigna individual and family Value 4-Tier",
       "marketSegment": "commercial-exchange",
       "formularyId": "IFP Value 4-Tier 2026",
+      "paSubmission": {
+        "portal": "cignaforhcp.com",
+        "sourceIds": [
+          "cigna-formulary-pa-intake-2026"
+        ]
+      },
       "sourceIds": [
         "cigna-osteoporosis-source-2026-07"
       ]
@@ -125,6 +146,13 @@
       "productName": "AARP MedicareRx Preferred from UHC (Maryland)",
       "marketSegment": "medicare-part-d",
       "formularyId": "S5921 / Formulary 00026000",
+      "paSubmission": {
+        "phone": "1-866-870-3470",
+        "note": "Part D coverage determination (PA / exception) requests: UnitedHealthcare Customer Service line printed in the formulary.",
+        "sourceIds": [
+          "medicare-partd-formulary-pa-intake-2026"
+        ]
+      },
       "sourceIds": [
         "medicare-partd-osteoporosis-source-2026-07"
       ]
@@ -272,6 +300,54 @@
       "url": "https://www.uhc.com/medicare/alphadog/PDEX26PD0348627_001",
       "effectiveDate": "2025-10-01",
       "accessed": "2026-07-21"
+    },
+    {
+      "id": "mdmedicaid-pa-intake-2026-10",
+      "label": "Contact Pharmacy Services",
+      "publisher": "Maryland Department of Health, Medicaid Pharmacy Program",
+      "type": "gov",
+      "url": "https://health.maryland.gov/mmcp/pap/pages/contact.aspx",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "uhc-md-formulary-pa-intake-2026",
+      "label": "UnitedHealthcare Commercial Prescription Drug List (PDL), Effective January 1, 2026",
+      "publisher": "UnitedHealthcare",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "cigna-formulary-pa-intake-2026",
+      "label": "Cigna Healthcare Value 4-Tier Prescription Drug List — coverage starting July 1, 2026 (Hormonal Agents section, p.18)",
+      "publisher": "Cigna Healthcare",
+      "type": "payer",
+      "url": "https://www.cigna.com/static/www-cigna-com/docs/ifp/value-4-tier-spec.pdf",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "medicare-partd-formulary-pa-intake-2026",
+      "label": "AARP Medicare Rx Preferred from UHC (PDP) — Complete Drug List (Formulary) 2026, Formulary ID 00026000, Estrogens / Progestins sections (pp. 70-74 index; drug list pp. ~70-72)",
+      "publisher": "UnitedHealthcare",
+      "type": "payer",
+      "url": "https://www.uhc.com/medicare/alphadog/PDEX26PD0348627_001",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "mdmedicaid-pa-criteria-denosumab-2026-10",
+      "label": "Maryland Medicaid Clinical Criteria: Prolia (denosumab); biosimilar items carry identical text (list item modified 2026-05-04)",
+      "publisher": "Maryland Department of Health, Medicaid Pharmacy Program",
+      "type": "gov",
+      "url": "https://health.maryland.gov/mmcp/pap/pages/Clinical-Criteria.aspx",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "mdmedicaid-pa-criteria-teriparatide-2026-10",
+      "label": "Maryland Medicaid Clinical Criteria: Forteo (teriparatide) (list item modified 2015-03-23)",
+      "publisher": "Maryland Department of Health, Medicaid Pharmacy Program",
+      "type": "gov",
+      "url": "https://health.maryland.gov/mmcp/pap/pages/Clinical-Criteria.aspx",
+      "accessed": "2026-10-21"
     }
   ],
   "glossary": [
@@ -422,6 +498,16 @@
           "reason": "Requires clinical-criteria PA and quantity limit (cc, ql); the PDL directs to the Enoby biosimilar instead.",
           "sourceIds": [
             "mdmedicaid-osteoporosis-source-2026-07"
+          ],
+          "criteria": [
+            "Age 18 years or older.",
+            "Labeled osteoporosis indication: postmenopausal women at high fracture risk, men with osteoporosis, or glucocorticoid-induced osteoporosis.",
+            "Intolerance, contraindication, or inadequate response to an appropriate therapeutic trial of an oral bisphosphonate.",
+            "Concomitant calcium and vitamin D supplement required."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "mdmedicaid-pa-criteria-denosumab-2026-10"
           ]
         },
         {
@@ -430,6 +516,16 @@
           "reason": "Requires clinical-criteria PA and quantity limit (cc, ql); Enoby is the PDL-preferred biosimilar.",
           "sourceIds": [
             "mdmedicaid-osteoporosis-source-2026-07"
+          ],
+          "criteria": [
+            "Age 18 years or older.",
+            "Labeled osteoporosis indication: postmenopausal women at high fracture risk, men with osteoporosis, or glucocorticoid-induced osteoporosis.",
+            "Intolerance, contraindication, or inadequate response to an appropriate therapeutic trial of an oral bisphosphonate.",
+            "Concomitant calcium and vitamin D supplement required."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "mdmedicaid-pa-criteria-denosumab-2026-10"
           ]
         },
         {
@@ -438,6 +534,16 @@
           "reason": "Requires clinical-criteria PA and quantity limit (cc, ql); Enoby is the PDL-preferred biosimilar.",
           "sourceIds": [
             "mdmedicaid-osteoporosis-source-2026-07"
+          ],
+          "criteria": [
+            "Age 18 years or older.",
+            "Labeled osteoporosis indication: postmenopausal women at high fracture risk, men with osteoporosis, or glucocorticoid-induced osteoporosis.",
+            "Intolerance, contraindication, or inadequate response to an appropriate therapeutic trial of an oral bisphosphonate.",
+            "Concomitant calcium and vitamin D supplement required."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "mdmedicaid-pa-criteria-denosumab-2026-10"
           ]
         },
         {
@@ -446,6 +552,16 @@
           "reason": "Requires clinical-criteria PA and quantity limit (cc, ql); Enoby is the PDL-preferred biosimilar.",
           "sourceIds": [
             "mdmedicaid-osteoporosis-source-2026-07"
+          ],
+          "criteria": [
+            "Age 18 years or older.",
+            "Labeled osteoporosis indication: postmenopausal women at high fracture risk, men with osteoporosis, or glucocorticoid-induced osteoporosis.",
+            "Intolerance, contraindication, or inadequate response to an appropriate therapeutic trial of an oral bisphosphonate.",
+            "Concomitant calcium and vitamin D supplement required."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "mdmedicaid-pa-criteria-denosumab-2026-10"
           ]
         },
         {
@@ -454,6 +570,16 @@
           "reason": "Requires clinical-criteria PA and quantity limit (cc, ql); Enoby is the PDL-preferred biosimilar.",
           "sourceIds": [
             "mdmedicaid-osteoporosis-source-2026-07"
+          ],
+          "criteria": [
+            "Age 18 years or older.",
+            "Labeled osteoporosis indication: postmenopausal women at high fracture risk, men with osteoporosis, or glucocorticoid-induced osteoporosis.",
+            "Intolerance, contraindication, or inadequate response to an appropriate therapeutic trial of an oral bisphosphonate.",
+            "Concomitant calcium and vitamin D supplement required."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "mdmedicaid-pa-criteria-denosumab-2026-10"
           ]
         }
       ],
@@ -497,6 +623,17 @@
           "reason": "Requires clinical-criteria PA and quantity limit (cc, ql).",
           "sourceIds": [
             "mdmedicaid-osteoporosis-source-2026-07"
+          ],
+          "criteria": [
+            "Age 18 years or older.",
+            "Diagnosis of primary or hypogonadal osteoporosis in men or postmenopausal women, or glucocorticoid-induced osteoporosis.",
+            "Failed or intolerant to a trial of an oral bisphosphonate.",
+            "Concomitant calcium and vitamin D supplement required.",
+            "Quantity limit 1 pen per 28 days; maximum 2 years total therapy."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "mdmedicaid-pa-criteria-teriparatide-2026-10"
           ]
         },
         {
@@ -505,6 +642,17 @@
           "reason": "PA is not waived for the generic in this class -- also carries the cc, ql markers; possibly a table-extraction duplicate of the Forteo line rather than a distinct generic listing, flagged rather than assumed",
           "sourceIds": [
             "mdmedicaid-osteoporosis-source-2026-07"
+          ],
+          "criteria": [
+            "Age 18 years or older.",
+            "Diagnosis of primary or hypogonadal osteoporosis in men or postmenopausal women, or glucocorticoid-induced osteoporosis.",
+            "Failed or intolerant to a trial of an oral bisphosphonate.",
+            "Concomitant calcium and vitamin D supplement required.",
+            "Quantity limit 1 pen per 28 days; maximum 2 years total therapy."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "mdmedicaid-pa-criteria-teriparatide-2026-10"
           ]
         },
         {
@@ -975,6 +1123,7 @@
         "plainSig": "Inject one dose under the skin, once a day, using the pre-filled pen; you or a caregiver can give the injection at home, for up to 2 years total in a lifetime."
       },
       "preferredRestriction": "Quantity limit only -- the primary Marketplace Formulary lists 'TERIPARATIDE' at Tier 4 with restriction code 'QL' and no PA code, meaning generic teriparatide itself is not gated by prior authorization under this document (unlike most other payers' formularies for this molecule, which typically require PA).",
+      "preferredPaRequired": false,
       "boglActive": false,
       "boglNote": null,
       "alternatives": [],

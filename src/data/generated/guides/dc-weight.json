@@ -1,0 +1,544 @@
+{
+  "id": "dc-weight",
+  "label": "DC · Weight loss",
+  "stateCode": "DC",
+  "region": "District of Columbia",
+  "topicId": "weight",
+  "topic": "Weight loss",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-21",
+  "capturedAt": "2026-10-21",
+  "payers": [
+    {
+      "id": "dc-medicaid",
+      "name": "DC Medicaid",
+      "shortName": "DC Medicaid",
+      "aka": "DC Medicaid fee-for-service and DC Healthcare Alliance (DHCF); DC Healthy Families MCOs run their own formularies",
+      "pbm": "Prime Therapeutics",
+      "productName": "DC Medicaid / DC Healthcare Alliance Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "District of Columbia Department of Health Care Finance Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "formularyUrl": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "sourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "amerihealth-caritas-dc",
+      "name": "AmeriHealth Caritas District of Columbia",
+      "shortName": "AmeriHealth Caritas DC",
+      "aka": "DC Healthy Families Medicaid MCO",
+      "pbm": "PerformRx",
+      "productName": "AmeriHealth Caritas DC drug formulary",
+      "marketSegment": "medicaid-mco",
+      "formularyId": "Drug Formulary (June 1, 2026)",
+      "formularyUrl": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "sourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "carefirst",
+      "name": "CareFirst BlueCross BlueShield",
+      "shortName": "CareFirst",
+      "pbm": "CVS Caremark",
+      "formularyUrl": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "paPolicyUrl": "https://member.carefirst.com/carefirst-resources/pdf/drugs-requiring-prior-authorization-formulary-2.pdf",
+      "productName": "CareFirst individual and family Exchange Formulary 2",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "CareFirst Exchange Formulary 2026 (5-Tier), last updated 09/01/26",
+      "sourceIds": [
+        "carefirst-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "kpmidatlantic",
+      "name": "Kaiser Permanente Mid-Atlantic",
+      "shortName": "Kaiser MAS",
+      "pbm": "Kaiser Permanente (in-house)",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "productName": "Kaiser Mid-Atlantic Marketplace formulary",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "District of Columbia, Maryland, and Virginia Marketplace Formulary (Last Update: 08/04/2026)",
+      "sourceIds": [
+        "kpmidatlantic-newtopics-2026-10"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "aom-glp1",
+      "name": "GLP-1-based anti-obesity medications",
+      "shortName": "GLP-1 AOM",
+      "plainName": "GLP-1 for weight loss",
+      "description": "Injectable or oral GLP-1/GIP agents labeled for chronic weight management (NOT their diabetes-labeled versions): semaglutide (Wegovy, including Wegovy tablets), tirzepatide (Zepbound), liraglutide (Saxenda). Many plans exclude weight-loss drugs entirely; an exclusion is a valid finding (outcome nonformulary).",
+      "plainDescription": "A weekly shot (or daily pill) for weight loss, like Wegovy or Zepbound.",
+      "indication": "Chronic weight management (obesity)",
+      "sourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "aom-oral",
+      "name": "Oral anti-obesity medications",
+      "shortName": "ORAL AOM",
+      "plainName": "Weight-loss pill",
+      "description": "Oral anti-obesity agents: phentermine (Adipex-P, Lomaira), phentermine/topiramate ER (Qsymia), naltrexone/bupropion ER (Contrave), orlistat (Xenical). Many plans exclude weight-loss drugs; an exclusion is a valid finding (outcome nonformulary).",
+      "plainDescription": "A pill for weight loss, like phentermine or Contrave.",
+      "indication": "Chronic weight management (obesity)",
+      "sourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "aom-glp1",
+      "preferredAgent": {
+        "inn": "Semaglutide (weight management)",
+        "brand": "Wegovy",
+        "genericAvailable": false,
+        "strength": "Not stated on PDL",
+        "sig": "Once weekly injection per label (weight-management dosing; not on PDL)",
+        "sigShort": "Weekly shot",
+        "plainSig": "A weekly shot for weight loss, per label."
+      },
+      "preferredRestriction": "No weight-loss GLP-1 appears on this plan's PDL. Anti-obesity drugs are excluded (page 1); coverage likely excluded (confirm with plan).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not covered (anti-obesity drugs excluded)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Wegovy (semaglutide, weight management)",
+          "outcome": "nonformulary",
+          "reason": "Anti-obesity drugs are an excluded class per page 1; this product is not named individually on the PDL",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zepbound (tirzepatide, weight management)",
+          "outcome": "nonformulary",
+          "reason": "Anti-obesity drugs are an excluded class per page 1; this product is not named individually on the PDL",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Saxenda (liraglutide, weight management)",
+          "outcome": "nonformulary",
+          "reason": "Anti-obesity drugs are an excluded class per page 1; this product is not named individually on the PDL",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Page 1 lists 'Excluded classes and drugs include: ... Anti-obesity drugs.' No weight-management GLP-1 (Wegovy, Zepbound, Saxenda) appears in the PDL text. The GLP-1 entries on page 21 (generic liraglutide, Ozempic, Victoza, Trulicity, Mounjaro, Rybelsus) are diabetes-labeled and were not used for this class. Page 1 also says non-PDL classes stay covered under FFS; anti-obesity drugs are named as excluded, so they are read as not covered. Confirm with the plan. [Sonnet check 2026-10-21: nonformulary rows now say the exclusion comes from the page 1 class statement, not from this drug being named.]",
+      "sourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "noCoveredAgent": true,
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "aom-oral",
+      "preferredAgent": {
+        "inn": "Phentermine (weight management)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Not stated on PDL",
+        "sig": "Standard label dosing for weight management (not on PDL)",
+        "sigShort": "Per prescriber",
+        "plainSig": "A pill for weight loss, per label."
+      },
+      "preferredRestriction": "No weight-loss oral agent appears on this plan's PDL. Anti-obesity drugs are excluded (page 1); coverage likely excluded (confirm with plan).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not covered (anti-obesity drugs excluded)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Phentermine (weight management)",
+          "outcome": "nonformulary",
+          "reason": "Anti-obesity drugs are an excluded class per page 1; this product is not named individually on the PDL",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Adipex-P (brand phentermine)",
+          "outcome": "nonformulary",
+          "reason": "Anti-obesity drugs are an excluded class per page 1; this product is not named individually on the PDL",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lomaira (phentermine)",
+          "outcome": "nonformulary",
+          "reason": "Anti-obesity drugs are an excluded class per page 1; this product is not named individually on the PDL",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Qsymia (phentermine/topiramate ER)",
+          "outcome": "nonformulary",
+          "reason": "Anti-obesity drugs are an excluded class per page 1; this product is not named individually on the PDL",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Contrave (naltrexone/bupropion ER)",
+          "outcome": "nonformulary",
+          "reason": "Anti-obesity drugs are an excluded class per page 1; this product is not named individually on the PDL",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Xenical / orlistat",
+          "outcome": "nonformulary",
+          "reason": "Anti-obesity drugs are an excluded class per page 1; this product is not named individually on the PDL",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Page 1 lists anti-obesity drugs among excluded classes and drugs. No phentermine, orlistat, Qsymia or Contrave entry appears in the PDL text. Bupropion (antidepressant and smoking-cessation lines) and topiramate (anticonvulsant lines) appear elsewhere on the PDL but are not weight-loss products and were not used. Page 1 also says non-PDL classes remain covered under FFS; anti-obesity drugs are named as excluded, so they are read as not covered. Confirm with the plan. [Sonnet check 2026-10-21: nonformulary rows now say the exclusion comes from the page 1 class statement, not from this drug being named.]",
+      "sourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "noCoveredAgent": true,
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "aom-glp1",
+      "preferredAgent": {
+        "inn": "Tirzepatide (weight management)",
+        "brand": "Zepbound",
+        "genericAvailable": false,
+        "strength": "Per label (auto-injector)",
+        "sig": "Subcutaneous injection once weekly per FDA label (dosing not printed in document)",
+        "sigShort": "SC weekly",
+        "plainSig": "A weekly shot for weight loss."
+      },
+      "preferredRestriction": "Non-formulary: NF PA. Not covered without prior authorization (PDF pp. 63, 144).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "NF (non-formulary; PA required)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Wegovy (semaglutide) oral tablets",
+          "outcome": "nonformulary",
+          "reason": "Non-formulary; PA required (PDF pp. 63, 143)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read PDF pp. 63, 143 and 144. The two listed chronic-weight-management GLP-1 products, Zepbound auto-injector and Wegovy oral tablets, are both NF PA, so Zepbound is the reference agent with its barrier in preferredRestriction. The Wegovy injection pen and Saxenda do not appear. Mounjaro, Ozempic and Trulicity are listed F with ST but are diabetes-labeled and are not used here. The document does not say it is a complete list, so the absent products are not treated as exclusions.",
+      "sourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "aom-oral",
+      "preferredAgent": {
+        "inn": "Phentermine (weight management)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Per label (reference agent; not on this plan's list)",
+        "sig": "Dosed per FDA label (reference only; not on this plan's list)",
+        "sigShort": "Per label",
+        "plainSig": "A pill for weight loss, if your plan covers it."
+      },
+      "preferredRestriction": "No phentermine, Qsymia, Contrave or orlistat product appears on this plan's list, and the document does not claim to be complete; coverage unknown (confirm with plan). VYKAT XR is printed under 'Anorexigenic Agents, Miscellaneous' as NF PA but is diazoxide choline, labeled for Prader-Willi hyperphagia, not general weight management (PDF p.63).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not covered (no covered agent listed)",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read PDF p63 (Anorexigenic Agents, Miscellaneous section). The only oral anti-obesity product on the list is VYKAT XR, NF PA; the INN diethylpropion comes from drug facts, not the document. Phentermine (Adipex-P, Lomaira), Qsymia, Contrave and orlistat do not appear. Generic topiramate is listed, but as an anticonvulsant, not as Qsymia. The document does not say it is a complete list. Phentermine is the reference agent only, so the restriction states that coverage is likely excluded and should be confirmed with the plan. [Sonnet check 2026-10-21: removed the invented INN \"diethylpropion\" for VYKAT XR (it is diazoxide choline, a Prader-Willi hyperphagia product) and dropped it as a weight-loss barrier; the document prints no INN. Replaced \"coverage likely excluded\" with coverage unknown.]",
+      "sourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "noCoveredAgent": true,
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "aom-glp1",
+      "preferredAgent": {
+        "inn": "Semaglutide (weight management)",
+        "brand": "Wegovy",
+        "genericAvailable": false,
+        "strength": "2.4 mg",
+        "sig": "Standard label dosing (weight-management labeling); not printed in formulary: 2.4 mg subcutaneously once weekly",
+        "sigShort": "2.4 mg SC weekly",
+        "plainSig": "A weekly shot for weight loss."
+      },
+      "preferredRestriction": "No weight-loss drug appears on this plan's 2026 list; coverage likely excluded (confirm with plan)",
+      "boglActive": false,
+      "boglNote": null,
+      "noCoveredAgent": true,
+      "tier": "Not listed on this formulary",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched the full formulary text (PDF p.1-176 body and index) for Wegovy, Zepbound, Saxenda, semaglutide, tirzepatide, liraglutide, and weight/obesity terms. None listed as weight-management products. Diabetes-labeled products appear at PDF p.107-108 (Ozempic injection and tablets, Mounjaro, Trulicity, generic liraglutide 18 mg/3 mL pen, all PA and QL) and are not counted as weight-loss coverage. The document does not say it is a complete list, so absence is recorded as not listed, not as nonformulary. Confirm with plan. [Reused 2026-10-21 for DC: same document as the MD guide.]",
+      "sourceIds": [
+        "carefirst-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "carefirst-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "aom-oral",
+      "preferredAgent": {
+        "inn": "Phentermine hydrochloride",
+        "brand": "Adipex-P",
+        "genericAvailable": true,
+        "strength": "37.5 mg tablet",
+        "sig": "Standard label dosing; not printed in formulary: 37.5 mg by mouth once daily before breakfast",
+        "sigShort": "37.5 mg tab daily",
+        "plainSig": "A weight-loss pill."
+      },
+      "preferredRestriction": "No weight-loss drug appears on this plan's 2026 list; coverage likely excluded (confirm with plan)",
+      "boglActive": false,
+      "boglNote": null,
+      "noCoveredAgent": true,
+      "tier": "Not listed on this formulary",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched the full formulary text for phentermine, Adipex-P, Lomaira, Qsymia (phentermine/topiramate), Contrave (naltrexone/bupropion), orlistat/Xenical, and weight/obesity terms. None listed. Not counted as weight-loss coverage: naltrexone 50 mg tablet (opioid antagonist, Tier 0, PDF p.93), generic topiramate and bupropion tablets (other indications, PDF p.65, p.81, p.94). The document does not say it is a complete list, so absence is recorded as not listed, not as nonformulary. Confirm with plan. [Reused 2026-10-21 for DC: same document as the MD guide.]",
+      "sourceIds": [
+        "carefirst-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "carefirst-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "aom-glp1",
+      "preferredAgent": {
+        "inn": "Semaglutide (weight management)",
+        "brand": "Wegovy",
+        "genericAvailable": false,
+        "strength": "standard label dosing",
+        "sig": "Per prescriber; standard label dosing (dose not printed in plan document)",
+        "sigShort": "per label",
+        "plainSig": "A weekly shot for weight loss."
+      },
+      "preferredRestriction": "No weight-loss GLP-1 (Wegovy, Zepbound, Saxenda) appears on this plan's list, and p.2 says any product not found on the list is considered non-formulary; coverage excluded (confirm with plan)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not on formulary (non-formulary)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Tirzepatide (Zepbound)",
+          "outcome": "nonformulary",
+          "reason": "Not on formulary list (p. 2: products not found on the list are non-formulary) (pp. 4-44 search)",
+          "sourceIds": [
+            "kpmidatlantic-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Liraglutide (Saxenda, weight-management)",
+          "outcome": "nonformulary",
+          "reason": "Not on formulary list (p. 2: products not found on the list are non-formulary) (pp. 4-44 search)",
+          "sourceIds": [
+            "kpmidatlantic-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched for Wegovy, semaglutide, Zepbound, tirzepatide, Saxenda, liraglutide, and weight/obesity terms. The only liraglutide and semaglutide entries are diabetes-labeled: generic liraglutide (PA, Tier 2) and Ozempic 0.25/0.5 mg (PA, Tier 3) on p. 32. They are not counted as weight-loss coverage. The document does not mention weight-loss exclusions beyond the complete-list statement. Confirm with plan. [Sonnet check 2026-10-21: reworded to the actual KP wording (p.2: \"Any product not found on the list will be considered non-formulary\"); absence re-checked by full-text search; pp.16, 21, 22, 32 spot-checked.] [Reused 2026-10-21 for DC: same document as the MD guide.]",
+      "sourceIds": [
+        "kpmidatlantic-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "noCoveredAgent": true,
+      "payerId": "kpmidatlantic"
+    },
+    {
+      "classId": "aom-oral",
+      "preferredAgent": {
+        "inn": "Phentermine hydrochloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "standard label dosing",
+        "sig": "Per prescriber; standard label dosing (dose not printed in plan document)",
+        "sigShort": "per label",
+        "plainSig": "A daily pill for weight loss, taken as your prescriber directs."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic), Higher Cost (HC)",
+      "alternatives": [
+        {
+          "drug": "Diethylpropion hydrochloride",
+          "note": "Tier 1 (generic), Higher Cost (HC), no PA (p. 22)",
+          "sourceIds": [
+            "kpmidatlantic-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Phentermine/topiramate ER (Qsymia)",
+          "outcome": "nonformulary",
+          "reason": "Not on formulary list (p. 2: products not found on the list are non-formulary) (p. 22 search)",
+          "sourceIds": [
+            "kpmidatlantic-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Naltrexone/bupropion ER (Contrave)",
+          "outcome": "nonformulary",
+          "reason": "Not on formulary list (p. 2: products not found on the list are non-formulary) (p. 22 search)",
+          "sourceIds": [
+            "kpmidatlantic-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Orlistat (Xenical)",
+          "outcome": "nonformulary",
+          "reason": "Not on formulary list (p. 2: products not found on the list are non-formulary) (search)",
+          "sourceIds": [
+            "kpmidatlantic-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Phentermine hcl Tier 1, Higher Cost (HC), no PA, p. 22 (anorexigenic/CNS stimulant section). Diethylpropion hcl is Tier 1, HC, no PA, p. 22. Naltrexone hcl on p. 22 is generic oral opioid antagonist, not Contrave, and is not counted. Adipex-P and Lomaira brands are not listed separately; generic phentermine is covered. Strength/sig not printed; standard label dosing used. [Reused 2026-10-21 for DC: same document as the MD guide.]",
+      "sourceIds": [
+        "kpmidatlantic-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "kpmidatlantic"
+    }
+  ],
+  "references": [
+    {
+      "id": "dc-medicaid-newtopics-2026-10",
+      "label": "District of Columbia Department of Health Care Finance Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "publisher": "District of Columbia Department of Health Care Finance",
+      "type": "gov",
+      "url": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "effectiveDate": "2026-09-18",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "amerihealth-caritas-dc-newtopics-2026-10",
+      "label": "Drug Formulary (June 1, 2026)",
+      "publisher": "AmeriHealth Caritas District of Columbia",
+      "type": "payer",
+      "url": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "effectiveDate": "2026-06-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "carefirst-newtopics-2026-10",
+      "label": "CareFirst Exchange Formulary 2026 (5-Tier), last updated 09/01/26",
+      "publisher": "CareFirst BlueCross BlueShield",
+      "type": "payer",
+      "url": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "effectiveDate": "2026-09-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "kpmidatlantic-newtopics-2026-10",
+      "label": "District of Columbia, Maryland, and Virginia Marketplace Formulary (Last Update: 08/04/2026)",
+      "publisher": "Kaiser Permanente",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "effectiveDate": "2026-08-04",
+      "accessed": "2026-10-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

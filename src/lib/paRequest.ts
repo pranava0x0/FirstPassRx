@@ -13,6 +13,35 @@ import type { ClassMeta, FormularyRecord, PaItem, PayerMeta } from '../types/for
  * Nothing here is stored or sent anywhere: the builder holds input in component state only.
  */
 
+/**
+ * Whether the preferred agent itself needs plan sign-off (PA, step therapy, an authorization or
+ * exception), as opposed to a note about a quantity, age or group limit, or an explicit "no PA".
+ * Only then is a PA request offered on the recommendation.
+ */
+// Drop negated clauses ("no PA under 25", "no PA or step therapy required for the plain tablet")
+// so a note that requires sign-off for one group and not another still counts as requiring it.
+function affirmativeRestriction(note: string): string {
+  return note.replace(/\b(no|not|without)\s+[^;.,]*?(PA|prior auth\w*|step therapy|authorization)[^;.,]*/gi, ' ')
+}
+
+export function preferredNeedsPa(record: FormularyRecord): boolean {
+  if (record.noCoveredAgent) return false
+  if (record.preferredPaRequired !== undefined) return record.preferredPaRequired
+  if (record.preferredCriteria?.length) return true
+  // "Clinical criteria apply" (NC, DC, NY Medicaid) is a plan review of the pick, same as a PA.
+  return /\b(PA|prior auth\w*|step therapy|step|authorization|TAR|exception|clinical criteria)\b/i.test(
+    affirmativeRestriction(record.preferredRestriction ?? ''),
+  )
+}
+
+/** The kind of sign-off the preferred agent's restriction asks for. */
+export function preferredOutcome(record: FormularyRecord): PaItem['outcome'] {
+  const note = affirmativeRestriction(record.preferredRestriction ?? '')
+  if (/\b(exception|non-?formulary|TAR)\b/i.test(note)) return 'nonformulary'
+  if (/\bstep\b/i.test(note) && !/\b(PA|prior auth\w*|authorization)\b/i.test(note)) return 'step'
+  return 'pa'
+}
+
 export type StepOutcome =
   | ''
   | 'inadequate'
@@ -70,7 +99,8 @@ const SAYS_NOT_PREFERRED = /\bnon-?\s?preferred\b|\bnot preferred\b/i
  */
 export function preferredAlternatives(record: FormularyRecord, item: PaItem): string[] {
   const names = [
-    record.preferredAgent.brand ?? record.preferredAgent.inn,
+    // A noCoveredAgent record's preferredAgent is only a class reference, not plan-preferred.
+    ...(record.noCoveredAgent ? [] : [record.preferredAgent.brand ?? record.preferredAgent.inn]),
     ...(record.alternatives ?? [])
       .filter((a) => SAYS_PREFERRED.test(a.note ?? '') && !SAYS_NOT_PREFERRED.test(a.note ?? ''))
       .map((a) => a.drug),

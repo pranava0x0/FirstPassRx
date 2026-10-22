@@ -84,3 +84,38 @@ describe('ResultCard "In plan" badge', () => {
     expect(screen.getByText('Tier 1 - preferred')).toBeInTheDocument()
   })
 })
+
+describe('ResultCard "What to do next" on a restricted pick', () => {
+  const next = () => screen.getByLabelText('What to do next')
+  it('calls a quantity limit a plan note, not plan sign-off', () => {
+    render(<ResultCard record={record({ preferredRestriction: 'QL (quantity limit)' })} payer={payer} panelId="p" labelId="l" />)
+    expect(next()).not.toHaveTextContent(/needs plan sign-off/)
+    expect(next()).toHaveTextContent(/without approval\. Plan note: QL \(quantity limit\)/)
+  })
+  it('calls "clinical criteria apply" plan sign-off', () => {
+    render(
+      <ResultCard
+        record={record({ preferredRestriction: 'Clinical criteria apply to all drugs in this class (page 19).' })}
+        payer={payer}
+        panelId="p"
+        labelId="l"
+      />,
+    )
+    expect(next()).toHaveTextContent(/needs plan sign-off here: Clinical criteria apply/)
+  })
+})
+
+describe('ResultCard step therapy on a no-covered-agent record', () => {
+  it('says not applicable instead of "None required for the preferred agent"', () => {
+    render(
+      <ResultCard
+        record={record({ noCoveredAgent: true, preferredRestriction: 'Not on the drug list (p. 5).' })}
+        payer={payer}
+        panelId="p"
+        labelId="l"
+      />,
+    )
+    expect(screen.queryByText('None required for the preferred agent.')).toBeNull()
+    expect(screen.getByText(/Not applicable: no drug in this class/)).toBeInTheDocument()
+  })
+})

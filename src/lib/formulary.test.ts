@@ -74,6 +74,145 @@ describe('guides + global meta', () => {
       'md-doac',
       'va-doac',
       'il-doac',
+      'ma-adhd',
+      'ma-lipids',
+      'ma-weight',
+      'ma-migraine',
+      'ny-adhd',
+      'ny-lipids',
+      'ny-weight',
+      'ny-migraine',
+      'pa-adhd',
+      'pa-lipids',
+      'pa-weight',
+      'pa-migraine',
+      'ca-adhd',
+      'ca-lipids',
+      'ca-weight',
+      'ca-migraine',
+      'al-adhd',
+      'al-lipids',
+      'al-weight',
+      'al-migraine',
+      'va-adhd',
+      'va-lipids',
+      'va-weight',
+      'va-migraine',
+      'il-adhd',
+      'il-lipids',
+      'il-weight',
+      'il-migraine',
+      'md-adhd',
+      'md-lipids',
+      'md-weight',
+      'md-migraine',
+      'tx-inhalers',
+      'tx-menopause',
+      'tx-ace',
+      'tx-diabetes',
+      'tx-nsaids',
+      'tx-osteoporosis',
+      'tx-doac',
+      'tx-adhd',
+      'tx-lipids',
+      'tx-weight',
+      'tx-migraine',
+      'dc-inhalers',
+      'dc-menopause',
+      'dc-ace',
+      'dc-diabetes',
+      'dc-nsaids',
+      'dc-osteoporosis',
+      'dc-doac',
+      'dc-ssris',
+      'dc-adhd',
+      'dc-lipids',
+      'dc-weight',
+      'dc-migraine',
+      'fl-inhalers',
+      'fl-menopause',
+      'fl-ace',
+      'fl-diabetes',
+      'fl-nsaids',
+      'fl-osteoporosis',
+      'fl-doac',
+      'fl-ssris',
+      'fl-adhd',
+      'fl-lipids',
+      'fl-weight',
+      'fl-migraine',
+      'oh-inhalers',
+      'oh-menopause',
+      'oh-ace',
+      'oh-diabetes',
+      'oh-nsaids',
+      'oh-osteoporosis',
+      'oh-doac',
+      'oh-ssris',
+      'oh-adhd',
+      'oh-lipids',
+      'oh-weight',
+      'oh-migraine',
+      'nc-inhalers',
+      'nc-menopause',
+      'nc-ace',
+      'nc-diabetes',
+      'nc-nsaids',
+      'nc-osteoporosis',
+      'nc-doac',
+      'nc-ssris',
+      'nc-adhd',
+      'nc-lipids',
+      'nc-weight',
+      'nc-migraine',
+      'mi-inhalers',
+      'mi-menopause',
+      'mi-ace',
+      'mi-diabetes',
+      'mi-nsaids',
+      'mi-osteoporosis',
+      'mi-doac',
+      'mi-ssris',
+      'mi-adhd',
+      'mi-lipids',
+      'mi-weight',
+      'mi-migraine',
+      'ga-inhalers',
+      'ga-menopause',
+      'ga-ace',
+      'ga-diabetes',
+      'ga-nsaids',
+      'ga-osteoporosis',
+      'ga-doac',
+      'ga-ssris',
+      'ga-adhd',
+      'ga-lipids',
+      'ga-weight',
+      'ga-migraine',
+      'wa-inhalers',
+      'wa-menopause',
+      'wa-ace',
+      'wa-diabetes',
+      'wa-nsaids',
+      'wa-osteoporosis',
+      'wa-doac',
+      'wa-ssris',
+      'wa-adhd',
+      'wa-lipids',
+      'wa-weight',
+      'wa-migraine',
+      'tn-inhalers',
+      'tn-menopause',
+      'tn-ace',
+      'tn-diabetes',
+      'tn-nsaids',
+      'tn-osteoporosis',
+      'tn-doac',
+      'tn-ssris',
+      'tn-adhd',
+      'tn-lipids',
+      'tn-weight',
+      'tn-migraine',
     ])
   })
 
@@ -356,6 +495,32 @@ describe('VA diabetes guide specifics', () => {
   })
 })
 
+describe('noCoveredAgent', () => {
+  const view = () => structuredClone((rawData as unknown as Formulary).guides.find((g) => g.id === 'ma-weight')!)
+  it('ships flagged cells with a reason, never as BOGL', () => {
+    const flagged = view().records.filter((r) => r.noCoveredAgent)
+    expect(flagged.length).toBeGreaterThan(0)
+    for (const r of flagged) {
+      expect(r.preferredRestriction?.trim()).toBeTruthy()
+      expect(r.boglActive).toBe(false)
+    }
+  })
+  it('never indexes the reference drug as a preferred search result', () => {
+    const g = buildGuideView(view())
+    const flagged = g.records.filter((r) => r.noCoveredAgent)
+    for (const r of flagged) {
+      const hits = g.searchFormulary(r.preferredAgent.inn.split(' ')[0]!, 200)
+      expect(hits.some((h) => h.kind === 'preferred' && h.payerId === r.payerId && h.classId === r.classId)).toBe(false)
+    }
+  })
+  it('rejects a flagged cell with no reason', () => {
+    const g = view()
+    const r = g.records.find((x) => x.noCoveredAgent)!
+    r.preferredRestriction = ''
+    expect(() => buildGuideView(g)).toThrow(/noCoveredAgent needs a preferredRestriction/)
+  })
+})
+
 describe('PA criteria and submission validation', () => {
   const base = () => structuredClone((rawData as unknown as Formulary).guides.find((g) => g.id === 'ma-inhalers')!)
 
@@ -388,5 +553,17 @@ describe('PA criteria and submission validation', () => {
       r.paRequired[0] = { ...r.paRequired[0]!, criteria: ['Something'], criteriaMode: mode as 'any', criteriaSourceIds: [g.references[0]!.id] }
       expect(() => buildGuideView(g)).toThrow(/criteriaMode "any" or "all"/)
     }
+  })
+})
+
+// The 'Send to' note is shown to prescribers; research commentary leaked into it once (2026-10-21).
+describe('paSubmission notes read as routing guidance', () => {
+  it('contain no research/process commentary', () => {
+    const bad = (rawData as unknown as Formulary).guides.flatMap((g) =>
+      g.payers
+        .map((p) => p.paSubmission?.note ?? '')
+        .filter((n) => /cited (page|flyer|document)|so none is listed|evidence|the page (lists|does not)|not listed\./i.test(n)),
+    )
+    expect([...new Set(bad)]).toEqual([])
   })
 })

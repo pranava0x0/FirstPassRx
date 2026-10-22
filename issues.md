@@ -204,6 +204,22 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
 
 ## Open
 
+- **2026-10-21 · data (IL) · two IL Medicaid MCO sources are stale lists.** Meridian's cited PDL is
+  dated December 1, 2024 and Blue Cross Community Health Plans' drug list says "Effective May 2025"
+  (cover still shows 2022–2023). Both back the existing `il-*` guides and the new IL topics. Find
+  each plan's current list and re-verify those cells. _Open._
+
+- **2026-10-21 · data (MD) · the cited Cigna "Value 4-Tier" URL now serves the list for coverage
+  starting 2027-01-01 (last updated 09/01/2026).** It is the full drug list ("Specialty" in its header
+  is a catalog code, not a specialty-only scope — an earlier note here said otherwise and was
+  wrong). Existing `md-*` Cigna cells were gathered from the 2026 version at the same URL; spot-check
+  them against the 2027 list before the next MD refresh, and note the effective-date change. _Open._
+
+- **2026-10-21 · data (MA) · 6 MassHealth MHDL table pages changed since last archive.** The
+  `--only=mhdl…/pubtheradetail.do` re-archive reported `DRIFT` on 6 tables cited by existing MA
+  guides. Could be a real MHDL revision or page noise (timestamps, session tokens); diff the
+  archived HTML text for drug/status changes before re-verifying `ma-*` cells. _Open._
+
 - **2026-10-21 · data (IL) · Aetna Better Health of Illinois formulary PDF changed since archive.**
   The archiver re-fetched it (2269 KB) with a new sha256 (`[DRIFT: content changed]` on all 7
   `aetna-better-health-il-*` sources); the cited URL is unchanged, so the plan reissued it. Re-read
@@ -762,3 +778,12 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   new ceiling) all green; verified live in the dev-server browser (PA → Inhalers → Independence
   Blue Cross renders the VoSpire ER alternative link-only, no price; CA → Diabetes → Insulin
   renders "Insulin Regular, Human" with the new $60.90 GoodRx price). _Fixed._
+
+- **2026-10-21 · sources · Anthem Select lists reissued (NY, VA, CA).** The archive run flagged
+  sha256 drift on `fm.formularynavigator.com/FBO/143/2026_Select_{3_Tier_NY_ABS,4_Tier_VA,4_Tier_CA}_IND.pdf`
+  (plus 59 HTML pages, which change on every fetch and are noise, and the DC PDL, re-read today
+  for the DC guides). The Anthem guides in those states were gathered from the earlier bytes;
+  re-check the cited classes against the new files. Root cause: source reissue, not a code bug.
+  _Fixed 2026-10-21:_ all 99 Anthem NY/VA/CA records re-checked against the 10/1/2026 files; 7
+  real changes applied (Mounjaro now listed with PA in NY and VA, sumatriptan auto-injector gained
+  step therapy in NY/VA/CA, Breztri Tier 3 -> 2), plus one older VA mis-tier fixed.

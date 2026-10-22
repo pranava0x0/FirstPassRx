@@ -1,0 +1,1068 @@
+{
+  "id": "dc-lipids",
+  "label": "DC · Cholesterol",
+  "stateCode": "DC",
+  "region": "District of Columbia",
+  "topicId": "lipids",
+  "topic": "Cholesterol",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-21",
+  "capturedAt": "2026-10-21",
+  "payers": [
+    {
+      "id": "dc-medicaid",
+      "name": "DC Medicaid",
+      "shortName": "DC Medicaid",
+      "aka": "DC Medicaid fee-for-service and DC Healthcare Alliance (DHCF); DC Healthy Families MCOs run their own formularies",
+      "pbm": "Prime Therapeutics",
+      "productName": "DC Medicaid / DC Healthcare Alliance Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "District of Columbia Department of Health Care Finance Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "formularyUrl": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "sourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "amerihealth-caritas-dc",
+      "name": "AmeriHealth Caritas District of Columbia",
+      "shortName": "AmeriHealth Caritas DC",
+      "aka": "DC Healthy Families Medicaid MCO",
+      "pbm": "PerformRx",
+      "productName": "AmeriHealth Caritas DC drug formulary",
+      "marketSegment": "medicaid-mco",
+      "formularyId": "Drug Formulary (June 1, 2026)",
+      "formularyUrl": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "sourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "carefirst",
+      "name": "CareFirst BlueCross BlueShield",
+      "shortName": "CareFirst",
+      "pbm": "CVS Caremark",
+      "formularyUrl": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "paPolicyUrl": "https://member.carefirst.com/carefirst-resources/pdf/drugs-requiring-prior-authorization-formulary-2.pdf",
+      "productName": "CareFirst individual and family Exchange Formulary 2",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "CareFirst Exchange Formulary 2026 (5-Tier), last updated 09/01/26",
+      "sourceIds": [
+        "carefirst-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "kpmidatlantic",
+      "name": "Kaiser Permanente Mid-Atlantic",
+      "shortName": "Kaiser MAS",
+      "pbm": "Kaiser Permanente (in-house)",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "productName": "Kaiser Mid-Atlantic Marketplace formulary",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "District of Columbia, Maryland, and Virginia Marketplace Formulary (Last Update: 08/04/2026)",
+      "sourceIds": [
+        "kpmidatlantic-newtopics-2026-10"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "statin",
+      "name": "Statins",
+      "shortName": "STATIN",
+      "plainName": "Statin",
+      "description": "HMG-CoA reductase inhibitors: atorvastatin (Lipitor), rosuvastatin (Crestor, Ezallor), simvastatin (Zocor), pravastatin, lovastatin (Altoprev), pitavastatin (Livalo, Zypitamag), fluvastatin, and statin combinations (Vytorin, Roszet).",
+      "plainDescription": "A daily pill that lowers LDL cholesterol.",
+      "indication": "Hyperlipidemia / ASCVD risk reduction",
+      "sourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "ezetimibe",
+      "name": "Ezetimibe & other non-statin oral agents",
+      "shortName": "EZE",
+      "plainName": "Ezetimibe / non-statin pill",
+      "description": "Non-statin oral LDL-lowering agents: ezetimibe (Zetia), bempedoic acid (Nexletol) and bempedoic acid/ezetimibe (Nexlizet).",
+      "plainDescription": "A cholesterol pill used with or instead of a statin.",
+      "indication": "Hyperlipidemia",
+      "sourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "pcsk9",
+      "name": "PCSK9 inhibitors & siRNA",
+      "shortName": "PCSK9",
+      "plainName": "Injectable LDL lowerer (PCSK9)",
+      "description": "Injectable PCSK9-pathway agents: evolocumab (Repatha), alirocumab (Praluent), inclisiran (Leqvio).",
+      "plainDescription": "An injection every 2 weeks to 6 months that strongly lowers LDL cholesterol.",
+      "indication": "Hyperlipidemia / ASCVD",
+      "sourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "statin",
+      "preferredAgent": {
+        "inn": "Atorvastatin",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Not stated on PDL",
+        "sig": "1 tablet by mouth once daily (standard label dosing; strength not stated on PDL)",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (generic)",
+      "alternatives": [
+        {
+          "drug": "Rosuvastatin (generic)",
+          "note": "Preferred generic, no PA (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Simvastatin (generic)",
+          "note": "Preferred generic, no PA (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pravastatin (generic)",
+          "note": "Preferred generic, no PA (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lovastatin (generic)",
+          "note": "Preferred generic, no PA (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Lipitor (brand atorvastatin)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Atorvaliq (atorvastatin oral suspension)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Caduet (brand amlodipine/atorvastatin)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Amlodipine/atorvastatin (generic)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Crestor (brand rosuvastatin)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ezallor Sprinkle (rosuvastatin)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zocor (brand simvastatin)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Vytorin (brand ezetimibe/simvastatin)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Simvastatin/ezetimibe (generic)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Altoprev (lovastatin ER)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Livalo (brand pitavastatin)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zypitamag (pitavastatin)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pitavastatin (generic)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluvastatin (generic)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluvastatin ER (generic)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lescol XL (brand fluvastatin ER)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from the 'Lipotropics: Statins' table (page 10). Preferred column: atorvastatin, rosuvastatin, simvastatin, lovastatin, pravastatin (all generic). Every brand statin (Lipitor, Crestor, Zocor, Livalo, Lescol XL, etc.) is under PA while the generic is preferred, so no BOGL. Preferred agent is atorvastatin generic; strength and sig are not on the PDL, so standard label dosing is stated. No class-level step note appears in the PDL.",
+      "sourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "noCoveredAgent": false,
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "ezetimibe",
+      "preferredAgent": {
+        "inn": "Ezetimibe",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Not stated on PDL",
+        "sig": "1 tablet by mouth once daily (standard label dosing; strength not stated on PDL)",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (generic)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Zetia (brand ezetimibe)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Nexletol (bempedoic acid)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Nexlizet (bempedoic acid/ezetimibe)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Juxtapid (lomitapide)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Tryngolza (olezarsen)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lipfendra (name as printed; drug identity not confirmed in this run)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from the 'Lipotropics: Cholesterol Absorption Inhibitors and Others' rows (page 10). Ezetimibe generic is the only item in the Preferred column for this subsection. Bempedoic acid products, brand Zetia, Juxtapid and Tryngolza are under PA. Lipfendra is listed under PA on the same page; its drug identity was not confirmed here, so it is listed by its printed name only. Nothing else in the class is covered without PA, so no alternatives are listed. Strength and sig are not printed, so standard label dosing is stated.",
+      "sourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "noCoveredAgent": false,
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "pcsk9",
+      "preferredAgent": {
+        "inn": "Evolocumab",
+        "brand": "Repatha",
+        "genericAvailable": false,
+        "strength": "Not stated on PDL",
+        "sig": "Injection per label (standard label dosing; not stated on PDL)",
+        "sigShort": "Injection per label",
+        "plainSig": "A shot that lowers LDL cholesterol, given on the schedule your prescriber sets."
+      },
+      "preferredRestriction": "PA required (not on the preferred list): no PCSK9 agent is on the preferred list (page 10).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Requires PA (no PCSK9 agent is preferred)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Repatha (evolocumab)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Praluent (alirocumab)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Leqvio (inclisiran)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 10)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from the 'Lipotropics: Cholesterol Absorption Inhibitors and Others' rows (page 10). Repatha, Praluent and Leqvio are all in the Requires PA column; none is preferred. Repatha is the reference preferred agent in this record because the plan lists no lower-barrier PCSK9 agent; the PA barrier applies. Dose and schedule are not on the PDL, so standard label dosing is stated.",
+      "sourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "noCoveredAgent": false,
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "statin",
+      "preferredAgent": {
+        "inn": "Atorvastatin calcium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Per label (strength not printed on the listing line)",
+        "sig": "Dosed per FDA label (document gives no sig)",
+        "sigShort": "Per label",
+        "plainSig": "Take as your prescriber directs."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "F (Formulary Drug)",
+      "alternatives": [
+        {
+          "drug": "Rosuvastatin calcium",
+          "note": "F; no QL printed (PDF p50)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Simvastatin",
+          "note": "F; QL 30 per 30 days on 40 mg; 80 mg carries ST (see paRequired) (PDF p50)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pravastatin sodium",
+          "note": "F; QL on 10, 20, 40, 80 mg (PDF p50)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lovastatin",
+          "note": "F; no QL printed (PDF p50)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ezetimibe-simvastatin combination",
+          "note": "F; QL 30 per 30 days (PDF p50)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Simvastatin 80 mg tablet",
+          "outcome": "step",
+          "reason": "Step: ST listed on the 80 mg strength only (PDF p50)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read PDF p50 (printed p49) Hmg-CoA Reductase Inhibitors section and PDF p46 for the combination. Atorvastatin chosen as the no-PA, F-tier generic; no strength or sig is printed for it, so label dosing is stated. The only barrier in the class is the step-therapy flag on the simvastatin 80 mg strength. Pitavastatin (Livalo, Zypitamag), fluvastatin, Lipitor, Crestor, Zocor, Altoprev, Vytorin and Roszet do not appear. The document does not say it is a complete list, so those absences are not treated as exclusions.",
+      "sourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "ezetimibe",
+      "preferredAgent": {
+        "inn": "Ezetimibe",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Per label (strength not printed)",
+        "sig": "Dosed per FDA label (document gives no sig)",
+        "sigShort": "Per label",
+        "plainSig": "Take as your prescriber directs."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "F (Formulary Drug), QL 30 per 30 days",
+      "alternatives": [
+        {
+          "drug": "Ezetimibe-simvastatin combination",
+          "note": "F; QL 30 per 30 days (PDF pp. 46, 50); also listed in the statin class",
+          "sourceIds": [
+            "amerihealth-caritas-dc-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Nexletol (bempedoic acid)",
+          "outcome": "nonformulary",
+          "reason": "Non-formulary; PA required (PDF pp. 38, 41)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Nexlizet (bempedoic acid / ezetimibe)",
+          "outcome": "nonformulary",
+          "reason": "Non-formulary; PA required (PDF pp. 38, 41, 46)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read PDF pp. 38, 41 and 46. Generic ezetimibe chosen as the no-PA, F-tier non-statin oral agent. Both bempedoic acid products are listed as NF PA. Zetia brand does not appear. The document does not say it is a complete list, so that absence is not treated as an exclusion.",
+      "sourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "pcsk9",
+      "preferredAgent": {
+        "inn": "Evolocumab",
+        "brand": "Repatha",
+        "genericAvailable": false,
+        "strength": "Per label (SureClick autoinjector and Pushtronex system listed)",
+        "sig": "Subcutaneous injection per FDA label (dosing not printed in document)",
+        "sigShort": "SC per label",
+        "plainSig": "A shot under the skin on the schedule your prescriber sets."
+      },
+      "preferredRestriction": "PA required (formulary; PA criteria are not stated in this document). QL 6 mL per 28 days (PDF p52).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "F (Formulary Drug) with PA",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Praluent (alirocumab) auto-injector",
+          "outcome": "pa",
+          "reason": "PA required; formulary (PDF p52)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Leqvio (inclisiran)",
+          "outcome": "nonformulary",
+          "reason": "Non-formulary; PA required (PDF pp. 41, 52)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp. 41 and 52 (Pcsk9 Inhibitors section). Repatha chosen as the first formulary PCSK9 agent. Praluent is also F PA, so the barrier is the same. Evolocumab has no generic. The document gives no PA criteria; the PA text is the only restriction printed.",
+      "sourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "statin",
+      "preferredAgent": {
+        "inn": "Atorvastatin calcium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "Standard label dosing; sig not printed in formulary: 20 mg by mouth once daily",
+        "sigShort": "20 mg tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Rosuvastatin calcium tablets 5, 10 mg",
+          "note": "Tier 1, $0 copay for ages 40-75 (PDF p.51); no PA or QL",
+          "sourceIds": [
+            "carefirst-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Rosuvastatin calcium tablets 20, 40 mg",
+          "note": "Tier 1 (PDF p.51); $0 copay only via exception process for primary prevention",
+          "sourceIds": [
+            "carefirst-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Simvastatin tablets 5, 10, 20, 40 mg",
+          "note": "Tier 1, $0 copay for ages 40-75 (PDF p.51)",
+          "sourceIds": [
+            "carefirst-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pravastatin sodium tablets 10, 20, 40, 80 mg",
+          "note": "Tier 1, $0 copay for ages 40-75 (PDF p.50-51)",
+          "sourceIds": [
+            "carefirst-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lovastatin tablets 10, 20, 40 mg",
+          "note": "Tier 1, $0 copay for ages 40-75 (PDF p.50)",
+          "sourceIds": [
+            "carefirst-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pitavastatin calcium tablets 1, 2, 4 mg",
+          "note": "Tier 1 generic, $0 copay for ages 40-75 (PDF p.50); Livalo and Zypitamag brands not listed",
+          "sourceIds": [
+            "carefirst-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluvastatin caps 20, 40 mg and ER tablets 80 mg",
+          "note": "Tier 1, $0 copay for ages 40-75 (PDF p.50)",
+          "sourceIds": [
+            "carefirst-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Atorvastatin calcium tablets 40, 80 mg",
+          "note": "Tier 1 (PDF p.50); $0 copay only via exception process for primary prevention",
+          "sourceIds": [
+            "carefirst-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ezetimibe-simvastatin tablets 10-10, 10-20, 10-40, 10-80 mg",
+          "note": "Tier 1, no PA or QL (PDF p.52); Vytorin brand not listed",
+          "sourceIds": [
+            "carefirst-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Simvastatin tablets 80 mg",
+          "outcome": "step",
+          "reason": "Step therapy: ST; PA** (PA applies if step is not met) (PDF p.51)",
+          "sourceIds": [
+            "carefirst-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Statin section, PDF p.49-52 (printed pp.47-50). Atorvastatin 10-20 mg and most generic statins are Tier 1 with a $0 copay for ages 40-75 (cost-share, not a barrier). Exception-process notes on atorvastatin 40/80 mg and rosuvastatin 20/40 mg (PDF p.50-51) are a cost-share condition, not a PA, so they are in alternatives, not paRequired. Simvastatin 80 mg is the only statin with a stated step/PA barrier. Brands Lipitor, Crestor, Zocor, Livalo, Zypitamag, Altoprev, Ezallor, Vytorin, Roszet, Pravachol were searched and are not listed. Judgment: atorvastatin 20 mg picked as the most commonly prescribed Tier 1 statin with no barrier at a common strength. Sig is standard label dosing, not printed. [Reused 2026-10-21 for DC: same document as the MD guide.]",
+      "sourceIds": [
+        "carefirst-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "carefirst-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "ezetimibe",
+      "preferredAgent": {
+        "inn": "Ezetimibe",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Standard label dosing; sig not printed in formulary: 10 mg by mouth once daily",
+        "sigShort": "10 mg tab QD",
+        "plainSig": "A cholesterol pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Bempedoic acid (Nexletol) 180 mg tablet",
+          "outcome": "pa",
+          "reason": "PA required (PDF p.48)",
+          "sourceIds": [
+            "carefirst-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Antilipemics, cholesterol absorption inhibitor, PDF p.49: ezetimibe 10 mg tablet, Tier 1, no PA or QL. Nexletol 180 mg (PDF p.48) is listed with PA. Nexlizet (bempedoic acid/ezetimibe) and Zetia brand are not listed; Nexletol is the only bempedoic acid product listed. Not recorded as nonformulary: the document does not say it is a complete list. [Reused 2026-10-21 for DC: same document as the MD guide.]",
+      "sourceIds": [
+        "carefirst-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "carefirst-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "pcsk9",
+      "preferredAgent": {
+        "inn": "Evolocumab",
+        "brand": "Repatha Push",
+        "genericAvailable": false,
+        "strength": "420 mg/3.5 mL autoinjector",
+        "sig": "Standard label dosing; sig not printed in formulary: 420 mg subcutaneously once every 28 days",
+        "sigShort": "420 mg SC monthly",
+        "plainSig": "A shot once a month that lowers LDL cholesterol."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (preferred brand per legend)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Repatha 140 mg/mL prefilled syringe",
+          "outcome": "pa",
+          "reason": "PA required; QL 3 syringes/28 days (PDF p.52)",
+          "sourceIds": [
+            "carefirst-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Repatha Sure 140 mg/mL pen",
+          "outcome": "pa",
+          "reason": "PA required; QL 3 pens/28 days (PDF p.52)",
+          "sourceIds": [
+            "carefirst-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Antilipemics, PCSK9 inhibitors, PDF p.52: Repatha Push 420 mg/3.5 mL is Tier 2 with QL (1 injection/28 days) and no PA. Repatha 140 mg/mL syringe and Repatha Sure pen are Tier 2 with PA and QL. Praluent (alirocumab) and Leqvio (inclisiran) are not listed by name; not recorded as nonformulary because the document does not say it is a complete list. Judgment: Repatha Push picked as the only PCSK9 product on the list with no PA, per the lowest-barrier rule. Sig is standard label dosing, not printed. [Reused 2026-10-21 for DC: same document as the MD guide.]",
+      "sourceIds": [
+        "carefirst-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "carefirst-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "statin",
+      "preferredAgent": {
+        "inn": "Atorvastatin calcium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "standard label dosing",
+        "sig": "Per prescriber; standard label dosing (dose not printed in plan document)",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day, for cholesterol."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Rosuvastatin calcium",
+          "note": "Tier 1 (generic), no PA; PREV flag (p. 16)",
+          "sourceIds": [
+            "kpmidatlantic-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pravastatin sodium",
+          "note": "Tier 1 (generic), no PA; PREV flag (p. 16)",
+          "sourceIds": [
+            "kpmidatlantic-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lovastatin",
+          "note": "Tier 1 (generic), no PA; PREV flag (p. 16)",
+          "sourceIds": [
+            "kpmidatlantic-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Simvastatin",
+          "note": "Tier 1 or 3 (depends on form); PREV flag (p. 16)",
+          "sourceIds": [
+            "kpmidatlantic-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluvastatin sodium",
+          "note": "Tier 3 (non-preferred), PREV flag (p. 16)",
+          "sourceIds": [
+            "kpmidatlantic-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ezetimibe-simvastatin",
+          "note": "Tier 3 (non-preferred) (p. 16)",
+          "sourceIds": [
+            "kpmidatlantic-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ezetimibe-rosuvastatin",
+          "note": "Tier 3 (non-preferred) (p. 16)",
+          "sourceIds": [
+            "kpmidatlantic-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Pitavastatin (Livalo, Zypitamag)",
+          "outcome": "nonformulary",
+          "reason": "Not on formulary list (p. 2: products not found on the list are non-formulary) (p. 16 search)",
+          "sourceIds": [
+            "kpmidatlantic-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Antilipemic agents, p. 16. PREV means preventative medication per the p. 4 key; it is recorded as a label, not a barrier. Atorvastatin is Tier 1 with no PA and is the most commonly prescribed generic statin. Pitavastatin is absent from the list and the document says unlisted products are non-formulary. Ezallor and Roszet brands are not listed. Strength/sig not printed; standard label dosing used. [Reused 2026-10-21 for DC: same document as the MD guide.]",
+      "sourceIds": [
+        "kpmidatlantic-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "kpmidatlantic"
+    },
+    {
+      "classId": "ezetimibe",
+      "preferredAgent": {
+        "inn": "Ezetimibe",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "standard label dosing",
+        "sig": "Per prescriber; standard label dosing (dose not printed in plan document)",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day, that lowers cholesterol."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Bempedoic acid (Nexletol)",
+          "outcome": "nonformulary",
+          "reason": "Not on formulary list (p. 2: products not found on the list are non-formulary) (p. 16 search)",
+          "sourceIds": [
+            "kpmidatlantic-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Bempedoic acid/ezetimibe (Nexlizet)",
+          "outcome": "nonformulary",
+          "reason": "Not on formulary list (p. 2: products not found on the list are non-formulary) (p. 16 search)",
+          "sourceIds": [
+            "kpmidatlantic-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Ezetimibe Tier 1, no PA, p. 16. Nexletol and Nexlizet are absent from the list, and p.2 says any product not found on the list is considered non-formulary. Ezetimibe-statin combinations are recorded under the statin class. Strength/sig not printed; standard label dosing used. [Sonnet check 2026-10-21: reworded to the actual KP wording (p.2: \"Any product not found on the list will be considered non-formulary\"); absence re-checked by full-text search; pp.16, 21, 22, 32 spot-checked.] [Reused 2026-10-21 for DC: same document as the MD guide.]",
+      "sourceIds": [
+        "kpmidatlantic-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "kpmidatlantic"
+    },
+    {
+      "classId": "pcsk9",
+      "preferredAgent": {
+        "inn": "Evolocumab (Repatha)",
+        "brand": "Repatha",
+        "genericAvailable": false,
+        "strength": "standard label dosing",
+        "sig": "Per prescriber; standard label dosing (dose not printed in plan document)",
+        "sigShort": "per label",
+        "plainSig": "A shot every 2 weeks that strongly lowers LDL cholesterol."
+      },
+      "preferredRestriction": "No PCSK9 inhibitor or inclisiran (Repatha, Praluent, Leqvio) appears on this plan's list, and p.2 says any product not found on the list is considered non-formulary; coverage excluded (confirm with plan)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not on formulary (non-formulary)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Evolocumab (Repatha)",
+          "outcome": "nonformulary",
+          "reason": "Not on formulary list (p. 2: products not found on the list are non-formulary) (p. 16 search)",
+          "sourceIds": [
+            "kpmidatlantic-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Alirocumab (Praluent)",
+          "outcome": "nonformulary",
+          "reason": "Not on formulary list (p. 2: products not found on the list are non-formulary) (p. 16 search)",
+          "sourceIds": [
+            "kpmidatlantic-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Inclisiran (Leqvio)",
+          "outcome": "nonformulary",
+          "reason": "Not on formulary list (p. 2: products not found on the list are non-formulary) (p. 16 search)",
+          "sourceIds": [
+            "kpmidatlantic-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched the full document text for evolocumab, Repatha, alirocumab, Praluent, inclisiran, and Leqvio; none appear. Repatha is the reference drug for the class only and is not presented as covered. Confirm with the plan. [Sonnet check 2026-10-21: reworded to the actual KP wording (p.2: \"Any product not found on the list will be considered non-formulary\"); absence re-checked by full-text search; pp.16, 21, 22, 32 spot-checked.] [Reused 2026-10-21 for DC: same document as the MD guide.]",
+      "sourceIds": [
+        "kpmidatlantic-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "noCoveredAgent": true,
+      "payerId": "kpmidatlantic"
+    }
+  ],
+  "references": [
+    {
+      "id": "dc-medicaid-newtopics-2026-10",
+      "label": "District of Columbia Department of Health Care Finance Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "publisher": "District of Columbia Department of Health Care Finance",
+      "type": "gov",
+      "url": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "effectiveDate": "2026-09-18",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "amerihealth-caritas-dc-newtopics-2026-10",
+      "label": "Drug Formulary (June 1, 2026)",
+      "publisher": "AmeriHealth Caritas District of Columbia",
+      "type": "payer",
+      "url": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "effectiveDate": "2026-06-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "carefirst-newtopics-2026-10",
+      "label": "CareFirst Exchange Formulary 2026 (5-Tier), last updated 09/01/26",
+      "publisher": "CareFirst BlueCross BlueShield",
+      "type": "payer",
+      "url": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "effectiveDate": "2026-09-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "kpmidatlantic-newtopics-2026-10",
+      "label": "District of Columbia, Maryland, and Virginia Marketplace Formulary (Last Update: 08/04/2026)",
+      "publisher": "Kaiser Permanente",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "effectiveDate": "2026-08-04",
+      "accessed": "2026-10-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

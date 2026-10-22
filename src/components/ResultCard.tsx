@@ -2,7 +2,8 @@ import type { FormularyRecord, PayerMeta } from '../types/formulary'
 import { useGuide } from '../lib/formulary'
 import { goodRxUrl, costPlusUrl, goodRxPrice, costPlusPrice, pricesCapturedAt } from '../lib/cash'
 import { BoglBanner } from './BoglBanner'
-import { PrescribeOptions } from './PrescribeOptions'
+import { AppealAction, PrescribeOptions } from './PrescribeOptions'
+import { preferredNeedsPa, preferredOutcome } from '../lib/paRequest'
 import { Citations } from './Citations'
 import { GlossaryTerm } from './GlossaryTerm'
 import { CashPriceBoxes } from './CashPriceBoxes'
@@ -20,7 +21,8 @@ function readableGenericName(name: string): string {
 }
 
 export function ResultCard({ record, payer, panelId, labelId }: Props) {
-  const { resolveSources, capturedAt, unitNoun } = useGuide()
+  const { resolveSources, capturedAt, unitNoun, getClass } = useGuide()
+  const drugClass = getClass(record.classId)
   const agent = record.preferredAgent
   const sources = resolveSources(record.sourceIds)
   const coverageSources = resolveSources(record.coverageSourceIds)
@@ -51,7 +53,7 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
         {/* The answer — minimal. */}
         <div className="highlights">
           <h2 className="recommendation-label">
-            4. Preferred option
+            {record.noCoveredAgent ? '4. Coverage' : '4. Preferred option'}
           </h2>
           {/* Verification describes coverage evidence only; it is not clinical guidance. */}
           <p className={`result__provenance is-${record.verification}`}>
@@ -88,10 +90,17 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
           </p>
         </div>
 
+        {record.noCoveredAgent ? (
+          <div className="recommendation-hero recommendation-hero--none">
+            <div className="recommendation-hero__label">NO COVERED OPTION</div>
+            <h3 className="recommendation-hero__name">No drug in this class is covered on this plan's list</h3>
+            <p className="recommendation-hero__generic">{record.preferredRestriction}</p>
+          </div>
+        ) : (
         <div className="recommendation-hero">
           <div className="recommendation-hero__label">FIRST-PASS RECOMMENDED</div>
           <h3 className="recommendation-hero__name">{displayName}</h3>
-          {agent.brand ? (
+          {agent.brand && !agent.inn.toLowerCase().startsWith(agent.brand.toLowerCase()) ? (
             <p className="recommendation-hero__generic">Also called: {readableGenericName(agent.inn)}</p>
           ) : null}
           <div className="recommendation-hero__meta">
@@ -116,7 +125,25 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
             costPlus={costPlusPoint}
             capturedAt={pricesAsOf}
           />
+          {/* Even the first-pass pick needs plan sign-off here: offer the PA request on it too. */}
+          {preferredNeedsPa(record) && drugClass ? (
+            <AppealAction
+              record={record}
+              payer={payer}
+              drugClass={drugClass}
+              item={{
+                drug: displayName,
+                outcome: preferredOutcome(record),
+                reason: record.preferredRestriction,
+                sourceIds: record.restrictionSourceIds,
+                criteria: record.preferredCriteria,
+                criteriaMode: record.preferredCriteriaMode,
+                criteriaSourceIds: record.preferredCriteriaSourceIds,
+              }}
+            />
+          ) : null}
         </div>
+        )}
 
         {/* Q1 + Q2: what to prescribe + alternatives, with cost in plan vs cash. */}
         <PrescribeOptions record={record} source={primarySource} payer={payer} />
@@ -142,15 +169,26 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
                   <b>Patient:</b> ask the pharmacy to confirm this exact benefit product before the
                   prescription is sent.
                 </li>
-                {record.boglActive ? (
+                {record.noCoveredAgent ? (
+                  <li>
+                    <b>Doctor:</b> no drug in this class is covered on this plan's list: it is either
+                    listed as excluded or not listed at all; the note above says which. Confirm
+                    with the plan before requesting a formulary exception or using a cash price.
+                  </li>
+                ) : record.boglActive ? (
                   <li>
                     <b>Doctor:</b> write <strong>{displayName}</strong> on the prescription, not
                     generic {genericBase} (the generic may need approval).
                   </li>
-                ) : record.preferredRestriction ? (
+                ) : record.preferredRestriction && preferredNeedsPa(record) ? (
                   <li>
                     <b>Doctor:</b> even this first-pass pick needs plan sign-off here:{' '}
                     {record.preferredRestriction}
+                  </li>
+                ) : record.preferredRestriction ? (
+                  <li>
+                    <b>Doctor:</b> this plan is likely to cover <strong>{displayName}</strong> without
+                    approval. Plan note: {record.preferredRestriction}
                   </li>
                 ) : (
                   <li>
@@ -166,7 +204,11 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
               <p className="eyebrow">
                 <GlossaryTerm match="Step therapy">Step therapy</GlossaryTerm>
               </p>
-              {record.stepTherapy ? (
+              {record.noCoveredAgent ? (
+                <p className="step__body step__body--none">
+                  Not applicable: no drug in this class is covered on this plan's list.
+                </p>
+              ) : record.stepTherapy ? (
                 <p className="step__body">{record.stepTherapy}</p>
               ) : (
                 <p className="step__body step__body--none">None required for the preferred agent.</p>

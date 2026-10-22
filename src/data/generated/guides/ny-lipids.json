@@ -1,0 +1,1340 @@
+{
+  "id": "ny-lipids",
+  "label": "NY · Cholesterol",
+  "stateCode": "NY",
+  "region": "New York",
+  "topicId": "lipids",
+  "topic": "Cholesterol",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-21",
+  "capturedAt": "2026-10-21",
+  "payers": [
+    {
+      "id": "ny-medicaid",
+      "name": "New York Medicaid (NYRx)",
+      "shortName": "NY Medicaid",
+      "aka": "NYRx — NYS Medicaid Pharmacy Program (Fee-for-Service); covers every NY Medicaid Managed Care plan's pharmacy benefit statewide since the April 1, 2023 pharmacy carve-out",
+      "pbm": "Prime Therapeutics / FHSC (NYRx fiscal agent)",
+      "formularyUrl": "https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf",
+      "paPolicyUrl": "https://www.health.ny.gov/health_care/medicaid/program/pharmacy/program_info.htm",
+      "paSubmission": {
+        "fax": "(800) 268-2990",
+        "phone": "(877) 309-9493",
+        "portal": "https://paxpress.nypa.hidinc.com",
+        "epa": "CoverMyMeds",
+        "note": "NYRx clinical call center, 24/7, phone or fax (with the matching PA form). Send one request only. eMedNY (1-800-343-9000) handles eligibility and claims, not PA.",
+        "sourceIds": [
+          "ny-medicaid-pa-intake-2026-10"
+        ]
+      },
+      "sourceIds": [
+        "ny-medicaid-newtopics-2026-10"
+      ],
+      "productName": "NYRx — NY Medicaid Pharmacy Program (Fee-for-Service, statewide)",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "NYRx, the Medicaid Drug Program: Preferred Drug List (Preferred Drug Program), revised September 14, 2026"
+    },
+    {
+      "id": "ny-excellus-bcbs",
+      "name": "Excellus BlueCross BlueShield (Commercial / Individual & Family)",
+      "shortName": "Excellus BCBS",
+      "pbm": "Express Scripts (ESI)",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/251/Excellus_2026_Metal_Plans_Base___Simply_Blue_Plus___College_Blue_Plans_Formulary_Guide_2981_v26.pdf",
+      "sourceIds": [
+        "ny-excellus-bcbs-newtopics-2026-10"
+      ],
+      "productName": "Excellus BlueCross BlueShield 2026 Individual & Family Metal Plans (Base / Simply Blue Plus / College Blue) -- Commercial Exchange",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "2026 Individual & Family Metal Plans, Base, Simply Blue Plus and College Blue Plans Formulary Guide (2981)"
+    },
+    {
+      "id": "ny-uhc-commercial",
+      "name": "UnitedHealthcare (Commercial)",
+      "shortName": "UHC Commercial",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "paSubmission": {
+        "phone": "1-800-711-4555 (Optum Rx prior authorization team)",
+        "portal": "optumrx.com > Healthcare Professionals > Prior Authorizations",
+        "sourceIds": [
+          "ny-uhc-commercial-formulary-pa-intake-2026"
+        ]
+      },
+      "sourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "productName": "UnitedHealthcare 2026 Commercial Prescription Drug List (CT/NJ/NY footprint)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 Prescription Drug List (PDL), UnitedHealthcare, effective January 1, 2026"
+    },
+    {
+      "id": "ny-anthem-bcbs",
+      "name": "Anthem Blue Cross and Blue Shield of New York (Commercial)",
+      "shortName": "Anthem BCBS NY",
+      "pbm": "CarelonRx",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_3_Tier_NY_ABS_IND.pdf",
+      "sourceIds": [
+        "ny-anthem-bcbs-newtopics-2026-10"
+      ],
+      "productName": "Anthem BCBS New York 2026 Select Drug List -- Three-Tier (Individual/HIX Marketplace)",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "Select Drug List, Three Tier Drug Plan (NY Marketplace, IND), current as of 9/1/2026"
+    },
+    {
+      "id": "ny-excellus-medicare",
+      "name": "Excellus Medicare BlueActive (PPO)",
+      "shortName": "Excellus Medicare",
+      "pbm": "Express Scripts (Medicare Part D)",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/251/Excellus_Medicare_5T_DP_even.pdf",
+      "sourceIds": [
+        "ny-excellus-medicare-newtopics-2026-10"
+      ],
+      "productName": "Excellus Medicare BlueActive (PPO) 2026 Medicare Advantage Part D Formulary",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Excellus BlueCross BlueShield 2026 Formulary (List of Covered Drugs), Medicare BlueActive (PPO) and other Medicare plans, formulary updated 09/01/2026"
+    }
+  ],
+  "classes": [
+    {
+      "id": "statin",
+      "name": "Statins",
+      "shortName": "STATIN",
+      "plainName": "Statin",
+      "description": "HMG-CoA reductase inhibitors: atorvastatin (Lipitor), rosuvastatin (Crestor, Ezallor), simvastatin (Zocor), pravastatin, lovastatin (Altoprev), pitavastatin (Livalo, Zypitamag), fluvastatin, and statin combinations (Vytorin, Roszet).",
+      "plainDescription": "A daily pill that lowers LDL cholesterol.",
+      "indication": "Hyperlipidemia / ASCVD risk reduction",
+      "sourceIds": [
+        "ny-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "ezetimibe",
+      "name": "Ezetimibe & other non-statin oral agents",
+      "shortName": "EZE",
+      "plainName": "Ezetimibe / non-statin pill",
+      "description": "Non-statin oral LDL-lowering agents: ezetimibe (Zetia), bempedoic acid (Nexletol) and bempedoic acid/ezetimibe (Nexlizet).",
+      "plainDescription": "A cholesterol pill used with or instead of a statin.",
+      "indication": "Hyperlipidemia",
+      "sourceIds": [
+        "ny-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "pcsk9",
+      "name": "PCSK9 inhibitors & siRNA",
+      "shortName": "PCSK9",
+      "plainName": "Injectable LDL lowerer (PCSK9)",
+      "description": "Injectable PCSK9-pathway agents: evolocumab (Repatha), alirocumab (Praluent), inclisiran (Leqvio).",
+      "plainDescription": "An injection every 2 weeks to 6 months that strongly lowers LDL cholesterol.",
+      "indication": "Hyperlipidemia / ASCVD",
+      "sourceIds": [
+        "ny-medicaid-newtopics-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "statin",
+      "preferredAgent": {
+        "inn": "Atorvastatin",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "40 mg",
+        "sig": "1 tablet by mouth once daily",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred generic (NYRx PDL status 1), no PA listed",
+      "alternatives": [
+        {
+          "drug": "Rosuvastatin (generic)",
+          "note": "Preferred generic, no PA listed (page 12)",
+          "sourceIds": [
+            "ny-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Simvastatin (generic)",
+          "note": "Preferred generic, no PA listed (page 12)",
+          "sourceIds": [
+            "ny-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pravastatin (generic)",
+          "note": "Preferred generic, no PA listed (page 12)",
+          "sourceIds": [
+            "ny-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lovastatin (generic)",
+          "note": "Preferred generic, no PA listed (page 12)",
+          "sourceIds": [
+            "ny-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Lipitor (brand)",
+          "outcome": "pa",
+          "reason": "PA required for this agent under NYRx PDP (page 12)",
+          "sourceIds": [
+            "ny-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zocor (brand)",
+          "outcome": "pa",
+          "reason": "PA required for this agent under NYRx PDP (page 12)",
+          "sourceIds": [
+            "ny-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Livalo (brand) and pitavastatin (generic Livalo)",
+          "outcome": "pa",
+          "reason": "PA required for this agent under NYRx PDP (page 12)",
+          "sourceIds": [
+            "ny-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zypitamag",
+          "outcome": "pa",
+          "reason": "PA required for this agent under NYRx PDP (page 12)",
+          "sourceIds": [
+            "ny-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluvastatin, fluvastatin ER, and Lescol XL",
+          "outcome": "pa",
+          "reason": "PA required for this agent under NYRx PDP (page 12)",
+          "sourceIds": [
+            "ny-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Altoprev (lovastatin ER)",
+          "outcome": "pa",
+          "reason": "PA required for this agent under NYRx PDP (page 12)",
+          "sourceIds": [
+            "ny-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Atorvaliq (atorvastatin oral liquid)",
+          "outcome": "pa",
+          "reason": "PA required for this agent under NYRx PDP (page 12)",
+          "sourceIds": [
+            "ny-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Caduet and generic atorvastatin/amlodipine",
+          "outcome": "pa",
+          "reason": "PA required for this agent under NYRx PDP (page 12)",
+          "sourceIds": [
+            "ny-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Vytorin and generic ezetimibe/simvastatin",
+          "outcome": "pa",
+          "reason": "PA required for this agent under NYRx PDP (page 12)",
+          "sourceIds": [
+            "ny-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read NYRx PDL page 12 (Cardiovascular, HMG-CoA reductase inhibitors) via layout-mode column read. Preferred generics: atorvastatin, rosuvastatin, simvastatin, pravastatin, lovastatin. Crestor brand, Roszet and Ezallor are not on the PDL (generic rosuvastatin is Preferred). Atorvastatin 40 mg and sig are a common FDA-label dose, not a PDL field.",
+      "sourceIds": [
+        "ny-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ny-medicaid"
+    },
+    {
+      "classId": "ezetimibe",
+      "preferredAgent": {
+        "inn": "Ezetimibe",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg",
+        "sig": "1 tablet by mouth once daily",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred generic (NYRx PDL status 1), no PA listed",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Zetia (brand)",
+          "outcome": "pa",
+          "reason": "PA required for this agent under NYRx PDP (page 12)",
+          "sourceIds": [
+            "ny-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read NYRx PDL page 12 (Cholesterol Absorption Inhibitors). Generic ezetimibe is Preferred; Zetia brand is Non-Preferred. Bempedoic acid (Nexletol) and bempedoic acid/ezetimibe (Nexlizet) do not appear on this PDL. The PDL is not a complete list of covered drugs (page 1), so their coverage is not determined here (confirm with NYRx). Strength and sig are the common FDA-label dose.",
+      "sourceIds": [
+        "ny-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ny-medicaid"
+    },
+    {
+      "classId": "pcsk9",
+      "preferredAgent": {
+        "inn": "Evolocumab",
+        "brand": "Repatha",
+        "genericAvailable": false,
+        "strength": "140 mg/mL prefilled syringe",
+        "sig": "140 mg by subcutaneous injection every 2 weeks, or 420 mg once monthly",
+        "sigShort": "140 mg SC q2wk",
+        "plainSig": "A shot every 2 weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred brand (NYRx PDL status 1), no PA listed",
+      "alternatives": [
+        {
+          "drug": "Praluent (alirocumab, brand)",
+          "note": "Preferred brand, no PA listed (page 12)",
+          "sourceIds": [
+            "ny-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read NYRx PDL page 12 (Lipotropics, Other): Repatha and Praluent are Preferred with no PA criteria shown. Inclisiran (Leqvio) does not appear on this PDL; the PDL is not a complete list (page 1), so its coverage is not determined here. Redemplo and Tryngolza (not PCSK9-pathway agents) are Non-Preferred and are outside this class. Sig is FDA-label dosing.",
+      "sourceIds": [
+        "ny-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ny-medicaid"
+    },
+    {
+      "classId": "statin",
+      "preferredAgent": {
+        "inn": "Atorvastatin calcium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "40 mg",
+        "sig": "1 tablet by mouth once daily",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Rosuvastatin 5 mg, 10 mg",
+          "note": "Tier 1, QL (page 29)",
+          "sourceIds": [
+            "ny-excellus-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Rosuvastatin 20 mg, 40 mg",
+          "note": "Tier 1, QL (page 29)",
+          "sourceIds": [
+            "ny-excellus-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Simvastatin 5, 10, 20, 40 mg",
+          "note": "Tier 1, QL (page 29)",
+          "sourceIds": [
+            "ny-excellus-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Simvastatin 80 mg",
+          "note": "Tier 1, QL (page 29)",
+          "sourceIds": [
+            "ny-excellus-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pravastatin",
+          "note": "Tier 1 (page 29)",
+          "sourceIds": [
+            "ny-excellus-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lovastatin 10 mg, 20 mg",
+          "note": "Tier 1 (page 29)",
+          "sourceIds": [
+            "ny-excellus-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lovastatin 40 mg",
+          "note": "Tier 1, QL (page 29)",
+          "sourceIds": [
+            "ny-excellus-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Atorvastatin 10 mg, 20 mg",
+          "note": "Tier 1; covered in full age 40-75 (page 29)",
+          "sourceIds": [
+            "ny-excellus-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ezetimibe-rosuvastatin (Roszet)",
+          "note": "Tier 2 (pages 29-30)",
+          "sourceIds": [
+            "ny-excellus-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ezetimibe-simvastatin (Vytorin generic)",
+          "note": "Tier 3 (page 30)",
+          "sourceIds": [
+            "ny-excellus-bcbs-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read directly from page 29 (HMG-CoA reductase inhibitors) and page 30 (combinations). Preferred pick is atorvastatin 40-80 mg: tier 1, no PA. Pitavastatin (Livalo, Zypitamag), fluvastatin and brand Lipitor, Crestor and Zocor do not appear; the document states it lists the most commonly prescribed drugs only (page 3), so these are left out, not marked nonformulary. Atorvastatin 10-20 mg coverage is age-limited to 40-75 per the document. Strength and sig are standard labeling.",
+      "sourceIds": [
+        "ny-excellus-bcbs-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-excellus-bcbs-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-excellus-bcbs-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ny-excellus-bcbs"
+    },
+    {
+      "classId": "ezetimibe",
+      "preferredAgent": {
+        "inn": "Ezetimibe",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg",
+        "sig": "1 tablet by mouth once daily",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Nexletol (bempedoic acid)",
+          "outcome": "step",
+          "reason": "Step therapy required (page 29); step criteria not stated in this document",
+          "sourceIds": [
+            "ny-excellus-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Nexlizet (bempedoic acid-ezetimibe)",
+          "outcome": "step",
+          "reason": "Step therapy required (page 29); step criteria not stated in this document",
+          "sourceIds": [
+            "ny-excellus-bcbs-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": "Step therapy required for bempedoic acid products Nexletol and Nexlizet (page 29); criteria not stated in this document.",
+      "verification": "verified",
+      "verificationNote": "Read directly from page 29 (selective cholesterol absorption inhibitors; ATP-citrate lyase inhibitors). Ezetimibe generic is tier 1 with no PA. Zetia brand does not appear. Both bempedoic acid products are tier 3 with ST and QL, recorded as step barriers in paRequired.",
+      "sourceIds": [
+        "ny-excellus-bcbs-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-excellus-bcbs-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-excellus-bcbs-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ny-excellus-bcbs"
+    },
+    {
+      "classId": "pcsk9",
+      "preferredAgent": {
+        "inn": "Evolocumab",
+        "brand": "Repatha",
+        "genericAvailable": false,
+        "strength": "140 mg/mL (SureClick or prefilled syringe)",
+        "sig": "140 mg by subcutaneous injection every 2 weeks, or 420 mg once monthly; dose per prescriber",
+        "sigShort": "140 mg SC Q2W",
+        "plainSig": "A shot every 2 weeks, or once a month."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read directly from page 29 (PCSK9 inhibitors): Repatha SureClick and Repatha syringe are tier 2 with QL and PV, no PA. Praluent (alirocumab) and Leqvio (inclisiran) do not appear. The document states it is a list of commonly prescribed drugs (page 3), so they are left out, not marked nonformulary. Dosing is standard labeling. [Sonnet check 2026-10-21: spot-checked page 29: Repatha SureClick/syringe tier 2 QL; PV, no PA - match. aom-oral page 129 re-read: phentermine tier 1, phendimetrazine tier 3 (real oral anorectic) - match.]",
+      "sourceIds": [
+        "ny-excellus-bcbs-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-excellus-bcbs-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-excellus-bcbs-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ny-excellus-bcbs"
+    },
+    {
+      "classId": "statin",
+      "preferredAgent": {
+        "inn": "Atorvastatin",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "40 mg",
+        "sig": "1 tablet by mouth once daily",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "noCoveredAgent": false,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Pravastatin sodium tablet",
+          "note": "Tier 1, no flag (p.21)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Simvastatin tablet 80 mg",
+          "note": "Tier 1, no flag (p.21)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lovastatin tablet",
+          "note": "Tier 1, H flag (health reform preventive, no PA listed) (p.20)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Rosuvastatin calcium tablet (generic)",
+          "note": "Tier 2, no flag (p.21)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ezetimibe-simvastatin (generic Vytorin)",
+          "note": "Tier 3, no flag (p.19)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Atorvastatin calcium tablet 10 mg, 20 mg",
+          "outcome": "pa",
+          "reason": "H-PA: may be part of health care reform preventive with prior authorization (p.19)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Simvastatin tablet 10 mg, 20 mg, 40 mg, 5 mg",
+          "outcome": "pa",
+          "reason": "H-PA: may be part of health care reform preventive with prior authorization (p.21)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lipitor (atorvastatin, brand)",
+          "outcome": "pa",
+          "reason": "E flag: may be excluded or subject to PA in NY (p.20)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Crestor (rosuvastatin, brand)",
+          "outcome": "pa",
+          "reason": "E flag: may be excluded or subject to PA in NY (p.19)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zocor (simvastatin, brand)",
+          "outcome": "pa",
+          "reason": "E flag: may be excluded or subject to PA in NY (p.22)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Vytorin (ezetimibe-simvastatin, brand)",
+          "outcome": "pa",
+          "reason": "E flag: may be excluded or subject to PA in NY (p.22)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Livalo (pitavastatin, brand)",
+          "outcome": "step",
+          "reason": "Step therapy (ST) and E flag (p.20)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pitavastatin calcium (generic)",
+          "outcome": "step",
+          "reason": "Step therapy (ST) and E flag (p.21)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": "Step therapy flag printed on pitavastatin (Livalo and generic), pp.20-21.",
+      "verification": "verified",
+      "verificationNote": "Read from PDL text layer, pp.19-22 (cardiovascular section). Atorvastatin 40/80 mg tier 1, no flag, is the lowest-barrier generic. Statins absent from this PDL (fluvastatin, Altoprev, Zypitamag, Ezallor, Roszet) are not recorded as nonformulary because the document states it is not a complete list. Generic statins are not BOGL. Sig is standard labeling, not the PDL. [Sonnet check 2026-10-21: spot-checked layout read of p.19-21: atorvastatin has a tier 1 H-PA row (10/20 mg) and a separate tier 1 no-flag row (40/80 mg); Lipitor/Crestor E - match. Page 5 states not all medications are represented (most commonly prescribed only) - supports leaving absences unmarked.]",
+      "sourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ny-uhc-commercial"
+    },
+    {
+      "classId": "ezetimibe",
+      "preferredAgent": {
+        "inn": "Ezetimibe",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg",
+        "sig": "1 tablet by mouth once daily",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "noCoveredAgent": false,
+      "tier": "Tier 2 (generic)",
+      "alternatives": [
+        {
+          "drug": "Ezetimibe-simvastatin (generic Vytorin)",
+          "note": "Tier 3, no flag (p.19)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Zetia (ezetimibe, brand)",
+          "outcome": "pa",
+          "reason": "E flag: may be excluded or subject to PA in NY (p.22)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Nexletol (bempedoic acid)",
+          "outcome": "pa",
+          "reason": "PA required, step therapy (ST), and QL (p.21); tier 2",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Nexlizet (bempedoic acid/ezetimibe)",
+          "outcome": "pa",
+          "reason": "PA required, step therapy (ST), and QL (p.21); tier 2",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from PDL text layer, pp.19-22. Generic ezetimibe is tier 2 with no flag and no PA. Bempedoic acid products are PA+ST+QL. Zetia brand is E-flagged. Sig is standard FDA labeling, not the PDL.",
+      "sourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ny-uhc-commercial"
+    },
+    {
+      "classId": "pcsk9",
+      "preferredAgent": {
+        "inn": "Evolocumab",
+        "brand": "Repatha",
+        "genericAvailable": false,
+        "strength": "140 mg/mL",
+        "sig": "140 mg by subcutaneous injection every 2 weeks, or 420 mg once monthly",
+        "sigShort": "140 mg SC q2wk",
+        "plainSig": "A shot every 2 weeks (or once a month at a higher dose)."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "noCoveredAgent": false,
+      "tier": "Tier 2",
+      "alternatives": [
+        {
+          "drug": "Repatha Pushtronex System (evolocumab, on-body delivery)",
+          "note": "Tier 2, QL, same drug (p.21)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Repatha SureClick (evolocumab autoinjector)",
+          "note": "Tier 2, QL, same drug (p.21)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Praluent (alirocumab)",
+          "outcome": "pa",
+          "reason": "PA and step therapy (ST) and QL, E flag (p.21)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read from PDL text layer, p.21. Repatha (all presentations) is tier 2 with QL only, no PA. Praluent is PA+ST+QL with E flag. Leqvio (inclisiran) does not appear in this PDL text; the document states it is not complete, so its coverage is unknown and it is not placed in paRequired. Sig is standard labeling, not the PDL.",
+      "sourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ny-uhc-commercial"
+    },
+    {
+      "payerId": "ny-anthem-bcbs",
+      "classId": "statin",
+      "preferredAgent": {
+        "inn": "Atorvastatin calcium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "40 mg tablet",
+        "sig": "1 tablet by mouth once daily",
+        "sigShort": "1 tab PO daily",
+        "plainSig": "One pill once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (DO flag)",
+      "alternatives": [
+        {
+          "drug": "Atorvastatin calcium 10, 20 mg",
+          "note": "Tier 1; DO; $0 (preventive) cost share on the 10/20 mg strengths (p. 26)",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Atorvastatin calcium 80 mg",
+          "note": "Tier 1; QL, no PA (p. 26)",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Simvastatin 5, 10, 20 mg",
+          "note": "Tier 1; DO; $0 (p. 26)",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Simvastatin 40 mg",
+          "note": "Tier 1; $0; QL, no PA (p. 26)",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Simvastatin 80 mg",
+          "note": "Tier 1; QL, no PA (p. 26)",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pravastatin sodium 10, 20, 40 mg",
+          "note": "Tier 1; DO; $0 (p. 26)",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pravastatin sodium 80 mg",
+          "note": "Tier 1; $0; QL (p. 26)",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lovastatin 10, 20 mg",
+          "note": "Tier 1; DO; $0 (p. 26)",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lovastatin 40 mg",
+          "note": "Tier 1; $0; QL (p. 26)",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluvastatin sodium capsule",
+          "note": "Tier 1; DO; $0 (p. 26)",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluvastatin sodium ER tablet",
+          "note": "Tier 2; $0; QL (p. 26)",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Rosuvastatin calcium 5, 10 mg",
+          "note": "Tier 2; DO; $0 (p. 26)",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Rosuvastatin calcium 20 mg",
+          "note": "Tier 2; DO, no PA (p. 26)",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Rosuvastatin calcium 40 mg",
+          "note": "Tier 2; QL, no PA (p. 26)",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Ezetimibe-simvastatin combination tablet (Vytorin generic type)",
+          "outcome": "step",
+          "reason": "Tier 1; step therapy (ST); QL. The list notes ST but does not state the step criteria (p. 26).",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pitavastatin (Livalo, Zypitamag)",
+          "outcome": "nonformulary",
+          "reason": "Not on list (p. 26; completeness statement p. 2).",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Brand-only products not on list: Lipitor, Crestor, Zocor, Altoprev, Ezallor, Roszet, Vytorin",
+          "outcome": "nonformulary",
+          "reason": "Not on list (p. 26; completeness statement p. 2). Generic equivalents are listed as shown above.",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": "Ezetimibe-simvastatin combination carries step therapy (ST) on p. 26; criteria not stated on the list.",
+      "verification": "verified",
+      "verificationNote": "Read directly from the HMG-CoA reductase inhibitor section, p. 26. Atorvastatin 40 mg is Tier 1, DO, no PA; it is the preferred pick as a moderate-to-high-intensity generic. DO is a dose-optimization note; the list does not explain what DO requires, so it is recorded as a note, not PA. $0 marks the preventive-drug cost share as printed on the 10/20 mg lines. Ezetimibe-simvastatin is listed in this class (step therapy). Niacin ER (Tier 1, ST) is not in this taxonomy class and is omitted. Pitavastatin absent per completeness statement (p. 2). [Sonnet check 2026-10-21: spot-checked p. 26: atorvastatin 40 mg Tier 1 DO, 80 mg QL, ezetimibe-simvastatin Tier 1 ST; QL - match.]",
+      "sourceIds": [
+        "ny-anthem-bcbs-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-anthem-bcbs-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-anthem-bcbs-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21"
+    },
+    {
+      "payerId": "ny-anthem-bcbs",
+      "classId": "ezetimibe",
+      "preferredAgent": {
+        "inn": "Ezetimibe",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "1 tablet by mouth once daily",
+        "sigShort": "1 tab PO daily",
+        "plainSig": "One pill once a day, with or without a statin."
+      },
+      "preferredRestriction": "PA required (Tier 1; QL).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (PA)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Bempedoic acid (Nexletol) and bempedoic acid/ezetimibe (Nexlizet)",
+          "outcome": "nonformulary",
+          "reason": "Not on list (p. 26; completeness statement p. 2).",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zetia (ezetimibe brand)",
+          "outcome": "nonformulary",
+          "reason": "Brand not on list; generic ezetimibe is listed under PA (p. 26).",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from the intestinal cholesterol absorption inhibitor line, p. 26. Ezetimibe generic is Tier 1 with PA and QL, so no PA-free ezetimibe option exists on this plan. Preferred pick is generic ezetimibe 10 mg. Bempedoic acid products are absent per completeness statement (p. 2). Ezetimibe-simvastatin combination is recorded under the statin class.",
+      "sourceIds": [
+        "ny-anthem-bcbs-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-anthem-bcbs-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-anthem-bcbs-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21"
+    },
+    {
+      "payerId": "ny-anthem-bcbs",
+      "classId": "pcsk9",
+      "preferredAgent": {
+        "inn": "Evolocumab",
+        "brand": "Repatha",
+        "genericAvailable": false,
+        "strength": "140 mg/mL SureClick auto-injector",
+        "sig": "Inject 140 mg under the skin every 2 weeks, or 420 mg once monthly, as labeled",
+        "sigShort": "SubQ q2wk or monthly",
+        "plainSig": "A shot under the skin every 2 weeks, or once a month, to lower cholesterol."
+      },
+      "preferredRestriction": "PA required (Tier 3; QL).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3 (PA)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Repatha prefilled syringe 140 mg/mL",
+          "outcome": "pa",
+          "reason": "Tier 3; PA; QL (p. 26)",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Repatha Pushtronex system 420 mg/3.5 mL",
+          "outcome": "pa",
+          "reason": "Tier 3; PA; QL (p. 26)",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Praluent (alirocumab)",
+          "outcome": "nonformulary",
+          "reason": "Not on list (p. 26; completeness statement p. 2).",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Leqvio (inclisiran)",
+          "outcome": "nonformulary",
+          "reason": "Not on list (p. 26; completeness statement p. 2).",
+          "sourceIds": [
+            "ny-anthem-bcbs-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from the PCSK9 inhibitors section, p. 26. Repatha in all three presentations is Tier 3 with PA and QL. Preferred pick is the SureClick auto-injector (most common presentation). Strength and dosing are from FDA labeling; the plan list gives product only. Praluent and Leqvio are absent per completeness statement (p. 2).",
+      "sourceIds": [
+        "ny-anthem-bcbs-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-anthem-bcbs-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-anthem-bcbs-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21"
+    },
+    {
+      "classId": "statin",
+      "preferredAgent": {
+        "inn": "Atorvastatin",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "All strengths listed (formulary gives no strength)",
+        "sig": "Take 1 tablet by mouth once daily",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "noCoveredAgent": false,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (preferred generic)",
+      "alternatives": [
+        {
+          "drug": "Rosuvastatin",
+          "note": "Tier 1, QL 45 tablets/30 days for 5 to 20 mg; 30/30 days for 40 mg (page 55)",
+          "sourceIds": [
+            "ny-excellus-medicare-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pravastatin",
+          "note": "Tier 1, no PA or QL printed (page 55)",
+          "sourceIds": [
+            "ny-excellus-medicare-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Simvastatin",
+          "note": "Tier 1, no PA or QL printed (page 55)",
+          "sourceIds": [
+            "ny-excellus-medicare-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lovastatin",
+          "note": "Tier 1, no PA or QL printed (page 55)",
+          "sourceIds": [
+            "ny-excellus-medicare-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluvastatin",
+          "note": "Tier 2, QL 30 to 60 capsules/30 days (page 55)",
+          "sourceIds": [
+            "ny-excellus-medicare-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pitavastatin calcium (generic Livalo)",
+          "note": "Tier 2, QL 30 tablets/30 days (page 55)",
+          "sourceIds": [
+            "ny-excellus-medicare-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ezetimibe-simvastatin",
+          "note": "Tier 2, QL 30 tablets/30 days (page 55)",
+          "sourceIds": [
+            "ny-excellus-medicare-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly on p. 55 (Dyslipidemics, HMG-CoA reductase inhibitors). Seven statin generics are covered; none carry PA or step therapy. Only the generic names appear, so brand-only coverage (Lipitor, Crestor, Zocor, Livalo, Zypitamag) was not inferred. Strength is not stated in the formulary, so none is asserted.",
+      "sourceIds": [
+        "ny-excellus-medicare-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-excellus-medicare-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-excellus-medicare-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ny-excellus-medicare"
+    },
+    {
+      "classId": "ezetimibe",
+      "preferredAgent": {
+        "inn": "Ezetimibe",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "All strengths listed (formulary gives no strength)",
+        "sig": "Take 1 tablet by mouth once daily",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "noCoveredAgent": false,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Ezetimibe-simvastatin",
+          "note": "Tier 2, QL 30 tablets/30 days (page 55)",
+          "sourceIds": [
+            "ny-excellus-medicare-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Bempedoic acid (Nexletol)",
+          "outcome": "step",
+          "reason": "Step therapy required (page 55); the step drug is not named in this document",
+          "sourceIds": [
+            "ny-excellus-medicare-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Bempedoic acid-ezetimibe (Nexlizet)",
+          "outcome": "step",
+          "reason": "Step therapy required (page 55); the step drug is not named in this document",
+          "sourceIds": [
+            "ny-excellus-medicare-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": "Bempedoic acid products (Nexletol, Nexlizet): step therapy flag only; step drug not stated in this document (page 55)",
+      "verification": "partial",
+      "verificationNote": "Read directly on p. 55. Ezetimibe is Tier 1 with QL 30 tablets/30 days, no PA. Nexletol and Nexlizet are Tier 4 with ST and QL. The document includes the ST flag but no step criteria, so the step drug is unknown. Zetia brand is absent, so generic ezetimibe is the covered product. Verification is partial because step criteria could not be confirmed from this document.",
+      "sourceIds": [
+        "ny-excellus-medicare-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-excellus-medicare-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-excellus-medicare-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ny-excellus-medicare"
+    },
+    {
+      "classId": "pcsk9",
+      "preferredAgent": {
+        "inn": "Evolocumab",
+        "brand": "Repatha",
+        "genericAvailable": false,
+        "strength": "140 mg/mL (SureClick autoinjector)",
+        "sig": "Inject 140 mg subcutaneously every 2 weeks, or 420 mg once monthly, as directed",
+        "sigShort": "140 mg SC q2wk",
+        "plainSig": "A shot every 2 weeks, or once a month."
+      },
+      "preferredRestriction": null,
+      "noCoveredAgent": false,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3 (preferred brand)",
+      "alternatives": [
+        {
+          "drug": "Repatha Syringe (evolocumab)",
+          "note": "Tier 3, QL 2 mL/28 days, no PA printed (page 56)",
+          "sourceIds": [
+            "ny-excellus-medicare-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Alirocumab (Praluent)",
+          "outcome": "nonformulary",
+          "reason": "Not on the 2026 formulary; the document defines the formulary as the list of covered drugs (pages 3 and 6)",
+          "sourceIds": [
+            "ny-excellus-medicare-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Inclisiran (Leqvio)",
+          "outcome": "nonformulary",
+          "reason": "Not on the 2026 formulary; the document defines the formulary as the list of covered drugs (pages 3 and 6)",
+          "sourceIds": [
+            "ny-excellus-medicare-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly on p. 56 (Repatha SureClick and Syringe; index p. 105 confirms), Tier 3, QL 2 mL/28 days, no PA printed). Repatha is the only covered PCSK9 agent. Judgment: the printed QL of 2 mL per 28 days may not cover the 420 mg monthly label dose (3 mL); flag for plan confirmation.",
+      "sourceIds": [
+        "ny-excellus-medicare-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-excellus-medicare-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-excellus-medicare-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "ny-excellus-medicare"
+    }
+  ],
+  "references": [
+    {
+      "id": "ny-medicaid-newtopics-2026-10",
+      "label": "NYRx, the Medicaid Drug Program: Preferred Drug List (Preferred Drug Program), revised September 14, 2026",
+      "publisher": "New York State Department of Health / NYRx (Medicaid pharmacy program)",
+      "type": "gov",
+      "url": "https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf",
+      "effectiveDate": "2026-09-14",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "ny-excellus-bcbs-newtopics-2026-10",
+      "label": "2026 Individual & Family Metal Plans, Base, Simply Blue Plus and College Blue Plans Formulary Guide (2981)",
+      "publisher": "Excellus BlueCross BlueShield",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/251/Excellus_2026_Metal_Plans_Base___Simply_Blue_Plus___College_Blue_Plans_Formulary_Guide_2981_v26.pdf",
+      "effectiveDate": "2026-09-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "ny-uhc-commercial-newtopics-2026-10",
+      "label": "2026 Prescription Drug List (PDL), UnitedHealthcare, effective January 1, 2026",
+      "publisher": "UnitedHealthcare",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "ny-anthem-bcbs-newtopics-2026-10",
+      "label": "Select Drug List, Three Tier Drug Plan (NY Marketplace, IND), current as of 9/1/2026",
+      "publisher": "Anthem Blue Cross and Blue Shield (NY)",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_3_Tier_NY_ABS_IND.pdf",
+      "effectiveDate": "2026-09-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "ny-excellus-medicare-newtopics-2026-10",
+      "label": "Excellus BlueCross BlueShield 2026 Formulary (List of Covered Drugs), Medicare BlueActive (PPO) and other Medicare plans, formulary updated 09/01/2026",
+      "publisher": "Excellus BlueCross BlueShield",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/251/Excellus_Medicare_5T_DP_even.pdf",
+      "effectiveDate": "2026-09-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "ny-medicaid-pa-intake-2026-10",
+      "label": "NYRx, the Medicaid Drug Program: Prior Authorization Resources",
+      "publisher": "Prime Therapeutics LLC (NYRx PBM vendor for NY State Medicaid)",
+      "type": "gov",
+      "url": "https://newyork.fhsc.com/providers/PA.aspx",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "ny-uhc-commercial-formulary-pa-intake-2026",
+      "label": "UnitedHealthcare Commercial Prescription Drug List (PDL), Effective January 1, 2026",
+      "publisher": "UnitedHealthcare",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "accessed": "2026-10-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

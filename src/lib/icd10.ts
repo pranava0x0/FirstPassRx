@@ -43,7 +43,43 @@ const OSTEOPOROSIS: Icd10Option[] = [
   { code: 'M80.08XA', label: 'Age-related osteoporosis with current pathological fracture, vertebra(e), initial encounter for fracture' },
 ]
 
+const ADHD: Icd10Option[] = [
+  { code: 'F90.0', label: 'Attention-deficit hyperactivity disorder, predominantly inattentive type' },
+  { code: 'F90.1', label: 'Attention-deficit hyperactivity disorder, predominantly hyperactive type' },
+  { code: 'F90.2', label: 'Attention-deficit hyperactivity disorder, combined type' },
+  { code: 'F90.9', label: 'Attention-deficit hyperactivity disorder, unspecified type' },
+]
+const LIPIDS: Icd10Option[] = [
+  { code: 'E78.00', label: 'Pure hypercholesterolemia, unspecified' },
+  { code: 'E78.011', label: 'Heterozygous familial hypercholesterolemia [HeFH]' },
+  { code: 'E78.5', label: 'Hyperlipidemia, unspecified' },
+  { code: 'I25.10', label: 'Atherosclerotic heart disease of native coronary artery without angina pectoris' },
+]
+const OBESITY: Icd10Option[] = [
+  // BMI codes (Z68.*) may only accompany a reportable diagnosis such as obesity (ICD-10-CM
+  // guidelines), so they are named in the label as the second code, never offered alone.
+  { code: 'E66.9', label: 'Obesity, unspecified (add the BMI code, Z68.30-Z68.45, as a second diagnosis)' },
+  { code: 'E66.01', label: 'Morbid (severe) obesity due to excess calories (add the BMI code, e.g. Z68.41)' },
+]
+const MIGRAINE: Icd10Option[] = [
+  { code: 'G43.909', label: 'Migraine, unspecified, not intractable, without status migrainosus' },
+  { code: 'G43.009', label: 'Migraine without aura, not intractable, without status migrainosus' },
+  { code: 'G43.109', label: 'Migraine with aura, not intractable, without status migrainosus' },
+  { code: 'G43.709', label: 'Chronic migraine without aura, not intractable, without status migrainosus' },
+]
+
 export const ICD10_BY_CLASS: Record<string, Icd10Option[]> = {
+  'stimulant-mph': ADHD,
+  'stimulant-amph': ADHD,
+  'adhd-nonstimulant': ADHD,
+  statin: LIPIDS,
+  ezetimibe: LIPIDS,
+  pcsk9: LIPIDS,
+  'aom-glp1': OBESITY,
+  'aom-oral': OBESITY,
+  triptan: MIGRAINE,
+  'gepant-acute': MIGRAINE,
+  'cgrp-preventive': MIGRAINE,
   saba: [...ASTHMA, ...COPD],
   ics: ASTHMA,
   icslaba: [...ASTHMA, ...COPD],

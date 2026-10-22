@@ -1,0 +1,1285 @@
+{
+  "id": "tx-adhd",
+  "label": "TX · ADHD",
+  "stateCode": "TX",
+  "region": "Texas",
+  "topicId": "adhd",
+  "topic": "ADHD",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-21",
+  "capturedAt": "2026-10-21",
+  "payers": [
+    {
+      "id": "tx-medicaid",
+      "name": "Texas Medicaid Vendor Drug Program (Fee-for-Service, statewide PDL binding on all MCOs)",
+      "shortName": "TX Medicaid FFS",
+      "pbm": "Texas Health and Human Services Commission (HHSC) Vendor Drug Program",
+      "formularyUrl": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "paSubmission": {
+        "fax": "866-469-8590",
+        "phone": "1-877-PA-TEXAS (1-877-728-3927)",
+        "portal": "VDP Provider Portal (online submissions are only available for non-preferred prior authorization requests)",
+        "note": "Texas Prior Authorization Call Center, for prescribers' clinical PA forms (TDI Form NOFR002). Monday–Friday 7 AM–7 PM Central. Managed care members go through their plan.",
+        "sourceIds": [
+          "tx-medicaid-pa-intake-2026-10"
+        ]
+      },
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "productName": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria, effective July 24, 2026"
+    },
+    {
+      "id": "bcbs-tx-commercial",
+      "name": "Blue Cross and Blue Shield of Texas (Commercial)",
+      "shortName": "BCBS Texas",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "sourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "productName": "Performance Drug List, July 2026",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Performance Drug List, July 2026 (Blue Cross and Blue Shield of Texas, 2026 commercial formulary)"
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "paSubmission": {
+        "fax": "1-877-486-2621",
+        "note": "Part D coverage determination (PA / exception) request fax printed in the formulary.",
+        "sourceIds": [
+          "humana-premier-rx-pdp-formulary-pa-intake-2026"
+        ]
+      },
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402"
+    }
+  ],
+  "classes": [
+    {
+      "id": "stimulant-mph",
+      "name": "Methylphenidate stimulants",
+      "shortName": "MPH",
+      "plainName": "Methylphenidate (Ritalin/Concerta type)",
+      "description": "CNS stimulants in the methylphenidate family: methylphenidate IR/ER (Ritalin, Concerta, Metadate, Aptensio, Jornay PM, Quillichew, Cotempla), dexmethylphenidate IR/ER (Focalin), serdexmethylphenidate/dexmethylphenidate (Azstarys), methylphenidate patch (Daytrana).",
+      "plainDescription": "A stimulant pill or patch for ADHD from the Ritalin/Concerta family.",
+      "indication": "ADHD",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "stimulant-amph",
+      "name": "Amphetamine stimulants",
+      "shortName": "AMPH",
+      "plainName": "Amphetamine (Adderall/Vyvanse type)",
+      "description": "CNS stimulants in the amphetamine family: mixed amphetamine salts IR/ER (Adderall, Adderall XR, Mydayis), lisdexamfetamine (Vyvanse, capsule and chewable), dextroamphetamine (Dexedrine, Zenzedi, Xelstrym patch), amphetamine sulfate (Evekeo), amphetamine ER (Adzenys, Dyanavel).",
+      "plainDescription": "A stimulant for ADHD from the Adderall/Vyvanse family.",
+      "indication": "ADHD",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "adhd-nonstimulant",
+      "name": "Non-stimulant ADHD agents",
+      "shortName": "NON-STIM",
+      "plainName": "Non-stimulant",
+      "description": "Non-stimulant ADHD agents: atomoxetine (Strattera), viloxazine ER (Qelbree), guanfacine ER (Intuniv), clonidine ER (Kapvay).",
+      "plainDescription": "A daily ADHD medicine that is not a stimulant.",
+      "indication": "ADHD",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "stimulant-mph",
+      "preferredAgent": {
+        "inn": "Methylphenidate (immediate-release)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "standard label dosing",
+        "sig": "As directed by prescriber (PDL does not state dose; standard label dosing)",
+        "sigShort": "As directed",
+        "plainSig": "Take as your prescriber directs."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred on PDL (no tier stated)",
+      "alternatives": [
+        {
+          "drug": "CONCERTA (methylphenidate ER)",
+          "note": "Preferred brand, no PA (page 80)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "DAYTRANA (methylphenidate patch)",
+          "note": "Preferred brand, no PA (page 80)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "JORNAY PM (methylphenidate ER)",
+          "note": "Preferred brand, no PA (page 80)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "FOCALIN XR (dexmethylphenidate ER)",
+          "note": "Preferred brand, no PA (page 80)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dexmethylphenidate ER and IR (generic)",
+          "note": "Preferred generic, no PA (page 80)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "RITALIN LA (methylphenidate ER)",
+          "note": "Preferred brand, no PA (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "METHYLIN (methylphenidate) solution",
+          "note": "Preferred, no PA (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "QUILLICHEW ER (methylphenidate chewable ER)",
+          "note": "Preferred, no PA (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "QUILLIVANT XR (methylphenidate) suspension",
+          "note": "Preferred, no PA (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "APTENSIO XR (methylphenidate)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 80)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "criteria": [
+            "Age 6 years or older.",
+            "No history of substance abuse in the last 365 days.",
+            "Requested dose not above the Texas HHS Psychotropic Medication Utilization Parameters maximum recommended dose.",
+            "No paid claim for another ER stimulant in the past 14 days.",
+            "Age 19 or older needs an ADD/ADHD diagnosis in the last 730 days (narcolepsy path approves only methylphenidate ER tablets, methylphenidate SR tablets, or dextroamphetamine ER capsules)."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "tx-medicaid-pa-criteria-adhd-2026-10"
+          ]
+        },
+        {
+          "drug": "AZSTARYS (serdexmethylphenidate/dexmethylphenidate)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 80)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "criteria": [
+            "Age 6 years or older.",
+            "No history of substance abuse in the last 365 days.",
+            "Requested dose not above the Texas HHS Psychotropic Medication Utilization Parameters maximum recommended dose.",
+            "No paid claim for another ER stimulant in the past 14 days.",
+            "Age 19 or older needs an ADD/ADHD diagnosis in the last 730 days (narcolepsy path approves only methylphenidate ER tablets, methylphenidate SR tablets, or dextroamphetamine ER capsules)."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "tx-medicaid-pa-criteria-adhd-2026-10"
+          ]
+        },
+        {
+          "drug": "COTEMPLA XR ODT (methylphenidate)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 80)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "criteria": [
+            "Age 6 years or older.",
+            "No history of substance abuse in the last 365 days.",
+            "Requested dose not above the Texas HHS Psychotropic Medication Utilization Parameters maximum recommended dose.",
+            "No paid claim for another ER stimulant in the past 14 days.",
+            "Age 19 or older needs an ADD/ADHD diagnosis in the last 730 days (narcolepsy path approves only methylphenidate ER tablets, methylphenidate SR tablets, or dextroamphetamine ER capsules)."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "tx-medicaid-pa-criteria-adhd-2026-10"
+          ]
+        },
+        {
+          "drug": "FOCALIN (dexmethylphenidate) IR brand",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "criteria": [
+            "Age 3 years or older.",
+            "No history of substance abuse in the last 365 days.",
+            "Requested dose not above the Texas HHS Psychotropic Medication Utilization Parameters maximum recommended daily dose.",
+            "No paid claim for another IR stimulant in the past 14 days.",
+            "Age 19 or older needs an ADD/ADHD diagnosis in the last 730 days, or narcolepsy in the last 730 days (narcolepsy path denies dexmethylphenidate, Evekeo ODT, and methamphetamine).",
+            "Under age 6: only amphetamine sulfate, amphetamine/dextroamphetamine, dextroamphetamine, dexmethylphenidate, Evekeo regular tablets, methylphenidate, Procentra, or Zenzedi."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "tx-medicaid-pa-criteria-adhd-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate ER (generic)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate LA (generic)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate CD (generic)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate chewable tablets (generic)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate patch (generic)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate solution (generic)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "RELEXXII (methylphenidate)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "RITALIN (methylphenidate) IR brand",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "criteria": [
+            "Age 3 years or older.",
+            "No history of substance abuse in the last 365 days.",
+            "Requested dose not above the Texas HHS Psychotropic Medication Utilization Parameters maximum recommended daily dose.",
+            "No paid claim for another IR stimulant in the past 14 days.",
+            "Age 19 or older needs an ADD/ADHD diagnosis in the last 730 days, or narcolepsy in the last 730 days (narcolepsy path denies dexmethylphenidate, Evekeo ODT, and methamphetamine).",
+            "Under age 6: only amphetamine sulfate, amphetamine/dextroamphetamine, dextroamphetamine, dexmethylphenidate, Evekeo regular tablets, methylphenidate, Procentra, or Zenzedi."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "tx-medicaid-pa-criteria-adhd-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "noCoveredAgent": false,
+      "verification": "verified",
+      "verificationNote": "Read PDL pp.80-81 (stimulants table). Two-column layout: preferred = left column, non-preferred = right column, confirmed by x-position on the page. Generic methylphenidate IR and dexmethylphenidate ER/IR are preferred (p.80-81). Class PA criteria (p.80): at least one of treatment failure with preferred drugs, contraindication, allergic reaction, or stage-four cancer. The PDL footer states that listing a brand or generic name includes all dosage forms (p.80). CONCERTA is a preferred brand while generic methylphenidate ER needs PA; the preferred pick is the IR generic, so boglActive is false. The PDL states no tiers. Judgment call: preferred pick is generic IR (cheapest no-PA generic), not a brand. [Sonnet check 2026-10-21: the 'ADHD Agents' clinical PA on p.81 sits over the non-stimulant table; the PDL does not make clear whether it also covers the stimulant rows, so no stimulant preferred-pick restriction is recorded. Confirm with the plan.]",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "stimulant-amph",
+      "preferredAgent": {
+        "inn": "Amphetamine salt combination (immediate-release)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "standard label dosing",
+        "sig": "As directed by prescriber (PDL does not state dose; standard label dosing)",
+        "sigShort": "As directed",
+        "plainSig": "Take as your prescriber directs."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred on PDL (no tier stated)",
+      "alternatives": [
+        {
+          "drug": "ADDERALL (amphetamine salt combination) brand",
+          "note": "Preferred brand, no PA (page 80)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "ADDERALL XR (amphetamine salt combination ER) brand",
+          "note": "Preferred brand, no PA (page 80)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Amphetamine salt combination ER (generic)",
+          "note": "Preferred generic, no PA (page 80)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "DEXEDRINE (dextroamphetamine)",
+          "note": "Preferred brand, no PA (page 80)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dextroamphetamine IR (generic)",
+          "note": "Preferred generic, no PA (page 80)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "DYANAVEL XR (amphetamine) suspension",
+          "note": "Preferred, no PA (page 80)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "VYVANSE (lisdexamfetamine) capsule",
+          "note": "Preferred brand, no PA for ADHD; clinical PA (binge eating disorder criteria) applies to drugs marked * (pages 80-81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "VYVANSE (lisdexamfetamine) chewable tablets",
+          "note": "Preferred brand; marked *, so the binge eating disorder clinical PA applies (pages 80-81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "ADZENYS XR ODT (amphetamine)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 80)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "criteria": [
+            "Age 6 years or older.",
+            "No history of substance abuse in the last 365 days.",
+            "Requested dose not above the Texas HHS Psychotropic Medication Utilization Parameters maximum recommended dose.",
+            "No paid claim for another ER stimulant in the past 14 days.",
+            "Age 19 or older needs an ADD/ADHD diagnosis in the last 730 days (narcolepsy path approves only methylphenidate ER tablets, methylphenidate SR tablets, or dextroamphetamine ER capsules)."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "tx-medicaid-pa-criteria-adhd-2026-10"
+          ]
+        },
+        {
+          "drug": "Amphetamine ER ODT (Adzenys ODT)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 80)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Amphetamine salt combination ER (AG)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 80)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Amphetamine sulfate (generic)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 80)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "criteria": [
+            "Age 3 years or older.",
+            "No history of substance abuse in the last 365 days.",
+            "Requested dose not above the Texas HHS Psychotropic Medication Utilization Parameters maximum recommended daily dose.",
+            "No paid claim for another IR stimulant in the past 14 days.",
+            "Age 19 or older needs an ADD/ADHD diagnosis in the last 730 days, or narcolepsy in the last 730 days (narcolepsy path denies dexmethylphenidate, Evekeo ODT, and methamphetamine).",
+            "Under age 6: only amphetamine sulfate, amphetamine/dextroamphetamine, dextroamphetamine, dexmethylphenidate, Evekeo regular tablets, methylphenidate, Procentra, or Zenzedi."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "tx-medicaid-pa-criteria-adhd-2026-10"
+          ]
+        },
+        {
+          "drug": "DYANAVEL XR (amphetamine) tablets",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "EVEKEO (amphetamine)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "criteria": [
+            "Age 3 years or older.",
+            "No history of substance abuse in the last 365 days.",
+            "Requested dose not above the Texas HHS Psychotropic Medication Utilization Parameters maximum recommended daily dose.",
+            "No paid claim for another IR stimulant in the past 14 days.",
+            "Age 19 or older needs an ADD/ADHD diagnosis in the last 730 days, or narcolepsy in the last 730 days (narcolepsy path denies dexmethylphenidate, Evekeo ODT, and methamphetamine).",
+            "Under age 6: only amphetamine sulfate, amphetamine/dextroamphetamine, dextroamphetamine, dexmethylphenidate, Evekeo regular tablets, methylphenidate, Procentra, or Zenzedi."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "tx-medicaid-pa-criteria-adhd-2026-10"
+          ]
+        },
+        {
+          "drug": "lisdexamfetamine (generic of VYVANSE, marked *)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "MYDAYIS (amphetamine salt combination ER)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "criteria": [
+            "Age 13 years or older.",
+            "No history of substance abuse in the last 365 days.",
+            "Requested dose not above the Texas HHS Psychotropic Medication Utilization Parameters maximum recommended dose.",
+            "No paid claim for another ER stimulant in the past 14 days.",
+            "Age 19 or older needs an ADD/ADHD diagnosis in the last 730 days (narcolepsy path approves only methylphenidate ER tablets, methylphenidate SR tablets, or dextroamphetamine ER capsules)."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "tx-medicaid-pa-criteria-adhd-2026-10"
+          ]
+        },
+        {
+          "drug": "DESOXYN (methamphetamine)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 80)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "criteria": [
+            "Age 3 years or older.",
+            "No history of substance abuse in the last 365 days.",
+            "Requested dose not above the Texas HHS Psychotropic Medication Utilization Parameters maximum recommended daily dose.",
+            "No paid claim for another IR stimulant in the past 14 days.",
+            "Age 19 or older needs an ADD/ADHD diagnosis in the last 730 days, or narcolepsy in the last 730 days (narcolepsy path denies dexmethylphenidate, Evekeo ODT, and methamphetamine).",
+            "Under age 6: only amphetamine sulfate, amphetamine/dextroamphetamine, dextroamphetamine, dexmethylphenidate, Evekeo regular tablets, methylphenidate, Procentra, or Zenzedi."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "tx-medicaid-pa-criteria-adhd-2026-10"
+          ]
+        },
+        {
+          "drug": "Methamphetamine (generic)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "criteria": [
+            "Age 3 years or older.",
+            "No history of substance abuse in the last 365 days.",
+            "Requested dose not above the Texas HHS Psychotropic Medication Utilization Parameters maximum recommended daily dose.",
+            "No paid claim for another IR stimulant in the past 14 days.",
+            "Age 19 or older needs an ADD/ADHD diagnosis in the last 730 days, or narcolepsy in the last 730 days (narcolepsy path denies dexmethylphenidate, Evekeo ODT, and methamphetamine).",
+            "Under age 6: only amphetamine sulfate, amphetamine/dextroamphetamine, dextroamphetamine, dexmethylphenidate, Evekeo regular tablets, methylphenidate, Procentra, or Zenzedi."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "tx-medicaid-pa-criteria-adhd-2026-10"
+          ]
+        },
+        {
+          "drug": "Dextroamphetamine ER (generic)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 80)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dextroamphetamine solution (generic)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 80)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "PROCENTRA (dextroamphetamine)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "criteria": [
+            "Age 3 years or older.",
+            "No history of substance abuse in the last 365 days.",
+            "Requested dose not above the Texas HHS Psychotropic Medication Utilization Parameters maximum recommended daily dose.",
+            "No paid claim for another IR stimulant in the past 14 days.",
+            "Age 19 or older needs an ADD/ADHD diagnosis in the last 730 days, or narcolepsy in the last 730 days (narcolepsy path denies dexmethylphenidate, Evekeo ODT, and methamphetamine).",
+            "Under age 6: only amphetamine sulfate, amphetamine/dextroamphetamine, dextroamphetamine, dexmethylphenidate, Evekeo regular tablets, methylphenidate, Procentra, or Zenzedi."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "tx-medicaid-pa-criteria-adhd-2026-10"
+          ]
+        },
+        {
+          "drug": "XELSTRYM (dextroamphetamine) transdermal",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "ZENZEDI (dextroamphetamine)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "criteria": [
+            "Age 3 years or older.",
+            "No history of substance abuse in the last 365 days.",
+            "Requested dose not above the Texas HHS Psychotropic Medication Utilization Parameters maximum recommended daily dose.",
+            "No paid claim for another IR stimulant in the past 14 days.",
+            "Age 19 or older needs an ADD/ADHD diagnosis in the last 730 days, or narcolepsy in the last 730 days (narcolepsy path denies dexmethylphenidate, Evekeo ODT, and methamphetamine).",
+            "Under age 6: only amphetamine sulfate, amphetamine/dextroamphetamine, dextroamphetamine, dexmethylphenidate, Evekeo regular tablets, methylphenidate, Procentra, or Zenzedi."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "tx-medicaid-pa-criteria-adhd-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "noCoveredAgent": false,
+      "verification": "verified",
+      "verificationNote": "Read PDL pp.80-81 (stimulants table, two-column layout; preferred = left column, non-preferred = right column, confirmed by x-position). Preferred generics: amphetamine salt combination ER/IR and dextroamphetamine IR. VYVANSE capsule and chewable are preferred brands, marked * (binge eating disorder clinical PA, p.80). Generic lisdexamfetamine is non-preferred, so this is a brand-over-generic case, but the preferred pick is the generic amphetamine salts, so boglActive is false; AB-rating is not stated in the PDL. Judgment call: DESOXYN and methamphetamine are included as amphetamine-family ADHD stimulants on the PDL even though the class description does not name them. The PDL states no tiers. [Sonnet check 2026-10-21: the 'ADHD Agents' clinical PA on p.81 sits over the non-stimulant table; the PDL does not make clear whether it also covers the stimulant rows, so no stimulant preferred-pick restriction is recorded. Confirm with the plan.]",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "adhd-nonstimulant",
+      "preferredAgent": {
+        "inn": "Atomoxetine",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "standard label dosing",
+        "sig": "As directed by prescriber (PDL does not state dose; standard label dosing)",
+        "sigShort": "As directed",
+        "plainSig": "Take as your prescriber directs."
+      },
+      "preferredRestriction": "Clinical PA 'ADHD Agents' applies to all drugs in this table (page 81), so preferred status does not waive it. Confirm with the plan.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred on PDL (no tier stated)",
+      "alternatives": [
+        {
+          "drug": "Clonidine ER (generic)",
+          "note": "Preferred generic (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Guanfacine ER (generic)",
+          "note": "Preferred generic (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "QELBREE (viloxazine)",
+          "note": "Preferred brand (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "INTUNIV (guanfacine ER) brand",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "criteria": [
+            "Age 6 years or older.",
+            "Requested quantity not above 2 units per day.",
+            "Age 19 or older needs an ADD/ADHD diagnosis in the last 730 days."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "tx-medicaid-pa-criteria-adhd-2026-10"
+          ]
+        },
+        {
+          "drug": "ONYDA XR (clonidine ER) suspension",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "criteria": [
+            "Age 6 years or older.",
+            "Requested quantity not above 4 units per day.",
+            "Age 19 or older needs an ADD/ADHD diagnosis in the last 730 days."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "tx-medicaid-pa-criteria-adhd-2026-10"
+          ]
+        },
+        {
+          "drug": "STRATTERA (atomoxetine) brand",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 81)",
+          "sourceIds": [
+            "tx-medicaid-newtopics-2026-10"
+          ],
+          "criteria": [
+            "Age 6 years or older.",
+            "Requested quantity not above 2 units per day.",
+            "Age 19 or older needs an ADD/ADHD diagnosis in the last 730 days."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "tx-medicaid-pa-criteria-adhd-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "noCoveredAgent": false,
+      "verification": "verified",
+      "verificationNote": "Read PDL p.81 (non-stimulant table). Preferred: atomoxetine, clonidine ER, guanfacine ER (generics) and QELBREE. Non-preferred: INTUNIV, ONYDA XR, STRATTERA. The PDL lists the 'ADHD Agents' clinical PA as applying to all drugs in this table (p.81), so it is recorded as a preferred-pick restriction. Judgment call: the clinical PA block sits over the non-stimulant table, not the stimulant rows above it. [Sonnet check 2026-10-21: re-read pp.57-58 / p.81: clinical PA stated as applying to all PCSK9 inhibitors / all drugs in the non-stimulant table; preferredRestriction confirmed.]",
+      "sourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "tx-medicaid",
+      "preferredCriteria": [
+        "Age 6 years or older.",
+        "Requested quantity not above 2 units per day.",
+        "Age 19 or older needs an ADD/ADHD diagnosis in the last 730 days."
+      ],
+      "preferredCriteriaMode": "all",
+      "preferredCriteriaSourceIds": [
+        "tx-medicaid-pa-criteria-adhd-2026-10"
+      ]
+    },
+    {
+      "classId": "stimulant-mph",
+      "preferredAgent": {
+        "inn": "Methylphenidate hydrochloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet (immediate release)",
+        "sig": "As directed by prescriber (standard label dosing; sig not printed on plan list)",
+        "sigShort": "As directed",
+        "plainSig": "Take as your doctor directs."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Generic (Tier 1)",
+      "alternatives": [
+        {
+          "drug": "Dexmethylphenidate hydrochloride tablet 2.5 mg, 5 mg",
+          "note": "Preferred generic (p), QL 240 / 120 tablets per 30 days (PDF p.60)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate HCl ER osmotic tablet 18, 27, 36, 54 mg (Concerta generic)",
+          "note": "Non-preferred generic (np), QL (PDF p.61)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate HCl ER 24-hr capsule 10, 20, 30, 40 mg; ER tablet 10, 20 mg",
+          "note": "Non-preferred generic (np), QL (PDF p.61)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate HCl chewable tablet 2.5, 5, 10 mg; oral solution 5 mg/5 mL, 10 mg/5 mL",
+          "note": "Non-preferred generic (np), QL (PDF p.61)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dexmethylphenidate HCl ER capsule 5-40 mg (Focalin XR ref)",
+          "note": "Non-preferred generic (np), QL (PDF p.60)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate HCl tablet 5 mg",
+          "note": "Preferred generic (p), QL 360 tablets per 30 days (PDF p.61)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Daytrana (methylphenidate patch)",
+          "outcome": "nonformulary",
+          "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Azstarys (serdexmethylphenidate/dexmethylphenidate)",
+          "outcome": "nonformulary",
+          "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Cotempla XR-ODT",
+          "outcome": "nonformulary",
+          "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "QuilliChew ER",
+          "outcome": "nonformulary",
+          "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Jornay PM",
+          "outcome": "nonformulary",
+          "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Aptensio XR",
+          "outcome": "nonformulary",
+          "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Preferred pick: methylphenidate HCl 10 mg IR tablet, preferred generic (p) with Ritalin as reference brand (not covered per PDF p.2). QL 180 tablets/30 days (PDF p.61). Brand Concerta-reference ER generic listed np. Sig not printed; standard label dosing. Exclusions taken from PDF p.2 ('Drugs that are not shown are not covered'). PDF page numbers used throughout (printed page = PDF page minus 10 on drug-list pages).",
+      "sourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "stimulant-amph",
+      "preferredAgent": {
+        "inn": "Amphetamine-dextroamphetamine (mixed amphetamine salts)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet (immediate release)",
+        "sig": "As directed by prescriber (standard label dosing; sig not printed on plan list)",
+        "sigShort": "As directed",
+        "plainSig": "Take as your doctor directs."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Generic (Tier 1) for 5 mg strength only",
+      "alternatives": [
+        {
+          "drug": "Amphetamine-dextroamphetamine tablet 7.5, 10, 12.5, 15, 20, 30 mg",
+          "note": "Non-preferred generic (np), QL 60-180 tablets per 30 days (PDF p.60)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Amphetamine-dextroamphetamine ER capsule 5-30 mg (Adderall XR ref)",
+          "note": "Non-preferred generic (np), QL 30-60 capsules per 30 days (PDF p.60)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lisdexamfetamine dimesylate capsule 10-70 mg (Vyvanse ref)",
+          "note": "Non-preferred generic (np), QL 30 capsules per 30 days (PDF p.61)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lisdexamfetamine dimesylate chewable tablet 10-60 mg (Vyvanse ref)",
+          "note": "Non-preferred generic (np), QL 30 tablets per 30 days (PDF p.61)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dextroamphetamine sulfate tablet 5, 10 mg; ER capsule 5, 10, 15 mg; oral solution 5 mg/5 mL",
+          "note": "Non-preferred generic (np), QL (PDF p.60-61)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Mydayis (mixed amphetamine salts ER)",
+          "outcome": "nonformulary",
+          "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Adzenys XR-ODT / Dyanavel XR (amphetamine ER)",
+          "outcome": "nonformulary",
+          "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Evekeo (amphetamine sulfate)",
+          "outcome": "nonformulary",
+          "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Xelstrym (dextroamphetamine patch)",
+          "outcome": "nonformulary",
+          "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zenzedi (dextroamphetamine)",
+          "outcome": "nonformulary",
+          "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Preferred pick: amphetamine-dextroamphetamine 5 mg tablet, the only strength listed as preferred generic (p, Adderall reference), QL 180 tablets/30 days (PDF p.60). Higher strengths are non-preferred generics (np) and are covered; they are listed as alternatives. The 5 mg strength is a low starting strength, so a patient on a higher dose will need a non-preferred strength. Sig not printed; standard label dosing. [Sonnet check 2026-10-21: corrected the alternative's QL range to 60-180 (30 mg tablet is QL 60, PDF p.60). PDF p.2 confirmed to say all covered drugs are shown and drugs not shown are not covered, supporting the nonformulary entries; p.3 adds that unlisted drugs may be checked with the plan.]",
+      "sourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "adhd-nonstimulant",
+      "preferredAgent": {
+        "inn": "Guanfacine hydrochloride extended-release",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "1 mg extended-release tablet (2 mg, 3 mg, 4 mg also preferred)",
+        "sig": "As directed by prescriber (standard label dosing; sig not printed on plan list)",
+        "sigShort": "As directed",
+        "plainSig": "Take as your doctor directs."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Generic (Tier 1)",
+      "alternatives": [
+        {
+          "drug": "Atomoxetine HCl capsule 10, 18, 25, 40, 60, 80, 100 mg (Strattera ref)",
+          "note": "Non-preferred generic (np), QL 30-120 capsules per 30 days, no PA printed (PDF p.60)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Clonidine HCl ER tablet 0.1 mg (Kapvay ref)",
+          "note": "Non-preferred generic (np), QL 120 tablets per 30 days (PDF p.60)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Qelbree (viloxazine ER)",
+          "outcome": "nonformulary",
+          "reason": "Not on plan list; plan states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Preferred pick: guanfacine ER tablet, preferred generic (p, Intuniv reference, not covered), 1 mg listed first; 2 mg and 3 mg also p. QL 30 tablets/30 days for 1 mg and 4 mg; 90 tablets for 2 mg; 60 for 3 mg (PDF p.61). Atomoxetine and clonidine ER are covered non-preferred generics with no PA printed. Sig not printed; standard label dosing.",
+      "sourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "stimulant-mph",
+      "preferredAgent": {
+        "inn": "Methylphenidate HCl (immediate-release)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg, 10 mg, 20 mg tablet",
+        "sig": "As directed per FDA label (dose not stated in document)",
+        "sigShort": "Per label",
+        "plainSig": "Taken by mouth as your doctor directs."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3 (per document)",
+      "alternatives": [
+        {
+          "drug": "Dexmethylphenidate IR tablet (2.5 mg, 5 mg, 10 mg)",
+          "note": "Tier 3, QL 60 per 30 days (page 51)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylphenidate HCl ER tablet (10 mg, 20 mg)",
+          "note": "Tier 3, QL 180 per 30 days (10 mg) / 90 per 30 days (20 mg) (page 52)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Methylphenidate IR tablet chosen as the lowest-barrier generic with no PA (all three methylphenidate-family generics listed carry Tier 3 and QL only). Document shows: methylphenidate HCl 5/10/20 mg tablet, Tier 3, QL 90 per 30 days (page 52); dexmethylphenidate tablet, Tier 3, QL 60 per 30 days (page 51); methylphenidate HCl ER tablets 10 mg and 20 mg, Tier 3 (page 52). Not listed in the document: Concerta, Ritalin, Focalin, Daytrana, Azstarys, Jornay PM, Aptensio and other brands; not assessed (document does not state it is a complete list). Strengths and sig are not printed for these lines; sig is standard label dosing. QL is not a PA barrier and is not in preferredRestriction. [Sonnet check 2026-10-21: spot-checked tiers and QL against pp.46-52; no change.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "stimulant-amph",
+      "preferredAgent": {
+        "inn": "Dextroamphetamine-amphetamine (mixed salts, immediate-release)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg to 20 mg, 30 mg tablet",
+        "sig": "As directed per FDA label (dose not stated in document)",
+        "sigShort": "Per label",
+        "plainSig": "Taken by mouth as your doctor directs."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3 (per document)",
+      "alternatives": [
+        {
+          "drug": "Dextroamphetamine-amphetamine ER capsule (5 mg, 10 mg, 15 mg)",
+          "note": "Tier 3, QL 30 per 30 days (page 51)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dextroamphetamine-amphetamine ER capsule (20 mg, 25 mg, 30 mg)",
+          "note": "Tier 3, QL 60 per 30 days (page 51)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dextroamphetamine-amphetamine IR tablet (30 mg)",
+          "note": "Tier 3, QL 60 per 30 days (page 51)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Dextroamphetamine sulfate IR tablet (2.5 mg to 30 mg)",
+          "note": "Tier 4, QL (page 51)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Mixed-salts IR tablet chosen as the lowest-barrier generic with no PA. Document lines on page 51: dextroamphetamine-amphetamine tablet 5/7.5/10/12.5/15/20 mg, Tier 3, QL 90 per 30 days; ER capsules and 30 mg tablet as listed in alternatives. Not listed in the document: Adderall, Adderall XR, Mydayis, Vyvanse (lisdexamfetamine), Evekeo, Zenzedi, Adzenys, Dyanavel, Xelstrym; not assessed. Strengths and sig are not printed for the preferred line; sig is standard label dosing. QL is not a PA barrier.",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "adhd-nonstimulant",
+      "preferredAgent": {
+        "inn": "Guanfacine ER",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "1 mg, 2 mg, 3 mg, 4 mg ER tablet",
+        "sig": "As directed per FDA label (dose not stated in document)",
+        "sigShort": "Per label",
+        "plainSig": "Taken by mouth as your doctor directs."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (per document)",
+      "alternatives": [
+        {
+          "drug": "Atomoxetine capsule (10 mg to 100 mg)",
+          "note": "Tier 4, QL 60 per 30 days (10-40 mg) / 30 per 30 days (60-100 mg) (page 51)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Guanfacine ER tablet (page 52: Tier 2, QL 30 per 30 days) chosen as the lowest-tier non-stimulant with no PA. Atomoxetine capsules (page 51) are covered at Tier 4 and are listed as an alternative. Not on this list: Qelbree (viloxazine), Kapvay (clonidine ER), Intuniv brand. The guanfacine 1 mg and 2 mg IR tablet (page 47, Tier 2) and clonidine IR tablets and patch (pages 46-47) are not ADHD extended-release products and are excluded from alternatives. Not assessed: brands absent from the document. Sig is standard label dosing.",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "tx-medicaid-newtopics-2026-10",
+      "label": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria, effective July 24, 2026",
+      "publisher": "Texas Health and Human Services (Texas Medicaid Vendor Drug Program, txvendordrug.com)",
+      "type": "gov",
+      "url": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "effectiveDate": "2026-07-24",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "bcbs-tx-commercial-newtopics-2026-10",
+      "label": "Performance Drug List, July 2026 (Blue Cross and Blue Shield of Texas, 2026 commercial formulary)",
+      "publisher": "Blue Cross and Blue Shield of Texas (Prime Therapeutics LLC)",
+      "type": "payer",
+      "url": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "humana-premier-rx-pdp-newtopics-2026-10",
+      "label": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-09-02",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "tx-medicaid-pa-intake-2026-10",
+      "label": "Outpatient Drug Services Handbook (October 2025), Texas Medicaid Provider Procedures Manual",
+      "publisher": "Texas Medicaid & Healthcare Partnership (TMHP) for Texas HHSC",
+      "type": "gov",
+      "url": "https://www.tmhp.com/sites/default/files/file-library/resources/provider-manuals/tmppm/pdf-chapters/2025/2025-10-october/2_15_outpatient_drug.pdf",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "humana-premier-rx-pdp-formulary-pa-intake-2026",
+      "label": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "tx-medicaid-pa-criteria-adhd-2026-10",
+      "label": "Texas PA Program clinical criteria: ADD/ADHD Medications (updated Jan 12, 2026)",
+      "publisher": "Texas Prior Authorization Program (Health Information Designs, hosted by Acentra)",
+      "type": "gov",
+      "url": "https://paxpress-txpa.acentra.com/add_adhd_agents.pdf",
+      "accessed": "2026-10-21",
+      "effectiveDate": "2026-01-12"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

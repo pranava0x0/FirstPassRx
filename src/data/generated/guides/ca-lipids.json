@@ -1,0 +1,755 @@
+{
+  "id": "ca-lipids",
+  "label": "CA · Cholesterol",
+  "stateCode": "CA",
+  "region": "California",
+  "topicId": "lipids",
+  "topic": "Cholesterol",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-21",
+  "capturedAt": "2026-10-21",
+  "payers": [
+    {
+      "id": "medi-cal-rx",
+      "name": "Medi-Cal Rx — California Medicaid Pharmacy Program (Fee-for-Service carve-out, statewide)",
+      "shortName": "Medi-Cal Rx",
+      "pbm": "Magellan Health (Magellan Medicaid Administration; DHCS vendor)",
+      "productName": "Medi-Cal Rx Contract Drugs List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Medi-Cal Rx Contract Drugs List (CDL), September 1, 2026",
+      "formularyUrl": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "paSubmission": {
+        "fax": "1-800-869-4325",
+        "portal": "https://www.medi-calrx.dhcs.ca.gov/provider/login",
+        "epa": "CoverMyMeds",
+        "note": "Statewide Medi-Cal Rx (covers managed care members too). Fax form DHCS 6560 (or 50-1, 50-2, 61-211). Mail: Medi-Cal Rx Customer Service Center, ATTN: Provider PA Requests, P.O. Box 730, Rancho Cordova, CA 95741-0730.",
+        "sourceIds": [
+          "medi-cal-rx-pa-intake-2026-10"
+        ]
+      },
+      "sourceIds": [
+        "medi-cal-rx-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "kaiser-permanente-ca",
+      "name": "Kaiser Permanente (Commercial HMO)",
+      "shortName": "Kaiser Permanente",
+      "pbm": "Internal (Kaiser Foundation Health Plan formulary; closed integrated pharmacy)",
+      "productName": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs), effective 09/01/2026",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "sourceIds": [
+        "kaiser-permanente-ca-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "anthem-bcbs-ca",
+      "name": "Anthem Blue Cross of California (Commercial)",
+      "shortName": "Anthem Blue Cross CA",
+      "pbm": "CarelonRx",
+      "productName": "2026 California Select Drug List - Four Tier",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 California Select Drug List: Four Tier (Individual, Anthem Blue Cross)",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "paSubmission": {
+        "epa": "https://www.covermymeds.com/main/partners/anthem",
+        "portal": "anthem.com/ca (Pharmacy)",
+        "fax": "844-474-3347",
+        "sourceIds": [
+          "anthem-bcbs-ca-formulary-pa-intake-2026"
+        ]
+      },
+      "sourceIds": [
+        "anthem-bcbs-ca-newtopics-2026-10"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "statin",
+      "name": "Statins",
+      "shortName": "STATIN",
+      "plainName": "Statin",
+      "description": "HMG-CoA reductase inhibitors: atorvastatin (Lipitor), rosuvastatin (Crestor, Ezallor), simvastatin (Zocor), pravastatin, lovastatin (Altoprev), pitavastatin (Livalo, Zypitamag), fluvastatin, and statin combinations (Vytorin, Roszet).",
+      "plainDescription": "A daily pill that lowers LDL cholesterol.",
+      "indication": "Hyperlipidemia / ASCVD risk reduction",
+      "sourceIds": [
+        "medi-cal-rx-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "ezetimibe",
+      "name": "Ezetimibe & other non-statin oral agents",
+      "shortName": "EZE",
+      "plainName": "Ezetimibe / non-statin pill",
+      "description": "Non-statin oral LDL-lowering agents: ezetimibe (Zetia), bempedoic acid (Nexletol) and bempedoic acid/ezetimibe (Nexlizet).",
+      "plainDescription": "A cholesterol pill used with or instead of a statin.",
+      "indication": "Hyperlipidemia",
+      "sourceIds": [
+        "medi-cal-rx-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "pcsk9",
+      "name": "PCSK9 inhibitors & siRNA",
+      "shortName": "PCSK9",
+      "plainName": "Injectable LDL lowerer (PCSK9)",
+      "description": "Injectable PCSK9-pathway agents: evolocumab (Repatha), alirocumab (Praluent), inclisiran (Leqvio).",
+      "plainDescription": "An injection every 2 weeks to 6 months that strongly lowers LDL cholesterol.",
+      "indication": "Hyperlipidemia / ASCVD",
+      "sourceIds": [
+        "medi-cal-rx-newtopics-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "statin",
+      "preferredAgent": {
+        "inn": "Atorvastatin calcium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "40 mg tablet",
+        "sig": "1 tablet by mouth once daily (standard label dosing)",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not stated on CDL (covered, no restriction listed)",
+      "alternatives": [
+        {
+          "drug": "Rosuvastatin calcium tablets 5, 10, 20, 40 mg",
+          "note": "Covered, no restriction listed (CDL p. 40)",
+          "sourceIds": [
+            "medi-cal-rx-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Simvastatin tablets 5-80 mg",
+          "note": "Covered, no restriction listed (CDL p. 40)",
+          "sourceIds": [
+            "medi-cal-rx-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pravastatin sodium tablets 10-80 mg",
+          "note": "Covered, no restriction listed (CDL p. 39)",
+          "sourceIds": [
+            "medi-cal-rx-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lovastatin tablets 10, 20, 40 mg",
+          "note": "Covered, no restriction listed (CDL p. 39)",
+          "sourceIds": [
+            "medi-cal-rx-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ezetimibe/simvastatin tablets 10/10 to 10/80 mg",
+          "note": "Combination; covered, no restriction listed (CDL p. 38)",
+          "sourceIds": [
+            "medi-cal-rx-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Pitavastatin (Livalo, Zypitamag)",
+          "outcome": "pa",
+          "reason": "Not on the CDL: TAR required",
+          "sourceIds": [
+            "medi-cal-rx-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluvastatin",
+          "outcome": "pa",
+          "reason": "Not on the CDL: TAR required",
+          "sourceIds": [
+            "medi-cal-rx-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lovastatin extended-release (Altoprev)",
+          "outcome": "pa",
+          "reason": "Not on the CDL: TAR required",
+          "sourceIds": [
+            "medi-cal-rx-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Rosuvastatin capsules (Ezallor)",
+          "outcome": "pa",
+          "reason": "Not on the CDL: TAR required",
+          "sourceIds": [
+            "medi-cal-rx-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ezetimibe/rosuvastatin (Roszet)",
+          "outcome": "pa",
+          "reason": "Not on the CDL: TAR required",
+          "sourceIds": [
+            "medi-cal-rx-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "noCoveredAgent": false,
+      "verification": "verified",
+      "verificationNote": "Read CDL pp. 37-40 (Anti-Lipidemic Agents). Atorvastatin 10-80, lovastatin, pravastatin, rosuvastatin 5-40, simvastatin 5-80 and ezetimibe/simvastatin listed with no restriction. Pitavastatin, fluvastatin, Altoprev, Ezallor and Roszet not listed. Atorvastatin 40 mg chosen as preferred (judgment; CDL does not rank). Sig is standard label dosing.",
+      "sourceIds": [
+        "medi-cal-rx-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "medi-cal-rx-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "medi-cal-rx-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "medi-cal-rx"
+    },
+    {
+      "classId": "ezetimibe",
+      "preferredAgent": {
+        "inn": "Ezetimibe",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "1 tablet by mouth once daily (standard label dosing)",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not stated on CDL (covered, no restriction listed)",
+      "alternatives": [
+        {
+          "drug": "Ezetimibe/simvastatin tablets 10/10 to 10/80 mg",
+          "note": "Combination with a statin; covered, no restriction listed (CDL p. 38)",
+          "sourceIds": [
+            "medi-cal-rx-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Bempedoic acid (Nexletol)",
+          "outcome": "pa",
+          "reason": "Not on the CDL: TAR required",
+          "sourceIds": [
+            "medi-cal-rx-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Bempedoic acid/ezetimibe (Nexlizet)",
+          "outcome": "pa",
+          "reason": "Not on the CDL: TAR required",
+          "sourceIds": [
+            "medi-cal-rx-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "noCoveredAgent": false,
+      "verification": "verified",
+      "verificationNote": "Read CDL p. 38. Ezetimibe 10 mg tablets listed with no restriction. Bempedoic acid products not listed (searched generic and brand). Sig is standard label dosing.",
+      "sourceIds": [
+        "medi-cal-rx-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "medi-cal-rx-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "medi-cal-rx-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "medi-cal-rx"
+    },
+    {
+      "classId": "pcsk9",
+      "preferredAgent": {
+        "inn": "Evolocumab",
+        "brand": "Repatha",
+        "genericAvailable": false,
+        "strength": "140 mg/mL single-dose prefilled syringe or SureClick autoinjector",
+        "sig": "140 mg by subcutaneous injection every 2 weeks (standard label dosing)",
+        "sigShort": "140 mg SC q2wk",
+        "plainSig": "A shot every 2 weeks."
+      },
+      "preferredRestriction": "Covered only for NDC labeler 72511; restricted to LDL-C lowering in patients aged 10 years and older; maximum 2 prefilled syringes or 1 kit per dispensing, one dispensing every 28 days (CDL p. 38).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not stated on CDL (covered, labeler- and QL-restricted)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Alirocumab (Praluent)",
+          "outcome": "pa",
+          "reason": "Not on the CDL: TAR required",
+          "sourceIds": [
+            "medi-cal-rx-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Inclisiran (Leqvio)",
+          "outcome": "pa",
+          "reason": "Not on the CDL: TAR required",
+          "sourceIds": [
+            "medi-cal-rx-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "noCoveredAgent": false,
+      "verification": "verified",
+      "verificationNote": "Read CDL p. 38. Only evolocumab is listed in this class; its LR and QL restrictions are carried in preferredRestriction. Alirocumab and inclisiran not listed. Sig is standard label dosing, not printed on the CDL.",
+      "sourceIds": [
+        "medi-cal-rx-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "medi-cal-rx-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "medi-cal-rx-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "medi-cal-rx",
+      "preferredCriteria": [
+        "Patient is aged 10 years or older and the drug is used to reduce LDL cholesterol (LDL-C).",
+        "Quantity: no more than 2 prefilled syringes (or 1 kit of 2 SureClick autoinjectors) per dispensing, one dispensing every 28 days.",
+        "Dispensed under NDC labeler code 72511; claims without this labeler code do not pay."
+      ],
+      "preferredCriteriaMode": "all",
+      "preferredCriteriaSourceIds": [
+        "medi-cal-rx-pa-criteria-pcsk9-2026-10"
+      ]
+    },
+    {
+      "classId": "statin",
+      "preferredAgent": {
+        "inn": "Atorvastatin calcium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "40 mg tablet",
+        "sig": "1 tablet by mouth once daily (standard label dosing; sig not printed in formulary)",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (PREV)",
+      "alternatives": [
+        {
+          "drug": "Rosuvastatin calcium tablet 5-40 mg",
+          "note": "Tier 1, PREV tag (PDF p.38)",
+          "sourceIds": [
+            "kaiser-permanente-ca-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Simvastatin tablet 5-80 mg",
+          "note": "Tier 1, PREV tag (PDF p.38)",
+          "sourceIds": [
+            "kaiser-permanente-ca-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pravastatin sodium tablet 10-80 mg",
+          "note": "Tier 1, PREV tag (PDF p.38)",
+          "sourceIds": [
+            "kaiser-permanente-ca-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lovastatin tablet 10-40 mg",
+          "note": "Tier 1, PREV tag (PDF p.38)",
+          "sourceIds": [
+            "kaiser-permanente-ca-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from PDF p.38 (ANTILIPEMIC AGENTS). All listed statins are tier 1 with the PREV tag, which the formulary legend defines as a preventive drug required to be covered at no charge in select plans (PDF p.11). Atorvastatin 10/20/40/80 mg listed; 40 mg chosen as the mid-intensity preferred strength. Pitavastatin, fluvastatin, LIPITOR, CRESTOR, ZOCOR, and combinations (Vytorin, Roszet) are not listed. No PA or step (PDF p.6). Sig is standard label dosing, not printed in the document.",
+      "sourceIds": [
+        "kaiser-permanente-ca-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kaiser-permanente-ca-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kaiser-permanente-ca-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "kaiser-permanente-ca"
+    },
+    {
+      "classId": "ezetimibe",
+      "preferredAgent": {
+        "inn": "Ezetimibe",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "1 tablet by mouth once daily (standard label dosing; sig not printed in formulary)",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read directly: ezetimibe tablets 10 mg tier 1, no QL or PA (PDF p.38). It is the only class member found, so the class-level answer is partial. Nexletol (bempedoic acid) and Nexlizet (bempedoic acid/ezetimibe) and ZETIA brand are not listed; absence is not confirmed exclusion because the formulary states it is not an all-inclusive list (PDF p.2). Fenofibrate, gemfibrozil, colestipol, and cholestyramine are tier 1 lipid agents outside this class definition and are not listed here.",
+      "sourceIds": [
+        "kaiser-permanente-ca-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kaiser-permanente-ca-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kaiser-permanente-ca-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "kaiser-permanente-ca"
+    },
+    {
+      "classId": "pcsk9",
+      "preferredAgent": {
+        "inn": "Evolocumab",
+        "brand": "Repatha",
+        "genericAvailable": false,
+        "strength": "140 mg/mL prefilled pen",
+        "sig": "Inject 140 mg subcutaneously every 2 weeks or 420 mg once monthly (standard label dosing; not printed in formulary)",
+        "sigShort": "SC q2wk or monthly",
+        "plainSig": "A shot every 2 weeks, or once a month."
+      },
+      "preferredRestriction": "No PCSK9 inhibitor (Repatha, Praluent, Leqvio) appears on this plan's 2026 formulary; coverage likely excluded (confirm with plan)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not listed",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Full-text search of the 145-page formulary for evolocumab/REPATHA, alirocumab/PRALUENT, and inclisiran/LEQVIO found no entries. Repatha is used as the class reference drug. The formulary states it is not an all-inclusive list (PDF p.2), so this is absence, not a confirmed exclusion. Coverage may be defined in the EOC or a separate medical-benefit list. Do not present any PCSK9 agent as covered on this plan's list.",
+      "sourceIds": [
+        "kaiser-permanente-ca-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kaiser-permanente-ca-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kaiser-permanente-ca-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "noCoveredAgent": true,
+      "payerId": "kaiser-permanente-ca"
+    },
+    {
+      "classId": "statin",
+      "preferredAgent": {
+        "inn": "Atorvastatin calcium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg",
+        "sig": "1 tablet by mouth once daily (standard label dosing; sig not printed on plan list)",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Simvastatin tablet 5-40 mg (and 80 mg)",
+          "note": "Tier 1, no PA; $0 preventive line at 5-40 mg (page 38)",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Pravastatin sodium tablet 10-80 mg",
+          "note": "Tier 1, no PA; $0 preventive line at 10-40 mg (page 38)",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lovastatin tablet 10-40 mg",
+          "note": "Tier 1, no PA; $0 preventive line (page 37-38)",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluvastatin sodium capsule",
+          "note": "Tier 1, no PA; $0 preventive line (page 37)",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Rosuvastatin calcium tablet 5-40 mg",
+          "note": "Tier 2, no PA (page 38)",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluvastatin sodium ER tablet",
+          "note": "Tier 2, no PA; $0 preventive line (page 37)",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Atorvastatin calcium tablet 40 and 80 mg",
+          "note": "Tier 1, no PA; DO/QL flags (page 37)",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Livalo / Zypitamag (pitavastatin)",
+          "outcome": "nonformulary",
+          "reason": "Not on this plan's 2026 list (p.7: list is complete); no line found",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ezallor sprinkle (rosuvastatin ER capsule)",
+          "outcome": "nonformulary",
+          "reason": "Not on this plan's 2026 list (p.7: list is complete); no line found",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Altoprev (lovastatin ER tablet)",
+          "outcome": "nonformulary",
+          "reason": "Not on this plan's 2026 list (p.7: list is complete); no line found",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Vytorin (ezetimibe/simvastatin)",
+          "outcome": "nonformulary",
+          "reason": "Not on this plan's 2026 list (p.7: list is complete); no line found",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Roszet (ezetimibe/rosuvastatin)",
+          "outcome": "nonformulary",
+          "reason": "Not on this plan's 2026 list (p.7: list is complete); no line found",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "noCoveredAgent": false,
+      "verification": "verified",
+      "verificationNote": "Read pages 37-38 (antihyperlipidemics). Atorvastatin 10 and 20 mg carry a $0 preventive flag (for some members at 100% with criteria, page 5); 20 mg was picked as the Tier 1 workhorse. No statin on the list needs PA or step. Lipitor/Crestor brand absence is not counted because their generics are listed. DO flags are dose-optimization notes, not PA, so preferredRestriction is null.",
+      "sourceIds": [
+        "anthem-bcbs-ca-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "anthem-bcbs-ca-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "anthem-bcbs-ca-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "anthem-bcbs-ca"
+    },
+    {
+      "classId": "ezetimibe",
+      "preferredAgent": {
+        "inn": "Ezetimibe",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg (standard label strength; not printed on plan list)",
+        "sig": "1 tablet by mouth once daily (standard label dosing; sig not printed on plan list)",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day."
+      },
+      "preferredRestriction": "PA required (page 38)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Nexletol (bempedoic acid)",
+          "outcome": "nonformulary",
+          "reason": "Not on this plan's 2026 list (p.7: list is complete); no line found",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Nexlizet (bempedoic acid/ezetimibe)",
+          "outcome": "nonformulary",
+          "reason": "Not on this plan's 2026 list (p.7: list is complete); no line found",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "noCoveredAgent": false,
+      "verification": "verified",
+      "verificationNote": "Read page 38. Ezetimibe is listed Tier 1 with PA and QL; the only non-statin oral LDL agent on the list, so picked as preferred with PA as the barrier. Zetia brand absence not counted (generic listed). Nexletol and Nexlizet do not appear.",
+      "sourceIds": [
+        "anthem-bcbs-ca-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "anthem-bcbs-ca-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "anthem-bcbs-ca-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "anthem-bcbs-ca"
+    },
+    {
+      "classId": "pcsk9",
+      "preferredAgent": {
+        "inn": "Evolocumab",
+        "brand": "Repatha",
+        "genericAvailable": false,
+        "strength": "140 mg/mL (standard label strength; not printed on plan list)",
+        "sig": "Inject 140 mg under the skin every 2 weeks, or 420 mg once monthly (standard label dosing; sig not printed on plan list)",
+        "sigShort": "140 mg SC q2wk",
+        "plainSig": "A shot under the skin every 2 weeks, or once a month."
+      },
+      "preferredRestriction": "PA required; Tier 3 (page 38)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Praluent (alirocumab)",
+          "outcome": "nonformulary",
+          "reason": "Not on this plan's 2026 list (p.7: list is complete); no line found",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Leqvio (inclisiran)",
+          "outcome": "nonformulary",
+          "reason": "Not on this plan's 2026 list (p.7: list is complete); no line found",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "noCoveredAgent": false,
+      "verification": "verified",
+      "verificationNote": "Read page 38. Repatha is the only PCSK9 agent listed, in three presentations (SureClick auto-injector, prefilled syringe, Pushtronex pump), all Tier 3 PA with QL 3 syringes per 28 days or 1 cartridge per 28 days. SureClick auto-injector picked as the preferred presentation; the 140 mg/mL strength and dosing schedule are standard label, not printed on the list. Repatha is brand-only, so boglActive is false.",
+      "sourceIds": [
+        "anthem-bcbs-ca-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "anthem-bcbs-ca-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "anthem-bcbs-ca-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "anthem-bcbs-ca"
+    }
+  ],
+  "references": [
+    {
+      "id": "medi-cal-rx-newtopics-2026-10",
+      "label": "Medi-Cal Rx Contract Drugs List (CDL), September 1, 2026",
+      "publisher": "California Department of Health Care Services (DHCS) / Medi-Cal Rx",
+      "type": "gov",
+      "url": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "effectiveDate": "2026-09-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "kaiser-permanente-ca-newtopics-2026-10",
+      "label": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs), effective 09/01/2026",
+      "publisher": "Kaiser Permanente",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "effectiveDate": "2026-09-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "anthem-bcbs-ca-newtopics-2026-10",
+      "label": "2026 California Select Drug List: Four Tier (Individual, Anthem Blue Cross)",
+      "publisher": "Anthem Blue Cross of California (Elevance Health)",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "effectiveDate": "2026-09-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "medi-cal-rx-pa-intake-2026-10",
+      "label": "Five Ways to Submit a Prior Authorization Request",
+      "publisher": "California Department of Health Care Services (DHCS), Medi-Cal Rx",
+      "type": "gov",
+      "url": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/PF_5_Ways_to_Submit_a_PA_Flyer.pdf",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "anthem-bcbs-ca-formulary-pa-intake-2026",
+      "label": "2026 California Select Drug List - Four Tier",
+      "publisher": "Anthem Blue Cross",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "medi-cal-rx-pa-criteria-pcsk9-2026-10",
+      "label": "Medi-Cal Rx Contract Drugs List, Oct 1 2026 (Evolocumab restriction)",
+      "publisher": "California Department of Health Care Services (DHCS), Medi-Cal Rx",
+      "type": "gov",
+      "url": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "accessed": "2026-10-21",
+      "effectiveDate": "2026-10-01"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

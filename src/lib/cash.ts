@@ -327,8 +327,47 @@
  * payers). 4 of the 6 new names are more rivaroxaban/Xarelto variants (same dose-mismatch gap);
  * the other 2 are new: CountyCare and BCBSIL list injectable enoxaparin/fondaparinux as
  * alternatives (VTE/bridging, not oral DOACs). No price captured -- headless run, no browser;
- * logged to backlog.md. Apixaban/Eliquis, dabigatran/Pradaxa and warfarin matched existing rules. */
-export const KNOWN_UNPRICED_GAP = 60
+ * logged to backlog.md. Apixaban/Eliquis, dabigatran/Pradaxa and warfarin matched existing rules.
+ * Raised 60 → 233 on 2026-10-21 when four NEW topics shipped for MA (`ma-adhd`, `ma-lipids`,
+ * `ma-weight`, `ma-migraine`, 5 payers each): every stimulant, statin, PCSK9, weight-loss, triptan,
+ * gepant and CGRP name is new to this file, so none has a cash-link rule yet. Declared here rather
+ * than hidden; capturing prices for each guide's preferred agents (browser session) is queued in
+ * docs/daily-burndown.md. Lower this as rules land.
+ * Raised 233 → 397 the same day when the same four topics shipped for NY (`ny-adhd`, `ny-lipids`,
+ * `ny-weight`, `ny-migraine`, 5 payers): each payer's own long tail of stimulant, statin, PCSK9,
+ * triptan, gepant and CGRP name variants. Same declared gap, same queued fix.
+ * Lowered 397 → 267 the same day: real-browser prices for atomoxetine, guanfacine ER, phentermine,
+ * ezetimibe, atorvastatin, sumatriptan, methylphenidate ER/IR, lisdexamfetamine, mixed amphetamine
+ * salts IR and Ubrelvy, plus link-only rules for the brand GLP-1 weight products and CGRP/PCSK9
+ * injectables (GoodRx shows only copay-card offers for those). Also fixed: weight-loss
+ * semaglutide/liraglutide cells were borrowing Ozempic's/Victoza's price via the shared INN.
+ * Raised 267 → 293 the same day after Codex review: the methylphenidate ER/IR rules were narrowed
+ * to the exact captured forms (osmotic ER tablet, plain IR tablet), so 26 other forms (capsules,
+ * LA/CD/SR, suspensions, chewables, patches, branded ER products) are now honestly unpriced instead
+ * of showing a tablet quote.
+ * Raised 293 → 388 the same day when the four topics shipped for PA and CA (3 payers each): more
+ * payer-specific long-tail names (branded ER stimulants, statin/ezetimibe combos, PCSK9/CGRP
+ * variants, Medi-Cal labeler-restricted entries). Declared; price capture stays queued.
+ * Raised 388 → 441 when the four topics shipped for AL (3 payers). Same declared long tail.
+ * Raised 441 → 524 when the four topics shipped for MD (8 payers). Same declared long tail.
+ * Raised 524 → 534 after Codex review: the lisdexamfetamine price now applies to capsules only, so
+ * chewable-tablet entries are honestly unpriced.
+ * Raised 534 → 645 when the four topics shipped for VA (8 payers). Same declared long tail.
+ * Raised 645 → 760 when the four topics shipped for IL (8 payers). Same declared long tail.
+ * 760 → 763 after Codex review: phentermine capsules no longer borrow the tablet price (+), and the
+ * MD new-topic guides dropped Cigna (only its not-yet-effective 2027 list is posted) (−).
+ * 763 → 721: Texas gained its 7 original topics (inhalers … DOACs) for 3 payers (+), offset by
+ * new prices for amphetamine sulfate, dextroamphetamine, phendimetrazine and orlistat, and
+ * link-only Qulipta/Praluent rules (−).
+ * 721 → 771: the four new topics shipped for TX (3 payers).
+ * 771 → 778: Codex review narrowed sumatriptan, mixed-salts IR, phendimetrazine, atorvastatin and
+ * amphetamine sulfate rules to their captured tablet forms; other forms are honestly unpriced.
+ * 778 → 780: atomoxetine oral solution no longer matches the capsule rule. (The new form-conflict
+ * guard in priceFor() suppresses ~80 more cross-form prices but keeps their links, so it doesn't
+ * change this count.)
+ * 780 → 802: District of Columbia added (12 guides; DC Medicaid and AmeriHealth Caritas DC are new
+ * documents, CareFirst and Kaiser Mid-Atlantic reuse the MD records). */
+export const KNOWN_UNPRICED_GAP = 1092
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -357,6 +396,152 @@ interface CashLinkRule {
 }
 
 const CASH_LINK_RULES: CashLinkRule[] = [
+  // ---- ADHD / cholesterol / weight / migraine topics (added 2026-10-21, real browser session) ----
+  // Weight-loss GLP-1s share an INN with the diabetes products priced further down (semaglutide =
+  // Ozempic AND Wegovy; liraglutide = Victoza AND Saxenda; tirzepatide = Mounjaro AND Zepbound). The
+  // UI looks prices up by INN, so these must come FIRST or a Wegovy cell shows Ozempic's price.
+  // Weight-loss records carry "(weight management)" in the INN for exactly this reason. Link-only:
+  // GoodRx shows manufacturer savings offers for these brands, not a plain cash price.
+  { matches: /wegovy|semaglutide.*weight/i, goodRxSlug: 'wegovy', pricesCapturedAt: '2026-10-21' },
+  { matches: /zepbound|tirzepatide.*weight/i, goodRxSlug: 'zepbound', pricesCapturedAt: '2026-10-21' },
+  { matches: /saxenda|liraglutide.*weight/i, goodRxSlug: 'saxenda', pricesCapturedAt: '2026-10-21' },
+  { matches: /foundayo|orforglipron/i, goodRxSlug: 'foundayo', pricesCapturedAt: '2026-10-21' },
+  {
+    matches: /^(?!.*(solution|suspension)).*(atomoxetine|strattera)/i,
+    goodRxSlug: 'atomoxetine',
+    goodRxParams: 'label_override=atomoxetine&form=capsule&dosage=40mg&quantity=30',
+    goodRxPrice: { price: 33.76, quantity: '30 capsules, 40mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    matches: /guanfacine.*(extended|\bER\b|24)|intuniv/i,
+    goodRxSlug: 'guanfacine-er',
+    goodRxParams: 'label_override=guanfacine-er&form=tablet&dosage=1mg&quantity=30',
+    goodRxPrice: { price: 19.45, quantity: '30 tablets, 1mg ER' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    // Not the phentermine/topiramate combo (Qsymia), a different product.
+    // Tablets only; capsules (15/30/37.5 mg) are priced differently (Codex review, PR 22).
+    matches: /^(?!.*(topiramate|qsymia|capsule)).*(phentermine|adipex|lomaira)/i,
+    goodRxSlug: 'phentermine',
+    goodRxParams: 'label_override=phentermine&form=tablet&dosage=37.5mg&quantity=30',
+    goodRxPrice: { price: 21.52, quantity: '30 tablets, 37.5mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    // Single-agent ezetimibe only; combos (Vytorin, Nexlizet, Roszet) are different products.
+    matches: /^(?!.*(simvastatin|vytorin|bempedoic|nexlizet|rosuvastatin|roszet|atorvastatin)).*(ezetimibe|zetia)/i,
+    goodRxSlug: 'ezetimibe',
+    goodRxParams: 'label_override=ezetimibe&form=tablet&dosage=10mg&quantity=30',
+    costPlusPath: 'ezetimibe-10mg-tablet',
+    goodRxPrice: { price: 16.0, quantity: '30 tablets, 10mg' },
+    costPlusPrice: { price: 6.38, quantity: '30 tablets, 10mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    // Single-agent atorvastatin only; Caduet (amlodipine/atorvastatin) is a different product.
+    matches: /^(?!.*(amlodipine|caduet|ezetimibe|suspension|atorvaliq)).*(atorvastatin|lipitor)/i,
+    goodRxSlug: 'atorvastatin',
+    goodRxParams: 'label_override=atorvastatin&form=tablet&dosage=40mg&quantity=30',
+    costPlusPath: 'atorvastatin-40mg-tablet',
+    goodRxPrice: { price: 15.24, quantity: '30 tablets, 40mg' },
+    costPlusPrice: { price: 5.67, quantity: '30 tablets, 40mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    // Oral tablets only; nasal, injectable, and sumatriptan/naproxen (Treximet) differ in price.
+    matches: /^(?!.*(naproxen|treximet|nasal|spray|inject|auto|statdose|zembrace|tosymra|onzetra|solution|cartridge|\bpen\b|subcutaneous|\bkit\b|syringe)).*sumatriptan/i,
+    goodRxSlug: 'sumatriptan',
+    goodRxParams: 'label_override=sumatriptan&form=tablet&dosage=50mg&quantity=9',
+    goodRxPrice: { price: 29.85, quantity: '9 tablets, 50mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    // Extended-release methylphenidate (Concerta-type, 18mg); not dexmethylphenidate (Focalin).
+    // Only the captured product: osmotic ER tablets (Concerta and its generic), so a name must say
+    // Concerta, osmotic/OSM/OROS, or 24-hour at Concerta strengths. Plain "ER", the 10/20 mg
+    // diffusion tablets, capsules, sprinkles, LA/CD/SR, liquids, chewables and patches differ
+    // (Codex review, PR 22).
+    matches: /^(?!.*(dexmethyl|capsule|\bcap\b|sprinkle|diffus|\bLA\b|\bCD\b|\bSR\b|suspension|solution|chew|patch|transdermal|daytrana|onyda|quilli|cotempla|aptensio|jornay|adhansia|relexxii|metadate|ritalin)).*(concerta|methylphenidate.*(osmotic|\bOSM\b|OROS|24[- ]?h(ou)?r?\b.*\b(18|27|36|54)\b))/i,
+    goodRxSlug: 'methylphenidate-er',
+    goodRxParams: 'label_override=methylphenidate-er&form=tablet&dosage=18mg&quantity=30',
+    goodRxPrice: { price: 39.49, quantity: '30 tablets, 18mg ER' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    // Immediate-release methylphenidate; must stay below the ER rule above.
+    // Only plain immediate-release tablets; every other methylphenidate form stays unpriced.
+    matches: /^(?!.*(dexmethyl|extended|\bER\b|\bXR\b|\bLA\b|\bCD\b|\bSR\b|osmotic|\bOSM\b|\b24|capsule|suspension|solution|chew|patch|transdermal|daytrana|concerta|metadate|methylin|quilli|cotempla|aptensio|jornay|relexxii|onyda|azstarys|adhansia)).*(methylphenidate|ritalin)/i,
+    goodRxSlug: 'methylphenidate',
+    goodRxParams: 'label_override=methylphenidate&form=tablet&dosage=10mg&quantity=60',
+    goodRxPrice: { price: 25.78, quantity: '60 tablets, 10mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    // Capsules only; the chewable tablet is a separately priced form (Codex review, PR 22).
+    matches: /^(?!.*chew).*(lisdexamfetamine|vyvanse)/i,
+    goodRxSlug: 'lisdexamfetamine',
+    goodRxParams: 'label_override=lisdexamfetamine&form=capsule&dosage=30mg&quantity=30',
+    goodRxPrice: { price: 67.78, quantity: '30 capsules, 30mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    // Immediate-release mixed amphetamine salts; Adderall XR / Mydayis are different products.
+    matches: /^(?!.*(\bXR\b|extended|mydayis|\bER\b|capsule|\bCP24\b|\b24\b|24-hour)).*(amphetamine.?dextroamphetamine|dextroamphetamine.?amphetamine|mixed amphetamine|amphetamine salt|adderall)/i,
+    goodRxSlug: 'amphetamine-dextroamphetamine',
+    goodRxParams: 'label_override=amphetamine-dextroamphetamine&form=tablet&dosage=10mg&quantity=60',
+    goodRxPrice: { price: 32.31, quantity: '60 tablets, 10mg IR' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    // Single-agent amphetamine sulfate IR tablets (Evekeo); not mixed salts (matched above) or ODT/ER.
+    matches: /^(?!.*(dextro|lisdex|mixed|aspartate|\bODT\b|\bXR\b|\bER\b|extended|capsule|suspension|adzenys|dyanavel)).*(amphetamine sulfate|evekeo)/i,
+    goodRxSlug: 'amphetamine-sulfate',
+    goodRxParams: 'label_override=amphetamine-sulfate&form=tablet&dosage=10mg&quantity=60',
+    goodRxPrice: { price: 53.18, quantity: '60 tablets, 10mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    // Single-agent dextroamphetamine IR tablets; not combos, capsules (Spansule), patch, or solution.
+    matches: /^(?!.*(amphetamine[- ]?dextro|dextroamphetamine[- ]?amph|mixed|lisdex|capsule|spansule|\bER\b|extended|patch|xelstrym|solution|procentra)).*(dextroamphetamine|zenzedi)/i,
+    goodRxSlug: 'dextroamphetamine',
+    goodRxParams: 'label_override=dextroamphetamine&form=tablet&dosage=10mg&quantity=60',
+    goodRxPrice: { price: 43.23, quantity: '60 tablets, 10mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    // 35 mg IR tablets only; the 105 mg extended-release capsule is a different product.
+    matches: /^(?!.*(capsule|extended|\bER\b|105)).*(phendimetrazine|bontril)/i,
+    goodRxSlug: 'phendimetrazine',
+    goodRxParams: 'label_override=phendimetrazine&form=tablet&dosage=35mg&quantity=90',
+    goodRxPrice: { price: 32.51, quantity: '90 tablets, 35mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  {
+    // Prescription orlistat 120 mg (Xenical); OTC alli 60 mg is a different product.
+    matches: /^(?!.*(alli\b|60 ?mg)).*(orlistat|xenical)/i,
+    goodRxSlug: 'xenical',
+    goodRxPrice: { price: 664.88, quantity: '90 capsules, 120mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  { matches: /atogepant|qulipta/i, goodRxSlug: 'qulipta', pricesCapturedAt: '2026-10-21' },
+  { matches: /alirocumab|praluent/i, goodRxSlug: 'praluent', pricesCapturedAt: '2026-10-21' },
+  {
+    // Brand only (no generic exists); GoodRx standard cash price.
+    matches: /ubrogepant|ubrelvy/i,
+    goodRxSlug: 'ubrelvy',
+    goodRxParams: 'label_override=ubrelvy&form=tablet&dosage=50mg&quantity=16',
+    goodRxPrice: { price: 1818, quantity: '16 tablets, 50mg' },
+    pricesCapturedAt: '2026-10-21',
+  },
+  // Brand injectables / ODT: GoodRx shows only manufacturer copay-card offers ("as low as $25"),
+  // not a cash price, so link-only rather than a misleading number.
+  { matches: /rimegepant|nurtec/i, goodRxSlug: 'nurtec', pricesCapturedAt: '2026-10-21' },
+  { matches: /evolocumab|repatha/i, goodRxSlug: 'repatha', pricesCapturedAt: '2026-10-21' },
+  { matches: /erenumab|aimovig/i, goodRxSlug: 'aimovig', pricesCapturedAt: '2026-10-21' },
+  { matches: /fremanezumab|ajovy/i, goodRxSlug: 'ajovy', pricesCapturedAt: '2026-10-21' },
+  { matches: /galcanezumab|emgality/i, goodRxSlug: 'emgality', pricesCapturedAt: '2026-10-21' },
   {
     matches: /\balbuterol sulfate solution|albuterol.*nebul/i,
     goodRxSlug: 'albuterol',
@@ -1821,25 +2006,56 @@ function cashLinkRule(name: string): CashLinkRule | undefined {
   return CASH_LINK_RULES.find((rule) => rule.matches.test(name))
 }
 
+// When the rule's captured product is a different dosage form (see formConflict below), its deep
+// links point at that other product too: GoodRx drops the form/strength params and lands on the
+// drug's own page (which has a form picker), and the product-specific Cost Plus link is withheld.
 export function goodRxUrl(name: string): string {
   const rule = cashLinkRule(name)
   const base = `https://www.goodrx.com/${rule?.goodRxSlug ?? fallbackSlug(name)}`
-  return rule?.goodRxParams ? `${base}?${rule.goodRxParams}` : base
+  return rule?.goodRxParams && !priceSuppressedByForm(name) ? `${base}?${rule.goodRxParams}` : base
 }
 
 export function costPlusUrl(name: string): string | null {
   const path = cashLinkRule(name)?.costPlusPath
-  return path ? `https://www.costplusdrugs.com/medications/${path}/` : null
+  return path && !priceSuppressedByForm(name) ? `https://www.costplusdrugs.com/medications/${path}/` : null
 }
 
 /** Snapshot GoodRx price for this drug, or null if no exact strength/form match was captured. */
+// Rules match by molecule name, but a price is captured for ONE dosage form. A covered name that
+// says it is a different form (oral solution vs tablets, vaginal cream vs tablets, Respimat vs
+// HandiHaler capsules, injection vs tablets) is a different product and must not show that price;
+// it keeps the link. Found 2026-10-21 by a dataset-wide test after ~80 names borrowed a tablet or
+// capsule quote. A name that also mentions the captured form (e.g. "10/20 mg tab, oral solution")
+// is not treated as a conflict.
+const TABLET = /\b(tablets?|tabs?)\b/i
+const CAPSULE = /\b(capsules?|caps?)\b/i
+const NOT_ORAL_SOLID =
+  /\b(solution|suspension|concentrate|elixir|syrup|liquid|patch|transdermal|injection|injectable|intramuscular|subcutaneous|cartridge|pen|syringe|vial|spray|nasal|cream|gel|ointment|ring|respimat|aerosol|chewable|odt|orally disintegrating|cp24)\b/i
+
+function formConflict(name: string, point: PricePoint): boolean {
+  const q = point.quantity
+  if (TABLET.test(q)) return !TABLET.test(name) && (NOT_ORAL_SOLID.test(name) || CAPSULE.test(name))
+  if (CAPSULE.test(q)) return !CAPSULE.test(name) && (NOT_ORAL_SOLID.test(name) || TABLET.test(name))
+  return false
+}
+
+/** True when a rule matches this name and has a price, but for a different dosage form. */
+export function priceSuppressedByForm(name: string): boolean {
+  const r = cashLinkRule(name)
+  return [r?.goodRxPrice, r?.costPlusPrice].some((p) => p !== undefined && formConflict(name, p))
+}
+
+function priceFor(name: string, point: PricePoint | undefined): PricePoint | null {
+  return point && !formConflict(name, point) ? point : null
+}
+
 export function goodRxPrice(name: string): PricePoint | null {
-  return cashLinkRule(name)?.goodRxPrice ?? null
+  return priceFor(name, cashLinkRule(name)?.goodRxPrice)
 }
 
 /** Snapshot Cost Plus Drugs price for this drug, or null if unavailable/out of stock at capture time. */
 export function costPlusPrice(name: string): PricePoint | null {
-  return cashLinkRule(name)?.costPlusPrice ?? null
+  return priceFor(name, cashLinkRule(name)?.costPlusPrice)
 }
 
 /** ISO date the prices above were captured, or null if this drug has no explicit cash-link rule. */

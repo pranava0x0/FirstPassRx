@@ -1,0 +1,582 @@
+{
+  "id": "dc-nsaids",
+  "label": "DC · NSAIDs",
+  "stateCode": "DC",
+  "region": "District of Columbia",
+  "topicId": "nsaids",
+  "topic": "NSAIDs",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-10-21",
+  "capturedAt": "2026-10-21",
+  "payers": [
+    {
+      "id": "dc-medicaid",
+      "name": "DC Medicaid",
+      "shortName": "DC Medicaid",
+      "aka": "DC Medicaid fee-for-service and DC Healthcare Alliance (DHCF); DC Healthy Families MCOs run their own formularies",
+      "pbm": "Prime Therapeutics",
+      "productName": "DC Medicaid / DC Healthcare Alliance Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "District of Columbia Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "formularyUrl": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "sourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "amerihealth-caritas-dc",
+      "name": "AmeriHealth Caritas District of Columbia",
+      "shortName": "AmeriHealth Caritas DC",
+      "aka": "DC Healthy Families Medicaid MCO",
+      "pbm": "PerformRx",
+      "productName": "AmeriHealth Caritas DC drug formulary",
+      "marketSegment": "medicaid-mco",
+      "formularyId": "Drug Formulary (June 1, 2026 edition)",
+      "formularyUrl": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "sourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "carefirst",
+      "name": "CareFirst BlueCross BlueShield",
+      "shortName": "CareFirst",
+      "pbm": "CVS Caremark",
+      "formularyUrl": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "paPolicyUrl": "https://member.carefirst.com/carefirst-resources/pdf/drugs-requiring-prior-authorization-formulary-2.pdf",
+      "productName": "CareFirst individual and family Exchange Formulary 2",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "CareFirst Exchange Formulary 2026",
+      "sourceIds": [
+        "carefirst-nsaids-source-2026-07-07"
+      ]
+    },
+    {
+      "id": "kpmidatlantic",
+      "name": "Kaiser Permanente Mid-Atlantic",
+      "shortName": "Kaiser MAS",
+      "pbm": "Kaiser Permanente (in-house)",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "productName": "Kaiser Mid-Atlantic Marketplace formulary",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "District of Columbia, Maryland, and Virginia Marketplace Formulary",
+      "sourceIds": [
+        "kpmidatlantic-nsaids-source-2026-07-07"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "nsaid-oral",
+      "name": "Oral NSAIDs",
+      "shortName": "NSAID",
+      "plainName": "Anti-inflammatory pain reliever",
+      "description": "Oral nonsteroidal anti-inflammatory drugs (naproxen, ibuprofen, meloxicam, celecoxib, diclofenac, etc.) — first-line therapy for musculoskeletal pain and inflammation.",
+      "plainDescription": "A pill that reduces pain, swelling, and inflammation — commonly used for joint and muscle pain.",
+      "indication": "Musculoskeletal pain & inflammation (e.g. osteoarthritis, back pain)",
+      "sourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "nsaid-oral",
+      "preferredAgent": {
+        "inn": "Meloxicam",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "tablet, standard label strength (not printed on PDL)",
+        "sig": "Standard label dosing (PDL does not print a sig)",
+        "sigShort": "Per label",
+        "plainSig": "One pill by mouth as your prescriber directs, with food."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (no PA)",
+      "noCoveredAgent": false,
+      "alternatives": [
+        {
+          "drug": "Naproxen tablet",
+          "note": "Preferred (no PA) (page 3)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Celecoxib",
+          "note": "Preferred (no PA) (page 3)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ibuprofen (suspension and tablet)",
+          "note": "Preferred (no PA) (page 3)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Indomethacin ER and IR capsule",
+          "note": "Preferred (no PA) (page 3)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Celebrex (celecoxib brand)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 3)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "ibuprofen 300 mg tablet",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 3)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "ibuprofen-famotidine",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 3)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "meloxicam capsule",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 3)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "ketorolac",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 3)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "naproxen CR",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 3)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "naproxen-esomeprazole",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 3)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "etodolac IR and SR",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 3)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "diclofenac potassium capsule, tablet and solution",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 3)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "diclofenac sodium SR",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 3)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "nabumetone (Relafen DS)",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 3)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "oxaprozin",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 3)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "piroxicam",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 3)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "sulindac",
+          "outcome": "pa",
+          "reason": "PA required (not on the preferred list) (page 3)",
+          "sourceIds": [
+            "dc-medicaid-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL page 3 (Analgesics: NSAIDs, Oral and Topical). Preferred pick is generic meloxicam tablet (no PA). The PDL lists 'ibuprofen (susp & tab)' as preferred and also lists an 'ibuprofen 300 mg tab' under PA on the same page; the conflict is flagged here and ibuprofen is not used as the pick. Topical diclofenac gel rows are not oral and are not listed. Strength and sig are not printed.",
+      "sourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "nsaid-oral",
+      "preferredAgent": {
+        "inn": "Meloxicam",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Not printed on formulary (standard label strengths 7.5 mg and 15 mg)",
+        "sig": "Take 1 tablet by mouth once daily with food (standard label dosing)",
+        "sigShort": "1 tab QD w/ food",
+        "plainSig": "One pill, once a day, with food."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "F (formulary); no PA or QL printed",
+      "alternatives": [
+        {
+          "drug": "Naproxen oral tablet; naproxen DR 500 mg; naproxen sodium 275 and 550 mg",
+          "note": "F; no PA printed (PDF p.79, p.161)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ibuprofen oral tablet 400, 600, 800 mg",
+          "note": "F; no PA printed (PDF p.79)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Celecoxib oral capsule 50, 100, 200, 400 mg",
+          "note": "F; QL 60 EA (50-200 mg) or 30 EA (400 mg) per 30 days (PDF p.76)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Diclofenac potassium 50 mg; diclofenac sodium DR",
+          "note": "F; no PA printed (PDF p.78-79)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p.78-79 'Nonsteroidal Anti-Inflamm. Agents, Misc' and p.84-85 'Reversible Cox-1/Cox-2 Inhibitors'. Meloxicam listed F with no PA or QL. Hydrocodone-ibuprofen (NF PA) is an opioid combination and excluded from this class. Ketorolac oral, etodolac, nabumetone not printed; absence not treated as exclusion. Judgment: meloxicam chosen as a common, no-PA oral NSAID; the document does not rank NSAIDs.",
+      "noCoveredAgent": false,
+      "sourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "nsaid-oral",
+      "preferredAgent": {
+        "inn": "naproxen",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "500 mg tablet",
+        "sig": "Take 1 tablet (500 mg) by mouth twice daily with food",
+        "sigShort": "naproxen 500mg tab, 1 PO BID w/ food",
+        "plainSig": "Take one 500 mg tablet twice a day with food, for pain or inflammation"
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "ibuprofen (tab 400/600/800 mg, susp 100mg/5ml)",
+          "note": "Tier 1, no PA, no notes column entry -- fully covered generic alternative",
+          "sourceIds": [
+            "carefirst-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "meloxicam (tab 7.5/15 mg)",
+          "note": "Tier 1, no PA, no notes column entry",
+          "sourceIds": [
+            "carefirst-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "celecoxib (cap 50/100/200 mg)",
+          "note": "Tier 1, no PA, no notes column entry -- listed under COX-2 INHIBITORS subheading, same tier/restriction profile as traditional NSAIDs",
+          "sourceIds": [
+            "carefirst-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "diclofenac potassium (tab 50 mg) and diclofenac sodium (delayed-release tab 25/50/75 mg, ER tab 100 mg)",
+          "note": "Tier 1, no PA, no notes column entry",
+          "sourceIds": [
+            "carefirst-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "diclofenac sodium gel 1% / voltaren arthritis pain gel",
+          "note": "Tier 1, OTC; QL (300g every 30 days) -- topical NSAID, quantity-limited but not restricted otherwise",
+          "sourceIds": [
+            "carefirst-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "etodolac (cap 200/300 mg, tab 400/500 mg, ER tab 400/500/600 mg)",
+          "note": "Tier 1, no PA, no notes column entry",
+          "sourceIds": [
+            "carefirst-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "nabumetone (tab 500/750 mg)",
+          "note": "Tier 1, no PA, no notes column entry",
+          "sourceIds": [
+            "carefirst-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "flurbiprofen, meclofenamate sodium, mefenamic acid, oxaprozin, piroxicam, sulindac",
+          "note": "Tier 1, no PA -- additional covered generic oral NSAID options, no notes column entries",
+          "sourceIds": [
+            "carefirst-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "diclofenac w/ misoprostol (delayed-release tab 50-0.2mg, 75-0.2mg)",
+          "note": "Tier 1, no PA -- combination product with GI-protective misoprostol",
+          "sourceIds": [
+            "carefirst-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "ketorolac tromethamine tab 10 mg",
+          "note": "Tier 1, QL (20 tabs every 30 days) -- short-course oral NSAID for acute pain, quantity-limited",
+          "sourceIds": [
+            "carefirst-nsaids-source-2026-07-07"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "tier": "Tier 1 - Generic Drugs ($)",
+      "verification": "verified",
+      "verificationNote": "Fetched member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf via curl and parsed locally with pypdf (plain WebFetch returned only unparsed binary PDF stream data). Page 1 confirms 'CareFirst Exchange Formulary 2026 ... Last updated 06/01/26'. Pages 1-2 (in-document numbering 1-2), under ANALGESICS > COX-2 INHIBITORS and NSAIDS, list verbatim: celecoxib 50/100/200mg (Tier 1, blank), diclofenac potassium 50mg (Tier 1, blank), diclofenac sodium gel 1% (Tier 1, 'QL (300g every 30 days), OTC'), diclofenac sodium delayed-release/ER tablets (Tier 1, blank), etodolac all forms (Tier 1, blank), flurbiprofen (Tier 1, blank), ibuprofen suspension/tablets (Tier 1, blank), ketorolac tromethamine tab 10mg (Tier 1, 'QL (20 tabs every 30 days)'), meclofenamate sodium, mefenamic acid, meloxicam 7.5/15mg (Tier 1, blank), nabumetone (Tier 1, blank), naproxen 250/375/500mg (Tier 1, blank), oxaprozin, piroxicam, sulindac (all Tier 1, blank), voltaren arthritis pain gel (Tier 1, 'QL (300g every 30 days), OTC'), and the NSAIDS, COMBINATIONS subsection listing diclofenac w/ misoprostol delayed-release 50-0.2mg and 75-0.2mg (Tier 1, blank). Every single oral NSAID in the formulary is Tier 1 with no PA or step-therapy restriction; only ketorolac (a short-course-only NSAID due to GI/renal risk) and the topical diclofenac gel carry quantity limits, which are standard clinical safety guardrails rather than access barriers. Selected naproxen 500mg as the preferred agent per common first-line convention for musculoskeletal pain; the entire class being Tier 1 no-PA means there is no meaningfully differentiated 'preferred' vs 'alternative' status -- all are equally accessible, captured as alternatives. Confirmed by full-document case-insensitive search that no brand NSAID (Celebrex is absent as a brand name -- generic celecoxib is listed only; Mobic, Anaprox, Naprosyn, Voltaren Gel is present as a specific branded OTC product line item alongside generic diclofenac gel) creates any PA/ST barrier; there is no drug in the requested oral-NSAID list that is excluded, so paRequired is empty. No class-wide step-therapy or BOGL language found near this section. [Reused 2026-10-21 for DC: same document as the MD guide (the CareFirst exchange formulary and the Kaiser Mid-Atlantic marketplace formulary cover DC, MD and VA).]",
+      "sourceIds": [
+        "carefirst-nsaids-source-2026-07-07"
+      ],
+      "coverageSourceIds": [
+        "carefirst-nsaids-source-2026-07-07"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-nsaids-source-2026-07-07"
+      ],
+      "lastReviewed": "2026-07-07",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "nsaid-oral",
+      "preferredAgent": {
+        "inn": "naproxen",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "500 mg tablet",
+        "sig": "1 tab PO BID PRN pain",
+        "sigShort": "1 tab PO BID PRN",
+        "plainSig": "Take 1 tablet by mouth twice a day as needed for pain"
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "ibuprofen",
+          "note": "Tier 1/3, covered generic alternative",
+          "sourceIds": [
+            "kpmidatlantic-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "meloxicam",
+          "note": "Tier 1/3, covered generic alternative",
+          "sourceIds": [
+            "kpmidatlantic-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "diclofenac sodium",
+          "note": "Tier 1/3, covered generic alternative",
+          "sourceIds": [
+            "kpmidatlantic-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "diclofenac potassium",
+          "note": "Tier 3, covered generic alternative",
+          "sourceIds": [
+            "kpmidatlantic-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "indomethacin",
+          "note": "Tier 1/3, covered generic alternative",
+          "sourceIds": [
+            "kpmidatlantic-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "nabumetone",
+          "note": "Tier 1, covered generic alternative",
+          "sourceIds": [
+            "kpmidatlantic-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "etodolac",
+          "note": "Tier 1/3, covered generic alternative",
+          "sourceIds": [
+            "kpmidatlantic-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "sulindac",
+          "note": "Tier 1, covered generic alternative",
+          "sourceIds": [
+            "kpmidatlantic-nsaids-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "celecoxib",
+          "note": "Tier 3; still covered, no PA flag -- higher cost-share COX-2 selective agent.",
+          "sourceIds": [
+            "kpmidatlantic-nsaids-source-2026-07-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "DICLOFENAC (brand, all-caps entry)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 brand-name entry distinct from the covered generic diclofenac sodium/potassium forms",
+          "sourceIds": [
+            "kpmidatlantic-nsaids-source-2026-07-07"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "tier": "Tier 1 - most preferred generic",
+      "verification": "verified",
+      "verificationNote": "Read from page 19 ('ANALGESICS AND ANTIPYRETICS') of the KP Mid-Atlantic Marketplace Formulary, last update 04/07/2026: 'naproxen 1' listed at Tier 1 with no PA/ST flag. Same page: 'ibuprofen 1, 3', 'meloxicam 1, 3, MSD MB', 'diclofenac sodium 1, 3', 'diclofenac potassium 3', 'indomethacin 1, 3', 'nabumetone 1', 'etodolac 1, 3', 'sulindac 1' all covered with no PA flags. 'celecoxib 3' is listed at Tier 3 alone (no lower-tier generic option exists for this specific COX-2 molecule), and a separate all-caps 'DICLOFENAC 3' brand entry appears distinct from the covered generic diclofenac forms — both classified here as non-preferred rather than clean top-tier coverage given their isolated Tier-3-only placement, though the source shows no explicit PA/ST flag on either. [Reused 2026-10-21 for DC: same document as the MD guide (the CareFirst exchange formulary and the Kaiser Mid-Atlantic marketplace formulary cover DC, MD and VA).]",
+      "sourceIds": [
+        "kpmidatlantic-nsaids-source-2026-07-07"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-nsaids-source-2026-07-07"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-nsaids-source-2026-07-07"
+      ],
+      "lastReviewed": "2026-07-07",
+      "payerId": "kpmidatlantic"
+    }
+  ],
+  "references": [
+    {
+      "id": "dc-medicaid-newtopics-2026-10",
+      "label": "District of Columbia Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "publisher": "District of Columbia Department of Health Care Finance (DHCF)",
+      "type": "gov",
+      "url": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "effectiveDate": "2026-09-18",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "amerihealth-caritas-dc-newtopics-2026-10",
+      "label": "Drug Formulary (June 1, 2026 edition)",
+      "publisher": "AmeriHealth Caritas District of Columbia",
+      "type": "payer",
+      "url": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "effectiveDate": "2026-06-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "carefirst-nsaids-source-2026-07-07",
+      "label": "CareFirst Exchange Formulary 2026",
+      "publisher": "CareFirst BlueCross BlueShield",
+      "type": "payer",
+      "url": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "effectiveDate": "2026-06-01",
+      "accessed": "2026-07-07"
+    },
+    {
+      "id": "kpmidatlantic-nsaids-source-2026-07-07",
+      "label": "District of Columbia, Maryland, and Virginia Marketplace Formulary",
+      "publisher": "Kaiser Permanente Mid-Atlantic States",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "effectiveDate": "2026-04-07",
+      "accessed": "2026-07-07"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

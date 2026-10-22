@@ -1,0 +1,363 @@
+{
+  "id": "al-weight",
+  "label": "AL · Weight loss",
+  "stateCode": "AL",
+  "region": "Alabama",
+  "topicId": "weight",
+  "topic": "Weight loss",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-21",
+  "capturedAt": "2026-10-21",
+  "payers": [
+    {
+      "id": "al-medicaid",
+      "name": "Alabama Medicaid Agency (Fee-for-Service, statewide -- no MCO contracts)",
+      "shortName": "AL Medicaid FFS",
+      "pbm": "Administered directly by the Alabama Medicaid Agency (no contracted PBM identified)",
+      "formularyUrl": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_7-1-26.pdf",
+      "paSubmission": {
+        "fax": "(800) 748-0116",
+        "phone": "(800) 748-0130",
+        "note": "Fee-for-service PA is processed by Acentra Health: fax or mail Form 369 to P.O. Box 3570, Auburn, AL 36831-3210.",
+        "sourceIds": [
+          "al-medicaid-pa-intake-2026-10"
+        ]
+      },
+      "sourceIds": [
+        "al-medicaid-newtopics-2026-10-ref"
+      ],
+      "productName": "Alabama Medicaid Agency Preferred Drug List by Therapeutic Category",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Alabama Medicaid Agency Preferred Drug List (PDL) Reference Tool"
+    },
+    {
+      "id": "bcbs-al-commercial",
+      "name": "Blue Cross and Blue Shield of Alabama (Commercial)",
+      "shortName": "BCBS Alabama",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+      "sourceIds": [
+        "bcbs-al-commercial-newtopics-2026-10"
+      ],
+      "productName": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx1.0 Prescription Drug List",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (September 2026)"
+    },
+    {
+      "id": "bcbs-al-medicare",
+      "name": "BCBS Alabama Blue Advantage (Medicare Advantage / Part D)",
+      "shortName": "Blue Advantage AL",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+      "sourceIds": [
+        "bcbs-al-medicare-newtopics-2026-10"
+      ],
+      "productName": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "aom-glp1",
+      "name": "GLP-1-based anti-obesity medications",
+      "shortName": "GLP-1 AOM",
+      "plainName": "GLP-1 for weight loss",
+      "description": "Injectable or oral GLP-1/GIP agents labeled for chronic weight management (NOT their diabetes-labeled versions): semaglutide (Wegovy, including Wegovy tablets), tirzepatide (Zepbound), liraglutide (Saxenda). Many plans exclude weight-loss drugs entirely; an exclusion is a valid finding (outcome nonformulary).",
+      "plainDescription": "A weekly shot (or daily pill) for weight loss, like Wegovy or Zepbound.",
+      "indication": "Chronic weight management (obesity)",
+      "sourceIds": [
+        "al-medicaid-newtopics-2026-10-ref"
+      ]
+    },
+    {
+      "id": "aom-oral",
+      "name": "Oral anti-obesity medications",
+      "shortName": "ORAL AOM",
+      "plainName": "Weight-loss pill",
+      "description": "Oral anti-obesity agents: phentermine (Adipex-P, Lomaira), phentermine/topiramate ER (Qsymia), naltrexone/bupropion ER (Contrave), orlistat (Xenical). Many plans exclude weight-loss drugs; an exclusion is a valid finding (outcome nonformulary).",
+      "plainDescription": "A pill for weight loss, like phentermine or Contrave.",
+      "indication": "Chronic weight management (obesity)",
+      "sourceIds": [
+        "al-medicaid-newtopics-2026-10-ref"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "aom-glp1",
+      "preferredAgent": {
+        "inn": "Tirzepatide (weight management)",
+        "brand": "Zepbound",
+        "genericAvailable": false,
+        "strength": "Standard label dosing (strength not stated in PDL)",
+        "sig": "As directed per FDA label (dose not stated in PDL)",
+        "sigShort": "Per label",
+        "plainSig": "Taken by injection as your doctor directs."
+      },
+      "preferredRestriction": "Not covered for weight reduction without obstructive sleep apnea (reference tool p. 15, footnote ^). Zepbound is preferred with clinical criteria (CC) for its OSA with obesity indication only. No chronic weight-management indication is covered.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not covered for weight reduction (Zepbound preferred with clinical criteria for OSA with obesity only)",
+      "noCoveredAgent": true,
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Wegovy (semaglutide brand)",
+          "outcome": "nonformulary",
+          "reason": "Non-covered for weight reduction (page 15, footnote #); covered via PA only for cardiovascular and MASH indications",
+          "sourceIds": [
+            "al-medicaid-newtopics-2026-10-ref"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read ref PDL p.15 (07/01/2026) footnotes ^ (Zepbound) and # (Wegovy), and thera PDL p.1 and p.2 (04/01/2026). The document states weight-reduction coverage is excluded for Wegovy and Zepbound, so this is a documented exclusion, not an inference. Wegovy tablets, Saxenda (liraglutide weight) and generic semaglutide are not listed. Diabetes-labeled Ozempic, Mounjaro, Rybelsus, Victoza and Trulicity are preferred with clinical criteria for diabetes and are NOT counted as weight-loss coverage. Marked partial because Saxenda and Wegovy tablets are absent from the document. Confirm with plan before relying on this cell. [Sonnet check 2026-10-21: preferredAgent.inn set to the weight-management label; PA-required wording removed per CC legend finding (the earlier claim that CC agents also need PA is not stated in the PDL legend ('cc: preferred with clinical criteria in place'); the CC agents sit under the 'NO PA REQUIRED' header, so the PA-required wording was removed and the restriction reworded to criteria-in-place. Thera PDL text cited earlier was not re-checked (not in local sources).)]",
+      "sourceIds": [
+        "al-medicaid-newtopics-2026-10-ref",
+        "al-medicaid-newtopics-2026-10-thera"
+      ],
+      "coverageSourceIds": [
+        "al-medicaid-newtopics-2026-10-ref",
+        "al-medicaid-newtopics-2026-10-thera"
+      ],
+      "restrictionSourceIds": [
+        "al-medicaid-newtopics-2026-10-ref",
+        "al-medicaid-newtopics-2026-10-thera"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "al-medicaid"
+    },
+    {
+      "classId": "aom-oral",
+      "preferredAgent": {
+        "inn": "Phentermine",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Standard label dosing (strength not stated in PDL)",
+        "sig": "As directed per FDA label (dose not stated in PDL)",
+        "sigShort": "Per label",
+        "plainSig": "Taken by mouth as your doctor directs."
+      },
+      "preferredRestriction": "No oral weight-loss agent appears in the AL PDL documents reviewed (phentermine, phentermine/topiramate, naltrexone/bupropion, orlistat not listed). Coverage not confirmed; confirm with DMAS or plan.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not listed (coverage not confirmed)",
+      "noCoveredAgent": true,
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched ref PDL (07/01/2026) and thera PDL (04/01/2026) full text: none of phentermine, Adipex-P, Lomaira, Qsymia, Contrave, naltrexone or orlistat appears. The documents do not state that oral weight-loss drugs are excluded, and the PDL says it is not a complete list, so absence is recorded as not confirmed rather than nonformulary. Phentermine is used as the class reference only; it is not presented as covered.",
+      "sourceIds": [
+        "al-medicaid-newtopics-2026-10-ref",
+        "al-medicaid-newtopics-2026-10-thera"
+      ],
+      "coverageSourceIds": [
+        "al-medicaid-newtopics-2026-10-ref",
+        "al-medicaid-newtopics-2026-10-thera"
+      ],
+      "restrictionSourceIds": [
+        "al-medicaid-newtopics-2026-10-ref",
+        "al-medicaid-newtopics-2026-10-thera"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "al-medicaid"
+    },
+    {
+      "classId": "aom-glp1",
+      "noCoveredAgent": true,
+      "preferredAgent": {
+        "inn": "Semaglutide (weight management)",
+        "brand": "Wegovy",
+        "genericAvailable": false,
+        "strength": "2.4 mg (reference label strength; not on this plan's list)",
+        "sig": "Standard label dosing: 2.4 mg subcutaneously once weekly (not printed on the list)",
+        "sigShort": "2.4 mg SQ weekly",
+        "plainSig": "A weekly shot for weight loss."
+      },
+      "preferredRestriction": "No weight-loss GLP-1 (Wegovy, Zepbound, Saxenda) appears on this plan's September 2026 list; coverage likely excluded (confirm with plan)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not listed",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read the whole PDF text layer. No weight-management GLP-1 appears: Wegovy, Zepbound and Saxenda are absent. Diabetes-labeled GLP-1s are listed as Tier 2 with PA (Ozempic, Rybelsus, Mounjaro on PDF p. 38-39; Trulicity p. 39; Xultophy p. 40); they are not the weight-management indication and are excluded from this class. Web search for a BCBS Alabama 2026 weight-loss exclusion found only secondary sources (none confirmed Alabama), so none is cited. Sig and strength are standard label dosing.",
+      "sourceIds": [
+        "bcbs-al-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "bcbs-al-commercial"
+    },
+    {
+      "classId": "aom-oral",
+      "noCoveredAgent": true,
+      "preferredAgent": {
+        "inn": "Phentermine",
+        "brand": "Adipex-P",
+        "genericAvailable": true,
+        "strength": "37.5 mg (reference label strength; not on this plan's list)",
+        "sig": "Standard label dosing: 37.5 mg by mouth once daily before breakfast (not printed on the list)",
+        "sigShort": "37.5 mg QD",
+        "plainSig": "One pill, once a day, for weight loss."
+      },
+      "preferredRestriction": "No oral weight-loss agent (phentermine, Qsymia, Contrave, orlistat) appears on this plan's September 2026 list; coverage likely excluded (confirm with plan)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not listed",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read the whole PDF text layer. Phentermine, phentermine-topiramate (Qsymia), naltrexone-bupropion (Contrave) and orlistat are absent. The only anti-obesity heading (PDF p. 84, ADHD/anti-narcolepsy/anti-obesity/anorexiants) lists no anti-obesity drugs under it. Sig and strength are standard label dosing. Confirm with plan.",
+      "sourceIds": [
+        "bcbs-al-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "bcbs-al-commercial"
+    },
+    {
+      "classId": "aom-glp1",
+      "preferredAgent": {
+        "inn": "Semaglutide (weight management)",
+        "brand": null,
+        "genericAvailable": false,
+        "strength": "2.4 mg weekly (standard label dosing; not printed in document)",
+        "sig": "Inject 2.4 mg subcutaneously once weekly (standard label dosing; not printed in document)",
+        "sigShort": "2.4 mg weekly",
+        "plainSig": "One weekly shot for weight loss."
+      },
+      "preferredRestriction": "No weight-loss GLP-1 (Wegovy, Zepbound, Saxenda) appears on this plan's 2026 list (PDF pp. 47-49). Medicare Part D generally excludes weight-loss drugs; this document does not say so. Confirm with the plan.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not listed in document",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched PDF text for Wegovy, Zepbound, Saxenda, semaglutide, liraglutide, tirzepatide, and the generic molecules. Only diabetes-labeled Mounjaro (tirzepatide, PDF p. 47), Ozempic and Rybelsus (semaglutide, PDF p. 49) appear, all Tier 3 with PA and QL. None is labeled for chronic weight management, so none is listed as a covered weight-loss agent. The document does not state it is the complete list and tells members to ask Member Services about drugs not included, so this is recorded as noCoveredAgent with partial verification, not as an exclusion. The document does not state a Part D weight-loss exclusion.",
+      "sourceIds": [
+        "bcbs-al-medicare-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-medicare-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-medicare-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "noCoveredAgent": true,
+      "payerId": "bcbs-al-medicare"
+    },
+    {
+      "classId": "aom-oral",
+      "preferredAgent": {
+        "inn": "Phentermine (weight management)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "37.5 mg tablet (standard label dosing; not printed in document)",
+        "sig": "1 tablet by mouth once daily before breakfast (standard label dosing; not printed in document)",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day, for weight loss."
+      },
+      "preferredRestriction": "No oral weight-loss drug (phentermine, Qsymia, Contrave, orlistat) appears on this plan's 2026 list. Medicare Part D generally excludes weight-loss drugs; this document does not say so. Confirm with the plan.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not listed in document",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched PDF text for phentermine, Adipex-P, Lomaira, Qsymia, Contrave, orlistat, Xenical. None appears. Naltrexone 50 mg tablet (PDF p. 17) and topiramate tablets/capsules (PDF p. 24) are on the list but are not weight-management products and were not used. The document does not state it is the complete list, so this is recorded as noCoveredAgent with partial verification, not as an exclusion. The document does not state a Part D weight-loss exclusion.",
+      "sourceIds": [
+        "bcbs-al-medicare-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-medicare-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-medicare-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "noCoveredAgent": true,
+      "payerId": "bcbs-al-medicare"
+    }
+  ],
+  "references": [
+    {
+      "id": "al-medicaid-newtopics-2026-10-ref",
+      "label": "Alabama Medicaid Agency Preferred Drug List (PDL) Reference Tool",
+      "publisher": "Alabama Medicaid Agency",
+      "type": "gov",
+      "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_7-1-26.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "al-medicaid-newtopics-2026-10-thera",
+      "label": "Alabama Medicaid Agency Preferred Drug List by Therapeutic Category",
+      "publisher": "Alabama Medicaid Agency",
+      "type": "gov",
+      "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Thera_3-16-26.pdf",
+      "effectiveDate": "2026-04-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "bcbs-al-commercial-newtopics-2026-10",
+      "label": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (September 2026)",
+      "publisher": "Blue Cross and Blue Shield of Alabama (PBM: Prime Therapeutics)",
+      "type": "payer",
+      "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+      "effectiveDate": "2026-09",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "bcbs-al-medicare-newtopics-2026-10",
+      "label": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)",
+      "publisher": "Blue Cross and Blue Shield of Alabama",
+      "type": "payer",
+      "url": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+      "effectiveDate": "2026-01-20",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "al-medicaid-pa-intake-2026-10",
+      "label": "Alabama Medicaid Pharmacy Prior Authorization Request Form (Form 369)",
+      "publisher": "Alabama Medicaid Agency",
+      "type": "gov",
+      "url": "https://medicaid.alabama.gov/documents/9.0_Resources/9.4_Forms_Library/9.4.14_PA_Forms/9.4.14_PH_PA_Form_369_Request_10-1-24.pdf",
+      "accessed": "2026-10-21",
+      "effectiveDate": "2024-10-01"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

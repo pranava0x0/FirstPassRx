@@ -23,6 +23,16 @@
       "productName": "NYRx — NY Medicaid Pharmacy Program (Fee-for-Service, statewide)",
       "marketSegment": "medicaid-ffs",
       "formularyId": "NYRx PDL, revised 2026-06-04",
+      "paSubmission": {
+        "fax": "(800) 268-2990",
+        "phone": "(877) 309-9493",
+        "portal": "https://paxpress.nypa.hidinc.com",
+        "epa": "CoverMyMeds",
+        "note": "NYRx clinical call center, 24/7, phone or fax (with the matching PA form). Send one request only. eMedNY (1-800-343-9000) handles eligibility and claims, not PA.",
+        "sourceIds": [
+          "ny-medicaid-pa-intake-2026-10"
+        ]
+      },
       "sourceIds": [
         "ny-medicaid-osteoporosis-source-2026-07"
       ]
@@ -49,6 +59,13 @@
       "productName": "UnitedHealthcare 2026 Commercial Prescription Drug List (CT/NJ/NY footprint)",
       "marketSegment": "commercial-employer",
       "formularyId": "2026 Prescription Drug List, effective 2026-01-01",
+      "paSubmission": {
+        "phone": "1-800-711-4555 (Optum Rx prior authorization team)",
+        "portal": "optumrx.com > Healthcare Professionals > Prior Authorizations",
+        "sourceIds": [
+          "ny-uhc-commercial-formulary-pa-intake-2026"
+        ]
+      },
       "sourceIds": [
         "ny-uhc-commercial-osteoporosis-source-2026-07"
       ]
@@ -187,6 +204,31 @@
       "url": "https://fm.formularynavigator.com/FBO/251/Excellus_Medicare_5T_DP_even.pdf",
       "effectiveDate": "2026-07-01",
       "accessed": "2026-07-21"
+    },
+    {
+      "id": "ny-medicaid-pa-intake-2026-10",
+      "label": "NYRx, the Medicaid Drug Program: Prior Authorization Resources",
+      "publisher": "Prime Therapeutics LLC (NYRx PBM vendor for NY State Medicaid)",
+      "type": "gov",
+      "url": "https://newyork.fhsc.com/providers/PA.aspx",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "ny-uhc-commercial-formulary-pa-intake-2026",
+      "label": "UnitedHealthcare Commercial Prescription Drug List (PDL), Effective January 1, 2026",
+      "publisher": "UnitedHealthcare",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "ny-medicaid-pa-criteria-pdl-anabolic-2026-10",
+      "label": "NYRx Preferred Drug List (revised 2026-09-14)",
+      "publisher": "NYRx, the Medicaid Pharmacy Program (Prime Therapeutics for NY State DOH)",
+      "type": "gov",
+      "url": "https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf",
+      "accessed": "2026-10-21",
+      "effectiveDate": "2026-09-14"
     }
   ],
   "glossary": [
@@ -417,7 +459,15 @@
       "restrictionSourceIds": [
         "ny-medicaid-osteoporosis-source-2026-07"
       ],
-      "lastReviewed": "2026-07-21"
+      "lastReviewed": "2026-07-21",
+      "preferredCriteria": [
+        "Trial of a preferred oral bisphosphonate (step therapy).",
+        "Cumulative PTH analog use (teriparatide or abaloparatide) under the 25-month lifetime limit."
+      ],
+      "preferredCriteriaMode": "all",
+      "preferredCriteriaSourceIds": [
+        "ny-medicaid-pa-criteria-pdl-anabolic-2026-10"
+      ]
     },
     {
       "payerId": "ny-medicaid",
@@ -581,6 +631,7 @@
         "plainSig": "You get one shot under the skin of 60 mg every six months, given by a healthcare provider or self-injected after specialty-pharmacy training."
       },
       "preferredRestriction": "No prior authorization is triggered for this Commercial/Individual & Family (Exchange) line of business: the Excellus 'Pharmacy Management Drug Policy - Osteoporosis' (Policy PHARMACY-35, last reviewed 06/01/2026) states its step-therapy criteria for Prolia 'only apply to Managed Medicaid (MMC/HARP)/Essential Plan and Dual Eligible Special Needs Plans (D-SNP).' Matching this, the Rx Formulary Guide lists PROLIA with QL (quantity limit — one 60 mg injection every 6 months per policy item #13), MS (must be dispensed via a participating specialty pharmacy), S (specialty drug), and PV (preventive drug list) — but no PA flag.",
+      "preferredPaRequired": false,
       "boglActive": false,
       "boglNote": null,
       "alternatives": [],

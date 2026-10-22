@@ -687,3 +687,29 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   task: the app now remembers the last plan, so a stale pick silently skews "cold start" counts.
   Measure a tall target by its first ~160px, not its bottom edge, or an opened panel reads as
   extra swipes.
+- **Cash prices are looked up by INN alone, so two products sharing an INN share a price.** On
+  2026-10-21 every Wegovy cell showed Ozempic's $199 and every Saxenda cell Victoza's $154
+  (semaglutide/liraglutide). Weight-loss records now carry "(weight management)" in the INN and the
+  weight-product rules sit at the TOP of `CASH_LINK_RULES`. Same trap for any dosage form sharing a
+  molecule: narrow each priced rule to the exact captured form (Codex flagged methylphenidate
+  capsules/LA/patches, lisdexamfetamine chewables, phentermine capsules, Climara Pro, Evamist in one
+  day). Before adding a priced rule, list every covered name it would match.
+- **State-first gathers (2026-10-21): one Haiku agent per payer document, all classes in one read,
+  then ONE Sonnet pass per state that edits the checkpoint files in place.** ~16–19K tokens per cell
+  vs 120K+ for single-class gathers, and the Sonnet pass caught a real error in every state (a
+  shifted-fields MD Medicaid file, Evekeo picked as "preferred", absence read as exclusion on lists
+  that don't claim completeness). Reuse a checkpoint for a payer on the same document (national UHC
+  PDL across states, Medicaid MCOs on a statewide PDL, a national PDP) but copy it only AFTER the
+  Sonnet pass. Shared brief + taxonomy live in `data-gathering/new4/`; merge with
+  `scripts/merge-gather.mjs`.
+- **A script that filters a list it will write back must filter a copy.** `merge-gather.mjs
+  --exclude-payers` first ran `source.payers = source.payers.filter(...)` on the source guide, which
+  silently deleted Cigna from `md-ssris` and shipped a broken commit. `npm test` caught it only
+  because `validate()` checks every record's payer exists — and `npx vitest` summary showed 162
+  tests instead of ~1000; read the total, not just "passed".
+- **Correction (2026-10-21): "Ozempic tablets" (oral semaglutide 1.5 / 4 / 9 mg) is a real 2026
+  product.** The earlier note in this file (IL gather) called an "OZEMPIC TABS" PDL line a table
+  artifact because Ozempic had no tablet at the time; by October 2026 it appears in the DC PDL,
+  Florida Blue, Molina IL and IL HFS lists, and GoodRx's Ozempic page defaults to the tablet (see the
+  GoodRx note above). Treat it as a diabetes GLP-1 (never as weight-loss coverage). Re-check
+  "doesn't exist" drug-fact rules against current sources before telling agents to reject a line.

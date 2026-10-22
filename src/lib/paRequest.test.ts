@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import type { ClassMeta, FormularyRecord, PaItem, PayerMeta } from '../types/formulary'
-import { buildPaRequest, emptyPaRequest, paChecklist, preferredAlternatives, responseClock, submissionLine } from './paRequest'
+import { preferredNeedsPa, preferredOutcome, buildPaRequest, emptyPaRequest, paChecklist, preferredAlternatives, responseClock, submissionLine } from './paRequest'
 import { ICD10_BY_CLASS, ICD10_RELEASE, icd10For } from './icd10'
 import data from '../data/formulary.json'
 
@@ -52,6 +52,14 @@ describe('preferredAlternatives', () => {
     expect(names).not.toContain('Invokana')
     expect(names).not.toContain('Inpefa')
     expect(names).not.toContain('Brenzavvy')
+  })
+})
+
+describe('preferredAlternatives on a no-covered-option record', () => {
+  // Codex review, PR 22: the reference drug was listed as a plan-preferred prerequisite.
+  it('omits the reference-only agent', () => {
+    const r = { ...record, noCoveredAgent: true, preferredRestriction: 'none listed' } as FormularyRecord
+    expect(preferredAlternatives(r, item)).not.toContain('Jardiance')
   })
 })
 
@@ -195,9 +203,59 @@ describe('ICD-10 suggestions', () => {
       for (const o of opts) expect(o.code).toMatch(/^[A-TV-Z]\d{2}(\.[0-9A-Z]{1,4})?$/)
     // N18.3 is a non-billable category since FY2021 (Sonnet review); stage-specific codes only.
     expect(Object.values(ICD10_BY_CLASS).flat().some((o) => o.code === 'N18.3')).toBe(false)
+    // E78.01 is a non-billable header in FY2027 (split into E78.010/.011/.019).
+    expect(Object.values(ICD10_BY_CLASS).flat().some((o) => o.code === 'E78.01')).toBe(false)
   })
   it('records which official release the list was checked against', () => {
     expect(ICD10_RELEASE.version).toMatch(/FY20\d\d/)
     expect(ICD10_RELEASE.source).toMatch(/^https:\/\/www\.cms\.gov\//)
   })
+})
+
+// Codex review, PR 22: a quantity limit or "no PA" note must not trigger a PA request.
+describe('preferredNeedsPa', () => {
+  const r = (preferredRestriction: string | undefined, extra = {}) => ({ ...record, preferredRestriction, ...extra }) as FormularyRecord
+  it.each([
+    ['PA required (Table 13)', true],
+    ['Step therapy: metformin first', true],
+    ['Not on the CDL: TAR required', true],
+    ['Quantity limit 60 per 30 days; no PA', false],
+    ['No PA, no quantity limit stated.', false],
+    ['Age 6-18 only', false],
+    ['PA required for members age 25 and older; no PA under 25', true],
+    ['Quantity limit (QL) applies; no PA or step therapy required for the plain naproxen tablet.', false],
+    ['Clinical criteria apply to all drugs in this class (PDL red note, page 19).', true],
+    ['Covered with clinical criteria (DUR table, page 75): BMI of 40 kg/m2 or greater', true],
+    ['QL (quantity limit)', false],
+    [undefined, false],
+  ])('%s -> %s', (note, want) => expect(preferredNeedsPa(r(note))).toBe(want))
+  it('dataset: picks whose note says the drug itself has no PA are flagged false', async () => {
+    const { default: raw } = await import('../data/formulary.json')
+    const find = (g: string, p: string, c: string) =>
+      (raw as unknown as { guides: { id: string; records: FormularyRecord[] }[] }).guides
+        .find((x) => x.id === g)!.records.find((x) => x.payerId === p && x.classId === c)!
+    // Codex review, PR 22: QL-only teriparatide and a step policy for other lines of business.
+    expect(preferredNeedsPa(find('md-osteoporosis', 'kpmidatlantic', 'anabolic'))).toBe(false)
+    expect(preferredNeedsPa(find('ny-osteoporosis', 'ny-excellus-bcbs', 'rankl-inhibitor'))).toBe(false)
+  })
+  it('follows an explicit preferredPaRequired over the restriction text', () => {
+    const brandOnly = 'The brand-name product carries "#" (brand requires PA); the generic tablet is covered without PA.'
+    expect(preferredNeedsPa(r(brandOnly))).toBe(true)
+    expect(preferredNeedsPa(r(brandOnly, { preferredPaRequired: false }))).toBe(false)
+    expect(preferredNeedsPa(r('QL only', { preferredPaRequired: true }))).toBe(true)
+  })
+  it('is false for a no-covered-option record', () => {
+    expect(preferredNeedsPa(r('PA required', { noCoveredAgent: true }))).toBe(false)
+  })
+})
+
+describe('preferredOutcome', () => {
+  const r = (preferredRestriction: string) => ({ ...record, preferredRestriction }) as FormularyRecord
+  it.each([
+    ['PA required (Table 13)', 'pa'],
+    ['Step therapy: metformin first', 'step'],
+    ['Non-formulary: exception required', 'nonformulary'],
+    ['Not on the CDL: TAR required', 'nonformulary'],
+    ['Step therapy and PA required', 'pa'],
+  ])('%s -> %s', (note, want) => expect(preferredOutcome(r(note))).toBe(want))
 })

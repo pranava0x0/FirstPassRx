@@ -1,0 +1,476 @@
+{
+  "id": "ca-weight",
+  "label": "CA · Weight loss",
+  "stateCode": "CA",
+  "region": "California",
+  "topicId": "weight",
+  "topic": "Weight loss",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-21",
+  "capturedAt": "2026-10-21",
+  "payers": [
+    {
+      "id": "medi-cal-rx",
+      "name": "Medi-Cal Rx — California Medicaid Pharmacy Program (Fee-for-Service carve-out, statewide)",
+      "shortName": "Medi-Cal Rx",
+      "pbm": "Magellan Health (Magellan Medicaid Administration; DHCS vendor)",
+      "productName": "Medi-Cal Rx Contract Drugs List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Medi-Cal Rx Contract Drugs List (CDL), September 1, 2026",
+      "formularyUrl": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "paSubmission": {
+        "fax": "1-800-869-4325",
+        "portal": "https://www.medi-calrx.dhcs.ca.gov/provider/login",
+        "epa": "CoverMyMeds",
+        "note": "Statewide Medi-Cal Rx (covers managed care members too). Fax form DHCS 6560 (or 50-1, 50-2, 61-211). Mail: Medi-Cal Rx Customer Service Center, ATTN: Provider PA Requests, P.O. Box 730, Rancho Cordova, CA 95741-0730.",
+        "sourceIds": [
+          "medi-cal-rx-pa-intake-2026-10"
+        ]
+      },
+      "sourceIds": [
+        "medi-cal-rx-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "kaiser-permanente-ca",
+      "name": "Kaiser Permanente (Commercial HMO)",
+      "shortName": "Kaiser Permanente",
+      "pbm": "Internal (Kaiser Foundation Health Plan formulary; closed integrated pharmacy)",
+      "productName": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs), effective 09/01/2026",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "sourceIds": [
+        "kaiser-permanente-ca-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "anthem-bcbs-ca",
+      "name": "Anthem Blue Cross of California (Commercial)",
+      "shortName": "Anthem Blue Cross CA",
+      "pbm": "CarelonRx",
+      "productName": "2026 California Select Drug List - Four Tier",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 California Select Drug List: Four Tier (Individual, Anthem Blue Cross)",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "paSubmission": {
+        "epa": "https://www.covermymeds.com/main/partners/anthem",
+        "portal": "anthem.com/ca (Pharmacy)",
+        "fax": "844-474-3347",
+        "sourceIds": [
+          "anthem-bcbs-ca-formulary-pa-intake-2026"
+        ]
+      },
+      "sourceIds": [
+        "anthem-bcbs-ca-newtopics-2026-10"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "aom-glp1",
+      "name": "GLP-1-based anti-obesity medications",
+      "shortName": "GLP-1 AOM",
+      "plainName": "GLP-1 for weight loss",
+      "description": "Injectable or oral GLP-1/GIP agents labeled for chronic weight management (NOT their diabetes-labeled versions): semaglutide (Wegovy, including Wegovy tablets), tirzepatide (Zepbound), liraglutide (Saxenda). Many plans exclude weight-loss drugs entirely; an exclusion is a valid finding (outcome nonformulary).",
+      "plainDescription": "A weekly shot (or daily pill) for weight loss, like Wegovy or Zepbound.",
+      "indication": "Chronic weight management (obesity)",
+      "sourceIds": [
+        "medi-cal-rx-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "aom-oral",
+      "name": "Oral anti-obesity medications",
+      "shortName": "ORAL AOM",
+      "plainName": "Weight-loss pill",
+      "description": "Oral anti-obesity agents: phentermine (Adipex-P, Lomaira), phentermine/topiramate ER (Qsymia), naltrexone/bupropion ER (Contrave), orlistat (Xenical). Many plans exclude weight-loss drugs; an exclusion is a valid finding (outcome nonformulary).",
+      "plainDescription": "A pill for weight loss, like phentermine or Contrave.",
+      "indication": "Chronic weight management (obesity)",
+      "sourceIds": [
+        "medi-cal-rx-newtopics-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "aom-glp1",
+      "preferredAgent": {
+        "inn": "Semaglutide (weight management)",
+        "brand": "Wegovy",
+        "genericAvailable": false,
+        "strength": "2.4 mg weekly pen (weight-management dose)",
+        "sig": "2.4 mg by subcutaneous injection once weekly (standard label dosing)",
+        "sigShort": "2.4 mg SC weekly",
+        "plainSig": "A weekly shot."
+      },
+      "preferredRestriction": "No weight-loss GLP-1 is covered: GLP-1 drugs for weight loss are not a Medi-Cal Rx benefit except for members under 21 under EPSDT (CDL p. 6). Wegovy is listed only for noncirrhotic MASH, labeler 00169, max 1 carton per 28 days (CDL p. 207).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not stated on CDL (listed for MASH only, labeler-restricted)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Tirzepatide (Zepbound)",
+          "outcome": "nonformulary",
+          "reason": "Weight-loss use is a non-benefit except for members under 21 (EPSDT); Zepbound for OSA is case-by-case PA (CDL p. 6); not on the CDL",
+          "sourceIds": [
+            "medi-cal-rx-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Liraglutide (Saxenda)",
+          "outcome": "nonformulary",
+          "reason": "Weight-loss use is a non-benefit except for members under 21 (EPSDT) (CDL p. 6); not on the CDL",
+          "sourceIds": [
+            "medi-cal-rx-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "noCoveredAgent": true,
+      "verification": "partial",
+      "verificationNote": "Read CDL p. 6 (GLP-1 weight-loss non-benefit, Wegovy and Zepbound PA language), p. 183 and p. 207. Wegovy is on the CDL only for MASH. Zepbound not listed as a product; OSA use reviewed case-by-case by PA (p. 6). Saxenda not listed. Mounjaro and Victoza are diabetes-labeled and listed (p. 180, 183) but are not weight-loss products. No covered weight-loss GLP-1 found; confirm with plan. [Sonnet check 2026-10-21: Zepbound moved from generic \"TAR required\" to nonformulary because CDL p.6 states the weight-loss non-benefit directly (with the under-21 EPSDT and OSA/CV exceptions); both reasons now cite p.6, not absence. p.207 Wegovy MASH-only restriction and p.113/p.38/p.80 facts spot-checked and match.]",
+      "sourceIds": [
+        "medi-cal-rx-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "medi-cal-rx-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "medi-cal-rx-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "medi-cal-rx"
+    },
+    {
+      "classId": "aom-oral",
+      "preferredAgent": {
+        "inn": "Phentermine hydrochloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "37.5 mg tablet",
+        "sig": "1 tablet by mouth once daily before breakfast (standard label dosing)",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill in the morning."
+      },
+      "preferredRestriction": "No oral weight-loss drug is on the CDL, so phentermine would need a TAR. Phentermine is a Schedule IV controlled substance (35-day max supply, CDL p. 6).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not stated on CDL (not listed)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Phentermine/topiramate ER (Qsymia)",
+          "outcome": "pa",
+          "reason": "Not on the CDL: TAR required",
+          "sourceIds": [
+            "medi-cal-rx-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Naltrexone/bupropion ER (Contrave)",
+          "outcome": "pa",
+          "reason": "Not on the CDL: TAR required",
+          "sourceIds": [
+            "medi-cal-rx-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Orlistat (Xenical)",
+          "outcome": "pa",
+          "reason": "Not on the CDL: TAR required",
+          "sourceIds": [
+            "medi-cal-rx-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "noCoveredAgent": true,
+      "verification": "partial",
+      "verificationNote": "Searched CDL for phentermine, Adipex-P, Lomaira, Qsymia, Contrave and orlistat (generic and brand): none listed. Naltrexone and bupropion appear on the CDL only as separate products for other indications, not as the Contrave combination. Weight-loss exclusion for oral agents is not stated; the TAR outcome follows the brief rule. Sig is standard label dosing.",
+      "sourceIds": [
+        "medi-cal-rx-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "medi-cal-rx-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "medi-cal-rx-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "medi-cal-rx"
+    },
+    {
+      "classId": "aom-glp1",
+      "preferredAgent": {
+        "inn": "Semaglutide (weight management)",
+        "brand": "Wegovy",
+        "genericAvailable": false,
+        "strength": "2.4 mg/0.75 mL pen (maintenance dose)",
+        "sig": "Inject 2.4 mg subcutaneously once weekly after dose titration from 0.25 mg (standard label dosing; sig not printed in formulary)",
+        "sigShort": "2.4 mg SC weekly",
+        "plainSig": "A once-a-week shot for weight loss."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read directly from PDF p.89: WEGOVY pens 0.25/0.5/1/1.7/2.4 mg and WEGOVY HD 7.2 mg are listed as tier 2, labeled (weight management), with no QL, PA, or step printed. Wegovy is the only weight-management GLP-1 found, so the class answer is partial. Zepbound (tirzepatide) and Saxenda (liraglutide 3 mg) are not listed; absence is not confirmed exclusion (PDF p.2). Diabetes-labeled OZEMPIC (PDF pp.80-81) and liraglutide 18 mg/3 mL (PDF p.80, tier 1 QL) are out of this class (diabetes indication) and were not used. Wegovy is brand-only, so boglActive is false.",
+      "sourceIds": [
+        "kaiser-permanente-ca-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kaiser-permanente-ca-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kaiser-permanente-ca-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "kaiser-permanente-ca"
+    },
+    {
+      "classId": "aom-oral",
+      "preferredAgent": {
+        "inn": "Phentermine hydrochloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "37.5 mg tablet",
+        "sig": "1 tablet by mouth once daily before breakfast (standard label dosing; sig not printed in formulary)",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill, once a day, before breakfast."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Phentermine HCl capsule 15 or 30 mg",
+          "note": "Tier 1, no QL (PDF p.48)",
+          "sourceIds": [
+            "kaiser-permanente-ca-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "QSYMIA (phentermine-topiramate ER) capsule 3.75/7.5/11.25/15 mg",
+          "note": "Tier 2 brand, no QL (PDF p.49)",
+          "sourceIds": [
+            "kaiser-permanente-ca-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly from PDF pp.48-49: phentermine capsules 15/30/37.5 mg and tablets 37.5 mg are tier 1 with no QL; QSYMIA is tier 2 with no QL. No PA or step (PDF p.6). Contrave (naltrexone-bupropion ER) and orlistat (Xenical) are not listed. Naltrexone tablets 50 mg and bupropion SR/XL are listed as separate generics for other indications (PDF p.56) and are not counted as weight-loss agents. ADIPEX-P and LOMAIRA brands are not listed. Sig is standard label dosing, not printed in the document.",
+      "sourceIds": [
+        "kaiser-permanente-ca-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kaiser-permanente-ca-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kaiser-permanente-ca-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "kaiser-permanente-ca"
+    },
+    {
+      "classId": "aom-glp1",
+      "preferredAgent": {
+        "inn": "Semaglutide (weight management)",
+        "brand": "Wegovy",
+        "genericAvailable": false,
+        "strength": "2.4 mg (standard label maintenance strength; not printed on plan list)",
+        "sig": "Inject 2.4 mg under the skin once weekly (standard label dosing; not on this plan list)",
+        "sigShort": "2.4 mg SC weekly",
+        "plainSig": "A weekly shot for weight loss."
+      },
+      "preferredRestriction": "No weight-loss GLP-1 appears on this plan's 2026 list; coverage likely excluded (confirm with plan). Wegovy is the reference product only.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not listed (no covered weight-loss agent)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Zepbound (tirzepatide)",
+          "outcome": "nonformulary",
+          "reason": "Not on this plan's 2026 list (p.7: list is complete); no line found",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Saxenda (liraglutide 3 mg, weight-management labeled)",
+          "outcome": "nonformulary",
+          "reason": "Not on this plan's 2026 list (p.7: list is complete); the liraglutide pen-injector on page 33 is diabetes-labeled (Victoza-type, 2 pens per box), not Saxenda",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Wegovy tablets (oral semaglutide)",
+          "outcome": "nonformulary",
+          "reason": "Not on this plan's 2026 list (p.7: list is complete); no line found",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "noCoveredAgent": true,
+      "verification": "partial",
+      "verificationNote": "Read page 33 and the drug index, and searched the full list for every weight-management GLP-1 (Wegovy, Zepbound, Saxenda, Wegovy tablets). None appears. Page 33 lists Ozempic and liraglutide pens only under DRUGS FOR DIABETES, which are excluded from this weight-loss class by definition, so they are not shown as alternatives. The list has no BE (benefit exclusion) flag on any weight-loss row. Coverage is likely excluded but the document does not state an exclusion explicitly; confirm with the plan. Partial because the class has no covered agent to verify against. [Sonnet check 2026-10-21: inn relabeled weight management. Completeness wording verified on p.7: \"This is a complete listing of all the drugs on the drug list\" (p.5 defines formulary as the complete list), which supports the absence-based nonformulary entries; p.7 also warns a listed drug may not be covered under some plan designs. Spot-checked p.38 (Repatha Tier 3 PA QL; ezetimibe Tier 1 PA QL) and p.85 (Emgality Tier 2 PA): match.]",
+      "sourceIds": [
+        "anthem-bcbs-ca-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "anthem-bcbs-ca-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "anthem-bcbs-ca-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "anthem-bcbs-ca"
+    },
+    {
+      "classId": "aom-oral",
+      "preferredAgent": {
+        "inn": "Phentermine hydrochloride",
+        "brand": "Adipex-P",
+        "genericAvailable": true,
+        "strength": "37.5 mg (standard label strength; not printed on plan list)",
+        "sig": "1 tablet by mouth once daily before breakfast (standard label dosing; not on this plan list)",
+        "sigShort": "37.5 mg QAM",
+        "plainSig": "A pill each morning for weight loss."
+      },
+      "preferredRestriction": "No oral weight-loss drug appears on this plan's 2026 list; coverage likely excluded (confirm with plan). Phentermine is the reference product only.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not listed (no covered weight-loss agent)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Phentermine HCl tablet (generic, 37.5 mg)",
+          "outcome": "nonformulary",
+          "reason": "Not on this plan's 2026 list (p.7: list is complete); no weight-loss phentermine line found; topiramate (page 28) and naltrexone IR (page 35) are not weight-loss labeled",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Lomaira (phentermine 8 mg)",
+          "outcome": "nonformulary",
+          "reason": "Not on this plan's 2026 list (p.7: list is complete); no line found",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Qsymia (phentermine/topiramate ER capsule)",
+          "outcome": "nonformulary",
+          "reason": "Not on this plan's 2026 list (p.7: list is complete); no line found; topiramate IR/ER on page 28 is an epilepsy/migraine generic, not Qsymia",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Contrave (naltrexone/bupropion ER)",
+          "outcome": "nonformulary",
+          "reason": "Not on this plan's 2026 list (p.7: list is complete); no line found; separate naltrexone IR (page 35) and bupropion ER (page 29) lines are not Contrave",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Xenical / orlistat capsule",
+          "outcome": "nonformulary",
+          "reason": "Not on this plan's 2026 list (p.7: list is complete); no line found",
+          "sourceIds": [
+            "anthem-bcbs-ca-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "noCoveredAgent": true,
+      "verification": "partial",
+      "verificationNote": "Read pages 28-29 and 35 and searched the full list for every oral anti-obesity agent. None appears as a weight-management product. Phentermine generic has no weight-loss line on this list, so the reference product is shown without a covered line. The naltrexone (p.35) and bupropion ER (p.29) lines are different indications and are not Contrave components counted here. The list has no BE flag on any weight-loss row. Partial because no covered agent exists to verify against.",
+      "sourceIds": [
+        "anthem-bcbs-ca-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "anthem-bcbs-ca-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "anthem-bcbs-ca-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "anthem-bcbs-ca"
+    }
+  ],
+  "references": [
+    {
+      "id": "medi-cal-rx-newtopics-2026-10",
+      "label": "Medi-Cal Rx Contract Drugs List (CDL), September 1, 2026",
+      "publisher": "California Department of Health Care Services (DHCS) / Medi-Cal Rx",
+      "type": "gov",
+      "url": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "effectiveDate": "2026-09-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "kaiser-permanente-ca-newtopics-2026-10",
+      "label": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs), effective 09/01/2026",
+      "publisher": "Kaiser Permanente",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "effectiveDate": "2026-09-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "anthem-bcbs-ca-newtopics-2026-10",
+      "label": "2026 California Select Drug List: Four Tier (Individual, Anthem Blue Cross)",
+      "publisher": "Anthem Blue Cross of California (Elevance Health)",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "effectiveDate": "2026-09-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "medi-cal-rx-pa-intake-2026-10",
+      "label": "Five Ways to Submit a Prior Authorization Request",
+      "publisher": "California Department of Health Care Services (DHCS), Medi-Cal Rx",
+      "type": "gov",
+      "url": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/PF_5_Ways_to_Submit_a_PA_Flyer.pdf",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "anthem-bcbs-ca-formulary-pa-intake-2026",
+      "label": "2026 California Select Drug List - Four Tier",
+      "publisher": "Anthem Blue Cross",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "accessed": "2026-10-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

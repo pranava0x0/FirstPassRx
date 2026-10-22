@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { costPlusUrl, goodRxUrl, hasCashLinkRule, goodRxPrice, costPlusPrice, pricesCapturedAt, KNOWN_UNPRICED_GAP } from './cash'
+import { costPlusUrl, goodRxUrl, hasCashLinkRule, goodRxPrice, costPlusPrice, pricesCapturedAt, priceSuppressedByForm, KNOWN_UNPRICED_GAP } from './cash'
 import rawData from '../data/formulary.json'
 import type { Formulary } from '../types/formulary'
 
@@ -196,6 +196,11 @@ describe('cash price coverage across the live formulary', () => {
     // immediate-release 50/75mg one; GoodRx pending for the same reason.
     const KNOWN_PRICE_UNAVAILABLE = [
       /climara/i,
+      // 2026-10-21 new topics: brand weight-loss GLP-1s and CGRP/PCSK9 injectables show only
+      // manufacturer savings offers on GoodRx, not a cash price.
+      /wegovy|zepbound|saxenda|foundayo|weight management/i,
+      /qulipta|atogepant|praluent|alirocumab/i,
+      /nurtec|rimegepant|repatha|evolocumab|aimovig|erenumab|ajovy|fremanezumab|emgality|galcanezumab/i,
       /menostar/i,
       /levonorgestrel/i,
       /combipatch/i,
@@ -280,7 +285,7 @@ describe('cash price coverage across the live formulary', () => {
     ]
     const matched = coveredDrugNames().filter((name) => hasCashLinkRule(name))
     const missingPrice = matched.filter((name) => !goodRxPrice(name) && !costPlusPrice(name))
-    const unexpected = missingPrice.filter((name) => !KNOWN_PRICE_UNAVAILABLE.some((re) => re.test(name)))
+    const unexpected = missingPrice.filter((name) => !priceSuppressedByForm(name) && !KNOWN_PRICE_UNAVAILABLE.some((re) => re.test(name)))
     expect(unexpected).toEqual([])
   })
 })
@@ -307,5 +312,102 @@ describe('distinct estradiol patch products stay unpriced', () => {
   })
   it('plain weekly patch keeps its captured price', () => {
     expect(goodRxPrice('Estradiol transdermal patch (weekly)')?.price).toBe(51.66)
+  })
+})
+
+// Weight-loss GLP-1s share an INN with diabetes products; a Wegovy cell once showed Ozempic's $199
+// and a Saxenda cell Victoza's $154 (found 2026-10-21). They must never borrow those prices.
+describe('weight-loss GLP-1s never borrow a diabetes product price', () => {
+  it.each(['Semaglutide (weight management)', 'semaglutide (Wegovy)', 'Wegovy', 'Liraglutide 3 mg (weight management)', 'Saxenda', 'Zepbound (tirzepatide)', 'Tirzepatide (weight management)'])(
+    '%s',
+    (name) => {
+      expect(goodRxPrice(name)).toBeNull()
+      expect(goodRxUrl(name)).not.toMatch(/ozempic|victoza|mounjaro/)
+    },
+  )
+  it('diabetes semaglutide keeps its Ozempic price', () => {
+    expect(goodRxPrice('Semaglutide (Ozempic)')).not.toBeNull()
+  })
+})
+
+// Codex review, PR 22: methylphenidate rules priced other dosage forms with tablet quotes.
+describe('methylphenidate prices only the captured forms', () => {
+  it.each(['Methylphenidate ER (generic Ritalin LA)', 'Methylphenidate ER capsule', 'Onyda XR (methylphenidate ER suspension)', 'Methylphenidate transdermal patch (Daytrana)', 'Methylphenidate oral solution', 'Methylphenidate chewable tablet', 'Ritalin LA', 'Dexmethylphenidate ER', 'Methylphenidate ER (diffusion) tablet 27, 36, 54 mg', 'Methylphenidate ER tablet 10 mg and 20 mg (generic)', 'Methylphenidate HCl Cap,Er Sprinkle,Biphasic 40-60 (10 mg, 15 mg)', 'Methylphenidate ER'])(
+    '%s has no borrowed price',
+    (name) => expect(goodRxPrice(name)).toBeNull(),
+  )
+  it('mixed amphetamine salts IR phrasings share the captured price', () => {
+    expect(goodRxPrice('Amphetamine salt combination (immediate-release)')?.price).toBe(32.31)
+    expect(goodRxPrice('Adderall XR (amphetamine salt combination ER)')).toBeNull()
+  })
+  it('phentermine capsules never borrow the tablet price', () => {
+    expect(goodRxPrice('Phentermine HCl oral capsule')).toBeNull()
+    expect(goodRxPrice('Phentermine HCl')?.price).toBe(21.52)
+  })
+  it('lisdexamfetamine chewables never borrow the capsule price', () => {
+    expect(goodRxPrice('Lisdexamfetamine chewable tablet (generic Vyvanse chewable)')).toBeNull()
+    expect(goodRxPrice('Lisdexamfetamine dimesylate')?.price).toBe(67.78)
+  })
+  it('prices osmotic ER tablets and plain IR tablets', () => {
+    expect(goodRxPrice('Methylphenidate hydrochloride extended-release (osmotic)')?.price).toBe(39.49)
+    expect(goodRxPrice('Methylphenidate ER (osmotic tablet)')?.price).toBe(39.49)
+    expect(goodRxPrice('Methylphenidate ER 24 hr tablet 18 mg, 27 mg')?.price).toBe(39.49)
+    expect(goodRxPrice('Methylphenidate ER-OROS (generic Concerta)')?.price).toBe(39.49)
+    expect(goodRxPrice('Methylphenidate hydrochloride')?.price).toBe(25.78)
+  })
+})
+
+// Codex review, PR 22: more dosage forms that must not borrow a tablet price.
+describe('form-specific prices for the new topics', () => {
+  it.each([
+    'Sumatriptan Succinate Subcutaneous Cartridge',
+    'Sumatriptan succinate subcutaneous solution',
+    'Amphetamine-dextroamphetamine CP24 capsule, 5/10/15/20/25/30 mg',
+    'Phendimetrazine Tartrate Capsule, Extended Release (105 mg)',
+    'Atorvastatin oral suspension (Atorvaliq)',
+    'Amphetamine sulfate ER oral suspension (Adzenys ER)',
+  ])('%s has no borrowed price', (name) => expect(goodRxPrice(name)).toBeNull())
+  it('the captured tablet forms keep their prices', () => {
+    expect(goodRxPrice('Sumatriptan succinate')?.price).toBe(29.85)
+    expect(goodRxPrice('Phendimetrazine tartrate')?.price).toBe(32.51)
+    expect(goodRxPrice('Atorvastatin calcium')?.price).toBe(15.24)
+  })
+})
+
+// Dataset-wide guard (2026-10-21, after Codex flagged ~10 form mismatches one by one): a priced
+// match must not cross dosage forms. If the captured quantity is for tablets, a covered name that
+// says capsule/solution/patch/etc. is a different product and must not borrow the price.
+describe('no covered name borrows a price captured for a different dosage form', () => {
+  const FORMS: [RegExp, RegExp][] = [
+    [/\b(tablets?|tabs?)\b/i, /\b(capsules?|cp24|solution|suspension|patch|transdermal|injection|subcutaneous|cartridge|pen|syringe|spray|nasal|chewable|ODT|orally disintegrating|gel|cream)\b/i],
+    [/\b(capsules?|caps?)\b/i, /\b(tablets?|solution|suspension|patch|injection|chewable|ODT)\b/i],
+  ]
+  const ALL_GUIDES = true
+  it('holds for every covered drug name', () => {
+    const offenders: string[] = []
+    for (const g of (rawData as unknown as Formulary).guides) {
+      if (!ALL_GUIDES && !['adhd', 'lipids', 'weight', 'migraine'].includes(g.topicId)) continue
+      for (const r of g.records) {
+        const names = [r.preferredAgent.inn, ...(r.alternatives ?? []).map((a) => a.drug)]
+        for (const n of names) {
+          const q = goodRxPrice(n)?.quantity
+          if (!q) continue
+          for (const [captured, other] of FORMS) {
+            if (captured.test(q) && other.test(n) && !captured.test(n)) offenders.push(`${n} -> ${q}`)
+          }
+        }
+      }
+    }
+    expect([...new Set(offenders)]).toEqual([])
+  })
+})
+
+// Codex review, PR 22: a suppressed cross-form price must not keep the other form's deep links.
+describe('form-conflicting names drop the captured product links', () => {
+  it('Premarin vaginal cream gets no tablet params and no Cost Plus tablet link', () => {
+    const name = 'Premarin vaginal cream'
+    expect(priceSuppressedByForm(name)).toBe(true)
+    expect(goodRxUrl(name)).not.toContain('?')
+    expect(costPlusUrl(name)).toBeNull()
   })
 })

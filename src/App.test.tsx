@@ -259,13 +259,15 @@ describe('FirstPassRx app', () => {
     expect(screen.getByText(/Partially verified/i)).toBeInTheDocument()
   })
 
-  it('switching to a state without the current condition jumps to one it has, and marks the rest "not yet"', async () => {
+  // Since 2026-10-21 every state has every topic, so the "jump to an available condition" /
+  // "(not yet)" path isn't reachable from the picker; this checks the condition is kept instead.
+  it('switching state keeps the current condition when the new state has it', async () => {
     const user = userEvent.setup()
     render(<App />)
     const stateSelect = screen.getByLabelText(/^State$/) as HTMLSelectElement
     await user.selectOptions(stateSelect, 'TX')
-    await waitFor(() => expect(selectedText(/^Condition$/)).toMatch(/SSRIs/))
-    expect(screen.getByRole('option', { name: /Inhalers \(not yet\)/ })).toBeDisabled()
+    await waitFor(() => expect(selectedText(/^State$/)).toMatch(/Texas/))
+    expect(selectedText(/^Condition$/)).toMatch(/Inhalers/)
     expect(screen.queryByText(/Not covered yet/)).not.toBeInTheDocument()
   })
 
@@ -300,9 +302,11 @@ describe('FirstPassRx app', () => {
     render(<App />)
     const card = document.querySelector('.rx-option-card.is-barrier') as HTMLElement
     await user.click(within(card).getByRole('button', { name: /request pa/i }))
-    expect(within(card).getByText(/0 of 4/)).toBeInTheDocument()
+    // The total depends on whether the plan's own criteria exist for this drug (4 or 5 items).
+    const total = Number(card.querySelector('.pa-builder__score b')?.textContent?.match(/of (\d+)/)?.[1])
+    expect(within(card).getByText(new RegExp(`0 of ${total}`))).toBeInTheDocument()
     await user.type(within(card).getByLabelText(/Diagnosis/), 'J45.40 moderate persistent asthma')
-    expect(within(card).getByText(/1 of 4/)).toBeInTheDocument()
+    expect(within(card).getByText(new RegExp(`1 of ${total}`))).toBeInTheDocument()
     expect(within(card).getByText(/42 U\.S\.C/)).toBeInTheDocument()
     expect(card.querySelector('.pa-builder__letter')?.textContent).toMatch(/DIAGNOSIS: J45\.40/)
     expect(window.localStorage.getItem('fprx:last-pick') ?? '').not.toMatch(/J45/)
@@ -314,6 +318,14 @@ describe('FirstPassRx app', () => {
     window.history.replaceState({}, '', '/?guide=pa-ssris&plan=pa-medicaid')
     render(<App />)
     expect(await screen.findByText(/every Pennsylvania Medicaid managed care plan statewide/)).toBeVisible()
+  })
+
+  it('says nothing is covered instead of recommending a drug the plan does not list', async () => {
+    window.history.replaceState({}, '', '/?guide=ma-weight&plan=tufts&class=aom-glp1')
+    render(<App />)
+    expect(await screen.findByText("NO COVERED OPTION")).toBeInTheDocument()
+    expect(screen.queryByText('FIRST-PASS RECOMMENDED')).not.toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 2, name: '4. Coverage' })).toBeInTheDocument()
   })
 
   it('PA request shows the plan criteria, ICD-10 suggestions, and where to send it (MGB ICS)', async () => {
@@ -348,5 +360,14 @@ describe('FirstPassRx app', () => {
     )
     await waitFor(() => expect(window.location.search).toBe('?guide=ma-inhalers&plan=mgb&class=ics'))
     expect((screen.getByLabelText(/select insurance plan/i) as HTMLSelectElement).value).toBe('mgb')
+  })
+
+  it('offers a PA request on the recommended drug itself when it needs plan approval', async () => {
+    const user = userEvent.setup()
+    window.history.replaceState({}, '', '/?guide=ma-lipids&plan=masshealth&class=pcsk9')
+    render(<App />)
+    const hero = (await screen.findByRole('heading', { level: 3, name: 'Repatha' })).closest('.recommendation-hero') as HTMLElement
+    await user.click(within(hero).getByRole('button', { name: /request pa/i }))
+    expect(hero.querySelector('.pa-builder__letter')?.textContent).toMatch(/REQUEST: prior authorization for Repatha/)
   })
 })

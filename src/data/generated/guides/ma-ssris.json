@@ -52,6 +52,15 @@
       "productName": "Tufts Value Direct 3-Tier",
       "marketSegment": "commercial-employer",
       "formularyId": "P32H Value Direct 3T 2026",
+      "paSubmission": {
+        "fax": "617-673-0988",
+        "phone": "888-884-2404",
+        "portal": "point32health.promptpa.com",
+        "epa": "CoverMyMeds (OptumRx) or Surescripts, from the EHR",
+        "sourceIds": [
+          "p32-pa-form"
+        ]
+      },
       "sourceIds": [
         "tufts-ssris-source-2026-07"
       ]
@@ -67,6 +76,16 @@
       "productName": "Harvard Pilgrim Select 3-Tier",
       "marketSegment": "commercial-employer",
       "formularyId": "HPHC Select 3T 2026",
+      "paSubmission": {
+        "fax": "617-673-0988",
+        "phone": "888-884-2404",
+        "portal": "point32health.promptpa.com",
+        "epa": "CoverMyMeds (OptumRx) or Surescripts, from the EHR",
+        "note": "Same Point32Health pharmacy PA intake as Tufts Health Plan.",
+        "sourceIds": [
+          "p32-pa-form"
+        ]
+      },
       "sourceIds": [
         "harvardpilgrim-ssris-source-2026-07"
       ]
@@ -146,6 +165,55 @@
       "url": "https://fm.formularynavigator.com/FBO/192/20266T.pdf",
       "effectiveDate": "2026-07-01",
       "accessed": "2026-07-21"
+    },
+    {
+      "id": "p32-pa-form",
+      "label": "Massachusetts Standard Form for Medication Prior Authorization Requests",
+      "publisher": "Point32Health / MA Collaborative",
+      "type": "payer",
+      "url": "https://www.point32health.org/documents/hphc-ma-std-pa-form-medication",
+      "effectiveDate": "2024-02-01",
+      "accessed": "2026-06-22"
+    },
+    {
+      "id": "masshealth-pa-criteria-fluoxetine-60-2026-10",
+      "label": "MHDL Table 17: Antidepressants (Evaluation Criteria for Approval; last revised 07/2026)",
+      "publisher": "MassHealth (EOHHS), MassHealth Drug List",
+      "type": "gov",
+      "url": "https://mhdl.pharmacy.services.conduent.com/MHDL/pubtheradetail.do?id=17",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "masshealth-pa-criteria-fluoxetine-90-dr-2026-10",
+      "label": "MHDL Table 17: Antidepressants (Evaluation Criteria for Approval; last revised 07/2026)",
+      "publisher": "MassHealth (EOHHS), MassHealth Drug List",
+      "type": "gov",
+      "url": "https://mhdl.pharmacy.services.conduent.com/MHDL/pubtheradetail.do?id=17",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "masshealth-pa-criteria-fluvoxamine-er-2026-10",
+      "label": "MHDL Table 17: Antidepressants (Evaluation Criteria for Approval; last revised 07/2026)",
+      "publisher": "MassHealth (EOHHS), MassHealth Drug List",
+      "type": "gov",
+      "url": "https://mhdl.pharmacy.services.conduent.com/MHDL/pubtheradetail.do?id=17",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "masshealth-pa-criteria-paxil-cr-2026-10",
+      "label": "MHDL Table 17: Antidepressants (Evaluation Criteria for Approval; last revised 07/2026)",
+      "publisher": "MassHealth (EOHHS), MassHealth Drug List",
+      "type": "gov",
+      "url": "https://mhdl.pharmacy.services.conduent.com/MHDL/pubtheradetail.do?id=17",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "masshealth-pa-criteria-sertraline-capsule-2026-10",
+      "label": "MHDL Table 17: Antidepressants (Evaluation Criteria for Approval; last revised 07/2026)",
+      "publisher": "MassHealth (EOHHS), MassHealth Drug List",
+      "type": "gov",
+      "url": "https://mhdl.pharmacy.services.conduent.com/MHDL/pubtheradetail.do?id=17",
+      "accessed": "2026-10-21"
     }
   ],
   "glossary": [
@@ -220,6 +288,15 @@
           "reason": "This specific high-dose tablet strength requires PA even though standard 10/20/40 mg fluoxetine capsule/solution strengths do not.",
           "sourceIds": [
             "masshealth-ssris-source-2026-07"
+          ],
+          "criteria": [
+            "Appropriate diagnosis",
+            "Appropriate dosing",
+            "Inadequate response (≥4 weeks) or adverse reaction to fluoxetine at an equivalent dose (three 20 mg capsules or tablets)"
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "masshealth-pa-criteria-fluoxetine-60-2026-10"
           ]
         },
         {
@@ -228,6 +305,15 @@
           "reason": "Non-standard delayed-release weekly-dosing capsule requires PA; standard daily-dose capsule/solution does not.",
           "sourceIds": [
             "masshealth-ssris-source-2026-07"
+          ],
+          "criteria": [
+            "Appropriate diagnosis",
+            "Appropriate dosing",
+            "Inadequate response (≥4 weeks) or adverse reaction to daily fluoxetine at an equivalent dose"
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "masshealth-pa-criteria-fluoxetine-90-dr-2026-10"
           ]
         },
         {
@@ -236,6 +322,15 @@
           "reason": "The extended-release formulation requires PA; the immediate-release formulation does not.",
           "sourceIds": [
             "masshealth-ssris-source-2026-07"
+          ],
+          "criteria": [
+            "Appropriate diagnosis",
+            "Appropriate dosing",
+            "Inadequate response (≥4 weeks) or adverse reaction to fluvoxamine immediate-release at an equivalent dose"
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "masshealth-pa-criteria-fluvoxamine-er-2026-10"
           ]
         },
         {
@@ -244,6 +339,15 @@
           "reason": "The controlled-release brand/formulation requires PA; the immediate-release paroxetine tablet does not.",
           "sourceIds": [
             "masshealth-ssris-source-2026-07"
+          ],
+          "criteria": [
+            "Appropriate diagnosis",
+            "Member is ≥18 years of age",
+            "Inadequate response (≥4 weeks) or adverse reaction to paroxetine immediate-release"
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "masshealth-pa-criteria-paxil-cr-2026-10"
           ]
         },
         {
@@ -260,6 +364,15 @@
           "reason": "The capsule dosage form requires PA; the standard sertraline oral concentrate/tablet forms do not.",
           "sourceIds": [
             "masshealth-ssris-source-2026-07"
+          ],
+          "criteria": [
+            "Appropriate diagnosis",
+            "Appropriate dosing",
+            "Inadequate response (≥4 weeks) or adverse reaction to sertraline tablets at equivalent dose (one 50 mg + one 100 mg tablet for 150 mg capsule, or two 100 mg tablets for 200 mg capsule)"
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "masshealth-pa-criteria-sertraline-capsule-2026-10"
           ]
         }
       ],
