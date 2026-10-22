@@ -589,10 +589,10 @@ lines.push(`${cells.length} cells, ${STATUSES.reduce((n, s) => n + overall[s], 0
 lines.push('## Totals', '', STATUSES.map((s) => `${s}: ${overall[s]}`).join(' · '), '')
 lines.push('## By payer', '', table(tally((c) => c.payer), 'payer'), '')
 lines.push('## By guide', '', table(tally((c) => c.guide), 'guide'), '')
-lines.push('## Cells flagged for review (FLAG_MISMATCH > AGE_QUALIFIED > AMBIGUOUS)', '')
+lines.push('## Cells flagged for review (FLAG_MISMATCH > AGE_QUALIFIED > NOT_FOUND > AMBIGUOUS)', '')
 for (const { c } of flagged.slice(0, 40)) {
   lines.push(`- **${c.guide} / ${c.payer} / ${c.class}** (${c.status})`)
-  for (const ch of c.checks.filter((x) => ['FLAG_MISMATCH', 'AGE_QUALIFIED'].includes(x.status)).slice(0, 4))
+  for (const ch of c.checks.filter((x) => ['FLAG_MISMATCH', 'AGE_QUALIFIED', 'NOT_FOUND', 'AMBIGUOUS'].includes(x.status)))
     lines.push(`  - ${ch.status} ${ch.kind} "${ch.drug.slice(0, 70)}": ${ch.reason} | row: ${ch.matched[0]?.raw?.slice(0, 140) ?? 'n/a'} (${ch.matched[0]?.page ? `p.${ch.matched[0].page}` : (ch.matched[0]?.table ?? '')})`)
 }
 lines.push('', '## Sources without extractable rows (their checks are SKIPPED)', '')
