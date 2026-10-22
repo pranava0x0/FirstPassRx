@@ -453,3 +453,15 @@ describe('ustekinumab biosimilars keep their own cash links', () => {
     (name, slug) => expect(goodRxUrl(name)).toBe(`https://www.goodrx.com/${slug}`),
   )
 })
+
+// Code review, PR 23: molecule-substring matches priced the wrong product.
+describe('new-topic rules do not capture neighbouring products', () => {
+  it('metoprolol tartrate is not priced as succinate ER', () => {
+    expect(goodRxUrl('Metoprolol tartrate 25, 50 mg tablet')).toContain('/metoprolol?')
+    expect(goodRxUrl('Toprol XL (metoprolol succinate)')).toContain('/metoprolol-succinate-er')
+  })
+  it.each(['Desvenlafaxine ER (generic)', 'Pristiq (desvenlafaxine)', 'Levamlodipine 2.5, 5 mg tablets', 'Benzhydrocodone/acetaminophen (Apadaz)', 'Seroquel, Zyprexa, Risperdal (brands)'])(
+    '%s has no borrowed price',
+    (name) => expect(goodRxPrice(name)).toBeNull(),
+  )
+})

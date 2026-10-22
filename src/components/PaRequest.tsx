@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useId } from 'react'
 import type { ClassMeta, FormularyRecord, PaItem, PayerMeta } from '../types/formulary'
 import { useGuide } from '../lib/formulary'
 import {
@@ -39,7 +39,8 @@ export function PaRequest({
   const { copied, copy } = useCopyToClipboard()
   const checklist = paChecklist(input, item.criteriaMode ?? 'any')
   const icdOptions = icd10For(record.classId, item.drug)
-  const listId = `icd10-${record.payerId}-${record.classId}`.replace(/\W+/g, '-')
+  // Unique per PA item: suggestions differ by drug, and several PaRequests render per record.
+  const listId = `icd10-${useId()}`.replace(/\W+/g, '-')
   const doneCount = checklist.filter((c) => c.done).length
   const letter = useMemo(
     () =>

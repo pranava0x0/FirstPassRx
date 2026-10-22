@@ -32,7 +32,7 @@
  ],
  [
   "^aripiprazole",
-  "Schizophrenia: 10-15 mg once daily. Bipolar mania: 15 mg once daily. Add-on for depression: start 2-5 mg once daily. Dose per indication (label).",
+  "Schizophrenia: 10-15 mg once daily. Bipolar mania: 15 mg once daily. Max 30 mg/day for both. Add-on for depression: start 2-5 mg once daily, max 15 mg/day. Dose per indication (label).",
   "Daily; dose per indication",
   "One pill once a day; the dose depends on what it is treating."
  ],
@@ -68,7 +68,7 @@
  ],
  [
   "bupropion.*(XL|extended-release \\(XL|extended-release tablet \\(XL)",
-  "150 mg once daily in the morning for at least 4 days, then 300 mg once daily if needed (label).",
+  "150 mg once daily in the morning for at least 4 days, then 300 mg once daily if needed; max 450 mg/day (label).",
   "150 mg QAM, then 300 mg",
   "One pill each morning; the dose may go up after a few days."
  ],
@@ -133,13 +133,13 @@
   "A shot every 2 to 4 weeks; your prescriber sets the dose from blood tests."
  ],
  [
-  "oxybutynin.*(extended|\\bER\\b|\\bXL\\b)",
+  "^(?!.*(patch|gel|transdermal)).*oxybutynin.*(extended|\\bER\\b|\\bXL\\b)",
   "Extended-release: 5-10 mg once daily; increase by 5 mg weekly to max 30 mg/day (label).",
   "ER 5-10 mg QD",
   "One pill a day for an overactive bladder."
  ],
  [
-  "^oxybutynin",
+  "^(?!.*(patch|gel|transdermal|oxytrol|gelnique)).*oxybutynin",
   "Immediate-release: 5 mg two to three times daily; max 5 mg four times daily (label).",
   "5 mg BID-TID",
   "One pill two or three times a day."
@@ -170,7 +170,7 @@
  ],
  [
   "^metoprolol succinate",
-  "Hypertension: 25-100 mg once daily. Heart failure: start 12.5-25 mg once daily and double every 2 weeks as tolerated (label).",
+  "Hypertension: 25-100 mg once daily, max 400 mg/day. Heart failure: start 12.5-25 mg once daily and double every 2 weeks as tolerated to a target of 200 mg (label).",
   "25-100 mg QD",
   "One pill a day; do not stop suddenly."
  ],
@@ -205,7 +205,7 @@
   "One pill a day."
  ],
  [
-  "^sofosbuvir",
+  "^(?!.*voxilaprevir).*sofosbuvir.*velpatasvir",
   "No cirrhosis or compensated cirrhosis: 1 tablet once daily for 12 weeks. Decompensated cirrhosis (Child-Pugh B or C): 1 tablet once daily plus weight-based ribavirin for 12 weeks (label).",
   "1 tab QD x12 wk (+ribavirin if decompensated)",
   "One pill a day for 12 weeks; people with advanced liver scarring also take ribavirin."

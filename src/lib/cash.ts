@@ -367,7 +367,7 @@
  * change this count.)
  * 780 → 802: District of Columbia added (12 guides; DC Medicaid and AmeriHealth Caritas DC are new
  * documents, CareFirst and Kaiser Mid-Atlantic reuse the MD records). */
-export const KNOWN_UNPRICED_GAP = 1547
+export const KNOWN_UNPRICED_GAP = 1550
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -400,7 +400,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   // read, then re-captured through Chrome (2026-10-22). Each rule is narrowed to the captured form. ----
   {
     // Immediate-release tablets only (Seroquel XR / quetiapine ER are priced differently).
-    matches: /^(?!.*\b(ER|XR|extended)\b).*(quetiapine|seroquel)/i,
+    matches: /^(?!.*(\b(ER|XR|extended)\b|zyprexa|risperdal|abilify)).*(quetiapine|seroquel)/i,
     goodRxSlug: 'quetiapine',
     goodRxParams: 'label_override=quetiapine&form=tablet&dosage=25mg&quantity=30',
     goodRxPrice: { price: 29.02, quantity: '30 tablets, 25mg' },
@@ -409,7 +409,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(maintena|asimtufii|aristada|lauroxil|inject|solution|odt|disintegrat|mycite)).*(aripiprazole|abilify)/i,
+    matches: /^(?!.*(maintena|asimtufii|aristada|lauroxil|inject|solution|odt|disintegrat|mycite|seroquel|zyprexa|risperdal)).*(aripiprazole|abilify)/i,
     goodRxSlug: 'aripiprazole',
     goodRxParams: 'label_override=aripiprazole&form=tablet&dosage=5mg&quantity=30',
     goodRxPrice: { price: 17.26, quantity: '30 tablets, 5mg' },
@@ -418,7 +418,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(consta|microsphere|perseris|uzedy|rykindo|inject|solution|odt|disintegrat|extended)).*(risperidone|risperdal)/i,
+    matches: /^(?!.*(consta|microsphere|perseris|uzedy|rykindo|inject|solution|odt|disintegrat|extended|seroquel|zyprexa|abilify)).*(risperidone|risperdal)/i,
     goodRxSlug: 'risperidone',
     goodRxParams: 'label_override=risperidone&form=tablet&dosage=1mg&quantity=60',
     goodRxPrice: { price: 29.9, quantity: '60 tablets, 1mg' },
@@ -437,7 +437,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   },
   {
     // ER capsules only; venlafaxine ER tablets are a different, costlier product.
-    matches: /^(?!.*tablet).*(venlafaxine.*(\bER\b|extended|\bXR\b)|effexor xr)/i,
+    matches: /^(?!.*(tablet|desvenlafaxine|pristiq)).*(\bvenlafaxine.*(\bER\b|extended|\bXR\b)|effexor xr)/i,
     goodRxSlug: 'venlafaxine-er',
     goodRxParams: 'label_override=venlafaxine-er&form=capsule&dosage=75mg&quantity=30',
     goodRxPrice: { price: 29.81, quantity: '30 capsules, 75mg ER' },
@@ -561,7 +561,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
   },
   {
     // Single-agent amlodipine only; the many amlodipine combination pills are different products.
-    matches: /^(?!.*(benazepril|valsartan|olmesartan|telmisartan|atorvastatin|perindopril|celecoxib|lotrel|exforge|azor|twynsta|caduet|norliqva|katerzia|suspension|solution)).*(amlodipine|norvasc)/i,
+    matches: /^(?!.*(benazepril|valsartan|olmesartan|telmisartan|atorvastatin|perindopril|celecoxib|lotrel|exforge|azor|twynsta|caduet|norliqva|katerzia|suspension|solution|levamlodipine|conjupri)).*(\bamlodipine|norvasc)/i,
     goodRxSlug: 'amlodipine',
     goodRxParams: 'label_override=amlodipine&form=tablet&dosage=5mg&quantity=30',
     goodRxPrice: { price: 14.31, quantity: '30 tablets, 5mg' },
@@ -570,7 +570,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(hydrochlorothiazide|hctz)).*(metoprolol succinate|toprol)/i,
+    matches: /^(?!.*(hydrochlorothiazide|hctz)).*(metoprolol succinate|\btoprol)/i,
     goodRxSlug: 'metoprolol-succinate-er',
     goodRxParams: 'label_override=metoprolol-succinate-er&form=tablet&dosage=50mg&quantity=30',
     goodRxPrice: { price: 29.45, quantity: '30 tablets, 50mg ER' },
@@ -643,7 +643,7 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /^(?!.*(ibuprofen|homatropine|chlorphen|guaifenesin|\bER\b|extended|2\.5)).*(hydrocodone.*acetaminophen|norco)/i,
+    matches: /^(?!.*(ibuprofen|homatropine|chlorphen|guaifenesin|benzhydrocodone|apadaz|\bER\b|extended|2\.5)).*(\bhydrocodone.*acetaminophen|norco)/i,
     goodRxSlug: 'hydrocodone-acetaminophen',
     goodRxParams: 'label_override=hydrocodone-acetaminophen&form=tablet&dosage=5mg-325mg&quantity=20',
     goodRxPrice: { price: 12.53, quantity: '20 tablets, 5mg/325mg' },
