@@ -446,3 +446,10 @@ describe('adalimumab biosimilars keep their own cash links', () => {
     (name, slug) => expect(goodRxUrl(name)).toBe(`https://www.goodrx.com/${slug}`),
   )
 })
+
+describe('ustekinumab biosimilars keep their own cash links', () => {
+  it.each([['Ustekinumab-kfce', 'yesintek'], ['Ustekinumab-ttwe', 'pyzchiva'], ['Stelara', 'stelara']])(
+    '%s -> %s',
+    (name, slug) => expect(goodRxUrl(name)).toBe(`https://www.goodrx.com/${slug}`),
+  )
+})

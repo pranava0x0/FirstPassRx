@@ -768,7 +768,48 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    matches: /ustekinumab|stelara|wezlana|selarsdi|pyzchiva|otulfi|imuldosa|yesintek|steqeyma/i,
+    matches: /ustekinumab-auub|wezlana/i,
+    goodRxSlug: 'wezlana',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /ustekinumab-aekn|selarsdi/i,
+    goodRxSlug: 'selarsdi',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /ustekinumab-ttwe|pyzchiva/i,
+    goodRxSlug: 'pyzchiva',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /ustekinumab-aauz|otulfi/i,
+    goodRxSlug: 'otulfi',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /ustekinumab-srlf|imuldosa/i,
+    goodRxSlug: 'imuldosa',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /ustekinumab-kfce|yesintek/i,
+    goodRxSlug: 'yesintek',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /ustekinumab-stba|steqeyma/i,
+    goodRxSlug: 'steqeyma',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    matches: /ustekinumab-hmny|starjemza/i,
+    goodRxSlug: 'starjemza',
+    pricesCapturedAt: '2026-10-22',
+  },
+  {
+    // Each ustekinumab biosimilar has its own GoodRx page (checked 2026-10-22); only Stelara links here.
+    matches: /stelara/i,
     goodRxSlug: 'stelara',
     pricesCapturedAt: '2026-10-22',
   },

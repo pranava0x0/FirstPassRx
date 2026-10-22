@@ -359,8 +359,8 @@ function evalRow(claim, r, ctx = {}) {
 
 const RANK = { FLAG_MISMATCH: 5, AMBIGUOUS: 4, AGE_QUALIFIED: 3, NOT_FOUND: 2, OK: 1, ACCEPTED: 1, SKIPPED: 0 }
 
-// Reviewed false positives (scripts/data/audit-accepted.json). Keyed on the check AND the first
-// matched source row's raw text, so a changed source row re-flags the check automatically.
+// Reviewed false positives (scripts/data/audit-accepted.json). Keyed on the check AND every matched
+// source row's raw text, so a change to any matched row re-flags the check automatically.
 const ACCEPTED_FILE = resolve(ROOT, 'scripts/data/audit-accepted.json')
 const acceptedList = existsSync(ACCEPTED_FILE) ? JSON.parse(readFileSync(ACCEPTED_FILE, 'utf8')) : []
 const acceptKey = (c) => [c.guide, c.payer, c.class, c.kind, c.drug, c.status, c.raw ?? ''].join('|')
@@ -526,7 +526,7 @@ for (const g of guides) {
     }
     for (const c of checks) {
       if (c.status === 'OK' || c.status === 'SKIPPED') continue
-      const key = acceptKey({ guide: g.id, payer: rec.payerId, class: rec.classId, kind: c.kind, drug: c.drug, status: c.status, raw: c.matched[0]?.raw })
+      const key = acceptKey({ guide: g.id, payer: rec.payerId, class: rec.classId, kind: c.kind, drug: c.drug, status: c.status, raw: c.matched.map((m) => m.raw).join(' || ') })
       if (accepted.has(key)) Object.assign(c, { status: 'ACCEPTED', reason: `reviewed false positive (${c.status}): ${c.reason}` })
     }
     cells.push({
@@ -606,7 +606,7 @@ if (args['accept-remaining']) {
   for (const c of cells)
     for (const ch of c.checks)
       if (!['OK', 'SKIPPED', 'ACCEPTED'].includes(ch.status))
-        add.push({ guide: c.guide, payer: c.payer, class: c.class, kind: ch.kind, drug: ch.drug, status: ch.status, raw: ch.matched[0]?.raw ?? '', reason: ch.reason, reviewed: today })
+        add.push({ guide: c.guide, payer: c.payer, class: c.class, kind: ch.kind, drug: ch.drug, status: ch.status, raw: ch.matched.map((m) => m.raw).join(' || '), reason: ch.reason, reviewed: today })
   writeFileSync(ACCEPTED_FILE, JSON.stringify([...acceptedList, ...add], null, 1) + '\n')
   console.log(`accepted ${add.length} reviewed checks -> ${ACCEPTED_FILE}`)
 }

@@ -119,7 +119,9 @@ export const ICD10_BY_CLASS: Record<string, Icd10Option[]> = {
   ],
   'tnf-inhibitor': [...AUTOIMMUNE, { code: 'M45.9', label: 'Ankylosing spondylitis of unspecified sites in spine' }],
   'il17-il23': AUTOIMMUNE.slice(1),
-  'jak-inhibitor': AUTOIMMUNE,
+  // Tofacitinib and upadacitinib (the MA picks) are labeled for RA, PsA, AS and UC -- not plaque
+  // psoriasis; Crohn's is upadacitinib-only, so it is left out of the class-wide list.
+  'jak-inhibitor': [AUTOIMMUNE[0], AUTOIMMUNE[1], AUTOIMMUNE[4], { code: 'M45.9', label: 'Ankylosing spondylitis of unspecified sites in spine' }],
   'opioid-ir': [
     { code: 'G89.18', label: 'Other acute postprocedural pain' },
     { code: 'G89.11', label: 'Acute pain due to trauma' },
@@ -146,6 +148,7 @@ export const ICD10_BY_CLASS: Record<string, Icd10Option[]> = {
   'beta-blocker': [HTN, { code: 'I50.9', label: 'Heart failure, unspecified' }, { code: 'I25.10', label: 'Atherosclerotic heart disease of native coronary artery without angina pectoris' }],
   thiazide: [HTN, { code: 'R60.9', label: 'Edema, unspecified' }],
   'hiv-prep': [
+    { code: 'Z29.81', label: 'Encounter for HIV pre-exposure prophylaxis' },
     { code: 'Z20.6', label: 'Contact with and (suspected) exposure to human immunodeficiency virus [HIV]' },
     { code: 'Z11.4', label: 'Encounter for screening for human immunodeficiency virus [HIV]' },
   ],
