@@ -583,7 +583,7 @@
         {
           "drug": "dapagliflozin (Farxiga)",
           "outcome": "pa",
-          "reason": "Brand-preferred-over-generic (BOGL) is active for this agent specifically; requires PA.",
+          "reason": "Brand Farxiga requires PA: MHDL A-Z row carries \"#\" (A-rated generic dapagliflozin payable, brand needs PA)",
           "sourceIds": [
             "masshealth-diabetes-source-2026-07-07"
           ]
@@ -625,7 +625,7 @@
       "stepTherapy": "PA for non-preferred SGLT2 inhibitors (e.g., Invokana) requires inadequate response (≥90 days of therapy within a 120-day period) to metformin used in combination with dapagliflozin or empagliflozin (Jardiance).",
       "tier": "No explicit dollar/tier language in MHDL; empagliflozin (Jardiance) is the sole preferred drug in this class and is covered without PA.",
       "verification": "verified",
-      "verificationNote": "Read directly from the MassHealth Drug List (MHDL) Table 26: Antidiabetic Agents (pubtheradetail.do?id=26), last revised 07/2026, original effective 05/2003. Confirmed empagliflozin (Jardiance) is the single preferred SGLT2 inhibitor with no PA required, while canagliflozin, dapagliflozin, ertugliflozin, and sotagliflozin all require PA with the specific step-therapy criterion of ≥90 days inadequate response to metformin + dapagliflozin or Jardiance combination therapy. Dapagliflozin is separately noted as brand-preferred-over-generic (BOGL active) in the source. The 10mg dose is a standard representative strength for empagliflozin, not verbatim dosing text from the page.",
+      "verificationNote": "Read directly from the MassHealth Drug List (MHDL) Table 26: Antidiabetic Agents (pubtheradetail.do?id=26), last revised 07/2026, original effective 05/2003. Confirmed empagliflozin (Jardiance) is the single preferred SGLT2 inhibitor with no PA required, while canagliflozin, dapagliflozin, ertugliflozin, and sotagliflozin all require PA with the specific step-therapy criterion of ≥90 days inadequate response to metformin + dapagliflozin or Jardiance combination therapy. Dapagliflozin is separately noted as brand-preferred-over-generic (BOGL active) in the source. The 10mg dose is a standard representative strength for empagliflozin, not verbatim dosing text from the page. [Audit 2026-10-22: Farxiga row is \"#\" (not BP); reason text mislabeled it brand-preferred]",
       "sourceIds": [
         "masshealth-diabetes-source-2026-07-07"
       ],
@@ -644,12 +644,12 @@
         "inn": "insulin glargine (basal) and insulin lispro (rapid-acting)",
         "brand": "Lantus (glargine, generic available) and Humalog (lispro)",
         "genericAvailable": true,
-        "strength": "100 units/mL prefilled pen or vial",
+        "strength": "100 units/mL: Lantus (generic glargine) pen or vial; insulin lispro prefilled syringe or vial (generic) or Humalog cartridge",
         "sig": "Inject subcutaneously per prescriber-directed dose and schedule",
         "sigShort": "SQ per Rx dosing",
         "plainSig": "Inject under the skin at the dose and times your doctor tells you."
       },
-      "preferredRestriction": null,
+      "preferredRestriction": "Brand Humalog in prefilled syringe/pen or vial needs PA; the generic insulin lispro syringe/vial and Humalog cartridge fill without PA (MHDL A-Z list).",
       "boglActive": true,
       "boglNote": "Insulin degludec (Tresiba) and insulin glargine (Toujeo) are explicitly noted \"Brand preferred over generic\" in the MHDL antidiabetic table.",
       "alternatives": [
@@ -838,7 +838,7 @@
       "stepTherapy": "Basal: PA requires medical necessity for use of the requested agent instead of insulin glargine prefilled syringe or vial (SmartPA can auto-approve Toujeo/Tresiba with ≥90 days of therapy in the last 120 days). Rapid-acting: PA requires inadequate response (≥90 days of therapy within a 180-day period), adverse reaction, or contraindication to insulin lispro (Humalog or a therapeutically equivalent generic).",
       "tier": "No explicit dollar/tier language in MHDL; insulin glargine (generic Lantus) is the preferred basal agent and insulin lispro (Humalog standard formulation) is the preferred rapid-acting agent, both covered without PA.",
       "verification": "verified",
-      "verificationNote": "Read directly from the MassHealth Drug List (MHDL) Table 26: Antidiabetic Agents (pubtheradetail.do?id=26), last revised 07/2026, original effective 05/2003. Confirmed insulin glargine (generic Lantus) is preferred for basal insulin and insulin lispro (Humalog standard formulation) is preferred for rapid-acting, both without PA; all other basal agents (Tresiba, Rezvoglar, Semglee, Toujeo) and rapid-acting agents (Fiasp, Novolog, Merilog, Kirsty, Lyumjev/Lyumjev Tempo, Admelog, Apidra) require PA with documented step-therapy criteria. Tresiba and Toujeo are explicitly marked \"Brand preferred over generic\" (BOGL) in the source, and both have a SmartPA auto-approval pathway. Combining basal and rapid-acting into a single checkpoint record per the schema's single-preferredAgent shape is a structural simplification — both categories' facts are independently verified from the same table.",
+      "verificationNote": "Read directly from the MassHealth Drug List (MHDL) Table 26: Antidiabetic Agents (pubtheradetail.do?id=26), last revised 07/2026, original effective 05/2003. Confirmed insulin glargine (generic Lantus) is preferred for basal insulin and insulin lispro (Humalog standard formulation) is preferred for rapid-acting, both without PA; all other basal agents (Tresiba, Rezvoglar, Semglee, Toujeo) and rapid-acting agents (Fiasp, Novolog, Merilog, Kirsty, Lyumjev/Lyumjev Tempo, Admelog, Apidra) require PA with documented step-therapy criteria. Tresiba and Toujeo are explicitly marked \"Brand preferred over generic\" (BOGL) in the source, and both have a SmartPA auto-approval pathway. Combining basal and rapid-acting into a single checkpoint record per the schema's single-preferredAgent shape is a structural simplification — both categories' facts are independently verified from the same table. [Audit 2026-10-22: Humalog brand prefilled syringe/vial row shows PA; generic lispro syringe/vial and Humalog cartridge show none] [Audit 2026-10-22: Humalog brand syringe/vial and 200 units/mL rows carry PA]",
       "sourceIds": [
         "masshealth-diabetes-source-2026-07-07"
       ],
@@ -1434,9 +1434,9 @@
         }
       ],
       "stepTherapy": null,
-      "tier": "Tier 1 - preferred generic",
+      "tier": "Tier 2 - preferred generic",
       "verification": "verified",
-      "verificationNote": "Read directly from 'Diabetes - Antidiabetic Agents' (PDF pages 83-84, effective Jan. 1, 2026, 'Last Update: 06/15/26'). Generic dapagliflozin (10 mg and 5 mg tablets) is listed Tier 1 with no PA/ST/QL flag; brand FARXIGA and JARDIANCE (empagliflozin, no generic yet) are both Tier 2, no PA. Canagliflozin (Invokana) and ertugliflozin (Steglatro) were confirmed absent by case-insensitive full-text search of the extracted document, indicating they are not on formulary (nonformulary) rather than merely omitted from this excerpt.",
+      "verificationNote": "Read directly from 'Diabetes - Antidiabetic Agents' (PDF pages 83-84, effective Jan. 1, 2026, 'Last Update: 06/15/26'). Generic dapagliflozin (10 mg and 5 mg tablets) is listed Tier 1 with no PA/ST/QL flag; brand FARXIGA and JARDIANCE (empagliflozin, no generic yet) are both Tier 2, no PA. Canagliflozin (Invokana) and ertugliflozin (Steglatro) were confirmed absent by case-insensitive full-text search of the extracted document, indicating they are not on formulary (nonformulary) rather than merely omitted from this excerpt. [Audit 2026-10-22: Tufts p84: generic dapagliflozin 10/5 mg and brand Farxiga are both Tier 2 (no Tier 1 SGLT2 line); record said Tier 1]",
       "sourceIds": [
         "tufts-diabetes-source-2026-07-07"
       ],

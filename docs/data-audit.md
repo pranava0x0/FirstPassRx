@@ -109,3 +109,22 @@ summary you hand back.
 - Conditions on PA (`members N and older`, quantity ceilings) are classified by keyword; read `raw`.
 - Tier checks run only when the record's `tier` text contains `Tier N` and the source has a numeric tier.
 - Uses pypdf's private layout API; a pypdf upgrade may need `layout_groups()` re-checked.
+
+## Reviewed false positives (`scripts/data/audit-accepted.json`)
+
+After agents review every flagged check and the real errors are fixed with
+`scripts/apply-cell-fixes.mjs`, record what is left as reviewed:
+
+```bash
+node scripts/audit-cells.mjs --state=MA --no-extract --accept-remaining
+```
+
+Each accepted entry is keyed on guide, payer, class, check kind, drug, status
+and the matched source row's raw text, so a re-run reports it as `ACCEPTED`
+instead of re-flagging it, and any change to the source row (a reissued list)
+flags it again automatically. Only run `--accept-remaining` after a review has
+cleared every remaining flag.
+
+MA, 2026-10-22: 2,020 checks → 36 real errors fixed (22 MassHealth, 14
+commercial), 125 reviewed false positives accepted, 0 open, 35 skipped
+(prose PDFs and one 404 with no extractable rows).

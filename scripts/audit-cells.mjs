@@ -357,7 +357,14 @@ function evalRow(claim, r, ctx = {}) {
   return { status: 'OK', reason: 'consistent with source row' }
 }
 
-const RANK = { FLAG_MISMATCH: 5, AMBIGUOUS: 4, AGE_QUALIFIED: 3, NOT_FOUND: 2, OK: 1, SKIPPED: 0 }
+const RANK = { FLAG_MISMATCH: 5, AMBIGUOUS: 4, AGE_QUALIFIED: 3, NOT_FOUND: 2, OK: 1, ACCEPTED: 1, SKIPPED: 0 }
+
+// Reviewed false positives (scripts/data/audit-accepted.json). Keyed on the check AND the first
+// matched source row's raw text, so a changed source row re-flags the check automatically.
+const ACCEPTED_FILE = resolve(ROOT, 'scripts/data/audit-accepted.json')
+const acceptedList = existsSync(ACCEPTED_FILE) ? JSON.parse(readFileSync(ACCEPTED_FILE, 'utf8')) : []
+const acceptKey = (c) => [c.guide, c.payer, c.class, c.kind, c.drug, c.status, c.raw ?? ''].join('|')
+const accepted = new Set(acceptedList.map(acceptKey))
 const worst = (statuses) => statuses.reduce((a, b) => (RANK[b] > RANK[a] ? b : a), 'SKIPPED')
 
 function slimRow(r, src) {
@@ -517,6 +524,11 @@ for (const g of guides) {
         }),
       )
     }
+    for (const c of checks) {
+      if (c.status === 'OK' || c.status === 'SKIPPED') continue
+      const key = acceptKey({ guide: g.id, payer: rec.payerId, class: rec.classId, kind: c.kind, drug: c.drug, status: c.status, raw: c.matched[0]?.raw })
+      if (accepted.has(key)) Object.assign(c, { status: 'ACCEPTED', reason: `reviewed false positive (${c.status}): ${c.reason}` })
+    }
     cells.push({
       guide: g.id,
       payer: rec.payerId,
@@ -529,7 +541,7 @@ for (const g of guides) {
 }
 
 // ---------------------------------------------------------------- summary
-const STATUSES = ['OK', 'NOT_FOUND', 'FLAG_MISMATCH', 'AGE_QUALIFIED', 'AMBIGUOUS', 'SKIPPED']
+const STATUSES = ['OK', 'ACCEPTED', 'NOT_FOUND', 'FLAG_MISMATCH', 'AGE_QUALIFIED', 'AMBIGUOUS', 'SKIPPED']
 const tally = (key) => {
   const m = new Map()
   for (const c of cells)
@@ -588,4 +600,14 @@ writeFileSync(
 writeFileSync(join(outDir, 'summary.md'), lines.join('\n'))
 console.log(`wrote ${join(outDir, 'report.json')} and summary.md`)
 console.log(STATUSES.map((s) => `${s} ${overall[s]}`).join(' · '))
+// --accept-remaining: after a review has cleared every still-flagged check, record them as accepted.
+if (args['accept-remaining']) {
+  const add = []
+  for (const c of cells)
+    for (const ch of c.checks)
+      if (!['OK', 'SKIPPED', 'ACCEPTED'].includes(ch.status))
+        add.push({ guide: c.guide, payer: c.payer, class: c.class, kind: ch.kind, drug: ch.drug, status: ch.status, raw: ch.matched[0]?.raw ?? '', reason: ch.reason, reviewed: today })
+  writeFileSync(ACCEPTED_FILE, JSON.stringify([...acceptedList, ...add], null, 1) + '\n')
+  console.log(`accepted ${add.length} reviewed checks -> ${ACCEPTED_FILE}`)
+}
 process.exit(args.strict && overall.FLAG_MISMATCH > 0 ? 1 : 0)
