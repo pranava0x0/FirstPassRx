@@ -68,12 +68,11 @@ const MIGRAINE: Icd10Option[] = [
   { code: 'G43.709', label: 'Chronic migraine without aura, not intractable, without status migrainosus' },
 ]
 
-const PSYCHOSIS: Icd10Option[] = [
-  { code: 'F20.9', label: 'Schizophrenia, unspecified' },
-  { code: 'F25.9', label: 'Schizoaffective disorder, unspecified' },
-  { code: 'F31.9', label: 'Bipolar disorder, unspecified' },
-  { code: 'F33.1', label: 'Major depressive disorder, recurrent, moderate' },
-]
+// Named one by one: noUncheckedIndexedAccess types LIST[0] as possibly undefined.
+const SCZ: Icd10Option = { code: 'F20.9', label: 'Schizophrenia, unspecified' }
+const SCZA: Icd10Option = { code: 'F25.9', label: 'Schizoaffective disorder, unspecified' }
+const BP: Icd10Option = { code: 'F31.9', label: 'Bipolar disorder, unspecified' }
+const MDD: Icd10Option = { code: 'F33.1', label: 'Major depressive disorder, recurrent, moderate' }
 const DEPRESSION: Icd10Option[] = [
   { code: 'F32.9', label: 'Major depressive disorder, single episode, unspecified' },
   { code: 'F33.1', label: 'Major depressive disorder, recurrent, moderate' },
@@ -87,13 +86,12 @@ const INSOMNIA: Icd10Option[] = [
   { code: 'G47.00', label: 'Insomnia, unspecified' },
   { code: 'F51.01', label: 'Primary insomnia' },
 ]
-const AUTOIMMUNE: Icd10Option[] = [
-  { code: 'M06.9', label: 'Rheumatoid arthritis, unspecified' },
-  { code: 'L40.50', label: 'Arthropathic psoriasis, unspecified' },
-  { code: 'L40.0', label: 'Psoriasis vulgaris' },
-  { code: 'K50.90', label: "Crohn's disease, unspecified, without complications" },
-  { code: 'K51.90', label: 'Ulcerative colitis, unspecified, without complications' },
-]
+const RA: Icd10Option = { code: 'M06.9', label: 'Rheumatoid arthritis, unspecified' }
+const PSA: Icd10Option = { code: 'L40.50', label: 'Arthropathic psoriasis, unspecified' }
+const PSO: Icd10Option = { code: 'L40.0', label: 'Psoriasis vulgaris' }
+const CD: Icd10Option = { code: 'K50.90', label: "Crohn's disease, unspecified, without complications" }
+const UC: Icd10Option = { code: 'K51.90', label: 'Ulcerative colitis, unspecified, without complications' }
+const AS: Icd10Option = { code: 'M45.9', label: 'Ankylosing spondylitis of unspecified sites in spine' }
 const HTN: Icd10Option = { code: 'I10', label: 'Essential (primary) hypertension' }
 const OAB: Icd10Option[] = [
   { code: 'N32.81', label: 'Overactive bladder' },
@@ -103,8 +101,8 @@ const OAB: Icd10Option[] = [
 export const ICD10_BY_CLASS: Record<string, Icd10Option[]> = {
   // Class-wide lists hold only what every agent in the class is labeled for; DRUG_ICD10 below adds
   // each drug's other indications (paliperidone is not labeled for bipolar or MDD).
-  'antipsychotic-oral': PSYCHOSIS.slice(0, 1),
-  'antipsychotic-lai': PSYCHOSIS.slice(0, 1),
+  'antipsychotic-oral': [SCZ],
+  'antipsychotic-lai': [SCZ],
   snri: [...DEPRESSION, { code: 'F41.1', label: 'Generalized anxiety disorder' }, { code: 'E11.42', label: 'Type 2 diabetes mellitus with diabetic polyneuropathy' }, { code: 'M79.7', label: 'Fibromyalgia' }],
   bupropion: DEPRESSION,
   'antidepressant-other': DEPRESSION,
@@ -121,13 +119,13 @@ export const ICD10_BY_CLASS: Record<string, Icd10Option[]> = {
   ],
   // Shared by every TNF agent (adalimumab, etanercept, certolizumab, golimumab); DRUG_ICD10 adds
   // psoriasis/IBD per product (etanercept has no IBD indication).
-  'tnf-inhibitor': [AUTOIMMUNE[0], AUTOIMMUNE[1], { code: 'M45.9', label: 'Ankylosing spondylitis of unspecified sites in spine' }],
+  'tnf-inhibitor': [RA, PSA, AS],
   // Shared by every IL-17 and IL-23 agent (ixekizumab, secukinumab, ustekinumab...): psoriasis and
   // PsA. Crohn's/UC are ustekinumab/risankizumab/guselkumab-only, so they are left out.
-  'il17-il23': [AUTOIMMUNE[2], AUTOIMMUNE[1]],
+  'il17-il23': [PSO, PSA],
   // Tofacitinib and upadacitinib (the MA picks) are labeled for RA, PsA, AS and UC -- not plaque
   // psoriasis; Crohn's is upadacitinib-only, so it is left out of the class-wide list.
-  'jak-inhibitor': [AUTOIMMUNE[0], AUTOIMMUNE[1], AUTOIMMUNE[4], { code: 'M45.9', label: 'Ankylosing spondylitis of unspecified sites in spine' }],
+  'jak-inhibitor': [RA, PSA, UC, AS],
   'opioid-ir': [
     { code: 'G89.18', label: 'Other acute postprocedural pain' },
     { code: 'G89.11', label: 'Acute pain due to trauma' },
@@ -220,13 +218,6 @@ export const ICD10_BY_CLASS: Record<string, Icd10Option[]> = {
   ],
 }
 
-const RA = AUTOIMMUNE[0]
-const PSA = AUTOIMMUNE[1]
-const PSO = AUTOIMMUNE[2]
-const CD = AUTOIMMUNE[3]
-const UC = AUTOIMMUNE[4]
-const AS: Icd10Option = { code: 'M45.9', label: 'Ankylosing spondylitis of unspecified sites in spine' }
-const [SCZ, SCZA, BP, MDD] = PSYCHOSIS
 
 /**
  * Per-drug lists, checked before the class list, so the PA builder never suggests a diagnosis the

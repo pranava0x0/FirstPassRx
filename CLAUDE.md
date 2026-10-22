@@ -738,3 +738,7 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
 - **Archived HTML can carry live third-party tokens.** Box-hosted IL criteria pages embedded a
   preview read token, a request token and signed avatar URLs; scripts/redact-secrets.mjs now masks
   those shapes and a test scans every committed archive.
+- **`npm test` was vitest-only, which strips types, so PRs #22 and #23 merged green while the Pages
+  deploy failed at `tsc -b` and the live site froze at PR #21 for a day.** `npm test` now runs
+  `tsc -b --noEmit` first. If the site looks stale, check `gh run list` for a red "Deploy to
+  GitHub Pages" before suspecting caching.
