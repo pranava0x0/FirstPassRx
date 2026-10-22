@@ -71,33 +71,46 @@ ledger names the stamp so the next run resumes from disk instead of re-gathering
 ## Queue (top = next)
 
 Each item fits roughly one 20-minute run. Done items stay listed (struck) so the next run knows.
+Every data item ends the same way: merge → `node scripts/apply-label-sigs.mjs --state=XX --topics=...`
+→ `node scripts/audit-cells.mjs --state=XX` → agents review only flagged checks →
+`node scripts/apply-cell-fixes.mjs <fixes>` → `--accept-remaining` → tests (see docs/data-audit.md).
 
-1. ~~TX: 7 missing topics~~ — done 2026-10-21 (all 9 states now have all 12 topics).
-2. ~~ADHD / cholesterol / weight / migraine in every state~~ — done 2026-10-21.
-3. **PA approval criteria per PA-blocked drug, one Medicaid payer per run.** Done 2026-10-21 for
-   the new topics in all 9 original states and for the original 8 topics in MA, PA, NY, AL, IL,
-   TX, MD (verified items only) and Medi-Cal (VA publishes none retrievable). DC (GLP-1 only: DHCF's
-   general form has no criteria), FL and OH done 2026-10-21; NC's posted criteria are a 2024 DRAFT
-   (not applied) and the rest sit behind the MES login. MI, GA, WA, TN Medicaid not yet done (TennCare's 565-page criteria PDF is cached-friendly). Then commercial plans' policies. Method:
-   `data-gathering/pa-criteria-2026-10-21/{BRIEF.md,targets.json}` → Haiku extract → Sonnet
-   adjudicate against the CURRENT document (it caught outdated bulletins, draft handbooks,
-   wrong AND/OR logic, and generic form questions posing as criteria) →
-   `node scripts/apply-pa-criteria.mjs <file>`.
-4. **PA submission channels for the remaining commercial and Part D payers.** Medicaid done for
-   all 9 states; commercial done where the payer's own formulary prints them (UHC, Sentara,
-   IBX, Anthem CA, Cigna, AARP, Humana). Remaining payers print only "call the number on the ID
-   card"; look for each plan's provider PA page. Verify with Sonnet before applying
-   (`scripts/apply-pa-submission.mjs`); a wrong fax misroutes PHI.
-5. **Cash prices.** Every recommended pick now has a price or a link-only rule except generic
-   rivaroxaban 20 mg (not sold) and one unspecified guanfacine form. Next: the alternatives long
-   tail (`KNOWN_UNPRICED_GAP` 1092). Needs the real browser.
-6. **Stale sources** (issues.md): Meridian (Dec 2024) and BCBS Community IL (May 2025) lists;
+1. **The 11 new topics in the other 16 states, one state per run** (antipsychotics, depression
+   beyond SSRIs, eczema/psoriasis/acne, insomnia/anxiety, RA/psoriasis/IBD biologics, pain,
+   testosterone, OAB, blood pressure beyond ACE, HIV, hepatitis C; 28 classes). Done: MA
+   (2026-10-22, PR #23). Order: NY, CA, TX, FL, PA, IL, OH, GA, NC, MI, VA, WA, MD, TN, AL, DC.
+   Method (MA run): taxonomy `data-gathering/ma-next11-2026-10-22/taxonomy{,-A,-B}.json`, task
+   template `TASK.md`, check template `CHECK.md`, `combine.py` — copy the folder for the new
+   state. Two Haiku agents per payer document (batch A 12 classes, batch B 16), one Sonnet check
+   per payer, `node scripts/merge-gather.mjs --dir=... --state=XX --payers-from=<xx>-adhd`.
+   Reuse UHC/Humana checkpoints across states (export-payer-checkpoint.mjs refuses source-state
+   prose). Then label sigs, ICD-10 (DRUG_ICD10 needs entries for any new barrier drug in JAK,
+   IL-17/23 and TNF — a test fails otherwise), cash rules for new picks, audit.
+2. **PA criteria for the new topics, per state as each lands** (MA done: all 5 payers).
+   `data-gathering/pa-criteria-2026-10-22/{BRIEF.md,targets.json}` → Haiku extract → Sonnet
+   adjudicate (multi-indication drugs need one path per indication) → `apply-pa-criteria.mjs`.
+3. **Run the deterministic audit on every other state's existing 12 topics, one state per run.**
+   MA is clean (1,727 OK, 252 reviewed, 0 open, 35 skipped). Expect new PDF layouts to need a
+   tweak in `scripts/source_rows.py` (see docs/data-audit.md "adding a layout").
+4. **PA approval criteria for the original topics' remaining Medicaid payers:** MI, GA, WA (Apple
+   Health PA policy numbers are in the PDL sheet), TN done; NC public criteria are a 2024 DRAFT.
+   Then commercial plans' policies.
+5. **PA submission channels** for payers that print only "call the number on the ID card"
+   (CareSource GA, Florida Blue, BCBS TN have no general pharmacy PA channel published). Verify
+   with Sonnet before applying (`scripts/apply-pa-submission.mjs`); a wrong fax misroutes PHI.
+6. **Cash prices for the alternatives long tail** (`KNOWN_UNPRICED_GAP` 1547). GoodRx needs the
+   user's Chrome (the in-app browser is blocked); extract only the price with javascript_tool and
+   print `location.pathname` to catch redirects. Cost Plus via browser if curl 403s.
+7. **Stale sources** (issues.md): Meridian (Dec 2024) and BCBS Community IL (May 2025) lists;
    Cigna MD's URL now serves the 2027 list (re-add Cigna to the MD new-topic guides on
-   2027-01-01); Aetna IL reissued; BCBS MA SSRI 404; 6 MassHealth tables drifted.
-7. **Partial → verified upgrades:** `il-osteoporosis` (13 partial), `ny-osteoporosis` (6),
+   2027-01-01); Aetna IL reissued; BCBS MA SSRI 404; 6 MassHealth tables drifted. The audit's
+   accepted list re-flags checks when a source row changes — re-run it after any reissue.
+8. **Partial → verified upgrades:** `il-osteoporosis` (13 partial), `ny-osteoporosis` (6),
    `ny-menopause` (5 example).
-8. **New states** (51 jurisdictions; DC, FL, OH, NC, MI, GA, WA, TN added 2026-10-21 = 17): pick by population; each new state costs a
-   payer-roster discovery plus one agent per payer for all 12 topics (~60–90 cells per payer).
+9. **New states** (17 of 51 covered): next by Medicaid enrollment AZ, NJ (per-MCO lists,
+   expensive), IN, KY (single PDL), LA, MN, MO, OR, CO, WI; SC and NV also have single PDLs.
+10. ~~TX: 7 missing topics~~ — done 2026-10-21. ~~ADHD / cholesterol / weight / migraine in every
+   state~~ — done 2026-10-21.
 
 ## Ledger (append one line per run)
 
@@ -108,3 +121,4 @@ Each item fits roughly one 20-minute run. Done items stay listed (struck) so the
 | 2026-10-21 | #2 NY (manual, 4 agents) | `ny-adhd/lipids/weight/migraine`: 55 cells, 36 verified; added to rolling PR #22 | #2 next state (MD or VA), or #1 TX |
 | 2026-10-21 | #8 new states (manual, 5.5 h run, ≤4 agents) | DC, FL, OH: 12 guides × 4 payers each (UHC and Humana PDP reused from checked records); PA criteria for the original topics in 8 states; one rolling PR #22 | NC merge, then GA/MI by population |
 | 2026-10-21 | #8 new states, cont. (manual, ≤4 agents) | NC, MI, GA, WA, TN (12 guides each); Anthem NY/VA/CA reissue applied; PA criteria OH/FL/DC; three Codex rounds fixed | Next state by population (NJ needs per-MCO lists; AZ, IN, KY have single PDLs), or #3 criteria for MI/GA/WA/TN |
+| 2026-10-22 | Research + MA wave (manual, ≤4 agents) | 11 new topics in MA (28 classes × 5 payers) with PA criteria, cash, label sigs; deterministic audit tooling; MA audit 0 open; PR #23 | Queue #1: NY for the 11 topics |

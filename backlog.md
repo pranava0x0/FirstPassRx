@@ -11,6 +11,19 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## High
 
+- **Strength-aware cash lookup** (high; Impact high, Effort medium, Cost none). `ResultCard` and
+  `PrescribeOptions` look prices up by `agent.inn` alone, so a pick at a different strength than
+  the captured product shows the wrong price (Codex flagged cyclobenzaprine 5 vs 10 mg, baclofen,
+  MGB hydrocodone 2.5/325 in one review). Pass `agent.strength` into `goodRxPrice/costPlusPrice`
+  and let a rule declare its captured strength; suppress the price (keep the link) on mismatch,
+  like `formConflict` does for dosage forms. Added 2026-10-22.
+- **Drug-aware ICD-10 for every class** (medium). `icd10For(classId, drug)` with DRUG_ICD10 now
+  covers JAK, IL-17/23, TNF and antipsychotics (test-enforced for the biologic classes); extend
+  the test to any class whose agents have different labeled indications. Added 2026-10-22.
+- **Per-indication sigs in the UI** (medium). Label sigs now spell out several indications in one
+  string (upadacitinib, ustekinumab, tofacitinib); a diagnosis chosen in the PA builder could
+  select the matching branch. Added 2026-10-22.
+
 - **Daily 5 PM burndown runs the data queue in [docs/daily-burndown.md](docs/daily-burndown.md).**
   (2026-10-21) State-first, payer-major, local `sources/` cache first. Next: TX 1 → 8 topics, then
   ADHD stimulants and statins/PCSK9 state by state. Keep that file's queue as the single ordered
