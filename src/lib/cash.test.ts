@@ -401,3 +401,13 @@ describe('no covered name borrows a price captured for a different dosage form',
     expect([...new Set(offenders)]).toEqual([])
   })
 })
+
+// Codex review, PR 22: a suppressed cross-form price must not keep the other form's deep links.
+describe('form-conflicting names drop the captured product links', () => {
+  it('Premarin vaginal cream gets no tablet params and no Cost Plus tablet link', () => {
+    const name = 'Premarin vaginal cream'
+    expect(priceSuppressedByForm(name)).toBe(true)
+    expect(goodRxUrl(name)).not.toContain('?')
+    expect(costPlusUrl(name)).toBeNull()
+  })
+})

@@ -204,7 +204,11 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
               <p className="eyebrow">
                 <GlossaryTerm match="Step therapy">Step therapy</GlossaryTerm>
               </p>
-              {record.stepTherapy ? (
+              {record.noCoveredAgent ? (
+                <p className="step__body step__body--none">
+                  Not applicable: no drug in this class is on this plan's list.
+                </p>
+              ) : record.stepTherapy ? (
                 <p className="step__body">{record.stepTherapy}</p>
               ) : (
                 <p className="step__body step__body--none">None required for the preferred agent.</p>

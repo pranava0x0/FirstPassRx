@@ -2006,15 +2006,18 @@ function cashLinkRule(name: string): CashLinkRule | undefined {
   return CASH_LINK_RULES.find((rule) => rule.matches.test(name))
 }
 
+// When the rule's captured product is a different dosage form (see formConflict below), its deep
+// links point at that other product too: GoodRx drops the form/strength params and lands on the
+// drug's own page (which has a form picker), and the product-specific Cost Plus link is withheld.
 export function goodRxUrl(name: string): string {
   const rule = cashLinkRule(name)
   const base = `https://www.goodrx.com/${rule?.goodRxSlug ?? fallbackSlug(name)}`
-  return rule?.goodRxParams ? `${base}?${rule.goodRxParams}` : base
+  return rule?.goodRxParams && !priceSuppressedByForm(name) ? `${base}?${rule.goodRxParams}` : base
 }
 
 export function costPlusUrl(name: string): string | null {
   const path = cashLinkRule(name)?.costPlusPath
-  return path ? `https://www.costplusdrugs.com/medications/${path}/` : null
+  return path && !priceSuppressedByForm(name) ? `https://www.costplusdrugs.com/medications/${path}/` : null
 }
 
 /** Snapshot GoodRx price for this drug, or null if no exact strength/form match was captured. */

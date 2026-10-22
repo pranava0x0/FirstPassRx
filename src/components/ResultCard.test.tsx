@@ -104,3 +104,18 @@ describe('ResultCard "What to do next" on a restricted pick', () => {
     expect(next()).toHaveTextContent(/needs plan sign-off here: Clinical criteria apply/)
   })
 })
+
+describe('ResultCard step therapy on a no-covered-agent record', () => {
+  it('says not applicable instead of "None required for the preferred agent"', () => {
+    render(
+      <ResultCard
+        record={record({ noCoveredAgent: true, preferredRestriction: 'Not on the drug list (p. 5).' })}
+        payer={payer}
+        panelId="p"
+        labelId="l"
+      />,
+    )
+    expect(screen.queryByText('None required for the preferred agent.')).toBeNull()
+    expect(screen.getByText(/Not applicable: no drug in this class/)).toBeInTheDocument()
+  })
+})
