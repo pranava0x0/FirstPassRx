@@ -24,14 +24,15 @@ async function switchGuide(user: ReturnType<typeof userEvent.setup>, stateName: 
   const stateSelect = screen.getByLabelText(/^State$/) as HTMLSelectElement
   const stateOpt = [...stateSelect.options].find((o) => stateName.test(o.textContent ?? ''))!
   await user.selectOptions(stateSelect, stateOpt.value)
-  await waitFor(() => expect(screen.getByLabelText(/^Condition$/)).toBeEnabled())
+  // Guide chunks load lazily; under full-suite load (248 guides) this can take over the 1 s default.
+  await waitFor(() => expect(screen.getByLabelText(/^Condition$/)).toBeEnabled(), { timeout: 5000 })
   const topicSelect = screen.getByLabelText(/^Condition$/) as HTMLSelectElement
   const topicOpt = [...topicSelect.options].find((o) => topicName.test(o.textContent ?? ''))!
   await user.selectOptions(topicSelect, topicOpt.value)
   await waitFor(() => {
     expect(topicSelect.value).toBe(topicOpt.value)
     expect(screen.queryByText(/^Loading$/)).not.toBeInTheDocument()
-  })
+  }, { timeout: 5000 })
 }
 
 /** Selected option text of a labelled select. */
