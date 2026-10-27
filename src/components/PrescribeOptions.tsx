@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { ClassMeta, FormularyRecord, PaItem, PayerMeta, Reference } from '../types/formulary'
 import { useGuide } from '../lib/formulary'
 import { goodRxUrl, costPlusUrl, goodRxPrice, costPlusPrice, pricesCapturedAt } from '../lib/cash'
@@ -44,10 +44,13 @@ export function PrescribeOptions({
   record,
   source,
   payer,
+  openFirstRequest = 0,
 }: {
   record: FormularyRecord
   source?: Reference
   payer: PayerMeta
+  /** Bumped by the header's "Request PA" button: opens the first blocked drug's request. */
+  openFirstRequest?: number
 }) {
   const guide = useGuide()
   const drugClass = guide.getClass(record.classId)
@@ -72,6 +75,7 @@ export function PrescribeOptions({
   }))
 
   const rows = [...alternates, ...barriers]
+  const firstBarrier = rows.findIndex((r) => r.type === 'barrier' && r.paItem)
 
   if (rows.length === 0) {
     return null
@@ -92,7 +96,7 @@ export function PrescribeOptions({
       </div>
       
       <div className="rx-cards-list">
-        {rows.map((row) => {
+        {rows.map((row, i) => {
           const costPlusHref = costPlusUrl(row.cashName)
           const goodRxPoint = row.type === 'alternative' ? goodRxPrice(row.cashName) : null
           const costPlusPoint = row.type === 'alternative' ? costPlusPrice(row.cashName) : null
@@ -134,7 +138,13 @@ export function PrescribeOptions({
               </div>
             )}
             {row.type === 'barrier' && row.paItem && drugClass ? (
-              <AppealAction record={record} item={row.paItem} payer={payer} drugClass={drugClass} />
+              <AppealAction
+                record={record}
+                item={row.paItem}
+                payer={payer}
+                drugClass={drugClass}
+                openSignal={i === firstBarrier ? openFirstRequest : 0}
+              />
             ) : null}
             </div>
           )
@@ -150,11 +160,14 @@ export function AppealAction({
   item,
   payer,
   drugClass,
+  openSignal = 0,
 }: {
   record: FormularyRecord
   item: PaItem
   payer: PayerMeta
   drugClass: ClassMeta
+  /** A new non-zero value opens the PA request and scrolls it into view. */
+  openSignal?: number
 }) {
   const initial = buildAppealLetter(record, item, payer, drugClass)
   const [mode, setMode] = useState<'request' | 'appeal' | null>(null)
@@ -162,6 +175,23 @@ export function AppealAction({
   const [value, setValue] = useState(initial)
   const [pdfError, setPdfError] = useState(false)
   const { copied, copy, reset } = useCopyToClipboard()
+  const rootRef = useRef<HTMLDivElement>(null)
+
+  const scrollOnOpen = useRef(false)
+
+  useEffect(() => {
+    if (!openSignal) return
+    scrollOnOpen.current = true
+    setMode('request')
+  }, [openSignal])
+
+  // After the request renders, jump to its card. Instant on purpose: smooth scrolling and
+  // requestAnimationFrame are both skipped in some embedded webviews and background frames.
+  useEffect(() => {
+    if (mode !== 'request' || !scrollOnOpen.current) return
+    scrollOnOpen.current = false
+    ;(rootRef.current?.closest('.rx-option-card') ?? rootRef.current)?.scrollIntoView?.({ block: 'start' })
+  }, [mode, openSignal])
 
   // Rebuild the letter whenever the underlying cell changes (payer/class switch can reuse this
   // component instance for a same-named barrier drug — see RxSig's identical fix for the same issue).
@@ -172,7 +202,7 @@ export function AppealAction({
   }, [initial])
 
   return (
-    <div className="appeal">
+    <div className="appeal" ref={rootRef}>
       <div className="appeal__buttons">
         <button
           type="button"

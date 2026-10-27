@@ -122,10 +122,17 @@
     pa_draft: {
       q: 'Open a PA request/letter draft for the first blocked drug.',
       run: async (c) => {
-        const card = await waitFor(() => $('.rx-option-card.is-barrier'))
-        const btn = card.querySelector('.pa-open-btn, .appeal-btn')
+        // Shortest path: the hero's "Start PA request" opens the first blocked drug's request and
+        // jumps to it. Fall back to the card's own button when the hero has no PA line.
+        const start = await waitFor(() => $('.pa-summary__open') || $('.rx-option-card.is-barrier'))
+        if (start.matches('.pa-summary__open')) {
+          await c.tap(start, 'start PA request (hero)')
+          await c.see(await waitFor(() => $('.rx-option-card.is-barrier .pa-builder')), 'draft')
+          return
+        }
+        const btn = start.querySelector('.pa-open-btn, .appeal-btn')
         await c.tap(btn, 'open PA draft')
-        await c.see(await waitFor(() => card.querySelector('textarea, .pa-builder')), 'draft')
+        await c.see(await waitFor(() => start.querySelector('textarea, .pa-builder')), 'draft')
       },
     },
     cash_price: {

@@ -2,7 +2,6 @@ import { useMemo, useState, useId } from 'react'
 import type { ClassMeta, FormularyRecord, PaItem, PayerMeta } from '../types/formulary'
 import { useGuide } from '../lib/formulary'
 import {
-  STEP_OUTCOME_LABEL,
   buildPaRequest,
   emptyPaRequest,
   paChecklist,
@@ -15,6 +14,19 @@ import {
 import { ICD10_RELEASE, icd10For } from '../lib/icd10'
 import { downloadLetterPdf } from '../lib/letterPdf'
 import { useCopyToClipboard } from '../lib/clipboard'
+
+/** One tap each; a native select needs two on a phone. The letter keeps the long wording. */
+const CRITERION_CHOICES: [Exclude<CriterionStatus, ''>, string][] = [
+  ['met', 'Met'],
+  ['not-met', 'Not met'],
+]
+const STEP_CHIP_LABEL: Record<Exclude<StepOutcome, ''>, string> = {
+  inadequate: 'Inadequate response',
+  adverse: 'Side effects',
+  contraindicated: 'Contraindicated',
+  'not-appropriate': 'Not appropriate',
+  'not-tried': 'Not tried',
+}
 
 /**
  * Prescriber-side PA request builder: a short structured form whose answers fill a letter of
@@ -64,6 +76,12 @@ export function PaRequest({
 
   return (
     <div className="pa-builder">
+      <header className="pa-builder__head">
+        <p className="pa-builder__eyebrow">Prior authorization request</p>
+        <p className="pa-builder__title">
+          {item.drug} <span className="pa-builder__for">for {payer.shortName}</span>
+        </p>
+      </header>
       {payer.paSubmission ? (
         <div className="pa-builder__send">
           <p className="pa-builder__send-label">Send to</p>
@@ -90,6 +108,11 @@ export function PaRequest({
           </b>{' '}
           things a reviewer checks first
         </p>
+        <div className="pa-meter" aria-hidden="true">
+          {checklist.map((c) => (
+            <span key={c.id} className={c.done ? 'is-done' : undefined} />
+          ))}
+        </div>
         <ul>
           {checklist.map((c) => (
             <li key={c.id} className={c.done ? 'is-done' : undefined}>
@@ -102,7 +125,7 @@ export function PaRequest({
 
       {input.criteria.length > 0 ? (
         <fieldset className="pa-steps pa-criteria">
-          <legend>
+          <legend className="pa-section">
             {item.criteriaMode === 'all'
               ? 'This plan approves when ALL of these are met'
               : 'This plan approves when ANY ONE of these is met'}
@@ -111,15 +134,20 @@ export function PaRequest({
           {input.criteria.map((c, i) => (
             <div key={c.text} className="pa-step">
               <p className="pa-step__drug pa-criteria__text">{c.text}</p>
-              <select
-                aria-label={`Criterion ${i + 1}: met or not`}
-                value={c.status}
-                onChange={(e) => setCriterion(i, { status: e.target.value as CriterionStatus })}
-              >
-                <option value="">Met?</option>
-                <option value="met">Met</option>
-                <option value="not-met">Not met</option>
-              </select>
+              <div className="pa-chips" role="radiogroup" aria-label={`Criterion ${i + 1}: met or not`}>
+                {CRITERION_CHOICES.map(([value, label]) => (
+                  <label key={value} className={`pa-chip${c.status === value ? ' is-on' : ''}`}>
+                    <input
+                      type="radio"
+                      name={`${listId}-criterion-${i}`}
+                      value={value}
+                      checked={c.status === value}
+                      onChange={() => setCriterion(i, { status: value })}
+                    />
+                    {label}
+                  </label>
+                ))}
+              </div>
               {c.status === 'met' ? (
                 <input
                   aria-label={`Chart evidence for criterion ${i + 1}`}
@@ -134,6 +162,7 @@ export function PaRequest({
         </fieldset>
       ) : null}
 
+      <p className="pa-section">Diagnosis and prescription</p>
       <div className="pa-builder__grid">
         <label className="pa-field pa-field--wide">
           <span>Diagnosis (ICD-10)</span>
@@ -181,23 +210,25 @@ export function PaRequest({
 
       {input.steps.length > 0 ? (
         <fieldset className="pa-steps">
-          <legend>The plan prefers these. Answer each one.</legend>
+          <legend className="pa-section">The plan prefers these. Answer each one.</legend>
           {input.steps.map((s, i) => (
             <div key={s.drug} className="pa-step">
               <p className="pa-step__drug">{s.drug}</p>
-              <select
-                aria-label={`Outcome for ${s.drug}`}
-                value={s.outcome}
-                onChange={(e) => setStep(i, { outcome: e.target.value as StepOutcome })}
-              >
-                <option value="">Choose…</option>
-                {Object.entries(STEP_OUTCOME_LABEL).map(([value, label]) => (
-                  <option key={value} value={value}>
-                    {label}
-                  </option>
+              <div className="pa-chips pa-chips--wrap" role="radiogroup" aria-label={`Outcome for ${s.drug}`}>
+                {(Object.keys(STEP_CHIP_LABEL) as Exclude<StepOutcome, ''>[]).map((value) => (
+                  <label key={value} className={`pa-chip${s.outcome === value ? ' is-on' : ''}`}>
+                    <input
+                      type="radio"
+                      name={`${listId}-step-${i}`}
+                      value={value}
+                      checked={s.outcome === value}
+                      onChange={() => setStep(i, { outcome: value })}
+                    />
+                    {STEP_CHIP_LABEL[value]}
+                  </label>
                 ))}
-              </select>
-              {s.outcome !== 'not-tried' ? (
+              </div>
+              {s.outcome !== '' && s.outcome !== 'not-tried' ? (
                 <input
                   aria-label={`Dates and details for ${s.drug}`}
                   value={s.detail}
@@ -231,7 +262,10 @@ export function PaRequest({
         <pre className="pa-builder__letter">{letter}</pre>
       </details>
 
-      <div className="appeal-panel__actions">
+      <div className="pa-builder__actions">
+        <p className="pa-builder__actions-score" aria-hidden="true">
+          {doneCount}/{checklist.length} ready
+        </p>
         <button
           type="button"
           className={`copy-btn${copied ? ' copy-btn--done' : ''}`}

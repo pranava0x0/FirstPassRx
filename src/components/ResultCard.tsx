@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { FormularyRecord, PayerMeta } from '../types/formulary'
 import { useGuide } from '../lib/formulary'
 import { goodRxUrl, costPlusUrl, goodRxPrice, costPlusPrice, pricesCapturedAt } from '../lib/cash'
@@ -33,6 +34,11 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
   const costPlusPoint = costPlusPrice(agent.inn)
   const pricesAsOf = pricesCapturedAt(agent.inn)
   const blocked = (record.paRequired ?? []).map((r) => r.drug)
+  // "Request PA" in the header opens the first blocked drug's request in place. Scoped to this
+  // record so switching plan or class never auto-opens a request on the next one.
+  const [paOpen, setPaOpen] = useState<{ record: FormularyRecord; n: number } | null>(null)
+  if (paOpen && paOpen.record !== record) setPaOpen(null)
+  const paSignal = paOpen?.record === record ? paOpen.n : 0
 
   // Clean lowercase generic name without salt/device suffixes, for the BOGL "write brand, not
   // generic X" copy (e.g. "Albuterol sulfate HFA" -> "albuterol").
@@ -115,7 +121,14 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
             <p className="pa-summary">
               <b>Needs plan approval:</b> {blocked.slice(0, 3).join(', ')}
               {blocked.length > 3 ? ` +${blocked.length - 3} more` : ''}{' '}
-              <a href="#rx-options">PA request ↓</a>
+              <button
+                type="button"
+                className="pa-summary__open"
+                aria-label={`Start a PA request for ${blocked[0]}`}
+                onClick={() => setPaOpen((cur) => ({ record, n: (cur?.record === record ? cur.n : 0) + 1 }))}
+              >
+                Start PA request <span aria-hidden="true">↓</span>
+              </button>
             </p>
           ) : null}
           <CashPriceBoxes
@@ -147,7 +160,7 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
         )}
 
         {/* Q1 + Q2: what to prescribe + alternatives, with cost in plan vs cash. */}
-        <PrescribeOptions record={record} source={primarySource} payer={payer} />
+        <PrescribeOptions record={record} source={primarySource} payer={payer} openFirstRequest={paSignal} />
 
         {/* Load-bearing prescriber warning — stays visible when the plan forces the brand. */}
         {record.boglActive && record.boglNote ? (

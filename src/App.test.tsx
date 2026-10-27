@@ -343,7 +343,7 @@ describe('FirstPassRx app', () => {
     expect(card.querySelector('.pa-criteria .pa-builder__source a')).not.toBeNull()
     expect(within(card).getByRole('link', { name: /CMS code file/ })).toHaveAttribute('href', expect.stringMatching(/cms\.gov/))
     expect(card.querySelector('.pa-builder__letter')?.textContent).toMatch(/Send to: fax 844-403-1029.*\(source: https:/)
-    await user.selectOptions(within(card).getByLabelText(/Criterion 2: met or not/), 'met')
+    await user.click(within(within(card).getByRole('radiogroup', { name: /Criterion 2: met or not/ })).getByRole('radio', { name: 'Met' }))
     await user.type(within(card).getByLabelText(/Chart evidence for criterion 2/), 'QVAR 3/2025 and Arnuity 1/2026, poor control')
     expect(within(card).getByText(/1 of 5/)).toBeInTheDocument()
     expect(card.querySelector('.pa-builder__letter')?.textContent).toMatch(/2\. Asthma diagnosis.*: MET — QVAR 3\/2025/)
@@ -360,6 +360,21 @@ describe('FirstPassRx app', () => {
     )
     await waitFor(() => expect(window.location.search).toBe('?guide=ma-inhalers&plan=mgb&class=ics'))
     expect((screen.getByLabelText(/select insurance plan/i) as HTMLSelectElement).value).toBe('mgb')
+  })
+
+  it('the header\'s "Start PA request" opens the first blocked drug\'s request in place (MGB ICS)', async () => {
+    const user = userEvent.setup()
+    window.history.replaceState({}, '', '/?guide=ma-inhalers&plan=mgb&class=ics')
+    render(<App />)
+    const start = await screen.findByRole('button', { name: /start a pa request for/i })
+    const first = start.getAttribute('aria-label')!.replace(/^Start a PA request for /, '')
+    await user.click(start)
+    const card = screen.getByRole('heading', { level: 5, name: first }).closest('.rx-option-card') as HTMLElement
+    expect(card.querySelector('.pa-builder')).not.toBeNull()
+    expect(within(card).getByRole('button', { name: /hide pa request/i })).toHaveAttribute('aria-expanded', 'true')
+    // Scoped to the record: switching class must not auto-open a request on the next one.
+    await user.click(screen.getByRole('tab', { name: /Rescue inhaler/i }))
+    expect(document.querySelector('.pa-builder')).toBeNull()
   })
 
   it('offers a PA request on the recommended drug itself when it needs plan approval', async () => {
