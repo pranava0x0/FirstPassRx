@@ -246,6 +246,17 @@ describe('guides + global meta', () => {
       'ca-hypertension',
       'ca-hiv',
       'ca-hepatitis-c',
+      'tx-antipsychotics',
+      'tx-antidepressants',
+      'tx-dermatology',
+      'tx-sleep-anxiety',
+      'tx-immunology',
+      'tx-pain',
+      'tx-testosterone',
+      'tx-oab',
+      'tx-hypertension',
+      'tx-hiv',
+      'tx-hepatitis-c',
     ])
   })
 

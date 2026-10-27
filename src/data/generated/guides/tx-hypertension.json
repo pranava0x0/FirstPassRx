@@ -1,0 +1,1258 @@
+{
+  "id": "tx-hypertension",
+  "label": "TX · Blood pressure (beyond ACE inhibitors)",
+  "stateCode": "TX",
+  "region": "Texas",
+  "topicId": "hypertension",
+  "topic": "Blood pressure (beyond ACE inhibitors)",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-27",
+  "capturedAt": "2026-10-27",
+  "payers": [
+    {
+      "id": "tx-medicaid",
+      "name": "Texas Medicaid Vendor Drug Program (Fee-for-Service, statewide PDL binding on all MCOs)",
+      "shortName": "TX Medicaid FFS",
+      "pbm": "Texas Health and Human Services Commission (HHSC) Vendor Drug Program",
+      "formularyUrl": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "productName": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization Criteria, effective July 24, 2026"
+    },
+    {
+      "id": "bcbs-tx-commercial",
+      "name": "Blue Cross and Blue Shield of Texas (Commercial)",
+      "shortName": "BCBS Texas",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "sourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "productName": "Performance Drug List, July 2026",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Blue Cross and Blue Shield of Texas Performance Drug List, October 2026 (41722-T TX); PDF pages cited are PDF indices (printed page = PDF page - 10). Fresh curl 2026-10-27 is byte-identical to sources/bcbs-tx-commercial-newtopics-2026-10.pdf (sha256 279e092f...); day of month not printed, effectiveDate set to 2026-10-01"
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "arb",
+      "name": "ARBs",
+      "shortName": "ARB",
+      "plainName": "Angiotensin receptor blocker",
+      "description": "Losartan, valsartan, irbesartan, olmesartan, telmisartan, candesartan, azilsartan (Edarbi); single-agent tablets (combinations with HCTZ or amlodipine are alternatives only if listed separately). Sacubitril/valsartan (Entresto) is heart failure and out of scope.",
+      "plainDescription": "A daily blood pressure pill, often used when an ACE inhibitor causes cough.",
+      "indication": "Hypertension, diabetic kidney disease",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "ccb",
+      "name": "Calcium channel blockers",
+      "shortName": "CCB",
+      "plainName": "Calcium channel blocker",
+      "description": "Dihydropyridines (amlodipine, nifedipine ER, felodipine ER, nicardipine) and non-dihydropyridines (diltiazem IR/ER, verapamil IR/ER).",
+      "plainDescription": "A daily blood pressure pill that relaxes blood vessels.",
+      "indication": "Hypertension, angina",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "beta-blocker",
+      "name": "Beta blockers",
+      "shortName": "BB",
+      "plainName": "Beta blocker",
+      "description": "Metoprolol tartrate/succinate, carvedilol IR/CR, atenolol, bisoprolol, nebivolol (Bystolic), propranolol IR/ER, labetalol, nadolol.",
+      "plainDescription": "A daily pill that slows the heart and lowers blood pressure.",
+      "indication": "Hypertension, heart failure, post-MI, angina",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "thiazide",
+      "name": "Thiazide diuretics",
+      "shortName": "THIAZIDE",
+      "plainName": "Water pill (thiazide)",
+      "description": "Hydrochlorothiazide, chlorthalidone, indapamide, metolazone.",
+      "plainDescription": "A daily water pill for blood pressure.",
+      "indication": "Hypertension, edema",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "arb",
+      "preferredAgent": {
+        "inn": "Losartan potassium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg (standard strength; PDL does not print strength)",
+        "sig": "50 mg once daily (25 mg if volume-depleted or with liver disease); range 25-100 mg/day (label).",
+        "sigShort": "50 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": "A Duplicate Therapy clinical PA is printed for the angiotensin modulator section (PDL p.15), which contains the ARB single agents; the criteria are in the linked DUR document. Applicability to single-agent losartan is a judgment call.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred on PDL (no tier stated)",
+      "alternatives": [
+        {
+          "drug": "DIOVAN (valsartan) brand; EDARBI (azilsartan) brand",
+          "note": "Preferred (p.16)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Irbesartan (generic)",
+          "note": "Preferred (p.16)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Losartan/HCTZ (generic); irbesartan/HCTZ; DIOVAN-HCT; EDARBYCLOR",
+          "note": "Preferred combination products listed separately (p.16); alternatives only, not single-agent ARBs",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "ARBLI (losartan); COZAAR (losartan)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.16",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Valsartan (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.16",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olmesartan (generic); BENICAR (olmesartan)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.16",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Candesartan (generic); ATACAND (candesartan)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.16",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Telmisartan (generic); MICARDIS (telmisartan)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.16",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "AVAPRO (irbesartan)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.16",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Azilsartan (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.16",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from PDL pp.15-16 (Angiotensin Modulators; ARBs). Losartan generic is preferred and is the lowest-barrier pick. Restriction is a judgment call on the duplicate-therapy clinical PA block printed on p.15. Thiazide combination ARB products are listed as alternatives only, per the class description.",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "ccb",
+      "preferredAgent": {
+        "inn": "Amlodipine besylate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg (standard strength; PDL does not print strength)",
+        "sig": "5 mg once daily (2.5 mg for older or frail adults); max 10 mg/day (label).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred on PDL (no tier stated)",
+      "alternatives": [
+        {
+          "drug": "NORVASC (amlodipine) brand; NORLIQVA (amlodipine oral solution)",
+          "note": "Preferred (p.37)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Verapamil IR (generic); verapamil ER (generic capsules, tablets)",
+          "note": "Preferred (p.37)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diltiazem IR (generic); diltiazem ER (generic); TIAZAC; CARTIA XT; DILT XR",
+          "note": "Preferred (pp.36-37)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nifedipine IR (generic); nifedipine ER (generic); felodipine ER (generic)",
+          "note": "Preferred (p.37)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "CARDIZEM (diltiazem); CARDIZEM CD; CARDIZEM LA; diltiazem LA (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL pp.36-37",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nicardipine (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.37",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Isradipine (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.37",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "PROCARDIA XL (nifedipine); nisoldipine (generic); SULAR (nisoldipine)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.37",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "KATERZIA (amlodipine); levamlodipine (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.37",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "TAZTIA XT; TIADYLT ER; MATZIM LA (diltiazem)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.37",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Verapamil 360 mg capsules; verapamil ER PM; VERELAN PM",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.37",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from PDL pp.36-37 (Calcium Channel Blockers). Amlodipine generic is preferred on the long-acting list. The PDL prints no class-wide clinical PA for this section.",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "beta-blocker",
+      "preferredAgent": {
+        "inn": "Metoprolol tartrate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg (standard strength; PDL lists 'metoprolol IR' without strength)",
+        "sig": "Hypertension: start 50 mg twice daily (or 25 mg twice daily) and titrate; usual 100-200 mg/day (label).",
+        "sigShort": "25-50 mg BID",
+        "plainSig": "One pill twice a day; do not stop suddenly."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred on PDL (no tier stated)",
+      "alternatives": [
+        {
+          "drug": "Atenolol (generic); TENORMIN (atenolol)",
+          "note": "Preferred (p.33)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Bisoprolol (generic); BYSTOLIC (nebivolol)",
+          "note": "Preferred (p.33)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metoprolol succinate XL (generic)",
+          "note": "Preferred (p.33)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Propranolol IR (generic); INDERAL LA/XL; INNOPRAN XL",
+          "note": "Preferred (p.33)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carvedilol (generic); COREG CR",
+          "note": "Preferred (p.33); COREG immediate-release is not preferred",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Labetalol (generic)",
+          "note": "Preferred (p.33)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Atenolol/chlorthalidone (generic)",
+          "note": "Preferred combination product (p.33); alternative only",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "KAPSPARGO (metoprolol succinate); TOPROL XL; LOPRESSOR (metoprolol) solution and tablet",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.33",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nadolol (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.33",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nebivolol (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.33",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pindolol (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.33",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Propranolol ER (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.33",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Betaxolol (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.33",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carvedilol ER (generic); COREG (carvedilol) immediate-release",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.33",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "TENORETIC (atenolol/HCTZ); metoprolol/HCTZ",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.33",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from PDL p.33 (Beta Blockers (Oral); Beta and Alpha Blockers; Beta Blocker Combinations). Metoprolol IR is preferred and is the lowest-barrier pick; strength is not printed (50 mg is a standard BID dose). Sotalol, the antiarrhythmic brands, are outside the class description and are not listed.",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "thiazide",
+      "preferredAgent": {
+        "inn": "Hydrochlorothiazide",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg (standard strength; PDL does not list single-agent HCTZ)",
+        "sig": "12.5-25 mg once daily in the morning (label).",
+        "sigShort": "12.5-25 mg QAM",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": "Not a PDL class; covered on the Texas Medicaid formulary (confirm). The PDL says it holds a subset of the formulary; the Formulary Drug Search was not readable here.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not a PDL class",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched PDL text for hydrochlorothiazide, chlorthalidone, indapamide, metolazone and the 'diuretic' headings (pp.5-88). Only combination products appear (ACE/diuretic p.16; ARB/diuretic p.16; atenolol/chlorthalidone and metoprolol/HCTZ p.33; Edarbyclor p.16). The class description lists single agents only, so combinations are not alternatives. noCoveredAgent is set because no single-agent member is on the PDL; this is NOT a nonformulary finding (the PDL says it is a subset of the formulary). Hydrochlorothiazide is a reference pick only. [Sonnet check 2026-10-27: reversed noCoveredAgent. Single-agent thiazides are absent from the PDL, and the PDL states it is only a subset of the formulary (p.5), so absence is not exclusion. Standard generic hydrochlorothiazide kept as the pick, no PDL PA applies. Web search found no citable Texas formulary line for it; confirm in the VDP Formulary Drug Search.]",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "arb",
+      "preferredAgent": {
+        "inn": "Losartan potassium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet (25 mg and 100 mg also listed)",
+        "sig": "50 mg once daily (25 mg if volume-depleted or with liver disease); range 25-100 mg/day (label).",
+        "sigShort": "50 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Generic (Tier 1, p)",
+      "alternatives": [
+        {
+          "drug": "Valsartan tablet 40, 80, 160, 320 mg (Diovan reference)",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.43)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Irbesartan tablet 75, 150, 300 mg (Avapro reference)",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.43)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olmesartan medoxomil tablet 5, 20, 40 mg (Benicar reference)",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.43)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Telmisartan tablet 20 mg, 80 mg (Micardis reference)",
+          "note": "Preferred Generic (Tier 1, p); 40 mg is np (PDF p.43)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Candesartan cilexetil tablet 4-32 mg (Atacand reference)",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA/QL printed (PDF p.42)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Losartan-HCTZ 50-12.5, 100-12.5, 100-25 mg (Hyzaar reference)",
+          "note": "Preferred Generic (Tier 1, p); combination listed separately (PDF p.43)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Valsartan-HCTZ 80-12.5, 160-12.5, 160-25 mg (Diovan HCT reference)",
+          "note": "Preferred Generic (Tier 1, p); 320 mg combination is np (PDF p.42-43)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Irbesartan-HCTZ 150-12.5, 300-12.5 mg (Avalide reference)",
+          "note": "Preferred Generic (Tier 1, p); combination listed separately (PDF p.43)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olmesartan-HCTZ 20-12.5, 40-12.5, 40-25 mg (Benicar HCT reference)",
+          "note": "Preferred Generic (Tier 1, p); combination listed separately (PDF p.43)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Telmisartan-amlodipine 40-5 to 80-10 mg",
+          "note": "Non-Preferred Generic (Tier 2, np); combination listed separately (PDF p.43)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Amlodipine-valsartan 5-160 to 10-320 mg (Exforge reference)",
+          "note": "Non-Preferred Generic (Tier 2, np); combination listed separately (PDF p.42)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Amlodipine-olmesartan 5-20 to 10-40 mg (Azor reference)",
+          "note": "Non-Preferred Generic (Tier 2, np); combination listed separately (PDF p.42)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Azilsartan (Edarbi)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list; intro states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Losartan 50 mg read as p, no PA/QL (PDF p.43 text layer; x-coordinate check on p.43 showed no flags on losartan, valsartan, irbesartan, olmesartan or telmisartan 20/80 rows). Combinations listed as alternatives per the class description (they are listed separately on this plan). Sacubitril-valsartan (Entresto, P PA) is out of scope per the class description and not included.",
+      "sourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "ccb",
+      "preferredAgent": {
+        "inn": "Amlodipine besylate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet (2.5 mg and 10 mg also listed)",
+        "sig": "5 mg once daily (2.5 mg for older or frail adults); max 10 mg/day (label).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Generic (Tier 1, p)",
+      "alternatives": [
+        {
+          "drug": "Nifedipine ER tablet 30, 60, 90 mg",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.41)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nifedipine IR capsule 10, 20 mg",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA/QL printed (PDF p.41)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Felodipine ER tablet 2.5, 5, 10 mg",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.41)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diltiazem CD beads 120, 180, 240 mg (Cardizem CD reference)",
+          "note": "Preferred Generic (Tier 1, p); 300 mg is np (PDF p.41)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diltiazem IR tablet 30, 60, 120 mg (Cardizem reference)",
+          "note": "Preferred Generic (Tier 1, p); 90 mg is np (PDF p.41)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diltiazem ER beads 120 mg, 180 mg (Tiazac reference)",
+          "note": "Preferred Generic (Tier 1, p); 240-420 mg is np (PDF p.41)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diltiazem LA tablet 120 mg (Cardizem LA reference)",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA/QL printed (PDF p.41)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Verapamil IR tablet 40, 80, 120 mg",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.41)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Verapamil ER tablet 120, 180, 240 mg (Calan SR reference)",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.41)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Verapamil ER capsule 120, 180, 240 mg (Verelan reference)",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA/QL printed (PDF p.41)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Nicardipine (oral)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list; intro states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Amlodipine 5 mg read as p, no PA/QL (PDF p.41-42 text layer; tier line follows the name). Every dihydropyridine and non-dihydropyridine CCB named in the class description that is printed is listed above. Nicardipine is not printed on the list.",
+      "sourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "beta-blocker",
+      "preferredAgent": {
+        "inn": "Metoprolol tartrate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg tablet (37.5 mg and 75 mg also listed)",
+        "sig": "Hypertension: start 50 mg twice daily (or 25 mg twice daily) and titrate; usual 100-200 mg/day (label).",
+        "sigShort": "25-50 mg BID",
+        "plainSig": "One pill twice a day; do not stop suddenly."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Generic (Tier 1, p)",
+      "alternatives": [
+        {
+          "drug": "Metoprolol succinate ER tablet 25-200 mg (Toprol XL reference)",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.40)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metoprolol tartrate tablet 50, 100 mg (Lopressor reference)",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.40)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Atenolol tablet 25, 50, 100 mg (Tenormin reference)",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.40)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carvedilol IR tablet 3.125-25 mg (Coreg reference)",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.40)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Bisoprolol fumarate tablet 5 mg",
+          "note": "Preferred Generic (Tier 1, p); 10 mg is np (PDF p.40)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nebivolol tablet 2.5-20 mg (Bystolic reference)",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.40)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Propranolol IR tablet 10, 20, 40, 80 mg",
+          "note": "Preferred Generic (Tier 1, p); 60 mg is np (PDF p.40)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Propranolol ER capsule 60, 80 mg (Inderal LA reference)",
+          "note": "Preferred Generic (Tier 1, p); 120/160 mg is np (PDF p.40)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Labetalol tablet 100 mg",
+          "note": "Preferred Generic (Tier 1, p); 200/300 mg is np (PDF p.40)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nadolol tablet 20, 40, 80 mg (Corgard reference)",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA/QL printed (PDF p.40)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Metoprolol tartrate 25 mg read as p, no PA/QL (PDF p.40 text layer; x-coordinate check on p.40 showed no PA/ST/QL flags on any beta-blocker row). Every beta blocker named in the class description that is printed is listed above. Judgment: metoprolol tartrate 25 mg chosen as the most commonly written preferred beta blocker; sig is standard label dosing.",
+      "sourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "thiazide",
+      "preferredAgent": {
+        "inn": "Hydrochlorothiazide",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg tablet (12.5 mg and 50 mg also listed)",
+        "sig": "12.5-25 mg once daily in the morning (label).",
+        "sigShort": "12.5-25 mg QAM",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Generic (Tier 1, p)",
+      "alternatives": [
+        {
+          "drug": "Chlorthalidone tablet 25 mg, 50 mg",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.44)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Indapamide tablet 1.25 mg, 2.5 mg",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.44)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metolazone tablet 2.5 mg",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.44)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metolazone tablet 5 mg, 10 mg",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA/QL printed (PDF p.44)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydrochlorothiazide capsule 12.5 mg",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.44)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "HCTZ 25 mg read as p, no PA/QL (PDF p.44 text layer; x-coordinate check on p.44 showed no flags on thiazide rows). Every thiazide named in the class description that is printed is listed above. Thalitone (chlorthalidone brand) is not printed; the generic is.",
+      "sourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "arb",
+      "preferredAgent": {
+        "inn": "Losartan potassium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet",
+        "sig": "50 mg once daily (25 mg if volume-depleted or with liver disease); range 25-100 mg/day (label).",
+        "sigShort": "50 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (Preferred Generic)",
+      "alternatives": [
+        {
+          "drug": "Valsartan 40, 80, 160, 320 mg tablet",
+          "note": "Tier 1; QL 60 per 30 days, no PA (page 51)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Irbesartan 75, 150, 300 mg tablet",
+          "note": "Tier 1; QL 30 per 30 days, no PA (page 48)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olmesartan 5, 20, 40 mg tablet",
+          "note": "Tier 1; QL, no PA (page 49)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Telmisartan 20, 40, 80 mg tablet",
+          "note": "Tier 1; QL, no PA (page 50)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Candesartan 4, 8, 16, 32 mg tablet",
+          "note": "Tier 3; QL, no PA (page 46)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Losartan 25, 50, 100 mg tablet read on page 48: Tier 1, QL 60 per 30 days, no PA or step. Azilsartan (Edarbi) is not listed. Combination ARB-diuretic and ARB-CCB products are excluded from the single-agent alternatives. Sacubitril-valsartan (heart failure) is out of scope. [Sonnet check 2026-10-27: Re-read by x-coordinate on v17; pages, tiers and flags match.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "ccb",
+      "preferredAgent": {
+        "inn": "Amlodipine besylate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg once daily (2.5 mg for older or frail adults); max 10 mg/day (label).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (Preferred Generic)",
+      "alternatives": [
+        {
+          "drug": "Verapamil IR 40, 80, 120 mg tablet",
+          "note": "Tier 1, no QL or PA (page 51)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Felodipine ER 2.5, 5, 10 mg tablet",
+          "note": "Tier 2, no QL or PA (page 47)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diltiazem IR 30, 60, 90, 120 mg tablet",
+          "note": "Tier 2, no QL or PA (page 47)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Verapamil ER 120, 180, 240 mg tablet",
+          "note": "Tier 2, no QL or PA (page 51)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diltiazem ER 12-hour and 24-hour capsules",
+          "note": "Tier 2; 360 mg 24-hour capsule QL 30 per 30 days (page 47)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nifedipine ER 30, 60, 90 mg tablet",
+          "note": "Tier 3, no QL or PA (page 49)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Amlodipine 10 mg, 2.5 mg, 5 mg tablet read on page 46: Tier 1, no QL or PA. Nicardipine is not listed. Amlodipine-containing combinations (benazepril, valsartan, olmesartan) are excluded from single-agent alternatives. [Sonnet check 2026-10-27: Re-read by x-coordinate on v17; pages, tiers and flags match.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "beta-blocker",
+      "preferredAgent": {
+        "inn": "Metoprolol succinate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg extended-release tablet",
+        "sig": "Hypertension: 25-100 mg once daily, max 400 mg/day. Heart failure: start 12.5-25 mg once daily and double every 2 weeks as tolerated to a target of 200 mg (label).",
+        "sigShort": "25-100 mg QD",
+        "plainSig": "One pill a day; do not stop suddenly."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (Preferred Generic)",
+      "alternatives": [
+        {
+          "drug": "Metoprolol tartrate 25, 50, 100 mg tablet",
+          "note": "Tier 1, no QL or PA (page 49)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Atenolol 25, 50, 100 mg tablet",
+          "note": "Tier 1, no QL or PA (page 46)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carvedilol 3.125, 6.25, 12.5, 25 mg tablet",
+          "note": "Tier 1, no QL or PA (page 47)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Bisoprolol fumarate 2.5, 5, 10 mg tablet",
+          "note": "Tier 2, no QL or PA (page 46)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Labetalol 100, 200, 300, 400 mg tablet",
+          "note": "Tier 2, no QL or PA (page 48)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Propranolol IR 10, 20, 40, 60, 80 mg tablet",
+          "note": "Tier 2, no QL or PA (page 50)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nebivolol 2.5 mg and 5 mg tablet",
+          "note": "Tier 3; QL 30 per 30 days, no PA (page 49)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nebivolol 10 mg and 20 mg tablet",
+          "note": "Tier 4; QL, no PA (page 49)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Metoprolol succinate ER 25 mg tablet read on page 49: Tier 1, no QL or PA. Judgment call: once-daily extended-release form, chosen over tartrate. Nadolol is not listed. Metoprolol-hydrochlorothiazide and bisoprolol-hydrochlorothiazide combinations are excluded from single-agent alternatives. [Sonnet check 2026-10-27: Re-read by x-coordinate on v17; pages, tiers and flags match.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "thiazide",
+      "preferredAgent": {
+        "inn": "Hydrochlorothiazide",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg tablet",
+        "sig": "12.5-25 mg once daily in the morning (label).",
+        "sigShort": "12.5-25 mg QAM",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (Preferred Generic)",
+      "alternatives": [
+        {
+          "drug": "Chlorthalidone 25 mg and 50 mg tablet",
+          "note": "Tier 1, no QL or PA (page 47)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Indapamide 1.25 mg and 2.5 mg tablet",
+          "note": "Tier 1, no QL or PA (page 48)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydrochlorothiazide 50 mg tablet",
+          "note": "Tier 1, no QL or PA (page 48)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metolazone 2.5, 5, 10 mg tablet",
+          "note": "Tier 3, no QL or PA (page 49)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Hydrochlorothiazide 12.5 mg and 25 mg tablet read on page 48: Tier 1, no QL or PA. Combination products (ARB-HCTZ, ACE-HCTZ, beta-blocker-HCTZ) are excluded from single-agent alternatives. [Sonnet check 2026-10-27: Re-read by x-coordinate on v17; pages, tiers and flags match.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "tx-medicaid-next11-2026-10",
+      "label": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization Criteria, effective July 24, 2026",
+      "publisher": "Texas Health and Human Services (Texas Medicaid Vendor Drug Program, txvendordrug.com)",
+      "type": "gov",
+      "url": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "effectiveDate": "2026-07-24",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "bcbs-tx-commercial-next11-2026-10",
+      "label": "Blue Cross and Blue Shield of Texas Performance Drug List, October 2026 (41722-T TX); PDF pages cited are PDF indices (printed page = PDF page - 10). Fresh curl 2026-10-27 is byte-identical to sources/bcbs-tx-commercial-newtopics-2026-10.pdf (sha256 279e092f...); day of month not printed, effectiveDate set to 2026-10-01",
+      "publisher": "Blue Cross and Blue Shield of Texas (Prime Therapeutics LLC)",
+      "type": "payer",
+      "url": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "humana-premier-rx-pdp-next11-2026-10",
+      "label": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

@@ -371,8 +371,9 @@
  * antipsychotics, antidepressants, biologics, HIV and blood-pressure drugs is mostly unpriced).
  * 1925 → 2141: California's 11 newer topics (3 payers × 28 classes). NY/CA pick names now carry
  * their form ("Tacrolimus ointment", "Bupropion HCl XL") so they reach the existing priced rules.
+ * 2141 → 2422: Texas's 11 newer topics (3 payers × 28 classes; Humana PDP is a national list).
  */
-export const KNOWN_UNPRICED_GAP = 2141
+export const KNOWN_UNPRICED_GAP = 2422
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake

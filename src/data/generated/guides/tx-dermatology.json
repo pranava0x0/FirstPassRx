@@ -1,0 +1,1430 @@
+{
+  "id": "tx-dermatology",
+  "label": "TX · Eczema, psoriasis and acne",
+  "stateCode": "TX",
+  "region": "Texas",
+  "topicId": "dermatology",
+  "topic": "Eczema, psoriasis and acne",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-10-27",
+  "capturedAt": "2026-10-27",
+  "payers": [
+    {
+      "id": "tx-medicaid",
+      "name": "Texas Medicaid Vendor Drug Program (Fee-for-Service, statewide PDL binding on all MCOs)",
+      "shortName": "TX Medicaid FFS",
+      "pbm": "Texas Health and Human Services Commission (HHSC) Vendor Drug Program",
+      "formularyUrl": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "productName": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization Criteria, effective July 24, 2026"
+    },
+    {
+      "id": "bcbs-tx-commercial",
+      "name": "Blue Cross and Blue Shield of Texas (Commercial)",
+      "shortName": "BCBS Texas",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "sourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "productName": "Performance Drug List, July 2026",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Blue Cross and Blue Shield of Texas Performance Drug List, October 2026 (41722-T TX); PDF pages cited are PDF indices (printed page = PDF page - 10). Fresh curl 2026-10-27 is byte-identical to sources/bcbs-tx-commercial-newtopics-2026-10.pdf (sha256 279e092f...); day of month not printed, effectiveDate set to 2026-10-01"
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "topical-steroid",
+      "name": "Topical corticosteroids",
+      "shortName": "TCS",
+      "plainName": "Steroid cream or ointment",
+      "description": "Topical corticosteroids by potency: hydrocortisone, triamcinolone, fluocinolone, mometasone, betamethasone, fluocinonide, clobetasol, halobetasol, desoximetasone (creams, ointments, lotions, foams, solutions).",
+      "plainDescription": "A steroid cream or ointment for eczema, psoriasis or rashes.",
+      "indication": "Eczema, psoriasis, dermatitis",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "topical-nonsteroid",
+      "name": "Non-steroid topicals for eczema",
+      "shortName": "NON-STEROID",
+      "plainName": "Non-steroid eczema cream",
+      "description": "Topical calcineurin inhibitors (tacrolimus ointment, pimecrolimus/Elidel), PDE4 (crisaborole/Eucrisa, roflumilast/Zoryve), JAK cream (ruxolitinib/Opzelura), tapinarof (Vtama).",
+      "plainDescription": "A non-steroid cream for eczema, often for the face or long-term use.",
+      "indication": "Atopic dermatitis, psoriasis",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "topical-acne",
+      "name": "Topical acne treatments",
+      "shortName": "ACNE",
+      "plainName": "Acne gel or cream",
+      "description": "Topical retinoids (tretinoin, adapalene, tazarotene, trifarotene), clindamycin and benzoyl peroxide combinations, clascoterone (Winlevi), azelaic acid, dapsone gel.",
+      "plainDescription": "A gel or cream for acne.",
+      "indication": "Acne vulgaris",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "ad-biologic",
+      "name": "Systemic treatment for moderate-to-severe eczema",
+      "shortName": "AD SYSTEMIC",
+      "plainName": "Eczema shot or pill",
+      "description": "Biologics and JAK inhibitors for atopic dermatitis: dupilumab (Dupixent), tralokinumab (Adbry), lebrikizumab (Ebglyss), nemolizumab (Nemluvio), abrocitinib (Cibinqo), upadacitinib (Rinvoq) for AD.",
+      "plainDescription": "A shot or pill for eczema that creams have not controlled.",
+      "indication": "Moderate-to-severe atopic dermatitis",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "topical-steroid",
+      "preferredAgent": {
+        "inn": "Triamcinolone acetonide cream",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.1% cream (standard strength; PDL does not print strength)",
+        "sig": "Apply a thin film to affected skin 2 to 3 times daily; avoid long use on the face or skin folds (label).",
+        "sigShort": "Thin film BID-TID",
+        "plainSig": "Rub a thin layer on the rash two or three times a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred on PDL, High Potency section (no tier stated)",
+      "alternatives": [
+        {
+          "drug": "Hydrocortisone cream, ointment (generic)",
+          "note": "Preferred, Low Potency section (PDL p.79)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Mometasone cream, ointment, solution (generic)",
+          "note": "Preferred, Medium Potency section (PDL p.79)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Betamethasone valerate cream, ointment (generic)",
+          "note": "Preferred, High Potency section (PDL p.79)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Betamethasone dipropionate lotion (generic)",
+          "note": "Preferred, High Potency section (PDL p.79)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clobetasol propionate cream, gel, ointment, solution (generic)",
+          "note": "Preferred, Very High Potency section (PDL p.80)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Halobetasol propionate cream, ointment (generic)",
+          "note": "Preferred, Very High Potency section (PDL p.80)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Fluocinonide (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.79",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Halcinonide (generic); HALOG (halcinonide)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.79",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Desoximetasone (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.79",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "TOPICORT (desoximetasone)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.79",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diflorasone (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.79",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "KENALOG aerosol (triamcinolone)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.79",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Triamcinolone acetonide aerosol (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.79",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Betamethasone dipropionate cream, gel, ointment (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.79",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Betamethasone dipropionate lotion, ointment (propylene glycol) (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.79",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Betamethasone valerate lotion (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.79",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Amcinonide (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.79",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clobetasol propionate foam, spray (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.80",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clobetasol lotion, shampoo (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.80",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Halobetasol propionate foam, lotion (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.80",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "BRYHALI (halobetasol propionate)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.80",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "CLODAN, OLUX, TOVET, LEXETTE, ULTRAVATE (clobetasol/halobetasol brands)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.80",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Desonide (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.79",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluocinolone acetonide oil and cream (generic); SYNALAR",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.79",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydrocortisone butyrate, hydrocortisone valerate, LOCOID (hydrocortisone butyrate)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.79",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clocortolone cream (generic); flurandrenolide; prednicarbate",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.79",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "BESER KIT (fluticasone); fluticasone propionate lotion",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.79",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Alclometasone (generic); ANUSOL-HC (hydrocortisone); TEXACORT (hydrocortisone) solution",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.79",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from PDL pp.79-80 (Steroids, Topical). Preferred column is x~78 and non-preferred column is x~298 (page 79-80 header positions). The PDL prints no class-wide clinical PA on these pages. Strength is not printed; 0.1% is the standard triamcinolone cream strength. Pick is triamcinolone acetonide cream, a generic preferred on the High Potency list. Several non-preferred names are grouped into one entry; each is read from PDL pp.79-80.",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "topical-nonsteroid",
+      "preferredAgent": {
+        "inn": "Tacrolimus ointment",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.1% ointment (adult strength; PDL does not print strength)",
+        "sig": "Apply a thin layer to affected skin twice daily; stop when the eczema clears (label).",
+        "sigShort": "Thin layer BID",
+        "plainSig": "Rub a thin layer on the eczema twice a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred on PDL (no tier stated)",
+      "alternatives": [
+        {
+          "drug": "ELIDEL (pimecrolimus)",
+          "note": "Preferred, Atopic Dermatitis section (PDL p.54)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "EUCRISA (crisaborole)",
+          "note": "Preferred, Atopic Dermatitis section (PDL p.54)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "VTAMA (tapinarof)",
+          "note": "Preferred, Atopic Dermatitis section (PDL p.54)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ZORYVE (roflumilast) 0.3% cream, foam",
+          "note": "Preferred, Atopic Dermatitis section (PDL p.54); 0.05%/0.15% strengths are not preferred",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "OPZELURA (ruxolitinib) cream",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.54",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ANZUPGO (delgocitinib)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.54",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pimecrolimus cream (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.54",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ZORYVE (roflumilast) 0.05%, 0.15% cream",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.54",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from PDL p.54 (Immunomodulators, Atopic Dermatitis). Topical 'tacrolimus' in this section is the ointment; oral tacrolimus is in the Immunosuppressives section (p.54) and is not used here. Strength is not printed. No class-wide clinical PA on this page.",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "topical-acne",
+      "preferredAgent": {
+        "inn": "Tretinoin",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.025% cream (standard strength; PDL lists 'tretinoin cream' without strength)",
+        "sig": "Apply a thin layer to the affected skin once daily at bedtime, after washing and drying the skin; avoid the eyes, mouth and sun exposure (label).",
+        "sigShort": "Thin layer QHS",
+        "plainSig": "A small amount on clean, dry skin at bedtime. Use sunscreen during the day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred on PDL (no tier stated)",
+      "alternatives": [
+        {
+          "drug": "Adapalene gel 0.1% (OTC)",
+          "note": "Preferred, Retinoids section (PDL p.11); OTC product",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "CLEOCIN-T (clindamycin) gel; CLINDAGEL (clindamycin); clindamycin lotion, pledgets, solution",
+          "note": "Preferred, Topical Acne section (PDL p.11)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ATRALIN (tretinoin); DIFFERIN cream and lotion (adapalene)",
+          "note": "Preferred, Retinoids section (PDL p.11)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "RETIN-A MICRO GEL (tretinoin microspheres)",
+          "note": "Preferred, Retinoids section (PDL p.11)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ACANYA GEL PUMP (clindamycin/benzoyl peroxide); Duac; Benzaclin gel pump",
+          "note": "Preferred, Combination section (PDL p.12); combination product listed in class description",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "EPIDUO FORTE (adapalene/benzoyl peroxide)",
+          "note": "Preferred, Combination section (PDL p.12); combination product listed in class description",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ZIANA (clindamycin/tretinoin)",
+          "note": "Preferred, Combination section (PDL p.12); combination product listed in class description",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Benzoyl peroxide gel, lotion, wash (OTC)",
+          "note": "Preferred, Benzoyl Peroxide section (PDL p.11); OTC",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "FINACEA (azelaic acid) foam",
+          "note": "Preferred, listed under Rosacea Agents, Topical (PDL p.76)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Adapalene cream, gel, gel pump, lotion (Rx generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.11",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "DIFFERIN GEL (adapalene)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.11",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ARAZLO (tazarotene); tazarotene (generic); FABIOR (tazarotene)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL pp.11-12",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "AKLIEF (trifarotene)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.11",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ALTRENO (tretinoin)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.11",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "RETIN-A (tretinoin); RETIN-A MICRO PUMP (tretinoin microspheres); tretinoin gel (Atralin)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL pp.11-12",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "CLINDACIN foam, gel, kits, pledgets (clindamycin); clindamycin foam (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.11",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clindamycin/tretinoin (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.12",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Adapalene/benzoyl peroxide AG (Epiduo Forte)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.12",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "BENZAMYCIN (erythromycin/benzoyl peroxide); CABTREO (adapalene/BPO/clindamycin)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.12",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clindamycin/benzoyl peroxide gel (generic Acanya); NEUAC GEL; ONEXTON GEL",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.12",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "TWYNEO (tretinoin/benzoyl peroxide)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.12",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "WINLEVI (clascoterone)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.12",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Dapsone gel",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.12",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Azelaic acid (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.76",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from PDL pp.11-12 (Acne Agents, Topical; Retinoids; Combination and Other Agents) and p.76 (azelaic acid under Rosacea Agents). The PDL's clinical PA box for topical acne says a Retinoids and Topical Acne Agents clinical PA 'may apply' (p.11). Its criteria are not printed in the PDL, so no clinical PA is recorded as a restriction on the pick. Oral isotretinoin is not in this class. Strength is not printed; 0.025% is the standard tretinoin cream strength.",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "ad-biologic",
+      "preferredAgent": {
+        "inn": "Dupilumab",
+        "brand": "DUPIXENT",
+        "genericAvailable": false,
+        "strength": "standard label strength (PDL does not print strength)",
+        "sig": "Adults: 600 mg subcutaneously once (two 300 mg injections), then 300 mg every 2 weeks (label).",
+        "sigShort": "600 mg once, then 300 mg q2wk",
+        "plainSig": "Two shots to start, then one shot every 2 weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred on PDL (no tier stated)",
+      "alternatives": [
+        {
+          "drug": "RINVOQ ER (upadacitinib); RINVOQ LQ solution",
+          "note": "Preferred on PDL (Cytokine and CAM Antagonists section, p.40); atopic dermatitis is one of its indications; the section-wide clinical PA on p.39 applies",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "ADBRY (tralokinumab) autoinjector, syringe",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.54",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "EBGLYSS (lebrikizumab-lbkz)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.54",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "NEMLUVIO (nemolizumab-ilto)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.54",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "CIBINQO (abrocitinib)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.39",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from PDL p.54 (Immunomodulators, Atopic Dermatitis). The PDL states: 'Dupixent, in this therapeutic PDL class, is for Atopic Dermatitis indication. The clinical prior authorization linked here includes the product's other indications.' No PA is printed for the atopic dermatitis use. Cibinqo is read from p.39. Dosing is standard label dosing, not printed in the PDL.",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "topical-steroid",
+      "preferredAgent": {
+        "inn": "Triamcinolone acetonide cream",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.1% cream (0.025% and 0.5% also listed)",
+        "sig": "Apply a thin film to affected skin 2 to 3 times daily; avoid long use on the face or skin folds (label).",
+        "sigShort": "Thin film BID-TID",
+        "plainSig": "Rub a thin layer on the rash two or three times a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Generic (Tier 1, p)",
+      "alternatives": [
+        {
+          "drug": "Hydrocortisone cream 2.5%",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.86)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydrocortisone ointment 2.5%",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.86)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Triamcinolone acetonide ointment 0.025%, 0.1%, 0.5%",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.87)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Mometasone furoate ointment 0.1%",
+          "note": "Preferred Generic (Tier 1, p); QL 100 grams/30 days (PDF p.86)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Betamethasone dipropionate augmented cream 0.05%",
+          "note": "Preferred Generic (Tier 1, p); QL 100 grams/30 days (PDF p.83)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clobetasol propionate cream/ointment/foam/solution 0.05%",
+          "note": "Non-Preferred Generic (Tier 2, np); QL 180 grams or mLs/90 days (PDF p.84)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluocinonide cream/ointment/gel/solution 0.05% and 0.1% cream",
+          "note": "Non-Preferred Generic (Tier 2, np); QL (PDF p.85)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Halobetasol propionate cream 0.05%",
+          "note": "Non-Preferred Generic (Tier 2, np); QL 180 grams/90 days (PDF p.85)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Desoximetasone cream/ointment 0.25%",
+          "note": "Non-Preferred Generic (Tier 2, np); QL 100 grams/30 days (PDF p.85)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluocinolone acetonide cream/ointment/solution 0.01%-0.025%",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA/QL printed (PDF p.85)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Betamethasone valerate cream/ointment/lotion 0.1%",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA/QL printed (PDF p.84)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Triamcinolone 0.1% cream read as p with no PA/QL (PDF p.87, text layer; p flag at x~387 confirmed by x-coordinate, no flags). Every topical corticosteroid named in the class description that is printed is listed above. Judgment: triamcinolone 0.1% cream chosen as the common mid-potency preferred steroid. Sig is standard label dosing (not printed).",
+      "sourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "topical-nonsteroid",
+      "preferredAgent": {
+        "inn": "Tacrolimus ointment",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.1% ointment (0.03% also listed)",
+        "sig": "Apply a thin layer to affected skin twice daily; stop when the eczema clears (label).",
+        "sigShort": "Thin layer BID",
+        "plainSig": "Rub a thin layer on the eczema twice a day."
+      },
+      "preferredRestriction": "Step therapy (ST) flag printed on the tacrolimus ointment row; step criteria not printed in this document.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Non-Preferred Generic (Tier 2, np, ST)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Pimecrolimus (Elidel) cream",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list; intro states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Crisaborole (Eucrisa) ointment",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list; intro states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Roflumilast (Zoryve) cream",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list; intro states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ruxolitinib (Opzelura) cream",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list; intro states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tapinarof (Vtama) cream",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list; intro states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": "ST flag on tacrolimus ointment (criteria not printed)",
+      "verification": "verified",
+      "verificationNote": "Only covered agent in the class is tacrolimus ointment (PDF p.87: 'tacrolimus oint 0.03%, 0.1% (Protopic) np ST'; ST flag at x~496 confirmed by x-coordinate). Protopic is the reference brand. Covered tacrolimus is Tier 2 with ST, so it is the lowest-barrier printed option. Judgment: the listed tier is np, not preferred; no preferred non-steroid topical is printed. Roflumilast on the list is oral Daliresp only, not the cream.",
+      "sourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "topical-acne",
+      "preferredAgent": {
+        "inn": "Clindamycin phosphate-benzoyl peroxide",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "1.2%-5% gel (refrigerated product; strength as printed)",
+        "sig": "Apply once daily in the evening to the affected area (label).",
+        "sigShort": "Once nightly",
+        "plainSig": "A thin layer on the face once a night."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Non-Preferred Generic (Tier 2, np)",
+      "alternatives": [
+        {
+          "drug": "Tretinoin cream 0.025%, 0.05%, 0.1%",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA/QL printed (PDF p.87)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tretinoin gel 0.01%",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA/QL printed (PDF p.87)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tazarotene cream and gel 0.05%, 0.1%",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA/QL printed (PDF p.87)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Azelaic acid gel 15%",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA/QL printed (PDF p.83)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clindamycin phosphate gel 1%",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA/QL printed (PDF p.84)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clindamycin phosphate lotion 1%",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA/QL printed (PDF p.84)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clindamycin phosphate solution 1%",
+          "note": "Non-Preferred Generic (Tier 2, np); QL 180 mL/30 days (PDF p.84)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ALTRENO (tretinoin) lotion 0.05%",
+          "note": "Non-Preferred Brand (NP); no PA/QL printed (PDF p.83)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Adapalene (Differin) topical",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list; intro states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Trifarotene (Aklief) cream",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list; intro states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clascoterone (Winlevi) cream",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list; intro states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Dapsone gel (topical; only oral dapsone is printed)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list; intro states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "The clindamycin-BPO gel row (PDF p.84) is np with no PA/QL. No topical acne agent on this list carries a p tier, so the pick is a np product with no PA; the tier is stated, not hidden. Every class-description agent that is printed is listed above. Oral dapsone is not in this class.",
+      "sourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "ad-biologic",
+      "preferredAgent": {
+        "inn": "Dupilumab",
+        "brand": "DUPIXENT",
+        "genericAvailable": false,
+        "strength": "300 mg/2 mL pen or prefilled syringe (200 mg/1.14 mL also listed)",
+        "sig": "Adults: 600 mg subcutaneously once (two 300 mg injections), then 300 mg every 2 weeks (label).",
+        "sigShort": "600 mg once, then 300 mg q2wk",
+        "plainSig": "Two shots to start, then one shot every 2 weeks."
+      },
+      "preferredRestriction": "PA required (PA flag printed; criteria not printed in this document). QL 2 pens or 2 syringes/28 days. Specialty drug (SP).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Specialty (Tier 5, P, SP)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "ADBRY (tralokinumab) 300 mg/2 mL pen and 150 mg/mL syringe",
+          "outcome": "pa",
+          "reason": "PA flag; QL 2 pens or 4 syringes/28 days; SP (PDF p.83)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "EBGLYSS (lebrikizumab) 250 mg/2 mL pen and syringe",
+          "outcome": "pa",
+          "reason": "PA flag; QL 1 pen or syringe/28 days; SP (PDF p.85)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "NEMLUVIO (nemolizumab) 30 mg auto-injector",
+          "outcome": "pa",
+          "reason": "PA flag; QL 1 pen/28 days; SP (PDF p.86)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "CIBINQO (abrocitinib) 50/100/200 mg tablet",
+          "outcome": "pa",
+          "reason": "PA flag; QL 30 tablets/30 days; SP (PDF p.84)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "RINVOQ (upadacitinib) ER tablet (also listed under oral JAK class)",
+          "outcome": "pa",
+          "reason": "PA flag; QL 30 tablets/30 days; SP (PDF p.68)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Dupixent P with PA, QL 2 pens or 2 syringes/28 days, SP read from PDF p.85 text layer; PA and QL positions confirmed by x-coordinate. All other AD biologics/JAKs printed carry PA. Judgment: Dupixent picked as the most commonly written AD biologic among PA-flagged P products; the same PA applies to each. Opzelura (ruxolitinib cream) is not printed (see topical class).",
+      "sourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "topical-steroid",
+      "preferredAgent": {
+        "inn": "Triamcinolone acetonide cream",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.1% cream",
+        "sig": "Apply a thin film to affected skin 2 to 3 times daily; avoid long use on the face or skin folds (label).",
+        "sigShort": "Thin film BID-TID",
+        "plainSig": "Rub a thin layer on the rash two or three times a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (Generic)",
+      "alternatives": [
+        {
+          "drug": "Hydrocortisone 1% and 2.5% cream",
+          "note": "Tier 2; QL 240 per 30 days, no PA (page 54)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Mometasone 0.1% cream",
+          "note": "Tier 2; QL 180 per 30 days, no PA (page 54)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Triamcinolone acetonide 0.025%, 0.1%, 0.5% ointment",
+          "note": "Tier 2, no QL or PA (page 61)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Betamethasone valerate 0.1% cream",
+          "note": "Tier 3; QL 180 per 30 days, no PA (page 53)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluocinonide 0.05% cream",
+          "note": "Tier 4; QL 120 per 30 days, no PA (page 54)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clobetasol 0.05% cream",
+          "note": "Tier 4; QL 120 per 30 days, no PA (page 53)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Triamcinolone acetonide 0.1% cream read on page 61: Tier 2, no QL, no PA. The guide lists it under the corticosteroid group, not the dermatological section (pages 53-55). No listed topical corticosteroid in this class carries PA or step therapy. Desoximetasone and halobetasol are not listed. Pick is a judgment call among the Tier 2 options: mid-potency cream with no quantity limit. [Sonnet check 2026-10-27: Re-read by x-coordinate on v17; pages, tiers and flags match.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "topical-nonsteroid",
+      "preferredAgent": {
+        "inn": "Tacrolimus ointment",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.1% ointment",
+        "sig": "Apply a thin layer to affected skin twice daily; stop when the eczema clears (label).",
+        "sigShort": "Thin layer BID",
+        "plainSig": "Rub a thin layer on the eczema twice a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 4 (Non-Preferred Drug)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Pimecrolimus 1% cream",
+          "outcome": "pa",
+          "reason": "PA and QL 100 per 30 days; Tier 4 (page 54)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ZORYVE (roflumilast) 0.15% cream",
+          "outcome": "pa",
+          "reason": "PA and QL 120 per 30 days; Tier 4 (page 55)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Tacrolimus 0.03% and 0.1% ointment read on page 55: Tier 4, QL 200 per 30 days, no PA. It is the only non-steroid eczema topical in this class without PA. Pimecrolimus cream (page 54) and Zoryve cream (page 55) both carry PA. Crisaborole (Eucrisa), ruxolitinib cream (Opzelura) and tapinarof (Vtama) are not listed. [Sonnet check 2026-10-27: Re-read by x-coordinate on v17; pages, tiers and flags match.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "topical-acne",
+      "preferredAgent": {
+        "inn": "Clindamycin phosphate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "1% gel",
+        "sig": "Apply a thin film to affected areas twice daily (label).",
+        "sigShort": "Thin film BID",
+        "plainSig": "A thin layer on the acne twice a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 4 (Non-Preferred Drug)",
+      "alternatives": [
+        {
+          "drug": "Clindamycin phosphate 1% swab",
+          "note": "Tier 2, no QL or PA (page 53)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tazarotene 0.1% cream",
+          "note": "Tier 3; QL 120 per 30 days, no PA (page 55)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clindamycin phosphate 1% solution",
+          "note": "Tier 4; QL 60 per 30 days, no PA (page 53)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Tretinoin 0.01% gel",
+          "outcome": "pa",
+          "reason": "PA and QL 45 per 30 days; Tier 3 (page 55)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tretinoin 0.025% and 0.05% gel",
+          "outcome": "pa",
+          "reason": "PA and QL 45 per 30 days; Tier 4 (page 55)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tretinoin 0.025%, 0.05%, 0.1% cream",
+          "outcome": "pa",
+          "reason": "PA and QL 45 per 30 days; Tier 4 (page 55)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Clindamycin phosphate 1% gel read on page 53: Tier 4, QL 60 per 30 days, no PA. Judgment call: the Tier 2 clindamycin 1% swab and Tier 3 tazarotene cream have no PA, but the gel is the standard acne topical; a reviewer should confirm this choice. Adapalene, benzoyl peroxide combinations, clascoterone (Winlevi), azelaic acid and dapsone gel are not listed (dapsone appears only as oral tablets, page 26). [Sonnet check 2026-10-27: Re-read by x-coordinate on v17 page 53; gel is Tier 4, QL 60 per 30 days, no PA. Adjudicated: kept clindamycin 1% gel as the commonly written topical antibiotic. Caveats for the prescriber: antibiotic monotherapy is discouraged in acne guidelines and no benzoyl peroxide product is listed; tazarotene 0.1% cream (Tier 3, QL 120, no PA, page 55) is the lower-tier retinoid and is a reasonable swap when a retinoid is wanted and pregnancy is not a concern.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "ad-biologic",
+      "preferredAgent": {
+        "inn": "Dupilumab",
+        "brand": "Dupixent",
+        "genericAvailable": false,
+        "strength": "300 mg/2 mL pen",
+        "sig": "Adults: 600 mg subcutaneously once (two 300 mg injections), then 300 mg every 2 weeks (label).",
+        "sigShort": "600 mg once, then 300 mg q2wk",
+        "plainSig": "Two shots to start, then one shot every 2 weeks."
+      },
+      "preferredRestriction": "PA and QL 8 per 28 days (page 70)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 5 (Specialty Tier)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Dupixent 200 mg/1.14 mL pen and syringe",
+          "outcome": "pa",
+          "reason": "PA and QL 3.42 per 28 days; Tier 5 (page 70)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Dupixent 300 mg/2 mL syringe",
+          "outcome": "pa",
+          "reason": "PA and QL 8 per 28 days; Tier 5 (page 70)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Rinvoq (upadacitinib) 15 mg and 30 mg extended-release tablet",
+          "outcome": "pa",
+          "reason": "PA and QL 30 per 30 days; Tier 5 (page 72)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Rinvoq (upadacitinib) 45 mg extended-release tablet and LQ solution",
+          "outcome": "pa",
+          "reason": "PA and QL; Tier 5 (page 72)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Dupixent 300 mg/2 mL pen read on page 70: Tier 5, PA and QL 8 per 28 days. Every atopic dermatitis agent listed carries PA. Rinvoq is listed under this class per the taxonomy, with PA. Tralokinumab (Adbry), lebrikizumab (Ebglyss), nemolizumab (Nemluvio) and abrocitinib (Cibinqo) are not listed; absence is not read as exclusion because the guide does not say it is complete. [Sonnet check 2026-10-27: Re-read by x-coordinate on v17; pages, tiers and flags match.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "tx-medicaid-next11-2026-10",
+      "label": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization Criteria, effective July 24, 2026",
+      "publisher": "Texas Health and Human Services (Texas Medicaid Vendor Drug Program, txvendordrug.com)",
+      "type": "gov",
+      "url": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "effectiveDate": "2026-07-24",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "bcbs-tx-commercial-next11-2026-10",
+      "label": "Blue Cross and Blue Shield of Texas Performance Drug List, October 2026 (41722-T TX); PDF pages cited are PDF indices (printed page = PDF page - 10). Fresh curl 2026-10-27 is byte-identical to sources/bcbs-tx-commercial-newtopics-2026-10.pdf (sha256 279e092f...); day of month not printed, effectiveDate set to 2026-10-01",
+      "publisher": "Blue Cross and Blue Shield of Texas (Prime Therapeutics LLC)",
+      "type": "payer",
+      "url": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "humana-premier-rx-pdp-next11-2026-10",
+      "label": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

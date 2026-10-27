@@ -1,0 +1,330 @@
+{
+  "id": "tx-hepatitis-c",
+  "label": "TX · Hepatitis C",
+  "stateCode": "TX",
+  "region": "Texas",
+  "topicId": "hepatitis-c",
+  "topic": "Hepatitis C",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-10-27",
+  "capturedAt": "2026-10-27",
+  "payers": [
+    {
+      "id": "tx-medicaid",
+      "name": "Texas Medicaid Vendor Drug Program (Fee-for-Service, statewide PDL binding on all MCOs)",
+      "shortName": "TX Medicaid FFS",
+      "pbm": "Texas Health and Human Services Commission (HHSC) Vendor Drug Program",
+      "formularyUrl": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "productName": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization Criteria, effective July 24, 2026"
+    },
+    {
+      "id": "bcbs-tx-commercial",
+      "name": "Blue Cross and Blue Shield of Texas (Commercial)",
+      "shortName": "BCBS Texas",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "sourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "productName": "Performance Drug List, July 2026",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Blue Cross and Blue Shield of Texas Performance Drug List, October 2026 (41722-T TX); PDF pages cited are PDF indices (printed page = PDF page - 10). Fresh curl 2026-10-27 is byte-identical to sources/bcbs-tx-commercial-newtopics-2026-10.pdf (sha256 279e092f...); day of month not printed, effectiveDate set to 2026-10-01"
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "hcv-daa",
+      "name": "Hepatitis C direct-acting antivirals",
+      "shortName": "DAA",
+      "plainName": "Hepatitis C cure pills",
+      "description": "Sofosbuvir/velpatasvir (Epclusa and authorized generic), glecaprevir/pibrentasvir (Mavyret), ledipasvir/sofosbuvir (Harvoni and authorized generic), sofosbuvir/velpatasvir/voxilaprevir (Vosevi), elbasvir/grazoprevir (Zepatier).",
+      "plainDescription": "An 8 to 12 week course of pills that cures hepatitis C.",
+      "indication": "Chronic hepatitis C",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "hcv-daa",
+      "preferredAgent": {
+        "inn": "Sofosbuvir/velpatasvir",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "400 mg/100 mg tablet (standard strength; PDL does not print strength)",
+        "sig": "No cirrhosis or compensated cirrhosis: 1 tablet once daily for 12 weeks. Decompensated cirrhosis (Child-Pugh B or C): 1 tablet once daily plus weight-based ribavirin for 12 weeks (label).",
+        "sigShort": "1 tab QD x12 wk (+ribavirin if decompensated)",
+        "plainSig": "One pill a day for 12 weeks; people with advanced liver scarring also take ribavirin."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred on PDL (no tier stated)",
+      "alternatives": [
+        {
+          "drug": "EPCLUSA (sofosbuvir/velpatasvir)",
+          "note": "Preferred, Polymerase/Protease Inhibitors (PDL p.46)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "MAVYRET (glecaprevir/pibrentasvir)",
+          "note": "Preferred, Polymerase/Protease Inhibitors (PDL p.46)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "HARVONI (ledipasvir/sofosbuvir); ledipasvir/sofosbuvir (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.46",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "SOVALDI (sofosbuvir)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.46",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "VOSEVI (sofosbuvir/velpatasvir/voxilaprevir)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.46",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ZEPATIER (elbasvir/grazoprevir)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.46",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "VIEKIRA PAK (dasabuvir/ombitasvir/paritaprevir/ritonavir)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.46",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from PDL p.46 (Hepatitis C Agents, Polymerase/Protease Inhibitors). Sofosbuvir/velpatasvir generic and Epclusa are both preferred, so no BOGL. Duration and dose are standard label values, not printed. The PA box for this section has no class-wide clinical PA line.",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "hcv-daa",
+      "preferredAgent": {
+        "inn": "Sofosbuvir-velpatasvir",
+        "brand": "EPCLUSA",
+        "genericAvailable": false,
+        "strength": "400 mg/100 mg tablet (200 mg/50 mg also listed)",
+        "sig": "No cirrhosis or compensated cirrhosis: 1 tablet once daily for 12 weeks. Decompensated cirrhosis (Child-Pugh B or C): 1 tablet once daily plus weight-based ribavirin for 12 weeks (label).",
+        "sigShort": "1 tab QD x12 wk (+ribavirin if decompensated)",
+        "plainSig": "One pill a day for 12 weeks; people with advanced liver scarring also take ribavirin."
+      },
+      "preferredRestriction": "PA required (PA flag printed; criteria not printed in this document). QL 28 tablets/28 days. Specialty drug (SP).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Specialty (Tier 5, P, SP)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "MAVYRET (glecaprevir-pibrentasvir) 100-40 mg tablet and pellet pack",
+          "outcome": "pa",
+          "reason": "PA flag; QL 90 tablets/30 days (pellets 140 packs/28 days); SP (PDF p.15)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "HARVONI (ledipasvir-sofosbuvir) 45-200 mg / 90-400 mg tablet and pellet pack",
+          "outcome": "pa",
+          "reason": "PA flag; QL 28 tablets/28 days (pellets 28 packs/28 days); SP (PDF p.15)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "SOVALDI (sofosbuvir) 200 mg/400 mg tablet and pellet pack",
+          "outcome": "pa",
+          "reason": "PA flag; QL 30 tablets/30 days (pellets 28 packs/28 days); SP (PDF p.16)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "VOSEVI (sofosbuvir-velpatasvir-voxilaprevir) 400-100-100 mg",
+          "outcome": "pa",
+          "reason": "PA flag; QL 30 tablets/30 days; SP (PDF p.17)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ZEPATIER (elbasvir-grazoprevir)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list; intro states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Epclusa tier P, PA, QL 28 tablets/28 days, SP read from PDF p.15 text layer and x-coordinate check (PA at x~430). Every DAA in the class description that is printed is PA-flagged, so all are in paRequired. Judgment: Epclusa picked as the most commonly written pan-genotypic option of the four PA products (a prescriber-practice choice, not a plan preference). Ledipasvir-sofosbuvir authorized generic and Zepatier not printed.",
+      "sourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "hcv-daa",
+      "preferredAgent": {
+        "inn": "Sofosbuvir and velpatasvir",
+        "brand": "Epclusa",
+        "genericAvailable": true,
+        "strength": "400 mg/100 mg tablet",
+        "sig": "No cirrhosis or compensated cirrhosis: 1 tablet once daily for 12 weeks. Decompensated cirrhosis (Child-Pugh B or C): 1 tablet once daily plus weight-based ribavirin for 12 weeks (label).",
+        "sigShort": "1 tab QD x12 wk (+ribavirin if decompensated)",
+        "plainSig": "One pill a day for 12 weeks; people with advanced liver scarring also take ribavirin."
+      },
+      "preferredRestriction": "PA and QL 28 per 28 days (page 39)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 5 (Specialty Tier)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Epclusa 150 mg/37.5 mg and 200 mg/50 mg pellets in packet",
+          "outcome": "pa",
+          "reason": "PA and QL (28 or 56 per 28 days); Tier 5 (page 39)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Epclusa 200 mg/50 mg tablet",
+          "outcome": "pa",
+          "reason": "PA and QL 28 per 28 days; Tier 5 (page 39)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Vosevi (sofosbuvir/velpatasvir/voxilaprevir) 400/100/100 mg tablet",
+          "outcome": "pa",
+          "reason": "PA and QL 28 per 28 days; Tier 5 (page 42)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Epclusa 400 mg/100 mg tablet read on page 39: Tier 5 (DL), PA and QL 28 per 28 days. Every DAA listed carries PA. Harvoni (ledipasvir/sofosbuvir), Mavyret (glecaprevir/pibrentasvir), Zepatier (elbasvir/grazoprevir) and the sofosbuvir/velpatasvir authorized generic are not listed; absence is not read as exclusion. Ribavirin is listed (Tier 3, no PA, page 41) but is not a DAA. boglActive is false: no brand-over-generic preference is printed. [Sonnet check 2026-10-27: Re-read by x-coordinate on v17; pages, tiers and flags match.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "tx-medicaid-next11-2026-10",
+      "label": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization Criteria, effective July 24, 2026",
+      "publisher": "Texas Health and Human Services (Texas Medicaid Vendor Drug Program, txvendordrug.com)",
+      "type": "gov",
+      "url": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "effectiveDate": "2026-07-24",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "bcbs-tx-commercial-next11-2026-10",
+      "label": "Blue Cross and Blue Shield of Texas Performance Drug List, October 2026 (41722-T TX); PDF pages cited are PDF indices (printed page = PDF page - 10). Fresh curl 2026-10-27 is byte-identical to sources/bcbs-tx-commercial-newtopics-2026-10.pdf (sha256 279e092f...); day of month not printed, effectiveDate set to 2026-10-01",
+      "publisher": "Blue Cross and Blue Shield of Texas (Prime Therapeutics LLC)",
+      "type": "payer",
+      "url": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "humana-premier-rx-pdp-next11-2026-10",
+      "label": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

@@ -1,0 +1,360 @@
+{
+  "id": "tx-testosterone",
+  "label": "TX · Testosterone",
+  "stateCode": "TX",
+  "region": "Texas",
+  "topicId": "testosterone",
+  "topic": "Testosterone",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-27",
+  "capturedAt": "2026-10-27",
+  "payers": [
+    {
+      "id": "tx-medicaid",
+      "name": "Texas Medicaid Vendor Drug Program (Fee-for-Service, statewide PDL binding on all MCOs)",
+      "shortName": "TX Medicaid FFS",
+      "pbm": "Texas Health and Human Services Commission (HHSC) Vendor Drug Program",
+      "formularyUrl": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "productName": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization Criteria, effective July 24, 2026"
+    },
+    {
+      "id": "bcbs-tx-commercial",
+      "name": "Blue Cross and Blue Shield of Texas (Commercial)",
+      "shortName": "BCBS Texas",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "sourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "productName": "Performance Drug List, July 2026",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Blue Cross and Blue Shield of Texas Performance Drug List, October 2026 (41722-T TX); PDF pages cited are PDF indices (printed page = PDF page - 10). Fresh curl 2026-10-27 is byte-identical to sources/bcbs-tx-commercial-newtopics-2026-10.pdf (sha256 279e092f...); day of month not printed, effectiveDate set to 2026-10-01"
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "testosterone",
+      "name": "Testosterone replacement",
+      "shortName": "TRT",
+      "plainName": "Testosterone gel, shot or pill",
+      "description": "Testosterone gel/solution (AndroGel, Testim, Fortesta, Vogelxo, generic 1%/1.62%), injections (cypionate, enanthate, Xyosted, Aveed undecanoate), patch (Androderm), oral undecanoate (Jatenzo, Tlando, Kyzatrex), nasal (Natesto), pellets (Testopel).",
+      "plainDescription": "Testosterone replacement for low testosterone, as a gel, shot or pill.",
+      "indication": "Male hypogonadism",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone (topical gel, pump)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "gel pump (strength not printed on PDL)",
+        "sig": "Apply the labeled starting dose once each morning to clean, dry skin of the shoulders and upper arms (1.62% gel: 40.5 mg; 1% gel: 50 mg); adjust by morning serum testosterone. Let dry, cover the site, and wash hands (label; boxed warning on secondary exposure).",
+        "sigShort": "Apply QAM, dose per labs",
+        "plainSig": "Rub the gel on your shoulders each morning, let it dry, and wash your hands. Keep it away from children and partners."
+      },
+      "preferredRestriction": "Texas PDL lists Androgenic Agents and Hormonal Therapy Agents clinical criteria as applying to all drugs in the class (p.14). No quantity limit printed. Criteria text not opened.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred on PDL (no tier stated)",
+      "alternatives": [
+        {
+          "drug": "ANDROGEL (testosterone) pump",
+          "note": "Preferred brand, no PA (p.15)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "TESTIM (testosterone)",
+          "note": "Preferred brand, no PA (p.15)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone gel packet (generic, Androgel 1% packet, Vogelxo)",
+          "note": "Preferred generic, no PA (p.15)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone gel tube (Testim, Vogelxo)",
+          "note": "Preferred, no PA (p.15)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "ANDROGEL (testosterone) packets",
+          "outcome": "pa",
+          "reason": "Not on preferred list; PA via PDL clinical criteria (p.15)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "NATESTO (testosterone nasal)",
+          "outcome": "pa",
+          "reason": "Not on preferred list; PA via PDL clinical criteria (p.15)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone gel (Axiron, Fortesta, Androgel 1.62% packet)",
+          "outcome": "pa",
+          "reason": "Not on preferred list; PA via PDL clinical criteria (p.15)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "VOGELXO (testosterone)",
+          "outcome": "pa",
+          "reason": "Not on preferred list; PA via PDL clinical criteria (p.15)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Partial. Only topical testosterone appears on the PDL (Androgenic Agents, Topical, p.14-15). Injectables (cypionate, enanthate, Xyosted, Aveed), Androderm patch, oral undecanoate (Jatenzo, Tlando, Kyzatrex) and Testopel pellets are not printed anywhere in the PDL, so they are not claimed as covered or excluded. Pick and status read directly from p.15. The Androgenic Agents and Hormonal Therapy clinical criteria are printed as applying to all drugs in the class (p.14); criteria text not opened. Pump strength is not printed. [Sonnet check 2026-10-27: chosen pick is the topical gel because it is the only preferred product. Testosterone cypionate/enanthate injections, the most common generic, are not on the PDL (formulary coverage to confirm), not claimed either way.]",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone cypionate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/mL injection (list also shows 100 mg/mL)",
+        "sig": "50-400 mg IM every 2 to 4 weeks, adjusted to keep morning testosterone in the normal range (label).",
+        "sigShort": "IM q2-4wk, dose per labs",
+        "plainSig": "A shot every 2 to 4 weeks; your prescriber sets the dose from blood tests."
+      },
+      "preferredRestriction": "Quantity limit: 10 mL per 28 days (printed; QL, not PA)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Non-Preferred Generic (Tier 2, np)",
+      "alternatives": [
+        {
+          "drug": "Testosterone cypionate 100 mg/mL injection",
+          "note": "Non-Preferred Generic (Tier 2, np); QL 1 vial/28 days; no PA/ST (PDF p.29)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Testosterone gel 1% (Androgel 25 mg/2.5 g, 50 mg/5 g, 12.5 mg/act, 20.25 mg/act pump)",
+          "outcome": "pa",
+          "reason": "PA and QL printed (PDF p.29); gel tier np",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone topical solution 30 mg/actuation",
+          "outcome": "pa",
+          "reason": "PA and QL printed (2 bottles/30 days; PDF p.29)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Methyltestosterone 10 mg capsule and tablet (Methitest)",
+          "outcome": "pa",
+          "reason": "PA and QL printed (600 tablets or capsules/30 days; PDF p.29)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone enanthate 200 mg/mL injection",
+          "outcome": "pa",
+          "reason": "PA and QL printed (5 mL/28 days; PDF p.29)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone undecanoate oral (Jatenzo, Tlando, Kyzatrex)",
+          "outcome": "nonformulary",
+          "reason": "Not on this list; the list states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone enanthate auto-injector (Xyosted)",
+          "outcome": "nonformulary",
+          "reason": "Not on this list; the list states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone nasal (Natesto) and patch (Androderm)",
+          "outcome": "nonformulary",
+          "reason": "Not on this list; the list states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Testosterone cypionate 200 mg/mL (Depo-testosterone generic) read at PDF p.29: tier 'np' at x=384, QL 10 mL/28 days at x=456, no PA. Chosen over oral methyltestosterone (PA + QL printed) as the standard product a prescriber would write. Aveed (undecanoate injection) and Testopel (pellets) are absent but are clinic-administered; they may sit under the medical benefit (PDF p.3), so they are not recorded as nonformulary. QL is controlled-substance quantity and recorded as printed.",
+      "sourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone cypionate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/mL injection",
+        "sig": "50-400 mg IM every 2 to 4 weeks, adjusted to keep morning testosterone in the normal range (label).",
+        "sigShort": "IM q2-4wk, dose per labs",
+        "plainSig": "A shot every 2 to 4 weeks; your prescriber sets the dose from blood tests."
+      },
+      "preferredRestriction": "PA required (page 67); the guide does not print PA criteria.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3 (as listed)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Testosterone enanthate injection (200 mg/mL)",
+          "outcome": "pa",
+          "reason": "PA and QL 25 per 90 days; Tier 3 (page 67)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone 1.62% gel packet (20.25 mg and 40.5 mg)",
+          "outcome": "pa",
+          "reason": "PA and QL; Tier 4 (page 67)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone 1.62% gel metered-dose pump",
+          "outcome": "pa",
+          "reason": "PA and QL 150 per 30 days; Tier 4 (page 67)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Tier 3 and PA for testosterone cypionate 200 mg/mL read by x-coordinate on page 67. The guide prints no PA criteria, so the reason is the PA flag alone. Every other testosterone product in the guide needs PA, so cypionate is the lowest-barrier pick. Partial because injections may be self-administered under Part D or given in a clinic under Part B; the cost path is unconfirmed. Jatenzo, Tlando, Kyzatrex, Xyosted, Aveed, Androderm, Natesto, Testopel and methyltestosterone do not appear in the guide. [Sonnet check 2026-10-27: Re-confirmed against Humana formulary 26402, v17 (updated 10/01/2026), sources/humana-premier-rx-pdp-newtopics-2026-10.pdf (tier, PA, ST, QL read by x-coordinate; the v16 copy used in the first pass is superseded). All testosterone rows (cypionate, enanthate, 1.62% gel packet and pump) are on page 67. Cypionate is Tier 3 with PA and no BvsD flag; enanthate is Tier 3, PA, QL 25 per 90 days; the 1.62% gels are Tier 4 with PA. Cypionate stays the pick: it is the standard generic injectable and carries the same PA as every other listed product, unlike oral methyltestosterone, which is not listed. Part B applies only to clinic-administered injections, so the cost path stays unconfirmed (partial).]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "tx-medicaid-next11-2026-10",
+      "label": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization Criteria, effective July 24, 2026",
+      "publisher": "Texas Health and Human Services (Texas Medicaid Vendor Drug Program, txvendordrug.com)",
+      "type": "gov",
+      "url": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "effectiveDate": "2026-07-24",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "bcbs-tx-commercial-next11-2026-10",
+      "label": "Blue Cross and Blue Shield of Texas Performance Drug List, October 2026 (41722-T TX); PDF pages cited are PDF indices (printed page = PDF page - 10). Fresh curl 2026-10-27 is byte-identical to sources/bcbs-tx-commercial-newtopics-2026-10.pdf (sha256 279e092f...); day of month not printed, effectiveDate set to 2026-10-01",
+      "publisher": "Blue Cross and Blue Shield of Texas (Prime Therapeutics LLC)",
+      "type": "payer",
+      "url": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "humana-premier-rx-pdp-next11-2026-10",
+      "label": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}
