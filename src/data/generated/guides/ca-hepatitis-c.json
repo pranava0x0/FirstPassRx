@@ -1,0 +1,292 @@
+{
+  "id": "ca-hepatitis-c",
+  "label": "CA · Hepatitis C",
+  "stateCode": "CA",
+  "region": "California",
+  "topicId": "hepatitis-c",
+  "topic": "Hepatitis C",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-10-27",
+  "capturedAt": "2026-10-27",
+  "payers": [
+    {
+      "id": "medi-cal-rx",
+      "name": "Medi-Cal Rx — California Medicaid Pharmacy Program (Fee-for-Service carve-out, statewide)",
+      "shortName": "Medi-Cal Rx",
+      "pbm": "Magellan Health (Magellan Medicaid Administration; DHCS vendor)",
+      "productName": "Medi-Cal Rx Contract Drugs List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Medi-Cal Rx Contract Drugs List (effective 10/01/2026, 242 pages)",
+      "formularyUrl": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ]
+    },
+    {
+      "id": "kaiser-permanente-ca",
+      "name": "Kaiser Permanente (Commercial HMO)",
+      "shortName": "Kaiser Permanente",
+      "pbm": "Internal (Kaiser Foundation Health Plan formulary; closed integrated pharmacy)",
+      "productName": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "sourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ]
+    },
+    {
+      "id": "anthem-bcbs-ca",
+      "name": "Anthem Blue Cross of California (Commercial)",
+      "shortName": "Anthem Blue Cross CA",
+      "pbm": "CarelonRx",
+      "productName": "2026 California Select Drug List - Four Tier",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 California Select Drug List, Four Tier (IND), Last Updated October 1, 2026",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "sourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "hcv-daa",
+      "name": "Hepatitis C direct-acting antivirals",
+      "shortName": "DAA",
+      "plainName": "Hepatitis C cure pills",
+      "description": "Sofosbuvir/velpatasvir (Epclusa and authorized generic), glecaprevir/pibrentasvir (Mavyret), ledipasvir/sofosbuvir (Harvoni and authorized generic), sofosbuvir/velpatasvir/voxilaprevir (Vosevi), elbasvir/grazoprevir (Zepatier).",
+      "plainDescription": "An 8 to 12 week course of pills that cures hepatitis C.",
+      "indication": "Chronic hepatitis C",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "hcv-daa",
+      "preferredAgent": {
+        "inn": "Sofosbuvir/velpatasvir",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "400 mg/100 mg tablet",
+        "sig": "No cirrhosis or compensated cirrhosis: 1 tablet once daily for 12 weeks. Decompensated cirrhosis (Child-Pugh B or C): 1 tablet once daily plus weight-based ribavirin for 12 weeks (label).",
+        "sigShort": "1 tab QD x12 wk (+ribavirin if decompensated)",
+        "plainSig": "One pill a day for 12 weeks; people with advanced liver scarring also take ribavirin."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Listed on CDL; no tier structure (UM flag shown where printed)",
+      "alternatives": [
+        {
+          "drug": "Ledipasvir/sofosbuvir 90 mg/400 mg tablet",
+          "note": "Listed, no UM flag (p.32)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Elbasvir/grazoprevir 50 mg/100 mg tablet",
+          "note": "Listed, no UM flag (p.30)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Glecaprevir/pibrentasvir (Mavyret) 100 mg/40 mg dose-pack tablets; 50 mg/20 mg pellet packets",
+          "note": "UM LR. Restricted to NDC labeler 00074 only (p.32)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Sofosbuvir/velpatasvir/voxilaprevir (Vosevi)",
+          "outcome": "pa",
+          "reason": "Not on the CDL (searched across pp.1-232). CDL p.4: \"Legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant.\" Not on the CDL as read; coverage by authorization only.",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from CDL pp.30, 32, 34. Preferred pick is the unflagged generic sofosbuvir/velpatasvir 400/100 mg (the Epclusa generic name as printed). Sig is standard course dosing, not printed. CDL p.4: \"Legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant.\" Not on the CDL as read; coverage by authorization only.",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "medi-cal-rx"
+    },
+    {
+      "classId": "hcv-daa",
+      "preferredAgent": {
+        "inn": "Sofosbuvir / velpatasvir",
+        "brand": "Epclusa",
+        "genericAvailable": true,
+        "strength": "400-100 mg tablet",
+        "sig": "No cirrhosis or compensated cirrhosis: 1 tablet once daily for 12 weeks. Decompensated cirrhosis (Child-Pugh B or C): 1 tablet once daily plus weight-based ribavirin for 12 weeks (label).",
+        "sigShort": "1 tab QD x12 wk (+ribavirin if decompensated)",
+        "plainSig": "One pill a day for 12 weeks; people with advanced liver scarring also take ribavirin."
+      },
+      "preferredRestriction": "Quantity limit: QL - 30 day(s), printed flag on this line (PDF p.19). Not a PA or step requirement.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 4 (high-cost brand)",
+      "alternatives": [
+        {
+          "drug": "Ledipasvir-sofosbuvir (Harvoni) 90-400 mg tablet",
+          "note": "Tier 4, QL - 30 day(s) (PDF p.20)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ledipasvir-sofosbuvir (Harvoni) 45-200 mg tablet",
+          "note": "Tier 4, QL - 30 day(s) (PDF p.20)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Sofosbuvir (Sovaldi) 400 mg tablet",
+          "note": "Tier 4, QL - 30 day(s) (PDF p.21)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Sofosbuvir-velpatasvir-voxilaprevir (Vosevi) 400-100-100 mg tablet",
+          "note": "Tier 4, QL - 30 day(s) (PDF p.21)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Sofosbuvir-velpatasvir (Epclusa) 200-50 mg pack",
+          "note": "Tier 4, no flag (PDF p.19)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Mavyret (glecaprevir/pibrentasvir)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zepatier (elbasvir/grazoprevir)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Epclusa 400-100 mg tablet read at PDF p.19: Tier 4, QL - 30 day(s). Harvoni, Sovaldi and Vosevi read at p.20-21 (Tier 4, QL). An Epclusa authorized generic is marketed in the US but is not printed in this document, so genericAvailable is true with boglActive false (no brand-over-generic preference shown). Mavyret (glecaprevir-pibrentasvir) and Zepatier (elbasvir-grazoprevir) do not appear in this document; not all-inclusive. Document says: \"Kaiser Foundation Health Plan does not have a requirement for PA\" (PDF p.6) and \"does not have a requirement for Step Therapy\" (PDF p.7). Drugs not listed are nonformulary; when a Kaiser or referral doctor determines one is medically appropriate and necessary it is covered by formulary exception (PDF p.7; decision within 72 hours, 24 urgent, PDF p.8). Completeness is ambiguous: p.6 defines the formulary as \"the complete list of prescription drugs preferred for use and eligible for coverage\" but p.2 says \"not an all-inclusive list\", so absence is not treated as exclusion. [Sonnet check 2026-10-27: policy wording corrected; 2 named absent drug(s) added as nonformulary (exception route)]",
+      "sourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "kaiser-permanente-ca"
+    },
+    {
+      "classId": "hcv-daa",
+      "preferredAgent": {
+        "inn": "Sofosbuvir-velpatasvir",
+        "brand": "Epclusa",
+        "genericAvailable": false,
+        "strength": "400 mg/100 mg tablet",
+        "sig": "No cirrhosis or compensated cirrhosis: 1 tablet once daily for 12 weeks. Decompensated cirrhosis (Child-Pugh B or C): 1 tablet once daily plus weight-based ribavirin for 12 weeks (label).",
+        "sigShort": "1 tab QD x12 wk (+ribavirin if decompensated)",
+        "plainSig": "One pill a day for 12 weeks; people with advanced liver scarring also take ribavirin."
+      },
+      "preferredRestriction": "PA and specialty pharmacy required; QL 1 tablet per day (Tier 2 PA; SP; QL), page 53",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (PA; SP; QL)",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Epclusa oral tablet 400-100 mg: Tier 2, PA, SP, QL (1 tablet per 1 day), page 53 (layout extraction; hepatitis C agent combinations section). Epclusa is the only hepatitis C DAA on the list. Mavyret (glecaprevir-pibrentasvir), Harvoni and its authorized generic (ledipasvir-sofosbuvir), Vosevi and Zepatier do not appear on the list or its index. Epclusa pellet packets (150 mg/37.5 mg and 200 mg/50 mg) carry the same PA flags and are a pediatric form of the same drug.",
+      "sourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "anthem-bcbs-ca"
+    }
+  ],
+  "references": [
+    {
+      "id": "medi-cal-rx-next11-2026-10",
+      "label": "Medi-Cal Rx Contract Drugs List (effective 10/01/2026, 242 pages)",
+      "publisher": "California Department of Health Care Services (Medi-Cal Rx)",
+      "type": "gov",
+      "url": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "kaiser-permanente-ca-next11-2026-10",
+      "label": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "publisher": "Kaiser Permanente",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "effectiveDate": "2026-10-06",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "anthem-bcbs-ca-next11-2026-10",
+      "label": "2026 California Select Drug List, Four Tier (IND), Last Updated October 1, 2026",
+      "publisher": "Anthem Blue Cross (Elevance Health)",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

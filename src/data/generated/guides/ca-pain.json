@@ -1,0 +1,971 @@
+{
+  "id": "ca-pain",
+  "label": "CA · Pain (opioids, nerve pain, muscle relaxants)",
+  "stateCode": "CA",
+  "region": "California",
+  "topicId": "pain",
+  "topic": "Pain (opioids, nerve pain, muscle relaxants)",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-27",
+  "capturedAt": "2026-10-27",
+  "payers": [
+    {
+      "id": "medi-cal-rx",
+      "name": "Medi-Cal Rx — California Medicaid Pharmacy Program (Fee-for-Service carve-out, statewide)",
+      "shortName": "Medi-Cal Rx",
+      "pbm": "Magellan Health (Magellan Medicaid Administration; DHCS vendor)",
+      "productName": "Medi-Cal Rx Contract Drugs List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Medi-Cal Rx Contract Drugs List (effective 10/01/2026, 242 pages)",
+      "formularyUrl": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ]
+    },
+    {
+      "id": "kaiser-permanente-ca",
+      "name": "Kaiser Permanente (Commercial HMO)",
+      "shortName": "Kaiser Permanente",
+      "pbm": "Internal (Kaiser Foundation Health Plan formulary; closed integrated pharmacy)",
+      "productName": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "sourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ]
+    },
+    {
+      "id": "anthem-bcbs-ca",
+      "name": "Anthem Blue Cross of California (Commercial)",
+      "shortName": "Anthem Blue Cross CA",
+      "pbm": "CarelonRx",
+      "productName": "2026 California Select Drug List - Four Tier",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 California Select Drug List, Four Tier (IND), Last Updated October 1, 2026",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "sourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "opioid-ir",
+      "name": "Short-acting opioids",
+      "shortName": "OPIOID IR",
+      "plainName": "Short-acting opioid",
+      "description": "Immediate-release opioids for acute pain: hydrocodone/acetaminophen, oxycodone IR and oxycodone/acetaminophen, tramadol, tapentadol IR (Nucynta), morphine IR, hydromorphone IR, codeine/acetaminophen.",
+      "plainDescription": "A short-acting opioid pain pill for acute pain.",
+      "indication": "Acute pain",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ]
+    },
+    {
+      "id": "gabapentinoid",
+      "name": "Gabapentinoids",
+      "shortName": "GABA",
+      "plainName": "Gabapentin or pregabalin",
+      "description": "Gabapentin (Neurontin, Gralise, Horizant), pregabalin IR/CR (Lyrica, Lyrica CR).",
+      "plainDescription": "A daily pill for nerve pain or shingles pain.",
+      "indication": "Neuropathic pain, postherpetic neuralgia, fibromyalgia",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ]
+    },
+    {
+      "id": "muscle-relaxant",
+      "name": "Skeletal muscle relaxants",
+      "shortName": "MUSCLE",
+      "plainName": "Muscle relaxant",
+      "description": "Cyclobenzaprine (IR, ER/Amrix), methocarbamol, tizanidine, baclofen, metaxalone, carisoprodol, orphenadrine, chlorzoxazone.",
+      "plainDescription": "A short-term pill for muscle spasms.",
+      "indication": "Musculoskeletal spasm, spasticity",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "opioid-ir",
+      "preferredAgent": {
+        "inn": "Hydrocodone bitartrate and acetaminophen",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg/325 mg tablet",
+        "sig": "1 to 2 tablets (5/325 mg) every 4 to 6 hours as needed for acute pain; max 8 tablets/day; shortest course needed (label).",
+        "sigShort": "1-2 tabs q4-6h PRN",
+        "plainSig": "One or two pills every 4 to 6 hours if needed for pain."
+      },
+      "preferredRestriction": "Controlled substance: new-start opioid claims (no opioid in prior 90 days) limited to a 7-day supply or 30 solid units; all controlled-substance claims limited to a 35-day supply, and claims over 35 days require PA; the chronic-therapy row prints a 500 MME limit (p.7). Starred Code I with QL (p.94).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "CDL listed, Code I (*) controlled substance with QL (p.94)",
+      "alternatives": [
+        {
+          "drug": "Oxycodone and acetaminophen tablets 5/325, 7.5/325, 10/325 mg",
+          "note": "Listed with Code I (*), QL; CS limits apply (p.95)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxycodone HCl tablets or capsules 5, 15, 30 mg",
+          "note": "Listed with Code I (*), QL; CS limits apply (p.96)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Codeine and acetaminophen tablets or capsules",
+          "note": "Listed with Code I (*), QL; CS limits apply (p.94)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydromorphone HCl tablets 2, 4, 8 mg",
+          "note": "Listed with Code I (*), QL; CS limits apply (p.94)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Morphine sulfate oral IR tablets 10, 15, 30 mg",
+          "note": "Listed with Code I (*); CS limits apply (p.95)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tramadol HCl tablets 50 mg",
+          "note": "Listed with Code I (*), AL and QL; PA required for members younger than 17 (p.97)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Tapentadol IR (Nucynta-type)",
+          "outcome": "pa",
+          "reason": "Not on CDL; unlisted legend drugs may be covered only with authorization (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read CDL pp.7-8, 94-97. Judgment on Code I: CDL General Provision 2 (p.4) requires authorization for starred entries unless used under the CDL-specified conditions. This record treats the controlled-substance policy limits as those conditions. If Medi-Cal Rx reads starred entries as PA-required, every opioid row here moves to paRequired. Meperidine elixir requires a PA (p.94) but is outside this class. Hydrocodone/APAP chosen as a usual short-acting generic (judgment). [Sonnet check 2026-10-27: CDL p.4 General Provision 2: \"Code I drugs marked with a symbol (*) require authorization in accordance with Section 51003 unless used under the conditions specified in the Contract Drugs List\". For zolpidem (p.126) and hydrocodone/APAP (p.94) the printed Code I condition is \"Refer to the Controlled Substance Policy section for drug-specific limitations\" (p.7), so the star is a use limit, not a PA; contrast meperidine elixir, which prints \"requires a PA\" (p.94). Pick kept; verification stays partial (starred wording is ambiguous on its face). Unlisted-product rows quote p.4: \"Legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant.\" Confirmed by text search of the full CDL: none of eszopiclone, zaleplon, tapentadol appear.]",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "medi-cal-rx"
+    },
+    {
+      "classId": "gabapentinoid",
+      "preferredAgent": {
+        "inn": "Gabapentin",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "300 mg capsule",
+        "sig": "Nerve pain after shingles: 300 mg on day 1, 300 mg twice daily on day 2, 300 mg three times daily on day 3, then titrate up to 1,800 mg/day in 3 doses as needed (label).",
+        "sigShort": "300 mg d1 to TID by d3",
+        "plainSig": "One capsule the first day, two the second, three the third; your prescriber may go higher."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "CDL listed; no restriction printed (p.103)",
+      "alternatives": [
+        {
+          "drug": "Gabapentin tablets 600, 800 mg",
+          "note": "CDL listed, no restriction printed (p.103)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gabapentin oral solution 250 mg/5 mL",
+          "note": "CDL listed, no restriction printed (p.103)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pregabalin capsules 25-300 mg",
+          "note": "CDL listed, no restriction printed (p.107)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Gabapentin once-daily tablet (Gralise-type)",
+          "outcome": "pa",
+          "reason": "Not on CDL; CDL lists gabapentin capsules, tablets and solution only (p.103); unlisted drugs need authorization (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gabapentin enacarbil extended-release (Horizant-type)",
+          "outcome": "pa",
+          "reason": "Not on CDL; unlisted legend drugs may be covered only with authorization (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pregabalin extended-release (Lyrica CR-type)",
+          "outcome": "pa",
+          "reason": "Not on CDL; CDL lists pregabalin capsules only (p.107); unlisted drugs need authorization (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read CDL pp.103 and 107. No restriction or UM code printed for gabapentin or pregabalin. Gabapentin 300 mg capsule chosen as an unrestricted generic (judgment).",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "medi-cal-rx"
+    },
+    {
+      "classId": "muscle-relaxant",
+      "preferredAgent": {
+        "inn": "Cyclobenzaprine HCl",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "5 mg three times daily; may increase to 10 mg three times daily. Use for 2 to 3 weeks (label).",
+        "sigShort": "5-10 mg TID x2-3 wk",
+        "plainSig": "One 5 mg pill three times a day for a few weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "CDL listed; no restriction printed (p.225)",
+      "alternatives": [
+        {
+          "drug": "Baclofen tablets 5, 10, 20 mg",
+          "note": "CDL listed, no restriction printed (p.225); granule packets restricted to labeler 64896 and suspension to age 21 or younger, not used here",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Methocarbamol tablets 500, 750 mg",
+          "note": "CDL listed, no restriction printed (p.225)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tizanidine HCl tablets 2, 4 mg and capsules 2, 4, 6 mg",
+          "note": "CDL listed, no restriction printed (p.225)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Metaxalone",
+          "outcome": "pa",
+          "reason": "Not on CDL; unlisted legend drugs may be covered only with authorization (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carisoprodol",
+          "outcome": "pa",
+          "reason": "Not on CDL; unlisted legend drugs may be covered only with authorization (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Orphenadrine",
+          "outcome": "pa",
+          "reason": "Not on CDL; unlisted legend drugs may be covered only with authorization (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Chlorzoxazone",
+          "outcome": "pa",
+          "reason": "Not on CDL; unlisted legend drugs may be covered only with authorization (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Cyclobenzaprine extended-release (Amrix-type)",
+          "outcome": "pa",
+          "reason": "CDL lists cyclobenzaprine IR tablets 5, 10 mg only (p.225); ER not listed (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read CDL p.225 (Skeletal Muscle Relaxants). Dantrolene capsules are also listed (p.225) but are not in this class's description, so not included. Cyclobenzaprine IR chosen as the usual generic for musculoskeletal spasm (judgment; no tier printed). [Sonnet check 2026-10-27: p.4 unlisted-drug quote confirmed verbatim; searched CDL text for the unlisted names cited, none present.]",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "medi-cal-rx"
+    },
+    {
+      "classId": "opioid-ir",
+      "preferredAgent": {
+        "inn": "Hydrocodone bitartrate and acetaminophen",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg/325 mg tablet",
+        "sig": "1 to 2 tablets (5/325 mg) every 4 to 6 hours as needed for acute pain; max 8 tablets/day; shortest course needed (label).",
+        "sigShort": "1-2 tabs q4-6h PRN",
+        "plainSig": "One or two pills every 4 to 6 hours if needed for pain."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Hydrocodone/APAP tablets 7.5-325 mg and 10-325 mg",
+          "note": "Tier 1, no QL printed (PDF p.45)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxycodone HCl tablets 5 mg",
+          "note": "Tier 1, no QL printed (PDF p.47)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxycodone/APAP tablets 5-325 mg and 10-325 mg",
+          "note": "Tier 1, no QL printed (PDF p.47)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxycodone/APAP tablets 7.5-325 mg",
+          "note": "Tier 1, QL - 30 day(s) (PDF p.47)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tramadol HCl tablets 50 mg",
+          "note": "Tier 1, no QL printed (PDF p.47)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tramadol/APAP tablets 37.5-325 mg",
+          "note": "Tier 1, no QL printed (PDF p.47)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Acetaminophen/codeine tablets 300-15, 300-30, 300-60 mg",
+          "note": "Tier 1, no QL printed (PDF p.44)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydromorphone HCl tablets 2, 4, 8 mg",
+          "note": "Tier 1, no QL printed (PDF p.45)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Morphine sulfate IR tablets 15, 30 mg",
+          "note": "Tier 2, no QL printed (PDF p.47)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Nucynta (tapentadol IR)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Preferred: hydrocodone/acetaminophen tabs 5-325 mg (PDF p.45, Tier 1, no flag); opioid rows PDF pp.44-47. Controlled substance. No quantity or day-supply limit is printed on the preferred row, so none is recorded. Printed opioid IR: hydrocodone/APAP, oxycodone IR, oxycodone/APAP, tramadol and tramadol/APAP, APAP/codeine, hydromorphone tabs, morphine IR tabs (Tier 2, PDF p.47). Tapentadol (Nucynta) is not printed; treated as unconfirmed. Methadone tabs are printed (PDF p.46) but outside the IR class list. Document says: \"Kaiser Foundation Health Plan does not have a requirement for PA\" (PDF p.6) and \"does not have a requirement for Step Therapy\" (PDF p.7). Drugs not listed are nonformulary; when a Kaiser or referral doctor determines one is medically appropriate and necessary it is covered by formulary exception (PDF p.7; decision within 72 hours, 24 urgent, PDF p.8). Completeness is ambiguous: p.6 defines the formulary as \"the complete list of prescription drugs preferred for use and eligible for coverage\" but p.2 says \"not an all-inclusive list\", so absence is not treated as exclusion. [Sonnet check 2026-10-27: pick, tier and flags re-read in the document; 1 named absent drug(s) added as nonformulary (exception route)]",
+      "sourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "kaiser-permanente-ca"
+    },
+    {
+      "classId": "gabapentinoid",
+      "preferredAgent": {
+        "inn": "Gabapentin",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "300 mg capsule",
+        "sig": "Nerve pain after shingles: 300 mg on day 1, 300 mg twice daily on day 2, 300 mg three times daily on day 3, then titrate up to 1,800 mg/day in 3 doses as needed (label).",
+        "sigShort": "300 mg d1 to TID by d3",
+        "plainSig": "One capsule the first day, two the second, three the third; your prescriber may go higher."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Gabapentin tablets 600 mg and 800 mg",
+          "note": "Tier 1, no flag (PDF p.50)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gabapentin oral solution 250 mg/5 mL",
+          "note": "Tier 1, no flag (PDF p.50)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gabapentin capsules 100 mg and 400 mg",
+          "note": "Tier 1, no flag (PDF p.50)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pregabalin capsules 25-300 mg",
+          "note": "Tier 1, no flag (PDF p.51)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pregabalin oral solution 20 mg/mL",
+          "note": "Tier 1, no flag (PDF p.51)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Gralise",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Horizant",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lyrica CR (pregabalin ER)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Preferred: gabapentin caps 300 mg (PDF p.50, Tier 1, no flag); pregabalin rows PDF p.51. Printed: gabapentin caps 100/300/400 mg, tabs 600/800 mg, oral soln 250 mg/5 mL; pregabalin caps 25-300 mg, oral soln 20 mg/mL. Not printed: Gralise, Horizant, Lyrica and Lyrica CR; treated as unconfirmed. Document says: \"Kaiser Foundation Health Plan does not have a requirement for PA\" (PDF p.6) and \"does not have a requirement for Step Therapy\" (PDF p.7). Drugs not listed are nonformulary; when a Kaiser or referral doctor determines one is medically appropriate and necessary it is covered by formulary exception (PDF p.7; decision within 72 hours, 24 urgent, PDF p.8). Completeness is ambiguous: p.6 defines the formulary as \"the complete list of prescription drugs preferred for use and eligible for coverage\" but p.2 says \"not an all-inclusive list\", so absence is not treated as exclusion. [Sonnet check 2026-10-27: pick, tier and flags re-read in the document; 3 named absent drug(s) added as nonformulary (exception route)]",
+      "sourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "kaiser-permanente-ca"
+    },
+    {
+      "classId": "muscle-relaxant",
+      "preferredAgent": {
+        "inn": "Cyclobenzaprine HCl",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg three times daily; may increase to 10 mg three times daily. Use for 2 to 3 weeks (label).",
+        "sigShort": "5-10 mg TID x2-3 wk",
+        "plainSig": "One 5 mg pill three times a day for a few weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Cyclobenzaprine HCl tablets 10 mg",
+          "note": "Tier 1, no flag (PDF p.31)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Baclofen tablets 10 mg and 20 mg",
+          "note": "Tier 1, no flag (PDF p.31)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Methocarbamol tablets 500 mg and 750 mg",
+          "note": "Tier 1, no flag (PDF p.31)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tizanidine HCl tablets 2 mg and 4 mg",
+          "note": "Tier 1, no flag (PDF p.31)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Amrix (cyclobenzaprine ER)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metaxalone",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carisoprodol",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Orphenadrine",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Chlorzoxazone",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Preferred: cyclobenzaprine HCl tabs 5 mg (PDF p.31, Tier 1, no flag); muscle relaxant rows PDF p.31. Printed: cyclobenzaprine IR 5/10 mg, baclofen 10/20 mg, methocarbamol 500/750 mg, tizanidine 2/4 mg; dantrolene caps (PDF p.31) are printed but outside the class list. Not printed: cyclobenzaprine ER (Amrix), metaxalone, carisoprodol, orphenadrine, chlorzoxazone; treated as unconfirmed. Document says: \"Kaiser Foundation Health Plan does not have a requirement for PA\" (PDF p.6) and \"does not have a requirement for Step Therapy\" (PDF p.7). Drugs not listed are nonformulary; when a Kaiser or referral doctor determines one is medically appropriate and necessary it is covered by formulary exception (PDF p.7; decision within 72 hours, 24 urgent, PDF p.8). Completeness is ambiguous: p.6 defines the formulary as \"the complete list of prescription drugs preferred for use and eligible for coverage\" but p.2 says \"not an all-inclusive list\", so absence is not treated as exclusion. [Sonnet check 2026-10-27: pick, tier and flags re-read in the document; 5 named absent drug(s) added as nonformulary (exception route)]",
+      "sourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "kaiser-permanente-ca"
+    },
+    {
+      "classId": "opioid-ir",
+      "preferredAgent": {
+        "inn": "Hydrocodone-acetaminophen tablet",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5-325 mg (listed strength combinations include 5-325)",
+        "sig": "1 to 2 tablets (5/325 mg) every 4 to 6 hours as needed for acute pain; max 8 tablets/day; shortest course needed (label).",
+        "sigShort": "1-2 tabs q4-6h PRN",
+        "plainSig": "One or two pills every 4 to 6 hours if needed for pain."
+      },
+      "preferredRestriction": "PA required (PA printed on the Tier 1 row, page 20). Quantity limit: 6 tablets per day (printed).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Oxycodone-acetaminophen tablet",
+          "outcome": "pa",
+          "reason": "Tier 1 PA; QL 6 tablets per day (page 21)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxycodone HCl tablet",
+          "outcome": "pa",
+          "reason": "Tier 2 PA; QL 6 tablets per day (page 21)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tramadol HCl tablet",
+          "outcome": "pa",
+          "reason": "Tier 1 PA; QL 8 tablets per day (page 21)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Morphine sulfate IR tablet",
+          "outcome": "pa",
+          "reason": "Tier 1 PA; QL 6 tablets per day (page 21)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydromorphone HCl tablet",
+          "outcome": "pa",
+          "reason": "Tier 1 PA; QL 6 tablets per day (page 20)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Acetaminophen-codeine tablet",
+          "outcome": "pa",
+          "reason": "Tier 1 PA; QL 6 tablets per day (page 20)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Codeine sulfate tablet",
+          "outcome": "pa",
+          "reason": "Tier 2 PA; QL 6 tablets per day (page 20)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxymorphone HCl tablet",
+          "outcome": "pa",
+          "reason": "Tier 2 PA; QL 6 tablets per day (page 21)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Pages 20-21 (analgesics, opioid). Every short-acting opioid tablet on the list carries PA, so the preferred pick is the most-prescribed Tier 1 PA generic (hydrocodone-acetaminophen). The 5-325 mg strength is one of the listed combinations. Sig is standard label dosing. Tapentadol (Nucynta) is not listed; not read as exclusion. Controlled substances: only printed QL values are recorded. [Sonnet check 2026-10-27: tier, PA/ST/QL flags and pick re-read against the cached PDF text layer; upgraded to verified. Hydrocodone-APAP Tier 1 PA QL 6/day (page 20) confirmed.]",
+      "sourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "anthem-bcbs-ca"
+    },
+    {
+      "classId": "gabapentinoid",
+      "preferredAgent": {
+        "inn": "Gabapentin capsule",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "300 mg (standard label strength; plan line gives no strength)",
+        "sig": "Nerve pain after shingles: 300 mg on day 1, 300 mg twice daily on day 2, 300 mg three times daily on day 3, then titrate up to 1,800 mg/day in 3 doses as needed (label).",
+        "sigShort": "300 mg d1 to TID by d3",
+        "plainSig": "One capsule the first day, two the second, three the third; your prescriber may go higher."
+      },
+      "preferredRestriction": "Dose optimization (DO) printed on the Tier 2 row (page 27): may require a switch to a once-daily higher strength. No PA on this row.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2",
+      "alternatives": [
+        {
+          "drug": "Pregabalin capsule 25-200, 75 mg",
+          "note": "Tier 2 QL 3 capsules per day (page 28)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pregabalin capsule 225, 300 mg",
+          "note": "Tier 2 QL 2 capsules per day (page 28)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pregabalin oral solution",
+          "note": "Tier 2 QL 30 mL per day (page 28)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gabapentin tablet 600 mg",
+          "note": "Tier 2 DO (page 27)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gabapentin tablet 800 mg",
+          "note": "Tier 2 QL 4 tablets per day (page 27)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gabapentin oral solution",
+          "note": "Tier 2 QL 72 mL per day (page 27)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Gabapentin (Relgaabi) capsule",
+          "outcome": "pa",
+          "reason": "Tier 2 PA; DO (page 28)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Pages 27-28 (anticonvulsants). Generic gabapentin and pregabalin are Tier 2 without PA. Not printed: Neurontin, Gralise, Horizant, Lyrica and Lyrica CR. Gabapentin capsule strength and sig are standard label dosing, not printed. DO on the gabapentin rows is a dose-optimization flag, not a PA. [Sonnet check 2026-10-27: tier, PA/ST/QL flags and pick re-read against the cached PDF text layer; upgraded to verified. Gabapentin capsule Tier 2 DO confirmed (page 27).]",
+      "sourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "anthem-bcbs-ca"
+    },
+    {
+      "classId": "muscle-relaxant",
+      "preferredAgent": {
+        "inn": "Cyclobenzaprine HCl tablet 10 mg",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg",
+        "sig": "5 mg three times daily; may increase to 10 mg three times daily. Use for 2 to 3 weeks (label).",
+        "sigShort": "5-10 mg TID x2-3 wk",
+        "plainSig": "One 5 mg pill three times a day for a few weeks."
+      },
+      "preferredRestriction": "Quantity limit: 3 tablets per day (printed on the 10 mg row, page 90). No PA.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Methocarbamol tablet 500 mg",
+          "note": "Tier 1 QL 8 tablets per day (page 90)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Methocarbamol tablet 750 mg",
+          "note": "Tier 1 QL 6 tablets per day (page 90)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tizanidine HCl tablet 2, 4 mg",
+          "note": "Tier 1 QL 4 or 9 tablets per day (page 90)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tizanidine HCl capsule 2, 4, 6 mg",
+          "note": "Tier 1 QL (page 90)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Baclofen tablet 5, 10 mg",
+          "note": "Tier 1 QL 3 tablets per day (page 90)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Baclofen tablet 20 mg",
+          "note": "Tier 1 QL 4 tablets per day (page 90)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carisoprodol tablet",
+          "note": "Tier 1 QL 4 tablets per day (page 90)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Chlorzoxazone tablet",
+          "note": "Tier 1 QL 4 tablets per day (page 90)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Cyclobenzaprine HCl tablet 5 mg",
+          "note": "Tier 1 QL 6 tablets per day (page 90)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Page 90 (musculoskeletal, central relaxants). Every listed muscle relaxant is Tier 1 with QL only; no PA or step. Not printed: orphenadrine, metaxalone, cyclobenzaprine ER (Amrix). Sig is standard label dosing. [Sonnet check 2026-10-27: tier, PA/ST/QL flags and pick re-read against the cached PDF text layer; upgraded to verified. Checked every alternative and PA row listed against pages cited.]",
+      "sourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "anthem-bcbs-ca"
+    }
+  ],
+  "references": [
+    {
+      "id": "medi-cal-rx-next11-2026-10",
+      "label": "Medi-Cal Rx Contract Drugs List (effective 10/01/2026, 242 pages)",
+      "publisher": "California Department of Health Care Services (Medi-Cal Rx)",
+      "type": "gov",
+      "url": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "kaiser-permanente-ca-next11-2026-10",
+      "label": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "publisher": "Kaiser Permanente",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "effectiveDate": "2026-10-06",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "anthem-bcbs-ca-next11-2026-10",
+      "label": "2026 California Select Drug List, Four Tier (IND), Last Updated October 1, 2026",
+      "publisher": "Anthem Blue Cross (Elevance Health)",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

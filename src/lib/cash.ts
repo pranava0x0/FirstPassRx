@@ -368,8 +368,11 @@
  * 780 → 802: District of Columbia added (12 guides; DC Medicaid and AmeriHealth Caritas DC are new
  * documents, CareFirst and Kaiser Mid-Atlantic reuse the MD records).
  * 1573 → 1925: New York's 11 newer topics (5 payers × 28 classes; the alternatives long tail of
- * antipsychotics, antidepressants, biologics, HIV and blood-pressure drugs is mostly unpriced). */
-export const KNOWN_UNPRICED_GAP = 1925
+ * antipsychotics, antidepressants, biologics, HIV and blood-pressure drugs is mostly unpriced).
+ * 1925 → 2141: California's 11 newer topics (3 payers × 28 classes). NY/CA pick names now carry
+ * their form ("Tacrolimus ointment", "Bupropion HCl XL") so they reach the existing priced rules.
+ */
+export const KNOWN_UNPRICED_GAP = 2141
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake

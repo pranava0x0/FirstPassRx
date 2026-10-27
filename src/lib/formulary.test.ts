@@ -235,6 +235,17 @@ describe('guides + global meta', () => {
       'ny-hypertension',
       'ny-hiv',
       'ny-hepatitis-c',
+      'ca-antipsychotics',
+      'ca-antidepressants',
+      'ca-dermatology',
+      'ca-sleep-anxiety',
+      'ca-immunology',
+      'ca-pain',
+      'ca-testosterone',
+      'ca-oab',
+      'ca-hypertension',
+      'ca-hiv',
+      'ca-hepatitis-c',
     ])
   })
 
