@@ -89,7 +89,7 @@
     
     
     <link rel="stylesheet" href="/etc.clientlibs/copapwp/clientlibs/clientlib-dependencies.lc-d41d8cd98f00b204e9800998ecf8427e-lc.min.css" type="text/css">
-<link rel="stylesheet" href="/etc.clientlibs/copapwp/clientlibs/clientlib-site.lc-a2959220f80be46576a0a4bdc95f54c5-lc.min.css" type="text/css">
+<link rel="stylesheet" href="/etc.clientlibs/copapwp/clientlibs/clientlib-site.lc-777f5515f3a45c1d11ad836a56239886-lc.min.css" type="text/css">
 
 
     
@@ -599,6 +599,63 @@
         })();
 
         document.addEventListener('DOMContentLoaded', coveoSearch.init(), false);
+
+        async function downloadImageFromUrl(imageUrl) {
+            const response = await fetch(imageUrl);
+            if (!response.ok) {
+                throw new Error("Image download failed: " + response.status);
+            }
+            const blob = await response.blob();
+            const blobUrl = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = blobUrl;
+            link.download =
+                new URL(imageUrl).pathname.split('/').pop() || 'download';
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            setTimeout(() => {
+                URL.revokeObjectURL(blobUrl);
+            }, 1000);
+        }
+
+        document.addEventListener('click', async function (event) {
+        const downloadButton = event.composedPath().find(
+            element =>
+                    element.classList && element.classList.contains(
+            'cmp-coveo-search__result-card__ethics-download'
+            )
+        );
+
+        if (!downloadButton) {
+            return;
+        }
+        event.preventDefault();
+        const resultCard = downloadButton.closest('.cmp-coveo-search__result-card');
+
+        if (!resultCard) {
+            console.error('Result card not found');
+            return;
+        }
+        const formIdElement = resultCard.querySelector('atomic-result-text[field="copapwpformid"]');
+        const imageUrlElement = resultCard.querySelector('atomic-result-text[field="copapwpdocumentdownload1"]');
+
+        const formId = formIdElement?.textContent?.trim();
+        const imageUrl = imageUrlElement?.textContent?.trim();
+
+        if (imageUrl) {
+            try {
+                await downloadImageFromUrl(imageUrl);
+            } catch (error) {
+                console.error('Image download failed:', error);
+            }
+            return;
+        } else if (formId) {
+            downloadSubmitFiling(formId);
+        } else {
+            console.error('No image URL or form ID found');
+        }
+    });
     </script>
 
     <!-- Include the custom script authored in page properties -->
@@ -927,6 +984,13 @@
 
 		</nav>
 	</div>
+</div>
+<div class="scriptcomponent aem-GridColumn aem-GridColumn--default--12">
+   <script src="/content/dam/components/coveo/clientlib-coveo-proxy.js" defer></script>
+   
+
+    
+
 </div>
 <div class="modal aem-GridColumn aem-GridColumn--default--12">
 
@@ -9652,7 +9716,7 @@ fetch('https://api.ipify.org?format=json')
     
     
     <script src="/etc.clientlibs/copapwp/clientlibs/clientlib-dependencies.lc-d41d8cd98f00b204e9800998ecf8427e-lc.min.js"></script>
-<script src="/etc.clientlibs/copapwp/clientlibs/clientlib-site.lc-2ab34b67367a44a0cd837c5aa39baa76-lc.min.js"></script>
+<script src="/etc.clientlibs/copapwp/clientlibs/clientlib-site.lc-8021ad6c6dc27c77a44340c4e51bec5a-lc.min.js"></script>
 
 
     
@@ -9660,7 +9724,7 @@ fetch('https://api.ipify.org?format=json')
     
     <script async src="/etc.clientlibs/core/wcm/components/commons/site/clientlibs/container.lc-0a6aff292f5cc42142779cde92054524-lc.min.js"></script>
 <script async src="/etc.clientlibs/clientlibs/granite/jquery/granite/csrf.lc-4a12cc641a266e93e1c9df14be0a0a8f-lc.min.js"></script>
-<script async src="/etc.clientlibs/copapwp/clientlibs/clientlib-base.lc-7be6a2114d28e9daf4b2da1387f7f329-lc.min.js"></script>
+<script async src="/etc.clientlibs/copapwp/clientlibs/clientlib-base.lc-53919bf96a8c93d73851525c3d7a3c3a-lc.min.js"></script>
 <script async src="/etc.clientlibs/copapwp/clientlibs/clientlib-favicon.lc-662bba9fca36df012ccb43444091dafb-lc.min.js"></script>
 
 
@@ -9676,7 +9740,7 @@ fetch('https://api.ipify.org?format=json')
 
     
     <script async src="/etc.clientlibs/fd/af/runtime/clientlibs/toggles.lc-c44fcb35e33d5f46761f21aa3ddeca79-lc.min.js"></script>
-<script async src="/etc.clientlibs/fd/af/runtime/clientlibs/rum.lc-9b286f2b01abc9ede3d2adf540c16b41-lc.min.js"></script>
+<script async src="/etc.clientlibs/fd/af/runtime/clientlibs/rum.lc-6bba82b7c7f2f7d12a7ba805e47fc796-lc.min.js"></script>
 <script async src="/etc.clientlibs/clientlibs/granite/dompurify.lc-46a64582d529fd6024b6aca7db08cb41-lc.min.js"></script>
 <script async src="/etc.clientlibs/core/fd/components/form/accordion/v1/accordion/clientlibs/commons.lc-36c4c664a1a91c14b422ab6c2da38f12-lc.min.js"></script>
 <script async src="/etc.clientlibs/copapwp-adaptive-form-components/clientlibs/fd/af-clientlibs/core-forms-components-runtime-all.lc-1874b1c2d6a89b82fa6bafa1e7ed6494-lc.min.js"></script>
