@@ -1195,6 +1195,16 @@ button {
 .panel-cite:hover {
   text-decoration: underline;
 }
+/* The label stays small, but the touch area is 44px tall (DESIGN: touch targets ≥ 44px). */
+.panel-cite {
+  position: relative;
+  display: inline-block;
+}
+.panel-cite::after {
+  content: '';
+  position: absolute;
+  inset: -16px -6px;
+}
 
 /* provenance: verification state + citation on one line, under the answer */
 .result__provenance {

@@ -67,7 +67,7 @@
   "One capsule a day with food; your prescriber may raise the dose."
  ],
  [
-  "bupropion.*(XL|extended-release \\(XL|extended-release tablet \\(XL|24-hour)",
+  "^(?!.*(hydrobromide|forfivo|aplenzin))bupropion.*(XL|extended-release \\(XL|extended-release tablet \\(XL|24-hour)",
   "150 mg once daily in the morning for at least 4 days, then 300 mg once daily if needed; max 450 mg/day (label).",
   "150 mg QAM, then 300 mg",
   "One pill each morning; the dose may go up after a few days."
@@ -288,7 +288,7 @@
   "Apply a thin film to affected areas twice daily (label).",
   "Thin film BID",
   "A thin layer on the acne twice a day.",
-  "solution"
+  "topical solution|^solution|1% solution"
  ],
  [
   "^vilazodone",
@@ -298,7 +298,7 @@
  ],
  [
   "^haloperidol decanoate",
-  "Deep IM (gluteal) injection every 4 weeks; first dose 10-15 times the stabilized daily oral haloperidol dose, not over 100 mg (label). Keep the oral dose only until the first injection takes effect if needed.",
+  "Deep IM (gluteal) injection every 4 weeks. First dose: 10-15 times the daily oral dose if stabilized on 10 mg/day or less (10-20 times if higher or at risk of relapse); give no more than 100 mg in the first injection and the rest 3-7 days later (label).",
   "IM q4wk, 10-15x oral daily dose",
   "A shot into the muscle about once a month, given at the clinic."
  ],
@@ -309,20 +309,20 @@
   "Take 3 pills together once a day with food for 8 weeks."
  ],
  [
-  "^dolutegravir.*lamivudine",
-  "1 tablet (dolutegravir 50 mg/lamivudine 300 mg) by mouth once daily, with or without food (label).",
+  "^dolutegravir(?!.*abacavir).*lamivudine",
+  "1 tablet (dolutegravir 50 mg/lamivudine 300 mg) by mouth once daily, with or without food. Test for hepatitis B before starting (label).",
   "1 tab QD",
   "One pill a day."
  ],
  [
-  "^atenolol",
+  "^atenolol$",
   "50 mg by mouth once daily for hypertension; may increase to 100 mg once daily after 1-2 weeks (label).",
   "50 mg QD",
   "One pill a day for blood pressure."
  ],
  [
-  "^apremilast",
-  "Titrate over 5 days to reduce GI upset: day 1 10 mg AM; day 2 10 mg BID; day 3 10 mg AM and 20 mg PM; day 4 20 mg BID; day 5 20 mg AM and 30 mg PM; day 6 on 30 mg twice daily (label).",
+  "^apremilast(?!.*(extended|\\bXR\\b))",
+  "Titrate over 5 days to reduce GI upset: day 1 10 mg AM; day 2 10 mg BID; day 3 10 mg AM and 20 mg PM; day 4 20 mg BID; day 5 20 mg AM and 30 mg PM; day 6 on 30 mg twice daily (label). Severe renal impairment (CrCl under 30): 30 mg once daily.",
   "Titrate x5d to 30 mg BID",
   "Start with a starter pack that raises the dose over 5 days, then one pill twice a day."
  ],
@@ -333,7 +333,7 @@
   "One pill a day for an overactive bladder."
  ],
  [
-  "^pregabalin",
+  "^pregabalin(?!.*(extended|\\bCR\\b))",
   "Start 75 mg by mouth twice daily (or 50 mg three times daily); may increase within 1 week to 300 mg/day depending on the indication (label). Taper over at least 1 week to stop.",
   "75 mg BID, titrate per indication",
   "A capsule twice a day. The dose may go up after a week."
@@ -345,21 +345,22 @@
   "One pill right before bed, only if you can sleep 7 or more hours."
  ],
  [
-  "^testosterone \\(topical gel\\)|^testosterone gel",
+  "^testosterone \\(topical gel\\)|^testosterone gel(?!.*(fortesta|nasal|natesto))",
   "Apply the labeled starting dose once each morning to clean, dry skin of the shoulders and upper arms (1.62% gel: 40.5 mg; 1% gel: 50 mg); adjust by morning serum testosterone. Let dry, cover the site, and wash hands (label; boxed warning on secondary exposure).",
   "Apply QAM, dose per labs",
   "Rub the gel on your shoulders each morning, let it dry, and wash your hands. Keep it away from children and partners."
  ],
  [
-  "^testosterone \\(injection in oil\\)",
+  "^testosterone \\(injection in oil\\)(?!.*undecanoate)",
   "50-400 mg IM every 2 to 4 weeks, adjusted to keep morning testosterone in the normal range (label).",
   "IM q2-4wk, dose per labs",
   "A shot every 2 to 4 weeks; your prescriber sets the dose from blood tests."
  ],
  [
   "^clobetasol propionate",
-  "Apply a thin layer to the affected skin twice daily. Do not use more than 50 g per week or for more than 2 consecutive weeks; not on the face, groin or armpits (label).",
+  "Apply a thin layer to the affected skin twice daily. Do not use more than 50 g per week or for more than 2 consecutive weeks; not on the face, groin or armpits (label for cream, ointment, gel and solution).",
   "Thin layer BID, max 2 wk",
-  "A strong steroid cream. Use a thin layer twice a day for no more than 2 weeks."
+  "A strong steroid for the skin. Use a thin layer twice a day for no more than 2 weeks.",
+  "cream|ointment|gel|solution"
  ]
 ]
