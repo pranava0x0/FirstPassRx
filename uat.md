@@ -39,3 +39,11 @@ and update `uat/interaction_costs.json`.
 - **2026-10-21 (evening)** — Re-ran after the picker grew to 12 conditions and every state got all
   12 topics: every task identical to the morning numbers (mobile: preferred 0, PA list 1, PA draft
   4, switch state+condition+plan 6). The select-based picker absorbed 3× the guides with no cost.
+- **2026-10-27** — The hero's "Needs plan approval" line now has a **Start PA request** button
+  that opens the first blocked drug's request in place and jumps to it. PA draft: mobile 4→2
+  (1 swipe + 1 tap), tablet/desktop 3→1. Inside the request, criteria and step outcomes are
+  one-tap chips instead of native selects (2 taps each on a phone), so filling a 2-criterion,
+  2-step request costs 4 taps fewer; Copy/PDF stay in a sticky bar at the bottom of the screen.
+  Every other task unchanged with 248 guides (226 → 248). Mobile audit at 375px: no horizontal
+  overflow; the small "source ↗" links got a 44px touch area.
+

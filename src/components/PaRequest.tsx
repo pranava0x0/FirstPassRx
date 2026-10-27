@@ -286,7 +286,7 @@ export function PaRequest({
           }}
           aria-label={`Download PA request for ${item.drug} as PDF`}
         >
-          Download PDF
+          PDF
         </button>
       </div>
       {pdfError ? (
