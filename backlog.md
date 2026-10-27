@@ -17,6 +17,10 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   MGB hydrocodone 2.5/325 in one review). Pass `agent.strength` into `goodRxPrice/costPlusPrice`
   and let a rule declare its captured strength; suppress the price (keep the link) on mismatch,
   like `formConflict` does for dosage forms. Added 2026-10-22.
+  2026-10-27 review (PR #25) found more: gabapentin 600 mg tablet cells (ny-anthem-bcbs, tx-medicaid)
+  show the 300 mg capsule price, Kaiser CA bupropion XL 300 mg shows 150 mg, duloxetine 60 mg and
+  lorazepam 1 mg show starting-dose prices. Also: the tacrolimus ointment rule has no `goodRxParams`,
+  so its bare `tacrolimus` GoodRx link may open on oral capsules — pin the ointment form.
 - **Drug-aware ICD-10 for every class** (medium). `icd10For(classId, drug)` with DRUG_ICD10 now
   covers JAK, IL-17/23, TNF and antipsychotics (test-enforced for the biologic classes); extend
   the test to any class whose agents have different labeled indications. Added 2026-10-22.
