@@ -1,0 +1,922 @@
+{
+  "id": "tx-immunology",
+  "label": "TX · Rheumatoid arthritis, psoriasis and IBD biologics",
+  "stateCode": "TX",
+  "region": "Texas",
+  "topicId": "immunology",
+  "topic": "Rheumatoid arthritis, psoriasis and IBD biologics",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-10-27",
+  "capturedAt": "2026-10-27",
+  "payers": [
+    {
+      "id": "tx-medicaid",
+      "name": "Texas Medicaid Vendor Drug Program (Fee-for-Service, statewide PDL binding on all MCOs)",
+      "shortName": "TX Medicaid FFS",
+      "pbm": "Texas Health and Human Services Commission (HHSC) Vendor Drug Program",
+      "formularyUrl": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "productName": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization Criteria, effective July 24, 2026"
+    },
+    {
+      "id": "bcbs-tx-commercial",
+      "name": "Blue Cross and Blue Shield of Texas (Commercial)",
+      "shortName": "BCBS Texas",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "sourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "productName": "Performance Drug List, July 2026",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Blue Cross and Blue Shield of Texas Performance Drug List, October 2026 (41722-T TX); PDF pages cited are PDF indices (printed page = PDF page - 10). Fresh curl 2026-10-27 is byte-identical to sources/bcbs-tx-commercial-newtopics-2026-10.pdf (sha256 279e092f...); day of month not printed, effectiveDate set to 2026-10-01"
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "tnf-inhibitor",
+      "name": "TNF inhibitors",
+      "shortName": "TNF",
+      "plainName": "TNF blocker (Humira type)",
+      "description": "Adalimumab and biosimilars (Humira, Hadlima, Hyrimoz, Cyltezo, Yusimry, Simlandi, Amjevita, unbranded adalimumab-adaz/-fkjp/-aacf), etanercept (Enbrel, Erelzi, Eticovo), certolizumab (Cimzia), golimumab (Simponi). Infliximab is infusion/medical benefit.",
+      "plainDescription": "A shot for rheumatoid arthritis, psoriasis, psoriatic arthritis or Crohn's/colitis.",
+      "indication": "RA, PsA, AS, psoriasis, Crohn's, UC",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "il17-il23",
+      "name": "IL-17 and IL-23 inhibitors",
+      "shortName": "IL-17/23",
+      "plainName": "IL-17 or IL-23 blocker",
+      "description": "Secukinumab (Cosentyx), ixekizumab (Taltz), bimekizumab (Bimzelx), brodalumab (Siliq); guselkumab (Tremfya), risankizumab (Skyrizi), tildrakizumab (Ilumya), ustekinumab and biosimilars (Stelara, Wezlana, Selarsdi, Pyzchiva, Otulfi, Imuldosa, Yesintek, Steqeyma).",
+      "plainDescription": "A shot for psoriasis, psoriatic arthritis or Crohn's/colitis.",
+      "indication": "Psoriasis, PsA, Crohn's, UC",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "jak-inhibitor",
+      "name": "Oral JAK inhibitors",
+      "shortName": "JAK",
+      "plainName": "JAK inhibitor pill",
+      "description": "Tofacitinib (Xeljanz, XR), upadacitinib (Rinvoq), baricitinib (Olumiant) for RA/PsA/UC; deucravacitinib (Sotyktu, TYK2) for psoriasis; apremilast (Otezla, PDE4) as an oral psoriasis alternative.",
+      "plainDescription": "A daily pill for rheumatoid arthritis, psoriasis or colitis.",
+      "indication": "RA, PsA, UC, psoriasis",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "tnf-inhibitor",
+      "preferredAgent": {
+        "inn": "Adalimumab-adaz (unbranded)",
+        "brand": null,
+        "genericAvailable": false,
+        "strength": "40 mg/0.4 mL (standard strength; PDL does not print strength)",
+        "sig": "RA/PsA/AS: 40 mg subcutaneously every 2 weeks. Psoriasis: 80 mg once, then 40 mg every 2 weeks starting 1 week later. Crohn's/UC: 160 mg, then 80 mg 2 weeks later, then 40 mg every 2 weeks (label).",
+        "sigShort": "40 mg SC q2wk (per indication)",
+        "plainSig": "A shot every 2 weeks; starting doses depend on the condition."
+      },
+      "preferredRestriction": "Clinical PA 'Cytokine and CAM Antagonists' is printed as applying to all drugs in this PDL section (p.39); the criteria sit in the linked DUR document, not in the PDL.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred on PDL (no tier stated)",
+      "alternatives": [
+        {
+          "drug": "HUMIRA (adalimumab)",
+          "note": "Preferred brand (p.39); clinical PA applies class-wide",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ENBREL (etanercept)",
+          "note": "Preferred, Cytokine and CAM Antagonists section (p.39)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "SIMPONI (golimumab)",
+          "note": "Preferred, Cytokine and CAM Antagonists section (p.40)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "HADLIMA (adalimumab-bwwd); CYLTEZO (adalimumab-adbm); YUFLYMA (adalimumab-aaty); HULIO; HYRIMOZ; AMJEVITA; SIMLANDI",
+          "note": "Preferred adalimumab biosimilars (pp.39-40)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "CIMZIA (certolizumab)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.39",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "YUSIMRY (adalimumab-aqvh)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.40",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ABRILADA (adalimumab-afzb)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.39",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "IDACIO (adalimumab-aacf); adalimumab-aacf (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.39",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ZYMFENTRA (infliximab-dyyb)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.40",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "SIMPONI ARIA (golimumab)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.40",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "CDV HUMIRA (adalimumab)",
+          "outcome": "pa",
+          "reason": "Separate co-branded Humira product, PA required (PDL p.39)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from PDL pp.39-40 (Cytokine and CAM Antagonists) by column position (preferred x~78, non-preferred x~323). Pick is the unbranded adalimumab-adaz, a preferred biosimilar; biosimilars are not generics, so genericAvailable is false. Conflict: HUMIRA appears in the preferred column (p.39) and as 'CDV HUMIRA (adalimumab)' in the non-preferred column (p.39); Humira is not used as the pick and is listed as an alternative only. IV infliximab is not on the PDL; ZYMFENTRA (SC infliximab) is listed. Strength and dosing are standard label values, not printed in the PDL. [Sonnet check 2026-10-27: the Humira conflict is not a text-layer error. HUMIRA is preferred and \"CDV HUMIRA\" (the co-branded Humira NDC) is a separate listing in the non-preferred column, so both are real. Added CDV Humira to paRequired. The p.39 header says the Cytokine and CAM Antagonists clinical PA applies to all drugs in the class, so even the preferred pick carries it; restriction text kept. Criteria text not opened.]",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "il17-il23",
+      "preferredAgent": {
+        "inn": "Ustekinumab-aauz (unbranded)",
+        "brand": null,
+        "genericAvailable": false,
+        "strength": "45 mg/0.5 mL (standard strength for body weight up to 100 kg; PDL does not print strength)",
+        "sig": "Psoriasis/PsA: 45 mg subcutaneously at weeks 0 and 4, then every 12 weeks (90 mg if over 100 kg). Crohn's/UC: one weight-based IV induction dose using 130 mg vials (260 mg if 55 kg or less, 390 mg for 55-85 kg, 520 mg over 85 kg), then 90 mg subcutaneously 8 weeks later and every 8 weeks (label).",
+        "sigShort": "45 mg SC wk 0, 4, q12wk (PsO); IV then 90 mg q8wk (IBD)",
+        "plainSig": "For psoriasis, two starting shots a month apart, then one every 3 months. For Crohn's or colitis, one IV infusion, then a shot every 8 weeks."
+      },
+      "preferredRestriction": "Clinical PA 'Cytokine and CAM Antagonists' is printed as applying to all drugs in this PDL section (p.39); the criteria sit in the linked DUR document, not in the PDL.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred on PDL (no tier stated)",
+      "alternatives": [
+        {
+          "drug": "SKYRIZI (risankizumab-rzaa)",
+          "note": "Preferred, Cytokine and CAM Antagonists section (p.40)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "TREMFYA (guselkumab)",
+          "note": "Preferred, Cytokine and CAM Antagonists section (p.40)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "IMULDOSA (ustekinumab-srlf); SELARSDI; PYZCHIVA; OTULFI; STARJEMZA; YESINTEK (ustekinumab biosimilars)",
+          "note": "Preferred ustekinumab biosimilars (pp.39-40)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "COSENTYX (secukinumab)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.39",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "BIMZELX (bimekizumab-bkzx)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.39",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ILUMYA (tildrakizumab-asmn)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.39",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "TALTZ (ixekizumab)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.40",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "SILIQ (brodalumab)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.40",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "STELARA (ustekinumab); ustekinumab (generic); STEQEYMA (ustekinumab-stba)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.40",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from PDL pp.39-40 by column position. Ustekinumab-aauz is the pick, one of several preferred ustekinumab biosimilars; the PDL does not rank them. Standard label dosing is used because the PDL does not print dosing. The section-wide clinical PA printed on p.39 applies to every drug in the section. [Sonnet check 2026-10-27: class-wide clinical PA on p.39 applies to all drugs in the class including this preferred pick; criteria text not opened.]",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "jak-inhibitor",
+      "preferredAgent": {
+        "inn": "Tofacitinib",
+        "brand": "XELJANZ",
+        "genericAvailable": false,
+        "strength": "5 mg tablet (standard strength; PDL does not print strength)",
+        "sig": "RA/PsA: 5 mg twice daily. Ulcerative colitis: 10 mg twice daily for 8 weeks (one 10 mg tablet per dose), then 5 mg twice daily (label).",
+        "sigShort": "5 mg BID (RA); 10 mg BID x8 wk (UC)",
+        "plainSig": "One 5 mg pill twice a day for arthritis; for colitis, one 10 mg pill twice a day for the first 8 weeks."
+      },
+      "preferredRestriction": "Clinical PA 'Cytokine and CAM Antagonists' is printed as applying to all drugs in this PDL section (p.39); the criteria sit in the linked DUR document, not in the PDL.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred on PDL (no tier stated)",
+      "alternatives": [
+        {
+          "drug": "RINVOQ ER (upadacitinib); RINVOQ LQ solution",
+          "note": "Preferred (p.40); also listed in the atopic dermatitis class",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "XELJANZ XR (tofacitinib); XELJANZ solution",
+          "note": "Preferred (p.40)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "OTEZLA (apremilast)",
+          "note": "Preferred (p.40); PDE4 inhibitor, listed in class description as an oral psoriasis alternative only",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "OLUMIANT (baricitinib)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.40",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "SOTYKTU (deucravacitinib)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.40",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "OTEZLA XR (apremilast)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.40",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from PDL pp.39-40 by column position. Xeljanz is the pick: a preferred oral JAK inhibitor with no generic printed on the PDL. The PDL does not state dosing, so 5 mg twice daily is the standard RA label dose. Otezla (apremilast) is listed as an alternative only, as the class description specifies. [Sonnet check 2026-10-27: class-wide clinical PA on p.39 applies to all drugs in the class including this preferred pick; criteria text not opened.]",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "tnf-inhibitor",
+      "preferredAgent": {
+        "inn": "Adalimumab",
+        "brand": "HUMIRA",
+        "genericAvailable": false,
+        "strength": "40 mg/0.4 mL pen or prefilled syringe (multiple strengths listed)",
+        "sig": "RA/PsA/AS: 40 mg subcutaneously every 2 weeks. Psoriasis: 80 mg once, then 40 mg every 2 weeks starting 1 week later. Crohn's/UC: 160 mg, then 80 mg 2 weeks later, then 40 mg every 2 weeks (label).",
+        "sigShort": "40 mg SC q2wk (per indication)",
+        "plainSig": "A shot every 2 weeks; starting doses depend on the condition."
+      },
+      "preferredRestriction": "PA required (PA flag printed; criteria not printed in this document). QL 2 syringes or pens/28 days. Specialty drug (SP).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Specialty (Tier 5, P, SP)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "ENBREL (etanercept) 25 mg, 50 mg/mL syringe, vial, cartridge, SureClick pen",
+          "outcome": "pa",
+          "reason": "PA flag; QL 4 syringes or 4 cartridges or 4 pens/28 days (8 vials/28 days for 25 mg vial); SP (PDF p.67)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "SIMPONI (golimumab) 100 mg/mL pen and syringe",
+          "outcome": "pa",
+          "reason": "PA flag; QL 1 syringe/28 days; SP (PDF p.68)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "CIMZIA (certolizumab pegol) 200 mg/mL syringe kit and starter kit",
+          "outcome": "pa",
+          "reason": "NP tier with PA; QL 4 syringes/28 days (starter 1 kit/180 days); SP (PDF p.52)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ADALIMUMAB-ADBM (unbranded adalimumab-adbm) pen, syringe, and CD/UC/HS kits",
+          "outcome": "pa",
+          "reason": "PA flag; QL 2 pens or syringes/28 days; SP (PDF p.66)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ADALIMUMAB-AATY (unbranded adalimumab-aaty) pen, syringe, and CD/UC/HS kits",
+          "outcome": "pa",
+          "reason": "PA flag; QL 2 pens or syringes/28 days (CD/UC/HS kit 1/180 days); SP (PDF p.66)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ZYMFENTRA (infliximab-dyyb) subcutaneous 1-pen and 2-pen and 2-syringe kits",
+          "outcome": "pa",
+          "reason": "NP tier with PA; QL 2 pens/28 days; SP (PDF p.53-54)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hadlima, Hyrimoz, Cyltezo, Yusimry, Simlandi, Amjevita (other adalimumab biosimilar brands)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list; intro states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Erelzi and Eticovo (etanercept biosimilars)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list; intro states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Humira 40 mg read as P with PA, QL 2 syringes or pens/28 days, SP (PDF p.67; x-coordinate check: PA at x~429-437). Adalimumab-adbm and -aaty are printed unbranded biosimilars with the same tier and PA. Infliximab IV is not printed; the list says drugs given by a health care professional are not covered under the pharmacy benefit (PDF p.7), so infliximab infusion (medical benefit) is not called non-covered. Judgment: Humira picked as the reference adalimumab product; the biosimilars carry the same tier and PA, so the choice is a prescriber decision, not a plan preference. Sig is standard label dosing.",
+      "sourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "il17-il23",
+      "preferredAgent": {
+        "inn": "Secukinumab",
+        "brand": "COSENTYX",
+        "genericAvailable": false,
+        "strength": "150 mg/mL prefilled syringe (75 mg/0.5 mL and 300 mg dose also listed)",
+        "sig": "Plaque psoriasis: 300 mg SC at weeks 0, 1, 2, 3 and 4, then every 4 weeks (150 mg may be enough for some patients). Psoriatic arthritis / ankylosing spondylitis: 150 mg SC, with or without that loading, then every 4 weeks (label).",
+        "sigShort": "300 mg SC wk 0-4, then q4wk (PsO)",
+        "plainSig": "A shot under the skin once a week for the first 5 weeks, then once a month."
+      },
+      "preferredRestriction": "PA required (PA flag printed; criteria not printed in this document). QL 1-2 syringes or pens/28 days. Specialty drug (SP).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Specialty (Tier 5, P, SP)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "BIMZELX (bimekizumab) 160 mg/mL and 320 mg/2 mL pen and syringe",
+          "outcome": "pa",
+          "reason": "NP tier with PA; QL 2 pens/56 days or 1 pen/56 days; SP (PDF p.84)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "TREMFYA (guselkumab) 100 mg/mL and 200 mg/2 mL pen and syringe",
+          "outcome": "pa",
+          "reason": "PA flag; QL 1 pen/syringe per 56 days (100 mg) or 28 days (200 mg); SP (PDF p.53, p.87)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "SKYRIZI (risankizumab) 150 mg/mL pen and syringe; cartridge 180/360 mg",
+          "outcome": "pa",
+          "reason": "PA flag; QL 1 pen or syringe/84 days; cartridge 1/56 days; SP (PDF p.53, p.86)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "STELARA (ustekinumab) 45 mg and 90 mg",
+          "outcome": "pa",
+          "reason": "PA flag; QL 1 vial or syringe/84 or 56 days; SP (PDF p.87)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "STEQEYMA (ustekinumab-stba) 45 mg and 90 mg",
+          "outcome": "pa",
+          "reason": "PA flag; QL 1 vial or syringe/84 or 56 days; SP (PDF p.87)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "YESINTEK (ustekinumab-kfce) 45 mg and 90 mg",
+          "outcome": "pa",
+          "reason": "PA flag; QL 1 vial or syringe/84 or 56 days; SP (PDF p.87)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Siliq (brodalumab)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list; intro states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Taltz (ixekizumab)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list; intro states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ilumya (tildrakizumab)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list; intro states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Cosentyx read as P with PA, QL 2 syringes/28 days (x-coordinate check: PA at x~429-437, SP flag present, tier at x~387). Every IL-17/IL-23 named in the class description that is printed is PA-flagged. Judgment: secukinumab chosen as the first-listed preferred IL-17 product (a prescriber-practice choice, not a plan preference); ustekinumab biosimilars (Yesintek, Steqeyma) carry the same tier and PA. Omvoh (mirikizumab, IL-23, PA, SP, PDF p.53) is printed but not in the taxonomy description, so not added. Sig is standard label dosing.",
+      "sourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "jak-inhibitor",
+      "preferredAgent": {
+        "inn": "Upadacitinib",
+        "brand": "RINVOQ",
+        "genericAvailable": false,
+        "strength": "15 mg extended-release tablet (30 mg and 45 mg also listed)",
+        "sig": "RA/PsA/AS: 15 mg once daily. Ulcerative colitis: 45 mg once daily for 8 weeks, then 15 mg (or 30 mg) once daily. Crohn's disease: 45 mg once daily for 12 weeks, then 15 mg (or 30 mg) once daily. Dose per indication (label).",
+        "sigShort": "15 mg QD (RA); 45 mg induction for UC/CD",
+        "plainSig": "One 15 mg pill a day for arthritis; for colitis or Crohn's, one 45 mg pill a day for the first 8 to 12 weeks, then a lower dose."
+      },
+      "preferredRestriction": "PA required (PA flag printed; criteria not printed in this document). QL 30 tablets/30 days. Specialty drug (SP).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Specialty (Tier 5, P, SP)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "XELJANZ (tofacitinib) 5 mg, 10 mg tablet, oral solution, and XR 11/22 mg",
+          "outcome": "pa",
+          "reason": "PA flag; QL 60 tablets/30 days (5 mg), 240 tablets/365 days (10 mg); SP (PDF p.68)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tofacitinib citrate generic 5 mg, 10 mg, 11 mg and 22 mg ER (Xeljanz reference)",
+          "outcome": "pa",
+          "reason": "np tier with PA flag; QL 60 tablets/30 days (5 mg); SP (PDF p.68)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "OLUMIANT (baricitinib) 1, 2, 4 mg tablet",
+          "outcome": "pa",
+          "reason": "PA flag; QL 30 tablets/30 days; SP (PDF p.67)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "SOTYKTU (deucravacitinib) 6 mg tablet (TYK2)",
+          "outcome": "pa",
+          "reason": "PA flag; QL 30 tablets/30 days; SP (PDF p.86)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "OTEZLA (apremilast) 20/30 mg tablet, starter pack, and XR 75 mg (PDE4, taxonomy alternative, not a JAK)",
+          "outcome": "pa",
+          "reason": "PA flag; QL 60 tablets/30 days (20/30 mg), 1 pack/180 days (starter); SP (PDF p.67)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Rinvoq 15 mg read as P with PA and QL 30 tablets/30 days, SP (PDF p.68; x-coordinate check: PA at x~430). Every JAK and taxonomy-listed oral alternative printed carries PA, so they are all in paRequired. Judgment: Rinvoq picked over Xeljanz; Xeljanz has an np generic of the same product (which would set a BOGL flag), while Rinvoq has no generic printed. Both are PA-flagged. Outside the description, the list also prints Leqselvi (deuruxolitinib, NP PA, PDF p.86) and Litfulo (ritlecitinib, NP PA, PDF p.86) (alopecia JAKs); not in the taxonomy description, so not added. Otezla is a taxonomy alternative and is shown only as a PA item.",
+      "sourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "tnf-inhibitor",
+      "preferredAgent": {
+        "inn": "Adalimumab-adaz",
+        "brand": null,
+        "genericAvailable": false,
+        "strength": "40 mg/0.4 mL pen",
+        "sig": "RA/PsA/AS: 40 mg subcutaneously every 2 weeks. Psoriasis: 80 mg once, then 40 mg every 2 weeks starting 1 week later. Crohn's/UC: 160 mg, then 80 mg 2 weeks later, then 40 mg every 2 weeks (label).",
+        "sigShort": "40 mg SC q2wk (per indication)",
+        "plainSig": "A shot every 2 weeks; starting doses depend on the condition."
+      },
+      "preferredRestriction": "PA and QL 2.4 per 28 days (page 69)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 5 (Specialty Tier)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Adalimumab-adaz other presentations (10 mg/0.1 mL and 20 mg/0.2 mL syringes, 40 mg syringe, 80 mg/0.8 mL pen)",
+          "outcome": "pa",
+          "reason": "PA and QL; Tier 5 (page 69)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Adalimumab-adbm kits and Crohn's and psoriasis-UV pens",
+          "outcome": "pa",
+          "reason": "PA and QL; Tier 5 (page 69)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Enbrel (etanercept) syringes, solution, Mini cartridge and SureClick pen",
+          "outcome": "pa",
+          "reason": "PA and QL 8 per 28 days; Tier 5 (page 70)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Adalimumab-adaz 40 mg/0.4 mL pen read on page 69: Tier 5, PA and QL 2.4 per 28 days. The pick is a judgment call: all listed TNF agents carry the same Tier 5 PA, and the guide prints no plan preference. Humira, Hadlima, Hyrimoz, Cyltezo, Yusimry, Simlandi, Amjevita, Erelzi, Eticovo, Cimzia and Simponi are not listed. Infliximab is not listed (usually a medical-benefit infusion), so it is not read as excluded. [Sonnet check 2026-10-27: Re-read by x-coordinate on v17 page 69. Adjudicated: adalimumab-adaz and adalimumab-adbm are the only adalimumab products listed and all are Tier 5 with PA, so adalimumab-adaz 40 mg/0.4 mL pen stays the pick. Enbrel (page 70) is Tier 5 with PA and QL 8 per 28 days.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "il17-il23",
+      "preferredAgent": {
+        "inn": "Ustekinumab",
+        "brand": "Otulfi",
+        "genericAvailable": false,
+        "strength": "45 mg/0.5 mL syringe",
+        "sig": "Psoriasis/PsA: 45 mg subcutaneously at weeks 0 and 4, then every 12 weeks (90 mg if over 100 kg). Crohn's/UC: one weight-based IV induction dose using 130 mg vials (260 mg if 55 kg or less, 390 mg for 55-85 kg, 520 mg over 85 kg), then 90 mg subcutaneously 8 weeks later and every 8 weeks (label).",
+        "sigShort": "45 mg SC wk 0, 4, q12wk (PsO); IV then 90 mg q8wk (IBD)",
+        "plainSig": "For psoriasis, two starting shots a month apart, then one every 3 months. For Crohn's or colitis, one IV infusion, then a shot every 8 weeks."
+      },
+      "preferredRestriction": "PA and QL 1.5 per 84 days (page 72)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3 (Preferred Brand)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Otulfi 45 mg/0.5 mL solution",
+          "outcome": "pa",
+          "reason": "PA and QL 1.5 per 84 days; Tier 3 (page 72)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Yesintek 45 mg/0.5 mL solution and syringe",
+          "outcome": "pa",
+          "reason": "PA and QL 1.5 per 84 days; Tier 3 (page 74)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Otulfi 90 mg/mL syringe",
+          "outcome": "pa",
+          "reason": "PA and QL 3 per 84 days; Tier 5 (page 72)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Yesintek 90 mg/mL syringe",
+          "outcome": "pa",
+          "reason": "PA and QL 3 per 84 days; Tier 5 (page 74)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Stelara (ustekinumab) 45 mg solution and syringe, 90 mg/mL syringe",
+          "outcome": "pa",
+          "reason": "PA and QL; Tier 5 (page 73)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ustekinumab (unbranded) 45 mg solution and syringe, 90 mg/mL syringe",
+          "outcome": "pa",
+          "reason": "PA and QL; Tier 5 (page 73)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Cosentyx (secukinumab), all presentations",
+          "outcome": "pa",
+          "reason": "PA and QL; Tier 5 (page 70)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tremfya (guselkumab), all presentations",
+          "outcome": "pa",
+          "reason": "PA and QL; Tier 5 (page 73)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Skyrizi (risankizumab), all presentations",
+          "outcome": "pa",
+          "reason": "PA and QL; Tier 5 (pages 72-73)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Otulfi 45 mg/0.5 mL syringe read on page 72: Tier 3 (Preferred Brand), PA and QL 1.5 per 84 days. No IL-17 or IL-23 agent in this class is listed without PA. Otulfi is a ustekinumab biosimilar, the lowest tier in the class. The pick is a judgment call: the 45 mg strength is the lowest-tier listed product. Brodalumab (Siliq), bimekizumab (Bimzelx), ixekizumab (Taltz), tildrakizumab (Ilumya) and the other ustekinumab biosimilars (Wezlana, Selarsdi, Pyzchiva, Imuldosa, Steqeyma) are not listed. Omlyclo (omalizumab) appears on page 72 but is outside this class. [Sonnet check 2026-10-27: Re-read by x-coordinate on v17 pages 70-74. Adjudicated: Otulfi and Yesintek are both Tier 3 (Preferred Brand) with PA and QL 1.5 per 84 days for the 45 mg dose, so Otulfi is one of two equal picks, not the sole preferred product; Stelara and unbranded ustekinumab are Tier 5. Ustekinumab blocks IL-12/23 (the class definition includes it); Cosentyx, Tremfya and Skyrizi, the IL-17 and IL-23 agents, are all Tier 5 with PA, so the ustekinumab biosimilar is the lowest-barrier product.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "jak-inhibitor",
+      "preferredAgent": {
+        "inn": "Upadacitinib",
+        "brand": "Rinvoq",
+        "genericAvailable": false,
+        "strength": "15 mg extended-release tablet",
+        "sig": "RA/PsA/AS: 15 mg once daily. Ulcerative colitis: 45 mg once daily for 8 weeks, then 15 mg (or 30 mg) once daily. Crohn's disease: 45 mg once daily for 12 weeks, then 15 mg (or 30 mg) once daily. Dose per indication (label).",
+        "sigShort": "15 mg QD (RA); 45 mg induction for UC/CD",
+        "plainSig": "One 15 mg pill a day for arthritis; for colitis or Crohn's, one 45 mg pill a day for the first 8 to 12 weeks, then a lower dose."
+      },
+      "preferredRestriction": "PA and QL 30 per 30 days (page 72)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 5 (Specialty Tier)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Rinvoq (upadacitinib) 45 mg extended-release tablet",
+          "outcome": "pa",
+          "reason": "PA and QL 168 per 365 days; Tier 5 (page 72)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Rinvoq LQ (upadacitinib) 1 mg/mL solution",
+          "outcome": "pa",
+          "reason": "PA and QL 360 per 30 days; Tier 5 (page 72)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Rinvoq 15 mg and 30 mg extended-release tablets read on page 72: Tier 5, PA and QL 30 per 30 days. Rinvoq is the only oral JAK inhibitor in this guide. Tofacitinib (Xeljanz), baricitinib (Olumiant) and deucravacitinib (Sotyktu) are not listed. Apremilast (Otezla) is not a JAK inhibitor and is not used as the pick; it is also not listed here. Absence is not read as exclusion. [Sonnet check 2026-10-27: Re-read by x-coordinate on v17; pages, tiers and flags match.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "tx-medicaid-next11-2026-10",
+      "label": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization Criteria, effective July 24, 2026",
+      "publisher": "Texas Health and Human Services (Texas Medicaid Vendor Drug Program, txvendordrug.com)",
+      "type": "gov",
+      "url": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "effectiveDate": "2026-07-24",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "bcbs-tx-commercial-next11-2026-10",
+      "label": "Blue Cross and Blue Shield of Texas Performance Drug List, October 2026 (41722-T TX); PDF pages cited are PDF indices (printed page = PDF page - 10). Fresh curl 2026-10-27 is byte-identical to sources/bcbs-tx-commercial-newtopics-2026-10.pdf (sha256 279e092f...); day of month not printed, effectiveDate set to 2026-10-01",
+      "publisher": "Blue Cross and Blue Shield of Texas (Prime Therapeutics LLC)",
+      "type": "payer",
+      "url": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "humana-premier-rx-pdp-next11-2026-10",
+      "label": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

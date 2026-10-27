@@ -1,0 +1,787 @@
+{
+  "id": "ca-sleep-anxiety",
+  "label": "CA · Insomnia and anxiety",
+  "stateCode": "CA",
+  "region": "California",
+  "topicId": "sleep-anxiety",
+  "topic": "Insomnia and anxiety",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-27",
+  "capturedAt": "2026-10-27",
+  "payers": [
+    {
+      "id": "medi-cal-rx",
+      "name": "Medi-Cal Rx — California Medicaid Pharmacy Program (Fee-for-Service carve-out, statewide)",
+      "shortName": "Medi-Cal Rx",
+      "pbm": "Magellan Health (Magellan Medicaid Administration; DHCS vendor)",
+      "productName": "Medi-Cal Rx Contract Drugs List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Medi-Cal Rx Contract Drugs List (effective 10/01/2026, 242 pages)",
+      "formularyUrl": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ]
+    },
+    {
+      "id": "kaiser-permanente-ca",
+      "name": "Kaiser Permanente (Commercial HMO)",
+      "shortName": "Kaiser Permanente",
+      "pbm": "Internal (Kaiser Foundation Health Plan formulary; closed integrated pharmacy)",
+      "productName": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "sourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ]
+    },
+    {
+      "id": "anthem-bcbs-ca",
+      "name": "Anthem Blue Cross of California (Commercial)",
+      "shortName": "Anthem Blue Cross CA",
+      "pbm": "CarelonRx",
+      "productName": "2026 California Select Drug List - Four Tier",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 California Select Drug List, Four Tier (IND), Last Updated October 1, 2026",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "sourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "z-drug",
+      "name": "Z-drug hypnotics",
+      "shortName": "Z-DRUG",
+      "plainName": "Sleep pill (zolpidem type)",
+      "description": "Zolpidem IR/ER/SL (Ambien, Ambien CR, Edluar), eszopiclone (Lunesta), zaleplon; ramelteon (Rozerem) and low-dose doxepin (Silenor) may be listed as alternatives.",
+      "plainDescription": "A bedtime pill for trouble falling or staying asleep.",
+      "indication": "Insomnia",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ]
+    },
+    {
+      "id": "dora",
+      "name": "Orexin receptor antagonists",
+      "shortName": "DORA",
+      "plainName": "Orexin blocker sleep pill",
+      "description": "Dual orexin receptor antagonists: suvorexant (Belsomra), lemborexant (Dayvigo), daridorexant (Quviviq).",
+      "plainDescription": "A newer bedtime pill that blocks the brain's wake signal.",
+      "indication": "Insomnia",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ]
+    },
+    {
+      "id": "benzodiazepine",
+      "name": "Benzodiazepines and buspirone for anxiety",
+      "shortName": "BZD",
+      "plainName": "Anxiety medicine",
+      "description": "Benzodiazepines (alprazolam IR/ER, lorazepam, clonazepam, diazepam, chlordiazepoxide, clorazepate) and the non-benzodiazepine anxiolytics buspirone and hydroxyzine as alternatives.",
+      "plainDescription": "A medicine for anxiety or panic attacks.",
+      "indication": "Generalized anxiety, panic disorder",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "z-drug",
+      "preferredAgent": {
+        "inn": "Zolpidem tartrate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "1 tablet (5 mg) by mouth at bedtime as needed, with at least 7 hours left for sleep. 5 mg is the labeled starting dose for women and adults 65+; men may start at 5 or 10 mg (label dosing).",
+        "sigShort": "5 mg QHS PRN",
+        "plainSig": "One small pill at bedtime when needed, only if you can sleep 7 or more hours."
+      },
+      "preferredRestriction": "Controlled substance: CDL limits all controlled-substance claims to a 35-day maximum supply and a 75% refill threshold; no drug-specific quantity is printed for zolpidem (p.7, p.126). Starred Code I entry (p.126).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "CDL listed, Code I (*) controlled substance (p.126)",
+      "alternatives": [
+        {
+          "drug": "Ramelteon 8 mg tablet",
+          "note": "CDL listed, not controlled, no restriction printed (p.126)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Eszopiclone (Lunesta-type)",
+          "outcome": "pa",
+          "reason": "Not on CDL; unlisted legend drugs may be covered only with authorization (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zaleplon",
+          "outcome": "pa",
+          "reason": "Not on CDL; unlisted legend drugs may be covered only with authorization (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zolpidem extended-release tablets (Ambien CR-type)",
+          "outcome": "pa",
+          "reason": "CDL lists zolpidem tartrate IR tablets 5, 10 mg only (p.126); ER not listed (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zolpidem sublingual tablets (Edluar-type)",
+          "outcome": "pa",
+          "reason": "CDL lists zolpidem tartrate IR tablets 5, 10 mg only (p.126); sublingual not listed (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Doxepin 3 and 6 mg tablets (Silenor-type)",
+          "outcome": "pa",
+          "reason": "CDL lists doxepin capsules 10-150 mg only (p.110); low-dose tablet not listed (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read CDL pp.7, 110, 125-126. Judgment on Code I: CDL General Provision 2 (p.4) says starred drugs need authorization unless used under the conditions the CDL specifies. This record treats the controlled-substance policy (p.7) as those conditions, so zolpidem is covered within those limits. If Medi-Cal Rx reads starred entries as PA-required, zolpidem moves to paRequired. The CDL also states DHCS recommends hypnotic use be 'occasional rather than continuous' (p.126); recorded here, not as a step. Zolpidem chosen as the standard Z-drug (judgment). Doxepin capsules listed are antidepressant strengths, not Silenor. [Sonnet check 2026-10-27: CDL p.4 General Provision 2: \"Code I drugs marked with a symbol (*) require authorization in accordance with Section 51003 unless used under the conditions specified in the Contract Drugs List\". For zolpidem (p.126) and hydrocodone/APAP (p.94) the printed Code I condition is \"Refer to the Controlled Substance Policy section for drug-specific limitations\" (p.7), so the star is a use limit, not a PA; contrast meperidine elixir, which prints \"requires a PA\" (p.94). Pick kept; verification stays partial (starred wording is ambiguous on its face). Unlisted-product rows quote p.4: \"Legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant.\" Confirmed by text search of the full CDL: none of eszopiclone, zaleplon, tapentadol appear.]",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "medi-cal-rx"
+    },
+    {
+      "classId": "dora",
+      "preferredAgent": {
+        "inn": "Suvorexant",
+        "brand": "Belsomra",
+        "genericAvailable": false,
+        "strength": "10 mg tablet",
+        "sig": "1 tablet by mouth at bedtime; dose per label (standard label dosing; CDL prints no sig)",
+        "sigShort": "1 tab PO QHS",
+        "plainSig": "One pill at bedtime, if your plan covers it."
+      },
+      "preferredRestriction": "Not on the Contract Drugs List. CDL p.4: legend drugs not listed 'may be covered subject to authorization from a Medi-Cal consultant.' No orexin receptor antagonist (suvorexant, lemborexant, daridorexant) appears anywhere in the CDL. Coverage unconfirmed; confirm with Medi-Cal Rx.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not on CDL",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Lemborexant (Dayvigo)",
+          "outcome": "pa",
+          "reason": "Not on CDL; unlisted legend drugs may be covered only with authorization (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Daridorexant (Quviviq)",
+          "outcome": "pa",
+          "reason": "Not on CDL; unlisted legend drugs may be covered only with authorization (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched the full CDL text (all 243 pages) for suvorexant, lemborexant, daridorexant, Belsomra, Dayvigo, Quviviq: none present. Recorded as noCoveredAgent with suvorexant as the class reference drug. Not called excluded, because CDL p.4 allows authorization for unlisted legend drugs. [Sonnet check 2026-10-27: re-searched full CDL text: no suvorexant, lemborexant, daridorexant, Belsomra, Dayvigo or Quviviq. noCoveredAgent confirmed; p.4 quote confirmed. Only ramelteon is listed as a non-benzodiazepine hypnotic (p.126).]",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "noCoveredAgent": true,
+      "payerId": "medi-cal-rx"
+    },
+    {
+      "classId": "benzodiazepine",
+      "preferredAgent": {
+        "inn": "Lorazepam",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.5 mg tablet",
+        "sig": "Anxiety: 2-3 mg/day in 2-3 divided doses (e.g. 0.5-1 mg two or three times daily); usual range 1-10 mg/day. Taper to stop (label).",
+        "sigShort": "0.5-1 mg BID-TID",
+        "plainSig": "A small pill two or three times a day for anxiety; do not stop suddenly."
+      },
+      "preferredRestriction": "Code I (*): controlled substance; covered within the Controlled Substance Policy limits (daily quantity 8 solid units), no TAR when used within them (CDL p.4 legend, p.7, p.100).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "CDL listed, Code I (*) controlled substance (p.100)",
+      "alternatives": [
+        {
+          "drug": "Buspirone HCl tablets",
+          "note": "CDL listed, no restriction printed (p.99); non-benzodiazepine anxiolytic",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydroxyzine HCl tablets 10, 25, 50 mg and hydroxyzine pamoate capsules 25, 50, 100 mg",
+          "note": "CDL listed, no restriction printed (p.99)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clonazepam tablets 0.5, 1, 2 mg and orally disintegrating tablets",
+          "note": "Listed with Code I (*); same controlled-substance limits (p.7, p.101)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Chlordiazepoxide HCl capsules 5, 10, 25 mg",
+          "note": "Listed with Code I (*); same controlled-substance limits (p.7, p.99)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Alprazolam (IR and ER)",
+          "outcome": "pa",
+          "reason": "Not on CDL; unlisted legend drugs may be covered only with authorization (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clorazepate",
+          "outcome": "pa",
+          "reason": "Not on CDL; unlisted legend drugs may be covered only with authorization (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diazepam tablets (oral)",
+          "outcome": "pa",
+          "reason": "Not on CDL; CDL lists diazepam only as injection and nasal spray, restricted to cerebral palsy/spasticity and acute epilepsy (p.101); unlisted drugs need authorization (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read CDL pp.7, 99-101. Searched the full CDL for alprazolam, clorazepate, oxazepam and diazepam tablets: only alprazolam, clorazepate and oral diazepam are absent. Buspirone chosen as the non-controlled, unrestricted option (judgment; the taxonomy lists both). Printed benzodiazepine limit: daily quantity 8 each (solid) (p.7). [Sonnet check 2026-10-27: p.4 unlisted-drug quote confirmed verbatim; searched CDL text for the unlisted names cited, none present.] [Opus review 2026-10-27: the class lists buspirone only as an alternative, so the pick is lorazepam (CDL p.100, Code I use limits per the p.4 legend and p.7 policy, as the Sonnet check read them for zolpidem and IR opioids); buspirone moved to alternatives.]",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "medi-cal-rx"
+    },
+    {
+      "classId": "z-drug",
+      "preferredAgent": {
+        "inn": "Zolpidem tartrate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "1 tablet (5 mg) by mouth at bedtime as needed, with at least 7 hours left for sleep. 5 mg is the labeled starting dose for women and adults 65+; men may start at 5 or 10 mg (label dosing).",
+        "sigShort": "5 mg QHS PRN",
+        "plainSig": "One small pill at bedtime when needed, only if you can sleep 7 or more hours."
+      },
+      "preferredRestriction": "Quantity limit printed: QL - 30 day(s) (30-day supply limit). No PA or step printed.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Ramelteon tablets 8 mg",
+          "note": "Tier 1, no flag (PDF p.55)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Doxepin HCl tablets 3 mg and 6 mg (low-dose)",
+          "note": "Tier 1, no flag (PDF p.54)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Lunesta (eszopiclone)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zaleplon",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ambien CR (zolpidem ER)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Edluar (zolpidem SL)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Preferred: zolpidem tartrate tabs 5 mg (PDF p.55, Tier 1, QL - 30 day(s)). Only zolpidem 5 mg is printed (no 10 mg tablet line). The QL (30 days) is the printed quantity limit; no PA or step flag. Not printed: eszopiclone (Lunesta), zaleplon, Ambien CR, Edluar; treated as unconfirmed. Ramelteon 8 mg (PDF p.55) and doxepin 3/6 mg tabs (PDF p.54) are printed and listed as alternatives per the class description. Document says: \"Kaiser Foundation Health Plan does not have a requirement for PA\" (PDF p.6) and \"does not have a requirement for Step Therapy\" (PDF p.7). Drugs not listed are nonformulary; when a Kaiser or referral doctor determines one is medically appropriate and necessary it is covered by formulary exception (PDF p.7; decision within 72 hours, 24 urgent, PDF p.8). Completeness is ambiguous: p.6 defines the formulary as \"the complete list of prescription drugs preferred for use and eligible for coverage\" but p.2 says \"not an all-inclusive list\", so absence is not treated as exclusion. [Sonnet check 2026-10-27: pick, tier and flags re-read in the document; 4 named absent drug(s) added as nonformulary (exception route)]",
+      "sourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "kaiser-permanente-ca"
+    },
+    {
+      "classId": "dora",
+      "preferredAgent": {
+        "inn": "Suvorexant",
+        "brand": "Belsomra",
+        "genericAvailable": false,
+        "strength": "10 mg tablet",
+        "sig": "1 tablet by mouth at bedtime (label dosing)",
+        "sigShort": "10 mg QHS (label)",
+        "plainSig": "One pill at bedtime."
+      },
+      "preferredRestriction": "No DORA is printed on this formulary (suvorexant, lemborexant, daridorexant searched in list and index). Kaiser has no PA; a nonformulary drug is covered only by physician formulary exception (PDF p.7). Coverage unconfirmed because p.2 says \"not an all-inclusive list\"; confirm with the plan.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not printed on this formulary",
+      "alternatives": [
+        {
+          "drug": "Ramelteon tablets 8 mg",
+          "note": "Tier 1, no flag; class-description alternative (PDF p.55)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Doxepin HCl tablets 3 mg and 6 mg (low-dose)",
+          "note": "Tier 1, no flag; class-description alternative (PDF p.54)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Belsomra (suvorexant)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Dayvigo (lemborexant)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Quviviq (daridorexant)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "No dual orexin receptor antagonist (suvorexant, lemborexant, daridorexant) appears in the formulary text; searched brand and generic names. Reference drug in preferredAgent is suvorexant only so the record has a class anchor; it is NOT printed as covered. Coverage unconfirmed because the formulary says it is not all-inclusive; confirm with the plan. Document says: \"Kaiser Foundation Health Plan does not have a requirement for PA\" (PDF p.6) and \"does not have a requirement for Step Therapy\" (PDF p.7). Drugs not listed are nonformulary; when a Kaiser or referral doctor determines one is medically appropriate and necessary it is covered by formulary exception (PDF p.7; decision within 72 hours, 24 urgent, PDF p.8). Completeness is ambiguous: p.6 defines the formulary as \"the complete list of prescription drugs preferred for use and eligible for coverage\" but p.2 says \"not an all-inclusive list\", so absence is not treated as exclusion. [Sonnet check 2026-10-27: kept partial: absence in a list the document calls not all-inclusive; exception route added; 3 named absent drug(s) added as nonformulary (exception route)]",
+      "sourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "noCoveredAgent": true,
+      "payerId": "kaiser-permanente-ca"
+    },
+    {
+      "classId": "benzodiazepine",
+      "preferredAgent": {
+        "inn": "Alprazolam",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.5 mg tablet",
+        "sig": "Anxiety: 0.25-0.5 mg three times daily; increase every 3-4 days if needed, max 4 mg/day. Taper to stop (label).",
+        "sigShort": "0.25-0.5 mg TID",
+        "plainSig": "A small pill up to three times a day for anxiety; do not stop suddenly."
+      },
+      "preferredRestriction": "Quantity limit printed: QL - 30 day(s) (30-day supply limit). No PA or step printed.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Alprazolam IR tablets 0.25, 1, 2 mg",
+          "note": "Tier 1, QL - 30 day(s) (PDF p.53)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lorazepam tablets 0.5-2 mg",
+          "note": "Tier 1, QL - 30 day(s) (PDF p.54)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clonazepam tablets 0.5-2 mg",
+          "note": "Tier 1, no QL printed (PDF p.49)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diazepam tablets 2-10 mg",
+          "note": "Tier 1, no QL printed (PDF p.54)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Chlordiazepoxide HCl capsules 5-25 mg",
+          "note": "Tier 1, no QL printed (PDF p.53)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clorazepate dipotassium tablets 3.75-15 mg",
+          "note": "Tier 1, no QL printed (PDF p.53)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxazepam capsules 10-30 mg",
+          "note": "Tier 1, QL - 30 day(s) (PDF p.54)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydroxyzine HCl tablets 10-50 mg",
+          "note": "Tier 1, no flag (PDF p.54)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Buspirone HCl tablets 5-30 mg (non-benzodiazepine anxiolytic)",
+          "note": "Tier 1, no flag, no QL printed (PDF p.53); not a benzodiazepine, so not the class pick",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Preferred: alprazolam IR tablets 0.5 mg (PDF p.53, Tier 1, QL - 30 day(s)); lorazepam tabs 0.5/1/2 mg PDF p.54 also Tier 1 with the same QL. Batch A filed buspirone, which is not a benzodiazepine; alprazolam is the benzodiazepine a prescriber most often writes for anxiety. Clonazepam, diazepam, chlordiazepoxide, clorazepate, oxazepam and hydroxyzine are printed Tier 1 (PDF pp.49-54). The QL is printed on the pick row, so it is recorded; the sig is label dosing, not printed. Document says: \"Kaiser Foundation Health Plan does not have a requirement for PA\" (PDF p.6) and \"does not have a requirement for Step Therapy\" (PDF p.7). Drugs not listed are nonformulary; when a Kaiser or referral doctor determines one is medically appropriate and necessary it is covered by formulary exception (PDF p.7; decision within 72 hours, 24 urgent, PDF p.8). Completeness is ambiguous: p.6 defines the formulary as \"the complete list of prescription drugs preferred for use and eligible for coverage\" but p.2 says \"not an all-inclusive list\", so absence is not treated as exclusion. [Sonnet check 2026-10-27: pick changed from buspirone to alprazolam; QL moved into preferredRestriction; buspirone kept as a non-benzodiazepine alternative]",
+      "sourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "kaiser-permanente-ca"
+    },
+    {
+      "classId": "z-drug",
+      "preferredAgent": {
+        "inn": "Zolpidem tartrate IR tablet",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Strength not stated on the plan line (standard label strengths apply)",
+        "sig": "1 tablet (5 mg) by mouth at bedtime as needed, with at least 7 hours left for sleep. 5 mg is the labeled starting dose for women and adults 65+; men may start at 5 or 10 mg (label dosing).",
+        "sigShort": "5 mg QHS PRN",
+        "plainSig": "One small pill at bedtime when needed, only if you can sleep 7 or more hours."
+      },
+      "preferredRestriction": "Quantity limit: 1 tablet per day (printed, page 81). Controlled substance (C-IV); the QL is not a PA.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Zaleplon capsule",
+          "note": "Tier 1 QL 1 capsule per day (page 80)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zolpidem tartrate ER tablet",
+          "note": "Tier 2 QL 1 tablet per day (page 80)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Doxepin HCl tablet (low-dose, Silenor-type)",
+          "outcome": "step",
+          "reason": "Tier 2 ST; QL 1 tablet per day (page 80)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Pages 80-81 (hypnotics). Zolpidem IR, zolpidem ER, zaleplon and doxepin tablet appear; no PA printed on the Z-drug rows. Doxepin tablet carries ST without printed criteria. Not printed: Ambien, Ambien CR, Edluar, Lunesta (eszopiclone). Preferred strength and sig are standard label dosing. [Sonnet check 2026-10-27: tier, PA/ST/QL flags and pick re-read against the cached PDF text layer; upgraded to verified. Zolpidem IR Tier 1 QL 1/day (page 81); eszopiclone unlisted, noted.]",
+      "sourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "anthem-bcbs-ca"
+    },
+    {
+      "classId": "dora",
+      "preferredAgent": {
+        "inn": "Suvorexant",
+        "brand": "Belsomra",
+        "genericAvailable": false,
+        "strength": "Strength not printed (label dosing)",
+        "sig": "1 tablet by mouth at bedtime (standard label dosing; not printed on list)",
+        "sigShort": "1 tab PO QHS",
+        "plainSig": "One pill at bedtime."
+      },
+      "preferredRestriction": "No orexin receptor antagonist (suvorexant, lemborexant, daridorexant) appears on this plan's 2026 California Select list (pages 80-81 hypnotics checked). Coverage not established; confirm with plan.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not listed",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Hypnotic section, pages 80-81, and full-document search by brand and generic: Belsomra, Dayvigo and Quviviq are absent. Absence is recorded as not listed, not as nonformulary. Preferred pick is a class reference drug, not a covered product. [Sonnet check 2026-10-27: grep of whole text and index found no suvorexant, lemborexant, daridorexant, Belsomra, Dayvigo or Quviviq. The list says it is the complete list of drugs eligible for coverage under the outpatient pharmacy benefit (page 2 definition of \"Formulary\"), though a plan design may still limit a listed drug. Kept partial per brief; confirm with plan.]",
+      "sourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "noCoveredAgent": true,
+      "payerId": "anthem-bcbs-ca"
+    },
+    {
+      "classId": "benzodiazepine",
+      "preferredAgent": {
+        "inn": "Alprazolam IR tablet",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Strength not stated on the plan line (label strengths apply)",
+        "sig": "Anxiety: 0.25-0.5 mg three times daily; increase every 3-4 days if needed, max 4 mg/day. Taper to stop (label).",
+        "sigShort": "0.25-0.5 mg TID",
+        "plainSig": "A small pill up to three times a day for anxiety; do not stop suddenly."
+      },
+      "preferredRestriction": "Quantity limit: 4 tablets per day (printed, page 23). Controlled substance (C-IV); a QL alone is not a PA.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Buspirone HCl tablet",
+          "note": "Tier 1, no QL printed (page 23)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydroxyzine HCl tablet",
+          "note": "Tier 1 (page 23)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydroxyzine pamoate capsule",
+          "note": "Tier 1 (page 23)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lorazepam tablet 0.5 mg",
+          "note": "Tier 1 QL 12 tablets per day (page 23)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lorazepam tablet 1, 2 mg",
+          "note": "Tier 1 QL 3 tablets per day (page 23)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diazepam tablet",
+          "note": "Tier 1 QL 4 tablets per day (page 23)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clonazepam tablet",
+          "note": "Tier 1 QL 3 tablets per day (page 27)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Chlordiazepoxide HCl capsule",
+          "note": "Tier 1 QL 4 capsules per day (page 23)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Alprazolam ER (XR) tablet",
+          "note": "Tier 1 QL (page 23)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Pages 23 (anxiety agents, benzodiazepines) and 27 (clonazepam). All benzodiazepines and buspirone/hydroxyzine rows are Tier 1 with QL only; no PA printed. Clorazepate is not listed. Alprazolam IR strength and sig are not printed on the line; label dosing applies. Clonazepam is in the anticonvulsant section, cited on page 27. [Sonnet check 2026-10-27: tier, PA/ST/QL flags and pick re-read against the cached PDF text layer; upgraded to verified. Checked every alternative and PA row listed against pages cited.]",
+      "sourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "anthem-bcbs-ca"
+    }
+  ],
+  "references": [
+    {
+      "id": "medi-cal-rx-next11-2026-10",
+      "label": "Medi-Cal Rx Contract Drugs List (effective 10/01/2026, 242 pages)",
+      "publisher": "California Department of Health Care Services (Medi-Cal Rx)",
+      "type": "gov",
+      "url": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "kaiser-permanente-ca-next11-2026-10",
+      "label": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "publisher": "Kaiser Permanente",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "effectiveDate": "2026-10-06",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "anthem-bcbs-ca-next11-2026-10",
+      "label": "2026 California Select Drug List, Four Tier (IND), Last Updated October 1, 2026",
+      "publisher": "Anthem Blue Cross (Elevance Health)",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

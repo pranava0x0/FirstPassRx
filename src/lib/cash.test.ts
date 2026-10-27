@@ -201,7 +201,7 @@ describe('cash price coverage across the live formulary', () => {
       /tofacitinib|xeljanz/i,
       /sofosbuvir|epclusa|bictegravir|biktarvy|dupilumab|dupixent|ixekizumab|taltz/i,
       /upadacitinib|rinvoq|suvorexant|belsomra|paliperidone|invega|risperdal consta|microsphere|glecaprevir|mavyret/i,
-      /adalimumab|humira|hadlima|hyrimoz|cyltezo|yusimry|simlandi|amjevita|ustekinumab|stelara|wezlana|selarsdi|pyzchiva|otulfi|imuldosa|yesintek|steqeyma/i,
+      /adalimumab|humira|hadlima|hyrimoz|cyltezo|yusimry|simlandi|amjevita|ustekinumab|stelara|wezlana|selarsdi|pyzchiva|otulfi|imuldosa|yesintek|steqeyma|starjemza/i,
       // 2026-10-21 new topics: brand weight-loss GLP-1s and CGRP/PCSK9 injectables show only
       // manufacturer savings offers on GoodRx, not a cash price.
       /wegovy|zepbound|saxenda|foundayo|weight management/i,

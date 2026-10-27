@@ -1,0 +1,561 @@
+{
+  "id": "tx-oab",
+  "label": "TX · Overactive bladder",
+  "stateCode": "TX",
+  "region": "Texas",
+  "topicId": "oab",
+  "topic": "Overactive bladder",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-10-27",
+  "capturedAt": "2026-10-27",
+  "payers": [
+    {
+      "id": "tx-medicaid",
+      "name": "Texas Medicaid Vendor Drug Program (Fee-for-Service, statewide PDL binding on all MCOs)",
+      "shortName": "TX Medicaid FFS",
+      "pbm": "Texas Health and Human Services Commission (HHSC) Vendor Drug Program",
+      "formularyUrl": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "productName": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization Criteria, effective July 24, 2026"
+    },
+    {
+      "id": "bcbs-tx-commercial",
+      "name": "Blue Cross and Blue Shield of Texas (Commercial)",
+      "shortName": "BCBS Texas",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "sourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "productName": "Performance Drug List, July 2026",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Blue Cross and Blue Shield of Texas Performance Drug List, October 2026 (41722-T TX); PDF pages cited are PDF indices (printed page = PDF page - 10). Fresh curl 2026-10-27 is byte-identical to sources/bcbs-tx-commercial-newtopics-2026-10.pdf (sha256 279e092f...); day of month not printed, effectiveDate set to 2026-10-01"
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "oab-antimuscarinic",
+      "name": "Antimuscarinics for overactive bladder",
+      "shortName": "ANTIMUSC",
+      "plainName": "Bladder pill (oxybutynin type)",
+      "description": "Oxybutynin IR/ER/patch/gel, tolterodine IR/ER, solifenacin, darifenacin, trospium IR/ER, fesoterodine (Toviaz).",
+      "plainDescription": "A daily pill to calm an overactive bladder.",
+      "indication": "Overactive bladder",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "oab-beta3",
+      "name": "Beta-3 agonists for overactive bladder",
+      "shortName": "BETA-3",
+      "plainName": "Bladder pill (Myrbetriq type)",
+      "description": "Mirabegron (Myrbetriq, generic mirabegron ER) and vibegron (Gemtesa).",
+      "plainDescription": "A newer daily bladder pill with fewer dry-mouth and memory side effects.",
+      "indication": "Overactive bladder",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "oab-antimuscarinic",
+      "preferredAgent": {
+        "inn": "Oxybutynin chloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg immediate-release tablet (PDL: 'oxybutynin IR 5 MG')",
+        "sig": "Immediate-release: 5 mg two to three times daily; max 5 mg four times daily (label).",
+        "sigShort": "5 mg BID-TID",
+        "plainSig": "One pill two or three times a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred on PDL (no tier stated)",
+      "alternatives": [
+        {
+          "drug": "Solifenacin (generic)",
+          "note": "Preferred generic (PDL p.34)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Fesoterodine (generic)",
+          "note": "Preferred (PDL p.34); the brand TOVIAZ is not preferred",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxybutynin ER (generic); OXYTROL (oxybutynin) transdermal",
+          "note": "Preferred (PDL p.34)",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Darifenacin ER (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.34",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "DETROL (tolterodine); DETROL LA; tolterodine (generic); tolterodine ER",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.34",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "TOVIAZ (fesoterodine)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.34",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Trospium (generic); trospium ER (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.34",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "VESICARE (solifenacin); VESICARE LS",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.34",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "OXYTROL FOR WOMEN (oxybutynin); oxybutynin IR 2.5 mg",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.34",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from PDL p.34 (Bladder Relaxant Preparations). Oxybutynin IR 5 mg is preferred; the 2.5 mg IR tablet is not. Oxybutynin is the lowest-cost preferred antimuscarinic with no PA; solifenacin and fesoterodine are preferred alternatives. Strength and dosing are standard label values.",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "oab-beta3",
+      "preferredAgent": {
+        "inn": "Mirabegron",
+        "brand": "MYRBETRIQ",
+        "genericAvailable": true,
+        "strength": "25 mg extended-release tablet (starting strength; PDL does not print strength)",
+        "sig": "25 mg once daily; may increase to 50 mg after 4 to 8 weeks (label).",
+        "sigShort": "25 mg QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": true,
+      "boglNote": "PDL prefers brand MYRBETRIQ (p.34) and lists generic mirabegron ER as not preferred (PA); AB-rated generic exists, so requesting the generic needs PA.",
+      "tier": "Preferred on PDL (no tier stated)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "GEMTESA (vibegron)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.34",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Mirabegron (generic)",
+          "outcome": "pa",
+          "reason": "PDL PA (not preferred), PDL p.34",
+          "sourceIds": [
+            "tx-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from PDL p.34. The brand MYRBETRIQ (tablets/granules) is preferred; generic mirabegron is listed as not preferred (PA). The inn field is set to the plain molecule name for the cash-price matcher. Generic mirabegron is an AB-rated ER tablet, so the brand-over-generic BOGL flag is set. No other preferred beta-3 agent is on the PDL. [Sonnet check 2026-10-27: confirmed from p.34: genericAvailable true and boglActive true are correct (same ER tablet, AB-rated generic).]",
+      "sourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "oab-antimuscarinic",
+      "preferredAgent": {
+        "inn": "Oxybutynin chloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg immediate-release tablet (ER 5/10/15 mg also listed)",
+        "sig": "Immediate-release: 5 mg two to three times daily; max 5 mg four times daily (label).",
+        "sigShort": "5 mg BID-TID",
+        "plainSig": "One pill two or three times a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Generic (Tier 1, p)",
+      "alternatives": [
+        {
+          "drug": "Oxybutynin chloride ER tablet 5 mg, 10 mg (Ditropan XL)",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.54)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxybutynin chloride ER tablet 15 mg",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.54)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxybutynin chloride oral solution 5 mg/5 mL",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.54)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Solifenacin succinate tablet 5 mg, 10 mg (Vesicare reference)",
+          "note": "Preferred Generic (Tier 1, p); no PA/QL printed (PDF p.54)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tolterodine tartrate IR 1 mg, 2 mg (Detrol reference)",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA/QL printed (PDF p.54)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tolterodine tartrate ER capsule 2 mg, 4 mg (Detrol LA reference)",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA/QL printed (PDF p.54)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Trospium chloride IR 20 mg, ER 60 mg",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA/QL printed (PDF p.54)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Darifenacin",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list; intro states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Fesoterodine (Toviaz)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list; intro states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxybutynin transdermal patch and gel",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list; intro states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Oxybutynin IR 5 mg read as p, no PA/QL, PDF p.54 (text layer; x-coordinate check on this page showed no flags on p-tier rows). Solifenacin generic p is listed with Vesicare as the reference brand. Judgment: IR oxybutynin chosen as the most commonly written preferred generic antimuscarinic. Sig is standard label dosing (not printed).",
+      "sourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "oab-beta3",
+      "preferredAgent": {
+        "inn": "Mirabegron",
+        "brand": "MYRBETRIQ",
+        "genericAvailable": true,
+        "strength": "25 mg extended-release tablet (50 mg also listed; granules for oral suspension also listed)",
+        "sig": "25 mg once daily; may increase to 50 mg after 4 to 8 weeks (label).",
+        "sigShort": "25 mg QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": true,
+      "boglNote": "Plan lists MYRBETRIQ ER tablet 25/50 mg as Preferred Brand (P) and generic mirabegron ER tablet 25/50 mg (Myrbetriq) as Non-Preferred Generic (np), both with no PA/QL (PDF p.54, x=387 vs x=384). Legend (PDF p.3): 'most reference brand drugs (in parentheses) are not covered', so the brand is covered only because it is listed separately. AB rating is not printed in the document; generic mirabegron ER tablets are FDA AB-rated to Myrbetriq (FDA Orange Book, drug fact). Granules: generic np vs brand P as well.",
+      "tier": "Preferred Brand (Tier 3, P)",
+      "alternatives": [
+        {
+          "drug": "Mirabegron ER tablet 25 mg, 50 mg (generic; reference brand Myrbetriq)",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA/QL printed (PDF p.54). Same product as the preferred brand",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "MYRBETRIQ granules for oral extended-release suspension 8 mg/mL",
+          "note": "Preferred Brand (P); no PA/QL printed (PDF p.54)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Vibegron (Gemtesa)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list; intro states drugs not shown are not covered (PDF p.2)",
+          "sourceIds": [
+            "bcbs-tx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Myrbetriq tablet read as P with no PA/QL (PDF p.54; x-coordinate check shows tier at x~387, no flags). The generic mirabegron ER tablet (same product, same tablet form) is printed as np on the same page, which is why BOGL is set. AB-rated status of the generic is not printed on this list: confirm before relying on the BOGL flag. [Sonnet check 2026-10-27: pick/flags confirmed by x-coordinate (brand P x=387, generic np x=384, no flag column entries); BOGL kept, boglNote now quotes PDF p.3 legend and states AB rating comes from FDA, not the document.]",
+      "sourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "oab-antimuscarinic",
+      "preferredAgent": {
+        "inn": "Solifenacin succinate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg once daily; may increase to 10 mg (label).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (Generic)",
+      "alternatives": [
+        {
+          "drug": "Oxybutynin chloride 5 mg tablet",
+          "note": "Tier 2, no QL or PA (page 60)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Solifenacin succinate 10 mg tablet",
+          "note": "Tier 2; QL 30 per 30 days, no PA (page 60)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxybutynin chloride ER 5, 10, 15 mg tablet",
+          "note": "Tier 3; QL 60 per 30 days, no PA (page 60)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Fesoterodine ER 4 mg, 8 mg tablet",
+          "note": "Tier 3; QL 30 per 30 days, no PA (page 60)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tolterodine IR 1 mg, 2 mg tablet",
+          "note": "Tier 4; QL 60 per 30 days, no PA (page 60)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tolterodine ER 2 mg, 4 mg capsule",
+          "note": "Tier 4; QL 30 per 30 days, no PA (page 60)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Trospium 20 mg tablet",
+          "note": "Tier 4, no QL or PA (page 60)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Solifenacin 5 mg tablet read on page 60: Tier 2, QL 30 per 30 days, no PA. The daily dose fits the quantity limit. Oxybutynin 5 mg IR (Tier 2, no QL) is an equal-tier alternative. Darifenacin, Toviaz (brand) and oxybutynin patch or gel are not listed. [Sonnet check 2026-10-27: Re-read by x-coordinate on v17; pages, tiers and flags match.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "oab-beta3",
+      "preferredAgent": {
+        "inn": "Mirabegron",
+        "brand": "Myrbetriq",
+        "genericAvailable": true,
+        "strength": "25 mg extended-release tablet",
+        "sig": "25 mg once daily; may increase to 50 mg after 4 to 8 weeks (label).",
+        "sigShort": "25 mg QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3 (Preferred Brand)",
+      "alternatives": [
+        {
+          "drug": "Myrbetriq 8 mg/mL oral suspension, extended-release",
+          "note": "Tier 3; QL 300 per 30 days, no PA (page 60)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Myrbetriq 25 mg and 50 mg extended-release tablets read on page 60: Tier 3, QL 30 per 30 days, no PA. Generic mirabegron extended-release is not listed in this guide; genericAvailable is true from the product's approved generic status, not from this document. No brand-over-generic preference is printed, so boglActive is false. Gemtesa (vibegron) is not listed. [Sonnet check 2026-10-27: Re-read by x-coordinate on v17; pages, tiers and flags match.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "tx-medicaid-next11-2026-10",
+      "label": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization Criteria, effective July 24, 2026",
+      "publisher": "Texas Health and Human Services (Texas Medicaid Vendor Drug Program, txvendordrug.com)",
+      "type": "gov",
+      "url": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "effectiveDate": "2026-07-24",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "bcbs-tx-commercial-next11-2026-10",
+      "label": "Blue Cross and Blue Shield of Texas Performance Drug List, October 2026 (41722-T TX); PDF pages cited are PDF indices (printed page = PDF page - 10). Fresh curl 2026-10-27 is byte-identical to sources/bcbs-tx-commercial-newtopics-2026-10.pdf (sha256 279e092f...); day of month not printed, effectiveDate set to 2026-10-01",
+      "publisher": "Blue Cross and Blue Shield of Texas (Prime Therapeutics LLC)",
+      "type": "payer",
+      "url": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "humana-premier-rx-pdp-next11-2026-10",
+      "label": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

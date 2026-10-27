@@ -1,0 +1,399 @@
+{
+  "id": "ca-testosterone",
+  "label": "CA · Testosterone",
+  "stateCode": "CA",
+  "region": "California",
+  "topicId": "testosterone",
+  "topic": "Testosterone",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-10-27",
+  "capturedAt": "2026-10-27",
+  "payers": [
+    {
+      "id": "medi-cal-rx",
+      "name": "Medi-Cal Rx — California Medicaid Pharmacy Program (Fee-for-Service carve-out, statewide)",
+      "shortName": "Medi-Cal Rx",
+      "pbm": "Magellan Health (Magellan Medicaid Administration; DHCS vendor)",
+      "productName": "Medi-Cal Rx Contract Drugs List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Medi-Cal Rx Contract Drugs List (effective 10/01/2026, 242 pages)",
+      "formularyUrl": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ]
+    },
+    {
+      "id": "kaiser-permanente-ca",
+      "name": "Kaiser Permanente (Commercial HMO)",
+      "shortName": "Kaiser Permanente",
+      "pbm": "Internal (Kaiser Foundation Health Plan formulary; closed integrated pharmacy)",
+      "productName": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "sourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ]
+    },
+    {
+      "id": "anthem-bcbs-ca",
+      "name": "Anthem Blue Cross of California (Commercial)",
+      "shortName": "Anthem Blue Cross CA",
+      "pbm": "CarelonRx",
+      "productName": "2026 California Select Drug List - Four Tier",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 California Select Drug List, Four Tier (IND), Last Updated October 1, 2026",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "sourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "testosterone",
+      "name": "Testosterone replacement",
+      "shortName": "TRT",
+      "plainName": "Testosterone gel, shot or pill",
+      "description": "Testosterone gel/solution (AndroGel, Testim, Fortesta, Vogelxo, generic 1%/1.62%), injections (cypionate, enanthate, Xyosted, Aveed undecanoate), patch (Androderm), oral undecanoate (Jatenzo, Tlando, Kyzatrex), nasal (Natesto), pellets (Testopel).",
+      "plainDescription": "Testosterone replacement for low testosterone, as a gel, shot or pill.",
+      "indication": "Male hypogonadism",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone (injection in oil)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/mL, 1 mL vial",
+        "sig": "50-400 mg IM every 2 to 4 weeks, adjusted to keep morning testosterone in the normal range (label).",
+        "sigShort": "IM q2-4wk, dose per labs",
+        "plainSig": "A shot every 2 to 4 weeks; your prescriber sets the dose from blood tests."
+      },
+      "preferredRestriction": "Code I (*) (p.65): covered for the printed uses only: primary or hypogonadotropic hypogonadism, delayed puberty, metastatic mammary cancer, or gender-affirming care. Gender-affirming use is not a Medi-Cal covered benefit for members under 18 or CHIP members under 19 from October 13, 2026 (p.6). Controlled-substance policy applies (p.7).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "CDL listed, Code I (*) controlled substance (p.65)",
+      "alternatives": [
+        {
+          "drug": "Methyltestosterone tablets 10, 25 mg (oral)",
+          "note": "Listed with Code I (*), QL; same printed uses (p.159); oral, listed as an alternative only",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Testosterone gel or solution 1% and 1.62% (AndroGel/Testim-type)",
+          "outcome": "pa",
+          "reason": "Not on CDL; unlisted legend drugs may be covered only with authorization (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone undecanoate oral (Jatenzo/Tlando/Kyzatrex-type)",
+          "outcome": "pa",
+          "reason": "Not on CDL; unlisted legend drugs may be covered only with authorization (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone nasal (Natesto-type)",
+          "outcome": "pa",
+          "reason": "Not on CDL; unlisted legend drugs may be covered only with authorization (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone patch (Androderm-type)",
+          "outcome": "pa",
+          "reason": "Not on CDL; unlisted legend drugs may be covered only with authorization (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone enanthate autoinjector (Xyosted-type)",
+          "outcome": "pa",
+          "reason": "Not separately listed; CDL lists testosterone injection in aqueous suspension and in oil vials only (p.65); unlisted drugs need authorization (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone undecanoate IM (Aveed-type)",
+          "outcome": "pa",
+          "reason": "Not on CDL; provider-administered, may bill under the medical benefit (not shown here); unlisted drugs need authorization (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone pellets (Testopel-type)",
+          "outcome": "pa",
+          "reason": "Not on CDL; provider-administered, may bill under the medical benefit (not shown here); unlisted drugs need authorization (p.4)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read CDL p.65 (testosterone injection, listed under Anti-Neoplastics; the Androgens section on p.159 cross-references it), p.6 (gender-affirming care rule), p.7 (controlled-substance policy). The CDL lists generic testosterone injection without a salt name; cypionate vs enanthate is not printed. The 200 mg/mL, 1 mL oil vial is the listed size chosen as the pick (judgment). Oral methyltestosterone is the only other listed testosterone and is an alternative, not the pick. [Sonnet check 2026-10-27: p.4 unlisted-drug quote confirmed verbatim; searched CDL text for the unlisted names cited, none present.]",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "medi-cal-rx"
+    },
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone gel",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "1.62% gel",
+        "sig": "Apply the labeled starting dose once each morning to clean, dry skin of the shoulders and upper arms (1.62% gel: 40.5 mg; 1% gel: 50 mg); adjust by morning serum testosterone. Let dry, cover the site, and wash hands (label; boxed warning on secondary exposure).",
+        "sigShort": "Apply QAM, dose per labs",
+        "plainSig": "Rub the gel on your shoulders each morning, let it dry, and wash your hands. Keep it away from children and partners."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Testosterone gel 1% (12.5 mg/act; 25 mg/2.5 g; 50 mg/5 g)",
+          "note": "Tier 1, no flag (PDF p.80)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone cypionate 200 mg/mL generic injection",
+          "note": "Tier 1, MB (PDF p.80); generic cypionate is MB (clinic-administered) while the DEPO-TESTOSTERONE 200 mg/mL row printed on PDF p.79 has no MB flag, so the two rows disagree; confirm which benefit applies",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "DEPO-TESTOSTERONE 200 mg/mL",
+          "note": "Tier 1, no MB flag printed (PDF p.79)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "DEPO-TESTOSTERONE 100 mg/mL",
+          "note": "Tier 2, MB (PDF p.79)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Methyltestosterone 10 mg capsules and tablets",
+          "note": "Tier 1, no flag (PDF p.79); oral androgen, not the preferred pick",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Xyosted (testosterone enanthate autoinjector)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Androderm patch",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Jatenzo (oral testosterone undecanoate)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tlando",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Kyzatrex",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Natesto nasal gel",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Preferred: testosterone gel 1.62% (PDF p.80, Tier 1, no flag); androgen rows PDF pp.79-80. Standard testosterone gel and injection are printed; oral methyltestosterone (PDF p.79) is listed only as an alternative. Testosterone cypionate 200 mg/mL generic is MB (medical benefit) on PDF p.80; the DEPO-TESTOSTERONE 200 mg/mL brand row (PDF p.79) shows no MB flag, a conflict to check with the plan. DEPO-TESTOSTERONE 100 mg/mL is Tier 2, MB. Not printed: Aveed, Xyosted, Jatenzo, Tlando, Kyzatrex, Natesto, Testopel, Androderm, Testim, Fortesta; treated as unconfirmed. Strength 1.62% is the printed gel strength; the sig is label dosing. Document says: \"Kaiser Foundation Health Plan does not have a requirement for PA\" (PDF p.6) and \"does not have a requirement for Step Therapy\" (PDF p.7). Drugs not listed are nonformulary; when a Kaiser or referral doctor determines one is medically appropriate and necessary it is covered by formulary exception (PDF p.7; decision within 72 hours, 24 urgent, PDF p.8). Completeness is ambiguous: p.6 defines the formulary as \"the complete list of prescription drugs preferred for use and eligible for coverage\" but p.2 says \"not an all-inclusive list\", so absence is not treated as exclusion. [Sonnet check 2026-10-27: pick kept as testosterone gel 1.62% (self-administered, pharmacy benefit, Tier 1, no flag, PDF p.80); cypionate injection is the other standard product but the generic row is MB. Generic cypionate 200 mg/mL (PDF p.80) is MB, Tier 1; DEPO-TESTOSTERONE 200 mg/mL (PDF p.79) Tier 1 with no MB; DEPO 100 mg/mL Tier 2 MB. Oral methyltestosterone not chosen. Aveed and Testopel are provider-administered, so absence likely means medical benefit; not called nonformulary. Sig added as label dosing; 6 named absent drug(s) added as nonformulary (exception route)]",
+      "sourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "kaiser-permanente-ca"
+    },
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone cypionate injection",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/mL (standard concentration; plan line gives no strength)",
+        "sig": "50-400 mg IM every 2 to 4 weeks, adjusted to keep morning testosterone in the normal range (label).",
+        "sigShort": "IM q2-4wk, dose per labs",
+        "plainSig": "A shot every 2 to 4 weeks; your prescriber sets the dose from blood tests."
+      },
+      "preferredRestriction": "PA required (PA printed on the Tier 1 row, page 22).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Depo-Testosterone (brand testosterone cypionate) injection",
+          "outcome": "pa",
+          "reason": "Tier 1 PA (page 22)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone transdermal gel 1.62% (20.25 mg/act)",
+          "outcome": "pa",
+          "reason": "Tier 2 PA; QL 1 bottle per 30 days (page 22)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone transdermal gel 1% (12.5 mg/act)",
+          "outcome": "pa",
+          "reason": "Tier 2 PA; QL 2 bottles per 30 days (page 22)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone transdermal gel packets (1%, 1.62%)",
+          "outcome": "pa",
+          "reason": "Tier 2 PA; QL 1-2 packets per day (page 22)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Methyltestosterone (Methitest) tablet",
+          "outcome": "pa",
+          "reason": "Tier 3 PA (page 22)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Page 22 (androgens). Testosterone cypionate injection is the lowest-tier, most-prescribed product, and it carries PA. Not printed on this list: Xyosted, Aveed, Androderm, Jatenzo, Tlando, Kyzatrex, Natesto and Testopel. Those are absent, not read as excluded. Strength and sig for the cypionate injection are standard label values, not printed. [Sonnet check 2026-10-27: tier, PA/ST/QL flags and pick re-read against the cached PDF text layer; upgraded to verified. Cypionate injection Tier 1 PA is the standard product; methyltestosterone Tier 3 PA correctly not chosen.]",
+      "sourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "anthem-bcbs-ca"
+    }
+  ],
+  "references": [
+    {
+      "id": "medi-cal-rx-next11-2026-10",
+      "label": "Medi-Cal Rx Contract Drugs List (effective 10/01/2026, 242 pages)",
+      "publisher": "California Department of Health Care Services (Medi-Cal Rx)",
+      "type": "gov",
+      "url": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "kaiser-permanente-ca-next11-2026-10",
+      "label": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "publisher": "Kaiser Permanente",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "effectiveDate": "2026-10-06",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "anthem-bcbs-ca-next11-2026-10",
+      "label": "2026 California Select Drug List, Four Tier (IND), Last Updated October 1, 2026",
+      "publisher": "Anthem Blue Cross (Elevance Health)",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

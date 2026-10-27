@@ -1,0 +1,1901 @@
+{
+  "id": "ny-hypertension",
+  "label": "NY · Blood pressure (beyond ACE inhibitors)",
+  "stateCode": "NY",
+  "region": "New York",
+  "topicId": "hypertension",
+  "topic": "Blood pressure (beyond ACE inhibitors)",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-27",
+  "capturedAt": "2026-10-27",
+  "payers": [
+    {
+      "id": "ny-medicaid",
+      "name": "New York Medicaid (NYRx)",
+      "shortName": "NY Medicaid",
+      "aka": "NYRx — NYS Medicaid Pharmacy Program (Fee-for-Service); covers every NY Medicaid Managed Care plan's pharmacy benefit statewide since the April 1, 2023 pharmacy carve-out",
+      "pbm": "Prime Therapeutics / FHSC (NYRx fiscal agent)",
+      "formularyUrl": "https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf",
+      "paPolicyUrl": "https://www.health.ny.gov/health_care/medicaid/program/pharmacy/program_info.htm",
+      "sourceIds": [
+        "ny-medicaid-next11-2026-10"
+      ],
+      "productName": "NYRx — NY Medicaid Pharmacy Program (Fee-for-Service, statewide)",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "NYRx, the Medicaid Drug Program Preferred Drug List (revised September 14, 2026; preferred status as of 10/22/2026)"
+    },
+    {
+      "id": "ny-excellus-bcbs",
+      "name": "Excellus BlueCross BlueShield (Commercial / Individual & Family)",
+      "shortName": "Excellus BCBS",
+      "pbm": "Express Scripts (ESI)",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/251/Excellus_2026_Metal_Plans_Base___Simply_Blue_Plus___College_Blue_Plans_Formulary_Guide_2981_v26.pdf",
+      "sourceIds": [
+        "ny-excellus-bcbs-next11-2026-10"
+      ],
+      "productName": "Excellus BlueCross BlueShield 2026 Individual & Family Metal Plans (Base / Simply Blue Plus / College Blue) -- Commercial Exchange",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "2026 Individual & Family Metal Plans, Base, Simply Blue Plus and College Blue Plans Formulary Guide (2981)"
+    },
+    {
+      "id": "ny-uhc-commercial",
+      "name": "UnitedHealthcare (Commercial)",
+      "shortName": "UHC Commercial",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "sourceIds": [
+        "ny-uhc-commercial-next11-2026-10"
+      ],
+      "productName": "UnitedHealthcare 2026 Commercial Prescription Drug List (CT/NJ/NY footprint)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 Prescription Drug List (PDL), UnitedHealthcare & affiliated companies"
+    },
+    {
+      "id": "ny-anthem-bcbs",
+      "name": "Anthem Blue Cross and Blue Shield of New York (Commercial)",
+      "shortName": "Anthem BCBS NY",
+      "pbm": "CarelonRx",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_3_Tier_NY_ABS_IND.pdf",
+      "sourceIds": [
+        "ny-anthem-bcbs-next11-2026-10"
+      ],
+      "productName": "Anthem BCBS New York 2026 Select Drug List -- Three-Tier (Individual/HIX Marketplace)",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "New York Select Drug List, Three Tier (Individual / HIX), 2026"
+    },
+    {
+      "id": "ny-excellus-medicare",
+      "name": "Excellus Medicare BlueActive (PPO)",
+      "shortName": "Excellus Medicare",
+      "pbm": "Express Scripts (Medicare Part D)",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/251/Excellus_Medicare_5T_DP_even.pdf",
+      "sourceIds": [
+        "ny-excellus-medicare-next11-2026-10"
+      ],
+      "productName": "Excellus Medicare BlueActive (PPO) 2026 Medicare Advantage Part D Formulary",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "2026 Formulary (List of Covered Drugs), Medicare BlueActive/Balanced/Classic/Enhanced/Essential/Plus/Vital (PPO) and Blue Choice Core/Optimum/Prime (HMO); Formulary ID 26059"
+    }
+  ],
+  "classes": [
+    {
+      "id": "arb",
+      "name": "ARBs",
+      "shortName": "ARB",
+      "plainName": "Angiotensin receptor blocker",
+      "description": "Losartan, valsartan, irbesartan, olmesartan, telmisartan, candesartan, azilsartan (Edarbi); single-agent tablets (combinations with HCTZ or amlodipine are alternatives only if listed separately). Sacubitril/valsartan (Entresto) is heart failure and out of scope.",
+      "plainDescription": "A daily blood pressure pill, often used when an ACE inhibitor causes cough.",
+      "indication": "Hypertension, diabetic kidney disease",
+      "sourceIds": [
+        "ny-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "ccb",
+      "name": "Calcium channel blockers",
+      "shortName": "CCB",
+      "plainName": "Calcium channel blocker",
+      "description": "Dihydropyridines (amlodipine, nifedipine ER, felodipine ER, nicardipine) and non-dihydropyridines (diltiazem IR/ER, verapamil IR/ER).",
+      "plainDescription": "A daily blood pressure pill that relaxes blood vessels.",
+      "indication": "Hypertension, angina",
+      "sourceIds": [
+        "ny-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "beta-blocker",
+      "name": "Beta blockers",
+      "shortName": "BB",
+      "plainName": "Beta blocker",
+      "description": "Metoprolol tartrate/succinate, carvedilol IR/CR, atenolol, bisoprolol, nebivolol (Bystolic), propranolol IR/ER, labetalol, nadolol.",
+      "plainDescription": "A daily pill that slows the heart and lowers blood pressure.",
+      "indication": "Hypertension, heart failure, post-MI, angina",
+      "sourceIds": [
+        "ny-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "thiazide",
+      "name": "Thiazide diuretics",
+      "shortName": "THIAZIDE",
+      "plainName": "Water pill (thiazide)",
+      "description": "Hydrochlorothiazide, chlorthalidone, indapamide, metolazone.",
+      "plainDescription": "A daily water pill for blood pressure.",
+      "indication": "Hypertension, edema",
+      "sourceIds": [
+        "ny-medicaid-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "arb",
+      "preferredAgent": {
+        "inn": "Losartan",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet (standard label strength)",
+        "sig": "50 mg once daily (25 mg if volume-depleted or with liver disease); range 25-100 mg/day (label).",
+        "sigShort": "50 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (NYRx PDL, p. 10)",
+      "alternatives": [
+        {
+          "drug": "Irbesartan",
+          "note": "Preferred (p. 10)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olmesartan",
+          "note": "Preferred (p. 10)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Telmisartan",
+          "note": "Preferred (p. 10)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Valsartan tablet",
+          "note": "Preferred (p. 10)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Cozaar (losartan brand)",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 10); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Atacand (candesartan)",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 10); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Candesartan",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 10); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Avapro (irbesartan brand)",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 10); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Azilsartan (gen Edarbi)",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 10); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Edarbi (azilsartan)",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 10); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Benicar (olmesartan brand)",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 10); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise) - dose optimization applies",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diovan (valsartan brand)",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 10); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise) - dose optimization applies",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Micardis (telmisartan brand)",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 10); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise) - dose optimization applies",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Eprosartan",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 10); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Valsartan solution",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 10); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Arbli (losartan oral suspension)",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 10); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read p. 10 at the page image: losartan, irbesartan, olmesartan, telmisartan and valsartan tablet are preferred; Cozaar (brand losartan) is non-preferred, so BOGL is not set. Single-agent ARBs only; ARB combinations are not listed as alternatives. Strength and sig are standard label dosing. [Sonnet check 2026-10-22: confirmed PDL p.1 intro: non-preferred drugs in PDP classes require PA unless indicated otherwise; reason text now cites p.1 intro.]",
+      "sourceIds": [
+        "ny-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "ny-medicaid"
+    },
+    {
+      "classId": "ccb",
+      "preferredAgent": {
+        "inn": "Amlodipine",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet (standard label strength)",
+        "sig": "5 mg once daily (2.5 mg for older or frail adults); max 10 mg/day (label).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (NYRx PDL, p. 11)",
+      "alternatives": [
+        {
+          "drug": "Felodipine ER",
+          "note": "Preferred (p. 11)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Isradipine",
+          "note": "Preferred (p. 11)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nicardipine HCl",
+          "note": "Preferred (p. 11)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nifedipine",
+          "note": "Preferred (p. 11)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nifedipine ER/SA",
+          "note": "Preferred (p. 11)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Norvasc (amlodipine brand)",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Katerzia (amlodipine suspension)",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Norliqva (amlodipine oral solution)",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Levamlodipine",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nisoldipine",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Procardia XL",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Sdamlo",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Sular",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read p. 11 at the page image: amlodipine, felodipine ER, isradipine, nicardipine HCl, nifedipine and nifedipine ER/SA preferred. Diltiazem does not appear anywhere in the PDL text; verapamil appears only in trandolapril/verapamil ER (Lotrel, preferred combination on p. 10), so neither is recorded as a single agent. The PDL is not a complete covered list (overview, p. 1), so absence is not treated as nonformulary. [Sonnet check 2026-10-22: confirmed PDL p.1 intro: non-preferred drugs in PDP classes require PA unless indicated otherwise; reason text now cites p.1 intro.]",
+      "sourceIds": [
+        "ny-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "ny-medicaid"
+    },
+    {
+      "classId": "beta-blocker",
+      "preferredAgent": {
+        "inn": "Atenolol",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet (standard label strength)",
+        "sig": "50 mg by mouth once daily for hypertension; may increase to 100 mg once daily after 1-2 weeks (label).",
+        "sigShort": "50 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (NYRx PDL, p. 11)",
+      "alternatives": [
+        {
+          "drug": "Carvedilol",
+          "note": "Preferred (p. 11)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Labetalol",
+          "note": "Preferred (p. 11)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metoprolol succinate XL",
+          "note": "Preferred (p. 11)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metoprolol tartrate",
+          "note": "Preferred (p. 11)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Propranolol tablet",
+          "note": "Preferred (p. 11)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Propranolol ER",
+          "note": "Preferred (p. 11)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Bisoprolol",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nebivolol (gen Bystolic)",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Bystolic (nebivolol)",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise) - dose optimization applies",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nadolol",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise) - dose optimization applies",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Acebutolol",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Betaxolol",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carvedilol ER",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Inderal LA",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Inderal XL",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "InnoPran XL",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Kapspargo Sprinkle",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lopressor (metoprolol tartrate)",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metoprolol tartrate 12.5 mg",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pindolol",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Propranolol solution",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tenormin (atenolol brand)",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Timolol",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Toprol XL (metoprolol succinate)",
+          "outcome": "pa",
+          "reason": "Not preferred on NYRx PDL (page 11); PA required per PDL intro (p.1: drugs not preferred in these classes require PA unless indicated otherwise)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read p. 11 at the page image: atenolol, carvedilol, labetalol, metoprolol succinate XL, metoprolol tartrate, propranolol tablet and ER preferred. Hemangeol is preferred but indicated for infantile hemangioma, so it is not an HTN alternative. Beta-blocker combinations (atenolol/chlorthalidone, bisoprolol/HCTZ) are not listed as single agents. Strength and sig are standard label dosing. [Sonnet check 2026-10-22: confirmed PDL p.1 intro: non-preferred drugs in PDP classes require PA unless indicated otherwise; reason text now cites p.1 intro.]",
+      "sourceIds": [
+        "ny-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "ny-medicaid"
+    },
+    {
+      "classId": "thiazide",
+      "preferredAgent": {
+        "inn": "Hydrochlorothiazide",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg tablet (standard label strength)",
+        "sig": "12.5-25 mg once daily in the morning (label).",
+        "sigShort": "12.5-25 mg QAM",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": "None printed. Single-agent thiazide diuretics are not on the NYRx PDL (only combinations such as atenolol/chlorthalidone and bisoprolol/HCTZ appear). PDL p.1: 'Not all drugs covered by NYRx are subject to programs included in this document' and 'All drugs currently covered by NYRx ... remain available under the PDP'; the NYRx PDL web page adds 'Not all agents covered by NYRx are listed on the PDL' (newyork.fhsc.com/providers/PDP_about.asp, read 2026-10-22).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not PDL-managed (single-agent thiazides not listed on NYRx PDL)",
+      "alternatives": [
+        {
+          "drug": "Chlorthalidone",
+          "note": "Standard alternative thiazide-type diuretic; also not PDL-managed (not listed on the PDL)",
+          "sourceIds": [
+            "ny-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched the full PDL text for hydrochlorothiazide, HCTZ, chlorthalidone, indapamide and metolazone. Single-agent thiazides are absent; atenolol/chlorthalidone (p. 11) is a combination only and is not used as a single-agent alternative. The PDL overview says the list is not a complete covered list, so absence is not treated as nonformulary. Chlorthalidone is a reference pick only. Strength and sig are standard label dosing. [Sonnet check 2026-10-22: noCoveredAgent removed; absence from the PDL means not PDL-managed, not uncovered. Pick changed from chlorthalidone to hydrochlorothiazide 25 mg as the most commonly written thiazide, chlorthalidone moved to alternatives. PDL p.1: 'Not all drugs covered by NYRx are subject to programs included in this document' and 'All drugs currently covered by NYRx ... remain available under the PDP'; the NYRx PDL web page adds 'Not all agents covered by NYRx are listed on the PDL' (newyork.fhsc.com/providers/PDP_about.asp, read 2026-10-22). Coverage not confirmed against the eMedNY list of reimbursable drugs. Partial.]",
+      "sourceIds": [
+        "ny-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "ny-medicaid"
+    },
+    {
+      "classId": "arb",
+      "preferredAgent": {
+        "inn": "Losartan potassium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Standard tablet strength (not printed in extract)",
+        "sig": "50 mg once daily (25 mg if volume-depleted or with liver disease); range 25-100 mg/day (label).",
+        "sigShort": "50 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Valsartan",
+          "note": "Tier 1, PV flag (Preventive Drug List), no PA",
+          "sourceIds": [
+            "ny-excellus-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Irbesartan",
+          "note": "Tier 1, PV flag, no PA",
+          "sourceIds": [
+            "ny-excellus-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olmesartan",
+          "note": "Tier 1, PV flag, no PA",
+          "sourceIds": [
+            "ny-excellus-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Telmisartan",
+          "note": "Tier 1, PV flag, no PA",
+          "sourceIds": [
+            "ny-excellus-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Candesartan",
+          "note": "Tier 1, PV flag, no PA",
+          "sourceIds": [
+            "ny-excellus-bcbs-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read p28 text layer. Each single-agent ARB Tier 1 with PV only (Preventive Drug List, not a barrier). Azilsartan (Edarbi) not in extract. Sacubitril-valsartan excluded per class description.",
+      "sourceIds": [
+        "ny-excellus-bcbs-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-excellus-bcbs-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-excellus-bcbs-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "ny-excellus-bcbs"
+    },
+    {
+      "classId": "ccb",
+      "preferredAgent": {
+        "inn": "Amlodipine besylate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Standard tablet strength (not printed in extract)",
+        "sig": "5 mg once daily (2.5 mg for older or frail adults); max 10 mg/day (label).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Nifedipine",
+          "note": "Tier 1, PV flag, no PA",
+          "sourceIds": [
+            "ny-excellus-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Felodipine ER",
+          "note": "Tier 1, PV flag, no PA",
+          "sourceIds": [
+            "ny-excellus-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diltiazem IR/ER tablets and capsules",
+          "note": "Tier 1, PV flag, no PA",
+          "sourceIds": [
+            "ny-excellus-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Verapamil IR/ER",
+          "note": "Tier 1, PV flag, no PA",
+          "sourceIds": [
+            "ny-excellus-bcbs-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read p30-31 text layer. All listed CCBs Tier 1 with PV only. Nicardipine not in extract. Amlodipine strength not printed on the extract line.",
+      "sourceIds": [
+        "ny-excellus-bcbs-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-excellus-bcbs-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-excellus-bcbs-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "ny-excellus-bcbs"
+    },
+    {
+      "classId": "beta-blocker",
+      "preferredAgent": {
+        "inn": "Metoprolol tartrate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg tablet",
+        "sig": "Hypertension: start 50 mg twice daily (or 25 mg twice daily) and titrate; usual 100-200 mg/day (label).",
+        "sigShort": "25-50 mg BID",
+        "plainSig": "One pill twice a day; do not stop suddenly."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Metoprolol succinate ER",
+          "note": "Tier 1, PV flag, no PA",
+          "sourceIds": [
+            "ny-excellus-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carvedilol",
+          "note": "Tier 1, PV flag, no PA",
+          "sourceIds": [
+            "ny-excellus-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Atenolol",
+          "note": "Tier 1, PV flag, no PA",
+          "sourceIds": [
+            "ny-excellus-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Bisoprolol fumarate",
+          "note": "Tier 1, PV flag, no PA",
+          "sourceIds": [
+            "ny-excellus-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nebivolol",
+          "note": "Tier 1, QL (no numeric limit printed), PV flag, no PA",
+          "sourceIds": [
+            "ny-excellus-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Propranolol",
+          "note": "Tier 1, PV flag, no PA",
+          "sourceIds": [
+            "ny-excellus-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Labetalol",
+          "note": "Tier 1, PV flag, no PA",
+          "sourceIds": [
+            "ny-excellus-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nadolol",
+          "note": "Tier 1, PV flag, no PA",
+          "sourceIds": [
+            "ny-excellus-bcbs-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read p27 and p30 text layer. Metoprolol tartrate 25 mg strength printed on p30. All listed beta-blockers Tier 1 with PV (and QL for nebivolol). Bystolic brand not in extract.",
+      "sourceIds": [
+        "ny-excellus-bcbs-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-excellus-bcbs-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-excellus-bcbs-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "ny-excellus-bcbs"
+    },
+    {
+      "classId": "thiazide",
+      "preferredAgent": {
+        "inn": "Hydrochlorothiazide",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Standard tablet strength (not printed in extract)",
+        "sig": "12.5-25 mg once daily in the morning (label).",
+        "sigShort": "12.5-25 mg QAM",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Chlorthalidone 25 mg/50 mg tablet",
+          "note": "Tier 1, PV flag, no PA",
+          "sourceIds": [
+            "ny-excellus-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Indapamide",
+          "note": "Tier 1, PV flag, no PA",
+          "sourceIds": [
+            "ny-excellus-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metolazone",
+          "note": "Tier 1, PV flag, no PA",
+          "sourceIds": [
+            "ny-excellus-bcbs-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read p32 text layer. All listed thiazides Tier 1 with PV only. HCTZ strength not printed on the extract line.",
+      "sourceIds": [
+        "ny-excellus-bcbs-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-excellus-bcbs-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-excellus-bcbs-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "ny-excellus-bcbs"
+    },
+    {
+      "classId": "arb",
+      "preferredAgent": {
+        "inn": "Losartan potassium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "standard label dosing (strength not printed)",
+        "sig": "50 mg once daily (25 mg if volume-depleted or with liver disease); range 25-100 mg/day (label).",
+        "sigShort": "50 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Irbesartan",
+          "note": "Tier 1, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Valsartan",
+          "note": "Tier 2, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olmesartan medoxomil",
+          "note": "Tier 2, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Telmisartan",
+          "note": "Tier 2, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Candesartan cilexetil",
+          "note": "Tier 3, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL pp.18-22 by row coordinates. Losartan Tier 1 with no flags (p.20). Single-agent ARB rows only; HCTZ and amlodipine combinations not used as alternatives. Azilsartan (Edarbi) and Micardis are E-flagged and omitted; generic azilsartan does not appear. Sacubitril-valsartan (Entresto) is out of scope. E symbol = may be excluded or subject to PA in certain states (PDL symbol key, p.5); not used as a covered alternative.",
+      "sourceIds": [
+        "ny-uhc-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-uhc-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-uhc-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "ny-uhc-commercial"
+    },
+    {
+      "classId": "ccb",
+      "preferredAgent": {
+        "inn": "Amlodipine besylate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "standard label dosing (strength not printed)",
+        "sig": "5 mg once daily (2.5 mg for older or frail adults); max 10 mg/day (label).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Nifedipine extended-release",
+          "note": "Tier 1, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nifedipine extended-release osmotic",
+          "note": "Tier 1, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Felodipine extended-release",
+          "note": "Tier 1, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diltiazem immediate-release oral",
+          "note": "Tier 1, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Verapamil extended-release tablet",
+          "note": "Tier 1, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Verapamil immediate-release oral",
+          "note": "Tier 1, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diltiazem extended-release tablet",
+          "note": "Tier 2, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL pp.18-22. Amlodipine Tier 1 with no flags (p.18). Nicardipine does not appear on this PDL. Amlodipine-containing combinations are not listed as single-agent alternatives. E symbol = may be excluded or subject to PA in certain states (PDL symbol key, p.5); not used as a covered alternative.",
+      "sourceIds": [
+        "ny-uhc-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-uhc-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-uhc-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "ny-uhc-commercial"
+    },
+    {
+      "classId": "beta-blocker",
+      "preferredAgent": {
+        "inn": "Metoprolol tartrate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet (printed strength; dose per label)",
+        "sig": "Hypertension: start 50 mg twice daily (or 25 mg twice daily) and titrate; usual 100-200 mg/day (label).",
+        "sigShort": "25-50 mg BID",
+        "plainSig": "One pill twice a day; do not stop suddenly."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Atenolol",
+          "note": "Tier 1, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Bisoprolol fumarate",
+          "note": "Tier 1, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carvedilol",
+          "note": "Tier 1, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Labetalol",
+          "note": "Tier 1, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nadolol",
+          "note": "Tier 1, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Propranolol immediate-release",
+          "note": "Tier 1, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metoprolol succinate extended-release (25 mg)",
+          "note": "Tier 1 for 25 mg; 50/100/200 mg Tier 2, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nebivolol",
+          "note": "Tier 3, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL pp.18-22 and confirmed the metoprolol tartrate and succinate strength splits by rendered image (p.20). Metoprolol tartrate 100/25/50 mg Tier 1; 37.5/75 mg E-flagged and omitted. Metoprolol succinate 25 mg Tier 1; 50/100/200 mg Tier 2. Bystolic brand does not appear; generic nebivolol Tier 3. Strength and sig not printed beyond the chosen printed strength.",
+      "sourceIds": [
+        "ny-uhc-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-uhc-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-uhc-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "ny-uhc-commercial"
+    },
+    {
+      "classId": "thiazide",
+      "preferredAgent": {
+        "inn": "Hydrochlorothiazide",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "standard label dosing (strength not printed)",
+        "sig": "12.5-25 mg once daily in the morning (label).",
+        "sigShort": "12.5-25 mg QAM",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Chlorthalidone",
+          "note": "Tier 1, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Indapamide",
+          "note": "Tier 1, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metolazone",
+          "note": "Tier 1, no PA/QL",
+          "sourceIds": [
+            "ny-uhc-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL p.20 and p.19. Hydrochlorothiazide oral, chlorthalidone, indapamide and metolazone are all Tier 1 with no flags. Maxzide (triamterene-HCTZ brand) is Tier 4 and not used as an alternative.",
+      "sourceIds": [
+        "ny-uhc-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-uhc-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-uhc-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "ny-uhc-commercial"
+    },
+    {
+      "classId": "arb",
+      "preferredAgent": {
+        "inn": "Losartan potassium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet",
+        "sig": "50 mg once daily (25 mg if volume-depleted or with liver disease); range 25-100 mg/day (label).",
+        "sigShort": "50 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (QL)",
+      "alternatives": [
+        {
+          "drug": "Valsartan 160 mg / 320 mg tablet",
+          "note": "Tier 1 QL, no PA",
+          "sourceIds": [
+            "ny-anthem-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Telmisartan tablet 20/40/80 mg",
+          "note": "Tier 1, no PA",
+          "sourceIds": [
+            "ny-anthem-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Irbesartan tablet 75/150/300 mg",
+          "note": "Tier 1 (DO/QL), no PA",
+          "sourceIds": [
+            "ny-anthem-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Candesartan cilexetil tablet",
+          "note": "Tier 1 (DO/QL), no PA",
+          "sourceIds": [
+            "ny-anthem-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olmesartan medoxomil tablet",
+          "note": "Tier 2 (DO/QL), no PA",
+          "sourceIds": [
+            "ny-anthem-bcbs-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Edarbi (azilsartan)",
+          "outcome": "nonformulary",
+          "reason": "Not on the NY Select list; p.2 states the list is a complete listing of drugs",
+          "sourceIds": [
+            "ny-anthem-bcbs-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read pp.27-28. Losartan 50/100 mg Tier 1 QL; 25 mg Tier 1 DO (50 mg picked). Valsartan, telmisartan, irbesartan, candesartan and olmesartan listed without PA. ARB/thiazide combinations excluded as not single-agent. Sacubitril-valsartan out of scope.",
+      "sourceIds": [
+        "ny-anthem-bcbs-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-anthem-bcbs-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-anthem-bcbs-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "ny-anthem-bcbs"
+    },
+    {
+      "classId": "ccb",
+      "preferredAgent": {
+        "inn": "Amlodipine besylate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg once daily (2.5 mg for older or frail adults); max 10 mg/day (label).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (QL)",
+      "alternatives": [
+        {
+          "drug": "Diltiazem extended-release capsule or tablet",
+          "note": "Tier 1 (DO/QL), no PA",
+          "sourceIds": [
+            "ny-anthem-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Verapamil extended-release tablet",
+          "note": "Tier 1 (DO/QL), no PA",
+          "sourceIds": [
+            "ny-anthem-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Felodipine extended-release tablet",
+          "note": "Tier 1 (DO/QL), no PA",
+          "sourceIds": [
+            "ny-anthem-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nifedipine extended-release tablet",
+          "note": "Tier 2 QL, no PA",
+          "sourceIds": [
+            "ny-anthem-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nicardipine capsule",
+          "note": "Tier 2 QL, no PA",
+          "sourceIds": [
+            "ny-anthem-bcbs-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read pp.37-39. Amlodipine 5 mg and 10 mg Tier 1 QL; 2.5 mg Tier 1 DO (5 mg picked). Amlodipine-atorvastatin combination excluded. No PA on any CCB in the class.",
+      "sourceIds": [
+        "ny-anthem-bcbs-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-anthem-bcbs-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-anthem-bcbs-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "ny-anthem-bcbs"
+    },
+    {
+      "classId": "beta-blocker",
+      "preferredAgent": {
+        "inn": "Metoprolol tartrate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet",
+        "sig": "Hypertension: start 50 mg twice daily (or 25 mg twice daily) and titrate; usual 100-200 mg/day (label).",
+        "sigShort": "25-50 mg BID",
+        "plainSig": "One pill twice a day; do not stop suddenly."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Metoprolol succinate extended-release tablet",
+          "note": "Tier 1, no PA",
+          "sourceIds": [
+            "ny-anthem-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carvedilol tablet",
+          "note": "Tier 1 (DO/QL), no PA",
+          "sourceIds": [
+            "ny-anthem-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Atenolol tablet",
+          "note": "Tier 1, no PA",
+          "sourceIds": [
+            "ny-anthem-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Bisoprolol fumarate tablet",
+          "note": "Tier 1, no PA",
+          "sourceIds": [
+            "ny-anthem-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Propranolol tablet or extended-release capsule",
+          "note": "Tier 1 (DO/QL), no PA",
+          "sourceIds": [
+            "ny-anthem-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Labetalol tablet",
+          "note": "Tier 1 (DO/QL), no PA",
+          "sourceIds": [
+            "ny-anthem-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nebivolol tablet",
+          "note": "Tier 2, no PA",
+          "sourceIds": [
+            "ny-anthem-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nadolol tablet",
+          "note": "Tier 2 (DO/QL), no PA",
+          "sourceIds": [
+            "ny-anthem-bcbs-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read pp.37-38. Metoprolol tartrate and succinate Tier 1 with no flags. Carvedilol, labetalol, propranolol flagged DO or QL only. Nebivolol Tier 2 with no PA. Metoprolol-HCTZ combination excluded. Strength 50 mg is one of the printed strengths.",
+      "sourceIds": [
+        "ny-anthem-bcbs-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-anthem-bcbs-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-anthem-bcbs-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "ny-anthem-bcbs"
+    },
+    {
+      "classId": "thiazide",
+      "preferredAgent": {
+        "inn": "Hydrochlorothiazide",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "per label (strength not printed in PDL)",
+        "sig": "12.5-25 mg once daily in the morning (label).",
+        "sigShort": "12.5-25 mg QAM",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Chlorthalidone tablet",
+          "note": "Tier 1, no PA",
+          "sourceIds": [
+            "ny-anthem-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Indapamide tablet",
+          "note": "Tier 1, no PA",
+          "sourceIds": [
+            "ny-anthem-bcbs-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metolazone tablet",
+          "note": "Tier 1, no PA",
+          "sourceIds": [
+            "ny-anthem-bcbs-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read p.51. Hydrochlorothiazide tablet and capsule Tier 1 with no flags. Chlorthalidone, indapamide and metolazone Tier 1. Triamterene-HCTZ and ACE/ARB-HCTZ combinations excluded. Strength not printed.",
+      "sourceIds": [
+        "ny-anthem-bcbs-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-anthem-bcbs-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-anthem-bcbs-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "ny-anthem-bcbs"
+    },
+    {
+      "classId": "arb",
+      "preferredAgent": {
+        "inn": "Losartan potassium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet (standard strength; not printed)",
+        "sig": "50 mg once daily (25 mg if volume-depleted or with liver disease); range 25-100 mg/day (label).",
+        "sigShort": "50 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Valsartan tablet",
+          "note": "Tier 1, no PA (p.50)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Irbesartan tablet",
+          "note": "Tier 1, no PA (p.50)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olmesartan tablet",
+          "note": "Tier 2, no PA (p.50)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Telmisartan tablet",
+          "note": "Tier 2, no PA (p.50)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Candesartan tablet",
+          "note": "Tier 2, no PA (p.50)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Azilsartan medoxomil (generic)",
+          "outcome": "step",
+          "reason": "Step therapy required (ST flag; criteria not in text) and QL 30 per 30 days (p.50)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Edarbi (azilsartan)",
+          "outcome": "step",
+          "reason": "Step therapy required (ST flag; criteria not in text) and QL 30 per 30 days (p.50)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p.50 ARB lines. Losartan, valsartan and irbesartan are Tier 1 with no PA/ST. Azilsartan (generic and Edarbi) is Tier 4 with ST and QL. Strength not printed; 50 mg is standard label strength. Combination ARB products omitted from alternatives.",
+      "sourceIds": [
+        "ny-excellus-medicare-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-excellus-medicare-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-excellus-medicare-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "ny-excellus-medicare"
+    },
+    {
+      "classId": "ccb",
+      "preferredAgent": {
+        "inn": "Amlodipine besylate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet (standard strength; not printed)",
+        "sig": "5 mg once daily (2.5 mg for older or frail adults); max 10 mg/day (label).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Verapamil tablet (IR)",
+          "note": "Tier 1, no PA (p.52)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Verapamil ER tablet",
+          "note": "Tier 1, no PA (p.52)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Felodipine ER",
+          "note": "Tier 2, no PA (p.52)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nifedipine ER tablet",
+          "note": "Tier 2, no PA (p.52)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diltiazem tablet and ER tablet",
+          "note": "Tier 2, no PA (p.52)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nicardipine oral capsule",
+          "note": "Tier 4, no PA (p.52)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp.52 CCB lines (amlodipine Tier 1; verapamil Tier 1 for tablets; verapamil pellet capsules Tier 3). No PA or ST on any CCB line. Strength not printed on the amlodipine line.",
+      "sourceIds": [
+        "ny-excellus-medicare-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-excellus-medicare-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-excellus-medicare-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "ny-excellus-medicare"
+    },
+    {
+      "classId": "beta-blocker",
+      "preferredAgent": {
+        "inn": "Metoprolol tartrate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg tablet",
+        "sig": "Hypertension: start 50 mg twice daily (or 25 mg twice daily) and titrate; usual 100-200 mg/day (label).",
+        "sigShort": "25-50 mg BID",
+        "plainSig": "One pill twice a day; do not stop suddenly."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Metoprolol succinate ER",
+          "note": "Tier 1, no PA (p.52)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carvedilol tablet",
+          "note": "Tier 1, no PA (p.52)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Atenolol tablet",
+          "note": "Tier 1, no PA (p.52)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Bisoprolol fumarate tablet",
+          "note": "Tier 2, no PA (p.52)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Labetalol tablet",
+          "note": "Tier 2, no PA (p.52)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nadolol tablet",
+          "note": "Tier 2, no PA (p.52)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Propranolol tablet",
+          "note": "Tier 2, no PA (p.52)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nebivolol tablet",
+          "note": "Tier 2, QL 30 per 30 days for 2.5 and 5 mg (p.52)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p.52 beta-blocker lines. Metoprolol tartrate tablet 25 mg (listed among 25/37.5/50/75/100 mg) is Tier 1, no PA. No PA or ST flags in the class.",
+      "sourceIds": [
+        "ny-excellus-medicare-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-excellus-medicare-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-excellus-medicare-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "ny-excellus-medicare"
+    },
+    {
+      "classId": "thiazide",
+      "preferredAgent": {
+        "inn": "Hydrochlorothiazide",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg tablet (standard strength; not printed)",
+        "sig": "12.5-25 mg once daily in the morning (label).",
+        "sigShort": "12.5-25 mg QAM",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Chlorthalidone tablet",
+          "note": "Tier 1, no PA (p.54)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Indapamide tablet",
+          "note": "Tier 1, no PA (p.54)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metolazone tablet",
+          "note": "Tier 1, no PA (p.55)",
+          "sourceIds": [
+            "ny-excellus-medicare-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp.54-55 thiazide lines. All four single-agent thiazides are Tier 1 with no PA or ST. HCTZ strength not printed on the line.",
+      "sourceIds": [
+        "ny-excellus-medicare-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-excellus-medicare-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-excellus-medicare-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "ny-excellus-medicare"
+    }
+  ],
+  "references": [
+    {
+      "id": "ny-medicaid-next11-2026-10",
+      "label": "NYRx, the Medicaid Drug Program Preferred Drug List (revised September 14, 2026; preferred status as of 10/22/2026)",
+      "publisher": "New York State Medicaid (NYRx)",
+      "type": "payer",
+      "url": "https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf",
+      "effectiveDate": "2026-09-14",
+      "accessed": "2026-10-22"
+    },
+    {
+      "id": "ny-excellus-bcbs-next11-2026-10",
+      "label": "2026 Individual & Family Metal Plans, Base, Simply Blue Plus and College Blue Plans Formulary Guide (2981)",
+      "publisher": "Excellus BCBS",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/251/Excellus_2026_Metal_Plans_Base___Simply_Blue_Plus___College_Blue_Plans_Formulary_Guide_2981_v26.pdf",
+      "effectiveDate": "2026-09-01",
+      "accessed": "2026-10-22"
+    },
+    {
+      "id": "ny-uhc-commercial-next11-2026-10",
+      "label": "2026 Prescription Drug List (PDL), UnitedHealthcare & affiliated companies",
+      "publisher": "UnitedHealthcare",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-10-22"
+    },
+    {
+      "id": "ny-anthem-bcbs-next11-2026-10",
+      "label": "New York Select Drug List, Three Tier (Individual / HIX), 2026",
+      "publisher": "Anthem Blue Cross and Blue Shield",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_3_Tier_NY_ABS_IND.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-22"
+    },
+    {
+      "id": "ny-excellus-medicare-next11-2026-10",
+      "label": "2026 Formulary (List of Covered Drugs), Medicare BlueActive/Balanced/Classic/Enhanced/Essential/Plus/Vital (PPO) and Blue Choice Core/Optimum/Prime (HMO); Formulary ID 26059",
+      "publisher": "Excellus BlueCross BlueShield",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/251/Excellus_Medicare_5T_DP_even.pdf",
+      "effectiveDate": "2026-09-01",
+      "accessed": "2026-10-22"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

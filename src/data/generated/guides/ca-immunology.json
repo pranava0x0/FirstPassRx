@@ -1,0 +1,861 @@
+{
+  "id": "ca-immunology",
+  "label": "CA · Rheumatoid arthritis, psoriasis and IBD biologics",
+  "stateCode": "CA",
+  "region": "California",
+  "topicId": "immunology",
+  "topic": "Rheumatoid arthritis, psoriasis and IBD biologics",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-27",
+  "capturedAt": "2026-10-27",
+  "payers": [
+    {
+      "id": "medi-cal-rx",
+      "name": "Medi-Cal Rx — California Medicaid Pharmacy Program (Fee-for-Service carve-out, statewide)",
+      "shortName": "Medi-Cal Rx",
+      "pbm": "Magellan Health (Magellan Medicaid Administration; DHCS vendor)",
+      "productName": "Medi-Cal Rx Contract Drugs List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Medi-Cal Rx Contract Drugs List (effective 10/01/2026, 242 pages)",
+      "formularyUrl": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ]
+    },
+    {
+      "id": "kaiser-permanente-ca",
+      "name": "Kaiser Permanente (Commercial HMO)",
+      "shortName": "Kaiser Permanente",
+      "pbm": "Internal (Kaiser Foundation Health Plan formulary; closed integrated pharmacy)",
+      "productName": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "sourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ]
+    },
+    {
+      "id": "anthem-bcbs-ca",
+      "name": "Anthem Blue Cross of California (Commercial)",
+      "shortName": "Anthem Blue Cross CA",
+      "pbm": "CarelonRx",
+      "productName": "2026 California Select Drug List - Four Tier",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 California Select Drug List, Four Tier (IND), Last Updated October 1, 2026",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "sourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "tnf-inhibitor",
+      "name": "TNF inhibitors",
+      "shortName": "TNF",
+      "plainName": "TNF blocker (Humira type)",
+      "description": "Adalimumab and biosimilars (Humira, Hadlima, Hyrimoz, Cyltezo, Yusimry, Simlandi, Amjevita, unbranded adalimumab-adaz/-fkjp/-aacf), etanercept (Enbrel, Erelzi, Eticovo), certolizumab (Cimzia), golimumab (Simponi). Infliximab is infusion/medical benefit.",
+      "plainDescription": "A shot for rheumatoid arthritis, psoriasis, psoriatic arthritis or Crohn's/colitis.",
+      "indication": "RA, PsA, AS, psoriasis, Crohn's, UC",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ]
+    },
+    {
+      "id": "il17-il23",
+      "name": "IL-17 and IL-23 inhibitors",
+      "shortName": "IL-17/23",
+      "plainName": "IL-17 or IL-23 blocker",
+      "description": "Secukinumab (Cosentyx), ixekizumab (Taltz), bimekizumab (Bimzelx), brodalumab (Siliq); guselkumab (Tremfya), risankizumab (Skyrizi), tildrakizumab (Ilumya), ustekinumab and biosimilars (Stelara, Wezlana, Selarsdi, Pyzchiva, Otulfi, Imuldosa, Yesintek, Steqeyma).",
+      "plainDescription": "A shot for psoriasis, psoriatic arthritis or Crohn's/colitis.",
+      "indication": "Psoriasis, PsA, Crohn's, UC",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ]
+    },
+    {
+      "id": "jak-inhibitor",
+      "name": "Oral JAK inhibitors",
+      "shortName": "JAK",
+      "plainName": "JAK inhibitor pill",
+      "description": "Tofacitinib (Xeljanz, XR), upadacitinib (Rinvoq), baricitinib (Olumiant) for RA/PsA/UC; deucravacitinib (Sotyktu, TYK2) for psoriasis; apremilast (Otezla, PDE4) as an oral psoriasis alternative.",
+      "plainDescription": "A daily pill for rheumatoid arthritis, psoriasis or colitis.",
+      "indication": "RA, PsA, UC, psoriasis",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "tnf-inhibitor",
+      "preferredAgent": {
+        "inn": "Adalimumab-adaz (citrate free)",
+        "brand": null,
+        "genericAvailable": false,
+        "strength": "40 mg/0.4 mL single-dose prefilled pen or syringe",
+        "sig": "RA/PsA/AS: 40 mg subcutaneously every 2 weeks. Psoriasis: 80 mg once, then 40 mg every 2 weeks starting 1 week later. Crohn's/UC: 160 mg, then 80 mg 2 weeks later, then 40 mg every 2 weeks (label).",
+        "sigShort": "40 mg SC q2wk (per indication)",
+        "plainSig": "A shot every 2 weeks; starting doses depend on the condition."
+      },
+      "preferredRestriction": "Code I: FDA-approved indications; max one carton (two pens or syringes) per 28 days; non-brand NDCs of labeler 61314 only. Brand Hyrimoz is not listed (p.192). Above-limit quantities need PA.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Listed on CDL; no tier structure (UM flag shown where printed)",
+      "alternatives": [
+        {
+          "drug": "Adalimumab (original or citrate free) prefilled pens and syringes 10-80 mg",
+          "note": "UM LR, QL. Max one carton per 28 days; labeler 00074 only (p.192)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Adalimumab-bwwd autoinjector or syringe 40 mg/0.4 mL and 40 mg/0.8 mL",
+          "note": "UM LR, QL. Max two cartons per 28 days; labeler 78206 only (p.193)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Adalimumab-fkjp pen 40 mg/0.8 mL; syringe 20 mg/0.4 mL and 40 mg/0.8 mL",
+          "note": "UM LR, QL. Max two cartons per 28 days; non-brand NDCs of labeler 83257 only; brand Hulio not listed (p.193)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Etanercept (Enbrel) prefilled syringe, SureClick, vial, Enbrel Mini cartridge",
+          "note": "UM LR, QL. Max one carton per 28 days; labeler 58406 only (p.196)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Certolizumab pegol (Cimzia)",
+          "outcome": "pa",
+          "reason": "Not on the CDL (searched across pp.1-232). CDL p.4: \"Legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant.\" Not on the CDL as read; coverage by authorization only.",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Golimumab (Simponi)",
+          "outcome": "pa",
+          "reason": "Not on the CDL (searched across pp.1-232). CDL p.4: \"Legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant.\" Not on the CDL as read; coverage by authorization only.",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hyrimoz (adalimumab-adaz brand), Hulio (adalimumab-fkjp brand), Cyltezo, Yusimry, Amjevita, Simlandi, and other adalimumab biosimilars",
+          "outcome": "pa",
+          "reason": "Brand-name NDCs are excluded from the listing (p.192 note on Hyrimoz; p.193 note on Hulio). The CDL lists only original adalimumab (labeler 00074), -adaz (61314), -bwwd (78206) and -fkjp (83257); other biosimilars are not listed (pp.192-193). CDL p.4: \"Legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant.\" Not on the CDL as read; coverage by authorization only.",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read from CDL pp.192-196. Infliximab does not appear on the pharmacy CDL. It is provider-administered and may sit under the medical benefit; this document does not say, so it is not called non-covered. Sig is standard label dosing, not printed. CDL p.4: \"Legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant.\" Not on the CDL as read; coverage by authorization only. [Sonnet check 2026-10-27: labelers confirmed against pp.192-193 (00074, 61314 non-brand, 78206, 83257 non-brand). The pick is a covered-labeler product; original adalimumab (Humira, 00074) is the more commonly written alternative with the same barriers, left as an alternative.]",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "medi-cal-rx"
+    },
+    {
+      "classId": "il17-il23",
+      "preferredAgent": {
+        "inn": "Ustekinumab-ttwe",
+        "brand": null,
+        "genericAvailable": false,
+        "strength": "45 mg/0.5 mL single-dose prefilled syringe",
+        "sig": "Psoriasis/PsA: 45 mg subcutaneously at weeks 0 and 4, then every 12 weeks (90 mg if over 100 kg). Crohn's/UC: one weight-based IV induction dose using 130 mg vials (260 mg if 55 kg or less, 390 mg for 55-85 kg, 520 mg over 85 kg), then 90 mg subcutaneously 8 weeks later and every 8 weeks (label).",
+        "sigShort": "45 mg SC wk 0, 4, q12wk (PsO); IV then 90 mg q8wk (IBD)",
+        "plainSig": "For psoriasis, two starting shots a month apart, then one every 3 months. For Crohn's or colitis, one IV infusion, then a shot every 8 weeks."
+      },
+      "preferredRestriction": "Code I: FDA-approved indications; max one carton (one injection) per 56 days (up to an 84-day supply); NDC labeler 61314 only (p.203). Above-limit quantities need PA.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Listed on CDL; Code I restriction (*) with quantity and labeler limits",
+      "alternatives": [
+        {
+          "drug": "Secukinumab (Cosentyx) 75, 150, 300 mg pens or syringes",
+          "note": "UM LR, QL. FDA-approved indications; max one carton per 28 days; labeler 00078 only (p.201)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risankizumab-rzaa (Skyrizi) 150 mg/mL autoinjector or syringe",
+          "note": "UM AL, LR, QL. Age 18+ for plaque psoriasis or active PsA; one carton per 84 days; labeler 00074 only (p.200)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Mirikizumab-mrkz (Omvoh) 100 mg/mL and 200 mg/2 mL",
+          "note": "UM AL, LR, QL. Age 18+ for Crohn's or UC; one carton per 28 days; labeler 00002 only (p.198). IL-23 inhibitor not named in the class description",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Ixekizumab (Taltz)",
+          "outcome": "pa",
+          "reason": "Not on the CDL (searched across pp.1-232). CDL p.4: \"Legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant.\" Not on the CDL as read; coverage by authorization only.",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Bimekizumab (Bimzelx)",
+          "outcome": "pa",
+          "reason": "Not on the CDL (searched across pp.1-232). CDL p.4: \"Legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant.\" Not on the CDL as read; coverage by authorization only.",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Brodalumab (Siliq)",
+          "outcome": "pa",
+          "reason": "Not on the CDL (searched across pp.1-232). CDL p.4: \"Legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant.\" Not on the CDL as read; coverage by authorization only.",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Guselkumab (Tremfya)",
+          "outcome": "pa",
+          "reason": "Not on the CDL (searched across pp.1-232). CDL p.4: \"Legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant.\" Not on the CDL as read; coverage by authorization only.",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tildrakizumab (Ilumya)",
+          "outcome": "pa",
+          "reason": "Not on the CDL (searched across pp.1-232). CDL p.4: \"Legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant.\" Not on the CDL as read; coverage by authorization only.",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Stelara and other ustekinumab products (Wezlana, Selarsdi, Pyzchiva, Otulfi, Imuldosa, Yesintek, Steqeyma)",
+          "outcome": "pa",
+          "reason": "Only ustekinumab-ttwe appears on the CDL (p.203). CDL p.4: \"Legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant.\" Not on the CDL as read; coverage by authorization only.",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from CDL pp.198-203. Preferred pick is the unbranded ustekinumab-ttwe, the listed biosimilar with a labeler restriction, chosen as the lower-cost unbranded option. Secukinumab and risankizumab are equally restricted alternatives. Sig is standard label dosing, not printed. CDL p.4: \"Legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant.\" Not on the CDL as read; coverage by authorization only. [Sonnet check 2026-10-27: ustekinumab-ttwe labeler 61314 confirmed (p.203).]",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "medi-cal-rx"
+    },
+    {
+      "classId": "jak-inhibitor",
+      "preferredAgent": {
+        "inn": "Upadacitinib",
+        "brand": "Rinvoq",
+        "genericAvailable": false,
+        "strength": "15 mg extended-release tablet",
+        "sig": "RA/PsA/AS: 15 mg once daily. Ulcerative colitis: 45 mg once daily for 8 weeks, then 15 mg (or 30 mg) once daily. Crohn's disease: 45 mg once daily for 12 weeks, then 15 mg (or 30 mg) once daily. Dose per indication (label).",
+        "sigShort": "15 mg QD (RA); 45 mg induction for UC/CD",
+        "plainSig": "One 15 mg pill a day for arthritis; for colitis or Crohn's, one 45 mg pill a day for the first 8 to 12 weeks, then a lower dose."
+      },
+      "preferredRestriction": "Code I: FDA-approved indications; NDC labeler 00074 only for all strengths and forms; 45 mg max 28 tablets per dispensing and three dispensings per 12 months (p.202).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Listed on CDL; Code I restriction (*) with labeler and quantity limits",
+      "alternatives": [
+        {
+          "drug": "Apremilast (Otezla) 20 mg and 30 mg tablets",
+          "note": "UM LR. FDA-approved indications; labeler 55513 only (p.194). PDE4 inhibitor, named in the class description",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Baricitinib (Olumiant)",
+          "outcome": "pa",
+          "reason": "Listed only for alopecia areata in patients 18 and older, labeler 00002 (p.194). Other uses, such as RA, need authorization. CDL p.4: \"Legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant.\" Not on the CDL as read; coverage by authorization only.",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tofacitinib (Xeljanz, XR)",
+          "outcome": "pa",
+          "reason": "Not on the CDL (searched across pp.1-232). CDL p.4: \"Legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant.\" Not on the CDL as read; coverage by authorization only.",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Deucravacitinib (Sotyktu)",
+          "outcome": "pa",
+          "reason": "Not on the CDL (searched across pp.1-232). CDL p.4: \"Legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant.\" Not on the CDL as read; coverage by authorization only.",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from CDL pp.194 and 202. Preferred pick is the upadacitinib ER tablet, a JAK inhibitor with no PA on the CDL, chosen as the JAK-class representative rather than the lowest-barrier product. Apremilast is listed as a PDE4 inhibitor and is an alternative. Sig is standard label dosing, not printed. CDL p.4: \"Legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant.\" Not on the CDL as read; coverage by authorization only. [Sonnet check 2026-10-27: upadacitinib labeler 00074 confirmed (p.202).]",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "medi-cal-rx"
+    },
+    {
+      "classId": "tnf-inhibitor",
+      "preferredAgent": {
+        "inn": "Adalimumab-atto",
+        "brand": "Amjevita",
+        "genericAvailable": false,
+        "strength": "40 mg/0.4 mL pen",
+        "sig": "RA/PsA/AS: 40 mg subcutaneously every 2 weeks. Psoriasis: 80 mg once, then 40 mg every 2 weeks starting 1 week later. Crohn's/UC: 160 mg, then 80 mg 2 weeks later, then 40 mg every 2 weeks (label).",
+        "sigShort": "40 mg SC q2wk (per indication)",
+        "plainSig": "A shot every 2 weeks; starting doses depend on the condition."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (brand, biosimilar)",
+      "alternatives": [
+        {
+          "drug": "Etanercept (Enbrel SureClick) 50 mg/mL",
+          "note": "Tier 4, QL - 30 day(s) (PDF p.86)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Infliximab-dyyb (Inflectra) 100 mg vial",
+          "note": "Tier 4, MB (medical benefit) (PDF p.87)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Humira (adalimumab)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hadlima",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hyrimoz",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Cyltezo",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Cimzia (certolizumab)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Simponi (golimumab)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Amjevita 40 mg/0.4 mL pen read at PDF p.85: Tier 2, no QL/LD/MB flag. Enbrel (p.86, Tier 4, QL) and Inflectra (p.87, Tier 4, MB, infusion) read directly. Adalimumab originator (Humira), Hadlima, Hyrimoz, Cyltezo, Yusimry, Simlandi, Cimzia (certolizumab), Simponi (golimumab) and Erelzi/Eticovo do not appear in this document; not all-inclusive, so not called excluded. Infliximab is a clinic infusion under the MB flag; not the preferred pick. Document says: \"Kaiser Foundation Health Plan does not have a requirement for PA\" (PDF p.6) and \"does not have a requirement for Step Therapy\" (PDF p.7). Drugs not listed are nonformulary; when a Kaiser or referral doctor determines one is medically appropriate and necessary it is covered by formulary exception (PDF p.7; decision within 72 hours, 24 urgent, PDF p.8). Completeness is ambiguous: p.6 defines the formulary as \"the complete list of prescription drugs preferred for use and eligible for coverage\" but p.2 says \"not an all-inclusive list\", so absence is not treated as exclusion. [Sonnet check 2026-10-27: infliximab is MB (medical benefit) infusion; picks read directly; 6 named absent drug(s) added as nonformulary (exception route)]",
+      "sourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "kaiser-permanente-ca"
+    },
+    {
+      "classId": "il17-il23",
+      "preferredAgent": {
+        "inn": "Ustekinumab-kfce",
+        "brand": "Yesintek",
+        "genericAvailable": false,
+        "strength": "45 mg/0.5 mL prefilled syringe",
+        "sig": "Psoriasis/PsA: 45 mg subcutaneously at weeks 0 and 4, then every 12 weeks (90 mg if over 100 kg). Crohn's/UC: one weight-based IV induction dose using 130 mg vials (260 mg if 55 kg or less, 390 mg for 55-85 kg, 520 mg over 85 kg), then 90 mg subcutaneously 8 weeks later and every 8 weeks (label).",
+        "sigShort": "45 mg SC wk 0, 4, q12wk (PsO); IV then 90 mg q8wk (IBD)",
+        "plainSig": "For psoriasis, two starting shots a month apart, then one every 3 months. For Crohn's or colitis, one IV infusion, then a shot every 8 weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (brand, biosimilar)",
+      "alternatives": [
+        {
+          "drug": "Guselkumab (Tremfya PEN) 100 mg/mL",
+          "note": "Tier 2, no flag (PDF p.98)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ustekinumab-kfce (Yesintek) 90 mg/mL syringe",
+          "note": "Tier 2, no flag (PDF p.98)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Secukinumab (Cosentyx) 150 mg/mL",
+          "note": "Tier 4, QL - 30 day(s) (PDF p.97)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risankizumab-rzaa (Skyrizi) 150 mg/mL",
+          "note": "Tier 4, no flag (PDF p.97)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Guselkumab (Tremfya SOSY) 100 mg/mL",
+          "note": "Tier 4, no flag (PDF p.98)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Taltz (ixekizumab)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Bimzelx (bimekizumab)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Siliq (brodalumab)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ilumya (tildrakizumab)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Stelara (ustekinumab)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Yesintek 45 mg/0.5 mL syringe read at PDF p.98: Tier 2, no flags (chosen as the lowest-tier ustekinumab biosimilar listed). Tremfya PEN 100 mg/mL (Tier 2, p.98) is an equal-tier alternative. Cosentyx (p.97, Tier 4, QL), Skyrizi (p.97, Tier 4) and Tremfya SOSY (p.98, Tier 4) read directly. Taltz/ixekizumab, Bimzelx/bimekizumab, Siliq/brodalumab, Ilumya/tildrakizumab, Stelara and other ustekinumab biosimilars do not appear; not all-inclusive. Sig is label dosing, not printed in the formulary. Document says: \"Kaiser Foundation Health Plan does not have a requirement for PA\" (PDF p.6) and \"does not have a requirement for Step Therapy\" (PDF p.7). Drugs not listed are nonformulary; when a Kaiser or referral doctor determines one is medically appropriate and necessary it is covered by formulary exception (PDF p.7; decision within 72 hours, 24 urgent, PDF p.8). Completeness is ambiguous: p.6 defines the formulary as \"the complete list of prescription drugs preferred for use and eligible for coverage\" but p.2 says \"not an all-inclusive list\", so absence is not treated as exclusion. [Sonnet check 2026-10-27: policy wording corrected; 5 named absent drug(s) added as nonformulary (exception route)]",
+      "sourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "kaiser-permanente-ca"
+    },
+    {
+      "classId": "jak-inhibitor",
+      "preferredAgent": {
+        "inn": "Tofacitinib citrate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "RA/PsA: 5 mg twice daily. Ulcerative colitis: 10 mg twice daily for 8 weeks (one 10 mg tablet per dose), then 5 mg twice daily (label).",
+        "sigShort": "5 mg BID (RA); 10 mg BID x8 wk (UC)",
+        "plainSig": "One 5 mg pill twice a day for arthritis; for colitis, one 10 mg pill twice a day for the first 8 weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Tofacitinib citrate ER 11 mg tablet",
+          "note": "Tier 1, no flag (PDF p.89)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tofacitinib citrate 10 mg tablet",
+          "note": "Tier 1, no flag (PDF p.89)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Apremilast (Otezla) 30 mg tablet",
+          "note": "Tier 4, QL - 30 day(s) (PDF p.88)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Rinvoq (upadacitinib)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olumiant (baricitinib)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Sotyktu (deucravacitinib)",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Xeljanz brand",
+          "outcome": "nonformulary",
+          "reason": "Not printed on this list (searched list and index). Kaiser has no PA form; coverage of a nonformulary drug is by physician formulary exception (PDF p.7). Absence is not proof of exclusion (PDF p.2).",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Tofacitinib citrate 5 mg tablet read at PDF p.89: generic, Tier 1, no QL/LD/MB flag. Otezla (apremilast) p.88 Tier 4, QL. Xeljanz brand, upadacitinib (Rinvoq), baricitinib (Olumiant) and deucravacitinib (Sotyktu) do not appear in this document; not all-inclusive. Sig is label dosing, not printed in the formulary. Document says: \"Kaiser Foundation Health Plan does not have a requirement for PA\" (PDF p.6) and \"does not have a requirement for Step Therapy\" (PDF p.7). Drugs not listed are nonformulary; when a Kaiser or referral doctor determines one is medically appropriate and necessary it is covered by formulary exception (PDF p.7; decision within 72 hours, 24 urgent, PDF p.8). Completeness is ambiguous: p.6 defines the formulary as \"the complete list of prescription drugs preferred for use and eligible for coverage\" but p.2 says \"not an all-inclusive list\", so absence is not treated as exclusion. [Sonnet check 2026-10-27: policy wording corrected; 4 named absent drug(s) added as nonformulary (exception route)]",
+      "sourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "kaiser-permanente-ca"
+    },
+    {
+      "classId": "tnf-inhibitor",
+      "preferredAgent": {
+        "inn": "Adalimumab",
+        "brand": "Humira",
+        "genericAvailable": false,
+        "strength": "40 mg/0.4 mL pen (2-pen kit)",
+        "sig": "RA/PsA/AS: 40 mg subcutaneously every 2 weeks. Psoriasis: 80 mg once, then 40 mg every 2 weeks starting 1 week later. Crohn's/UC: 160 mg, then 80 mg 2 weeks later, then 40 mg every 2 weeks (label).",
+        "sigShort": "40 mg SC q2wk (per indication)",
+        "plainSig": "A shot every 2 weeks; starting doses depend on the condition."
+      },
+      "preferredRestriction": "PA and specialty pharmacy required; QL 2 syringes per 28 days (Tier 4 PA; SP; QL), page 17",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 4 (PA; SP; QL)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Simlandi (adalimumab-ryvk) 40 mg/0.4 mL, 40 mg/0.8 mL, 80 mg/0.8 mL and other kits",
+          "outcome": "pa",
+          "reason": "Tier 4 PA; SP; QL (pages 17-18)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Humira 40 mg/0.8 mL and 80 mg/0.8 mL pen kits, prefilled syringe and starter kits",
+          "outcome": "pa",
+          "reason": "Tier 4 PA; SP; QL (page 17)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Simponi (golimumab) auto-injector and prefilled syringe",
+          "outcome": "pa",
+          "reason": "Tier 4 PA; SP; QL (page 18)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Simponi Aria (golimumab) IV solution",
+          "outcome": "pa",
+          "reason": "Tier 4 PA; SP (page 18); infusion product, may fall under the medical benefit",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Enbrel (etanercept) subcutaneous solution, prefilled syringe and SureClick",
+          "outcome": "pa",
+          "reason": "Tier 4 PA; SP; QL (page 19)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Humira 40 mg/0.4 mL 2-pen kit: Tier 4, PA, SP, QL (2 syringes per 28 days), page 17 (layout extraction). Humira was chosen as the reference product. Simlandi (adalimumab-ryvk) carries identical flags, so it is an equivalent option. No unbranded adalimumab appears on the list. Certolizumab (Cimzia), infliximab, and the other etanercept and adalimumab biosimilars (Hadlima, Hyrimoz, Cyltezo, Yusimry, Amjevita, Erelzi, Eticovo) do not appear on the list or its index. Infliximab is typically a clinic infusion under the medical benefit (page 2). [Sonnet check 2026-10-27: Humira kept as pick (the product prescribers name); Simlandi (adalimumab-ryvk, Humira biosimilar) has identical Tier 4 PA/SP/QL, so either is acceptable and neither is BOGL. Confirm if the UI should prefer the biosimilar.]",
+      "sourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "anthem-bcbs-ca"
+    },
+    {
+      "classId": "il17-il23",
+      "preferredAgent": {
+        "inn": "Ustekinumab",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Subcutaneous solution (strength not printed on list)",
+        "sig": "Psoriasis/PsA: 45 mg subcutaneously at weeks 0 and 4, then every 12 weeks (90 mg if over 100 kg). Crohn's/UC: one weight-based IV induction dose using 130 mg vials (260 mg if 55 kg or less, 390 mg for 55-85 kg, 520 mg over 85 kg), then 90 mg subcutaneously 8 weeks later and every 8 weeks (label).",
+        "sigShort": "45 mg SC wk 0, 4, q12wk (PsO); IV then 90 mg q8wk (IBD)",
+        "plainSig": "For psoriasis, two starting shots a month apart, then one every 3 months. For Crohn's or colitis, one IV infusion, then a shot every 8 weeks."
+      },
+      "preferredRestriction": "PA and specialty pharmacy required; QL 1 syringe per 12 weeks (Tier 4 PA; SP; QL), page 69",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 4 (PA; SP; QL)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Skyrizi (risankizumab-rzaa) pen, prefilled syringe 150 mg/mL and 55 mg/0.37 mL",
+          "outcome": "pa",
+          "reason": "Tier 4 PA; SP; QL 1 unit per 12 weeks (page 69)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Selarsdi (ustekinumab-aekn) subcutaneous solution",
+          "outcome": "pa",
+          "reason": "Tier 4 PA; SP; QL 1 vial per 84 days (page 68)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Skyrizi and Selarsdi intravenous solutions",
+          "outcome": "pa",
+          "reason": "Tier 4 PA; SP; QL (page 77); infusion product, may fall under the medical benefit",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Unbranded ustekinumab subcutaneous solution and prefilled syringe: Tier 4, PA, SP, QL (1 syringe per 12 weeks), page 69 (layout extraction). Skyrizi and Selarsdi carry the same Tier 4 PA/SP flags and are listed as PA alternatives. Secukinumab, ixekizumab, bimekizumab, brodalumab, guselkumab, tildrakizumab and the other ustekinumab biosimilars (Wezlana, Pyzchiva, Otulfi, Imuldosa, Yesintek, Steqeyma) and Stelara do not appear on the list or its index. The unbranded ustekinumab strength is not printed.",
+      "sourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "anthem-bcbs-ca"
+    },
+    {
+      "classId": "jak-inhibitor",
+      "preferredAgent": {
+        "inn": "Upadacitinib",
+        "brand": "Rinvoq",
+        "genericAvailable": false,
+        "strength": "15 mg extended-release tablet",
+        "sig": "RA/PsA/AS: 15 mg once daily. Ulcerative colitis: 45 mg once daily for 8 weeks, then 15 mg (or 30 mg) once daily. Crohn's disease: 45 mg once daily for 12 weeks, then 15 mg (or 30 mg) once daily. Dose per indication (label).",
+        "sigShort": "15 mg QD (RA); 45 mg induction for UC/CD",
+        "plainSig": "One 15 mg pill a day for arthritis; for colitis or Crohn's, one 45 mg pill a day for the first 8 to 12 weeks, then a lower dose."
+      },
+      "preferredRestriction": "PA and specialty pharmacy required; QL 1 tablet per day (Tier 4 PA; SP; QL), page 17",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 4 (PA; SP; QL)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Otezla (apremilast) tablet, therapy pack and XR, initiation pack",
+          "outcome": "pa",
+          "reason": "Tier 4 PA; SP; QL (page 19)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Rinvoq 45 mg extended-release tablet and Rinvoq LQ oral solution",
+          "outcome": "pa",
+          "reason": "Tier 4 PA; SP; QL (page 17)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Rinvoq ER tablet 15 mg and 30 mg: Tier 4, PA, SP, QL (1 tablet per 1 day), page 17 (layout extraction). Rinvoq is the JAK inhibitor on the list and was picked over Otezla (apremilast, PDE4) because the class is defined as JAK inhibitors. Tofacitinib (Xeljanz), baricitinib (Olumiant) and deucravacitinib (Sotyktu) do not appear on the list or its index. Dose is standard label dosing for the 15 mg strength. [Sonnet check 2026-10-27: Class definition lists Otezla (PDE4) only as an oral psoriasis alternative, not a JAK; Rinvoq stays the pick and Otezla stays in paRequired, which is correct. Rinvoq and Otezla have identical Tier 4 PA/SP/QL flags.]",
+      "sourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "anthem-bcbs-ca"
+    }
+  ],
+  "references": [
+    {
+      "id": "medi-cal-rx-next11-2026-10",
+      "label": "Medi-Cal Rx Contract Drugs List (effective 10/01/2026, 242 pages)",
+      "publisher": "California Department of Health Care Services (Medi-Cal Rx)",
+      "type": "gov",
+      "url": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "kaiser-permanente-ca-next11-2026-10",
+      "label": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "publisher": "Kaiser Permanente",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "effectiveDate": "2026-10-06",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "anthem-bcbs-ca-next11-2026-10",
+      "label": "2026 California Select Drug List, Four Tier (IND), Last Updated October 1, 2026",
+      "publisher": "Anthem Blue Cross (Elevance Health)",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

@@ -1,0 +1,525 @@
+{
+  "id": "ca-hiv",
+  "label": "CA · HIV prevention and treatment",
+  "stateCode": "CA",
+  "region": "California",
+  "topicId": "hiv",
+  "topic": "HIV prevention and treatment",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-27",
+  "capturedAt": "2026-10-27",
+  "payers": [
+    {
+      "id": "medi-cal-rx",
+      "name": "Medi-Cal Rx — California Medicaid Pharmacy Program (Fee-for-Service carve-out, statewide)",
+      "shortName": "Medi-Cal Rx",
+      "pbm": "Magellan Health (Magellan Medicaid Administration; DHCS vendor)",
+      "productName": "Medi-Cal Rx Contract Drugs List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Medi-Cal Rx Contract Drugs List (effective 10/01/2026, 242 pages)",
+      "formularyUrl": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ]
+    },
+    {
+      "id": "kaiser-permanente-ca",
+      "name": "Kaiser Permanente (Commercial HMO)",
+      "shortName": "Kaiser Permanente",
+      "pbm": "Internal (Kaiser Foundation Health Plan formulary; closed integrated pharmacy)",
+      "productName": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "sourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ]
+    },
+    {
+      "id": "anthem-bcbs-ca",
+      "name": "Anthem Blue Cross of California (Commercial)",
+      "shortName": "Anthem Blue Cross CA",
+      "pbm": "CarelonRx",
+      "productName": "2026 California Select Drug List - Four Tier",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 California Select Drug List, Four Tier (IND), Last Updated October 1, 2026",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "sourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "hiv-prep",
+      "name": "HIV pre-exposure prophylaxis (PrEP)",
+      "shortName": "PrEP",
+      "plainName": "HIV prevention pill or shot",
+      "description": "Emtricitabine/tenofovir disoproxil (Truvada and generics), emtricitabine/tenofovir alafenamide (Descovy), cabotegravir LA (Apretude), lenacapavir (Yeztugo).",
+      "plainDescription": "A daily pill or long-acting shot that prevents HIV.",
+      "indication": "HIV PrEP",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ]
+    },
+    {
+      "id": "hiv-art",
+      "name": "Single-tablet HIV treatment regimens",
+      "shortName": "STR",
+      "plainName": "Once-daily HIV treatment pill",
+      "description": "Complete single-tablet regimens: bictegravir/FTC/TAF (Biktarvy), dolutegravir/abacavir/lamivudine (Triumeq), dolutegravir/lamivudine (Dovato), dolutegravir/rilpivirine (Juluca), darunavir/cobicistat/FTC/TAF (Symtuza), elvitegravir/cobi/FTC/TAF (Genvoya), rilpivirine/FTC/TAF (Odefsey), efavirenz/FTC/TDF and generics; cabotegravir/rilpivirine LA (Cabenuva).",
+      "plainDescription": "A once-a-day pill that treats HIV.",
+      "indication": "HIV-1 infection",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "hiv-prep",
+      "preferredAgent": {
+        "inn": "Emtricitabine/tenofovir disoproxil fumarate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/300 mg tablet",
+        "sig": "PrEP: 1 tablet once daily. Confirm a negative HIV test before starting and test every 3 months (label).",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day; get an HIV test every 3 months."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Listed on CDL; no tier structure (UM flag shown where printed)",
+      "alternatives": [
+        {
+          "drug": "Emtricitabine/tenofovir alafenamide (Descovy) 200 mg/25 mg tablet",
+          "note": "UM LR. Restricted to NDC labeler 61958 only (p.31). 120 mg/15 mg tablet same row",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Cabotegravir ER injection kit 600 mg/3 mL (Apretude)",
+          "note": "UM LR. Restricted to NDC labeler 49702 only (p.28). CDL does not state medical vs pharmacy benefit",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lenacapavir tablets 300 mg (labeler 61958 only, p.32) and lenacapavir injection 463.5 mg/1.5 mL",
+          "note": "Tablet row carries UM LR, labeler 61958. Injection row has no UM flag as printed. The CDL lists the molecule only and does not state an indication, so PrEP (Yeztugo) vs treatment (Sunlenca) is not distinguished",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read from CDL pp.28, 31, 32. Preferred pick is the unflagged generic emtricitabine/tenofovir DF 200/300 mg. p.5 states: 'Drugs indicated for the treatment of HIV may be used for PEP without obtaining a PA.' No other HIV-specific carve-out from TAR or PA appears in this document. Partial: Apretude and lenacapavir injection benefit route (pharmacy vs medical) is not printed, and the lenacapavir indication is not distinguished. Sig is standard label dosing, not printed.",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "medi-cal-rx"
+    },
+    {
+      "classId": "hiv-art",
+      "preferredAgent": {
+        "inn": "Bictegravir/emtricitabine/tenofovir alafenamide",
+        "brand": "Biktarvy",
+        "genericAvailable": false,
+        "strength": "50 mg/200 mg/25 mg tablet",
+        "sig": "1 tablet once daily, with or without food (label).",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": "Labeler restriction (LR): claim pays only for NDC labeler code 61958 (p.28). No PA printed.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Listed on CDL; Code I labeler restriction (*) on brand regimens",
+      "alternatives": [
+        {
+          "drug": "Abacavir/dolutegravir/lamivudine (Triumeq) 600 mg/50 mg/300 mg tablet",
+          "note": "UM LR. Restricted to NDC labeler 49702 only (p.27)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Dolutegravir/lamivudine (Dovato) 50 mg/300 mg tablet",
+          "note": "UM LR. Restricted to NDC labeler 49702 only (p.29)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Dolutegravir/rilpivirine (Juluca) 50 mg/25 mg tablet",
+          "note": "UM LR. Restricted to NDC labeler 49702 only (p.29)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Darunavir/cobicistat/emtricitabine/tenofovir alafenamide (Symtuza) 800/150/200/10 mg tablet",
+          "note": "UM LR. Restricted to NDC labeler 59676 only (p.29)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Elvitegravir/cobicistat/emtricitabine/tenofovir alafenamide (Genvoya) 150/150/200/10 mg tablet",
+          "note": "UM LR. Restricted to NDC labeler 61958 only (p.30)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Emtricitabine/rilpivirine/tenofovir alafenamide (Odefsey) 200/25/25 mg tablet",
+          "note": "UM LR. Restricted to NDC labeler 61958 only (p.31)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Efavirenz/emtricitabine/tenofovir DF 600/200/300 mg tablet (generic)",
+          "note": "Listed, no UM flag (p.30). Efavirenz-based older regimen; not chosen as preferred (judgment)",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Cabotegravir/rilpivirine LA injection kits 400/600 mg and 600/900 mg (Cabenuva)",
+          "note": "UM LR. Restricted to NDC labeler 49702 only (p.28). Injection; CDL does not state medical vs pharmacy benefit",
+          "sourceIds": [
+            "medi-cal-rx-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from CDL pp.27-31. Biktarvy is restricted to NDC labeler 61958 (the Gilead-coded NDC) under Code I; within that condition no PA is printed, so preferredRestriction is null. Only the single-tablet regimens named in the class description are considered. Cabenuva benefit route is not printed. Sig is standard label dosing, not printed. p.5 PEP statement applies to HIV drugs for post-exposure prophylaxis, not to this treatment class. [Sonnet check 2026-10-27: preferredRestriction was null; added the printed LR. Pick is the labeler-61958 Biktarvy product.]",
+      "sourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "medi-cal-rx-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "medi-cal-rx"
+    },
+    {
+      "classId": "hiv-prep",
+      "preferredAgent": {
+        "inn": "Emtricitabine / tenofovir disoproxil fumarate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200-300 mg tablet",
+        "sig": "PrEP: 1 tablet once daily. Confirm a negative HIV test before starting and test every 3 months (label).",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day; get an HIV test every 3 months."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic, preventive)",
+      "alternatives": [
+        {
+          "drug": "Descovy (emtricitabine-tenofovir alafenamide) 200-25 mg tablet",
+          "note": "Tier 2, brand, PREV flag (PDF p.19)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Descovy (emtricitabine-tenofovir alafenamide) 120-15 mg tablet",
+          "note": "Tier 2, brand, no flag (PDF p.19)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Emtricitabine-tenofovir DF 200-300 mg tablet read at PDF p.19: Tier 1, carries the PREV flag (USPSTF A/B preventive drug; no cost share in select plans, p.8). Descovy 200-25 mg and 120-15 mg read at p.19: Tier 2, no flags. Apretude (cabotegravir LA) and Yeztugo (lenacapavir) do not appear in this document; Apretude is typically clinic-administered, so it may sit under the medical benefit. Not all-inclusive, so not called excluded. Document says: \"Kaiser Foundation Health Plan does not have a requirement for PA\" (PDF p.6) and \"does not have a requirement for Step Therapy\" (PDF p.7). Drugs not listed are nonformulary; when a Kaiser or referral doctor determines one is medically appropriate and necessary it is covered by formulary exception (PDF p.7; decision within 72 hours, 24 urgent, PDF p.8). Completeness is ambiguous: p.6 defines the formulary as \"the complete list of prescription drugs preferred for use and eligible for coverage\" but p.2 says \"not an all-inclusive list\", so absence is not treated as exclusion. [Sonnet check 2026-10-27: Descovy 200-25 mg carries PREV (note said no flag); Apretude and Yeztugo are clinic-administered, likely medical benefit, not called nonformulary]",
+      "sourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "kaiser-permanente-ca"
+    },
+    {
+      "classId": "hiv-art",
+      "preferredAgent": {
+        "inn": "Bictegravir / emtricitabine / tenofovir alafenamide",
+        "brand": "Biktarvy",
+        "genericAvailable": false,
+        "strength": "50-200-25 mg tablet",
+        "sig": "1 tablet once daily, with or without food (label).",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (brand)",
+      "alternatives": [
+        {
+          "drug": "Efavirenz / emtricitabine / tenofovir DF 600-200-300 mg tablet",
+          "note": "Tier 1 (generic), no flag (PDF p.19)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Genvoya (elvitegravir-cobicistat-FTC-TAF)",
+          "note": "Tier 2, no flag (PDF p.20)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Odefsey (rilpivirine-FTC-TAF)",
+          "note": "Tier 2, no flag (PDF p.20)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Triumeq (abacavir-dolutegravir-lamivudine)",
+          "note": "Tier 2, no flag (PDF p.21)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Dovato (dolutegravir-lamivudine)",
+          "note": "Tier 2, no flag (PDF p.19)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Juluca (dolutegravir-rilpivirine)",
+          "note": "Tier 2, no flag (PDF p.20)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Symtuza (darunavir-cobicistat-FTC-TAF)",
+          "note": "Tier 2, no flag (PDF p.21)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Stribild (elvitegravir-cobicistat-FTC-TDF)",
+          "note": "Tier 2, no flag (PDF p.21)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Complera (rilpivirine-FTC-TDF)",
+          "note": "Tier 2, no flag (PDF p.19)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Symfi (efavirenz-lamivudine-TDF 600-300-300 mg)",
+          "note": "Tier 2, no flag (PDF p.21)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Cabenuva (cabotegravir-rilpivirine injection)",
+          "note": "Tier 2, no flag (injectable; no MB flag printed) (PDF p.19)",
+          "sourceIds": [
+            "kaiser-permanente-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Biktarvy 50-200-25 mg tablet read at PDF p.19: Tier 2, no flags, no generic. Efavirenz-FTC-TDF generic (Tier 1) read at p.19. Other single-tablet regimens read at p.19-21 (Tier 2, no flags). Cabenuva is an injectable; the document prints no MB flag on it, so it is listed as an alternative only. Not all-inclusive. Document says: \"Kaiser Foundation Health Plan does not have a requirement for PA\" (PDF p.6) and \"does not have a requirement for Step Therapy\" (PDF p.7). Drugs not listed are nonformulary; when a Kaiser or referral doctor determines one is medically appropriate and necessary it is covered by formulary exception (PDF p.7; decision within 72 hours, 24 urgent, PDF p.8). Completeness is ambiguous: p.6 defines the formulary as \"the complete list of prescription drugs preferred for use and eligible for coverage\" but p.2 says \"not an all-inclusive list\", so absence is not treated as exclusion. [Sonnet check 2026-10-27: policy wording corrected]",
+      "sourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kaiser-permanente-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "kaiser-permanente-ca"
+    },
+    {
+      "classId": "hiv-prep",
+      "preferredAgent": {
+        "inn": "Emtricitabine-tenofovir disoproxil fumarate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/300 mg tablet",
+        "sig": "PrEP: 1 tablet once daily. Confirm a negative HIV test before starting and test every 3 months (label).",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day; get an HIV test every 3 months."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 ($0 preventive)",
+      "alternatives": [
+        {
+          "drug": "Descovy (emtricitabine-tenofovir alafenamide) tablet 200 mg-25 mg",
+          "note": "Tier 2; $0 preventive; QL 1 tablet per day (page 51)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Emtricitabine-tenofovir DF oral tablet 200-300 mg: Tier 1; $0 (preventive drug), QL (1 tablet per 1 day), no PA or ST, page 51 (layout extraction). Descovy 200-25 mg is listed as an alternative with the same $0 preventive flag. Apretude (cabotegravir LA) and Yeztugo (lenacapavir) do not appear on the list or its index; Apretude is provider-administered and may fall under the medical benefit (page 2). Truvada brand is not listed separately.",
+      "sourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "anthem-bcbs-ca"
+    },
+    {
+      "classId": "hiv-art",
+      "preferredAgent": {
+        "inn": "Bictegravir-emtricitabine-tenofovir alafenamide",
+        "brand": "Biktarvy",
+        "genericAvailable": false,
+        "strength": "50 mg/200 mg/25 mg tablet",
+        "sig": "1 tablet once daily, with or without food (label).",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (QL)",
+      "alternatives": [
+        {
+          "drug": "Dovato (dolutegravir-lamivudine) tablet",
+          "note": "Tier 2, QL 1 tablet per day (page 51)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Genvoya (elvitegravir-cobicistat-emtricitabine-tenofovir alafenamide) tablet",
+          "note": "Tier 2, QL 1 tablet per day (page 51)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Stribild (elvitegravir-cobicistat-emtricitabine-tenofovir DF) tablet",
+          "note": "Tier 2, QL 1 tablet per day (page 51)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Triumeq (abacavir-dolutegravir-lamivudine) tablet",
+          "note": "Tier 2, QL 1 tablet per day (page 51)",
+          "sourceIds": [
+            "anthem-bcbs-ca-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Biktarvy oral tablet: Tier 2, QL (1 tablet per 1 day), no PA or ST, page 51 (layout extraction). Dovato, Genvoya, Stribild and Triumeq are the other complete single-tablet regimens on the list (Tier 2, QL, no PA). Descovy and single-agent components are not complete regimens and are not alternatives. Odefsey, Juluca, Symtuza, efavirenz-emtricitabine-tenofovir generic and Cabenuva do not appear on the list or its index; Cabenuva is provider-administered (medical benefit possible, page 2).",
+      "sourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "anthem-bcbs-ca-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "anthem-bcbs-ca"
+    }
+  ],
+  "references": [
+    {
+      "id": "medi-cal-rx-next11-2026-10",
+      "label": "Medi-Cal Rx Contract Drugs List (effective 10/01/2026, 242 pages)",
+      "publisher": "California Department of Health Care Services (Medi-Cal Rx)",
+      "type": "gov",
+      "url": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "kaiser-permanente-ca-next11-2026-10",
+      "label": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "publisher": "Kaiser Permanente",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "effectiveDate": "2026-10-06",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "anthem-bcbs-ca-next11-2026-10",
+      "label": "2026 California Select Drug List, Four Tier (IND), Last Updated October 1, 2026",
+      "publisher": "Anthem Blue Cross (Elevance Health)",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}
