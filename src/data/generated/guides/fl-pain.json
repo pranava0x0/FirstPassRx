@@ -1,0 +1,1216 @@
+{
+  "id": "fl-pain",
+  "label": "FL · Pain (opioids, nerve pain, muscle relaxants)",
+  "stateCode": "FL",
+  "region": "Florida",
+  "topicId": "pain",
+  "topic": "Pain (opioids, nerve pain, muscle relaxants)",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-10-27",
+  "capturedAt": "2026-10-27",
+  "payers": [
+    {
+      "id": "fl-medicaid",
+      "name": "Florida Medicaid",
+      "shortName": "FL Medicaid",
+      "aka": "Florida Medicaid Preferred Drug List (AHCA); Statewide Medicaid Managed Care plans follow the same PDL",
+      "productName": "Florida Medicaid Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Florida Medicaid Preferred Drug List, effective October 1, 2026",
+      "formularyUrl": "https://ahca.myflorida.com/file/medicaid/PDL_Effective_10.01.2026.pdf",
+      "sourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ]
+    },
+    {
+      "id": "florida-blue",
+      "name": "Florida Blue",
+      "shortName": "Florida Blue",
+      "aka": "Blue Cross and Blue Shield of Florida",
+      "pbm": "Prime Therapeutics",
+      "productName": "Florida Blue 2026 6-Tier ValueScript formulary (individual / ACA)",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "ValueScript Rx Medication Guide, October 2026 (Florida Blue, 6-tier closed formulary)",
+      "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_FL_6T_ValueScript.pdf",
+      "sourceIds": [
+        "florida-blue-next11-2026-10"
+      ]
+    },
+    {
+      "id": "uhc-fl",
+      "name": "UnitedHealthcare (Commercial)",
+      "shortName": "UnitedHealthcare",
+      "aka": "National commercial PDL (same list in every state)",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "paPolicyUrl": "https://www.uhcprovider.com/en/resource-library/drug-lists-pharmacy.html",
+      "productName": "UnitedHealthcare 2026 Commercial PDL (base list)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 Prescription Drug List (PDL), UnitedHealthcare & affiliated companies",
+      "sourceIds": [
+        "uhc-fl-next11-2026-10"
+      ]
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "opioid-ir",
+      "name": "Short-acting opioids",
+      "shortName": "OPIOID IR",
+      "plainName": "Short-acting opioid",
+      "description": "Immediate-release opioids for acute pain: hydrocodone/acetaminophen, oxycodone IR and oxycodone/acetaminophen, tramadol, tapentadol IR (Nucynta), morphine IR, hydromorphone IR, codeine/acetaminophen.",
+      "plainDescription": "A short-acting opioid pain pill for acute pain.",
+      "indication": "Acute pain",
+      "sourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ]
+    },
+    {
+      "id": "gabapentinoid",
+      "name": "Gabapentinoids",
+      "shortName": "GABA",
+      "plainName": "Gabapentin or pregabalin",
+      "description": "Gabapentin (Neurontin, Gralise, Horizant), pregabalin IR/CR (Lyrica, Lyrica CR).",
+      "plainDescription": "A daily pill for nerve pain or shingles pain.",
+      "indication": "Neuropathic pain, postherpetic neuralgia, fibromyalgia",
+      "sourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ]
+    },
+    {
+      "id": "muscle-relaxant",
+      "name": "Skeletal muscle relaxants",
+      "shortName": "MUSCLE",
+      "plainName": "Muscle relaxant",
+      "description": "Cyclobenzaprine (IR, ER/Amrix), methocarbamol, tizanidine, baclofen, metaxalone, carisoprodol, orphenadrine, chlorzoxazone.",
+      "plainDescription": "A short-term pill for muscle spasms.",
+      "indication": "Musculoskeletal spasm, spasticity",
+      "sourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "opioid-ir",
+      "preferredAgent": {
+        "inn": "Hydrocodone bitartrate and acetaminophen",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg/325 mg tablet",
+        "sig": "1 to 2 tablets (5/325 mg) every 4 to 6 hours as needed for acute pain; max 8 tablets/day; shortest course needed (label).",
+        "sigShort": "1-2 tabs q4-6h PRN",
+        "plainSig": "One or two pills every 4 to 6 hours if needed for pain."
+      },
+      "preferredRestriction": "AHCA Auto PA doc (pp.26, 33): opioid edits do not override a limit of 4 controlled substances per rolling 27 days (6 with a cancer or sickle cell diagnosis); the PDL itself prints no day-supply or quantity limit.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "PDL listed, no PA (page 35)",
+      "alternatives": [
+        {
+          "drug": "Oxycodone HCl IR 5/10/15/20/30 mg tablets",
+          "note": "No PA (PDL p.34)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        },
+        {
+          "drug": "Oxycodone/acetaminophen 5/325 and 10/325 mg",
+          "note": "No PA (PDL p.36)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        },
+        {
+          "drug": "Tramadol HCl 50 mg tablet",
+          "note": "No PA, age 12+ (PDL p.34)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        },
+        {
+          "drug": "Tramadol/acetaminophen 37.5/325 mg",
+          "note": "No PA, age 18+ (PDL p.36)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        },
+        {
+          "drug": "Morphine sulfate IR 15/30 mg tablets",
+          "note": "No PA (PDL p.34)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        },
+        {
+          "drug": "Hydromorphone HCl 2/4/8 mg tablets",
+          "note": "No PA (PDL p.33)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        },
+        {
+          "drug": "Acetaminophen with codeine #3/#4 tablets",
+          "note": "No PA, age 12+ (PDL p.35)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL pp.33-36. All IR opioids listed no PA. Tapentadol (Nucynta) not listed on PDL (not coded nonformulary). Controlled substance (C-II): PDL has no quantity-limit or day-supply column and prints no limit for these items, so none recorded. [Sonnet check 2026-10-27: Hydrocodone/acetaminophen is named in the class definition, so a combination product is in class here; all rows verified PDL p.35-36, no PA, age 0+. Added the printed controlled-substance count limit.]",
+      "sourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ],
+      "coverageSourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ],
+      "restrictionSourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "fl-medicaid"
+    },
+    {
+      "classId": "gabapentinoid",
+      "preferredAgent": {
+        "inn": "Gabapentin",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "300 mg capsule",
+        "sig": "Nerve pain after shingles: 300 mg on day 1, 300 mg twice daily on day 2, 300 mg three times daily on day 3, then titrate up to 1,800 mg/day in 3 doses as needed (label).",
+        "sigShort": "300 mg d1 to TID by d3",
+        "plainSig": "One capsule the first day, two the second, three the third; your prescriber may go higher."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "PDL listed, no PA (page 38)",
+      "alternatives": [
+        {
+          "drug": "Gabapentin 100/400 mg capsules, 600/800 mg tablets, oral solution",
+          "note": "No PA (PDL p.38)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        },
+        {
+          "drug": "Pregabalin 25-300 mg capsules, oral solution",
+          "note": "No PA (PDL p.39)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL pp.38-39. Gabapentin and pregabalin IR listed no PA. Neurontin, Gralise, Horizant and Lyrica CR not listed on PDL (not coded nonformulary). AHCA Auto PA doc places brand Neurontin and Gralise on a seizure-diagnosis edit; the generic listed here bypasses it per the document. Judgment: gabapentin 300 mg as the common low-cost generic.",
+      "sourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ],
+      "coverageSourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ],
+      "restrictionSourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "fl-medicaid"
+    },
+    {
+      "classId": "muscle-relaxant",
+      "preferredAgent": {
+        "inn": "Cyclobenzaprine HCl",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "5 mg three times daily; may increase to 10 mg three times daily. Use for 2 to 3 weeks (label).",
+        "sigShort": "5-10 mg TID x2-3 wk",
+        "plainSig": "One 5 mg pill three times a day for a few weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "PDL listed, no PA (page 42)",
+      "alternatives": [
+        {
+          "drug": "Cyclobenzaprine HCl 5 mg tablet",
+          "note": "No PA (PDL p.42)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        },
+        {
+          "drug": "Methocarbamol 500/750/1000 mg tablets",
+          "note": "No PA (PDL p.42)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        },
+        {
+          "drug": "Tizanidine HCl 2/4 mg tablets",
+          "note": "No PA (PDL p.42)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        },
+        {
+          "drug": "Baclofen tablets 5/10/15/20 mg",
+          "note": "No PA (PDL p.41-42)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        },
+        {
+          "drug": "Chlorzoxazone 500 mg tablet",
+          "note": "No PA (PDL p.42)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        },
+        {
+          "drug": "Orphenadrine citrate ER 100 mg tablet",
+          "note": "No PA (PDL p.42)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Baclofen oral solution 5 mg/5 mL and 25 mg/5 mL",
+          "outcome": "pa",
+          "reason": "Auto PA (PDL column) (PDL p.42): listed Auto PA, age 12+ (liquid formulations only)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL pp.41-42. Cyclobenzaprine, methocarbamol, tizanidine, baclofen tablets, chlorzoxazone and orphenadrine ER listed no PA. Not listed on PDL: metaxalone, carisoprodol, Amrix (not coded nonformulary). Judgment: cyclobenzaprine 10 mg as the most common generic muscle relaxant.",
+      "sourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ],
+      "coverageSourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ],
+      "restrictionSourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "fl-medicaid"
+    },
+    {
+      "classId": "opioid-ir",
+      "preferredAgent": {
+        "inn": "Hydrocodone bitartrate and acetaminophen",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg/325 mg tablet",
+        "sig": "1 to 2 tablets (5/325 mg) every 4 to 6 hours as needed for acute pain; max 8 tablets/day; shortest course needed (label).",
+        "sigShort": "1-2 tabs q4-6h PRN",
+        "plainSig": "One or two pills every 4 to 6 hours if needed for pain."
+      },
+      "preferredRestriction": "PA required (Prior Authorization Program, PDF p.78); quantity limit 360 tablets per 30 days (PDF p.78).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3 (Low-Cost Generic)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Hydrocodone bitartrate and acetaminophen 7.5/325 mg and 10/325 mg tablet",
+          "outcome": "pa",
+          "reason": "PA required; Tier 3; QL 180 tablets per 30 days for 10/325 and 7.5/325 (PDF p.78)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxycodone HCl 5 mg tablet (Roxicodone)",
+          "outcome": "pa",
+          "reason": "PA required; Tier 3; QL 360 tablets per 30 days (PDF p.79)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxycodone and acetaminophen 2.5/325 mg and 5/325 mg tablet (Percocet)",
+          "outcome": "pa",
+          "reason": "PA required; Tier 3; QL 360 tablets per 30 days (PDF p.79)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxycodone and acetaminophen 7.5/325 mg and 10/325 mg tablet (Percocet)",
+          "outcome": "pa",
+          "reason": "PA required; Tier 3; QL 240 and 180 tablets per 30 days (PDF p.79)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tapentadol IR tablet 50-100 mg (Nucynta)",
+          "outcome": "pa",
+          "reason": "PA required; Tier 5; QL 180 tablets per 30 days (PDF p.79)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tramadol HCl 50 mg tablet (Ultram)",
+          "outcome": "pa",
+          "reason": "PA required; Tier 3; QL 240 tablets per 30 days (PDF p.80)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tramadol and acetaminophen 37.5/325 mg tablet (Ultracet)",
+          "outcome": "pa",
+          "reason": "PA required; Tier 3; QL 240 tablets per 30 days (PDF p.80)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Morphine sulfate IR tablet 15 mg",
+          "outcome": "pa",
+          "reason": "PA required; Tier 3; QL 240 tablets per 30 days (PDF p.79)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydromorphone HCl IR tablet 2, 4, 8 mg (Dilaudid)",
+          "outcome": "pa",
+          "reason": "PA required; Tier 3; QL 180 tablets per 30 days (PDF p.79)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Acetaminophen and codeine 300/30 mg tablet (Tylenol with codeine)",
+          "outcome": "pa",
+          "reason": "PA required; Tier 3; QL 360 tablets per 30 days (PDF p.77)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp.77-80. Every short-acting opioid row carries PA and QL; none is covered without PA, so no alternatives are listed. Pick (judgment): hydrocodone-acetaminophen 5/325 mg, the common Tier 3 PA product with the same QL as the oxycodone 5 mg line. The paRequired list is a representative set, not every strength. Sig is not printed; standard label dosing used. Schedule II is an external fact, not printed in the guide. [Sonnet check 2026-10-27: hydrocodone/acetaminophen is named in the opioid-ir class description, so it is in class; Tier 3, PA, QL 360/30 days (5/325) confirmed PDF p.78]",
+      "sourceIds": [
+        "florida-blue-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "florida-blue-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "florida-blue-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "florida-blue"
+    },
+    {
+      "classId": "gabapentinoid",
+      "preferredAgent": {
+        "inn": "Gabapentin",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "300 mg capsule",
+        "sig": "Nerve pain after shingles: 300 mg on day 1, 300 mg twice daily on day 2, 300 mg three times daily on day 3, then titrate up to 1,800 mg/day in 3 doses as needed (label).",
+        "sigShort": "300 mg d1 to TID by d3",
+        "plainSig": "One capsule the first day, two the second, three the third; your prescriber may go higher."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3 (Low-Cost Generic)",
+      "alternatives": [
+        {
+          "drug": "Gabapentin tablet 600 mg and 800 mg (Neurontin)",
+          "note": "Tier 3; no PA/ST/QL printed (PDF p.85)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gabapentin oral solution 250 mg/5 mL (Neurontin)",
+          "note": "Tier 5; no PA/ST/QL printed (PDF p.85)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pregabalin capsule 25-300 mg (Lyrica)",
+          "note": "Tier 3; QL 60-360 capsules/30 days by strength; no PA/ST printed (PDF p.86)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pregabalin oral solution 20 mg/mL (Lyrica)",
+          "note": "Tier 5; QL 900 mL/30 days; no PA/ST printed (PDF p.86)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Gabapentin enacarbil ER tablet (Horizant)",
+          "outcome": "nonformulary",
+          "reason": "Not on the closed formulary list, and a closed formulary does not cover unlisted medications; brand absent from the guide (searched full text and index). Guide p.2 (PDF): \"ValueScript is a closed formulary pharmacy plan. This means any medications not on the formulary (included in the medication list) are not covered\" and \"Brand name medications not listed in the medication list are not covered\".",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp.85-86 (guide lists gabapentin and pregabalin under the anticonvulsant section). Pick: generic gabapentin 300 mg capsule, Tier 3, no PA/ST/QL (judgment: common lowest-barrier strength). Titration sig is standard label dosing; the guide prints no sig and no dose schedule. Gralise, Horizant and Lyrica CR are absent and recorded nonformulary. [Sonnet check 2026-10-27: removed from paRequired (brand has an AB-rated generic form, and the guide says generics are covered unless specifically excluded, so absence is not proof of nonformulary): Gabapentin once-daily tablet (Gralise); Pregabalin ER tablet (Lyrica CR)]",
+      "sourceIds": [
+        "florida-blue-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "florida-blue-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "florida-blue-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "florida-blue"
+    },
+    {
+      "classId": "muscle-relaxant",
+      "preferredAgent": {
+        "inn": "Cyclobenzaprine HCl",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "5 mg three times daily; may increase to 10 mg three times daily. Use for 2 to 3 weeks (label).",
+        "sigShort": "5-10 mg TID x2-3 wk",
+        "plainSig": "One 5 mg pill three times a day for a few weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3 (Low-Cost Generic)",
+      "alternatives": [
+        {
+          "drug": "Methocarbamol tablet 500 mg and 750 mg",
+          "note": "Tier 3; no PA/ST/QL printed (PDF p.89)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tizanidine tablet 2 mg and 4 mg (Zanaflex)",
+          "note": "Tier 3; no PA/ST/QL printed (PDF p.89)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Baclofen tablet 10 mg and 20 mg",
+          "note": "Tier 3; no PA/ST/QL printed (PDF p.88)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carisoprodol tablet 350 mg (Soma)",
+          "note": "Tier 3; no PA/ST/QL printed (PDF p.88)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Orphenadrine citrate ER tablet 100 mg",
+          "note": "Tier 3; no PA/ST/QL printed (PDF p.89)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Chlorzoxazone tablet 500 mg",
+          "note": "Tier 3; no PA/ST/QL printed (PDF p.88)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metaxalone tablet 400 mg and 800 mg (Skelaxin)",
+          "note": "Tier 5; no PA/ST/QL printed (PDF p.89)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp.88-89. Pick: generic cyclobenzaprine IR 10 mg, Tier 3, no PA/ST/QL (judgment: common muscle relaxant). Sig is standard label dosing; the guide prints no sig. Cyclobenzaprine IR 5 mg is also Tier 3. Amrix / ER absent, recorded nonformulary. [Sonnet check 2026-10-27: removed from paRequired (brand has an AB-rated generic form, and the guide says generics are covered unless specifically excluded, so absence is not proof of nonformulary): Cyclobenzaprine ER capsule (Amrix)]",
+      "sourceIds": [
+        "florida-blue-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "florida-blue-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "florida-blue-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "florida-blue"
+    },
+    {
+      "classId": "opioid-ir",
+      "preferredAgent": {
+        "inn": "Hydrocodone bitartrate and acetaminophen",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5-325 mg oral tablet (document lists 2.5-325, 5-325, 7.5-325, 10-325 mg)",
+        "sig": "1 to 2 tablets (5/325 mg) every 4 to 6 hours as needed for acute pain; max 8 tablets/day; shortest course needed (label).",
+        "sigShort": "1-2 tabs q4-6h PRN",
+        "plainSig": "One or two pills every 4 to 6 hours if needed for pain."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Oxycodone hcl oral tablet",
+          "note": "Tier 1, QL (p.8); quantity not printed",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxycodone-acetaminophen oral tablet (generic)",
+          "note": "Tier 1, QL (p.8); quantity not printed",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tramadol hcl oral tablet 50 mg",
+          "note": "Tier 1, QL (p.8); quantity not printed",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tramadol-acetaminophen",
+          "note": "Tier 1, QL (p.8); quantity not printed",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Morphine sulfate oral tablet (immediate-release)",
+          "note": "Tier 1, QL (p.8); quantity not printed",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydromorphone hcl oral tablet",
+          "note": "Tier 1, QL (p.7); quantity not printed",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Acetaminophen-codeine oral tablet",
+          "note": "Tier 1, QL (p.7); quantity not printed",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nucynta (tapentadol IR)",
+          "note": "Tier 4, QL (p.7); Tier 4 may be covered only in select benefits (p.5)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Percocet (oxycodone-acetaminophen brand), QL",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.8)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Roxicodone (oxycodone brand), QL",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.8)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Dilaudid (hydromorphone brand), QL",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.7)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydrocodone-acetaminophen 10-300 mg oral tablet, QL",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.7)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read pp.7-8 from rendered page images. Hydrocodone-acetaminophen 2.5-325 to 10-325 mg oral tablets are Tier 1 with QL. The QL flag is printed without a quantity, so no quantity limit is recorded. Controlled substance: no day-supply or MME limit printed. Oxycontin and Xtampza are extended-release and omitted. [Sonnet check 2026-10-22: E is a symbol in the Tier column, not a tier; the legend (p.5) says E drugs may be excluded or subject to PA and the page footer says E and ST drugs are subject to PA, so E items stay as PA-type with that wording.] [Reused: same national UHC commercial PDL (commercial-pdl-jan-2026.pdf) cited for uhc-fl]",
+      "sourceIds": [
+        "uhc-fl-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "uhc-fl-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "uhc-fl-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "uhc-fl"
+    },
+    {
+      "classId": "gabapentinoid",
+      "preferredAgent": {
+        "inn": "Gabapentin",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Oral capsule (strength not printed in document)",
+        "sig": "Nerve pain after shingles: 300 mg on day 1, 300 mg twice daily on day 2, 300 mg three times daily on day 3, then titrate up to 1,800 mg/day in 3 doses as needed (label).",
+        "sigShort": "300 mg d1 to TID by d3",
+        "plainSig": "One capsule the first day, two the second, three the third; your prescriber may go higher."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Gabapentin oral solution 250 mg/5 mL",
+          "note": "Tier 1, no flag (p.11)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gabapentin oral tablet 600 mg, 800 mg",
+          "note": "Tier 1, no flag (p.11)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pregabalin oral capsule",
+          "note": "Tier 2, no flag (p.23)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Lyrica (pregabalin brand)",
+          "outcome": "pa",
+          "reason": "PA required; Tier 4 (p.23)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Neurontin (gabapentin brand)",
+          "outcome": "pa",
+          "reason": "PA required; Tier 4 (p.12)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gabapentin oral tablet 25 mg, 50 mg",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) and PA (p.11)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gabarone (brand, listed as E and PA)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) and PA (p.11)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read pp.11, 12 and 23 from rendered page images. Generic gabapentin capsule and 600/800 mg tablet are Tier 1 with no flags; capsule chosen as preferred. Strength and sig not printed; standard label dosing used. Gralise, Horizant and Lyrica CR are not listed. [Sonnet check 2026-10-22: E is a symbol in the Tier column, not a tier; the legend (p.5) says E drugs may be excluded or subject to PA and the page footer says E and ST drugs are subject to PA, so E items stay as PA-type with that wording.] [Reused: same national UHC commercial PDL (commercial-pdl-jan-2026.pdf) cited for uhc-fl]",
+      "sourceIds": [
+        "uhc-fl-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "uhc-fl-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "uhc-fl-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "uhc-fl"
+    },
+    {
+      "classId": "muscle-relaxant",
+      "preferredAgent": {
+        "inn": "Cyclobenzaprine hcl",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg oral tablet",
+        "sig": "5 mg three times daily; may increase to 10 mg three times daily. Use for 2 to 3 weeks (label).",
+        "sigShort": "5-10 mg TID x2-3 wk",
+        "plainSig": "One 5 mg pill three times a day for a few weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Methocarbamol oral tablet 500 mg, 750 mg",
+          "note": "Tier 1, no flag (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tizanidine hcl oral tablet",
+          "note": "Tier 1, no flag (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Baclofen oral tablet 5, 10, 20 mg",
+          "note": "Tier 1, no flag (p.49)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carisoprodol oral tablet 350 mg",
+          "note": "Tier 1, no flag (p.49)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Chlorzoxazone oral tablet 500 mg",
+          "note": "Tier 1, no flag (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Orphenadrine citrate ER",
+          "note": "Tier 2, no flag (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metaxalone oral tablet 400 mg, 800 mg",
+          "note": "Tier 3, no flag (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tizanidine hcl oral capsule",
+          "note": "Tier 3, no flag (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Fexmid (cyclobenzaprine brand)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Soma (carisoprodol brand)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Cyclobenzaprine hcl oral tablet 7.5 mg",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Baclofen oral tablet 15 mg",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.49)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carisoprodol oral tablet 250 mg",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.49)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Chlorzoxazone oral tablet 250, 375, 750 mg",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Methocarbamol oral tablet 1000 mg",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metaxalone oral tablet 640 mg",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Vanadom 350 mg (brand)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read pp.49-50 from rendered page images. Cyclobenzaprine 10 mg tablet is Tier 1 with no flag; chosen as the most common product. Several strengths carry the E symbol. Strength beyond the printed 10 mg and sig are not printed; standard label dosing used. Zanaflex and Amrix not listed as covered alternatives. [Sonnet check 2026-10-22: E is a symbol in the Tier column, not a tier; the legend (p.5) says E drugs may be excluded or subject to PA and the page footer says E and ST drugs are subject to PA, so E items stay as PA-type with that wording.] [Reused: same national UHC commercial PDL (commercial-pdl-jan-2026.pdf) cited for uhc-fl]",
+      "sourceIds": [
+        "uhc-fl-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "uhc-fl-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "uhc-fl-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "uhc-fl"
+    },
+    {
+      "classId": "opioid-ir",
+      "preferredAgent": {
+        "inn": "Tramadol hydrochloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet",
+        "sig": "50-100 mg every 4 to 6 hours as needed for pain; max 400 mg/day. For longer use, start 25 mg daily and titrate (label).",
+        "sigShort": "50-100 mg q4-6h PRN",
+        "plainSig": "One or two pills every 4 to 6 hours if needed for pain."
+      },
+      "preferredRestriction": "Controlled substance (Schedule IV): dispensing limit (30-day supply) and quantity limit 240 tablets per 30 days; no PA or step printed on this strength.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (Generic)",
+      "alternatives": [
+        {
+          "drug": "Hydrocodone-acetaminophen tablet (2.5 to 10 mg / 325 mg)",
+          "note": "Tier 3; DL and QL 360 per 30 days (page 11)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxycodone IR tablet (5, 10 mg)",
+          "note": "Tier 3; DL and QL 360 per 30 days (page 12)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxycodone-acetaminophen tablet (2.5 to 10 mg / 325 mg)",
+          "note": "Tier 3; DL and QL 360 per 30 days (page 12)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Acetaminophen-codeine tablet (300 mg / 15, 30, 60 mg)",
+          "note": "Tier 3; DL; QL 180 to 390 per 30 days by strength (page 11)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydromorphone tablet (2, 4, 8 mg)",
+          "note": "Tier 3; DL; QL 240 to 360 per 30 days (page 11)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Morphine IR tablet (15, 30 mg)",
+          "note": "Tier 3; DL and QL 180 per 30 days (page 12)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Tramadol ER tablet (100, 200, 300 mg)",
+          "outcome": "step",
+          "reason": "Step therapy (ST) and QL 30 per 30 days; Tier 4 (pages 12-13). Step criteria not printed in the guide.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": "Extended-release tramadol carries step therapy (pages 12-13). The 50 mg immediate-release tablet has no step therapy.",
+      "verification": "verified",
+      "verificationNote": "Tier 2, DL and QL 240 per 30 days for tramadol 50 mg read by x-coordinate on page 13. No PA or step on the immediate-release tablet. Judgment: tramadol 50 mg is the lowest-tier short-acting opioid. Combination products (hydrocodone, oxycodone and codeine with acetaminophen) are listed as alternatives because the class definition names them. Tapentadol (NUCYNTA) and codeine sulfate single-agent do not appear in the guide; the guide does not state it is complete, so they are not recorded as excluded. Methadone and the fentanyl and buprenorphine patches are outside this class. Controlled substance, so the limits are recorded in preferredRestriction. [Sonnet check 2026-10-27: Re-confirmed against Humana formulary 26402, v17 (updated 10/01/2026), sources/humana-premier-rx-pdp-newtopics-2026-10.pdf (tier, PA, ST, QL read by x-coordinate; the v16 copy used in the first pass is superseded). Pages, tiers and flags match v17.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "gabapentinoid",
+      "preferredAgent": {
+        "inn": "Gabapentin",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "300 mg capsule",
+        "sig": "Nerve pain after shingles: 300 mg on day 1, 300 mg twice daily on day 2, 300 mg three times daily on day 3, then titrate up to 1,800 mg/day in 3 doses as needed (label).",
+        "sigShort": "300 mg d1 to TID by d3",
+        "plainSig": "One capsule the first day, two the second, three the third; your prescriber may go higher."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (Generic)",
+      "alternatives": [
+        {
+          "drug": "Gabapentin tablet (600, 800 mg)",
+          "note": "Tier 2; QL 180 per 30 days, no PA (page 19)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gabapentin oral solution",
+          "note": "Tier 4; QL 2,250 mL per 30 days, no PA (page 19)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pregabalin capsule (25 to 300 mg)",
+          "note": "Tier 3; QL 90 per 30 days (60 per 30 days for 225 and 300 mg) (page 52)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pregabalin oral solution",
+          "note": "Tier 3; QL 900 mL per 30 days (page 52)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Tier 2 and QL 270 per 30 days for gabapentin 300 mg capsule read by x-coordinate on page 19. No PA or step. Judgment: 300 mg is the usual starting capsule strength. Titration is per label; the sig does not set a fixed daily dose. The QL is a quantity limit, not PA, so preferredRestriction is null. Gralise, Horizant, Neurontin and Lyrica brand names are not listed. [Sonnet check 2026-10-27: Re-confirmed against Humana formulary 26402, v17 (updated 10/01/2026), sources/humana-premier-rx-pdp-newtopics-2026-10.pdf (tier, PA, ST, QL read by x-coordinate; the v16 copy used in the first pass is superseded). Pages, tiers and flags match v17.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "muscle-relaxant",
+      "preferredAgent": {
+        "inn": "Tizanidine hydrochloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "4 mg tablet",
+        "sig": "Start 2 mg by mouth; may repeat every 6-8 hours as needed, up to 3 doses in 24 hours. Increase by 2-4 mg per dose as needed (max 36 mg/day) (label).",
+        "sigShort": "2 mg q6-8h PRN, max 3 doses/day",
+        "plainSig": "A small pill up to three times a day when needed. It can make you sleepy."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (Preferred Generic)",
+      "alternatives": [
+        {
+          "drug": "Cyclobenzaprine tablet (5, 10 mg)",
+          "note": "Tier 2, no utilization requirement (page 82). The usual acute muscle-spasm choice.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Methocarbamol tablet (500, 750 mg)",
+          "note": "Tier 2, no utilization requirement (page 82)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Baclofen tablet (5, 10, 20 mg)",
+          "note": "Tier 2; 5 mg QL 90 per 30 days, no PA (page 38)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Chlorzoxazone tablet (500 mg)",
+          "note": "Tier 4, no utilization requirement (page 82)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Tier 1 and no utilization flag for tizanidine 4 mg read by x-coordinate on page 38. No PA or step. Judgment: chosen on tier. Tizanidine is labeled for spasticity; cyclobenzaprine (Tier 2) is the usual acute muscle-spasm choice and is listed first among alternatives. Skelaxin (metaxalone), Soma (carisoprodol), orphenadrine and the cyclobenzaprine ER products are not in the guide. [Sonnet check 2026-10-27: Re-confirmed against Humana formulary 26402, v17 (updated 10/01/2026), sources/humana-premier-rx-pdp-newtopics-2026-10.pdf (tier, PA, ST, QL read by x-coordinate; the v16 copy used in the first pass is superseded). Cyclobenzaprine, methocarbamol and chlorzoxazone are on page 82; tizanidine and baclofen on page 38.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "fl-medicaid-next11-2026-10-pdl",
+      "label": "Florida Medicaid Preferred Drug List, effective October 1, 2026",
+      "publisher": "Florida Agency for Health Care Administration (AHCA)",
+      "type": "gov",
+      "url": "https://ahca.myflorida.com/file/medicaid/PDL_Effective_10.01.2026.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "florida-blue-next11-2026-10",
+      "label": "ValueScript Rx Medication Guide, October 2026 (Florida Blue, 6-tier closed formulary)",
+      "publisher": "Florida Blue (Prime Therapeutics)",
+      "type": "payer",
+      "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_FL_6T_ValueScript.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "uhc-fl-next11-2026-10",
+      "label": "2026 Prescription Drug List (PDL), UnitedHealthcare & affiliated companies",
+      "publisher": "UnitedHealthcare",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-10-22"
+    },
+    {
+      "id": "humana-premier-rx-pdp-next11-2026-10",
+      "label": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}
