@@ -31,7 +31,20 @@
   "Start with a small dose twice a day; your prescriber raises it over a few days."
  ],
  [
-  "^aripiprazole",
+  "^aripiprazole(?!.*(asimtufii|aristada|lauroxil)).*(inject|maintena)",
+  "400 mg IM (deltoid or gluteal) once monthly, no sooner than 26 days apart. Start with one 400 mg injection plus oral aripiprazole 10-20 mg daily for 14 days, or two 400 mg injections at separate sites plus one 20 mg oral dose; establish oral tolerability first (Abilify Maintena label).",
+  "400 mg IM q4wk + oral x14d",
+  "A shot at the clinic once a month. Keep taking the pills for the first 2 weeks."
+ ],
+ [
+  "^aripiprazole(?!.*(asimtufii|aristada|lauroxil))",
+  "400 mg IM (deltoid or gluteal) once monthly, no sooner than 26 days apart. Start with one 400 mg injection plus oral aripiprazole 10-20 mg daily for 14 days, or two 400 mg injections at separate sites plus one 20 mg oral dose; establish oral tolerability first (Abilify Maintena label).",
+  "400 mg IM q4wk + oral x14d",
+  "A shot at the clinic once a month. Keep taking the pills for the first 2 weeks.",
+  "inject|monthly|maintena"
+ ],
+ [
+  "^aripiprazole(?!.*(inject|maintena|asimtufii|aristada|lauroxil))",
   "Schizophrenia: 10-15 mg once daily. Bipolar mania: 15 mg once daily. Max 30 mg/day for both. Add-on for depression: start 2-5 mg once daily, max 15 mg/day. Dose per indication (label).",
   "Daily; dose per indication",
   "One pill once a day; the dose depends on what it is treating."
@@ -61,10 +74,16 @@
   "One capsule a day; the dose usually goes up after a week."
  ],
  [
-  "^venlafaxine",
+  "^venlafaxine(?=.*(\\bER\\b|\\bXR\\b|extended))",
   "Start 75 mg once daily with food (or 37.5 mg for 4-7 days), then increase by up to 75 mg/day every 4 or more days; max 225 mg/day (label).",
   "75 mg QD with food, titrate",
   "One capsule a day with food; your prescriber may raise the dose."
+ ],
+ [
+  "^venlafaxine(?!.*(\\bER\\b|\\bXR\\b|extended))",
+  "Start 75 mg/day by mouth in 2 or 3 divided doses with food; may increase by up to 75 mg/day every 4 days or more, usually to 150-225 mg/day (immediate-release tablet label).",
+  "37.5 mg BID with food, titrate",
+  "A pill two or three times a day with food. The dose may go up slowly."
  ],
  [
   "^(?!.*(hydrobromide|forfivo|aplenzin))bupropion.*(XL|extended-release \\(XL|extended-release tablet \\(XL|24-hour)",

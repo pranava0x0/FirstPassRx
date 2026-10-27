@@ -383,7 +383,7 @@ button {
   border-color: var(--accent-deep);
 }
 .plan-note {
-  margin: 5px 2px 0;
+  margin: 12px 2px 0;
   font-size: 12.5px;
   color: var(--ink-muted);
 }
@@ -726,9 +726,6 @@ button {
 .pa-summary b {
   font-weight: 600;
 }
-.pa-summary a {
-  white-space: nowrap;
-}
 #rx-options {
   scroll-margin-top: 12px;
 }
@@ -876,16 +873,13 @@ button {
   bottom: 0;
   z-index: 2;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 8px;
   margin: 0 -12px;
   padding: 10px 12px;
   background: var(--paper-shade);
   border-top: 1px solid var(--rule);
-}
-.pa-builder__actions {
-  flex-wrap: nowrap;
 }
 .pa-builder__actions .copy-btn {
   flex: 1 1 auto;
@@ -1004,7 +998,7 @@ button {
   text-transform: uppercase;
   color: var(--ink-muted);
 }
-.pa-builder input:not([type='checkbox']),
+.pa-builder input:not([type='checkbox']):not([type='radio']),
 .pa-builder select,
 .pa-builder textarea {
   width: 100%;
@@ -1204,7 +1198,7 @@ button {
 .panel-cite::after {
   content: '';
   position: absolute;
-  inset: -16px -6px;
+  inset: -12px -6px;
 }
 
 /* provenance: verification state + citation on one line, under the answer */

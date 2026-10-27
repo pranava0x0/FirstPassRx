@@ -347,6 +347,11 @@ describe('FirstPassRx app', () => {
     await user.type(within(card).getByLabelText(/Chart evidence for criterion 2/), 'QVAR 3/2025 and Arnuity 1/2026, poor control')
     expect(within(card).getByText(/1 of 5/)).toBeInTheDocument()
     expect(card.querySelector('.pa-builder__letter')?.textContent).toMatch(/2\. Asthma diagnosis.*: MET — QVAR 3\/2025/)
+    // A second tap on the chosen chip clears it (code review, PR 25: a mis-tap must be undoable).
+    const metChip = within(within(card).getByRole('radiogroup', { name: /Criterion 2: met or not/ })).getByRole('radio', { name: 'Met' })
+    await user.click(metChip)
+    expect(metChip).not.toBeChecked()
+    expect(within(card).getByText(/0 of 5/)).toBeInTheDocument()
   })
 
   // Regression: under StrictMode the init effect ran twice and re-read a URL the sync effect had

@@ -143,6 +143,8 @@ export function PaRequest({
                       value={value}
                       checked={c.status === value}
                       onChange={() => setCriterion(i, { status: value })}
+                      // Tapping the chosen chip again clears a mis-tap (the old select had a blank option).
+                      onClick={() => c.status === value && setCriterion(i, { status: '' })}
                     />
                     {label}
                   </label>
@@ -223,6 +225,7 @@ export function PaRequest({
                       value={value}
                       checked={s.outcome === value}
                       onChange={() => setStep(i, { outcome: value })}
+                      onClick={() => s.outcome === value && setStep(i, { outcome: '' })}
                     />
                     {STEP_CHIP_LABEL[value]}
                   </label>
