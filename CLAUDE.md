@@ -745,3 +745,20 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
 - **The agent-cap hook reads `.claude/agent-cap` relative to the shell's working directory.** A
   `cd data-gathering/<stamp>` in a Bash call silently dropped the cap to the default 2 for the next
   Agent launch. Keep the shell at the repo root (use paths, not `cd`) during a gather.
+- **Gather agents file a class's "alternatives only" drug as the pick, and a Sonnet check can miss
+  it (2026-10-27).** Two of three CA payers picked buspirone for the benzodiazepine class, whose
+  description lists buspirone only as an alternative; the Medi-Cal Sonnet check passed it. Put "the
+  pick must belong to its class (taxonomy says which drugs are alternatives only)" in every gather
+  and check prompt, and print every merged pick (inn | strength) for one Opus pass before commit.
+- **A class missing from a Medicaid PDL is not an uncovered class.** TX Medicaid's PDL "holds a
+  subset of the formulary"; a Haiku agent set `noCoveredAgent` on thiazides because no single agent
+  was on the PDL. Non-PDL classes are covered on the state formulary: pick the standard generic,
+  mark partial, say "not a PDL class".
+- **Name the form in the pick's INN when the strength reveals it** ("Tacrolimus ointment",
+  "Bupropion HCl XL", "Aripiprazole (long-acting injectable, monthly)"). Cash lookups key on the
+  INN alone, so a bare "Aripiprazole" on an LAI cell showed 30 oral tablets' price (review, PR #25).
+- **Label-sig rules: same strength can mean different labels.** Clindamycin/BPO 1%/5% is once daily
+  as Duac and twice daily as BenzaClin; a sig rule can't tell them apart, so the sig names both.
+  Run a Sonnet fact-check with web search over every new sig rule — on 2026-10-27 it found 3 wrong
+  sigs and 7 regexes that would hand one product another's directions (Triumeq, Tenoretic, Lyrica
+  CR, Aveed, Aplenzin, Otezla XR).
