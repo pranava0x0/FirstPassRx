@@ -1,0 +1,1594 @@
+{
+  "id": "pa-pain",
+  "label": "PA · Pain (opioids, nerve pain, muscle relaxants)",
+  "stateCode": "PA",
+  "region": "Pennsylvania",
+  "topicId": "pain",
+  "topic": "Pain (opioids, nerve pain, muscle relaxants)",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-29",
+  "capturedAt": "2026-10-29",
+  "payers": [
+    {
+      "id": "pa-medicaid",
+      "aka": "Statewide PDL binds fee-for-service and every Pennsylvania Medicaid managed care plan statewide (Physical HealthChoices + Community HealthChoices): same preferred/non-preferred status and PA criteria; each MCO runs its own PA intake (DHS MA Bulletin 2022-12-09)",
+      "name": "PA Medical Assistance Statewide Preferred Drug List (Fee-for-Service)",
+      "shortName": "PA Medicaid FFS",
+      "pbm": "OptumRx, Inc. (negotiates supplemental rebates / P&T support for DHS)",
+      "productName": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026 v11",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026, v16",
+      "formularyUrl": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-pdl-v16.pdf",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "ibx-commercial",
+      "name": "Independence Blue Cross (Commercial)",
+      "shortName": "Independence Blue Cross",
+      "pbm": "FutureScripts (IBX's PBM subsidiary)",
+      "productName": "Select Drug Program® Formulary",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Select Drug Program Formulary (effective July 1, 2026)",
+      "formularyUrl": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "sourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ]
+    },
+    {
+      "id": "highmark-bcbs",
+      "name": "Highmark Blue Cross Blue Shield (Commercial)",
+      "shortName": "Highmark BCBS",
+      "pbm": "Prime Therapeutics (Highmark is a Prime owner-member Blue plan)",
+      "productName": "Highmark Comprehensive Formulary (Drug Search)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (analg-006); formulary effective 10/23/2026",
+      "formularyUrl": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=analgesic%2c+anti-inflammatory+or+antipyretic%7canalgesic+opioid+hydrocodone+and+non-salicylate+combinations",
+      "sourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-analg-006"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "opioid-ir",
+      "name": "Short-acting opioids",
+      "shortName": "OPIOID IR",
+      "plainName": "Short-acting opioid",
+      "description": "Immediate-release opioids for acute pain: hydrocodone/acetaminophen, oxycodone IR and oxycodone/acetaminophen, tramadol, tapentadol IR (Nucynta), morphine IR, hydromorphone IR, codeine/acetaminophen.",
+      "plainDescription": "A short-acting opioid pain pill for acute pain.",
+      "indication": "Acute pain",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "gabapentinoid",
+      "name": "Gabapentinoids",
+      "shortName": "GABA",
+      "plainName": "Gabapentin or pregabalin",
+      "description": "Gabapentin (Neurontin, Gralise, Horizant), pregabalin IR/CR (Lyrica, Lyrica CR).",
+      "plainDescription": "A daily pill for nerve pain or shingles pain.",
+      "indication": "Neuropathic pain, postherpetic neuralgia, fibromyalgia",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "muscle-relaxant",
+      "name": "Skeletal muscle relaxants",
+      "shortName": "MUSCLE",
+      "plainName": "Muscle relaxant",
+      "description": "Cyclobenzaprine (IR, ER/Amrix), methocarbamol, tizanidine, baclofen, metaxalone, carisoprodol, orphenadrine, chlorzoxazone.",
+      "plainDescription": "A short-term pill for muscle spasms.",
+      "indication": "Musculoskeletal spasm, spasticity",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "opioid-ir",
+      "preferredAgent": {
+        "inn": "Hydrocodone bitartrate and acetaminophen",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg/325 mg tablet",
+        "sig": "1 to 2 tablets (5/325 mg) every 4 to 6 hours as needed for acute pain; max 8 tablets/day; shortest course needed (label).",
+        "sigShort": "1-2 tabs q4-6h PRN",
+        "plainSig": "One or two pills every 4 to 6 hours if needed for pain."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (Statewide PDL; no tiers)",
+      "alternatives": [
+        {
+          "drug": "Oxycodone HCl tablet",
+          "note": "Preferred, QL (page 3)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxycodone-acetaminophen tablet (generic Percocet)",
+          "note": "Preferred, QL (page 3)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Endocet tablet",
+          "note": "Preferred, QL (page 3)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tramadol 50/100 mg tablet",
+          "note": "Preferred, AR, QL (page 3)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tramadol-acetaminophen tablet",
+          "note": "Preferred, AR, QL (page 3)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Morphine sulfate IR tablet",
+          "note": "Preferred, QL (page 3)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Acetaminophen-codeine tablet",
+          "note": "Preferred, AR, QL (page 3)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Percocet (oxycodone-acetaminophen) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 3)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Roxicodone and Roxybond (oxycodone) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 3)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxycodone capsule and oxycodone concentrate",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 3)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Dilaudid (hydromorphone) tablet and liquid, hydromorphone tablet and solution",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 3)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxymorphone tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 3)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Codeine tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 3)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydrocodone-ibuprofen tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 3)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Levorphanol tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 3)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Meperidine tablet and solution",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 3)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nalocet and Prolate (oxycodone-acetaminophen) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 3)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tramadol solution",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 3)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pentazocine-naloxone tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 3)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from PDL v16 pp. 3-4 (opioid short-acting block, layout-mode columns). Hydrocodone-acetaminophen tablet picked: preferred, QL only, the most-prescribed short-acting opioid on the list. QL is recorded but no numeric limit is printed on the PDL, so preferredRestriction is null. Tapentadol IR (Nucynta) does not appear on the PDL and is not treated as excluded. Sig is label dosing, not PDL text. [Sonnet check 2026-10-28: Concrete strength set; QL has no printed numeric limit.]",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "classId": "gabapentinoid",
+      "preferredAgent": {
+        "inn": "Gabapentin",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "300 mg capsule (generic Neurontin)",
+        "sig": "Nerve pain after shingles: 300 mg on day 1, 300 mg twice daily on day 2, 300 mg three times daily on day 3, then titrate up to 1,800 mg/day in 3 doses as needed (label).",
+        "sigShort": "300 mg d1 to TID by d3",
+        "plainSig": "One capsule the first day, two the second, three the third; your prescriber may go higher."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (Statewide PDL; no tiers)",
+      "alternatives": [
+        {
+          "drug": "Gabapentin 600/800 mg tablet",
+          "note": "Preferred, QL (page 38)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gabapentin solution",
+          "note": "Preferred, QL (page 38)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gabapentin ER tablet (generic Gralise)",
+          "note": "Preferred, QL (page 38)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pregabalin capsule and solution",
+          "note": "Preferred, QL (page 38)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Lyrica (pregabalin) capsule and solution",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 38)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lyrica CR (pregabalin ER) tablet and pregabalin ER tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 38)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gralise ER (gabapentin) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 38)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Horizant ER (gabapentin enacarbil) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 38)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Neurontin (gabapentin) capsule, solution and tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 38)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gabarone (gabapentin) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 38)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Drizalma Sprinkle (duloxetine) capsule",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 38)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from PDL v16 p. 38 (neuropathic pain agents). Gabapentin 300 mg capsule picked: preferred generic, QL only. Strength and sig are standard label dosing, not printed on the PDL. Lyrica CR and pregabalin ER are not preferred. Gabapentin is not AR-restricted.",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "classId": "muscle-relaxant",
+      "preferredAgent": {
+        "inn": "Cyclobenzaprine HCl",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg three times daily; may increase to 10 mg three times daily. Use for 2 to 3 weeks (label).",
+        "sigShort": "5-10 mg TID x2-3 wk",
+        "plainSig": "One 5 mg pill three times a day for a few weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (Statewide PDL; no tiers)",
+      "alternatives": [
+        {
+          "drug": "Baclofen tablet 5, 10, 20 mg",
+          "note": "Preferred, QL (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Methocarbamol tablet",
+          "note": "Preferred, QL (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tizanidine tablet",
+          "note": "Preferred, QL (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Dantrolene capsule",
+          "note": "Preferred, QL (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Amrix (cyclobenzaprine ER) capsule and cyclobenzaprine ER capsule",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Fexmid (cyclobenzaprine) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carisoprodol tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Chlorzoxazone tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metaxalone tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Orphenadrine ER tablet and orphenadrine-aspirin-caffeine tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Norgesic and Norgesic Forte tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Baclofen solution, suspension, 15 mg tablet, and Ozobax DS solution",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Dantrium (dantrolene) capsule",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from PDL v16 p. 48 (skeletal muscle relaxants). Cyclobenzaprine IR tablet picked: preferred, QL only. Plain orphenadrine IR tablet does not appear on the PDL (only ER and combination forms are listed) and is not treated as excluded. Standard label dosing, not PDL text. [Sonnet check 2026-10-28: Concrete strength set.]",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "classId": "opioid-ir",
+      "preferredAgent": {
+        "inn": "Hydrocodone bitartrate/acetaminophen",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg/325 mg tablet",
+        "sig": "1 to 2 tablets (5/325 mg) every 4 to 6 hours as needed for acute pain; max 8 tablets/day; shortest course needed (label).",
+        "sigShort": "1-2 tabs q4-6h PRN",
+        "plainSig": "One or two pills every 4 to 6 hours if needed for pain."
+      },
+      "preferredRestriction": "QL, 5DS (day-supply limit) and MME flags printed on the generic row (p.32); no PA. The document prints no numbers.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Low-cost generic (LCG)",
+      "alternatives": [
+        {
+          "drug": "Oxycodone/acetaminophen (generic)",
+          "note": "LCG, QL, 5DS, MME; no PA (p. 35)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxycodone IR (generic)",
+          "note": "G, QL, 5DS, MME; no PA (p. 35)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tramadol HCl tablet (generic, 25/50/100 mg)",
+          "note": "LCG, QL, MME; no PA (p. 37)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tramadol HCl 75 mg tablet (generic)",
+          "note": "G, QL only; no PA (p. 37)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tramadol/acetaminophen (generic)",
+          "note": "G, QL, MME; no PA (p. 37)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Acetaminophen/codeine (generic)",
+          "note": "LCG, QL, 5DS, MME; no PA (p. 27)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydromorphone IR (generic)",
+          "note": "G, QL, 5DS, MME; no PA (p. 32)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Morphine IR (generic)",
+          "note": "G, QL, 5DS, MME; no PA (p. 34)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxymorphone IR (generic)",
+          "note": "G, QL, 5DS, MME; no PA (p. 35)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nucynta (tapentadol IR brand)",
+          "note": "NPD tier, QL, 5DS, MME; no PA (p. 34)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Oxycodone 5 mg and 30 mg tablet (brand-named row)",
+          "outcome": "pa",
+          "reason": "PA, QL, 5DS, MME; NPD tier (p. 35)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxaydo (oxycodone brand)",
+          "outcome": "pa",
+          "reason": "PA, QL, 5DS, MME; NPD tier (p. 35)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Roxicodone and Roxybond (oxycodone brands)",
+          "outcome": "pa",
+          "reason": "QL, 5DS, PA, MME; NPD tier (p. 36)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxycodone/acetaminophen brand, Primlev and Prolate (oxycodone/APAP)",
+          "outcome": "pa",
+          "reason": "PA, QL, 5DS, MME; NPD tier (p. 35)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Norco and Xodol (hydrocodone/APAP brands)",
+          "outcome": "pa",
+          "reason": "QL, 5DS, PA, MME; NPD tier (p. 38)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lortab (hydrocodone/APAP brand)",
+          "outcome": "pa",
+          "reason": "QL, 5DS, PA; NPD tier (p. 33)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ultram and Ultracet (tramadol brands)",
+          "outcome": "pa",
+          "reason": "QL, PA, MME; NPD tier (p. 38)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tramadol HCl oral solution 5 mg/mL",
+          "outcome": "pa",
+          "reason": "PA, QL, MME; NPD tier (p. 37)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Demerol (meperidine brand) and Dilaudid (hydromorphone brand)",
+          "outcome": "pa",
+          "reason": "PA, QL, 5DS, MME; NPD tier (p. 30)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Apadaz (benzhydrocodone/APAP)",
+          "outcome": "pa",
+          "reason": "PA, QL, 5DS, MME; NPD tier (p. 28)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tylenol with Codeine (brand)",
+          "outcome": "pa",
+          "reason": "QL, 5DS, PA, MME; NPD tier (p. 37)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from page images. Hydrocodone/APAP generic is LCG with QL, 5DS and MME flags and no PA. Those are flags only; the document prints no numeric quantity or day-supply limits, so none are recorded in preferredRestriction. Controlled substance: no PA is required for the preferred pick. Combination products are included here because the class description names them. [Sonnet check 2026-10-28: row rechecked by position (p.32): LCG with QL, 5DS, MME; restriction was blank, now recorded as printed.]",
+      "sourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "ibx-commercial"
+    },
+    {
+      "classId": "gabapentinoid",
+      "preferredAgent": {
+        "inn": "Gabapentin (capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "300 mg capsule",
+        "sig": "Nerve pain after shingles: 300 mg on day 1, 300 mg twice daily on day 2, 300 mg three times daily on day 3, then titrate up to 1,800 mg/day in 3 doses as needed (label).",
+        "sigShort": "300 mg d1 to TID by d3",
+        "plainSig": "One capsule the first day, two the second, three the third; your prescriber may go higher."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Generic (G)",
+      "alternatives": [
+        {
+          "drug": "Pregabalin capsule (generic)",
+          "note": "G, no PA flag (p. 35)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Gabapentin tablet (generic)",
+          "outcome": "pa",
+          "reason": "PA required, G tier (p. 32)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gabapentin oral solution (generic)",
+          "outcome": "pa",
+          "reason": "PA required, G tier (p. 32)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Neurontin (gabapentin brand) and Neurontin oral solution",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 34)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gralise (gabapentin once-daily)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 32)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Horizant (gabapentin enacarbil)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 32)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gabarone (gabapentin brand-named row)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 32)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lyrica capsule, Lyrica CR and Lyrica oral solution (pregabalin brands)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 33)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pregabalin ER tablet (generic)",
+          "outcome": "pa",
+          "reason": "PA required, G tier (p. 35)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pregabalin oral solution (generic)",
+          "outcome": "pa",
+          "reason": "PA required, G tier (p. 35)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read from page images. The unflagged generic gabapentin row (p. 32) does not print its dosage form; the tablet and solution rows carry PA, so the unflagged row is read as capsule. Confirm the form with plan. Strength and sig are standard label dosing, not printed. [Sonnet check 2026-10-28: row rechecked by position (p.32): \"gabapentin\" G with no flag, \"gabapentin tab\" G PA, \"gabapentin soln\" G PA, plus an unexplained truncated \"gabap\" row G PA. The form of the unflagged row is not printed; capsule is inferred by elimination, so form stays unconfirmed (partial).]",
+      "sourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "ibx-commercial"
+    },
+    {
+      "classId": "muscle-relaxant",
+      "preferredAgent": {
+        "inn": "Cyclobenzaprine (immediate-release)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg three times daily; may increase to 10 mg three times daily. Use for 2 to 3 weeks (label).",
+        "sigShort": "5-10 mg TID x2-3 wk",
+        "plainSig": "One 5 mg pill three times a day for a few weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Low-cost generic (LCG)",
+      "alternatives": [
+        {
+          "drug": "Methocarbamol 500 mg and 750 mg (generic)",
+          "note": "LCG, no PA flag (p. 33)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tizanidine (generic)",
+          "note": "G, no PA flag (p. 62)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Baclofen tablet (generic)",
+          "note": "G, no PA flag (p. 60)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carisoprodol (generic)",
+          "note": "G, no PA flag (p. 60)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Chlorzoxazone 375, 500 and 750 mg (generic)",
+          "note": "G, no PA flag (p. 60)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Orphenadrine ER (generic)",
+          "note": "G, no PA flag (p. 62)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Robaxin (methocarbamol brand)",
+          "note": "NPD tier, no PA flag (p. 62)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Cyclobenzaprine ER and Amrix (cyclobenzaprine ER brands)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 60)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Skelaxin (metaxalone brand) and Metaxalone brand-named row",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (pp. 62, 61)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metaxalone 640 mg tablet (generic)",
+          "outcome": "pa",
+          "reason": "PA required, G tier (p. 61); 800 mg not listed",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Soma (carisoprodol brand)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 62)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zanaflex (tizanidine brand)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 62)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Baclofen oral solution and Ozobax solution (baclofen brand)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (pp. 60, 62)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Baclofen oral suspension 25 mg/mL (generic) and Fleqsuvy suspension",
+          "outcome": "pa",
+          "reason": "PA and QL required (pp. 60, 61)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lorzone (chlorzoxazone brand)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 62)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Orphenadrine/aspirin/caffeine (Norgesic Forte, Orphengesic Forte)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 62)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from page images. Cyclobenzaprine IR generic is LCG with no flag. Metaxalone 800 mg is not printed; only the 640 mg generic (PA) appears. Strength and sig are standard label dosing, not printed. [Sonnet cross-check 2026-10-29: pick strength set to the 5 mg start dose]",
+      "sourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "ibx-commercial"
+    },
+    {
+      "classId": "opioid-ir",
+      "preferredAgent": {
+        "inn": "Hydrocodone bitartrate and acetaminophen",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg/325 mg tablet",
+        "sig": "1 to 2 tablets (5/325 mg) every 4 to 6 hours as needed for acute pain; max 8 tablets/day; shortest course needed (label).",
+        "sigShort": "1-2 tabs q4-6h PRN",
+        "plainSig": "One or two pills every 4 to 6 hours if needed for pain."
+      },
+      "preferredRestriction": "PA required per Highmark listing (Tier 1 generic; PA criteria not printed on the listing)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 / Formulary Generic Drug",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Oxycodone-acetaminophen 5-325 mg (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 1 generic)",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-analg-010"
+          ]
+        },
+        {
+          "drug": "Oxycodone IR 5 mg (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); member note, quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-analg-002"
+          ]
+        },
+        {
+          "drug": "Oxycodone IR 20 mg (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 1 generic); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-analg-002"
+          ]
+        },
+        {
+          "drug": "Acetaminophen-codeine 300-30 mg (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 1 generic)",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-analg-003"
+          ]
+        },
+        {
+          "drug": "Tramadol 50 mg tablet (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 1 generic); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-analg-002"
+          ]
+        },
+        {
+          "drug": "Morphine IR 15-30 mg tablet (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 1 generic); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-analg-002"
+          ]
+        },
+        {
+          "drug": "Hydromorphone 2-8 mg tablet (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 1 generic); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-analg-002"
+          ]
+        },
+        {
+          "drug": "Methadone 5 mg tablet (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 1 generic); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-analg-002"
+          ]
+        },
+        {
+          "drug": "Tapentadol IR 50-100 mg (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-analg-002"
+          ]
+        },
+        {
+          "drug": "Nucynta IR tablet (brand tapentadol)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-analg-002"
+          ]
+        },
+        {
+          "drug": "Percocet tablet (brand oxycodone-acetaminophen)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary)",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-analg-010"
+          ]
+        },
+        {
+          "drug": "Roxicodone tablet (brand oxycodone)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-analg-002"
+          ]
+        },
+        {
+          "drug": "Dilaudid tablet (brand hydromorphone)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-analg-002"
+          ]
+        },
+        {
+          "drug": "Hydrocodone-ibuprofen 5-200 mg (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary)",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-analg-008"
+          ]
+        },
+        {
+          "drug": "Tramadol-acetaminophen 37.5-325 mg (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary)",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-analg-014"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read Highmark Analgesic Opioid class pages (cls-analg-002, -003, -006, -008, -010, -014). Every opioid IR product on the listing carries PA; the Tier 1 generic hydrocodone-acetaminophen 5-325 mg is the most common lowest-barrier pick. Controlled substance: the listing prints PA and QL flags but no quantity or day-supply numbers, so none are recorded. Nothing is inferred beyond the flags shown. Oxycodone 5 mg and tapentadol IR are Tier 3 with PA.",
+      "sourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-analg-006"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-analg-006"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-analg-002",
+        "highmark-bcbs-next11-2026-10-cls-analg-003",
+        "highmark-bcbs-next11-2026-10-cls-analg-006",
+        "highmark-bcbs-next11-2026-10-cls-analg-008",
+        "highmark-bcbs-next11-2026-10-cls-analg-010",
+        "highmark-bcbs-next11-2026-10-cls-analg-014"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "highmark-bcbs"
+    },
+    {
+      "classId": "gabapentinoid",
+      "preferredAgent": {
+        "inn": "Gabapentin",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "300 mg capsule",
+        "sig": "Nerve pain after shingles: 300 mg on day 1, 300 mg twice daily on day 2, 300 mg three times daily on day 3, then titrate up to 1,800 mg/day in 3 doses as needed (label).",
+        "sigShort": "300 mg d1 to TID by d3",
+        "plainSig": "One capsule the first day, two the second, three the third; your prescriber may go higher."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 / Formulary Generic Drug",
+      "alternatives": [
+        {
+          "drug": "Gabapentin 100 and 400 mg capsule (generic)",
+          "note": "Tier 1 generic; no PA",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-012"
+          ]
+        },
+        {
+          "drug": "Gabapentin 600 and 800 mg tablet (generic)",
+          "note": "Tier 1 generic; no PA",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-012"
+          ]
+        },
+        {
+          "drug": "Neurontin capsule and tablet (brand gabapentin)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); no PA",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-012"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Gabapentin 200 mg capsule (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); day supply limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-012"
+          ]
+        },
+        {
+          "drug": "Pregabalin capsule (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary)",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-012",
+            "highmark-bcbs-next11-2026-10-cls-cns-080"
+          ]
+        },
+        {
+          "drug": "Lyrica capsule and solution (brand pregabalin)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary)",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-012",
+            "highmark-bcbs-next11-2026-10-cls-cns-080"
+          ]
+        },
+        {
+          "drug": "Lyrica CR and pregabalin ER tablet",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-103",
+            "highmark-bcbs-next11-2026-10-cls-cns-104"
+          ]
+        },
+        {
+          "drug": "Gabapentin ER tablet (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-104"
+          ]
+        },
+        {
+          "drug": "Gralise tablet (gabapentin)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-104"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read Highmark CNS > Anticonvulsant - Gaba Analogs (cls-cns-012), Fibromyalgia Agents (cls-cns-080), Neuropathic Pain Therapy (cls-cns-103) and Postherpetic Neuralgia (cls-cns-104). Generic gabapentin 300 mg capsule is Tier 1 with no PA or QL. Generic pregabalin, Lyrica, Lyrica CR, gabapentin ER and Gralise are Tier 3 with PA. Gabapentin 200 mg capsule is Tier 3 with PA and day-supply limit.",
+      "sourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-cns-012"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-cns-012"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-cns-012"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "highmark-bcbs"
+    },
+    {
+      "classId": "muscle-relaxant",
+      "preferredAgent": {
+        "inn": "Cyclobenzaprine hydrochloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg three times daily; may increase to 10 mg three times daily. Use for 2 to 3 weeks (label).",
+        "sigShort": "5-10 mg TID x2-3 wk",
+        "plainSig": "One 5 mg pill three times a day for a few weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 / Formulary Generic Drug",
+      "alternatives": [
+        {
+          "drug": "Cyclobenzaprine 10 mg tablet (generic)",
+          "note": "Tier 1 generic; no PA; low-cost generic program",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-loco-010"
+          ]
+        },
+        {
+          "drug": "Methocarbamol 500-750 mg tablet (generic)",
+          "note": "Tier 1 generic; no PA",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-loco-010"
+          ]
+        },
+        {
+          "drug": "Tizanidine tablet (generic)",
+          "note": "Tier 1 generic; no PA; low-cost generic program",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-loco-010"
+          ]
+        },
+        {
+          "drug": "Baclofen 10-20 mg tablet (generic)",
+          "note": "Tier 1 generic; no PA; low-cost generic program",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-loco-010"
+          ]
+        },
+        {
+          "drug": "Carisoprodol 350 mg tablet (generic)",
+          "note": "Tier 1 generic; no PA",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-loco-010"
+          ]
+        },
+        {
+          "drug": "Chlorzoxazone 500 mg tablet (generic)",
+          "note": "Tier 1 generic; no PA",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-loco-010"
+          ]
+        },
+        {
+          "drug": "Orphenadrine ER tablet (generic)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); no PA",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-loco-010"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Cyclobenzaprine 7.5 mg tablet (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); Market Watch",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-loco-010"
+          ]
+        },
+        {
+          "drug": "Cyclobenzaprine ER capsule (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); Market Watch",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-loco-010"
+          ]
+        },
+        {
+          "drug": "Methocarbamol 1000 mg tablet (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); Market Watch",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-loco-010"
+          ]
+        },
+        {
+          "drug": "Tizanidine capsule (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); Market Watch, quantity limit, specialty tier",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-loco-010"
+          ]
+        },
+        {
+          "drug": "Baclofen oral solution or suspension (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); Market Watch, day supply limit, quantity limit, specialty tier",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-loco-010"
+          ]
+        },
+        {
+          "drug": "Chlorzoxazone 250-750 mg tablet (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); Market Watch",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-loco-010"
+          ]
+        },
+        {
+          "drug": "Metaxalone 640-800 mg tablet (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); Market Watch, specialty tier",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-loco-010"
+          ]
+        },
+        {
+          "drug": "Zanaflex tablet and capsule (brand tizanidine)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); Market Watch, quantity limit, specialty tier",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-loco-010"
+          ]
+        },
+        {
+          "drug": "Amrix capsule (brand cyclobenzaprine ER)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); Market Watch",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-loco-010"
+          ]
+        },
+        {
+          "drug": "Fexmid tablet (cyclobenzaprine)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); Market Watch",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-loco-010"
+          ]
+        },
+        {
+          "drug": "Lorzone tablet (chlorzoxazone)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); Market Watch",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-loco-010"
+          ]
+        },
+        {
+          "drug": "Soma tablet (brand carisoprodol)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary)",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-loco-010"
+          ]
+        },
+        {
+          "drug": "Ozobax oral solution (baclofen)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); Market Watch, day supply limit, quantity limit, specialty tier",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-loco-010"
+          ]
+        },
+        {
+          "drug": "Carisoprodol-aspirin tablet (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary)",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-loco-009"
+          ]
+        },
+        {
+          "drug": "Orphenadrine-aspirin-caffeine tablet (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); Market Watch, quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-loco-009"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read Highmark Locomotor System > Skeletal Muscle Relaxant - Central Muscle Relaxants (cls-loco-010) and the combination classes (cls-loco-009, -012, -013). Generic cyclobenzaprine 5 mg is Tier 1 with no PA or QL (low-cost generic flag only). Carisoprodol 350 mg generic is Tier 1 with no flags. Several generic and brand products (Amrix, Fexmid, Lorzone, Soma, metaxalone 800, cyclobenzaprine ER and 7.5 mg, chlorzoxazone 250/375/750) carry PA. The plan page does not print a sig.",
+      "sourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-loco-010"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-loco-010"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-loco-010"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "highmark-bcbs"
+    }
+  ],
+  "references": [
+    {
+      "id": "pa-medicaid-next11-2026-10",
+      "label": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026, v16",
+      "publisher": "Pennsylvania Department of Human Services",
+      "type": "gov",
+      "url": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-pdl-v16.pdf",
+      "effectiveDate": "2026-01-20",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "ibx-commercial-next11-2026-10",
+      "label": "Select Drug Program Formulary (effective July 1, 2026)",
+      "publisher": "Independence Blue Cross",
+      "type": "payer",
+      "url": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-analg-002",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (analg-002); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=analgesic%2c+anti-inflammatory+or+antipyretic%7canalgesic+opioid+agonists",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-analg-003",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (analg-003); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=analgesic%2c+anti-inflammatory+or+antipyretic%7canalgesic+opioid+codeine+combinations",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-analg-006",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (analg-006); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=analgesic%2c+anti-inflammatory+or+antipyretic%7canalgesic+opioid+hydrocodone+and+non-salicylate+combinations",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-analg-008",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (analg-008); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=analgesic%2c+anti-inflammatory+or+antipyretic%7canalgesic+opioid+hydrocodone+combinations",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-analg-010",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (analg-010); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=analgesic%2c+anti-inflammatory+or+antipyretic%7canalgesic+opioid+oxycodone+combinations",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-analg-014",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (analg-014); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=analgesic%2c+anti-inflammatory+or+antipyretic%7canalgesic+opioid+tramadol+combinations",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-cns-012",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-012); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7canticonvulsant+-+gaba+analogs",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-cns-080",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-080); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7cfibromyalgia+agents+-+gaba+analogs",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-cns-103",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-103); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7cneuropathic+pain+therapy",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-cns-104",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-104); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7cpostherpetic+neuralgia+agents",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-loco-009",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (loco-009); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=locomotor+system%7cskeletal+muscle+relaxant+-+analgesic+salicylate+combinations",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-loco-010",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (loco-010); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=locomotor+system%7cskeletal+muscle+relaxant+-+central+muscle+relaxants",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

@@ -1,0 +1,676 @@
+{
+  "id": "pa-hiv",
+  "label": "PA · HIV prevention and treatment",
+  "stateCode": "PA",
+  "region": "Pennsylvania",
+  "topicId": "hiv",
+  "topic": "HIV prevention and treatment",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-29",
+  "capturedAt": "2026-10-29",
+  "payers": [
+    {
+      "id": "pa-medicaid",
+      "aka": "Statewide PDL binds fee-for-service and every Pennsylvania Medicaid managed care plan statewide (Physical HealthChoices + Community HealthChoices): same preferred/non-preferred status and PA criteria; each MCO runs its own PA intake (DHS MA Bulletin 2022-12-09)",
+      "name": "PA Medical Assistance Statewide Preferred Drug List (Fee-for-Service)",
+      "shortName": "PA Medicaid FFS",
+      "pbm": "OptumRx, Inc. (negotiates supplemental rebates / P&T support for DHS)",
+      "productName": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026 v11",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026, v16",
+      "formularyUrl": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-pdl-v16.pdf",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "ibx-commercial",
+      "name": "Independence Blue Cross (Commercial)",
+      "shortName": "Independence Blue Cross",
+      "pbm": "FutureScripts (IBX's PBM subsidiary)",
+      "productName": "Select Drug Program® Formulary",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Select Drug Program Formulary (effective July 1, 2026)",
+      "formularyUrl": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "sourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ]
+    },
+    {
+      "id": "highmark-bcbs",
+      "name": "Highmark Blue Cross Blue Shield (Commercial)",
+      "shortName": "Highmark BCBS",
+      "pbm": "Prime Therapeutics (Highmark is a Prime owner-member Blue plan)",
+      "productName": "Highmark Comprehensive Formulary (Drug Search)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Highmark Drug Search, Anti-Infective Agents > Antiretroviral - Capsid Inhibitors (class browse page)",
+      "formularyUrl": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=anti-infective+agents%7cantiretroviral+-+capsid+inhibitors",
+      "sourceIds": [
+        "highmark-bcbs-next11-2026-10-b-antiretroviral-capsid-inhibitors"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "hiv-prep",
+      "name": "HIV pre-exposure prophylaxis (PrEP)",
+      "shortName": "PrEP",
+      "plainName": "HIV prevention pill or shot",
+      "description": "Emtricitabine/tenofovir disoproxil (Truvada and generics), emtricitabine/tenofovir alafenamide (Descovy), cabotegravir LA (Apretude), lenacapavir (Yeztugo).",
+      "plainDescription": "A daily pill or long-acting shot that prevents HIV.",
+      "indication": "HIV PrEP",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "hiv-art",
+      "name": "Single-tablet HIV treatment regimens",
+      "shortName": "STR",
+      "plainName": "Once-daily HIV treatment pill",
+      "description": "Complete single-tablet regimens: bictegravir/FTC/TAF (Biktarvy), dolutegravir/abacavir/lamivudine (Triumeq), dolutegravir/lamivudine (Dovato), dolutegravir/rilpivirine (Juluca), darunavir/cobicistat/FTC/TAF (Symtuza), elvitegravir/cobi/FTC/TAF (Genvoya), rilpivirine/FTC/TAF (Odefsey), efavirenz/FTC/TDF and generics; cabotegravir/rilpivirine LA (Cabenuva).",
+      "plainDescription": "A once-a-day pill that treats HIV.",
+      "indication": "HIV-1 infection",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "hiv-prep",
+      "preferredAgent": {
+        "inn": "Emtricitabine-tenofovir disoproxil fumarate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/300 mg tablet",
+        "sig": "PrEP: 1 tablet once daily. Confirm a negative HIV test before starting and test every 3 months (label).",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day; get an HIV test every 3 months."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (PDL, QL, no PA)",
+      "alternatives": [
+        {
+          "drug": "Descovy (emtricitabine-tenofovir alafenamide) tablet",
+          "note": "Preferred, QL (PDL p.29)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Yeztugo (lenacapavir) tablet and vial",
+          "note": "Preferred, QL (PDL p.29)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Apretude (cabotegravir ER) vial",
+          "note": "Preferred, QL; provider-administered injection, likely medical benefit (PDL p.29)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Truvada (emtricitabine-tenofovir DF) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.29)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL v16 (Effective January 2026) read directly by column x-position; left column = Preferred, right column = Non-Preferred (header: non-preferred agents require PA). Generic emtricitabine-tenofovir DF tablet is preferred; brand Truvada is non-preferred. Dosing is standard label dosing (not printed).",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "classId": "hiv-art",
+      "preferredAgent": {
+        "inn": "Bictegravir-emtricitabine-tenofovir alafenamide",
+        "brand": "Biktarvy",
+        "genericAvailable": false,
+        "strength": "50 mg/200 mg/25 mg tablet",
+        "sig": "1 tablet once daily, with or without food (label).",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (PDL, QL, no PA)",
+      "alternatives": [
+        {
+          "drug": "Dovato (dolutegravir-lamivudine) tablet",
+          "note": "Preferred, QL (PDL p.30)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Triumeq (abacavir-dolutegravir-lamivudine) tablet",
+          "note": "Preferred, QL (PDL p.30)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Juluca (dolutegravir-rilpivirine) tablet",
+          "note": "Preferred, QL (PDL p.30)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Genvoya tablet",
+          "note": "Preferred, QL (PDL p.30)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Odefsey tablet",
+          "note": "Preferred, QL (PDL p.30)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Delstrigo tablet and Symfi (efavirenz-lamivudine-TDF) tablet",
+          "note": "Preferred, QL (PDL p.30)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Complera tablet",
+          "note": "Preferred, QL (PDL p.30)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Efavirenz-emtricitabine-TDF tablet",
+          "note": "Preferred, QL (PDL p.30)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Cabenuva (cabotegravir-rilpivirine) vial",
+          "note": "Preferred, QL; provider-administered injection, likely medical benefit (PDL p.30)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Stribild (elvitegravir-cobicistat-emtricitabine-TDF) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.30)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Symtuza (darunavir-cobicistat-emtricitabine-TAF) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.30)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Generic efavirenz-lamivudine-TDF tablet",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.30)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Generic emtricitabine-rilpivirine-TDF tablet",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.30)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Triumeq PD (tablet for suspension)",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.30)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL v16 (Effective January 2026) read directly by column x-position; left column = Preferred, right column = Non-Preferred (header: non-preferred agents require PA). Scope is complete single-tablet regimens only, per taxonomy. Cabenuva is provider-administered. Dosing is standard label dosing (not printed).",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "boglActive": false,
+      "boglNote": null,
+      "preferredRestriction": null,
+      "stepTherapy": null,
+      "sourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "alternatives": [
+        {
+          "drug": "Descovy (emtricitabine/tenofovir alafenamide) 200-25 mg",
+          "note": "$0 preventive (ACA), QL, no PA (p.20)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Truvada (emtricitabine/tenofovir DF)",
+          "note": "Not preferred brand, no PA (p.23)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Yeztugo (lenacapavir)",
+          "note": "Not preferred brand, no PA (p.24)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "classId": "hiv-prep",
+      "preferredAgent": {
+        "inn": "Emtricitabine/tenofovir disoproxil fumarate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/300 mg",
+        "sig": "PrEP: 1 tablet once daily. Confirm a negative HIV test before starting and test every 3 months (label).",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day; get an HIV test every 3 months."
+      },
+      "tier": "Generic (G), $0 preventive (ACA), quantity limit (QL), no PA (p.21; PrEP list p.4)",
+      "verification": "partial",
+      "verificationNote": "PrEP appears on the $0 preventive (ACA) list (p.4) and in the anti-infective listing (pp.19-24). Apretude (cabotegravir LA) does not appear in this document; provider-administered injections may sit under the medical benefit, so partial.",
+      "payerId": "ibx-commercial"
+    },
+    {
+      "boglActive": false,
+      "boglNote": null,
+      "preferredRestriction": null,
+      "stepTherapy": null,
+      "sourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "alternatives": [
+        {
+          "drug": "Triumeq (dolutegravir/abacavir/lamivudine)",
+          "note": "Preferred brand, no PA (p.23)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Biktarvy (bictegravir/FTC/TAF)",
+          "note": "Not preferred brand, no PA (p.19)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Juluca (dolutegravir/rilpivirine)",
+          "note": "Not preferred brand, no PA (p.21)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Symtuza (darunavir/cobicistat/FTC/TAF)",
+          "note": "Not preferred brand, no PA (p.23)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Efavirenz/emtricitabine/tenofovir DF (generic)",
+          "note": "G, no PA (p.20); older regimen, not a usual first choice",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Atripla (efavirenz/FTC/TDF)",
+          "note": "Not preferred brand, no PA (p.19)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "classId": "hiv-art",
+      "preferredAgent": {
+        "inn": "Dolutegravir/lamivudine",
+        "brand": "Dovato",
+        "genericAvailable": false,
+        "strength": "50 mg/300 mg tablet",
+        "sig": "1 tablet (dolutegravir 50 mg/lamivudine 300 mg) by mouth once daily, with or without food. Test for hepatitis B before starting (label).",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day."
+      },
+      "tier": "Preferred brand (PB), no PA (p.20)",
+      "verification": "partial",
+      "verificationNote": "Read from the Antibiotics and Other Drugs Used for Infection listing (guide pp.19-24). No single-tablet regimen on the list carries PA. Genvoya, Odefsey and Cabenuva (LA injection) do not appear in this document, so partial. Preferred pick is the generic efavirenz/FTC/TDF tablet (G), the cheapest tier. [Sonnet check 2026-10-28: pick changed from generic efavirenz/FTC/TDF (G, no flag but a disfavored older regimen) to Dovato (PB, no PA/QL, p.20 by image), a current first-line single-tablet regimen on the list; efavirenz combo moved to alternatives. Triumeq also PB (p.23). Dovato is not for hepatitis B co-infection or known lamivudine resistance. Tier cells for PB rows read by image.]",
+      "payerId": "ibx-commercial"
+    },
+    {
+      "classId": "hiv-prep",
+      "preferredAgent": {
+        "inn": "Emtricitabine/tenofovir disoproxil fumarate",
+        "brand": "Truvada",
+        "genericAvailable": true,
+        "strength": "200 mg/300 mg tablet",
+        "sig": "PrEP: 1 tablet once daily. Confirm a negative HIV test before starting and test every 3 months (label).",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day; get an HIV test every 3 months."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 / Formulary Generic Drug",
+      "alternatives": [
+        {
+          "drug": "Descovy Oral Tablet",
+          "note": "Tier 2 / Formulary Brand Drug; no PA flag on listing; quantity limit flag",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-capsid-inhibitors",
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-nucleoside-and-nucleotide-analog-rtis-combinations",
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-pre-exposure-prophylaxis-prep"
+          ]
+        },
+        {
+          "drug": "Yeztugo Oral Tablet",
+          "note": "Tier 2 / Formulary Brand Drug; no PA flag on listing; quantity limit flag",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-capsid-inhibitors",
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-nucleoside-and-nucleotide-analog-rtis-combinations",
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-pre-exposure-prophylaxis-prep"
+          ]
+        },
+        {
+          "drug": "Truvada Oral Tablet",
+          "note": "Tier 3 / Non-Formulary Drug; no PA flag on listing; quantity limit flag",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-capsid-inhibitors",
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-nucleoside-and-nucleotide-analog-rtis-combinations",
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-pre-exposure-prophylaxis-prep"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Generic emtricitabine/tenofovir DF 200/300 mg is Tier 1 with no PA or QL flag; Truvada brand is Tier 3 non-formulary with a QL flag. Descovy and Yeztugo are Tier 2 with QL flags. Apretude (cabotegravir LA) did not appear on the pharmacy listing; it is likely a provider-administered medical-benefit product and is not inferred as excluded. Partial until Apretude coverage is confirmed. Listing rows read for this class: 12; alternatives shown 3 of 3 non-PA products (Tier 1/2 first); PA-flagged products listed in paRequired: 0. Pick row icons: Tier 1/ Formulary Generic Drug.",
+      "sourceIds": [
+        "highmark-bcbs-next11-2026-10-b-antiretroviral-capsid-inhibitors",
+        "highmark-bcbs-next11-2026-10-b-antiretroviral-nucleoside-and-nucleotide-analog-rtis-combinations",
+        "highmark-bcbs-next11-2026-10-b-antiretroviral-pre-exposure-prophylaxis-prep"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-next11-2026-10-b-antiretroviral-capsid-inhibitors",
+        "highmark-bcbs-next11-2026-10-b-antiretroviral-nucleoside-and-nucleotide-analog-rtis-combinations",
+        "highmark-bcbs-next11-2026-10-b-antiretroviral-pre-exposure-prophylaxis-prep"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-next11-2026-10-b-antiretroviral-capsid-inhibitors",
+        "highmark-bcbs-next11-2026-10-b-antiretroviral-nucleoside-and-nucleotide-analog-rtis-combinations",
+        "highmark-bcbs-next11-2026-10-b-antiretroviral-pre-exposure-prophylaxis-prep"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "highmark-bcbs"
+    },
+    {
+      "classId": "hiv-art",
+      "preferredAgent": {
+        "inn": "Bictegravir/emtricitabine/tenofovir alafenamide",
+        "brand": "Biktarvy",
+        "genericAvailable": false,
+        "strength": "50 mg/200 mg/25 mg tablet",
+        "sig": "1 tablet once daily, with or without food (label).",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": "Tier 2 with a quantity limit; no PA flag on the listing.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 / Formulary Brand Drug",
+      "alternatives": [
+        {
+          "drug": "Efavirenz/emtricitabine/tenofovir disoproxil fumarate tablet (generic)",
+          "note": "Tier 1 / Formulary Generic Drug; quantity limit; no PA flag",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nnrti-combinations",
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nrti-combinations",
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-nucleoside-and-nucleotide-rtis-comb"
+          ]
+        },
+        {
+          "drug": "Efavirenz-Lamivu-Tenofov Disop Oral Tablet",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing; quantity limit flag",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nnrti-combinations",
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nrti-combinations",
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-nucleoside-and-nucleotide-rtis-comb"
+          ]
+        },
+        {
+          "drug": "Dovato Oral Tablet",
+          "note": "Tier 2 / Formulary Brand Drug; no PA flag on listing; quantity limit flag",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nnrti-combinations",
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nrti-combinations",
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-nucleoside-and-nucleotide-rtis-comb"
+          ]
+        },
+        {
+          "drug": "Genvoya Oral Tablet",
+          "note": "Tier 2 / Formulary Brand Drug; no PA flag on listing; quantity limit flag",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nnrti-combinations",
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nrti-combinations",
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-nucleoside-and-nucleotide-rtis-comb"
+          ]
+        },
+        {
+          "drug": "Juluca Oral Tablet",
+          "note": "Tier 2 / Formulary Brand Drug; no PA flag on listing; quantity limit flag",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nnrti-combinations",
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nrti-combinations",
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-nucleoside-and-nucleotide-rtis-comb"
+          ]
+        },
+        {
+          "drug": "Odefsey Oral Tablet",
+          "note": "Tier 2 / Formulary Brand Drug; no PA flag on listing; quantity limit flag",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nnrti-combinations",
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nrti-combinations",
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-nucleoside-and-nucleotide-rtis-comb"
+          ]
+        },
+        {
+          "drug": "Stribild Oral Tablet",
+          "note": "Tier 2 / Formulary Brand Drug; no PA flag on listing; quantity limit flag",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nnrti-combinations",
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nrti-combinations",
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-nucleoside-and-nucleotide-rtis-comb"
+          ]
+        },
+        {
+          "drug": "Symtuza Oral Tablet",
+          "note": "Tier 2 / Formulary Brand Drug; no PA flag on listing; quantity limit flag",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nnrti-combinations",
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nrti-combinations",
+            "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-nucleoside-and-nucleotide-rtis-comb"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Generic efavirenz/emtricitabine/TDF 600/200/300 mg is Tier 1 with a Quantity Limit flag only (no PA). Single-tablet brands (Biktarvy, Genvoya, Odefsey, Symtuza, Stribild, Triumeq, Dovato, Juluca) are Tier 2 with QL flags and are alternatives. Cabenuva (cabotegravir/rilpivirine LA) did not appear on the pharmacy listing and is likely a medical-benefit product; not inferred as excluded. Partial for that reason. Listing rows read for this class: 15; alternatives shown 12 of 12 non-PA products (Tier 1/2 first); PA-flagged products listed in paRequired: 0. Pick row icons: Tier 1/ Formulary Generic Drug, Quantity Limit. [Sonnet check 2026-10-28: trimmed lists from 12 alternatives/0 PA items to the first 8/12; full list is in the source pages.] [Opus review 2026-10-29: pick changed from generic efavirenz/FTC/TDF to Biktarvy (Tier 2, QL, no PA) — efavirenz-based regimens are not recommended initial ART in DHHS guidelines; same change as the IBX check. Efavirenz combo kept as the Tier 1 alternative.]",
+      "sourceIds": [
+        "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nnrti-combinations",
+        "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nrti-combinations",
+        "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-nucleoside-and-nucleotide-rtis-comb"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nnrti-combinations",
+        "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nrti-combinations",
+        "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-nucleoside-and-nucleotide-rtis-comb"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nnrti-combinations",
+        "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nrti-combinations",
+        "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-nucleoside-and-nucleotide-rtis-comb"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "highmark-bcbs"
+    }
+  ],
+  "references": [
+    {
+      "id": "pa-medicaid-next11-2026-10",
+      "label": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026, v16",
+      "publisher": "Pennsylvania Department of Human Services",
+      "type": "gov",
+      "url": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-pdl-v16.pdf",
+      "effectiveDate": "2026-01-20",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "ibx-commercial-next11-2026-10",
+      "label": "Select Drug Program Formulary (effective July 1, 2026)",
+      "publisher": "Independence Blue Cross",
+      "type": "payer",
+      "url": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-b-antiretroviral-capsid-inhibitors",
+      "label": "Highmark Drug Search, Anti-Infective Agents > Antiretroviral - Capsid Inhibitors (class browse page)",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=anti-infective+agents%7cantiretroviral+-+capsid+inhibitors",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-b-antiretroviral-nucleoside-and-nucleotide-analog-rtis-combinations",
+      "label": "Highmark Drug Search, Anti-Infective Agents > Antiretroviral - Nucleoside And Nucleotide Analog Rtis Combinations (class browse page)",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=anti-infective+agents%7cantiretroviral+-+nucleoside+and+nucleotide+analog+rtis+combinations",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-b-antiretroviral-pre-exposure-prophylaxis-prep",
+      "label": "Highmark Drug Search, Anti-Infective Agents > Antiretroviral - Pre-Exposure Prophylaxis (Prep) (class browse page)",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=anti-infective+agents%7cantiretroviral+-+pre-exposure+prophylaxis+(prep)",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nnrti-combinations",
+      "label": "Highmark Drug Search, Anti-Infective Agents > Antiretroviral - Integrase Inhibitor And Nnrti Combinations (class browse page)",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=anti-infective+agents%7cantiretroviral+-+integrase+inhibitor+and+nnrti+combinations",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-and-nrti-combinations",
+      "label": "Highmark Drug Search, Anti-Infective Agents > Antiretroviral - Integrase Inhibitor And Nrti Combinations (class browse page)",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=anti-infective+agents%7cantiretroviral+-+integrase+inhibitor+and+nrti+combinations",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-b-antiretroviral-integrase-inhibitor-nucleoside-and-nucleotide-rtis-comb",
+      "label": "Highmark Drug Search, Anti-Infective Agents > Antiretroviral-Integrase Inhibitor,Nucleoside And Nucleotide Rtis Comb (class browse page)",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=anti-infective+agents%7cantiretroviral-integrase+inhibitor%2cnucleoside+and+nucleotide+rtis+comb",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

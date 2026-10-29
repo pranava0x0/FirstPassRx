@@ -1,0 +1,587 @@
+{
+  "id": "pa-oab",
+  "label": "PA · Overactive bladder",
+  "stateCode": "PA",
+  "region": "Pennsylvania",
+  "topicId": "oab",
+  "topic": "Overactive bladder",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-29",
+  "capturedAt": "2026-10-29",
+  "payers": [
+    {
+      "id": "pa-medicaid",
+      "aka": "Statewide PDL binds fee-for-service and every Pennsylvania Medicaid managed care plan statewide (Physical HealthChoices + Community HealthChoices): same preferred/non-preferred status and PA criteria; each MCO runs its own PA intake (DHS MA Bulletin 2022-12-09)",
+      "name": "PA Medical Assistance Statewide Preferred Drug List (Fee-for-Service)",
+      "shortName": "PA Medicaid FFS",
+      "pbm": "OptumRx, Inc. (negotiates supplemental rebates / P&T support for DHS)",
+      "productName": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026 v11",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026, v16",
+      "formularyUrl": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-pdl-v16.pdf",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "ibx-commercial",
+      "name": "Independence Blue Cross (Commercial)",
+      "shortName": "Independence Blue Cross",
+      "pbm": "FutureScripts (IBX's PBM subsidiary)",
+      "productName": "Select Drug Program® Formulary",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Select Drug Program Formulary (effective July 1, 2026)",
+      "formularyUrl": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "sourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ]
+    },
+    {
+      "id": "highmark-bcbs",
+      "name": "Highmark Blue Cross Blue Shield (Commercial)",
+      "shortName": "Highmark BCBS",
+      "pbm": "Prime Therapeutics (Highmark is a Prime owner-member Blue plan)",
+      "productName": "Highmark Comprehensive Formulary (Drug Search)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Highmark Drug Search, Genitourinary Therapy > Urinary Antispasmodic - Antichol., M(3) Muscarinic Selective (Bladder) (class browse page)",
+      "formularyUrl": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=genitourinary+therapy%7curinary+antispasmodic+-+antichol.%2c+m(3)+muscarinic+selective+(bladder)",
+      "sourceIds": [
+        "highmark-bcbs-next11-2026-10-b-urinary-antispasmodic-antichol-m-3-muscarinic-selective-bladder"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "oab-antimuscarinic",
+      "name": "Antimuscarinics for overactive bladder",
+      "shortName": "ANTIMUSC",
+      "plainName": "Bladder pill (oxybutynin type)",
+      "description": "Oxybutynin IR/ER/patch/gel, tolterodine IR/ER, solifenacin, darifenacin, trospium IR/ER, fesoterodine (Toviaz).",
+      "plainDescription": "A daily pill to calm an overactive bladder.",
+      "indication": "Overactive bladder",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "oab-beta3",
+      "name": "Beta-3 agonists for overactive bladder",
+      "shortName": "BETA-3",
+      "plainName": "Bladder pill (Myrbetriq type)",
+      "description": "Mirabegron (Myrbetriq, generic mirabegron ER) and vibegron (Gemtesa).",
+      "plainDescription": "A newer daily bladder pill with fewer dry-mouth and memory side effects.",
+      "indication": "Overactive bladder",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "oab-antimuscarinic",
+      "preferredAgent": {
+        "inn": "Oxybutynin chloride (immediate-release)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "Immediate-release: 5 mg two to three times daily; max 5 mg four times daily (label).",
+        "sigShort": "5 mg BID-TID",
+        "plainSig": "One pill two or three times a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (PDL, QL, no PA)",
+      "alternatives": [
+        {
+          "drug": "Darifenacin ER tablet",
+          "note": "Preferred, no flag (PDL p.15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Solifenacin tablet",
+          "note": "Preferred, QL (PDL p.15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tolterodine tablet and ER capsule",
+          "note": "Preferred, QL (PDL p.15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Trospium tablet",
+          "note": "Preferred, QL (PDL p.15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Toviaz (fesoterodine) ER tablet and generic fesoterodine ER tablet",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Vesicare (solifenacin) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Trospium ER capsule",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxybutynin 2.5 mg tablet; Oxytrol (oxybutynin) patch",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL v16 (Effective January 2026) read directly by column x-position; left column = Preferred, right column = Non-Preferred (header: non-preferred agents require PA). QL applies (quantity limit not printed in PDL). Dosing is standard label dosing (not printed). [Sonnet cross-check 2026-10-29: pick named as the immediate-release tablet to match its IR sig; duplicate IR alternative dropped]",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "classId": "oab-beta3",
+      "preferredAgent": {
+        "inn": "Mirabegron",
+        "brand": "Myrbetriq",
+        "genericAvailable": true,
+        "strength": "25 mg ER tablet",
+        "sig": "25 mg once daily; may increase to 50 mg after 4 to 8 weeks (label).",
+        "sigShort": "25 mg QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": true,
+      "boglNote": "PDL v16 p.15 lists brand Myrbetriq ER tablet as Preferred and generic Mirabegron ER tablet as Non-Preferred (PA). The generic is AB-rated to Myrbetriq ER tablet (same form, same device); the AB rating comes from FDA Orange Book knowledge, not the PDL.",
+      "tier": "Preferred (PDL, brand, QL, no PA)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Mirabegron ER tablet (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required; brand Myrbetriq is the preferred product (PDL p.15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gemtesa (vibegron) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Myrbetriq ER suspension",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL v16 (Effective January 2026) read directly by column x-position; left column = Preferred, right column = Non-Preferred (header: non-preferred agents require PA). Brand Myrbetriq ER tablet is preferred (PDL p.15 left column). Generic mirabegron ER tablet is listed as non-preferred on the same page. The AB-rated status of the generic is not stated in the PDL and was not verified; boglActive is set on the PDL brand-over-generic pattern only. No other covered beta-3 alternative is listed. [Sonnet check 2026-10-28: re-read PDL p.15 text; brand preferred over generic is explicit, so BOGL stays true and the cell is verified. Same dosage form as the generic.]",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "boglActive": false,
+      "boglNote": null,
+      "preferredRestriction": null,
+      "stepTherapy": null,
+      "sourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "alternatives": [
+        {
+          "drug": "Tolterodine tartrate (immediate-release)",
+          "note": "Generic, no PA (p.72)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tolterodine tartrate LA (ER)",
+          "note": "Generic, no PA (p.72)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Solifenacin",
+          "note": "Generic, no PA (p.72)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Trospium chloride",
+          "note": "Generic, no PA (p.72)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Darifenacin ER",
+          "note": "Generic, no PA (p.71)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Fesoterodine ER",
+          "note": "Generic, no PA (p.61)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Enablex (darifenacin)",
+          "note": "Not preferred brand, no PA (p.71)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Ditropan XL (oxybutynin ER)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.71)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Detrol (tolterodine)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.71)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Detrol LA (tolterodine ER)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.71)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Vesicare (solifenacin)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.72)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Toviaz (fesoterodine)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.62)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxytrol patch (oxybutynin)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.72)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gelnique gel (oxybutynin)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.71)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "classId": "oab-antimuscarinic",
+      "preferredAgent": {
+        "inn": "Oxybutynin chloride (immediate-release)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "Immediate-release: 5 mg two to three times daily; max 5 mg four times daily (label).",
+        "sigShort": "5 mg BID-TID",
+        "plainSig": "One pill two or three times a day."
+      },
+      "tier": "Generic (G), no PA (p.72)",
+      "verification": "verified",
+      "verificationNote": "Read from the Urinary and Prostate section (PDF pp.71-73, guide pp.70-72) and the Specialty block for Toviaz and fesoterodine (guide pp.61-62). The oxybutynin line prints 'tab [ER] G', so the generic tier applies to IR and ER. Sig is standard label dosing. [Sonnet cross-check 2026-10-29: pick named as the immediate-release tablet to match its IR sig; duplicate IR alternative dropped]",
+      "payerId": "ibx-commercial"
+    },
+    {
+      "boglActive": false,
+      "boglNote": null,
+      "preferredRestriction": null,
+      "stepTherapy": null,
+      "sourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "alternatives": [
+        {
+          "drug": "Myrbetriq (mirabegron)",
+          "note": "Preferred brand, no PA (p.71)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Gemtesa (vibegron)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.71)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "classId": "oab-beta3",
+      "preferredAgent": {
+        "inn": "Mirabegron",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg ER tablet",
+        "sig": "25 mg once daily; may increase to 50 mg after 4 to 8 weeks (label).",
+        "sigShort": "25 mg QD",
+        "plainSig": "One pill a day."
+      },
+      "tier": "Generic (G), no PA (p.71)",
+      "verification": "verified",
+      "verificationNote": "Read from the Urinary and Prostate section (guide pp.70-71). Generic mirabegron is tier G; brand Myrbetriq is PB; both without PA. The plan prefers the generic, so no BOGL.",
+      "payerId": "ibx-commercial"
+    },
+    {
+      "classId": "oab-antimuscarinic",
+      "preferredAgent": {
+        "inn": "Solifenacin succinate",
+        "brand": "Vesicare",
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg once daily; may increase to 10 mg (label).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": "Solifenacin (generic and Vesicare) is the only antimuscarinic on the pages read, listed Tier 3 with no PA flag. Oxybutynin, tolterodine, trospium, darifenacin and fesoterodine did not appear; absence is not treated as exclusion. Tier 3 non-formulary: covered only on open or 3-tier incentive designs, not closed formularies.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3 / Non-Formulary Drug",
+      "alternatives": [
+        {
+          "drug": "Vesicare Oral Tablet",
+          "note": "Tier 3 / Non-Formulary Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-urinary-antispasmodic-antichol-m-3-muscarinic-selective-bladder"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Vesicare Ls Oral Suspension",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3 / Non-Formulary Drug); listed forms: Suspension 1 mg/mL; quantity limit also flagged",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-urinary-antispasmodic-antichol-m-3-muscarinic-selective-bladder"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Browse pages read: Urinary antispasmodic (antichol., m3 selective) and Urinary antispasmodic (anticholinergics, non-selective). Hyoscyamine products (Tier 1) are GI/bladder antispasmodics, not in this class, and were excluded. [Sonnet check 2026-10-28: solifenacin succinate 5 mg made the pick (Tier 3, no PA); removed noCoveredAgent; partial because Highmark labels Tier 3 'Non-Formulary Drug' and other antimuscarinics were not found.] [Sonnet cross-check 2026-10-29: closed-formulary caveat added, as on the DORA record]",
+      "sourceIds": [
+        "highmark-bcbs-next11-2026-10-b-urinary-antispasmodic-antichol-m-3-muscarinic-selective-bladder"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-next11-2026-10-b-urinary-antispasmodic-antichol-m-3-muscarinic-selective-bladder"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-next11-2026-10-b-urinary-antispasmodic-antichol-m-3-muscarinic-selective-bladder"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "highmark-bcbs"
+    },
+    {
+      "classId": "oab-beta3",
+      "preferredAgent": {
+        "inn": "Mirabegron",
+        "brand": "Myrbetriq",
+        "genericAvailable": true,
+        "strength": "25 mg extended-release tablet",
+        "sig": "25 mg once daily; may increase to 50 mg after 4 to 8 weeks (label).",
+        "sigShort": "25 mg QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 / Formulary Generic Drug",
+      "alternatives": [
+        {
+          "drug": "Myrbetriq Oral Tablet Extended Release",
+          "note": "Tier 2 / Formulary Brand Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-overactive-bladder-agents-beta-3-adrenergic-receptor-agonist"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Gemtesa Oral Tablet",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3 / Non-Formulary Drug); listed forms: Tablet 75 mg; quantity limit also flagged",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-overactive-bladder-agents-beta-3-adrenergic-receptor-agonist"
+          ]
+        },
+        {
+          "drug": "Mirabegron Oral Suspension,Extended Rel Recon",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3 / Non-Formulary Drug); listed forms: Suspension,Extended Rel Recon 8 mg/mL; quantity limit also flagged",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-overactive-bladder-agents-beta-3-adrenergic-receptor-agonist"
+          ]
+        },
+        {
+          "drug": "Myrbetriq Oral Suspension,Extended Rel Recon",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3 / Non-Formulary Drug); listed forms: Suspension,Extended Rel Recon 8 mg/mL; quantity limit also flagged",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-overactive-bladder-agents-beta-3-adrenergic-receptor-agonist"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Mirabegron ER generic (25 mg and 50 mg) is Tier 1 with no PA or QL flag, so it is preferred. Myrbetriq brand is Tier 2 with an Upcoming Changes flag and no PA flag. Gemtesa and the mirabegron oral suspension are Tier 3 with PA flags. The generic is not a brand-over-generic case, so boglActive is false. Listing rows read for this class: 7; alternatives shown 1 of 1 non-PA products (Tier 1/2 first); PA-flagged products listed in paRequired: 3. Pick row icons: Tier 1/ Formulary Generic Drug.",
+      "sourceIds": [
+        "highmark-bcbs-next11-2026-10-b-overactive-bladder-agents-beta-3-adrenergic-receptor-agonist"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-next11-2026-10-b-overactive-bladder-agents-beta-3-adrenergic-receptor-agonist"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-next11-2026-10-b-overactive-bladder-agents-beta-3-adrenergic-receptor-agonist"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "highmark-bcbs"
+    }
+  ],
+  "references": [
+    {
+      "id": "pa-medicaid-next11-2026-10",
+      "label": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026, v16",
+      "publisher": "Pennsylvania Department of Human Services",
+      "type": "gov",
+      "url": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-pdl-v16.pdf",
+      "effectiveDate": "2026-01-20",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "ibx-commercial-next11-2026-10",
+      "label": "Select Drug Program Formulary (effective July 1, 2026)",
+      "publisher": "Independence Blue Cross",
+      "type": "payer",
+      "url": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-b-urinary-antispasmodic-antichol-m-3-muscarinic-selective-bladder",
+      "label": "Highmark Drug Search, Genitourinary Therapy > Urinary Antispasmodic - Antichol., M(3) Muscarinic Selective (Bladder) (class browse page)",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=genitourinary+therapy%7curinary+antispasmodic+-+antichol.%2c+m(3)+muscarinic+selective+(bladder)",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-b-overactive-bladder-agents-beta-3-adrenergic-receptor-agonist",
+      "label": "Highmark Drug Search, Genitourinary Therapy > Overactive Bladder Agents - Beta -3 Adrenergic Receptor Agonist (class browse page)",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=genitourinary+therapy%7coveractive+bladder+agents+-+beta+-3+adrenergic+receptor+agonist",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}
