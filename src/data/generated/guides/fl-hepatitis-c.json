@@ -1,0 +1,397 @@
+{
+  "id": "fl-hepatitis-c",
+  "label": "FL · Hepatitis C",
+  "stateCode": "FL",
+  "region": "Florida",
+  "topicId": "hepatitis-c",
+  "topic": "Hepatitis C",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-10-27",
+  "capturedAt": "2026-10-27",
+  "payers": [
+    {
+      "id": "fl-medicaid",
+      "name": "Florida Medicaid",
+      "shortName": "FL Medicaid",
+      "aka": "Florida Medicaid Preferred Drug List (AHCA); Statewide Medicaid Managed Care plans follow the same PDL",
+      "productName": "Florida Medicaid Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Florida Medicaid Preferred Drug List, effective 10/01/2026",
+      "formularyUrl": "https://ahca.myflorida.com/file/medicaid/PDL_Effective_10.01.2026.pdf",
+      "sourceIds": [
+        "fl-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "florida-blue",
+      "name": "Florida Blue",
+      "shortName": "Florida Blue",
+      "aka": "Blue Cross and Blue Shield of Florida",
+      "pbm": "Prime Therapeutics",
+      "productName": "Florida Blue 2026 6-Tier ValueScript formulary (individual / ACA)",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "ValueScript Rx Medication Guide, October 2026 (Florida Blue, 6-tier closed formulary)",
+      "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_FL_6T_ValueScript.pdf",
+      "sourceIds": [
+        "florida-blue-next11-2026-10"
+      ]
+    },
+    {
+      "id": "uhc-fl",
+      "name": "UnitedHealthcare (Commercial)",
+      "shortName": "UnitedHealthcare",
+      "aka": "National commercial PDL (same list in every state)",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "paPolicyUrl": "https://www.uhcprovider.com/en/resource-library/drug-lists-pharmacy.html",
+      "productName": "UnitedHealthcare 2026 Commercial PDL (base list)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 Prescription Drug List (PDL), UnitedHealthcare & affiliated companies",
+      "sourceIds": [
+        "uhc-fl-next11-2026-10"
+      ]
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "hcv-daa",
+      "name": "Hepatitis C direct-acting antivirals",
+      "shortName": "DAA",
+      "plainName": "Hepatitis C cure pills",
+      "description": "Sofosbuvir/velpatasvir (Epclusa and authorized generic), glecaprevir/pibrentasvir (Mavyret), ledipasvir/sofosbuvir (Harvoni and authorized generic), sofosbuvir/velpatasvir/voxilaprevir (Vosevi), elbasvir/grazoprevir (Zepatier).",
+      "plainDescription": "An 8 to 12 week course of pills that cures hepatitis C.",
+      "indication": "Chronic hepatitis C",
+      "sourceIds": [
+        "fl-medicaid-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "hcv-daa",
+      "preferredAgent": {
+        "inn": "Sofosbuvir/velpatasvir",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "400 mg/100 mg tablet",
+        "sig": "No cirrhosis or compensated cirrhosis: 1 tablet once daily for 12 weeks. Decompensated cirrhosis (Child-Pugh B or C): 1 tablet once daily plus weight-based ribavirin for 12 weeks (label).",
+        "sigShort": "1 tab QD x12 wk (+ribavirin if decompensated)",
+        "plainSig": "One pill a day for 12 weeks; people with advanced liver scarring also take ribavirin."
+      },
+      "preferredRestriction": "Auto PA (page 71): system-checked criteria; the PDL does not print the criteria; ages 3 and up.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not stated on PDL (no tier column; PA flag only)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Glecaprevir/pibrentasvir (Mavyret) 100/40 mg tablet and 50/20 mg pellet packet",
+          "outcome": "pa",
+          "reason": "Auto PA (page 71): system-checked criteria; ages 3 and up",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Sofosbuvir/velpatasvir/voxilaprevir (Vosevi) 400/100/100 mg tablet",
+          "outcome": "pa",
+          "reason": "Clinical PA (page 71): clinical documentation required; ages 18 and up",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from the AHCA PDL copy, page 71. The PDL lists the generic name only; the Epclusa brand and its authorized generic are the same product, so genericAvailable is true and no BOGL is asserted. Not on PDL: ledipasvir/sofosbuvir (Harvoni) and elbasvir/grazoprevir (Zepatier); not asserted excluded. Sig is standard label dosing.",
+      "sourceIds": [
+        "fl-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "fl-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "fl-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "fl-medicaid"
+    },
+    {
+      "classId": "hcv-daa",
+      "preferredAgent": {
+        "inn": "Sofosbuvir-velpatasvir",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "400 mg/100 mg tablet",
+        "sig": "No cirrhosis or compensated cirrhosis: 1 tablet once daily for 12 weeks. Decompensated cirrhosis (Child-Pugh B or C): 1 tablet once daily plus weight-based ribavirin for 12 weeks (label).",
+        "sigShort": "1 tab QD x12 wk (+ribavirin if decompensated)",
+        "plainSig": "One pill a day for 12 weeks; people with advanced liver scarring also take ribavirin."
+      },
+      "preferredRestriction": "PA required (PDF p.23); QL 28 tablets per 28 days; specialty (SP) drug.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 6 (Specialty)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Epclusa (sofosbuvir-velpatasvir) brand",
+          "outcome": "pa",
+          "reason": "PA, QL 28 tablets per 28 days; specialty (PDF p.21)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ledipasvir-sofosbuvir (generic; Harvoni reference)",
+          "outcome": "pa",
+          "reason": "PA, QL 28 tablets per 28 days; specialty; tier 5 (PDF p.22)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Harvoni (ledipasvir-sofosbuvir)",
+          "outcome": "pa",
+          "reason": "PA, QL 28 tablets per 28 days; specialty (PDF p.21)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Mavyret (glecaprevir-pibrentasvir)",
+          "outcome": "pa",
+          "reason": "PA, QL 84 tablets per 28 days; specialty (PDF p.22)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Vosevi (sofosbuvir-velpatasvir-voxilaprevir)",
+          "outcome": "pa",
+          "reason": "PA, QL 28 tablets per 28 days; specialty (PDF p.24)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zepatier (elbasvir-grazoprevir)",
+          "outcome": "nonformulary",
+          "reason": "Brand absent from the guide (searched full text and index). Guide p.2 (PDF): \"ValueScript is a closed formulary pharmacy plan. This means any medications not on the formulary (included in the medication list) are not covered\" and \"Brand name medications not listed in the medication list are not covered\".",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Generic sofosbuvir-velpatasvir 400 mg/100 mg (PDF p.23) is the pick: tier 6, PA+QL, specialty, same as the Epclusa brand (p.21), so the plan does not prefer brand over generic and BOGL is not set. Harvoni, ledipasvir-sofosbuvir, Mavyret and Vosevi read directly (pp.21-24), all PA+QL. Zepatier absent (closed formulary, p.2). Pick is judgment since every HCV option needs PA. Sig is label dosing, not printed. [Sonnet check 2026-10-27: tier and preferredRestriction values were swapped in the checkpoint; corrected]",
+      "sourceIds": [
+        "florida-blue-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "florida-blue-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "florida-blue-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "florida-blue"
+    },
+    {
+      "classId": "hcv-daa",
+      "preferredAgent": {
+        "inn": "Sofosbuvir-velpatasvir",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "400 mg/100 mg (standard; strength not printed)",
+        "sig": "No cirrhosis or compensated cirrhosis: 1 tablet once daily for 12 weeks. Decompensated cirrhosis (Child-Pugh B or C): 1 tablet once daily plus weight-based ribavirin for 12 weeks (label).",
+        "sigShort": "1 tab QD x12 wk (+ribavirin if decompensated)",
+        "plainSig": "One pill a day for 12 weeks; people with advanced liver scarring also take ribavirin."
+      },
+      "preferredRestriction": "PA, QL and specialty pharmacy (SP) flagged (p.18)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Sofosbuvir-velpatasvir (Epclusa)",
+          "outcome": "pa",
+          "reason": "Tier 2; PA, QL and SP flagged (p.17)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ledipasvir-sofosbuvir (Harvoni)",
+          "outcome": "step",
+          "reason": "Tier 2; PA, ST, QL and SP flagged (p.17)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ledipasvir-sofosbuvir (generic)",
+          "outcome": "step",
+          "reason": "Tier 2; PA, ST, QL and SP flagged (p.17)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Glecaprevir-pibrentasvir (Mavyret)",
+          "outcome": "pa",
+          "reason": "Tier 2; PA, QL and SP flagged (p.17)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Sofosbuvir-velpatasvir-voxilaprevir (Vosevi)",
+          "outcome": "pa",
+          "reason": "Tier 2; PA, QL and SP flagged (p.18)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL pp.17-18. Every DAA on the PDL needs PA, QL and SP; ledipasvir-sofosbuvir products add ST. Sofosbuvir-velpatasvir generic chosen as the lowest-barrier product (no ST). Brand Epclusa and the generic share Tier 2 and the same flags, so no BOGL preference is shown. Elbasvir-grazoprevir (Zepatier) does not appear on this PDL. Strength and duration not printed. [Reused: same national UHC commercial PDL (commercial-pdl-jan-2026.pdf) cited for uhc-fl]",
+      "sourceIds": [
+        "uhc-fl-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "uhc-fl-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "uhc-fl-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "uhc-fl"
+    },
+    {
+      "classId": "hcv-daa",
+      "preferredAgent": {
+        "inn": "Sofosbuvir and velpatasvir",
+        "brand": "Epclusa",
+        "genericAvailable": true,
+        "strength": "400 mg/100 mg tablet",
+        "sig": "No cirrhosis or compensated cirrhosis: 1 tablet once daily for 12 weeks. Decompensated cirrhosis (Child-Pugh B or C): 1 tablet once daily plus weight-based ribavirin for 12 weeks (label).",
+        "sigShort": "1 tab QD x12 wk (+ribavirin if decompensated)",
+        "plainSig": "One pill a day for 12 weeks; people with advanced liver scarring also take ribavirin."
+      },
+      "preferredRestriction": "PA and QL 28 per 28 days (page 39)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 5 (Specialty Tier)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Epclusa 150 mg/37.5 mg and 200 mg/50 mg pellets in packet",
+          "outcome": "pa",
+          "reason": "PA and QL (28 or 56 per 28 days); Tier 5 (page 39)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Epclusa 200 mg/50 mg tablet",
+          "outcome": "pa",
+          "reason": "PA and QL 28 per 28 days; Tier 5 (page 39)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Vosevi (sofosbuvir/velpatasvir/voxilaprevir) 400/100/100 mg tablet",
+          "outcome": "pa",
+          "reason": "PA and QL 28 per 28 days; Tier 5 (page 42)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Epclusa 400 mg/100 mg tablet read on page 39: Tier 5 (DL), PA and QL 28 per 28 days. Every DAA listed carries PA. Harvoni (ledipasvir/sofosbuvir), Mavyret (glecaprevir/pibrentasvir), Zepatier (elbasvir/grazoprevir) and the sofosbuvir/velpatasvir authorized generic are not listed; absence is not read as exclusion. Ribavirin is listed (Tier 3, no PA, page 41) but is not a DAA. boglActive is false: no brand-over-generic preference is printed. [Sonnet check 2026-10-27: Re-read by x-coordinate on v17; pages, tiers and flags match.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "fl-medicaid-next11-2026-10",
+      "label": "Florida Medicaid Preferred Drug List, effective 10/01/2026",
+      "publisher": "Florida Agency for Health Care Administration (AHCA)",
+      "type": "gov",
+      "url": "https://ahca.myflorida.com/file/medicaid/PDL_Effective_10.01.2026.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "florida-blue-next11-2026-10",
+      "label": "ValueScript Rx Medication Guide, October 2026 (Florida Blue, 6-tier closed formulary)",
+      "publisher": "Florida Blue (Prime Therapeutics)",
+      "type": "payer",
+      "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_FL_6T_ValueScript.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "uhc-fl-next11-2026-10",
+      "label": "2026 Prescription Drug List (PDL), UnitedHealthcare & affiliated companies",
+      "publisher": "UnitedHealthcare",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-10-22"
+    },
+    {
+      "id": "humana-premier-rx-pdp-next11-2026-10",
+      "label": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

@@ -1,0 +1,1575 @@
+{
+  "id": "pa-hypertension",
+  "label": "PA · Blood pressure (beyond ACE inhibitors)",
+  "stateCode": "PA",
+  "region": "Pennsylvania",
+  "topicId": "hypertension",
+  "topic": "Blood pressure (beyond ACE inhibitors)",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-29",
+  "capturedAt": "2026-10-29",
+  "payers": [
+    {
+      "id": "pa-medicaid",
+      "aka": "Statewide PDL binds fee-for-service and every Pennsylvania Medicaid managed care plan statewide (Physical HealthChoices + Community HealthChoices): same preferred/non-preferred status and PA criteria; each MCO runs its own PA intake (DHS MA Bulletin 2022-12-09)",
+      "name": "PA Medical Assistance Statewide Preferred Drug List (Fee-for-Service)",
+      "shortName": "PA Medicaid FFS",
+      "pbm": "OptumRx, Inc. (negotiates supplemental rebates / P&T support for DHS)",
+      "productName": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026 v11",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026, v16",
+      "formularyUrl": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-pdl-v16.pdf",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "ibx-commercial",
+      "name": "Independence Blue Cross (Commercial)",
+      "shortName": "Independence Blue Cross",
+      "pbm": "FutureScripts (IBX's PBM subsidiary)",
+      "productName": "Select Drug Program® Formulary",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Select Drug Program Formulary (effective July 1, 2026)",
+      "formularyUrl": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "sourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ]
+    },
+    {
+      "id": "highmark-bcbs",
+      "name": "Highmark Blue Cross Blue Shield (Commercial)",
+      "shortName": "Highmark BCBS",
+      "pbm": "Prime Therapeutics (Highmark is a Prime owner-member Blue plan)",
+      "productName": "Highmark Comprehensive Formulary (Drug Search)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Highmark Drug Search, Cardiovascular Therapy Agents > Angiotensin Ii Receptor Blockers (Arbs) (class browse page)",
+      "formularyUrl": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=cardiovascular+therapy+agents%7cangiotensin+ii+receptor+blockers+(arbs)",
+      "sourceIds": [
+        "highmark-bcbs-next11-2026-10-b-angiotensin-ii-receptor-blockers-arbs"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "arb",
+      "name": "ARBs",
+      "shortName": "ARB",
+      "plainName": "Angiotensin receptor blocker",
+      "description": "Losartan, valsartan, irbesartan, olmesartan, telmisartan, candesartan, azilsartan (Edarbi); single-agent tablets (combinations with HCTZ or amlodipine are alternatives only if listed separately). Sacubitril/valsartan (Entresto) is heart failure and out of scope.",
+      "plainDescription": "A daily blood pressure pill, often used when an ACE inhibitor causes cough.",
+      "indication": "Hypertension, diabetic kidney disease",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "ccb",
+      "name": "Calcium channel blockers",
+      "shortName": "CCB",
+      "plainName": "Calcium channel blocker",
+      "description": "Dihydropyridines (amlodipine, nifedipine ER, felodipine ER, nicardipine) and non-dihydropyridines (diltiazem IR/ER, verapamil IR/ER).",
+      "plainDescription": "A daily blood pressure pill that relaxes blood vessels.",
+      "indication": "Hypertension, angina",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "beta-blocker",
+      "name": "Beta blockers",
+      "shortName": "BB",
+      "plainName": "Beta blocker",
+      "description": "Metoprolol tartrate/succinate, carvedilol IR/CR, atenolol, bisoprolol, nebivolol (Bystolic), propranolol IR/ER, labetalol, nadolol.",
+      "plainDescription": "A daily pill that slows the heart and lowers blood pressure.",
+      "indication": "Hypertension, heart failure, post-MI, angina",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "thiazide",
+      "name": "Thiazide diuretics",
+      "shortName": "THIAZIDE",
+      "plainName": "Water pill (thiazide)",
+      "description": "Hydrochlorothiazide, chlorthalidone, indapamide, metolazone.",
+      "plainDescription": "A daily water pill for blood pressure.",
+      "indication": "Hypertension, edema",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "arb",
+      "preferredAgent": {
+        "inn": "Losartan potassium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet",
+        "sig": "50 mg once daily (25 mg if volume-depleted or with liver disease); range 25-100 mg/day (label).",
+        "sigShort": "50 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (PDL, QL, no PA)",
+      "alternatives": [
+        {
+          "drug": "Irbesartan tablet",
+          "note": "Preferred, QL (PDL p.4)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olmesartan tablet",
+          "note": "Preferred, QL (PDL p.4)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Telmisartan tablet",
+          "note": "Preferred, QL (PDL p.4)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Valsartan tablet",
+          "note": "Preferred, QL (PDL p.4)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Candesartan tablet",
+          "note": "Preferred, QL (PDL p.4)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Atacand (candesartan)",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.4)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Cozaar (losartan)",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.4)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Avapro (irbesartan)",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.4)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Benicar (olmesartan)",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.4)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diovan (valsartan) and valsartan oral solution",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.5)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Edarbi (azilsartan)",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.4)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL v16 (Effective January 2026) read directly by column x-position; left column = Preferred, right column = Non-Preferred (header: non-preferred agents require PA). Sacubitril-valsartan (Entresto) is heart failure and out of scope. Quantity limits apply but are not printed in the PDL. [Sonnet cross-check 2026-10-29: fixed-dose combination products removed from this single-agent class]",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "classId": "ccb",
+      "preferredAgent": {
+        "inn": "Amlodipine besylate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg once daily (2.5 mg for older or frail adults); max 10 mg/day (label).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (PDL, QL, no PA)",
+      "alternatives": [
+        {
+          "drug": "Felodipine ER tablet",
+          "note": "Preferred, QL (PDL p.17)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nifedipine ER tablet and nifedipine capsule",
+          "note": "Preferred, QL (PDL p.17)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diltiazem tablet and 24HR ER capsule (generic Cardizem CD)",
+          "note": "Preferred, QL (PDL p.17)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Verapamil tablet and ER tablet (generic Calan SR)",
+          "note": "Preferred, QL (PDL p.17)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Norvasc (amlodipine) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.17)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Procardia XL (nifedipine ER) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.17)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Sular ER (nisoldipine ER) tablet and generic nisoldipine ER",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.17)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nicardipine capsule and Katerzia (amlodipine) suspension",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.17)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL v16 (Effective January 2026) read directly by column x-position; left column = Preferred, right column = Non-Preferred (header: non-preferred agents require PA). Amlodipine-atorvastatin (Caduet) is a combination and is not used as a single-agent alternative. Dosing is standard label dosing (not printed).",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "classId": "beta-blocker",
+      "preferredAgent": {
+        "inn": "Atenolol",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet",
+        "sig": "50 mg by mouth once daily for hypertension; may increase to 100 mg once daily after 1-2 weeks (label).",
+        "sigShort": "50 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (PDL, no PA)",
+      "alternatives": [
+        {
+          "drug": "Metoprolol succinate ER tablet and metoprolol tartrate tablet",
+          "note": "Preferred, no PA (PDL p.15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carvedilol tablet",
+          "note": "Preferred, QL (PDL p.15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nebivolol tablet (generic)",
+          "note": "Preferred, QL (PDL p.15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Bisoprolol 5 mg and 10 mg tablet",
+          "note": "Preferred, no PA (PDL p.15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Propranolol tablet and ER capsule; nadolol tablet; labetalol tablet",
+          "note": "Preferred, no PA (PDL p.15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Bystolic (nebivolol) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carvedilol ER capsule",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Inderal LA, Inderal XL and Innopran XL (propranolol) capsules",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lopressor (metoprolol tartrate) tablet and Toprol XL (metoprolol succinate) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tenormin (atenolol) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Betapace and Betapace AF (sotalol) tablets; Sotylize solution",
+          "outcome": "pa",
+          "reason": "Not preferred; PA required (PDL p.15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL v16 (Effective January 2026) read directly by column x-position; left column = Preferred, right column = Non-Preferred (header: non-preferred agents require PA). Sacubitril-valsartan is out of scope. Dosing is standard label dosing (not printed). [Sonnet cross-check 2026-10-29: fixed-dose combination products removed from this single-agent class]",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "classId": "thiazide",
+      "preferredAgent": {
+        "inn": "Hydrochlorothiazide",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg tablet",
+        "sig": "12.5-25 mg once daily in the morning (label).",
+        "sigShort": "12.5-25 mg QAM",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not a PDL class (MA formulary, standard generic)",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Not a PDL class. No single-agent thiazide diuretic appears on the statewide PDL v16 (only combinations, e.g. bisoprolol-HCTZ, atenolol-chlorthalidone, losartan-HCTZ, on pp.4-15). Standard generic picked per the MA-formulary convention; MA formulary coverage was not read directly, so this record is partial. No alternatives are asserted. [Sonnet check 2026-10-28: kept partial; not a PDL class.]",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "boglActive": false,
+      "boglNote": null,
+      "preferredRestriction": null,
+      "stepTherapy": null,
+      "sourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "alternatives": [
+        {
+          "drug": "Valsartan",
+          "note": "Generic, no PA (p.45)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Irbesartan",
+          "note": "Generic, no PA (p.41)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olmesartan",
+          "note": "Generic, no PA (p.43)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Telmisartan",
+          "note": "Generic, no PA (p.44)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Candesartan",
+          "note": "Generic, no PA (p.40)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Cozaar (losartan)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.40)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diovan (valsartan)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.40)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Avapro (irbesartan)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.39)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Benicar (olmesartan)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.39)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Atacand (candesartan)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.39)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Micardis (telmisartan)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.42)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Edarbi (azilsartan)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.40)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "classId": "arb",
+      "preferredAgent": {
+        "inn": "Losartan potassium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg",
+        "sig": "50 mg once daily (25 mg if volume-depleted or with liver disease); range 25-100 mg/day (label).",
+        "sigShort": "50 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "tier": "Generic (G), no PA (p.42)",
+      "verification": "verified",
+      "verificationNote": "Read from the Heart, Blood Pressure and Cholesterol section (guide pp.38-45). Single-agent ARBs only; HCTZ and amlodipine combinations are not single-agent alternatives and are omitted. Sacubitril/valsartan is out of scope.",
+      "payerId": "ibx-commercial"
+    },
+    {
+      "boglActive": false,
+      "boglNote": null,
+      "preferredRestriction": null,
+      "stepTherapy": null,
+      "sourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "alternatives": [
+        {
+          "drug": "Nifedipine ER",
+          "note": "Generic, no PA (p.43)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Felodipine ER",
+          "note": "Generic, no PA (p.41)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nicardipine",
+          "note": "Generic, no PA (p.43)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Isradipine",
+          "note": "Generic, no PA (p.42)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nisoldipine ER",
+          "note": "Generic, no PA (p.43)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diltiazem HCl (IR, CD, LA, SR, ER)",
+          "note": "Generic, no PA (p.40)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Verapamil HCl (IR and ER)",
+          "note": "Generic, no PA (p.45)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Adalat CC (nifedipine ER)",
+          "note": "Not preferred brand, no PA (p.39)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Procardia XL (nifedipine ER)",
+          "note": "Not preferred brand, no PA (p.43)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Calan and Calan SR (verapamil)",
+          "note": "Not preferred brand, no PA (p.40)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Norvasc (amlodipine)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.43)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Cardizem (diltiazem)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.40)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Cardizem CD (diltiazem)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.40)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Cardizem LA (diltiazem)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.40)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Verelan ER (verapamil)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.45)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "classId": "ccb",
+      "preferredAgent": {
+        "inn": "Amlodipine besylate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg",
+        "sig": "5 mg once daily (2.5 mg for older or frail adults); max 10 mg/day (label).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "tier": "Low-cost generic (LCG), no PA (p.39)",
+      "verification": "verified",
+      "verificationNote": "Read from the Heart, Blood Pressure and Cholesterol section (guide pp.38-45) and the verapamil lines on p.45. Sig is standard label dosing.",
+      "payerId": "ibx-commercial"
+    },
+    {
+      "boglActive": false,
+      "boglNote": null,
+      "preferredRestriction": null,
+      "stepTherapy": null,
+      "sourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "alternatives": [
+        {
+          "drug": "Metoprolol succinate ER",
+          "note": "Generic, no PA (p.42)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carvedilol IR and CR",
+          "note": "Generic, no PA (p.40)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Atenolol",
+          "note": "Low-cost generic, no PA (p.39)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Bisoprolol fumarate",
+          "note": "Generic, no PA (p.39)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nadolol",
+          "note": "Generic, no PA (p.42)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Propranolol IR and ER",
+          "note": "Generic, no PA (p.43)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Labetalol",
+          "note": "Generic, no PA (p.42)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nebivolol (generic)",
+          "note": "Generic, no PA (p.42)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Toprol XL (metoprolol succinate)",
+          "note": "Not preferred brand, no PA (p.44)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Corgard (nadolol)",
+          "note": "Not preferred brand, no PA (p.40)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Bystolic (nebivolol)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.39)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Coreg and Coreg CR (carvedilol)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.40)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tenormin (atenolol)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.44)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Inderal LA (propranolol)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.41)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lopressor oral solution (metoprolol)",
+          "outcome": "pa",
+          "reason": "PA required; not preferred (p.42)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "classId": "beta-blocker",
+      "preferredAgent": {
+        "inn": "Metoprolol tartrate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg",
+        "sig": "Hypertension: start 50 mg twice daily (or 25 mg twice daily) and titrate; usual 100-200 mg/day (label).",
+        "sigShort": "25-50 mg BID",
+        "plainSig": "One pill twice a day; do not stop suddenly."
+      },
+      "tier": "Low-cost generic (LCG), no PA (p.42)",
+      "verification": "verified",
+      "verificationNote": "Read from the Heart, Blood Pressure and Cholesterol section (guide pp.38-45). Sig is the standard starting dose; not printed on the formulary.",
+      "payerId": "ibx-commercial"
+    },
+    {
+      "boglActive": false,
+      "boglNote": null,
+      "preferredRestriction": null,
+      "stepTherapy": null,
+      "sourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "alternatives": [
+        {
+          "drug": "Chlorthalidone",
+          "note": "Generic, no PA (p.40)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Indapamide",
+          "note": "Generic, no PA (p.41)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metolazone",
+          "note": "Generic, no PA (p.42)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Thalitone (chlorthalidone)",
+          "note": "Not preferred brand, no PA (p.44)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Microzide (hydrochlorothiazide)",
+          "note": "Not preferred brand, no PA (p.42)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "classId": "thiazide",
+      "preferredAgent": {
+        "inn": "Hydrochlorothiazide",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg",
+        "sig": "12.5-25 mg once daily in the morning (label).",
+        "sigShort": "12.5-25 mg QAM",
+        "plainSig": "One pill each morning."
+      },
+      "tier": "Low-cost generic (LCG), no PA (p.41)",
+      "verification": "verified",
+      "verificationNote": "Read from the Heart, Blood Pressure and Cholesterol section (guide pp.38-45). Combination products (Maxzide, triamterene-HCTZ) are excluded from single-agent alternatives. No thiazide on this list carries PA.",
+      "payerId": "ibx-commercial"
+    },
+    {
+      "classId": "arb",
+      "preferredAgent": {
+        "inn": "Losartan potassium",
+        "brand": "Cozaar",
+        "genericAvailable": true,
+        "strength": "50 mg tablet",
+        "sig": "50 mg once daily (25 mg if volume-depleted or with liver disease); range 25-100 mg/day (label).",
+        "sigShort": "50 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 / Formulary Generic Drug",
+      "alternatives": [
+        {
+          "drug": "Irbesartan Oral Tablet",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing; quantity limit flag",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-angiotensin-ii-receptor-blockers-arbs"
+          ]
+        },
+        {
+          "drug": "Olmesartan Oral Tablet",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing; quantity limit flag",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-angiotensin-ii-receptor-blockers-arbs"
+          ]
+        },
+        {
+          "drug": "Valsartan Oral Tablet",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing; quantity limit flag",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-angiotensin-ii-receptor-blockers-arbs"
+          ]
+        },
+        {
+          "drug": "Atacand Oral Tablet",
+          "note": "Tier 3 / Non-Formulary Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-angiotensin-ii-receptor-blockers-arbs"
+          ]
+        },
+        {
+          "drug": "Avapro Oral Tablet",
+          "note": "Tier 3 / Non-Formulary Drug; no PA flag on listing; quantity limit flag",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-angiotensin-ii-receptor-blockers-arbs"
+          ]
+        },
+        {
+          "drug": "Azilsartan Medoxomil Oral Tablet",
+          "note": "Tier 3 / Non-Formulary Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-angiotensin-ii-receptor-blockers-arbs"
+          ]
+        },
+        {
+          "drug": "Benicar Oral Tablet",
+          "note": "Tier 3 / Non-Formulary Drug; no PA flag on listing; quantity limit flag",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-angiotensin-ii-receptor-blockers-arbs"
+          ]
+        },
+        {
+          "drug": "Cozaar Oral Tablet",
+          "note": "Tier 3 / Non-Formulary Drug; no PA flag on listing; quantity limit flag",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-angiotensin-ii-receptor-blockers-arbs"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Arbli Oral Suspension",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3 / Non-Formulary Drug); listed forms: Suspension 10 mg/mL; quantity limit also flagged",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-angiotensin-ii-receptor-blockers-arbs"
+          ]
+        },
+        {
+          "drug": "Valsartan Oral Solution",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3 / Non-Formulary Drug); listed forms: Solution 4 mg/mL",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-angiotensin-ii-receptor-blockers-arbs"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Losartan 50 mg tablet is Tier 1 generic with a Quantity Limit flag and a Low-Cost Generic Rx flag. A QL alone is not PA, and the listing does not print the quantity, so none is recorded. Irbesartan, olmesartan and valsartan generics are Tier 1 with QL flags (alternatives). Telmisartan, candesartan, azilsartan and the brand ARBs are Tier 3; valsartan oral solution has a PA flag. ARB-combination products are not listed as alternatives, per the class description. Listing rows read for this class: 43; alternatives shown 13 of 13 non-PA products (Tier 1/2 first); PA-flagged products listed in paRequired: 2. Pick row icons: Tier 1/ Formulary Generic Drug, Quantity Limit, Low-Cost Generic Rx. [Sonnet check 2026-10-28: trimmed lists from 13 alternatives/2 PA items to the first 8/12; full list is in the source pages.]",
+      "sourceIds": [
+        "highmark-bcbs-next11-2026-10-b-angiotensin-ii-receptor-blockers-arbs"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-next11-2026-10-b-angiotensin-ii-receptor-blockers-arbs"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-next11-2026-10-b-angiotensin-ii-receptor-blockers-arbs"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "highmark-bcbs"
+    },
+    {
+      "classId": "ccb",
+      "preferredAgent": {
+        "inn": "Amlodipine besylate",
+        "brand": "Norvasc",
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg once daily (2.5 mg for older or frail adults); max 10 mg/day (label).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 / Formulary Generic Drug",
+      "alternatives": [
+        {
+          "drug": "Cartia Xt Oral Capsule,Extended Release",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-benzothiazepines",
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-dihydropyridines",
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-phenylakylamines"
+          ]
+        },
+        {
+          "drug": "Dilt-Xr Oral Capsule,Ext.Rel",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-benzothiazepines",
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-dihydropyridines",
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-phenylakylamines"
+          ]
+        },
+        {
+          "drug": "Diltiazem Hcl Oral Capsule,Ext.Rel",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-benzothiazepines",
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-dihydropyridines",
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-phenylakylamines"
+          ]
+        },
+        {
+          "drug": "Diltiazem Hcl Oral Capsule,Extended Release",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-benzothiazepines",
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-dihydropyridines",
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-phenylakylamines"
+          ]
+        },
+        {
+          "drug": "Diltiazem Hcl Oral Tablet",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-benzothiazepines",
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-dihydropyridines",
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-phenylakylamines"
+          ]
+        },
+        {
+          "drug": "Felodipine Oral Tablet Extended Release",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-benzothiazepines",
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-dihydropyridines",
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-phenylakylamines"
+          ]
+        },
+        {
+          "drug": "Nifedipine Oral Tablet Extended Release",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-benzothiazepines",
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-dihydropyridines",
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-phenylakylamines"
+          ]
+        },
+        {
+          "drug": "Tiadylt Er Oral Capsule,Extended Release",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-benzothiazepines",
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-dihydropyridines",
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-phenylakylamines"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Levamlodipine Oral Tablet",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3 / Non-Formulary Drug); listed forms: Tablet 2.5 mg; Tablet 5 mg; quantity limit also flagged",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-benzothiazepines",
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-dihydropyridines",
+            "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-phenylakylamines"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Amlodipine 5 mg tablet is Tier 1 generic with a Low-Cost Generic Rx flag only (no PA, no QL). Nifedipine ER, felodipine ER, diltiazem and verapamil generics are Tier 1 with no PA flag and are alternatives. Nicardipine did not appear on the pages read. Amlodipine-combination products are not listed. Listing rows read for this class: 93; alternatives shown 22 of 22 non-PA products (Tier 1/2 first); PA-flagged products listed in paRequired: 1. Pick row icons: Tier 1/ Formulary Generic Drug, Low-Cost Generic Rx. [Sonnet check 2026-10-28: trimmed lists from 22 alternatives/1 PA items to the first 8/12; full list is in the source pages.]",
+      "sourceIds": [
+        "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-benzothiazepines",
+        "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-dihydropyridines",
+        "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-phenylakylamines"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-benzothiazepines",
+        "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-dihydropyridines",
+        "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-phenylakylamines"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-benzothiazepines",
+        "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-dihydropyridines",
+        "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-phenylakylamines"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "highmark-bcbs"
+    },
+    {
+      "classId": "beta-blocker",
+      "preferredAgent": {
+        "inn": "Metoprolol succinate",
+        "brand": "Toprol-XL",
+        "genericAvailable": true,
+        "strength": "50 mg extended-release tablet",
+        "sig": "Hypertension: 25-100 mg once daily, max 400 mg/day. Heart failure: start 12.5-25 mg once daily and double every 2 weeks as tolerated to a target of 200 mg (label).",
+        "sigShort": "25-100 mg QD",
+        "plainSig": "One pill a day; do not stop suddenly."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 / Formulary Generic Drug",
+      "alternatives": [
+        {
+          "drug": "Atenolol Oral Tablet",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-alpha-beta-blockers",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-cardiac-selective",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-non-cardiac-selective"
+          ]
+        },
+        {
+          "drug": "Carvedilol Oral Tablet",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-alpha-beta-blockers",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-cardiac-selective",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-non-cardiac-selective"
+          ]
+        },
+        {
+          "drug": "Labetalol Oral Tablet",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-alpha-beta-blockers",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-cardiac-selective",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-non-cardiac-selective"
+          ]
+        },
+        {
+          "drug": "Nadolol Oral Tablet",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-alpha-beta-blockers",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-cardiac-selective",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-non-cardiac-selective"
+          ]
+        },
+        {
+          "drug": "Nebivolol Oral Tablet",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-alpha-beta-blockers",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-cardiac-selective",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-non-cardiac-selective"
+          ]
+        },
+        {
+          "drug": "Propranolol Oral Capsule,Extended Release",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-alpha-beta-blockers",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-cardiac-selective",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-non-cardiac-selective"
+          ]
+        },
+        {
+          "drug": "Propranolol Oral Solution",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-alpha-beta-blockers",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-cardiac-selective",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-non-cardiac-selective"
+          ]
+        },
+        {
+          "drug": "Propranolol Oral Tablet",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-alpha-beta-blockers",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-cardiac-selective",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-non-cardiac-selective"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Carvedilol Phosphate Oral Capsule, Er Multiphase",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3 / Non-Formulary Drug); listed forms: Capsule, Er Multiphase 24 Hr 10 mg; Capsule, Er Multiphase 24 Hr 20 mg; Capsule, Er Multiphase 24 Hr 40 mg and more",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-alpha-beta-blockers",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-cardiac-selective",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-non-cardiac-selective"
+          ]
+        },
+        {
+          "drug": "Coreg Cr Oral Capsule, Er Multiphase",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3 / Non-Formulary Drug); listed forms: Capsule, Er Multiphase 24 Hr 10 mg; Capsule, Er Multiphase 24 Hr 20 mg; Capsule, Er Multiphase 24 Hr 40 mg and more",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-alpha-beta-blockers",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-cardiac-selective",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-non-cardiac-selective"
+          ]
+        },
+        {
+          "drug": "Coreg Oral Tablet",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3 / Non-Formulary Drug); listed forms: Tablet 12.5 mg; Tablet 25 mg; Tablet 3.125 mg and more",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-alpha-beta-blockers",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-cardiac-selective",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-non-cardiac-selective"
+          ]
+        },
+        {
+          "drug": "Bisoprolol Fumarate Oral Tablet",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3 / Non-Formulary Drug); listed forms: Tablet 2.5 mg",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-alpha-beta-blockers",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-cardiac-selective",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-non-cardiac-selective"
+          ]
+        },
+        {
+          "drug": "Bystolic Oral Tablet",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3 / Non-Formulary Drug); listed forms: Tablet 10 mg; Tablet 2.5 mg; Tablet 20 mg and more",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-alpha-beta-blockers",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-cardiac-selective",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-non-cardiac-selective"
+          ]
+        },
+        {
+          "drug": "Lopressor Oral Solution",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3 / Non-Formulary Drug); listed forms: Solution 10 mg/mL; quantity limit also flagged",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-alpha-beta-blockers",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-cardiac-selective",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-non-cardiac-selective"
+          ]
+        },
+        {
+          "drug": "Lopressor Oral Tablet",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3 / Non-Formulary Drug); listed forms: Tablet 100 mg; Tablet 12.5 mg; Tablet 50 mg",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-alpha-beta-blockers",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-cardiac-selective",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-non-cardiac-selective"
+          ]
+        },
+        {
+          "drug": "Metoprolol Tartrate Oral Tablet",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3 / Non-Formulary Drug); listed forms: Tablet 12.5 mg",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-alpha-beta-blockers",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-cardiac-selective",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-non-cardiac-selective"
+          ]
+        },
+        {
+          "drug": "Inderal La Oral Capsule,Extended Release",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3 / Non-Formulary Drug); listed forms: Capsule,Extended Release 24 Hr 120 mg; Capsule,Extended Release 24 Hr 160 mg; Capsule,Extended Release 24 Hr 60 mg and more",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-alpha-beta-blockers",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-cardiac-selective",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-non-cardiac-selective"
+          ]
+        },
+        {
+          "drug": "Inderal Xl Oral Capsule,Extended Release",
+          "outcome": "pa",
+          "reason": "PA required per Highmark drug search (Tier 3 / Non-Formulary Drug); listed forms: Capsule,Extended Release 24Hr 120 mg; Capsule,Extended Release 24Hr 80 mg",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-alpha-beta-blockers",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-cardiac-selective",
+            "highmark-bcbs-next11-2026-10-b-beta-blockers-non-cardiac-selective"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Metoprolol succinate ER 50 mg is Tier 1 generic with no PA or QL flag. Metoprolol tartrate, carvedilol and atenolol are Tier 1 generics (carvedilol and atenolol with a Low-Cost Generic Rx flag). Sotalol and sotalol AF are antiarrhythmics and are excluded from this class. Propranolol, nadolol, labetalol, nebivolol and bisoprolol generics are Tier 1. Listing rows read for this class: 72; alternatives shown 9 of 9 non-PA products (Tier 1/2 first); PA-flagged products listed in paRequired: 10. Pick row icons: Tier 1/ Formulary Generic Drug. [Sonnet check 2026-10-28: trimmed lists from 9 alternatives/10 PA items to the first 8/12; full list is in the source pages.]",
+      "sourceIds": [
+        "highmark-bcbs-next11-2026-10-b-alpha-beta-blockers",
+        "highmark-bcbs-next11-2026-10-b-beta-blockers-cardiac-selective",
+        "highmark-bcbs-next11-2026-10-b-beta-blockers-non-cardiac-selective"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-next11-2026-10-b-alpha-beta-blockers",
+        "highmark-bcbs-next11-2026-10-b-beta-blockers-cardiac-selective",
+        "highmark-bcbs-next11-2026-10-b-beta-blockers-non-cardiac-selective"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-next11-2026-10-b-alpha-beta-blockers",
+        "highmark-bcbs-next11-2026-10-b-beta-blockers-cardiac-selective",
+        "highmark-bcbs-next11-2026-10-b-beta-blockers-non-cardiac-selective"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "highmark-bcbs"
+    },
+    {
+      "classId": "thiazide",
+      "preferredAgent": {
+        "inn": "Hydrochlorothiazide",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg tablet",
+        "sig": "12.5-25 mg once daily in the morning (label).",
+        "sigShort": "12.5-25 mg QAM",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 / Formulary Generic Drug",
+      "alternatives": [
+        {
+          "drug": "Chlorthalidone Oral Tablet",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-diuretic-thiazides-and-related"
+          ]
+        },
+        {
+          "drug": "Hydrochlorothiazide Oral Capsule",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-diuretic-thiazides-and-related"
+          ]
+        },
+        {
+          "drug": "Indapamide Oral Tablet",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-diuretic-thiazides-and-related"
+          ]
+        },
+        {
+          "drug": "Metolazone Oral Tablet",
+          "note": "Tier 1 / Formulary Generic Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-diuretic-thiazides-and-related"
+          ]
+        },
+        {
+          "drug": "Diuril Oral Suspension",
+          "note": "Tier 2 / Formulary Brand Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-diuretic-thiazides-and-related"
+          ]
+        },
+        {
+          "drug": "Hemiclor Oral Tablet",
+          "note": "Tier 3 / Non-Formulary Drug; no PA flag on listing; quantity limit flag",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-diuretic-thiazides-and-related"
+          ]
+        },
+        {
+          "drug": "Thalitone Oral Tablet",
+          "note": "Tier 3 / Non-Formulary Drug; no PA flag on listing",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-b-diuretic-thiazides-and-related"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Hydrochlorothiazide 25 mg tablet is Tier 1 generic with a Low-Cost Generic Rx flag only. Chlorthalidone, indapamide and metolazone generics are Tier 1 without PA flags. Chlorthalidone brand Thalitone and Hemiclor are Tier 3 non-formulary without PA flags. Listing rows read for this class: 14; alternatives shown 7 of 7 non-PA products (Tier 1/2 first); PA-flagged products listed in paRequired: 0. Pick row icons: Tier 1/ Formulary Generic Drug, Low-Cost Generic Rx.",
+      "sourceIds": [
+        "highmark-bcbs-next11-2026-10-b-diuretic-thiazides-and-related"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-next11-2026-10-b-diuretic-thiazides-and-related"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-next11-2026-10-b-diuretic-thiazides-and-related"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "highmark-bcbs"
+    }
+  ],
+  "references": [
+    {
+      "id": "pa-medicaid-next11-2026-10",
+      "label": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026, v16",
+      "publisher": "Pennsylvania Department of Human Services",
+      "type": "gov",
+      "url": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-pdl-v16.pdf",
+      "effectiveDate": "2026-01-20",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "ibx-commercial-next11-2026-10",
+      "label": "Select Drug Program Formulary (effective July 1, 2026)",
+      "publisher": "Independence Blue Cross",
+      "type": "payer",
+      "url": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-b-angiotensin-ii-receptor-blockers-arbs",
+      "label": "Highmark Drug Search, Cardiovascular Therapy Agents > Angiotensin Ii Receptor Blockers (Arbs) (class browse page)",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=cardiovascular+therapy+agents%7cangiotensin+ii+receptor+blockers+(arbs)",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-benzothiazepines",
+      "label": "Highmark Drug Search, Cardiovascular Therapy Agents > Calcium Channel Blockers - Benzothiazepines (class browse page)",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=cardiovascular+therapy+agents%7ccalcium+channel+blockers+-+benzothiazepines",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-dihydropyridines",
+      "label": "Highmark Drug Search, Cardiovascular Therapy Agents > Calcium Channel Blockers - Dihydropyridines (class browse page)",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=cardiovascular+therapy+agents%7ccalcium+channel+blockers+-+dihydropyridines",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-b-calcium-channel-blockers-phenylakylamines",
+      "label": "Highmark Drug Search, Cardiovascular Therapy Agents > Calcium Channel Blockers - Phenylakylamines (class browse page)",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=cardiovascular+therapy+agents%7ccalcium+channel+blockers+-+phenylakylamines",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-b-alpha-beta-blockers",
+      "label": "Highmark Drug Search, Cardiovascular Therapy Agents > Alpha-Beta Blockers (class browse page)",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=cardiovascular+therapy+agents%7calpha-beta+blockers",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-b-beta-blockers-cardiac-selective",
+      "label": "Highmark Drug Search, Cardiovascular Therapy Agents > Beta Blockers Cardiac Selective (class browse page)",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=cardiovascular+therapy+agents%7cbeta+blockers+cardiac+selective",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-b-beta-blockers-non-cardiac-selective",
+      "label": "Highmark Drug Search, Cardiovascular Therapy Agents > Beta Blockers Non-Cardiac Selective (class browse page)",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=cardiovascular+therapy+agents%7cbeta+blockers+non-cardiac+selective",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-b-diuretic-thiazides-and-related",
+      "label": "Highmark Drug Search, Cardiovascular Therapy Agents > Diuretic - Thiazides And Related (class browse page)",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=cardiovascular+therapy+agents%7cdiuretic+-+thiazides+and+related",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

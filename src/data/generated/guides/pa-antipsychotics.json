@@ -1,0 +1,1027 @@
+{
+  "id": "pa-antipsychotics",
+  "label": "PA · Antipsychotics",
+  "stateCode": "PA",
+  "region": "Pennsylvania",
+  "topicId": "antipsychotics",
+  "topic": "Antipsychotics",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-29",
+  "capturedAt": "2026-10-29",
+  "payers": [
+    {
+      "id": "pa-medicaid",
+      "aka": "Statewide PDL binds fee-for-service and every Pennsylvania Medicaid managed care plan statewide (Physical HealthChoices + Community HealthChoices): same preferred/non-preferred status and PA criteria; each MCO runs its own PA intake (DHS MA Bulletin 2022-12-09)",
+      "name": "PA Medical Assistance Statewide Preferred Drug List (Fee-for-Service)",
+      "shortName": "PA Medicaid FFS",
+      "pbm": "OptumRx, Inc. (negotiates supplemental rebates / P&T support for DHS)",
+      "productName": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026 v11",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026, v16",
+      "formularyUrl": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-pdl-v16.pdf",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "ibx-commercial",
+      "name": "Independence Blue Cross (Commercial)",
+      "shortName": "Independence Blue Cross",
+      "pbm": "FutureScripts (IBX's PBM subsidiary)",
+      "productName": "Select Drug Program® Formulary",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Select Drug Program Formulary (effective July 1, 2026)",
+      "formularyUrl": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "sourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ]
+    },
+    {
+      "id": "highmark-bcbs",
+      "name": "Highmark Blue Cross Blue Shield (Commercial)",
+      "shortName": "Highmark BCBS",
+      "pbm": "Prime Therapeutics (Highmark is a Prime owner-member Blue plan)",
+      "productName": "Highmark Comprehensive Formulary (Drug Search)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-065); formulary effective 10/23/2026",
+      "formularyUrl": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7cantipsychotic-atypical%2cd2+receptor+partial+agonist-5ht+serotonin+mixed",
+      "sourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-cns-065"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "antipsychotic-oral",
+      "name": "Oral atypical antipsychotics",
+      "shortName": "ORAL AAP",
+      "plainName": "Daily antipsychotic pill",
+      "description": "Second-generation oral antipsychotics: aripiprazole, quetiapine IR/ER, olanzapine, risperidone, ziprasidone, lurasidone (Latuda), paliperidone ER, cariprazine (Vraylar), brexpiprazole (Rexulti), lumateperone (Caplyta), asenapine, iloperidone, clozapine, olanzapine/samidorphan (Lybalvi).",
+      "plainDescription": "A daily pill for schizophrenia, bipolar disorder or add-on treatment for depression.",
+      "indication": "Schizophrenia, bipolar disorder, adjunct MDD",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "antipsychotic-lai",
+      "name": "Long-acting injectable antipsychotics",
+      "shortName": "LAI",
+      "plainName": "Monthly or longer antipsychotic shot",
+      "description": "Long-acting injectables: aripiprazole (Abilify Maintena, Abilify Asimtufii, Aristada), paliperidone palmitate (Invega Sustenna/Trinza/Hafyera), risperidone (Risperdal Consta, Perseris, Uzedy, Rykindo), olanzapine pamoate (Zyprexa Relprevv), haloperidol and fluphenazine decanoate.",
+      "plainDescription": "A shot every few weeks or months instead of a daily pill.",
+      "indication": "Schizophrenia, bipolar I maintenance",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "antipsychotic-oral",
+      "preferredAgent": {
+        "inn": "Quetiapine",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg tablet",
+        "sig": "Schizophrenia: start 25 mg twice daily, increase by 25-50 mg per dose daily to 300-400 mg/day in 2-3 doses by day 4. Bipolar mania: start 50 mg twice daily and titrate. Dose per indication (label).",
+        "sigShort": "25 mg BID, titrate per indication",
+        "plainSig": "Start with a small dose twice a day; your prescriber raises it over a few days."
+      },
+      "preferredRestriction": "AR: clinical PA required for specified ages (PDL key says \"specified ages\" but prints none); QL applies to FFS claims",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (Statewide PDL; no tiers)",
+      "alternatives": [
+        {
+          "drug": "Aripiprazole tablet",
+          "note": "Preferred, AR, QL (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperidone tablet and solution",
+          "note": "Preferred, AR, QL (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olanzapine tablet",
+          "note": "Preferred, AR, QL (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lurasidone tablet",
+          "note": "Preferred, AR, QL (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ziprasidone capsule",
+          "note": "Preferred, AR, QL (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone ER tablet",
+          "note": "Preferred, AR, QL (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Quetiapine ER tablet",
+          "note": "Preferred, AR, QL (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clozapine tablet",
+          "note": "Preferred, AR, QL (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Abilify (aripiprazole) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Caplyta (lumateperone) capsule",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Latuda (lurasidone) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Rexulti (brexpiprazole) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Vraylar (cariprazine) capsule",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 14)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lybalvi (olanzapine/samidorphan) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Fanapt (iloperidone) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Cobenfy (xanomeline-trospium) capsule",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Seroquel and Seroquel XR (quetiapine) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 14)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zyprexa (olanzapine) tablet and Zydis",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 14)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Saphris SL (asenapine) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 14)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clozaril (clozapine) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from PDL v16 (Jan 2026) pp. 13-14, layout-mode column split (Preferred left, Non-Preferred right). Quetiapine IR tablet picked as the lowest-barrier generic oral atypical: preferred, AR and QL only. Strength and sig are standard label dosing, not printed on the PDL. Lybalvi, Nuplazid and Opipza are also not preferred but are omitted from paRequired for brevity. The PDL is not all-inclusive, so drugs not listed are not treated as excluded. [Sonnet check 2026-10-28: Concrete starting strength set (label start for schizophrenia); PDL key (p.1) defines AR only as \"specified ages (in years)\"; no ages printed, none invented (antipsychotic under-18 rule seen only in secondary DHS bulletins/MCO policies, not confirmed).]",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "classId": "antipsychotic-lai",
+      "preferredAgent": {
+        "inn": "Aripiprazole (long-acting injectable, monthly)",
+        "brand": "Abilify Maintena",
+        "genericAvailable": false,
+        "strength": "400 mg prefilled syringe (extended-release injectable suspension)",
+        "sig": "400 mg IM (deltoid or gluteal) once monthly, no sooner than 26 days apart. Start with one 400 mg injection plus oral aripiprazole 10-20 mg daily for 14 days, or two 400 mg injections at separate sites plus one 20 mg oral dose; establish oral tolerability first (Abilify Maintena label).",
+        "sigShort": "400 mg IM q4wk + oral x14d",
+        "plainSig": "A shot at the clinic once a month. Keep taking the pills for the first 2 weeks."
+      },
+      "preferredRestriction": "AR: clinical PA required for specified ages (PDL key says \"specified ages\" but prints none); QL applies to FFS claims; provider-administered, so coverage may fall under the medical benefit rather than the pharmacy PDL",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (Statewide PDL; no tiers)",
+      "alternatives": [
+        {
+          "drug": "Aristada ER and Aristada Initio (aripiprazole lauroxil)",
+          "note": "Preferred, AR, QL (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Invega Sustenna, Invega Trinza, Invega Hafyera (paliperidone palmitate)",
+          "note": "Preferred, AR, QL (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperdal Consta (risperidone)",
+          "note": "Preferred, AR, QL (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperidone ER vial",
+          "note": "Preferred, AR, QL (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Uzedy ER (risperidone)",
+          "note": "Preferred, AR, QL (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Haloperidol decanoate vial and ampule",
+          "note": "Preferred, AR (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluphenazine decanoate vial",
+          "note": "Preferred, AR (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Erzofri (paliperidone palmitate)",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zyprexa Relprevv (olanzapine pamoate)",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zyprexa (olanzapine) vial and olanzapine vial",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Geodon (ziprasidone) vial and ziprasidone vial",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Chlorpromazine ampule and vial",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluphenazine HCl vial",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 13)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read from PDL v16 p. 13 (injectable block, Preferred left, Non-Preferred right). Abilify Maintena picked: preferred, AR and QL, the most common brand LAI on the list. Provider-administered, so the medical benefit may apply; confirm with DHS. Perseris and Rykindo (named in the class description) do not appear on this PDL, so they are not treated as excluded. Strength and monthly interval are per label, not printed on the PDL. [Sonnet check 2026-10-28: Concrete strength set; PDL key (p.1) defines AR only as \"specified ages (in years)\"; no ages printed, none invented (antipsychotic under-18 rule seen only in secondary DHS bulletins/MCO policies, not confirmed).]",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "classId": "antipsychotic-oral",
+      "preferredAgent": {
+        "inn": "Aripiprazole",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Schizophrenia: 10-15 mg once daily. Bipolar mania: 15 mg once daily. Max 30 mg/day for both. Add-on for depression: start 2-5 mg once daily, max 15 mg/day. Dose per indication (label).",
+        "sigShort": "Daily; dose per indication",
+        "plainSig": "One pill once a day; the dose depends on what it is treating."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Generic (G)",
+      "alternatives": [
+        {
+          "drug": "Quetiapine fumarate ER (generic)",
+          "note": "G, no PA flag (p. 36)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olanzapine (generic)",
+          "note": "G, no PA flag (p. 34)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olanzapine ODT (generic)",
+          "note": "LCG, no PA flag (p. 34)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperidone (generic)",
+          "note": "LCG, no PA flag (p. 36)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lurasidone tablet (generic)",
+          "note": "G, no PA flag (p. 33)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone ER tablet (generic)",
+          "note": "G, no PA flag (p. 35)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ziprasidone (generic)",
+          "note": "G, no PA flag (p. 38)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clozapine and clozapine ODT (generic)",
+          "note": "G, no PA flag (p. 29)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Asenapine sublingual tablet (generic)",
+          "note": "G, no PA flag (p. 28)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Vraylar (cariprazine)",
+          "note": "NPD tier, no PA or QL flag (p. 38)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Rexulti (brexpiprazole)",
+          "note": "NPD tier, no PA or QL flag (p. 36)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Abilify, Abilify Mycite and Abilify Mycite Maintenance/Starter Pak (aripiprazole brand)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 27; PA list p. 10)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Caplyta (lumateperone)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 29)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Latuda (lurasidone brand)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 33)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lybalvi (olanzapine/samidorphan)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 33)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Invega ER tablet (paliperidone brand)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 32)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Geodon (ziprasidone brand)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 32)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Fanapt and Fanapt Pak (iloperidone)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 31)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperdal (risperidone brand)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 36)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Seroquel and Seroquel XR (quetiapine brand)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 36)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Saphris (asenapine brand)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 36)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zyprexa and Zyprexa Zydis (olanzapine brand)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 38)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from page images. Printed page numbers (PDF page = printed + 1). Aripiprazole generic is G with no flag (p. 28); brand aripiprazole and Abilify Mycite are NPD PA (p. 27). Strength and sig are standard label dosing, not printed. Generic quetiapine IR is not printed on the tier pages; only quetiapine ER (G) appears. Vraylar and Rexulti are NPD with no flags, so they belong in alternatives. [Sonnet check 2026-10-28: row rechecked by position (p.28): aripiprazole G, no PA/QL. Starting strength changed from 5 mg to the 10 mg schizophrenia starting tablet.]",
+      "sourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "ibx-commercial"
+    },
+    {
+      "classId": "antipsychotic-lai",
+      "preferredAgent": {
+        "inn": "Haloperidol decanoate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Injection (strength not on list)",
+        "sig": "Not listed on this formulary; confirm coverage with plan.",
+        "sigShort": "Not listed",
+        "plainSig": "Not on this plan's pharmacy list."
+      },
+      "preferredRestriction": "No long-acting injectable antipsychotic appears on this plan's Select Drug list. Injectables are usually provider-administered under the medical benefit, so this may be a medical-benefit question rather than an exclusion. Confirm with plan.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not on pharmacy list (likely medical benefit)",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched the full text for Abilify Maintena/Asimtufii, Aristada, Invega Sustenna/Trinza/Hafyera, Risperdal Consta, Perseris, Uzedy, Rykindo, Zyprexa Relprevv and decanoate salts: none appear. Oral generics appear (haloperidol G, p. 32; fluphenazine G, p. 31) but no decanoate. Absence is not stated as an exclusion; the document does not say it is a complete list. [Sonnet check 2026-10-28: re-searched all 127 pages for every LAI name, decanoate and palmitate: none listed (only oral haloperidol/fluphenazine and the oral Invega ER tablet). Likely medical benefit, not a confirmed exclusion; tier and pick label aligned to the other states' LAI cells.]",
+      "sourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "noCoveredAgent": true,
+      "payerId": "ibx-commercial"
+    },
+    {
+      "classId": "antipsychotic-oral",
+      "preferredAgent": {
+        "inn": "Aripiprazole",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Schizophrenia: 10-15 mg once daily. Bipolar mania: 15 mg once daily. Max 30 mg/day for both. Add-on for depression: start 2-5 mg once daily, max 15 mg/day. Dose per indication (label).",
+        "sigShort": "Daily; dose per indication",
+        "plainSig": "One pill once a day; the dose depends on what it is treating."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 / Formulary Generic Drug",
+      "alternatives": [
+        {
+          "drug": "Risperidone tablet (generic)",
+          "note": "Tier 1 generic; no PA; quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-052"
+          ]
+        },
+        {
+          "drug": "Quetiapine IR tablet (generic)",
+          "note": "Tier 1 generic; no PA; quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-062"
+          ]
+        },
+        {
+          "drug": "Olanzapine tablet (generic)",
+          "note": "Tier 1 generic; no PA; quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-063"
+          ]
+        },
+        {
+          "drug": "Clozapine tablet (generic)",
+          "note": "Tier 1 generic; no PA; quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-054"
+          ]
+        },
+        {
+          "drug": "Haloperidol tablet (generic)",
+          "note": "Tier 1 generic; no PA; quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-055"
+          ]
+        },
+        {
+          "drug": "Asenapine sublingual tablet (generic)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); no PA; quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-050"
+          ]
+        },
+        {
+          "drug": "Ziprasidone capsule (generic)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); no PA; quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-051"
+          ]
+        },
+        {
+          "drug": "Paliperidone ER tablet (generic)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); no PA; quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-052"
+          ]
+        },
+        {
+          "drug": "Quetiapine ER tablet (generic)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); no PA; quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-062"
+          ]
+        },
+        {
+          "drug": "Zyprexa tablet (brand olanzapine)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); no PA; quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-063"
+          ]
+        },
+        {
+          "drug": "Invega ER tablet (brand paliperidone)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); no PA; quantity limit; Copay Armor",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-052"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Abilify tablet (brand aripiprazole)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-065"
+          ]
+        },
+        {
+          "drug": "Aripiprazole ODT (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary)",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-065"
+          ]
+        },
+        {
+          "drug": "Rexulti tablet (brand brexpiprazole)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-065"
+          ]
+        },
+        {
+          "drug": "Vraylar capsule (brand cariprazine)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-066"
+          ]
+        },
+        {
+          "drug": "Caplyta capsule (brand lumateperone)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-053"
+          ]
+        },
+        {
+          "drug": "Latuda tablet (brand lurasidone)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-051"
+          ]
+        },
+        {
+          "drug": "Lurasidone tablet (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-051"
+          ]
+        },
+        {
+          "drug": "Lybalvi tablet (olanzapine/samidorphan)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-063",
+            "highmark-bcbs-next11-2026-10-cls-cns-067"
+          ]
+        },
+        {
+          "drug": "Saphris sublingual tablet (brand asenapine)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-050"
+          ]
+        },
+        {
+          "drug": "Seroquel XR tablet (brand quetiapine ER)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-062"
+          ]
+        },
+        {
+          "drug": "Olanzapine-fluoxetine capsule (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary)",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-063"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read Highmark therapeutic-class pages CNS > Antipsychotic classes (cls-cns-050 to -066, plus -063/-067 for Lybalvi) on the listing that carries tier and PA/QL icons. Generic aripiprazole 5 mg is Tier 1 with QL only; no PA on the generic tablet. QL limits are not printed on the listing. Abilify, Rexulti, Vraylar, Caplyta, Latuda, lurasidone generic, Lybalvi, Saphris and Seroquel XR carry PA. Long-acting injectables are covered separately in antipsychotic-lai. [Sonnet cross-check 2026-10-29: pick strength set to the 10 mg schizophrenia start dose]",
+      "sourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-cns-065"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-cns-065"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-cns-065"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "highmark-bcbs"
+    },
+    {
+      "classId": "antipsychotic-lai",
+      "preferredAgent": {
+        "inn": "Haloperidol decanoate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg/mL intramuscular solution",
+        "sig": "Deep IM (gluteal) injection every 4 weeks. First dose: 10-15 times the daily oral dose if stabilized on 10 mg/day or less (10-20 times if higher or at risk of relapse); give no more than 100 mg in the first injection and the rest 3-7 days later (label).",
+        "sigShort": "IM q4wk, 10-15x oral daily dose",
+        "plainSig": "A shot into the muscle about once a month, given at the clinic."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 / Formulary Generic Drug",
+      "alternatives": [
+        {
+          "drug": "Haloperidol decanoate 100 mg/mL (generic)",
+          "note": "Tier 1 generic; no PA",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-055"
+          ]
+        },
+        {
+          "drug": "Fluphenazine decanoate 25 mg/mL (generic)",
+          "note": "Tier 1 generic; no PA",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-059"
+          ]
+        },
+        {
+          "drug": "Haldol Decanoate (brand haloperidol decanoate)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); no PA",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-055"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read Highmark CNS > Antipsychotic - Butyrophenone (cls-cns-055) and Phenothiazines, Piperazine (cls-cns-059). Generic haloperidol decanoate 50 and 100 mg/mL and fluphenazine decanoate are Tier 1 with no PA or QL shown. Abilify Maintena/Asimtufii, Aristada, Invega Sustenna/Trinza/Hafyera, Risperdal Consta, Perseris, Uzedy, Rykindo and Zyprexa Relprevv do not appear on the pharmacy listing for these classes; they are likely provider-administered (medical benefit). Not called non-covered: confirm with plan. Sig is standard label dosing; the plan page does not print a sig.",
+      "sourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-cns-055"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-cns-055"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-cns-055"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "highmark-bcbs"
+    }
+  ],
+  "references": [
+    {
+      "id": "pa-medicaid-next11-2026-10",
+      "label": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026, v16",
+      "publisher": "Pennsylvania Department of Human Services",
+      "type": "gov",
+      "url": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-pdl-v16.pdf",
+      "effectiveDate": "2026-01-20",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "ibx-commercial-next11-2026-10",
+      "label": "Select Drug Program Formulary (effective July 1, 2026)",
+      "publisher": "Independence Blue Cross",
+      "type": "payer",
+      "url": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-cns-050",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-050); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7cantipsychotic+-+atyp+dopamine-serotonin+antag+dibenzo-oxepino+pyrroles",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-cns-051",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-051); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7cantipsychotic+-+atypical+dopamine-serotonin+antag-+benzisothiazolones",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-cns-052",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-052); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7cantipsychotic+-+atypical+dopamine-serotonin+antag-+benzisoxazole+deriv",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-cns-053",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-053); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7cantipsychotic+-+atypical+dopamine-serotonin+antag-butyrophenone+deriv",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-cns-054",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-054); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7cantipsychotic+-+atypical+dopamine-serotonin+antag-dibenzodiazepine+der",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-cns-055",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-055); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7cantipsychotic+-+butyrophenone+derivatives",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-cns-059",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-059); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7cantipsychotic+-+phenothiazines%2c+piperazine",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-cns-062",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-062); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7cantipsychotic+-atypical+dopamine-serotonin+antag-dibenzothiazepine+der",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-cns-063",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-063); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7cantipsychotic+-atypical+dopamine-serotonin+antag-thienobenzodiazepines",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-cns-065",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-065); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7cantipsychotic-atypical%2cd2+receptor+partial+agonist-5ht+serotonin+mixed",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-cns-066",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-066); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7cantipsychotic-atypical%2cd3%2fd2+receptor+partial+agonist-serotonin+mixed",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-cns-067",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-067); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7cantipsychotics%2catypical%2cdopamine%2cserotonin+antag+and+opioid+antag+comb",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

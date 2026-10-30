@@ -1,0 +1,1029 @@
+{
+  "id": "fl-sleep-anxiety",
+  "label": "FL · Insomnia and anxiety",
+  "stateCode": "FL",
+  "region": "Florida",
+  "topicId": "sleep-anxiety",
+  "topic": "Insomnia and anxiety",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-27",
+  "capturedAt": "2026-10-27",
+  "payers": [
+    {
+      "id": "fl-medicaid",
+      "name": "Florida Medicaid",
+      "shortName": "FL Medicaid",
+      "aka": "Florida Medicaid Preferred Drug List (AHCA); Statewide Medicaid Managed Care plans follow the same PDL",
+      "productName": "Florida Medicaid Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Florida Medicaid Preferred Drug List, effective October 1, 2026",
+      "formularyUrl": "https://ahca.myflorida.com/file/medicaid/PDL_Effective_10.01.2026.pdf",
+      "sourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ]
+    },
+    {
+      "id": "florida-blue",
+      "name": "Florida Blue",
+      "shortName": "Florida Blue",
+      "aka": "Blue Cross and Blue Shield of Florida",
+      "pbm": "Prime Therapeutics",
+      "productName": "Florida Blue 2026 6-Tier ValueScript formulary (individual / ACA)",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "ValueScript Rx Medication Guide, October 2026 (Florida Blue, 6-tier closed formulary)",
+      "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_FL_6T_ValueScript.pdf",
+      "sourceIds": [
+        "florida-blue-next11-2026-10"
+      ]
+    },
+    {
+      "id": "uhc-fl",
+      "name": "UnitedHealthcare (Commercial)",
+      "shortName": "UnitedHealthcare",
+      "aka": "National commercial PDL (same list in every state)",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "paPolicyUrl": "https://www.uhcprovider.com/en/resource-library/drug-lists-pharmacy.html",
+      "productName": "UnitedHealthcare 2026 Commercial PDL (base list)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 Prescription Drug List (PDL), UnitedHealthcare & affiliated companies",
+      "sourceIds": [
+        "uhc-fl-next11-2026-10"
+      ]
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "z-drug",
+      "name": "Z-drug hypnotics",
+      "shortName": "Z-DRUG",
+      "plainName": "Sleep pill (zolpidem type)",
+      "description": "Zolpidem IR/ER/SL (Ambien, Ambien CR, Edluar), eszopiclone (Lunesta), zaleplon; ramelteon (Rozerem) and low-dose doxepin (Silenor) may be listed as alternatives.",
+      "plainDescription": "A bedtime pill for trouble falling or staying asleep.",
+      "indication": "Insomnia",
+      "sourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ]
+    },
+    {
+      "id": "dora",
+      "name": "Orexin receptor antagonists",
+      "shortName": "DORA",
+      "plainName": "Orexin blocker sleep pill",
+      "description": "Dual orexin receptor antagonists: suvorexant (Belsomra), lemborexant (Dayvigo), daridorexant (Quviviq).",
+      "plainDescription": "A newer bedtime pill that blocks the brain's wake signal.",
+      "indication": "Insomnia",
+      "sourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ]
+    },
+    {
+      "id": "benzodiazepine",
+      "name": "Benzodiazepines and buspirone for anxiety",
+      "shortName": "BZD",
+      "plainName": "Anxiety medicine",
+      "description": "Benzodiazepines (alprazolam IR/ER, lorazepam, clonazepam, diazepam, chlordiazepoxide, clorazepate) and the non-benzodiazepine anxiolytics buspirone and hydroxyzine as alternatives.",
+      "plainDescription": "A medicine for anxiety or panic attacks.",
+      "indication": "Generalized anxiety, panic disorder",
+      "sourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "z-drug",
+      "preferredAgent": {
+        "inn": "Zolpidem tartrate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "1 tablet (5 mg) by mouth at bedtime as needed, with at least 7 hours left for sleep. 5 mg is the labeled starting dose for women and adults 65+; men may start at 5 or 10 mg (label dosing).",
+        "sigShort": "5 mg QHS PRN",
+        "plainSig": "One small pill at bedtime when needed, only if you can sleep 7 or more hours."
+      },
+      "preferredRestriction": "Adults only (PDL age 18+). AHCA Auto PA doc references a limit of 4 controlled substances per rolling 27 days; its scope for Z-drugs is not printed on the PDL.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "PDL listed, no PA, age 18+ (page 30)",
+      "alternatives": [
+        {
+          "drug": "Eszopiclone 1/2/3 mg tablets",
+          "note": "No PA, age 18+ (PDL p.30)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        },
+        {
+          "drug": "Zaleplon 5/10 mg capsules",
+          "note": "No PA, age 18+ (PDL p.30)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        },
+        {
+          "drug": "Ramelteon 8 mg tablet",
+          "note": "No PA, age 65+ (PDL p.46); listed as an alternative in the class definition",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Zolpidem 10 mg tablet (Ambien 10 mg)",
+          "outcome": "pa",
+          "reason": "Auto PA (PDL column) (PDL p.30; AHCA Auto PA doc p.53): 10 mg needs a 10 mg fill in prior 30 days, or a 5 mg fill with 24+ day supply in prior 90 days",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl",
+            "fl-medicaid-next11-2026-10-autopa"
+          ]
+        }
+      ],
+      "stepTherapy": "Zolpidem 10 mg: trial of 5 mg required (Auto PA; AHCA Auto PA doc p.53)",
+      "verification": "verified",
+      "verificationNote": "Read PDL pp.30, 46. Zolpidem 5 mg listed no PA (age 18+); 10 mg Auto PA. Eszopiclone and zaleplon listed no PA (age 18+). Ramelteon listed no PA (age 65+). Not on PDL: Ambien brand 5 mg, Edluar, Lunesta brand, Silenor (doxepin 3/6 mg; only TCA doxepin capsules are listed, p.32). Controlled substance (C-IV): PDL prints no quantity or day-supply limit, none recorded. [Sonnet check 2026-10-27: Added the printed age limit and the controlled-substance count limit. Ramelteon is age 65+ only (already noted).]",
+      "sourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ],
+      "coverageSourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ],
+      "restrictionSourceIds": [
+        "fl-medicaid-next11-2026-10-pdl",
+        "fl-medicaid-next11-2026-10-autopa"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "fl-medicaid"
+    },
+    {
+      "classId": "dora",
+      "preferredAgent": {
+        "inn": "Suvorexant",
+        "brand": "Belsomra",
+        "genericAvailable": false,
+        "strength": "10 mg tablet",
+        "sig": "1 tablet by mouth at bedtime (standard label dosing)",
+        "sigShort": "1 tab QHS",
+        "plainSig": "One pill at bedtime."
+      },
+      "preferredRestriction": "No orexin receptor antagonist (suvorexant, lemborexant, daridorexant) is on the Florida Medicaid PDL effective 10/01/2026. This is not a confirmed exclusion: the PDL does not claim to be complete, and AHCA codes unlisted products as Non-PDL (an edit that Auto PA does not override). Confirm with AHCA whether a PA route exists.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not listed on PDL",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched PDL pp.1-80 for suvorexant/Belsomra, lemborexant/Dayvigo and daridorexant/Quviviq: none listed. The PDL does not say it is a complete list of covered drugs, so this is treated as partial and not as a confirmed exclusion. Suvorexant is used only as the class reference drug and is not a covered pick. No alternatives listed for this class. [Sonnet check 2026-10-27: Reworded the restriction: absence is not proof of exclusion (the old text said 'likely excluded'). Kept noCoveredAgent with partial because no DORA is listed and no class-level coverage statement was found. Confirm with AHCA.]",
+      "sourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ],
+      "coverageSourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ],
+      "restrictionSourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ],
+      "lastReviewed": "2026-10-27",
+      "noCoveredAgent": true,
+      "payerId": "fl-medicaid"
+    },
+    {
+      "classId": "benzodiazepine",
+      "preferredAgent": {
+        "inn": "Lorazepam",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "1 mg tablet",
+        "sig": "Anxiety: 2-3 mg/day in 2-3 divided doses (e.g. 0.5-1 mg two or three times daily); usual range 1-10 mg/day. Taper to stop (label).",
+        "sigShort": "0.5-1 mg BID-TID",
+        "plainSig": "A small pill two or three times a day for anxiety; do not stop suddenly."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "PDL listed, no PA (page 30)",
+      "alternatives": [
+        {
+          "drug": "Alprazolam 0.25/0.5/1/2 mg tablets",
+          "note": "No PA, age 7+ (PDL p.30)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        },
+        {
+          "drug": "Clonazepam IR and ODT tablets",
+          "note": "No PA (PDL p.36)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        },
+        {
+          "drug": "Diazepam 2/5/10 mg tablets",
+          "note": "No PA (PDL p.30)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        },
+        {
+          "drug": "Chlordiazepoxide capsules",
+          "note": "No PA, age 6+ (PDL p.30)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        },
+        {
+          "drug": "Oxazepam capsules",
+          "note": "No PA, age 6+ (PDL p.30)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        },
+        {
+          "drug": "Buspirone HCl 5/7.5/10/15/30 mg tablets",
+          "note": "No PA (PDL p.30)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        },
+        {
+          "drug": "Hydroxyzine HCl tablets 10/25/50 mg",
+          "note": "No PA (PDL p.79-80)",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Klonopin (clonazepam brand)",
+          "outcome": "pa",
+          "reason": "Auto PA (PDL column) (PDL p.36): brand listed Auto PA; generic clonazepam is not",
+          "sourceIds": [
+            "fl-medicaid-next11-2026-10-pdl",
+            "fl-medicaid-next11-2026-10-autopa"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL pp.30, 36, 79-80. Lorazepam 0.5/1/2 mg listed no PA (age 0+). Buspirone and hydroxyzine listed no PA, named as alternatives in the class definition. Judgment: lorazepam chosen as the benzodiazepine pick because the class is defined as benzodiazepines; buspirone is a non-controlled alternative worth considering. Controlled substance (C-IV): PDL prints no quantity or day-supply limit, none recorded. AHCA Auto PA doc has a benzodiazepine plus long-acting opioid edit (2 BZP day supply cap), not applicable to these short-acting generics. Not on PDL: clorazepate. [Sonnet check 2026-10-27: Re-verified lorazepam, alprazolam, clonazepam, diazepam, chlordiazepoxide, oxazepam, buspirone and Klonopin (Auto PA, PDL p.36) against the PDL; the controlled-substance count limit in the Auto PA doc (4 per rolling 27 days) is not printed as applying to benzodiazepines, so not recorded as a restriction.]",
+      "sourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ],
+      "coverageSourceIds": [
+        "fl-medicaid-next11-2026-10-pdl"
+      ],
+      "restrictionSourceIds": [
+        "fl-medicaid-next11-2026-10-pdl",
+        "fl-medicaid-next11-2026-10-autopa"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "fl-medicaid"
+    },
+    {
+      "classId": "z-drug",
+      "preferredAgent": {
+        "inn": "Zolpidem tartrate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "1 tablet (5 mg) by mouth at bedtime as needed, with at least 7 hours left for sleep. 5 mg is the labeled starting dose for women and adults 65+; men may start at 5 or 10 mg (label dosing).",
+        "sigShort": "5 mg QHS PRN",
+        "plainSig": "One small pill at bedtime when needed, only if you can sleep 7 or more hours."
+      },
+      "preferredRestriction": "Quantity limit: 60 tablets per 30 days (PDF p.73). No PA or ST printed.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3 (Low-Cost Generic)",
+      "alternatives": [
+        {
+          "drug": "Zolpidem tartrate 10 mg tablet (Ambien)",
+          "note": "Tier 3; QL 30 tablets/30 days (PDF p.73)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zolpidem tartrate ER 6.25 mg and 12.5 mg (Ambien CR)",
+          "note": "Tier 3; QL 60 and 30 tablets/30 days (PDF p.73)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Eszopiclone tablet 1-3 mg (Lunesta)",
+          "note": "Tier 3; QL 90 tablets/30 days (1 mg) and 30 tablets/30 days (2-3 mg) (PDF p.72)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zaleplon capsule 5 mg and 10 mg",
+          "note": "Tier 3; QL 60 and 30 capsules/30 days (PDF p.73)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ramelteon tablet 8 mg (Rozerem)",
+          "note": "Tier 3; QL 30 tablets/30 days; not a controlled substance (PDF p.72)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Doxepin tablet 3 mg and 6 mg (Silenor)",
+          "note": "Tier 5; QL 30 tablets/30 days (PDF p.72)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp.72-73 (hypnotics). Pick: generic zolpidem IR 5 mg, Tier 3, no PA/ST; 5 mg is the labeled starting dose for women. Sig is standard label dosing; the guide prints no sig. QL 60 tablets/30 days is recorded as the printed restriction because the drug is a controlled substance. Edluar absent, recorded nonformulary. [Sonnet check 2026-10-27: removed from paRequired (brand has an AB-rated generic form, and the guide says generics are covered unless specifically excluded, so absence is not proof of nonformulary): Zolpidem sublingual tablet (Edluar)]",
+      "sourceIds": [
+        "florida-blue-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "florida-blue-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "florida-blue-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "florida-blue"
+    },
+    {
+      "classId": "dora",
+      "preferredAgent": {
+        "inn": "Daridorexant",
+        "brand": "Quviviq",
+        "genericAvailable": false,
+        "strength": "25 mg tablet",
+        "sig": "25 to 50 mg by mouth once nightly within 30 minutes of bedtime, with at least 7 hours before planned waking (label).",
+        "sigShort": "25-50 mg QHS",
+        "plainSig": "One pill within 30 minutes of bedtime."
+      },
+      "preferredRestriction": "Responsible Steps (ST): a covered alternative must be tried first (the guide does not name which drugs satisfy the step). Quantity limit: 30 tablets per 30 days (PDF p.72).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 5 (High-Cost Generic, Preferred Brand)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Suvorexant (Belsomra)",
+          "outcome": "nonformulary",
+          "reason": "Not on the closed formulary list, and a closed formulary does not cover unlisted medications; brand absent from the guide (searched full text and index). Guide p.2 (PDF): \"ValueScript is a closed formulary pharmacy plan. This means any medications not on the formulary (included in the medication list) are not covered\" and \"Brand name medications not listed in the medication list are not covered\".",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lemborexant (Dayvigo)",
+          "outcome": "nonformulary",
+          "reason": "Not on the closed formulary list, and a closed formulary does not cover unlisted medications; brand absent from the guide (searched full text and index). Guide p.2 (PDF): \"ValueScript is a closed formulary pharmacy plan. This means any medications not on the formulary (included in the medication list) are not covered\" and \"Brand name medications not listed in the medication list are not covered\".",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": "Responsible Steps (ST) applies (PDF p.72); the covered alternatives that satisfy it are not named in the guide.",
+      "verification": "verified",
+      "verificationNote": "Read PDF p.72 (hypnotics). Quviviq is the only orexin antagonist on the list, so it is the pick by default (not a ranking); it carries ST and QL 30/30 days, which are printed. The guide does not say which drugs satisfy the ST step, so no alternatives are asserted. Sig is standard label dosing; the guide prints no sig.",
+      "sourceIds": [
+        "florida-blue-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "florida-blue-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "florida-blue-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "florida-blue"
+    },
+    {
+      "classId": "benzodiazepine",
+      "preferredAgent": {
+        "inn": "Alprazolam",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.5 mg tablet",
+        "sig": "Anxiety: 0.25-0.5 mg three times daily; increase every 3-4 days if needed, max 4 mg/day. Taper to stop (label).",
+        "sigShort": "0.25-0.5 mg TID",
+        "plainSig": "A small pill up to three times a day for anxiety; do not stop suddenly."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3 (Low-Cost Generic)",
+      "alternatives": [
+        {
+          "drug": "Lorazepam tablet 0.5, 1, 2 mg (Ativan)",
+          "note": "Tier 3; no PA/ST/QL printed (PDF p.67)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clonazepam tablet 0.5, 1, 2 mg (Klonopin)",
+          "note": "Tier 3; no PA/ST/QL printed (PDF p.84)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diazepam tablet 2, 5, 10 mg (Valium)",
+          "note": "Tier 3; no PA/ST/QL printed (PDF p.67)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Chlordiazepoxide capsule 5, 10, 25 mg",
+          "note": "Tier 3; no PA/ST/QL printed (PDF p.67)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Alprazolam ER tablet (Xanax XR)",
+          "note": "Tier 3; no PA/ST/QL printed (PDF p.67)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Buspirone tablet 5-30 mg (non-benzodiazepine)",
+          "note": "Tier 3; no PA/ST/QL printed (PDF p.67)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydroxyzine HCl tablet 10, 25, 50 mg (non-benzodiazepine)",
+          "note": "Tier 3; no PA/ST/QL printed (PDF p.67)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clorazepate tablet 3.75, 7.5, 15 mg",
+          "note": "Tier 5; no PA/ST/QL printed (PDF p.67)",
+          "sourceIds": [
+            "florida-blue-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp.67 and 84. No benzodiazepine row carries PA, ST or QL, so no restriction is recorded. Pick: generic alprazolam 0.5 mg, Tier 3 (judgment pick as a common lowest-barrier product). Sig is not printed; standard label dosing used as a placeholder. Controlled substances, so day-supply limits would be recorded only if printed (none are).",
+      "sourceIds": [
+        "florida-blue-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "florida-blue-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "florida-blue-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "florida-blue"
+    },
+    {
+      "classId": "z-drug",
+      "preferredAgent": {
+        "inn": "Zolpidem tartrate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Immediate-release oral tablet (strength not printed in document)",
+        "sig": "1 tablet (5 mg) by mouth at bedtime as needed, with at least 7 hours left for sleep. 5 mg is the labeled starting dose for women and adults 65+; men may start at 5 or 10 mg (label dosing).",
+        "sigShort": "5 mg QHS PRN",
+        "plainSig": "One small pill at bedtime when needed, only if you can sleep 7 or more hours."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Zolpidem tartrate ER tablet",
+          "note": "Tier 2, no flag (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Eszopiclone",
+          "note": "Tier 2, no flag (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zaleplon",
+          "note": "Tier 1, no flag (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ramelteon (generic)",
+          "note": "Tier 3, QL (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Ambien (zolpidem brand)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ambien CR (zolpidem brand)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lunesta (eszopiclone brand)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Doxepin hcl oral tablet (low-dose), QL",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Rozerem (ramelteon brand), QL",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read p.50 from rendered page image. Zolpidem IR tablet is Tier 1 with no flag. Controlled substance: no quantity or day-supply limit printed, so none recorded. Strength and sig not printed; standard label dosing used. Silenor brand not listed. Zolpidem sublingual and Edluar not listed. [Sonnet check 2026-10-22: E is a symbol in the Tier column, not a tier; the legend (p.5) says E drugs may be excluded or subject to PA and the page footer says E and ST drugs are subject to PA, so E items stay as PA-type with that wording.] [Reused: same national UHC commercial PDL (commercial-pdl-jan-2026.pdf) cited for uhc-fl]",
+      "sourceIds": [
+        "uhc-fl-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "uhc-fl-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "uhc-fl-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "uhc-fl"
+    },
+    {
+      "classId": "dora",
+      "preferredAgent": {
+        "inn": "Suvorexant",
+        "brand": "Belsomra",
+        "genericAvailable": false,
+        "strength": "Per label (not printed in document)",
+        "sig": "10 mg once, within 30 minutes of bedtime, with at least 7 hours left before waking; may increase to 20 mg (label).",
+        "sigShort": "10 mg QHS",
+        "plainSig": "One pill at bedtime, only if you can sleep 7 or more hours."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 4",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Dayvigo (lemborexant), QL",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Quviviq (daridorexant), QL",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.50)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read p.50 from rendered page image. Belsomra is the only orexin antagonist without an E flag; Tier 4 with QL and no PA or ST flag. The legend (p.5) says Tier 4 drugs may be covered only in select benefits, so coverage depends on the member's Tier 4 benefit. No quantity limit printed, so none recorded. Dayvigo and Quviviq carry QL and E flags. Generic DORA products not listed. [Sonnet check 2026-10-22: E is a symbol in the Tier column, not a tier; the legend (p.5) says E drugs may be excluded or subject to PA and the page footer says E and ST drugs are subject to PA, so E items stay as PA-type with that wording.] [Reused: same national UHC commercial PDL (commercial-pdl-jan-2026.pdf) cited for uhc-fl]",
+      "sourceIds": [
+        "uhc-fl-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "uhc-fl-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "uhc-fl-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "uhc-fl"
+    },
+    {
+      "classId": "benzodiazepine",
+      "preferredAgent": {
+        "inn": "Alprazolam",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Immediate-release oral tablet (strength not printed in document)",
+        "sig": "Anxiety: 0.25-0.5 mg three times daily; increase every 3-4 days if needed, max 4 mg/day. Taper to stop (label).",
+        "sigShort": "0.25-0.5 mg TID",
+        "plainSig": "A small pill up to three times a day for anxiety; do not stop suddenly."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Lorazepam oral tablet",
+          "note": "Tier 1, no flag (p.18)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clonazepam oral",
+          "note": "Tier 1, no flag (p.18)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diazepam oral tablet",
+          "note": "Tier 1, no flag (p.18)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clorazepate dipotassium",
+          "note": "Tier 1, no flag (p.18)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Chlordiazepoxide hcl",
+          "note": "Tier 1, no flag (p.18)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Alprazolam ER and XR",
+          "note": "Tier 1, no flag (p.18)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Buspirone hcl oral",
+          "note": "Tier 1, no flag (p.18)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydroxyzine hcl oral",
+          "note": "Tier 1, no flag (p.18)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Xanax (alprazolam brand)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.18)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Xanax XR (alprazolam brand)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.18)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ativan (lorazepam brand)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.18)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Klonopin (clonazepam brand)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.18)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Valium (diazepam brand)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.18)",
+          "sourceIds": [
+            "uhc-fl-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read p.18 from rendered page image. Generic alprazolam IR, lorazepam, clonazepam, diazepam, clorazepate, chlordiazepoxide, buspirone and hydroxyzine are Tier 1 with no flags. Controlled substance: no quantity or day-supply limit printed, so none recorded. Strength and sig not printed; standard label dosing used. [Sonnet check 2026-10-22: E is a symbol in the Tier column, not a tier; the legend (p.5) says E drugs may be excluded or subject to PA and the page footer says E and ST drugs are subject to PA, so E items stay as PA-type with that wording.] [Reused: same national UHC commercial PDL (commercial-pdl-jan-2026.pdf) cited for uhc-fl]",
+      "sourceIds": [
+        "uhc-fl-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "uhc-fl-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "uhc-fl-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "uhc-fl"
+    },
+    {
+      "classId": "z-drug",
+      "preferredAgent": {
+        "inn": "Zolpidem tartrate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "1 tablet (5 mg) by mouth at bedtime as needed, with at least 7 hours left for sleep. 5 mg is the labeled starting dose for women and adults 65+; men may start at 5 or 10 mg (label dosing).",
+        "sigShort": "5 mg QHS PRN",
+        "plainSig": "One small pill at bedtime when needed, only if you can sleep 7 or more hours."
+      },
+      "preferredRestriction": "Controlled substance (Schedule IV): quantity limit 30 tablets per 30 days; no PA or step printed.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (Generic)",
+      "alternatives": [
+        {
+          "drug": "Zolpidem ER tablet (6.25, 12.5 mg)",
+          "note": "Tier 2; QL 30 per 30 days, no PA (page 82)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Eszopiclone tablet (1, 2, 3 mg)",
+          "note": "Tier 2; QL 30 per 30 days, no PA (page 82)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ramelteon tablet (8 mg)",
+          "note": "Tier 4; QL 30 per 30 days, no PA (page 82)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Tier 2 and QL 30 per 30 days for zolpidem 5 mg read by x-coordinate on page 82. No PA or step. Judgment: 5 mg is the labeled starting dose; the 10 mg strength is also Tier 2 and is not picked as the default. Controlled substance, so the quantity limit is recorded in preferredRestriction. Ambien, Ambien CR, Edluar, Lunesta and Silenor brand names are not listed. Zaleplon is not in the guide, and doxepin appears only at 10 mg and higher capsule strengths, so it is not an alternative. [Sonnet check 2026-10-27: Re-confirmed against Humana formulary 26402, v17 (updated 10/01/2026), sources/humana-premier-rx-pdp-newtopics-2026-10.pdf (tier, PA, ST, QL read by x-coordinate; the v16 copy used in the first pass is superseded). Pages, tiers and flags match v17.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "dora",
+      "preferredAgent": {
+        "inn": "Suvorexant",
+        "brand": "BELSOMRA",
+        "genericAvailable": false,
+        "strength": "10 mg tablet",
+        "sig": "10 mg once, within 30 minutes of bedtime, with at least 7 hours left before waking; may increase to 20 mg (label).",
+        "sigShort": "10 mg QHS",
+        "plainSig": "One pill at bedtime, only if you can sleep 7 or more hours."
+      },
+      "preferredRestriction": "Controlled substance (Schedule IV): quantity limit 60 tablets per 30 days (10 mg); no PA or step printed.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3 (as listed)",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Tier 3 and QL 60 per 30 days for BELSOMRA 10 mg read by x-coordinate on page 82. No PA or step. Judgment: 10 mg is the standard labeled dose. Belsomra 5 mg, 15 mg and 20 mg are the same product, so they are not alternatives. Dayvigo (lemborexant) and Quviviq (daridorexant) do not appear anywhere in the guide. The guide does not state it is complete, so they are not recorded as excluded and no other orexin antagonist is listed as covered. [Sonnet check 2026-10-27: Re-confirmed against Humana formulary 26402, v17 (updated 10/01/2026), sources/humana-premier-rx-pdp-newtopics-2026-10.pdf (tier, PA, ST, QL read by x-coordinate; the v16 copy used in the first pass is superseded). Belsomra is on page 82.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "benzodiazepine",
+      "preferredAgent": {
+        "inn": "Lorazepam",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "1 mg tablet",
+        "sig": "Anxiety: 2-3 mg/day in 2-3 divided doses (e.g. 0.5-1 mg two or three times daily); usual range 1-10 mg/day. Taper to stop (label).",
+        "sigShort": "0.5-1 mg BID-TID",
+        "plainSig": "A small pill two or three times a day for anxiety; do not stop suddenly."
+      },
+      "preferredRestriction": "Controlled substance (Schedule IV): dispensing limit (30-day supply) and quantity limit 90 tablets per 30 days; no PA or step printed.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (Generic)",
+      "alternatives": [
+        {
+          "drug": "Alprazolam IR tablet (0.25 to 1 mg)",
+          "note": "Tier 3; DL and QL 120 per 30 days (page 42)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Alprazolam IR tablet (2 mg)",
+          "note": "Tier 3; DL and QL 150 per 30 days (page 42)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clonazepam tablet (0.5 to 2 mg)",
+          "note": "Tier 3; DL (page 42)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clonazepam orally disintegrating tablet",
+          "note": "Tier 4; DL (page 42)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diazepam tablet (2, 5, 10 mg)",
+          "note": "Tier 3; DL and QL 90 to 120 per 30 days (page 42)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clorazepate tablet",
+          "note": "Tier 4; DL (page 42)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Buspirone tablet (5 to 30 mg)",
+          "note": "Tier 1, no utilization requirement (page 42)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydroxyzine HCl tablet (10, 25, 50 mg)",
+          "note": "Tier 3, no utilization requirement (page 42)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Tier 2, DL and QL 90 per 30 days for lorazepam 1 mg read by x-coordinate on page 42. No PA or step on any benzodiazepine or buspirone row. Judgment: lorazepam is the lowest-tier benzodiazepine, and buspirone and hydroxyzine are listed as alternatives per the class definition. Controlled substance, so the dispensing and quantity limits are recorded in preferredRestriction. Ativan, Xanax and Klonopin brand names are not listed. [Sonnet check 2026-10-27: Re-confirmed against Humana formulary 26402, v17 (updated 10/01/2026), sources/humana-premier-rx-pdp-newtopics-2026-10.pdf (tier, PA, ST, QL read by x-coordinate; the v16 copy used in the first pass is superseded). Pages, tiers and flags match v17.]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "fl-medicaid-next11-2026-10-pdl",
+      "label": "Florida Medicaid Preferred Drug List, effective October 1, 2026",
+      "publisher": "Florida Agency for Health Care Administration (AHCA)",
+      "type": "gov",
+      "url": "https://ahca.myflorida.com/file/medicaid/PDL_Effective_10.01.2026.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "fl-medicaid-next11-2026-10-autopa",
+      "label": "AHCA Automated Prior Authorizations and Bypass Lists (10-2026)",
+      "publisher": "Florida Agency for Health Care Administration (AHCA)",
+      "type": "gov",
+      "url": "https://ahca.myflorida.com/file/medicaid/AutoPABypassLists10.08.26.pdf",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "florida-blue-next11-2026-10",
+      "label": "ValueScript Rx Medication Guide, October 2026 (Florida Blue, 6-tier closed formulary)",
+      "publisher": "Florida Blue (Prime Therapeutics)",
+      "type": "payer",
+      "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_FL_6T_ValueScript.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "uhc-fl-next11-2026-10",
+      "label": "2026 Prescription Drug List (PDL), UnitedHealthcare & affiliated companies",
+      "publisher": "UnitedHealthcare",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-10-22"
+    },
+    {
+      "id": "humana-premier-rx-pdp-next11-2026-10",
+      "label": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

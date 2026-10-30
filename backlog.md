@@ -1189,3 +1189,5 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   trial-of-preferred rules, so the PA-barrier framing is weakest exactly where the drug class is
   highest-stakes; MA added PA for topiramate XR sprinkle (2026-01-05) only. Neither beats PCSK9 /
   atypical antipsychotics on the existing scorecard. Research only; not started.
+
+- **build-seo --check fails every new day with no data change** (medium): `scripts/build-seo.mjs` stamps today into sitemap lastmod and llms.txt "as of", so the pretest check goes stale at midnight. Derive the date from the newest guide `asOf`/capture date instead. Found by the 2026-10-28 burndown.

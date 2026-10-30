@@ -1,0 +1,1079 @@
+{
+  "id": "pa-sleep-anxiety",
+  "label": "PA · Insomnia and anxiety",
+  "stateCode": "PA",
+  "region": "Pennsylvania",
+  "topicId": "sleep-anxiety",
+  "topic": "Insomnia and anxiety",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-10-29",
+  "capturedAt": "2026-10-29",
+  "payers": [
+    {
+      "id": "pa-medicaid",
+      "aka": "Statewide PDL binds fee-for-service and every Pennsylvania Medicaid managed care plan statewide (Physical HealthChoices + Community HealthChoices): same preferred/non-preferred status and PA criteria; each MCO runs its own PA intake (DHS MA Bulletin 2022-12-09)",
+      "name": "PA Medical Assistance Statewide Preferred Drug List (Fee-for-Service)",
+      "shortName": "PA Medicaid FFS",
+      "pbm": "OptumRx, Inc. (negotiates supplemental rebates / P&T support for DHS)",
+      "productName": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026 v11",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026, v16",
+      "formularyUrl": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-pdl-v16.pdf",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "ibx-commercial",
+      "name": "Independence Blue Cross (Commercial)",
+      "shortName": "Independence Blue Cross",
+      "pbm": "FutureScripts (IBX's PBM subsidiary)",
+      "productName": "Select Drug Program® Formulary",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Select Drug Program Formulary (effective July 1, 2026)",
+      "formularyUrl": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "sourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ]
+    },
+    {
+      "id": "highmark-bcbs",
+      "name": "Highmark Blue Cross Blue Shield (Commercial)",
+      "shortName": "Highmark BCBS",
+      "pbm": "Prime Therapeutics (Highmark is a Prime owner-member Blue plan)",
+      "productName": "Highmark Comprehensive Formulary (Drug Search)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-109); formulary effective 10/23/2026",
+      "formularyUrl": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7csedative-hypnotic+-+gaba-receptor+modulators",
+      "sourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-cns-109"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "z-drug",
+      "name": "Z-drug hypnotics",
+      "shortName": "Z-DRUG",
+      "plainName": "Sleep pill (zolpidem type)",
+      "description": "Zolpidem IR/ER/SL (Ambien, Ambien CR, Edluar), eszopiclone (Lunesta), zaleplon; ramelteon (Rozerem) and low-dose doxepin (Silenor) may be listed as alternatives.",
+      "plainDescription": "A bedtime pill for trouble falling or staying asleep.",
+      "indication": "Insomnia",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "dora",
+      "name": "Orexin receptor antagonists",
+      "shortName": "DORA",
+      "plainName": "Orexin blocker sleep pill",
+      "description": "Dual orexin receptor antagonists: suvorexant (Belsomra), lemborexant (Dayvigo), daridorexant (Quviviq).",
+      "plainDescription": "A newer bedtime pill that blocks the brain's wake signal.",
+      "indication": "Insomnia",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "benzodiazepine",
+      "name": "Benzodiazepines and buspirone for anxiety",
+      "shortName": "BZD",
+      "plainName": "Anxiety medicine",
+      "description": "Benzodiazepines (alprazolam IR/ER, lorazepam, clonazepam, diazepam, chlordiazepoxide, clorazepate) and the non-benzodiazepine anxiolytics buspirone and hydroxyzine as alternatives.",
+      "plainDescription": "A medicine for anxiety or panic attacks.",
+      "indication": "Generalized anxiety, panic disorder",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "z-drug",
+      "preferredAgent": {
+        "inn": "Zolpidem",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "1 tablet (5 mg) by mouth at bedtime as needed, with at least 7 hours left for sleep. 5 mg is the labeled starting dose for women and adults 65+; men may start at 5 or 10 mg (label dosing).",
+        "sigShort": "5 mg QHS PRN",
+        "plainSig": "One small pill at bedtime when needed, only if you can sleep 7 or more hours."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (Statewide PDL; no tiers)",
+      "alternatives": [
+        {
+          "drug": "Eszopiclone tablet",
+          "note": "Preferred, QL (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zaleplon capsule",
+          "note": "Preferred, QL (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Ambien (zolpidem) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ambien CR (zolpidem ER) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Edluar (zolpidem SL) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zolpidem ER tablet and zolpidem SL tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zolpidem capsule",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ramelteon tablet and Rozerem (ramelteon)",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Doxepin tablet (low-dose, Silenor generic)",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from PDL v16 p. 48 (sedative hypnotics). Zolpidem 5/10 mg tablet is preferred, QL only (controlled C-IV; day-supply limit not printed, so preferredRestriction is null). Eszopiclone and zaleplon are preferred alternatives. Ramelteon and low-dose doxepin tablets are not preferred. Lunesta and Silenor brand are not listed on the PDL. [Sonnet cross-check 2026-10-29: pick strength set to the 5 mg labeled start dose]",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "classId": "dora",
+      "preferredAgent": {
+        "inn": "Suvorexant",
+        "brand": "Belsomra",
+        "genericAvailable": false,
+        "strength": "10 mg tablet",
+        "sig": "10 mg once, within 30 minutes of bedtime, with at least 7 hours left before waking; may increase to 20 mg (label).",
+        "sigShort": "10 mg QHS",
+        "plainSig": "One pill at bedtime, only if you can sleep 7 or more hours."
+      },
+      "preferredRestriction": "Not preferred on the Statewide PDL: PA required. All three orexin antagonists sit in the not-preferred column, so Belsomra is the common lowest-barrier pick",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Non-Preferred (PA required)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Dayvigo (lemborexant) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Quviviq (daridorexant) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 48)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from PDL v16 p. 48. No orexin antagonist is in the preferred column; all three (Belsomra, Dayvigo, Quviviq) require PA. Belsomra is picked as the most-prescribed brand, which is the lowest-barrier pick when every option needs PA. Strength and sig are label dosing, not printed on the PDL.",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "classId": "benzodiazepine",
+      "preferredAgent": {
+        "inn": "Alprazolam",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.25 mg tablet",
+        "sig": "Anxiety: 0.25-0.5 mg three times daily; increase every 3-4 days if needed, max 4 mg/day. Taper to stop (label).",
+        "sigShort": "0.25-0.5 mg TID",
+        "plainSig": "A small pill up to three times a day for anxiety; do not stop suddenly."
+      },
+      "preferredRestriction": "AR: clinical PA required for specified ages (PDL key says \"specified ages\" but prints none); QL applies to FFS claims; controlled substance (C-IV), day-supply limit not printed on PDL",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (Statewide PDL; no tiers)",
+      "alternatives": [
+        {
+          "drug": "Lorazepam tablet",
+          "note": "Preferred, AR, QL (pages 14-15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clonazepam tablet and ODT",
+          "note": "Preferred, AR, QL (page 14)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diazepam tablet and solution",
+          "note": "Preferred, AR, QL (page 14)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Chlordiazepoxide capsule",
+          "note": "Preferred, AR, QL (page 14)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Buspirone tablet (non-benzodiazepine anxiolytic)",
+          "note": "Preferred, QL (page 14)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydroxyzine HCl tablet",
+          "note": "Preferred, no AR or QL flag (page 14)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Xanax (alprazolam) tablet and Xanax XR",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Alprazolam ER/XR tablet and alprazolam ODT",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 14)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Klonopin (clonazepam) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 14)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ativan (lorazepam) vial",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 14)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Loreev XR (lorazepam ER) capsule",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clorazepate tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 14)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxazepam capsule",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Meprobamate tablet",
+          "outcome": "pa",
+          "reason": "Not preferred on the Statewide PDL; PA required (page 15)",
+          "sourceIds": [
+            "pa-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from PDL v16 pp. 14-15 (anxiolytics block; lorazepam rows continue on p. 15). Alprazolam IR tablet picked: preferred generic, AR and QL. AR ages are not printed on the PDL. Standard label dosing is used, not PDL text. Benzodiazepine and buspirone/hydroxyzine alternatives are per the class description. [Sonnet check 2026-10-28: Concrete starting strength set; PDL key (p.1) defines AR only as \"specified ages (in years)\"; no ages printed, none invented (antipsychotic under-18 rule seen only in secondary DHS bulletins/MCO policies, not confirmed).]",
+      "sourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "classId": "z-drug",
+      "preferredAgent": {
+        "inn": "Zolpidem tartrate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "1 tablet (5 mg) by mouth at bedtime as needed, with at least 7 hours left for sleep. 5 mg is the labeled starting dose for women and adults 65+; men may start at 5 or 10 mg (label dosing).",
+        "sigShort": "5 mg QHS PRN",
+        "plainSig": "One small pill at bedtime when needed, only if you can sleep 7 or more hours."
+      },
+      "preferredRestriction": "The generic zolpidem tartrate row (LCG) prints PA, QL \"(10mg only)\" (p.38). The 5 mg strength is outside that qualifier, so no PA is read for it; confirm with plan.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Low-cost generic (LCG)",
+      "alternatives": [
+        {
+          "drug": "Eszopiclone 1 mg and 2 mg (generic)",
+          "note": "G, no PA flag; 3 mg needs PA and QL (p. 31)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zaleplon (generic)",
+          "note": "G, quantity limit only, no PA (p. 38)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ramelteon (generic)",
+          "note": "G, quantity limit only, no PA (p. 36)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Ambien (zolpidem brand)",
+          "outcome": "pa",
+          "reason": "PA and QL required, NPD tier (p. 28)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ambien CR (zolpidem ER brand)",
+          "outcome": "pa",
+          "reason": "PA and QL required, NPD tier (p. 28)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zolpidem tartrate 10 mg (generic)",
+          "outcome": "pa",
+          "reason": "PA and QL for 10 mg only (p. 38)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zolpidem tartrate ER 12.5 mg (generic)",
+          "outcome": "pa",
+          "reason": "PA and QL for 12.5 mg only (p. 38)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zolpidem tartrate SL 3.5 mg (generic) and Intermezzo",
+          "outcome": "pa",
+          "reason": "PA and QL for 3.5 mg; Intermezzo PA and QL (pp. 38, 32)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zolpidem tartrate capsule (brand-named row)",
+          "outcome": "pa",
+          "reason": "PA and QL required, NPD tier (p. 38)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Eszopiclone 3 mg (generic) and Lunesta (brand)",
+          "outcome": "pa",
+          "reason": "PA and QL required; Lunesta NPD (pp. 31, 33)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Rozerem (ramelteon brand)",
+          "outcome": "pa",
+          "reason": "PA and QL required, NPD tier (p. 36)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Silenor (doxepin brand) and doxepin tablet (generic)",
+          "outcome": "pa",
+          "reason": "PA required (pp. 36, 31)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Edluar (zolpidem sublingual)",
+          "outcome": "pa",
+          "reason": "PA required, listed on PA-drug list (p. 11)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read from page images and the PA-drug list (printed pp. 10-17). Zolpidem IR 5 mg is unflagged; the PA and QL flags on the zolpidem rows apply only to the 10 mg strength. Controlled substance: QL and day-supply limits are printed only as flags with no numbers, so none are recorded as limits. [Sonnet check 2026-10-28: position check of p.38 shows the qualifier \"(10mg only)\" sits under PA, QL on the LCG row; reading that 5 mg is unrestricted is an inference, so lowered to partial.]",
+      "sourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "ibx-commercial"
+    },
+    {
+      "classId": "dora",
+      "preferredAgent": {
+        "inn": "Suvorexant",
+        "brand": "Belsomra",
+        "genericAvailable": false,
+        "strength": "10 mg tablet",
+        "sig": "10 mg once, within 30 minutes of bedtime, with at least 7 hours left before waking; may increase to 20 mg (label).",
+        "sigShort": "10 mg QHS",
+        "plainSig": "One pill at bedtime, only if you can sleep 7 or more hours."
+      },
+      "preferredRestriction": "PA and quantity limit required (NPD tier; printed p. 28 and PA-drug list p. 10). All three DORAs on this plan carry PA and QL.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not preferred drug (NPD), PA and QL",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Dayvigo (lemborexant)",
+          "outcome": "pa",
+          "reason": "PA and QL required, NPD tier (p. 30)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Quviviq (daridorexant)",
+          "outcome": "pa",
+          "reason": "PA and QL required, NPD tier (p. 36)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from page images. Every DORA on this list is NPD with PA and QL, so the preferred pick is Belsomra as the most-written DORA; none is cheaper on barrier. No covered alternative exists within the DORA class.",
+      "sourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "ibx-commercial"
+    },
+    {
+      "classId": "benzodiazepine",
+      "preferredAgent": {
+        "inn": "Alprazolam (immediate-release)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.5 mg tablet",
+        "sig": "Anxiety: 0.25-0.5 mg three times daily; increase every 3-4 days if needed, max 4 mg/day. Taper to stop (label).",
+        "sigShort": "0.25-0.5 mg TID",
+        "plainSig": "A small pill up to three times a day for anxiety; do not stop suddenly."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Low-cost generic (LCG)",
+      "alternatives": [
+        {
+          "drug": "Lorazepam (generic)",
+          "note": "LCG, no PA or QL (p. 33)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lorazepam concentrate (generic)",
+          "note": "G, no PA or QL (p. 33)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clonazepam (generic)",
+          "note": "G, no PA flag (p. 29)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clorazepate (generic)",
+          "note": "G, no PA flag (p. 29)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Chlordiazepoxide (generic)",
+          "note": "LCG, no PA flag (p. 29)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diazepam tablet (generic)",
+          "note": "LCG, no PA flag (p. 30)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diazepam solution (generic)",
+          "note": "G, no PA flag (p. 30)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Alprazolam ER (generic)",
+          "note": "G, no PA flag (p. 28)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Buspirone (generic)",
+          "note": "G, no PA flag (p. 29)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Buspar (buspirone brand)",
+          "note": "NPD tier, no PA flag (p. 29)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tranxene T (clorazepate brand)",
+          "note": "NPD tier, no PA flag (p. 37)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydroxyzine HCl tablet (generic)",
+          "note": "LCG, no PA flag (p. 69)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydroxyzine HCl syrup and pamoate (generic)",
+          "note": "G, no PA flag (p. 69)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Xanax (alprazolam brand)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 38)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Xanax XR (alprazolam ER brand)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 38)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Valium (diazepam brand)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 38)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Klonopin (clonazepam brand)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 32)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Loreev XR (lorazepam ER)",
+          "outcome": "pa",
+          "reason": "PA required, NPD tier (p. 33)",
+          "sourceIds": [
+            "ibx-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from page images. Benzodiazepine generics are unflagged except brand rows, which all carry PA. No day-supply or QL flag printed for generic alprazolam, lorazepam or clonazepam. Buspirone and hydroxyzine are the non-benzodiazepine alternatives named by the class.",
+      "sourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "ibx-commercial"
+    },
+    {
+      "classId": "z-drug",
+      "preferredAgent": {
+        "inn": "Zolpidem tartrate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "1 tablet (5 mg) by mouth at bedtime as needed, with at least 7 hours left for sleep. 5 mg is the labeled starting dose for women and adults 65+; men may start at 5 or 10 mg (label dosing).",
+        "sigShort": "5 mg QHS PRN",
+        "plainSig": "One small pill at bedtime when needed, only if you can sleep 7 or more hours."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 / Formulary Generic Drug",
+      "alternatives": [
+        {
+          "drug": "Eszopiclone tablet (generic)",
+          "note": "Tier 1 generic; no PA",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-109"
+          ]
+        },
+        {
+          "drug": "Zaleplon capsule (generic)",
+          "note": "Tier 1 generic; no PA",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-109"
+          ]
+        },
+        {
+          "drug": "Zolpidem IR 10 mg tablet (generic)",
+          "note": "Tier 1 generic; no PA; quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-109"
+          ]
+        },
+        {
+          "drug": "Zolpidem ER tablet (generic)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); no PA; quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-109"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Ambien tablet (brand zolpidem)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-109"
+          ]
+        },
+        {
+          "drug": "Ambien CR tablet (brand zolpidem ER)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-109"
+          ]
+        },
+        {
+          "drug": "Zolpidem sublingual tablet (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary)",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-109"
+          ]
+        },
+        {
+          "drug": "Edluar sublingual tablet (brand zolpidem)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary)",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-109"
+          ]
+        },
+        {
+          "drug": "Lunesta tablet (brand eszopiclone)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary)",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-109"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read Highmark CNS > Sedative-Hypnotic - Gaba-Receptor Modulators class (cls-cns-109). Generic zolpidem IR 5 mg is Tier 1 with QL only (the numeric limit is not printed on the listing). Generic eszopiclone and zaleplon are Tier 1 with no PA or QL. Zolpidem is a Schedule IV controlled substance; no day-supply limit is printed for it on this listing. Preferred pick is the 5 mg strength, the labeled starting dose for women.",
+      "sourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-cns-109"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-cns-109"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-cns-109"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "highmark-bcbs"
+    },
+    {
+      "classId": "dora",
+      "preferredAgent": {
+        "inn": "Suvorexant",
+        "brand": "Belsomra",
+        "genericAvailable": false,
+        "strength": "10 mg tablet",
+        "sig": "10 mg once, within 30 minutes of bedtime, with at least 7 hours left before waking; may increase to 20 mg (label).",
+        "sigShort": "10 mg QHS",
+        "plainSig": "One pill at bedtime, only if you can sleep 7 or more hours."
+      },
+      "preferredRestriction": "PA required per Highmark listing (Tier 3 non-formulary; covered only on open or 3-tier incentive designs; PA criteria not printed on the listing)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3 / Non-Formulary Drug",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Dayvigo tablet (brand lemborexant)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-110"
+          ]
+        },
+        {
+          "drug": "Quviviq tablet (brand daridorexant)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-110"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read Highmark CNS > Sedative-Hypnotic - Orexin Receptor Antagonist class (cls-cns-110). All three orexin antagonists (Belsomra, Dayvigo, Quviviq) are Tier 3 non-formulary with QL and PA. No covered DORA is listed, so alternatives is empty; the Z-drug record carries the covered sleep options.",
+      "sourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-cns-110"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-cns-110"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-cns-110"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "highmark-bcbs"
+    },
+    {
+      "classId": "benzodiazepine",
+      "preferredAgent": {
+        "inn": "Lorazepam",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.5 mg tablet",
+        "sig": "Anxiety: 2-3 mg/day in 2-3 divided doses (e.g. 0.5-1 mg two or three times daily); usual range 1-10 mg/day. Taper to stop (label).",
+        "sigShort": "0.5-1 mg BID-TID",
+        "plainSig": "A small pill two or three times a day for anxiety; do not stop suddenly."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 / Formulary Generic Drug",
+      "alternatives": [
+        {
+          "drug": "Diazepam tablet (generic)",
+          "note": "Tier 1 generic; no PA",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-002"
+          ]
+        },
+        {
+          "drug": "Clonazepam tablet (generic)",
+          "note": "Tier 1 generic; no PA; quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-002"
+          ]
+        },
+        {
+          "drug": "Chlordiazepoxide capsule (generic)",
+          "note": "Tier 1 generic; no PA",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-002"
+          ]
+        },
+        {
+          "drug": "Oxazepam capsule (generic)",
+          "note": "Tier 1 generic; no PA",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-002"
+          ]
+        },
+        {
+          "drug": "Lorazepam 1-2 mg tablet (generic)",
+          "note": "Tier 1 generic; no PA",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-002"
+          ]
+        },
+        {
+          "drug": "Clorazepate tablet (generic)",
+          "note": "Tier 3 non-formulary (covered only on open or 3-tier incentive designs; not covered on closed formularies); no PA",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-002"
+          ]
+        },
+        {
+          "drug": "Buspirone tablet (generic)",
+          "note": "Tier 1 generic; no PA; low-cost generic program",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-004"
+          ]
+        },
+        {
+          "drug": "Hydroxyzine HCl tablet (generic)",
+          "note": "Tier 1 generic; no PA; low-cost generic program",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-001"
+          ]
+        },
+        {
+          "drug": "Hydroxyzine pamoate capsule (generic)",
+          "note": "Tier 1 generic; no PA; low-cost generic program",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-001"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Alprazolam IR tablet (generic)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 1 generic); quantity limit",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-002"
+          ]
+        },
+        {
+          "drug": "Xanax tablet and XR (brand alprazolam)",
+          "outcome": "pa",
+          "reason": "PA required per Highmark listing (Tier 3 non-formulary)",
+          "sourceIds": [
+            "highmark-bcbs-next11-2026-10-cls-cns-002"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read Highmark CNS > Antianxiety Agent - Benzodiazepines (cls-cns-002), Non-Benzodiazepine (cls-cns-004) and Antihistamine Type (cls-cns-001). Generic lorazepam, diazepam, clonazepam, chlordiazepoxide and buspirone are Tier 1 with no PA. Generic alprazolam IR and brand Xanax carry PA. Lorazepam 0.5 mg is the lowest starting strength; controlled substance, and no day-supply limit is printed.",
+      "sourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-cns-002"
+      ],
+      "coverageSourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-cns-002"
+      ],
+      "restrictionSourceIds": [
+        "highmark-bcbs-next11-2026-10-cls-cns-002"
+      ],
+      "lastReviewed": "2026-10-28",
+      "payerId": "highmark-bcbs"
+    }
+  ],
+  "references": [
+    {
+      "id": "pa-medicaid-next11-2026-10",
+      "label": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026, v16",
+      "publisher": "Pennsylvania Department of Human Services",
+      "type": "gov",
+      "url": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-pdl-v16.pdf",
+      "effectiveDate": "2026-01-20",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "ibx-commercial-next11-2026-10",
+      "label": "Select Drug Program Formulary (effective July 1, 2026)",
+      "publisher": "Independence Blue Cross",
+      "type": "payer",
+      "url": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-cns-001",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-001); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7cantianxiety+agent+-+antihistamine+type",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-cns-002",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-002); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7cantianxiety+agent+-+benzodiazepines",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-cns-004",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-004); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7cantianxiety+agent+-+non-benzodiazepine",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-cns-109",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-109); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7csedative-hypnotic+-+gaba-receptor+modulators",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "highmark-bcbs-next11-2026-10-cls-cns-110",
+      "label": "Highmark Comprehensive Formulary - Drug Search, therapeutic class listing (cns-110); formulary effective 10/23/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=central+nervous+system+agents%7csedative-hypnotic+-+orexin+receptor+antagonist",
+      "effectiveDate": "2026-10-23",
+      "accessed": "2026-10-28"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}
