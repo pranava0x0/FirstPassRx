@@ -375,8 +375,9 @@
  * 2422 → 2556: Florida's 11 newer topics (4 payers × 28 classes; UHC and Humana reused).
  * 2556 → 2804: Pennsylvania's 11 newer topics (3 payers × 28 classes; Highmark lists run long).
  * 2804 → 3385: Illinois's 11 newer topics (8 payers × 28 classes; five Medicaid MCO lists).
+ * 3385 → 3515: Ohio's 11 newer topics (4 payers × 28 classes; UHC and Humana reused).
  */
-export const KNOWN_UNPRICED_GAP = 3385
+export const KNOWN_UNPRICED_GAP = 3515
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake

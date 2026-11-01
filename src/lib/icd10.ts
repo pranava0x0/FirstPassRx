@@ -82,6 +82,11 @@ const ECZEMA: Icd10Option[] = [
   { code: 'L20.9', label: 'Atopic dermatitis, unspecified' },
   { code: 'L20.89', label: 'Other atopic dermatitis' },
 ]
+const ALOPECIA_AREATA: Icd10Option[] = [
+  { code: 'L63.9', label: 'Alopecia areata, unspecified' },
+  { code: 'L63.0', label: 'Alopecia (capitis) totalis' },
+  { code: 'L63.1', label: 'Alopecia universalis' },
+]
 const INSOMNIA: Icd10Option[] = [
   { code: 'G47.00', label: 'Insomnia, unspecified' },
   { code: 'F51.01', label: 'Primary insomnia' },
@@ -237,6 +242,7 @@ const DRUG_ICD10: [RegExp, Icd10Option[]][] = [
   [/tofacitinib|xeljanz/i, [RA, PSA, AS, UC]],
   [/baricitinib|olumiant/i, [RA]],
   [/abrocitinib|cibinqo/i, ECZEMA],
+  [/deuruxolitinib|leqselvi|ritlecitinib|litfulo/i, ALOPECIA_AREATA],
   [/mirikizumab|omvoh|vedolizumab|entyvio/i, [CD, UC]],
   [/tildrakizumab|ilumya|brodalumab|siliq/i, [PSO]],
   [/adalimumab|humira|hadlima|hyrimoz|cyltezo|yusimry|simlandi|amjevita|abrilada|hulio|idacio|yuflyma|infliximab|remicade|inflectra|renflexis|avsola|zymfentra/i, [RA, PSA, AS, PSO, CD, UC]],
