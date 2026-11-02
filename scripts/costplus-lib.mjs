@@ -50,7 +50,7 @@ export function sameForm(want, entry) {
   return t.includes(want.form)
 }
 // Every molecule word on both sides: "atenolol" must not match atenolol/chlorthalidone.
-const ROUTE = new Set(['vaginal', 'topical', 'ophthalmic', 'nasal', 'smoking', 'det', 'hfa', 'unbranded', 'micronized'])
+const ROUTE = new Set(['vaginal', 'topical', 'ophthalmic', 'nasal', 'hfa', 'unbranded', 'micronized'])
 export function sameMolecule(want, entry) {
   const have = words(entry.medication_name).filter((w) => !ROUTE.has(w))
   return want.filter((w) => !ROUTE.has(w)).every((w) => have.includes(w)) && have.every((w) => want.includes(w))

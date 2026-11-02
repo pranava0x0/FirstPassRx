@@ -379,8 +379,10 @@ import costPlusSnapshot from '../data/costplus-prices.json' with { type: 'json' 
  * 2804 → 3385: Illinois's 11 newer topics (8 payers × 28 classes; five Medicaid MCO lists).
  * 3385 → 3515: Ohio's 11 newer topics (4 payers × 28 classes; UHC and Humana reused).
  * 3515 → 3618: Georgia's 11 newer topics (5 payers × 28 classes; UHC and Humana reused).
+ * 3618 → 3489: 8 Cost Plus-only rules from the vendor's price-list API (scripts/costplus.mjs).
+ * 3489 → 3664: North Carolina's 11 newer topics (4 payers × 28 classes; UHC and Humana reused).
  */
-export const KNOWN_UNPRICED_GAP = 3618
+export const KNOWN_UNPRICED_GAP = 3664
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
