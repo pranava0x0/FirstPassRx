@@ -381,8 +381,9 @@ import costPlusSnapshot from '../data/costplus-prices.json' with { type: 'json' 
  * 3515 → 3618: Georgia's 11 newer topics (5 payers × 28 classes; UHC and Humana reused).
  * 3618 → 3489: 8 Cost Plus-only rules from the vendor's price-list API (scripts/costplus.mjs).
  * 3489 → 3664: North Carolina's 11 newer topics (4 payers × 28 classes; UHC and Humana reused).
+ * 3664 → 3609: Cost Plus rules for oral olanzapine and pravastatin.
  */
-export const KNOWN_UNPRICED_GAP = 3664
+export const KNOWN_UNPRICED_GAP = 3609
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -2504,6 +2505,24 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     goodRxParams: 'label_override=trospium&form=tablet&dosage=20mg&quantity=60',
     costPlusPath: 'trospium-chloride-20mg-tablet-sanctura',
     costPlusPrice: { price: 14.03, quantity: '60 tablets, 20mg' },
+    pricesCapturedAt: '2026-11-02',
+  },
+  {
+    // Oral tablets only: not the ODT (Zydis), the long-acting injection, or the fluoxetine and
+    // samidorphan combinations.
+    matches: /^(?!.*(odt|disintegrat|zydis|inject|relprevv|pamoate|fluoxetine|symbyax|samidorphan|lybalvi|intramuscular)).*(olanzapine|zyprexa)/i,
+    goodRxSlug: 'olanzapine',
+    goodRxParams: 'label_override=olanzapine&form=tablet&dosage=5mg&quantity=30',
+    costPlusPath: 'olanzapine-5mg-tablet',
+    costPlusPrice: { price: 6.21, quantity: '30 tablets, 5mg' },
+    pricesCapturedAt: '2026-11-02',
+  },
+  {
+    matches: /pravastatin|pravachol/i,
+    goodRxSlug: 'pravastatin',
+    goodRxParams: 'label_override=pravastatin&form=tablet&dosage=40mg&quantity=30',
+    costPlusPath: 'pravastatin-40mg-tablet',
+    costPlusPrice: { price: 6.3, quantity: '30 tablets, 40mg' },
     pricesCapturedAt: '2026-11-02',
   },
 ]
