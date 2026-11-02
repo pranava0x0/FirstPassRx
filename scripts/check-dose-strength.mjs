@@ -55,6 +55,10 @@ for (const g of data.guides) {
     const sig = a.sig.replace(/\([^)]*\)/g, ' ')
     const [dose] = amounts(sig.split(/[.;]\s/)[0]).length ? amounts(sig.split(/[.;]\s/)[0]) : amounts(sig)
     if (!strengths.length || !dose || deliverable(dose, strengths)) continue
+    // A sig that names the pick's strength as a labeled dose ("25, 50 or 100 mg", "may increase to
+    // 15 mg", "(40 mg if LDL-C must fall more than 45%)") is consistent with it.
+    const named = amounts(a.sig.replace(/(\d)\s*-\s*(\d)/g, '$1 to $2'))
+    if (strengths.some((st) => named.some((n) => n.unit === st.unit && n.n === st.n))) continue
     if (strengths.length === 1 && soldAt(a.inn, a.strength, dose)) {
       const value = a.strength.replace(new RegExp(`${strengths[0].n}\\s*${strengths[0].unit}`, 'i'), `${dose.n} ${dose.unit}`)
       fixes.push({ guideId: g.id, payerId: r.payerId, classId: r.classId, op: 'setAgentField', field: 'strength', value,
