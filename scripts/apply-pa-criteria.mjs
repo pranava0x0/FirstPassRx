@@ -8,11 +8,16 @@
 // paRequired items whose drug string matches exactly get criteria; a "[preferred] …" target sets
 // the record's preferredCriteria (only when the preferred agent carries a restriction). Anything
 // unmatched is reported, never guessed.
+//
+// --all-states: the payer's document is national (a Part D PDP, a national commercial PDL), so a
+// set written for one state's guide also applies to every other guide on the same topic where the
+// same payer lists the same exact drug string. Only use it for genuinely state-neutral documents.
 import { readFileSync } from 'node:fs'
 import { writeValidatedFormulary } from './write-formulary.mjs'
 
 const files = process.argv.slice(2).filter((a) => !a.startsWith('--'))
 const DRY = process.argv.includes('--dry-run')
+const ALL_STATES = process.argv.includes('--all-states')
 const FORMULARY = 'src/data/formulary.json'
 const data = JSON.parse(readFileSync(FORMULARY, 'utf8'))
 
@@ -32,36 +37,42 @@ for (const file of files) {
     if (set.criteriaMode !== 'any' && set.criteriaMode !== 'all') throw new Error(`${file}: bad criteriaMode`)
     const criteria = (set.criteria ?? []).map((c) => String(c).trim()).filter(Boolean)
     if (!criteria.length || !set.reference?.id || !set.reference?.url) continue
-    const g = data.guides.find((x) => x.id === set.guideId)
-    const r = g?.records.find((x) => x.payerId === f.payerId && x.classId === set.classId)
-    if (!g || !r) {
-      unmatched.push(`${set.guideId}/${set.classId} (no record)`)
-      continue
-    }
-    const ref = { ...set.reference }
-    if (!ref.effectiveDate) delete ref.effectiveDate
-    if (!g.references.some((x) => x.id === ref.id)) g.references.push(ref)
-    for (const drug of set.drugs ?? []) {
-      if (drug.startsWith('[preferred]')) {
-        if (!r.preferredRestriction) {
-          unmatched.push(`${set.guideId}/${set.classId}: ${drug} (preferred has no restriction)`)
+    const home = data.guides.find((x) => x.id === set.guideId)
+    const copies = ALL_STATES && home ? data.guides.filter((x) => x !== home && x.topicId === home.topicId) : []
+    for (const g of [home, ...copies]) {
+      const isHome = g === home
+      const r = g?.records.find((x) => x.payerId === f.payerId && x.classId === set.classId)
+      if (!g || !r) {
+        if (isHome) unmatched.push(`${set.guideId}/${set.classId} (no record)`)
+        continue
+      }
+      const ref = { ...set.reference }
+      if (!ref.effectiveDate) delete ref.effectiveDate
+      const before = applied
+      for (const drug of set.drugs ?? []) {
+        if (drug.startsWith('[preferred]')) {
+          if (!r.preferredRestriction) {
+            if (isHome) unmatched.push(`${set.guideId}/${set.classId}: ${drug} (preferred has no restriction)`)
+            continue
+          }
+          r.preferredCriteria = criteria
+          r.preferredCriteriaMode = set.criteriaMode
+          r.preferredCriteriaSourceIds = [ref.id]
+          applied++
           continue
         }
-        r.preferredCriteria = criteria
-        r.preferredCriteriaMode = set.criteriaMode
-        r.preferredCriteriaSourceIds = [ref.id]
+        const item = r.paRequired.find((x) => x.drug === drug)
+        if (!item) {
+          if (isHome) unmatched.push(`${set.guideId}/${set.classId}: ${drug}`)
+          continue
+        }
+        item.criteria = criteria
+        item.criteriaMode = set.criteriaMode
+        item.criteriaSourceIds = [ref.id]
         applied++
-        continue
       }
-      const item = r.paRequired.find((x) => x.drug === drug)
-      if (!item) {
-        unmatched.push(`${set.guideId}/${set.classId}: ${drug}`)
-        continue
-      }
-      item.criteria = criteria
-      item.criteriaMode = set.criteriaMode
-      item.criteriaSourceIds = [ref.id]
-      applied++
+      // Cite the document only in guides where it now backs at least one item.
+      if (applied > before && !g.references.some((x) => x.id === ref.id)) g.references.push(ref)
     }
   }
   console.log(`${f.payerId}: criteria on ${applied} item(s); unmatched ${unmatched.length}`)
