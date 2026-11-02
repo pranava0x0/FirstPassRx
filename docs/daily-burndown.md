@@ -98,7 +98,9 @@ Every data item ends the same way: merge → `node scripts/apply-label-sigs.mjs 
 5. **PA submission channels** for payers that print only "call the number on the ID card"
    (CareSource GA, Florida Blue, BCBS TN have no general pharmacy PA channel published). Verify
    with Sonnet before applying (`scripts/apply-pa-submission.mjs`); a wrong fax misroutes PHI.
-6. **Cash prices for the alternatives long tail** (`KNOWN_UNPRICED_GAP` 1547). GoodRx needs the
+6. **Cash prices.** Cost Plus is deterministic now: `npm run costplus` (audit + gap list),
+   `npm run costplus -- --write` (refresh the snapshot the app reads). Run it after every merge
+   and add `costPlusPath` for each ADD line whose form matches. **Then the alternatives long tail** (`KNOWN_UNPRICED_GAP` 1547). GoodRx needs the
    user's Chrome (the in-app browser is blocked); extract only the price with javascript_tool and
    print `location.pathname` to catch redirects. Cost Plus via browser if curl 403s.
 7. **Stale sources** (issues.md): Meridian (Dec 2024) and BCBS Community IL (May 2025) lists;
