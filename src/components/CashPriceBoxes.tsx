@@ -16,6 +16,15 @@ export function CashPriceBoxes({
   costPlus: PricePoint | null
   capturedAt: string | null
 }) {
+  // Cost Plus prices come from a newer price-list snapshot than the hand-captured GoodRx ones.
+  const goodRxDate = goodRx ? capturedAt : null
+  const costPlusDate = costPlus ? (costPlus.capturedAt ?? capturedAt) : null
+  const asOf =
+    goodRxDate && costPlusDate && goodRxDate !== costPlusDate
+      ? `GoodRx price as of ${goodRxDate} · Cost+ as of ${costPlusDate}`
+      : goodRxDate || costPlusDate
+        ? `Prices as of ${goodRxDate ?? costPlusDate}`
+        : null
   return (
     <div className="price-boxes">
       <div className="price-boxes__row">
@@ -44,9 +53,7 @@ export function CashPriceBoxes({
           </a>
         ) : null}
       </div>
-      {capturedAt && (goodRx || costPlus) ? (
-        <p className="price-boxes__date">Prices as of {capturedAt}</p>
-      ) : null}
+      {asOf ? <p className="price-boxes__date">{asOf}</p> : null}
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { costPlusUrl, goodRxUrl, hasCashLinkRule, goodRxPrice, costPlusPrice, pricesCapturedAt, priceSuppressedByForm, KNOWN_UNPRICED_GAP } from './cash'
+import { CASH_LINK_RULES, costPlusUrl, goodRxUrl, hasCashLinkRule, goodRxPrice, costPlusPrice, pricesCapturedAt, priceSuppressedByForm, KNOWN_UNPRICED_GAP } from './cash'
+import costPlusSnapshot from '../data/costplus-prices.json'
 import rawData from '../data/formulary.json'
 import type { Formulary } from '../types/formulary'
 
@@ -291,7 +292,14 @@ describe('cash price coverage across the live formulary', () => {
     ]
     const matched = coveredDrugNames().filter((name) => hasCashLinkRule(name))
     const missingPrice = matched.filter((name) => !goodRxPrice(name) && !costPlusPrice(name))
-    const unexpected = missingPrice.filter((name) => !priceSuppressedByForm(name) && !KNOWN_PRICE_UNAVAILABLE.some((re) => re.test(name)))
+    // Out of stock in today's Cost Plus snapshot (scripts/costplus.mjs) -> no price, link kept.
+    const outOfStock = (name: string) => {
+      const path = costPlusUrl(name)?.split('/medications/')[1]?.replace(/\/$/, '').toLowerCase()
+      return path !== undefined && (costPlusSnapshot.paths as Record<string, { inStock?: boolean }>)[path]?.inStock === false
+    }
+    const unexpected = missingPrice.filter(
+      (name) => !priceSuppressedByForm(name) && !outOfStock(name) && !KNOWN_PRICE_UNAVAILABLE.some((re) => re.test(name)),
+    )
     expect(unexpected).toEqual([])
   })
 })
@@ -469,4 +477,25 @@ describe('new-topic rules do not capture neighbouring products', () => {
     '%s has no borrowed price',
     (name) => expect(goodRxPrice(name)).toBeNull(),
   )
+})
+
+describe('Cost Plus price-list snapshot', () => {
+  it('has an entry for every rule with a Cost Plus path (run `npm run costplus -- --write`)', () => {
+    const paths = costPlusSnapshot.paths as Record<string, unknown>
+    const missing = CASH_LINK_RULES.filter((r) => r.costPlusPath && !(r.costPlusPath.toLowerCase() in paths)).map((r) => r.costPlusPath)
+    expect(missing).toEqual([])
+  })
+
+  it('prices from the snapshot and dates it separately from GoodRx', () => {
+    const p = costPlusPrice('Sumatriptan succinate')
+    expect(p?.capturedAt).toBe(costPlusSnapshot.fetchedAt)
+    expect(p?.quantity).toBe('9 tablets, 50mg')
+    expect(pricesCapturedAt('Sumatriptan succinate')).toBe('2026-10-21')
+  })
+
+  it('does not price combinations from a single-agent Cost Plus rule', () => {
+    expect(costPlusUrl('Atenolol/chlorthalidone')).toBeNull()
+    expect(costPlusUrl('Clindamycin/benzoyl peroxide 1%/5% gel')).not.toContain('clindamycinphosphate-0_01-gel')
+    expect(costPlusUrl('Oxybutynin chloride ER 10 mg')).not.toContain('oxybutyninchloride-5mg-tablet')
+  })
 })

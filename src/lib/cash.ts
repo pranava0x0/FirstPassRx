@@ -1,3 +1,5 @@
+import costPlusSnapshot from '../data/costplus-prices.json' with { type: 'json' }
+
 // Vendor URLs must use canonical medication names, not the clinical labels shown in the UI.
 
 /** Ceiling on covered-drug names with no explicit cash-link rule (see issues.md) -- a ceiling,
@@ -387,9 +389,18 @@ export interface PricePoint {
   price: number
   /** What the price is for, e.g. "1 inhaler", "30 tablets" — vendors quote different pack sizes. */
   quantity: string
+  /** ISO date this price was read, when it differs from the rule's pricesCapturedAt (Cost Plus
+   * prices come from the vendor's price-list API snapshot, refreshed by scripts/costplus.mjs). */
+  capturedAt?: string
 }
 
-interface CashLinkRule {
+// Cost Plus Drugs' own price list, keyed by lower-case product path: each rule's price at its own
+// quantity label, stock, and paths the vendor no longer lists. Regenerate with
+// `node scripts/costplus.mjs --write`.
+type CostPlusSnapshotEntry = { price?: number | null; inStock?: boolean; delisted?: boolean }
+const COST_PLUS: { fetchedAt: string; paths: Record<string, CostPlusSnapshotEntry> } = costPlusSnapshot
+
+export interface CashLinkRule {
   matches: RegExp
   goodRxSlug: string
   /** Query string (no leading ?) that pins the GoodRx page to this rule's exact dosage, when the
@@ -406,7 +417,7 @@ interface CashLinkRule {
   pricesCapturedAt?: string
 }
 
-const CASH_LINK_RULES: CashLinkRule[] = [
+export const CASH_LINK_RULES: readonly CashLinkRule[] = [
   // ---- MA next-11 topics (added 2026-10-22): Cost Plus via browser; GoodRx blocked after one
   // read, then re-captured through Chrome (2026-10-22). Each rule is narrowed to the captured form. ----
   {
@@ -627,9 +638,11 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    // Cost Plus listed generic tofacitinib at a price that could not be re-verified; link only.
+    // Generic tofacitinib 5mg, priced from Cost Plus's own price list (scripts/costplus.mjs).
     matches: /^(?!.*(\bXR\b|extended|solution)).*(tofacitinib|xeljanz)/i,
     goodRxSlug: 'xeljanz',
+    costPlusPath: 'tofacitinib-citrate-5mg-bottle-of-60-tablets-60',
+    costPlusPrice: { price: 25.08, quantity: '60 tablets, 5mg' },
     pricesCapturedAt: '2026-10-22',
   },
   {
@@ -839,6 +852,8 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxSlug: 'atomoxetine',
     goodRxParams: 'label_override=atomoxetine&form=capsule&dosage=40mg&quantity=30',
     goodRxPrice: { price: 33.76, quantity: '30 capsules, 40mg' },
+    costPlusPath: 'atomoxetinehcl-40mg-capsule',
+    costPlusPrice: { price: 10.87, quantity: '30 capsules, 40mg' },
     pricesCapturedAt: '2026-10-21',
   },
   {
@@ -846,6 +861,8 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxSlug: 'guanfacine-er',
     goodRxParams: 'label_override=guanfacine-er&form=tablet&dosage=1mg&quantity=30',
     goodRxPrice: { price: 19.45, quantity: '30 tablets, 1mg ER' },
+    costPlusPath: 'guanfacinehcler-1mg-tablet',
+    costPlusPrice: { price: 6.77, quantity: '30 tablets, 1mg ER' },
     pricesCapturedAt: '2026-10-21',
   },
   {
@@ -883,6 +900,8 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxSlug: 'sumatriptan',
     goodRxParams: 'label_override=sumatriptan&form=tablet&dosage=50mg&quantity=9',
     goodRxPrice: { price: 29.85, quantity: '9 tablets, 50mg' },
+    costPlusPath: 'sumatriptansuccinate-50mg-tablet',
+    costPlusPrice: { price: 6.59, quantity: '9 tablets, 50mg' },
     pricesCapturedAt: '2026-10-21',
   },
   {
@@ -1677,6 +1696,8 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxSlug: 'ibuprofen',
     goodRxParams: 'label_override=ibuprofen&form=tablet&dosage=600mg&quantity=30',
     goodRxPrice: { price: 29.65, quantity: '30 tablets, 600mg' },
+    costPlusPath: 'ibuprofen-600mg-tablet',
+    costPlusPrice: { price: 5.81, quantity: '30 tablets, 600mg' },
     pricesCapturedAt: '2026-07-09',
   },
   {
@@ -2127,6 +2148,8 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     matches: /liraglutide|victoza/i,
     goodRxSlug: 'victoza',
     goodRxPrice: { price: 154.2, quantity: '1 carton (3 pens), 18mg/3mL' },
+    costPlusPath: 'liraglutide-18-mg_3ml-solution-pen-injector-9',
+    costPlusPrice: { price: 129.2, quantity: '1 carton (3 pens), 18mg/3mL' },
     pricesCapturedAt: '2026-07-09',
   },
   {
@@ -2383,9 +2406,9 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     matches: /\bapixaban\b|\beliquis\b/i,
     goodRxSlug: 'eliquis',
     goodRxParams: 'label_override=apixaban&form=tablet&dosage=5mg&quantity=60',
-    costPlusPath: 'eliquis-5mg-bottle-of-60-tablets-60-eliquis',
+    // Cost Plus dropped Eliquis from its price list by 2026-11-02 (scripts/costplus.mjs: DEAD), so
+    // the Cost Plus link and its $345 manufacturer-subsidized price were removed.
     goodRxPrice: { price: 347.76, quantity: '60 tablets, 5mg (standard GoodRx price)' },
-    costPlusPrice: { price: 345.0, quantity: '60 tablets, 5mg (manufacturer-subsidized direct-to-patient price)' },
     pricesCapturedAt: '2026-08-21',
   },
   {
@@ -2411,6 +2434,75 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxPrice: { price: 29.34, quantity: '30 tablets, 10mg (standard GoodRx price)' },
     costPlusPrice: { price: 6.62, quantity: '30 tablets, 10mg' },
     pricesCapturedAt: '2026-09-07',
+  },
+  // ---- Cost Plus-only rules (added 2026-11-02 from scripts/costplus.mjs, which reads Cost Plus's
+  // own price list). Each is a preferred pick with no prior rule; GoodRx keeps its link without a
+  // price until a browser session captures one. Each regex is narrowed to the listed product's
+  // form and excludes the combos/forms a priced molecule shares (CLAUDE.md, combo-drug trap). ----
+  {
+    matches: /^(?!.*(\bER\b|\bXL\b|extended|ditropan xl|\bgel\b|gelnique|patch|oxytrol|syrup|solution)).*oxybutynin/i,
+    goodRxSlug: 'oxybutynin',
+    goodRxParams: 'label_override=oxybutynin&form=tablet&dosage=5mg&quantity=30',
+    costPlusPath: 'oxybutyninchloride-5mg-tablet',
+    costPlusPrice: { price: 5.98, quantity: '30 tablets, 5mg' },
+    pricesCapturedAt: '2026-11-02',
+  },
+  {
+    matches: /^(?!.*(capsule|solution)).*(tizanidine|zanaflex)/i,
+    goodRxSlug: 'tizanidine',
+    goodRxParams: 'label_override=tizanidine&form=tablet&dosage=4mg&quantity=30',
+    costPlusPath: 'tizanidine-4mg-tablet',
+    costPlusPrice: { price: 5.62, quantity: '30 tablets, 4mg' },
+    pricesCapturedAt: '2026-11-02',
+  },
+  {
+    // Clindamycin 1% gel alone: not the clindamycin/benzoyl peroxide or /tretinoin combos, and not
+    // the oral capsules, lotion, foam, solution or pledgets.
+    matches: /^(?!.*(benzoyl|peroxide|tretinoin|adapalene|ziana|veltin|onexton|benzaclin|duac|acanya|neuac|cabtreo|capsule|oral|lotion|foam|solution|pledget|swab|vaginal|cleocin)).*clindamycin.*\bgel\b/i,
+    goodRxSlug: 'clindamycin-phosphate',
+    costPlusPath: 'clindamycinphosphate-0_01-gel',
+    costPlusPrice: { price: 10.67, quantity: '60 g, 1% gel' },
+    pricesCapturedAt: '2026-11-02',
+  },
+  {
+    // Tretinoin cream alone (not gel, microsphere, or the clindamycin/BPO combos).
+    matches: /^(?!.*(clindamycin|benzoyl|ziana|veltin|twyneo|cabtreo|\bgel\b|micro|lotion|oral|capsule|altreno|arazlo)).*tretinoin.*cream/i,
+    goodRxSlug: 'tretinoin',
+    costPlusPath: 'tretinoin-0_025-cream-20g',
+    costPlusPrice: { price: 14.17, quantity: '20 g, 0.025% cream' },
+    pricesCapturedAt: '2026-11-02',
+  },
+  {
+    matches: /^(?!.*(chlorthalidone|tenoretic|solution)).*(atenolol|tenormin)/i,
+    goodRxSlug: 'atenolol',
+    goodRxParams: 'label_override=atenolol&form=tablet&dosage=50mg&quantity=30',
+    costPlusPath: 'atenolol-50mg-tablet',
+    costPlusPrice: { price: 5.36, quantity: '30 tablets, 50mg' },
+    pricesCapturedAt: '2026-11-02',
+  },
+  {
+    matches: /^(?!.*(atenolol|tenoretic|azilsartan|edarbyclor|clonidine|metoprolol|lopressor|olmesartan|candesartan)).*(chlorthalidone|thalitone)/i,
+    goodRxSlug: 'chlorthalidone',
+    goodRxParams: 'label_override=chlorthalidone&form=tablet&dosage=25mg&quantity=30',
+    costPlusPath: 'chlorthalidone-25mg-tablet',
+    costPlusPrice: { price: 5.85, quantity: '30 tablets, 25mg' },
+    pricesCapturedAt: '2026-11-02',
+  },
+  {
+    matches: /^(?!.*(solution)).*(vilazodone|viibryd)/i,
+    goodRxSlug: 'vilazodone',
+    goodRxParams: 'label_override=vilazodone&form=tablet&dosage=10mg&quantity=30',
+    costPlusPath: 'vilazodone-hcl-10mg-tablet',
+    costPlusPrice: { price: 12.96, quantity: '30 tablets, 10mg' },
+    pricesCapturedAt: '2026-11-02',
+  },
+  {
+    matches: /^(?!.*(\bER\b|\bXR\b|extended|capsule)).*(trospium|sanctura)/i,
+    goodRxSlug: 'trospium',
+    goodRxParams: 'label_override=trospium&form=tablet&dosage=20mg&quantity=60',
+    costPlusPath: 'trospium-chloride-20mg-tablet-sanctura',
+    costPlusPrice: { price: 14.03, quantity: '60 tablets, 20mg' },
+    pricesCapturedAt: '2026-11-02',
   },
 ]
 // Rivaroxaban (generic) was deliberately NOT priced this session (al-doac gather, 2026-08-21):
@@ -2449,7 +2541,8 @@ export function goodRxUrl(name: string): string {
 
 export function costPlusUrl(name: string): string | null {
   const path = cashLinkRule(name)?.costPlusPath
-  return path && !priceSuppressedByForm(name) ? `https://www.costplusdrugs.com/medications/${path}/` : null
+  if (!path || priceSuppressedByForm(name) || COST_PLUS.paths[path.toLowerCase()]?.delisted) return null
+  return `https://www.costplusdrugs.com/medications/${path}/`
 }
 
 /** Snapshot GoodRx price for this drug, or null if no exact strength/form match was captured. */
@@ -2486,8 +2579,15 @@ export function goodRxPrice(name: string): PricePoint | null {
 }
 
 /** Snapshot Cost Plus Drugs price for this drug, or null if unavailable/out of stock at capture time. */
+// The snapshot wins over the hand-captured price: it is newer and computed the same way the
+// product page does. Out of stock or delisted -> no price (the link stays unless delisted).
 export function costPlusPrice(name: string): PricePoint | null {
-  return priceFor(name, cashLinkRule(name)?.costPlusPrice)
+  const rule = cashLinkRule(name)
+  const point = priceFor(name, rule?.costPlusPrice)
+  const snap = rule?.costPlusPath ? COST_PLUS.paths[rule.costPlusPath.toLowerCase()] : undefined
+  if (!point || !snap) return point
+  if (snap.delisted || snap.inStock === false) return null
+  return typeof snap.price === 'number' ? { ...point, price: snap.price, capturedAt: COST_PLUS.fetchedAt } : point
 }
 
 /** ISO date the prices above were captured, or null if this drug has no explicit cash-link rule. */
