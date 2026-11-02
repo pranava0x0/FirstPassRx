@@ -381,9 +381,9 @@ import costPlusSnapshot from '../data/costplus-prices.json' with { type: 'json' 
  * 3515 → 3618: Georgia's 11 newer topics (5 payers × 28 classes; UHC and Humana reused).
  * 3618 → 3489: 8 Cost Plus-only rules from the vendor's price-list API (scripts/costplus.mjs).
  * 3489 → 3664: North Carolina's 11 newer topics (4 payers × 28 classes; UHC and Humana reused).
- * 3664 → 3609: Cost Plus rules for oral olanzapine and pravastatin.
+ * 3664 → 3612: Cost Plus rules for oral generic olanzapine and pravastatin (brand Zyprexa stays unpriced).
  */
-export const KNOWN_UNPRICED_GAP = 3609
+export const KNOWN_UNPRICED_GAP = 3612
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -2517,7 +2517,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
   {
     // Oral tablets only: not the ODT (Zydis), the long-acting injection, or the fluoxetine and
     // samidorphan combinations.
-    matches: /^(?!.*(odt|disintegrat|zydis|inject|relprevv|pamoate|fluoxetine|symbyax|samidorphan|lybalvi|intramuscular)).*(olanzapine|zyprexa)/i,
+    matches: /^(?!.*(odt|disintegrat|zydis|inject|relprevv|pamoate|fluoxetine|symbyax|samidorphan|lybalvi|intramuscular|\bbrand\b)).*olanzapine/i,
     goodRxSlug: 'olanzapine',
     goodRxParams: 'label_override=olanzapine&form=tablet&dosage=5mg&quantity=30',
     goodRxPrice: { price: 29.45, quantity: '30 tablets, 5mg' },
