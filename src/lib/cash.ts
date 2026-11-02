@@ -2439,13 +2439,15 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     pricesCapturedAt: '2026-09-07',
   },
   // ---- Cost Plus-only rules (added 2026-11-02 from scripts/costplus.mjs, which reads Cost Plus's
-  // own price list). Each is a preferred pick with no prior rule; GoodRx keeps its link without a
-  // price until a browser session captures one. Each regex is narrowed to the listed product's
+  // own price list). Each is a preferred pick with no prior rule; GoodRx prices were read the same
+  // day in a real Chrome session at the pinned dosage (the clindamycin gel and tretinoin cream
+  // pages were not checked, so those keep a link without a GoodRx price). Each regex is narrowed to the listed product's
   // form and excludes the combos/forms a priced molecule shares (CLAUDE.md, combo-drug trap). ----
   {
     matches: /^(?!.*(\bER\b|\bXL\b|extended|ditropan xl|\bgel\b|gelnique|patch|oxytrol|syrup|solution)).*oxybutynin/i,
     goodRxSlug: 'oxybutynin',
     goodRxParams: 'label_override=oxybutynin&form=tablet&dosage=5mg&quantity=30',
+    goodRxPrice: { price: 29.43, quantity: '30 tablets, 5mg' },
     costPlusPath: 'oxybutyninchloride-5mg-tablet',
     costPlusPrice: { price: 5.98, quantity: '30 tablets, 5mg' },
     pricesCapturedAt: '2026-11-02',
@@ -2454,6 +2456,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     matches: /^(?!.*(capsule|solution)).*(tizanidine|zanaflex)/i,
     goodRxSlug: 'tizanidine',
     goodRxParams: 'label_override=tizanidine&form=tablet&dosage=4mg&quantity=30',
+    goodRxPrice: { price: 29.19, quantity: '30 tablets, 4mg' },
     costPlusPath: 'tizanidine-4mg-tablet',
     costPlusPrice: { price: 5.62, quantity: '30 tablets, 4mg' },
     pricesCapturedAt: '2026-11-02',
@@ -2479,6 +2482,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     matches: /^(?!.*(chlorthalidone|tenoretic|solution)).*(atenolol|tenormin)/i,
     goodRxSlug: 'atenolol',
     goodRxParams: 'label_override=atenolol&form=tablet&dosage=50mg&quantity=30',
+    goodRxPrice: { price: 29.22, quantity: '30 tablets, 50mg' },
     costPlusPath: 'atenolol-50mg-tablet',
     costPlusPrice: { price: 5.36, quantity: '30 tablets, 50mg' },
     pricesCapturedAt: '2026-11-02',
@@ -2487,6 +2491,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     matches: /^(?!.*(atenolol|tenoretic|azilsartan|edarbyclor|clonidine|metoprolol|lopressor|olmesartan|candesartan)).*(chlorthalidone|thalitone)/i,
     goodRxSlug: 'chlorthalidone',
     goodRxParams: 'label_override=chlorthalidone&form=tablet&dosage=25mg&quantity=30',
+    goodRxPrice: { price: 29.45, quantity: '30 tablets, 25mg' },
     costPlusPath: 'chlorthalidone-25mg-tablet',
     costPlusPrice: { price: 5.85, quantity: '30 tablets, 25mg' },
     pricesCapturedAt: '2026-11-02',
@@ -2495,6 +2500,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     matches: /^(?!.*(solution)).*(vilazodone|viibryd)/i,
     goodRxSlug: 'vilazodone',
     goodRxParams: 'label_override=vilazodone&form=tablet&dosage=10mg&quantity=30',
+    goodRxPrice: { price: 37.8, quantity: '30 tablets, 10mg' },
     costPlusPath: 'vilazodone-hcl-10mg-tablet',
     costPlusPrice: { price: 12.96, quantity: '30 tablets, 10mg' },
     pricesCapturedAt: '2026-11-02',
@@ -2503,6 +2509,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     matches: /^(?!.*(\bER\b|\bXR\b|extended|capsule)).*(trospium|sanctura)/i,
     goodRxSlug: 'trospium',
     goodRxParams: 'label_override=trospium&form=tablet&dosage=20mg&quantity=60',
+    goodRxPrice: { price: 30.04, quantity: '60 tablets, 20mg' },
     costPlusPath: 'trospium-chloride-20mg-tablet-sanctura',
     costPlusPrice: { price: 14.03, quantity: '60 tablets, 20mg' },
     pricesCapturedAt: '2026-11-02',
@@ -2513,6 +2520,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     matches: /^(?!.*(odt|disintegrat|zydis|inject|relprevv|pamoate|fluoxetine|symbyax|samidorphan|lybalvi|intramuscular)).*(olanzapine|zyprexa)/i,
     goodRxSlug: 'olanzapine',
     goodRxParams: 'label_override=olanzapine&form=tablet&dosage=5mg&quantity=30',
+    goodRxPrice: { price: 29.45, quantity: '30 tablets, 5mg' },
     costPlusPath: 'olanzapine-5mg-tablet',
     costPlusPrice: { price: 6.21, quantity: '30 tablets, 5mg' },
     pricesCapturedAt: '2026-11-02',
@@ -2521,6 +2529,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     matches: /^(?!.*(aspirin|ezetimibe|fenofibrate|niacin)).*(pravastatin|pravachol)/i,
     goodRxSlug: 'pravastatin',
     goodRxParams: 'label_override=pravastatin&form=tablet&dosage=40mg&quantity=30',
+    goodRxPrice: { price: 16.37, quantity: '30 tablets, 40mg' },
     costPlusPath: 'pravastatin-40mg-tablet',
     costPlusPrice: { price: 6.3, quantity: '30 tablets, 40mg' },
     pricesCapturedAt: '2026-11-02',
