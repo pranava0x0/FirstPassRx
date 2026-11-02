@@ -78,7 +78,7 @@ Every data item ends the same way: merge → `node scripts/apply-label-sigs.mjs 
 1. **The 11 new topics in the other 16 states, one state per run** (antipsychotics, depression
    beyond SSRIs, eczema/psoriasis/acne, insomnia/anxiety, RA/psoriasis/IBD biologics, pain,
    testosterone, OAB, blood pressure beyond ACE, HIV, hepatitis C; 28 classes). Done: MA
-   (2026-10-22, PR #23), NY, CA, TX and FL (2026-10-27), PA (2026-10-29), IL (2026-10-31), OH (2026-11-01), GA (2026-11-02). Order: NY, CA, TX, FL, PA, IL, OH, GA, NC, MI, VA, WA, MD, TN, AL, DC.
+   (2026-10-22, PR #23), NY, CA, TX and FL (2026-10-27), PA (2026-10-29), IL (2026-10-31), OH (2026-11-01), GA and NC (2026-11-02). Next: MI. Order: NY, CA, TX, FL, PA, IL, OH, GA, NC, MI, VA, WA, MD, TN, AL, DC.
    Method (MA run): taxonomy `data-gathering/ma-next11-2026-10-22/taxonomy{,-A,-B}.json`, task
    template `TASK.md`, check template `CHECK.md`, `combine.py` — copy the folder for the new
    state. Two Haiku agents per payer document (batch A 12 classes, batch B 16), one Sonnet check
