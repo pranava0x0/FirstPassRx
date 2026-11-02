@@ -23,6 +23,9 @@ export function unitsFor(label, entry) {
   if (/^(mg|mcg|units?|iu|meq|%)\b/i.test(m[2].trim()) || /^\s*\d+(\.\d+)?\s*%/.test(label)) return null // a strength
   const word = m[2].trim().split(/\s+/).slice(0, 3).find((w) => UNIT_WORDS.test(w) || MASS_WORDS.test(w) || PACKAGE_WORDS.test(w)) ?? ''
   const byMass = /^(g|gm|grams|ml)$/i.test(entry.unit)
+  // An explicit count anywhere wins over a package word: "1 bottle (30 tablets)" is 30 tablets.
+  const counted = !byMass && label.match(/(\d+(?:\.\d+)?)\s*(tablets?|tabs?|capsules?|caps?|patch(es)?|pills?)\b/i)
+  if (counted) return Number(counted[1])
   if (UNIT_WORDS.test(word)) return byMass ? null : n
   if (MASS_WORDS.test(word)) return byMass ? n : null
   if (PACKAGE_WORDS.test(word)) return n * (Number(entry.pack_size) || 1) / (byMass ? 1 : Number(entry.quantity) || 1)

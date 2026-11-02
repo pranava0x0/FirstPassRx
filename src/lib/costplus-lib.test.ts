@@ -31,6 +31,7 @@ describe('Cost Plus price-list helpers', () => {
     expect(unitsFor('45 g, 1.2%/5% gel', entry({ unit: 'g', pack_size: 45 }))).toBe(45)
     expect(unitsFor('30 tablets', entry({ unit: 'mL' }))).toBeNull()
     expect(unitsFor('1 carton (3 pens), 18mg/3mL', entry({ unit: 'mL', pack_size: 9 }))).toBe(9)
+    expect(unitsFor('1 bottle (30 tablets)', entry({ pack_size: 60 }))).toBe(30) // explicit count wins
   })
 
   it('never matches a single agent to a combination product', () => {

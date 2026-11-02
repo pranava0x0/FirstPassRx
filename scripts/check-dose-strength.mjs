@@ -31,8 +31,9 @@ export function amounts(text) {
     [...(m[1].match(/\d+(?:\.\d+)?/g) ?? []), m[2]].map((n) => ({ n: Number(n), unit: m[3].toLowerCase() })),
   )
 }
+const mg = (a) => (a.unit === 'mcg' ? a.n / 1000 : a.n)
 export function deliverable(dose, strengths) {
-  return strengths.some((s) => s.unit === dose.unit && [1, 2, 3, 4].some((k) => Math.abs(s.n * k - dose.n) < 1e-9))
+  return strengths.some((s) => [1, 2, 3, 4].some((k) => Math.abs(mg(s) * k - mg(dose)) < 1e-9))
 }
 
 const lists = (() => { try { return readdirSync('data-gathering/costplus').filter((f) => f.startsWith('pricelist-')).sort() } catch { return [] } })()
@@ -40,7 +41,7 @@ const catalog = lists.length ? JSON.parse(readFileSync(`data-gathering/costplus/
 function soldAt(inn, strengthText, dose) {
   const want = words(inn)
   const shape = formOf(`${inn} ${strengthText}`)
-  return catalog.some((e) => e.cpd_channel && sameMolecule(want, e) && sameForm(shape, e) && Number(strengthNum(e.strength)) === dose.n && /mg|mcg/i.test(e.strength))
+  return catalog.some((e) => e.cpd_channel && sameMolecule(want, e) && sameForm(shape, e) && Number(strengthNum(e.strength)) === dose.n && new RegExp(`\\d\\s*${dose.unit}\\b`, 'i').test(e.strength))
 }
 const fixes = []
 const flags = []
@@ -58,9 +59,11 @@ for (const g of data.guides) {
     // A sig that names the pick's strength as a labeled dose ("25, 50 or 100 mg", "may increase to
     // 15 mg", "(40 mg if LDL-C must fall more than 45%)") is consistent with it.
     const named = amounts(a.sig.replace(/(\d)\s*-\s*(\d)/g, '$1 to $2'))
-    if (strengths.some((st) => named.some((n) => n.unit === st.unit && n.n === st.n))) continue
+    if (strengths.some((st) => named.some((n) => mg(n) === mg(st)))) continue
     if (strengths.length === 1 && soldAt(a.inn, a.strength, dose)) {
-      const value = a.strength.replace(new RegExp(`${strengths[0].n}\\s*${strengths[0].unit}`, 'i'), `${dose.n} ${dose.unit}`)
+      const num = String(strengths[0].n).replace('.', '\\.')
+      const value = a.strength.replace(new RegExp(`\\b${num}0*\\s*${strengths[0].unit}`, 'i'), `${dose.n} ${dose.unit}`)
+      if (value === a.strength) continue
       fixes.push({ guideId: g.id, payerId: r.payerId, classId: r.classId, op: 'setAgentField', field: 'strength', value,
         why: `pick strength ${a.strength} -> ${value}: the sig starts at ${dose.n} ${dose.unit} (scripts/check-dose-strength.mjs)` })
     }

@@ -24,6 +24,7 @@ const data = JSON.parse(readFileSync(FORMULARY, 'utf8'))
 for (const file of files) {
   const f = JSON.parse(readFileSync(file, 'utf8'))
   let applied = 0
+  let copied = 0
   const unmatched = []
   // One criteria set per drug: a drug listed in two sets would be silently overwritten.
   const seen = new Set()
@@ -51,6 +52,9 @@ for (const file of files) {
       const before = applied
       for (const drug of set.drugs ?? []) {
         if (drug.startsWith('[preferred]')) {
+          // A copy only applies when that guide's pick is the same product as the home guide's.
+          const homePick = home.records.find((x) => x.payerId === f.payerId && x.classId === set.classId)?.preferredAgent?.inn
+          if (!isHome && r.preferredAgent?.inn !== homePick) continue
           if (!r.preferredRestriction) {
             if (isHome) unmatched.push(`${set.guideId}/${set.classId}: ${drug} (preferred has no restriction)`)
             continue
@@ -70,12 +74,13 @@ for (const file of files) {
         item.criteriaMode = set.criteriaMode
         item.criteriaSourceIds = [ref.id]
         applied++
+        if (!isHome) copied++
       }
       // Cite the document only in guides where it now backs at least one item.
       if (applied > before && !g.references.some((x) => x.id === ref.id)) g.references.push(ref)
     }
   }
-  console.log(`${f.payerId}: criteria on ${applied} item(s); unmatched ${unmatched.length}`)
+  console.log(`${f.payerId}: criteria on ${applied} item(s)${ALL_STATES ? ` (${copied} in other states)` : ''}; unmatched ${unmatched.length}`)
   for (const u of unmatched.slice(0, 15)) console.log(`  - ${u}`)
 }
 if (DRY) console.log('(dry run: nothing written)')

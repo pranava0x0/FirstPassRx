@@ -2518,7 +2518,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     pricesCapturedAt: '2026-11-02',
   },
   {
-    matches: /pravastatin|pravachol/i,
+    matches: /^(?!.*(aspirin|ezetimibe|fenofibrate|niacin)).*(pravastatin|pravachol)/i,
     goodRxSlug: 'pravastatin',
     goodRxParams: 'label_override=pravastatin&form=tablet&dosage=40mg&quantity=30',
     costPlusPath: 'pravastatin-40mg-tablet',
