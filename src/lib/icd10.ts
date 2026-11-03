@@ -252,6 +252,8 @@ const DRUG_ICD10: [RegExp, Icd10Option[]][] = [
   [/simponi aria|golimumab.*(\bIV\b|intravenous|aria)/i, [RA, PSA, AS]],
   [/golimumab|simponi/i, [RA, PSA, AS, UC]],
   [/deucravacitinib|sotyktu|apremilast|otezla/i, [PSO, PSA]],
+  // Oral IL-23 receptor peptide; labeled for plaque psoriasis only.
+  [/icotrokinra|icotyde/i, [PSO]],
   [/ustekinumab|stelara|wezlana|selarsdi|pyzchiva|otulfi|imuldosa|yesintek|steqeyma|starjemza|risankizumab|skyrizi|guselkumab|tremfya/i, [PSO, PSA, CD, UC]],
   [/secukinumab|cosentyx|ixekizumab|taltz|bimekizumab|bimzelx/i, [PSO, PSA, AS]],
 ]

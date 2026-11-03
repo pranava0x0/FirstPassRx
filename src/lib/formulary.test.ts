@@ -356,6 +356,17 @@ describe('guides + global meta', () => {
       'wa-hypertension',
       'wa-hiv',
       'wa-hepatitis-c',
+      'tn-antipsychotics',
+      'tn-antidepressants',
+      'tn-dermatology',
+      'tn-sleep-anxiety',
+      'tn-immunology',
+      'tn-pain',
+      'tn-testosterone',
+      'tn-oab',
+      'tn-hypertension',
+      'tn-hiv',
+      'tn-hepatitis-c',
     ])
   })
 

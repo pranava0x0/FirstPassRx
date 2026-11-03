@@ -1,0 +1,1464 @@
+{
+  "id": "tn-antipsychotics",
+  "label": "TN · Antipsychotics",
+  "stateCode": "TN",
+  "region": "Tennessee",
+  "topicId": "antipsychotics",
+  "topic": "Antipsychotics",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-03",
+  "capturedAt": "2026-11-03",
+  "payers": [
+    {
+      "id": "tn-medicaid",
+      "name": "TennCare (Tennessee Medicaid)",
+      "shortName": "TennCare",
+      "aka": "TennCare Preferred Drug List, administered by OptumRx for every TennCare member",
+      "pbm": "OptumRx",
+      "productName": "TennCare Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "TennCare: Preferred Drug List (PDL), effective October 1, 2026",
+      "formularyUrl": "https://contenthub-aem.optumrx.com/content/dam/contenthub/onboarding/assets/Tenncare/Tenncare-PDL.pdf",
+      "sourceIds": [
+        "tn-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "bcbst",
+      "name": "BlueCross BlueShield of Tennessee",
+      "shortName": "BCBS Tennessee",
+      "productName": "BCBST 2026 Essential Formulary (individual marketplace and small group)",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "BlueCross BlueShield of Tennessee Essential Formulary Guide (November 2026)",
+      "formularyUrl": "https://www.bcbst.com/docs/providers/2026-essential-formulary.pdf",
+      "sourceIds": [
+        "bcbst-next11-2026-10"
+      ]
+    },
+    {
+      "id": "uhc-tn",
+      "name": "UnitedHealthcare (Commercial)",
+      "shortName": "UnitedHealthcare",
+      "aka": "National commercial PDL (same list in every state)",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "paPolicyUrl": "https://www.uhcprovider.com/en/resource-library/drug-lists-pharmacy.html",
+      "productName": "UnitedHealthcare 2026 Commercial PDL (base list)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 Prescription Drug List (PDL), UnitedHealthcare & affiliated companies",
+      "sourceIds": [
+        "uhc-oh-next11-2026-10"
+      ]
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "antipsychotic-oral",
+      "name": "Oral atypical antipsychotics",
+      "shortName": "ORAL AAP",
+      "plainName": "Daily antipsychotic pill",
+      "description": "Second-generation oral antipsychotics: aripiprazole, quetiapine IR/ER, olanzapine, risperidone, ziprasidone, lurasidone (Latuda), paliperidone ER, cariprazine (Vraylar), brexpiprazole (Rexulti), lumateperone (Caplyta), asenapine, iloperidone, clozapine, olanzapine/samidorphan (Lybalvi).",
+      "plainDescription": "A daily pill for schizophrenia, bipolar disorder or add-on treatment for depression.",
+      "indication": "Schizophrenia, bipolar disorder, adjunct MDD",
+      "sourceIds": [
+        "tn-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "antipsychotic-lai",
+      "name": "Long-acting injectable antipsychotics",
+      "shortName": "LAI",
+      "plainName": "Monthly or longer antipsychotic shot",
+      "description": "Long-acting injectables: aripiprazole (Abilify Maintena, Abilify Asimtufii, Aristada), paliperidone palmitate (Invega Sustenna/Trinza/Hafyera), risperidone (Risperdal Consta, Perseris, Uzedy, Rykindo), olanzapine pamoate (Zyprexa Relprevv), haloperidol and fluphenazine decanoate.",
+      "plainDescription": "A shot every few weeks or months instead of a daily pill.",
+      "indication": "Schizophrenia, bipolar I maintenance",
+      "sourceIds": [
+        "tn-medicaid-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "antipsychotic-oral",
+      "preferredAgent": {
+        "inn": "Aripiprazole",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg",
+        "sig": "Schizophrenia: 10-15 mg once daily. Bipolar mania: 15 mg once daily. Max 30 mg/day for both. Add-on for depression: start 2-5 mg once daily, max 15 mg/day. Dose per indication (label).",
+        "sigShort": "Daily; dose per indication",
+        "plainSig": "One pill once a day; the dose depends on what it is treating."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (PDL column; QL only, no PA)",
+      "alternatives": [
+        {
+          "drug": "Quetiapine IR tabs",
+          "note": "Preferred, QL only (p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperidone tabs",
+          "note": "Preferred, QL only (p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olanzapine tabs",
+          "note": "Preferred, QL only (p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone tabs",
+          "note": "Preferred, QL only (p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clozapine tabs",
+          "note": "Preferred, QL only (p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ziprasidone caps",
+          "note": "Preferred, QL only (p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Aripiprazole ODT and oral solution",
+          "note": "Preferred, QL only (p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Asenapine SL tabs",
+          "outcome": "pa",
+          "reason": "PA and QL required; preferred column (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lurasidone tabs",
+          "outcome": "pa",
+          "reason": "PA and QL required; preferred column (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Quetiapine ER tabs",
+          "outcome": "pa",
+          "reason": "PA and QL required; preferred column (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Rexulti (brexpiprazole) tabs",
+          "outcome": "pa",
+          "reason": "PA and QL required; preferred column (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Vraylar (cariprazine) caps",
+          "outcome": "pa",
+          "reason": "PA and QL required; preferred column (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olanzapine ODT",
+          "outcome": "pa",
+          "reason": "PA and QL required; preferred column (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperidone ODT",
+          "outcome": "pa",
+          "reason": "PA and QL required; preferred column (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperidone oral solution",
+          "outcome": "pa",
+          "reason": "PA and QL required; preferred column (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Abilify (aripiprazole) tabs",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Abilify MyCite tabs",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Opipza (aripiprazole) film",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Caplyta (lumateperone) caps",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clozapine ODT",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clozaril (clozapine) tabs",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Versacloz (clozapine) suspension",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Fanapt (iloperidone) tabs",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Geodon (ziprasidone) caps",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Invega (paliperidone ER) tabs",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Latuda (lurasidone) tabs",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lybalvi (olanzapine/samidorphan) tabs",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperdal (risperidone) soln and tabs",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Saphris (asenapine) SL tabs",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Seroquel (quetiapine) tabs",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Seroquel XR (quetiapine ER) tabs",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zyprexa (olanzapine) tabs",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zyprexa Zydis ODT",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zyprexa IM injection",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read PDL pp.29-31 by x-coordinate (Preferred column x<300, Non-Preferred x>=300). Preferred pick aripiprazole tabs: preferred, QL only, no PA. QL numbers are not printed in this PDL (criteria document not cached), so no restriction recorded. Section header carries 'ID' (class PA for I/DD patients); not recorded as general PA. Cariprazine, brexpiprazole and asenapine preferred items carry PA. Cobenfy, Nuplazid, Symbyax and Secuado are outside this class description and omitted. Strength and sig are standard label dosing, not printed on the PDL. [Sonnet check 2026-11-02: antipsychotic rows are on PDL p.29, not p.30 (page cites corrected). Confirmed haloperidol decanoate injection and fluphenazine injection are Preferred with no PA/QL flag; Haldol Decanoate brand is Non-Preferred; all aripiprazole/paliperidone/Abilify/Aristada LAIs are PA, QL. Aripiprazole tabs Preferred QL only. Pick confirmed.]",
+      "sourceIds": [
+        "tn-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tn-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tn-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "tn-medicaid"
+    },
+    {
+      "classId": "antipsychotic-lai",
+      "preferredAgent": {
+        "inn": "Haloperidol decanoate (long-acting injectable)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "100 mg/mL",
+        "sig": "Deep IM (gluteal) injection every 4 weeks. First dose: 10-15 times the daily oral dose if stabilized on 10 mg/day or less (10-20 times if higher or at risk of relapse); give no more than 100 mg in the first injection and the rest 3-7 days later (label).",
+        "sigShort": "IM q4wk, 10-15x oral daily dose",
+        "plainSig": "A shot into the muscle about once a month, given at the clinic."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (PDL column; no PA)",
+      "alternatives": [
+        {
+          "drug": "Fluphenazine injection",
+          "note": "Preferred, no PA flag (p.29); PDL does not name the decanoate form, class description does",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Abilify Maintena (aripiprazole) inj",
+          "outcome": "pa",
+          "reason": "PA and QL required; preferred column (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Abilify Asimtufii (aripiprazole) inj",
+          "outcome": "pa",
+          "reason": "PA and QL required; preferred column (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Aristada (aripiprazole lauroxil) inj",
+          "outcome": "pa",
+          "reason": "PA and QL required; preferred column (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Aristada Initio",
+          "outcome": "pa",
+          "reason": "PA and QL required; preferred column (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Erzofri (paliperidone) inj",
+          "outcome": "pa",
+          "reason": "PA and QL required; preferred column (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Invega Sustenna (paliperidone palmitate) inj",
+          "outcome": "pa",
+          "reason": "PA and QL required; preferred column (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Invega Trinza (paliperidone palmitate) inj",
+          "outcome": "pa",
+          "reason": "PA and QL required; preferred column (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Invega Hafyera (paliperidone palmitate) inj",
+          "outcome": "pa",
+          "reason": "PA and QL required; preferred column (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Perseris (risperidone) inj",
+          "outcome": "pa",
+          "reason": "PA and QL required; preferred column (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Uzedy (risperidone) inj",
+          "outcome": "pa",
+          "reason": "PA and QL required; preferred column (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperdal Consta (risperidone) inj",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperidone ER inj (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Rykindo (risperidone) inj",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zyprexa Relprevv (olanzapine pamoate) inj",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.29)",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Haldol Decanoate (haloperidol decanoate) inj",
+          "outcome": "step",
+          "reason": "Not preferred: trial and failure of 2 preferred agents (PDL p.1 general rule; listed p.29); no PA flag printed",
+          "sourceIds": [
+            "tn-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Provider-administered injectables. PDL p.1 says agents given by a healthcare provider may be covered under the medical benefit (MCO to confirm), so the injectable cells are partial, not nonformulary. Haloperidol decanoate picked as the lowest-barrier LAI: preferred, no PA flag (p.29). Fluphenazine injection listed without naming decanoate. Strength and sig are standard label dosing, not printed. Aveed, Testopel and Androderm are not LAIs and are not in this file. [Sonnet check 2026-11-02: antipsychotic rows are on PDL p.29, not p.30 (page cites corrected). Confirmed haloperidol decanoate injection and fluphenazine injection are Preferred with no PA/QL flag; Haldol Decanoate brand is Non-Preferred; all aripiprazole/paliperidone/Abilify/Aristada LAIs are PA, QL. Aripiprazole tabs Preferred QL only. Pick confirmed.]",
+      "sourceIds": [
+        "tn-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "tn-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "tn-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "tn-medicaid"
+    },
+    {
+      "classId": "antipsychotic-oral",
+      "preferredAgent": {
+        "inn": "Quetiapine fumarate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg immediate-release tablet",
+        "sig": "Schizophrenia: start 25 mg twice daily, increase by 25-50 mg per dose daily to 300-400 mg/day in 2-3 doses by day 4. Bipolar mania: start 50 mg twice daily and titrate. Dose per indication (label).",
+        "sigShort": "25 mg BID, titrate per indication",
+        "plainSig": "Start with a small dose twice a day; your prescriber raises it over a few days."
+      },
+      "preferredRestriction": "PA required (PDF p.47: quetiapine fumarate tabs flagged 2 PA)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (generic)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Aripiprazole tablet",
+          "outcome": "pa",
+          "reason": "PA required (PDF p.48)",
+          "sourceIds": [
+            "bcbst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lurasidone HCl tablet",
+          "outcome": "pa",
+          "reason": "PA required (PDF p.46)",
+          "sourceIds": [
+            "bcbst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ziprasidone HCl capsule",
+          "outcome": "pa",
+          "reason": "PA required (PDF p.46)",
+          "sourceIds": [
+            "bcbst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone ER tablet",
+          "outcome": "pa",
+          "reason": "PA required (PDF p.47)",
+          "sourceIds": [
+            "bcbst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperidone tablet, solution, ODT",
+          "outcome": "pa",
+          "reason": "PA required (PDF p.47)",
+          "sourceIds": [
+            "bcbst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olanzapine tablet and ODT",
+          "outcome": "pa",
+          "reason": "PA required (PDF p.47)",
+          "sourceIds": [
+            "bcbst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clozapine tablet and ODT",
+          "outcome": "pa",
+          "reason": "PA required (PDF p.47)",
+          "sourceIds": [
+            "bcbst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Asenapine sublingual tablet",
+          "outcome": "pa",
+          "reason": "PA required (PDF p.47)",
+          "sourceIds": [
+            "bcbst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Quetiapine fumarate ER tablet",
+          "outcome": "pa",
+          "reason": "PA required (PDF p.47)",
+          "sourceIds": [
+            "bcbst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "VRAYLAR (cariprazine) capsule",
+          "outcome": "pa",
+          "reason": "PA required; Tier 3 (PDF p.46)",
+          "sourceIds": [
+            "bcbst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "REXULTI (brexpiprazole) tablet",
+          "outcome": "pa",
+          "reason": "PA required; Tier 4 (PDF p.48)",
+          "sourceIds": [
+            "bcbst-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read on PDF pp.46-48 (ANTIPSYCHOTICS - MISC., QUINOLINONE, BENZISOXAZOLE, DIBENZAPINES). Every oral atypical on the list is PA-flagged, so the pick is quetiapine IR 25 mg (common generic, labeled for adjunct MDD) as the lowest-barrier product a prescriber would write; PA criteria are not in this document. Absent from the list: Caplyta (lumateperone), Latuda brand, Lybalvi, iloperidone (Fanapt), generic cariprazine, Secuado and Nuplazid (not in class). Olanzapine-fluoxetine capsule is a combination product and was excluded. The document does not say the list is complete, so absent drugs are not coded as excluded. Sig is label dosing, not printed.",
+      "sourceIds": [
+        "bcbst-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbst-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbst-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbst"
+    },
+    {
+      "classId": "antipsychotic-lai",
+      "preferredAgent": {
+        "inn": "Risperidone (extended-release injectable microspheres)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg vial",
+        "sig": "25 mg IM every 2 weeks. Continue oral risperidone (or another oral antipsychotic) for 3 weeks after the first injection, because drug release is delayed. Establish tolerability with oral risperidone first (label).",
+        "sigShort": "25 mg IM q2wk + oral x3 wk",
+        "plainSig": "A shot every 2 weeks; keep taking your pills for the first 3 weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (generic)",
+      "alternatives": [
+        {
+          "drug": "ABILIFY MAINTENA (aripiprazole) ER injectable",
+          "note": "Tier 3, no PA/ST flag (PDF p.48)",
+          "sourceIds": [
+            "bcbst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ARISTADA (aripiprazole lauroxil)",
+          "note": "Tier 3, no PA/ST flag (PDF p.48)",
+          "sourceIds": [
+            "bcbst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ARISTADA INITIO",
+          "note": "Tier 3, no PA/ST flag (PDF p.48)",
+          "sourceIds": [
+            "bcbst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "PERSERIS (risperidone)",
+          "note": "Tier 3, no PA/ST flag (PDF p.47)",
+          "sourceIds": [
+            "bcbst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ABILIFY ASIMTUFII (aripiprazole)",
+          "note": "Tier 4, no PA/ST flag (PDF p.48)",
+          "sourceIds": [
+            "bcbst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "INVEGA SUSTENNA (paliperidone palmitate)",
+          "note": "Tier 4, no PA/ST flag (PDF p.47)",
+          "sourceIds": [
+            "bcbst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "INVEGA TRINZA (paliperidone palmitate)",
+          "note": "Tier 4, no PA/ST flag (PDF p.47)",
+          "sourceIds": [
+            "bcbst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "INVEGA HAFYERA (paliperidone palmitate)",
+          "note": "Tier 4, no PA/ST flag (PDF p.47)",
+          "sourceIds": [
+            "bcbst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "RYKINDO (risperidone)",
+          "note": "Tier 4, no PA/ST flag (PDF p.47)",
+          "sourceIds": [
+            "bcbst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "UZEDY (risperidone)",
+          "note": "Tier 4, no PA/ST flag (PDF p.47)",
+          "sourceIds": [
+            "bcbst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ZYPREXA RELPREVV (olanzapine pamoate)",
+          "note": "Tier 4, no PA/ST flag (PDF p.47)",
+          "sourceIds": [
+            "bcbst-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read on PDF p.47 (risperidone microspheres SRER 12.5/25/37.5/50 mg, Tier 2, no PA/ST flag), the only LAI on this list with a generic name and no flag. All 11 other LAIs on pp.47-48 are branded Tier 3/4 with no flag and go in alternatives. Haloperidol decanoate and fluphenazine decanoate do not appear. Clinic-given LAIs can route under the medical benefit; the document does not say how these are billed, so routing is not confirmed. Interval and dose are label dosing, not printed.",
+      "sourceIds": [
+        "bcbst-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbst-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbst-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbst"
+    },
+    {
+      "classId": "antipsychotic-oral",
+      "preferredAgent": {
+        "inn": "Quetiapine",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Immediate-release tablet (strength not printed in document)",
+        "sig": "Schizophrenia: start 25 mg twice daily, increase by 25-50 mg per dose daily to 300-400 mg/day in 2-3 doses by day 4. Bipolar mania: start 50 mg twice daily and titrate. Dose per indication (label).",
+        "sigShort": "25 mg BID, titrate per indication",
+        "plainSig": "Start with a small dose twice a day; your prescriber raises it over a few days."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Olanzapine tablet",
+          "note": "Tier 1, no flag (p.17)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperidone tablet",
+          "note": "Tier 1, no flag (p.17)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clozapine tablet",
+          "note": "Tier 1, no flag (p.17)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Aripiprazole tablet",
+          "note": "Tier 2, no flag (p.17)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olanzapine tablet dispersible",
+          "note": "Tier 2, no flag (p.17)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Quetiapine fumarate extended-release",
+          "note": "Tier 2, no flag (p.17)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ziprasidone hcl",
+          "note": "Tier 2, no flag (p.17)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lurasidone hcl",
+          "note": "Tier 2, QL (p.17)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone ER (generic)",
+          "note": "Tier 3, QL (p.17)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Asenapine maleate (generic)",
+          "note": "Tier 3, QL (p.17)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Vraylar (cariprazine)",
+          "note": "Tier 4, QL (p.17); Tier 4 may be covered only in select benefits (p.5)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Rexulti (brexpiprazole)",
+          "note": "Tier 4, QL (p.17); Tier 4 may be covered only in select benefits (p.5)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Caplyta (lumateperone)",
+          "outcome": "pa",
+          "reason": "PA and step therapy required; Tier 4 (p.17)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ],
+          "criteria": [
+            "Schizophrenia AND failure, contraindication, or intolerance to 3 of: aripiprazole, lurasidone, olanzapine, quetiapine IR/ER, risperidone, ziprasidone (document drug, date, duration)",
+            "Bipolar I/II depression AND failure or intolerance to BOTH olanzapine plus an SSRI AND quetiapine IR or ER",
+            "Major depressive disorder used with an antidepressant AND failure of an SSRI AND an SNRI, mirtazapine, or bupropion AND one of aripiprazole, olanzapine, or quetiapine XR",
+            "Started at a behavioral inpatient admission with discharge in the past 3 months, and member is currently stable on therapy",
+            "New to plan and stabilized on Caplyta (coverage effective 120 days or less)"
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "uhc-ga-pa-criteria-caplyta-2026-11"
+          ]
+        },
+        {
+          "drug": "Abilify (aripiprazole brand)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.17)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zyprexa (olanzapine brand) and Zyprexa Zydis",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.17)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Seroquel and Seroquel XR (quetiapine brand)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.17)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperdal (risperidone brand)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.17)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Geodon oral (ziprasidone brand)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.17)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Latuda (lurasidone brand), QL",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.17)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Invega (paliperidone brand), QL",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.17)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Saphris (asenapine brand), QL",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.17)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read the antipsychotic table on p.17 from the rendered page image. Quetiapine fumarate IR is Tier 1 with no PA, ST or QL flag. Strength and sig are not printed in the document; standard label dosing used. Caplyta carries PA, ST and QL (p.17); no ST criteria printed. Lybalvi and iloperidone are not listed. The PDL states it lists only the most commonly prescribed medications (p.5), so absence is not treated as non-coverage. Olanzapine/samidorphan not listed. [Sonnet check 2026-10-22: E is a symbol in the Tier column, not a tier; the legend (p.5) says E drugs may be excluded or subject to PA and the page footer says E and ST drugs are subject to PA, so E items stay as PA-type with that wording.] [Sonnet check 2026-10-22: confirmed Vraylar Tier 4 with QL and no PA/ST flag (p.17); Tier 4 only in select benefits (T4 symbol, p.5). Caplyta Tier 4 PA, ST, QL confirmed.] [Reused: same national UHC commercial PDL (commercial-pdl-jan-2026.pdf) cited for uhc-fl] [Reused: same national UHC commercial PDL (commercial-pdl-jan-2026.pdf) cited for uhc-oh] [Reused: same national UHC commercial PDL (exported 2026-11-02)] [Reused: same national UHC commercial PDL as GA (reused, checked)] [Reused: same national UHC commercial PDL as NC/GA (reused, checked)] [Reused: same national UHC commercial PDL as MI/NC/GA (reused, checked)]",
+      "sourceIds": [
+        "uhc-oh-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "uhc-oh-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "uhc-oh-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "uhc-tn"
+    },
+    {
+      "classId": "antipsychotic-lai",
+      "preferredAgent": {
+        "inn": "Paliperidone palmitate",
+        "brand": "Invega Sustenna",
+        "genericAvailable": false,
+        "strength": "Per label (not printed in document)",
+        "sig": "Day 1: 234 mg IM in the deltoid; 1 week later: 156 mg deltoid; then 117 mg monthly (range 39-234 mg). Establish tolerability with oral paliperidone or risperidone first (label).",
+        "sigShort": "234 mg d1, 156 mg d8, then monthly",
+        "plainSig": "Two starting shots a week apart, then one shot a month."
+      },
+      "preferredRestriction": "Not listed on this pharmacy PDL. The PDL excludes medications administered in a physician's office (p.4), so long-acting injectable antipsychotics are likely covered under the medical benefit. Coverage and any prior authorization are not confirmed; check the member's plan.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not on pharmacy PDL (likely medical benefit)",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched all 80 pages for long-acting injectable antipsychotics: Abilify Maintena, Aristada, Invega Sustenna/Trinza/Hafyera, Risperdal Consta, Perseris, Uzedy, Rykindo, Zyprexa Relprevv, fluphenazine decanoate and haloperidol decanoate. None are listed. The PDL states it does not include medications obtained or administered in a physician's office (p.4), so these are likely medical-benefit (provider-administered) drugs. Plan coverage not confirmed. Haloperidol decanoate is a class reference only, not a verified covered product. [Sonnet check 2026-10-22: the document does not exclude LAI antipsychotics; it only says the PDL omits physician-administered drugs (p.4) and is not a complete list (p.5). Replaced the noCoveredAgent/haloperidol decanoate entry with Invega Sustenna as the common product, partial, medical-benefit note. Product is a clinician pick, not a PDL-verified one.] [Reused: same national UHC commercial PDL (commercial-pdl-jan-2026.pdf) cited for uhc-fl] [Reused: same national UHC commercial PDL (commercial-pdl-jan-2026.pdf) cited for uhc-oh] [Reused: same national UHC commercial PDL (exported 2026-11-02)] [Reused: same national UHC commercial PDL as GA (reused, checked)] [Reused: same national UHC commercial PDL as NC/GA (reused, checked)] [Reused: same national UHC commercial PDL as MI/NC/GA (reused, checked)]",
+      "sourceIds": [
+        "uhc-oh-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "uhc-oh-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "uhc-oh-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "uhc-tn"
+    },
+    {
+      "classId": "antipsychotic-oral",
+      "preferredAgent": {
+        "inn": "Risperidone",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "1 mg tablet",
+        "sig": "Schizophrenia: start 2 mg/day (1 mg twice daily or 2 mg once), titrate by 1-2 mg/day to 4-8 mg/day. Bipolar mania: 2-3 mg once daily. Dose per indication (label).",
+        "sigShort": "2 mg/day, titrate per indication",
+        "plainSig": "A pill once or twice a day; your prescriber adjusts the dose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (Preferred Generic)",
+      "alternatives": [
+        {
+          "drug": "Quetiapine IR tablet (25 to 400 mg)",
+          "note": "Tier 2; quantity limits vary by strength, no PA (page 37)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olanzapine tablet (2.5 to 20 mg)",
+          "note": "Tier 3, no utilization requirement (page 37)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Aripiprazole tablet (2 to 30 mg)",
+          "note": "Tier 3, no utilization requirement (page 35)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lurasidone tablet (20 to 120 mg)",
+          "note": "Tier 3; QL 30 per 30 days (80 mg: 60 per 30 days), no PA (page 37)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clozapine tablet (25 to 200 mg)",
+          "note": "Tier 3; quantity limit by strength, no PA (page 36)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone ER tablet",
+          "note": "Tier 4; QL 30 per 30 days (page 37)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Quetiapine ER tablet",
+          "note": "Tier 4; quantity limit by strength, no PA (page 37)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ziprasidone capsule",
+          "note": "Tier 4, no utilization requirement (page 38)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Lumateperone (CAPLYTA) capsule",
+          "outcome": "pa",
+          "reason": "PA and QL 30 per 30 days; Tier 4 (page 36)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ],
+          "criteria": [
+            "Schizophrenia: diagnosis AND prior therapy, intolerance, or contraindication to at least 2 of: risperidone, olanzapine, quetiapine, ziprasidone, aripiprazole, or lurasidone.",
+            "Bipolar I or II (bipolar depression): diagnosis AND prior therapy, intolerance, or contraindication to quetiapine AND at least one of: olanzapine or lurasidone.",
+            "Major depressive disorder: diagnosis AND prior antidepressant monotherapy AND prior generic atypical antipsychotic as add-on; Caplyta used as adjunct to an antidepressant, not monotherapy."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "humana-premier-rx-pdp-pa-criteria-enhanced2-2026-11"
+          ]
+        },
+        {
+          "drug": "Cariprazine (VRAYLAR) capsule",
+          "outcome": "pa",
+          "reason": "PA and QL 30 per 30 days; Tier 4 (page 38)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ],
+          "criteria": [
+            "Schizophrenia (age 13+): diagnosis AND prior therapy, intolerance, or contraindication to at least 2 of: risperidone, olanzapine, quetiapine, ziprasidone, aripiprazole, or lurasidone.",
+            "Bipolar I manic or mixed episode (age 10+): prior therapy, intolerance, or contraindication to at least 2 of: risperidone, olanzapine, quetiapine, ziprasidone, or aripiprazole.",
+            "Bipolar I depression: diagnosis AND prior therapy, intolerance, or contraindication to quetiapine or lurasidone.",
+            "Major depressive disorder: DSM-5 diagnosis AND prior adequate-dose (8+ weeks) antidepressant monotherapy AND prior generic oral atypical antipsychotic as add-on; Vraylar used adjunctively."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "humana-premier-rx-pdp-pa-criteria-enhanced2-2026-11"
+          ]
+        },
+        {
+          "drug": "Brexpiprazole (REXULTI) tablet",
+          "outcome": "pa",
+          "reason": "PA and QL 30 per 30 days; Tier 5 (page 38)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ],
+          "criteria": [
+            "Major depressive disorder: clinical diagnosis AND prior therapy, intolerance, or contraindication to one generic oral atypical antipsychotic; used as add-on to an antidepressant, not monotherapy.",
+            "Schizophrenia: clinical diagnosis AND prior therapy, intolerance, or contraindication to one generic oral atypical antipsychotic.",
+            "Agitation with dementia due to Alzheimer's disease: clinical diagnosis AND Rexulti not used as an as-needed (prn) treatment for agitation."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "humana-premier-rx-pdp-pa-criteria-enhanced2-2026-11"
+          ]
+        },
+        {
+          "drug": "Olanzapine/samidorphan (LYBALVI) tablet",
+          "outcome": "pa",
+          "reason": "PA and QL 30 per 30 days; Tier 5 (page 37)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ],
+          "criteria": [
+            "Excluded: current opioid use or an episode of acute opioid withdrawal.",
+            "Schizophrenia: diagnosis AND prior therapy, intolerance, or contraindication to at least one generic atypical antipsychotic (olanzapine, risperidone, quetiapine, ziprasidone, aripiprazole, or lurasidone).",
+            "Bipolar I (acute manic or mixed; maintenance monotherapy): diagnosis AND prior therapy, intolerance, or contraindication to at least one of: olanzapine, risperidone, quetiapine, ziprasidone, or aripiprazole."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "humana-premier-rx-pdp-pa-criteria-enhanced2-2026-11"
+          ]
+        },
+        {
+          "drug": "Iloperidone (FANAPT) tablet and titration packs",
+          "outcome": "pa",
+          "reason": "PA and QL; Tier 4 (page 36)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ],
+          "criteria": [
+            "Schizophrenia: used for schizophrenia AND prior therapy, intolerance, or contraindication to at least 2 of: risperidone, olanzapine, quetiapine, ziprasidone, aripiprazole, or lurasidone.",
+            "Bipolar I (manic or mixed episode): used for bipolar I AND prior therapy, intolerance, or contraindication to at least 2 of: risperidone, olanzapine, quetiapine, ziprasidone, or aripiprazole.",
+            "Titration packs A, B, and C carry the same criteria as the tablet in the criteria document."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "humana-premier-rx-pdp-pa-criteria-enhanced2-2026-11"
+          ]
+        },
+        {
+          "drug": "Milsaperidone (BYSANTI) tablet and titration packs",
+          "outcome": "pa",
+          "reason": "PA and QL; Tier 5 for tablet, Tier 4 for packs (pages 35-36)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ],
+          "criteria": [
+            "Schizophrenia: diagnosis AND tried or cannot use at least 2 of: risperidone, olanzapine, quetiapine, ziprasidone, aripiprazole, or lurasidone.",
+            "Bipolar I (manic or mixed episodes): diagnosis AND tried or cannot use at least 2 of: risperidone, olanzapine, quetiapine, ziprasidone, or aripiprazole.",
+            "Titration packs A, B, and C carry the same criteria as the tablet in the criteria document."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "humana-premier-rx-pdp-pa-criteria-enhanced2-2026-11"
+          ]
+        },
+        {
+          "drug": "Asenapine sublingual tablet",
+          "outcome": "pa",
+          "reason": "PA and QL 60 per 30 days; Tier 4 (page 35)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ],
+          "criteria": [
+            "Diagnosis of schizophrenia or bipolar I disorder (manic or mixed episodes).",
+            "Member is using asenapine for that indication.",
+            "Prior therapy, intolerance, or contraindication to at least 2 of: risperidone, olanzapine, quetiapine, ziprasidone, aripiprazole, or lurasidone."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "humana-premier-rx-pdp-pa-criteria-enhanced2-2026-11"
+          ]
+        },
+        {
+          "drug": "Asenapine transdermal patch (SECUADO)",
+          "outcome": "pa",
+          "reason": "PA and QL 30 per 30 days; Tier 4 (page 38)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ],
+          "criteria": [
+            "Diagnosis of schizophrenia.",
+            "Prior therapy, intolerance, or contraindication to at least 2 of: risperidone, olanzapine, quetiapine, ziprasidone, aripiprazole, or lurasidone.",
+            "No age limit is stated in the criteria document."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "humana-premier-rx-pdp-pa-criteria-enhanced2-2026-11"
+          ]
+        },
+        {
+          "drug": "Aripiprazole oral film (OPIPZA)",
+          "outcome": "pa",
+          "reason": "PA and QL; Tier 5 (page 37)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ],
+          "criteria": [
+            "Schizophrenia (age 13+): diagnosis AND tried or cannot use at least 2 generic atypicals: risperidone, olanzapine, quetiapine, ziprasidone, aripiprazole, or lurasidone.",
+            "MDD (age 18+): diagnosis AND tried or cannot use generic aripiprazole with an antidepressant; Opipza used as add-on to antidepressant, not monotherapy.",
+            "Irritability with autistic disorder or Tourette's disorder (age 6+): clinically diagnosed condition."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "humana-premier-rx-pdp-pa-criteria-enhanced2-2026-11"
+          ]
+        },
+        {
+          "drug": "Clozapine orally disintegrating tablets",
+          "outcome": "pa",
+          "reason": "PA required on all ODT strengths; QL on 25 mg ODT 1,080 per 30 days; Tier 4 (page 36)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ],
+          "criteria": [
+            "Treatment-resistant schizophrenia.",
+            "Member is using clozapine ODT or Versacloz (clozapine oral solution).",
+            "Prior therapy or intolerance to generic clozapine tablets."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "humana-premier-rx-pdp-pa-criteria-enhanced2-2026-11"
+          ]
+        },
+        {
+          "drug": "Clozapine oral suspension (VERSACLOZ)",
+          "outcome": "pa",
+          "reason": "PA and QL 540 mL per 30 days; Tier 4 (page 38)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ],
+          "criteria": [
+            "Treatment-resistant schizophrenia.",
+            "Member is using clozapine ODT or Versacloz (clozapine oral solution).",
+            "Prior therapy or intolerance to generic clozapine tablets."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "humana-premier-rx-pdp-pa-criteria-enhanced2-2026-11"
+          ]
+        },
+        {
+          "drug": "Risperidone orally disintegrating tablet",
+          "outcome": "step",
+          "reason": "Step therapy (ST) and QL 60 per 30 days; Tier 4 (page 38). Step criteria not printed in the guide.",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": "Risperidone orally disintegrating tablets carry step therapy (page 38). The risperidone 1 mg tablet does not. Step criteria are not printed in the guide.",
+      "verification": "verified",
+      "verificationNote": "Tier 1 and utilization flags for the risperidone 1 mg tablet read by x-coordinate on page 38 (tier column, then QL 60 per 30 days; no PA or ST). Risperidone ODT is step therapy and is listed under paRequired. Quantity limit on the 1 mg tablet is not a PA and is recorded here, not in preferredRestriction. Oral atypicals on pages 35-38. Brand-only names LATUDA and SAPHRIS do not appear in this guide. Ziprasidone, paliperidone and generic quetiapine are covered. The guide does not state it is a complete list, so absent names are not recorded as excluded. [Sonnet check 2026-10-27: Re-confirmed against Humana formulary 26402, v17 (updated 10/01/2026), sources/humana-premier-rx-pdp-newtopics-2026-10.pdf (tier, PA, ST, QL read by x-coordinate; the v16 copy used in the first pass is superseded). Page numbers moved by one for risperidone (p38), lurasidone (p37), Caplyta (p36), Rexulti (p38) and Lybalvi (p37); all tiers and flags unchanged.] [Reused: same national Humana Premier Rx PDP formulary (exported 2026-11-02)] [Reused: same national Humana Premier Rx PDP formulary (reused, checked)] [Reused: same national Humana Premier Rx PDP formulary (reused, checked)]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "antipsychotic-lai",
+      "preferredAgent": {
+        "inn": "Risperidone (long-acting injection)",
+        "brand": "RISPERDAL CONSTA",
+        "genericAvailable": false,
+        "strength": "25 mg/2 mL vial",
+        "sig": "25 mg IM every 2 weeks. Continue oral risperidone (or another oral antipsychotic) for 3 weeks after the first injection, because drug release is delayed. Establish tolerability with oral risperidone first (label).",
+        "sigShort": "25 mg IM q2wk + oral x3 wk",
+        "plainSig": "A shot every 2 weeks; keep taking your pills for the first 3 weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 4",
+      "alternatives": [
+        {
+          "drug": "Haloperidol decanoate (generic)",
+          "note": "Tier 4, no utilization requirement (page 36)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluphenazine decanoate (generic)",
+          "note": "Tier 4, no utilization requirement (page 36)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone palmitate (INVEGA SUSTENNA)",
+          "note": "Tier 4; QL 1 per 28 days (156 mg) or 1.5 per 28 days (other strengths) (pages 36-37)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Aripiprazole monthly (ABILIFY MAINTENA)",
+          "note": "Tier 4; DL and QL 1 per 28 days (page 35)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Aripiprazole every 2 months (ABILIFY ASIMTUFII)",
+          "note": "Tier 4; QL by strength per 56 days (page 35)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Aripiprazole lauroxil (ARISTADA)",
+          "note": "Tier 4; DL and QL by strength (page 35)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olanzapine pamoate (ZYPREXA RELPREVV)",
+          "note": "Tier 4; DL and QL by strength (page 38)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone palmitate 3-month and 6-month (INVEGA TRINZA, INVEGA HAFYERA)",
+          "note": "Tier 4; QL per 90 or 180 days (pages 36-37)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Tier and quantity-limit flags for the risperidone microspheres read by x-coordinate on page 38 (Tier 4, QL 2 per 28 days; no PA on any long-acting injectable on pages 35-38). Judgment: all long-acting options are Tier 4 with no PA, so the preferred pick is Risperdal Consta, a common product whose QL matches its every-2-week label dosing. Long-acting injectables are usually given in a clinic and may fall under the Part B medical benefit rather than Part D; the guide prints no BvsD flag on these rows, so the cost path is unconfirmed. Perseris, Uzedy and Rykindo do not appear in the guide. The guide does not state it is complete, so they are not recorded as excluded. [Sonnet check 2026-10-27: Re-confirmed against Humana formulary 26402, v17 (updated 10/01/2026), sources/humana-premier-rx-pdp-newtopics-2026-10.pdf (tier, PA, ST, QL read by x-coordinate; the v16 copy used in the first pass is superseded). Risperdal Consta is Tier 4, QL 2 per 28 days, no PA on page 38. Sustenna is on pages 36-37, Trinza on 37, Hafyera on 36. Stays partial: no BvsD flag is printed, so the Part B or Part D path for clinic-given injections is unconfirmed.] [Reused: same national Humana Premier Rx PDP formulary (exported 2026-11-02)] [Reused: same national Humana Premier Rx PDP formulary (reused, checked)] [Reused: same national Humana Premier Rx PDP formulary (reused, checked)]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "tn-medicaid-next11-2026-10",
+      "label": "TennCare: Preferred Drug List (PDL), effective October 1, 2026",
+      "publisher": "TennCare (Tennessee Medicaid), administered by OptumRx",
+      "type": "gov",
+      "url": "https://contenthub-aem.optumrx.com/content/dam/contenthub/onboarding/assets/Tenncare/Tenncare-PDL.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "bcbst-next11-2026-10",
+      "label": "BlueCross BlueShield of Tennessee Essential Formulary Guide (November 2026)",
+      "publisher": "BlueCross BlueShield of Tennessee",
+      "type": "payer",
+      "url": "https://www.bcbst.com/docs/providers/2026-essential-formulary.pdf",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "uhc-oh-next11-2026-10",
+      "label": "2026 Prescription Drug List (PDL), UnitedHealthcare & affiliated companies",
+      "publisher": "UnitedHealthcare",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-10-22"
+    },
+    {
+      "id": "uhc-ga-pa-criteria-caplyta-2026-11",
+      "label": "UHC Program 2026 P 2208-8: Prior Authorization/Medical Necessity - Caplyta (lumateperone)",
+      "publisher": "UnitedHealthcare Pharmacy Clinical Pharmacy Programs",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/prior-auth/drugs-pharmacy/commercial/a-g/PA-Med-Nec-Caplyta.pdf",
+      "accessed": "2026-11-02",
+      "effectiveDate": "2026-04-01"
+    },
+    {
+      "id": "humana-premier-rx-pdp-next11-2026-10",
+      "label": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "humana-premier-rx-pdp-pa-criteria-enhanced2-2026-11",
+      "label": "Humana 2026 Enhanced-2 PDP Prior Authorization Criteria (Formulary ID 26402, Version 18; effective 11/01/2026)",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/2026%20Enhanced-2%20PDP-Prior%20Authorizationpdf",
+      "accessed": "2026-11-02",
+      "effectiveDate": "2026-11-01"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}
