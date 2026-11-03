@@ -1,0 +1,696 @@
+{
+  "id": "ky-hiv",
+  "label": "KY · HIV prevention and treatment",
+  "stateCode": "KY",
+  "region": "Kentucky",
+  "topicId": "hiv",
+  "topic": "HIV prevention and treatment",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-03",
+  "capturedAt": "2026-11-03",
+  "payers": [
+    {
+      "id": "ky-medicaid",
+      "name": "Kentucky Medicaid",
+      "shortName": "KY Medicaid",
+      "aka": "Kentucky Medicaid single Preferred Drug List: fee-for-service and every Medicaid managed care plan (Aetna Better Health of Kentucky, Humana Healthy Horizons in Kentucky, Passport by Molina Healthcare, UnitedHealthcare Community Plan, WellCare of Kentucky), one PBM (MedImpact)",
+      "pbm": "MedImpact",
+      "productName": "Kentucky Medicaid Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Kentucky Medicaid Preferred Drug List (PDL), October 2026",
+      "formularyUrl": "https://kyportal.medimpact.com/sites/default/files/2023-12/kentucky-medicaid-pdl.pdf",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ]
+    },
+    {
+      "id": "anthem-ky",
+      "name": "Anthem Blue Cross and Blue Shield (Kentucky)",
+      "shortName": "Anthem KY",
+      "pbm": "CarelonRx",
+      "productName": "Anthem 2026 Select Drug List — Four Tier (Kentucky individual)",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "Anthem 2026 Select Drug List — Four Tier (Kentucky individual)",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_KY_IND.pdf",
+      "sourceIds": [
+        "anthem-ky-select-2026"
+      ]
+    },
+    {
+      "id": "uhc-ky",
+      "name": "UnitedHealthcare (Commercial)",
+      "shortName": "UnitedHealthcare",
+      "aka": "National commercial PDL (same list in every state)",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "paPolicyUrl": "https://www.uhcprovider.com/en/resource-library/drug-lists-pharmacy.html",
+      "productName": "UnitedHealthcare 2026 Commercial PDL (base list)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 Prescription Drug List (PDL), UnitedHealthcare & affiliated companies",
+      "sourceIds": [
+        "uhc-oh-next11-2026-10"
+      ]
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "hiv-prep",
+      "name": "HIV pre-exposure prophylaxis (PrEP)",
+      "shortName": "PrEP",
+      "plainName": "HIV prevention pill or shot",
+      "description": "Emtricitabine/tenofovir disoproxil (Truvada and generics), emtricitabine/tenofovir alafenamide (Descovy), cabotegravir LA (Apretude), lenacapavir (Yeztugo).",
+      "plainDescription": "A daily pill or long-acting shot that prevents HIV.",
+      "indication": "HIV PrEP",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ]
+    },
+    {
+      "id": "hiv-art",
+      "name": "Single-tablet HIV treatment regimens",
+      "shortName": "STR",
+      "plainName": "Once-daily HIV treatment pill",
+      "description": "Complete single-tablet regimens: bictegravir/FTC/TAF (Biktarvy), dolutegravir/abacavir/lamivudine (Triumeq), dolutegravir/lamivudine (Dovato), dolutegravir/rilpivirine (Juluca), darunavir/cobicistat/FTC/TAF (Symtuza), elvitegravir/cobi/FTC/TAF (Genvoya), rilpivirine/FTC/TAF (Odefsey), efavirenz/FTC/TDF and generics; cabotegravir/rilpivirine LA (Cabenuva).",
+      "plainDescription": "A once-a-day pill that treats HIV.",
+      "indication": "HIV-1 infection",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "hiv-prep",
+      "preferredAgent": {
+        "inn": "Emtricitabine/tenofovir disoproxil fumarate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/300 mg tablet",
+        "sig": "PrEP: 1 tablet once daily. Confirm a negative HIV test before starting and test every 3 months (label).",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day; get an HIV test every 3 months."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred",
+      "alternatives": [
+        {
+          "drug": "Descovy (emtricitabine/tenofovir alafenamide) tablet",
+          "note": "Preferred, no PA; quantity limit (PDL p. 4; PA criteria p. 152)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Truvada (emtricitabine/tenofovir DF) brand tablet",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required under PrEP criteria (PA criteria p. 152; PDL p. 5).",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Yeztugo (lenacapavir) tablet and vial",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required. PrEP criteria include Day 1/2 initiation with injection or temporary oral bridging, weight 35 kg or more, high-risk attestation, and negative HIV-1 test (PA criteria pp. 151-152; PDL p. 5).",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL pp. 4-5 and PA criteria pp. 151-152. Generic emtricitabine/tenofovir DF is Preferred with no PA (quantity limit only, which is not a PA). Apretude (cabotegravir LA) is not on this PDL; provider-administered and may sit under the medical benefit (not searched beyond the PDL). Cabotegravir/rilpivirine (Cabenuva) also absent from the PDL.",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10",
+        "ky-medicaid-pa-criteria-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ky-medicaid-pa-criteria-2026-10"
+      ],
+      "lastReviewed": "2026-11-03",
+      "payerId": "ky-medicaid"
+    },
+    {
+      "classId": "hiv-art",
+      "preferredAgent": {
+        "inn": "Bictegravir/emtricitabine/tenofovir alafenamide",
+        "brand": "Biktarvy",
+        "genericAvailable": false,
+        "strength": "50 mg/200 mg/25 mg tablet",
+        "sig": "1 tablet once daily, with or without food (label).",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred",
+      "alternatives": [
+        {
+          "drug": "Dovato (dolutegravir/lamivudine) tablet",
+          "note": "Preferred, no PA; quantity limit (PDL p. 4; PA criteria p. 152)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Triumeq (dolutegravir/abacavir/lamivudine) tablet",
+          "note": "Preferred, no PA; quantity limit (PDL p. 5; PA criteria p. 153)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Genvoya (elvitegravir/cobicistat/FTC/TAF) tablet",
+          "note": "Preferred, no PA; quantity limit (PDL p. 5; PA criteria p. 152)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Juluca (dolutegravir/rilpivirine) tablet",
+          "note": "Preferred, no PA; quantity limit (PDL p. 5; PA criteria p. 152)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Odefsey (rilpivirine/FTC/TAF) tablet",
+          "note": "Preferred, no PA; quantity limit (PDL p. 5; PA criteria p. 152)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Symtuza (darunavir/cobicistat/FTC/TAF) tablet",
+          "note": "Preferred, no PA; quantity limit (PDL p. 5; PA criteria p. 153)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Efavirenz/emtricitabine/tenofovir DF tablet (generic Atripla)",
+          "note": "Preferred, no PA; quantity limit. Efavirenz combo, not the pick (PDL p. 5)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Emtricitabine/rilpivirine/tenofovir DF tablet (generic Complera)",
+          "note": "Preferred, no PA; quantity limit (PDL p.5; PA criteria p.152)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Triumeq suspension (pediatric dispersible)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PA criteria p. 152; PDL p. 5).",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL pp. 4-5 and PA criteria pp. 152-153. Biktarvy picked: Preferred, no PA, guideline-preferred single-tablet regimen, per the brief's HIV rule (never an efavirenz combo). Cabenuva (cabotegravir/rilpivirine LA) is not on the PDL (medical benefit). Every single-tablet regimen in the class description that appears on the PDL is Preferred except the Triumeq suspension form. Quantity limits (QL) are not PA. [Sonnet check 2026-11-03: the two documents disagree on brand Complera: PDL p.4 lists \"Complera tablet\" in PREFERRED (x=190), while the PA criteria status table p.152 lists Complera in Non-Preferred (x=408). Generic emtricitabine/rilpivirine/TDF is Preferred in both (PDL p.5, PA p.152). Complera is not the pick, so no pick changes; it is not listed as a barrier or an alternative because the source conflict is unresolved. A human should confirm the brand status if Complera ever becomes the pick.]",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10",
+        "ky-medicaid-pa-criteria-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ky-medicaid-pa-criteria-2026-10"
+      ],
+      "lastReviewed": "2026-11-03",
+      "payerId": "ky-medicaid"
+    },
+    {
+      "classId": "hiv-prep",
+      "preferredAgent": {
+        "inn": "Emtricitabine-tenofovir disoproxil fumarate (generic)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/300 mg",
+        "sig": "PrEP: 1 tablet once daily. Confirm a negative HIV test before starting and test every 3 months (label).",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day; get an HIV test every 3 months."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 ($0 preventive; QL)",
+      "alternatives": [
+        {
+          "drug": "Descovy (emtricitabine-tenofovir alafenamide) 200-25 mg tablet",
+          "note": "Listed on p. 35: Tier column prints NF (legend: NF = Non-Formulary) and Notes read \"$0 ($0 copay for pre-exposure prophylaxis); QL\". Shown as $0 copay when used for PrEP with a quantity limit; no PA or ST is printed. The list does not say what NF means for non-PrEP use.",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Select Drug List p. 35 (antiretrovirals, RTI-nucleoside/nucleotide): emtricitabine-tenofovir DF 200-300 mg Tier 1, $0 with QL, no PA. Descovy row (p. 35) reads tier NF (non-formulary) with a $0 PrEP copay in the Notes column; see the Sonnet check below for how it is recorded. Apretude and Yeztugo are not on the list. Apretude is provider-administered and may fall under the medical benefit. [Sonnet check 2026-11-03: Descovy moved out of nonformulary: the p. 35 row has tier NF but the Notes column prints a $0 copay for pre-exposure prophylaxis, which fits ACA preventive coverage, so it is recorded as listed at $0 for PrEP (QL), not as excluded. Apretude (cabotegravir) and Yeztugo (lenacapavir) are clinician-administered injections absent from the pharmacy list; likely medical benefit, coverage unconfirmed (partial). Generic emtricitabine-tenofovir DF 200-300 mg is Tier 1 \"$0; QL\" on p. 35.]",
+      "sourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "coverageSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "restrictionSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "lastReviewed": "2026-11-03",
+      "payerId": "anthem-ky"
+    },
+    {
+      "classId": "hiv-art",
+      "preferredAgent": {
+        "inn": "Bictegravir-emtricitabine-tenofovir alafenamide",
+        "brand": "Biktarvy",
+        "genericAvailable": false,
+        "strength": "50 mg/200 mg/25 mg",
+        "sig": "1 tablet once daily, with or without food (label).",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": "Quantity limit (amount not printed; p. 34)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 4",
+      "alternatives": [
+        {
+          "drug": "Dolutegravir-lamivudine (Dovato)",
+          "note": "Tier 4, QL only (p. 35)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Abacavir-dolutegravir-lamivudine (Triumeq)",
+          "note": "Tier 4, QL only (p. 35)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Elvitegravir-cobicistat-emtricitabine-tenofovir (Genvoya)",
+          "note": "Tier 4, QL only (p. 35)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Efavirenz-emtricitabine-tenofovir DF (generic)",
+          "note": "Tier 1, QL only; efavirenz-based (p. 35)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Dolutegravir-rilpivirine (Juluca)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Select Drug List. Page 2: \"Yes, this is a complete listing of all the drugs on the drug list.\" Exception route: prescriber preapproval (prior authorization) via Member Services (p. 3).",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Darunavir-cobicistat-emtricitabine-tenofovir alafenamide (Symtuza)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Select Drug List. Page 2: \"Yes, this is a complete listing of all the drugs on the drug list.\" Exception route: prescriber preapproval (prior authorization) via Member Services (p. 3).",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Rilpivirine-emtricitabine-tenofovir alafenamide (Odefsey)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Select Drug List. Page 2: \"Yes, this is a complete listing of all the drugs on the drug list.\" Exception route: prescriber preapproval (prior authorization) via Member Services (p. 3).",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Select Drug List p. 34 (antiretroviral combinations): Biktarvy Tier 4, QL only, no PA or ST. Guideline-preferred single-tablet regimen, so it is the pick. Dovato, Triumeq and Genvoya (p. 35) are Tier 4 QL. Efavirenz-emtricitabine-tenofovir DF generic (Tier 1 QL, p. 35) is an efavirenz combination; listed as an alternative only because the class description includes efavirenz combinations. Juluca, Symtuza, Odefsey and Cabenuva are not on the list. [Sonnet check 2026-11-03: strength set to the single Biktarvy tablet strength; the list prints no strength.] [Sonnet check 2026-11-03: Biktarvy is Tier 4 with Notes \"QL\" only on p. 34 (no PA/ST), so the QL is recorded as in Anthem Ohio. Cabenuva (cabotegravir-rilpivirine) is clinician-administered and is not on the pharmacy list; it is likely covered under the medical benefit, so it is not listed as nonformulary and coverage is unconfirmed (partial).]",
+      "sourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "coverageSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "restrictionSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "lastReviewed": "2026-11-03",
+      "payerId": "anthem-ky"
+    },
+    {
+      "classId": "hiv-prep",
+      "preferredAgent": {
+        "inn": "Emtricitabine-tenofovir disoproxil fumarate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "standard label dosing (strength not printed)",
+        "sig": "PrEP: 1 tablet once daily. Confirm a negative HIV test before starting and test every 3 months (label).",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day; get an HIV test every 3 months."
+      },
+      "preferredRestriction": "QL flagged; quantity limit amount not printed on PDL. H symbol = may be part of health care reform preventive coverage (p.5)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Truvada (emtricitabine-tenofovir DF, brand)",
+          "note": "Tier 4, QL",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Descovy (emtricitabine-tenofovir alafenamide)",
+          "note": "Tier 4, QL, H",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read PDL pp.17-18 (Antivirals). Generic emtricitabine-tenofovir DF is Tier 1 with QL (p.17). Descovy and Truvada are Tier 4 with QL. Apretude (cabotegravir LA) and Cabenuva are provider-administered and not listed as oral agents; likely medical benefit, not inferred nonformulary. Yeztugo (lenacapavir) does not appear on this PDL. Partial because injectable and newest PrEP products are absent. [Reused: same national UHC commercial PDL (commercial-pdl-jan-2026.pdf) cited for uhc-fl] [Reused: same national UHC commercial PDL (commercial-pdl-jan-2026.pdf) cited for uhc-oh] [Reused: same national UHC commercial PDL (exported 2026-11-02)] [Reused: same national UHC commercial PDL as GA (reused, checked)] [Reused: same national UHC commercial PDL as NC/GA (reused, checked)] [Reused: same national UHC commercial PDL as MI/NC/GA (reused, checked)] [Reused: same national UHC commercial PDL in every state]",
+      "sourceIds": [
+        "uhc-oh-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "uhc-oh-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "uhc-oh-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "uhc-ky"
+    },
+    {
+      "classId": "hiv-art",
+      "preferredAgent": {
+        "inn": "Dolutegravir-lamivudine",
+        "brand": "Dovato",
+        "genericAvailable": false,
+        "strength": "standard label dosing (strength not printed)",
+        "sig": "1 tablet (dolutegravir 50 mg/lamivudine 300 mg) by mouth once daily, with or without food. Test for hepatitis B before starting (label).",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": "QL flagged; quantity limit amount not printed on PDL",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2",
+      "alternatives": [
+        {
+          "drug": "Dolutegravir-abacavir-lamivudine (Triumeq)",
+          "note": "Tier 2, QL",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Dolutegravir-rilpivirine (Juluca)",
+          "note": "Tier 2, QL",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Bictegravir-emtricitabine-tenofovir alafenamide (Biktarvy)",
+          "note": "Tier 4, QL",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Elvitegravir-cobicistat-emtricitabine-TAF (Genvoya)",
+          "note": "Tier 4, QL",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Rilpivirine-emtricitabine-TAF (Odefsey)",
+          "note": "Tier 4, QL",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read PDL pp.17-18. All listed complete single-tablet regimens carry QL only; none carries PA or ST. Symtuza, efavirenz-emtricitabine-TDF and Cabenuva do not appear on this PDL (Cabenuva is provider-administered); not inferred nonformulary. Partial for the same reason. [Reused: same national UHC commercial PDL (commercial-pdl-jan-2026.pdf) cited for uhc-fl] [Reused: same national UHC commercial PDL (commercial-pdl-jan-2026.pdf) cited for uhc-oh] [Reused: same national UHC commercial PDL (exported 2026-11-02)] [Reused: same national UHC commercial PDL as GA (reused, checked)] [Reused: same national UHC commercial PDL as NC/GA (reused, checked)] [Reused: same national UHC commercial PDL as MI/NC/GA (reused, checked)] [Reused: same national UHC commercial PDL in every state]",
+      "sourceIds": [
+        "uhc-oh-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "uhc-oh-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "uhc-oh-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "uhc-ky"
+    },
+    {
+      "classId": "hiv-prep",
+      "preferredAgent": {
+        "inn": "Emtricitabine and tenofovir disoproxil fumarate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/300 mg tablet",
+        "sig": "PrEP: 1 tablet once daily. Confirm a negative HIV test before starting and test every 3 months (label).",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day; get an HIV test every 3 months."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 4 (Non-Preferred Drug)",
+      "alternatives": [
+        {
+          "drug": "Descovy (emtricitabine/tenofovir alafenamide) 120/15 mg and 200/25 mg tablet",
+          "note": "Tier 5; QL 30 per 30 days, no PA (page 39)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Generic emtricitabine-tenofovir DF 200 mg/300 mg read on page 39: Tier 4, QL 30 per 30 days, no PA. The row wraps across three lines in the text layer; the tier and QL sit on the same entry. Chosen over Descovy (Tier 5, no PA) as the lowest-tier listed oral PrEP agent without PA. Judgment call for the checker to confirm. Apretude (cabotegravir long-acting) and Yeztugo (lenacapavir) are not listed; cabotegravir is usually a clinic-given injection under the medical benefit, so it is not read as excluded. [Sonnet check 2026-10-27: Re-read by x-coordinate on v17 page 39: generic emtricitabine/tenofovir DF is Tier 4, QL 30 per 30 days, no PA; Descovy is Tier 5, no PA. Pick confirmed. Apretude and Yeztugo do not appear anywhere in the guide (raw text search); cabotegravir is clinic-administered, so this is not recorded as an exclusion.] [Reused: same national Humana Premier Rx PDP formulary (exported 2026-11-02)] [Reused: same national Humana Premier Rx PDP formulary (reused, checked)] [Reused: same national Humana Premier Rx PDP formulary (reused, checked)] [Reused: same national Humana Premier Rx PDP formulary in every state]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "hiv-art",
+      "preferredAgent": {
+        "inn": "Bictegravir, emtricitabine, and tenofovir alafenamide",
+        "brand": "Biktarvy",
+        "genericAvailable": false,
+        "strength": "50 mg/200 mg/25 mg tablet",
+        "sig": "1 tablet once daily, with or without food (label).",
+        "sigShort": "1 tab QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 5 (Specialty Tier)",
+      "alternatives": [
+        {
+          "drug": "Efavirenz/emtricitabine/tenofovir DF 600/200/300 mg tablet (generic)",
+          "note": "Tier 4; QL 30 per 30 days, no PA (page 39)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Triumeq (abacavir/dolutegravir/lamivudine) 600/50/300 mg tablet",
+          "note": "Tier 5; QL 30 per 30 days, no PA (page 41)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Dovato (dolutegravir/lamivudine) 50/300 mg tablet",
+          "note": "Tier 5; QL 30 per 30 days, no PA (page 39)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Juluca (dolutegravir/rilpivirine) 50/25 mg tablet",
+          "note": "Tier 5; QL 30 per 30 days, no PA (page 40)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Genvoya (elvitegravir/cobicistat/emtricitabine/tenofovir alafenamide) tablet",
+          "note": "Tier 5; QL 30 per 30 days, no PA (page 40)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Odefsey (rilpivirine/emtricitabine/tenofovir alafenamide) 200/25/25 mg tablet",
+          "note": "Tier 5; QL 30 per 30 days, no PA (page 40)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Symtuza (darunavir/cobicistat/emtricitabine/tenofovir alafenamide) tablet",
+          "note": "Tier 5; QL 30 per 30 days, no PA (page 41)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Efavirenz/lamivudine/tenofovir DF 400/300/300 and 600/300/300 mg tablet (generic)",
+          "note": "Tier 5; QL 30 per 30 days, no PA (page 39)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Cabenuva (cabotegravir/rilpivirine) long-acting injection",
+          "note": "Tier 5; QL 50 per 365 days, no PA (page 39); clinic-given injectable listed on the Part D drug list",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Biktarvy 50/200/25 mg tablet read on page 39: Tier 5 (DL), QL 30 per 30 days, no PA. Judgment call: the generic efavirenz/emtricitabine/tenofovir DF tablet (Tier 4, no PA) is the lower-tier option, but the efavirenz regimen is an older choice than the integrase-based single tablets, so Biktarvy is picked; a reviewer should confirm. DL (Dispensing Limit) means a 30-day supply limit per page 10. Triumeq PD (pediatric) is excluded. Stribild and Delstrigo are listed on page 39-41 but are not named in this class. [Sonnet check 2026-10-27: Re-read by x-coordinate on v17 page 39. Adjudicated: Biktarvy (Tier 5, DL, QL 30 per 30 days, no PA) kept as the pick: integrase-based single tablets are the current first-line choice and none of the lower-tier options is an equivalent single-tablet regimen (generic efavirenz/emtricitabine/tenofovir DF is Tier 4). Specialty-tier drugs are not eligible for tiering exceptions.] [Reused: same national Humana Premier Rx PDP formulary (exported 2026-11-02)] [Reused: same national Humana Premier Rx PDP formulary (reused, checked)] [Reused: same national Humana Premier Rx PDP formulary (reused, checked)] [Reused: same national Humana Premier Rx PDP formulary in every state]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "ky-medicaid-pdl-2026-10",
+      "label": "Kentucky Medicaid Preferred Drug List (PDL), October 2026",
+      "publisher": "Kentucky Department for Medicaid Services (MedImpact, single PBM)",
+      "type": "gov",
+      "url": "https://kyportal.medimpact.com/sites/default/files/2023-12/kentucky-medicaid-pdl.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-03"
+    },
+    {
+      "id": "ky-medicaid-pa-criteria-2026-10",
+      "label": "Kentucky Medicaid Prior Authorization Criteria, Version October 2026",
+      "publisher": "Kentucky Department for Medicaid Services (MedImpact, single PBM)",
+      "type": "gov",
+      "url": "https://kyportal.medimpact.com/sites/default/files/2023-12/kentucky-medicaid-pa-criteria.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-03"
+    },
+    {
+      "id": "anthem-ky-select-2026",
+      "label": "Anthem 2026 Select Drug List — Four Tier (Kentucky individual)",
+      "publisher": "Anthem Blue Cross and Blue Shield",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_KY_IND.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-03"
+    },
+    {
+      "id": "uhc-oh-next11-2026-10",
+      "label": "2026 Prescription Drug List (PDL), UnitedHealthcare & affiliated companies",
+      "publisher": "UnitedHealthcare",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-10-22"
+    },
+    {
+      "id": "humana-premier-rx-pdp-next11-2026-10",
+      "label": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

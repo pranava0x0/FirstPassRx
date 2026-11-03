@@ -1,0 +1,564 @@
+{
+  "id": "ky-weight",
+  "label": "KY · Weight loss",
+  "stateCode": "KY",
+  "region": "Kentucky",
+  "topicId": "weight",
+  "topic": "Weight loss",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-03",
+  "capturedAt": "2026-11-03",
+  "payers": [
+    {
+      "id": "ky-medicaid",
+      "name": "Kentucky Medicaid",
+      "shortName": "KY Medicaid",
+      "aka": "Kentucky Medicaid single Preferred Drug List: fee-for-service and every Medicaid managed care plan (Aetna Better Health of Kentucky, Humana Healthy Horizons in Kentucky, Passport by Molina Healthcare, UnitedHealthcare Community Plan, WellCare of Kentucky), one PBM (MedImpact)",
+      "pbm": "MedImpact",
+      "productName": "Kentucky Medicaid Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Kentucky Medicaid Preferred Drug List (PDL), October 2026",
+      "formularyUrl": "https://kyportal.medimpact.com/sites/default/files/2023-12/kentucky-medicaid-pdl.pdf",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ]
+    },
+    {
+      "id": "anthem-ky",
+      "name": "Anthem Blue Cross and Blue Shield (Kentucky)",
+      "shortName": "Anthem KY",
+      "pbm": "CarelonRx",
+      "productName": "Anthem 2026 Select Drug List — Four Tier (Kentucky individual)",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "Anthem 2026 Select Drug List — Four Tier (Kentucky individual)",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_KY_IND.pdf",
+      "sourceIds": [
+        "anthem-ky-select-2026"
+      ]
+    },
+    {
+      "id": "uhc-ky",
+      "name": "UnitedHealthcare (Commercial)",
+      "shortName": "UnitedHealthcare",
+      "aka": "National commercial PDL (same list in every state)",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "paPolicyUrl": "https://www.uhcprovider.com/en/resource-library/drug-lists-pharmacy.html",
+      "productName": "UnitedHealthcare 2026 Commercial PDL (base list)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 Prescription Drug List (PDL), UnitedHealthcare, effective January 1, 2026",
+      "sourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402"
+    }
+  ],
+  "classes": [
+    {
+      "id": "aom-glp1",
+      "name": "GLP-1-based anti-obesity medications",
+      "shortName": "GLP-1 AOM",
+      "plainName": "GLP-1 for weight loss",
+      "description": "Injectable or oral GLP-1/GIP agents labeled for chronic weight management (NOT their diabetes-labeled versions): semaglutide (Wegovy, including Wegovy tablets), tirzepatide (Zepbound), liraglutide (Saxenda). Many plans exclude weight-loss drugs entirely; an exclusion is a valid finding (outcome nonformulary).",
+      "plainDescription": "A weekly shot (or daily pill) for weight loss, like Wegovy or Zepbound.",
+      "indication": "Chronic weight management (obesity)",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ]
+    },
+    {
+      "id": "aom-oral",
+      "name": "Oral anti-obesity medications",
+      "shortName": "ORAL AOM",
+      "plainName": "Weight-loss pill",
+      "description": "Oral anti-obesity agents: phentermine (Adipex-P, Lomaira), phentermine/topiramate ER (Qsymia), naltrexone/bupropion ER (Contrave), orlistat (Xenical). Many plans exclude weight-loss drugs; an exclusion is a valid finding (outcome nonformulary).",
+      "plainDescription": "A pill for weight loss, like phentermine or Contrave.",
+      "indication": "Chronic weight management (obesity)",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "aom-glp1",
+      "preferredAgent": {
+        "inn": "Semaglutide (weight management)",
+        "brand": "Wegovy",
+        "genericAvailable": false,
+        "strength": "0.25 mg/0.5 mL pen",
+        "sig": "0.25 mg subcutaneously once weekly, raised every 4 weeks (0.5, 1, 1.7 mg) to 2.4 mg once weekly (label).",
+        "sigShort": "0.25 mg SC qwk, titrate to 2.4 mg",
+        "plainSig": "One shot under the skin once a week; the dose goes up each month."
+      },
+      "preferredRestriction": "Weight loss alone is excluded: PA criteria p. 161 footnote reads 'Drugs used for anorexia, weight loss, or weight gain are excluded from coverage.' Wegovy is covered with PA only for non-obesity indications (Wegovy criteria pp. 1-3): (1) MACE risk reduction: age 45+, prior MI, stroke or symptomatic PAD, BMI 27+, on lipid-lowering therapy plus a beta-blocker, RAS inhibitor or antiplatelet, no type 2 diabetes or A1c 6.5+; (2) MASH with F2-F3 fibrosis: age 18+, no type 2 diabetes or cirrhosis, gastroenterologist or hepatologist (pen only, not the tablet). Approval 6 months; quantity limit 4 pens per 28 days (tablet 1 per day). Not listed on the PDL.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not on PDL; separate PA criteria for non-obesity indications only",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Wegovy for weight management alone",
+          "outcome": "nonformulary",
+          "reason": "Excluded: drugs used for weight loss are excluded from coverage (PA criteria p. 161 footnote); Wegovy is approvable only for MACE risk reduction or MASH (Wegovy criteria pp. 1-3)",
+          "sourceIds": [
+            "ky-medicaid-pa-criteria-2026-10",
+            "ky-medicaid-wegovy-criteria-2026"
+          ]
+        },
+        {
+          "drug": "Zepbound (tirzepatide)",
+          "outcome": "pa",
+          "reason": "PA for moderate-to-severe obstructive sleep apnea only: age 18+, BMI 30+, 3-month CPAP/BiPAP/APAP trial, sleep or OSA specialist, no diabetes or A1c 6.5+ (Zepbound criteria pp. 1-2); obesity alone is excluded (PA criteria p. 161 footnote)",
+          "sourceIds": [
+            "ky-medicaid-pa-criteria-2026-10",
+            "ky-medicaid-zepbound-criteria-2026"
+          ]
+        },
+        {
+          "drug": "Saxenda (liraglutide, weight management)",
+          "outcome": "nonformulary",
+          "reason": "Excluded: weight-loss use is excluded from coverage (PA criteria p. 161 footnote); no Saxenda criteria or PDL listing found",
+          "sourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "PDL pp. 1-34 searched for Wegovy, Zepbound, Saxenda, semaglutide, tirzepatide: no hit, so none is on the PDL. PA criteria p. 161 (also pp. 163-164) footnote: 'Drugs used for anorexia, weight loss, or weight gain are excluded from coverage.' Separate criteria PDFs fetched 2026-11-03 from the MedImpact Kentucky portal: Wegovy (4 pp.: MACE risk reduction and MASH only) and Zepbound (2 pp.: moderate-to-severe OSA only). Neither document covers obesity or chronic weight management by itself. Neither prints an effective date (Wegovy file name carries 1.3.2026; Zepbound has none; portal files last modified 2026-10-30). Pick kept as Wegovy as the class reference product, but the restriction states the exclusion; do not present this as weight-loss coverage. Diabetes-labeled GLP-1s (Ozempic, Mounjaro) are a separate class. [Sonnet check 2026-11-03: replaced the earlier 'excluded entirely' finding, which missed the Wegovy and Zepbound criteria; noCoveredAgent set false because Wegovy and Zepbound are approvable for non-obesity indications. Verification stays partial because the documents print no date.]",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10",
+        "ky-medicaid-pa-criteria-2026-10",
+        "ky-medicaid-wegovy-criteria-2026",
+        "ky-medicaid-zepbound-criteria-2026"
+      ],
+      "coverageSourceIds": [
+        "ky-medicaid-pdl-2026-10",
+        "ky-medicaid-pa-criteria-2026-10",
+        "ky-medicaid-wegovy-criteria-2026",
+        "ky-medicaid-zepbound-criteria-2026"
+      ],
+      "restrictionSourceIds": [
+        "ky-medicaid-pa-criteria-2026-10",
+        "ky-medicaid-wegovy-criteria-2026",
+        "ky-medicaid-zepbound-criteria-2026"
+      ],
+      "lastReviewed": "2026-11-03",
+      "noCoveredAgent": false,
+      "payerId": "ky-medicaid"
+    },
+    {
+      "classId": "aom-oral",
+      "preferredAgent": {
+        "inn": "Phentermine (weight management)",
+        "brand": "Adipex-P",
+        "genericAvailable": true,
+        "strength": "37.5 mg",
+        "sig": "37.5 mg (1 tablet) by mouth once daily before breakfast",
+        "sigShort": "37.5 mg QAM",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": "Not covered: Kentucky Medicaid excludes drugs used for weight loss (PA criteria p. 161). Phentermine shown only as the class reference product; it is not a covered pick.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not on PDL (weight-loss exclusion)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Phentermine (Lomaira, Adipex-P, generic)",
+          "outcome": "nonformulary",
+          "reason": "Excluded: drugs used for weight loss are excluded from coverage (PA criteria p. 161, footnote)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Qsymia (phentermine/topiramate ER)",
+          "outcome": "nonformulary",
+          "reason": "Excluded: drugs used for weight loss are excluded from coverage (PA criteria p. 161, footnote)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Contrave (naltrexone/bupropion ER)",
+          "outcome": "nonformulary",
+          "reason": "Excluded: drugs used for weight loss are excluded from coverage (PA criteria p. 161, footnote)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Orlistat (Xenical)",
+          "outcome": "nonformulary",
+          "reason": "Excluded: drugs used for weight loss are excluded from coverage (PA criteria p. 161, footnote)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "No oral anti-obesity agent appears on the PDL (phentermine, Qsymia, Contrave and orlistat searched across all 34 pages). The PA criteria footnote on p. 161 excludes weight-loss drugs from coverage. Topiramate and naltrexone hits on the PDL (pp. 3, 11-12) are for other indications and are not this class. Verification partial per the no-coverage rule. [Sonnet check 2026-11-03: Footnote 'Drugs used for anorexia, weight loss, or weight gain are excluded from coverage' also confirmed on PA criteria pp. 163-164; it sits on the diabetes class pages but is worded for all weight-loss drugs. Searched PDL and PA criteria for phentermine, Qsymia, Contrave, orlistat: none listed. Kept partial/noCoveredAgent; a human should confirm with the plan whether phentermine is covered for any non-weight indication.]",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10",
+        "ky-medicaid-pa-criteria-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ky-medicaid-pdl-2026-10",
+        "ky-medicaid-pa-criteria-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ky-medicaid-pa-criteria-2026-10"
+      ],
+      "lastReviewed": "2026-11-03",
+      "noCoveredAgent": true,
+      "payerId": "ky-medicaid"
+    },
+    {
+      "classId": "aom-glp1",
+      "preferredAgent": {
+        "inn": "Semaglutide (weight management)",
+        "brand": "Wegovy",
+        "genericAvailable": false,
+        "strength": "0.25 mg (starting dose)",
+        "sig": "Inject 0.25 mg under the skin once weekly for 4 weeks, then escalate per label (standard label dosing)",
+        "sigShort": "0.25 mg weekly",
+        "plainSig": "A weekly shot, starting low."
+      },
+      "preferredRestriction": "No covered weight-management GLP-1 on this list: Wegovy, Zepbound and Saxenda are not listed. The list is complete (p.2). Diabetes-labeled Ozempic and Trulicity appear on p.23 but are not weight-management products.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "NF",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Wegovy (semaglutide, weight management)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Anthem 2026 Select Drug List. Page 2 states: \"Yes, this is a complete listing of all the drugs on the drug list.\" Exception route: doctor can ask Anthem to review coverage by preapproval/prior authorization (Member Services or PA form), per Select Drug List p.3.",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Zepbound (tirzepatide)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Anthem 2026 Select Drug List. Page 2 states: \"Yes, this is a complete listing of all the drugs on the drug list.\" Exception route: doctor can ask Anthem to review coverage by preapproval/prior authorization (Member Services or PA form), per Select Drug List p.3.",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Saxenda (liraglutide, weight management)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Anthem 2026 Select Drug List. Page 2 states: \"Yes, this is a complete listing of all the drugs on the drug list.\" Exception route: doctor can ask Anthem to review coverage by preapproval/prior authorization (Member Services or PA form), per Select Drug List p.3.",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched the full list for Wegovy, Zepbound, Saxenda, semaglutide, tirzepatide and liraglutide. Only diabetes-labeled products appear (Ozempic, Trulicity, liraglutide on p.23). No weight-management GLP-1 is listed, so noCoveredAgent is set. The starting strength and sig are label dosing, not printed on the list.",
+      "sourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "coverageSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "restrictionSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "lastReviewed": "2026-11-03",
+      "noCoveredAgent": true,
+      "payerId": "anthem-ky"
+    },
+    {
+      "classId": "aom-oral",
+      "preferredAgent": {
+        "inn": "Phentermine (weight management)",
+        "brand": "Adipex-P",
+        "genericAvailable": true,
+        "strength": "37.5 mg",
+        "sig": "Take 1 tablet (37.5 mg) by mouth once daily before breakfast (standard label dosing)",
+        "sigShort": "37.5 mg QAM",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": "No oral weight-management agent is on this list: phentermine, phendimetrazine, benzphetamine, diethylpropion, Lomaira, Adipex-P, Qsymia, Contrave and orlistat do not appear anywhere in the document. The list says it is a complete listing (p. 2).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "NF",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Qsymia (phentermine/topiramate ER)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Anthem 2026 Select Drug List. Page 2 states: \"Yes, this is a complete listing of all the drugs on the drug list.\" Exception route: doctor can ask Anthem to review coverage by preapproval/prior authorization (Member Services or PA form), per Select Drug List p.3.",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Contrave (naltrexone/bupropion ER)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Anthem 2026 Select Drug List. Page 2 states: \"Yes, this is a complete listing of all the drugs on the drug list.\" Exception route: doctor can ask Anthem to review coverage by preapproval/prior authorization (Member Services or PA form), per Select Drug List p.3.",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Xenical or orlistat",
+          "outcome": "nonformulary",
+          "reason": "Not on the Anthem 2026 Select Drug List. Page 2 states: \"Yes, this is a complete listing of all the drugs on the drug list.\" Exception route: doctor can ask Anthem to review coverage by preapproval/prior authorization (Member Services or PA form), per Select Drug List p.3.",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched the full list for phentermine, Adipex-P, Lomaira, Qsymia, Contrave, orlistat and Xenical. None appear. The ADHD/anti-obesity section (p.8-9) lists no anti-obesity agents. Naltrexone IR tablet is listed (p.24) but is not the naltrexone/bupropion obesity product. noCoveredAgent is set; the 37.5 mg sig is label dosing. [Sonnet check 2026-11-03: re-searched the full text for phentermine, phendimetrazine, benzphetamine, diethylpropion, Lomaira, Adipex-P, Qsymia, Contrave, naltrexone-bupropion, orlistat: none. The p. 8 ADHD/anti-obesity section holds only alpha agonists, atomoxetine, amphetamines, Sunosi and stimulants, with no anorexiant subcategory. The Anthem Ohio list (Tier 1 PA; QL phentermine) differs from this one, so noCoveredAgent stays.]",
+      "sourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "coverageSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "restrictionSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "lastReviewed": "2026-11-03",
+      "noCoveredAgent": true,
+      "payerId": "anthem-ky"
+    },
+    {
+      "classId": "aom-glp1",
+      "preferredAgent": {
+        "inn": "Semaglutide (weight management)",
+        "brand": "Wegovy",
+        "genericAvailable": false,
+        "strength": "2.4 mg",
+        "sig": "2.4 mg by subcutaneous injection once weekly (chronic weight management labeling)",
+        "sigShort": "2.4 mg SC weekly",
+        "plainSig": "A weekly shot for weight loss."
+      },
+      "preferredRestriction": "No weight-loss GLP-1 (Wegovy, Zepbound, Saxenda) appears on this plan's 2026 PDL; coverage likely excluded (confirm with plan)",
+      "boglActive": false,
+      "boglNote": null,
+      "noCoveredAgent": true,
+      "tier": "Not listed on this PDL",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched full PDL text for Wegovy, Zepbound, Saxenda, semaglutide, tirzepatide, liraglutide, and weight/obesity terms. No weight-management GLP-1 is listed. Diabetes-labeled GLP-1s appear on p.31 (Ozempic PA+QL, Rybelsus PA+QL, Trulicity PA+QL, Mounjaro PA+QL, generic liraglutide 18 mg/3 mL pen PA+QL) and are not counted as weight-loss coverage. The document says it is not a complete list, so absence is recorded as not listed, not as nonformulary. Confirm with plan. [Reused 2026-10-21 for uhc-md: same national UHC commercial PDL document as ny-uhc-commercial; Sonnet-checked in the NY pass. NY-specific \"E\" (may be excluded in NY) flags apply to NY plans; outside CT/NJ/NY the PDL legend (p.5) says E-flagged drugs may be excluded from coverage, so they are recorded as non-formulary here.] [Reused: same national UHC commercial PDL as the MD guide (2026-10-21)] [Reused: same national UHC commercial PDL in every state]",
+      "sourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "uhc-ky"
+    },
+    {
+      "classId": "aom-oral",
+      "preferredAgent": {
+        "inn": "Phentermine hydrochloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "37.5 mg",
+        "sig": "37.5 mg by mouth once daily before breakfast (label)",
+        "sigShort": "37.5 mg QD",
+        "plainSig": "One small pill once a day, in the morning."
+      },
+      "preferredRestriction": "No oral weight-loss agent (phentermine, phentermine/topiramate, naltrexone/bupropion, orlistat) appears on this plan's 2026 PDL; coverage likely excluded (confirm with plan)",
+      "boglActive": false,
+      "boglNote": null,
+      "noCoveredAgent": true,
+      "tier": "Not listed on this PDL",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched full PDL text for phentermine, Adipex, Lomaira, Qsymia (phentermine/topiramate), Contrave (naltrexone/bupropion), orlistat/Xenical, diethylpropion, phendimetrazine, benzphetamine: none listed. The document says it is not a complete list, so absence is recorded as not listed, not as nonformulary. Confirm with plan. [Reused 2026-10-21 for uhc-md: same national UHC commercial PDL document as ny-uhc-commercial; Sonnet-checked in the NY pass. NY-specific \"E\" (may be excluded in NY) flags apply to NY plans; outside CT/NJ/NY the PDL legend (p.5) says E-flagged drugs may be excluded from coverage, so they are recorded as non-formulary here.] [Reused: same national UHC commercial PDL as the MD guide (2026-10-21)] [Reused: same national UHC commercial PDL in every state]",
+      "sourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "uhc-ky"
+    },
+    {
+      "classId": "aom-glp1",
+      "preferredAgent": {
+        "inn": "Semaglutide (weight management)",
+        "brand": "Wegovy",
+        "genericAvailable": false,
+        "strength": "Standard label dosing",
+        "sig": "As directed per FDA label (weight management; dose not stated in document)",
+        "sigShort": "Per label",
+        "plainSig": "Taken as your doctor directs."
+      },
+      "preferredRestriction": "No weight-loss GLP-1 appears on this plan's 2026 list (Wegovy, Zepbound, Saxenda absent); coverage likely excluded (confirm with plan). Part D generally excludes weight-loss drugs; the document does not state this exclusion.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not on plan list",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Weight-loss GLP-1s are not on this plan's list. Wegovy, Zepbound and Saxenda do not appear anywhere in the document (full text searched). Mounjaro (page 43) and Ozempic (page 44) are listed under the Blood Glucose Regulators category (page 42) with PA and QL; the document does not give them a weight-management indication, so they are not treated as covered weight-loss options. The document contains no statement that it is a complete list, so absence is recorded as a finding to confirm, not a stated exclusion. [Reused: same national Humana Premier Rx PDP formulary as the TX guide (2026-10-21)] [Reused: same national Humana Premier Rx PDP formulary in every state]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "noCoveredAgent": true,
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "aom-oral",
+      "preferredAgent": {
+        "inn": "Phentermine (weight management)",
+        "brand": "Adipex-P",
+        "genericAvailable": true,
+        "strength": "Standard label dosing",
+        "sig": "As directed per FDA label (weight management; dose not stated in document)",
+        "sigShort": "Per label",
+        "plainSig": "Taken as your doctor directs."
+      },
+      "preferredRestriction": "No oral weight-loss agent appears on this plan's 2026 list (phentermine, Qsymia, Contrave, orlistat absent); coverage likely excluded (confirm with plan). Part D generally excludes weight-loss drugs; the document does not state this exclusion.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not on plan list",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "No phentermine, phentermine/topiramate (Qsymia), naltrexone/bupropion ER (Contrave) or orlistat (Xenical) line appears in the document (full text searched). Lines that look similar but are not weight-loss agents: naltrexone 50 mg tablet (anti-addiction, Tier 2, page 13), bupropion SR/ER (smoking deterrent, Tier 3, pages 13 and 21-22), topiramate tablet and solution (anticonvulsant, page 20). The document contains no statement that it is a complete list, so absence is recorded as a finding to confirm, not a stated exclusion. [Reused: same national Humana Premier Rx PDP formulary as the TX guide (2026-10-21)] [Reused: same national Humana Premier Rx PDP formulary in every state]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "noCoveredAgent": true,
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "ky-medicaid-pdl-2026-10",
+      "label": "Kentucky Medicaid Preferred Drug List (PDL), October 2026",
+      "publisher": "Kentucky Department for Medicaid Services (MedImpact, single PBM)",
+      "type": "gov",
+      "url": "https://kyportal.medimpact.com/sites/default/files/2023-12/kentucky-medicaid-pdl.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-03"
+    },
+    {
+      "id": "ky-medicaid-pa-criteria-2026-10",
+      "label": "Kentucky Medicaid Prior Authorization Criteria, Version October 2026",
+      "publisher": "Kentucky Department for Medicaid Services (MedImpact, single PBM)",
+      "type": "gov",
+      "url": "https://kyportal.medimpact.com/sites/default/files/2023-12/kentucky-medicaid-pa-criteria.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-03"
+    },
+    {
+      "id": "ky-medicaid-wegovy-criteria-2026",
+      "label": "Kentucky Medicaid Wegovy (semaglutide) Prior Authorization Criteria (file version 1.3.2026; no date printed in the document)",
+      "publisher": "Kentucky Department for Medicaid Services (MedImpact, single PBM)",
+      "type": "gov",
+      "url": "https://kyportal.medimpact.com/sites/default/files/2026-10/wegovy_pa_criteria_1.3.2026_1.pdf",
+      "effectiveDate": "2026-01-03",
+      "accessed": "2026-11-03"
+    },
+    {
+      "id": "ky-medicaid-zepbound-criteria-2026",
+      "label": "Kentucky Medicaid Zepbound (tirzepatide) Prior Authorization Criteria (no effective date printed; portal file last modified 2026-10-30)",
+      "publisher": "Kentucky Department for Medicaid Services (MedImpact, single PBM)",
+      "type": "gov",
+      "url": "https://kyportal.medimpact.com/sites/default/files/2026-10/zepbound_pa_criteria_4.pdf",
+      "effectiveDate": "2026-10-30",
+      "accessed": "2026-11-03"
+    },
+    {
+      "id": "anthem-ky-select-2026",
+      "label": "Anthem 2026 Select Drug List — Four Tier (Kentucky individual)",
+      "publisher": "Anthem Blue Cross and Blue Shield",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_KY_IND.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-03"
+    },
+    {
+      "id": "ny-uhc-commercial-newtopics-2026-10",
+      "label": "2026 Prescription Drug List (PDL), UnitedHealthcare, effective January 1, 2026",
+      "publisher": "UnitedHealthcare",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "humana-premier-rx-pdp-newtopics-2026-10",
+      "label": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-09-02",
+      "accessed": "2026-10-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}
