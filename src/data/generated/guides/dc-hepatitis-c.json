@@ -1,0 +1,446 @@
+{
+  "id": "dc-hepatitis-c",
+  "label": "DC · Hepatitis C",
+  "stateCode": "DC",
+  "region": "District of Columbia",
+  "topicId": "hepatitis-c",
+  "topic": "Hepatitis C",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-03",
+  "capturedAt": "2026-11-03",
+  "payers": [
+    {
+      "id": "dc-medicaid",
+      "name": "DC Medicaid",
+      "shortName": "DC Medicaid",
+      "aka": "DC Medicaid fee-for-service and DC Healthcare Alliance (DHCF); DC Healthy Families MCOs run their own formularies",
+      "pbm": "Prime Therapeutics",
+      "productName": "DC Medicaid / DC Healthcare Alliance Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "District of Columbia Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "formularyUrl": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "amerihealth-caritas-dc",
+      "name": "AmeriHealth Caritas District of Columbia",
+      "shortName": "AmeriHealth Caritas DC",
+      "aka": "DC Healthy Families Medicaid MCO",
+      "pbm": "PerformRx",
+      "productName": "AmeriHealth Caritas DC drug formulary",
+      "marketSegment": "medicaid-mco",
+      "formularyId": "AmeriHealth Caritas DC Drug Formulary (effective June 1, 2026)",
+      "formularyUrl": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "sourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ]
+    },
+    {
+      "id": "carefirst",
+      "name": "CareFirst BlueCross BlueShield",
+      "shortName": "CareFirst",
+      "pbm": "CVS Caremark",
+      "formularyUrl": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "paPolicyUrl": "https://member.carefirst.com/carefirst-resources/pdf/drugs-requiring-prior-authorization-formulary-2.pdf",
+      "productName": "CareFirst individual and family Exchange Formulary 2",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "CareFirst Exchange Formulary 2026 (5-Tier), last updated 10/01/26",
+      "sourceIds": [
+        "carefirst-next11-2026-10"
+      ]
+    },
+    {
+      "id": "kpmidatlantic",
+      "name": "Kaiser Permanente Mid-Atlantic",
+      "shortName": "Kaiser MAS",
+      "pbm": "Kaiser Permanente (in-house)",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "productName": "Kaiser Mid-Atlantic Marketplace formulary",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "Kaiser Permanente Marketplace Formulary (Mid-Atlantic region), last update 10/06/2026",
+      "sourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "hcv-daa",
+      "name": "Hepatitis C direct-acting antivirals",
+      "shortName": "DAA",
+      "plainName": "Hepatitis C cure pills",
+      "description": "Sofosbuvir/velpatasvir (Epclusa and authorized generic), glecaprevir/pibrentasvir (Mavyret), ledipasvir/sofosbuvir (Harvoni and authorized generic), sofosbuvir/velpatasvir/voxilaprevir (Vosevi), elbasvir/grazoprevir (Zepatier).",
+      "plainDescription": "An 8 to 12 week course of pills that cures hepatitis C.",
+      "indication": "Chronic hepatitis C",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "hcv-daa",
+      "preferredAgent": {
+        "inn": "Sofosbuvir/velpatasvir (generic)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "400 mg/100 mg tablet (standard; not printed on PDL)",
+        "sig": "No cirrhosis or compensated cirrhosis: 1 tablet once daily for 12 weeks. Decompensated cirrhosis (Child-Pugh B or C): 1 tablet once daily plus weight-based ribavirin for 12 weeks (label).",
+        "sigShort": "1 tab QD x12 wk (+ribavirin if decompensated)",
+        "plainSig": "One pill a day for 12 weeks; people with advanced liver scarring also take ribavirin."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (PDL, no PA)",
+      "alternatives": [
+        {
+          "drug": "Mavyret (glecaprevir/pibrentasvir)",
+          "note": "Preferred, no PA (PDL p.6)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Vosevi (sofosbuvir/velpatasvir/voxilaprevir)",
+          "note": "Preferred, no PA (PDL p.6)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Epclusa (sofosbuvir/velpatasvir brand)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.6); generic sofosbuvir/velpatasvir is preferred",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Harvoni (ledipasvir/sofosbuvir brand)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.6)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ledipasvir/sofosbuvir (generic)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.6)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zepatier (elbasvir/grazoprevir)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.6)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read DC PDL p.6 (Hepatitis C Agents). Preferred: Mavyret, generic sofosbuvir/velpatasvir and Vosevi, all no PA. PA: Epclusa, Harvoni, generic ledipasvir/sofosbuvir and Zepatier. Pegasys vial and ribavirin are preferred but are not in the class description. Pick is generic sofosbuvir/velpatasvir; strength and 12-week duration are standard label dosing, not printed on PDL.",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "hcv-daa",
+      "preferredAgent": {
+        "inn": "Sofosbuvir-velpatasvir",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "400 mg-100 mg tablet",
+        "sig": "No cirrhosis or compensated cirrhosis: 1 tablet once daily for 12 weeks. Decompensated cirrhosis (Child-Pugh B or C): 1 tablet once daily plus weight-based ribavirin for 12 weeks (label).",
+        "sigShort": "1 tab QD x12 wk (+ribavirin if decompensated)",
+        "plainSig": "One pill a day for 12 weeks; people with advanced liver scarring also take ribavirin."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "F (Formulary Drug)",
+      "alternatives": [
+        {
+          "drug": "Ledipasvir-sofosbuvir (generic Harvoni)",
+          "note": "F, no PA printed (PDF p.12)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Mavyret (glecaprevir-pibrentasvir)",
+          "note": "F, brand, no PA printed (PDF p.12)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Epclusa (sofosbuvir-velpatasvir brand), oral tablet and packet",
+          "outcome": "nonformulary",
+          "reason": "Non-formulary (NF); PA required (PDF p.11-12)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Harvoni (ledipasvir-sofosbuvir brand), oral tablet and packet",
+          "outcome": "nonformulary",
+          "reason": "Non-formulary (NF); PA required (PDF p.11-12)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ],
+          "criteria": [
+            "Documented medical reason (intolerance, hypersensitivity, contraindication) why preferred Mavyret, generic Epclusa, or generic Harvoni cannot be used",
+            "Member is 3 years of age or older; request is for an FDA/AASLD-recommended indication at approved dose and duration",
+            "Provider attests no limited life expectancy under 12 months from non-liver comorbidity",
+            "HBV: complete immunization series or HBV screening (sAb, sAg, cAb); quantitative HBV DNA if sAg positive, with treatment plan if detectable",
+            "HIV screening documented; if positive and untreated, the medical record documents the rationale",
+            "Genotype and AASLD-recommended RAS testing as required for the regimen; drug interactions addressed; alcohol and IV drug abuse counseling documented",
+            "Member agrees to HCV monitoring and education program, DC Medicaid Beneficiary Disclosure form completed, and SVR12 testing"
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "amerihealth-caritas-dc-pa-criteria-hcv-daa-2026-11"
+          ]
+        },
+        {
+          "drug": "Sovaldi (sofosbuvir) packet",
+          "outcome": "nonformulary",
+          "reason": "Non-formulary (NF); PA required (PDF p.12)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ],
+          "criteria": [
+            "Documented medical reason (intolerance, hypersensitivity, contraindication) why preferred Mavyret, generic Epclusa, or generic Harvoni cannot be used",
+            "Member is 3 years of age or older; request is for an FDA/AASLD-recommended indication at approved dose and duration",
+            "Provider attests no limited life expectancy under 12 months from non-liver comorbidity",
+            "HBV: complete immunization series or HBV screening (sAb, sAg, cAb); quantitative HBV DNA if sAg positive, with treatment plan if detectable",
+            "HIV screening documented; if positive and untreated, the medical record documents the rationale",
+            "Genotype and AASLD-recommended RAS testing as required for the regimen; drug interactions addressed; alcohol and IV drug abuse counseling documented",
+            "Member agrees to HCV monitoring and education program, DC Medicaid Beneficiary Disclosure form completed, and SVR12 testing"
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "amerihealth-caritas-dc-pa-criteria-hcv-daa-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Generic sofosbuvir-velpatasvir and ledipasvir-sofosbuvir are F with no PA (PDF p.12). Their brands Epclusa, Harvoni and Sovaldi are NF with PA. Mavyret is F with no flag. Generic sofosbuvir-velpatasvir is the lowest-barrier pick. The generic is not a brand-over-generic preference, so boglActive is false. Vosevi and Zepatier are not in the document. Strength and duration are label dosing.",
+      "sourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "hcv-daa",
+      "preferredAgent": {
+        "inn": "Sofosbuvir-velpatasvir",
+        "brand": "Epclusa",
+        "genericAvailable": false,
+        "strength": "400 mg-100 mg tablet",
+        "sig": "No cirrhosis or compensated cirrhosis: 1 tablet once daily for 12 weeks. Decompensated cirrhosis (Child-Pugh B or C): 1 tablet once daily plus weight-based ribavirin for 12 weeks (label).",
+        "sigShort": "1 tab QD x12 wk (+ribavirin if decompensated)",
+        "plainSig": "One pill a day for 12 weeks; people with advanced liver scarring also take ribavirin."
+      },
+      "preferredRestriction": "PA required; quantity limit 28 tablets every 28 days (PDF p.25)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 4",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Harvoni (ledipasvir-sofosbuvir) 90 mg-400 mg tablet",
+          "outcome": "pa",
+          "reason": "PA and quantity limit (PDF p.26)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Vosevi (sofosbuvir-velpatasvir-voxilaprevir) tablet",
+          "outcome": "pa",
+          "reason": "PA and quantity limit (PDF p.26)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Sovaldi (sofosbuvir) 400 mg tablet",
+          "outcome": "step",
+          "reason": "Step therapy, PA and quantity limit (Tier 5 specialty) (PDF p.26)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read on PDF pp.25-26: EPCLUSA TAB 400-100 Tier 4, PA and QL (28 tabs every 28 days). Every listed DAA needs PA, so Epclusa is picked as the lowest-barrier, widely written option on the same PA terms. Harvoni (ledipasvir-sofosbuvir), Vosevi and Sovaldi are listed with PA; Sovaldi also carries step therapy. Mavyret (glecaprevir-pibrentasvir) and Zepatier (elbasvir-grazoprevir) are not on this document; absence is not read as exclusion.",
+      "sourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "hcv-daa",
+      "preferredAgent": {
+        "inn": "Sofosbuvir-velpatasvir",
+        "brand": "Epclusa",
+        "genericAvailable": false,
+        "strength": "400 mg/100 mg tablet",
+        "sig": "No cirrhosis or compensated cirrhosis: 1 tablet once daily for 12 weeks. Decompensated cirrhosis (Child-Pugh B or C): 1 tablet once daily plus weight-based ribavirin for 12 weeks (label).",
+        "sigShort": "1 tab QD x12 wk (+ribavirin if decompensated)",
+        "plainSig": "One pill a day for 12 weeks; people with advanced liver scarring also take ribavirin."
+      },
+      "preferredRestriction": "PA and quantity limit required: 'SOFOSBUVIR-VELPATASVIR 2 PA, QL' (p.8); criteria and QL amount not printed.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "PA and quantity limit (PDF p.8); PA criteria not printed on the list. Confirm with plan.",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Harvoni (ledipasvir-sofosbuvir)",
+          "outcome": "pa",
+          "reason": "PA and quantity limit, tier 4 (PDF p.8); PA criteria not printed on the list",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Vosevi (sofosbuvir-velpatasvir-voxilaprevir)",
+          "outcome": "pa",
+          "reason": "PA and quantity limit, tier 4 (PDF p.8); PA criteria not printed on the list",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Mavyret (glecaprevir-pibrentasvir)",
+          "outcome": "nonformulary",
+          "reason": "Not on the list. PDF p.2 states: \"Any product not found on the list will be considered non-formulary.\"",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zepatier (elbasvir-grazoprevir)",
+          "outcome": "nonformulary",
+          "reason": "Not on the list. PDF p.2 states: \"Any product not found on the list will be considered non-formulary.\"",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Sofosbuvir-velpatasvir listed tier 2 with PA and QL on PDF p.8, the lowest-barrier product in the class (Harvoni and Vosevi are tier 4 with PA and QL). Brand-only names are shown in capitals on this list; SOFOSBUVIR-VELPATASVIR is read as the Epclusa line, and any authorized generic is not stated. Mavyret and Zepatier do not appear; recorded as nonformulary under PDF p.2. [Sonnet check 2026-11-02: Confirmed lines: SOFOSBUVIR-VELPATASVIR 2 PA,QL; LEDIPASVIR-SOFOSBUVIR 4 PA,QL; VOSEVI 4 PA,QL; no Mavyret/Zepatier. Added the PA/QL text to preferredRestriction (was null). Brand name Epclusa not printed; line is the generic-named product.]",
+      "sourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "kpmidatlantic"
+    }
+  ],
+  "references": [
+    {
+      "id": "dc-medicaid-next11-2026-10",
+      "label": "District of Columbia Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "publisher": "District of Columbia Department of Health Care Finance",
+      "type": "gov",
+      "url": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "effectiveDate": "2026-09-18",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "amerihealth-caritas-dc-next11-2026-10",
+      "label": "AmeriHealth Caritas DC Drug Formulary (effective June 1, 2026)",
+      "publisher": "AmeriHealth Caritas District of Columbia",
+      "type": "payer",
+      "url": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "effectiveDate": "2026-06-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "carefirst-next11-2026-10",
+      "label": "CareFirst Exchange Formulary 2026 (5-Tier), last updated 10/01/26",
+      "publisher": "CareFirst BlueCross BlueShield",
+      "type": "payer",
+      "url": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "kpmidatlantic-next11-2026-10",
+      "label": "Kaiser Permanente Marketplace Formulary (Mid-Atlantic region), last update 10/06/2026",
+      "publisher": "Kaiser Permanente",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "effectiveDate": "2026-10-06",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "amerihealth-caritas-dc-pa-criteria-hcv-daa-2026-11",
+      "label": "Hepatitis C treatment - AHDC Pharmacy Prior Authorization Criteria (updated 4/1/2026)",
+      "publisher": "AmeriHealth Caritas DC (PerformRx)",
+      "type": "payer",
+      "url": "https://www.amerihealthcaritasdc.com/pdf/provider/pharmacy-prior-authorization-criteria.pdf",
+      "accessed": "2026-11-02",
+      "effectiveDate": "2026-04-01"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

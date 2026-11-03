@@ -1,0 +1,1487 @@
+{
+  "id": "dc-hypertension",
+  "label": "DC · Blood pressure (beyond ACE inhibitors)",
+  "stateCode": "DC",
+  "region": "District of Columbia",
+  "topicId": "hypertension",
+  "topic": "Blood pressure (beyond ACE inhibitors)",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-03",
+  "capturedAt": "2026-11-03",
+  "payers": [
+    {
+      "id": "dc-medicaid",
+      "name": "DC Medicaid",
+      "shortName": "DC Medicaid",
+      "aka": "DC Medicaid fee-for-service and DC Healthcare Alliance (DHCF); DC Healthy Families MCOs run their own formularies",
+      "pbm": "Prime Therapeutics",
+      "productName": "DC Medicaid / DC Healthcare Alliance Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "District of Columbia Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "formularyUrl": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "amerihealth-caritas-dc",
+      "name": "AmeriHealth Caritas District of Columbia",
+      "shortName": "AmeriHealth Caritas DC",
+      "aka": "DC Healthy Families Medicaid MCO",
+      "pbm": "PerformRx",
+      "productName": "AmeriHealth Caritas DC drug formulary",
+      "marketSegment": "medicaid-mco",
+      "formularyId": "AmeriHealth Caritas DC Drug Formulary (effective June 1, 2026)",
+      "formularyUrl": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "sourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ]
+    },
+    {
+      "id": "carefirst",
+      "name": "CareFirst BlueCross BlueShield",
+      "shortName": "CareFirst",
+      "pbm": "CVS Caremark",
+      "formularyUrl": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "paPolicyUrl": "https://member.carefirst.com/carefirst-resources/pdf/drugs-requiring-prior-authorization-formulary-2.pdf",
+      "productName": "CareFirst individual and family Exchange Formulary 2",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "CareFirst Exchange Formulary 2026 (5-Tier), last updated 10/01/26",
+      "sourceIds": [
+        "carefirst-next11-2026-10"
+      ]
+    },
+    {
+      "id": "kpmidatlantic",
+      "name": "Kaiser Permanente Mid-Atlantic",
+      "shortName": "Kaiser MAS",
+      "pbm": "Kaiser Permanente (in-house)",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "productName": "Kaiser Mid-Atlantic Marketplace formulary",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "Kaiser Permanente Marketplace Formulary (Mid-Atlantic region), last update 10/06/2026",
+      "sourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "arb",
+      "name": "ARBs",
+      "shortName": "ARB",
+      "plainName": "Angiotensin receptor blocker",
+      "description": "Losartan, valsartan, irbesartan, olmesartan, telmisartan, candesartan, azilsartan (Edarbi); single-agent tablets (combinations with HCTZ or amlodipine are alternatives only if listed separately). Sacubitril/valsartan (Entresto) is heart failure and out of scope.",
+      "plainDescription": "A daily blood pressure pill, often used when an ACE inhibitor causes cough.",
+      "indication": "Hypertension, diabetic kidney disease",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "ccb",
+      "name": "Calcium channel blockers",
+      "shortName": "CCB",
+      "plainName": "Calcium channel blocker",
+      "description": "Dihydropyridines (amlodipine, nifedipine ER, felodipine ER, nicardipine) and non-dihydropyridines (diltiazem IR/ER, verapamil IR/ER).",
+      "plainDescription": "A daily blood pressure pill that relaxes blood vessels.",
+      "indication": "Hypertension, angina",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "beta-blocker",
+      "name": "Beta blockers",
+      "shortName": "BB",
+      "plainName": "Beta blocker",
+      "description": "Metoprolol tartrate/succinate, carvedilol IR/CR, atenolol, bisoprolol, nebivolol (Bystolic), propranolol IR/ER, labetalol, nadolol.",
+      "plainDescription": "A daily pill that slows the heart and lowers blood pressure.",
+      "indication": "Hypertension, heart failure, post-MI, angina",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "thiazide",
+      "name": "Thiazide diuretics",
+      "shortName": "THIAZIDE",
+      "plainName": "Water pill (thiazide)",
+      "description": "Hydrochlorothiazide, chlorthalidone, indapamide, metolazone.",
+      "plainDescription": "A daily water pill for blood pressure.",
+      "indication": "Hypertension, edema",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "arb",
+      "preferredAgent": {
+        "inn": "Losartan potassium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet (standard starting dose; not printed on PDL)",
+        "sig": "50 mg once daily (25 mg if volume-depleted or with liver disease); range 25-100 mg/day (label).",
+        "sigShort": "50 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (PDL, no PA)",
+      "alternatives": [
+        {
+          "drug": "Irbesartan",
+          "note": "Preferred, no PA (PDL p.8)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olmesartan",
+          "note": "Preferred, no PA (PDL p.8)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Telmisartan",
+          "note": "Preferred, no PA (PDL p.8)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Valsartan tablets",
+          "note": "Preferred, no PA (PDL p.8)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Losartan/HCTZ",
+          "note": "Preferred combination listed separately (PDL p.8)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Amlodipine/valsartan",
+          "note": "Preferred combination listed separately (PDL p.9)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Amlodipine/olmesartan",
+          "note": "Preferred combination listed separately (PDL p.9)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Cozaar (losartan)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.8)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diovan (valsartan)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.8)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Benicar (olmesartan)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.8)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Micardis (telmisartan)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.8)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Avapro (irbesartan)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.8)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Atacand and candesartan (generic)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.8)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Edarbi (azilsartan)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.8)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hyzaar (losartan/HCTZ)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.8)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read DC PDL pp.8-9 (Angiotensin Receptor Blockers). Preferred single agents: irbesartan, losartan, olmesartan, telmisartan, valsartan tablets. Sacubitril/valsartan (generic, listed preferred on p.8) is heart failure and out of scope, so not an alternative. Losartan strength and sig are standard label dosing.",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "ccb",
+      "preferredAgent": {
+        "inn": "Amlodipine besylate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet (standard starting dose; not printed on PDL)",
+        "sig": "5 mg once daily (2.5 mg for older or frail adults); max 10 mg/day (label).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (PDL, no PA)",
+      "alternatives": [
+        {
+          "drug": "Nifedipine extended-release",
+          "note": "Preferred, no PA (PDL p.9)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diltiazem extended-release capsule",
+          "note": "Preferred, no PA (PDL p.10)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diltiazem tablet",
+          "note": "Preferred, no PA (PDL p.10)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Verapamil tablet",
+          "note": "Preferred, no PA (PDL p.10)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Verapamil extended-release tablet",
+          "note": "Preferred, no PA (PDL p.10)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Norvasc (amlodipine)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.9)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Procardia XL (nifedipine ER)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.9)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Felodipine ER",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.9)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nicardipine HCl and nimodipine",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.9)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Cardizem CD and Cardizem LA (diltiazem)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.10)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Verapamil ER capsule, verapamil 360 mg capsule, Verelan PM",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.10)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read DC PDL pp.9-10 (Calcium Channel Blockers, DHP and NonDHP). Preferred: amlodipine, nifedipine ER, diltiazem tablet and capsule, verapamil tablet and ER tablet. Pick is amlodipine 5 mg; strength and sig are standard label dosing, not printed on PDL.",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "beta-blocker",
+      "preferredAgent": {
+        "inn": "Metoprolol tartrate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet (standard hypertension dose; not printed on PDL)",
+        "sig": "Hypertension: start 50 mg twice daily (or 25 mg twice daily) and titrate; usual 100-200 mg/day (label).",
+        "sigShort": "25-50 mg BID",
+        "plainSig": "One pill twice a day; do not stop suddenly."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (PDL, no PA)",
+      "alternatives": [
+        {
+          "drug": "Metoprolol succinate ER",
+          "note": "Preferred, no PA (PDL p.9)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Atenolol",
+          "note": "Preferred, no PA (PDL p.9)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carvedilol",
+          "note": "Preferred, no PA (PDL p.9)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Bisoprolol",
+          "note": "Preferred, no PA (PDL p.9)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nebivolol HCl (generic)",
+          "note": "Preferred, no PA (PDL p.9)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Propranolol tablets, solution, ER and SA",
+          "note": "Preferred, no PA (PDL p.9)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Labetalol",
+          "note": "Preferred, no PA (PDL p.9)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nadolol",
+          "note": "Preferred, no PA (PDL p.9)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Sotalol",
+          "note": "Preferred, no PA (PDL p.9)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Bystolic (nebivolol)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.9)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Coreg CR (carvedilol ER)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.9)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Toprol XL (metoprolol succinate ER)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.9)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tenormin (atenolol)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.9)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lopressor (metoprolol)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.9)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Inderal LA and Inderal XL",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.9)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read DC PDL p.9 (Beta Blockers). Metoprolol tartrate is preferred with no PA. Beta-blocker/diuretic combinations on p.9 (atenolol/chlorthalidone, bisoprolol/HCTZ, metoprolol/HCTZ, propranolol/HCTZ) are combinations and are not used as single-agent alternatives. Strength and sig are standard label dosing.",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "thiazide",
+      "preferredAgent": {
+        "inn": "Hydrochlorothiazide",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg tablet (standard starting dose; not printed on PDL)",
+        "sig": "12.5-25 mg once daily in the morning (label).",
+        "sigShort": "12.5-25 mg QAM",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not a PDL class (covered on DC Medicaid FFS formulary per PDL p.1)",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "No standalone thiazide diuretic section appears on the DC PDL; thiazide combinations appear only in the ACE/ARB/beta-blocker combination rows (pp.8-9, e.g., atenolol/chlorthalidone, bisoprolol/HCTZ, losartan/HCTZ). Per PDL p.1, drug classes not listed are not part of the PDL but remain covered for DC Medicaid FFS members, so this is NOT a PDL-based noCoveredAgent and no exclusion is recorded. Pick is a standard generic thiazide; its specific coverage was not confirmed on the state formulary. Strength and sig are standard label dosing.",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "arb",
+      "preferredAgent": {
+        "inn": "Losartan potassium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet",
+        "sig": "50 mg once daily (25 mg if volume-depleted or with liver disease); range 25-100 mg/day (label).",
+        "sigShort": "50 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "F (Formulary Drug); no PA or step printed",
+      "alternatives": [
+        {
+          "drug": "Losartan potassium-hydrochlorothiazide",
+          "note": "F; combination listed separately (PDF p.39-40, 54)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Valsartan",
+          "outcome": "step",
+          "reason": "Step therapy flag (ST); step criteria not printed in this document (PDF p.39-40)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ],
+          "criteria": [
+            "Documented adequate trial and failure or intolerance with a first-line agent (losartan or losartan/HCTZ) for at least 15 days of therapy",
+            "Request is for a medically accepted indication (FDA, Micromedex, AHFS, USP DI, package insert, or standard of care)"
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "amerihealth-caritas-dc-pa-criteria-htn-arb-2026-11"
+          ]
+        },
+        {
+          "drug": "Irbesartan",
+          "outcome": "step",
+          "reason": "Step therapy flag (ST); step criteria not printed in this document (PDF p.39-40)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ],
+          "criteria": [
+            "Documented adequate trial and failure or intolerance with a first-line agent (losartan or losartan/HCTZ) for at least 15 days of therapy",
+            "Request is for a medically accepted indication (FDA, Micromedex, AHFS, USP DI, package insert, or standard of care)"
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "amerihealth-caritas-dc-pa-criteria-htn-arb-2026-11"
+          ]
+        },
+        {
+          "drug": "Olmesartan medoxomil",
+          "outcome": "step",
+          "reason": "Step therapy flag (ST); step criteria not printed in this document (PDF p.39-40)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ],
+          "criteria": [
+            "Documented adequate trial and failure or intolerance with a first-line agent (losartan or losartan/HCTZ) for at least 15 days of therapy",
+            "Request is for a medically accepted indication (FDA, Micromedex, AHFS, USP DI, package insert, or standard of care)"
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "amerihealth-caritas-dc-pa-criteria-htn-arb-2026-11"
+          ]
+        },
+        {
+          "drug": "Telmisartan",
+          "outcome": "step",
+          "reason": "Step therapy flag (ST); step criteria not printed in this document (PDF p.39-40)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ],
+          "criteria": [
+            "Documented adequate trial and failure or intolerance with a first-line agent (losartan or losartan/HCTZ) for at least 15 days of therapy",
+            "Request is for a medically accepted indication (FDA, Micromedex, AHFS, USP DI, package insert, or standard of care)"
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "amerihealth-caritas-dc-pa-criteria-htn-arb-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": "Step therapy flagged on valsartan, irbesartan, olmesartan, telmisartan and several ARB combinations (PDF p.39-40); step criteria not printed in this document.",
+      "verification": "verified",
+      "verificationNote": "Losartan potassium oral is F with no note (PDF p.39-40). Valsartan, irbesartan, olmesartan and telmisartan are F with ST (PDF p.39-40). ARB-HCTZ and amlodipine-valsartan combinations carry ST and are not single-agent alternatives. Candesartan and azilsartan (Edarbi) do not appear in the document. Strength and sig are standard label dosing.",
+      "sourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "ccb",
+      "preferredAgent": {
+        "inn": "Amlodipine besylate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg once daily (2.5 mg for older or frail adults); max 10 mg/day (label).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "F (Formulary Drug); QL 30 EA per 30 days",
+      "alternatives": [
+        {
+          "drug": "Nifedipine extended-release 24-hour tablet",
+          "note": "F, QL 30 or 60 EA per 30 days (PDF p.44, 48-49)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Felodipine extended-release",
+          "note": "F, no QL printed (PDF p.44, 48-49)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diltiazem (immediate-release and extended-release)",
+          "note": "F, QL varies by product (PDF p.43-45, 48-49)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Verapamil (immediate-release and extended-release)",
+          "note": "F, QL varies by product (PDF p.43-45, 48)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Amlodipine besylate oral is F with QL 30 EA per 30 days (PDF p.43, 48-49). The QL is not PA, so preferredRestriction is null. Nifedipine ER, felodipine ER, diltiazem and verapamil are all F (PDF p.43-45, 48-49). Amlodipine-benazepril and amlodipine-valsartan are combinations and are not listed as alternatives. Strength and sig are the standard starting dose.",
+      "sourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "beta-blocker",
+      "preferredAgent": {
+        "inn": "Metoprolol tartrate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet",
+        "sig": "Hypertension: start 50 mg twice daily (or 25 mg twice daily) and titrate; usual 100-200 mg/day (label).",
+        "sigShort": "25-50 mg BID",
+        "plainSig": "One pill twice a day; do not stop suddenly."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "F (Formulary Drug)",
+      "alternatives": [
+        {
+          "drug": "Atenolol",
+          "note": "F (PDF p.28, 42, 46-47, 51)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carvedilol",
+          "note": "F (PDF p.26-27, 39, 42, 46-47, 51)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Bisoprolol fumarate",
+          "note": "F (PDF p.28, 42, 46-47, 51)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Propranolol",
+          "note": "F (PDF p.26, 42, 46-47, 51)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nadolol",
+          "note": "F (PDF p.26, 28, 42, 46-47)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Labetalol",
+          "note": "F, QL 60 or 120 EA per 30 days (PDF p.26-27, 39, 42)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metoprolol succinate extended-release",
+          "note": "F (PDF p.28, 42, 46-47)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Metoprolol tartrate oral tablet 100 mg, 25 mg and 50 mg is F with no flags (PDF p.28). All beta-blockers in PDF p.26-28 and p.42-51 are F with no PA, ST or NF flag. Labetalol carries QL only. Nebivolol (Bystolic) does not appear in the document. Strength is the printed 50 mg option; sig is standard label dosing.",
+      "sourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "thiazide",
+      "preferredAgent": {
+        "inn": "Hydrochlorothiazide",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg tablet",
+        "sig": "12.5-25 mg once daily in the morning (label).",
+        "sigShort": "12.5-25 mg QAM",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "F (Formulary Drug)",
+      "alternatives": [
+        {
+          "drug": "Chlorthalidone",
+          "note": "F, 25 mg and 50 mg tablets (PDF p.54, 113)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Indapamide",
+          "note": "F (PDF p.54, 113)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metolazone",
+          "note": "F (PDF p.54, 113)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Hydrochlorothiazide oral is F with no flag (PDF p.54, 112). Chlorthalidone, indapamide and metolazone are F with no flag (PDF p.54-55, 112-113). Combination diuretics belong to the ARB and beta-blocker classes. Strength is the standard 25 mg starting dose; sig is label dosing.",
+      "sourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "arb",
+      "preferredAgent": {
+        "inn": "Losartan potassium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet",
+        "sig": "50 mg once daily (25 mg if volume-depleted or with liver disease); range 25-100 mg/day (label).",
+        "sigShort": "50 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Valsartan 160 mg tablet",
+          "note": "Tier 1, no PA (PDF p.47)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Irbesartan 150 mg tablet",
+          "note": "Tier 1, no PA (PDF p.47)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olmesartan medoxomil 20 mg tablet",
+          "note": "Tier 1, no PA (PDF p.47)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Telmisartan 40 mg tablet",
+          "note": "Tier 1, no PA (PDF p.47)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Candesartan cilexetil 16 mg tablet",
+          "note": "Tier 1, no PA (PDF p.46)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read on PDF pp.46-47: losartan potassium 25/50/100 mg Tier 1, no PA, ST or QL. Single-agent alternatives listed below are Tier 1 generics on the same pages. Combination tablets (losartan-HCTZ, valsartan-HCTZ, amlodipine-valsartan and similar) are not used as single-agent alternatives. Azilsartan (Edarbi) is not on this document; absence is not read as exclusion. Sacubitril-valsartan (Entresto) is listed under heart failure and is out of scope.",
+      "sourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "ccb",
+      "preferredAgent": {
+        "inn": "Amlodipine besylate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg once daily (2.5 mg for older or frail adults); max 10 mg/day (label).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Nifedipine ER 30 mg tablet",
+          "note": "Tier 1, no PA (PDF p.55)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Felodipine ER 5 mg tablet",
+          "note": "Tier 1, no PA (PDF p.55)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diltiazem ER 24-hour 120 mg capsule",
+          "note": "Tier 1, no PA (PDF p.54)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Verapamil ER 24-hour 240 mg capsule",
+          "note": "Tier 1, no PA (PDF p.56)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read on PDF p.54: amlodipine besylate 2.5/5/10 mg Tier 1, no PA. Alternatives are Tier 1 generics on PDF pp.54-56. Amlodipine-atorvastatin combinations (PDF p.53-54) are not single-agent alternatives. Nicardipine, nimodipine and nisoldipine appear on the list and are not given as alternatives.",
+      "sourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "beta-blocker",
+      "preferredAgent": {
+        "inn": "Atenolol",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet",
+        "sig": "50 mg by mouth once daily for hypertension; may increase to 100 mg once daily after 1-2 weeks (label).",
+        "sigShort": "50 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Metoprolol succinate ER 50 mg tablet",
+          "note": "Tier 1, no PA (PDF p.52)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metoprolol tartrate 50 mg tablet",
+          "note": "Tier 1, no PA (PDF p.53)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carvedilol 25 mg tablet",
+          "note": "Tier 1, no PA (PDF p.52)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Bisoprolol fumarate 5 mg tablet",
+          "note": "Tier 1, no PA (PDF p.52)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nebivolol 5 mg tablet",
+          "note": "Tier 1, no PA (PDF p.53)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Propranolol ER 80 mg capsule",
+          "note": "Tier 1, no PA (PDF p.53)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read on PDF p.52: atenolol 25/50/100 mg Tier 1, no PA. Chosen as the once-daily generic beta blocker on the list. Metoprolol, carvedilol, bisoprolol, nebivolol and propranolol are Tier 1 with no restriction (PDF pp.52-53). Beta-blocker/diuretic combinations are not single-agent alternatives.",
+      "sourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "thiazide",
+      "preferredAgent": {
+        "inn": "Hydrochlorothiazide",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg tablet",
+        "sig": "12.5-25 mg once daily in the morning (label).",
+        "sigShort": "12.5-25 mg QAM",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Chlorthalidone 25 mg tablet",
+          "note": "Tier 1, no PA (PDF p.56)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Indapamide 2.5 mg tablet",
+          "note": "Tier 1, no PA (PDF p.57)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metolazone 5 mg tablet",
+          "note": "Tier 1, no PA (PDF p.57)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read on PDF p.57: hydrochlorothiazide 12.5 mg capsule, 12.5/25/50 mg tablets Tier 1, no PA. Alternatives are the other single-agent thiazide-type diuretics on PDF pp.56-57. Triamterene-HCTZ and spironolactone-HCTZ combinations are not single-agent alternatives.",
+      "sourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "arb",
+      "preferredAgent": {
+        "inn": "Losartan potassium",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet",
+        "sig": "50 mg once daily (25 mg if volume-depleted or with liver disease); range 25-100 mg/day (label).",
+        "sigShort": "50 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Losartan potassium and hydrochlorothiazide",
+          "note": "Tier 1, combination listed separately (PDF p.18)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Valsartan",
+          "note": "Tier 2 (PDF p.18)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Irbesartan",
+          "note": "Tier 2 (PDF p.18)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olmesartan medoxomil",
+          "note": "Tier 2 (PDF p.18)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Telmisartan",
+          "note": "Tier 3 (PDF p.18)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Candesartan cilexetil",
+          "note": "Tier 3 (PDF p.17)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Edarbi (azilsartan) and azilsartan",
+          "outcome": "nonformulary",
+          "reason": "Not on the list. PDF p.2 states: \"Any product not found on the list will be considered non-formulary.\"",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read on PDF pp.17-18. Losartan tier 1 with no PA, step or QL. Sacubitril-valsartan (Entresto) excluded as heart failure, per the class description. Strength and sig are standard label dosing, not printed. Azilsartan absent; recorded as nonformulary under PDF p.2.",
+      "sourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "kpmidatlantic"
+    },
+    {
+      "classId": "ccb",
+      "preferredAgent": {
+        "inn": "Amlodipine besylate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg once daily (2.5 mg for older or frail adults); max 10 mg/day (label).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day for blood pressure."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Diltiazem (immediate-release tablet and coated-beads extended-release)",
+          "note": "Tier 1 (PDF p.17)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Verapamil hydrochloride",
+          "note": "Tier 1 (PDF p.17)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nifedipine",
+          "note": "Tier 1 or 3 depending on form (PDF p.17)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Felodipine",
+          "note": "Tier 3 (PDF p.17)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nicardipine hydrochloride (oral)",
+          "note": "Tier 3 (PDF p.17); intravenous form is medical benefit",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read on PDF p.17. Amlodipine tier 1 with no PA, step or QL. Amlodipine-benazepril and amlodipine-olmesartan are combinations and not used as single-agent alternatives. Strength and sig are standard label dosing, not printed.",
+      "sourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "kpmidatlantic"
+    },
+    {
+      "classId": "beta-blocker",
+      "preferredAgent": {
+        "inn": "Metoprolol tartrate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet",
+        "sig": "Hypertension: start 50 mg twice daily (or 25 mg twice daily) and titrate; usual 100-200 mg/day (label).",
+        "sigShort": "25-50 mg BID",
+        "plainSig": "One pill twice a day; do not stop suddenly."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 for some forms; tier 3 for others (form not named on the list)",
+      "alternatives": [
+        {
+          "drug": "Metoprolol succinate",
+          "note": "Tier 1 (PDF pp.17-18)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Atenolol",
+          "note": "Tier 1 (PDF p.18)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carvedilol",
+          "note": "Tier 1 (PDF p.18)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Labetalol hydrochloride (oral)",
+          "note": "Tier 1 (PDF p.18)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Propranolol hydrochloride",
+          "note": "Tier 1 (PDF p.18)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Bisoprolol fumarate",
+          "note": "Tier 1 (PDF p.18)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nebivolol",
+          "note": "Tier 3 (PDF p.18)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nadolol",
+          "note": "Tier 3 (PDF p.18)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Bystolic (brand nebivolol)",
+          "outcome": "nonformulary",
+          "reason": "Not on the list. PDF p.2 states: \"Any product not found on the list will be considered non-formulary.\"",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read on PDF pp.17-18. Metoprolol tartrate listed tier 1 for some forms and tier 3 for others; the 50 mg tablet is assumed to be the tier 1 form. No PA, step or QL printed for any beta-blocker here. Intravenous beta-blockers (esmolol, labetalol IV, metoprolol IV) are medical benefit and excluded. Strength and sig are standard label dosing.",
+      "sourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "kpmidatlantic"
+    },
+    {
+      "classId": "thiazide",
+      "preferredAgent": {
+        "inn": "Hydrochlorothiazide",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg tablet",
+        "sig": "12.5-25 mg once daily in the morning (label).",
+        "sigShort": "12.5-25 mg QAM",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Chlorthalidone",
+          "note": "Tier 1 (PDF p.25)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Indapamide",
+          "note": "Tier 1 (PDF p.25)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metolazone",
+          "note": "Tier 1 (PDF p.25)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read on PDF p.25 (diuretics). Hydrochlorothiazide, chlorthalidone, indapamide and metolazone are all tier 1 with no PA, step or QL printed. Strength and sig are standard label dosing.",
+      "sourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "kpmidatlantic"
+    }
+  ],
+  "references": [
+    {
+      "id": "dc-medicaid-next11-2026-10",
+      "label": "District of Columbia Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "publisher": "District of Columbia Department of Health Care Finance",
+      "type": "gov",
+      "url": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "effectiveDate": "2026-09-18",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "amerihealth-caritas-dc-next11-2026-10",
+      "label": "AmeriHealth Caritas DC Drug Formulary (effective June 1, 2026)",
+      "publisher": "AmeriHealth Caritas District of Columbia",
+      "type": "payer",
+      "url": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "effectiveDate": "2026-06-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "carefirst-next11-2026-10",
+      "label": "CareFirst Exchange Formulary 2026 (5-Tier), last updated 10/01/26",
+      "publisher": "CareFirst BlueCross BlueShield",
+      "type": "payer",
+      "url": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "kpmidatlantic-next11-2026-10",
+      "label": "Kaiser Permanente Marketplace Formulary (Mid-Atlantic region), last update 10/06/2026",
+      "publisher": "Kaiser Permanente",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "effectiveDate": "2026-10-06",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "amerihealth-caritas-dc-pa-criteria-htn-arb-2026-11",
+      "label": "ARB and renin inhibitor (second-line preferred) - AHDC Pharmacy Prior Authorization Criteria (updated 4/1/2026)",
+      "publisher": "AmeriHealth Caritas DC (PerformRx)",
+      "type": "payer",
+      "url": "https://www.amerihealthcaritasdc.com/pdf/provider/pharmacy-prior-authorization-criteria.pdf",
+      "accessed": "2026-11-02",
+      "effectiveDate": "2026-04-01"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

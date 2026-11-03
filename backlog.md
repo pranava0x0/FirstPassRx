@@ -1191,3 +1191,5 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   atypical antipsychotics on the existing scorecard. Research only; not started.
 
 - **build-seo --check fails every new day with no data change** (medium): `scripts/build-seo.mjs` stamps today into sitemap lastmod and llms.txt "as of", so the pretest check goes stale at midnight. Derive the date from the newest guide `asOf`/capture date instead. Found by the 2026-10-28 burndown.
+
+- **PA checklists: reauthorization lines inside initial-approval "all" sets (medium, 2026-11-02).** 21 paRequired items outside MD/AL/DC carry a "Reauthorization: …" criterion in a `criteriaMode: "all"` set, so `criteriaDone()` makes an initial request require renewal evidence. Codex flagged the same shape for Alabama's pediatric stable-therapy item (fixed in PR #27 by folding it into the trial statement). Either strip renewal lines at apply time or add a per-criterion `phase: "renewal"` the checklist skips.

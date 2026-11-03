@@ -1,0 +1,994 @@
+{
+  "id": "al-sleep-anxiety",
+  "label": "AL · Insomnia and anxiety",
+  "stateCode": "AL",
+  "region": "Alabama",
+  "topicId": "sleep-anxiety",
+  "topic": "Insomnia and anxiety",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-03",
+  "capturedAt": "2026-11-03",
+  "payers": [
+    {
+      "id": "al-medicaid",
+      "name": "Alabama Medicaid Agency (Fee-for-Service, statewide -- no MCO contracts)",
+      "shortName": "AL Medicaid FFS",
+      "pbm": "Administered directly by the Alabama Medicaid Agency (no contracted PBM identified)",
+      "formularyUrl": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_7-1-26.pdf",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref"
+      ],
+      "productName": "Alabama Medicaid Agency Preferred Drug List by Therapeutic Category",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Alabama Medicaid PDL Reference Tool (eff. 07/01/2026)"
+    },
+    {
+      "id": "bcbs-al-commercial",
+      "name": "Blue Cross and Blue Shield of Alabama (Commercial)",
+      "shortName": "BCBS Alabama",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+      "sourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "productName": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx1.0 Prescription Drug List",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (October 2026)"
+    },
+    {
+      "id": "bcbs-al-medicare",
+      "name": "BCBS Alabama Blue Advantage (Medicare Advantage / Part D)",
+      "shortName": "Blue Advantage AL",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+      "sourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "productName": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "z-drug",
+      "name": "Z-drug hypnotics",
+      "shortName": "Z-DRUG",
+      "plainName": "Sleep pill (zolpidem type)",
+      "description": "Zolpidem IR/ER/SL (Ambien, Ambien CR, Edluar), eszopiclone (Lunesta), zaleplon; ramelteon (Rozerem) and low-dose doxepin (Silenor) may be listed as alternatives.",
+      "plainDescription": "A bedtime pill for trouble falling or staying asleep.",
+      "indication": "Insomnia",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref"
+      ]
+    },
+    {
+      "id": "dora",
+      "name": "Orexin receptor antagonists",
+      "shortName": "DORA",
+      "plainName": "Orexin blocker sleep pill",
+      "description": "Dual orexin receptor antagonists: suvorexant (Belsomra), lemborexant (Dayvigo), daridorexant (Quviviq).",
+      "plainDescription": "A newer bedtime pill that blocks the brain's wake signal.",
+      "indication": "Insomnia",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref"
+      ]
+    },
+    {
+      "id": "benzodiazepine",
+      "name": "Benzodiazepines and buspirone for anxiety",
+      "shortName": "BZD",
+      "plainName": "Anxiety medicine",
+      "description": "Benzodiazepines (alprazolam IR/ER, lorazepam, clonazepam, diazepam, chlordiazepoxide, clorazepate) and the non-benzodiazepine anxiolytics buspirone and hydroxyzine as alternatives.",
+      "plainDescription": "A medicine for anxiety or panic attacks.",
+      "indication": "Generalized anxiety, panic disorder",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "z-drug",
+      "preferredAgent": {
+        "inn": "Zolpidem tartrate (IR)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg or 10 mg tablet",
+        "sig": "1 tablet (5 mg) by mouth at bedtime as needed, with at least 7 hours left for sleep. 5 mg is the labeled starting dose for women and adults 65+; men may start at 5 or 10 mg (label dosing).",
+        "sigShort": "5 mg QHS PRN",
+        "plainSig": "One small pill at bedtime when needed, only if you can sleep 7 or more hours."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred generic (no PA); Schedule IV",
+      "alternatives": [
+        {
+          "drug": "Zolpidem ER (generic Ambien CR)",
+          "note": "Preferred generic, no PA (Ref p.8); Ambien CR brand is PA",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Eszopiclone (generic)",
+          "note": "Preferred generic, no PA (Ref p.8); Lunesta brand is PA",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Zaleplon (generic)",
+          "note": "Preferred generic, no PA (Ref p.8)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Ramelteon (generic)",
+          "note": "Preferred generic, no PA (Ref p.8); Rozerem brand is PA",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Doxepin low-dose tablet (generic, Silenor-type)",
+          "note": "Generic doxepin sits on the Silenor row as preferred generic (Ref p.7); Silenor brand is PA. Confirm the generic is the 3 mg/6 mg tablet before dispensing.",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Ambien (zolpidem IR brand)",
+          "outcome": "pa",
+          "reason": "Brand requires PA; generic zolpidem is preferred (Ref p.8)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ],
+          "criteria": [
+            "Appropriate diagnosis supported by documentation in the patient record.",
+            "Failed 30-day trials with 2+ prescribed, preferred agents in class within 6 months, OR allergy/contraindication to all preferred agents, OR (age 18 and under) stable therapy 60+ consecutive days."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "al-medicaid-pa-criteria-anxiolytic-hypnotic-2026-11"
+          ]
+        },
+        {
+          "drug": "Ambien CR (zolpidem ER brand)",
+          "outcome": "pa",
+          "reason": "Brand requires PA; generic zolpidem ER is preferred (Ref p.8)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ],
+          "criteria": [
+            "Appropriate diagnosis supported by documentation in the patient record.",
+            "Failed 30-day trials with 2+ prescribed, preferred agents in class within 6 months, OR allergy/contraindication to all preferred agents, OR (age 18 and under) stable therapy 60+ consecutive days."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "al-medicaid-pa-criteria-anxiolytic-hypnotic-2026-11"
+          ]
+        },
+        {
+          "drug": "Edluar (zolpidem sublingual)",
+          "outcome": "pa",
+          "reason": "PA required (Ref p.8)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ],
+          "criteria": [
+            "Appropriate diagnosis supported by documentation in the patient record.",
+            "Failed 30-day trials with 2+ prescribed, preferred agents in class within 6 months, OR allergy/contraindication to all preferred agents, OR (age 18 and under) stable therapy 60+ consecutive days."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "al-medicaid-pa-criteria-anxiolytic-hypnotic-2026-11"
+          ]
+        },
+        {
+          "drug": "Lunesta (eszopiclone brand)",
+          "outcome": "pa",
+          "reason": "Brand requires PA; generic eszopiclone is preferred (Ref p.8)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ],
+          "criteria": [
+            "Appropriate diagnosis supported by documentation in the patient record.",
+            "Failed 30-day trials with 2+ prescribed, preferred agents in class within 6 months, OR allergy/contraindication to all preferred agents, OR (age 18 and under) stable therapy 60+ consecutive days."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "al-medicaid-pa-criteria-anxiolytic-hypnotic-2026-11"
+          ]
+        },
+        {
+          "drug": "Rozerem (ramelteon brand)",
+          "outcome": "pa",
+          "reason": "Brand requires PA; generic ramelteon is preferred (Ref p.8)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ],
+          "criteria": [
+            "Appropriate diagnosis supported by documentation in the patient record.",
+            "Failed 30-day trials with 2+ prescribed, preferred agents in class within 6 months, OR allergy/contraindication to all preferred agents, OR (age 18 and under) stable therapy 60+ consecutive days."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "al-medicaid-pa-criteria-anxiolytic-hypnotic-2026-11"
+          ]
+        },
+        {
+          "drug": "Silenor (doxepin low-dose brand)",
+          "outcome": "pa",
+          "reason": "PA required (Ref p.7)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ],
+          "criteria": [
+            "Appropriate diagnosis supported by documentation in the patient record.",
+            "Failed 30-day trials with 2+ prescribed, preferred agents in class within 6 months, OR allergy/contraindication to all preferred agents, OR (age 18 and under) stable therapy 60+ consecutive days."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "al-medicaid-pa-criteria-anxiolytic-hypnotic-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": "Anxiolytic/sedative/hypnotic PA (PA Instructions p.33): failed 30-day trials with at least two prescribed and preferred agents in the class within the past 6 months, or documented allergy or contraindication to all preferred agents.",
+      "verification": "verified",
+      "verificationNote": "Ref Tool p.8 (Anxiolytics/Sedatives/Hypnotics: Miscellaneous Agents), x-coordinate read: generic zolpidem IR and ER, eszopiclone, zaleplon and ramelteon sit in the Preferred Generic column; Ambien, Ambien CR, Edluar, Lunesta and Rozerem in the PA column. Thera p.2 agrees (all covered generics). Judgment: zolpidem IR 10 mg chosen as most-prescribed generic. Controlled (C-IV): no quantity or day-supply limit is printed in either document, so none is recorded. Doxepin alternative carries a strength caveat because the generic row shares the antidepressant section.",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref",
+        "al-medicaid-next11-2026-10-thera",
+        "al-medicaid-next11-2026-10-pa"
+      ],
+      "coverageSourceIds": [
+        "al-medicaid-next11-2026-10-ref",
+        "al-medicaid-next11-2026-10-thera"
+      ],
+      "restrictionSourceIds": [
+        "al-medicaid-next11-2026-10-ref",
+        "al-medicaid-next11-2026-10-pa"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "al-medicaid"
+    },
+    {
+      "classId": "dora",
+      "preferredAgent": {
+        "inn": "Suvorexant (Belsomra)",
+        "brand": "Belsomra",
+        "genericAvailable": false,
+        "strength": "10 mg",
+        "sig": "10 mg once, within 30 minutes of bedtime, with at least 7 hours left before waking; may increase to 20 mg (label).",
+        "sigShort": "10 mg QHS",
+        "plainSig": "One pill at bedtime, only if you can sleep 7 or more hours."
+      },
+      "preferredRestriction": "PA required: no orexin receptor antagonist is preferred; Belsomra sits in the PA column (Ref Tool p.9).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "PA required (no preferred agent in class)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Dayvigo (lemborexant)",
+          "outcome": "pa",
+          "reason": "PA required (Ref p.9); no preferred agent in class",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ],
+          "criteria": [
+            "Appropriate diagnosis supported by documentation in the patient record.",
+            "Failed 30-day trials with 2+ prescribed, preferred agents in class within 6 months, OR allergy/contraindication to all preferred agents, OR (age 18 and under) stable therapy 60+ consecutive days."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "al-medicaid-pa-criteria-anxiolytic-hypnotic-2026-11"
+          ]
+        },
+        {
+          "drug": "Quviviq (daridorexant)",
+          "outcome": "pa",
+          "reason": "PA required (Ref p.9); no preferred agent in class",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ],
+          "criteria": [
+            "Appropriate diagnosis supported by documentation in the patient record.",
+            "Failed 30-day trials with 2+ prescribed, preferred agents in class within 6 months, OR allergy/contraindication to all preferred agents, OR (age 18 and under) stable therapy 60+ consecutive days."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "al-medicaid-pa-criteria-anxiolytic-hypnotic-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Ref Tool p.9 (Orexin Receptor Antagonists): 'none' in the preferred columns; Belsomra, Dayvigo and Quviviq all in the PA column. Thera p.2 says 'All covered generics' with no brand preferred. No generic exists. Judgment: all three need PA, so the lowest-barrier pick is a matter of prescriber choice; suvorexant chosen as the first-listed and most-prescribed branded DORA. The PA Instructions do not name the orexin class; the class PA rule (p.33, Anxiolytics/Sedatives/Hypnotics) is not confirmed to apply and is not recorded. [Sonnet check 2026-11-02: confirmed by column position (x=404, PA column) that Belsomra, Dayvigo and Quviviq are all PA; Belsomra kept as pick with PA restriction. PA Instructions contain no orexin criteria (searched).]",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref",
+        "al-medicaid-next11-2026-10-thera"
+      ],
+      "coverageSourceIds": [
+        "al-medicaid-next11-2026-10-ref"
+      ],
+      "restrictionSourceIds": [
+        "al-medicaid-next11-2026-10-ref"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "al-medicaid"
+    },
+    {
+      "classId": "benzodiazepine",
+      "preferredAgent": {
+        "inn": "Alprazolam (IR)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.25 mg",
+        "sig": "Anxiety: 0.25-0.5 mg three times daily; increase every 3-4 days if needed, max 4 mg/day. Taper to stop (label).",
+        "sigShort": "0.25-0.5 mg TID",
+        "plainSig": "A small pill up to three times a day for anxiety; do not stop suddenly."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred generic (no PA); Schedule IV",
+      "alternatives": [
+        {
+          "drug": "Lorazepam (generic)",
+          "note": "Preferred generic, no PA (Ref p.8); Ativan brand is PA",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Clonazepam (generic)",
+          "note": "Preferred generic, no PA (Ref p.8); Klonopin brand is PA",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Diazepam (generic)",
+          "note": "Preferred generic, no PA (Ref p.8)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Buspirone (generic)",
+          "note": "Preferred generic, no PA (Ref p.8)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Hydroxyzine (generic)",
+          "note": "Preferred generic, no PA (Ref p.8); Vistaril brand is PA",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Xanax (alprazolam IR brand)",
+          "outcome": "pa",
+          "reason": "Brand requires PA; generic alprazolam is preferred (Ref p.8)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ],
+          "criteria": [
+            "Appropriate diagnosis supported by documentation in the patient record.",
+            "Failed 30-day trials with 2+ prescribed, preferred agents in class within 6 months, OR allergy/contraindication to all preferred agents, OR (age 18 and under) stable therapy 60+ consecutive days."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "al-medicaid-pa-criteria-anxiolytic-hypnotic-2026-11"
+          ]
+        },
+        {
+          "drug": "Xanax XR (alprazolam ER brand)",
+          "outcome": "pa",
+          "reason": "Brand requires PA; generic alprazolam ER is preferred (Ref p.8)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ],
+          "criteria": [
+            "Appropriate diagnosis supported by documentation in the patient record.",
+            "Failed 30-day trials with 2+ prescribed, preferred agents in class within 6 months, OR allergy/contraindication to all preferred agents, OR (age 18 and under) stable therapy 60+ consecutive days."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "al-medicaid-pa-criteria-anxiolytic-hypnotic-2026-11"
+          ]
+        },
+        {
+          "drug": "Ativan (lorazepam brand)",
+          "outcome": "pa",
+          "reason": "Brand requires PA; generic lorazepam is preferred (Ref p.8)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ],
+          "criteria": [
+            "Appropriate diagnosis supported by documentation in the patient record.",
+            "Failed 30-day trials with 2+ prescribed, preferred agents in class within 6 months, OR allergy/contraindication to all preferred agents, OR (age 18 and under) stable therapy 60+ consecutive days."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "al-medicaid-pa-criteria-anxiolytic-hypnotic-2026-11"
+          ]
+        },
+        {
+          "drug": "Klonopin (clonazepam brand)",
+          "outcome": "pa",
+          "reason": "Brand requires PA; generic clonazepam is preferred (Ref p.8)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ],
+          "criteria": [
+            "Appropriate diagnosis supported by documentation in the patient record.",
+            "Failed 30-day trials with 2+ prescribed, preferred agents in class within 6 months, OR allergy/contraindication to all preferred agents, OR (age 18 and under) stable therapy 60+ consecutive days."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "al-medicaid-pa-criteria-anxiolytic-hypnotic-2026-11"
+          ]
+        },
+        {
+          "drug": "Halcion (triazolam brand)",
+          "outcome": "pa",
+          "reason": "Brand requires PA; generic triazolam is preferred (Ref p.8)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ],
+          "criteria": [
+            "Appropriate diagnosis supported by documentation in the patient record.",
+            "Failed 30-day trials with 2+ prescribed, preferred agents in class within 6 months, OR allergy/contraindication to all preferred agents, OR (age 18 and under) stable therapy 60+ consecutive days."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "al-medicaid-pa-criteria-anxiolytic-hypnotic-2026-11"
+          ]
+        },
+        {
+          "drug": "Restoril (temazepam brand)",
+          "outcome": "pa",
+          "reason": "Brand requires PA; generic temazepam is preferred (Ref p.8)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ],
+          "criteria": [
+            "Appropriate diagnosis supported by documentation in the patient record.",
+            "Failed 30-day trials with 2+ prescribed, preferred agents in class within 6 months, OR allergy/contraindication to all preferred agents, OR (age 18 and under) stable therapy 60+ consecutive days."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "al-medicaid-pa-criteria-anxiolytic-hypnotic-2026-11"
+          ]
+        },
+        {
+          "drug": "Tranxene (clorazepate brand)",
+          "outcome": "pa",
+          "reason": "Brand requires PA; generic clorazepate is preferred (Ref p.8)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ],
+          "criteria": [
+            "Appropriate diagnosis supported by documentation in the patient record.",
+            "Failed 30-day trials with 2+ prescribed, preferred agents in class within 6 months, OR allergy/contraindication to all preferred agents, OR (age 18 and under) stable therapy 60+ consecutive days."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "al-medicaid-pa-criteria-anxiolytic-hypnotic-2026-11"
+          ]
+        },
+        {
+          "drug": "Loreev XR (lorazepam ER)",
+          "outcome": "pa",
+          "reason": "PA required (Ref p.8)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ],
+          "criteria": [
+            "Appropriate diagnosis supported by documentation in the patient record.",
+            "Failed 30-day trials with 2+ prescribed, preferred agents in class within 6 months, OR allergy/contraindication to all preferred agents, OR (age 18 and under) stable therapy 60+ consecutive days."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "al-medicaid-pa-criteria-anxiolytic-hypnotic-2026-11"
+          ]
+        },
+        {
+          "drug": "Alprazolam Intensol (oral concentrate)",
+          "outcome": "pa",
+          "reason": "PA required (Ref p.8)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ],
+          "criteria": [
+            "Appropriate diagnosis supported by documentation in the patient record.",
+            "Failed 30-day trials with 2+ prescribed, preferred agents in class within 6 months, OR allergy/contraindication to all preferred agents, OR (age 18 and under) stable therapy 60+ consecutive days."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "al-medicaid-pa-criteria-anxiolytic-hypnotic-2026-11"
+          ]
+        },
+        {
+          "drug": "Vistaril (hydroxyzine brand)",
+          "outcome": "pa",
+          "reason": "Brand requires PA; generic hydroxyzine is preferred (Ref p.8)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ],
+          "criteria": [
+            "Appropriate diagnosis supported by documentation in the patient record.",
+            "Failed 30-day trials with 2+ prescribed, preferred agents in class within 6 months, OR allergy/contraindication to all preferred agents, OR (age 18 and under) stable therapy 60+ consecutive days."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "al-medicaid-pa-criteria-anxiolytic-hypnotic-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": "Anxiolytic/sedative/hypnotic PA (PA Instructions p.33): failed 30-day trials with at least two prescribed and preferred agents in the class within the past 6 months, or documented allergy or contraindication to all preferred agents.",
+      "verification": "verified",
+      "verificationNote": "Ref Tool p.8 (Benzodiazepines; Miscellaneous Agents), x-coordinate read: generic alprazolam IR and ER, lorazepam, clonazepam, triazolam, temazepam, clorazepate, diazepam, buspirone and hydroxyzine sit in the Preferred Generic column; the brands, Loreev XR and Alprazolam Intensol in the PA column. Thera p.2 agrees (all covered generics). Judgment: alprazolam IR 0.25 mg three times daily as the standard starting dose (not printed). Controlled (C-IV): no quantity or day-supply limit printed, none recorded.",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref",
+        "al-medicaid-next11-2026-10-thera",
+        "al-medicaid-next11-2026-10-pa"
+      ],
+      "coverageSourceIds": [
+        "al-medicaid-next11-2026-10-ref",
+        "al-medicaid-next11-2026-10-thera"
+      ],
+      "restrictionSourceIds": [
+        "al-medicaid-next11-2026-10-ref",
+        "al-medicaid-next11-2026-10-pa"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "al-medicaid"
+    },
+    {
+      "classId": "z-drug",
+      "preferredAgent": {
+        "inn": "Zolpidem tartrate (immediate-release)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg",
+        "sig": "1 tablet (5 mg) by mouth at bedtime as needed, with at least 7 hours left for sleep. 5 mg is the labeled starting dose for women and adults 65+; men may start at 5 or 10 mg (label dosing).",
+        "sigShort": "5 mg QHS PRN",
+        "plainSig": "One small pill at bedtime when needed, only if you can sleep 7 or more hours."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Zolpidem tartrate IR tab 10 mg (Ambien)",
+          "note": "Tier 1, dispensing limit dot, no PA or step (PDF p.84)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zolpidem tartrate ER (Ambien CR), 6.25-12.5 mg",
+          "note": "Tier 1, dispensing limit dot, no PA or step (PDF p.83)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Eszopiclone tab (Lunesta), 1-3 mg",
+          "note": "Tier 1, dispensing limit dot, no PA or step (PDF p.83)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zaleplon cap, 5-10 mg",
+          "note": "Tier 1, dispensing limit dot, no PA or step (PDF p.83)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Doxepin HCl tab (sleep, Silenor generic), 3-6 mg",
+          "note": "Tier 1, dispensing limit dot, no PA or step (PDF p.83)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp.83-84. All Z-drug rows are Tier 1 with a dispensing-limit dot only; no quantity printed, so no quantity limit recorded. Zolpidem 5 mg chosen as the label-consistent starting strength; standard label dosing sig. Ramelteon (Rozerem) is not on the list and was not recorded as excluded. Belsomra and Dayvigo are DORA agents and are in their own class.",
+      "sourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbs-al-commercial"
+    },
+    {
+      "classId": "dora",
+      "preferredAgent": {
+        "inn": "Suvorexant",
+        "brand": "Belsomra",
+        "genericAvailable": false,
+        "strength": "10 mg",
+        "sig": "10 mg once, within 30 minutes of bedtime, with at least 7 hours left before waking; may increase to 20 mg (label).",
+        "sigShort": "10 mg QHS",
+        "plainSig": "One pill at bedtime, only if you can sleep 7 or more hours."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3",
+      "alternatives": [
+        {
+          "drug": "Lemborexant (Dayvigo), 5-10 mg",
+          "note": "Tier 3 brand, dispensing limit dot, no PA or step (PDF p.83)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p.83. Belsomra (suvorexant 5/10/15/20 mg) and Dayvigo (lemborexant 5/10 mg) are Tier 3 brands with a dispensing-limit dot only; no generic exists so no BOGL. Belsomra 10 mg chosen as the commonly written strength. Daridorexant (Quviviq) is not on the list; it was not recorded as excluded because the document does not say it is complete.",
+      "sourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbs-al-commercial"
+    },
+    {
+      "classId": "benzodiazepine",
+      "preferredAgent": {
+        "inn": "Alprazolam (immediate-release)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.25 mg",
+        "sig": "Anxiety: 0.25-0.5 mg three times daily; increase every 3-4 days if needed, max 4 mg/day. Taper to stop (label).",
+        "sigShort": "0.25-0.5 mg TID",
+        "plainSig": "A small pill up to three times a day for anxiety; do not stop suddenly."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Lorazepam tab (Ativan), 0.5-2 mg",
+          "note": "Tier 1, no dots (PDF p.74)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clonazepam tab (Klonopin), 0.5-2 mg",
+          "note": "Tier 1, no dots (PDF p.101)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diazepam tab (Valium), 2-10 mg",
+          "note": "Tier 1, no dots (PDF p.74)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Chlordiazepoxide cap, 5-25 mg",
+          "note": "Tier 1, no dots (PDF p.74)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clorazepate tab, 3.75-15 mg",
+          "note": "Tier 1, no dots (PDF p.74)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Alprazolam ER tab (Xanax XR), 0.5-3 mg",
+          "note": "Tier 1, no dots (PDF p.74)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Buspirone HCl tab, 5-30 mg",
+          "note": "Tier 1, no dots (PDF p.74)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydroxyzine HCl tab, 10-50 mg",
+          "note": "Tier 1, no dots (PDF p.74)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp.74, 101. No benzodiazepine row carries a PA, step, or dispensing-limit dot in this document, so no quantity or day-supply limit is recorded. Alprazolam 0.25 mg (Xanax reference) chosen as the label starting strength for anxiety; sig is standard label dosing, not printed. Buspirone and hydroxyzine are listed as alternatives per the class definition; both are Tier 1 with no dots.",
+      "sourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbs-al-commercial"
+    },
+    {
+      "classId": "z-drug",
+      "preferredAgent": {
+        "inn": "Zolpidem tartrate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "1 tablet (5 mg) by mouth at bedtime as needed, with at least 7 hours left for sleep. 5 mg is the labeled starting dose for women and adults 65+; men may start at 5 or 10 mg (label dosing).",
+        "sigShort": "5 mg QHS PRN",
+        "plainSig": "One small pill at bedtime when needed, only if you can sleep 7 or more hours."
+      },
+      "preferredRestriction": "Quantity limit: 30 tablets per 30 days (printed, PDF p. 86). Controlled substance. Flagged # (high-risk medication for patients over 65), which is a marker, not a PA.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (Generic)",
+      "alternatives": [
+        {
+          "drug": "Zaleplon capsules (5 mg, 10 mg)",
+          "note": "Tier 3, QL 30 or 60 capsules/30 days (PDF p. 86), no PA; flagged # high-risk",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ramelteon tablet (8 mg)",
+          "note": "Tier 4, QL 30 tablets/30 days (PDF p. 85), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp. 85-86 Sleep Disorder Agents. Preferred pick is zolpidem IR 5 mg (tier 2, QL 30/30, no PA, PDF p. 86); the 5 mg dose is the labeled starting dose, not printed. Eszopiclone (Lunesta), zolpidem ER/SL and the Ambien/Edluar brands are not on the list and are not inferred as excluded. Low-dose doxepin tablets (Silenor) are not on the list; the doxepin capsules on the list are full antidepressant doses and were not used as alternatives.",
+      "sourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbs-al-medicare"
+    },
+    {
+      "classId": "dora",
+      "preferredAgent": {
+        "inn": "Suvorexant",
+        "brand": "Belsomra",
+        "genericAvailable": false,
+        "strength": "10 mg tablet",
+        "sig": "1 tablet by mouth at bedtime (label dosing; not printed on the list)",
+        "sigShort": "1 tab QHS",
+        "plainSig": "One pill at bedtime."
+      },
+      "preferredRestriction": "Not printed on the plan's 2026 list (no orexin antagonist appears in the Sleep Disorder Agents section or the index). The list does not call itself complete, so confirm with the plan; expect a formulary exception.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not on list",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read PDF pp. 85-86 Sleep Disorder Agents and searched the full extracted text for suvorexant, lemborexant, daridorexant and their brand names; none appear. The front matter says a drug not shown on the list should be checked with Member Services, so this is not a confirmed exclusion. noCoveredAgent is set because no class agent is shown. Belsomra is a reference agent for the class only. [Sonnet check 2026-11-02: full-text search of the cached PDF confirms none of the three agents or brand names appear. The intro never states the list is complete, so absence stays partial rather than a confirmed exclusion.] [Review 2026-11-02: absence is not a confirmed exclusion, so noCoveredAgent is cleared; still partial.]",
+      "sourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbs-al-medicare"
+    },
+    {
+      "classId": "benzodiazepine",
+      "preferredAgent": {
+        "inn": "Alprazolam",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.25 mg tablet",
+        "sig": "Anxiety: 0.25-0.5 mg three times daily; increase every 3-4 days if needed, max 4 mg/day. Taper to stop (label).",
+        "sigShort": "0.25-0.5 mg TID",
+        "plainSig": "A small pill up to three times a day for anxiety; do not stop suddenly."
+      },
+      "preferredRestriction": "Quantity limit: 120 tablets per 30 days (printed, PDF p. 44). Controlled substance; no PA.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (Generic)",
+      "alternatives": [
+        {
+          "drug": "Buspirone tablets (5, 7.5, 10, 15, 30 mg)",
+          "note": "Tier 2, no QL or PA printed (PDF p. 44); non-benzodiazepine anxiolytic",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clonazepam tablets (0.5, 1 mg)",
+          "note": "Tier 2, QL 120 tablets/30 days (PDF p. 44), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clonazepam ODT (0.125-1 mg)",
+          "note": "Tier 4, QL 90 tablets/30 days (PDF p. 44), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Lorazepam tablets and oral concentrate (0.5, 1, 2 mg)",
+          "outcome": "pa",
+          "reason": "PA required for members 65 and older (list reads \"PA (>=65 yr)\"); tier 2, QL 120 tablets/30 days (PDF p. 45)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Diazepam tablets, solutions and concentrate",
+          "outcome": "pa",
+          "reason": "PA required for members 65 and older (list reads \"PA (>=65 yr)\"); tier 2 tablets, QL (PDF pp. 44-45)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clorazepate dipotassium tablets",
+          "outcome": "pa",
+          "reason": "PA required for members 65 and older (list reads \"PA (>=65 yr)\"); tier 4, QL (PDF p. 44)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydroxyzine HCl tablets (10, 25, 50 mg)",
+          "outcome": "pa",
+          "reason": "PA required for members 65 and older (list reads \"PA (>=65 yr)\"); tier 3 (PDF p. 45)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp. 44-45 Anxiolytics. Preferred pick is alprazolam 0.25 mg (tier 2, QL 120/30, no PA, PDF p. 44); the labeled starting dose is not printed. Lorazepam, diazepam, clorazepate and hydroxyzine all carry the 65+ PA, so they sit in paRequired. Chlordiazepoxide and alprazolam ER are not on the list and are not inferred as excluded. [Sonnet check 2026-11-02: reconfirmed in PDF - risperidone tab tier 2, QL only, no PA (the ODT and solution carry PA >=65); alprazolam tab tier 2, QL 120 (150 for 2 mg), no PA, no # flag.]",
+      "sourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbs-al-medicare"
+    }
+  ],
+  "references": [
+    {
+      "id": "al-medicaid-next11-2026-10-ref",
+      "label": "Alabama Medicaid PDL Reference Tool (eff. 07/01/2026)",
+      "publisher": "Alabama Medicaid Agency",
+      "type": "gov",
+      "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_7-1-26.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "al-medicaid-next11-2026-10-thera",
+      "label": "Alabama Medicaid PDL by Therapeutic Category (eff. 04/01/2026)",
+      "publisher": "Alabama Medicaid Agency",
+      "type": "gov",
+      "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Thera_3-16-26.pdf",
+      "effectiveDate": "2026-04-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "al-medicaid-next11-2026-10-pa",
+      "label": "Alabama Medicaid PA Criteria Instructions (Form 369), eff. 10/01/2026",
+      "publisher": "Alabama Medicaid Agency",
+      "type": "gov",
+      "url": "https://medicaid.alabama.gov/documents/9.0_Resources/9.4_Forms_Library/9.4.13_Pharmacy_Services/9.4.13_PH_Prior_Authorization_Criteria_10-5-26.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "bcbs-al-commercial-next11-2026-10",
+      "label": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (October 2026)",
+      "publisher": "Blue Cross and Blue Shield of Alabama (pharmacy benefit: Prime Therapeutics LLC)",
+      "type": "payer",
+      "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+      "accessed": "2026-11-02",
+      "effectiveDate": "2026-10-01"
+    },
+    {
+      "id": "bcbs-al-medicare-next11-2026-10",
+      "label": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)",
+      "publisher": "Blue Cross and Blue Shield of Alabama (Blue Advantage Choice, Medicare Advantage Part D)",
+      "type": "payer",
+      "url": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+      "effectiveDate": "2026-01-20",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "al-medicaid-pa-criteria-anxiolytic-hypnotic-2026-11",
+      "label": "Alabama Medicaid PA Criteria (eff. 2026-10-01): Anxiolytics/Sedatives/Hypnotics, p.33",
+      "publisher": "Alabama Medicaid Agency, Division of Pharmacy Services",
+      "type": "gov",
+      "url": "https://medicaid.alabama.gov/documents/9.0_Resources/9.4_Forms_Library/9.4.13_Pharmacy_Services/9.4.13_PH_Prior_Authorization_Criteria_10-5-26.pdf",
+      "accessed": "2026-11-02",
+      "effectiveDate": "2026-10-01"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

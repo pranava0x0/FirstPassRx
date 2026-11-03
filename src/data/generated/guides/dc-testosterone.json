@@ -1,0 +1,472 @@
+{
+  "id": "dc-testosterone",
+  "label": "DC · Testosterone",
+  "stateCode": "DC",
+  "region": "District of Columbia",
+  "topicId": "testosterone",
+  "topic": "Testosterone",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-03",
+  "capturedAt": "2026-11-03",
+  "payers": [
+    {
+      "id": "dc-medicaid",
+      "name": "DC Medicaid",
+      "shortName": "DC Medicaid",
+      "aka": "DC Medicaid fee-for-service and DC Healthcare Alliance (DHCF); DC Healthy Families MCOs run their own formularies",
+      "pbm": "Prime Therapeutics",
+      "productName": "DC Medicaid / DC Healthcare Alliance Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "District of Columbia Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "formularyUrl": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "amerihealth-caritas-dc",
+      "name": "AmeriHealth Caritas District of Columbia",
+      "shortName": "AmeriHealth Caritas DC",
+      "aka": "DC Healthy Families Medicaid MCO",
+      "pbm": "PerformRx",
+      "productName": "AmeriHealth Caritas DC drug formulary",
+      "marketSegment": "medicaid-mco",
+      "formularyId": "AmeriHealth Caritas DC Drug Formulary (effective June 1, 2026)",
+      "formularyUrl": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "sourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ]
+    },
+    {
+      "id": "carefirst",
+      "name": "CareFirst BlueCross BlueShield",
+      "shortName": "CareFirst",
+      "pbm": "CVS Caremark",
+      "formularyUrl": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "paPolicyUrl": "https://member.carefirst.com/carefirst-resources/pdf/drugs-requiring-prior-authorization-formulary-2.pdf",
+      "productName": "CareFirst individual and family Exchange Formulary 2",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "CareFirst Exchange Formulary 2026 (5-Tier), last updated 10/01/26",
+      "sourceIds": [
+        "carefirst-next11-2026-10"
+      ]
+    },
+    {
+      "id": "kpmidatlantic",
+      "name": "Kaiser Permanente Mid-Atlantic",
+      "shortName": "Kaiser MAS",
+      "pbm": "Kaiser Permanente (in-house)",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "productName": "Kaiser Mid-Atlantic Marketplace formulary",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "Kaiser Permanente Marketplace Formulary (Mid-Atlantic region), last update 10/06/2026",
+      "sourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "testosterone",
+      "name": "Testosterone replacement",
+      "shortName": "TRT",
+      "plainName": "Testosterone gel, shot or pill",
+      "description": "Testosterone gel/solution (AndroGel, Testim, Fortesta, Vogelxo, generic 1%/1.62%), injections (cypionate, enanthate, Xyosted, Aveed undecanoate), patch (Androderm), oral undecanoate (Jatenzo, Tlando, Kyzatrex), nasal (Natesto), pellets (Testopel).",
+      "plainDescription": "Testosterone replacement for low testosterone, as a gel, shot or pill.",
+      "indication": "Male hypogonadism",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone (topical gel pump)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "1.62% gel pump (generic for AndroGel; strength not printed on PDL)",
+        "sig": "Apply the labeled starting dose once each morning to clean, dry skin of the shoulders and upper arms (1.62% gel: 40.5 mg; 1% gel: 50 mg); adjust by morning serum testosterone. Let dry, cover the site, and wash hands (label; boxed warning on secondary exposure).",
+        "sigShort": "Apply QAM, dose per labs",
+        "plainSig": "Rub the gel on your shoulders each morning, let it dry, and wash your hands. Keep it away from children and partners."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (no PA)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "AndroGel (brand gel)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.20)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testim (brand gel)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.20)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Natesto (nasal testosterone)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.20)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone topical (generic packets for AndroGel, Axiron, Fortesta, Vogelxo)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.20)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Vogelxo",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.20)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read PDL p.20 (Endocrine and Metabolic Agents, Androgenic Agents, Topical). Only topical testosterone appears: generic testosterone gel pump (for AndroGel) is Preferred with no PA; brand gels, generic packets and Natesto require PA. The PDL does not print the strength of the generic pump; 1.62% is the strength of the generic AndroGel pump (judgment). Injectable testosterone (cypionate, enanthate, Xyosted, Aveed), oral testosterone undecanoate (Jatenzo, Tlando, Kyzatrex), patches and pellets do not appear on this PDL; the testosterone heading is not a PDL class beyond topical agents, so they are covered on the Medicaid formulary and not confirmed here.",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone cypionate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/mL",
+        "sig": "50-400 mg IM every 2 to 4 weeks, adjusted to keep morning testosterone in the normal range (label).",
+        "sigShort": "IM q2-4wk, dose per labs",
+        "plainSig": "A shot every 2 to 4 weeks; your prescriber sets the dose from blood tests."
+      },
+      "preferredRestriction": "Quantity limit: 4 mL per 28 days (PDF p. 133); no PA printed",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "F (Formulary Drug)",
+      "alternatives": [
+        {
+          "drug": "Testosterone cypionate 100 mg/mL",
+          "note": "F; QL 10 mL per 28 days (PDF p. 133)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone enanthate IM",
+          "note": "F; QL 5 mL per 28 days (PDF p. 133)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Testosterone transdermal gel 1.62% (generic gel, AndroGel-type)",
+          "outcome": "pa",
+          "reason": "PA required (PDF p. 134)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ],
+          "criteria": [
+            "Diagnosis of primary hypogonadism (congenital or acquired) or hypogonadotropic hypogonadism (congenital or acquired)",
+            "Documented low total testosterone (<300 ng/dL) with a copy of the laboratory result",
+            "Not prescribed to men with carcinoma of the breast or known or suspected prostate cancer; not for pregnant or breastfeeding women (exclusions)"
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "amerihealth-caritas-dc-pa-criteria-testo-preferred-2026-11"
+          ]
+        },
+        {
+          "drug": "Testosterone transdermal solution",
+          "outcome": "pa",
+          "reason": "PA required (PDF p. 134)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ],
+          "criteria": [
+            "Diagnosis of primary hypogonadism (congenital or acquired) or hypogonadotropic hypogonadism (congenital or acquired)",
+            "Documented low total testosterone (<300 ng/dL) with a copy of the laboratory result",
+            "Not prescribed to men with carcinoma of the breast or known or suspected prostate cancer; not for pregnant or breastfeeding women (exclusions)"
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "amerihealth-caritas-dc-pa-criteria-testo-preferred-2026-11"
+          ]
+        },
+        {
+          "drug": "Testim (testosterone gel)",
+          "outcome": "nonformulary",
+          "reason": "Non-formulary; PA required (PDF p. 133)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ],
+          "criteria": [
+            "Diagnosis of primary hypogonadism (congenital or acquired) or hypogonadotropic hypogonadism (congenital or acquired)",
+            "Documented low total testosterone (<300 ng/dL) with a copy of the laboratory result",
+            "Documented adequate trial and failure or intolerance with a preferred topical agent"
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "amerihealth-caritas-dc-pa-criteria-testo-nonformulary-2026-11"
+          ]
+        },
+        {
+          "drug": "Kyzatrex (oral testosterone undecanoate)",
+          "outcome": "nonformulary",
+          "reason": "Non-formulary; PA required (PDF p. 133)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ],
+          "criteria": [
+            "Diagnosis of primary hypogonadism (congenital or acquired) or hypogonadotropic hypogonadism (congenital or acquired)",
+            "Documented low total testosterone (<300 ng/dL) with a copy of the laboratory result",
+            "Documented adequate trial and failure or intolerance with a preferred topical agent"
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "amerihealth-caritas-dc-pa-criteria-testo-nonformulary-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read PDF pp. 133-134 (Androgens section and the duplicate listing). Testosterone cypionate 200 mg/mL is F with QL 4 mL per 28 days; that is a controlled substance QL and is recorded in preferredRestriction. Strength choice is a judgment call. Not on the list: Aveed (testosterone undecanoate injection) and Testopel (pellets). Both are clinic-administered and may fall under the medical benefit; the document does not say. Also absent: Xyosted, Jatenzo, Tlando, Natesto, Androderm, Fortesta, Vogelxo, AndroGel brand.",
+      "sourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone cypionate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/mL injection",
+        "sig": "50-400 mg IM every 2 to 4 weeks, adjusted to keep morning testosterone in the normal range (label).",
+        "sigShort": "IM q2-4wk, dose per labs",
+        "plainSig": "A shot every 2 to 4 weeks; your prescriber sets the dose from blood tests."
+      },
+      "preferredRestriction": "PA required (printed, PDF p.105). PA criteria are not printed in this document.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Testosterone cypionate injection, 100 mg/mL",
+          "outcome": "pa",
+          "reason": "PA required (PDF p.105)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone enanthate injection, 200 mg/mL",
+          "outcome": "pa",
+          "reason": "PA required (PDF p.105)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone 2% gel (10 mg/actuation)",
+          "outcome": "pa",
+          "reason": "PA required (PDF p.105)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone 1% gel (25 mg/2.5 g)",
+          "outcome": "pa",
+          "reason": "PA required (PDF p.105)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read PDF p.105 (formulary p.103). Every testosterone line listed is Tier 1 with PA. The preferred pick is the standard cypionate injection, not an oral or unflagged product, since no testosterone product is free of PA here. Aveed (undecanoate) and Testopel (pellets) are provider-administered and not listed, so they may sit under the medical benefit; not recorded as nonformulary. Xyosted, Jatenzo, Tlando, Kyzatrex, Natesto and Androderm are not listed. Marked partial for the benefit-routing gap.",
+      "sourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone cypionate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/mL injection",
+        "sig": "50-400 mg IM every 2 to 4 weeks, adjusted to keep morning testosterone in the normal range (label).",
+        "sigShort": "IM q2-4wk, dose per labs",
+        "plainSig": "A shot every 2 to 4 weeks; your prescriber sets the dose from blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 or 2 by listing; QL printed (p.31)",
+      "alternatives": [
+        {
+          "drug": "Testosterone enanthate",
+          "note": "Tier 1; QL printed (p.31)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone (dosage form not stated in the list)",
+          "note": "Tier 1 or 3 (p.31); form cannot be read from the listing",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "AVEED (testosterone undecanoate injection)",
+          "note": "Tier 3; medical benefit (MB) printed (p.31)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "JATENZO / TLANDO / KYZATREX (oral testosterone undecanoate)",
+          "outcome": "nonformulary",
+          "reason": "Not on the list (p.2 rule); the only undecanoate listed is the AVEED injection (p.31)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Testosterone cypionate (Tier 1 or 2, QL) and testosterone enanthate (Tier 1, QL) are listed as injectables (p.31); the 'testosterone 1, 3' line has no dosage form printed, so its form cannot be confirmed. QL amounts are not printed. Strength and dosing are standard label values. ANDROGEL, XYOSTED, TESTIM, FORTESTA and NATESTO are not listed by brand name. Testopel is not listed by brand name. [Sonnet check 2026-11-02: Confirmed 'testosterone 1, 3' has no form printed (also 'cypionate 1, 2 QL', 'enanthate 1 QL', Aveed 3 MB). Cypionate injection is the standard pick; kept partial. Oral undecanoate absence kept as nonformulary (self-administered).]",
+      "sourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "kpmidatlantic"
+    }
+  ],
+  "references": [
+    {
+      "id": "dc-medicaid-next11-2026-10",
+      "label": "District of Columbia Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "publisher": "District of Columbia Department of Health Care Finance",
+      "type": "gov",
+      "url": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "effectiveDate": "2026-09-18",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "amerihealth-caritas-dc-next11-2026-10",
+      "label": "AmeriHealth Caritas DC Drug Formulary (effective June 1, 2026)",
+      "publisher": "AmeriHealth Caritas District of Columbia",
+      "type": "payer",
+      "url": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "effectiveDate": "2026-06-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "carefirst-next11-2026-10",
+      "label": "CareFirst Exchange Formulary 2026 (5-Tier), last updated 10/01/26",
+      "publisher": "CareFirst BlueCross BlueShield",
+      "type": "payer",
+      "url": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "kpmidatlantic-next11-2026-10",
+      "label": "Kaiser Permanente Marketplace Formulary (Mid-Atlantic region), last update 10/06/2026",
+      "publisher": "Kaiser Permanente",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "effectiveDate": "2026-10-06",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "amerihealth-caritas-dc-pa-criteria-testo-preferred-2026-11",
+      "label": "Androgenic agents, preferred generics - AHDC Pharmacy Prior Authorization Criteria (updated 4/1/2026)",
+      "publisher": "AmeriHealth Caritas DC (PerformRx)",
+      "type": "payer",
+      "url": "https://www.amerihealthcaritasdc.com/pdf/provider/pharmacy-prior-authorization-criteria.pdf",
+      "accessed": "2026-11-02",
+      "effectiveDate": "2026-04-01"
+    },
+    {
+      "id": "amerihealth-caritas-dc-pa-criteria-testo-nonformulary-2026-11",
+      "label": "Androgenic agents, non-formulary - AHDC Pharmacy Prior Authorization Criteria (updated 4/1/2026)",
+      "publisher": "AmeriHealth Caritas DC (PerformRx)",
+      "type": "payer",
+      "url": "https://www.amerihealthcaritasdc.com/pdf/provider/pharmacy-prior-authorization-criteria.pdf",
+      "accessed": "2026-11-02",
+      "effectiveDate": "2026-04-01"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}
