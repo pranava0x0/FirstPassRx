@@ -499,3 +499,23 @@ describe('Cost Plus price-list snapshot', () => {
     expect(costPlusUrl('Oxybutynin chloride ER 10 mg')).not.toContain('oxybutyninchloride-5mg-tablet')
   })
 })
+
+describe('strength-aware cash lookups', () => {
+  it('prices a pick at its own strength from the Cost Plus variants', () => {
+    const p = costPlusPrice('Duloxetine', '60 mg delayed-release capsule')
+    expect(p?.quantity).toBe('30 capsules, 60mg')
+    expect(costPlusUrl('Duloxetine', '60 mg delayed-release capsule')).toContain('60mg-capsule')
+  })
+
+  it('never shows a GoodRx price captured at another strength, and re-pins the link', () => {
+    expect(goodRxPrice('Duloxetine', '60 mg delayed-release capsule')).toBeNull()
+    expect(goodRxUrl('Duloxetine', '60 mg delayed-release capsule')).toContain('dosage=60mg')
+    expect(goodRxUrl('Gabapentin', '600 mg tablet')).toContain('form=tablet')
+  })
+
+  it('leaves lists, combinations and missing strengths alone', () => {
+    expect(goodRxPrice('Duloxetine', '20 / 30 / 60 mg capsule')).toEqual(goodRxPrice('Duloxetine'))
+    expect(goodRxPrice('Duloxetine')).not.toBeNull()
+    expect(costPlusPrice('Budesonide-formoterol', '160/4.5 mcg')).toEqual(costPlusPrice('Budesonide-formoterol'))
+  })
+})

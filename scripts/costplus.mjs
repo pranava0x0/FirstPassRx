@@ -19,14 +19,14 @@
 // The list is cached at data-gathering/costplus/pricelist-<date>.json (gitignored).
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { CASH_LINK_RULES, costPlusUrl, priceSuppressedByForm } from '../src/lib/cash.ts'
-import { cashPrice, formOf, sameForm, sameMolecule, slugOf, strengthNum, unitsFor, words } from './costplus-lib.mjs'
+import { cashPrice, formOf, strengthKey, sameForm, sameMolecule, slugOf, strengthNum, unitsFor, words } from './costplus-lib.mjs'
 
 const ruleFor = (name) => CASH_LINK_RULES.find((r) => r.matches.test(name))
 
 const flag = (n) => process.argv.includes(`--${n}`)
 const arg = (n) => (process.argv.find((a) => a.startsWith(`--${n}=`)) || '').slice(n.length + 3)
 const API = 'https://api.costplusdrugs.com/pricelist/cpd'
-const today = new Date().toISOString().slice(0, 10)
+const today = new Date().toLocaleDateString('en-CA') // local date: the UTC date runs a day ahead in the evening
 const cacheDir = 'data-gathering/costplus'
 const SNAPSHOT = 'src/data/costplus-prices.json'
 const cacheFile = `${cacheDir}/pricelist-${today}.json`
@@ -55,7 +55,23 @@ function main(catalog) {
     const key = rule.costPlusPath.toLowerCase()
     const e = bySlug.get(key)
     const n = e && rule.costPlusPrice && unitsFor(rule.costPlusPrice.quantity, e)
-    snapshot.paths[key] = e ? { price: n ? cashPrice(e, n) : null, inStock: !!e.cpd_channel?.in_stock } : { delisted: true }
+    if (!e) {
+      snapshot.paths[key] = { delisted: true }
+      continue
+    }
+    snapshot.paths[key] = { price: n ? cashPrice(e, n) : null, inStock: !!e.cpd_channel?.in_stock }
+    // Same product at other strengths (same name, form and brand/generic), priced for the same
+    // count, so a pick at a different strength gets its own price and link (cash.ts).
+    if (!n) continue
+    const variants = {}
+    for (const v of catalog) {
+      if (v === e || !v.cpd_channel?.in_stock || v.medication_name !== e.medication_name || v.form !== e.form || v.brand_generic !== e.brand_generic) continue
+      const k = strengthKey(v.strength)
+      const units = k && unitsFor(rule.costPlusPrice.quantity, v)
+      if (!units || variants[k]) continue
+      variants[k] = { path: slugOf(v.url), price: cashPrice(v, units) }
+    }
+    if (Object.keys(variants).length) snapshot.paths[key].variants = variants
   }
   if (flag('write')) {
     writeFileSync(SNAPSHOT, JSON.stringify(snapshot, null, 2) + '\n')

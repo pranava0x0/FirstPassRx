@@ -60,3 +60,10 @@ export function sameMolecule(want, entry) {
 }
 export const strengthNum = (s) => ((s || '').match(/(\d+(?:\.\d+)?)\s*(mg|mcg|g|%|unit)/i) || [])[1]
 
+
+/** "25mg", "0.5mg", "100mcg" for a single-strength label; null for combinations and percentages. */
+export function strengthKey(text) {
+  const t = (text || '').toLowerCase().replace(/\s+/g, '')
+  const m = t.match(/^(\d+(?:\.\d+)?)(mg|mcg)$/)
+  return m ? `${Number(m[1])}${m[2]}` : null
+}

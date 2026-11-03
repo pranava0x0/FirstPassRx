@@ -11,7 +11,7 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## High
 
-- **Strength-aware cash lookup** (high; Impact high, Effort medium, Cost none). `ResultCard` and
+- **Strength-aware cash lookup** — DONE 2026-11-02 for the pick card: `ResultCard` passes `agent.strength`; a GoodRx price captured at another single strength is hidden (205 cells) and the link re-pinned to the pick's dosage/form; Cost Plus prices the pick's own strength from the price-list variants (64 cells) or hides it (131). Still open: alternatives in `PrescribeOptions` carry no strength. Original note (high; Impact high, Effort medium, Cost none). `ResultCard` and
   `PrescribeOptions` look prices up by `agent.inn` alone, so a pick at a different strength than
   the captured product shows the wrong price (Codex flagged cyclobenzaprine 5 vs 10 mg, baclofen,
   MGB hydrocodone 2.5/325 in one review). Pass `agent.strength` into `goodRxPrice/costPlusPrice`

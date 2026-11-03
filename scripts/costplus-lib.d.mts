@@ -16,3 +16,4 @@ export function formOf(text: string): { form: string | null; extended: boolean }
 export function sameForm(want: { form: string | null; extended: boolean }, entry: CostPlusEntry): boolean
 export function sameMolecule(want: string[], entry: CostPlusEntry): boolean
 export function strengthNum(s: string): string | undefined
+export function strengthKey(text: string): string | null
