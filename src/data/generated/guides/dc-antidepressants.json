@@ -1,0 +1,955 @@
+{
+  "id": "dc-antidepressants",
+  "label": "DC · Depression (beyond SSRIs)",
+  "stateCode": "DC",
+  "region": "District of Columbia",
+  "topicId": "antidepressants",
+  "topic": "Depression (beyond SSRIs)",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-03",
+  "capturedAt": "2026-11-03",
+  "payers": [
+    {
+      "id": "dc-medicaid",
+      "name": "DC Medicaid",
+      "shortName": "DC Medicaid",
+      "aka": "DC Medicaid fee-for-service and DC Healthcare Alliance (DHCF); DC Healthy Families MCOs run their own formularies",
+      "pbm": "Prime Therapeutics",
+      "productName": "DC Medicaid / DC Healthcare Alliance Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "District of Columbia Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "formularyUrl": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "amerihealth-caritas-dc",
+      "name": "AmeriHealth Caritas District of Columbia",
+      "shortName": "AmeriHealth Caritas DC",
+      "aka": "DC Healthy Families Medicaid MCO",
+      "pbm": "PerformRx",
+      "productName": "AmeriHealth Caritas DC drug formulary",
+      "marketSegment": "medicaid-mco",
+      "formularyId": "AmeriHealth Caritas DC Drug Formulary (effective June 1, 2026)",
+      "formularyUrl": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "sourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ]
+    },
+    {
+      "id": "carefirst",
+      "name": "CareFirst BlueCross BlueShield",
+      "shortName": "CareFirst",
+      "pbm": "CVS Caremark",
+      "formularyUrl": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "paPolicyUrl": "https://member.carefirst.com/carefirst-resources/pdf/drugs-requiring-prior-authorization-formulary-2.pdf",
+      "productName": "CareFirst individual and family Exchange Formulary 2",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "CareFirst Exchange Formulary 2026 (5-Tier), last updated 10/01/26",
+      "sourceIds": [
+        "carefirst-next11-2026-10"
+      ]
+    },
+    {
+      "id": "kpmidatlantic",
+      "name": "Kaiser Permanente Mid-Atlantic",
+      "shortName": "Kaiser MAS",
+      "pbm": "Kaiser Permanente (in-house)",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "productName": "Kaiser Mid-Atlantic Marketplace formulary",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "Kaiser Permanente Marketplace Formulary (Mid-Atlantic region), last update 10/06/2026",
+      "sourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "snri",
+      "name": "SNRIs",
+      "shortName": "SNRI",
+      "plainName": "Serotonin-norepinephrine reuptake inhibitor",
+      "description": "Venlafaxine IR/ER (tablet and capsule), desvenlafaxine (Pristiq), duloxetine (Cymbalta, Drizalma), levomilnacipran (Fetzima).",
+      "plainDescription": "A daily antidepressant that also helps some nerve pain.",
+      "indication": "Major depression, anxiety, neuropathic pain",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "bupropion",
+      "name": "Bupropion",
+      "shortName": "NDRI",
+      "plainName": "Bupropion (Wellbutrin type)",
+      "description": "Bupropion IR, SR, XL (Wellbutrin, Wellbutrin XL, Forfivo XL, Aplenzin); exclude Zyban labeling for smoking cessation and naltrexone/bupropion (Contrave).",
+      "plainDescription": "A daily antidepressant that does not usually cause weight gain or sexual side effects.",
+      "indication": "Major depression, seasonal affective disorder",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "antidepressant-other",
+      "name": "Other antidepressants",
+      "shortName": "OTHER",
+      "plainName": "Mirtazapine, trazodone and newer agents",
+      "description": "Mirtazapine (Remeron, ODT), trazodone, vilazodone (Viibryd), vortioxetine (Trintellix), dextromethorphan/bupropion (Auvelity), nefazodone.",
+      "plainDescription": "Other daily antidepressants, including ones often used at night for sleep.",
+      "indication": "Major depression",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "snri",
+      "preferredAgent": {
+        "inn": "Duloxetine",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "30 mg delayed-release capsule",
+        "sig": "Depression or anxiety: 30 mg once daily for 1 week, then 60 mg once daily. Nerve pain or fibromyalgia: 60 mg once daily (may start at 30 mg) (label).",
+        "sigShort": "30 mg QD x1 wk, then 60 mg",
+        "plainSig": "One capsule a day; the dose usually goes up after a week."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (no PA)",
+      "alternatives": [
+        {
+          "drug": "Venlafaxine IR",
+          "note": "Preferred, no PA (PDL p.14)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Venlafaxine HCl ER capsules",
+          "note": "Preferred, no PA (PDL p.14)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Cymbalta (duloxetine)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.17)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Drizalma Sprinkle (duloxetine)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.17)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Duloxetine 80 mg, 90 mg and 120 mg capsules",
+          "outcome": "pa",
+          "reason": "PA required for these strengths (PDL p.14)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Duloxetine (generic for Irenka)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.17)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Desvenlafaxine ER",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.14)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pristiq (desvenlafaxine)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.14)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Fetzima (levomilnacipran)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.14)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Venlafaxine besylate ER tablets",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.14)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Venlafaxine HCl ER tablets",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.14)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL p.14 (Antidepressants: Others) and p.17 (Neuropathic Pain and Select Agents). Generic duloxetine (gen for Cymbalta) is Preferred on p.17; venlafaxine IR and venlafaxine HCl ER capsules are Preferred on p.14. The PDL does not print the generic duloxetine strengths; 30 mg is the label starting dose (judgment). Duloxetine picked over venlafaxine as the most commonly written preferred SNRI. Duloxetine 80/90/120 mg capsules require PA.",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "bupropion",
+      "preferredAgent": {
+        "inn": "Bupropion XL",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "150 mg extended-release tablet",
+        "sig": "150 mg once daily in the morning for at least 4 days, then 300 mg once daily if needed; max 450 mg/day (label).",
+        "sigShort": "150 mg QAM, then 300 mg",
+        "plainSig": "One pill each morning; the dose may go up after a few days."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (no PA)",
+      "alternatives": [
+        {
+          "drug": "Bupropion SR",
+          "note": "Preferred, no PA; PDL lists IR/SR/XL at 150 and 300 mg (p.14)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Bupropion IR",
+          "note": "Preferred, no PA; PDL lists IR/SR/XL at 150 and 300 mg (p.14)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Bupropion XL 450 mg (generic for Forfivo XL)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.14)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Wellbutrin SR / XL (brand)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.14)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL p.14 (Antidepressants: Others). Preferred line reads 'bupropion IR/SR/XL 150, 300' without assigning strengths to formulations; XL 150 mg chosen as the standard starting dose (judgment). Generic bupropion is Preferred and the brand Wellbutrin SR/XL requires PA, so no brand-over-generic (BOGL) condition applies. Zyban and Contrave are not listed on this PDL line.",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "antidepressant-other",
+      "preferredAgent": {
+        "inn": "Mirtazapine",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "15 mg tablet",
+        "sig": "15 mg once daily at bedtime; may increase every 1-2 weeks up to 45 mg (label).",
+        "sigShort": "15 mg QHS",
+        "plainSig": "One pill at bedtime."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (no PA)",
+      "alternatives": [
+        {
+          "drug": "Trazodone",
+          "note": "Preferred, no PA (PDL p.14)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Mirtazapine ODT",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.14)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Remeron (mirtazapine)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.14)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nefazodone",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.14)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Viibryd (vilazodone)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.14)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Vilazodone (generic)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.14)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Trintellix (vortioxetine)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.14)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Auvelity (dextromethorphan/bupropion)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.14)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL p.14 (Antidepressants: Others). Mirtazapine IR and trazodone are Preferred with no PA. Mirtazapine chosen as the preferred generic with a bedtime starting dose (judgment; trazodone is equally preferred). The MAOIs on the same PDL line (Nardil, phenelzine, tranylcypromine, Marplan, Emsam, Exxua, Zurzuvae, Spravato) are PA but are outside this class description and are not listed here. Sedation or nightly use is not a PDL restriction.",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "snri",
+      "preferredAgent": {
+        "inn": "Duloxetine",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "60 mg (delayed-release capsule)",
+        "sig": "Depression or anxiety: 30 mg once daily for 1 week, then 60 mg once daily. Nerve pain or fibromyalgia: 60 mg once daily (may start at 30 mg) (label).",
+        "sigShort": "30 mg QD x1 wk, then 60 mg",
+        "plainSig": "One capsule a day; the dose usually goes up after a week."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "F (Formulary Drug)",
+      "alternatives": [
+        {
+          "drug": "Venlafaxine HCl (IR)",
+          "note": "F; no QL printed (PDF p. 87)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Venlafaxine HCl ER (capsule)",
+          "note": "F; no QL printed (PDF p. 87)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Venlafaxine HCl ER (tablet 225 mg)",
+          "note": "F; no QL printed (PDF p. 87)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp. 76 and 87 (duloxetine DR capsule, F, no PA on both pages; venlafaxine F on p. 87). Not on the list: desvenlafaxine (Pristiq), levomilnacipran (Fetzima), Cymbalta and Drizalma brands. Document does not state completeness, so these are absent, not excluded.",
+      "sourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "bupropion",
+      "preferredAgent": {
+        "inn": "Bupropion HCl XL",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "150 mg (extended-release tablet)",
+        "sig": "150 mg once daily in the morning for at least 4 days, then 300 mg once daily if needed; max 450 mg/day (label).",
+        "sigShort": "150 mg QAM, then 300 mg",
+        "plainSig": "One pill each morning; the dose may go up after a few days."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "F (Formulary Drug)",
+      "alternatives": [
+        {
+          "drug": "Bupropion HCl ER (SR)",
+          "note": "F; no QL printed (PDF p. 64)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Bupropion HCl (IR)",
+          "note": "F; no QL printed (PDF p. 64)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p. 64 (bupropion IR, SR, XL all F with no PA). Bupropion ER (smoking deterrent, F QL 90 per 30 days, PDF p. 64) is the smoking-cessation labeling and is excluded per the class description. Not on the list: Wellbutrin brand, Forfivo XL, Aplenzin, Contrave (naltrexone/bupropion).",
+      "sourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "antidepressant-other",
+      "preferredAgent": {
+        "inn": "Mirtazapine",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "15 mg",
+        "sig": "15 mg once daily at bedtime; may increase every 1-2 weeks up to 45 mg (label).",
+        "sigShort": "15 mg QHS",
+        "plainSig": "One pill at bedtime."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "F (Formulary Drug)",
+      "alternatives": [
+        {
+          "drug": "Trazodone HCl",
+          "note": "F; no QL printed (PDF p. 89)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nefazodone HCl",
+          "note": "F; no QL printed (PDF p. 89)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp. 65, 89 (mirtazapine F, trazodone F, nefazodone F, no PA). Strength not printed on the list; 15 mg is the label starting dose. Not on the list: vilazodone (Viibryd), vortioxetine (Trintellix), dextromethorphan/bupropion (Auvelity), Remeron brand. Spravato and Zurzuvae are NF PA but are outside this class (PDF p. 65).",
+      "sourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "snri",
+      "preferredAgent": {
+        "inn": "Duloxetine",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "60 mg delayed-release capsule",
+        "sig": "Depression or anxiety: 30 mg once daily for 1 week, then 60 mg once daily. Nerve pain or fibromyalgia: 60 mg once daily (may start at 30 mg) (label).",
+        "sigShort": "30 mg QD x1 wk, then 60 mg",
+        "plainSig": "One capsule a day; the dose usually goes up after a week."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Desvenlafaxine ER tablet (generic of Pristiq), 25/50/100 mg",
+          "note": "Tier 1 (generic), no flag (PDF p.65)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Venlafaxine HCl tablet (IR), 25 to 100 mg",
+          "note": "Tier 1, no flag (PDF pp.69-70)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Venlafaxine HCl ER capsule, 37.5/75/150 mg",
+          "note": "Tier 1, no flag (PDF p.69)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Venlafaxine HCl ER tablet, 37.5/75/150 mg",
+          "note": "Tier 1, no flag (PDF p.70)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Levomilnacipran (Fetzima) capsule",
+          "note": "Tier 3, no flag (PDF pp.66-67)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp.65-70 (formulary pp.63-68). Duloxetine delayed-release pellet capsules 20/30/60 mg are Tier 1 with no flag (PDF p.66). Desvenlafaxine ER and all venlafaxine forms are Tier 1 with no flag. Fetzima is Tier 3 with no flag. Cymbalta, Drizalma and generic levomilnacipran are not listed. No SNRI carries PA or ST in this document.",
+      "sourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "bupropion",
+      "preferredAgent": {
+        "inn": "Bupropion HCl XL",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "150 mg extended-release (XL) tablet",
+        "sig": "150 mg once daily in the morning for at least 4 days, then 300 mg once daily if needed; max 450 mg/day (label).",
+        "sigShort": "150 mg QAM, then 300 mg",
+        "plainSig": "One pill each morning; the dose may go up after a few days."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Bupropion HCl immediate-release tablet, 75 and 100 mg",
+          "note": "Tier 1, no flag (PDF p.64)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Bupropion HCl sustained-release tablet, 100/150/200 mg",
+          "note": "Tier 1, no flag (PDF pp.64-65)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Bupropion HCl extended-release (XL) tablet, 300 mg",
+          "note": "Tier 1, no flag (PDF p.65)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp.64-65 (formulary pp.62-63). Every bupropion IR, SR and XL strength listed is Tier 1 with no flag. Wellbutrin, Aplenzin and Forfivo brands are not listed. The smoking-deterrent bupropion SR (PDF p.93) is outside this class description and not recorded. No PA or ST appears on any bupropion line.",
+      "sourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "antidepressant-other",
+      "preferredAgent": {
+        "inn": "Mirtazapine",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "15 mg tablet",
+        "sig": "15 mg once daily at bedtime; may increase every 1-2 weeks up to 45 mg (label).",
+        "sigShort": "15 mg QHS",
+        "plainSig": "One pill at bedtime."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Mirtazapine orally disintegrating tablet, 15/30/45 mg",
+          "note": "Tier 1, no flag (PDF p.67)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Trazodone HCl tablet, 50 to 300 mg",
+          "note": "Tier 1, no flag (PDF p.69)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nefazodone HCl tablet, 50 to 250 mg",
+          "note": "Tier 1, no flag (PDF p.68)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Vilazodone HCl tablet, 10/20/40 mg",
+          "note": "Tier 1, no flag (PDF p.70)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Trintellix (vortioxetine) tablet, 5/10/20 mg",
+          "outcome": "step",
+          "reason": "Tier 3 with ST; PA** (PA applies if step not met) (PDF p.69)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp.67-70 (formulary pp.65-68). Mirtazapine tablets and ODT are Tier 1 with no flag. Trazodone, nefazodone and generic vilazodone are Tier 1 with no flag. Trintellix carries ST; PA**. Remeron, Viibryd and Auvelity brands are not listed. Pick is a judgment call: mirtazapine 15 mg is the common Tier 1 starting strength.",
+      "sourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "snri",
+      "preferredAgent": {
+        "inn": "Duloxetine HCl",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "60 mg delayed-release capsule",
+        "sig": "Depression or anxiety: 30 mg once daily for 1 week, then 60 mg once daily. Nerve pain or fibromyalgia: 60 mg once daily (may start at 30 mg) (label).",
+        "sigShort": "30 mg QD x1 wk, then 60 mg",
+        "plainSig": "One capsule a day; the dose usually goes up after a week."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 or 3 by form (p.23)",
+      "alternatives": [
+        {
+          "drug": "Venlafaxine HCl",
+          "note": "Tier 1 or 3 by form (p.24)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Desvenlafaxine succinate",
+          "note": "Tier 3, no flag (p.23)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Desvenlafaxine ER (listed as DESVENLAFAXINE ER)",
+          "note": "Tier 3, no flag (p.23)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "FETZIMA (levomilnacipran)",
+          "note": "Tier 3, no flag (p.23)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "All four class molecules appear on the list (pp.23-24). Brand CYMBALTA, PRISTIQ and DRIZALMA are not listed, but the generic molecules are covered, so they are not coded as exclusions. Form split (capsule vs other) is not printed; capsule chosen as the standard duloxetine form and strength is standard label dosing.",
+      "sourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "kpmidatlantic"
+    },
+    {
+      "classId": "bupropion",
+      "preferredAgent": {
+        "inn": "Bupropion HCl (extended-release XL)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "150 mg extended-release tablet",
+        "sig": "150 mg once daily in the morning for at least 4 days, then 300 mg once daily if needed; max 450 mg/day (label).",
+        "sigShort": "150 mg QAM, then 300 mg",
+        "plainSig": "One pill each morning; the dose may go up after a few days."
+      },
+      "preferredRestriction": "PA required: the bupropion HCl line carries a PA flag (p.23); the document does not state the PA criteria or which dosage forms the flag covers.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 or 3 by form; PA printed (p.23)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "APLENZIN (bupropion hydrobromide)",
+          "outcome": "nonformulary",
+          "reason": "Not on the list; only bupropion HCl appears (p.23) and the generic HCl salt is the only listed form",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "The only depression bupropion row is 'bupropion hcl 1, 3 PA' (p.23); the PA flag applies to the whole row and the document does not separate forms, so PA is assumed to cover the preferred XL tablet. 'bupropion hcl (smoking deterrent) PREV' (p.14) is smoking-cessation labeling and excluded. Wellbutrin, Forfivo XL and Aplenzin are not listed by brand name. Strength and sig are standard label values, not printed. [Sonnet check 2026-11-02: Confirmed single 'bupropion hcl 1, 3 PA' line (p.23); form covered by PA flag unconfirmed, kept partial. Aplenzin absence kept as nonformulary (oral, self-administered).]",
+      "sourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "kpmidatlantic"
+    },
+    {
+      "classId": "antidepressant-other",
+      "preferredAgent": {
+        "inn": "Mirtazapine",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "15 mg tablet",
+        "sig": "15 mg once daily at bedtime; may increase every 1-2 weeks up to 45 mg (label).",
+        "sigShort": "15 mg QHS",
+        "plainSig": "One pill at bedtime."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 or 3 by form (p.23)",
+      "alternatives": [
+        {
+          "drug": "Trazodone HCl",
+          "note": "Tier 1 or 3 by form (p.24)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nefazodone HCl",
+          "note": "Tier 1, no flag (p.23)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "VIIBRYD (vilazodone)",
+          "note": "Tier 3, no flag (p.24)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "TRINTELLIX (vortioxetine)",
+          "outcome": "pa",
+          "reason": "PA required (p.24)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "AUVELITY (dextromethorphan/bupropion)",
+          "outcome": "nonformulary",
+          "reason": "Not on the list; dextromethorphan does not appear in the list (p.2 rule)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Mirtazapine (Tier 1 or 3 by form, no flag) is the lowest-barrier pick (p.23). REMERON and mirtazapine ODT are not listed by name; the generic molecule is covered. Strength and sig are standard label starting values, not printed.",
+      "sourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "kpmidatlantic"
+    }
+  ],
+  "references": [
+    {
+      "id": "dc-medicaid-next11-2026-10",
+      "label": "District of Columbia Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "publisher": "District of Columbia Department of Health Care Finance",
+      "type": "gov",
+      "url": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "effectiveDate": "2026-09-18",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "amerihealth-caritas-dc-next11-2026-10",
+      "label": "AmeriHealth Caritas DC Drug Formulary (effective June 1, 2026)",
+      "publisher": "AmeriHealth Caritas District of Columbia",
+      "type": "payer",
+      "url": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "effectiveDate": "2026-06-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "carefirst-next11-2026-10",
+      "label": "CareFirst Exchange Formulary 2026 (5-Tier), last updated 10/01/26",
+      "publisher": "CareFirst BlueCross BlueShield",
+      "type": "payer",
+      "url": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "kpmidatlantic-next11-2026-10",
+      "label": "Kaiser Permanente Marketplace Formulary (Mid-Atlantic region), last update 10/06/2026",
+      "publisher": "Kaiser Permanente",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "effectiveDate": "2026-10-06",
+      "accessed": "2026-11-02"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

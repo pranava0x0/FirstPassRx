@@ -388,8 +388,9 @@ import costPlusSnapshot from '../data/costplus-prices.json' with { type: 'json' 
  * 3937 → 4085: Tennessee's 11 newer topics (4 payers × 28 classes; UHC and Humana reused).
  * 4085 → 4303: Maryland's 11 newer topics (7 payers × 28 classes; UHC reused, Priority Partners copies the PDL).
  * 4303 → 4443: Alabama's 11 newer topics (3 payers × 28 classes).
+ * 4443 → 4504: DC's 11 newer topics (4 payers × 28 classes; CareFirst and Kaiser reuse the MD records).
  */
-export const KNOWN_UNPRICED_GAP = 4443
+export const KNOWN_UNPRICED_GAP = 4504
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake

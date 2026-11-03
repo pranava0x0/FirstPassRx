@@ -1,0 +1,1170 @@
+{
+  "id": "dc-antipsychotics",
+  "label": "DC · Antipsychotics",
+  "stateCode": "DC",
+  "region": "District of Columbia",
+  "topicId": "antipsychotics",
+  "topic": "Antipsychotics",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-03",
+  "capturedAt": "2026-11-03",
+  "payers": [
+    {
+      "id": "dc-medicaid",
+      "name": "DC Medicaid",
+      "shortName": "DC Medicaid",
+      "aka": "DC Medicaid fee-for-service and DC Healthcare Alliance (DHCF); DC Healthy Families MCOs run their own formularies",
+      "pbm": "Prime Therapeutics",
+      "productName": "DC Medicaid / DC Healthcare Alliance Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "District of Columbia Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "formularyUrl": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "amerihealth-caritas-dc",
+      "name": "AmeriHealth Caritas District of Columbia",
+      "shortName": "AmeriHealth Caritas DC",
+      "aka": "DC Healthy Families Medicaid MCO",
+      "pbm": "PerformRx",
+      "productName": "AmeriHealth Caritas DC drug formulary",
+      "marketSegment": "medicaid-mco",
+      "formularyId": "AmeriHealth Caritas DC Drug Formulary (effective June 1, 2026)",
+      "formularyUrl": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "sourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ]
+    },
+    {
+      "id": "carefirst",
+      "name": "CareFirst BlueCross BlueShield",
+      "shortName": "CareFirst",
+      "pbm": "CVS Caremark",
+      "formularyUrl": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "paPolicyUrl": "https://member.carefirst.com/carefirst-resources/pdf/drugs-requiring-prior-authorization-formulary-2.pdf",
+      "productName": "CareFirst individual and family Exchange Formulary 2",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "CareFirst Exchange Formulary 2026 (5-Tier), last updated 10/01/26",
+      "sourceIds": [
+        "carefirst-next11-2026-10"
+      ]
+    },
+    {
+      "id": "kpmidatlantic",
+      "name": "Kaiser Permanente Mid-Atlantic",
+      "shortName": "Kaiser MAS",
+      "pbm": "Kaiser Permanente (in-house)",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "productName": "Kaiser Mid-Atlantic Marketplace formulary",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "Kaiser Permanente Marketplace Formulary (Mid-Atlantic region), last update 10/06/2026",
+      "sourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "antipsychotic-oral",
+      "name": "Oral atypical antipsychotics",
+      "shortName": "ORAL AAP",
+      "plainName": "Daily antipsychotic pill",
+      "description": "Second-generation oral antipsychotics: aripiprazole, quetiapine IR/ER, olanzapine, risperidone, ziprasidone, lurasidone (Latuda), paliperidone ER, cariprazine (Vraylar), brexpiprazole (Rexulti), lumateperone (Caplyta), asenapine, iloperidone, clozapine, olanzapine/samidorphan (Lybalvi).",
+      "plainDescription": "A daily pill for schizophrenia, bipolar disorder or add-on treatment for depression.",
+      "indication": "Schizophrenia, bipolar disorder, adjunct MDD",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "antipsychotic-lai",
+      "name": "Long-acting injectable antipsychotics",
+      "shortName": "LAI",
+      "plainName": "Monthly or longer antipsychotic shot",
+      "description": "Long-acting injectables: aripiprazole (Abilify Maintena, Abilify Asimtufii, Aristada), paliperidone palmitate (Invega Sustenna/Trinza/Hafyera), risperidone (Risperdal Consta, Perseris, Uzedy, Rykindo), olanzapine pamoate (Zyprexa Relprevv), haloperidol and fluphenazine decanoate.",
+      "plainDescription": "A shot every few weeks or months instead of a daily pill.",
+      "indication": "Schizophrenia, bipolar I maintenance",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "antipsychotic-oral",
+      "preferredAgent": {
+        "inn": "Risperidone",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "1 mg",
+        "sig": "Schizophrenia: start 2 mg/day (1 mg twice daily or 2 mg once), titrate by 1-2 mg/day to 4-8 mg/day. Bipolar mania: 2-3 mg once daily. Dose per indication (label).",
+        "sigShort": "2 mg/day, titrate per indication",
+        "plainSig": "A pill once or twice a day; your prescriber adjusts the dose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (no PA)",
+      "alternatives": [
+        {
+          "drug": "Aripiprazole tablet",
+          "note": "Preferred, no PA (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clozapine tablet",
+          "note": "Preferred, no PA (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lurasidone",
+          "note": "Preferred, no PA (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olanzapine",
+          "note": "Preferred, no PA (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone",
+          "note": "Preferred, no PA (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Quetiapine IR and ER",
+          "note": "Preferred, no PA (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperidone solution",
+          "note": "Preferred, no PA (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ziprasidone",
+          "note": "Preferred, no PA (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Abilify (aripiprazole)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "aripiprazole ODT",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "aripiprazole solution",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Saphris (asenapine SL)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Bysanti",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Caplyta (lumateperone)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "clozapine ODT",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clozaril (clozapine)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Cobenfy",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Fanapt (iloperidone)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Geodon (ziprasidone)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Invega (paliperidone ER)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Latuda (lurasidone)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lybalvi (olanzapine/samidorphan)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Nuplazid",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "olanzapine/fluoxetine",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Opipza",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Rexulti (brexpiprazole)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperdal (risperidone)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "risperidone ODT",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Secuado (asenapine patch)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Seroquel (quetiapine)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Seroquel XR",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Versacloz (clozapine suspension)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Vraylar (cariprazine)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zyprexa (olanzapine)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zyprexa Zydis",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL p.16 (Central Nervous System, Antipsychotics, Oral: Atypical & Misc.) directly. Preferred column lists 9 agents with no PA; PA column lists 28 agents, all brand or specific-form items. Judgment call: risperidone tablet chosen as a preferred generic commonly written for schizophrenia; aripiprazole, olanzapine, quetiapine and lurasidone are equally preferred. Strength and sig are standard label starting dose, not printed on the PDL. No quantity limit printed for this class. Haloperidol, fluphenazine and other conventional antipsychotics are not listed on the PDL; this heading is not stated as a complete list, so their absence is not an exclusion.",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "antipsychotic-lai",
+      "preferredAgent": {
+        "inn": "Risperidone (long-acting injection)",
+        "brand": "Risperdal Consta",
+        "genericAvailable": false,
+        "strength": "25 mg/2 mL vial (every 2 weeks)",
+        "sig": "25 mg IM every 2 weeks. Continue oral risperidone (or another oral antipsychotic) for 3 weeks after the first injection, because drug release is delayed. Establish tolerability with oral risperidone first (label).",
+        "sigShort": "25 mg IM q2wk + oral x3 wk",
+        "plainSig": "A shot every 2 weeks; keep taking your pills for the first 3 weeks."
+      },
+      "preferredRestriction": "Clinical criteria may apply to this class (DC injectable atypical antipsychotic PA form, PDL p.16)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (no PA)",
+      "alternatives": [
+        {
+          "drug": "Abilify Asimtufii",
+          "note": "Preferred, no PA (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Abilify Maintena",
+          "note": "Preferred, no PA (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Aristada",
+          "note": "Preferred, no PA (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Aristada Initio",
+          "note": "Preferred, no PA (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Invega Hafyera",
+          "note": "Preferred, no PA (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Invega Sustenna",
+          "note": "Preferred, no PA (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Invega Trinza",
+          "note": "Preferred, no PA (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Perseris",
+          "note": "Preferred, no PA (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Erzofri",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "risperidone intramuscular",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Rykindo",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Uzedy",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Zyprexa Relprevv",
+          "outcome": "pa",
+          "reason": "PA required (PDL p.16)",
+          "sourceIds": [
+            "dc-medicaid-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL p.16 (Antipsychotics, Long-Acting Injectables). The class is marked '* Clinical criteria may apply' and links the DC injectable atypical antipsychotic PA form; recorded as a restriction on the pick, not as PA. The PDL states HCP-administered drugs are generally not included, yet these injectables are listed, so the benefit (pharmacy vs medical) is not stated. Judgment call: Risperdal Consta chosen among 8 preferred LAIs as a widely used agent with a non-branded risperidone base; Abilify Maintena is an equally defensible pick. Haloperidol decanoate and fluphenazine decanoate do not appear; not a stated exclusion.",
+      "sourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "antipsychotic-oral",
+      "preferredAgent": {
+        "inn": "Aripiprazole",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg",
+        "sig": "Schizophrenia: 10-15 mg once daily. Bipolar mania: 15 mg once daily. Max 30 mg/day for both. Add-on for depression: start 2-5 mg once daily, max 15 mg/day. Dose per indication (label).",
+        "sigShort": "Daily; dose per indication",
+        "plainSig": "One pill once a day; the dose depends on what it is treating."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "F (Formulary Drug)",
+      "alternatives": [
+        {
+          "drug": "Quetiapine fumarate (IR)",
+          "note": "F; QL 90 tabs/30 days for 25-100 mg and 200 mg, 150 tabs/30 days for 150 mg, 60 tabs/30 days for 300-400 mg; AL min 10 years (PDF p. 72)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Quetiapine fumarate ER",
+          "note": "F; QL 30 tabs/30 days (150-200 mg) and 60 tabs/30 days (50-400 mg); AL min 10 years (PDF p. 66 and 72)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olanzapine",
+          "note": "F; QL 30 tabs/30 days; AL min 10 years (PDF p. 72)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperidone (tablets, solution)",
+          "note": "F; QL 60/90/120 tabs per 30 days by strength; AL min 5 years (PDF p. 72-73)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ziprasidone HCl",
+          "note": "F; QL 60 per 30 days (PDF p. 73)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clozapine",
+          "note": "F; QL 270 tabs/30 days (100 mg), 120 tabs/30 days (200 mg), 90 tabs/30 days (25-50 mg); AL min 18 years (PDF p. 71-72)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Iloperidone (Fanapt titration packs A, B, C)",
+          "outcome": "nonformulary",
+          "reason": "Non-formulary; PA required (PDF p. 72)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp. 66, 71-73 (Atypical Antipsychotics and Antimanic sections). Aripiprazole 5 mg tablet is F with QL 60/30 days and AL min 6 years (p. 71); the tablet strength is printed as a list, so 5 mg is the lowest listed strength and is a judgment call on the preferred pick. Not on the list: lurasidone (Latuda), cariprazine (Vraylar), brexpiprazole (Rexulti), lumateperone (Caplyta), asenapine, paliperidone oral, olanzapine/samidorphan (Lybalvi). The document does not state that the list is complete, so these are absent from coverage, not recorded as excluded.",
+      "sourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "antipsychotic-lai",
+      "preferredAgent": {
+        "inn": "Haloperidol decanoate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "100 mg/mL (50 mg/mL also listed)",
+        "sig": "Deep IM (gluteal) injection every 4 weeks. First dose: 10-15 times the daily oral dose if stabilized on 10 mg/day or less (10-20 times if higher or at risk of relapse); give no more than 100 mg in the first injection and the rest 3-7 days later (label).",
+        "sigShort": "IM q4wk, 10-15x oral daily dose",
+        "plainSig": "A shot into the muscle about once a month, given at the clinic."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "F (Formulary Drug)",
+      "alternatives": [
+        {
+          "drug": "Aripiprazole (Abilify Maintena)",
+          "note": "F; QL 1 per 28 days; AL min 18 years (PDF p. 71)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Aripiprazole (Abilify Asimtufii)",
+          "note": "F; QL 2.4 mL/56 days (720 mg) and 3.2 mL/56 days (960 mg); AL min 18 years (PDF p. 71)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Aripiprazole lauroxil (Aristada, Aristada Initio)",
+          "note": "F; QL per 28 or 56 days by syringe; AL min 18 years (PDF p. 71)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperidone ER (Uzedy)",
+          "note": "F; QL per 28 or 56 days by syringe strength; AL min 18 years (PDF p. 73)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperidone microspheres ER (generic long-acting risperidone)",
+          "note": "F; QL 2 per 28 days; AL min 18 years (PDF p. 72)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olanzapine pamoate (Zyprexa Relprevv)",
+          "note": "F; QL 2 per 28 days (210/300 mg), 1 per 28 days (405 mg); AL min 18 years (PDF p. 73)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluphenazine decanoate",
+          "note": "F; no QL printed (PDF p. 83)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Paliperidone palmitate (Invega Sustenna)",
+          "outcome": "nonformulary",
+          "reason": "Non-formulary; PA required (PDF p. 72)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone palmitate (Invega Trinza)",
+          "outcome": "nonformulary",
+          "reason": "Non-formulary; PA required (PDF p. 72)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone palmitate (Invega Hafyera)",
+          "outcome": "nonformulary",
+          "reason": "Non-formulary; PA required (PDF p. 72)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone palmitate (Erzofri)",
+          "outcome": "nonformulary",
+          "reason": "Non-formulary; PA required (PDF p. 72)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperidone (Perseris)",
+          "outcome": "nonformulary",
+          "reason": "Non-formulary; PA required (PDF p. 72)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperidone (Rykindo)",
+          "outcome": "nonformulary",
+          "reason": "Non-formulary; PA required (PDF p. 73)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read PDF pp. 71-74, 83. Haloperidol decanoate (F, no QL, no PA) is the preferred pick as the lowest-cost F LAI; Abilify Maintena and Uzedy are also F. These products are injected in clinic, so coverage may sit under the medical benefit rather than the pharmacy benefit; the document does not say which applies. Not on the list: Risperdal Consta (brand). Doses and sigs are standard label dosing, not printed in the document.",
+      "sourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "antipsychotic-oral",
+      "preferredAgent": {
+        "inn": "Aripiprazole",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Schizophrenia: 10-15 mg once daily. Bipolar mania: 15 mg once daily. Max 30 mg/day for both. Add-on for depression: start 2-5 mg once daily, max 15 mg/day. Dose per indication (label).",
+        "sigShort": "Daily; dose per indication",
+        "plainSig": "One pill once a day; the dose depends on what it is treating."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Risperidone tablet (0.25 to 4 mg)",
+          "note": "Tier 1, no flag (PDF p.75)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Quetiapine fumarate tablet (IR, 25 to 400 mg)",
+          "note": "Tier 1, no flag (PDF p.75)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Quetiapine fumarate extended-release tablet",
+          "note": "Tier 1, no flag (PDF p.75)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olanzapine tablet and orally disintegrating tablet",
+          "note": "Tier 1, no flag (PDF pp.74-75)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lurasidone HCl tablet",
+          "note": "Tier 1, no flag (PDF p.74)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ziprasidone HCl capsule",
+          "note": "Tier 1, no flag (PDF p.76)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone ER tablet (oral)",
+          "note": "Tier 1, no flag (PDF p.75)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Asenapine maleate sublingual tablet",
+          "note": "Tier 1, no flag (PDF p.72)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clozapine tablet and orally disintegrating tablet",
+          "note": "Tier 1, no flag (PDF p.73)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Vraylar (cariprazine) capsule",
+          "outcome": "step",
+          "reason": "ST; PA applies if step not met (PA**), all strengths (PDF p.76)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp.72-76 (formulary pp.70-74). Preferred aripiprazole 10 mg tablet is Tier 1 with no flag. All generic oral atypicals on the list are Tier 1 with no flag. Vraylar is Tier 2 with ST; PA**. Not listed in this document: brand-only Abilify, Seroquel, Geodon, Latuda, Caplyta, Rexulti, Lybalvi, Fanapt. The document does not say it is a complete list, so these are not recorded as nonformulary. Cobenfy (Tier 3, no flag, PDF p.73) is outside this class description and not recorded. Pick is a judgment call: aripiprazole chosen as a common once-daily Tier 1 generic.",
+      "sourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "antipsychotic-lai",
+      "preferredAgent": {
+        "inn": "Haloperidol decanoate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "100 mg/mL injection",
+        "sig": "Deep IM (gluteal) injection every 4 weeks. First dose: 10-15 times the daily oral dose if stabilized on 10 mg/day or less (10-20 times if higher or at risk of relapse); give no more than 100 mg in the first injection and the rest 3-7 days later (label).",
+        "sigShort": "IM q4wk, 10-15x oral daily dose",
+        "plainSig": "A shot into the muscle about once a month, given at the clinic."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Fluphenazine decanoate 25 mg/mL injection",
+          "note": "Tier 1, no flag (PDF p.73)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone palmitate (Invega Sustenna)",
+          "note": "Tier 2, no flag (PDF p.74)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone palmitate (Invega Trinza)",
+          "note": "Tier 2, no flag (PDF p.74)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone palmitate (Invega Hafyera)",
+          "note": "Tier 2, no flag (PDF p.74)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Aripiprazole lauroxil (Aristada)",
+          "note": "Tier 2, no flag (PDF p.72)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone palmitate (Erzofri)",
+          "note": "Tier 2, no flag (PDF p.73)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperidone ER injectable (Rykindo)",
+          "note": "Tier 2, no flag (PDF pp.75-76)",
+          "sourceIds": [
+            "carefirst-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read PDF pp.72-76. Haloperidol decanoate 100 mg/mL and fluphenazine decanoate 25 mg/mL are Tier 1 with no flag. Invega Sustenna, Trinza, Hafyera, Aristada, Erzofri and Rykindo are Tier 2 with no flag. No LAI carries PA or ST here. Not listed in this document: Abilify Maintena, Risperdal Consta, Perseris, Uzedy, Zyprexa Relprevv. These are likely provider-administered (medical benefit) products, so their absence is not treated as nonformulary. Marked partial because the benefit routing is not printed. Pick is a judgment call: lowest-tier Tier 1 generic decanoate; the document prints no dose, so the sig states label dosing without a number.",
+      "sourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "antipsychotic-oral",
+      "preferredAgent": {
+        "inn": "Quetiapine fumarate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg tablet (immediate-release)",
+        "sig": "Schizophrenia: start 25 mg twice daily, increase by 25-50 mg per dose daily to 300-400 mg/day in 2-3 doses by day 4. Bipolar mania: start 50 mg twice daily and titrate. Dose per indication (label).",
+        "sigShort": "25 mg BID, titrate per indication",
+        "plainSig": "Start with a small dose twice a day; your prescriber raises it over a few days."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 or 3 by form (p.24)",
+      "alternatives": [
+        {
+          "drug": "Aripiprazole",
+          "note": "Tier 1 or 3 by form; MB flag printed on the line (p.23)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olanzapine",
+          "note": "Tier 1 or 3 by form; MB flag printed on the line (p.23)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperidone",
+          "note": "Tier 1, 2 or 3 by form; MB flag printed on the line (p.24)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lurasidone HCl",
+          "note": "Tier 1, no flag (p.23)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ziprasidone HCl",
+          "note": "Tier 1 or 3 by form (p.24)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clozapine",
+          "note": "Tier 1 or 3 by form; QL printed (p.23)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "REXULTI (brexpiprazole)",
+          "note": "Tier 4, no PA printed (p.24)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "VRAYLAR (cariprazine)",
+          "outcome": "nonformulary",
+          "reason": "Not on the list; the document states any product not on the list is non-formulary (p.2).",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "CAPLYTA (lumateperone)",
+          "outcome": "nonformulary",
+          "reason": "Not on the list; the document states any product not on the list is non-formulary (p.2).",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "LYBALVI (olanzapine/samidorphan)",
+          "outcome": "nonformulary",
+          "reason": "Not on the list; the document states any product not on the list is non-formulary (p.2).",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "FANAPT (iloperidone)",
+          "outcome": "nonformulary",
+          "reason": "Not on the list; the document states any product not on the list is non-formulary (p.2).",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from the formulary list, antipsychotic rows on pp.23-24. Quetiapine IR is listed as 'quetiapine fumarate 1, 3'; the list does not split tiers by form, so the tier is given per listing. Dose is standard label starting dose (not printed in the document). Brand-only products named in the class description but absent from the list are coded nonformulary under the document's p.2 statement.",
+      "sourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "kpmidatlantic"
+    },
+    {
+      "classId": "antipsychotic-lai",
+      "preferredAgent": {
+        "inn": "Haloperidol decanoate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "100 mg/mL injection (standard label strength)",
+        "sig": "Deep IM (gluteal) injection every 4 weeks. First dose: 10-15 times the daily oral dose if stabilized on 10 mg/day or less (10-20 times if higher or at risk of relapse); give no more than 100 mg in the first injection and the rest 3-7 days later (label).",
+        "sigShort": "IM q4wk, 10-15x oral daily dose",
+        "plainSig": "A shot into the muscle about once a month, given at the clinic."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 or 3 by form; medical benefit (MB) (p.23)",
+      "alternatives": [
+        {
+          "drug": "Fluphenazine decanoate",
+          "note": "Tier 1; medical benefit (MB) (p.23)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperidone microspheres",
+          "note": "Tier 2; medical benefit (MB) (p.24)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "INVEGA SUSTENNA (paliperidone palmitate)",
+          "note": "Tier 2; medical benefit (MB) (p.23)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ARISTADA (aripiprazole lauroxil)",
+          "note": "Tier 2; medical benefit (MB) (p.23)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "ZYPREXA RELPREVV (olanzapine pamoate)",
+          "note": "Tier 3; medical benefit (MB) (p.24)",
+          "sourceIds": [
+            "kpmidatlantic-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Long-acting injectables carry the MB flag (medical benefit: clinic-administered, not dispensed by the outpatient pharmacy, pp.2 and 23). Pick is the generic depot (haloperidol decanoate, Tier 1 or 3 by form). Strength and dosing are standard label values, not printed in the document. [Sonnet check 2026-11-02: Abilify Maintena/Asimtufii are not printed; as clinic-administered injectables they are likely medical benefit, so the nonformulary entry was removed rather than inferred from absence. The haloperidol decanoate pick is itself MB; verification lowered to partial.]",
+      "sourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "kpmidatlantic"
+    }
+  ],
+  "references": [
+    {
+      "id": "dc-medicaid-next11-2026-10",
+      "label": "District of Columbia Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "publisher": "District of Columbia Department of Health Care Finance",
+      "type": "gov",
+      "url": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "effectiveDate": "2026-09-18",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "amerihealth-caritas-dc-next11-2026-10",
+      "label": "AmeriHealth Caritas DC Drug Formulary (effective June 1, 2026)",
+      "publisher": "AmeriHealth Caritas District of Columbia",
+      "type": "payer",
+      "url": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "effectiveDate": "2026-06-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "carefirst-next11-2026-10",
+      "label": "CareFirst Exchange Formulary 2026 (5-Tier), last updated 10/01/26",
+      "publisher": "CareFirst BlueCross BlueShield",
+      "type": "payer",
+      "url": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "kpmidatlantic-next11-2026-10",
+      "label": "Kaiser Permanente Marketplace Formulary (Mid-Atlantic region), last update 10/06/2026",
+      "publisher": "Kaiser Permanente",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "effectiveDate": "2026-10-06",
+      "accessed": "2026-11-02"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}
