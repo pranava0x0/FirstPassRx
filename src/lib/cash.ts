@@ -1,3 +1,5 @@
+import costPlusSnapshot from '../data/costplus-prices.json' with { type: 'json' }
+
 // Vendor URLs must use canonical medication names, not the clinical labels shown in the UI.
 
 /** Ceiling on covered-drug names with no explicit cash-link rule (see issues.md) -- a ceiling,
@@ -372,8 +374,20 @@
  * 1925 → 2141: California's 11 newer topics (3 payers × 28 classes). NY/CA pick names now carry
  * their form ("Tacrolimus ointment", "Bupropion HCl XL") so they reach the existing priced rules.
  * 2141 → 2422: Texas's 11 newer topics (3 payers × 28 classes; Humana PDP is a national list).
+ * 2422 → 2556: Florida's 11 newer topics (4 payers × 28 classes; UHC and Humana reused).
+ * 2556 → 2804: Pennsylvania's 11 newer topics (3 payers × 28 classes; Highmark lists run long).
+ * 2804 → 3385: Illinois's 11 newer topics (8 payers × 28 classes; five Medicaid MCO lists).
+ * 3385 → 3515: Ohio's 11 newer topics (4 payers × 28 classes; UHC and Humana reused).
+ * 3515 → 3618: Georgia's 11 newer topics (5 payers × 28 classes; UHC and Humana reused).
+ * 3618 → 3489: 8 Cost Plus-only rules from the vendor's price-list API (scripts/costplus.mjs).
+ * 3489 → 3664: North Carolina's 11 newer topics (4 payers × 28 classes; UHC and Humana reused).
+ * 3664 → 3610: Cost Plus rules for oral generic olanzapine and pravastatin (brand Zyprexa stays unpriced); 43 topical picks named with their form.
+ * 3610 → 3743: Michigan's 11 newer topics (4 payers × 28 classes; UHC and Humana reused).
+ * 3743 → 3831: Virginia's 11 newer topics (8 payers × 28 classes; MCOs copy the DMAS PDL records).
+ * 3831 → 3937: Washington's 11 newer topics (4 payers × 28 classes; UHC and Humana reused).
+ * 3937 → 4085: Tennessee's 11 newer topics (4 payers × 28 classes; UHC and Humana reused).
  */
-export const KNOWN_UNPRICED_GAP = 2422
+export const KNOWN_UNPRICED_GAP = 4085
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -382,9 +396,24 @@ export interface PricePoint {
   price: number
   /** What the price is for, e.g. "1 inhaler", "30 tablets" — vendors quote different pack sizes. */
   quantity: string
+  /** ISO date this price was read, when it differs from the rule's pricesCapturedAt (Cost Plus
+   * prices come from the vendor's price-list API snapshot, refreshed by scripts/costplus.mjs). */
+  capturedAt?: string
 }
 
-interface CashLinkRule {
+// Cost Plus Drugs' own price list, keyed by lower-case product path: each rule's price at its own
+// quantity label, stock, and paths the vendor no longer lists. Regenerate with
+// `node scripts/costplus.mjs --write`.
+type CostPlusSnapshotEntry = {
+  price?: number | null
+  inStock?: boolean
+  delisted?: boolean
+  /** The same product at other strengths, priced for the same count, keyed like "60mg". */
+  variants?: Record<string, { path: string; price: number | null }>
+}
+const COST_PLUS: { fetchedAt: string; paths: Record<string, CostPlusSnapshotEntry> } = costPlusSnapshot
+
+export interface CashLinkRule {
   matches: RegExp
   goodRxSlug: string
   /** Query string (no leading ?) that pins the GoodRx page to this rule's exact dosage, when the
@@ -401,7 +430,7 @@ interface CashLinkRule {
   pricesCapturedAt?: string
 }
 
-const CASH_LINK_RULES: CashLinkRule[] = [
+export const CASH_LINK_RULES: readonly CashLinkRule[] = [
   // ---- MA next-11 topics (added 2026-10-22): Cost Plus via browser; GoodRx blocked after one
   // read, then re-captured through Chrome (2026-10-22). Each rule is narrowed to the captured form. ----
   {
@@ -622,9 +651,11 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     pricesCapturedAt: '2026-10-22',
   },
   {
-    // Cost Plus listed generic tofacitinib at a price that could not be re-verified; link only.
+    // Generic tofacitinib 5mg, priced from Cost Plus's own price list (scripts/costplus.mjs).
     matches: /^(?!.*(\bXR\b|extended|solution)).*(tofacitinib|xeljanz)/i,
     goodRxSlug: 'xeljanz',
+    costPlusPath: 'tofacitinib-citrate-5mg-bottle-of-60-tablets-60',
+    costPlusPrice: { price: 25.08, quantity: '60 tablets, 5mg' },
     pricesCapturedAt: '2026-10-22',
   },
   {
@@ -834,6 +865,8 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxSlug: 'atomoxetine',
     goodRxParams: 'label_override=atomoxetine&form=capsule&dosage=40mg&quantity=30',
     goodRxPrice: { price: 33.76, quantity: '30 capsules, 40mg' },
+    costPlusPath: 'atomoxetinehcl-40mg-capsule',
+    costPlusPrice: { price: 10.87, quantity: '30 capsules, 40mg' },
     pricesCapturedAt: '2026-10-21',
   },
   {
@@ -841,6 +874,8 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxSlug: 'guanfacine-er',
     goodRxParams: 'label_override=guanfacine-er&form=tablet&dosage=1mg&quantity=30',
     goodRxPrice: { price: 19.45, quantity: '30 tablets, 1mg ER' },
+    costPlusPath: 'guanfacinehcler-1mg-tablet',
+    costPlusPrice: { price: 6.77, quantity: '30 tablets, 1mg ER' },
     pricesCapturedAt: '2026-10-21',
   },
   {
@@ -878,6 +913,8 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxSlug: 'sumatriptan',
     goodRxParams: 'label_override=sumatriptan&form=tablet&dosage=50mg&quantity=9',
     goodRxPrice: { price: 29.85, quantity: '9 tablets, 50mg' },
+    costPlusPath: 'sumatriptansuccinate-50mg-tablet',
+    costPlusPrice: { price: 6.59, quantity: '9 tablets, 50mg' },
     pricesCapturedAt: '2026-10-21',
   },
   {
@@ -1672,6 +1709,8 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxSlug: 'ibuprofen',
     goodRxParams: 'label_override=ibuprofen&form=tablet&dosage=600mg&quantity=30',
     goodRxPrice: { price: 29.65, quantity: '30 tablets, 600mg' },
+    costPlusPath: 'ibuprofen-600mg-tablet',
+    costPlusPrice: { price: 5.81, quantity: '30 tablets, 600mg' },
     pricesCapturedAt: '2026-07-09',
   },
   {
@@ -2122,6 +2161,8 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     matches: /liraglutide|victoza/i,
     goodRxSlug: 'victoza',
     goodRxPrice: { price: 154.2, quantity: '1 carton (3 pens), 18mg/3mL' },
+    costPlusPath: 'liraglutide-18-mg_3ml-solution-pen-injector-9',
+    costPlusPrice: { price: 129.2, quantity: '1 carton (3 pens), 18mg/3mL' },
     pricesCapturedAt: '2026-07-09',
   },
   {
@@ -2378,9 +2419,9 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     matches: /\bapixaban\b|\beliquis\b/i,
     goodRxSlug: 'eliquis',
     goodRxParams: 'label_override=apixaban&form=tablet&dosage=5mg&quantity=60',
-    costPlusPath: 'eliquis-5mg-bottle-of-60-tablets-60-eliquis',
+    // Cost Plus dropped Eliquis from its price list by 2026-11-02 (scripts/costplus.mjs: DEAD), so
+    // the Cost Plus link and its $345 manufacturer-subsidized price were removed.
     goodRxPrice: { price: 347.76, quantity: '60 tablets, 5mg (standard GoodRx price)' },
-    costPlusPrice: { price: 345.0, quantity: '60 tablets, 5mg (manufacturer-subsidized direct-to-patient price)' },
     pricesCapturedAt: '2026-08-21',
   },
   {
@@ -2406,6 +2447,102 @@ const CASH_LINK_RULES: CashLinkRule[] = [
     goodRxPrice: { price: 29.34, quantity: '30 tablets, 10mg (standard GoodRx price)' },
     costPlusPrice: { price: 6.62, quantity: '30 tablets, 10mg' },
     pricesCapturedAt: '2026-09-07',
+  },
+  // ---- Cost Plus-only rules (added 2026-11-02 from scripts/costplus.mjs, which reads Cost Plus's
+  // own price list). Each is a preferred pick with no prior rule; GoodRx prices were read the same
+  // day in a real Chrome session at the pinned dosage (the clindamycin gel and tretinoin cream
+  // pages were not checked, so those keep a link without a GoodRx price). Each regex is narrowed to the listed product's
+  // form and excludes the combos/forms a priced molecule shares (CLAUDE.md, combo-drug trap). ----
+  {
+    matches: /^(?!.*(\bER\b|\bXL\b|extended|ditropan xl|\bgel\b|gelnique|patch|oxytrol|syrup|solution)).*oxybutynin/i,
+    goodRxSlug: 'oxybutynin',
+    goodRxParams: 'label_override=oxybutynin&form=tablet&dosage=5mg&quantity=30',
+    goodRxPrice: { price: 29.43, quantity: '30 tablets, 5mg' },
+    costPlusPath: 'oxybutyninchloride-5mg-tablet',
+    costPlusPrice: { price: 5.98, quantity: '30 tablets, 5mg' },
+    pricesCapturedAt: '2026-11-02',
+  },
+  {
+    matches: /^(?!.*(capsule|solution)).*(tizanidine|zanaflex)/i,
+    goodRxSlug: 'tizanidine',
+    goodRxParams: 'label_override=tizanidine&form=tablet&dosage=4mg&quantity=30',
+    goodRxPrice: { price: 29.19, quantity: '30 tablets, 4mg' },
+    costPlusPath: 'tizanidine-4mg-tablet',
+    costPlusPrice: { price: 5.62, quantity: '30 tablets, 4mg' },
+    pricesCapturedAt: '2026-11-02',
+  },
+  {
+    // Clindamycin 1% gel alone: not the clindamycin/benzoyl peroxide or /tretinoin combos, and not
+    // the oral capsules, lotion, foam, solution or pledgets.
+    matches: /^(?!.*(benzoyl|peroxide|tretinoin|adapalene|ziana|veltin|onexton|benzaclin|duac|acanya|neuac|cabtreo|capsule|oral|lotion|foam|solution|pledget|swab|vaginal|cleocin)).*clindamycin.*\bgel\b/i,
+    goodRxSlug: 'clindamycin-phosphate',
+    costPlusPath: 'clindamycinphosphate-0_01-gel',
+    costPlusPrice: { price: 10.67, quantity: '60 g, 1% gel' },
+    pricesCapturedAt: '2026-11-02',
+  },
+  {
+    // Tretinoin cream alone (not gel, microsphere, or the clindamycin/BPO combos).
+    matches: /^(?!.*(clindamycin|benzoyl|ziana|veltin|twyneo|cabtreo|\bgel\b|micro|lotion|oral|capsule|altreno|arazlo)).*tretinoin.*cream/i,
+    goodRxSlug: 'tretinoin',
+    costPlusPath: 'tretinoin-0_025-cream-20g',
+    costPlusPrice: { price: 14.17, quantity: '20 g, 0.025% cream' },
+    pricesCapturedAt: '2026-11-02',
+  },
+  {
+    matches: /^(?!.*(chlorthalidone|tenoretic|solution)).*(atenolol|tenormin)/i,
+    goodRxSlug: 'atenolol',
+    goodRxParams: 'label_override=atenolol&form=tablet&dosage=50mg&quantity=30',
+    goodRxPrice: { price: 29.22, quantity: '30 tablets, 50mg' },
+    costPlusPath: 'atenolol-50mg-tablet',
+    costPlusPrice: { price: 5.36, quantity: '30 tablets, 50mg' },
+    pricesCapturedAt: '2026-11-02',
+  },
+  {
+    matches: /^(?!.*(atenolol|tenoretic|azilsartan|edarbyclor|clonidine|metoprolol|lopressor|olmesartan|candesartan)).*(chlorthalidone|thalitone)/i,
+    goodRxSlug: 'chlorthalidone',
+    goodRxParams: 'label_override=chlorthalidone&form=tablet&dosage=25mg&quantity=30',
+    goodRxPrice: { price: 29.45, quantity: '30 tablets, 25mg' },
+    costPlusPath: 'chlorthalidone-25mg-tablet',
+    costPlusPrice: { price: 5.85, quantity: '30 tablets, 25mg' },
+    pricesCapturedAt: '2026-11-02',
+  },
+  {
+    matches: /^(?!.*(solution)).*(vilazodone|viibryd)/i,
+    goodRxSlug: 'vilazodone',
+    goodRxParams: 'label_override=vilazodone&form=tablet&dosage=10mg&quantity=30',
+    goodRxPrice: { price: 37.8, quantity: '30 tablets, 10mg' },
+    costPlusPath: 'vilazodone-hcl-10mg-tablet',
+    costPlusPrice: { price: 12.96, quantity: '30 tablets, 10mg' },
+    pricesCapturedAt: '2026-11-02',
+  },
+  {
+    matches: /^(?!.*(\bER\b|\bXR\b|extended|capsule)).*(trospium|sanctura)/i,
+    goodRxSlug: 'trospium',
+    goodRxParams: 'label_override=trospium&form=tablet&dosage=20mg&quantity=60',
+    goodRxPrice: { price: 30.04, quantity: '60 tablets, 20mg' },
+    costPlusPath: 'trospium-chloride-20mg-tablet-sanctura',
+    costPlusPrice: { price: 14.03, quantity: '60 tablets, 20mg' },
+    pricesCapturedAt: '2026-11-02',
+  },
+  {
+    // Oral tablets only: not the ODT (Zydis), the long-acting injection, or the fluoxetine and
+    // samidorphan combinations.
+    matches: /^(?!.*(odt|disintegrat|zydis|inject|relprevv|pamoate|fluoxetine|symbyax|samidorphan|lybalvi|intramuscular|\bbrand\b)).*olanzapine/i,
+    goodRxSlug: 'olanzapine',
+    goodRxParams: 'label_override=olanzapine&form=tablet&dosage=5mg&quantity=30',
+    goodRxPrice: { price: 29.45, quantity: '30 tablets, 5mg' },
+    costPlusPath: 'olanzapine-5mg-tablet',
+    costPlusPrice: { price: 6.21, quantity: '30 tablets, 5mg' },
+    pricesCapturedAt: '2026-11-02',
+  },
+  {
+    matches: /^(?!.*(aspirin|ezetimibe|fenofibrate|niacin)).*(pravastatin|pravachol)/i,
+    goodRxSlug: 'pravastatin',
+    goodRxParams: 'label_override=pravastatin&form=tablet&dosage=40mg&quantity=30',
+    goodRxPrice: { price: 16.37, quantity: '30 tablets, 40mg' },
+    costPlusPath: 'pravastatin-40mg-tablet',
+    costPlusPrice: { price: 6.3, quantity: '30 tablets, 40mg' },
+    pricesCapturedAt: '2026-11-02',
   },
 ]
 // Rivaroxaban (generic) was deliberately NOT priced this session (al-doac gather, 2026-08-21):
@@ -2436,15 +2573,70 @@ function cashLinkRule(name: string): CashLinkRule | undefined {
 // When the rule's captured product is a different dosage form (see formConflict below), its deep
 // links point at that other product too: GoodRx drops the form/strength params and lands on the
 // drug's own page (which has a form picker), and the product-specific Cost Plus link is withheld.
-export function goodRxUrl(name: string): string {
+export function goodRxUrl(name: string, strength?: string): string {
   const rule = cashLinkRule(name)
   const base = `https://www.goodrx.com/${rule?.goodRxSlug ?? fallbackSlug(name)}`
-  return rule?.goodRxParams && !priceSuppressedByForm(name) ? `${base}?${rule.goodRxParams}` : base
+  if (!rule?.goodRxParams || priceSuppressedByForm(name)) return base
+  // A pick at another strength: point the pinned link at the pick's own dosage, or drop the pin
+  // when the pick names no single strength we can pin to.
+  const captured = rule.goodRxPrice ?? rule.costPlusPrice
+  const want = captured ? strengthMismatch(captured, strength) : null
+  if (!want) return `${base}?${rule.goodRxParams}`
+  if (want === true) return base
+  // ...and its own oral form when the strength says so (gabapentin 600 mg is a tablet, not a
+  // capsule); special tablets (ODT, chewable, vaginal, sublingual) are other products: no re-pin.
+  const text = strength ?? ''
+  if (/disintegrat|\bodt\b|chew|vaginal|sublingual/i.test(text)) return base
+  const form = /\btablet/i.test(text) ? 'tablet' : /\bcapsule/i.test(text) ? 'capsule' : null
+  const params = rule.goodRxParams.replace(/dosage=[^&]*/, `dosage=${want}`)
+  return `${base}?${form ? params.replace(/form=(tablet|capsule)\b/, `form=${form}`) : params}`
 }
 
-export function costPlusUrl(name: string): string | null {
-  const path = cashLinkRule(name)?.costPlusPath
-  return path && !priceSuppressedByForm(name) ? `https://www.costplusdrugs.com/medications/${path}/` : null
+export function costPlusUrl(name: string, strength?: string): string | null {
+  const rule = cashLinkRule(name)
+  const path = rule?.costPlusPath
+  if (!path || priceSuppressedByForm(name) || COST_PLUS.paths[path.toLowerCase()]?.delisted) return null
+  const want = rule.costPlusPrice ? strengthMismatch(rule.costPlusPrice, strength) : null
+  if (!want) return `https://www.costplusdrugs.com/medications/${path}/`
+  // Cost Plus pages are per strength: link the pick's own strength, or none rather than another's.
+  const variant = typeof want === 'string' ? variantFor(path, want) : undefined
+  return variant ? `https://www.costplusdrugs.com/medications/${variant.path}/` : null
+}
+
+// Prices are captured for one strength; a pick naming a different strength must not show it
+// (gabapentin 600 mg tablets were showing the 300 mg capsule price). Rate and concentration
+// denominators ("0.05 mg/24 hr", "180 mcg/actuation", "0.5mg/2mL") are dropped first; what remains
+// is every amount the text names. Combination strengths ("160/4.5 mcg", "5-325 mg") are skipped.
+function amountsIn(text: string | undefined): string[] | null {
+  if (!text) return []
+  const t = text.replace(/\s*\/\s*(\d+(\.\d+)?\s*)?(m?l|hr|hrs|hours?|24\s*h(ou)?rs?|day|d|actuation|act|dose|spray|puff|inh)\b/gi, '')
+  if (/(mg|mcg)\s*\/\s*\d|\d\s*\/\s*\d+(\.\d+)?\s*(mg|mcg)|\d\s*-\s*\d+(\.\d+)?\s*(mg|mcg)/i.test(t)) return null
+  // A list shares its trailing unit: "0.5 / 1 / 2 mg", "25, 50 or 100 mg".
+  return [...t.matchAll(/((?:\d+(?:\.\d+)?\s*(?:,|\/|or|and)\s*)*)(\d+(?:\.\d+)?)\s*(mg|mcg)\b/gi)].flatMap((m) =>
+    [...(m[1]?.match(/\d+(?:\.\d+)?/g) ?? []), m[2] ?? ''].map((n) => `${Number(n)}${(m[3] ?? '').toLowerCase()}`),
+  )
+}
+
+const toMg = (key: string) => Number.parseFloat(key) / (key.endsWith('mcg') ? 1000 : 1)
+
+/** The pick's own strength (e.g. "60mg") when it differs from the captured one; true when the
+ * pick names only other strengths but no single one to switch to; null when consistent or unknown. */
+function strengthMismatch(point: PricePoint, strength: string | undefined): string | true | null {
+  // A special tablet named only in the strength ("5 mg orally disintegrating tablet") is another
+  // product than a plain-tablet capture.
+  const special = /disintegrat|\bodt\b|chewable|vaginal|sublingual/i
+  if (special.test(strength ?? '') && !special.test(point.quantity)) return true
+  const have = amountsIn(point.quantity)
+  const want = amountsIn(strength)
+  if (!have || !want || have.length !== 1 || !want.length) return null
+  const captured = toMg(have[0] ?? '')
+  if (want.some((w) => Math.abs(toMg(w) - captured) < 1e-9)) return null
+  return want.length === 1 ? (want[0] ?? null) : true
+}
+
+function variantFor(path: string, want: string) {
+  const variants = COST_PLUS.paths[path.toLowerCase()]?.variants ?? {}
+  return Object.entries(variants).find(([k]) => Math.abs(toMg(k) - toMg(want)) < 1e-9)?.[1]
 }
 
 /** Snapshot GoodRx price for this drug, or null if no exact strength/form match was captured. */
@@ -2476,13 +2668,30 @@ function priceFor(name: string, point: PricePoint | undefined): PricePoint | nul
   return point && !formConflict(name, point) ? point : null
 }
 
-export function goodRxPrice(name: string): PricePoint | null {
-  return priceFor(name, cashLinkRule(name)?.goodRxPrice)
+export function goodRxPrice(name: string, strength?: string): PricePoint | null {
+  const point = priceFor(name, cashLinkRule(name)?.goodRxPrice)
+  return point && strengthMismatch(point, strength) !== null ? null : point
 }
 
 /** Snapshot Cost Plus Drugs price for this drug, or null if unavailable/out of stock at capture time. */
-export function costPlusPrice(name: string): PricePoint | null {
-  return priceFor(name, cashLinkRule(name)?.costPlusPrice)
+// The snapshot wins over the hand-captured price: it is newer and computed the same way the
+// product page does. Out of stock or delisted -> no price (the link stays unless delisted). A
+// pick at another strength gets that strength's price when Cost Plus sells it, else none.
+export function costPlusPrice(name: string, strength?: string): PricePoint | null {
+  const rule = cashLinkRule(name)
+  const point = priceFor(name, rule?.costPlusPrice)
+  const snap = rule?.costPlusPath ? COST_PLUS.paths[rule.costPlusPath.toLowerCase()] : undefined
+  const want = point ? strengthMismatch(point, strength) : null
+  if (point && want) {
+    const variant = typeof want === 'string' && rule?.costPlusPath ? variantFor(rule.costPlusPath, want) : undefined
+    if (typeof variant?.price !== 'number') return null
+    const have = amountsIn(point.quantity)?.[0] ?? ''
+    const quantity = point.quantity.replace(new RegExp(`\\b${have.replace(/(mg|mcg)$/, '').replace('.', '\\.')}\\s*${have.replace(/^[\d.]+/, '')}\\b`, 'i'), String(want))
+    return { price: variant.price, quantity, capturedAt: COST_PLUS.fetchedAt }
+  }
+  if (!point || !snap) return point
+  if (snap.delisted || snap.inStock === false) return null
+  return typeof snap.price === 'number' ? { ...point, price: snap.price, capturedAt: COST_PLUS.fetchedAt } : point
 }
 
 /** ISO date the prices above were captured, or null if this drug has no explicit cash-link rule. */

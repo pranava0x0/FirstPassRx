@@ -762,3 +762,26 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   Run a Sonnet fact-check with web search over every new sig rule — on 2026-10-27 it found 3 wrong
   sigs and 7 regexes that would hand one product another's directions (Triumeq, Tenoretic, Lyrica
   CR, Aveed, Aplenzin, Otezla XR).
+- **Cost Plus Drugs has a public price-list API — never scrape its pages for prices again.**
+  `https://api.costplusdrugs.com/pricelist/cpd` returns the whole catalog (~2,400 products, 4 MB,
+  plain `fetch`/`curl` works; the website itself is behind a Cloudflare challenge) with slug,
+  strength, form, stock and `price_per_unit`. The page's cash price = `price_per_unit × units +
+  cash_dispensing_fee` (shipping excluded); units are in the entry's own billing unit (`ea`, `g`,
+  `mL` — an inhaler billed per gram is `pack_size` units). `npm run costplus` audits every rule's
+  path (DEAD/DRIFT/out of stock) and lists preferred picks Cost Plus sells at the same strength,
+  form and release; `-- --write` regenerates `src/data/costplus-prices.json`, which the app prices
+  from. First run (2026-11-02): Eliquis delisted, 6 stored prices off by >15%, 239 cells gained a
+  link. The catalog also proves a strength exists, which `scripts/check-dose-strength.mjs` uses to
+  fix picks whose strength can't deliver the sig's starting dose.
+- **Name matching against a vendor catalog needs both directions.** "atenolol ⊂ atenolol-
+  chlorthalidone" and "clindamycin ⊂ clindamycin-benzoyl peroxide" pass a one-way word check; require
+  every catalog molecule word to be in the pick too, and don't treat salt words that distinguish
+  molecules (furoate vs propionate) as noise.
+- **PA criteria: extract a national document once, then copy.** Humana's Part D criteria (one
+  extraction from the GA guides) filled 240 items across 6 states with `apply-pa-criteria
+  --all-states`; UHC's national commercial PDL needed re-keying instead, because each state gives
+  UHC its own payer id (`uhc-ga`, `uhc-nc`, `ny-uhc-commercial`, ...). `build-pa-targets.mjs
+  --summary` ranks payers by drugs still missing criteria — start with the multi-state ones.
+  Coverage of published criteria varies a lot by state: OH/NC/PA Medicaid print criteria for
+  nearly every class, TX/NY only for PDL classes with clinical edits, IL HFS for 2 of 11 newer
+  classes. An agent's "0 sets" for a class usually means the state publishes none, not a miss.

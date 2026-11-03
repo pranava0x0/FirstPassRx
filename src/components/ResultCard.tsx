@@ -29,9 +29,10 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
   const coverageSources = resolveSources(record.coverageSourceIds)
   const primarySource = coverageSources[0]
   const displayName = agent.brand ?? agent.inn
-  const costPlusHref = costPlusUrl(agent.inn)
-  const goodRxPoint = goodRxPrice(agent.inn)
-  const costPlusPoint = costPlusPrice(agent.inn)
+  // The pick's strength picks the matching price and link (a 60 mg pick never shows a 30 mg price).
+  const costPlusHref = costPlusUrl(agent.inn, agent.strength)
+  const goodRxPoint = goodRxPrice(agent.inn, agent.strength)
+  const costPlusPoint = costPlusPrice(agent.inn, agent.strength)
   const pricesAsOf = pricesCapturedAt(agent.inn)
   const blocked = (record.paRequired ?? []).map((r) => r.drug)
   // "Request PA" in the header opens the first blocked drug's request in place. Scoped to this
@@ -132,7 +133,7 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
             </p>
           ) : null}
           <CashPriceBoxes
-            goodRxHref={goodRxUrl(agent.inn)}
+            goodRxHref={goodRxUrl(agent.inn, agent.strength)}
             goodRx={goodRxPoint}
             costPlusHref={costPlusHref}
             costPlus={costPlusPoint}

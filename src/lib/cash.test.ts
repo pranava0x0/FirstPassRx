@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { costPlusUrl, goodRxUrl, hasCashLinkRule, goodRxPrice, costPlusPrice, pricesCapturedAt, priceSuppressedByForm, KNOWN_UNPRICED_GAP } from './cash'
+import { CASH_LINK_RULES, costPlusUrl, goodRxUrl, hasCashLinkRule, goodRxPrice, costPlusPrice, pricesCapturedAt, priceSuppressedByForm, KNOWN_UNPRICED_GAP } from './cash'
+import costPlusSnapshot from '../data/costplus-prices.json'
 import rawData from '../data/formulary.json'
 import type { Formulary } from '../types/formulary'
 
@@ -291,7 +292,14 @@ describe('cash price coverage across the live formulary', () => {
     ]
     const matched = coveredDrugNames().filter((name) => hasCashLinkRule(name))
     const missingPrice = matched.filter((name) => !goodRxPrice(name) && !costPlusPrice(name))
-    const unexpected = missingPrice.filter((name) => !priceSuppressedByForm(name) && !KNOWN_PRICE_UNAVAILABLE.some((re) => re.test(name)))
+    // Out of stock in today's Cost Plus snapshot (scripts/costplus.mjs) -> no price, link kept.
+    const outOfStock = (name: string) => {
+      const path = costPlusUrl(name)?.split('/medications/')[1]?.replace(/\/$/, '').toLowerCase()
+      return path !== undefined && (costPlusSnapshot.paths as Record<string, { inStock?: boolean }>)[path]?.inStock === false
+    }
+    const unexpected = missingPrice.filter(
+      (name) => !priceSuppressedByForm(name) && !outOfStock(name) && !KNOWN_PRICE_UNAVAILABLE.some((re) => re.test(name)),
+    )
     expect(unexpected).toEqual([])
   })
 })
@@ -470,3 +478,60 @@ describe('new-topic rules do not capture neighbouring products', () => {
     (name) => expect(goodRxPrice(name)).toBeNull(),
   )
 })
+
+describe('Cost Plus price-list snapshot', () => {
+  it('has an entry for every rule with a Cost Plus path (run `npm run costplus -- --write`)', () => {
+    const paths = costPlusSnapshot.paths as Record<string, unknown>
+    const missing = CASH_LINK_RULES.filter((r) => r.costPlusPath && !(r.costPlusPath.toLowerCase() in paths)).map((r) => r.costPlusPath)
+    expect(missing).toEqual([])
+  })
+
+  it('prices from the snapshot and dates it separately from GoodRx', () => {
+    const p = costPlusPrice('Sumatriptan succinate')
+    expect(p?.capturedAt).toBe(costPlusSnapshot.fetchedAt)
+    expect(p?.quantity).toBe('9 tablets, 50mg')
+    expect(pricesCapturedAt('Sumatriptan succinate')).toBe('2026-10-21')
+  })
+
+  it('does not price combinations from a single-agent Cost Plus rule', () => {
+    expect(costPlusUrl('Atenolol/chlorthalidone')).toBeNull()
+    expect(costPlusUrl('Clindamycin/benzoyl peroxide 1%/5% gel')).not.toContain('clindamycinphosphate-0_01-gel')
+    expect(costPlusUrl('Oxybutynin chloride ER 10 mg')).not.toContain('oxybutyninchloride-5mg-tablet')
+  })
+})
+
+describe('strength-aware cash lookups', () => {
+  it('prices a pick at its own strength from the Cost Plus variants', () => {
+    const p = costPlusPrice('Duloxetine', '60 mg delayed-release capsule')
+    expect(p?.quantity).toBe('30 capsules, 60mg')
+    expect(costPlusUrl('Duloxetine', '60 mg delayed-release capsule')).toContain('60mg-capsule')
+  })
+
+  it('never shows a GoodRx price captured at another strength, and re-pins the link', () => {
+    expect(goodRxPrice('Duloxetine', '60 mg delayed-release capsule')).toBeNull()
+    expect(goodRxUrl('Duloxetine', '60 mg delayed-release capsule')).toContain('dosage=60mg')
+    expect(goodRxUrl('Gabapentin', '600 mg tablet')).toContain('form=tablet')
+  })
+
+  it('leaves lists, combinations and missing strengths alone', () => {
+    expect(goodRxPrice('Duloxetine', '20 / 30 / 60 mg capsule')).toEqual(goodRxPrice('Duloxetine'))
+    expect(goodRxPrice('Duloxetine')).not.toBeNull()
+    expect(costPlusPrice('Budesonide-formoterol', '160/4.5 mcg')).toEqual(costPlusPrice('Budesonide-formoterol'))
+  })
+})
+
+describe('strength matching edge cases (code review round 2)', () => {
+  it('drops rate and concentration denominators before comparing', () => {
+    expect(goodRxPrice('estradiol', '0.05 mg/24 hr (transdermal patch)')).toBeNull()
+    expect(costPlusPrice('Budesonide', '180 mcg/actuation')).toBeNull()
+  })
+  it('keeps a price whose strength is in the pick list, and links no other strength', () => {
+    expect(goodRxPrice('Estradiol', '0.5 / 1 / 2 mg tablet')).not.toBeNull()
+    expect(costPlusUrl('Gabapentin', '600 mg tablet')).toBeNull()
+  })
+  it('treats an ODT named only in the strength as another product', () => {
+    expect(goodRxPrice('Olanzapine', '5 mg orally disintegrating tablet')).toBeNull()
+    expect(goodRxUrl('Olanzapine', '5 mg orally disintegrating tablet')).toBe('https://www.goodrx.com/olanzapine')
+  })
+})
+

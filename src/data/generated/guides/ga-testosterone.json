@@ -1,0 +1,836 @@
+{
+  "id": "ga-testosterone",
+  "label": "GA · Testosterone",
+  "stateCode": "GA",
+  "region": "Georgia",
+  "topicId": "testosterone",
+  "topic": "Testosterone",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-02",
+  "capturedAt": "2026-11-02",
+  "payers": [
+    {
+      "id": "ga-medicaid",
+      "name": "Georgia Medicaid (fee-for-service)",
+      "shortName": "GA Medicaid FFS",
+      "aka": "Georgia Medicaid and PeachCare for Kids fee-for-service PDL (DCH); care management organizations publish their own lists",
+      "productName": "Georgia Medicaid / PeachCare for Kids Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Georgia Medicaid/PeachCare Preferred Drug List, effective October 1, 2026",
+      "formularyUrl": "https://dch.georgia.gov/document/document/gme-web-pdl-10-1-26/download",
+      "sourceIds": [
+        "ga-medicaid-next11-2026-10"
+      ]
+    },
+    {
+      "id": "caresource-ga",
+      "name": "CareSource Georgia (Medicaid)",
+      "shortName": "CareSource GA",
+      "aka": "Georgia Medicaid care management organization",
+      "productName": "CareSource Georgia Medicaid Formulary / PDL",
+      "marketSegment": "medicaid-mco",
+      "formularyId": "CareSource Georgia Medicaid Preferred Drug List (PDL), effective 07/01/2026",
+      "formularyUrl": "https://www.caresource.com/documents/ga-med-m-2964344-2026-pdl.pdf",
+      "sourceIds": [
+        "caresource-ga-next11-2026-10"
+      ]
+    },
+    {
+      "id": "anthem-ga",
+      "name": "Anthem Blue Cross and Blue Shield (Georgia)",
+      "shortName": "Anthem GA",
+      "pbm": "CarelonRx",
+      "productName": "Anthem 2026 Select Drug List — Four Tier (Georgia individual)",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "Anthem Blue Cross and Blue Shield Select Drug List, Four Tier Drug Plan (Georgia, individual), 2026",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_GA_IND.pdf",
+      "sourceIds": [
+        "anthem-ga-next11-2026-10"
+      ]
+    },
+    {
+      "id": "uhc-ga",
+      "name": "UnitedHealthcare (Commercial)",
+      "shortName": "UnitedHealthcare",
+      "aka": "National commercial PDL (same list in every state)",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "paPolicyUrl": "https://www.uhcprovider.com/en/resource-library/drug-lists-pharmacy.html",
+      "productName": "UnitedHealthcare 2026 Commercial PDL (base list)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 Prescription Drug List (PDL), UnitedHealthcare & affiliated companies",
+      "sourceIds": [
+        "uhc-oh-next11-2026-10"
+      ]
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "testosterone",
+      "name": "Testosterone replacement",
+      "shortName": "TRT",
+      "plainName": "Testosterone gel, shot or pill",
+      "description": "Testosterone gel/solution (AndroGel, Testim, Fortesta, Vogelxo, generic 1%/1.62%), injections (cypionate, enanthate, Xyosted, Aveed undecanoate), patch (Androderm), oral undecanoate (Jatenzo, Tlando, Kyzatrex), nasal (Natesto), pellets (Testopel).",
+      "plainDescription": "Testosterone replacement for low testosterone, as a gel, shot or pill.",
+      "indication": "Male hypogonadism",
+      "sourceIds": [
+        "ga-medicaid-next11-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone cypionate (generic injection)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/mL",
+        "sig": "50-400 mg IM every 2 to 4 weeks, adjusted to keep morning testosterone in the normal range (label).",
+        "sigShort": "IM q2-4wk, dose per labs",
+        "plainSig": "A shot every 2 to 4 weeks; your prescriber sets the dose from blood tests."
+      },
+      "preferredRestriction": "PA required (page 66); PA criteria are not printed on the PDL",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "P (Preferred), PA",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Testosterone gel generic (Fortesta/Testim generic)",
+          "outcome": "pa",
+          "reason": "PA required; QLL (page 66)",
+          "sourceIds": [
+            "ga-medicaid-next11-2026-10"
+          ],
+          "criteria": [
+            "Male, age 18 or older, with primary or secondary hypogonadism.",
+            "Serum testosterone below 300 ng/dL confirmed by 2 morning lab levels on separate days.",
+            "Prescriber submits a letter of medical necessity why brand Androgel 1.62% and generic testosterone 1.62% are not appropriate."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ga-medicaid-pa-criteria-androgenic-topical-2026-11"
+          ]
+        },
+        {
+          "drug": "Testosterone topical solution generic",
+          "outcome": "pa",
+          "reason": "PA required; QLL (page 66)",
+          "sourceIds": [
+            "ga-medicaid-next11-2026-10"
+          ],
+          "criteria": [
+            "Male, age 18 or older, with primary or secondary hypogonadism.",
+            "Serum testosterone below 300 ng/dL confirmed by 2 morning lab levels on separate days.",
+            "Prescriber submits a letter of medical necessity why brand Androgel 1.62% and generic testosterone 1.62% are not appropriate."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ga-medicaid-pa-criteria-androgenic-topical-2026-11"
+          ]
+        },
+        {
+          "drug": "Testosterone gel pump generic (Vogelxo generic)",
+          "outcome": "pa",
+          "reason": "PA required; QLL (page 66)",
+          "sourceIds": [
+            "ga-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Jatenzo (oral testosterone undecanoate)",
+          "outcome": "pa",
+          "reason": "PA required; QLL (page 66)",
+          "sourceIds": [
+            "ga-medicaid-next11-2026-10"
+          ],
+          "criteria": [
+            "Male, age 18 or older, with primary or secondary hypogonadism.",
+            "Serum testosterone below 300 ng/dL confirmed by 2 morning lab levels on separate days.",
+            "Prescriber submits a letter of medical necessity why Methitest, Androderm, and brand Androgel are not appropriate."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ga-medicaid-pa-criteria-androgenic-oral-2026-11"
+          ]
+        },
+        {
+          "drug": "Tlando (oral testosterone undecanoate)",
+          "outcome": "pa",
+          "reason": "PA required; QLL (page 66)",
+          "sourceIds": [
+            "ga-medicaid-next11-2026-10"
+          ],
+          "criteria": [
+            "Male, age 18 or older, with primary or secondary hypogonadism.",
+            "Serum testosterone below 300 ng/dL confirmed by 2 morning lab levels on separate days.",
+            "Prescriber submits a letter of medical necessity why Methitest, Androderm, and brand Androgel are not appropriate."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ga-medicaid-pa-criteria-androgenic-oral-2026-11"
+          ]
+        },
+        {
+          "drug": "Xyosted (testosterone enanthate autoinjector)",
+          "outcome": "pa",
+          "reason": "PA required; QLL (page 66)",
+          "sourceIds": [
+            "ga-medicaid-next11-2026-10"
+          ],
+          "criteria": [
+            "Male, age 18 or older, with primary or secondary hypogonadism.",
+            "Serum testosterone below 300 ng/dL confirmed by 2 morning lab levels on separate days.",
+            "Tried and failed intramuscular testosterone to reach goal, or not a candidate for intramuscular testosterone."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ga-medicaid-pa-criteria-androgenic-injectable-2026-11"
+          ]
+        },
+        {
+          "drug": "Natesto (nasal testosterone)",
+          "outcome": "pa",
+          "reason": "PA required; QLL (page 66)",
+          "sourceIds": [
+            "ga-medicaid-next11-2026-10"
+          ],
+          "criteria": [
+            "Male, age 18 or older, with primary or secondary hypogonadism.",
+            "Serum testosterone below 300 ng/dL confirmed by 2 morning lab levels on separate days.",
+            "Prescriber submits a letter of medical necessity why brand Androgel 1.62% and generic testosterone 1.62% are not appropriate."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ga-medicaid-pa-criteria-androgenic-topical-2026-11"
+          ]
+        },
+        {
+          "drug": "Methyltestosterone capsules generic",
+          "outcome": "pa",
+          "reason": "PA required; QLL (page 66)",
+          "sourceIds": [
+            "ga-medicaid-next11-2026-10"
+          ],
+          "criteria": [
+            "Male, age 12 or older, with primary or secondary hypogonadism or delayed male puberty.",
+            "Serum testosterone below 300 ng/dL confirmed by 2 morning lab levels on separate days.",
+            "Generic methyltestosterone also requires a letter of medical necessity why Methitest is not appropriate."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ga-medicaid-pa-criteria-androgenic-oral-2026-11"
+          ]
+        },
+        {
+          "drug": "Depo-Testosterone (brand)",
+          "outcome": "pa",
+          "reason": "PA required (page 66)",
+          "sourceIds": [
+            "ga-medicaid-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone gel pump 1.62% (generic Androgel)",
+          "outcome": "pa",
+          "reason": "PA required; QLL (page 66)",
+          "sourceIds": [
+            "ga-medicaid-next11-2026-10"
+          ],
+          "criteria": [
+            "Male, age 18 or older, with primary or secondary hypogonadism.",
+            "Serum testosterone below 300 ng/dL confirmed by 2 morning lab levels on separate days."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ga-medicaid-pa-criteria-androgenic-topical-2026-11"
+          ]
+        },
+        {
+          "drug": "Methitest (oral methyltestosterone)",
+          "outcome": "pa",
+          "reason": "PA required (page 66)",
+          "sourceIds": [
+            "ga-medicaid-next11-2026-10"
+          ],
+          "criteria": [
+            "Male, age 12 or older, with primary or secondary hypogonadism or delayed male puberty.",
+            "Serum testosterone below 300 ng/dL confirmed by 2 morning lab levels on separate days.",
+            "Generic methyltestosterone also requires a letter of medical necessity why Methitest is not appropriate."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ga-medicaid-pa-criteria-androgenic-oral-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Every testosterone product on PDL page 66 carries PA, so the pick is the lowest-barrier standard injection (generic 'testosterone injection', P). The cypionate salt is inferred from the common generic product; the PDL does not name the ester. Aveed (undecanoate injection), Testopel (pellets) and Androderm (patch) are not on the PDL; they are provider-administered or not listed, so absence is not an exclusion. Oral methyltestosterone (Methitest) was not picked despite its P status. [Sonnet check 2026-11-02: PDL p66 prints 'testosterone injection generic' P PA with no ester named; cypionate inferred (Depo-Testosterone P PA on the same page is the cypionate brand; Delatestryl P PA is enanthate). Pick stays the generic injection, partial. Moved Depo-Testosterone, gel pump 1.62% and Methitest from alternatives to paRequired because each carries PA.]",
+      "sourceIds": [
+        "ga-medicaid-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ga-medicaid-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ga-medicaid-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "ga-medicaid"
+    },
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone (1% transdermal gel)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "1% transdermal gel",
+        "sig": "Apply 50 mg (5 g of 1% gel) once daily in the morning to shoulders and upper arms; adjust by serum testosterone, max 100 mg/day (label).",
+        "sigShort": "50 mg (5 g) gel QAM",
+        "plainSig": "Rub the measured gel onto your shoulders and upper arms every morning."
+      },
+      "preferredRestriction": "PA required; no PA criteria printed on PDL (PDL p. 37, printed p. 34)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (preferred generic)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Testosterone 1% transdermal gel packet 25 mg/2.5 g",
+          "outcome": "pa",
+          "reason": "PA required (PDL p. 37, printed p. 34)",
+          "sourceIds": [
+            "caresource-ga-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone 1% transdermal gel packet 50 mg/5 g",
+          "outcome": "pa",
+          "reason": "PA; QL 100 GM per 30 days (PDL p. 37, printed p. 34)",
+          "sourceIds": [
+            "caresource-ga-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p. 37 (printed p. 34). The 1% transdermal gel is Tier 1 and needs PA. Cypionate and enanthate injections, Xyosted, Aveed, Jatenzo, Tlando, Kyzatrex, Natesto, Androderm, Testopel, Fortesta and AndroGel/Testim brands do not appear in the PDL. Oral methyltestosterone (Tier 1, PDF p. 36) is outside this class's listed products and is not recorded as an alternative.",
+      "sourceIds": [
+        "caresource-ga-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "caresource-ga-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "caresource-ga-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "caresource-ga"
+    },
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone cypionate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/mL",
+        "sig": "50-400 mg IM every 2 to 4 weeks, adjusted to keep morning testosterone in the normal range (label).",
+        "sigShort": "IM q2-4wk, dose per labs",
+        "plainSig": "A shot every 2 to 4 weeks; your prescriber sets the dose from blood tests."
+      },
+      "preferredRestriction": "PA required (Tier 1 PA; page 13)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 PA",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Depo-Testosterone (brand cypionate) injection",
+          "outcome": "pa",
+          "reason": "PA flagged; Tier 1 (page 13)",
+          "sourceIds": [
+            "anthem-ga-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone transdermal gel",
+          "outcome": "pa",
+          "reason": "PA flagged; Tier 2 (page 13); quantity limit flagged",
+          "sourceIds": [
+            "anthem-ga-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from page 13 (testosterone cypionate injection and IM solution Tier 1 PA). Depo-Testosterone brand is also Tier 1 PA, so the generic is preferred and no BOGL applies. Transdermal gel is Tier 2 PA; QL. Enanthate, undecanoate and pellet forms are not listed. Strength and sig are standard label dosing, not printed.",
+      "sourceIds": [
+        "anthem-ga-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "anthem-ga-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "anthem-ga-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "anthem-ga"
+    },
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone cypionate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "Intramuscular injection (strength not printed in document)",
+        "sig": "50-400 mg IM every 2 to 4 weeks, adjusted to keep morning testosterone in the normal range (label).",
+        "sigShort": "IM q2-4wk, dose per labs",
+        "plainSig": "A shot every 2 to 4 weeks; your prescriber sets the dose from blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Testosterone enanthate intramuscular",
+          "note": "Tier 1, no flag (p.41)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Depo-Testosterone 100 mg/mL (brand)",
+          "note": "Tier 3, no flag (p.41)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Depo-Testosterone 200 mg/mL (brand)",
+          "note": "Tier 4, no flag (p.41)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Testosterone gel 1.62% transdermal (generic Androgel pump)",
+          "outcome": "pa",
+          "reason": "PA and QL required; Tier 2 (p.41)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ],
+          "criteria": [
+            "Bilateral orchiectomy, panhypopituitarism, or a genetic cause of hypogonadism (e.g., Klinefelter), male at birth, and not on growth hormone (unless panhypopituitarism) or an aromatase inhibitor",
+            "Two pretreatment total testosterone levels below 300 ng/dL, male at birth, no growth hormone or aromatase inhibitor, and one of: weight under 90% IBW, osteopenia, low bone density or libido, or organic cause",
+            "SHBG-altering condition (e.g., thyroid, HIV, liver, diabetes, obesity) and one free or bioavailable testosterone below 50 pg/mL (or below lab range), with the same added requirements as the prior statement",
+            "Gender dysphoria (DSM diagnosis) and hormone use to align physical characteristics with gender expression, with no growth hormone (unless panhypopituitarism) or aromatase inhibitor"
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "uhc-ga-pa-criteria-testosterone-topical-oral-2026-11"
+          ]
+        },
+        {
+          "drug": "Testosterone gel 20.25 mg/act (1.62%) transdermal",
+          "outcome": "pa",
+          "reason": "PA and QL required; Tier 2 (p.41)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ],
+          "criteria": [
+            "Bilateral orchiectomy, panhypopituitarism, or a genetic cause of hypogonadism (e.g., Klinefelter), male at birth, and not on growth hormone (unless panhypopituitarism) or an aromatase inhibitor",
+            "Two pretreatment total testosterone levels below 300 ng/dL, male at birth, no growth hormone or aromatase inhibitor, and one of: weight under 90% IBW, osteopenia, low bone density or libido, or organic cause",
+            "SHBG-altering condition (e.g., thyroid, HIV, liver, diabetes, obesity) and one free or bioavailable testosterone below 50 pg/mL (or below lab range), with the same added requirements as the prior statement",
+            "Gender dysphoria (DSM diagnosis) and hormone use to align physical characteristics with gender expression, with no growth hormone (unless panhypopituitarism) or aromatase inhibitor"
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "uhc-ga-pa-criteria-testosterone-topical-oral-2026-11"
+          ]
+        },
+        {
+          "drug": "Testim (testosterone gel brand)",
+          "outcome": "pa",
+          "reason": "PA and QL required; Tier 2 (p.41)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ],
+          "criteria": [
+            "Bilateral orchiectomy, panhypopituitarism, or a genetic cause of hypogonadism (e.g., Klinefelter), male at birth, and not on growth hormone (unless panhypopituitarism) or an aromatase inhibitor",
+            "Two pretreatment total testosterone levels below 300 ng/dL, male at birth, no growth hormone or aromatase inhibitor, and one of: weight under 90% IBW, osteopenia, low bone density or libido, or organic cause",
+            "SHBG-altering condition (e.g., thyroid, HIV, liver, diabetes, obesity) and one free or bioavailable testosterone below 50 pg/mL (or below lab range), with the same added requirements as the prior statement",
+            "Gender dysphoria (DSM diagnosis) and hormone use to align physical characteristics with gender expression, with no growth hormone (unless panhypopituitarism) or aromatase inhibitor"
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "uhc-ga-pa-criteria-testosterone-topical-oral-2026-11"
+          ]
+        },
+        {
+          "drug": "Kyzatrex (testosterone undecanoate oral)",
+          "outcome": "pa",
+          "reason": "PA and QL required; Tier 4 (p.41)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ],
+          "criteria": [
+            "Bilateral orchiectomy, panhypopituitarism, or a genetic cause of hypogonadism (e.g., Klinefelter), male at birth, and not on growth hormone (unless panhypopituitarism) or an aromatase inhibitor",
+            "Two pretreatment total testosterone levels below 300 ng/dL, male at birth, no growth hormone or aromatase inhibitor, and one of: weight under 90% IBW, osteopenia, low bone density or libido, or organic cause",
+            "SHBG-altering condition (e.g., thyroid, HIV, liver, diabetes, obesity) and one free or bioavailable testosterone below 50 pg/mL (or below lab range), with the same added requirements as the prior statement",
+            "Gender dysphoria (DSM diagnosis) and hormone use to align physical characteristics with gender expression, with no growth hormone (unless panhypopituitarism) or aromatase inhibitor"
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "uhc-ga-pa-criteria-testosterone-topical-oral-2026-11"
+          ]
+        },
+        {
+          "drug": "Androgel pump (testosterone gel brand)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA), PA and QL (p.41)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ],
+          "criteria": [
+            "Bilateral orchiectomy, panhypopituitarism, or a genetic cause of hypogonadism (e.g., Klinefelter), male at birth, and not on growth hormone (unless panhypopituitarism) or an aromatase inhibitor",
+            "Two pretreatment total testosterone levels below 300 ng/dL, male at birth, no growth hormone or aromatase inhibitor, and one of: weight under 90% IBW, osteopenia, low bone density or libido, or organic cause",
+            "SHBG-altering condition (e.g., thyroid, HIV, liver, diabetes, obesity) and one free or bioavailable testosterone below 50 pg/mL (or below lab range), with the same added requirements as the prior statement",
+            "Gender dysphoria (DSM diagnosis) and hormone use to align physical characteristics with gender expression, with no growth hormone (unless panhypopituitarism) or aromatase inhibitor"
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "uhc-ga-pa-criteria-testosterone-topical-oral-2026-11"
+          ]
+        },
+        {
+          "drug": "Fortesta (testosterone gel brand)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA), PA and QL (p.41)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ],
+          "criteria": [
+            "Bilateral orchiectomy, panhypopituitarism, or a genetic cause of hypogonadism (e.g., Klinefelter), male at birth, and not on growth hormone (unless panhypopituitarism) or an aromatase inhibitor",
+            "Two pretreatment total testosterone levels below 300 ng/dL, male at birth, no growth hormone or aromatase inhibitor, and one of: weight under 90% IBW, osteopenia, low bone density or libido, or organic cause",
+            "SHBG-altering condition (e.g., thyroid, HIV, liver, diabetes, obesity) and one free or bioavailable testosterone below 50 pg/mL (or below lab range), with the same added requirements as the prior statement",
+            "Gender dysphoria (DSM diagnosis) and hormone use to align physical characteristics with gender expression, with no growth hormone (unless panhypopituitarism) or aromatase inhibitor"
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "uhc-ga-pa-criteria-testosterone-topical-oral-2026-11"
+          ]
+        },
+        {
+          "drug": "Jatenzo (testosterone undecanoate oral), QL",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.41)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ],
+          "criteria": [
+            "Bilateral orchiectomy, panhypopituitarism, or a genetic cause of hypogonadism (e.g., Klinefelter), male at birth, and not on growth hormone (unless panhypopituitarism) or an aromatase inhibitor",
+            "Two pretreatment total testosterone levels below 300 ng/dL, male at birth, no growth hormone or aromatase inhibitor, and one of: weight under 90% IBW, osteopenia, low bone density or libido, or organic cause",
+            "SHBG-altering condition (e.g., thyroid, HIV, liver, diabetes, obesity) and one free or bioavailable testosterone below 50 pg/mL (or below lab range), with the same added requirements as the prior statement",
+            "Gender dysphoria (DSM diagnosis) and hormone use to align physical characteristics with gender expression, with no growth hormone (unless panhypopituitarism) or aromatase inhibitor"
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "uhc-ga-pa-criteria-testosterone-topical-oral-2026-11"
+          ]
+        },
+        {
+          "drug": "Natesto (testosterone nasal)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA), PA and QL (p.41)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tlando (testosterone undecanoate oral)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA), PA and QL (p.41)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ],
+          "criteria": [
+            "Bilateral orchiectomy, panhypopituitarism, or a genetic cause of hypogonadism (e.g., Klinefelter), male at birth, and not on growth hormone (unless panhypopituitarism) or an aromatase inhibitor",
+            "Two pretreatment total testosterone levels below 300 ng/dL, male at birth, no growth hormone or aromatase inhibitor, and one of: weight under 90% IBW, osteopenia, low bone density or libido, or organic cause",
+            "SHBG-altering condition (e.g., thyroid, HIV, liver, diabetes, obesity) and one free or bioavailable testosterone below 50 pg/mL (or below lab range), with the same added requirements as the prior statement",
+            "Gender dysphoria (DSM diagnosis) and hormone use to align physical characteristics with gender expression, with no growth hormone (unless panhypopituitarism) or aromatase inhibitor"
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "uhc-ga-pa-criteria-testosterone-topical-oral-2026-11"
+          ]
+        },
+        {
+          "drug": "Xyosted (testosterone enanthate auto-injector)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA), PA and QL (p.41)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ],
+          "criteria": [
+            "Bilateral orchiectomy, panhypopituitarism, or genetic cause, male at birth, failure or intolerance to both cypionate and enanthate injections, and to testosterone 1.62% gel and Testim",
+            "Total testosterone below 300 ng/dL twice (or free T below 50 pg/mL with SHBG-altering condition), one of: weight under 90% IBW, osteopenia, low bone density or libido, or organic cause, plus failure requirements",
+            "Gender dysphoria (DSM diagnosis) and hormone use to align with gender expression, plus Xyosted-specific requirements in the program"
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "uhc-ga-pa-criteria-xyosted-2026-11"
+          ]
+        },
+        {
+          "drug": "Vogelxo and Undecatrex (testosterone gel and oral)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA), PA and QL (p.41)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ],
+          "criteria": [
+            "Bilateral orchiectomy, panhypopituitarism, or a genetic cause of hypogonadism (e.g., Klinefelter), male at birth, and not on growth hormone (unless panhypopituitarism) or an aromatase inhibitor",
+            "Two pretreatment total testosterone levels below 300 ng/dL, male at birth, no growth hormone or aromatase inhibitor, and one of: weight under 90% IBW, osteopenia, low bone density or libido, or organic cause",
+            "SHBG-altering condition (e.g., thyroid, HIV, liver, diabetes, obesity) and one free or bioavailable testosterone below 50 pg/mL (or below lab range), with the same added requirements as the prior statement",
+            "Gender dysphoria (DSM diagnosis) and hormone use to align physical characteristics with gender expression, with no growth hormone (unless panhypopituitarism) or aromatase inhibitor"
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "uhc-ga-pa-criteria-testosterone-topical-oral-2026-11"
+          ]
+        },
+        {
+          "drug": "Testosterone cypionate injection (listed as Tier E)",
+          "outcome": "pa",
+          "reason": "E symbol (legend p.5: may be excluded or subject to PA; footer: E and ST drugs are subject to PA) (p.41)",
+          "sourceIds": [
+            "uhc-oh-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read p.41 from rendered page image. Generic testosterone cypionate and enanthate intramuscular are Tier 1 with no flags; cypionate chosen as the standard product. Strength and sig not printed; standard label dosing used. Aveed, Testopel and Androderm are not listed; likely provider-administered or absent, not confirmed as non-coverage. Controlled substance flags: none printed for the Tier 1 injections. [Sonnet check 2026-10-22: E is a symbol in the Tier column, not a tier; the legend (p.5) says E drugs may be excluded or subject to PA and the page footer says E and ST drugs are subject to PA, so E items stay as PA-type with that wording.] [Reused: same national UHC commercial PDL (commercial-pdl-jan-2026.pdf) cited for uhc-fl] [Reused: same national UHC commercial PDL (commercial-pdl-jan-2026.pdf) cited for uhc-oh] [Reused: same national UHC commercial PDL (exported 2026-11-02)]",
+      "sourceIds": [
+        "uhc-oh-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "uhc-oh-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "uhc-oh-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-22",
+      "payerId": "uhc-ga"
+    },
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone cypionate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/mL injection",
+        "sig": "50-400 mg IM every 2 to 4 weeks, adjusted to keep morning testosterone in the normal range (label).",
+        "sigShort": "IM q2-4wk, dose per labs",
+        "plainSig": "A shot every 2 to 4 weeks; your prescriber sets the dose from blood tests."
+      },
+      "preferredRestriction": "PA required (page 67); the guide does not print PA criteria.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3 (as listed)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Testosterone enanthate injection (200 mg/mL)",
+          "outcome": "pa",
+          "reason": "PA and QL 25 per 90 days; Tier 3 (page 67)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ],
+          "criteria": [
+            "Primary hypogonadism (testicular failure) or hypogonadotropic hypogonadism, AND two morning testosterone levels below reference range at separate times before treatment, OR a low or in-range level on treatment.",
+            "Metastatic breast cancer (testosterone enanthate only).",
+            "Delay puberty in males (testosterone enanthate only)."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "humana-premier-rx-pdp-pa-criteria-enhanced2-2026-11"
+          ]
+        },
+        {
+          "drug": "Testosterone 1.62% gel packet (20.25 mg and 40.5 mg)",
+          "outcome": "pa",
+          "reason": "PA and QL; Tier 4 (page 67)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ],
+          "criteria": [
+            "Diagnosis of primary hypogonadism (cryptorchidism, bilateral torsion, orchitis, orchiectomy, Klinefelter's, chemotherapy, toxins) OR hypogonadotropic hypogonadism (GnRH/LH deficiency, pituitary-hypothalamic injury).",
+            "Two morning total or free testosterone levels below the lab reference range at separate times before treatment, OR a level below or within range while already on treatment.",
+            "Metastatic breast cancer and delayed male puberty indications apply to testosterone enanthate only."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "humana-premier-rx-pdp-pa-criteria-enhanced2-2026-11"
+          ]
+        },
+        {
+          "drug": "Testosterone 1.62% gel metered-dose pump",
+          "outcome": "pa",
+          "reason": "PA and QL 150 per 30 days; Tier 4 (page 67)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Tier 3 and PA for testosterone cypionate 200 mg/mL read by x-coordinate on page 67. The guide prints no PA criteria, so the reason is the PA flag alone. Every other testosterone product in the guide needs PA, so cypionate is the lowest-barrier pick. Partial because injections may be self-administered under Part D or given in a clinic under Part B; the cost path is unconfirmed. Jatenzo, Tlando, Kyzatrex, Xyosted, Aveed, Androderm, Natesto, Testopel and methyltestosterone do not appear in the guide. [Sonnet check 2026-10-27: Re-confirmed against Humana formulary 26402, v17 (updated 10/01/2026), sources/humana-premier-rx-pdp-newtopics-2026-10.pdf (tier, PA, ST, QL read by x-coordinate; the v16 copy used in the first pass is superseded). All testosterone rows (cypionate, enanthate, 1.62% gel packet and pump) are on page 67. Cypionate is Tier 3 with PA and no BvsD flag; enanthate is Tier 3, PA, QL 25 per 90 days; the 1.62% gels are Tier 4 with PA. Cypionate stays the pick: it is the standard generic injectable and carries the same PA as every other listed product, unlike oral methyltestosterone, which is not listed. Part B applies only to clinic-administered injections, so the cost path stays unconfirmed (partial).] [Reused: same national Humana Premier Rx PDP formulary (exported 2026-11-02)]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-next11-2026-10"
+      ],
+      "lastReviewed": "2026-10-27",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "ga-medicaid-next11-2026-10",
+      "label": "Georgia Medicaid/PeachCare Preferred Drug List, effective October 1, 2026",
+      "publisher": "Georgia Department of Community Health, Medicaid/PeachCare",
+      "type": "gov",
+      "url": "https://dch.georgia.gov/document/document/gme-web-pdl-10-1-26/download",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "caresource-ga-next11-2026-10",
+      "label": "CareSource Georgia Medicaid Preferred Drug List (PDL), effective 07/01/2026",
+      "publisher": "CareSource",
+      "type": "payer",
+      "url": "https://www.caresource.com/documents/ga-med-m-2964344-2026-pdl.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-10-31"
+    },
+    {
+      "id": "anthem-ga-next11-2026-10",
+      "label": "Anthem Blue Cross and Blue Shield Select Drug List, Four Tier Drug Plan (Georgia, individual), 2026",
+      "publisher": "Anthem Blue Cross and Blue Shield",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_GA_IND.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "uhc-oh-next11-2026-10",
+      "label": "2026 Prescription Drug List (PDL), UnitedHealthcare & affiliated companies",
+      "publisher": "UnitedHealthcare",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-10-22"
+    },
+    {
+      "id": "humana-premier-rx-pdp-next11-2026-10",
+      "label": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v17, updated 10/01/2026)",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-27"
+    },
+    {
+      "id": "humana-premier-rx-pdp-pa-criteria-enhanced2-2026-11",
+      "label": "Humana 2026 Enhanced-2 PDP Prior Authorization Criteria (Formulary ID 26402, Version 18; effective 11/01/2026)",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/2026%20Enhanced-2%20PDP-Prior%20Authorizationpdf",
+      "accessed": "2026-11-02",
+      "effectiveDate": "2026-11-01"
+    },
+    {
+      "id": "uhc-ga-pa-criteria-testosterone-topical-oral-2026-11",
+      "label": "UHC Program 2025 P 2018-19: Prior Authorization/Medical Necessity - Testosterone (topical gel, transdermal, oral)",
+      "publisher": "UnitedHealthcare Pharmacy Clinical Pharmacy Programs",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/prior-auth/drugs-pharmacy/commercial/r-z/PA-Med-Nec-Testosterone.pdf",
+      "accessed": "2026-11-02",
+      "effectiveDate": "2026-02-01"
+    },
+    {
+      "id": "uhc-ga-pa-criteria-xyosted-2026-11",
+      "label": "UHC Program 2025 P 2018-19: Prior Authorization/Medical Necessity - Testosterone (Xyosted section)",
+      "publisher": "UnitedHealthcare Pharmacy Clinical Pharmacy Programs",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/prior-auth/drugs-pharmacy/commercial/r-z/PA-Med-Nec-Testosterone.pdf",
+      "accessed": "2026-11-02",
+      "effectiveDate": "2026-02-01"
+    },
+    {
+      "id": "ga-medicaid-pa-criteria-androgenic-topical-2026-11",
+      "label": "Georgia Medicaid FFS Androgenic Agents Topical PA Summary",
+      "publisher": "Georgia Department of Community Health (DCH)",
+      "type": "gov",
+      "url": "https://dch.georgia.gov/media/84971/download",
+      "accessed": "2026-11-02",
+      "effectiveDate": "2023-11-20"
+    },
+    {
+      "id": "ga-medicaid-pa-criteria-androgenic-injectable-2026-11",
+      "label": "Georgia Medicaid FFS Androgenic Agents Injectable PA Summary",
+      "publisher": "Georgia Department of Community Health (DCH)",
+      "type": "gov",
+      "url": "https://dch.georgia.gov/document/document/androgenic-agents-injectable-93020/download",
+      "accessed": "2026-11-02",
+      "effectiveDate": "2020-09-30"
+    },
+    {
+      "id": "ga-medicaid-pa-criteria-androgenic-oral-2026-11",
+      "label": "Georgia Medicaid FFS Androgenic Agents Oral PA Summary",
+      "publisher": "Georgia Department of Community Health (DCH)",
+      "type": "gov",
+      "url": "https://dch.georgia.gov/document/document/androgenic-agents-oral-2524/download",
+      "accessed": "2026-11-02",
+      "effectiveDate": "2024-02-05"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}
