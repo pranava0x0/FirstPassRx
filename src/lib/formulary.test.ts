@@ -323,6 +323,17 @@ describe('guides + global meta', () => {
       'nc-hypertension',
       'nc-hiv',
       'nc-hepatitis-c',
+      'mi-antipsychotics',
+      'mi-antidepressants',
+      'mi-dermatology',
+      'mi-sleep-anxiety',
+      'mi-immunology',
+      'mi-pain',
+      'mi-testosterone',
+      'mi-oab',
+      'mi-hypertension',
+      'mi-hiv',
+      'mi-hepatitis-c',
     ])
   })
 
