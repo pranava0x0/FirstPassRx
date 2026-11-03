@@ -334,6 +334,17 @@ describe('guides + global meta', () => {
       'mi-hypertension',
       'mi-hiv',
       'mi-hepatitis-c',
+      'va-antipsychotics',
+      'va-antidepressants',
+      'va-dermatology',
+      'va-sleep-anxiety',
+      'va-immunology',
+      'va-pain',
+      'va-testosterone',
+      'va-oab',
+      'va-hypertension',
+      'va-hiv',
+      'va-hepatitis-c',
     ])
   })
 

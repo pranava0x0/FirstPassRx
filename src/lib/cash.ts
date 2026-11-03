@@ -383,8 +383,9 @@ import costPlusSnapshot from '../data/costplus-prices.json' with { type: 'json' 
  * 3489 → 3664: North Carolina's 11 newer topics (4 payers × 28 classes; UHC and Humana reused).
  * 3664 → 3610: Cost Plus rules for oral generic olanzapine and pravastatin (brand Zyprexa stays unpriced); 43 topical picks named with their form.
  * 3610 → 3743: Michigan's 11 newer topics (4 payers × 28 classes; UHC and Humana reused).
+ * 3743 → 3831: Virginia's 11 newer topics (8 payers × 28 classes; MCOs copy the DMAS PDL records).
  */
-export const KNOWN_UNPRICED_GAP = 3743
+export const KNOWN_UNPRICED_GAP = 3831
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
