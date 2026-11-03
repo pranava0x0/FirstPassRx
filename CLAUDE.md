@@ -777,3 +777,11 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   chlorthalidone" and "clindamycin ⊂ clindamycin-benzoyl peroxide" pass a one-way word check; require
   every catalog molecule word to be in the pick too, and don't treat salt words that distinguish
   molecules (furoate vs propionate) as noise.
+- **PA criteria: extract a national document once, then copy.** Humana's Part D criteria (one
+  extraction from the GA guides) filled 240 items across 6 states with `apply-pa-criteria
+  --all-states`; UHC's national commercial PDL needed re-keying instead, because each state gives
+  UHC its own payer id (`uhc-ga`, `uhc-nc`, `ny-uhc-commercial`, ...). `build-pa-targets.mjs
+  --summary` ranks payers by drugs still missing criteria — start with the multi-state ones.
+  Coverage of published criteria varies a lot by state: OH/NC/PA Medicaid print criteria for
+  nearly every class, TX/NY only for PDL classes with clinical edits, IL HFS for 2 of 11 newer
+  classes. An agent's "0 sets" for a class usually means the state publishes none, not a miss.
