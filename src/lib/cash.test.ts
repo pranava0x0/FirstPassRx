@@ -519,3 +519,19 @@ describe('strength-aware cash lookups', () => {
     expect(costPlusPrice('Budesonide-formoterol', '160/4.5 mcg')).toEqual(costPlusPrice('Budesonide-formoterol'))
   })
 })
+
+describe('strength matching edge cases (code review round 2)', () => {
+  it('drops rate and concentration denominators before comparing', () => {
+    expect(goodRxPrice('estradiol', '0.05 mg/24 hr (transdermal patch)')).toBeNull()
+    expect(costPlusPrice('Budesonide', '180 mcg/actuation')).toBeNull()
+  })
+  it('keeps a price whose strength is in the pick list, and links no other strength', () => {
+    expect(goodRxPrice('Estradiol', '0.5 / 1 / 2 mg tablet')).not.toBeNull()
+    expect(costPlusUrl('Gabapentin', '600 mg tablet')).toBeNull()
+  })
+  it('treats an ODT named only in the strength as another product', () => {
+    expect(goodRxPrice('Olanzapine', '5 mg orally disintegrating tablet')).toBeNull()
+    expect(goodRxUrl('Olanzapine', '5 mg orally disintegrating tablet')).toBe('https://www.goodrx.com/olanzapine')
+  })
+})
+

@@ -2574,11 +2574,17 @@ export function goodRxUrl(name: string, strength?: string): string {
   const rule = cashLinkRule(name)
   const base = `https://www.goodrx.com/${rule?.goodRxSlug ?? fallbackSlug(name)}`
   if (!rule?.goodRxParams || priceSuppressedByForm(name)) return base
-  // A pick at another strength: point the pinned link at the pick's own dosage.
-  const want = rule.goodRxPrice && strengthMismatch(rule.goodRxPrice, strength)
+  // A pick at another strength: point the pinned link at the pick's own dosage, or drop the pin
+  // when the pick names no single strength we can pin to.
+  const captured = rule.goodRxPrice ?? rule.costPlusPrice
+  const want = captured ? strengthMismatch(captured, strength) : null
   if (!want) return `${base}?${rule.goodRxParams}`
-  // ...and its own oral form when the strength says it (gabapentin 600 mg is a tablet, not a capsule).
-  const form = /\btablet/i.test(strength ?? '') ? 'tablet' : /\bcapsule/i.test(strength ?? '') ? 'capsule' : null
+  if (want === true) return base
+  // ...and its own oral form when the strength says so (gabapentin 600 mg is a tablet, not a
+  // capsule); special tablets (ODT, chewable, vaginal, sublingual) are other products: no re-pin.
+  const text = strength ?? ''
+  if (/disintegrat|\bodt\b|chew|vaginal|sublingual/i.test(text)) return base
+  const form = /\btablet/i.test(text) ? 'tablet' : /\bcapsule/i.test(text) ? 'capsule' : null
   const params = rule.goodRxParams.replace(/dosage=[^&]*/, `dosage=${want}`)
   return `${base}?${form ? params.replace(/form=(tablet|capsule)\b/, `form=${form}`) : params}`
 }
@@ -2587,25 +2593,47 @@ export function costPlusUrl(name: string, strength?: string): string | null {
   const rule = cashLinkRule(name)
   const path = rule?.costPlusPath
   if (!path || priceSuppressedByForm(name) || COST_PLUS.paths[path.toLowerCase()]?.delisted) return null
-  const want = rule.costPlusPrice && strengthMismatch(rule.costPlusPrice, strength)
-  const variant = want ? COST_PLUS.paths[path.toLowerCase()]?.variants?.[want] : undefined
-  return `https://www.costplusdrugs.com/medications/${variant?.path ?? path}/`
+  const want = rule.costPlusPrice ? strengthMismatch(rule.costPlusPrice, strength) : null
+  if (!want) return `https://www.costplusdrugs.com/medications/${path}/`
+  // Cost Plus pages are per strength: link the pick's own strength, or none rather than another's.
+  const variant = typeof want === 'string' ? variantFor(path, want) : undefined
+  return variant ? `https://www.costplusdrugs.com/medications/${variant.path}/` : null
 }
 
-// Prices are captured for one strength; a pick naming a different single strength must not show
-// it (gabapentin 600 mg tablets were showing the 300 mg capsule price). Lists ("0.5 / 1 / 2 mg"),
-// combinations ("160/4.5 mcg", "5-325 mg") and percentages name no single strength: no check.
-function singleStrength(text: string | undefined): string | null {
-  if (!text || /\d\s*(,|\/|-|or|and|to)\s*\d+(\.\d+)?\s*(mg|mcg)|(mg|mcg)\s*\/\s*\d/i.test(text)) return null
-  const found = [...new Set([...text.matchAll(/(\d+(?:\.\d+)?)\s*(mg|mcg)\b/gi)].map((m) => `${Number(m[1])}${(m[2] ?? '').toLowerCase()}`))]
-  return found.length === 1 ? (found[0] ?? null) : null
+// Prices are captured for one strength; a pick naming a different strength must not show it
+// (gabapentin 600 mg tablets were showing the 300 mg capsule price). Rate and concentration
+// denominators ("0.05 mg/24 hr", "180 mcg/actuation", "0.5mg/2mL") are dropped first; what remains
+// is every amount the text names. Combination strengths ("160/4.5 mcg", "5-325 mg") are skipped.
+function amountsIn(text: string | undefined): string[] | null {
+  if (!text) return []
+  const t = text.replace(/\s*\/\s*(\d+(\.\d+)?\s*)?(m?l|hr|hrs|hours?|24\s*h(ou)?rs?|day|d|actuation|act|dose|spray|puff|inh)\b/gi, '')
+  if (/(mg|mcg)\s*\/\s*\d|\d\s*\/\s*\d+(\.\d+)?\s*(mg|mcg)|\d\s*-\s*\d+(\.\d+)?\s*(mg|mcg)/i.test(t)) return null
+  // A list shares its trailing unit: "0.5 / 1 / 2 mg", "25, 50 or 100 mg".
+  return [...t.matchAll(/((?:\d+(?:\.\d+)?\s*(?:,|\/|or|and)\s*)*)(\d+(?:\.\d+)?)\s*(mg|mcg)\b/gi)].flatMap((m) =>
+    [...(m[1]?.match(/\d+(?:\.\d+)?/g) ?? []), m[2] ?? ''].map((n) => `${Number(n)}${(m[3] ?? '').toLowerCase()}`),
+  )
 }
 
-/** The pick's own strength (e.g. "60mg") when it differs from the one this price was captured at. */
-function strengthMismatch(point: PricePoint, strength: string | undefined): string | null {
-  const want = singleStrength(strength)
-  const have = singleStrength(point.quantity)
-  return want && have && want !== have ? want : null
+const toMg = (key: string) => Number.parseFloat(key) / (key.endsWith('mcg') ? 1000 : 1)
+
+/** The pick's own strength (e.g. "60mg") when it differs from the captured one; true when the
+ * pick names only other strengths but no single one to switch to; null when consistent or unknown. */
+function strengthMismatch(point: PricePoint, strength: string | undefined): string | true | null {
+  // A special tablet named only in the strength ("5 mg orally disintegrating tablet") is another
+  // product than a plain-tablet capture.
+  const special = /disintegrat|\bodt\b|chewable|vaginal|sublingual/i
+  if (special.test(strength ?? '') && !special.test(point.quantity)) return true
+  const have = amountsIn(point.quantity)
+  const want = amountsIn(strength)
+  if (!have || !want || have.length !== 1 || !want.length) return null
+  const captured = toMg(have[0] ?? '')
+  if (want.some((w) => Math.abs(toMg(w) - captured) < 1e-9)) return null
+  return want.length === 1 ? (want[0] ?? null) : true
+}
+
+function variantFor(path: string, want: string) {
+  const variants = COST_PLUS.paths[path.toLowerCase()]?.variants ?? {}
+  return Object.entries(variants).find(([k]) => Math.abs(toMg(k) - toMg(want)) < 1e-9)?.[1]
 }
 
 /** Snapshot GoodRx price for this drug, or null if no exact strength/form match was captured. */
@@ -2639,7 +2667,7 @@ function priceFor(name: string, point: PricePoint | undefined): PricePoint | nul
 
 export function goodRxPrice(name: string, strength?: string): PricePoint | null {
   const point = priceFor(name, cashLinkRule(name)?.goodRxPrice)
-  return point && strengthMismatch(point, strength) ? null : point
+  return point && strengthMismatch(point, strength) !== null ? null : point
 }
 
 /** Snapshot Cost Plus Drugs price for this drug, or null if unavailable/out of stock at capture time. */
@@ -2650,12 +2678,12 @@ export function costPlusPrice(name: string, strength?: string): PricePoint | nul
   const rule = cashLinkRule(name)
   const point = priceFor(name, rule?.costPlusPrice)
   const snap = rule?.costPlusPath ? COST_PLUS.paths[rule.costPlusPath.toLowerCase()] : undefined
-  const want = point && strengthMismatch(point, strength)
+  const want = point ? strengthMismatch(point, strength) : null
   if (point && want) {
-    const variant = snap?.variants?.[want]
+    const variant = typeof want === 'string' && rule?.costPlusPath ? variantFor(rule.costPlusPath, want) : undefined
     if (typeof variant?.price !== 'number') return null
-    const have = singleStrength(point.quantity) ?? ''
-    const quantity = point.quantity.replace(new RegExp(`${have.replace(/(mg|mcg)$/, '')}\\s*${have.replace(/^[\d.]+/, '')}`, 'i'), want)
+    const have = amountsIn(point.quantity)?.[0] ?? ''
+    const quantity = point.quantity.replace(new RegExp(`\\b${have.replace(/(mg|mcg)$/, '').replace('.', '\\.')}\\s*${have.replace(/^[\d.]+/, '')}\\b`, 'i'), String(want))
     return { price: variant.price, quantity, capturedAt: COST_PLUS.fetchedAt }
   }
   if (!point || !snap) return point
