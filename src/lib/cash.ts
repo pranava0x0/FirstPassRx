@@ -2484,6 +2484,14 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     pricesCapturedAt: '2026-11-02',
   },
   {
+    // Tazarotene 0.1% cream only (not the gel, foam, lotion or the halobetasol combo).
+    matches: /^(?!.*(gel|foam|lotion|arazlo|duobrii|halobetasol)).*tazarotene.*cream/i,
+    goodRxSlug: 'tazarotene',
+    costPlusPath: 'tazarotene-0_10-tube-of-cream-30-tazorac',
+    costPlusPrice: { price: 37.38, quantity: '30 g, 0.1% cream' },
+    pricesCapturedAt: '2026-11-02',
+  },
+  {
     // Tretinoin cream alone (not gel, microsphere, or the clindamycin/BPO combos).
     matches: /^(?!.*(clindamycin|benzoyl|ziana|veltin|twyneo|cabtreo|\bgel\b|micro|lotion|oral|capsule|altreno|arazlo)).*tretinoin.*cream/i,
     goodRxSlug: 'tretinoin',
