@@ -1,0 +1,735 @@
+{
+  "id": "al-antipsychotics",
+  "label": "AL · Antipsychotics",
+  "stateCode": "AL",
+  "region": "Alabama",
+  "topicId": "antipsychotics",
+  "topic": "Antipsychotics",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-03",
+  "capturedAt": "2026-11-03",
+  "payers": [
+    {
+      "id": "al-medicaid",
+      "name": "Alabama Medicaid Agency (Fee-for-Service, statewide -- no MCO contracts)",
+      "shortName": "AL Medicaid FFS",
+      "pbm": "Administered directly by the Alabama Medicaid Agency (no contracted PBM identified)",
+      "formularyUrl": "https://medicaid.alabama.gov/documents/9.0_Resources/9.4_Forms_Library/9.4.13_Pharmacy_Services/9.4.13_PH_Prior_Authorization_Criteria_10-5-26.pdf",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-pa"
+      ],
+      "productName": "Alabama Medicaid Agency Preferred Drug List by Therapeutic Category",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Alabama Medicaid PA Criteria Instructions (Form 369), eff. 10/01/2026"
+    },
+    {
+      "id": "bcbs-al-commercial",
+      "name": "Blue Cross and Blue Shield of Alabama (Commercial)",
+      "shortName": "BCBS Alabama",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+      "sourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "productName": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx1.0 Prescription Drug List",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (October 2026)"
+    },
+    {
+      "id": "bcbs-al-medicare",
+      "name": "BCBS Alabama Blue Advantage (Medicare Advantage / Part D)",
+      "shortName": "Blue Advantage AL",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+      "sourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "productName": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "antipsychotic-oral",
+      "name": "Oral atypical antipsychotics",
+      "shortName": "ORAL AAP",
+      "plainName": "Daily antipsychotic pill",
+      "description": "Second-generation oral antipsychotics: aripiprazole, quetiapine IR/ER, olanzapine, risperidone, ziprasidone, lurasidone (Latuda), paliperidone ER, cariprazine (Vraylar), brexpiprazole (Rexulti), lumateperone (Caplyta), asenapine, iloperidone, clozapine, olanzapine/samidorphan (Lybalvi).",
+      "plainDescription": "A daily pill for schizophrenia, bipolar disorder or add-on treatment for depression.",
+      "indication": "Schizophrenia, bipolar disorder, adjunct MDD",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-pa"
+      ]
+    },
+    {
+      "id": "antipsychotic-lai",
+      "name": "Long-acting injectable antipsychotics",
+      "shortName": "LAI",
+      "plainName": "Monthly or longer antipsychotic shot",
+      "description": "Long-acting injectables: aripiprazole (Abilify Maintena, Abilify Asimtufii, Aristada), paliperidone palmitate (Invega Sustenna/Trinza/Hafyera), risperidone (Risperdal Consta, Perseris, Uzedy, Rykindo), olanzapine pamoate (Zyprexa Relprevv), haloperidol and fluphenazine decanoate.",
+      "plainDescription": "A shot every few weeks or months instead of a daily pill.",
+      "indication": "Schizophrenia, bipolar I maintenance",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-pa"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "antipsychotic-oral",
+      "preferredAgent": {
+        "inn": "Aripiprazole",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg",
+        "sig": "Schizophrenia: 10-15 mg once daily. Bipolar mania: 15 mg once daily. Max 30 mg/day for both. Add-on for depression: start 2-5 mg once daily, max 15 mg/day. Dose per indication (label).",
+        "sigShort": "Daily; dose per indication",
+        "plainSig": "One pill once a day; the dose depends on what it is treating."
+      },
+      "preferredRestriction": "PA via the antipsychotic class rule (PA Instructions p.3, p.70); the electronic PA program (p.8) approves automatically when claims history or diagnosis meet criteria. The PDL intro says antipsychotics are exempt from the PDL PA requirement; the two documents conflict.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not a PDL class (PA required)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Risperidone (generic)",
+          "outcome": "pa",
+          "reason": "Antipsychotic class PA applies (non-PDL drug class; PA Instructions p.3 and p.70); drug not individually listed",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-pa"
+          ]
+        },
+        {
+          "drug": "Quetiapine (generic)",
+          "outcome": "pa",
+          "reason": "Antipsychotic class PA applies (non-PDL drug class; PA Instructions p.3 and p.70); drug not individually listed",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-pa"
+          ]
+        },
+        {
+          "drug": "Olanzapine (generic)",
+          "outcome": "pa",
+          "reason": "Antipsychotic class PA applies (non-PDL drug class; PA Instructions p.3 and p.70); drug not individually listed",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-pa"
+          ]
+        },
+        {
+          "drug": "Lybalvi (olanzapine/samidorphan)",
+          "outcome": "pa",
+          "reason": "Antipsychotic class PA applies (non-PDL drug class; PA Instructions p.3 and p.70)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-pa"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Not a PDL class: no oral antipsychotic appears in the 07/01/2026 Reference Tool (text searched, pp.1-28) or the 04/01/2026 therapeutic-category PDL. Conflict: the 04/01/2026 PDL (p.1) says antipsychotics are exempt from the PA requirement, but the newer PA Instructions (eff. 10/01/2026) list Antipsychotic Agents among non-PDL drugs that require PA (p.3; criteria p.70). Resolved toward the newer document (PA required). Aripiprazole chosen as the standard generic oral antipsychotic; dose is the label starting dose, not printed in the document. Drug-level PA status for individual generics is inferred from the class rule. [Sonnet check 2026-11-02: PA Instructions (eff. 10/01/2026) re-fetched: URL returns 200 (614 KB); p.3 lists Antipsychotic Agents under \"Non-PDL Drugs and/or Drug Classes to Require PA\" and p.8 lists them in the electronic PA (EPA) program; p.70 criteria: diagnosis or psychiatrist prescriber, prior trials not applicable. The PDL intro says antipsychotic and HIV/AIDS drugs are exempt from the PDL PA requirement, so the two documents conflict; PA stays recorded because a class-level PA document names the class, but the claim is class-wide and EPA auto-approves when claims history/diagnosis meet criteria. Confirm at point of prescribing.]",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref",
+        "al-medicaid-next11-2026-10-thera",
+        "al-medicaid-next11-2026-10-pa"
+      ],
+      "coverageSourceIds": [
+        "al-medicaid-next11-2026-10-pa",
+        "al-medicaid-next11-2026-10-thera"
+      ],
+      "restrictionSourceIds": [
+        "al-medicaid-next11-2026-10-pa"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "al-medicaid"
+    },
+    {
+      "classId": "antipsychotic-lai",
+      "preferredAgent": {
+        "inn": "Haloperidol decanoate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "100 mg/mL",
+        "sig": "Deep IM (gluteal) injection every 4 weeks. First dose: 10-15 times the daily oral dose if stabilized on 10 mg/day or less (10-20 times if higher or at risk of relapse); give no more than 100 mg in the first injection and the rest 3-7 days later (label).",
+        "sigShort": "IM q4wk, 10-15x oral daily dose",
+        "plainSig": "A shot into the muscle about once a month, given at the clinic."
+      },
+      "preferredRestriction": "Class-level antipsychotic PA (PA Instructions p.3, p.70; EPA program p.8) applies if billed through pharmacy; the PDL intro says antipsychotics are exempt from PDL PA, so the two documents conflict. Clinic-administered: may be billed under the medical benefit instead.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not a PDL class (PA required; provider-administered)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Risperidone microspheres (Risperdal Consta, Perseris, Uzedy, Rykindo)",
+          "outcome": "pa",
+          "reason": "Antipsychotic class PA applies (non-PDL; PA Instructions p.3 and p.70); clinic-administered, may fall under medical benefit",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-pa"
+          ]
+        },
+        {
+          "drug": "Paliperidone palmitate (Invega Sustenna, Trinza, Hafyera)",
+          "outcome": "pa",
+          "reason": "Antipsychotic class PA applies (non-PDL; PA Instructions p.3 and p.70); clinic-administered, may fall under medical benefit",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-pa"
+          ]
+        },
+        {
+          "drug": "Aripiprazole long-acting (Abilify Maintena, Asimtufii, Aristada)",
+          "outcome": "pa",
+          "reason": "Antipsychotic class PA applies (non-PDL; PA Instructions p.3 and p.70); clinic-administered, may fall under medical benefit",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-pa"
+          ]
+        },
+        {
+          "drug": "Fluphenazine decanoate (generic)",
+          "outcome": "pa",
+          "reason": "Antipsychotic class PA applies (non-PDL; PA Instructions p.3 and p.70); clinic-administered, may fall under medical benefit",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-pa"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Not a PDL class: no long-acting injectable antipsychotic appears in either PDL document. Same PA conflict as the oral class: the 04/01/2026 PDL says antipsychotics are exempt; the 10/01/2026 PA Instructions list them as PA-required non-PDL drugs (p.3, criteria p.70); the newer document was used. Haloperidol decanoate chosen as the standard generic LAI (clinic-administered). Whether these are billed under the medical benefit was not confirmed; coverage stated as partial. [Sonnet check 2026-11-02: PA Instructions (eff. 10/01/2026) re-fetched: URL returns 200 (614 KB); p.3 lists Antipsychotic Agents under \"Non-PDL Drugs and/or Drug Classes to Require PA\" and p.8 lists them in the electronic PA (EPA) program; p.70 criteria: diagnosis or psychiatrist prescriber, prior trials not applicable. The PDL intro says antipsychotic and HIV/AIDS drugs are exempt from the PDL PA requirement, so the two documents conflict; PA stays recorded because a class-level PA document names the class, but the claim is class-wide and EPA auto-approves when claims history/diagnosis meet criteria. Confirm at point of prescribing.] Haloperidol decanoate is not named individually in either document.]",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref",
+        "al-medicaid-next11-2026-10-thera",
+        "al-medicaid-next11-2026-10-pa"
+      ],
+      "coverageSourceIds": [
+        "al-medicaid-next11-2026-10-pa",
+        "al-medicaid-next11-2026-10-thera"
+      ],
+      "restrictionSourceIds": [
+        "al-medicaid-next11-2026-10-pa"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "al-medicaid"
+    },
+    {
+      "classId": "antipsychotic-oral",
+      "preferredAgent": {
+        "inn": "Quetiapine fumarate (immediate-release)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg",
+        "sig": "Schizophrenia: start 25 mg twice daily, increase by 25-50 mg per dose daily to 300-400 mg/day in 2-3 doses by day 4. Bipolar mania: start 50 mg twice daily and titrate. Dose per indication (label).",
+        "sigShort": "25 mg BID, titrate per indication",
+        "plainSig": "Start with a small dose twice a day; your prescriber raises it over a few days."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Aripiprazole tab (Abilify)",
+          "note": "Tier 1 generic, 2-30 mg listed; dispensing limit dot, no PA or step (PDF p.78)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olanzapine tab",
+          "note": "Tier 1 generic, 2.5-15 mg listed; dispensing limit dot, no PA or step (PDF p.80)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperidone tab (Risperdal)",
+          "note": "Tier 1 generic, 0.25-4 mg listed; dispensing limit dot, no PA or step (PDF p.82)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Ziprasidone cap (Geodon)",
+          "note": "Tier 1, 20-80 mg; dispensing limit dot, no PA or step (PDF p.82)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lurasidone tab (Latuda)",
+          "note": "Tier 1 generic, 20-120 mg; dispensing limit dot, no PA or step (PDF p.80)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clozapine tab (Clozaril)",
+          "note": "Tier 1 generic, 25-200 mg; dispensing limit dot, no PA or step (PDF p.79)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Asenapine SL tab (Saphris)",
+          "note": "Tier 1 generic, 2.5-10 mg; dispensing limit dot, no PA or step (PDF p.78)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone ER tab (Invega)",
+          "note": "Tier 1 generic, 1.5-9 mg; dispensing limit dot, no PA or step (PDF p.81)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Cariprazine (Vraylar)",
+          "note": "Tier 2 brand, dispensing limit dot, no PA or step (PDF p.82)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Brexpiprazole (Rexulti)",
+          "note": "Tier 2 brand, 0.25-4 mg listed; dispensing limit dot, no PA or step (PDF p.81)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lumateperone (Caplyta)",
+          "note": "Tier 3 brand, 10.5-42 mg; dispensing limit dot, no PA or step (PDF p.78)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Iloperidone (Fanapt), incl. titration packs",
+          "outcome": "step",
+          "reason": "Step therapy required (PDF p.79)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clozapine oral suspension (Versacloz)",
+          "outcome": "step",
+          "reason": "Step therapy required (PDF p.82)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp.78-83 (Central Nervous System, Antipsychotics) by column position: tier number, Prior Authorization, Step Therapy, Dispensing Limits, ACA and Limited Distribution dots; verified visually on p.81. No Prior Authorization dot appears on any oral antipsychotic row. Dispensing Limits dot is on most generics; the quantity is not printed in this document, so no quantity limit is recorded. Preferred pick is quetiapine IR 25 mg (most commonly written generic oral antipsychotic; all generic picks are Tier 1 with the same flags); its dose is a titration starting point and the sig is standard label dosing, not printed. Secuado (asenapine transdermal patch, PDF p.82, step dot) is excluded as not oral. Lybalvi and other oral brands absent from the list (e.g., Abilify Asimtufii is injectable) were not recorded as excluded; the document does not say its list is complete. [Sonnet check 2026-11-02: Fanapt confirmed Step+Dispensing columns (not PA) on rendered p.79; haloperidol decanoate Tier 1 no flags.]",
+      "sourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbs-al-commercial"
+    },
+    {
+      "classId": "antipsychotic-lai",
+      "preferredAgent": {
+        "inn": "Haloperidol decanoate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "100 mg/mL",
+        "sig": "Deep IM (gluteal) injection every 4 weeks. First dose: 10-15 times the daily oral dose if stabilized on 10 mg/day or less (10-20 times if higher or at risk of relapse); give no more than 100 mg in the first injection and the rest 3-7 days later (label).",
+        "sigShort": "IM q4wk, 10-15x oral daily dose",
+        "plainSig": "A shot into the muscle about once a month, given at the clinic."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Risperidone microspheres, generic (Risperdal Consta)",
+          "outcome": "step",
+          "reason": "Step therapy required (PDF p.81)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperdal Consta",
+          "outcome": "step",
+          "reason": "Step therapy required (PDF p.81)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Aripiprazole ER injection (Abilify Maintena)",
+          "outcome": "step",
+          "reason": "Step therapy required (PDF p.78)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Aripiprazole lauroxil (Aristada, Aristada Initio)",
+          "outcome": "step",
+          "reason": "Step therapy required (PDF p.78)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone palmitate (Invega Sustenna, Trinza, Hafyera)",
+          "outcome": "step",
+          "reason": "Step therapy required (PDF pp.79-80)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olanzapine pamoate (Zyprexa Relprevv)",
+          "outcome": "step",
+          "reason": "Step therapy required (PDF pp.82-83)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read PDF pp.78-83. Haloperidol decanoate 100 mg/mL (Tier 1, no PA, step, or dispensing-limit dot) is the only long-acting injectable without a dot; it is the preferred pick. Every brand LAI and the generic risperidone microsphere product carry a Step Therapy dot (Tier 3 brands, Tier 1 generic risperidone), so they are recorded under paRequired as step. Fluphenazine decanoate is not on the list (only fluphenazine HCl injection, PDF p.79, which is not a depot form; not recorded). Partial: these injectables are listed under the pharmacy benefit; administration may fall under the medical benefit and the document does not say which, so the sig is standard label dosing and the benefit channel is unconfirmed. Absent products (Abilify Asimtufii, Perseris, Uzedy, Rykindo) were not recorded as excluded.",
+      "sourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbs-al-commercial"
+    },
+    {
+      "classId": "antipsychotic-oral",
+      "preferredAgent": {
+        "inn": "Risperidone",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "1 mg",
+        "sig": "Schizophrenia: start 2 mg/day (1 mg twice daily or 2 mg once), titrate by 1-2 mg/day to 4-8 mg/day. Bipolar mania: 2-3 mg once daily. Dose per indication (label).",
+        "sigShort": "2 mg/day, titrate per indication",
+        "plainSig": "A pill once or twice a day; your prescriber adjusts the dose."
+      },
+      "preferredRestriction": "Quantity limit: 60 tablets per 30 days (printed, PDF p. 40). No PA.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (Generic)",
+      "alternatives": [
+        {
+          "drug": "Ziprasidone (Geodon-type capsules, 20-80 mg)",
+          "note": "Tier 4, QL 90 or 60 capsules/30 days (PDF p. 41), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Cariprazine (Vraylar capsules)",
+          "note": "Tier 4, QL 30 capsules/30 days (PDF p. 40), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lumateperone (Caplyta capsules)",
+          "note": "Tier 5, QL 30 capsules/30 days (PDF p. 38), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Aripiprazole (tablets, ODT, oral solution, Opipza film)",
+          "outcome": "pa",
+          "reason": "PA required for members 65 and older (list reads \"PA (>=65 yr)\"); tier 3 tablets, QL (PDF p. 38)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olanzapine (tablets, ODT, IM)",
+          "outcome": "pa",
+          "reason": "PA required for members 65 and older (list reads \"PA (>=65 yr)\"); tier 2, QL (PDF p. 39)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Quetiapine fumarate (IR and ER tablets)",
+          "outcome": "pa",
+          "reason": "PA required for members 65 and older (list reads \"PA (>=65 yr)\"); tier 2 IR and tier 4 ER, QL (PDF p. 40)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Clozapine (tablets, ODT, Versacloz suspension)",
+          "outcome": "pa",
+          "reason": "PA required for members 65 and older (list reads \"PA (>=65 yr)\"); tier 3-4, QL (PDF p. 38)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Lurasidone (tablets)",
+          "outcome": "pa",
+          "reason": "PA required for members 65 and older (list reads \"PA (>=65 yr)\"); tier 4, QL (PDF p. 39)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone palmitate ER tablets",
+          "outcome": "pa",
+          "reason": "PA required for members 65 and older (list reads \"PA (>=65 yr)\"); tier 4, QL (PDF p. 40)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Asenapine sublingual tablets",
+          "outcome": "pa",
+          "reason": "PA required for members 65 and older (list reads \"PA (>=65 yr)\"); tier 4, QL (PDF p. 38)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Iloperidone (Fanapt)",
+          "outcome": "pa",
+          "reason": "PA required for members 65 and older (list reads \"PA (>=65 yr)\"); tier 5, QL (PDF p. 38)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Brexpiprazole (Rexulti)",
+          "outcome": "pa",
+          "reason": "PA required for members 65 and older (list reads \"PA (>=65 yr)\"); tier 5, QL (PDF p. 40)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Olanzapine-samidorphan (Lybalvi)",
+          "outcome": "pa",
+          "reason": "PA required for members 65 and older (list reads \"PA (>=65 yr)\"); tier 5, QL (PDF p. 39)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Haloperidol tablets",
+          "outcome": "pa",
+          "reason": "PA required for members 65 and older (list reads \"PA (>=65 yr)\"); tier 2-3 (PDF p. 39)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp. 38-41 (printed pp. 24-27) Antipsychotics table. Preferred pick: risperidone tablets 0.25-3 mg are tier 2 with QL 60 tablets/30 days and no PA (PDF p. 40). Every other oral atypical on the list is either PA for members 65+ (which is most of this Medicare population) or a no-PA tier 4-5 product (ziprasidone, cariprazine, lumateperone). Quetiapine IR and olanzapine are tier 2 but carry the 65+ PA, so they sit in paRequired. Strength and sig are standard label starting dosing, not printed on the list. Brands not on the list (Latuda, Uzedy, Rykindo) are not inferred as excluded; the list's front matter says to ask Member Services about drugs not shown. [Sonnet check 2026-11-02: reconfirmed in PDF - risperidone tab tier 2, QL only, no PA (the ODT and solution carry PA >=65); alprazolam tab tier 2, QL 120 (150 for 2 mg), no PA, no # flag.]",
+      "sourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbs-al-medicare"
+    },
+    {
+      "classId": "antipsychotic-lai",
+      "preferredAgent": {
+        "inn": "Risperidone (long-acting injectable, microspheres)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mg vial, IM",
+        "sig": "25 mg IM every 2 weeks. Continue oral risperidone (or another oral antipsychotic) for 3 weeks after the first injection, because drug release is delayed. Establish tolerability with oral risperidone first (label).",
+        "sigShort": "25 mg IM q2wk + oral x3 wk",
+        "plainSig": "A shot every 2 weeks; keep taking your pills for the first 3 weeks."
+      },
+      "preferredRestriction": "Quantity limit: 2 vials per 28 days (printed, PDF p. 40). No PA. Provider-administered; may be covered under Part B rather than Part D.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 4 (Non-Preferred Drug)",
+      "alternatives": [
+        {
+          "drug": "Paliperidone palmitate (Invega Sustenna 39 mg)",
+          "note": "Tier 4, QL 1 kit/28 days (PDF p. 39), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Aripiprazole (Abilify Maintena, vial and prefilled syringe)",
+          "note": "Tier 5, QL 1/28 days (PDF p. 38), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Aripiprazole (Abilify Asimtufii)",
+          "note": "Tier 5, QL 1 syringe/56 days (PDF p. 38), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone palmitate (Invega Sustenna 78-234 mg)",
+          "note": "Tier 5, QL 1 kit/28 days (PDF p. 39), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone palmitate (Invega Trinza)",
+          "note": "Tier 5, QL 1 kit/84 days (PDF p. 39), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Paliperidone palmitate (Invega Hafyera)",
+          "note": "Tier 5, QL 1 kit/180 days (PDF p. 39), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperidone subcutaneous (Perseris)",
+          "note": "Tier 5, QL 1 syringe/28 days (PDF p. 40), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Risperidone microspheres 50 mg",
+          "note": "Tier 5, QL 2 vials/28 days (PDF p. 40), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Haloperidol decanoate injection",
+          "outcome": "pa",
+          "reason": "PA required for members 65 and older (list reads \"PA (>=65 yr)\"); tier 4 (PDF p. 39)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Fluphenazine decanoate injection",
+          "outcome": "pa",
+          "reason": "PA required for members 65 and older (list reads \"PA (>=65 yr)\"); tier 4 (PDF p. 38)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read PDF pp. 38-40 Antipsychotics table. All LAIs on the list are injected in clinic, so their coverage may sit under Part B; the list does not say which benefit applies, so this record is partial. Preferred pick is the generic risperidone microspheres (no PA, QL 2 vials/28 days, PDF p. 40); 25 mg every 2 weeks is standard label dosing, not printed. Not on the list and not inferred as excluded: Risperdal Consta, Zyprexa Relprevv, Aristada, Uzedy, Rykindo.",
+      "sourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbs-al-medicare"
+    }
+  ],
+  "references": [
+    {
+      "id": "al-medicaid-next11-2026-10-ref",
+      "label": "Alabama Medicaid PDL Reference Tool (eff. 07/01/2026)",
+      "publisher": "Alabama Medicaid Agency",
+      "type": "gov",
+      "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_7-1-26.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "al-medicaid-next11-2026-10-thera",
+      "label": "Alabama Medicaid PDL by Therapeutic Category (eff. 04/01/2026)",
+      "publisher": "Alabama Medicaid Agency",
+      "type": "gov",
+      "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Thera_3-16-26.pdf",
+      "effectiveDate": "2026-04-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "al-medicaid-next11-2026-10-pa",
+      "label": "Alabama Medicaid PA Criteria Instructions (Form 369), eff. 10/01/2026",
+      "publisher": "Alabama Medicaid Agency",
+      "type": "gov",
+      "url": "https://medicaid.alabama.gov/documents/9.0_Resources/9.4_Forms_Library/9.4.13_Pharmacy_Services/9.4.13_PH_Prior_Authorization_Criteria_10-5-26.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "bcbs-al-commercial-next11-2026-10",
+      "label": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (October 2026)",
+      "publisher": "Blue Cross and Blue Shield of Alabama (pharmacy benefit: Prime Therapeutics LLC)",
+      "type": "payer",
+      "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+      "accessed": "2026-11-02",
+      "effectiveDate": "2026-10-01"
+    },
+    {
+      "id": "bcbs-al-medicare-next11-2026-10",
+      "label": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)",
+      "publisher": "Blue Cross and Blue Shield of Alabama (Blue Advantage Choice, Medicare Advantage Part D)",
+      "type": "payer",
+      "url": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+      "effectiveDate": "2026-01-20",
+      "accessed": "2026-11-02"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

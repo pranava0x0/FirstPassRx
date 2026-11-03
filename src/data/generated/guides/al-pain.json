@@ -1,0 +1,957 @@
+{
+  "id": "al-pain",
+  "label": "AL · Pain (opioids, nerve pain, muscle relaxants)",
+  "stateCode": "AL",
+  "region": "Alabama",
+  "topicId": "pain",
+  "topic": "Pain (opioids, nerve pain, muscle relaxants)",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-03",
+  "capturedAt": "2026-11-03",
+  "payers": [
+    {
+      "id": "al-medicaid",
+      "name": "Alabama Medicaid Agency (Fee-for-Service, statewide -- no MCO contracts)",
+      "shortName": "AL Medicaid FFS",
+      "pbm": "Administered directly by the Alabama Medicaid Agency (no contracted PBM identified)",
+      "formularyUrl": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_7-1-26.pdf",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref"
+      ],
+      "productName": "Alabama Medicaid Agency Preferred Drug List by Therapeutic Category",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Alabama Medicaid PDL Reference Tool (eff. 07/01/2026)"
+    },
+    {
+      "id": "bcbs-al-commercial",
+      "name": "Blue Cross and Blue Shield of Alabama (Commercial)",
+      "shortName": "BCBS Alabama",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+      "sourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "productName": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx1.0 Prescription Drug List",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (October 2026)"
+    },
+    {
+      "id": "bcbs-al-medicare",
+      "name": "BCBS Alabama Blue Advantage (Medicare Advantage / Part D)",
+      "shortName": "Blue Advantage AL",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+      "sourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "productName": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "opioid-ir",
+      "name": "Short-acting opioids",
+      "shortName": "OPIOID IR",
+      "plainName": "Short-acting opioid",
+      "description": "Immediate-release opioids for acute pain: hydrocodone/acetaminophen, oxycodone IR and oxycodone/acetaminophen, tramadol, tapentadol IR (Nucynta), morphine IR, hydromorphone IR, codeine/acetaminophen.",
+      "plainDescription": "A short-acting opioid pain pill for acute pain.",
+      "indication": "Acute pain",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref"
+      ]
+    },
+    {
+      "id": "gabapentinoid",
+      "name": "Gabapentinoids",
+      "shortName": "GABA",
+      "plainName": "Gabapentin or pregabalin",
+      "description": "Gabapentin (Neurontin, Gralise, Horizant), pregabalin IR/CR (Lyrica, Lyrica CR).",
+      "plainDescription": "A daily pill for nerve pain or shingles pain.",
+      "indication": "Neuropathic pain, postherpetic neuralgia, fibromyalgia",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref"
+      ]
+    },
+    {
+      "id": "muscle-relaxant",
+      "name": "Skeletal muscle relaxants",
+      "shortName": "MUSCLE",
+      "plainName": "Muscle relaxant",
+      "description": "Cyclobenzaprine (IR, ER/Amrix), methocarbamol, tizanidine, baclofen, metaxalone, carisoprodol, orphenadrine, chlorzoxazone.",
+      "plainDescription": "A short-term pill for muscle spasms.",
+      "indication": "Musculoskeletal spasm, spasticity",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "opioid-ir",
+      "preferredAgent": {
+        "inn": "Hydrocodone/acetaminophen",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg/325 mg tablet",
+        "sig": "1 to 2 tablets (5/325 mg) every 4 to 6 hours as needed for acute pain; max 8 tablets/day; shortest course needed (label).",
+        "sigShort": "1-2 tabs q4-6h PRN",
+        "plainSig": "One or two pills every 4 to 6 hours if needed for pain."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred generic (no PA); Schedule II",
+      "alternatives": [
+        {
+          "drug": "Oxycodone/acetaminophen (generic)",
+          "note": "Preferred generic, no PA (Ref p.22); Percocet brand is PA",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Oxycodone IR (generic)",
+          "note": "Preferred generic, no PA (Ref p.22); Roxicodone brand is PA",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Tramadol (generic)",
+          "note": "Preferred generic, no PA (Ref p.22)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Morphine IR (generic)",
+          "note": "Preferred generic, no PA (Ref p.22)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Hydromorphone (generic)",
+          "note": "Preferred generic, no PA (Ref p.22); Dilaudid brand is PA",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Codeine/acetaminophen (generic)",
+          "note": "Preferred generic, no PA (Ref p.22)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Nucynta (tapentadol IR)",
+          "outcome": "pa",
+          "reason": "PA required (Ref p.22); no generic",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Percocet (oxycodone/acetaminophen brand)",
+          "outcome": "pa",
+          "reason": "Brand requires PA; generic oxycodone/acetaminophen is preferred (Ref p.22)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Roxicodone (oxycodone brand)",
+          "outcome": "pa",
+          "reason": "Brand requires PA; generic oxycodone is preferred (Ref p.22)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Dilaudid (hydromorphone brand)",
+          "outcome": "pa",
+          "reason": "Brand requires PA; generic hydromorphone is preferred (Ref p.22)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Methadone (generic)",
+          "outcome": "pa",
+          "reason": "PA required (Ref p.22; Thera p.3); methadone for pain limited to severe pain needing daily around-the-clock treatment (PA Instructions p.16)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref",
+            "al-medicaid-next11-2026-10-thera",
+            "al-medicaid-next11-2026-10-pa"
+          ]
+        },
+        {
+          "drug": "Apadaz (benzhydrocodone/acetaminophen)",
+          "outcome": "pa",
+          "reason": "PA required (Ref p.22)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Demerol (meperidine brand)",
+          "outcome": "pa",
+          "reason": "Brand requires PA; generic meperidine is preferred (Ref p.22)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        }
+      ],
+      "stepTherapy": "Narcotic analgesic PA (PA Instructions p.16): failed 30-day trials with at least two prescribed and preferred narcotic analgesics within the past 6 months, or documented allergy or contraindication; medical justification must document failure of NSAIDs, acetaminophen or aspirin and a pain evaluation.",
+      "verification": "verified",
+      "verificationNote": "Ref Tool p.22 (Opiate Agonists), x-coordinate read: generic hydrocodone/acetaminophen, oxycodone, oxycodone/acetaminophen, tramadol, morphine, hydromorphone and codeine combinations sit in the Preferred Generic column; Nucynta, Percocet, Roxicodone, Dilaudid, Demerol, Apadaz and methadone (generic) in the PA column. Thera p.3 agrees ('All covered generics (generic methadone requires a PA)'). Judgment: hydrocodone/acetaminophen chosen as the most-prescribed short-acting generic. Controlled: no quantity or day-supply limit printed in either PDL document, none recorded. Strength and sig are standard label dosing, not printed.",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref",
+        "al-medicaid-next11-2026-10-thera",
+        "al-medicaid-next11-2026-10-pa"
+      ],
+      "coverageSourceIds": [
+        "al-medicaid-next11-2026-10-ref",
+        "al-medicaid-next11-2026-10-thera"
+      ],
+      "restrictionSourceIds": [
+        "al-medicaid-next11-2026-10-ref",
+        "al-medicaid-next11-2026-10-pa"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "al-medicaid"
+    },
+    {
+      "classId": "gabapentinoid",
+      "preferredAgent": {
+        "inn": "Gabapentin",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "300 mg capsule",
+        "sig": "Nerve pain after shingles: 300 mg on day 1, 300 mg twice daily on day 2, 300 mg three times daily on day 3, then titrate up to 1,800 mg/day in 3 doses as needed (label).",
+        "sigShort": "300 mg d1 to TID by d3",
+        "plainSig": "One capsule the first day, two the second, three the third; your prescriber may go higher."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not a PDL class",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Not a PDL class: neither the 07/01/2026 Reference Tool (28 pp.) nor the 04/01/2026 therapeutic-category PDL lists gabapentin or pregabalin (text search of both documents returned no hits for either name or any brand: Neurontin, Gralise, Horizant, Lyrica). The PA Instructions (eff. 10/01/2026, p.3) do not list gabapentinoids among non-PDL drugs that require PA. Under the Medicaid PDL rule, a missing class is covered on the state formulary, so standard generic gabapentin is recorded as partial. Pregabalin not verified and not listed as an alternative. [Sonnet check 2026-11-02: re-searched the PA Instructions: no gabapentin/pregabalin mention. Class absent from PDL = state-formulary coverage; kept partial with standard generic, no PA.]",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref",
+        "al-medicaid-next11-2026-10-thera",
+        "al-medicaid-next11-2026-10-pa"
+      ],
+      "coverageSourceIds": [
+        "al-medicaid-next11-2026-10-ref",
+        "al-medicaid-next11-2026-10-thera",
+        "al-medicaid-next11-2026-10-pa"
+      ],
+      "restrictionSourceIds": [
+        "al-medicaid-next11-2026-10-pa"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "al-medicaid"
+    },
+    {
+      "classId": "muscle-relaxant",
+      "preferredAgent": {
+        "inn": "Cyclobenzaprine (IR)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg",
+        "sig": "5 mg three times daily; may increase to 10 mg three times daily. Use for 2 to 3 weeks (label).",
+        "sigShort": "5-10 mg TID x2-3 wk",
+        "plainSig": "One 5 mg pill three times a day for a few weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred generic (no PA)",
+      "alternatives": [
+        {
+          "drug": "Methocarbamol (generic)",
+          "note": "Preferred generic, no PA (Ref p.21); Robaxin brand is PA",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Tizanidine (generic)",
+          "note": "Preferred generic, no PA (Ref p.21); Zanaflex brand is PA",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Baclofen (generic)",
+          "note": "Preferred generic, no PA (Ref p.21); Fleqsuvy and Gablofen brands are PA",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Metaxalone (generic)",
+          "note": "Preferred generic, no PA (Ref p.21); Skelaxin-type brand not on PDL rows read",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Orphenadrine (generic, IR)",
+          "note": "Preferred generic, no PA (Ref p.22)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Chlorzoxazone (generic)",
+          "note": "Preferred generic, no PA (Ref p.21); Lorzone brand is PA",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Carisoprodol (generic)",
+          "outcome": "pa",
+          "reason": "Generic carisoprodol requires PA (Ref p.21; Thera p.3)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref",
+            "al-medicaid-next11-2026-10-thera"
+          ]
+        },
+        {
+          "drug": "Soma (carisoprodol brand)",
+          "outcome": "pa",
+          "reason": "PA required (Ref p.21)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Amrix (cyclobenzaprine ER capsule)",
+          "outcome": "pa",
+          "reason": "PA required (Ref p.21)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Fexmid (cyclobenzaprine brand)",
+          "outcome": "pa",
+          "reason": "PA required (Ref p.21)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Lorzone (chlorzoxazone brand)",
+          "outcome": "pa",
+          "reason": "PA required (Ref p.21)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Robaxin (methocarbamol brand)",
+          "outcome": "pa",
+          "reason": "PA required (Ref p.21)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Zanaflex (tizanidine brand)",
+          "outcome": "pa",
+          "reason": "PA required (Ref p.21)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        }
+      ],
+      "stepTherapy": "Skeletal muscle relaxant PA (PA Instructions p.62): failed 30-day trials with at least two prescribed and preferred skeletal muscle relaxants within the past 6 months, or documented allergy or contraindication. Stable-therapy exception applies only to chronic conditions with spasticity.",
+      "verification": "verified",
+      "verificationNote": "Ref Tool p.21 (Centrally Acting and GABA-derivative sections) and p.22 (Miscellaneous), x-coordinate read: generic cyclobenzaprine, methocarbamol, metaxalone, tizanidine, chlorzoxazone, baclofen and orphenadrine sit in the Preferred Generic column; generic carisoprodol, Amrix, Soma, Fexmid, Lorzone, Robaxin and Zanaflex in the PA column. Thera p.3 agrees ('generic carisoprodol products require a PA'). Judgment: cyclobenzaprine IR chosen as the lowest-barrier, most-prescribed agent. Dose is standard label dosing, not printed.",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref",
+        "al-medicaid-next11-2026-10-thera",
+        "al-medicaid-next11-2026-10-pa"
+      ],
+      "coverageSourceIds": [
+        "al-medicaid-next11-2026-10-ref",
+        "al-medicaid-next11-2026-10-thera"
+      ],
+      "restrictionSourceIds": [
+        "al-medicaid-next11-2026-10-ref",
+        "al-medicaid-next11-2026-10-pa"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "al-medicaid"
+    },
+    {
+      "classId": "opioid-ir",
+      "preferredAgent": {
+        "inn": "Hydrocodone bitartrate and acetaminophen",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg/325 mg",
+        "sig": "1 to 2 tablets (5/325 mg) every 4 to 6 hours as needed for acute pain; max 8 tablets/day; shortest course needed (label).",
+        "sigShort": "1-2 tabs q4-6h PRN",
+        "plainSig": "One or two pills every 4 to 6 hours if needed for pain."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Oxycodone HCl tab, 5-30 mg (Roxicodone at 15 and 30 mg)",
+          "note": "Tier 1, dispensing limit dot, no PA or step (PDF p.94)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxycodone and acetaminophen tab (Percocet), 2.5-10 mg/325 mg",
+          "note": "Tier 1, dispensing limit dot, no PA or step (PDF pp.94-95)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tramadol HCl tab, 50 mg",
+          "note": "Tier 1, dispensing limit dot, no PA or step (PDF p.95)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Acetaminophen and codeine tab, 300 mg/15-60 mg",
+          "note": "Tier 1, dispensing limit dot, no PA or step (PDF pp.92-93)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydromorphone HCl tab (Dilaudid), 2-8 mg",
+          "note": "Tier 1, dispensing limit dot, no PA or step (PDF pp.93-94)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Morphine sulfate IR tab, 15-30 mg",
+          "note": "Tier 1, dispensing limit dot, no PA or step (PDF p.94)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tapentadol tab (Nucynta), 50-100 mg",
+          "note": "Tier 3 brand, dispensing limit dot, no PA or step (PDF p.94)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp.92-95. Dispensing-limit dots are on every immediate-release opioid row. The document does not print quantities or day supply, so none are recorded in preferredRestriction. Extended-release opioids (hydrocodone ER, hydromorphone ER, morphine ER, tapentadol ER, tramadol ER, oxymorphone ER, Xtampza) carry PA dots but are outside this immediate-release class and are not recorded here. Hydrocodone-APAP 5/325 mg is the most commonly written short-acting opioid and is Tier 1; sig is standard label dosing. The quantity limit behind the dispensing-limit dot is not printed here, so it is not recorded.",
+      "sourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbs-al-commercial"
+    },
+    {
+      "classId": "gabapentinoid",
+      "preferredAgent": {
+        "inn": "Gabapentin",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "300 mg",
+        "sig": "Nerve pain after shingles: 300 mg on day 1, 300 mg twice daily on day 2, 300 mg three times daily on day 3, then titrate up to 1,800 mg/day in 3 doses as needed (label).",
+        "sigShort": "300 mg d1 to TID by d3",
+        "plainSig": "One capsule the first day, two the second, three the third; your prescriber may go higher."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Gabapentin tab, 600 mg and 800 mg (Neurontin)",
+          "note": "Tier 1, no dots (PDF p.102)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gabapentin oral solution, 250 mg/5 mL (Neurontin)",
+          "note": "Tier 1, no dots (PDF p.102)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pregabalin cap (Lyrica), 25-300 mg",
+          "note": "Tier 1, dispensing limit dot, no PA or step (PDF p.104)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pregabalin oral solution, 20 mg/mL (Lyrica)",
+          "note": "Tier 1, dispensing limit dot, no PA or step (PDF p.104)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp.102, 104. Gabapentin capsules and tablets are Tier 1 with no dots; pregabalin is Tier 1 with a dispensing-limit dot. Gabapentin 300 mg capsule chosen as the common starting strength; sig is standard label dosing (titrated per label). Gralise, Horizant and Lyrica CR are not on the list and were not recorded as excluded.",
+      "sourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbs-al-commercial"
+    },
+    {
+      "classId": "muscle-relaxant",
+      "preferredAgent": {
+        "inn": "Cyclobenzaprine HCl",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg",
+        "sig": "5 mg three times daily; may increase to 10 mg three times daily. Use for 2 to 3 weeks (label).",
+        "sigShort": "5-10 mg TID x2-3 wk",
+        "plainSig": "One 5 mg pill three times a day for a few weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Methocarbamol tab, 500-750 mg",
+          "note": "Tier 1, no dots (PDF p.108)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tizanidine HCl tab, 2 mg and 4 mg (Zanaflex)",
+          "note": "Tier 1, no dots (PDF p.108)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Baclofen tab, 10-20 mg",
+          "note": "Tier 1, no dots (PDF p.107)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Metaxalone tab, 400-800 mg",
+          "note": "Tier 1, no dots (PDF p.108)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Carisoprodol tab (Soma), 250-350 mg",
+          "note": "Tier 1, no dots (PDF p.107)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Orphenadrine citrate ER tab, 100 mg",
+          "note": "Tier 1, no dots (PDF p.108)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Chlorzoxazone tab, 500 mg",
+          "note": "Tier 1, no dots (PDF p.107)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Cyclobenzaprine tab, 5 mg",
+          "note": "Tier 1, no dots (PDF p.107)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp.107-108. Every skeletal muscle relaxant row listed (cyclobenzaprine, methocarbamol, tizanidine, baclofen, metaxalone, carisoprodol, orphenadrine ER, chlorzoxazone) is Tier 1 with no PA, step, or dispensing-limit dot. Cyclobenzaprine 10 mg chosen as the common strength; sig is standard label dosing. Cyclobenzaprine ER (Amrix) is not on the list. Orphenadrine-aspirin-caffeine (Orphengesic Forte, Tier 3) is a combination product and is excluded.",
+      "sourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbs-al-commercial"
+    },
+    {
+      "classId": "opioid-ir",
+      "preferredAgent": {
+        "inn": "Tramadol hydrochloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet",
+        "sig": "50-100 mg every 4 to 6 hours as needed for pain; max 400 mg/day. For longer use, start 25 mg daily and titrate (label).",
+        "sigShort": "50-100 mg q4-6h PRN",
+        "plainSig": "One or two pills every 4 to 6 hours if needed for pain."
+      },
+      "preferredRestriction": "Quantity limit: 240 tablets per 30 days (printed, PDF p. 16). Controlled substance (C-IV); no PA.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (Generic)",
+      "alternatives": [
+        {
+          "drug": "Oxycodone HCl IR 5 mg tablet",
+          "note": "Tier 3, QL 360 tablets/30 days (PDF p. 16), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxycodone HCl IR 10, 15, 20, 30 mg tablets",
+          "note": "Tier 3, QL 180 tablets/30 days (PDF p. 16), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxycodone/acetaminophen 2.5-5/325 mg tablets",
+          "note": "Tier 3, QL 360 tablets/30 days (PDF p. 16), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxycodone/acetaminophen 7.5/325 mg and 10/325 mg tablets",
+          "note": "Tier 3, QL 240 or 180 tablets/30 days (PDF p. 16), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydrocodone/acetaminophen 5/325 mg tablet",
+          "note": "Tier 3, QL 240 tablets/30 days (PDF p. 15), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydrocodone/acetaminophen 7.5/325 and 10/325 mg tablets",
+          "note": "Tier 3, QL 180 tablets/30 days (PDF p. 15), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydrocodone/acetaminophen oral solution",
+          "note": "Tier 4, QL 2700 mL/30 days (PDF p. 15), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydromorphone HCl IR 2, 4, 8 mg tablets",
+          "note": "Tier 3, QL 180 tablets/30 days (PDF p. 15), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Morphine sulfate IR 15 mg tablet",
+          "note": "Tier 4, QL 360 tablets/30 days (PDF p. 16), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Morphine sulfate IR 30 mg tablet",
+          "note": "Tier 4, QL 180 tablets/30 days (PDF p. 16), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tramadol/acetaminophen 37.5/325 mg tablet",
+          "note": "Tier 3, QL 240 tablets/30 days (PDF p. 16), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Acetaminophen/codeine 300/15, 300/30 mg tablets",
+          "note": "Tier 3, QL 360 tablets/30 days (PDF p. 15), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Acetaminophen/codeine 300/60 mg tablet",
+          "note": "Tier 3, QL 180 tablets/30 days (PDF p. 15), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp. 15-16 Analgesics. Preferred pick is tramadol 50 mg (tier 2, QL 240/30, no PA, PDF p. 16). Every immediate-release opioid on the list is QL-only, with no PA or step. Tramadol ER (PA) is not in this IR class and is not used. Tapentadol IR (Nucynta) is not on the list and is not inferred as excluded. Sig is label dosing, not printed. Quantity limits are controlled-substance limits recorded as printed.",
+      "sourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbs-al-medicare"
+    },
+    {
+      "classId": "gabapentinoid",
+      "preferredAgent": {
+        "inn": "Gabapentin",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "300 mg capsule",
+        "sig": "Nerve pain after shingles: 300 mg on day 1, 300 mg twice daily on day 2, 300 mg three times daily on day 3, then titrate up to 1,800 mg/day in 3 doses as needed (label).",
+        "sigShort": "300 mg d1 to TID by d3",
+        "plainSig": "One capsule the first day, two the second, three the third; your prescriber may go higher."
+      },
+      "preferredRestriction": "Quantity limit: 360 capsules per 30 days (printed, PDF p. 22). No PA.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (Generic)",
+      "alternatives": [
+        {
+          "drug": "Gabapentin 100 mg capsule",
+          "note": "Tier 2, QL 1080 capsules/30 days (PDF p. 22), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gabapentin 400 mg capsule",
+          "note": "Tier 2, QL 270 capsules/30 days (PDF p. 22), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gabapentin 600 mg tablet",
+          "note": "Tier 2, QL 180 tablets/30 days (PDF p. 23), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gabapentin 800 mg tablet",
+          "note": "Tier 2, QL 135 tablets/30 days (PDF p. 23), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Gabapentin oral solution 250 mg/5 mL",
+          "note": "Tier 3, QL 2160 mL/30 days (PDF p. 22), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pregabalin capsules (25-200 mg, 225-300 mg)",
+          "note": "Tier 3, QL 90 or 60 capsules/30 days (PDF p. 23), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Pregabalin oral solution 20 mg/mL",
+          "note": "Tier 3, QL 900 mL/30 days (PDF p. 23), no PA",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp. 22-23 (listed under Anticonvulsants, not a pain heading). Preferred pick is gabapentin 300 mg capsule (tier 2, QL 360/30, no PA, PDF p. 22). No gabapentinoid on the list carries PA or step therapy. Neurontin, Gralise, Horizant and Lyrica CR brands are not on the list and are not inferred as excluded. Sig is label-typical dosing, not printed.",
+      "sourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbs-al-medicare"
+    },
+    {
+      "classId": "muscle-relaxant",
+      "preferredAgent": {
+        "inn": "Cyclobenzaprine hydrochloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg three times daily; may increase to 10 mg three times daily. Use for 2 to 3 weeks (label).",
+        "sigShort": "5-10 mg TID x2-3 wk",
+        "plainSig": "One 5 mg pill three times a day for a few weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (Generic)",
+      "alternatives": [
+        {
+          "drug": "Methocarbamol 500 mg and 750 mg tablets",
+          "note": "Tier 2, no QL or PA printed (PDF p. 85); flagged # high-risk",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tizanidine HCl 2 mg and 4 mg tablets",
+          "note": "Tier 2, no QL or PA printed (PDF p. 41)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Baclofen 10 mg and 20 mg tablets",
+          "note": "Tier 2, no QL or PA printed (PDF p. 41)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF pp. 41 and 85 (Antispasticity agents and Skeletal Muscle Relaxants). Preferred pick is cyclobenzaprine 5 mg (tier 2, no QL or PA printed, PDF p. 85). The # symbol on cyclobenzaprine and methocarbamol is the high-risk medication marker for patients over 65, not a PA or QL; not recorded as a restriction. Carisoprodol, metaxalone, orphenadrine, chlorzoxazone and cyclobenzaprine ER (Amrix) are not on the list and are not inferred as excluded. Sig is label starting dosing, not printed.",
+      "sourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbs-al-medicare"
+    }
+  ],
+  "references": [
+    {
+      "id": "al-medicaid-next11-2026-10-ref",
+      "label": "Alabama Medicaid PDL Reference Tool (eff. 07/01/2026)",
+      "publisher": "Alabama Medicaid Agency",
+      "type": "gov",
+      "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_7-1-26.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "al-medicaid-next11-2026-10-thera",
+      "label": "Alabama Medicaid PDL by Therapeutic Category (eff. 04/01/2026)",
+      "publisher": "Alabama Medicaid Agency",
+      "type": "gov",
+      "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Thera_3-16-26.pdf",
+      "effectiveDate": "2026-04-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "al-medicaid-next11-2026-10-pa",
+      "label": "Alabama Medicaid PA Criteria Instructions (Form 369), eff. 10/01/2026",
+      "publisher": "Alabama Medicaid Agency",
+      "type": "gov",
+      "url": "https://medicaid.alabama.gov/documents/9.0_Resources/9.4_Forms_Library/9.4.13_Pharmacy_Services/9.4.13_PH_Prior_Authorization_Criteria_10-5-26.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "bcbs-al-commercial-next11-2026-10",
+      "label": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (October 2026)",
+      "publisher": "Blue Cross and Blue Shield of Alabama (pharmacy benefit: Prime Therapeutics LLC)",
+      "type": "payer",
+      "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+      "accessed": "2026-11-02",
+      "effectiveDate": "2026-10-01"
+    },
+    {
+      "id": "bcbs-al-medicare-next11-2026-10",
+      "label": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)",
+      "publisher": "Blue Cross and Blue Shield of Alabama (Blue Advantage Choice, Medicare Advantage Part D)",
+      "type": "payer",
+      "url": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+      "effectiveDate": "2026-01-20",
+      "accessed": "2026-11-02"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

@@ -1,0 +1,488 @@
+{
+  "id": "al-oab",
+  "label": "AL · Overactive bladder",
+  "stateCode": "AL",
+  "region": "Alabama",
+  "topicId": "oab",
+  "topic": "Overactive bladder",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-03",
+  "capturedAt": "2026-11-03",
+  "payers": [
+    {
+      "id": "al-medicaid",
+      "name": "Alabama Medicaid Agency (Fee-for-Service, statewide -- no MCO contracts)",
+      "shortName": "AL Medicaid FFS",
+      "pbm": "Administered directly by the Alabama Medicaid Agency (no contracted PBM identified)",
+      "formularyUrl": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_7-1-26.pdf",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref"
+      ],
+      "productName": "Alabama Medicaid Agency Preferred Drug List by Therapeutic Category",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Alabama Medicaid PDL Reference Tool (eff. 07/01/2026)"
+    },
+    {
+      "id": "bcbs-al-commercial",
+      "name": "Blue Cross and Blue Shield of Alabama (Commercial)",
+      "shortName": "BCBS Alabama",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+      "sourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "productName": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx1.0 Prescription Drug List",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (October 2026)"
+    },
+    {
+      "id": "bcbs-al-medicare",
+      "name": "BCBS Alabama Blue Advantage (Medicare Advantage / Part D)",
+      "shortName": "Blue Advantage AL",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+      "sourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "productName": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "oab-antimuscarinic",
+      "name": "Antimuscarinics for overactive bladder",
+      "shortName": "ANTIMUSC",
+      "plainName": "Bladder pill (oxybutynin type)",
+      "description": "Oxybutynin IR/ER/patch/gel, tolterodine IR/ER, solifenacin, darifenacin, trospium IR/ER, fesoterodine (Toviaz).",
+      "plainDescription": "A daily pill to calm an overactive bladder.",
+      "indication": "Overactive bladder",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref"
+      ]
+    },
+    {
+      "id": "oab-beta3",
+      "name": "Beta-3 agonists for overactive bladder",
+      "shortName": "BETA-3",
+      "plainName": "Bladder pill (Myrbetriq type)",
+      "description": "Mirabegron (Myrbetriq, generic mirabegron ER) and vibegron (Gemtesa).",
+      "plainDescription": "A newer daily bladder pill with fewer dry-mouth and memory side effects.",
+      "indication": "Overactive bladder",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "oab-antimuscarinic",
+      "preferredAgent": {
+        "inn": "Oxybutynin chloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg extended-release tablet",
+        "sig": "Immediate-release: 5 mg two to three times daily; max 5 mg four times daily (label).",
+        "sigShort": "5 mg BID-TID",
+        "plainSig": "One pill two or three times a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred generic (no PA)",
+      "alternatives": [
+        {
+          "drug": "Solifenacin (generic)",
+          "note": "Covered generic, no PA (p.19)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Tolterodine (generic, IR and ER)",
+          "note": "Covered generic, no PA (p.19)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Fesoterodine (generic)",
+          "note": "Covered generic, no PA (p.19)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Trospium (generic)",
+          "note": "Covered generic, no PA (p.19)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Darifenacin (generic)",
+          "note": "Covered generic, no PA (p.19)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Oxytrol (oxybutynin transdermal patch)",
+          "note": "Preferred brand, no PA (p.19)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Vesicare (solifenacin)",
+          "outcome": "pa",
+          "reason": "Not preferred brand; PA required (p.19)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Detrol / Detrol LA (tolterodine)",
+          "outcome": "pa",
+          "reason": "Not preferred brand; PA required (p.19)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Toviaz (fesoterodine)",
+          "outcome": "pa",
+          "reason": "Not preferred brand; PA required (p.19)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from Reference tool p.19 (07/01/2026). The PDL lists 'oxybutynin' without dosage-form detail, and the thera intro says drug names cover all forms unless noted, so the ER form is covered; 5 mg daily chosen as the once-daily generic. Strength and sig are label dosing, not printed.",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref"
+      ],
+      "coverageSourceIds": [
+        "al-medicaid-next11-2026-10-ref"
+      ],
+      "restrictionSourceIds": [
+        "al-medicaid-next11-2026-10-ref"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "al-medicaid"
+    },
+    {
+      "classId": "oab-beta3",
+      "preferredAgent": {
+        "inn": "Mirabegron",
+        "brand": "Myrbetriq",
+        "genericAvailable": true,
+        "strength": "25 mg extended-release tablet",
+        "sig": "25 mg once daily; may increase to 50 mg after 4 to 8 weeks (label).",
+        "sigShort": "25 mg QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": true,
+      "boglNote": "Plan lists Myrbetriq as a preferred brand with no PA; generic mirabegron ER requires PA (p.19). AB-rating of generic mirabegron ER to Myrbetriq is from FDA product knowledge, not from the PDL.",
+      "tier": "Preferred brand (no PA)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Mirabegron (generic)",
+          "outcome": "pa",
+          "reason": "Generic mirabegron requires PA (p.19; thera doc agrees)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Gemtesa (vibegron)",
+          "outcome": "pa",
+          "reason": "Not preferred brand; PA required (p.19)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from Reference tool p.19: Myrbetriq is in the Preferred Brand column with no PA; generic mirabegron is in the PA column. The thera doc (04/01/2026) says the same. Brand-over-generic preference is why boglActive is true. Vibegron is PA. Sig is label dosing, not printed. [Sonnet check 2026-11-02: PDL wording confirmed: Thera p.2 reads \"Myrbetriq - All covered generics (generic mirabegron requires a PA)\"; Ref p.19 puts Myrbetriq in the preferred-brand column (x=32) and generic mirabegron in the PA column (x=404). Same form (ER tablet); generic mirabegron ER tablets are AB-rated to Myrbetriq per FDA Orange Book (from drug knowledge, not the PDL), so boglActive true is kept.]",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref"
+      ],
+      "coverageSourceIds": [
+        "al-medicaid-next11-2026-10-ref"
+      ],
+      "restrictionSourceIds": [
+        "al-medicaid-next11-2026-10-ref"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "al-medicaid"
+    },
+    {
+      "classId": "oab-antimuscarinic",
+      "preferredAgent": {
+        "inn": "Oxybutynin chloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet (immediate release)",
+        "sig": "Immediate-release: 5 mg two to three times daily; max 5 mg four times daily (label).",
+        "sigShort": "5 mg BID-TID",
+        "plainSig": "One pill two or three times a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Oxybutynin chloride ER 5 mg tablet",
+          "note": "Tier 1, no flags (PDF p.72)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tolterodine tartrate 1 mg and 2 mg tablet (Detrol)",
+          "note": "Tier 1, no flags (PDF p.72)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tolterodine tartrate ER 2 mg and 4 mg capsule",
+          "note": "Tier 1, no flags (PDF p.72)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Solifenacin succinate 5 mg and 10 mg tablet (Vesicare)",
+          "note": "Tier 1, no flags (PDF p.72)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Darifenacin ER 7.5 mg and 15 mg tablet",
+          "note": "Tier 1, no flags (PDF p.72)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Trospium chloride 20 mg tablet and ER 60 mg capsule",
+          "note": "Tier 1, no flags (PDF p.72)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Oxybutynin 5 mg IR tablet read on PDF p.72 (right column): Tier 1, no flags. Every antimuscarinic listed is Tier 1 with no PA or step. Fesoterodine (Toviaz) and oxybutynin patch or gel are not printed; not recorded as excluded. Sig is standard label dosing, not printed.",
+      "sourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbs-al-commercial"
+    },
+    {
+      "classId": "oab-beta3",
+      "preferredAgent": {
+        "inn": "Mirabegron ER",
+        "brand": "Myrbetriq",
+        "genericAvailable": true,
+        "strength": "25 mg ER tablet",
+        "sig": "25 mg once daily; may increase to 50 mg after 4 to 8 weeks (label).",
+        "sigShort": "25 mg QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Mirabegron ER 50 mg tablet",
+          "note": "Tier 1, no flags (PDF p.72)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Myrbetriq oral granules 8 mg/mL",
+          "note": "Tier 2 brand, no PA flag (PDF p.72)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Mirabegron ER 25 mg tablet (generic, Myrbetriq reference) read on PDF p.72 right column: Tier 1, no flags. Vibegron (Gemtesa) is not printed; not recorded as excluded. Brand Myrbetriq ER tablet is not printed as a separate line. Sig is standard label dosing.",
+      "sourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbs-al-commercial"
+    },
+    {
+      "classId": "oab-antimuscarinic",
+      "preferredAgent": {
+        "inn": "Solifenacin succinate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg once daily; may increase to 10 mg (label).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": "QL 30 tablets per 30 days (not a PA)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (Generic)",
+      "alternatives": [
+        {
+          "drug": "Oxybutynin chloride 5 mg tablet (immediate release)",
+          "note": "Tier 2, QL 120 tablets/30 days (p.65)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Oxybutynin chloride ER 5/10/15 mg tablet",
+          "note": "Tier 3 (Preferred Brand), QL 30-90 tablets/30 days (p.65)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tolterodine tartrate 1 mg/2 mg tablet",
+          "note": "Tier 4 (not preferred), QL 60 tablets/30 days (p.65)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Tolterodine tartrate ER 2 mg/4 mg capsule",
+          "note": "Tier 4 (not preferred), QL 30 capsules/30 days (p.65)",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Solifenacin 5 mg/10 mg tablet read on PDF p.65 (Tier 2, QL 30 tablets/30 days, no PA). Darifenacin, trospium IR and fesoterodine (Toviaz) do not appear on this list; not called nonformulary. Oxybutynin patch and gel are not listed. Sig is standard label dosing. [Sonnet check 2026-11-02: pick and its tier/flags re-read in the cached PDF; the printed flags confirm coverage, so verified. Effective date 2026-01-20 matches the printed update date (record A uses the same).]",
+      "sourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbs-al-medicare"
+    },
+    {
+      "classId": "oab-beta3",
+      "preferredAgent": {
+        "inn": "Mirabegron",
+        "brand": "Myrbetriq",
+        "genericAvailable": false,
+        "strength": "25 mg extended-release tablet",
+        "sig": "25 mg once daily; may increase to 50 mg after 4 to 8 weeks (label).",
+        "sigShort": "25 mg QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": "QL 30 tablets per 30 days (not a PA)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3 (Preferred Brand)",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Myrbetriq ER tablet 25 mg/50 mg read on PDF p.64 (Tier 3, QL 30 tablets/30 days, no PA). Myrbetriq granules (p.64) also listed. Generic mirabegron ER and Gemtesa (vibegron) do not appear on this list. No generic mirabegron is printed, so boglActive is false. Only one beta-3 agent is covered per the list. Sig is standard label dosing. [Sonnet check 2026-11-02: pick and its tier/flags re-read in the cached PDF; the printed flags confirm coverage, so verified. Effective date 2026-01-20 matches the printed update date (record A uses the same).]",
+      "sourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbs-al-medicare"
+    }
+  ],
+  "references": [
+    {
+      "id": "al-medicaid-next11-2026-10-ref",
+      "label": "Alabama Medicaid PDL Reference Tool (eff. 07/01/2026)",
+      "publisher": "Alabama Medicaid Agency",
+      "type": "gov",
+      "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_7-1-26.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "bcbs-al-commercial-next11-2026-10",
+      "label": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (October 2026)",
+      "publisher": "Blue Cross and Blue Shield of Alabama (pharmacy benefit: Prime Therapeutics LLC)",
+      "type": "payer",
+      "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+      "accessed": "2026-11-02",
+      "effectiveDate": "2026-10-01"
+    },
+    {
+      "id": "bcbs-al-medicare-next11-2026-10",
+      "label": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)",
+      "publisher": "Blue Cross and Blue Shield of Alabama (Blue Advantage Choice, Medicare Advantage Part D)",
+      "type": "payer",
+      "url": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+      "effectiveDate": "2026-01-20",
+      "accessed": "2026-11-02"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

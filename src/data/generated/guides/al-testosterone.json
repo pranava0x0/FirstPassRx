@@ -1,0 +1,405 @@
+{
+  "id": "al-testosterone",
+  "label": "AL · Testosterone",
+  "stateCode": "AL",
+  "region": "Alabama",
+  "topicId": "testosterone",
+  "topic": "Testosterone",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-03",
+  "capturedAt": "2026-11-03",
+  "payers": [
+    {
+      "id": "al-medicaid",
+      "name": "Alabama Medicaid Agency (Fee-for-Service, statewide -- no MCO contracts)",
+      "shortName": "AL Medicaid FFS",
+      "pbm": "Administered directly by the Alabama Medicaid Agency (no contracted PBM identified)",
+      "formularyUrl": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_7-1-26.pdf",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref"
+      ],
+      "productName": "Alabama Medicaid Agency Preferred Drug List by Therapeutic Category",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Alabama Medicaid PDL Reference Tool (eff. 07/01/2026)"
+    },
+    {
+      "id": "bcbs-al-commercial",
+      "name": "Blue Cross and Blue Shield of Alabama (Commercial)",
+      "shortName": "BCBS Alabama",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+      "sourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "productName": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx1.0 Prescription Drug List",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (October 2026)"
+    },
+    {
+      "id": "bcbs-al-medicare",
+      "name": "BCBS Alabama Blue Advantage (Medicare Advantage / Part D)",
+      "shortName": "Blue Advantage AL",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+      "sourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "productName": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "testosterone",
+      "name": "Testosterone replacement",
+      "shortName": "TRT",
+      "plainName": "Testosterone gel, shot or pill",
+      "description": "Testosterone gel/solution (AndroGel, Testim, Fortesta, Vogelxo, generic 1%/1.62%), injections (cypionate, enanthate, Xyosted, Aveed undecanoate), patch (Androderm), oral undecanoate (Jatenzo, Tlando, Kyzatrex), nasal (Natesto), pellets (Testopel).",
+      "plainDescription": "Testosterone replacement for low testosterone, as a gel, shot or pill.",
+      "indication": "Male hypogonadism",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone cypionate (injection)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/mL",
+        "sig": "50-400 mg IM every 2 to 4 weeks, adjusted to keep morning testosterone in the normal range (label).",
+        "sigShort": "IM q2-4wk, dose per labs",
+        "plainSig": "A shot every 2 to 4 weeks; your prescriber sets the dose from blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred generic (no PA)",
+      "alternatives": [
+        {
+          "drug": "Testosterone enanthate (generic injection)",
+          "note": "Preferred generic, no PA (Ref p.20)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Testosterone gel (generic AndroGel)",
+          "note": "Preferred generic, no PA (Ref p.19)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Testosterone gel (generic Testim)",
+          "note": "Preferred generic, no PA (Ref p.20)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Testosterone gel (generic Vogelxo)",
+          "note": "Preferred generic, no PA (Ref p.20)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Androderm (testosterone patch brand)",
+          "outcome": "pa",
+          "reason": "PA required (Ref p.19)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Aveed (testosterone undecanoate injection)",
+          "outcome": "pa",
+          "reason": "PA required (Ref p.19); clinic-administered, may fall under medical benefit",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Depo-Testosterone (brand)",
+          "outcome": "pa",
+          "reason": "Brand requires PA; generic testosterone cypionate is preferred (Ref p.20)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Jatenzo (oral testosterone undecanoate)",
+          "outcome": "pa",
+          "reason": "PA required (Ref p.20)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Tlando (oral testosterone undecanoate)",
+          "outcome": "pa",
+          "reason": "PA required (Ref p.20)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Natesto (nasal testosterone)",
+          "outcome": "pa",
+          "reason": "PA required (Ref p.20)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Testopel (testosterone pellets)",
+          "outcome": "pa",
+          "reason": "PA required (Ref p.20); clinic-implanted, may fall under medical benefit",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        },
+        {
+          "drug": "Xyosted (testosterone enanthate autoinjector)",
+          "outcome": "pa",
+          "reason": "PA required (Ref p.20)",
+          "sourceIds": [
+            "al-medicaid-next11-2026-10-ref"
+          ]
+        }
+      ],
+      "stepTherapy": "Androgen PA (PA Instructions p.19): failed 30-day trials with at least two prescribed and preferred androgens within the past 6 months, or documented allergy or contraindication to all preferred agents. Male-only products require a male patient with hypogonadotropic or primary hypogonadism.",
+      "verification": "verified",
+      "verificationNote": "Ref Tool pp.19-20 (Androgens), x-coordinate read: generic testosterone cypionate, testosterone enanthate and the generic testosterone gels (AndroGel, Testim, Vogelxo) sit in the Preferred Generic column; Androderm, Aveed, Depo-Testosterone, Jatenzo, Natesto, Testopel, Tlando and Xyosted in the PA column. Thera p.3 agrees ('All covered generics'). Judgment: testosterone cypionate injection chosen as the standard generic, not oral methyltestosterone. Aveed and Testopel are clinic-administered and may fall under the medical benefit; not confirmed.",
+      "sourceIds": [
+        "al-medicaid-next11-2026-10-ref",
+        "al-medicaid-next11-2026-10-thera",
+        "al-medicaid-next11-2026-10-pa"
+      ],
+      "coverageSourceIds": [
+        "al-medicaid-next11-2026-10-ref",
+        "al-medicaid-next11-2026-10-thera"
+      ],
+      "restrictionSourceIds": [
+        "al-medicaid-next11-2026-10-ref",
+        "al-medicaid-next11-2026-10-pa"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "al-medicaid"
+    },
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone cypionate (intramuscular injection)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/mL",
+        "sig": "50-400 mg IM every 2 to 4 weeks, adjusted to keep morning testosterone in the normal range (label).",
+        "sigShort": "IM q2-4wk, dose per labs",
+        "plainSig": "A shot every 2 to 4 weeks; your prescriber sets the dose from blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Testosterone cypionate IM, 100 mg/mL",
+          "note": "Tier 1, no dots (PDF p.32)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone enanthate IM, 200 mg/mL",
+          "note": "Tier 3, no dots (PDF p.32)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Testosterone topical gel 1% 25 mg/2.5 g (generic)",
+          "outcome": "pa",
+          "reason": "PA required (PDF p.32)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone topical gel 1% 50 mg/5 g (Testim)",
+          "outcome": "pa",
+          "reason": "PA required (PDF p.32)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone topical gel 1.62% 20.25 mg/actuation (Androgel pump)",
+          "outcome": "pa",
+          "reason": "PA required (PDF p.32)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone topical solution 30 mg/actuation",
+          "outcome": "pa",
+          "reason": "PA required (PDF p.32)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Methyltestosterone oral tab (Methitest), 10 mg",
+          "outcome": "pa",
+          "reason": "PA required (PDF p.32)",
+          "sourceIds": [
+            "bcbs-al-commercial-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read PDF p.32 (Endocrine and Metabolic, Androgen-Anabolic). The topical testosterone products carry PA and dispensing-limit dots; testosterone cypionate injection and enanthate injection carry no dots. Cypionate 200 mg/mL chosen as the lowest-barrier, lowest-cost pick. Partial: the injectable preferred pick is listed under the pharmacy benefit, but administration may fall under the medical benefit and this document does not say which; sig is standard label dosing, not printed. Aveed, Xyosted, Jatenzo, Tlando, Kyzatrex, Natesto, Testopel and Androderm are not on the list and were not recorded as excluded. [Sonnet check 2026-11-02: cypionate 200 mg/mL Tier 1 with no flags, gels Tier 1 with PA plus dispensing limit, Methitest Tier 3 PA; confirmed on rendered p.32. Pick kept as standard product, methyltestosterone not used.]",
+      "sourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-commercial-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbs-al-commercial"
+    },
+    {
+      "classId": "testosterone",
+      "preferredAgent": {
+        "inn": "Testosterone cypionate (intramuscular injection)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "200 mg/mL (1 mL vial)",
+        "sig": "50-400 mg IM every 2 to 4 weeks, adjusted to keep morning testosterone in the normal range (label).",
+        "sigShort": "IM q2-4wk, dose per labs",
+        "plainSig": "A shot every 2 to 4 weeks; your prescriber sets the dose from blood tests."
+      },
+      "preferredRestriction": "PA required (printed, PDF p. 71). Provider-administered injection; may be covered under Part B rather than Part D.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3 (Preferred Brand)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Depo-Testosterone (testosterone cypionate injection, 100 and 200 mg/mL)",
+          "outcome": "pa",
+          "reason": "PA required (PDF p. 67), tier 3",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone enanthate injection 200 mg/mL",
+          "outcome": "pa",
+          "reason": "PA required (PDF p. 71), tier 3",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        },
+        {
+          "drug": "Testosterone topical gel (1%, 1.62%, multiple packet and pump sizes)",
+          "outcome": "pa",
+          "reason": "PA and QL required (PDF p. 71), tier 4",
+          "sourceIds": [
+            "bcbs-al-medicare-next11-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read PDF pp. 67 and 71. Every testosterone product on the list needs PA, so the preferred pick is the lowest-barrier product a prescriber would write: generic testosterone cypionate injection (tier 3, PA, PDF p. 71). Alternatives all need PA, so none appears in alternatives. Injections given in clinic may sit under the medical benefit (Part B); the list does not say, so this record is partial. Aveed, Xyosted, Androderm, Jatenzo, Tlando, Kyzatrex, Natesto and Testopel are not on the list and are not inferred as excluded. Sig is label dosing, not printed.",
+      "sourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-medicare-next11-2026-10"
+      ],
+      "lastReviewed": "2026-11-02",
+      "payerId": "bcbs-al-medicare"
+    }
+  ],
+  "references": [
+    {
+      "id": "al-medicaid-next11-2026-10-ref",
+      "label": "Alabama Medicaid PDL Reference Tool (eff. 07/01/2026)",
+      "publisher": "Alabama Medicaid Agency",
+      "type": "gov",
+      "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_7-1-26.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "al-medicaid-next11-2026-10-thera",
+      "label": "Alabama Medicaid PDL by Therapeutic Category (eff. 04/01/2026)",
+      "publisher": "Alabama Medicaid Agency",
+      "type": "gov",
+      "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Thera_3-16-26.pdf",
+      "effectiveDate": "2026-04-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "al-medicaid-next11-2026-10-pa",
+      "label": "Alabama Medicaid PA Criteria Instructions (Form 369), eff. 10/01/2026",
+      "publisher": "Alabama Medicaid Agency",
+      "type": "gov",
+      "url": "https://medicaid.alabama.gov/documents/9.0_Resources/9.4_Forms_Library/9.4.13_Pharmacy_Services/9.4.13_PH_Prior_Authorization_Criteria_10-5-26.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-02"
+    },
+    {
+      "id": "bcbs-al-commercial-next11-2026-10",
+      "label": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (October 2026)",
+      "publisher": "Blue Cross and Blue Shield of Alabama (pharmacy benefit: Prime Therapeutics LLC)",
+      "type": "payer",
+      "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+      "accessed": "2026-11-02",
+      "effectiveDate": "2026-10-01"
+    },
+    {
+      "id": "bcbs-al-medicare-next11-2026-10",
+      "label": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)",
+      "publisher": "Blue Cross and Blue Shield of Alabama (Blue Advantage Choice, Medicare Advantage Part D)",
+      "type": "payer",
+      "url": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+      "effectiveDate": "2026-01-20",
+      "accessed": "2026-11-02"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}
