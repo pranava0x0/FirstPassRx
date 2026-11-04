@@ -389,8 +389,9 @@ import costPlusSnapshot from '../data/costplus-prices.json' with { type: 'json' 
  * 4085 → 4303: Maryland's 11 newer topics (7 payers × 28 classes; UHC reused, Priority Partners copies the PDL).
  * 4303 → 4443: Alabama's 11 newer topics (3 payers × 28 classes).
  * 4443 → 4504: DC's 11 newer topics (4 payers × 28 classes; CareFirst and Kaiser reuse the MD records).
+ * 4504 → 4549 (2026-11-03): Kentucky, all 23 topics (4 payers × 61 classes; UHC and Humana reused).
  */
-export const KNOWN_UNPRICED_GAP = 4504
+export const KNOWN_UNPRICED_GAP = 4549
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -2630,6 +2631,19 @@ function amountsIn(text: string | undefined): string[] | null {
 
 const toMg = (key: string) => Number.parseFloat(key) / (key.endsWith('mcg') ? 1000 : 1)
 
+// "250/50mcg", "1 mg / 0.5 mg", "115 mcg / 21 mcg per actuation" -> ["250mcg/50mcg"]. A unit
+// written once at the end applies to both numbers. Rate denominators (/24 hr, /actuation) are
+// stripped first, as in amountsIn.
+function comboPairs(text: string | undefined): string[] {
+  if (!text) return []
+  const t = text.replace(/\s*\/\s*(\d+(\.\d+)?\s*)?(m?l|hr|hrs|hours?|24\s*h(ou)?rs?|day|d|actuation|act|dose|spray|puff|inh)\b/gi, '')
+  return [...t.matchAll(/(\d+(?:\.\d+)?)\s*(mg|mcg)?\s*\/\s*(\d+(?:\.\d+)?)\s*(mg|mcg)\b/gi)].map((m) => {
+    const u2 = (m[4] ?? '').toLowerCase()
+    const u1 = (m[2] ?? u2).toLowerCase()
+    return `${toMg(`${Number(m[1])}${u1}`)}/${toMg(`${Number(m[3])}${u2}`)}`
+  })
+}
+
 /** The pick's own strength (e.g. "60mg") when it differs from the captured one; true when the
  * pick names only other strengths but no single one to switch to; null when consistent or unknown. */
 function strengthMismatch(point: PricePoint, strength: string | undefined): string | true | null {
@@ -2637,6 +2651,14 @@ function strengthMismatch(point: PricePoint, strength: string | undefined): stri
   // product than a plain-tablet capture.
   const special = /disintegrat|\bodt\b|chewable|vaginal|sublingual/i
   if (special.test(strength ?? '') && !special.test(point.quantity)) return true
+  // A combination capture ("250/50mcg") only prices a pick naming the same pair; an Advair HFA
+  // 115/21 or an estradiol/norethindrone 1/0.5 pick borrowed the 250/50 and 0.5/0.1 prices (PR 28).
+  const havePair = comboPairs(point.quantity)
+  if (havePair.length === 1) {
+    const wantPairs = comboPairs(strength)
+    if (!wantPairs.length) return null
+    return wantPairs.includes(havePair[0] ?? '') ? null : true
+  }
   const have = amountsIn(point.quantity)
   const want = amountsIn(strength)
   if (!have || !want || have.length !== 1 || !want.length) return null

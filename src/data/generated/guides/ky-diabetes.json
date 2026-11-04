@@ -1,0 +1,1689 @@
+{
+  "id": "ky-diabetes",
+  "label": "KY · Diabetes",
+  "stateCode": "KY",
+  "region": "Kentucky",
+  "topicId": "diabetes",
+  "topic": "Diabetes",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-03",
+  "capturedAt": "2026-11-03",
+  "payers": [
+    {
+      "id": "ky-medicaid",
+      "name": "Kentucky Medicaid",
+      "shortName": "KY Medicaid",
+      "aka": "Kentucky Medicaid single Preferred Drug List: fee-for-service and every Medicaid managed care plan (Aetna Better Health of Kentucky, Humana Healthy Horizons in Kentucky, Passport by Molina Healthcare, UnitedHealthcare Community Plan, WellCare of Kentucky), one PBM (MedImpact)",
+      "pbm": "MedImpact",
+      "productName": "Kentucky Medicaid Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Kentucky Medicaid Preferred Drug List (PDL), October 2026",
+      "formularyUrl": "https://kyportal.medimpact.com/sites/default/files/2023-12/kentucky-medicaid-pdl.pdf",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ]
+    },
+    {
+      "id": "anthem-ky",
+      "name": "Anthem Blue Cross and Blue Shield (Kentucky)",
+      "shortName": "Anthem KY",
+      "pbm": "CarelonRx",
+      "productName": "Anthem 2026 Select Drug List — Four Tier (Kentucky individual)",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "Anthem 2026 Select Drug List — Four Tier (Kentucky individual)",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_KY_IND.pdf",
+      "sourceIds": [
+        "anthem-ky-select-2026"
+      ]
+    },
+    {
+      "id": "uhc-ky",
+      "name": "UnitedHealthcare (Commercial)",
+      "shortName": "UnitedHealthcare",
+      "aka": "National commercial PDL (same list in every state)",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "paPolicyUrl": "https://www.uhcprovider.com/en/resource-library/drug-lists-pharmacy.html",
+      "productName": "UnitedHealthcare 2026 Commercial PDL (base list)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "UnitedHealthcare 2026 Prescription Drug List (PDL)",
+      "sourceIds": [
+        "uhc-md-diabetes-source-2026-07-07"
+      ]
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402"
+    }
+  ],
+  "classes": [
+    {
+      "id": "metformin-oral",
+      "name": "Metformin (biguanide)",
+      "shortName": "Metformin",
+      "plainName": "First diabetes pill",
+      "description": "Biguanide oral therapy (metformin IR/ER) — guideline first-line pharmacotherapy for type 2 diabetes.",
+      "plainDescription": "The standard first pill for type 2 diabetes. Cheap, effective, decades of use.",
+      "indication": "Type 2 diabetes (first-line)",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ]
+    },
+    {
+      "id": "glp1",
+      "name": "GLP-1 receptor agonists",
+      "shortName": "GLP-1",
+      "plainName": "Weekly diabetes injection",
+      "description": "GLP-1 receptor agonists (semaglutide, dulaglutide, liraglutide) and the dual GIP/GLP-1 agonist tirzepatide — for type 2 diabetes with weight and cardiovascular benefit.",
+      "plainDescription": "Injectable (usually weekly) diabetes medicines that also help with weight. Most plans require approval first.",
+      "indication": "Type 2 diabetes",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ]
+    },
+    {
+      "id": "sglt2",
+      "name": "SGLT2 inhibitors",
+      "shortName": "SGLT2",
+      "plainName": "Daily diabetes pill (SGLT2)",
+      "description": "SGLT2 inhibitors (empagliflozin, dapagliflozin, canagliflozin) — oral therapy with heart-failure and kidney benefit.",
+      "plainDescription": "A once-a-day pill that lowers blood sugar and protects the heart and kidneys.",
+      "indication": "Type 2 diabetes; heart failure & CKD benefit",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ]
+    },
+    {
+      "id": "insulin",
+      "name": "Insulins (basal & rapid)",
+      "shortName": "Insulin",
+      "plainName": "Insulin",
+      "description": "Basal (glargine, degludec) and rapid-acting (lispro, aspart) insulins; formulary preference is brand-specific on most plans.",
+      "plainDescription": "Daily long-acting and mealtime insulins. Which exact brand is covered differs plan to plan.",
+      "indication": "Type 2 & type 1 diabetes (dosing individualized)",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "metformin-oral",
+      "preferredAgent": {
+        "inn": "Metformin hydrochloride (immediate-release tablet, generic)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "500 mg tablet",
+        "sig": "Start 500 mg by mouth twice daily (or 850 mg once daily) with meals; increase by 500 mg weekly to a usual 2,000 mg/day; max 2,550 mg/day (label).",
+        "sigShort": "500 mg BID with meals",
+        "plainSig": "One pill twice a day with meals; your dose goes up slowly."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred",
+      "alternatives": [
+        {
+          "drug": "Metformin ER tablet",
+          "note": "Preferred, no PA (PDL p.23)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Metformin ER gastric tablet",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.23)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: ≥3-month trial and failure, allergy, contraindication, or intolerance of 2 preferred agents (e.g., metformin IR and metformin ER)."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Metformin ER osmotic tablet",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.23)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: ≥3-month trial and failure, allergy, contraindication, or intolerance of 2 preferred agents (e.g., metformin IR and metformin ER)."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Metformin solution",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.23)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: ≥3-month trial and failure, allergy, contraindication, or intolerance of 2 preferred metformin agents.",
+            "Unable to swallow metformin or metformin ER tablets."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Metformin 625 mg / 750 mg tablet",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.23)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: ≥3-month trial and failure, allergy, contraindication, or intolerance of 2 preferred agents (e.g., metformin IR and metformin ER)."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Riomet solution",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.23)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: ≥3-month trial and failure, allergy, contraindication, or intolerance of 2 preferred metformin agents.",
+            "Unable to swallow metformin or metformin ER tablets."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL p.23: 'metformin 500 mg, 850 mg, 1000 mg tablet' is PREFERRED (no PA); metformin ER tablet also PREFERRED. Glyburide/metformin and glipizide/metformin combinations excluded. PA criteria PDF p.171: metformins without PA for preferred agents.",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ky-medicaid-pa-criteria-2026-10"
+      ],
+      "lastReviewed": "2026-11-03",
+      "payerId": "ky-medicaid"
+    },
+    {
+      "classId": "glp1",
+      "preferredAgent": {
+        "inn": "Semaglutide (Ozempic pen, diabetes)",
+        "brand": "Ozempic",
+        "genericAvailable": false,
+        "strength": "2 mg/3 mL pen (0.25 mg or 0.5 mg per dose)",
+        "sig": "0.25 mg subcutaneously once weekly for 4 weeks, then 0.5 mg weekly; increase in 4-week steps to 1 mg, then 2 mg, if needed (label).",
+        "sigShort": "0.25 mg SC qwk x4, then 0.5 mg",
+        "plainSig": "One shot under the skin once a week; the dose goes up after a month."
+      },
+      "preferredRestriction": "PA required (Preferred with PA; PDL p.22; PA criteria PDF p.161): T2DM diagnosis confirmed by ICD-10 with chart notes in the past 12 months. Approval 6 months; limited to two brand switches per year.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred with PA",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Mounjaro pen (tirzepatide)",
+          "outcome": "pa",
+          "reason": "Preferred with PA: T2DM with ICD-10 and chart notes (PDL p.22; PA criteria PDF p.161)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Type 2 diabetes confirmed in chart notes within the past 12 months, with an A1c of 6.5% or higher (or a historical A1c of 6.5% or higher plus an A1c within the past 6 months).",
+            "No personal or family history of medullary thyroid carcinoma or MEN 2.",
+            "Not used with another GLP-1 receptor agonist or DPP-4 inhibitor, unless the member is changing therapy.",
+            "Requested dose does not exceed the maximum FDA-approved dose for diabetes."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Trulicity pen (dulaglutide)",
+          "outcome": "pa",
+          "reason": "Preferred with PA: T2DM with ICD-10 and chart notes (PDL p.22; PA criteria PDF p.161)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Type 2 diabetes confirmed in chart notes within the past 12 months, with an A1c of 6.5% or higher (or a historical A1c of 6.5% or higher plus an A1c within the past 6 months).",
+            "No personal or family history of medullary thyroid carcinoma or MEN 2.",
+            "Not used with another GLP-1 receptor agonist or DPP-4 inhibitor, unless the member is changing therapy.",
+            "Requested dose does not exceed the maximum FDA-approved dose for diabetes."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Victoza pen (liraglutide)",
+          "outcome": "pa",
+          "reason": "Preferred with PA: T2DM with ICD-10 and chart notes (PDL p.22; PA criteria PDF p.161)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Type 2 diabetes confirmed in chart notes within the past 12 months, with an A1c of 6.5% or higher (or a historical A1c of 6.5% or higher plus an A1c within the past 6 months).",
+            "No personal or family history of medullary thyroid carcinoma or MEN 2.",
+            "Not used with another GLP-1 receptor agonist or DPP-4 inhibitor, unless the member is changing therapy.",
+            "Requested dose does not exceed the maximum FDA-approved dose for diabetes."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Ozempic tablet (oral semaglutide)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.22; PA criteria PDF p.161)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Type 2 diabetes confirmed in chart notes within the past 12 months, with an A1c of 6.5% or higher (or a historical A1c of 6.5% or higher plus an A1c within the past 6 months).",
+            "No personal or family history of medullary thyroid carcinoma or MEN 2.",
+            "Not used with another GLP-1 receptor agonist or DPP-4 inhibitor, unless the member is changing therapy.",
+            "Requested dose does not exceed the maximum FDA-approved dose for diabetes.",
+            "Non-preferred: ≥3-month trial and failure, allergy, contraindication, or intolerance of 2 preferred agents (chart notes or claims must confirm)."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Rybelsus tablet (oral semaglutide)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.22; PA criteria PDF p.161)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Type 2 diabetes confirmed in chart notes within the past 12 months, with an A1c of 6.5% or higher (or a historical A1c of 6.5% or higher plus an A1c within the past 6 months).",
+            "No personal or family history of medullary thyroid carcinoma or MEN 2.",
+            "Not used with another GLP-1 receptor agonist or DPP-4 inhibitor, unless the member is changing therapy.",
+            "Requested dose does not exceed the maximum FDA-approved dose for diabetes.",
+            "Non-preferred: ≥3-month trial and failure, allergy, contraindication, or intolerance of 2 preferred agents (chart notes or claims must confirm)."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Exenatide pen",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.22)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Type 2 diabetes confirmed in chart notes within the past 12 months, with an A1c of 6.5% or higher (or a historical A1c of 6.5% or higher plus an A1c within the past 6 months).",
+            "No personal or family history of medullary thyroid carcinoma or MEN 2.",
+            "Not used with another GLP-1 receptor agonist or DPP-4 inhibitor, unless the member is changing therapy.",
+            "Requested dose does not exceed the maximum FDA-approved dose for diabetes.",
+            "Non-preferred: ≥3-month trial and failure, allergy, contraindication, or intolerance of 2 preferred agents (chart notes or claims must confirm).",
+            "Known or suspected allergy, intolerance, or contraindication to an inactive ingredient in the preferred brand formulation."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Liraglutide pen (generic Victoza)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.22)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Type 2 diabetes confirmed in chart notes within the past 12 months, with an A1c of 6.5% or higher (or a historical A1c of 6.5% or higher plus an A1c within the past 6 months).",
+            "No personal or family history of medullary thyroid carcinoma or MEN 2.",
+            "Not used with another GLP-1 receptor agonist or DPP-4 inhibitor, unless the member is changing therapy.",
+            "Requested dose does not exceed the maximum FDA-approved dose for diabetes.",
+            "Non-preferred: ≥3-month trial and failure, allergy, contraindication, or intolerance of 2 preferred agents (chart notes or claims must confirm).",
+            "Known or suspected allergy, intolerance, or contraindication to an inactive ingredient in the preferred brand formulation."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL p.22: no GLP-1 is PREFERRED without PA. Ozempic pen is in the PREFERRED WITH PA column, so it is the pick (most commonly prescribed of the PA-column GLP-1s). Diabetes-labeled products only; Wegovy/Zepbound not in this class. PA criteria PDF p.161: T2DM confirmed by ICD-10 with chart notes in past 12 months; approval 6 months; limited to two brand switches per year.",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ky-medicaid-pa-criteria-2026-10"
+      ],
+      "lastReviewed": "2026-11-03",
+      "payerId": "ky-medicaid"
+    },
+    {
+      "classId": "sglt2",
+      "preferredAgent": {
+        "inn": "Dapagliflozin (generic tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Type 2 diabetes: 5 or 10 mg by mouth once daily in the morning. Heart failure or chronic kidney disease: 10 mg once daily (label).",
+        "sigShort": "10 mg QAM",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": "PA required (Preferred with PA; PDL p. 23; PA criteria PDF p. 167, flags CC, QL): type 2 diabetes with ASCVD, or trial/failure, intolerance or contraindication to metformin; OR chronic kidney disease (ICD-10 N18); OR heart failure. QL 1 per day.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred with PA",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Jardiance (empagliflozin)",
+          "outcome": "pa",
+          "reason": "Preferred with PA: T2DM with ASCVD, CKD, HF, or metformin failure (PDL p.23; PA criteria PDF p.167)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Type 2 diabetes with atherosclerotic cardiovascular disease (ASCVD).",
+            "Type 2 diabetes with trial and failure (e.g., A1c goal not met), intolerance, or contraindication to metformin.",
+            "Chronic kidney disease (ICD-10 N18).",
+            "Heart failure."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Farxiga (dapagliflozin, brand)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.23; PA criteria PDF p.167)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: ≥3-month trial and failure, allergy, contraindication, or intolerance of 1 preferred agent.",
+            "One of: type 2 diabetes with ASCVD or with metformin failure, intolerance, or contraindication; chronic kidney disease (ICD-10 N18); or heart failure."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Invokana (canagliflozin)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.23)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: ≥3-month trial and failure, allergy, contraindication, or intolerance of 1 preferred agent."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Steglatro (ertugliflozin)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.23)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: ≥3-month trial and failure, allergy, contraindication, or intolerance of 1 preferred agent."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Inpefa (sotagliflozin)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.23)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Type 2 diabetes with chronic kidney disease and other cardiovascular risk factors, OR a diagnosis of heart failure.",
+            "≥3-month trial and failure, allergy, contraindication, or intolerance of 1 preferred agent."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL p.23: generic dapagliflozin tablet is in the PREFERRED WITH PA column; no SGLT2 is PREFERRED without PA. PA criteria PDF p.167: dapagliflozin requires T2DM plus ASCVD, CKD (ICD-10 N18), or heart failure, OR trial/failure, intolerance or contraindication to metformin; QL 1 per day. Synjardy/Xigduo XR (combinations) excluded. [Sonnet check 2026-11-03: Confirmed by x-coordinate that dapagliflozin tablet (generic) is in the PREFERRED WITH PA column (x~312), Jardiance, Synjardy and Xigduo XR beside it, and Farxiga brand, dapagliflozin/metformin ER and the rest are NON-PREFERRED (PDL p. 23). PA criteria p. 167 print the dapagliflozin/Jardiance criteria as T2DM with ASCVD or metformin failure, OR CKD, OR heart failure (CKD and HF stand alone); restriction text corrected. Label start for glycemic control is 5 mg, 10 mg for HF/CKD; 10 mg tablet kept.]",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ky-medicaid-pa-criteria-2026-10"
+      ],
+      "lastReviewed": "2026-11-03",
+      "payerId": "ky-medicaid"
+    },
+    {
+      "classId": "insulin",
+      "preferredAgent": {
+        "inn": "Insulin glargine (U-100 Solostar pen, generic for Lantus Solostar)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "100 units/mL (U-100) prefilled pen",
+        "sig": "Type 2 diabetes, insulin-naive: start up to 10 units (or 0.2 units/kg) subcutaneously once daily at the same time each day, then adjust to fasting glucose. Type 1: about one-third of the total daily insulin dose, with a mealtime insulin (label).",
+        "sigShort": "up to 10 units SC QD, titrate",
+        "plainSig": "One shot under the skin once a day at the same time; your dose is adjusted to your sugar readings."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred",
+      "alternatives": [
+        {
+          "drug": "Lantus Solostar (insulin glargine, brand)",
+          "note": "Preferred, no PA (PDL p.22)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Insulin glargine vial",
+          "note": "Preferred, no PA (PDL p.22)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Insulin lispro Kwikpen U-100 (generic Humalog, rapid-acting)",
+          "note": "Preferred, no PA (PDL p.22)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "NovoLog FlexPen (insulin aspart)",
+          "note": "Preferred, no PA (PDL p.22)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Levemir FlexPen (insulin detemir)",
+          "note": "Preferred, no PA (PDL p.22)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Humulin R U-500 Kwikpen",
+          "note": "Preferred, no PA (PDL p.22)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Basaglar Kwikpen U-100 (insulin glargine)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.22; PA criteria PDF p.159)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Trial and failure of ≥ 2 preferred insulins, one of which must be insulin glargine or Lantus.",
+            "Clinical rationale (e.g., intolerance to an inactive ingredient) that a preferred product cannot be used."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Semglee (yfgn) pen",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.23)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Trial and failure of ≥ 2 preferred insulins, one of which must be insulin glargine or Lantus.",
+            "Clinical rationale (e.g., intolerance to an inactive ingredient) that a preferred product cannot be used."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Toujeo Solostar (insulin glargine U-300)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.23)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: ≥3-month trial and failure, allergy, contraindication, or intolerance of 2 preferred agents in any sub-class."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Tresiba FlexTouch U-100 (insulin degludec)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.23)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: ≥3-month trial and failure, allergy, contraindication, or intolerance of 2 preferred agents in any sub-class."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Humalog Kwikpen U-100 (insulin lispro, brand)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.22)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: ≥3-month trial and failure, allergy, contraindication, or intolerance of 2 preferred agents in any sub-class."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Lyumjev Kwikpen U-100",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.22)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Trial and failure of ≥ 2 preferred insulins.",
+            "Clinical rationale (e.g., intolerance to an inactive ingredient) that a preferred product cannot be used."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Fiasp FlexTouch",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.22)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Trial and failure of ≥ 2 preferred insulins.",
+            "Clinical rationale (e.g., intolerance to an inactive ingredient) that a preferred product cannot be used."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL p.22-23: insulin glargine Solostar U100 (generic for Lantus Solostar) and Lantus Solostar are both PREFERRED with no PA, so no brand-over-generic boglActive. Rapid-acting pick is generic insulin lispro Kwikpen U-100 (PREFERRED). Dose is individualized; no fixed dose is set here. PA criteria PDF p.159: non-preferred insulins need a 3-month trial and failure of two preferred insulins.",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ky-medicaid-pa-criteria-2026-10"
+      ],
+      "lastReviewed": "2026-11-03",
+      "payerId": "ky-medicaid"
+    },
+    {
+      "classId": "metformin-oral",
+      "preferredAgent": {
+        "inn": "Metformin hydrochloride (immediate-release oral tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "500 mg",
+        "sig": "Start 500 mg by mouth twice daily (or 850 mg once daily) with meals; increase by 500 mg weekly to a usual 2,000 mg/day; max 2,550 mg/day (label).",
+        "sigShort": "500 mg BID with meals",
+        "plainSig": "One pill twice a day with meals; your dose goes up slowly."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Metformin hydrochloride ER 24-hour oral tablet",
+          "note": "Tier 1, QL (p. 20)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Metformin hydrochloride oral tablet 850 mg",
+          "note": "Tier 1, $0 preventive, QL (p. 21)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read p. 21 (metformin hcl oral tablet 1000 mg, 500 mg, Tier 1, QL). Sig is standard label dosing. Metformin fixed-dose combinations (sulfonylurea, DPP-4, SGLT2 combos, pp. 23-24) excluded as separate products.",
+      "sourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "coverageSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "restrictionSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "lastReviewed": "2026-11-03",
+      "payerId": "anthem-ky"
+    },
+    {
+      "classId": "glp1",
+      "preferredAgent": {
+        "inn": "Semaglutide (Ozempic pen, 0.25 mg/dose starting dose)",
+        "brand": "Ozempic",
+        "genericAvailable": false,
+        "strength": "0.25 mg or 0.5 mg per dose pen (start 0.25 mg)",
+        "sig": "0.25 mg subcutaneously once weekly for 4 weeks, then 0.5 mg weekly; increase in 4-week steps to 1 mg, then 2 mg, if needed (label).",
+        "sigShort": "0.25 mg SC qwk x4, then 0.5 mg",
+        "plainSig": "One shot under the skin once a week; the dose goes up after a month."
+      },
+      "preferredRestriction": "Prior authorization (PA) and quantity limit (QL) on the list (Tier 2, p. 23). Ozempic 0.25/0.5 mg pen is the lowest-strength pen listed.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Ozempic (1 mg/dose or 2 mg/dose pen)",
+          "outcome": "pa",
+          "reason": "PA required, Tier 2 (p. 23)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Trulicity (dulaglutide) auto-injector",
+          "outcome": "pa",
+          "reason": "PA required, Tier 2 (p. 23)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Liraglutide subcutaneous pen-injector (indication not stated on list)",
+          "outcome": "pa",
+          "reason": "PA required, Tier 2 (p. 23); list does not state diabetes vs weight-management product",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Mounjaro (tirzepatide)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Select Drug List (p. 2: \"Yes, this is a complete listing of all the drugs on the drug list.\"); preapproval route on p. 3",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Rybelsus / Ozempic tablets (oral semaglutide)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Select Drug List (p. 2: \"Yes, this is a complete listing of all the drugs on the drug list.\"); preapproval route on p. 3",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read p. 23 (INCRETIN MIMETIC AGENTS: Ozempic 0.25/0.5 mg, 1 mg, 2 mg pens and Trulicity, all Tier 2 PA; QL). Liraglutide pen line is listed without indication, so it is not used as the pick. Mounjaro and oral semaglutide are not printed anywhere in the PDF (text search), so recorded as nonformulary under the p. 2 completeness statement. Ozempic pen strength and sig are standard label dosing. [Sonnet check 2026-11-03: strength matches the list row \"Ozempic (0.25 or 0.5 mg/dose)\". Every GLP-1 on the list is Tier 2 PA; QL (Ozempic, Trulicity, generic liraglutide pen, p. 23); Victoza brand, Mounjaro, Rybelsus and Ozempic tablets are not printed, so no no-PA diabetes GLP-1 exists on this list. Ozempic kept as the common pick (same as Anthem Ohio).]",
+      "sourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "coverageSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "restrictionSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "lastReviewed": "2026-11-03",
+      "payerId": "anthem-ky"
+    },
+    {
+      "classId": "sglt2",
+      "preferredAgent": {
+        "inn": "Dapagliflozin (oral tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg",
+        "sig": "Type 2 diabetes: 5 or 10 mg by mouth once daily in the morning. Heart failure or chronic kidney disease: 10 mg once daily (label).",
+        "sigShort": "10 mg QAM",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": "Step therapy (ST) on the list (Tier 1, p. 23); the list does not name the step drug(s).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Jardiance (empagliflozin) oral tablet",
+          "outcome": "step",
+          "reason": "Step: ST noted on the list (Tier 2, p. 23); step drugs not named",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Dapagliflozin propanediol oral tablet (10 mg, 5 mg)",
+          "outcome": "step",
+          "reason": "Step: ST noted on the list (Tier 2, p. 23); step drugs not named",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Canagliflozin (Invokana)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Select Drug List (p. 2: \"Yes, this is a complete listing of all the drugs on the drug list.\"); preapproval route on p. 3",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Ertugliflozin (Steglatro)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Select Drug List (p. 2: \"Yes, this is a complete listing of all the drugs on the drug list.\"); preapproval route on p. 3",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        }
+      ],
+      "stepTherapy": "ST (step therapy) on the Notes column for dapagliflozin (p. 23). The step drug(s) are not named anywhere on the list.",
+      "verification": "verified",
+      "verificationNote": "Read p. 23 (SGLT2 INHIBITORS: dapagliflozin oral tablet Tier 1, ST; QL; Jardiance and dapagliflozin propanediol Tier 2, ST; QL). Step agent not printed; the appeal letter must cite the plan's step criteria from Anthem directly. SGLT2/metformin combinations (p. 23-24) excluded.",
+      "sourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "coverageSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "restrictionSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "lastReviewed": "2026-11-03",
+      "payerId": "anthem-ky"
+    },
+    {
+      "classId": "insulin",
+      "preferredAgent": {
+        "inn": "Insulin glargine (Lantus SoloStar pen, 100 units/mL)",
+        "brand": "Lantus SoloStar",
+        "genericAvailable": true,
+        "strength": "100 units/mL SoloStar pen",
+        "sig": "Type 2 diabetes, insulin-naive: start up to 10 units (or 0.2 units/kg) subcutaneously once daily at the same time each day, then adjust to fasting glucose. Type 1: about one-third of the total daily insulin dose, with a mealtime insulin (label).",
+        "sigShort": "up to 10 units SC QD, titrate",
+        "plainSig": "One shot under the skin once a day at the same time; your dose is adjusted to your sugar readings."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2",
+      "alternatives": [
+        {
+          "drug": "Insulin degludec (Tresiba FlexTouch / unbranded)",
+          "note": "Tier 2, QL (p. 23)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Insulin lispro (Humalog and unbranded lispro)",
+          "note": "Tier 2, QL (p. 22)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Insulin aspart (Novolog and unbranded aspart)",
+          "note": "Tier 2, QL (p. 22)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Insulin glargine-yfgn (unbranded biosimilar glargine)",
+          "note": "Tier 3, QL (p. 22)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Novolin 70/30 FlexPen (human insulin)",
+          "note": "Tier 2, QL (p. 22)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Humulin R U-500 KwikPen (concentrated human insulin)",
+          "outcome": "pa",
+          "reason": "PA required, Tier 2 (p. 22)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read p. 22 (LANTUS SoloStar Tier 2, QL; Humulin R U-500 Tier 2, PA; QL). Insulin glargine-yfgn (Tier 3) is an interchangeable biosimilar, not an AB-rated generic; the plan prefers Lantus by tier, not by a dispense-as-written block, so boglActive is false. Strength and sig are standard label dosing; the list prints neither. Insulin brands and glargine are on the same page. [Sonnet check 2026-11-03: strength cleaned to \"100 units/mL SoloStar pen\"; Lantus SoloStar is Tier 2 QL (p. 22), glargine-yfgn biosimilar is Tier 3.]",
+      "sourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "coverageSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "restrictionSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "lastReviewed": "2026-11-03",
+      "payerId": "anthem-ky"
+    },
+    {
+      "classId": "metformin-oral",
+      "preferredAgent": {
+        "inn": "metformin hcl",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "500 mg oral tablet (also available 850 mg, 1000 mg)",
+        "sig": "Start 500 mg by mouth twice daily (or 850 mg once daily) with meals; increase by 500 mg weekly to a usual 2,000 mg/day; max 2,550 mg/day (label).",
+        "sigShort": "500 mg BID with meals",
+        "plainSig": "One pill twice a day with meals; your dose goes up slowly."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "metformin hcl er (extended-release, standard formulation)",
+          "note": "Tier 1, preferred generic extended-release, no PA",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "glipizide xl oral tablet extended release",
+          "note": "Tier 1, covered alternative first-line oral agent (sulfonylurea class)",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "glimepiride oral tablet (1mg, 2mg, 4mg)",
+          "note": "Tier 1, covered alternative oral agent (sulfonylurea class)",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "pioglitazone hcl",
+          "note": "Tier 1, quantity limit, covered alternative oral agent (thiazolidinedione class)",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "metformin hcl oral tablet 625mg, 750mg",
+          "outcome": "pa",
+          "reason": "Listed as \"E\" -- may be excluded from coverage or subject to PA; the higher-strength tablets are not covered as cleanly as the standard 500/850/1000mg strengths",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "metformin hcl er (mod)",
+          "outcome": "pa",
+          "reason": "Marked \"E PA\" -- modified-release extended formulation requires prior authorization",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "metformin hcl er (osm)",
+          "outcome": "pa",
+          "reason": "Marked \"E PA\" -- osmotic extended-release formulation (e.g., Glumetza-type) requires prior authorization",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "GLUMETZA ORAL TABLET (branded osmotic ER metformin)",
+          "outcome": "pa",
+          "reason": "Marked \"E PA\" -- brand extended-release product requires prior authorization",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "tier": "Tier 1 (lowest member cost) for standard metformin HCl tablets and standard ER",
+      "verification": "verified",
+      "verificationNote": "Read directly from the UnitedHealthcare 2026 PDL, effective January 1, 2026, pages 30-31 (Diabetes - Non-Insulin Agents). Confirmed: 'metformin hcl er 1' and 'metformin hcl oral tablet 1000 mg, 500 mg, 850 mg 1' (page 31, Tier 1, no restriction symbol). Confirmed 'metformin hcl er (mod) E PA' and 'metformin hcl er (osm) E PA' (page 31) and 'metformin hcl oral tablet 625 mg, 750 mg E' (page 31) -- all marked with PA/exclusion flags. 'GLUMETZA ORAL TABLET EXTENDED RELEASE 24 HOUR 1000 MG, 500 MG E PA' (page 31) confirms the brand ER product also requires PA. Alternatives (glipizide XL, glimepiride, pioglitazone) confirmed Tier 1 on page 30-31 as other first-line-adjacent oral options in the same Non-Insulin Agents section. Sig (500mg BID with meals, titrate) is standard metformin FDA-label dosing, not stated verbatim in the PDL, which lists coverage/tier only. [Reused: same national UHC commercial PDL as the MD guide (2026-10-21); outside CT/NJ/NY its 'E' symbol means may be excluded] [Reused: same national UHC commercial PDL in every state]",
+      "sourceIds": [
+        "uhc-md-diabetes-source-2026-07-07"
+      ],
+      "coverageSourceIds": [
+        "uhc-md-diabetes-source-2026-07-07"
+      ],
+      "restrictionSourceIds": [
+        "uhc-md-diabetes-source-2026-07-07"
+      ],
+      "lastReviewed": "2026-07-07",
+      "payerId": "uhc-ky"
+    },
+    {
+      "classId": "glp1",
+      "preferredAgent": {
+        "inn": "semaglutide",
+        "brand": "Ozempic",
+        "genericAvailable": false,
+        "strength": "subcutaneous injection pen (0.25mg/0.5mg/1mg/2mg dose escalation)",
+        "sig": "0.25 mg subcutaneously once weekly for 4 weeks, then 0.5 mg weekly; increase in 4-week steps to 1 mg, then 2 mg, if needed (label).",
+        "sigShort": "0.25 mg SC qwk x4, then 0.5 mg",
+        "plainSig": "One shot under the skin once a week; the dose goes up after a month."
+      },
+      "preferredRestriction": "Requires prior authorization (PA) and has a quantity limit (QL) even as the preferred agent -- Tier 2.",
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "TRULICITY (dulaglutide)",
+          "note": "Tier 2, PA required, quantity limit -- covered alternative GLP-1",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "MOUNJARO (tirzepatide, dual GIP/GLP-1 agonist)",
+          "note": "Tier 2, PA required, quantity limit -- covered dual-agonist alternative",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "RYBELSUS (oral semaglutide)",
+          "note": "Tier 2, PA required, quantity limit -- covered oral GLP-1 alternative",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "liraglutide solution pen-injector 18mg/3ml (2-pack)",
+          "note": "Tier 2, PA required, quantity limit -- covered generic-class GLP-1 alternative",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "liraglutide solution pen-injector 18mg/3ml (3-pack)",
+          "note": "Tier 3, PA required, quantity limit -- covered but higher cost-share pack size",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "SOLIQUA (insulin glargine-lixisenatide combo)",
+          "note": "Tier 2, quantity limit -- covered combination product containing a GLP-1 component",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "BYDUREON BCISE (exenatide extended-release auto-injector)",
+          "outcome": "pa",
+          "reason": "Tier 2, marked PA and QL -- covered class member but requires prior authorization like the rest of the class",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "tier": "Tier 2 (mid-range member cost) for Ozempic and all GLP-1 class members",
+      "verification": "verified",
+      "verificationNote": "Read directly from the UnitedHealthcare 2026 PDL, effective January 1, 2026, pages 30-31 (Diabetes - Non-Insulin Agents). Confirmed: 'OZEMPIC 2 PA, QL' (page 31), 'TRULICITY 2 PA, QL' (page 31), 'MOUNJARO 2 PA, QL' (page 31), 'RYBELSUS 2 PA, QL' (page 31), 'liraglutide solution pen-injector 18 mg/3ml subcutaneous 2 PA, QL (2-pack)' and '...3 PA, QL (3-pack)' (page 31), 'BYDUREON BCISE AUTOINJECTOR SUBCUTANEOUS AUTO-INJECTOR 2 MG/0.85ML 2 PA, QL' (page 30), 'SOLIQUA 2 QL' (page 31). Every GLP-1 agent on this PDL requires PA regardless of tier -- this is a class-wide pattern, not specific to non-preferred agents, so Ozempic was selected as the preferred/most commonly first-line agent per current ADA/clinical guidance, all sitting at the same Tier 2 with the same PA+QL restriction profile. No agent in this class is PA-free on this PDL. Sig reflects standard Ozempic FDA-label dose-titration schedule, not stated verbatim in the PDL. [Reused: same national UHC commercial PDL as the MD guide (2026-10-21); outside CT/NJ/NY its 'E' symbol means may be excluded] [Reused: same national UHC commercial PDL in every state]",
+      "sourceIds": [
+        "uhc-md-diabetes-source-2026-07-07"
+      ],
+      "coverageSourceIds": [
+        "uhc-md-diabetes-source-2026-07-07"
+      ],
+      "restrictionSourceIds": [
+        "uhc-md-diabetes-source-2026-07-07"
+      ],
+      "lastReviewed": "2026-07-07",
+      "payerId": "uhc-ky"
+    },
+    {
+      "classId": "sglt2",
+      "preferredAgent": {
+        "inn": "empagliflozin",
+        "brand": "Jardiance",
+        "genericAvailable": false,
+        "strength": "10 mg oral tablet (also 25 mg)",
+        "sig": "10 mg by mouth once daily in the morning; may increase to 25 mg for blood sugar control (label).",
+        "sigShort": "10 mg QAM",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": "Quantity limit (QL) applies; no PA required -- the only SGLT2 agent on this PDL without a PA/step-therapy requirement.",
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "GLYXAMBI (empagliflozin-linagliptin combo)",
+          "note": "Tier 2, step therapy, quantity limit -- covered combination product",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "SYNJARDY (empagliflozin-metformin combo)",
+          "note": "Tier 2, quantity limit -- covered combination product",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "SYNJARDY XR (empagliflozin-metformin extended release)",
+          "note": "Tier 2, quantity limit -- covered combination product",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "FARXIGA (dapagliflozin)",
+          "outcome": "step",
+          "reason": "Marked \"E ST, QL\" -- step therapy required before this brand SGLT2 is covered",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "INVOKANA (canagliflozin)",
+          "outcome": "step",
+          "reason": "Marked \"E ST, QL\" -- step therapy required before this brand SGLT2 is covered",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "DAPAGLIFLOZIN PROPANEDIOL (generic Farxiga)",
+          "outcome": "step",
+          "reason": "Marked \"E ST, QL\" -- generic still requires step therapy on this PDL",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "DAPAGLIFLOZIN PRO-METFORMIN ER (generic Xigduo XR)",
+          "outcome": "step",
+          "reason": "Marked \"E ST, QL\" -- combination generic still requires step therapy",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "XIGDUO XR (dapagliflozin-metformin combo, brand)",
+          "outcome": "step",
+          "reason": "Marked \"E ST, QL\" -- step therapy required for this combination brand",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "BRENZAVVY (bexagliflozin)",
+          "outcome": "step",
+          "reason": "Tier 3, marked ST and QL -- newer SGLT2 entrant requires step therapy",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        }
+      ],
+      "stepTherapy": "Step therapy (ST) is explicitly required for dapagliflozin-based products (Farxiga and its generics, Xigduo XR) and for Brenzavvy -- members must generally try Jardiance (empagliflozin) first before these agents are approved.",
+      "tier": "Tier 2 (mid-range member cost) for Jardiance, no PA",
+      "verification": "verified",
+      "verificationNote": "Read directly from the UnitedHealthcare 2026 PDL, effective January 1, 2026, pages 30-31 (Diabetes - Non-Insulin Agents). Confirmed: 'JARDIANCE 2 QL' (page 31) with no PA or ST symbol, in contrast to 'FARXIGA E ST, QL' (page 30), 'DAPAGLIFLOZIN PRO-METFORMIN ER E ST, QL' (page 30), 'DAPAGLIFLOZIN PROPANEDIOL E ST, QL' (page 30), 'INVOKANA E ST, QL' (page 31), 'XIGDUO XR E ST, QL' (page 31), and 'BRENZAVVY 3 ST, QL' (page 30). 'GLYXAMBI 2 ST, QL' (page 31) confirms even the empagliflozin combination product carries step therapy, distinguishing it from empagliflozin monotherapy (Jardiance) which is the only clean, PA/ST-free option in the class. 'SYNJARDY 2 QL' and 'SYNJARDY XR 2 QL' (page 31) confirmed as clean-covered empagliflozin combinations. Sig reflects standard Jardiance FDA-label dosing, not stated verbatim in the PDL. [Reused: same national UHC commercial PDL as the MD guide (2026-10-21); outside CT/NJ/NY its 'E' symbol means may be excluded] [Reused: same national UHC commercial PDL in every state]",
+      "sourceIds": [
+        "uhc-md-diabetes-source-2026-07-07"
+      ],
+      "coverageSourceIds": [
+        "uhc-md-diabetes-source-2026-07-07"
+      ],
+      "restrictionSourceIds": [
+        "uhc-md-diabetes-source-2026-07-07"
+      ],
+      "lastReviewed": "2026-07-07",
+      "payerId": "uhc-ky"
+    },
+    {
+      "classId": "insulin",
+      "preferredAgent": {
+        "inn": "insulin glargine",
+        "brand": "Lantus (Solostar pen and vial)",
+        "genericAvailable": true,
+        "strength": "100 units/mL (U-100), Solostar pen or vial",
+        "sig": "Type 2 diabetes, insulin-naive: start up to 10 units (or 0.2 units/kg) subcutaneously once daily at the same time each day, then adjust to fasting glucose. Type 1: about one-third of the total daily insulin dose, with a mealtime insulin (label).",
+        "sigShort": "up to 10 units SC QD, titrate",
+        "plainSig": "One shot under the skin once a day at the same time; your dose is adjusted to your sugar readings."
+      },
+      "preferredRestriction": "Quantity limit (QL) applies; no PA required for LANTUS SOLOSTAR/vial. For rapid-acting coverage, HUMALOG VIAL and HUMALOG MIX 50/50 VIAL / MIX 75/25 VIAL are Tier 1 with QL, no PA.",
+      "boglActive": true,
+      "boglNote": "LANTUS SOLOSTAR and LANTUS U-100 VIAL (brand insulin glargine) sit at Tier 1 with only a quantity limit, while the unbranded 'insulin glargine' and 'insulin glargine solostar/maxsolostar' generic/authorized-generic entries are marked \"E\" (PA/exclusion-eligible) -- the brand is the cleaner-covered option for this basal insulin on this specific PDL.",
+      "alternatives": [
+        {
+          "drug": "HUMALOG VIAL / HUMALOG MIX 50/50 VIAL / HUMALOG MIX 75/25 VIAL (insulin lispro, rapid-acting)",
+          "note": "Tier 1, quantity limit, no PA -- preferred rapid-acting option",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "insulin lispro vial (generic Humalog)",
+          "note": "Tier 1, quantity limit -- covered generic rapid-acting alternative",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "TOUJEO SOLOSTAR / TOUJEO MAX SOLOSTAR (insulin glargine U-300, brand)",
+          "note": "Tier 2, quantity limit -- covered concentrated basal alternative",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "LYUMJEV VIAL (insulin lispro-aabc, ultra-rapid)",
+          "note": "Tier 1, quantity limit -- covered ultra-rapid alternative",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "LYUMJEV KWIKPEN",
+          "note": "Tier 2, quantity limit -- covered pen delivery alternative",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "insulin glargine (unbranded)",
+          "outcome": "pa",
+          "reason": "Marked \"E QL\" -- may be excluded from coverage or subject to PA despite Lantus brand being clean-covered",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "INSULIN GLARGINE SOLOSTAR / INSULIN GLARGINE MAX SOLOSTAR (unbranded authorized generic)",
+          "outcome": "pa",
+          "reason": "Marked \"E QL\" -- same PA/exclusion flag as the unbranded vial",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "TRESIBA FLEXTOUCH (insulin degludec)",
+          "outcome": "pa",
+          "reason": "Marked \"E QL\" -- brand long-acting insulin requires PA/exclusion review",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "INSULIN DEGLUDEC FLEXTOUCH (generic Tresiba)",
+          "outcome": "pa",
+          "reason": "Marked \"E QL\" -- generic still carries the PA/exclusion flag",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "INSULIN ASPART / INSULIN ASPART FLEXPEN (generic Novolog)",
+          "outcome": "step",
+          "reason": "Marked \"E ST, QL\" -- explicit step therapy required for generic rapid-acting insulin aspart",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "NOVOLOG / NOVOLOG FLEXPEN / NOVOLOG RELION (brand and store-brand insulin aspart)",
+          "outcome": "step",
+          "reason": "Marked \"E ST, QL\" -- step therapy required across all Novolog-family products",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "NOVOLIN 70/30, NOVOLIN N, NOVOLIN R (all forms including ReliOn)",
+          "outcome": "step",
+          "reason": "Marked \"E ST, QL\" -- step therapy required for all Novolin human insulin products",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "BASAGLAR TEMPO PEN (insulin glargine biosimilar)",
+          "outcome": "pa",
+          "reason": "Marked \"E QL\" -- biosimilar glargine still requires PA/exclusion review",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "ADMELOG / ADMELOG SOLOSTAR (insulin lispro biosimilar/follow-on)",
+          "outcome": "pa",
+          "reason": "Marked \"E QL\" -- follow-on rapid-acting insulin requires PA/exclusion review",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "HUMALOG TEMPO PEN / HUMALOG VIAL (note: only certain Humalog presentations are marked E)",
+          "outcome": "pa",
+          "reason": "HUMALOG TEMPO PEN specifically marked \"E QL\" (distinct from the clean Tier-1/2 HUMALOG VIAL/KWIKPEN/cartridge entries)",
+          "sourceIds": [
+            "uhc-md-diabetes-source-2026-07-07"
+          ]
+        }
+      ],
+      "stepTherapy": "Step therapy (ST) is explicitly required for insulin aspart (generic and Novolog brand/ReliOn) and for the entire Novolin human-insulin line -- members must generally try a preferred rapid-acting analog (e.g., Humalog) or preferred basal (e.g., Lantus) before these are approved.",
+      "tier": "Tier 1 (lowest member cost) for LANTUS SOLOSTAR/vial and HUMALOG VIAL/MIX vials",
+      "verification": "verified",
+      "verificationNote": "Read directly from the UnitedHealthcare 2026 PDL, effective January 1, 2026, pages 29-30 (Diabetes - Insulin). Confirmed: 'LANTUS SOLOSTAR 1 QL' and 'LANTUS U-100 VIAL 1 QL' (page 30) vs. 'INSULIN GLARGINE E QL', 'INSULIN GLARGINE MAX SOLOSTAR E QL', 'INSULIN GLARGINE SOLOSTAR E QL' (page 30) -- brand clean-covered, generic/authorized-generic PA-flagged. Confirmed 'HUMALOG MIX 50/50 VIAL...1 QL', 'HUMALOG MIX 75/25 VIAL 1 QL', 'HUMULIN N VIAL 1 QL', 'HUMULIN R VIAL 1 QL' (pages 29-30) at Tier 1. Confirmed 'INSULIN ASPART E ST, QL', 'INSULIN ASPART FLEXPEN E ST, QL' (page 30) and the full NOVOLIN/NOVOLOG family all marked 'E ST, QL' (page 30) -- explicit step-therapy symbol. Confirmed 'TRESIBA FLEXTOUCH E QL', 'INSULIN DEGLUDEC FLEXTOUCH E QL', 'BASAGLAR TEMPO PEN E QL', 'ADMELOG E QL', 'ADMELOG SOLOSTAR E QL', 'HUMALOG TEMPO PEN E QL' (pages 29-30) -- all PA/exclusion-flagged. TOUJEO and LYUMJEV confirmed Tier 1-2 with QL only, no PA/ST symbol (page 30). This class shows the most brand-over-generic (BOGL) activity of the ten classes reviewed: multiple brand insulins (Lantus, Humalog) are cleanly covered while their own authorized generics or class competitors carry PA/ST flags. Sig reflects standard basal-insulin dosing convention, not stated verbatim in the PDL. [Reused: same national UHC commercial PDL as the MD guide (2026-10-21); outside CT/NJ/NY its 'E' symbol means may be excluded] [Reused: same national UHC commercial PDL in every state]",
+      "sourceIds": [
+        "uhc-md-diabetes-source-2026-07-07"
+      ],
+      "coverageSourceIds": [
+        "uhc-md-diabetes-source-2026-07-07"
+      ],
+      "restrictionSourceIds": [
+        "uhc-md-diabetes-source-2026-07-07"
+      ],
+      "lastReviewed": "2026-07-07",
+      "payerId": "uhc-ky"
+    },
+    {
+      "classId": "metformin-oral",
+      "preferredAgent": {
+        "inn": "Metformin hydrochloride",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "500 mg immediate-release tablet",
+        "sig": "Start 500 mg by mouth twice daily (or 850 mg once daily) with meals; increase by 500 mg weekly to a usual 2,000 mg/day; max 2,550 mg/day (label).",
+        "sigShort": "500 mg BID with meals",
+        "plainSig": "One pill twice a day with meals; your dose goes up slowly."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Metformin ER 500 mg extended-release tablet",
+          "note": "Tier 1, QL 120 per 30 days (page 43)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Metformin ER 750 mg extended-release tablet",
+          "note": "Tier 1, QL 60 per 30 days (page 43)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Metformin 850 mg tablet",
+          "note": "Tier 1 (page 43)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read page 43: metformin 500 mg and 1,000 mg immediate-release tablets, Tier 1, no UM; ER 500 and 750 mg Tier 1 with QL. Combination products (glipizide-metformin, page 43; pioglitazone-metformin, page 44) are excluded as single-agent alternatives. Sig is standard label dosing. [Reused: same national Humana Premier Rx PDP formulary as the TX guide (2026-10-21)] [Reused: same national Humana Premier Rx PDP formulary in every state]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "glp1",
+      "preferredAgent": {
+        "inn": "Semaglutide",
+        "brand": "OZEMPIC",
+        "genericAvailable": false,
+        "strength": "0.25 mg or 0.5 mg per dose (2 mg/3 mL pen)",
+        "sig": "0.25 mg subcutaneously once weekly for 4 weeks, then 0.5 mg weekly; increase in 4-week steps to 1 mg, then 2 mg, if needed (label).",
+        "sigShort": "0.25 mg SC qwk x4, then 0.5 mg",
+        "plainSig": "One shot under the skin once a week; the dose goes up after a month."
+      },
+      "preferredRestriction": "PA required (page 44); QL 3 pens per 28 days",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3, PA, QL 3 per 28 days",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "MOUNJARO (tirzepatide) 2.5 to 15 mg/0.5 mL pen",
+          "outcome": "pa",
+          "reason": "PA required (page 43)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read page 44 (OZEMPIC pen, Tier 3, PA, QL 3 per 28 days) and page 43 (MOUNJARO pen, Tier 3, PA, QL 2 per 28 days). Both products are diabetes-labeled. Every covered GLP-1 on the list needs PA, so the lowest-barrier pick is Ozempic (same tier, same restriction) and the barrier is stated in preferredRestriction. Trulicity, Victoza/liraglutide, Rybelsus, Byetta and Bydureon are not on the list; the document does not say the list is complete, so they are not recorded as excluded. Wegovy, Zepbound and Saxenda do not appear on the list; weight-loss products are not recorded as covered or excluded. Partial because absent GLP-1 products cannot be confirmed as non-covered from this document. Sig is standard label dosing. [Reused: same national Humana Premier Rx PDP formulary as the TX guide (2026-10-21)] [Reused: same national Humana Premier Rx PDP formulary in every state]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "sglt2",
+      "preferredAgent": {
+        "inn": "Dapagliflozin",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Type 2 diabetes: 5 or 10 mg by mouth once daily in the morning. Heart failure or chronic kidney disease: 10 mg once daily (label).",
+        "sigShort": "10 mg QAM",
+        "plainSig": "One pill each morning."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3, QL 30 per 30 days",
+      "alternatives": [
+        {
+          "drug": "FARXIGA (dapagliflozin) 5 mg and 10 mg tablet",
+          "note": "Brand; Tier 3, QL 30 per 30 days (page 42)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "JARDIANCE (empagliflozin) 10 mg and 25 mg tablet",
+          "note": "Brand; Tier 3, QL 30 per 30 days (page 43)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read page 42: dapagliflozin 5 and 10 mg tablet (generic), Tier 3, QL 30 per 30 days, no PA/ST; FARXIGA on the same page is Tier 3 with the same QL. Page 43: JARDIANCE 10 and 25 mg Tier 3 with the same QL. The document does not indicate a brand preference between the generic and FARXIGA, so boglActive false. Canagliflozin and generic empagliflozin do not appear on the list. Sig is standard label dosing. [Reused: same national Humana Premier Rx PDP formulary as the TX guide (2026-10-21)] [Reused: same national Humana Premier Rx PDP formulary in every state]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "insulin",
+      "preferredAgent": {
+        "inn": "Insulin glargine",
+        "brand": "LANTUS SOLOSTAR",
+        "genericAvailable": false,
+        "strength": "U-100 pen (100 units/mL, 3 mL)",
+        "sig": "Type 2 diabetes, insulin-naive: start up to 10 units (or 0.2 units/kg) subcutaneously once daily at the same time each day, then adjust to fasting glucose. Type 1: about one-third of the total daily insulin dose, with a mealtime insulin (label).",
+        "sigShort": "up to 10 units SC QD, titrate",
+        "plainSig": "One shot under the skin once a day at the same time; your dose is adjusted to your sugar readings."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3, CI (covered insulin), MO",
+      "alternatives": [
+        {
+          "drug": "Insulin lispro 100 units/mL solution (generic)",
+          "note": "Tier 3, CI, MO (page 43)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Insulin aspart U-100 pen, cartridge, solution (generic)",
+          "note": "Tier 3, CI, MO (page 43)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "TRESIBA FlexTouch (insulin degludec) U-100 and U-200 pen",
+          "note": "Tier 3, CI, MO (page 44)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "TOUJEO SoloStar (insulin glargine U-300) pen",
+          "note": "Tier 3, CI, MO (page 44)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "NOVOLOG FlexPen (insulin aspart) U-100 pen",
+          "note": "Tier 3, CI, MO (page 43)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read pages 43 and 44: LANTUS SoloStar U-100 pen and vial, Tier 3, CI and MO, no PA/ST. Page 10 defines CI as Part D covered insulin products. LANTUS was picked as the basal preferred agent because it is the most-prescribed basal product of the covered basal lines; no generic glargine is on the list, so boglActive false. Basaglar, Semglee, Rezvoglar, Humalog, Admelog and Lyumjev do not appear on the list. The document does not state the list is complete, so these are not recorded as excluded; partial because the preferred basal pick could differ if one of them is covered. Humulin R U-500 (page 43, Tier 5, DL) is a concentrated regular insulin and excluded from the basal alternatives. Soliqua (page 44) is a glargine-lixisenatide combination and excluded. [Reused: same national Humana Premier Rx PDP formulary as the TX guide (2026-10-21)] [Reused: same national Humana Premier Rx PDP formulary in every state]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "ky-medicaid-pdl-2026-10",
+      "label": "Kentucky Medicaid Preferred Drug List (PDL), October 2026",
+      "publisher": "Kentucky Department for Medicaid Services (MedImpact, single PBM)",
+      "type": "gov",
+      "url": "https://kyportal.medimpact.com/sites/default/files/2023-12/kentucky-medicaid-pdl.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-03"
+    },
+    {
+      "id": "ky-medicaid-pa-criteria-2026-10",
+      "label": "Kentucky Medicaid Prior Authorization Criteria, Version October 2026",
+      "publisher": "Kentucky Department for Medicaid Services (MedImpact, single PBM)",
+      "type": "gov",
+      "url": "https://kyportal.medimpact.com/sites/default/files/2023-12/kentucky-medicaid-pa-criteria.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-03"
+    },
+    {
+      "id": "anthem-ky-select-2026",
+      "label": "Anthem 2026 Select Drug List — Four Tier (Kentucky individual)",
+      "publisher": "Anthem Blue Cross and Blue Shield",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_KY_IND.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-03"
+    },
+    {
+      "id": "uhc-md-diabetes-source-2026-07-07",
+      "label": "UnitedHealthcare 2026 Prescription Drug List (PDL)",
+      "publisher": "UnitedHealthcare & affiliated companies",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-07-07"
+    },
+    {
+      "id": "humana-premier-rx-pdp-newtopics-2026-10",
+      "label": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-09-02",
+      "accessed": "2026-10-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

@@ -1,0 +1,1168 @@
+{
+  "id": "ky-migraine",
+  "label": "KY · Migraine",
+  "stateCode": "KY",
+  "region": "Kentucky",
+  "topicId": "migraine",
+  "topic": "Migraine",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-03",
+  "capturedAt": "2026-11-03",
+  "payers": [
+    {
+      "id": "ky-medicaid",
+      "name": "Kentucky Medicaid",
+      "shortName": "KY Medicaid",
+      "aka": "Kentucky Medicaid single Preferred Drug List: fee-for-service and every Medicaid managed care plan (Aetna Better Health of Kentucky, Humana Healthy Horizons in Kentucky, Passport by Molina Healthcare, UnitedHealthcare Community Plan, WellCare of Kentucky), one PBM (MedImpact)",
+      "pbm": "MedImpact",
+      "productName": "Kentucky Medicaid Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Kentucky Medicaid Preferred Drug List (PDL), October 2026",
+      "formularyUrl": "https://kyportal.medimpact.com/sites/default/files/2023-12/kentucky-medicaid-pdl.pdf",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ]
+    },
+    {
+      "id": "anthem-ky",
+      "name": "Anthem Blue Cross and Blue Shield (Kentucky)",
+      "shortName": "Anthem KY",
+      "pbm": "CarelonRx",
+      "productName": "Anthem 2026 Select Drug List — Four Tier (Kentucky individual)",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "Anthem 2026 Select Drug List — Four Tier (Kentucky individual)",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_KY_IND.pdf",
+      "sourceIds": [
+        "anthem-ky-select-2026"
+      ]
+    },
+    {
+      "id": "uhc-ky",
+      "name": "UnitedHealthcare (Commercial)",
+      "shortName": "UnitedHealthcare",
+      "aka": "National commercial PDL (same list in every state)",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "paPolicyUrl": "https://www.uhcprovider.com/en/resource-library/drug-lists-pharmacy.html",
+      "productName": "UnitedHealthcare 2026 Commercial PDL (base list)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 Prescription Drug List (PDL), UnitedHealthcare, effective January 1, 2026",
+      "sourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ]
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402"
+    }
+  ],
+  "classes": [
+    {
+      "id": "triptan",
+      "name": "Triptans",
+      "shortName": "TRIPTAN",
+      "plainName": "Triptan (acute)",
+      "description": "Acute migraine 5-HT1B/1D agonists: sumatriptan (tablet, nasal, injection; Imitrex, Tosymra, Zembrace), rizatriptan (Maxalt, MLT), zolmitriptan (Zomig), eletriptan (Relpax), naratriptan, almotriptan, frovatriptan, sumatriptan/naproxen (Treximet).",
+      "plainDescription": "A pill (or spray/shot) taken when a migraine starts.",
+      "indication": "Acute migraine",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ]
+    },
+    {
+      "id": "gepant-acute",
+      "name": "Acute CGRP antagonists (gepants) & ditans",
+      "shortName": "GEPANT",
+      "plainName": "Gepant (Nurtec/Ubrelvy)",
+      "description": "Acute CGRP receptor antagonists and ditans: rimegepant (Nurtec ODT, also preventive), ubrogepant (Ubrelvy), zavegepant nasal (Zavzpret), lasmiditan (Reyvow).",
+      "plainDescription": "A newer migraine pill (or nasal spray) for when triptans don't work or aren't safe.",
+      "indication": "Acute migraine",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ]
+    },
+    {
+      "id": "cgrp-preventive",
+      "name": "CGRP preventives",
+      "shortName": "CGRP PREV",
+      "plainName": "Migraine preventive (CGRP)",
+      "description": "Migraine-preventive CGRP agents: erenumab (Aimovig), fremanezumab (Ajovy), galcanezumab (Emgality), eptinezumab (Vyepti, IV), atogepant (Qulipta, oral).",
+      "plainDescription": "A monthly shot (or daily pill) that prevents migraines.",
+      "indication": "Migraine prevention",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "triptan",
+      "preferredAgent": {
+        "inn": "Sumatriptan (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg",
+        "sig": "25, 50 or 100 mg by mouth at migraine onset; may repeat after 2 hours if the headache returns; max 200 mg in 24 hours (label).",
+        "sigShort": "50 mg at onset; may repeat in 2 h",
+        "plainSig": "One pill when a migraine starts; a second pill after 2 hours if it comes back."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred",
+      "alternatives": [
+        {
+          "drug": "Rizatriptan tablet",
+          "note": "Preferred; quantity limit only (PDL p. 13; PA criteria p. 92)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Rizatriptan ODT",
+          "note": "Preferred; quantity limit only (PDL p. 13; PA criteria p. 92)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Sumatriptan nasal spray",
+          "note": "Preferred; quantity limit only (PDL p. 13; PA criteria p. 92)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Sumatriptan vial (injection)",
+          "note": "Preferred; quantity limit only (PDL p. 14; PA criteria p. 92)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Imitrex (sumatriptan) tablet, pen, cartridge",
+          "outcome": "step",
+          "reason": "Step: trial and failure of one preferred agent (PA criteria p. 91; PDL p. 14)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: trial and failure, allergy, contraindication, or intolerance of 1 preferred agent."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Maxalt / Maxalt-MLT (rizatriptan, brand)",
+          "outcome": "step",
+          "reason": "Step: trial and failure of one preferred agent (PA criteria p. 91; PDL p. 14)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: trial and failure, allergy, contraindication, or intolerance of 1 preferred agent."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Relpax (eletriptan) tablet",
+          "outcome": "step",
+          "reason": "Step: trial and failure of one preferred agent (PA criteria p. 91; PDL p. 13)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: trial and failure, allergy, contraindication, or intolerance of 1 preferred agent."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Zomig (zolmitriptan) tablet, ODT, spray",
+          "outcome": "step",
+          "reason": "Step: trial and failure of one preferred agent (PA criteria p. 91; PDL p. 14)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: trial and failure, allergy, contraindication, or intolerance of 1 preferred agent."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Zembrace SymTouch (sumatriptan 3 mg injection)",
+          "outcome": "step",
+          "reason": "Step: trial and failure of the corresponding generic sumatriptan injection (PA criteria p. 91; PDL p. 14)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: trial and failure, allergy, contraindication, or intolerance of 1 preferred agent.",
+            "Trial and failure of a corresponding generic sumatriptan formulation (e.g., nasal spray, injection)."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Tosymra (sumatriptan nasal spray, brand)",
+          "outcome": "step",
+          "reason": "Step: trial and failure of the corresponding generic sumatriptan nasal spray (PA criteria p. 91; PDL p. 14)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: trial and failure, allergy, contraindication, or intolerance of 1 preferred agent.",
+            "Trial and failure of a corresponding generic sumatriptan formulation (e.g., nasal spray, injection)."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL p. 13-14 by column x-position: generic sumatriptan tablet, rizatriptan tablet/ODT, sumatriptan spray and vial are PREFERRED. PA criteria p. 91 state all preferred triptans are preferred without PA; quantity limits apply (p. 91-92). Non-preferred triptans require trial and failure of 1 preferred agent (p. 91). Sumatriptan 50 mg is a standard labeled dose (label range 25-100 mg); the document prints no strength for the sig. Almotriptan, eletriptan, frovatriptan, naratriptan and zolmitriptan brands are non-preferred; representative list only. [Sonnet check 2026-11-03: Re-read PDL pp. 13-14 by x-coordinate and PA criteria pp. 91-92: sumatriptan tablet, spray and vial and rizatriptan tablet/ODT are in the PREFERRED column, and p. 91 says 'All preferred agents are preferred without PA.' The pick is preferred with no PA or step; its only edit is a quantity limit (p. 91-92 criteria allow a one-time overage approval). Only the non-preferred triptans need a step (trial of 1 preferred agent). A QL alone is not PA. Tosymra and Onzetra/Zembrace need trial of the matching generic sumatriptan form. No change.]",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10",
+        "ky-medicaid-pa-criteria-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ky-medicaid-pa-criteria-2026-10"
+      ],
+      "lastReviewed": "2026-11-03",
+      "payerId": "ky-medicaid"
+    },
+    {
+      "classId": "gepant-acute",
+      "preferredAgent": {
+        "inn": "Rimegepant (acute)",
+        "brand": "Nurtec ODT",
+        "genericAvailable": false,
+        "strength": "75 mg",
+        "sig": "Acute: 75 mg orally disintegrating tablet once at migraine onset, max 75 mg in 24 hours. Prevention: 75 mg every other day (label).",
+        "sigShort": "75 mg ODT at onset",
+        "plainSig": "Let one tablet melt on or under your tongue when a migraine starts."
+      },
+      "preferredRestriction": "PA (PA criteria p. 94): migraine diagnosis; trial and failure, or contraindication to, 2 triptans; age 18 or older; quantity limit 18 tablets per 30 days.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred with PA",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Ubrelvy (ubrogepant)",
+          "outcome": "pa",
+          "reason": "PA: migraine diagnosis; trial and failure, or contraindication to, 2 triptans; age 18 or older; quantity limit (PA criteria p. 95; PDL p. 13)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Diagnosis of migraine, with or without aura.",
+            "Trial and failure of, or contraindication to, 2 triptans (e.g., sumatriptan).",
+            "Age 18 years or older."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Zavzpret (zavegepant nasal spray)",
+          "outcome": "step",
+          "reason": "Step: trial and failure of 2 triptans and of 1 preferred CGRP antagonist; age 18 or older (PA criteria p. 96; PDL p. 13)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Diagnosis of migraine, with or without aura.",
+            "Not for preventive treatment of migraine or chronic migraine (prescriber attestation).",
+            "Tried and failed, or contraindication or intolerance to, 2 triptans.",
+            "Tried and failed, or contraindication or intolerance to, 1 preferred CGRP antagonist.",
+            "Age 18 years or older."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": "Trial and failure, or contraindication to, 2 triptans (PA criteria p. 94)",
+      "verification": "verified",
+      "verificationNote": "Read PDL p. 13: Nurtec ODT and Ubrelvy are PREFERRED WITH PA; Zavzpret is not preferred. Lasmiditan (Reyvow) does not appear on the PDL or in the PA criteria, so it is not listed and its status is not stated. Nurtec ODT chosen as the gepant with the same 2-triptan PA as Ubrelvy and the most common lowest-barrier pick here; 75 mg is the labeled acute dose. [Sonnet check 2026-11-03: Confirmed PDL p. 13 (Nurtec ODT, Ubrelvy in PREFERRED WITH PA) and PA criteria pp. 94-96 (2-triptan trial, age 18+, QL). No change.]",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10",
+        "ky-medicaid-pa-criteria-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ky-medicaid-pa-criteria-2026-10"
+      ],
+      "lastReviewed": "2026-11-03",
+      "payerId": "ky-medicaid"
+    },
+    {
+      "classId": "cgrp-preventive",
+      "preferredAgent": {
+        "inn": "Erenumab",
+        "brand": "Aimovig",
+        "genericAvailable": false,
+        "strength": "70 mg/mL",
+        "sig": "70 mg subcutaneously once monthly; some patients need 140 mg once monthly (label).",
+        "sigShort": "70 mg SC qmo",
+        "plainSig": "One shot under the skin once a month."
+      },
+      "preferredRestriction": "PA (PA criteria p. 93): migraine diagnosis; trial and failure at maximally tolerated doses of 2 oral preventives from the AAN/AHS list, at least one Level A or B; age 18 or older; quantity limit 1 autoinjector per 28 days (p. 95).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred with PA",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Ajovy (fremanezumab)",
+          "outcome": "pa",
+          "reason": "PA: migraine diagnosis; 2 oral preventives tried and failed; age 6-17 with weight 45 kg or more, or 18 or older (PA criteria p. 93-94; PDL p. 13)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Age 6 to 17 years weighing 45 kg or more: episodic migraine diagnosis; if 12 years or older, 2-month trial and failure of topiramate.",
+            "Age 18 years or older: migraine diagnosis, and ≥1-month trial and failure (maximally tolerated doses) of two AHS/AAN-listed preventives, at least one Level A or B, unless all contraindicated."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Emgality 120 mg/mL (galcanezumab, preventive)",
+          "outcome": "pa",
+          "reason": "PA: migraine diagnosis; 2 oral preventives tried and failed; age 18 or older (PA criteria p. 93; PDL p. 13)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Diagnosis of migraine with or without aura.",
+            "Tried and failed a ≥1-month trial (maximally tolerated doses) of two medications from the 2012 AAN/AHS guidelines, at least one Level A or B, unless all are contraindicated.",
+            "Age 18 years or older."
+          ],
+          "criteriaMode": "all",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Qulipta (atogepant, oral)",
+          "outcome": "step",
+          "reason": "Step: trial and failure of a 1-month preferred injectable CGRP agent (Aimovig, Ajovy or Emgality 120 mg/mL); migraine-day thresholds; age 18 or older (PA criteria p. 94-95; PDL p. 13)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Episodic migraine (ICHD-III): ≥1-month failure of a preferred injectable CGRP agent (Aimovig, Ajovy, Emgality 120); ≥4 migraine days/month; ≤15 headache days/month in prior 6 months; no medication overuse.",
+            "Chronic migraine: ≥1-month failure of a preferred injectable CGRP agent (Aimovig, Ajovy, Emgality 120); ≥8 migraine days/month for last 3 months; ≥15 headache days/month for prior 3 months; no medication overuse."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Nurtec ODT (rimegepant, preventive)",
+          "outcome": "step",
+          "reason": "Step: trial and failure of a 1-month preferred injectable CGRP agent; migraine-day thresholds; age 18 or older (PA criteria p. 94-95; PDL p. 13)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Episodic migraine (ICHD-III): ≥1-month failure of a preferred injectable CGRP agent (Aimovig, Ajovy, Emgality 120); ≥4 migraine days/month; ≤15 headache days/month in prior 6 months; no medication overuse."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": "Trial and failure of 2 oral migraine preventives from the AAN/AHS list (PA criteria p. 93)",
+      "verification": "verified",
+      "verificationNote": "Read PDL p. 13: Aimovig autoinjector, Ajovy, Emgality 120 mg/mL and Qulipta are PREFERRED WITH PA. Aimovig chosen as the first listed injectable with the same oral-preventive PA. Starting dose 70 mg monthly per the Aimovig label. Vyepti (eptinezumab) does not appear on the PDL. Emgality 300 mg/mL (PDL p. 13, NON-PREFERRED) is not in the extracted PA criteria and is not listed. Reading of the Aimovig PA block is from the extracted text; confirm the Level A/B wording at p. 93 before relying on it. [Sonnet check 2026-11-03: Confirmed PDL p. 13 and PA criteria pp. 93-95: Aimovig, Ajovy, Emgality 120 mg/mL need 2 failed oral preventives; Qulipta and Nurtec (prevention) need a 1-month trial of a preferred injectable CGRP agent. No change.]",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10",
+        "ky-medicaid-pa-criteria-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ky-medicaid-pa-criteria-2026-10"
+      ],
+      "lastReviewed": "2026-11-03",
+      "payerId": "ky-medicaid"
+    },
+    {
+      "classId": "triptan",
+      "preferredAgent": {
+        "inn": "Sumatriptan succinate tablet",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg",
+        "sig": "25, 50 or 100 mg by mouth at migraine onset; may repeat after 2 hours if the headache returns; max 200 mg in 24 hours (label).",
+        "sigShort": "50 mg at onset; may repeat in 2 h",
+        "plainSig": "One pill when a migraine starts; a second pill after 2 hours if it comes back."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Sumatriptan nasal solution",
+          "note": "Tier 1, QL, no PA (p.62)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Sumatriptan auto-injector and cartridge",
+          "note": "Tier 2, QL, no PA (p.62)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Rizatriptan benzoate tablet and dispersible tablet",
+          "note": "Tier 1, QL, no PA (p.62)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Zolmitriptan tablet and dispersible tablet",
+          "note": "Tier 1, QL, no PA (p.62)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Naratriptan tablet",
+          "note": "Tier 1, QL, no PA (p.62)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Almotriptan tablet",
+          "note": "Tier 1, QL, no PA (p.62)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Eletriptan tablet",
+          "note": "Tier 2, QL, no PA (p.62)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Frovatriptan succinate tablet",
+          "outcome": "step",
+          "reason": "Step: ST listed; Tier 2 (p.62, Notes 'ST; QL')",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Zomig (brand zolmitriptan tablet)",
+          "outcome": "step",
+          "reason": "Step: ST on the brand; generic zolmitriptan is Tier 1 with QL only (p.62)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Treximet (sumatriptan/naproxen)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Anthem 2026 Select Drug List. Page 2 states: \"Yes, this is a complete listing of all the drugs on the drug list.\" Exception route: doctor can ask Anthem to review coverage by preapproval/prior authorization (Member Services or PA form), per Select Drug List p.3.",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read p.62 (Selective serotonin agonists 5-HT(1) rows). Sumatriptan tablet is Tier 1 with 'QL' and no PA or ST. Strength is not printed for the generic tablet; 50 mg and the sig are standard label dosing. Frovatriptan and brand Zomig carry ST and are recorded as step barriers.",
+      "sourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "coverageSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "restrictionSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "lastReviewed": "2026-11-03",
+      "payerId": "anthem-ky"
+    },
+    {
+      "classId": "gepant-acute",
+      "preferredAgent": {
+        "inn": "Rimegepant ODT",
+        "brand": "Nurtec ODT",
+        "genericAvailable": false,
+        "strength": "75 mg",
+        "sig": "Dissolve 1 tablet (75 mg) on the tongue as needed; max 75 mg per 24 hours (standard label dosing)",
+        "sigShort": "75 mg PRN",
+        "plainSig": "One dissolving tablet when needed."
+      },
+      "preferredRestriction": "No covered acute gepant or ditan: Nurtec, Ubrelvy, Zavzpret and Reyvow are not listed. The list is complete (p.2).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "NF",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Ubrelvy (ubrogepant)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Anthem 2026 Select Drug List. Page 2 states: \"Yes, this is a complete listing of all the drugs on the drug list.\" Exception route: doctor can ask Anthem to review coverage by preapproval/prior authorization (Member Services or PA form), per Select Drug List p.3.",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Zavzpret (zavegepant nasal)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Anthem 2026 Select Drug List. Page 2 states: \"Yes, this is a complete listing of all the drugs on the drug list.\" Exception route: doctor can ask Anthem to review coverage by preapproval/prior authorization (Member Services or PA form), per Select Drug List p.3.",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Reyvow (lasmiditan)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Anthem 2026 Select Drug List. Page 2 states: \"Yes, this is a complete listing of all the drugs on the drug list.\" Exception route: doctor can ask Anthem to review coverage by preapproval/prior authorization (Member Services or PA form), per Select Drug List p.3.",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Searched p.62 (migraine products; the CGRP and ergot/serotonin sections) for rimegepant, Nurtec, ubrogepant, Ubrelvy, zavegepant, Zavzpret, lasmiditan and Reyvow. None appear. Rimegepant ODT is used as the class reference drug only; noCoveredAgent is set and the sig is label dosing.",
+      "sourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "coverageSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "restrictionSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "lastReviewed": "2026-11-03",
+      "noCoveredAgent": true,
+      "payerId": "anthem-ky"
+    },
+    {
+      "classId": "cgrp-preventive",
+      "preferredAgent": {
+        "inn": "Galcanezumab-gnlm (Emgality)",
+        "brand": "Emgality",
+        "genericAvailable": false,
+        "strength": "120 mg/mL",
+        "sig": "Migraine prevention: 240 mg subcutaneously once as a loading dose (two 120 mg injections), then 120 mg once monthly (label).",
+        "sigShort": "240 mg SC x1, then 120 mg qmo",
+        "plainSig": "Two shots under the skin the first month, then one shot each month."
+      },
+      "preferredRestriction": "PA required; quantity limit (Anthem p.62, Notes 'PA; QL'). Tier 2.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Aimovig (erenumab)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Anthem 2026 Select Drug List. Page 2 states: \"Yes, this is a complete listing of all the drugs on the drug list.\" Exception route: doctor can ask Anthem to review coverage by preapproval/prior authorization (Member Services or PA form), per Select Drug List p.3.",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Ajovy (fremanezumab)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Anthem 2026 Select Drug List. Page 2 states: \"Yes, this is a complete listing of all the drugs on the drug list.\" Exception route: doctor can ask Anthem to review coverage by preapproval/prior authorization (Member Services or PA form), per Select Drug List p.3.",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Qulipta (atogepant)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Anthem 2026 Select Drug List. Page 2 states: \"Yes, this is a complete listing of all the drugs on the drug list.\" Exception route: doctor can ask Anthem to review coverage by preapproval/prior authorization (Member Services or PA form), per Select Drug List p.3.",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read p.62 (CGRP receptor antagonists / monoclonal antibodies). Emgality appears in three presentations (300 mg cluster-dose syringe, auto-injector, prefilled syringe), each Tier 2 'PA; QL'. The 120 mg/mL strength is not printed; the sig is standard label dosing. Erenumab, fremanezumab, eptinezumab and atogepant are not listed. [Sonnet check 2026-11-03: Vyepti (eptinezumab) is an IV infusion given in clinic and absent from the pharmacy list; likely medical benefit, not recorded as nonformulary; coverage unconfirmed.]",
+      "sourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "coverageSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "restrictionSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "lastReviewed": "2026-11-03",
+      "payerId": "anthem-ky"
+    },
+    {
+      "classId": "triptan",
+      "preferredAgent": {
+        "inn": "Sumatriptan succinate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg",
+        "sig": "25, 50 or 100 mg by mouth at migraine onset; may repeat after 2 hours if the headache returns; max 200 mg in 24 hours (label).",
+        "sigShort": "50 mg at onset; may repeat in 2 h",
+        "plainSig": "One pill when a migraine starts; a second pill after 2 hours if it comes back."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "noCoveredAgent": false,
+      "tier": "Tier 1 (generic)",
+      "alternatives": [
+        {
+          "drug": "Rizatriptan benzoate (generic Maxalt)",
+          "note": "Tier 1, QL, no PA (p.15)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Naratriptan hydrochloride (generic)",
+          "note": "Tier 1, QL, no PA (p.14)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Sumatriptan succinate subcutaneous auto-injector (generic)",
+          "note": "Tier 1, QL (p.15)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Sumatriptan nasal solution (generic)",
+          "note": "Tier 2, QL (p.15)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Eletriptan hydrobromide (generic Relpax)",
+          "note": "Tier 2, QL (p.14)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zolmitriptan oral tablet (generic)",
+          "note": "Tier 2, QL (p.15)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zomig nasal solution 5 mg",
+          "note": "Tier 2, QL (p.15)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zolmitriptan oral tablet dispersible (generic)",
+          "note": "Tier 3, QL (p.15)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zomig nasal solution 2.5 mg",
+          "note": "Tier 3, QL (p.15)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Frovatriptan succinate (generic)",
+          "note": "Tier 3, QL (p.14)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Imitrex nasal solution (brand)",
+          "note": "Tier 4 (may be covered in select benefits only), QL (p.14)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Imitrex oral (brand sumatriptan tablet)",
+          "outcome": "nonformulary",
+          "reason": "UHC PDL 'E' symbol: may be excluded from coverage outside CT/NJ/NY (p.14); QL",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Imitrex STATDOSE System",
+          "outcome": "nonformulary",
+          "reason": "UHC PDL 'E' symbol: may be excluded from coverage outside CT/NJ/NY (p.14); QL",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Maxalt (brand rizatriptan)",
+          "outcome": "nonformulary",
+          "reason": "UHC PDL 'E' symbol: may be excluded from coverage outside CT/NJ/NY (p.14); QL",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Maxalt-MLT",
+          "outcome": "nonformulary",
+          "reason": "UHC PDL 'E' symbol: may be excluded from coverage outside CT/NJ/NY (p.14); QL",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Relpax (brand eletriptan)",
+          "outcome": "nonformulary",
+          "reason": "UHC PDL 'E' symbol: may be excluded from coverage outside CT/NJ/NY (p.15); QL",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Tosymra (sumatriptan nasal)",
+          "outcome": "nonformulary",
+          "reason": "UHC PDL 'E' symbol: may be excluded from coverage outside CT/NJ/NY (p.15); QL",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zembrace SymTouch (sumatriptan injection)",
+          "outcome": "nonformulary",
+          "reason": "UHC PDL 'E' symbol: may be excluded from coverage outside CT/NJ/NY (p.15); QL",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zolmitriptan nasal solution (generic, 2.5 mg and 5 mg)",
+          "outcome": "nonformulary",
+          "reason": "UHC PDL 'E' symbol: may be excluded from coverage outside CT/NJ/NY (p.15); QL",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zomig oral tablet 5 mg",
+          "outcome": "nonformulary",
+          "reason": "UHC PDL 'E' symbol: may be excluded from coverage outside CT/NJ/NY (p.15); QL",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from PDL text layer, pp.14-15 (section 'Antimigraine Agents - Drugs for Migraines'). Generic sumatriptan oral tablet is tier 1, QL, no PA or ST. Almotriptan and Treximet do not appear in this PDL. E-flagged items are recorded as outcome 'pa' per the NY legend (p.5). Sig is standard FDA labeling, not the PDL. [Reused 2026-10-21 for uhc-md: same national UHC commercial PDL document as ny-uhc-commercial; Sonnet-checked in the NY pass. NY-specific \"E\" (may be excluded in NY) flags apply to NY plans; outside CT/NJ/NY the PDL legend (p.5) says E-flagged drugs may be excluded from coverage, so they are recorded as non-formulary here.] [Reused: same national UHC commercial PDL as the MD guide (2026-10-21)] [Reused: same national UHC commercial PDL in every state]",
+      "sourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "uhc-ky"
+    },
+    {
+      "classId": "gepant-acute",
+      "preferredAgent": {
+        "inn": "Ubrogepant",
+        "brand": "Ubrelvy",
+        "genericAvailable": false,
+        "strength": "50 mg",
+        "sig": "50 or 100 mg by mouth at migraine onset; may repeat once after 2 hours; max 200 mg in 24 hours (label).",
+        "sigShort": "50-100 mg at onset; may repeat in 2 h",
+        "plainSig": "One pill when a migraine starts; one more after 2 hours if needed."
+      },
+      "preferredRestriction": "PA, step therapy (ST), and quantity limit required on this plan (p.15)",
+      "boglActive": false,
+      "boglNote": null,
+      "noCoveredAgent": false,
+      "tier": "Tier 2",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Nurtec ODT (rimegepant)",
+          "outcome": "pa",
+          "reason": "PA and step therapy (ST) and QL required (p.15); tier 2",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Zavzpret (zavegepant nasal)",
+          "outcome": "pa",
+          "reason": "PA and step therapy (ST) and QL required (p.15); tier 4",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Reyvow (lasmiditan)",
+          "outcome": "pa",
+          "reason": "PA and step therapy (ST) and QL required (p.15); tier 4",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": "PA and ST apply to all listed acute gepants and ditans (p.15).",
+      "verification": "verified",
+      "verificationNote": "Read from PDL text layer, p.15. Every listed acute gepant/ditan carries PA+ST+QL. Ubrelvy chosen as preferred pick as tier 2 with the same barrier as Nurtec; Nurtec is also preventive. Zavzpret and Reyvow are tier 4. Sig is standard labeling, not the PDL. [Reused 2026-10-21 for uhc-md: same national UHC commercial PDL document as ny-uhc-commercial; Sonnet-checked in the NY pass. NY-specific \"E\" (may be excluded in NY) flags apply to NY plans; outside CT/NJ/NY the PDL legend (p.5) says E-flagged drugs may be excluded from coverage, so they are recorded as non-formulary here.] [Reused: same national UHC commercial PDL as the MD guide (2026-10-21)] [Reused: same national UHC commercial PDL in every state]",
+      "sourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "uhc-ky"
+    },
+    {
+      "classId": "cgrp-preventive",
+      "preferredAgent": {
+        "inn": "Erenumab-aooe",
+        "brand": "Aimovig",
+        "genericAvailable": false,
+        "strength": "70 mg/mL",
+        "sig": "70 mg subcutaneously once monthly; some patients need 140 mg once monthly (label).",
+        "sigShort": "70 mg SC qmo",
+        "plainSig": "One shot under the skin once a month."
+      },
+      "preferredRestriction": "PA, step therapy (ST), and quantity limit required on this plan (p.14)",
+      "boglActive": false,
+      "boglNote": null,
+      "noCoveredAgent": false,
+      "tier": "Tier 2",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Emgality (galcanezumab)",
+          "outcome": "pa",
+          "reason": "PA and step therapy (ST) and QL required (p.14); tier 2",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ajovy (fremanezumab)",
+          "outcome": "pa",
+          "reason": "PA and step therapy (ST) and QL required, E flag (p.14)",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Qulipta (atogepant, oral)",
+          "outcome": "pa",
+          "reason": "PA and step therapy (ST) and QL required (p.15); tier 2",
+          "sourceIds": [
+            "ny-uhc-commercial-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": "PA and ST apply to all listed CGRP preventives (pp.14-15).",
+      "verification": "partial",
+      "verificationNote": "Read from PDL text layer, pp.14-15. All four listed CGRP preventives carry PA+ST+QL; Aimovig is the first monthly option without an E flag. Vyepti (eptinezumab, IV) does not appear in this PDL; the document says it is not complete, so its coverage is unknown and it is not placed in paRequired. Sig is standard labeling, not the PDL. [Reused 2026-10-21 for uhc-md: same national UHC commercial PDL document as ny-uhc-commercial; Sonnet-checked in the NY pass. NY-specific \"E\" (may be excluded in NY) flags apply to NY plans; outside CT/NJ/NY the PDL legend (p.5) says E-flagged drugs may be excluded from coverage, so they are recorded as non-formulary here.] [Reused: same national UHC commercial PDL as the MD guide (2026-10-21)] [Reused: same national UHC commercial PDL in every state]",
+      "sourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ny-uhc-commercial-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "uhc-ky"
+    },
+    {
+      "classId": "triptan",
+      "preferredAgent": {
+        "inn": "Sumatriptan succinate",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mg tablet (25 mg and 100 mg also listed)",
+        "sig": "25, 50 or 100 mg by mouth at migraine onset; may repeat after 2 hours if the headache returns; max 200 mg in 24 hours (label).",
+        "sigShort": "50 mg at onset; may repeat in 2 h",
+        "plainSig": "One pill when a migraine starts; a second pill after 2 hours if it comes back."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (per document)",
+      "alternatives": [
+        {
+          "drug": "Rizatriptan tablet (5 mg, 10 mg)",
+          "note": "Tier 2, QL 12 per 30 days (page 26)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Rizatriptan ODT (5 mg, 10 mg)",
+          "note": "Tier 3, QL 12 per 30 days (page 26)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Naratriptan tablet (1 mg, 2.5 mg)",
+          "note": "Tier 3, QL 9 per 30 days (page 26)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Eletriptan tablet (20 mg, 40 mg)",
+          "note": "Tier 4, QL 9 per 30 days (page 25)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Sumatriptan succinate pen injector (4 mg, 6 mg)",
+          "note": "Tier 4, QL 6 per 30 days (page 26)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Sumatriptan tablet chosen as the lowest-tier triptan with no PA (page 26: Tier 2, QL 9 per 30 days). Other triptans listed are alternatives. Not listed in the document: Imitrex, Tosymra, Zembrace, Maxalt brand, Zomig, Relpax brand, almotriptan, frovatriptan, Treximet (sumatriptan/naproxen); not assessed. Dihydroergotamine spray (page 25, PA) and ergotamine-caffeine (page 26) are not triptans and are not listed. Sig is standard label dosing; the document prints no sig. [Reused: same national Humana Premier Rx PDP formulary as the TX guide (2026-10-21)] [Reused: same national Humana Premier Rx PDP formulary in every state]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "gepant-acute",
+      "preferredAgent": {
+        "inn": "Ubrogepant",
+        "brand": "Ubrelvy",
+        "genericAvailable": false,
+        "strength": "50 mg, 100 mg tablet",
+        "sig": "50 or 100 mg by mouth at migraine onset; may repeat once after 2 hours; max 200 mg in 24 hours (label).",
+        "sigShort": "50-100 mg at onset; may repeat in 2 h",
+        "plainSig": "One pill when a migraine starts; one more after 2 hours if needed."
+      },
+      "preferredRestriction": "PA required (page 26); QL 16 tablets per 30 days",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3 (per document)",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Ubrelvy is the only acute gepant listed (page 26, Tier 3, PA and QL). It is the preferred pick because it is the only candidate, despite the PA. Not listed in the document: Nurtec ODT (rimegepant), Zavzpret (zavegepant nasal), Reyvow (lasmiditan); not assessed, so no barrier is inferred for them. Sig is standard label dosing. [Reused: same national Humana Premier Rx PDP formulary as the TX guide (2026-10-21)] [Reused: same national Humana Premier Rx PDP formulary in every state]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "cgrp-preventive",
+      "preferredAgent": {
+        "inn": "Atogepant",
+        "brand": "Qulipta",
+        "genericAvailable": false,
+        "strength": "60 mg tablet (10 mg and 30 mg also listed)",
+        "sig": "Episodic migraine: 10, 30 or 60 mg by mouth once daily. Chronic migraine: 60 mg once daily (label).",
+        "sigShort": "10-60 mg QD",
+        "plainSig": "One pill a day to prevent migraines."
+      },
+      "preferredRestriction": "PA required (page 26); QL 30 tablets per 30 days",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 4 (per document)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Emgality (galcanezumab) pen or syringe",
+          "outcome": "pa",
+          "reason": "PA required (page 26)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Qulipta (oral) chosen over Emgality (injection) as the lower-burden preferred pick: both are Tier 4 and PA-restricted (page 26), so the choice is a judgment call; the oral product is recorded here as preferred. Strength 60 mg is the standard label preventive dose; the document lists 10, 30 and 60 mg tablets without a dosing instruction. Not listed in the document: Aimovig (erenumab), Ajovy (fremanezumab), Vyepti (eptinezumab, IV); not assessed, so no barrier is inferred for them. Emgality is PA-restricted and listed in paRequired. [Reused: same national Humana Premier Rx PDP formulary as the TX guide (2026-10-21)] [Reused: same national Humana Premier Rx PDP formulary in every state]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "ky-medicaid-pdl-2026-10",
+      "label": "Kentucky Medicaid Preferred Drug List (PDL), October 2026",
+      "publisher": "Kentucky Department for Medicaid Services (MedImpact, single PBM)",
+      "type": "gov",
+      "url": "https://kyportal.medimpact.com/sites/default/files/2023-12/kentucky-medicaid-pdl.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-03"
+    },
+    {
+      "id": "ky-medicaid-pa-criteria-2026-10",
+      "label": "Kentucky Medicaid Prior Authorization Criteria, Version October 2026",
+      "publisher": "Kentucky Department for Medicaid Services (MedImpact, single PBM)",
+      "type": "gov",
+      "url": "https://kyportal.medimpact.com/sites/default/files/2023-12/kentucky-medicaid-pa-criteria.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-03"
+    },
+    {
+      "id": "anthem-ky-select-2026",
+      "label": "Anthem 2026 Select Drug List — Four Tier (Kentucky individual)",
+      "publisher": "Anthem Blue Cross and Blue Shield",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_KY_IND.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-03"
+    },
+    {
+      "id": "ny-uhc-commercial-newtopics-2026-10",
+      "label": "2026 Prescription Drug List (PDL), UnitedHealthcare, effective January 1, 2026",
+      "publisher": "UnitedHealthcare",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "humana-premier-rx-pdp-newtopics-2026-10",
+      "label": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-09-02",
+      "accessed": "2026-10-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

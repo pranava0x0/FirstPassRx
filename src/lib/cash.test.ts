@@ -518,6 +518,13 @@ describe('strength-aware cash lookups', () => {
     expect(goodRxPrice('Duloxetine')).not.toBeNull()
     expect(costPlusPrice('Budesonide-formoterol', '160/4.5 mcg')).toEqual(costPlusPrice('Budesonide-formoterol'))
   })
+  it('never prices a combination pick at another pair (PR 28 review)', () => {
+    expect(goodRxPrice('Estradiol / norethindrone acetate (oral combination tablet)', '1 mg / 0.5 mg tablet')).toBeNull()
+    expect(costPlusPrice('Estradiol / norethindrone acetate (oral combination tablet)', '1 mg / 0.5 mg tablet')).toBeNull()
+    expect(goodRxPrice('Fluticasone propionate-salmeterol (HFA inhaler)', '115 mcg / 21 mcg per actuation')).toBeNull()
+    expect(costPlusPrice('Fluticasone propionate-salmeterol (HFA inhaler)', '115 mcg / 21 mcg per actuation')).toBeNull()
+    expect(goodRxPrice('Estradiol / norethindrone acetate', '0.5 mg/0.1 mg')).not.toBeNull()
+  })
 })
 
 describe('strength matching edge cases (code review round 2)', () => {

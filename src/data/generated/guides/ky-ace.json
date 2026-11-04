@@ -1,0 +1,653 @@
+{
+  "id": "ky-ace",
+  "label": "KY · ACE Inhibitors",
+  "stateCode": "KY",
+  "region": "Kentucky",
+  "topicId": "ace-inhibitors",
+  "topic": "ACE Inhibitors",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-11-03",
+  "capturedAt": "2026-11-03",
+  "payers": [
+    {
+      "id": "ky-medicaid",
+      "name": "Kentucky Medicaid",
+      "shortName": "KY Medicaid",
+      "aka": "Kentucky Medicaid single Preferred Drug List: fee-for-service and every Medicaid managed care plan (Aetna Better Health of Kentucky, Humana Healthy Horizons in Kentucky, Passport by Molina Healthcare, UnitedHealthcare Community Plan, WellCare of Kentucky), one PBM (MedImpact)",
+      "pbm": "MedImpact",
+      "productName": "Kentucky Medicaid Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Kentucky Medicaid Preferred Drug List (PDL), October 2026",
+      "formularyUrl": "https://kyportal.medimpact.com/sites/default/files/2023-12/kentucky-medicaid-pdl.pdf",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ]
+    },
+    {
+      "id": "anthem-ky",
+      "name": "Anthem Blue Cross and Blue Shield (Kentucky)",
+      "shortName": "Anthem KY",
+      "pbm": "CarelonRx",
+      "productName": "Anthem 2026 Select Drug List — Four Tier (Kentucky individual)",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "Anthem 2026 Select Drug List — Four Tier (Kentucky individual)",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_KY_IND.pdf",
+      "sourceIds": [
+        "anthem-ky-select-2026"
+      ]
+    },
+    {
+      "id": "uhc-ky",
+      "name": "UnitedHealthcare (Commercial)",
+      "shortName": "UnitedHealthcare",
+      "aka": "National commercial PDL (same list in every state)",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "paPolicyUrl": "https://www.uhcprovider.com/en/resource-library/drug-lists-pharmacy.html",
+      "productName": "UnitedHealthcare 2026 Commercial PDL (base list)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "UnitedHealthcare 2026 Prescription Drug List (PDL)",
+      "sourceIds": [
+        "uhc-md-ace-inhibitors-source-2026-07-07"
+      ]
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402"
+    }
+  ],
+  "classes": [
+    {
+      "id": "ace-inhibitor",
+      "name": "ACE inhibitors",
+      "shortName": "ACE inhibitor",
+      "plainName": "Blood pressure pill (ACE)",
+      "description": "Angiotensin-converting-enzyme inhibitors (lisinopril, enalapril, benazepril, ramipril, etc.) -- first-line oral therapy for hypertension and heart failure.",
+      "plainDescription": "A common daily pill for high blood pressure or heart failure.",
+      "indication": "Hypertension & heart failure",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "ace-inhibitor",
+      "preferredAgent": {
+        "inn": "Lisinopril",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Hypertension: start 10 mg by mouth once daily (5 mg if on a diuretic); usual 20-40 mg once daily (label).",
+        "sigShort": "10 mg QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred",
+      "alternatives": [
+        {
+          "drug": "Benazepril tablet",
+          "note": "Preferred, no PA (PDL p.7)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Enalapril tablet",
+          "note": "Preferred, no PA (PDL p.7)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Quinapril tablet",
+          "note": "Preferred, no PA (PDL p.7)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Ramipril capsule",
+          "note": "Preferred, no PA (PDL p.7)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Trandolapril tablet",
+          "note": "Preferred, no PA (PDL p.7)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Zestril (lisinopril)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.7)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: ≥30-day trial and failure, allergy, contraindication, or intolerance of 2 preferred agents in any sub-class."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Accupril (quinapril)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.7)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: ≥30-day trial and failure, allergy, contraindication, or intolerance of 2 preferred agents in any sub-class."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Altace (ramipril)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.7)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: ≥30-day trial and failure, allergy, contraindication, or intolerance of 2 preferred agents in any sub-class."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Lotensin (benazepril)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.7)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: ≥30-day trial and failure, allergy, contraindication, or intolerance of 2 preferred agents in any sub-class."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Captopril tablet",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.7)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: ≥30-day trial and failure, allergy, contraindication, or intolerance of 2 preferred agents in any sub-class."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Fosinopril tablet",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.7)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: ≥30-day trial and failure, allergy, contraindication, or intolerance of 2 preferred agents in any sub-class."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Moexipril tablet",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.7)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: ≥30-day trial and failure, allergy, contraindication, or intolerance of 2 preferred agents in any sub-class."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Perindopril tablet",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.7)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: ≥30-day trial and failure, allergy, contraindication, or intolerance of 2 preferred agents in any sub-class."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Qbrelis solution (lisinopril)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.7)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: ≥30-day trial and failure, allergy, contraindication, or intolerance of 2 preferred agents in any sub-class.",
+            "Unable to swallow whole or consume crushed generic tablets."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        },
+        {
+          "drug": "Epaned solution (enalapril)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.7)",
+          "sourceIds": [
+            "ky-medicaid-pdl-2026-10",
+            "ky-medicaid-pa-criteria-2026-10"
+          ],
+          "criteria": [
+            "Non-preferred: ≥30-day trial and failure, allergy, contraindication, or intolerance of 2 preferred agents in any sub-class.",
+            "Unable to swallow whole or consume crushed generic tablets."
+          ],
+          "criteriaMode": "any",
+          "criteriaSourceIds": [
+            "ky-medicaid-pa-criteria-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL p.7: lisinopril tablet is PREFERRED (no PA). Zestril (brand) is NON-PREFERRED while generic lisinopril is preferred, so no boglActive. ACE + diuretic combinations (lisinopril/HCTZ etc., PDL p.8) excluded as combination products. PA criteria PDF p.7 lists ACE inhibitor PDL status.",
+      "sourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ky-medicaid-pdl-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ky-medicaid-pa-criteria-2026-10"
+      ],
+      "lastReviewed": "2026-11-03",
+      "payerId": "ky-medicaid"
+    },
+    {
+      "classId": "ace-inhibitor",
+      "preferredAgent": {
+        "inn": "Lisinopril (oral tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg",
+        "sig": "Hypertension: start 10 mg by mouth once daily (5 mg if on a diuretic); usual 20-40 mg once daily (label).",
+        "sigShort": "10 mg QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Benazepril oral tablet",
+          "note": "Tier 1, QL (p. 27)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Enalapril maleate oral tablet",
+          "note": "Tier 1, QL (p. 27)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Quinapril oral tablet",
+          "note": "Tier 1, QL (p. 27)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Ramipril oral capsule",
+          "note": "Tier 1, QL (p. 27); 1.25 mg strength Tier 1, DO",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Trandolapril oral tablet",
+          "note": "Tier 1, QL (p. 27)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Perindopril erbumine oral tablet",
+          "note": "Tier 1, QL (p. 27)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Fosinopril sodium oral tablet",
+          "note": "Tier 1, QL (p. 27)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Moexipril HCl oral tablet",
+          "note": "Tier 1, QL (p. 27)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        },
+        {
+          "drug": "Captopril oral tablet",
+          "note": "Tier 2, QL (p. 27)",
+          "sourceIds": [
+            "anthem-ky-select-2026"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read p. 27 (ACE INHIBITORS). Lisinopril Tier 1, QL, no PA. Strength and sig are standard starting dose for hypertension; the list prints neither. ACE-inhibitor/CCB and ACE-inhibitor/thiazide combinations (p. 26-27) excluded.",
+      "sourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "coverageSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "restrictionSourceIds": [
+        "anthem-ky-select-2026"
+      ],
+      "lastReviewed": "2026-11-03",
+      "payerId": "anthem-ky"
+    },
+    {
+      "classId": "ace-inhibitor",
+      "preferredAgent": {
+        "inn": "lisinopril",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg oral tablet",
+        "sig": "Hypertension: start 10 mg by mouth once daily (5 mg if on a diuretic); usual 20-40 mg once daily (label).",
+        "sigShort": "10 mg QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "alternatives": [
+        {
+          "drug": "benazepril hcl oral",
+          "note": "Tier 1, preferred generic, no PA",
+          "sourceIds": [
+            "uhc-md-ace-inhibitors-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "captopril oral",
+          "note": "Tier 1, preferred generic, no PA",
+          "sourceIds": [
+            "uhc-md-ace-inhibitors-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "fosinopril sodium",
+          "note": "Tier 1, preferred generic, no PA",
+          "sourceIds": [
+            "uhc-md-ace-inhibitors-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "enalapril maleate oral tablet",
+          "note": "Tier 1, preferred generic, no PA",
+          "sourceIds": [
+            "uhc-md-ace-inhibitors-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "lisinopril-hydrochlorothiazide",
+          "note": "Tier 1, preferred combination generic, no PA",
+          "sourceIds": [
+            "uhc-md-ace-inhibitors-source-2026-07-07"
+          ]
+        },
+        {
+          "drug": "enalapril-hydrochlorothiazide",
+          "note": "Tier 1, preferred combination generic, no PA",
+          "sourceIds": [
+            "uhc-md-ace-inhibitors-source-2026-07-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "enalapril maleate oral solution",
+          "outcome": "pa",
+          "reason": "Tier 3, marked PA -- liquid formulation requires prior authorization while the tablet form does not",
+          "sourceIds": [
+            "uhc-md-ace-inhibitors-source-2026-07-07"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "tier": "Tier 1 (lowest member cost)",
+      "verification": "verified",
+      "verificationNote": "Read directly from the UnitedHealthcare 2026 PDL, effective January 1, 2026, pages 19-20 (Cardiovascular section covering antihypertensives). Confirmed: 'lisinopril oral 1', 'lisinopril-hydrochlorothiazide 1', 'benazepril hcl oral 1', 'benazepril-hydrochlorothiazide 1' (page 19), 'captopril oral 1' (page 19), 'enalapril maleate oral tablet 1', 'enalapril maleate oral solution 3 PA', 'enalapril-hydrochlorothiazide 1', 'fosinopril sodium 1' (page 20) -- all generic ACE inhibitors are Tier 1 with no PA except the enalapril oral solution liquid formulation, which is Tier 3 PA. No brand-name ACE inhibitor (e.g., Zestril, Prinivil, Vasotec, Lotensin) is separately listed as still marketed/covered -- LOTENSIN and LOTENSIN HCT appear on page 20 at Tier 4 (brand benazepril), confirming brand is non-preferred versus generic. Ramipril was searched for but not found as a distinct line item in the pages read; the class as a whole is generically dominated at Tier 1 per the PDL's generic medication policy (page 5). [Reused: same national UHC commercial PDL as the MD guide (2026-10-21); outside CT/NJ/NY its 'E' symbol means may be excluded] [Reused: same national UHC commercial PDL in every state]",
+      "sourceIds": [
+        "uhc-md-ace-inhibitors-source-2026-07-07"
+      ],
+      "coverageSourceIds": [
+        "uhc-md-ace-inhibitors-source-2026-07-07"
+      ],
+      "restrictionSourceIds": [
+        "uhc-md-ace-inhibitors-source-2026-07-07"
+      ],
+      "lastReviewed": "2026-07-07",
+      "payerId": "uhc-ky"
+    },
+    {
+      "classId": "ace-inhibitor",
+      "preferredAgent": {
+        "inn": "Lisinopril",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Hypertension: start 10 mg by mouth once daily (5 mg if on a diuretic); usual 20-40 mg once daily (label).",
+        "sigShort": "10 mg QD",
+        "plainSig": "One pill a day."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Enalapril maleate 2.5, 5, 10, 20 mg tablet",
+          "note": "Tier 1, Mail Order (page 47)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Benazepril 5, 10, 20, 40 mg tablet",
+          "note": "Tier 1, Mail Order (page 46)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Fosinopril 10, 20, 40 mg tablet",
+          "note": "Tier 1, Mail Order (page 47)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Quinapril 5, 10, 20, 40 mg tablet",
+          "note": "Tier 1, Mail Order (page 49)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Perindopril erbumine 2, 4, 8 mg tablet",
+          "note": "Tier 1, Mail Order (page 49)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Trandolapril 1, 2, 4 mg tablet",
+          "note": "Tier 1, Mail Order (page 50)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Ramipril 1.25, 2.5, 5, 10 mg capsule",
+          "note": "Tier 1, Mail Order (page 50)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Moexipril 7.5, 15 mg tablet",
+          "note": "Tier 2, Mail Order (page 49)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        },
+        {
+          "drug": "Captopril 12.5, 25, 50, 100 mg tablet",
+          "note": "Tier 3, Mail Order (page 46)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-newtopics-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read pages 46 to 50: lisinopril 2.5 to 40 mg tablets, Tier 1, no UM. Every ACE inhibitor on the list carries no PA or ST. Combination products (lisinopril-HCTZ, benazepril-HCTZ, enalapril-HCTZ, amlodipine-benazepril) are excluded as single-agent alternatives. Sig is standard label dosing. [Reused: same national Humana Premier Rx PDP formulary as the TX guide (2026-10-21)] [Reused: same national Humana Premier Rx PDP formulary in every state]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-newtopics-2026-10"
+      ],
+      "lastReviewed": "2026-10-21",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "ky-medicaid-pdl-2026-10",
+      "label": "Kentucky Medicaid Preferred Drug List (PDL), October 2026",
+      "publisher": "Kentucky Department for Medicaid Services (MedImpact, single PBM)",
+      "type": "gov",
+      "url": "https://kyportal.medimpact.com/sites/default/files/2023-12/kentucky-medicaid-pdl.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-03"
+    },
+    {
+      "id": "ky-medicaid-pa-criteria-2026-10",
+      "label": "Kentucky Medicaid Prior Authorization Criteria, Version October 2026",
+      "publisher": "Kentucky Department for Medicaid Services (MedImpact, single PBM)",
+      "type": "gov",
+      "url": "https://kyportal.medimpact.com/sites/default/files/2023-12/kentucky-medicaid-pa-criteria.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-03"
+    },
+    {
+      "id": "anthem-ky-select-2026",
+      "label": "Anthem 2026 Select Drug List — Four Tier (Kentucky individual)",
+      "publisher": "Anthem Blue Cross and Blue Shield",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_KY_IND.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-03"
+    },
+    {
+      "id": "uhc-md-ace-inhibitors-source-2026-07-07",
+      "label": "UnitedHealthcare 2026 Prescription Drug List (PDL)",
+      "publisher": "UnitedHealthcare & affiliated companies",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-07-07"
+    },
+    {
+      "id": "humana-premier-rx-pdp-newtopics-2026-10",
+      "label": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-09-02",
+      "accessed": "2026-10-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

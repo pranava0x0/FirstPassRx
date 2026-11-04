@@ -785,3 +785,8 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   Coverage of published criteria varies a lot by state: OH/NC/PA Medicaid print criteria for
   nearly every class, TX/NY only for PDL classes with clinical edits, IL HFS for 2 of 11 newer
   classes. An agent's "0 sets" for a class usually means the state publishes none, not a miss.
+- **From a worktree session, a PreToolUse hook blocks Write/Edit into the main checkout's
+  `data-gathering/` (2026-11-03).** `docs/daily-burndown.md` says checkpoints live in the main
+  checkout, but a worktree session can't write there with the file tools (Bash `mv` still works).
+  Keep the gather dir in the worktree (`data-gathering/` is gitignored there too), point agents at
+  the worktree path, and copy the dir to the main checkout before the worktree is removed.
