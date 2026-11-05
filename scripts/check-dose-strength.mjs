@@ -16,7 +16,7 @@
 // strength field names the maintenance dose while the sig titrates up to it).
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { formOf, sameForm, sameMolecule, strengthNum, words } from './costplus-lib.mjs'
-import { amounts, deliverable, mg } from './dose-lib.mjs'
+import { amounts, fitsSig, startDose } from './dose-lib.mjs'
 
 const arg = (n) => (process.argv.find((a) => a.startsWith(`--${n}=`)) || '').slice(n.length + 3)
 const data = JSON.parse(readFileSync('src/data/formulary.json', 'utf8'))
@@ -39,14 +39,8 @@ for (const g of data.guides) {
     const a = r.preferredAgent
     if (!a?.strength || !a?.sig) continue
     const strengths = amounts(a.strength)
-    // Parentheticals list what the plan covers ("plan lists 25, 50, 100 mg"), not a dose.
-    const sig = a.sig.replace(/\([^)]*\)/g, ' ')
-    const [dose] = amounts(sig.split(/[.;]\s/)[0]).length ? amounts(sig.split(/[.;]\s/)[0]) : amounts(sig)
-    if (!strengths.length || !dose || deliverable(dose, strengths)) continue
-    // A sig that names the pick's strength as a labeled dose ("25, 50 or 100 mg", "may increase to
-    // 15 mg", "(40 mg if LDL-C must fall more than 45%)") is consistent with it.
-    const named = amounts(a.sig.replace(/(\d)\s*-\s*(\d)/g, '$1 to $2'))
-    if (strengths.some((st) => named.some((n) => mg(n) === mg(st)))) continue
+    const dose = startDose(a.sig)
+    if (fitsSig(a.strength, a.sig)) continue
     if (strengths.length === 1 && soldAt(a.inn, a.strength, dose)) {
       const num = String(strengths[0].n).replace('.', '\\.')
       const value = a.strength.replace(new RegExp(`\\b${num}0*\\s*${strengths[0].unit}`, 'i'), `${dose.n} ${dose.unit}`)

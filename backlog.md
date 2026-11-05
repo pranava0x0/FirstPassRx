@@ -1193,3 +1193,13 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 - **build-seo --check fails every new day with no data change** (medium): `scripts/build-seo.mjs` stamps today into sitemap lastmod and llms.txt "as of", so the pretest check goes stale at midnight. Derive the date from the newest guide `asOf`/capture date instead. Found by the 2026-10-28 burndown.
 
 - **PA checklists: reauthorization lines inside initial-approval "all" sets (medium, 2026-11-02).** 21 paRequired items outside MD/AL/DC carry a "Reauthorization: …" criterion in a `criteriaMode: "all"` set, so `criteriaDone()` makes an initial request require renewal evidence. Codex flagged the same shape for Alabama's pediatric stable-therapy item (fixed in PR #27 by folding it into the trial statement). Either strip renewal lines at apply time or add a per-criterion `phase: "renewal"` the checklist skips.
+
+- **(low, 2026-11-04) Two strength gaps left after the combination-pricing pass.** QVAR 40 mcg (3 cells):
+  GoodRx won't pin 40 mcg and Cost Plus carries no beclomethasone. Estradiol 0.025 mg weekly patch, Cost
+  Plus side (3 cells): the generic is out of stock and only brand Climara is listed, which this project
+  doesn't substitute. Re-check both on the next `npm run costplus` / GoodRx pass. Also: Cost Plus's
+  twice-weekly rule prices Lyllana (branded, $94.61 for 8) while GoodRx shows the generic at $54.82.
+- **(low, 2026-11-04) 34 picks still name no strength** because the list leaves the form open
+  ("patch/gel/spray", "cream or tablet", methylphenidate IR vs ER, testosterone 1% vs 1.62% gel). Re-read
+  each source row; add a form-specific row to scripts/data/label-strengths.json when one is settled. One
+  `ics` cell picks fluticasone nasal suspension, which isn't an asthma inhaler; fix the pick itself.
