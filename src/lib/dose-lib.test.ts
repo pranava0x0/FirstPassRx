@@ -42,6 +42,8 @@ describe('label starting-dose strengths', () => {
     expect(pick('vaginal', 'estradiol vaginal', 'vaginal cream or tablet')).toBeNull()
     expect(pick('ics', 'fluticasone propionate', 'nasal suspension')).toBeNull()
     expect(pick('adhd-nonstimulant', 'Guanfacine hydrochloride (ADHD)', 'formulation not specified')).toBeNull()
+    expect(pick('stimulant-amph', 'Amphetamine-dextroamphetamine XR')).toBeNull()
+    expect(pick('icslaba', 'Fluticasone propionate-salmeterol HFA', 'HFA inhaler')).toBeNull()
   })
   it('reads the starting dose and checks a strength against it', () => {
     expect(startDose('15 mg once daily at bedtime; may increase to 45 mg')).toEqual({ n: 15, unit: 'mg' })

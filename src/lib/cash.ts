@@ -1325,6 +1325,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     goodRxParams: 'label_override=estradiol&form=carton&dosage=4-once-weekly-patches-of-0.05mg-day&quantity=1',
     costPlusPath: 'estradiol-0_05mg-carton-of-weekly-patches-4-climara',
     goodRxPrice: { price: 51.66, quantity: '4 once-weekly patches, 0.05mg/day (1 carton)' },
+    goodRxVariants: { '0.025mg': { price: 49.41, quantity: '4 once-weekly patches, 0.025mg/day (1 carton)', path: 'estradiol?label_override=estradiol&form=carton&dosage=4-once-weekly-patches-of-0.025mg-day&quantity=1', capturedAt: '2026-11-04' } },
     pricesCapturedAt: '2026-10-21',
   },
   {
@@ -2601,7 +2602,7 @@ function cashLinkRule(name: string): CashLinkRule | undefined {
 // drug's own page (which has a form picker), and the product-specific Cost Plus link is withheld.
 export function goodRxUrl(name: string, strength?: string): string {
   const rule = cashLinkRule(name)
-  const variant = goodRxVariant(rule, name, strength)
+  const variant = priceSuppressedByForm(name) ? undefined : goodRxVariant(rule, name, strength)
   if (variant) return `https://www.goodrx.com/${variant.path}`
   const base = `https://www.goodrx.com/${rule?.goodRxSlug ?? fallbackSlug(name)}`
   if (!rule?.goodRxParams || priceSuppressedByForm(name)) return base
