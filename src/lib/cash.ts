@@ -429,6 +429,9 @@ export interface CashLinkRule {
   goodRxPrice?: PricePoint
   /** Cost Plus Drugs "price with us". Omitted when out of stock or unavailable at capture time. */
   costPlusPrice?: PricePoint
+  /** GoodRx prices at other strengths, keyed like "10mg", each with its own pinned page path
+   * (slug + query). A pick at one of these strengths gets that price and link, not the rule's. */
+  goodRxVariants?: Record<string, PricePoint & { path: string }>
   /** ISO date both prices above were read directly off the vendor page (real browser session,
    * not a secondary aggregator). */
   pricesCapturedAt?: string
@@ -452,6 +455,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     goodRxSlug: 'aripiprazole',
     goodRxParams: 'label_override=aripiprazole&form=tablet&dosage=5mg&quantity=30',
     goodRxPrice: { price: 17.26, quantity: '30 tablets, 5mg' },
+    goodRxVariants: { '10mg': { price: 30.36, quantity: '30 tablets, 10mg', path: 'aripiprazole?label_override=aripiprazole&form=tablet&dosage=10mg&quantity=30', capturedAt: '2026-11-04' } },
     costPlusPath: 'aripiprazole-5mg-tablet',
     costPlusPrice: { price: 6.93, quantity: '30 tablets, 5mg' },
     pricesCapturedAt: '2026-10-22',
@@ -613,6 +617,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     goodRxSlug: 'metoprolol-succinate-er',
     goodRxParams: 'label_override=metoprolol-succinate-er&form=tablet&dosage=50mg&quantity=30',
     goodRxPrice: { price: 29.45, quantity: '30 tablets, 50mg ER' },
+    goodRxVariants: { '25mg': { price: 14.39, quantity: '30 tablets, 25mg ER', path: 'metoprolol-er?label_override=metoprolol-succinate-er&form=tablet&dosage=25mg&quantity=30', capturedAt: '2026-11-04' } },
     costPlusPath: 'metoprololextendedreleaseer-50mg-tablet',
     costPlusPrice: { price: 5.52, quantity: '30 tablets, 50mg ER' },
     pricesCapturedAt: '2026-10-22',
@@ -622,6 +627,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     goodRxSlug: 'metoprolol',
     goodRxParams: 'label_override=metoprolol-tartrate&form=tablet&dosage=25mg&quantity=60',
     goodRxPrice: { price: 29.43, quantity: '60 tablets, 25mg' },
+    goodRxVariants: { '50mg': { price: 29.43, quantity: '60 tablets, 50mg', path: 'metoprolol?label_override=metoprolol-tartrate&form=tablet&dosage=50mg&quantity=60', capturedAt: '2026-11-04' } },
     costPlusPath: 'metoprolol-tartrate-25mg-tablet',
     costPlusPrice: { price: 5.56, quantity: '60 tablets, 25mg' },
     pricesCapturedAt: '2026-10-22',
@@ -674,6 +680,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     goodRxSlug: 'alprazolam',
     goodRxParams: 'label_override=alprazolam&form=tablet&dosage=0.5mg&quantity=60',
     goodRxPrice: { price: 19.17, quantity: '60 tablets, 0.5mg' },
+    goodRxVariants: { '0.25mg': { price: 29.9, quantity: '60 tablets, 0.25mg', path: 'alprazolam?label_override=alprazolam&form=tablet&dosage=0.25mg&quantity=60', capturedAt: '2026-11-04' } },
     pricesCapturedAt: '2026-10-22',
   },
   {
@@ -908,6 +915,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     goodRxParams: 'label_override=atorvastatin&form=tablet&dosage=40mg&quantity=30',
     costPlusPath: 'atorvastatin-40mg-tablet',
     goodRxPrice: { price: 15.24, quantity: '30 tablets, 40mg' },
+    goodRxVariants: { '10mg': { price: 14.69, quantity: '30 tablets, 10mg', path: 'atorvastatin?label_override=atorvastatin&form=tablet&dosage=10mg&quantity=30', capturedAt: '2026-11-04' } },
     costPlusPrice: { price: 5.67, quantity: '30 tablets, 40mg' },
     pricesCapturedAt: '2026-10-21',
   },
@@ -940,6 +948,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     goodRxSlug: 'methylphenidate',
     goodRxParams: 'label_override=methylphenidate&form=tablet&dosage=10mg&quantity=60',
     goodRxPrice: { price: 25.78, quantity: '60 tablets, 10mg' },
+    goodRxVariants: { '5mg': { price: 29.32, quantity: '60 tablets, 5mg', path: 'methylphenidate?label_override=methylphenidate&form=tablet&dosage=5mg&quantity=60', capturedAt: '2026-11-04' } },
     pricesCapturedAt: '2026-10-21',
   },
   {
@@ -956,6 +965,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     goodRxSlug: 'amphetamine-dextroamphetamine',
     goodRxParams: 'label_override=amphetamine-dextroamphetamine&form=tablet&dosage=10mg&quantity=60',
     goodRxPrice: { price: 32.31, quantity: '60 tablets, 10mg IR' },
+    goodRxVariants: { '5mg': { price: 30.28, quantity: '60 tablets, 5mg IR', path: 'amphetamine-salt-combo?label_override=amphetamine-dextroamphetamine&form=tablet&dosage=5mg&quantity=60', capturedAt: '2026-11-04' } },
     pricesCapturedAt: '2026-10-21',
   },
   {
@@ -972,6 +982,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     goodRxSlug: 'dextroamphetamine',
     goodRxParams: 'label_override=dextroamphetamine&form=tablet&dosage=10mg&quantity=60',
     goodRxPrice: { price: 43.23, quantity: '60 tablets, 10mg' },
+    goodRxVariants: { '5mg': { price: 38.35, quantity: '60 tablets, 5mg', path: 'dextroamphetamine?label_override=dextroamphetamine&form=tablet&dosage=5mg&quantity=60', capturedAt: '2026-11-04' } },
     pricesCapturedAt: '2026-10-21',
   },
   {
@@ -1048,6 +1059,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     goodRxSlug: 'budesonide',
     costPlusPath: 'budesonide-0_5mg_2ml-inhalation-suspension-60ml',
     goodRxPrice: { price: 48.30, quantity: '30 ampules, 0.5mg/2mL' },
+    goodRxVariants: { '0.25mg': { price: 55.85, quantity: '30 ampules, 0.25mg/2mL', path: 'budesonide?label_override=budesonide&form=ampule-of-inhalation-suspension&dosage=0.25mg-2ml&quantity=30', capturedAt: '2026-11-04' } },
     costPlusPrice: { price: 25.06, quantity: '0.5mg/2mL' },
     pricesCapturedAt: '2026-06-30',
   },
@@ -1086,6 +1098,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     goodRxSlug: 'fluticasone',
     costPlusPath: 'fluticasone-propionate-hfa-110-mcg_act-inhaler-12',
     goodRxPrice: { price: 181.48, quantity: '1 HFA inhaler, 110mcg' },
+    goodRxVariants: { '44mcg': { price: 143.23, quantity: '1 HFA inhaler, 44mcg', path: 'fluticasone-propionate-hfa?form=hfa-inhaler&dosage=44mcg&quantity=1', capturedAt: '2026-11-04' } },
     costPlusPrice: { price: 185.03, quantity: '1 HFA inhaler, 110mcg, 12g' },
     pricesCapturedAt: '2026-06-30',
   },
@@ -1723,6 +1736,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     goodRxParams: 'label_override=meloxicam&form=tablet&dosage=15mg&quantity=30',
     costPlusPath: 'meloxicam-15mg-tablet',
     goodRxPrice: { price: 19.61, quantity: '30 tablets, 15mg' },
+    goodRxVariants: { '7.5mg': { price: 26.27, quantity: '30 tablets, 7.5mg', path: 'meloxicam?label_override=meloxicam&form=tablet&dosage=7.5mg&quantity=30', capturedAt: '2026-11-04' } },
     costPlusPrice: { price: 5.38, quantity: '30 tablets, 15mg' },
     pricesCapturedAt: '2026-07-09',
   },
@@ -2297,9 +2311,9 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     matches: /\balendronate\b|\bfosamax\b/i,
     goodRxSlug: 'alendronate',
     goodRxParams: 'dosage=70mg&form=tablet&quantity=4&label_override=alendronate',
-    costPlusPath: 'alendronate-10mg-tablet',
+    costPlusPath: 'alendronate-70mg-tablet4pack',
     goodRxPrice: { price: 29.3, quantity: '4 tablets, 70mg (once-weekly dosing)' },
-    costPlusPrice: { price: 7.38, quantity: '30 tablets, 10mg (daily-dosing strength)' },
+    costPlusPrice: { price: 5.53, quantity: '4 tablets, 70mg (once-weekly dosing)' },
     pricesCapturedAt: '2026-07-30',
   },
   {
@@ -2587,6 +2601,8 @@ function cashLinkRule(name: string): CashLinkRule | undefined {
 // drug's own page (which has a form picker), and the product-specific Cost Plus link is withheld.
 export function goodRxUrl(name: string, strength?: string): string {
   const rule = cashLinkRule(name)
+  const variant = goodRxVariant(rule, name, strength)
+  if (variant) return `https://www.goodrx.com/${variant.path}`
   const base = `https://www.goodrx.com/${rule?.goodRxSlug ?? fallbackSlug(name)}`
   if (!rule?.goodRxParams || priceSuppressedByForm(name)) return base
   // A pick at another strength: point the pinned link at the pick's own dosage, or drop the pin
@@ -2701,9 +2717,20 @@ function priceFor(name: string, point: PricePoint | undefined): PricePoint | nul
   return point && !formConflict(name, point) ? point : null
 }
 
+// The captured GoodRx price at the pick's own strength, when the pick names another strength.
+function goodRxVariant(rule: CashLinkRule | undefined, name: string, strength: string | undefined) {
+  const point = priceFor(name, rule?.goodRxPrice)
+  const want = point ? strengthMismatch(point, strength) : null
+  if (typeof want !== 'string') return undefined
+  return Object.entries(rule?.goodRxVariants ?? {}).find(([k]) => Math.abs(toMg(k) - toMg(want)) < 1e-9)?.[1]
+}
+
 export function goodRxPrice(name: string, strength?: string): PricePoint | null {
-  const point = priceFor(name, cashLinkRule(name)?.goodRxPrice)
-  return point && strengthMismatch(point, strength) !== null ? null : point
+  const rule = cashLinkRule(name)
+  const point = priceFor(name, rule?.goodRxPrice)
+  if (!point || strengthMismatch(point, strength) === null) return point
+  const variant = goodRxVariant(rule, name, strength)
+  return variant ? { price: variant.price, quantity: variant.quantity, capturedAt: variant.capturedAt } : null
 }
 
 /** Snapshot Cost Plus Drugs price for this drug, or null if unavailable/out of stock at capture time. */

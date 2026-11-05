@@ -527,6 +527,20 @@ describe('strength-aware cash lookups', () => {
   })
 })
 
+describe('GoodRx prices at other strengths', () => {
+  it('prices and links a pick at a captured variant strength', () => {
+    expect(goodRxPrice('Atorvastatin calcium', '10 mg tablet')?.price).toBe(14.69)
+    expect(goodRxUrl('Atorvastatin calcium', '10 mg tablet')).toBe(
+      'https://www.goodrx.com/atorvastatin?label_override=atorvastatin&form=tablet&dosage=10mg&quantity=30',
+    )
+    expect(goodRxUrl('Fluticasone propionate', '44 mcg/actuation HFA inhaler')).toContain('fluticasone-propionate-hfa?')
+  })
+  it('keeps the rule price at its own strength and none at an uncaptured one', () => {
+    expect(goodRxPrice('Atorvastatin calcium', '40 mg tablet')?.price).toBe(15.24)
+    expect(goodRxPrice('Atorvastatin calcium', '20 mg tablet')).toBeNull()
+  })
+})
+
 describe('strength matching edge cases (code review round 2)', () => {
   it('drops rate and concentration denominators before comparing', () => {
     expect(goodRxPrice('estradiol', '0.05 mg/24 hr (transdermal patch)')).toBeNull()
