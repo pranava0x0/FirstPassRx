@@ -2663,18 +2663,21 @@ function amountsIn(text: string | undefined): string[] | null {
 
 const toMg = (key: string) => Number.parseFloat(key) / (key.endsWith('mcg') ? 1000 : 1)
 
-// "250/50mcg", "1 mg / 0.5 mg", "115 mcg / 21 mcg per actuation" -> ["0.05/0.25"]: both amounts
+// "250/50mcg", "1 mg / 0.5 mg", "1 mg-0.5 mg", "115 mcg / 21 mcg per actuation" -> ["0.05/0.25"]: both amounts
 // in mg, smaller first, so "2.5 mcg/0.5 mg" and "0.5mg/2.5mcg" are the same pair. A unit written
 // once at the end applies to both numbers. Rate denominators (/24 hr, /actuation) are stripped
 // first, as in amountsIn.
 function comboPairs(text: string | undefined): string[] {
   if (!text) return []
   const t = text.replace(/\s*\/\s*(\d+(\.\d+)?\s*)?(m?l|hr|hrs|hours?|24\s*h(ou)?rs?|day|d|actuation|act|dose|spray|puff|inh)\b/gi, '')
-  return [...t.matchAll(/(\d+(?:\.\d+)?)\s*(mg|mcg)?\s*\/\s*(\d+(?:\.\d+)?)\s*(mg|mcg)\b/gi)].map((m) => {
-    const u2 = (m[4] ?? '').toLowerCase()
+  // A list shares its trailing unit: "100-50, 250-50, or 500-50 mcg", "5-325/7.5-325 mg". A pair
+  // with no unit after it anywhere (e.g. "days 1-28" at the end) is not a strength.
+  return [...t.matchAll(/(\d+(?:\.\d+)?)\s*(mg|mcg)?\s*[/-]\s*(\d+(?:\.\d+)?)\s*(mg|mcg)?\b/gi)].flatMap((m) => {
+    const u2 = (m[4] ?? t.slice((m.index ?? 0) + m[0].length).match(/\b(mg|mcg)\b/i)?.[1] ?? '').toLowerCase()
+    if (!u2) return []
     const u1 = (m[2] ?? u2).toLowerCase()
     const pair = [toMg(`${Number(m[1])}${u1}`), toMg(`${Number(m[3])}${u2}`)].sort((a, b) => a - b)
-    return pair.join('/')
+    return [pair.join('/')]
   })
 }
 

@@ -549,6 +549,15 @@ describe('combination and pack-size variants', () => {
     expect(costPlusUrl('Ethinyl estradiol / norethindrone', '2.5 mcg/0.5 mg tablet')).toContain('0_5mg-2_5mcg')
     expect(goodRxPrice('fluticasone propionate-salmeterol', '100/50 mcg/inhalation powder (Diskus)')?.price).toBe(55.98)
   })
+  it('reads a pair written with a dash (code review)', () => {
+    expect(goodRxPrice('estradiol-norethindrone acetate', '1 mg-0.5 mg tablet')?.price).toBe(56.53)
+    expect(goodRxPrice('fluticasone-salmeterol', '100mcg-50mcg/dose dry powder inhaler')?.price).toBe(55.98)
+    expect(goodRxPrice('fluticasone-salmeterol', '115-21 mcg/actuation HFA inhalation aerosol')).toBeNull()
+    expect(costPlusPrice('fluticasone-salmeterol', '115-21 mcg/actuation HFA inhalation aerosol')).toBeNull()
+  })
+  it('prices a twice-weekly patch as twice-weekly (code review)', () => {
+    expect(goodRxPrice('Estradiol transdermal patch (twice-weekly)', '0.05 mg/day, twice-weekly patch')?.quantity).toMatch(/twice-weekly/)
+  })
   it('routes ethinyl estradiol/norethindrone to the femhrt rule, not Activella', () => {
     expect(goodRxUrl('Ethinyl estradiol / norethindrone acetate', '1 mg / 5 mcg tablet')).toContain('/jinteli')
   })
