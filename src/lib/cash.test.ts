@@ -519,8 +519,8 @@ describe('strength-aware cash lookups', () => {
     expect(costPlusPrice('Budesonide-formoterol', '160/4.5 mcg')).toEqual(costPlusPrice('Budesonide-formoterol'))
   })
   it('never prices a combination pick at another pair (PR 28 review)', () => {
-    expect(goodRxPrice('Estradiol / norethindrone acetate (oral combination tablet)', '1 mg / 0.5 mg tablet')).toBeNull()
-    expect(costPlusPrice('Estradiol / norethindrone acetate (oral combination tablet)', '1 mg / 0.5 mg tablet')).toBeNull()
+    expect(goodRxPrice('Estradiol / norethindrone acetate (oral combination tablet)', '2 mg / 1 mg tablet')).toBeNull()
+    expect(costPlusPrice('Estradiol / norethindrone acetate (oral combination tablet)', '2 mg / 1 mg tablet')).toBeNull()
     expect(goodRxPrice('Fluticasone propionate-salmeterol (HFA inhaler)', '115 mcg / 21 mcg per actuation')).toBeNull()
     expect(costPlusPrice('Fluticasone propionate-salmeterol (HFA inhaler)', '115 mcg / 21 mcg per actuation')).toBeNull()
     expect(goodRxPrice('Estradiol / norethindrone acetate', '0.5 mg/0.1 mg')).not.toBeNull()
@@ -538,6 +538,41 @@ describe('GoodRx prices at other strengths', () => {
   it('keeps the rule price at its own strength and none at an uncaptured one', () => {
     expect(goodRxPrice('Atorvastatin calcium', '40 mg tablet')?.price).toBe(15.24)
     expect(goodRxPrice('Atorvastatin calcium', '20 mg tablet')).toBeNull()
+  })
+})
+
+describe('combination and pack-size variants', () => {
+  it('prices a combination pick at its own pair, written in either order', () => {
+    expect(goodRxPrice('Estradiol / norethindrone acetate', '1 mg / 0.5 mg tablet')?.price).toBe(56.53)
+    expect(costPlusPrice('Estradiol / norethindrone acetate', '1 mg/0.5 mg tablet')?.quantity).toBe('28 tablets, 1mg/0.5mg')
+    expect(goodRxPrice('Ethinyl estradiol / norethindrone', '2.5 mcg/0.5 mg tablet')?.price).toBe(75.02)
+    expect(costPlusUrl('Ethinyl estradiol / norethindrone', '2.5 mcg/0.5 mg tablet')).toContain('0_5mg-2_5mcg')
+    expect(goodRxPrice('fluticasone propionate-salmeterol', '100/50 mcg/inhalation powder (Diskus)')?.price).toBe(55.98)
+  })
+  it('reads a pair written with a dash (code review)', () => {
+    expect(goodRxPrice('estradiol-norethindrone acetate', '1 mg-0.5 mg tablet')?.price).toBe(56.53)
+    expect(goodRxPrice('fluticasone-salmeterol', '100mcg-50mcg/dose dry powder inhaler')?.price).toBe(55.98)
+    expect(goodRxPrice('fluticasone-salmeterol', '115-21 mcg/actuation HFA inhalation aerosol')).toBeNull()
+    expect(costPlusPrice('fluticasone-salmeterol', '115-21 mcg/actuation HFA inhalation aerosol')).toBeNull()
+  })
+  it('prices a twice-weekly patch as twice-weekly (code review)', () => {
+    expect(goodRxPrice('Estradiol transdermal patch (twice-weekly)', '0.05 mg/day, twice-weekly patch')?.quantity).toMatch(/twice-weekly/)
+  })
+  it('routes ethinyl estradiol/norethindrone to the femhrt rule, not Activella', () => {
+    expect(goodRxUrl('Ethinyl estradiol / norethindrone acetate', '1 mg / 5 mcg tablet')).toContain('/jinteli')
+  })
+  it('never prices or pins a pair it has no variant for', () => {
+    expect(goodRxPrice('fluticasone propionate-salmeterol', '500/50 mcg/inhalation powder')).toBeNull()
+    expect(goodRxUrl('Estradiol / norethindrone acetate', '2 mg / 1 mg tablet')).toBe('https://www.goodrx.com/activella')
+    expect(costPlusUrl('fluticasone propionate-salmeterol', '500/50 mcg/inhalation powder')).toBeNull()
+  })
+  it('a single-strength key never matches a pair, and a pair key never matches one strength', () => {
+    expect(costPlusPrice('Estradiol / norethindrone acetate', '1 mg tablet')).not.toBeNull() // no pair named: rule price
+    expect(goodRxPrice('Oxybutynin chloride ER', '5 mg extended-release tablet')?.quantity).toBe('30 tablets, 5mg ER')
+  })
+  it('prices Cost Plus pack-size variants at their own count', () => {
+    expect(costPlusPrice('budesonide', '0.25 mg/2 mL inhalation suspension')?.price).toBe(29.72)
+    expect(costPlusPrice('fluticasone propionate', '44 mcg/actuation HFA inhaler')?.price).toBe(145.29)
   })
 })
 
