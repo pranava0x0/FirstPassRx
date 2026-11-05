@@ -1193,3 +1193,14 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 - **build-seo --check fails every new day with no data change** (medium): `scripts/build-seo.mjs` stamps today into sitemap lastmod and llms.txt "as of", so the pretest check goes stale at midnight. Derive the date from the newest guide `asOf`/capture date instead. Found by the 2026-10-28 burndown.
 
 - **PA checklists: reauthorization lines inside initial-approval "all" sets (medium, 2026-11-02).** 21 paRequired items outside MD/AL/DC carry a "Reauthorization: …" criterion in a `criteriaMode: "all"` set, so `criteriaDone()` makes an initial request require renewal evidence. Codex flagged the same shape for Alabama's pediatric stable-therapy item (fixed in PR #27 by folding it into the trial statement). Either strip renewal lines at apply time or add a per-criterion `phase: "renewal"` the checklist skips.
+
+- **(medium, 2026-11-04) Price the combination and patch picks that the strength backfill un-priced.** These
+  23 cells used to show another product's price; now they show none: Activella 1/0.5 mg and femhrt
+  2.5 mcg/0.5 mg (the rule prices 0.5/0.1), Advair Diskus 100/50 (the rule prices 250/50), estradiol weekly
+  patch 0.05 mg/24 hr (the estradiol rule is the oral tablet), QVAR 40 mcg (GoodRx won't pin 40 mcg),
+  and the Cost Plus side of budesonide 0.25 mg/2 mL and fluticasone HFA 44 mcg (the catalog sells both, but
+  costplus.mjs builds no variants for them). Combinations need a pair-keyed variant; the patch needs its own rule.
+- **(low, 2026-11-04) 34 picks still name no strength** because the list leaves the form open
+  ("patch/gel/spray", "cream or tablet", methylphenidate IR vs ER, testosterone 1% vs 1.62% gel). Re-read
+  each source row; add a form-specific row to scripts/data/label-strengths.json when one is settled. One
+  `ics` cell picks fluticasone nasal suspension, which isn't an asthma inhaler; fix the pick itself.

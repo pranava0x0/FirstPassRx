@@ -777,3 +777,20 @@ describe('paSubmission notes read as routing guidance', () => {
     expect([...new Set(bad)]).toEqual([])
   })
 })
+
+// scripts/apply-label-strengths.mjs filled the rest from the label starting dose; these name no
+// single form ("patch/gel/spray", "cream or tablet") and stay as the plan printed them.
+const PICKS_WITHOUT_STRENGTH = 34
+describe('preferred-pick strengths', () => {
+  it('only picks whose form the list leaves open lack a numeric strength', () => {
+    let missing = 0
+    for (const g of (rawData as unknown as Formulary).guides) {
+      const active = new Set(g.classes.filter((c) => !c.comingSoon).map((c) => c.id))
+      for (const r of g.records) {
+        if (r.noCoveredAgent || !active.has(r.classId) || !r.preferredAgent?.inn) continue
+        if (!/\d/.test(r.preferredAgent.strength ?? '')) missing++
+      }
+    }
+    expect(missing).toBeLessThanOrEqual(PICKS_WITHOUT_STRENGTH)
+  })
+})

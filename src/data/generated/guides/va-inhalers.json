@@ -413,7 +413,7 @@
         "inn": "budesonide",
         "brand": "Pulmicort",
         "genericAvailable": true,
-        "strength": "inhalation suspension for nebulization",
+        "strength": "0.25 mg/2 mL inhalation suspension",
         "sig": "Inhale contents of 1 ampule via nebulizer twice daily",
         "sigShort": "budesonide neb susp, 1 amp INH BID",
         "plainSig": "Breathe in the medicine using your nebulizer machine twice a day"
@@ -481,7 +481,7 @@
       "stepTherapy": null,
       "tier": "Preferred Drug List (PDL) - no PA required for clean-listed agents; drugs omitted from the PDL are non-preferred and generally require prior authorization under DMAS policy",
       "verification": "verified",
-      "verificationNote": "Fetched the PDF directly via curl with a browser User-Agent (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf, 200 OK, confirmed real 153-page PDF) and extracted full text with PyPDF2. Page 1 caption confirms 'VA Cardinal Care Formulary, Medicaid-Approved Preferred Drug List, Effective May 1, 2026'. Page 19, under '*ANTIASTHMATIC AND BRONCHODILATOR AGENTS*' > '*STEROID INHALANTS***', lists (with notes read verbatim from the Notes column): ARNUITY ELLIPTA (AL), ASMANEX 120/14/30/60 metered-dose dry powder devices (no note), ASMANEX HFA 100/200 mcg (no note), ASMANEX HFA 50 mcg/act (AL), budesonide inhalation suspension/Pulmicort (AL), PULMICORT FLEXHALER (no note), QVAR REDIHALER (no note). Budesonide nebulizer suspension was selected as the 'preferredAgent' because it is the only generic (non-brand-only) product in this subsection, even though it carries an AL note in the document (captured in preferredRestriction, per the instructions to record a restriction on the top pick itself); Pulmicort Flexhaler and QVAR Redihaler are brand-only entries with no restriction and are captured as alternatives since they are not the generic pick. No standalone fluticasone (Flovent) or ciclesonide (Alvescent/Alvesco) product appears anywhere in this subsection or in a full-document search - both are absent from the PDL entirely, hence flagged nonformulary. No class-wide step-therapy criterion or BOGL note appears near this section.",
+      "verificationNote": "Fetched the PDF directly via curl with a browser User-Agent (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf, 200 OK, confirmed real 153-page PDF) and extracted full text with PyPDF2. Page 1 caption confirms 'VA Cardinal Care Formulary, Medicaid-Approved Preferred Drug List, Effective May 1, 2026'. Page 19, under '*ANTIASTHMATIC AND BRONCHODILATOR AGENTS*' > '*STEROID INHALANTS***', lists (with notes read verbatim from the Notes column): ARNUITY ELLIPTA (AL), ASMANEX 120/14/30/60 metered-dose dry powder devices (no note), ASMANEX HFA 100/200 mcg (no note), ASMANEX HFA 50 mcg/act (AL), budesonide inhalation suspension/Pulmicort (AL), PULMICORT FLEXHALER (no note), QVAR REDIHALER (no note). Budesonide nebulizer suspension was selected as the 'preferredAgent' because it is the only generic (non-brand-only) product in this subsection, even though it carries an AL note in the document (captured in preferredRestriction, per the instructions to record a restriction on the top pick itself); Pulmicort Flexhaler and QVAR Redihaler are brand-only entries with no restriction and are captured as alternatives since they are not the generic pick. No standalone fluticasone (Flovent) or ciclesonide (Alvescent/Alvesco) product appears anywhere in this subsection or in a full-document search - both are absent from the PDL entirely, hence flagged nonformulary. No class-wide step-therapy criterion or BOGL note appears near this section. [Strength 2026-11-04: list names no strength (\"inhalation suspension for nebulization\"); set to the label starting dose (scripts/data/label-strengths.json)]",
       "sourceIds": [
         "va-medicaid-ffs-inhalers-source-2026-07-07"
       ],
@@ -1891,7 +1891,7 @@
         "inn": "budesonide",
         "brand": "Pulmicort",
         "genericAvailable": true,
-        "strength": "inhalation suspension for nebulization",
+        "strength": "0.25 mg/2 mL inhalation suspension",
         "sig": "Inhale contents of 1 ampule via nebulizer twice daily",
         "sigShort": "budesonide neb susp, 1 amp INH BID",
         "plainSig": "Breathe in the medicine using your nebulizer machine twice a day"
@@ -1959,7 +1959,7 @@
       "stepTherapy": null,
       "tier": "State PDL Preferred; no PA (budesonide inhalation suspension)",
       "verification": "verified",
-      "verificationNote": "Verified against Aetna Better Health of Virginia's own 2026 formulary (FBO/111, ABH VA V2 v33, eff 07/01/2026). Budesonide inhalation suspension is drug_tier 'Preferred', PA=false. Among ICS inhalers Aetna also lists Arnuity Ellipta, Asmanex/Asmanex HFA, and QVAR RediHaler as Preferred (no PA), while fluticasone propionate HFA/Diskus, beclomethasone HFA, and fluticasone furoate Ellipta are State PDL Non-Preferred. Payer-branded confirmation replacing the prior statewide-PDL-only read.",
+      "verificationNote": "Verified against Aetna Better Health of Virginia's own 2026 formulary (FBO/111, ABH VA V2 v33, eff 07/01/2026). Budesonide inhalation suspension is drug_tier 'Preferred', PA=false. Among ICS inhalers Aetna also lists Arnuity Ellipta, Asmanex/Asmanex HFA, and QVAR RediHaler as Preferred (no PA), while fluticasone propionate HFA/Diskus, beclomethasone HFA, and fluticasone furoate Ellipta are State PDL Non-Preferred. Payer-branded confirmation replacing the prior statewide-PDL-only read. [Strength 2026-11-04: list names no strength (\"inhalation suspension for nebulization\"); set to the label starting dose (scripts/data/label-strengths.json)]",
       "sourceIds": [
         "aetna-better-health-va-pdl-2026",
         "va-medicaid-ffs-inhalers-source-2026-07-07"
@@ -2547,7 +2547,7 @@
         "inn": "fluticasone propionate-salmeterol",
         "brand": "Wixela Inhub (authorized generic of Advair Diskus)",
         "genericAvailable": true,
-        "strength": "inhalation blister with device, standard strength",
+        "strength": "100/50 mcg/inhalation powder (Diskus)",
         "sig": "Inhale as directed by prescriber twice daily for asthma/COPD maintenance",
         "sigShort": "INH BID (maintenance)",
         "plainSig": "Use the inhaler twice a day, every day, even when feeling well -- this is a daily controller combining a steroid and a long-acting bronchodilator, not a rescue inhaler"
@@ -2603,7 +2603,7 @@
       "stepTherapy": null,
       "tier": "Tier 1 - Preferred Generic Drug",
       "verification": "verified",
-      "verificationNote": "Downloaded and read the full PDF (120 pages, SHP_MD_MEM_OMSC_230005), 'Sentara Health Employer Plans Standard Formulary for Large Group Employer Plans (July - September 2026)', page 1 confirms updated 07/01/2026. Read the 'PULMONARY AGENTS' table on PDF pages 91-94 (printed 82-85): 'fluticasone propion-salmeterol inhalation blister with device' is listed Tier 1, QL (1 per 30 days), no PA/ST flag -- confirmed via cross-reference with 'wixela inhub' also appearing at Tier 1, QL (1 per 30 days) on PDF page 94 (Wixela Inhub is the FDA-approved generic/authorized-generic Diskus device for fluticasone-salmeterol, so both entries describe the same clinical product at the same tier). 'ADVAIR HFA' (brand MDI) sits at Tier 2, QL (1 per 30 days) -- still covered, no PA, so it is an alternative. Other ICS/LABA combination products found: 'breyna' (Tier 2, QL 1/30d -- authorized generic of Symbicort), 'budesonide-formoterol' (Tier 2, QL 1/30d -- generic Symbicort), 'DULERA' (Tier 2, QL 13/30d), 'BREO ELLIPTA' (Tier 2, QL 1/30d), and 'TRELEGY ELLIPTA' (Tier 2, QL 1/30d -- this is actually a triple-therapy ICS/LAMA/LABA product but was captured here since it contains an ICS/LABA combination and appears in the same undifferentiated pulmonary-agents list). None of these carry a PA/ST flag, so all are Tier-2 covered alternatives, not restricted. Cross-referenced tier/abbreviation legend on PDF pages 6 and 11. Strength/sig are standard combination-inhaler conventions, not printed verbatim (the formulary lists Tier and Requirements/Limits only), so verification is 'verified' for tier/PA/restriction and inferred for strength/sig. No class-wide step-therapy criterion for ICS/LABA was found.",
+      "verificationNote": "Downloaded and read the full PDF (120 pages, SHP_MD_MEM_OMSC_230005), 'Sentara Health Employer Plans Standard Formulary for Large Group Employer Plans (July - September 2026)', page 1 confirms updated 07/01/2026. Read the 'PULMONARY AGENTS' table on PDF pages 91-94 (printed 82-85): 'fluticasone propion-salmeterol inhalation blister with device' is listed Tier 1, QL (1 per 30 days), no PA/ST flag -- confirmed via cross-reference with 'wixela inhub' also appearing at Tier 1, QL (1 per 30 days) on PDF page 94 (Wixela Inhub is the FDA-approved generic/authorized-generic Diskus device for fluticasone-salmeterol, so both entries describe the same clinical product at the same tier). 'ADVAIR HFA' (brand MDI) sits at Tier 2, QL (1 per 30 days) -- still covered, no PA, so it is an alternative. Other ICS/LABA combination products found: 'breyna' (Tier 2, QL 1/30d -- authorized generic of Symbicort), 'budesonide-formoterol' (Tier 2, QL 1/30d -- generic Symbicort), 'DULERA' (Tier 2, QL 13/30d), 'BREO ELLIPTA' (Tier 2, QL 1/30d), and 'TRELEGY ELLIPTA' (Tier 2, QL 1/30d -- this is actually a triple-therapy ICS/LAMA/LABA product but was captured here since it contains an ICS/LABA combination and appears in the same undifferentiated pulmonary-agents list). None of these carry a PA/ST flag, so all are Tier-2 covered alternatives, not restricted. Cross-referenced tier/abbreviation legend on PDF pages 6 and 11. Strength/sig are standard combination-inhaler conventions, not printed verbatim (the formulary lists Tier and Requirements/Limits only), so verification is 'verified' for tier/PA/restriction and inferred for strength/sig. No class-wide step-therapy criterion for ICS/LABA was found. [Strength 2026-11-04: list names no strength (\"inhalation blister with device, standard strength\"); set to the label starting dose (scripts/data/label-strengths.json)]",
       "sourceIds": [
         "sentara-commercial-inhalers-source-2026-07-07"
       ],
