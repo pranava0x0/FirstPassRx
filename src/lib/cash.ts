@@ -413,7 +413,7 @@ type CostPlusSnapshotEntry = {
   inStock?: boolean
   delisted?: boolean
   /** The same product at other strengths, priced for the same count, keyed like "60mg". */
-  variants?: Record<string, { path: string; price: number | null }>
+  variants?: Record<string, { path: string; price: number | null; quantity?: string }>
 }
 const COST_PLUS: { fetchedAt: string; paths: Record<string, CostPlusSnapshotEntry> } = costPlusSnapshot
 
@@ -430,8 +430,13 @@ export interface CashLinkRule {
   /** Cost Plus Drugs "price with us". Omitted when out of stock or unavailable at capture time. */
   costPlusPrice?: PricePoint
   /** GoodRx prices at other strengths, keyed like "10mg", each with its own pinned page path
-   * (slug + query). A pick at one of these strengths gets that price and link, not the rule's. */
+   * (slug + query). A pick at one of these strengths gets that price and link, not the rule's.
+   * Combination keys name the pair ("1mg/0.5mg"). */
   goodRxVariants?: Record<string, PricePoint & { path: string }>
+  /** Cost Plus products at other strengths that scripts/costplus.mjs can't pair up on its own
+   * (combinations, other pack sizes). Keyed like goodRxVariants; the quantity label must name a
+   * count the catalog entry bills by ("60 doses", "60 mL"). costplus.mjs prices each one. */
+  costPlusVariants?: Record<string, { path: string; quantity: string }>
   /** ISO date both prices above were read directly off the vendor page (real browser session,
    * not a secondary aggregator). */
   pricesCapturedAt?: string
@@ -571,6 +576,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     goodRxSlug: 'oxybutynin-er',
     goodRxParams: 'label_override=oxybutynin-er&form=tablet&dosage=10mg&quantity=30',
     goodRxPrice: { price: 29.81, quantity: '30 tablets, 10mg ER' },
+    goodRxVariants: { '5mg': { price: 29.81, quantity: '30 tablets, 5mg ER', path: 'oxybutynin-er?label_override=oxybutynin-er&form=tablet&dosage=5mg&quantity=30', capturedAt: '2026-11-04' } },
     costPlusPath: 'oxybutyninextendedreleaseer-10mg-tablet',
     costPlusPrice: { price: 6.14, quantity: '30 tablets, 10mg ER' },
     pricesCapturedAt: '2026-10-22',
@@ -1060,6 +1066,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     costPlusPath: 'budesonide-0_5mg_2ml-inhalation-suspension-60ml',
     goodRxPrice: { price: 48.30, quantity: '30 ampules, 0.5mg/2mL' },
     goodRxVariants: { '0.25mg': { price: 55.85, quantity: '30 ampules, 0.25mg/2mL', path: 'budesonide?label_override=budesonide&form=ampule-of-inhalation-suspension&dosage=0.25mg-2ml&quantity=30', capturedAt: '2026-11-04' } },
+    costPlusVariants: { '0.25mg': { path: 'budesonide-0_25mg_2ml-suspension', quantity: '60 mL (30 x 2mL vials), 0.25mg/2mL' } },
     costPlusPrice: { price: 25.06, quantity: '0.5mg/2mL' },
     pricesCapturedAt: '2026-06-30',
   },
@@ -1069,6 +1076,8 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     costPlusPath: 'Fluticasone-Salmeterol-250mcg50mcg-Tablet',
     goodRxPrice: { price: 65.46, quantity: '1 diskus inhaler, 250/50mcg' },
     costPlusPrice: { price: 47.55, quantity: '250/50mcg, 60 doses' },
+    goodRxVariants: { '100mcg/50mcg': { price: 55.98, quantity: '1 diskus inhaler, 100/50mcg', path: 'fluticasone-salmeterol?label_override=fluticasone-salmeterol&form=diskus-inhaler&dosage=100mcg-50mcg&quantity=1', capturedAt: '2026-11-04' } },
+    costPlusVariants: { '100mcg/50mcg': { path: 'fluticasone-salmeterol-100mcg-50mcg-aerosol-powder-60-doses', quantity: '60 doses, 100/50mcg' } },
     pricesCapturedAt: '2026-06-30',
   },
   {
@@ -1099,6 +1108,7 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     costPlusPath: 'fluticasone-propionate-hfa-110-mcg_act-inhaler-12',
     goodRxPrice: { price: 181.48, quantity: '1 HFA inhaler, 110mcg' },
     goodRxVariants: { '44mcg': { price: 143.23, quantity: '1 HFA inhaler, 44mcg', path: 'fluticasone-propionate-hfa?form=hfa-inhaler&dosage=44mcg&quantity=1', capturedAt: '2026-11-04' } },
+    costPlusVariants: { '44mcg': { path: 'fluticasone-propionate-hfa-44-mcg_act-inhaler-10_6', quantity: '1 HFA inhaler, 44mcg, 10.6g' } },
     costPlusPrice: { price: 185.03, quantity: '1 HFA inhaler, 110mcg, 12g' },
     pricesCapturedAt: '2026-06-30',
   },
@@ -1235,12 +1245,15 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     // "abigale|gallifrey|zafemy" added 2026-07-16: branded-generic manufacturer names for the same
     // estradiol/norethindrone acetate 0.5/0.1mg or 1/0.5mg combo as Activella -- Cost Plus doesn't
     // carry these specific brand names, but they're chemically identical, same strengths.
-    matches: /estradiol.*norethindrone|activella|mimvey|amabelz|abigale|gallifrey|zafemy/i,
+    // "(?<!ethinyl )": "Ethinyl estradiol / norethindrone" is femhrt, priced by the next rule.
+    matches: /(?<!ethinyl )estradiol.*norethindrone|activella|mimvey|amabelz|abigale|gallifrey|zafemy/i,
     goodRxSlug: 'activella',
     goodRxParams: 'label_override=estradiol-norethindrone&form=package&dosage=28-tablets-of-0.5mg-0.1mg&quantity=3',
     costPlusPath: 'estradiolnorethrindroneacetate-0_5mg0_1mg-blisterpack28pack',
     goodRxPrice: { price: 57.30, quantity: '28 tablets (3 packages), 0.5mg/0.1mg' },
     costPlusPrice: { price: 23.40, quantity: '28 tablets, 0.5mg/0.1mg' },
+    goodRxVariants: { '1mg/0.5mg': { price: 56.53, quantity: '28 tablets (3 packages), 1mg/0.5mg', path: 'activella?label_override=estradiol-norethindrone&form=package&dosage=28-tablets-of-1mg-0.5mg&quantity=3', capturedAt: '2026-11-04' } },
+    costPlusVariants: { '1mg/0.5mg': { path: 'estradiolnorethrindroneacetate-1mg0_5mg-blisterpack28pack', quantity: '28 tablets, 1mg/0.5mg' } },
     pricesCapturedAt: '2026-07-01',
   },
   {
@@ -1257,6 +1270,8 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     costPlusPath: 'norethindrone-acetate-ethinyl-estradiol-1mg-5mcg-pack-of-tablets-90-fyavolv',
     goodRxPrice: { price: 61.49, quantity: '28 tablets, 1mg/5mcg' },
     costPlusPrice: { price: 30.63, quantity: '90 tablets, 1mg/5mcg' },
+    goodRxVariants: { '0.5mg/2.5mcg': { price: 75.02, quantity: '84 tablets (3 packages of 28), 0.5mg/2.5mcg', path: 'fyavolv?label_override=fyavolv&form=package&dosage=28-tablets-of-0.5mg-2.5mcg&quantity=3', capturedAt: '2026-11-04' } },
+    costPlusVariants: { '0.5mg/2.5mcg': { path: 'norethindrone-acetate-ethinyl-estradiol-0_5mg-2_5mcg-pack-of-tablets-90-fyavolv', quantity: '90 tablets, 0.5mg/2.5mcg' } },
     pricesCapturedAt: '2026-06-30',
   },
   {
@@ -2611,7 +2626,7 @@ export function goodRxUrl(name: string, strength?: string): string {
   const captured = rule.goodRxPrice ?? rule.costPlusPrice
   const want = captured ? strengthMismatch(captured, strength) : null
   if (!want) return `${base}?${rule.goodRxParams}`
-  if (want === true) return base
+  if (want === true || want.includes('/')) return base
   // ...and its own oral form when the strength says so (gabapentin 600 mg is a tablet, not a
   // capsule); special tablets (ODT, chewable, vaginal, sublingual) are other products: no re-pin.
   const text = strength ?? ''
@@ -2648,21 +2663,24 @@ function amountsIn(text: string | undefined): string[] | null {
 
 const toMg = (key: string) => Number.parseFloat(key) / (key.endsWith('mcg') ? 1000 : 1)
 
-// "250/50mcg", "1 mg / 0.5 mg", "115 mcg / 21 mcg per actuation" -> ["250mcg/50mcg"]. A unit
-// written once at the end applies to both numbers. Rate denominators (/24 hr, /actuation) are
-// stripped first, as in amountsIn.
+// "250/50mcg", "1 mg / 0.5 mg", "115 mcg / 21 mcg per actuation" -> ["0.05/0.25"]: both amounts
+// in mg, smaller first, so "2.5 mcg/0.5 mg" and "0.5mg/2.5mcg" are the same pair. A unit written
+// once at the end applies to both numbers. Rate denominators (/24 hr, /actuation) are stripped
+// first, as in amountsIn.
 function comboPairs(text: string | undefined): string[] {
   if (!text) return []
   const t = text.replace(/\s*\/\s*(\d+(\.\d+)?\s*)?(m?l|hr|hrs|hours?|24\s*h(ou)?rs?|day|d|actuation|act|dose|spray|puff|inh)\b/gi, '')
   return [...t.matchAll(/(\d+(?:\.\d+)?)\s*(mg|mcg)?\s*\/\s*(\d+(?:\.\d+)?)\s*(mg|mcg)\b/gi)].map((m) => {
     const u2 = (m[4] ?? '').toLowerCase()
     const u1 = (m[2] ?? u2).toLowerCase()
-    return `${toMg(`${Number(m[1])}${u1}`)}/${toMg(`${Number(m[3])}${u2}`)}`
+    const pair = [toMg(`${Number(m[1])}${u1}`), toMg(`${Number(m[3])}${u2}`)].sort((a, b) => a - b)
+    return pair.join('/')
   })
 }
 
-/** The pick's own strength (e.g. "60mg") when it differs from the captured one; true when the
- * pick names only other strengths but no single one to switch to; null when consistent or unknown. */
+/** The pick's own strength (e.g. "60mg", or a pair like "0.5/1") when it differs from the captured
+ * one; true when the pick names only other strengths but no single one to switch to; null when
+ * consistent or unknown. */
 function strengthMismatch(point: PricePoint, strength: string | undefined): string | true | null {
   // A special tablet named only in the strength ("5 mg orally disintegrating tablet") is another
   // product than a plain-tablet capture.
@@ -2674,7 +2692,8 @@ function strengthMismatch(point: PricePoint, strength: string | undefined): stri
   if (havePair.length === 1) {
     const wantPairs = comboPairs(strength)
     if (!wantPairs.length) return null
-    return wantPairs.includes(havePair[0] ?? '') ? null : true
+    if (wantPairs.includes(havePair[0] ?? '')) return null
+    return wantPairs.length === 1 ? (wantPairs[0] ?? true) : true
   }
   const have = amountsIn(point.quantity)
   const want = amountsIn(strength)
@@ -2684,9 +2703,15 @@ function strengthMismatch(point: PricePoint, strength: string | undefined): stri
   return want.length === 1 ? (want[0] ?? null) : true
 }
 
+// A variant key names one strength ("10mg") or a pair ("1mg/0.5mg"); a pair only matches a pair.
+function sameStrength(key: string, want: string): boolean {
+  if (want.includes('/')) return comboPairs(key)[0] === want
+  return !key.includes('/') && Math.abs(toMg(key) - toMg(want)) < 1e-9
+}
+
 function variantFor(path: string, want: string) {
   const variants = COST_PLUS.paths[path.toLowerCase()]?.variants ?? {}
-  return Object.entries(variants).find(([k]) => Math.abs(toMg(k) - toMg(want)) < 1e-9)?.[1]
+  return Object.entries(variants).find(([k]) => sameStrength(k, want))?.[1]
 }
 
 /** Snapshot GoodRx price for this drug, or null if no exact strength/form match was captured. */
@@ -2723,7 +2748,7 @@ function goodRxVariant(rule: CashLinkRule | undefined, name: string, strength: s
   const point = priceFor(name, rule?.goodRxPrice)
   const want = point ? strengthMismatch(point, strength) : null
   if (typeof want !== 'string') return undefined
-  return Object.entries(rule?.goodRxVariants ?? {}).find(([k]) => Math.abs(toMg(k) - toMg(want)) < 1e-9)?.[1]
+  return Object.entries(rule?.goodRxVariants ?? {}).find(([k]) => sameStrength(k, want))?.[1]
 }
 
 export function goodRxPrice(name: string, strength?: string): PricePoint | null {
@@ -2746,6 +2771,7 @@ export function costPlusPrice(name: string, strength?: string): PricePoint | nul
   if (point && want) {
     const variant = typeof want === 'string' && rule?.costPlusPath ? variantFor(rule.costPlusPath, want) : undefined
     if (typeof variant?.price !== 'number') return null
+    if (variant.quantity) return { price: variant.price, quantity: variant.quantity, capturedAt: COST_PLUS.fetchedAt }
     const have = amountsIn(point.quantity)?.[0] ?? ''
     const quantity = point.quantity.replace(new RegExp(`\\b${have.replace(/(mg|mcg)$/, '').replace('.', '\\.')}\\s*${have.replace(/^[\d.]+/, '')}\\b`, 'i'), String(want))
     return { price: variant.price, quantity, capturedAt: COST_PLUS.fetchedAt }

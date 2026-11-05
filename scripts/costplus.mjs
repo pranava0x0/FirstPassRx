@@ -62,9 +62,15 @@ function main(catalog) {
     snapshot.paths[key] = { price: n ? cashPrice(e, n) : null, inStock: !!e.cpd_channel?.in_stock }
     // Same product at other strengths (same name, form and brand/generic), priced for the same
     // count, so a pick at a different strength gets its own price and link (cash.ts).
-    if (!n) continue
     const variants = {}
-    for (const v of catalog) {
+    // Hand-pinned variants first (combinations, other pack sizes), priced at their own label.
+    for (const [k, pin] of Object.entries(rule.costPlusVariants ?? {})) {
+      const v = bySlug.get(pin.path.toLowerCase())
+      const units = v && unitsFor(pin.quantity, v)
+      if (!v || !units || !v.cpd_channel?.in_stock) { console.log(`  VARIANT ${rule.costPlusPath} ${k}: ${!v ? 'delisted' : !units ? `can't count "${pin.quantity}"` : 'out of stock'}`); continue }
+      variants[k] = { path: pin.path, price: cashPrice(v, units), quantity: pin.quantity }
+    }
+    for (const v of n ? catalog : []) {
       if (v === e || !v.cpd_channel?.in_stock || v.medication_name !== e.medication_name || v.form !== e.form || v.brand_generic !== e.brand_generic) continue
       const k = strengthKey(v.strength)
       const units = k && unitsFor(rule.costPlusPrice.quantity, v)

@@ -306,7 +306,7 @@
       "payerId": "va-medicaid-ffs",
       "classId": "est-td",
       "preferredAgent": {
-        "inn": "estradiol",
+        "inn": "Estradiol transdermal patch (once-weekly)",
         "brand": "Climara",
         "genericAvailable": true,
         "strength": "transdermal patch, once-weekly, 0.025mg/day-0.1mg/day range",
@@ -347,7 +347,7 @@
       "stepTherapy": null,
       "tier": "Preferred Drug List (PDL) - no PA required; drugs omitted from the PDL are non-preferred and generally require prior authorization under DMAS policy",
       "verification": "verified",
-      "verificationNote": "Fetched the PDF directly via curl with a browser User-Agent (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf, 200 OK, confirmed real 153-page PDF) and extracted full text with PyPDF2. Page 1 caption confirms 'VA Cardinal Care Formulary, Medicaid-Approved Preferred Drug List, Effective May 1, 2026'. Page 83-84, under '*ESTROGENS*' > '*ESTROGENS***' (the subsection immediately after Estrogen & Progestin), lists exactly two entries: 'estradiol oral tablet' (no note - captured separately as est-oral) and 'estradiol transdermal patch weekly Climara QL' (the only transdermal product on the entire PDL). A full-document case-insensitive search for 'divigel', 'elestrin', 'estrogel', 'evamist', 'vivelle', and 'minivelle' returned zero matches anywhere in the 153 pages, confirming no gel, spray, or twice-weekly patch product is on this formulary at all - this is a real coverage gap, not an extraction miss (the surrounding Estrogens and Estrogen & Progestin subsections both render correctly with populated brand names and Notes columns for other entries, proving the parser captured the section completely). Per this project's own documented rule (never attach a brand price/product as a substitute for a missing exact-match item), no gel/spray/twice-weekly alternative is listed as an 'alternative' since none exists on this PDL - all are tagged nonformulary/absent. QL is the only restriction on the sole covered transdermal product.",
+      "verificationNote": "Fetched the PDF directly via curl with a browser User-Agent (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf, 200 OK, confirmed real 153-page PDF) and extracted full text with PyPDF2. Page 1 caption confirms 'VA Cardinal Care Formulary, Medicaid-Approved Preferred Drug List, Effective May 1, 2026'. Page 83-84, under '*ESTROGENS*' > '*ESTROGENS***' (the subsection immediately after Estrogen & Progestin), lists exactly two entries: 'estradiol oral tablet' (no note - captured separately as est-oral) and 'estradiol transdermal patch weekly Climara QL' (the only transdermal product on the entire PDL). A full-document case-insensitive search for 'divigel', 'elestrin', 'estrogel', 'evamist', 'vivelle', and 'minivelle' returned zero matches anywhere in the 153 pages, confirming no gel, spray, or twice-weekly patch product is on this formulary at all - this is a real coverage gap, not an extraction miss (the surrounding Estrogens and Estrogen & Progestin subsections both render correctly with populated brand names and Notes columns for other entries, proving the parser captured the section completely). Per this project's own documented rule (never attach a brand price/product as a substitute for a missing exact-match item), no gel/spray/twice-weekly alternative is listed as an 'alternative' since none exists on this PDL - all are tagged nonformulary/absent. QL is the only restriction on the sole covered transdermal product. [INN 2026-11-04: list names \"estradiol\"; patch form added from the strength text so the cash price is a patch's]",
       "sourceIds": [
         "va-medicaid-ffs-menopause-ht-source-2026-07-07"
       ],
@@ -615,7 +615,7 @@
       "payerId": "anthem-healthkeepers-plus",
       "classId": "est-td",
       "preferredAgent": {
-        "inn": "estradiol",
+        "inn": "Estradiol transdermal patch (once-weekly)",
         "brand": "Climara",
         "genericAvailable": true,
         "strength": "0.05 mg/day transdermal patch, weekly",
@@ -631,7 +631,7 @@
       "stepTherapy": null,
       "tier": null,
       "verification": "verified",
-      "verificationNote": "Read directly from the Virginia Cardinal Care Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf), page 84 'ESTROGENS' subsection (immediately following 'ESTROGEN & PROGESTIN' on page 83, under the top-level '*ESTROGENS**' class header). The transdermal entry is the single line 'estradiol transdermal patch weekly Climara QL' -- lowercase generic name per the document's own legend (page 1: lowercase = generic), with Climara given as the reference brand and a QL (quantity limit) note. No other transdermal estrogen product (gel, spray, or other patch brand/strength such as Vivelle-Dot, Divigel, Estrogel, Minivelle) appears anywhere in this PDL -- confirmed via targeted searches for 'divigel', 'vivelle', and 'estrogel' all returning zero matches. This means the weekly 0.05 mg/day estradiol patch is the only transdermal estrogen product on Virginia's Medicaid PDL, so it is both the preferred and sole covered agent in this class -- verified, not inferred, that no alternatives or PA-restricted transdermal products exist in this document. Strength (0.05 mg/day, the most common Climara starting dose) and sig (apply weekly) are standard clinical convention, not stated in this PDL (drug/tier/QL notes only, no dosing directions or specific strength breakdown). No class-wide step-therapy criterion or BOGL note appears in or near this section.",
+      "verificationNote": "Read directly from the Virginia Cardinal Care Medicaid-Approved Preferred Drug List, effective May 1, 2026 (fm.formularynavigator.com/FBO/4/Virginia_PDL_English.pdf), page 84 'ESTROGENS' subsection (immediately following 'ESTROGEN & PROGESTIN' on page 83, under the top-level '*ESTROGENS**' class header). The transdermal entry is the single line 'estradiol transdermal patch weekly Climara QL' -- lowercase generic name per the document's own legend (page 1: lowercase = generic), with Climara given as the reference brand and a QL (quantity limit) note. No other transdermal estrogen product (gel, spray, or other patch brand/strength such as Vivelle-Dot, Divigel, Estrogel, Minivelle) appears anywhere in this PDL -- confirmed via targeted searches for 'divigel', 'vivelle', and 'estrogel' all returning zero matches. This means the weekly 0.05 mg/day estradiol patch is the only transdermal estrogen product on Virginia's Medicaid PDL, so it is both the preferred and sole covered agent in this class -- verified, not inferred, that no alternatives or PA-restricted transdermal products exist in this document. Strength (0.05 mg/day, the most common Climara starting dose) and sig (apply weekly) are standard clinical convention, not stated in this PDL (drug/tier/QL notes only, no dosing directions or specific strength breakdown). No class-wide step-therapy criterion or BOGL note appears in or near this section. [INN 2026-11-04: list names \"estradiol\"; patch form added from the strength text so the cash price is a patch's]",
       "sourceIds": [
         "va-medicaid-ffs-menopause-ht-source-2026-07-07"
       ],
@@ -1645,7 +1645,7 @@
       "payerId": "aetna-better-health",
       "classId": "est-td",
       "preferredAgent": {
-        "inn": "estradiol",
+        "inn": "Estradiol transdermal patch (once-weekly)",
         "brand": "Climara",
         "genericAvailable": true,
         "strength": "transdermal patch, once-weekly, 0.025mg/day-0.1mg/day range",
@@ -1686,7 +1686,7 @@
       "stepTherapy": null,
       "tier": "State PDL Preferred; no PA",
       "verification": "verified",
-      "verificationNote": "Verified against Aetna Better Health of Virginia's own 2026 formulary (FormularyNavigator NDC export FBO/111, formulary_id 22791 'ABH VA V2', version 33, effective 07/01/2026, fetched via curl with a browser User-Agent, 200 OK, 27 MB JSON, 102,529 NDC entries). The estradiol transdermal patch (weekly & twice-weekly) is listed drug_tier 'Preferred' with prior_authorization=false and step_therapy=false. This is the payer-branded confirmation the prior 'partial' note said was missing (previously only the statewide DMAS PDL, which Aetna follows, had been read).",
+      "verificationNote": "Verified against Aetna Better Health of Virginia's own 2026 formulary (FormularyNavigator NDC export FBO/111, formulary_id 22791 'ABH VA V2', version 33, effective 07/01/2026, fetched via curl with a browser User-Agent, 200 OK, 27 MB JSON, 102,529 NDC entries). The estradiol transdermal patch (weekly & twice-weekly) is listed drug_tier 'Preferred' with prior_authorization=false and step_therapy=false. This is the payer-branded confirmation the prior 'partial' note said was missing (previously only the statewide DMAS PDL, which Aetna follows, had been read). [INN 2026-11-04: list names \"estradiol\"; patch form added from the strength text so the cash price is a patch's]",
       "sourceIds": [
         "aetna-better-health-va-pdl-2026",
         "va-medicaid-ffs-menopause-ht-source-2026-07-07"
@@ -1962,7 +1962,7 @@
       "payerId": "anthem-commercial",
       "classId": "est-td",
       "preferredAgent": {
-        "inn": "estradiol",
+        "inn": "Estradiol transdermal patch (once-weekly)",
         "brand": null,
         "genericAvailable": true,
         "strength": "transdermal patch, weekly (e.g. 0.025mg, 0.05mg, 0.1mg per day release rate)",
@@ -1993,7 +1993,7 @@
       "stepTherapy": null,
       "tier": "Tier 1 - drugs with the lowest cost share",
       "verification": "verified",
-      "verificationNote": "Read directly from the 2026 Virginia Individual Four Tier Select Drug List, page 53, 'ESTROGENS' subsection (the plain, non-combination 'ESTROGENS' heading that follows 'ESTROGEN & PROGESTIN'). Document effective date 07/01/2026 confirmed in footer. Both estradiol transdermal patch weekly and twice-weekly generic forms are listed Tier 1 with QL, no PA/ST. Brand DOTTI (also a twice-weekly transdermal patch) is likewise Tier 1 QL - unusual for a brand to share the generic's tier, but confirmed as written on the page. No estradiol gel or spray (e.g. Divigel, Evamist) products appear in this document's estrogen section - only patch formulations are listed for transdermal delivery. No PA, ST, or non-formulary items were found for transdermal estrogen.",
+      "verificationNote": "Read directly from the 2026 Virginia Individual Four Tier Select Drug List, page 53, 'ESTROGENS' subsection (the plain, non-combination 'ESTROGENS' heading that follows 'ESTROGEN & PROGESTIN'). Document effective date 07/01/2026 confirmed in footer. Both estradiol transdermal patch weekly and twice-weekly generic forms are listed Tier 1 with QL, no PA/ST. Brand DOTTI (also a twice-weekly transdermal patch) is likewise Tier 1 QL - unusual for a brand to share the generic's tier, but confirmed as written on the page. No estradiol gel or spray (e.g. Divigel, Evamist) products appear in this document's estrogen section - only patch formulations are listed for transdermal delivery. No PA, ST, or non-formulary items were found for transdermal estrogen. [INN 2026-11-04: list names \"estradiol\"; patch form added from the strength text so the cash price is a patch's]",
       "sourceIds": [
         "anthem-commercial-menopause-ht-source-2026-07-07"
       ],
@@ -2525,7 +2525,7 @@
       "payerId": "wellcare-value-script",
       "classId": "est-td",
       "preferredAgent": {
-        "inn": "estradiol",
+        "inn": "Estradiol transdermal patch (once-weekly)",
         "brand": null,
         "genericAvailable": true,
         "strength": "0.05 mg/24 hr transdermal patch, applied once weekly",
@@ -2556,7 +2556,7 @@
       "stepTherapy": null,
       "tier": "Tier 4 (Non-Preferred Drug)",
       "verification": "verified",
-      "verificationNote": "Read directly from the Wellcare Value Script (PDP) 2026 Formulary (Submission ID 26195, effective 07/01/2026), page 138 (Estrogens/Progestins section under Obstetrics/Gynecology). 'estradiol transdermal patch weekly 0.025 mg/24hr, 0.0375mg/24hr, 0.05mg/24hr, 0.06mg/24hr, 0.075mg/24hr, 0.1mg/24hr' and 'estradiol transdermal patch semiweekly' are both listed at Tier 4 with quantity limits (4 EA/28 days weekly, 8 EA/28 days semiweekly) and no PA/ST flag. All transdermal estrogen products on this formulary -- generic estradiol, dotti, and lyllana -- sit at the same Tier 4, so 'preferred' here means the standard generic estradiol patch (lowest-cost, most widely recognized generic) rather than a lower-tier distinction, since no transdermal estrogen product reaches a lower tier on this plan. No brand-name patches (Climara, Vivelle-Dot, Minivelle, Alora) appear in the document by name.",
+      "verificationNote": "Read directly from the Wellcare Value Script (PDP) 2026 Formulary (Submission ID 26195, effective 07/01/2026), page 138 (Estrogens/Progestins section under Obstetrics/Gynecology). 'estradiol transdermal patch weekly 0.025 mg/24hr, 0.0375mg/24hr, 0.05mg/24hr, 0.06mg/24hr, 0.075mg/24hr, 0.1mg/24hr' and 'estradiol transdermal patch semiweekly' are both listed at Tier 4 with quantity limits (4 EA/28 days weekly, 8 EA/28 days semiweekly) and no PA/ST flag. All transdermal estrogen products on this formulary -- generic estradiol, dotti, and lyllana -- sit at the same Tier 4, so 'preferred' here means the standard generic estradiol patch (lowest-cost, most widely recognized generic) rather than a lower-tier distinction, since no transdermal estrogen product reaches a lower tier on this plan. No brand-name patches (Climara, Vivelle-Dot, Minivelle, Alora) appear in the document by name. [INN 2026-11-04: list names \"estradiol\"; patch form added from the strength text so the cash price is a patch's]",
       "sourceIds": [
         "wellcare-value-script-menopause-ht-source-2026-07-07"
       ],
