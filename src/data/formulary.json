@@ -525377,6 +525377,14 @@
           "alternatives": [],
           "paRequired": [
             {
+              "drug": "Voquezna (vonoprazan) tablet",
+              "outcome": "nonformulary",
+              "reason": "Not on the drug list, which says it is a complete listing (p. 2); request a formulary exception through prior authorization (p. 3)",
+              "sourceIds": [
+                "anthem-ky-select-2026"
+              ]
+            },
+            {
               "drug": "Voquezna Triple Pak / Dual Pak (vonoprazan, H. pylori kits)",
               "outcome": "nonformulary",
               "reason": "Not on the drug list; the list states it is a complete listing (p. 2). Exception route: preapproval/prior authorization request by the prescriber (p. 3).",
@@ -525387,7 +525395,7 @@
           ],
           "stepTherapy": null,
           "verification": "verified",
-          "verificationNote": "Vonoprazan is absent from all 80 pages (text search for vonoprazan and Voquezna returned no match). Per the class instruction, Voquezna is the reference product and its absence is the finding. The list's completeness statement is on p. 2. No P-CAB alternative appears on the list, so alternatives are empty. The H. pylori Pak products are also absent. [Sonnet check 2026-11-06: each nonformulary brand re-searched across all 80 pages (case-insensitive, whitespace/hyphen-stripped): confirmed absent; page-2 completeness line is circular (complete listing of drugs on the list), p. 3 says a drug not on the list may be paid at full cost, so the nonformulary calls are reasonable but worth a human glance.]",
+          "verificationNote": "Vonoprazan is absent from all 80 pages (text search for vonoprazan and Voquezna returned no match). Per the class instruction, Voquezna is the reference product and its absence is the finding. The list's completeness statement is on p. 2. No P-CAB alternative appears on the list, so alternatives are empty. The H. pylori Pak products are also absent. [Sonnet check 2026-11-06: each nonformulary brand re-searched across all 80 pages (case-insensitive, whitespace/hyphen-stripped): confirmed absent; page-2 completeness line is circular (complete listing of drugs on the list), p. 3 says a drug not on the list may be paid at full cost, so the nonformulary calls are reasonable but worth a human glance.] [Review 2026-11-06: no P-CAB is listed, so noCoveredAgent is set; Voquezna stays as the class reference and the exception route is in paRequired]",
           "sourceIds": [
             "anthem-ky-select-2026"
           ],
@@ -525398,7 +525406,8 @@
             "anthem-ky-select-2026"
           ],
           "lastReviewed": "2026-11-06",
-          "payerId": "anthem-ky"
+          "payerId": "anthem-ky",
+          "noCoveredAgent": true
         },
         {
           "classId": "h2ra",
@@ -525804,10 +525813,19 @@
           "boglNote": null,
           "tier": "Not on plan list",
           "alternatives": [],
-          "paRequired": [],
+          "paRequired": [
+            {
+              "drug": "Voquezna (vonoprazan) tablet",
+              "outcome": "nonformulary",
+              "reason": "Not on the plan's list of covered drugs (p. 3); request a formulary exception (p. 7)",
+              "sourceIds": [
+                "humana-premier-rx-pdp-2026-11"
+              ]
+            }
+          ],
           "stepTherapy": null,
           "verification": "partial",
-          "verificationNote": "Read from the formulary text layer, row by row (each tier digit sits on the same row as its drug name; pypdf gave no x-coordinates for the digits). Formulary sig and quantity limits are as printed; the document prints no sig, so the sig is the label starting dose. No vonoprazan product appears in the formulary (searched Voquezna and vonoprazan, upper and lower case, PDG pp. 10-95). Voquezna is kept as the reference product for this class and the barrier is recorded in preferredRestriction. Voquezna Triple Pak and Dual Pak (H. pylori kits) are not listed either. [Sonnet check 2026-11-06: tiers and flags re-read in layout (row-aligned) extraction, not flattened text; tier \"Not on plan list\" and restriction reworded to match prior Humana records; lowered to partial because the pick is unlisted.]",
+          "verificationNote": "Read from the formulary text layer, row by row (each tier digit sits on the same row as its drug name; pypdf gave no x-coordinates for the digits). Formulary sig and quantity limits are as printed; the document prints no sig, so the sig is the label starting dose. No vonoprazan product appears in the formulary (searched Voquezna and vonoprazan, upper and lower case, PDG pp. 10-95). Voquezna is kept as the reference product for this class and the barrier is recorded in preferredRestriction. Voquezna Triple Pak and Dual Pak (H. pylori kits) are not listed either. [Sonnet check 2026-11-06: tiers and flags re-read in layout (row-aligned) extraction, not flattened text; tier \"Not on plan list\" and restriction reworded to match prior Humana records; lowered to partial because the pick is unlisted.] [Review 2026-11-06: no P-CAB is listed, so noCoveredAgent is set; Voquezna stays as the class reference and the exception route is in paRequired]",
           "sourceIds": [
             "humana-premier-rx-pdp-2026-11"
           ],
@@ -525818,7 +525836,8 @@
             "humana-premier-rx-pdp-2026-11"
           ],
           "lastReviewed": "2026-11-06",
-          "payerId": "humana-premier-rx-pdp"
+          "payerId": "humana-premier-rx-pdp",
+          "noCoveredAgent": true
         },
         {
           "classId": "h2ra",

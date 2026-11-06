@@ -591,3 +591,12 @@ describe('strength matching edge cases (code review round 2)', () => {
   })
 })
 
+
+describe('common-drug topic rules (2026-11-06)', () => {
+  it('prices the generic picks but not the branded products sharing the molecule', () => {
+    for (const n of ['Famotidine (tablet)', 'Doxycycline hyclate (capsule)', 'Tamsulosin (capsule)', 'Furosemide (tablet)'])
+      expect(goodRxPrice(n), n).not.toBeNull()
+    for (const n of ['PEPCID (famotidine) tablet', 'MONDOXYNE NL (doxycycline hyclate, brand)', 'Flomax (tamsulosin)', 'Lasix (furosemide)', 'Furoscix (furosemide) on-body infusor'])
+      expect(hasCashLinkRule(n), n).toBe(false)
+  })
+})
