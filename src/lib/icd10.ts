@@ -102,6 +102,27 @@ const OAB: Icd10Option[] = [
   { code: 'N32.81', label: 'Overactive bladder' },
   { code: 'N39.41', label: 'Urge incontinence' },
 ]
+const GERD: Icd10Option = { code: 'K21.9', label: 'Gastro-esophageal reflux disease without esophagitis' }
+const EROSIVE: Icd10Option = { code: 'K21.00', label: 'Gastro-esophageal reflux disease with esophagitis, without bleeding' }
+const GASTRIC_ULCER: Icd10Option = { code: 'K25.9', label: 'Gastric ulcer, unspecified as acute or chronic, without hemorrhage or perforation' }
+const DUODENAL_ULCER: Icd10Option = { code: 'K26.9', label: 'Duodenal ulcer, unspecified as acute or chronic, without hemorrhage or perforation' }
+const HPYLORI: Icd10Option = { code: 'B96.81', label: 'Helicobacter pylori [H. pylori] as the cause of diseases classified elsewhere' }
+const HYPOTHYROID: Icd10Option[] = [
+  { code: 'E03.9', label: 'Hypothyroidism, unspecified' },
+  { code: 'E06.3', label: 'Autoimmune thyroiditis' },
+  { code: 'E89.0', label: 'Postprocedural hypothyroidism' },
+]
+const CELLULITIS: Icd10Option = { code: 'L03.90', label: 'Cellulitis, unspecified' }
+const OTITIS: Icd10Option = { code: 'H66.90', label: 'Otitis media, unspecified, unspecified ear' }
+const STREP: Icd10Option = { code: 'J02.0', label: 'Streptococcal pharyngitis' }
+const SINUSITIS: Icd10Option = { code: 'J01.90', label: 'Acute sinusitis, unspecified' }
+const PNEUMONIA: Icd10Option = { code: 'J18.9', label: 'Pneumonia, unspecified organism' }
+const UTI: Icd10Option = { code: 'N39.0', label: 'Urinary tract infection, site not specified' }
+const CYSTITIS: Icd10Option = { code: 'N30.00', label: 'Acute cystitis without hematuria' }
+const BPH: Icd10Option[] = [
+  { code: 'N40.1', label: 'Benign prostatic hyperplasia with lower urinary tract symptoms' },
+  { code: 'N40.0', label: 'Benign prostatic hyperplasia without lower urinary tract symptoms' },
+]
 
 export const ICD10_BY_CLASS: Record<string, Icd10Option[]> = {
   // Class-wide lists hold only what every agent in the class is labeled for; DRUG_ICD10 below adds
@@ -220,6 +241,37 @@ export const ICD10_BY_CLASS: Record<string, Icd10Option[]> = {
     { code: 'I48.0', label: 'Paroxysmal atrial fibrillation' },
     { code: 'I82.409', label: 'Acute embolism and thrombosis of unspecified deep veins of unspecified lower extremity' },
     { code: 'I26.99', label: 'Other pulmonary embolism without acute cor pulmonale' },
+  ],
+  ppi: [GERD, EROSIVE, GASTRIC_ULCER, DUODENAL_ULCER, HPYLORI],
+  pcab: [EROSIVE, GERD, HPYLORI],
+  h2ra: [GERD, GASTRIC_ULCER, DUODENAL_ULCER],
+  levothyroxine: HYPOTHYROID,
+  'thyroid-t3-ndt': HYPOTHYROID,
+  'oral-corticosteroid': [
+    { code: 'J44.1', label: 'Chronic obstructive pulmonary disease with (acute) exacerbation' },
+    { code: 'J45.901', label: 'Unspecified asthma with (acute) exacerbation' },
+    RA,
+    { code: 'M35.3', label: 'Polymyalgia rheumatica' },
+    { code: 'E27.40', label: 'Unspecified adrenocortical insufficiency' },
+  ],
+  'abx-penicillin': [OTITIS, SINUSITIS, STREP, CELLULITIS],
+  'abx-cephalosporin': [CELLULITIS, UTI, OTITIS, STREP],
+  'abx-macrolide': [PNEUMONIA, { code: 'J20.9', label: 'Acute bronchitis, unspecified' }, STREP],
+  'abx-tetracycline': [{ code: 'A69.20', label: 'Lyme disease, unspecified' }, PNEUMONIA, CELLULITIS, { code: 'L70.0', label: 'Acne vulgaris' }],
+  'abx-fluoroquinolone': [UTI, { code: 'N10', label: 'Acute pyelonephritis' }, PNEUMONIA],
+  'abx-uti': [CYSTITIS, UTI],
+  'abx-cdiff': [
+    { code: 'A04.72', label: 'Enterocolitis due to Clostridium difficile, not specified as recurrent' },
+    { code: 'A04.71', label: 'Enterocolitis due to Clostridium difficile, recurrent' },
+  ],
+  'bph-alpha': BPH,
+  'bph-5ari': BPH,
+  'bph-pde5': BPH,
+  'loop-diuretic': [
+    { code: 'I50.9', label: 'Heart failure, unspecified' },
+    { code: 'R60.9', label: 'Edema, unspecified' },
+    { code: 'K74.60', label: 'Unspecified cirrhosis of liver' },
+    { code: 'N18.30', label: 'Chronic kidney disease, stage 3 unspecified' },
   ],
 }
 
