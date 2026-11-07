@@ -392,8 +392,11 @@ import costPlusSnapshot from '../data/costplus-prices.json' with { type: 'json' 
  * 4504 → 4549 (2026-11-03): Kentucky, all 23 topics (4 payers × 61 classes; UHC and Humana reused).
  * 4549 → 4780 (2026-11-06): Kentucky's 6 common-drug topics (4 payers × 17 classes). Every pick is
  *   priced; the 231 new names are alternatives and brand-only products.
+ * 4780 → 4826 (2026-11-07): the Atelvia rule matched any "delayed-release" text, so DR naproxen,
+ *   fluoxetine 90 mg weekly, diclofenac, PPIs and DR antibiotics showed Atelvia's price; those names
+ *   are now honestly unpriced (Codex review, PR #32).
  */
-export const KNOWN_UNPRICED_GAP = 4780
+export const KNOWN_UNPRICED_GAP = 4826
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -1726,7 +1729,9 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     pricesCapturedAt: '2026-07-09',
   },
   {
-    matches: /naproxen|naprosyn|anaprox/i,
+    // Plain naproxen tablets only: delayed-release (EC-Naprosyn), ER and naproxen/esomeprazole
+    // (Vimovo) price differently.
+    matches: /^(?!.*(delayed|\bdr\b|\bec\b|ec-|esomeprazole|vimovo|extended|\ber\b|naprelan|sumatriptan|treximet)).*(naproxen|naprosyn|anaprox)/i,
     goodRxSlug: 'naproxen',
     goodRxParams: 'label_override=naproxen&form=tablet&dosage=500mg&quantity=60',
     costPlusPath: 'naproxen-500mg-tablet',
@@ -2291,7 +2296,8 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     pricesCapturedAt: '2026-07-29',
   },
   {
-    matches: /\bfluoxetine\b|\bprozac\b/i,
+    // Daily capsules only: the 90 mg delayed-release weekly capsule is another product.
+    matches: /^(?!.*(delayed|\bdr\b|weekly|\b90 ?mg)).*(\bfluoxetine\b|\bprozac\b)/i,
     goodRxSlug: 'fluoxetine',
     costPlusPath: 'fluoxetine-10mg-capsule',
     goodRxPrice: { price: 26.43, quantity: '30 capsules, 20mg' },
@@ -2385,7 +2391,9 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     // "delayed-release" alongside other strengths (e.g. "risedronate sodium (35 mg weekly, 5 mg
     // daily, 150 mg monthly, delayed-release 35 mg)") are inherently ambiguous about which single
     // strength to represent -- treated as DR since that's the most specific term present.
-    matches: /atelvia|delayed.release|\bdr\/ec\b|\btbec\b/i,
+    // Risedronate only: a bare "delayed-release" match also caught DR naproxen, fluoxetine, diclofenac
+    // and every PPI (Codex, 2026-11-06).
+    matches: /atelvia|risedronate.*(delayed.release|\bdr\/ec\b|\btbec\b)|(delayed.release|\bdr\/ec\b|\btbec\b).*risedronate/i,
     goodRxSlug: 'atelvia',
     costPlusPath: 'risedronate-sodium-35mg-tablet-atelvia',
     costPlusPrice: { price: 101.53, quantity: '4 tablets, 35mg delayed-release (once-weekly dosing)' },
@@ -2761,6 +2769,26 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     costPlusPath: 'furosemide-20mg-tablet',
     costPlusPrice: { price: 5.58, quantity: '30 tablets, 20mg' },
     pricesCapturedAt: '2026-11-06',
+  },
+  {
+    // Generic delayed-release capsules; esomeprazole, omeprazole/bicarbonate, OTC magnesium
+    // tablets and H. pylori kits are other products.
+    matches: /^(?!.*(esomeprazole|sodium bicarbonate|zegerid|konvomep|prilosec|magnesium|pak|talicia|amoxicillin|clarithro|naproxen|\bbrand\b|suspension|\b40\b|\b10\b)).*\bomeprazole\b/i,
+    goodRxSlug: 'omeprazole',
+    goodRxParams: 'label_override=omeprazole&form=capsule-delayed-release&dosage=20mg&quantity=30',
+    goodRxPrice: { price: 14.91, quantity: '30 capsules, 20mg' },
+    costPlusPath: 'omeprazoledelayedreleasedr-20mg-capsule',
+    costPlusPrice: { price: 5.93, quantity: '30 capsules, 20mg' },
+    pricesCapturedAt: '2026-11-07',
+  },
+  {
+    matches: /^(?!.*(protonix|\bbrand\b|packet|granule|suspension|inject|\bIV\b|\b20\b)).*pantoprazole/i,
+    goodRxSlug: 'pantoprazole',
+    goodRxParams: 'label_override=pantoprazole&form=tablet-delayed-release&dosage=40mg&quantity=30',
+    goodRxPrice: { price: 29.45, quantity: '30 tablets, 40mg' },
+    costPlusPath: 'pantoprazoledelayedreleasedr-40mg-tablet',
+    costPlusPrice: { price: 6.36, quantity: '30 tablets, 40mg' },
+    pricesCapturedAt: '2026-11-07',
   },
   {
     // Brand only; H. pylori paks are other products. GoodRx shows the same $198.90 at every
