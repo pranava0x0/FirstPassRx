@@ -75,6 +75,21 @@ Every data item ends the same way: merge → `node scripts/apply-label-sigs.mjs 
 → `node scripts/audit-cells.mjs --state=XX` → agents review only flagged checks →
 `node scripts/apply-cell-fixes.mjs <fixes>` → `--accept-remaining` → tests (see docs/data-audit.md).
 
+0. **Six common-drug topics, one state per run** (acid reflux, thyroid, oral steroids, antibiotics,
+   BPH, loop diuretics; 17 classes; added 2026-11-06 from the CMS Part D top-20 list). Done: KY
+   (68 cells, 60 verified). Template: `data-gathering/ky-common6-2026-11-06/` in the main checkout
+   (taxonomy.json, BRIEF.md, CHECK.md, research.md; copy the folder and change the payer sections).
+   UHC and Humana PDP are national: export them from the KY guides instead of re-gathering, e.g.
+   `node scripts/export-payer-checkpoint.mjs --payer=uhc-ky --as=<state's UHC id> --guides=ky-acid-reflux,ky-thyroid,ky-oral-steroids,ky-antibiotics,ky-bph,ky-loop-diuretics --out=<dir>/<id>.json --note="same national UHC PDL"`
+   (same for `humana-premier-rx-pdp`). UHC's key says E = "may be excluded from coverage or subject to
+   Prior Authorization in Connecticut, New Jersey and New York": the KY records call bare E
+   nonformulary, so for NY remap those items to outcome "pa". One Haiku agent per remaining payer
+   document (all 17 classes in one read), one Sonnet check per payer (CHECK.md), then
+   `merge-gather --payers-from=<xx>-adhd`, `apply-label-sigs --topics=acid-reflux,thyroid,oral-steroids,antibiotics,bph,loop-diuretics`
+   (rows exist for every expected pick), add the 6 guide ids to the order test, raise
+   KNOWN_UNPRICED_GAP. Cash rules exist for every KY pick molecule. Order: OH, GA, NC, TN, MI, FL, TX,
+   PA, IL, NY, CA, VA, WA, MD, AL, DC, MA. Criteria (item 2) for the brand-only products after each lands.
+
 1. **The 11 new topics in the other 16 states, one state per run** (antipsychotics, depression
    beyond SSRIs, eczema/psoriasis/acne, insomnia/anxiety, RA/psoriasis/IBD biologics, pain,
    testosterone, OAB, blood pressure beyond ACE, HIV, hepatitis C; 28 classes). Done: MA

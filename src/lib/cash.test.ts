@@ -591,3 +591,26 @@ describe('strength matching edge cases (code review round 2)', () => {
   })
 })
 
+
+describe('common-drug topic rules (2026-11-06)', () => {
+  it('prices the generic picks but not the branded products sharing the molecule', () => {
+    for (const n of ['Famotidine (tablet)', 'Doxycycline hyclate (capsule)', 'Tamsulosin (capsule)', 'Furosemide (tablet)'])
+      expect(goodRxPrice(n), n).not.toBeNull()
+    for (const n of ['PEPCID (famotidine) tablet', 'MONDOXYNE NL (doxycycline hyclate, brand)', 'Flomax (tamsulosin)', 'Lasix (furosemide)', 'Furoscix (furosemide) on-body infusor'])
+      expect(hasCashLinkRule(n), n).toBe(false)
+  })
+})
+
+describe('delayed-release products keep their own price (Codex, 2026-11-06)', () => {
+  it('routes only risedronate DR to Atelvia', () => {
+    expect(goodRxUrl('Atelvia (risedronate delayed-release)')).toMatch(/atelvia/i)
+    for (const n of ['Omeprazole (delayed-release capsule)', 'Pantoprazole sodium (delayed-release tablet)', 'Duloxetine HCl delayed-release', 'Naproxen DR (delayed-release tablet)', 'Fluoxetine delayed-release capsule 90 mg'])
+      expect(goodRxUrl(n), n).not.toMatch(/atelvia/i)
+  })
+  it('prices the PPI picks as PPIs and leaves DR naproxen and weekly fluoxetine unpriced', () => {
+    expect(goodRxPrice('Omeprazole (delayed-release capsule)')?.quantity).toBe('30 capsules, 20mg')
+    expect(goodRxPrice('Pantoprazole sodium (delayed-release tablet)')?.quantity).toBe('30 tablets, 40mg')
+    expect(goodRxPrice('Naproxen DR (delayed-release tablet)')).toBeNull()
+    expect(goodRxPrice('Fluoxetine delayed-release capsule 90 mg')).toBeNull()
+  })
+})
