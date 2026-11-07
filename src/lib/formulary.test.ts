@@ -423,6 +423,12 @@ describe('guides + global meta', () => {
       'ky-hypertension',
       'ky-hiv',
       'ky-hepatitis-c',
+      'ky-acid-reflux',
+      'ky-thyroid',
+      'ky-oral-steroids',
+      'ky-antibiotics',
+      'ky-bph',
+      'ky-loop-diuretics',
     ])
   })
 

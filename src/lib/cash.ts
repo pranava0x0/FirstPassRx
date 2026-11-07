@@ -390,8 +390,13 @@ import costPlusSnapshot from '../data/costplus-prices.json' with { type: 'json' 
  * 4303 → 4443: Alabama's 11 newer topics (3 payers × 28 classes).
  * 4443 → 4504: DC's 11 newer topics (4 payers × 28 classes; CareFirst and Kaiser reuse the MD records).
  * 4504 → 4549 (2026-11-03): Kentucky, all 23 topics (4 payers × 61 classes; UHC and Humana reused).
+ * 4549 → 4780 (2026-11-06): Kentucky's 6 common-drug topics (4 payers × 17 classes). Every pick is
+ *   priced; the 231 new names are alternatives and brand-only products.
+ * 4780 → 4826 (2026-11-07): the Atelvia rule matched any "delayed-release" text, so DR naproxen,
+ *   fluoxetine 90 mg weekly, diclofenac, PPIs and DR antibiotics showed Atelvia's price; those names
+ *   are now honestly unpriced (Codex review, PR #32).
  */
-export const KNOWN_UNPRICED_GAP = 4549
+export const KNOWN_UNPRICED_GAP = 4826
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -1724,7 +1729,9 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     pricesCapturedAt: '2026-07-09',
   },
   {
-    matches: /naproxen|naprosyn|anaprox/i,
+    // Plain naproxen tablets only: delayed-release (EC-Naprosyn), ER and naproxen/esomeprazole
+    // (Vimovo) price differently.
+    matches: /^(?!.*(delayed|\bdr\b|\bec\b|ec-|esomeprazole|vimovo|extended|\ber\b|naprelan|sumatriptan|treximet)).*(naproxen|naprosyn|anaprox)/i,
     goodRxSlug: 'naproxen',
     goodRxParams: 'label_override=naproxen&form=tablet&dosage=500mg&quantity=60',
     costPlusPath: 'naproxen-500mg-tablet',
@@ -2289,7 +2296,8 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     pricesCapturedAt: '2026-07-29',
   },
   {
-    matches: /\bfluoxetine\b|\bprozac\b/i,
+    // Daily capsules only: the 90 mg delayed-release weekly capsule is another product.
+    matches: /^(?!.*(delayed|\bdr\b|weekly|\b90 ?mg)).*(\bfluoxetine\b|\bprozac\b)/i,
     goodRxSlug: 'fluoxetine',
     costPlusPath: 'fluoxetine-10mg-capsule',
     goodRxPrice: { price: 26.43, quantity: '30 capsules, 20mg' },
@@ -2383,7 +2391,9 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     // "delayed-release" alongside other strengths (e.g. "risedronate sodium (35 mg weekly, 5 mg
     // daily, 150 mg monthly, delayed-release 35 mg)") are inherently ambiguous about which single
     // strength to represent -- treated as DR since that's the most specific term present.
-    matches: /atelvia|delayed.release|\bdr\/ec\b|\btbec\b/i,
+    // Risedronate only: a bare "delayed-release" match also caught DR naproxen, fluoxetine, diclofenac
+    // and every PPI (Codex, 2026-11-06).
+    matches: /atelvia|risedronate.*(delayed.release|\bdr\/ec\b|\btbec\b)|(delayed.release|\bdr\/ec\b|\btbec\b).*risedronate/i,
     goodRxSlug: 'atelvia',
     costPlusPath: 'risedronate-sodium-35mg-tablet-atelvia',
     costPlusPrice: { price: 101.53, quantity: '4 tablets, 35mg delayed-release (once-weekly dosing)' },
@@ -2585,6 +2595,209 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     costPlusPath: 'pravastatin-40mg-tablet',
     costPlusPrice: { price: 6.3, quantity: '30 tablets, 40mg' },
     pricesCapturedAt: '2026-11-02',
+  },
+  // ---- Common-drug topics (added 2026-11-06): GoodRx via the user's Chrome, Cost Plus from its
+  // price-list API. Each rule is narrowed to the captured form. ----
+  {
+    matches: /^(?!.*(ibuprofen|duexis|pepcid|\bbrand\b|calcium|suspension|solution|inject|\b40\b)).*famotidine/i,
+    goodRxSlug: 'famotidine',
+    goodRxParams: 'label_override=famotidine&form=tablet&dosage=20mg&quantity=60',
+    goodRxPrice: { price: 17.03, quantity: '60 tablets, 20mg' },
+    costPlusPath: 'famotidine-20mg-tablet',
+    costPlusPrice: { price: 5.63, quantity: '60 tablets, 20mg' },
+    pricesCapturedAt: '2026-11-06',
+  },
+  {
+    // Generic tablets only: brand tablets, Tirosint capsules and the oral solutions price differently.
+    matches: /^(?!.*(capsule|solution|tirosint|thyquidity|ermeza|synthroid|levoxyl|levo-t|unithroid|euthyrox|\bbrand\b)).*levothyroxine/i,
+    goodRxSlug: 'levothyroxine',
+    goodRxParams: 'label_override=levothyroxine&form=tablet&dosage=50mcg&quantity=30',
+    goodRxPrice: { price: 30.84, quantity: '30 tablets, 50mcg' },
+    costPlusPath: 'levothyroxine-50mcg-tablet',
+    costPlusPrice: { price: 5.91, quantity: '30 tablets, 50mcg' },
+    pricesCapturedAt: '2026-11-06',
+  },
+  {
+    matches: /^(?!.*(cytomel|liomny|\bbrand\b|armour|levothyroxine|solution|\b5 mcg|\b50 mcg)).*liothyronine/i,
+    goodRxSlug: 'liothyronine',
+    goodRxParams: 'label_override=liothyronine&form=tablet&dosage=25mcg&quantity=30',
+    goodRxPrice: { price: 32.78, quantity: '30 tablets, 25mcg' },
+    costPlusPath: 'liothyronine-sodium-25mcg-tablet',
+    costPlusPrice: { price: 8.98, quantity: '30 tablets, 25mcg' },
+    pricesCapturedAt: '2026-11-06',
+  },
+  {
+    // Plain tablets; Rayos (delayed-release), solutions and dose packs are other products.
+    matches: /^(?!.*(rayos|deltasone|\bbrand\b|delayed|solution|intensol|pack|methylpred|prednisolone)).*\bprednisone\b/i,
+    goodRxSlug: 'prednisone',
+    goodRxParams: 'label_override=prednisone&form=tablet&dosage=10mg&quantity=21',
+    goodRxPrice: { price: 29.18, quantity: '21 tablets, 10mg' },
+    costPlusPath: 'prednisone-10mg-tablet',
+    costPlusPrice: { price: 5.51, quantity: '21 tablets, 10mg' },
+    pricesCapturedAt: '2026-11-06',
+  },
+  {
+    // Capsules only; amoxicillin-clavulanate, chewables, suspension and H. pylori kits are other products.
+    matches: /^(?!.*(clav|augmentin|amoxil|\bbrand\b|chew|suspension|tablet|omeprazole|lansoprazole|vonoprazan|talicia|rifabutin|\bER\b|extended)).*amoxicillin/i,
+    goodRxSlug: 'amoxicillin',
+    goodRxParams: 'label_override=amoxicillin&form=capsule&dosage=500mg&quantity=30',
+    goodRxPrice: { price: 29.79, quantity: '30 capsules, 500mg' },
+    costPlusPath: 'amoxicillin-500mg-capsule-amoxil',
+    costPlusPrice: { price: 6.73, quantity: '30 capsules, 500mg' },
+    pricesCapturedAt: '2026-11-06',
+  },
+  {
+    matches: /^(?!.*(tablet|suspension|keflex|\bbrand\b|\b250\b|\b750\b)).*cephalexin/i,
+    goodRxSlug: 'cephalexin',
+    goodRxParams: 'label_override=cephalexin&form=capsule&dosage=500mg&quantity=28',
+    goodRxPrice: { price: 27.49, quantity: '28 capsules, 500mg' },
+    costPlusPath: 'cephalexin-500mg-capsule',
+    costPlusPrice: { price: 7.5, quantity: '28 capsules, 500mg' },
+    pricesCapturedAt: '2026-11-06',
+  },
+  {
+    matches: /^(?!.*(suspension|zithromax|\bbrand\b|packet|\bER\b|extended|ophthalmic|azasite|\b500\b|\b600\b)).*azithromycin/i,
+    goodRxSlug: 'azithromycin',
+    goodRxParams: 'label_override=azithromycin&form=tablet&dosage=250mg&quantity=6',
+    goodRxPrice: { price: 29.35, quantity: '6 tablets, 250mg' },
+    costPlusPath: 'azithromycin-250mg-pack-of-6-tablets-6',
+    costPlusPrice: { price: 5.84, quantity: '6 tablets, 250mg' },
+    pricesCapturedAt: '2026-11-06',
+  },
+  {
+    // Hyclate and monohydrate are priced separately; branded and delayed-release doxycycline are other products.
+    matches: /^(?!.*(doryx|acticlate|targadox|lymepak|mondoxyne|\bbrand\b|delayed|\bDR\b|monohydrate|tablet|periostat|vibramycin|\b20\b|\b40\b|\b50\b)).*doxycycline hyclate/i,
+    goodRxSlug: 'doxycycline-hyclate',
+    goodRxParams: 'label_override=doxycycline-hyclate&form=capsule&dosage=100mg&quantity=20',
+    goodRxPrice: { price: 29.77, quantity: '20 capsules, 100mg' },
+    costPlusPath: 'doxycyclinehyclate-100mg-capsule',
+    costPlusPrice: { price: 7.26, quantity: '20 capsules, 100mg' },
+    pricesCapturedAt: '2026-11-06',
+  },
+  {
+    matches: /^(?!.*(adoxa|monodox|mondoxyne|avidoxy|oracea|\bbrand\b|tablet|suspension|\b50\b|\b75\b|\b150\b)).*doxycycline monohydrate/i,
+    goodRxSlug: 'doxycycline-monohydrate',
+    goodRxParams: 'label_override=doxycycline-monohydrate&form=capsule&dosage=100mg&quantity=20',
+    goodRxPrice: { price: 31.09, quantity: '20 capsules, 100mg' },
+    costPlusPath: 'doxycyclinemonohydrate-100mg-capsule',
+    costPlusPrice: { price: 7.74, quantity: '20 capsules, 100mg' },
+    pricesCapturedAt: '2026-11-06',
+  },
+  {
+    matches: /^(?!.*(\bER\b|extended|ophthalmic|otic|suspension|drops|dexamethasone|hydrocortisone|\bcipro\b|\bbrand\b|\b250\b|\b750\b|inject|dextrose|infusion)).*ciprofloxacin/i,
+    goodRxSlug: 'ciprofloxacin',
+    goodRxParams: 'label_override=ciprofloxacin&form=tablet&dosage=500mg&quantity=14',
+    goodRxPrice: { price: 15.49, quantity: '14 tablets, 500mg' },
+    costPlusPath: 'ciprofloxacin-500mg-tablet',
+    costPlusPrice: { price: 6.25, quantity: '14 tablets, 500mg' },
+    pricesCapturedAt: '2026-11-06',
+  },
+  {
+    // Macrobid-type monohydrate/macrocrystals capsules; Macrodantin and the suspension are other products. GoodRx files the generic under its Macrobid page.
+    matches: /^(?!.*(suspension|furadantin|macrodantin|\bbrand\b)).*(nitrofurantoin mono|macrobid)/i,
+    goodRxSlug: 'macrobid',
+    goodRxParams: 'label_override=nitrofurantoin-monohydrate-macrocrystals&form=capsule&dosage=100mg&quantity=10',
+    goodRxPrice: { price: 29.83, quantity: '10 capsules, 100mg' },
+    costPlusPath: 'nitrofurantoin-mono_macro-100mg-capsule',
+    costPlusPrice: { price: 6.38, quantity: '10 capsules, 100mg' },
+    pricesCapturedAt: '2026-11-06',
+  },
+  {
+    // Double-strength tablets.
+    matches: /^(?!.*(suspension|\bSS\b|single|\b400\b|bactrim|\bbrand\b)).*(sulfamethoxazole|smx-tmp)/i,
+    goodRxSlug: 'sulfamethoxazole-trimethoprim',
+    goodRxParams: 'label_override=sulfamethoxazole-trimethoprim&form=tablet&dosage=800mg-160mg&quantity=6',
+    goodRxPrice: { price: 28.8, quantity: '6 tablets, 800mg/160mg' },
+    costPlusPath: 'sulfamethoxazoletrimethoprim-800mg160mg-tablet',
+    costPlusPrice: { price: 5.23, quantity: '6 tablets, 800mg/160mg' },
+    pricesCapturedAt: '2026-11-06',
+  },
+  {
+    // Oral capsules; the solution, Firvanq kit and IV vancomycin are other products.
+    matches: /^(?!.*(solution|firvanq|inject|\bIV\b|vancocin|\bbrand\b|kit|\b250\b)).*vancomycin/i,
+    goodRxSlug: 'vancomycin',
+    goodRxParams: 'label_override=vancomycin&form=capsule&dosage=125mg&quantity=40',
+    goodRxPrice: { price: 46.85, quantity: '40 capsules, 125mg' },
+    costPlusPath: 'vancomycin-125mg-capsule',
+    costPlusPrice: { price: 28, quantity: '40 capsules, 125mg' },
+    pricesCapturedAt: '2026-11-06',
+  },
+  {
+    matches: /^(?!.*(dutasteride|jalyn|flomax|\bbrand\b)).*tamsulosin/i,
+    goodRxSlug: 'tamsulosin',
+    goodRxParams: 'label_override=tamsulosin&form=capsule&dosage=0.4mg&quantity=30',
+    goodRxPrice: { price: 14.77, quantity: '30 capsules, 0.4mg' },
+    costPlusPath: 'tamsulosin-0_4mg-capsule',
+    costPlusPrice: { price: 6.01, quantity: '30 capsules, 0.4mg' },
+    pricesCapturedAt: '2026-11-06',
+  },
+  {
+    matches: /^(?!.*(tamsulosin|jalyn|avodart|\bbrand\b)).*dutasteride/i,
+    goodRxSlug: 'dutasteride',
+    goodRxParams: 'label_override=dutasteride&form=capsule&dosage=0.5mg&quantity=30',
+    goodRxPrice: { price: 18.45, quantity: '30 capsules, 0.5mg' },
+    costPlusPath: 'dutasteride-0_5mg-capsule-avodart',
+    costPlusPrice: { price: 7.46, quantity: '30 capsules, 0.5mg' },
+    pricesCapturedAt: '2026-11-06',
+  },
+  {
+    // 5 mg (BPH) only; finasteride 1 mg (hair loss) is another product.
+    matches: /^(?!.*(tadalafil|entadfi|proscar|propecia|\bbrand\b|\b1 ?mg)).*finasteride/i,
+    goodRxSlug: 'finasteride',
+    goodRxParams: 'label_override=finasteride&form=tablet&dosage=5mg&quantity=30',
+    goodRxPrice: { price: 29.81, quantity: '30 tablets, 5mg' },
+    costPlusPath: 'finasteride-5mg-tablet',
+    costPlusPrice: { price: 6.16, quantity: '30 tablets, 5mg' },
+    pricesCapturedAt: '2026-11-06',
+  },
+  {
+    // Generic tadalafil; GoodRx files it under its Cialis page.
+    matches: /^(?!.*(finasteride|entadfi|cialis|\bbrand\b|adcirca|alyq|tadliq|suspension|\b10\b|\b20\b|\b40\b)).*tadalafil/i,
+    goodRxSlug: 'cialis',
+    goodRxParams: 'label_override=tadalafil&form=tablet&dosage=5mg&quantity=30',
+    goodRxPrice: { price: 19.44, quantity: '30 tablets, 5mg' },
+    costPlusPath: 'tadalafil-5mg-tablet',
+    costPlusPrice: { price: 5.98, quantity: '30 tablets, 5mg' },
+    pricesCapturedAt: '2026-11-06',
+  },
+  {
+    // Tablets; Furoscix, Lasix ONYU and the oral solution are other products.
+    matches: /^(?!.*(furoscix|lasix|onyu|\bbrand\b|solution|inject|subcutaneous|\b40\b|\b80\b)).*furosemide/i,
+    goodRxSlug: 'furosemide',
+    goodRxParams: 'label_override=furosemide&form=tablet&dosage=20mg&quantity=30',
+    goodRxPrice: { price: 29.22, quantity: '30 tablets, 20mg' },
+    costPlusPath: 'furosemide-20mg-tablet',
+    costPlusPrice: { price: 5.58, quantity: '30 tablets, 20mg' },
+    pricesCapturedAt: '2026-11-06',
+  },
+  {
+    // Generic delayed-release capsules; esomeprazole, omeprazole/bicarbonate, OTC magnesium
+    // tablets and H. pylori kits are other products.
+    matches: /^(?!.*(esomeprazole|sodium bicarbonate|zegerid|konvomep|prilosec|magnesium|pak|talicia|amoxicillin|clarithro|naproxen|\bbrand\b|suspension|\b40\b|\b10\b)).*\bomeprazole\b/i,
+    goodRxSlug: 'omeprazole',
+    goodRxParams: 'label_override=omeprazole&form=capsule-delayed-release&dosage=20mg&quantity=30',
+    goodRxPrice: { price: 14.91, quantity: '30 capsules, 20mg' },
+    costPlusPath: 'omeprazoledelayedreleasedr-20mg-capsule',
+    costPlusPrice: { price: 5.93, quantity: '30 capsules, 20mg' },
+    pricesCapturedAt: '2026-11-07',
+  },
+  {
+    matches: /^(?!.*(protonix|\bbrand\b|packet|granule|suspension|inject|\bIV\b|\b20\b)).*pantoprazole/i,
+    goodRxSlug: 'pantoprazole',
+    goodRxParams: 'label_override=pantoprazole&form=tablet-delayed-release&dosage=40mg&quantity=30',
+    goodRxPrice: { price: 29.45, quantity: '30 tablets, 40mg' },
+    costPlusPath: 'pantoprazoledelayedreleasedr-40mg-tablet',
+    costPlusPrice: { price: 6.36, quantity: '30 tablets, 40mg' },
+    pricesCapturedAt: '2026-11-07',
+  },
+  {
+    // Brand only; H. pylori paks are other products. GoodRx shows the same $198.90 at every
+    // pharmacy (the manufacturer's cash price, not a coupon). Not sold by Cost Plus.
+    matches: /^(?!.*(pak|amoxicillin|clarithromycin)).*(vonoprazan|voquezna)/i,
+    goodRxSlug: 'voquezna',
+    goodRxParams: 'label_override=voquezna&form=tablet&dosage=20mg&quantity=30',
+    goodRxPrice: { price: 198.9, quantity: '30 tablets, 20mg' },
+    pricesCapturedAt: '2026-11-06',
   },
 ]
 // Rivaroxaban (generic) was deliberately NOT priced this session (al-doac gather, 2026-08-21):

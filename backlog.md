@@ -11,6 +11,24 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## High
 
+- **Six common-drug topics in every state** (high; Impact high, Effort high, Cost agent tokens).
+  Medicare Part D 2024 (CMS Prescribers by Geography and Drug) puts 10 of the 20 most-used drugs
+  in classes we didn't cover: PPIs, levothyroxine, oral steroids, antibiotics, tamsulosin, furosemide.
+  Taxonomy (6 topics, 17 classes): `data-gathering/ky-common6-2026-11-06/taxonomy.json`; brand and
+  newer-product research with sources in `research.md` next to it. The generics are cheap and rarely
+  PA'd, so the PA value is in the brand-only products each class description names: Voquezna
+  (vonoprazan), Dexilant, Tirosint/Tirosint-SOL and the levothyroxine solutions, desiccated thyroid,
+  Rayos/Hemady, Doryx/Solodyn/Seysara/Nuzyra, Baxdela, Pivya/Orlynvah/Blujepa, Dificid/Vowst/Firvanq,
+  Entadfi/Jalyn, tadalafil for BPH (often ED-excluded), Furoscix/Soaanz/Edecrin. Done: KY (2026-11-06).
+  Reusable state-neutral checkpoints: `uhc.json`, `humana-premier-rx-pdp.json` in that dir. Next:
+  the other 17 states, one per daily run (queue item 0 in docs/daily-burndown.md). Added 2026-11-06.
+  Left out of the first cut, from the research pass (medium): an **H. pylori kit** class (Talicia,
+  Pylera, Helidac, Voquezna Triple/Dual Pak; all brand-only, often PA or excluded); **tegoprazan**
+  (second P-CAB, NDA filed 2026-01, decision expected about 2027-01: add to `pcab` when approved);
+  **Utebzi** (oral tebipenem for complicated UTI, approved 2026-06 per GSK, not yet FDA-confirmed)
+  and **Nuzolvence** (zoliflodacin, oral gonorrhea, 2025-12) as UTI/STI antibiotic picks with PA;
+  desiccated thyroid is under FDA enforcement and some PBMs are dropping it in 2026, so re-check
+  `thyroid-t3-ndt` cells at each refresh. Fidaxomicin now has an AB-rated generic (BOGL check).
 - **Strength-aware cash lookup** — DONE 2026-11-02 for the pick card: `ResultCard` passes `agent.strength`; a GoodRx price captured at another single strength is hidden (205 cells) and the link re-pinned to the pick's dosage/form; Cost Plus prices the pick's own strength from the price-list variants (64 cells) or hides it (131). Still open: alternatives in `PrescribeOptions` carry no strength. Original note (high; Impact high, Effort medium, Cost none). `ResultCard` and
   `PrescribeOptions` look prices up by `agent.inn` alone, so a pick at a different strength than
   the captured product shows the wrong price (Codex flagged cyclobenzaprine 5 vs 10 mg, baclofen,
