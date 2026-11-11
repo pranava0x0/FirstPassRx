@@ -12,9 +12,9 @@ export function Citations({
 }) {
   return (
     <section className="cites" aria-labelledby="cites-head">
-      <p className="eyebrow" id="cites-head">
+      <h4 id="cites-head">
         Sources
-      </p>
+      </h4>
       <ol className="cites__list">
         {sources.map((s, i) => (
           <li key={s.id} className="cites__item">

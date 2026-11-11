@@ -15,7 +15,8 @@ import {
 import { Disclaimer } from './components/Disclaimer'
 import { Controls } from './components/Controls'
 import { ResultCard } from './components/ResultCard'
-// Note: the omni-search bar (src/components/Search.tsx) is parked pending a redesign — see backlog.md.
+import { MedicationLookup, PlanComparison, type CompareStart } from './components/MedicationLookup'
+import { PaDraftProvider } from './lib/paDrafts'
 
 const PANEL_ID = 'result-panel'
 const LAST_PICK_KEY = 'fprx:last-pick'
@@ -49,6 +50,22 @@ function writeLastPick(pick: Pick): void {
 const tabId = (c: ClassId) => `tab-${c}`
 
 export default function App() {
+  return <PaDraftProvider><CoverageDesk /></PaDraftProvider>
+}
+
+function CoverageDesk() {
+  const [lane,setLane] = useState<'plan'|'drug'>('plan')
+  const [visitedLookup,setVisitedLookup] = useState(false)
+  const [comparison,setComparison] = useState<CompareStart|null>(null)
+  const compareTrigger = useRef<HTMLElement | null>(null)
+  function openComparison(start: CompareStart) {
+    compareTrigger.current = document.activeElement instanceof HTMLElement ? document.activeElement : null
+    setComparison(start)
+  }
+  function closeComparison() {
+    setComparison(null)
+    requestAnimationFrame(() => compareTrigger.current?.focus())
+  }
   // Where a returning prescriber left off: the URL wins (a shared link), then the last pick on
   // this device (most prescribers repeat the same one or two plans all day), then the default.
   function getInitialPick(): Pick {
@@ -190,7 +207,7 @@ export default function App() {
 
   return (
     <GuideProvider value={guide}>
-      <a className="skip-link" href={`#${PANEL_ID}`}>
+      <a className="skip-link" href={comparison || lane==='drug' ? '#med-panel' : `#${PANEL_ID}`}>
         Skip to result
       </a>
 
@@ -198,12 +215,17 @@ export default function App() {
         <header className="masthead" role="banner">
           <div className="masthead__row">
             <h1 className="masthead__mark">
-              First<span className="rx">Pass</span>Rx
+              <img src={import.meta.env.BASE_URL + 'fprx.svg'} alt="" /> <i>FirstPass</i><span className="rx">Rx</span>
             </h1>
           </div>
         </header>
 
         <main role="main">
+          <nav className="lookup-nav" aria-label="Lookup method">
+            <button aria-pressed={lane==='plan'} onClick={()=>{setLane('plan');setComparison(null)}}>By plan</button>
+            <button aria-pressed={lane==='drug'} onClick={()=>{setVisitedLookup(true);setLane('drug');setComparison(null)}}>By medication</button>
+          </nav>
+          <div hidden={lane!=='plan' || !!comparison}>
           <Controls
             payerId={payerId}
             classId={classId}
@@ -232,7 +254,6 @@ export default function App() {
             <section id={PANEL_ID} className="result" aria-live="polite">
               <div className="doc">
                 <div className="highlights">
-                  <span className="eyebrow">Not covered yet</span>
                   <p className="agent__plain">
                     No formulary guide covers this state and prescription type yet.
                     Pick a different combination above.
@@ -244,7 +265,6 @@ export default function App() {
             <section id={PANEL_ID} className="result" aria-live="polite" aria-busy={loadingGuideId !== null}>
               <div className="doc">
                 <div className="highlights">
-                  <span className="eyebrow">{guideLoadError ? 'Could not load' : 'Loading'}</span>
                   <p className="agent__plain">
                     {guideLoadError
                       ? 'This guide could not load. Check your connection and try again.'
@@ -259,12 +279,12 @@ export default function App() {
               payer={payer}
               panelId={PANEL_ID}
               labelId={tabId(classId)}
+              onCompare={drug=>openComparison({drug,guideId:guide.id,classId,payerId})}
             />
           ) : (
             <section id={PANEL_ID} className="result" aria-live="polite">
               <div className="doc">
                 <div className="highlights">
-                  <span className="eyebrow">No data</span>
                   <p className="agent__plain">
                     No record exists for this plan and class yet. Add one in{' '}
                     <code>src/data/formulary.json</code>.
@@ -273,6 +293,11 @@ export default function App() {
               </div>
             </section>
           )}
+          </div>
+          <div id="med-panel" tabIndex={-1} hidden={lane!=='drug' && !comparison}>
+            {visitedLookup && <div hidden={lane!=='drug' || !!comparison}><MedicationLookup compare={openComparison}/></div>}
+            {comparison && <PlanComparison start={comparison} back={closeComparison}/>}
+          </div>
         </main>
 
         <section className="disclaimer-group">
@@ -281,8 +306,7 @@ export default function App() {
 
         <footer className="footer" role="contentinfo">
           <p>
-            <strong>FirstPassRx</strong> is reference only. Data v{meta.version}, captured{' '}
-            {guide.capturedAt}; confirm before prescribing.
+            <strong>FirstPassRx</strong> is reference only. Data v{meta.version}{lane === 'plan' && !comparison && guideReady ? ', captured ' + guide.capturedAt : ''}; confirm before prescribing.
           </p>
           <p>
             Open source ·{' '}

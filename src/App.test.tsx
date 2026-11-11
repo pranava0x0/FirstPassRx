@@ -169,7 +169,7 @@ describe('FirstPassRx app', () => {
     await user.click(screen.getByRole('tab', { name: /Daily combo controller/ }))
     const panel = screen.getByRole('tabpanel')
     // the options table — recommended pick + the also-covered combos
-    expect(within(panel).getByText(/FIRST-PASS RECOMMENDED/i)).toBeInTheDocument()
+    expect(within(panel).getByRole('heading', { name: '4. Preferred option' })).toBeInTheDocument()
     const options = within(panel).getByRole('region', { name: /prescribing options/i })
     expect(within(options).getByText(/Advair Diskus/)).toBeInTheDocument()
     expect(within(options).getByText(/Breo Ellipta/)).toBeInTheDocument()
@@ -311,6 +311,18 @@ describe('FirstPassRx app', () => {
     expect(within(card).getByText(/42 U\.S\.C/)).toBeInTheDocument()
     expect(card.querySelector('.pa-builder__letter')?.textContent).toMatch(/DIAGNOSIS: J45\.40/)
     expect(window.localStorage.getItem('fprx:last-pick') ?? '').not.toMatch(/J45/)
+    expect(card.querySelector('pre')).toHaveTextContent(/INCOMPLETE DRAFT.*Missing documentation/)
+    expect(within(card).getByRole('button', {name:/download incomplete draft.*PDF/i})).toBeInTheDocument()
+    const toggle = within(card).getByRole('button', { name: /hide pa request/i })
+    await user.click(toggle)
+    await user.click(screen.getByRole('button', {name:/start a pa request for/i}))
+    expect(within(card).getByLabelText(/Diagnosis/)).toHaveValue('J45.40 moderate persistent asthma')
+    const second = document.querySelectorAll<HTMLElement>('.rx-option-card.is-barrier')[1]!
+    await user.click(within(second).getByRole('button', { name: /request pa/i }))
+    expect(within(second).getByLabelText(/Diagnosis/)).toHaveValue('')
+    await user.click(within(card).getByRole('button', {name:'Clear worksheet'}))
+    expect(within(card).getByLabelText(/Diagnosis/)).toHaveValue('')
+
   })
 
   // Codex review on PR 19: the aka (e.g. "statewide PDL binds every Medicaid MCO") was only a
@@ -324,8 +336,8 @@ describe('FirstPassRx app', () => {
   it('says nothing is covered instead of recommending a drug the plan does not list', async () => {
     window.history.replaceState({}, '', '/?guide=ma-weight&plan=tufts&class=aom-glp1')
     render(<App />)
-    expect(await screen.findByText("NO COVERED OPTION")).toBeInTheDocument()
-    expect(screen.queryByText('FIRST-PASS RECOMMENDED')).not.toBeInTheDocument()
+    expect(await screen.findByText('No covered option verified for this class')).toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: '4. Preferred option' })).not.toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 2, name: '4. Coverage' })).toBeInTheDocument()
   })
 

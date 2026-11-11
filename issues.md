@@ -4,6 +4,8 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
 
 ## Fixed
 
+- **2026-11-11 · PA worksheet lost entries on hide/reopen.** Answers now stay in tab memory for the same guide, plan, class and request. Clear worksheet or reload to discard. Verified on mobile and desktop.
+
 - **2026-10-22 · build (deploy) · the live site stopped updating after PR #21.** The Deploy to
   GitHub Pages runs for PR #22 and PR #23 failed at Build: `tsc -b` found 49 type errors
   (`noUncheckedIndexedAccess` on `AUTOIMMUNE[n]`/`PSYCHOSIS` destructuring in `src/lib/icd10.ts`,
