@@ -42,6 +42,19 @@ export function preferredOutcome(record: FormularyRecord): PaItem['outcome'] {
   return 'pa'
 }
 
+/** Both lookup paths must open the same worksheet for the same preferred listing. */
+export function preferredPaItem(record: FormularyRecord): PaItem | undefined {
+  if (!preferredNeedsPa(record)) return undefined
+  const outcome = preferredOutcome(record)
+  return {
+    drug: record.preferredAgent.brand ?? record.preferredAgent.inn,
+    outcome,
+    reason: record.preferredRestriction ?? (outcome === 'step' ? 'Step therapy required' : 'PA required'),
+    sourceIds: record.restrictionSourceIds, criteria: record.preferredCriteria,
+    criteriaMode: record.preferredCriteriaMode, criteriaSourceIds: record.preferredCriteriaSourceIds,
+  }
+}
+
 export type StepOutcome =
   | ''
   | 'inadequate'

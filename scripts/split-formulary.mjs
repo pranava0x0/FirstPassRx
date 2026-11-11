@@ -3,6 +3,8 @@ import path from 'node:path'
 import process from 'node:process'
 import { fileURLToPath } from 'node:url'
 
+import { medicationEntries } from '../src/lib/medicationEntries.mjs'
+
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const sourcePath = path.join(root, 'src/data/formulary.json')
 const outputDir = path.join(root, 'src/data/generated')
@@ -32,6 +34,21 @@ outputs.set(
 for (const guide of formulary.guides) {
   outputs.set(path.join(guidesDir, `${guide.id}.json`), `${JSON.stringify(guide, null, 2)}\n`)
 }
+
+// The optional lookup downloads names and guide/class pointers, never the full formulary.
+const catalog = new Map()
+for (const guide of formulary.guides) {
+  for (const record of guide.records) {
+    for (const { label } of medicationEntries(record)) {
+      if (!catalog.has(label)) catalog.set(label, new Set())
+      catalog.get(label).add(guide.id + '/' + record.classId)
+    }
+  }
+}
+// One product per line keeps policy-data changes readable in a diff.
+const labels = [...catalog.keys()].sort()
+outputs.set(path.join(outputDir, 'medications.json'),
+  '{\n' + labels.map(label => JSON.stringify(label) + ':' + JSON.stringify([...catalog.get(label)].sort())).join(',\n') + '\n}\n')
 
 const expectedPaths = new Set(outputs.keys())
 const existingGuidePaths = fs.existsSync(guidesDir)

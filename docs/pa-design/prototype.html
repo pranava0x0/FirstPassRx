@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FirstPassRx · Coverage lookup</title>
+<link rel="icon" href="fprx.svg" type="image/svg+xml">
+<style>
+:root{color-scheme:light;--ink:#192e2b;--muted:#50645e;--pine:#104c43;--line:#cbd4ca;--paper:#faf9f3;--wash:#edf2eb}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header,main,footer{width:min(100% - 40px,1000px);margin:auto}
+header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:18px 0 13px;border-bottom:3px solid var(--ink)}
+.brand{display:flex;align-items:center;gap:11px;font:italic 34px/1 Georgia,serif;letter-spacing:-1.4px}.brand img{width:46px;height:46px}.brand b{color:var(--pine);font:600 22px/1 Georgia,serif;letter-spacing:-1px;margin-left:1px}
+main{padding:24px 0 38px}h1,h2,h3,p{margin:0}
+h1,h2,h3,caption{font:500 29px/1.18 Georgia,serif;letter-spacing:-.55px}h1{font-size:36px}h2{margin-bottom:6px}h3,caption{font-size:22px}
+p+p{margin-top:8px}small,.sub,footer{color:var(--muted)}small{font-size:14px}
+.filters{display:grid;grid-template-columns:1fr 1.1fr 1.65fr;gap:14px;margin:17px 0 22px}
+label{display:block;font-weight:650;font-size:15px;margin-bottom:4px}.field{position:relative;min-width:0}
+.control{display:flex;background:white;border:1px solid #788c81;border-radius:5px;overflow:hidden}
+input,button,select{font:inherit;color:inherit}input{width:100%;min-width:0;padding:9px 11px;background:white;border:0}
+button,summary,select{min-height:44px}button,select,summary{cursor:pointer}button{padding:8px 13px;background:white;border:1px solid var(--line);border-radius:5px;color:var(--pine);font-weight:630}
+button:hover{background:var(--wash)}.control button{border:0;border-left:1px solid var(--line);border-radius:0;width:44px;flex:none;font-size:18px}
+:focus-visible{outline:3px solid #255fba;outline-offset:2px}.control:focus-within{outline:3px solid #255fba;outline-offset:2px}.control input:focus{outline:0}.control button:focus-visible{outline-offset:-3px}
+.popup{position:absolute;z-index:2;top:100%;left:0;right:0;padding:4px;margin-top:4px;background:white;border:1px solid #82938a;border-radius:6px;box-shadow:0 7px 16px #1e36221a;max-height:260px;overflow:auto}
+[role=option]{min-height:44px;padding:9px;border-radius:3px;cursor:pointer}[role=option]:hover,[role=option].active{background:var(--wash)}[role=option] small,.drug small{display:block;font-weight:400}.empty{padding:8px}
+#content{border-top:1px solid var(--line);padding-top:18px}#content:focus{outline:none}
+.head,.actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.head{justify-content:space-between}.actions{margin-top:15px}.primary{background:var(--pine);color:white;border-color:var(--pine)}.primary:hover{background:#0a3931}
+nav{display:flex;gap:4px;align-items:center;margin:12px 0 4px}nav button{border-color:transparent;background:transparent}nav button[aria-pressed=true]{background:#e1ece2;color:var(--pine);border-color:#aabfaf}
+.plan-block+.plan-block{border-top:1px solid var(--line);padding-top:18px;margin-top:20px}.plan-block h3{line-height:1.35;font-family:inherit;font-size:17px;font-weight:650;letter-spacing:0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:10px;margin:9px 0 16px}.option{background:white;border:1px solid var(--line);border-radius:9px;padding:13px 16px}.option.preferred{border:2px solid var(--pine);background:var(--wash)}.option p{margin:4px 0}.option .actions{margin-top:9px}
+.group-title{font-size:16px;margin:14px 0 4px}.plan-checks{display:flex;align-items:center;flex-wrap:wrap;gap:4px 18px}.plan-checks label{display:inline-flex;align-items:center;min-height:44px;gap:7px;margin:0;font-weight:400}.plan-checks input{width:17px;height:17px;accent-color:var(--pine)}
+.compare-list{width:100%;border-collapse:collapse;margin:10px 0 16px}.compare-list th,.compare-list td{text-align:left;border-bottom:1px solid var(--line);padding:11px 8px}.compare-list thead{background:var(--wash)}.compare-list tbody th{font-weight:600}.compare-list small{display:block;font-weight:400}.head h2{margin:0}.compare-action{margin:0 0 12px}.option button,.head button,.actions button,nav button{border-radius:7px}
+.detail{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(215px,1fr);gap:18px;margin-top:15px}.sheet,aside{background:white;border:1px solid var(--line);border-radius:6px;padding:18px}.sheet{border-top:3px solid var(--pine)}aside{background:var(--wash);align-self:start}aside p,.sheet p{margin-top:6px}.answers label{margin-top:14px}.answers select{width:100%;background:white;border:1px solid #82938a;border-radius:4px;padding:6px}details{margin-top:10px}summary{display:list-item;align-content:center;color:var(--pine)}pre{white-space:pre-wrap;font:inherit}.sr{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden}footer{border-top:1px solid var(--line);padding:15px 0;font-size:13px}
+@media(max-width:650px){header,main,footer{width:calc(100% - 28px)}header{padding:10px 0}.brand{font-size:28px;gap:7px}.brand img{width:39px;height:39px}.brand b{font-size:19px}header small{font-size:12px}main{padding-top:17px}h1{font-size:30px}h2{font-size:24px}.filters{grid-template-columns:1fr 1fr;gap:8px;margin:12px 0 16px}.field:has(#drug){grid-column:1/-1}.control input{padding:7px;font-size:16px}.detail{grid-template-columns:1fr;gap:10px}.sheet,aside{padding:14px}.head{gap:3px}}
+</style>
+<header><div class="brand" aria-label="FirstPassRx"><img src="fprx.svg" alt=""><span>FirstPass<b>Rx</b></span></div><small>Fictional plan data</small></header>
+<main><h1>Coverage lookup</h1><nav aria-label="Lookup method"><button type="button" data-mode="plan">By plan</button><button type="button" data-mode="drug">By medication</button></nav>
+<div id="filters" class="filters" role="group" aria-label="Coverage filters"></div>
+<p id="announce" class="sr" role="status"></p><section id="content" tabindex="-1"></section></main>
+<footer>Interactive mockup · No patient data · Nothing is submitted</footer>
+<script>
+const states={MA:'Massachusetts',WA:'Washington'};
+const meds={generic:['Albuterol sulfate HFA','Generic inhaler · 90 mcg'],brand:['Ventolin HFA','Brand inhaler · 90 mcg'],eye:['Cyclosporine ophthalmic','Eye drops'],limit:['Example tablet','Oral tablet']};
+const plans={
+  ffs:{state:'MA',name:'Example FFS',rules:{generic:'pa',brand:'preferred',limit:'limit'}},
+  managed:{state:'MA',name:'Example managed',rules:{}},
+  sound:{state:'WA',name:'Example Sound',rules:{generic:'preferred',limit:'limit'}},
+  inland:{state:'WA',name:'Example Inland',rules:{brand:'preferred'}}
+};
+const labels={pa:'PA required',preferred:'Preferred',limit:'Quantity limit',unknown:'Unknown'};
+const notes={pa:'The example policy requires a prior authorization for this product.',preferred:'The example plan lists this product as preferred without a routine PA. Confirm the member’s benefit.',limit:'A quantity limit is listed. A limit alone does not establish that a PA is required.',unknown:'No verified entry for this product on this plan. That establishes neither coverage nor exclusion.'};
+const evidence=['Qualifying diagnosis','Prior product and outcome','Form, directions, quantity and days supplied'];
+const fields={state:'State',plan:'Plan',drug:'Medication'}, all={state:'All states',plan:'All plans',drug:'All medications'};
+const lanes={plan:{state:'MA',plan:'ffs',drug:'*'},drug:{state:'*',plan:'*',drug:'*'}};
+let mode='plan', context={...lanes.plan}, view='coverage', returnTo=null, comparison=null;
+const chosenPlans=new Set();
+const drafts=new Map(), content=document.querySelector('#content');
+const key=()=>[context.state,context.plan,context.drug].join('/');
+const answers=()=>drafts.get(key())||['','',''];
+const listedPlans=()=>Object.entries(plans).filter(([,p])=>context.state==='*'||p.state===context.state);
+const status=(plan,drug)=>plans[plan].rules[drug]||'unknown';
+const isExact=()=>context.plan!=='*'&&context.drug!=='*';
+const button=(text,act,cls='')=>`<button type="button" data-act="${act}" class="${cls}">${text}</button>`;
+
+function options(id){
+  const rows=id==='state'?Object.entries(states):id==='plan'?listedPlans().map(([k,p])=>[k,p.name,states[p.state]]):Object.entries(meds).map(([k,[name,form]])=>[k,name,form]);
+  return [['*',all[id]],...rows];
+}
+function filters(){
+  document.querySelector('#filters').innerHTML=(view==='compare'?['drug','state']:mode==='drug'?['drug','state','plan']:['state','plan','drug']).map(id=>[id,fields[id]]).map(([id,name])=>`<div class="field">
+    <label for="${id}">${name}</label><div class="control"><input id="${id}" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="${id}-list" autocomplete="off"><button type="button" aria-label="Browse ${name.toLowerCase()} options" aria-controls="${id}-list" aria-expanded="false">⌄</button></div>
+    <div class="popup" hidden><div id="${id}-list" role="listbox" aria-label="${name} options"></div><p hidden class="empty" role="status">No matches</p></div></div>`).join('');
+  for(const input of document.querySelectorAll('.control input')) bindPicker(input.id);
+}
+function bindPicker(id){
+  const input=document.getElementById(id), root=input.closest('.field'), toggle=root.querySelector('button'), popup=root.querySelector('.popup'), list=root.querySelector('[role=listbox]');
+  const opts=options(id), selected=opts.find(o=>o[0]===context[id])[1];
+  input.value=selected;let hits=[],active=-1;
+  function highlight(i){
+    active=i; for(const [n,el] of [...list.children].entries())el.classList.toggle('active',n===i);
+    if(i<0)input.removeAttribute('aria-activedescendant');
+    else{input.setAttribute('aria-activedescendant',list.children[i].id);list.children[i].scrollIntoView({block:'nearest'})}
+  }
+  function open(query=''){
+    popup.hidden=false;for(const el of [input,toggle])el.setAttribute('aria-expanded','true');
+    hits=opts.filter(o=>(o.join(' ')+(id==='drug'&&o[0]==='brand'?' albuterol':'')).toLowerCase().includes(query.trim().toLowerCase()));
+    list.innerHTML=hits.map(([k,name,hint],i)=>`<div id="${id}-o${i}" role="option" aria-selected="${context[id]===k}" data-key="${k}">${name}${hint?'<small>'+hint+'</small>':''}</div>`).join('');
+    root.querySelector('.empty').hidden=hits.length>0;highlight(-1);
+  }
+  function close(){popup.hidden=true;input.value=selected;highlight(-1);for(const el of [input,toggle])el.setAttribute('aria-expanded','false')}
+  function choose(k){
+    if(k===context[id]){close();input.focus();return}
+    const previous={...context};context[id]=k;
+    if(id==='state'&&context.plan!=='*'&&plans[context.plan].state!==k)context.plan='*';
+    if(id==='plan'&&k!=='*')context.state=plans[k].state;
+    returnTo=isExact()&&!['prepare','review'].includes(view)&&!(previous.plan!=='*'&&previous.drug!=='*')?previous:null;
+    if(view!=='compare')view='coverage';render();document.getElementById(id).focus();
+  }
+  input.onfocus=()=>input.select();input.onclick=()=>{if(popup.hidden){input.select();open()}};
+  input.oninput=()=>open(input.value);toggle.onclick=()=>{const wasOpen=!popup.hidden;input.focus();if(wasOpen)close();else{input.select();open()}};
+  input.onkeydown=e=>{
+    if(e.key==='Escape'){close();input.select();return}
+    if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();if(popup.hidden)open();if(hits.length)highlight(active<0?(e.key==='ArrowDown'?0:hits.length-1):(active+(e.key==='ArrowDown'?1:-1)+hits.length)%hits.length)}
+    if(e.key==='Enter'&&!popup.hidden){e.preventDefault();if(active>=0)choose(hits[active][0]);else if(hits.length===1)choose(hits[0][0])}
+  };
+  list.onmousedown=e=>e.preventDefault();list.onclick=e=>{const opt=e.target.closest('[role=option]');if(opt)choose(opt.dataset.key)};
+  root.onfocusout=e=>{if(!root.contains(e.relatedTarget))close()};
+}
+function openButton(plan,drug,text,action='detail',cls=''){
+  return `<button type="button" class="${cls}" data-plan="${plan}" data-drug="${drug}" data-open="${action}">${text}</button>`;
+}
+function card(plan,drug){
+  const s=status(plan,drug),[name,form]=meds[drug];
+  const action=s==='pa'?openButton(plan,drug,'Prepare PA request','prepare','primary'):openButton(plan,drug,'View coverage');
+  return `<article class="option ${s}"><h3>${name}</h3><p>${labels[s]} · ${form}</p><div class="actions">${action}${s==='preferred'&&context.drug==='*'?`<button type="button" data-compare-drug="${drug}">Compare plans</button>`:''}</div></article>`;
+}
+function browse(){
+  if(mode==='drug'&&context.drug==='*')return '<h2>Find a medication</h2><p>Type or open the medication field to see where the product is preferred or restricted.</p>';
+  const rows=listedPlans().filter(([k])=>context.plan==='*'||context.plan===k);
+  return rows.map(([plan,p])=>{
+    const title=p.name+' · '+states[p.state];
+    if(context.drug!=='*')return `<section class="plan-block"><h2>${title}</h2><div class="cards">${card(plan,context.drug)}</div></section>`;
+    const inhalers=['generic','brand'],pick=inhalers.find(d=>status(plan,d)==='preferred');
+    return `<section class="plan-block"><h2>${title}</h2>${pick?`<div class="cards">${card(plan,pick)}</div>`:'<p>No preferred inhaler is verified for this plan.</p>'}
+      <h3 class="group-title">${pick?'Other inhaler options':'Inhaler options'}</h3><div class="cards">${inhalers.filter(d=>d!==pick).map(d=>card(plan,d)).join('')}</div>
+      <h3 class="group-title">Other medications</h3><div class="cards">${['eye','limit'].map(d=>card(plan,d)).join('')}</div></section>`;
+  }).join('');
+}
+function detail(){
+  const {plan,drug}=context,s=status(plan,drug),[name,form]=meds[drug];
+  const alternative=s==='pa'&&plans[plan].rules.brand==='preferred';
+  return `<section class="plan-block"><h2>${name}</h2><p>${form} · ${plans[plan].name} · ${states[plans[plan].state]}</p>
+    <div class="cards"><article class="option ${s}"><h3>${s==='unknown'?'Coverage is unknown':labels[s]}</h3><p>${notes[s]}</p>
+    <div class="actions">${s==='pa'?button(answers().some(Boolean)?'Resume worksheet':'Prepare PA request','prepare','primary'):''}${button('Compare plans','compare')}</div></article></div>
+    ${alternative?'<h3 class="group-title">Preferred alternative</h3><div class="cards">'+card(plan,'brand')+'</div>':''}
+    ${button('Back to options','back')}</section>`;
+}
+function compare(){
+  const drug=context.drug,available=listedPlans(),selected=available.filter(([k])=>chosenPlans.has(k));
+  const checks=available.map(([k,p])=>`<label><input type="checkbox" data-include="${k}" ${chosenPlans.has(k)?'checked':''}>${p.name} (${p.state})</label>`).join('');
+  const rows=selected.map(([k,p])=>`<tr><th scope="row">${p.name}<small>${states[p.state]}</small></th><td>${labels[status(k,drug)]}</td></tr>`).join('');
+  return `<div class="head"><h2>Compare plans</h2>${button('Back to coverage','endcompare')}</div>
+    ${drug==='*'?'<p>Choose one medication to compare its coverage.</p>':`<p>${meds[drug].join(' · ')}</p><div class="plan-checks" role="group" aria-label="Plans to compare">${checks}</div>
+    ${rows?`<table class="compare-list"><thead><tr><th scope="col">Plan</th><th scope="col">Coverage</th></tr></thead><tbody>${rows}</tbody></table>`:''}
+    ${selected.length<2?'<p>Select at least two plans to compare.</p>':''}`}`;
+}
+function startCompare(drug=context.drug){
+  comparison={context:{...context},returnTo};chosenPlans.clear();
+  for(const [key] of Object.entries(plans))chosenPlans.add(key);
+  context={...context,plan:'*',drug};returnTo=null;view='compare';
+}
+function worksheet(){
+  const vals=answers(),missing=evidence.filter((_,i)=>vals[i]!=='yes'),review=view==='review';
+  return `<div class="head"><h2>${review?'Review the worksheet':'Prepare the request'}</h2>${button('Back to coverage','coverage')}</div>
+    <p class="sub">${meds[context.drug][0]} · ${plans[context.plan].name} · ${states[context.state]}</p><div class="detail">
+    ${review?`<section class="sheet"><h3>${missing.length?missing.length+' item'+(missing.length===1?'':'s')+' to resolve':'Ready for clinician review'}</h3>
+    ${missing.length?'<ul>'+missing.map(x=>'<li>'+x+'</li>').join('')+'</ul>':''}<p>Draft only · Nothing has been sent.</p>
+    <details><summary>Preview example worksheet</summary><pre id="preview"></pre></details><div class="actions">${button('Edit evidence','prepare')}${button(missing.length?'Download incomplete draft':'Download example worksheet','export')}</div></section>
+    <aside><h3>Payer intake</h3><p>No verified destination in this example. Confirm the member’s plan and use its official portal or form.</p></aside>`:`<section class="sheet answers"><h3>What can the chart support?</h3><p>All three items are needed for this example policy.</p>${evidence.map((label,i)=>`<label for="s${i}">${label}</label><select id="s${i}" data-field="${i}">${[['','Not checked'],['yes','Sample evidence available'],['no','Evidence missing']].map(([v,l])=>`<option value="${v}" ${vals[i]===v?'selected':''}>${l}</option>`).join('')}</select>`).join('')}
+    <div class="actions">${button('Review worksheet','review','primary')}</div></section><aside><h3 id="progress">${3-missing.length} of 3 documented</h3><p>You can browse other options and return to this draft during this visit.</p></aside>`}</div>`;
+}
+function draft(){return ['DESIGN STUDY · '+(answers().every(v=>v==='yes')?'EXAMPLE WORKSHEET':'INCOMPLETE DRAFT')+' · NOT SUBMITTED',states[context.state]+' · '+plans[context.plan].name,meds[context.drug][0],...evidence.map((s,i)=>s+': '+(answers()[i]==='yes'?'sample evidence available':'MISSING — '+(answers()[i]==='no'?'evidence unavailable':'not checked')))].join('\n')}
+function render(){
+  for(const el of document.querySelectorAll('nav button'))el.setAttribute('aria-pressed',String(mode===el.dataset.mode));
+  filters();content.innerHTML=view==='compare'?compare():view!=='coverage'?worksheet():isExact()?detail():browse();
+  if(view==='coverage'&&!isExact()&&context.drug!=='*')content.insertAdjacentHTML('afterbegin','<div class="compare-action">'+button('Compare plans','compare')+'</div>');
+  if(view==='review')document.querySelector('#preview').textContent=draft();
+  document.querySelector('#announce').textContent=[...Object.keys(fields).map(k=>options(k).find(o=>o[0]===context[k])[1]),content.querySelector('h2').textContent].join(', ');
+}
+document.querySelector('nav').onclick=e=>{
+  const next=e.target.closest('button')?.dataset.mode;if(!next)return;
+  if(mode===next&&view==='coverage')return;
+  lanes[mode]={...(comparison?.context||context)};mode=next;context={...lanes[next]};view='coverage';comparison=null;returnTo=null;render();
+  document.getElementById(next==='drug'?'drug':'plan').focus();
+};
+content.onchange=e=>{if(e.target.dataset.include){const k=e.target.dataset.include;if(e.target.checked)chosenPlans.add(k);else chosenPlans.delete(k);render();content.querySelector('[data-include="'+k+'"]').focus();return}if(!e.target.matches('[data-field]'))return;const a=answers();a[Number(e.target.dataset.field)]=e.target.value;drafts.set(key(),a);document.querySelector('#progress').textContent=a.filter(v=>v==='yes').length+' of 3 documented'};
+content.onclick=e=>{
+  const el=e.target.closest('button');if(!el)return;
+  if(el.dataset.compareDrug){startCompare(el.dataset.compareDrug)}
+  else if(el.dataset.plan){if(!isExact())returnTo={...context};context={state:plans[el.dataset.plan].state,plan:el.dataset.plan,drug:el.dataset.drug};view=el.dataset.open==='prepare'?'prepare':'coverage'}
+  else switch(el.dataset.act){
+    case 'back':context=returnTo||(mode==='plan'?{...context,drug:'*'}:{...context,plan:'*'});returnTo=null;view='coverage';break;
+    case 'compare':startCompare();break;
+    case 'endcompare':({context,returnTo}=comparison);comparison=null;view='coverage';break;
+    case 'export':{const url=URL.createObjectURL(new Blob([draft()],{type:'text/plain'}));const a=document.createElement('a');a.href=url;a.download='example-pa-worksheet.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);return}
+    default:view=el.dataset.act;
+  }
+  render();content.focus();
+};
+render();
+</script></html>

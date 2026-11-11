@@ -378,7 +378,10 @@ export function loadGuideView(id: string): Promise<GuideView> {
   const path = `../data/generated/guides/${requestedId}.json`
   const load = guideModules[path]
   if (!load) return Promise.reject(new Error(`No generated guide chunk for ${requestedId}`))
-  const pending = load().then((module) => buildGuideView(module.default))
+  const pending = load().then((module) => buildGuideView(module.default)).catch(error => {
+    guideCache.delete(requestedId)
+    throw error
+  })
   guideCache.set(requestedId, pending)
   return pending
 }

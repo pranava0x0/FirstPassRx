@@ -1,3 +1,4 @@
+import { usePaDraft } from '../lib/paDrafts'
 import { useMemo, useState, useId } from 'react'
 import type { ClassMeta, FormularyRecord, PaItem, PayerMeta } from '../types/formulary'
 import { useGuide } from '../lib/formulary'
@@ -43,10 +44,10 @@ export function PaRequest({
   payer: PayerMeta
   drugClass: ClassMeta
 }) {
-  const { stateCode, resolveSources } = useGuide()
+  const { id: guideId, stateCode, resolveSources } = useGuide()
   const submissionSources = resolveSources(payer.paSubmission?.sourceIds ?? [])
   const criteriaSources = resolveSources(item.criteriaSourceIds ?? [])
-  const [input, setInput] = useState<PaRequestInput>(() => emptyPaRequest(record, item))
+  const [input, setInput, clear] = usePaDraft(JSON.stringify([guideId, record.classId, payer.id, item.drug, item.reason]), () => emptyPaRequest(record, item))
   const [pdfError, setPdfError] = useState(false)
   const { copied, copy } = useCopyToClipboard()
   const checklist = paChecklist(input, item.criteriaMode ?? 'any')
@@ -54,7 +55,7 @@ export function PaRequest({
   // Unique per PA item: suggestions differ by drug, and several PaRequests render per record.
   const listId = `icd10-${useId()}`.replace(/\W+/g, '-')
   const doneCount = checklist.filter((c) => c.done).length
-  const letter = useMemo(
+  const body = useMemo(
     () =>
       buildPaRequest(record, item, payer, drugClass, input, {
         submission: submissionSources.map((x) => x.url),
@@ -62,6 +63,8 @@ export function PaRequest({
       }),
     [record, item, payer, drugClass, input, submissionSources, criteriaSources],
   )
+  const missing = checklist.filter(c=>!c.done)
+  const letter = (missing.length ? 'INCOMPLETE DRAFT — Not submitted\nMissing documentation:\n' + missing.map(c=>'• '+c.label).join('\n') : 'Draft for clinician review — Not submitted') + '\n\n' + body
   const set = (patch: Partial<PaRequestInput>) => setInput((cur) => ({ ...cur, ...patch }))
   const setCriterion = (i: number, patch: { status?: CriterionStatus; evidence?: string }) =>
     setInput((cur) => ({
@@ -77,9 +80,8 @@ export function PaRequest({
   return (
     <div className="pa-builder">
       <header className="pa-builder__head">
-        <p className="pa-builder__eyebrow">Prior authorization request</p>
         <p className="pa-builder__title">
-          {item.drug} <span className="pa-builder__for">for {payer.shortName}</span>
+          PA request: {item.drug} <span className="pa-builder__for">for {payer.shortName}</span>
         </p>
       </header>
       {payer.paSubmission ? (
@@ -273,9 +275,9 @@ export function PaRequest({
           type="button"
           className={`copy-btn${copied ? ' copy-btn--done' : ''}`}
           onClick={() => copy(letter)}
-          aria-label={`Copy PA request for ${item.drug}`}
+          aria-label={`Copy ${missing.length ? 'incomplete draft' : 'PA request'} for ${item.drug}`}
         >
-          <span aria-hidden="true">{copied ? '✓ Copied' : 'Copy request'}</span>
+          <span aria-hidden="true">{copied ? '✓ Copied' : missing.length ? 'Copy incomplete draft' : 'Copy request'}</span>
           <span className="sr-only" aria-live="polite">
             {copied ? 'Copied to clipboard' : ''}
           </span>
@@ -285,11 +287,11 @@ export function PaRequest({
           className="copy-btn"
           onClick={() => {
             setPdfError(false)
-            downloadLetterPdf(letter, `PA request — ${item.drug}`).catch(() => setPdfError(true))
+            downloadLetterPdf(letter, `${missing.length ? 'Incomplete PA draft' : 'PA draft'} — ${item.drug}`).catch(() => setPdfError(true))
           }}
-          aria-label={`Download PA request for ${item.drug} as PDF`}
+          aria-label={`Download ${missing.length ? 'incomplete draft' : 'PA request'} for ${item.drug} as PDF`}
         >
-          PDF
+          {missing.length ? 'Incomplete draft PDF' : 'Draft PDF'}
         </button>
       </div>
       {pdfError ? (
@@ -297,7 +299,8 @@ export function PaRequest({
           PDF download failed. Check your connection, or use Copy request instead.
         </p>
       ) : null}
-      <p className="pa-builder__privacy">Nothing you type is saved or sent. It stays on this page.</p>
+      <p className="pa-builder__privacy">Answers stay in this tab until cleared or reloaded. Nothing is submitted.</p>
+      <button type="button" className="desk-action" onClick={clear}>Clear worksheet</button>
     </div>
   )
 }

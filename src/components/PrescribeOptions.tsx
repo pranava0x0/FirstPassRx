@@ -45,10 +45,12 @@ export function PrescribeOptions({
   source,
   payer,
   openFirstRequest = 0,
+  onCompare,
 }: {
   record: FormularyRecord
   source?: Reference
   payer: PayerMeta
+  onCompare?: (drug: string) => void
   /** Bumped by the header's "Request PA" button: opens the first blocked drug's request. */
   openFirstRequest?: number
 }) {
@@ -137,6 +139,7 @@ export function PrescribeOptions({
                 </span>
               </div>
             )}
+            {onCompare && <button className="desk-action" onClick={()=>onCompare(row.drug)}>Compare plans</button>}
             {row.type === 'barrier' && row.paItem && drugClass ? (
               <AppealAction
                 record={record}

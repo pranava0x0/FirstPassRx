@@ -1,10 +1,11 @@
+import { preferredLabel } from '../lib/medicationEntries.mjs'
 import { useState } from 'react'
 import type { FormularyRecord, PayerMeta } from '../types/formulary'
 import { useGuide } from '../lib/formulary'
 import { goodRxUrl, costPlusUrl, goodRxPrice, costPlusPrice, pricesCapturedAt } from '../lib/cash'
 import { BoglBanner } from './BoglBanner'
 import { AppealAction, PrescribeOptions } from './PrescribeOptions'
-import { preferredNeedsPa, preferredOutcome } from '../lib/paRequest'
+import { preferredNeedsPa, preferredPaItem } from '../lib/paRequest'
 import { Citations } from './Citations'
 import { GlossaryTerm } from './GlossaryTerm'
 import { CashPriceBoxes } from './CashPriceBoxes'
@@ -13,6 +14,7 @@ import { CashPriceBoxes } from './CashPriceBoxes'
 interface Props {
   record: FormularyRecord
   payer: PayerMeta
+  onCompare?: (label: string) => void
   panelId: string
   labelId: string
 }
@@ -21,13 +23,14 @@ function readableGenericName(name: string): string {
   return name.replace(/\s+HFA\b/g, ' inhaler')
 }
 
-export function ResultCard({ record, payer, panelId, labelId }: Props) {
+export function ResultCard({ record, payer, panelId, labelId, onCompare }: Props) {
   const { resolveSources, capturedAt, unitNoun, getClass } = useGuide()
   const drugClass = getClass(record.classId)
   const agent = record.preferredAgent
   const sources = resolveSources(record.sourceIds)
   const coverageSources = resolveSources(record.coverageSourceIds)
   const primarySource = coverageSources[0]
+  const preferredRequest = preferredPaItem(record)
   const displayName = agent.brand ?? agent.inn
   // The pick's strength picks the matching price and link (a 60 mg pick never shows a 30 mg price).
   const costPlusHref = costPlusUrl(agent.inn, agent.strength)
@@ -99,13 +102,11 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
 
         {record.noCoveredAgent ? (
           <div className="recommendation-hero recommendation-hero--none">
-            <div className="recommendation-hero__label">NO COVERED OPTION</div>
-            <h3 className="recommendation-hero__name">No drug in this class is covered on this plan's list</h3>
+            <h3 className="recommendation-hero__name">No covered option verified for this class</h3>
             <p className="recommendation-hero__generic">{record.preferredRestriction}</p>
           </div>
         ) : (
         <div className="recommendation-hero">
-          <div className="recommendation-hero__label">FIRST-PASS RECOMMENDED</div>
           <h3 className="recommendation-hero__name">{displayName}</h3>
           {agent.brand && !agent.inn.toLowerCase().startsWith(agent.brand.toLowerCase()) ? (
             <p className="recommendation-hero__generic">Also called: {readableGenericName(agent.inn)}</p>
@@ -139,29 +140,21 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
             costPlus={costPlusPoint}
             capturedAt={pricesAsOf}
           />
+          {onCompare && <button className="desk-action" onClick={()=>onCompare(preferredLabel(agent))}>Compare plans</button>}
           {/* Even the first-pass pick needs plan sign-off here: offer the PA request on it too. */}
-          {preferredNeedsPa(record) && drugClass ? (
+          {preferredRequest && drugClass ? (
             <AppealAction
               record={record}
               payer={payer}
               drugClass={drugClass}
-              item={{
-                drug: displayName,
-                outcome: preferredOutcome(record),
-                // preferredPaRequired can flag a PA the restriction text doesn't spell out.
-                reason: record.preferredRestriction ?? (preferredOutcome(record) === 'step' ? 'Step therapy required' : 'PA required'),
-                sourceIds: record.restrictionSourceIds,
-                criteria: record.preferredCriteria,
-                criteriaMode: record.preferredCriteriaMode,
-                criteriaSourceIds: record.preferredCriteriaSourceIds,
-              }}
+              item={preferredRequest}
             />
           ) : null}
         </div>
         )}
 
         {/* Q1 + Q2: what to prescribe + alternatives, with cost in plan vs cash. */}
-        <PrescribeOptions record={record} source={primarySource} payer={payer} openFirstRequest={paSignal} />
+        <PrescribeOptions onCompare={onCompare} record={record} source={primarySource} payer={payer} openFirstRequest={paSignal} />
 
         {/* Load-bearing prescriber warning — stays visible when the plan forces the brand. */}
         {record.boglActive && record.boglNote ? (
@@ -178,7 +171,7 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
           <summary>Coverage detail &amp; full sources</summary>
           <div className="appendix__body">
             <div className="patient-summary" aria-label="What to do next">
-              <p className="eyebrow">What to do next</p>
+              <h4>What to do next</h4>
               <ol>
                 <li>
                   <b>Patient:</b> ask the pharmacy to confirm this exact benefit product before the
@@ -216,9 +209,9 @@ export function ResultCard({ record, payer, panelId, labelId }: Props) {
             </div>
 
             <div className="appendix__block">
-              <p className="eyebrow">
+              <h4>
                 <GlossaryTerm match="Step therapy">Step therapy</GlossaryTerm>
-              </p>
+              </h4>
               {record.noCoveredAgent ? (
                 <p className="step__body step__body--none">
                   Not applicable: no drug in this class is covered on this plan's list.
