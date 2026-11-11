@@ -201,7 +201,7 @@ Lead with the answer, not the preamble. A result card front-loaded a paragraph o
 - **The formulary first-pass option, then a scannable comparison table, then true barriers.** Coverage preference is not a clinical recommendation. Keep covered higher-tier/non-preferred drugs in the table; reserve the barrier rail for PA, step therapy, and non-formulary outcomes.
 - **Demote policy detail and full sources to ONE collapsed appendix.** Do not render dosing or paste-ready prescription text without independent clinical sources and patient-context gates.
 - **Merge provenance onto one line.** Verification state + the source citation read as "✓ Verified · per <source>", not a stamp plus a separate "Coverage per…" line.
-- **Cut the count of headings/subtitles.** Each eyebrow/subtitle is a tax on the scan; if a section's purpose is obvious from context, drop its label.
+- **Cut the count of headings/subtitles.** Each subtitle is a tax on the scan; if a section's purpose is obvious from context, drop its label.
 
 ### 8.8 Responsive data tables
 
@@ -262,7 +262,7 @@ These apply to any project that surfaces data, claims, or content from external 
 - **"Not available", not blank.** Optional fields render as italic muted placeholders.
 - **"Adjacent", not "0.0 mi".** Render `n < threshold` as a meaningful word, not a misleading number.
 - **No emojis by default** — outline pills do the badge work. If the project's voice needs emoji (consumer/social), use sparingly and document in `design.md`.
-- **Lowercase prose, uppercase labels.** Eyebrows, KPI labels, table heads, outline-pill text are uppercase with `0.04–0.14em` tracking; everything else sentence case.
+- **Lowercase prose, uppercase labels.** KPI labels, table heads, outline-pill text are uppercase with `0.04–0.14em` tracking; everything else sentence case.
 - **AI-generated content is visibly distinguished** — a 3px accent left-border plus a model-credit meta line. The reader should never confuse primary data with generated narrative.
 - **Borrow design *values*, never imitate a brand.** Take the useful values from a reference publication (high-contrast type, disciplined grids, rule lines, source trails, calm authority) — not its masthead, logo, proprietary fonts, or furniture that implies you *are* them. The first screen is the tool, not a marketing page.
 
@@ -384,7 +384,9 @@ Decisions made by *omission*:
 
 ## 15. FirstPassRx Project Overrides & Visual Uniformity
 
-To maintain editorial gravitas and a unique point of view for FirstPassRx:
+**Hard requirement: no eyebrows.** In FirstPassRx screens and mockups, never put a decorative label, kicker, or status badge above a heading. Start with the heading. Put necessary plan context or status in the heading or immediately below it. Keep visible labels for form controls.
+
+Medication lookup must support typing and selection from the same field. Opening the list must work without typing; typing filters exact product choices. Never infer coverage from unmatched free text.
 - **Typography pairing:** Uses *Plus Jakarta Sans* for modern, premium sans-serif UI elements (tabs, inputs) and a traditional *Serif* stack (Charter, Georgia) for all main content titles, step headers, and recommendations.
 - **Section Headers:** Section headers (1, 2, and 3) must be styled identically as uppercase text (`text-transform: uppercase`) in the serif font (`clamp(20px, 5vw, 24px)`) to establish consistent structure.
 - **Workflow Sectioning:** Sections 1, 2, and 3 are separated by a `<hr className="section-divider" />` to keep spacing and dividers perfectly consistent (24px margins) and avoid browser-specific `<fieldset>` padding bugs.

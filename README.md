@@ -6,13 +6,9 @@ agent, covered alternatives, true coverage barriers, and a numbered **source cit
 result. It does not recommend treatment or generate prescription directions: patient-specific
 clinical selection and dosing remain outside the formulary tool.
 
-A top-level toggle switches between **guides** — each a region × therapeutic area with its own plans,
-classes, and sourced data:
+**By plan** is the default: pick a state, prescribing topic, plan, and class to see the preferred product and alternatives. **By medication** lets you type a brand or generic name or browse the list, then choose a state and plan. **Compare plans** on a listed product shows two plans side by side. It matches the exact source label in the same class; different wording or a missing record means coverage is unknown.
 
-- **MA · Inhalers** — Massachusetts inhaler formularies (MassHealth, BCBS MA, Tufts, Harvard Pilgrim, MGB).
-- **MD · Menopause HT** — Maryland menopause hormone therapy across 8 plans (Maryland Medicaid,
-  CareFirst, Kaiser Mid-Atlantic, Johns Hopkins Priority Partners, UnitedHealthcare, Cigna, Aetna,
-  and a representative Medicare Part D plan).
+PA worksheets keep their answers in this tab while you switch views. Clear the worksheet or reload the page to discard those answers. Copied letters and PDFs identify missing documentation. The app does not submit requests.
 
 Static single-page app — React + Vite, no backend, deploys to GitHub Pages. Design identity is
 "Monograph" (a dated drug-compendium page); see [docs/design.md](docs/design.md).

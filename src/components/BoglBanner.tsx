@@ -16,7 +16,7 @@ export function BoglBanner({ brand, payerName, genericBase, unitNoun }: Props) {
         &#9888;
       </span>
       <div>
-        <p className="bogl__eyebrow">Ask for the brand name</p>
+        <h4>Ask for the brand name</h4>
         <p className="bogl__body">
           For {payerName}, ask for <b>{brand}</b>. The generic {genericBase} {unitNoun} may need
           extra insurance approval first.

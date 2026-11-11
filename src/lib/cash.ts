@@ -396,7 +396,7 @@ import costPlusSnapshot from '../data/costplus-prices.json' with { type: 'json' 
  *   fluoxetine 90 mg weekly, diclofenac, PPIs and DR antibiotics showed Atelvia's price; those names
  *   are now honestly unpriced (Codex review, PR #32).
  */
-export const KNOWN_UNPRICED_GAP = 5087
+export const KNOWN_UNPRICED_GAP = 5178
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake

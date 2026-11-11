@@ -447,6 +447,12 @@ describe('guides + global meta', () => {
       'nc-antibiotics',
       'nc-bph',
       'nc-loop-diuretics',
+      'tn-acid-reflux',
+      'tn-thyroid',
+      'tn-oral-steroids',
+      'tn-antibiotics',
+      'tn-bph',
+      'tn-loop-diuretics',
     ])
   })
 
