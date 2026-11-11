@@ -11,6 +11,15 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## High
 
+- **Validate the new medication lookup and PA worksheet with prescribing staff.** The app now supports plan-first lookup, exact-label medication search, two-plan comparison, in-memory worksheets and incomplete exports. Measure time to find a correctly sourced product and prepare a reviewed draft, including when a plan has no exact listing. [Tasks and acceptance gates](docs/pa-design/README.md).
+
+- **Pilot ophthalmic cyclosporine in Washington; deepen existing PA-heavy drugs.** WA carriers reported
+  1,973 ophthalmic cyclosporine requests (plan year 2024); no ophthalmic guide exists. Then add
+  product- and indication-specific criteria to the existing WA semaglutide/tirzepatide and
+  lisdexamfetamine entries. Extend the existing dupilumab asthma item only with a respiratory policy.
+  One payer product per pilot. [Ranked evidence and completion criteria](docs/pa-design/medications.md).
+  Proposed 2026-11-11; not yet in the scheduled burndown.
+
 - **Six common-drug topics in every state** (high; Impact high, Effort high, Cost agent tokens).
   Medicare Part D 2024 (CMS Prescribers by Geography and Drug) puts 10 of the 20 most-used drugs
   in classes we didn't cover: PPIs, levothyroxine, oral steroids, antibiotics, tamsulosin, furosemide.
@@ -450,6 +459,11 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   or specific molecules in the search index so patients without medical background find what they need.
 
 ## Medium
+
+- **High-volume lookup pilots: latanoprost for glaucoma, then allopurinol for gout maintenance.**
+  About 10.3M and 14.9M US prescriptions, respectively (2024 estimates); PA burden unknown.
+  Check glaucoma while the ocular sources are open. [Scope and demand sources](docs/pa-design/medications.md).
+  Proposed 2026-11-11.
 
 - **Design ideas from the 2026-10-21 competitor scan** (Epocrates/MMIT coverage search,
   Surescripts real-time benefit, CoverMyMeds, GoodRx provider mode, Latent Health):
