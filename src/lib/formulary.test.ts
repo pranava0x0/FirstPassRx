@@ -459,6 +459,12 @@ describe('guides + global meta', () => {
       'mi-antibiotics',
       'mi-bph',
       'mi-loop-diuretics',
+      'fl-acid-reflux',
+      'fl-thyroid',
+      'fl-oral-steroids',
+      'fl-antibiotics',
+      'fl-bph',
+      'fl-loop-diuretics',
     ])
   })
 

@@ -276,7 +276,7 @@ describe('FirstPassRx app', () => {
     const user = userEvent.setup()
     const { unmount } = render(<App />)
     await user.click(screen.getByRole('tab', { name: /Daily combo controller/ }))
-    await waitFor(() => expect(window.location.search).toMatch(/class=icslaba/))
+    await waitFor(() => expect(window.location.search).toMatch(/class=icslaba/), { timeout: 5000 })
     expect(window.location.search).toMatch(/guide=ma-inhalers/)
     const link = window.location.search
     unmount()

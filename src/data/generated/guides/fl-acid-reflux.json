@@ -1,0 +1,953 @@
+{
+  "id": "fl-acid-reflux",
+  "label": "FL · Acid reflux & ulcers",
+  "stateCode": "FL",
+  "region": "Florida",
+  "topicId": "acid-reflux",
+  "topic": "Acid reflux & ulcers",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-13",
+  "capturedAt": "2026-11-13",
+  "payers": [
+    {
+      "id": "fl-medicaid",
+      "name": "Florida Medicaid",
+      "shortName": "FL Medicaid",
+      "aka": "Florida Medicaid Preferred Drug List (AHCA); Statewide Medicaid Managed Care plans follow the same PDL",
+      "productName": "Florida Medicaid Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Florida Medicaid Preferred Drug List, effective October 1, 2026",
+      "formularyUrl": "https://ahca.myflorida.com/file/medicaid/PDL_Effective_10.01.2026.pdf",
+      "sourceIds": [
+        "fl-medicaid-pdl-2026-10"
+      ]
+    },
+    {
+      "id": "florida-blue",
+      "name": "Florida Blue",
+      "shortName": "Florida Blue",
+      "aka": "Blue Cross and Blue Shield of Florida",
+      "pbm": "Prime Therapeutics",
+      "productName": "Florida Blue 2026 6-Tier ValueScript formulary (individual / ACA)",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "ValueScript Rx Medication Guide, November 2026 (Florida Blue, 6-tier)",
+      "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_FL_6T_ValueScript.pdf",
+      "sourceIds": [
+        "florida-blue-valuescript-2026-10"
+      ]
+    },
+    {
+      "id": "uhc-fl",
+      "name": "UnitedHealthcare (Commercial)",
+      "shortName": "UnitedHealthcare",
+      "aka": "National commercial PDL (same list in every state)",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "paPolicyUrl": "https://www.uhcprovider.com/en/resource-library/drug-lists-pharmacy.html",
+      "productName": "UnitedHealthcare 2026 Commercial PDL (base list)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "UnitedHealthcare Commercial Prescription Drug List (PDL), Effective January 1, 2026",
+      "sourceIds": [
+        "uhc-commercial-pdl-2026"
+      ]
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v18, updated 11/02/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "ppi",
+      "name": "Proton pump inhibitors",
+      "shortName": "PPI",
+      "plainName": "Acid blocker (PPI)",
+      "description": "Proton pump inhibitors: omeprazole (Prilosec), pantoprazole (Protonix), esomeprazole (Nexium), lansoprazole (Prevacid, SoluTab), rabeprazole (Aciphex), dexlansoprazole (Dexilant), omeprazole/sodium bicarbonate (Zegerid, Konvomep). Capsules, tablets, packets and suspensions. Not H2 blockers or vonoprazan.",
+      "plainDescription": "A once-a-day pill that shuts down most stomach acid. Used for reflux, ulcers and to protect the stomach.",
+      "indication": "GERD, erosive esophagitis, ulcers, H. pylori",
+      "sourceIds": [
+        "fl-medicaid-pdl-2026-10"
+      ]
+    },
+    {
+      "id": "pcab",
+      "name": "Potassium-competitive acid blocker",
+      "shortName": "P-CAB",
+      "plainName": "Newer acid blocker (vonoprazan)",
+      "description": "Vonoprazan (Voquezna tablets; Voquezna Triple Pak and Dual Pak for H. pylori). Brand only, no generic. Usually a step after PPIs. If the plan lists no vonoprazan, that is the finding: pick Voquezna as the reference product and record the barrier.",
+      "plainDescription": "A newer brand-name acid blocker, used when the usual acid pills haven't worked.",
+      "indication": "Erosive esophagitis, heartburn from GERD, H. pylori",
+      "sourceIds": [
+        "fl-medicaid-pdl-2026-10"
+      ]
+    },
+    {
+      "id": "h2ra",
+      "name": "H2 blockers",
+      "shortName": "H2RA",
+      "plainName": "Milder acid reducer (H2 blocker)",
+      "description": "Histamine-2 receptor antagonists: famotidine (Pepcid; tablets, suspension), cimetidine, nizatidine. Prescription strengths. Not PPIs.",
+      "plainDescription": "A milder acid pill, often taken at bedtime or as needed.",
+      "indication": "Reflux, ulcers",
+      "sourceIds": [
+        "fl-medicaid-pdl-2026-10"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "ppi",
+      "preferredAgent": {
+        "inn": "Omeprazole (delayed-release capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg capsule",
+        "sig": "20 mg by mouth once daily before a meal: 4 weeks for GERD symptoms, 4 to 8 weeks for erosive esophagitis or ulcer healing (label).",
+        "sigShort": "20 mg QD AC",
+        "plainSig": "One capsule a day before a meal, usually for 4 to 8 weeks."
+      },
+      "preferredRestriction": "Age 1 year and older (PDL p. 22)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "PDL listed, no PA (p. 22)",
+      "alternatives": [
+        {
+          "drug": "Pantoprazole sodium (delayed-release tablet, 20 mg and 40 mg)",
+          "note": "Preferred, no PA, age 5+ (PDL p. 22)",
+          "sourceIds": [
+            "fl-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Esomeprazole magnesium (delayed-release capsule, 20 mg and 40 mg)",
+          "note": "Preferred, no PA, age 0+ (PDL p. 22)",
+          "sourceIds": [
+            "fl-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Lansoprazole (delayed-release capsule, 15 mg and 30 mg)",
+          "note": "Preferred, no PA, age 1+ (PDL p. 22)",
+          "sourceIds": [
+            "fl-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Omeprazole (delayed-release capsule, 10 mg and 40 mg)",
+          "note": "Preferred, no PA, age 1+ (PDL p. 22)",
+          "sourceIds": [
+            "fl-medicaid-pdl-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Omeprazole (delayed-release tablet, 20 mg)",
+          "outcome": "pa",
+          "reason": "Auto PA: pays only with a cystic fibrosis diagnosis on file (PDL p. 22)",
+          "sourceIds": [
+            "fl-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Omeprazole magnesium (delayed-release capsule, 20 mg)",
+          "outcome": "pa",
+          "reason": "Auto PA: pays only with a cystic fibrosis diagnosis on file (PDL p. 22)",
+          "sourceIds": [
+            "fl-medicaid-pdl-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL p. 22 (HIC3 D4J), read by x-position. PA column prints 'No' or Auto PA types, not 'Yes'. Vonoprazan (Voquezna), Dexilant, Konvomep, Zegerid, Prilosec, Prevacid and Aciphex are not on the PDL. The PDL front matter does not say the list is complete, so no nonformulary status is recorded for them. [Sonnet check 2026-11-13: Confirmed p. 22: omeprazole DR 20 mg capsule (age 1+, No PA) is the no-PA pick; omeprazole DR 20 mg tablet and omeprazole magnesium 20 mg products are Cystic Fib Diag Auto PA.]",
+      "sourceIds": [
+        "fl-medicaid-pdl-2026-10"
+      ],
+      "coverageSourceIds": [
+        "fl-medicaid-pdl-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "fl-medicaid-pdl-2026-10"
+      ],
+      "lastReviewed": "2026-11-13",
+      "payerId": "fl-medicaid"
+    },
+    {
+      "classId": "pcab",
+      "preferredAgent": {
+        "inn": "Vonoprazan (tablet)",
+        "brand": "Voquezna",
+        "genericAvailable": false,
+        "strength": "20 mg tablet",
+        "sig": "20 mg by mouth once daily for 8 weeks to heal erosive esophagitis, then 10 mg once daily to maintain; 10 mg once daily for 4 weeks for heartburn from non-erosive GERD (label).",
+        "sigShort": "20 mg QD x8 wk",
+        "plainSig": "One pill a day for 8 weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not listed on PDL",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "class not on the PDL. Vonoprazan (Voquezna tablets, Triple Pak, Dual Pak) does not appear in PDL pp. 22-78 searched by brand and generic name. The PDL front matter does not say it is complete, so no PA or nonformulary status is recorded. Coverage is unconfirmed, not a finding of exclusion.",
+      "sourceIds": [
+        "fl-medicaid-pdl-2026-10"
+      ],
+      "coverageSourceIds": [
+        "fl-medicaid-pdl-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "fl-medicaid-pdl-2026-10"
+      ],
+      "lastReviewed": "2026-11-13",
+      "payerId": "fl-medicaid"
+    },
+    {
+      "classId": "h2ra",
+      "preferredAgent": {
+        "inn": "Famotidine (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "GERD: 20 mg by mouth twice daily for up to 6 weeks. Duodenal ulcer: 40 mg once daily at bedtime or 20 mg twice daily for up to 8 weeks. Gastric ulcer: 40 mg once daily at bedtime (label).",
+        "sigShort": "20 mg BID (GERD)",
+        "plainSig": "One pill twice a day for reflux, or as your prescriber directs for an ulcer."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "PDL listed, no PA (p. 78)",
+      "alternatives": [
+        {
+          "drug": "Famotidine (tablet, 40 mg)",
+          "note": "Preferred, no PA, age 0+ (PDL p. 78)",
+          "sourceIds": [
+            "fl-medicaid-pdl-2026-10"
+          ]
+        },
+        {
+          "drug": "Famotidine (oral suspension, 40 mg/5 mL)",
+          "note": "Preferred, no PA, age 0-11 only (PDL p. 78)",
+          "sourceIds": [
+            "fl-medicaid-pdl-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL p. 78 (HIC3 Z2D). Cimetidine and nizatidine are not on the PDL; the list does not state it is complete, so no status is recorded for them.",
+      "sourceIds": [
+        "fl-medicaid-pdl-2026-10"
+      ],
+      "coverageSourceIds": [
+        "fl-medicaid-pdl-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "fl-medicaid-pdl-2026-10"
+      ],
+      "lastReviewed": "2026-11-13",
+      "payerId": "fl-medicaid"
+    },
+    {
+      "classId": "ppi",
+      "preferredAgent": {
+        "inn": "Omeprazole (delayed-release capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg delayed-release capsule",
+        "sig": "20 mg by mouth once daily before a meal: 4 weeks for GERD symptoms, 4 to 8 weeks for erosive esophagitis or ulcer healing (label).",
+        "sigShort": "20 mg QD AC",
+        "plainSig": "One capsule a day before a meal, usually for 4 to 8 weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 3 (Low-Cost Generic)",
+      "alternatives": [
+        {
+          "drug": "Esomeprazole magnesium (delayed-release capsule) 40 mg (Nexium)",
+          "note": "Tier 3; QL 60 capsules/30 days; no PA printed (PDF p.62)",
+          "sourceIds": [
+            "florida-blue-valuescript-2026-10"
+          ]
+        },
+        {
+          "drug": "Lansoprazole (delayed-release capsule) 30 mg (Prevacid)",
+          "note": "Tier 3; QL 60 capsules/30 days; no PA printed (PDF p.62)",
+          "sourceIds": [
+            "florida-blue-valuescript-2026-10"
+          ]
+        },
+        {
+          "drug": "Pantoprazole sodium (delayed-release tablet) 20 mg and 40 mg (Protonix)",
+          "note": "Tier 3; QL 60 tablets/30 days; no PA printed (PDF p.62)",
+          "sourceIds": [
+            "florida-blue-valuescript-2026-10"
+          ]
+        },
+        {
+          "drug": "Rabeprazole sodium (delayed-release tablet) 20 mg (Aciphex)",
+          "note": "Tier 3; QL 60 tablets/30 days; no PA printed (PDF p.62)",
+          "sourceIds": [
+            "florida-blue-valuescript-2026-10"
+          ]
+        },
+        {
+          "drug": "Omeprazole (delayed-release capsule) 10 mg and 40 mg",
+          "note": "Tier 3; QL 60 capsules/30 days; the 20 mg strength has no QL (PDF p.62)",
+          "sourceIds": [
+            "florida-blue-valuescript-2026-10"
+          ]
+        },
+        {
+          "drug": "Esomeprazole magnesium for delayed-release suspension packets (Nexium)",
+          "note": "Tier 5; QL 60 packets/30 days; no PA printed (PDF p.62)",
+          "sourceIds": [
+            "florida-blue-valuescript-2026-10"
+          ]
+        },
+        {
+          "drug": "Pantoprazole sodium for delayed-release suspension packet 40 mg (Protonix)",
+          "note": "Tier 5; QL 60 packets/30 days; no PA printed (PDF p.62)",
+          "sourceIds": [
+            "florida-blue-valuescript-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Dexilant (dexlansoprazole)",
+          "outcome": "nonformulary",
+          "reason": "Brand-only product not on the list; the guide says brands not listed are not covered (PDF p.2, p.3); exception request via PDF p.12; no dexlansoprazole row on PDF p.62",
+          "sourceIds": [
+            "florida-blue-valuescript-2026-10"
+          ]
+        },
+        {
+          "drug": "Konvomep (omeprazole/sodium bicarbonate oral suspension kit)",
+          "outcome": "nonformulary",
+          "reason": "Brand-only product not on the list; the guide says brands not listed are not covered (PDF p.2, p.3); exception request via PDF p.12; no omeprazole/sodium bicarbonate row on PDF p.62",
+          "sourceIds": [
+            "florida-blue-valuescript-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PPI rows on PDF p.62 (printed p.46), section ULCER DRUGS. Pick omeprazole DR 20 mg capsule, Tier 3, no PA, no QL on that strength. Dexilant and Konvomep are not listed; recorded nonformulary under the closed-formulary statement (PDF p.2, p.5). Judgment: the guide also says 'All generic medications are covered unless specifically excluded' (PDF p.3); read with the closed-formulary wording, which is the specific rule for unlisted drugs. Zegerid and Prilosec brands are not listed either; generic omeprazole is covered, so not recorded as separate barriers. [Sonnet check 2026-11-13: Brand-only nonformulary rules rest on the guide's own wording: \"Brand name medications not listed in the medication list are not covered\" (PDF p.2) and \"Brand Name medications are covered only if they are included in the Closed Formulary list\" (PDF p.3); exception route: Coverage Exception Process, PDF p.12 (printed XI). The p.5 line \"any medications not on the formulary ... are not covered\" is overridden for generics by \"All generic medications are covered unless specifically excluded by your plan\" (PDF p.3), so no generic is recorded as nonformulary from absence. Cover and p.2-3 headers say November 2026; reference relabeled, id unchanged.]",
+      "sourceIds": [
+        "florida-blue-valuescript-2026-10"
+      ],
+      "coverageSourceIds": [
+        "florida-blue-valuescript-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "florida-blue-valuescript-2026-10"
+      ],
+      "lastReviewed": "2026-11-13",
+      "payerId": "florida-blue"
+    },
+    {
+      "classId": "pcab",
+      "preferredAgent": {
+        "inn": "Vonoprazan (tablet)",
+        "brand": "Voquezna",
+        "genericAvailable": false,
+        "strength": "20 mg tablet",
+        "sig": "20 mg by mouth once daily for 8 weeks to heal erosive esophagitis, then 10 mg once daily to maintain; 10 mg once daily for 4 weeks for heartburn from non-erosive GERD (label).",
+        "sigShort": "20 mg QD x8 wk",
+        "plainSig": "One pill a day for 8 weeks."
+      },
+      "preferredRestriction": "Brand-only; not on the list, so not covered (PDF p.2, p.3). Exception route: PDF p.12.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not listed (closed formulary)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Voquezna Triple Pak and Voquezna Dual Pak (vonoprazan H. pylori kits)",
+          "outcome": "nonformulary",
+          "reason": "Brand-only product not on the list; the guide says brands not listed are not covered (PDF p.2, p.3); exception request via PDF p.12",
+          "sourceIds": [
+            "florida-blue-valuescript-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "No vonoprazan row anywhere in the PDF (searched Voquezna and vonoprazan, all 159 pages). Per the class description, Voquezna is the reference product and the barrier is the finding: the plan does not list it, so it is not covered. Coverage exception process (PDF p.12) is the only route noted. Verified by absence under the closed-formulary statement. [Sonnet check 2026-11-13: Brand-only nonformulary rules rest on the guide's own wording: \"Brand name medications not listed in the medication list are not covered\" (PDF p.2) and \"Brand Name medications are covered only if they are included in the Closed Formulary list\" (PDF p.3); exception route: Coverage Exception Process, PDF p.12 (printed XI). The p.5 line \"any medications not on the formulary ... are not covered\" is overridden for generics by \"All generic medications are covered unless specifically excluded by your plan\" (PDF p.3), so no generic is recorded as nonformulary from absence.]",
+      "sourceIds": [
+        "florida-blue-valuescript-2026-10"
+      ],
+      "coverageSourceIds": [
+        "florida-blue-valuescript-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "florida-blue-valuescript-2026-10"
+      ],
+      "lastReviewed": "2026-11-13",
+      "payerId": "florida-blue"
+    },
+    {
+      "classId": "h2ra",
+      "preferredAgent": {
+        "inn": "Famotidine (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "GERD: 20 mg by mouth twice daily for up to 6 weeks. Duodenal ulcer: 40 mg once daily at bedtime or 20 mg twice daily for up to 8 weeks. Gastric ulcer: 40 mg once daily at bedtime (label).",
+        "sigShort": "20 mg BID (GERD)",
+        "plainSig": "One pill twice a day for reflux, or as your prescriber directs for an ulcer."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not printed (generic covered under the all-generics statement, PDF p.3)",
+      "alternatives": [
+        {
+          "drug": "Cimetidine hydrochloride (oral solution) 300 mg/5 mL",
+          "note": "Tier 3; no PA printed (PDF p.62)",
+          "sourceIds": [
+            "florida-blue-valuescript-2026-10"
+          ]
+        },
+        {
+          "drug": "Famotidine (for oral suspension) 40 mg/5 mL",
+          "note": "Tier 5; no PA or QL printed (PDF p.62)",
+          "sourceIds": [
+            "florida-blue-valuescript-2026-10"
+          ]
+        },
+        {
+          "drug": "Nizatidine (capsule) 150 mg",
+          "note": "Tier 5; no PA printed (PDF p.62)",
+          "sourceIds": [
+            "florida-blue-valuescript-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Nizatidine (capsule) 300 mg",
+          "outcome": "pa",
+          "reason": "PA required; Tier 6 (PDF p.62)",
+          "sourceIds": [
+            "florida-blue-valuescript-2026-10"
+          ]
+        },
+        {
+          "drug": "Pepcid (famotidine brand)",
+          "outcome": "nonformulary",
+          "reason": "Brand-only product not on the list; the guide says brands not listed are not covered (PDF p.2, p.3); exception request via PDF p.12",
+          "sourceIds": [
+            "florida-blue-valuescript-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "H2 rows on PDF p.62 (printed p.46): cimetidine solution 300 mg/5 mL (Tier 3), famotidine for suspension 40 mg/5 mL (Tier 5), nizatidine capsules 150 mg (Tier 5) and 300 mg (Tier 6, PA). No famotidine tablet row anywhere (searched all 159 pages and index). Nizatidine 300 mg is PA. [Sonnet check 2026-11-13: Changed pick from cimetidine solution to famotidine 20 mg tablet. No tablet row is printed, but the guide says \"All generic medications are covered unless specifically excluded by your plan\" (PDF p.3), and no exclusion is shown, so generic famotidine tablets are likely covered. Tier and QL are NOT confirmed (the guide prints none), hence partial; confirm on the member lookup. Not recorded as nonformulary because absence does not exclude a generic. Pepcid brand not listed, so not covered (PDF p.2).]",
+      "sourceIds": [
+        "florida-blue-valuescript-2026-10"
+      ],
+      "coverageSourceIds": [
+        "florida-blue-valuescript-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "florida-blue-valuescript-2026-10"
+      ],
+      "lastReviewed": "2026-11-13",
+      "payerId": "florida-blue"
+    },
+    {
+      "classId": "ppi",
+      "preferredAgent": {
+        "inn": "Omeprazole (delayed-release capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg capsule",
+        "sig": "20 mg by mouth once daily before a meal: 4 weeks for GERD symptoms, 4 to 8 weeks for erosive esophagitis or ulcer healing (label).",
+        "sigShort": "20 mg QD AC",
+        "plainSig": "One capsule a day before a meal, usually for 4 to 8 weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Pantoprazole sodium (delayed-release tablet)",
+          "note": "Tier 1, no PA or QL (PDL p. 34)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "Rabeprazole sodium (tablet)",
+          "note": "Tier 2, QL (PDL p. 34)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Dexilant (dexlansoprazole) delayed-release capsule",
+          "outcome": "nonformulary",
+          "reason": "Coded E with no PA or ST flag on its row. PDL symbol key (p. 5): \"May be excluded from coverage or subject to Prior Authorization in Connecticut, New Jersey and New York\". No PA is printed for this row, so it is recorded as excluded from coverage, matching earlier UHC records; QL also listed (PDL p. 34).",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "Dexlansoprazole (generic capsule)",
+          "outcome": "nonformulary",
+          "reason": "Coded E with no PA or ST flag on its row. PDL symbol key (p. 5): \"May be excluded from coverage or subject to Prior Authorization in Connecticut, New Jersey and New York\". No PA is printed for this row, so it is recorded as excluded from coverage, matching earlier UHC records; QL also listed (PDL p. 34).",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "ACIPHEX (rabeprazole)",
+          "outcome": "nonformulary",
+          "reason": "Coded E with no PA or ST flag on its row. PDL symbol key (p. 5): \"May be excluded from coverage or subject to Prior Authorization in Connecticut, New Jersey and New York\". No PA is printed for this row, so it is recorded as excluded from coverage, matching earlier UHC records; QL also listed (PDL p. 34).",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "NEXIUM (esomeprazole magnesium) delayed-release capsule",
+          "outcome": "nonformulary",
+          "reason": "Coded E with no PA or ST flag on its row. PDL symbol key (p. 5): \"May be excluded from coverage or subject to Prior Authorization in Connecticut, New Jersey and New York\". No PA is printed for this row, so it is recorded as excluded from coverage, matching earlier UHC records; QL also listed (PDL p. 34).",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "PREVACID (lansoprazole) delayed-release capsule",
+          "outcome": "nonformulary",
+          "reason": "Coded E with no PA or ST flag on its row. PDL symbol key (p. 5): \"May be excluded from coverage or subject to Prior Authorization in Connecticut, New Jersey and New York\". No PA is printed for this row, so it is recorded as excluded from coverage, matching earlier UHC records; QL also listed (PDL p. 34).",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "Lansoprazole delayed-release capsule",
+          "outcome": "nonformulary",
+          "reason": "Coded E with no PA or ST flag on its row. PDL symbol key (p. 5): \"May be excluded from coverage or subject to Prior Authorization in Connecticut, New Jersey and New York\". No PA is printed for this row, so it is recorded as excluded from coverage, matching earlier UHC records; QL also listed (PDL p. 34).",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "PROTONIX (pantoprazole) delayed-release tablet",
+          "outcome": "nonformulary",
+          "reason": "Coded E with no PA or ST flag on its row. PDL symbol key (p. 5): \"May be excluded from coverage or subject to Prior Authorization in Connecticut, New Jersey and New York\". No PA is printed for this row, so it is recorded as excluded from coverage, matching earlier UHC records (PDL p. 34).",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "Esomeprazole magnesium oral packet",
+          "outcome": "step",
+          "reason": "Step therapy and PA listed; QL also listed (Tier 3) (PDL p. 34)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "Lansoprazole delayed-release orally disintegrating tablet",
+          "outcome": "step",
+          "reason": "Step therapy and PA listed; QL also listed (Tier 3) (PDL p. 34)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "NEXIUM oral packet",
+          "outcome": "step",
+          "reason": "Step therapy and PA listed; QL also listed (Tier 4) (PDL p. 34)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "PREVACID SOLUTAB",
+          "outcome": "step",
+          "reason": "Step therapy and PA listed; E-coded; QL also listed (PDL p. 34)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        }
+      ],
+      "stepTherapy": "Step therapy is listed on the PPI packet, dispersible and SoluTab rows (PDL p. 34). The document does not name the step drug.",
+      "verification": "verified",
+      "verificationNote": "Read from the PDL tier column on p. 34 (Gastrointestinal Agents, Drugs for Acid Reflux and Ulcer). Omeprazole DR capsule is Tier 1 with no PA. The PDL prints no strength; 20 mg is the label starting dose for GERD. Symbol key on p. 5: E = may be excluded from coverage or subject to PA in CT, NJ and NY; E rows are recorded as nonformulary. The document is a list of commonly prescribed drugs, not a complete listing, so unlisted brands were not recorded. [Sonnet check 2026-11-06: E-coded rows re-worded to quote the PDL symbol key (p. 5) and treated as excluded when no PA/ST flag is printed.] [Reused: same national UHC PDL]",
+      "sourceIds": [
+        "uhc-commercial-pdl-2026"
+      ],
+      "coverageSourceIds": [
+        "uhc-commercial-pdl-2026"
+      ],
+      "restrictionSourceIds": [
+        "uhc-commercial-pdl-2026"
+      ],
+      "lastReviewed": "2026-11-06",
+      "payerId": "uhc-fl"
+    },
+    {
+      "classId": "pcab",
+      "preferredAgent": {
+        "inn": "Vonoprazan (tablet)",
+        "brand": "Voquezna",
+        "genericAvailable": false,
+        "strength": "20 mg tablet",
+        "sig": "20 mg by mouth once daily for 8 weeks to heal erosive esophagitis, then 10 mg once daily to maintain; 10 mg once daily for 4 weeks for heartburn from non-erosive GERD (label).",
+        "sigShort": "20 mg QD x8 wk",
+        "plainSig": "One pill a day for 8 weeks."
+      },
+      "preferredRestriction": "Prior authorization and quantity limit (PDL p. 34)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 4 (may be covered on Tier 4 in select benefits; symbol key p. 5)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "VOQUEZNA DUAL PAK (vonoprazan H. pylori kit)",
+          "outcome": "step",
+          "reason": "Step therapy and PA listed; QL also listed (PDL p. 34)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "VOQUEZNA TRIPLE PAK (vonoprazan H. pylori kit)",
+          "outcome": "step",
+          "reason": "Step therapy and PA listed; QL also listed (PDL p. 34)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        }
+      ],
+      "stepTherapy": "Step therapy is listed on the Voquezna Dual and Triple Paks (PDL p. 34). The document does not name the step drug.",
+      "verification": "verified",
+      "verificationNote": "Voquezna tablet is listed on p. 34 as Tier 4 with PA and QL. The PDL lists the brand only; no generic vonoprazan appears. The 20 mg strength and erosive esophagitis sig come from the label. The Paks are H. pylori kits and are recorded as step-therapy rows. Tier 4 coverage depends on the member's benefit (symbol key p. 5). [Reused: same national UHC PDL]",
+      "sourceIds": [
+        "uhc-commercial-pdl-2026"
+      ],
+      "coverageSourceIds": [
+        "uhc-commercial-pdl-2026"
+      ],
+      "restrictionSourceIds": [
+        "uhc-commercial-pdl-2026"
+      ],
+      "lastReviewed": "2026-11-06",
+      "payerId": "uhc-fl"
+    },
+    {
+      "classId": "h2ra",
+      "preferredAgent": {
+        "inn": "Famotidine (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "GERD: 20 mg by mouth twice daily for up to 6 weeks. Duodenal ulcer: 40 mg once daily at bedtime or 20 mg twice daily for up to 8 weeks. Gastric ulcer: 40 mg once daily at bedtime (label).",
+        "sigShort": "20 mg BID (GERD)",
+        "plainSig": "One pill twice a day for reflux, or as your prescriber directs for an ulcer."
+      },
+      "preferredRestriction": "The 20 mg and 40 mg famotidine tablets are coded E with no PA flag. PDL symbol key (p. 5): \"May be excluded from coverage or subject to Prior Authorization in Connecticut, New Jersey and New York\". Covered Tier 1 options on this list: famotidine oral suspension and cimetidine tablets. Confirm coverage of the tablet before prescribing.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "E (may be excluded from coverage)",
+      "alternatives": [
+        {
+          "drug": "Famotidine oral suspension, reconstituted (40 mg/5 mL)",
+          "note": "Tier 1, no PA or QL; same molecule, liquid form (PDL p. 34)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "Cimetidine oral tablet",
+          "note": "Tier 1, no PA (PDL p. 34)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "PEPCID (famotidine) tablet",
+          "outcome": "nonformulary",
+          "reason": "Coded E with no PA or ST flag on its row. PDL symbol key (p. 5): \"May be excluded from coverage or subject to Prior Authorization in Connecticut, New Jersey and New York\". No PA is printed for this row, so it is recorded as excluded from coverage, matching earlier UHC records (PDL p. 34).",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from p. 34. The famotidine suspension is the Tier 1 covered famotidine product. The 20 mg and 40 mg famotidine tablets, the usual prescription form, are coded E on this list, so the pick is the covered suspension rather than the tablet. Suspension strength 40 mg/5 mL is the label strength; the PDL prints no strength. [Sonnet check 2026-11-06: Pick changed from the suspension to the 20 mg tablet, the form prescribers write for adults. Row \"famotidine oral tablet 20 mg, 40 mg\" is Tier cell E (p. 34); the suspension and cimetidine are Tier 1. The PDL gives no reason for the E code. Separately, p. 5 says benefit designs \"allow us to exclude a medication if determined to be Therapeutically Equivalent to another covered product or OTC option\", and famotidine 20 mg is sold OTC, but this is an inference and does not explain the 40 mg strength. A human should confirm tablet coverage.] [Reused: same national UHC PDL]",
+      "sourceIds": [
+        "uhc-commercial-pdl-2026"
+      ],
+      "coverageSourceIds": [
+        "uhc-commercial-pdl-2026"
+      ],
+      "restrictionSourceIds": [
+        "uhc-commercial-pdl-2026"
+      ],
+      "lastReviewed": "2026-11-06",
+      "preferredPaRequired": false,
+      "payerId": "uhc-fl"
+    },
+    {
+      "classId": "ppi",
+      "preferredAgent": {
+        "inn": "Omeprazole (delayed-release capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg delayed-release capsule",
+        "sig": "20 mg by mouth once daily before a meal: 4 weeks for GERD symptoms, 4 to 8 weeks for erosive esophagitis or ulcer healing (label).",
+        "sigShort": "20 mg QD AC",
+        "plainSig": "One capsule a day before a meal, usually for 4 to 8 weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Pantoprazole sodium (delayed-release tablet)",
+          "note": "Tier 1, QL 60 per 30 days, no PA (PDG p. 59)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Esomeprazole magnesium (delayed-release capsule)",
+          "note": "Tier 3, QL 60 per 30 days, no PA (PDG p. 58)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Lansoprazole (delayed-release capsule)",
+          "note": "Tier 3, QL 60 per 30 days, no PA (PDG p. 59)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Rabeprazole sodium (generic)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Dexilant (dexlansoprazole)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Omeprazole/sodium bicarbonate (Zegerid, Konvomep)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from the formulary text layer, row by row (each tier digit sits on the same row as its drug name; pypdf gave no x-coordinates for the digits). Formulary sig and quantity limits are as printed; the document prints no sig, so the sig is the label starting dose. Omeprazole 20 mg DR capsule is Tier 1 with no PA (PDG p. 59). Not listed in the document: rabeprazole, dexlansoprazole, omeprazole/sodium bicarbonate, Prevacid SoluTab, Nexium brand. Omeprazole 10 mg DR capsule (Tier 1, PDG p. 59) is a lower strength of the same product and is not the pick. [Sonnet check 2026-11-06: tiers and flags re-read in layout (row-aligned) extraction, not flattened text; nonformulary reasons reworded to the front-matter wording; removed \"omeprazole magnesium\" alternative (not a listed product; only esomeprazole magnesium is, p. 58).] [Reused: same national Humana Premier Rx PDP formulary]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "lastReviewed": "2026-11-06",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "pcab",
+      "preferredAgent": {
+        "inn": "Vonoprazan (tablet)",
+        "brand": "VOQUEZNA",
+        "genericAvailable": false,
+        "strength": "20 mg tablet",
+        "sig": "20 mg by mouth once daily for 8 weeks to heal erosive esophagitis, then 10 mg once daily to maintain; 10 mg once daily for 4 weeks for heartburn from non-erosive GERD (label).",
+        "sigShort": "20 mg QD x8 wk",
+        "plainSig": "One pill a day for 8 weeks."
+      },
+      "preferredRestriction": "Voquezna is not listed. The document does not say unlisted drugs are excluded; PDG p. 7 offers a formulary exception request, and p. 3 calls the document a \"list of covered drugs\". Coverage not confirmed.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not on plan list",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Voquezna (vonoprazan) tablet",
+          "outcome": "nonformulary",
+          "reason": "Not on the plan's list of covered drugs (p. 3); request a formulary exception (p. 7)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read from the formulary text layer, row by row (each tier digit sits on the same row as its drug name; pypdf gave no x-coordinates for the digits). Formulary sig and quantity limits are as printed; the document prints no sig, so the sig is the label starting dose. No vonoprazan product appears in the formulary (searched Voquezna and vonoprazan, upper and lower case, PDG pp. 10-95). Voquezna is kept as the reference product for this class and the barrier is recorded in preferredRestriction. Voquezna Triple Pak and Dual Pak (H. pylori kits) are not listed either. [Sonnet check 2026-11-06: tiers and flags re-read in layout (row-aligned) extraction, not flattened text; tier \"Not on plan list\" and restriction reworded to match prior Humana records; lowered to partial because the pick is unlisted.] [Review 2026-11-06: no P-CAB is listed, so noCoveredAgent is set; Voquezna stays as the class reference and the exception route is in paRequired] [Reused: same national Humana Premier Rx PDP formulary]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "lastReviewed": "2026-11-06",
+      "noCoveredAgent": true,
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "h2ra",
+      "preferredAgent": {
+        "inn": "Famotidine (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "GERD: 20 mg by mouth twice daily for up to 6 weeks. Duodenal ulcer: 40 mg once daily at bedtime or 20 mg twice daily for up to 8 weeks. Gastric ulcer: 40 mg once daily at bedtime (label).",
+        "sigShort": "20 mg BID (GERD)",
+        "plainSig": "One pill twice a day for reflux, or as your prescriber directs for an ulcer."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2",
+      "alternatives": [
+        {
+          "drug": "Famotidine 40 mg/5 mL suspension",
+          "note": "Tier 4, no PA (PDG p. 58)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Cimetidine (tablet)",
+          "note": "Tier 2, no PA (PDG p. 58)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Cimetidine oral solution 300 mg/5 mL",
+          "note": "Tier 3, no PA (PDG p. 58)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Nizatidine (capsule)",
+          "note": "Tier 2, no PA (PDG p. 59)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from the formulary text layer, row by row (each tier digit sits on the same row as its drug name; pypdf gave no x-coordinates for the digits). Formulary sig and quantity limits are as printed; the document prints no sig, so the sig is the label starting dose. Famotidine 20 mg tablet is Tier 2 with no PA (PDG p. 58). Pepcid brand is not listed (generic famotidine is). No H2 blocker is Tier 1 in this formulary. [Reused: same national Humana Premier Rx PDP formulary]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "lastReviewed": "2026-11-06",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "fl-medicaid-pdl-2026-10",
+      "label": "Florida Medicaid Preferred Drug List, effective October 1, 2026",
+      "publisher": "Florida Agency for Health Care Administration (AHCA)",
+      "type": "gov",
+      "url": "https://ahca.myflorida.com/file/medicaid/PDL_Effective_10.01.2026.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "florida-blue-valuescript-2026-10",
+      "label": "ValueScript Rx Medication Guide, November 2026 (Florida Blue, 6-tier)",
+      "publisher": "Florida Blue (Prime Therapeutics)",
+      "type": "payer",
+      "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_FL_6T_ValueScript.pdf",
+      "effectiveDate": "2026-11-01",
+      "accessed": "2026-11-13"
+    },
+    {
+      "id": "uhc-commercial-pdl-2026",
+      "label": "UnitedHealthcare Commercial Prescription Drug List (PDL), Effective January 1, 2026",
+      "publisher": "UnitedHealthcare",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-11-06"
+    },
+    {
+      "id": "humana-premier-rx-pdp-2026-11",
+      "label": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v18, updated 11/02/2026)",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-11-02",
+      "accessed": "2026-11-06"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}
