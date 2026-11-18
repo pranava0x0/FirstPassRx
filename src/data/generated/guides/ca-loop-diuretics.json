@@ -1,0 +1,312 @@
+{
+  "id": "ca-loop-diuretics",
+  "label": "CA · Loop diuretics",
+  "stateCode": "CA",
+  "region": "California",
+  "topicId": "loop-diuretics",
+  "topic": "Loop diuretics",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-11-18",
+  "capturedAt": "2026-11-18",
+  "payers": [
+    {
+      "id": "medi-cal-rx",
+      "name": "Medi-Cal Rx — California Medicaid Pharmacy Program (Fee-for-Service carve-out, statewide)",
+      "shortName": "Medi-Cal Rx",
+      "pbm": "Magellan Health (Magellan Medicaid Administration; DHCS vendor)",
+      "productName": "Medi-Cal Rx Contract Drugs List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Medi-Cal Rx Contract Drugs List (November 1, 2026)",
+      "formularyUrl": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "sourceIds": [
+        "medi-cal-rx-common6-2026-11"
+      ]
+    },
+    {
+      "id": "kaiser-permanente-ca",
+      "name": "Kaiser Permanente (Commercial HMO)",
+      "shortName": "Kaiser Permanente",
+      "pbm": "Internal (Kaiser Foundation Health Plan formulary; closed integrated pharmacy)",
+      "productName": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (effective 11/03/2026; updated 11/01/2026)",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "sourceIds": [
+        "kaiser-permanente-ca-common6-2026-11"
+      ]
+    },
+    {
+      "id": "anthem-bcbs-ca",
+      "name": "Anthem Blue Cross of California (Commercial)",
+      "shortName": "Anthem Blue Cross CA",
+      "pbm": "CarelonRx",
+      "productName": "2026 California Select Drug List - Four Tier",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 California Select Drug List, Four Tier (IND), Last Updated November 1, 2026",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "sourceIds": [
+        "anthem-bcbs-ca-common6-2026-11"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "loop-diuretic",
+      "name": "Loop diuretics",
+      "shortName": "Loop",
+      "plainName": "Water pill (loop diuretic)",
+      "description": "Loop diuretics: furosemide (Lasix; tablets, oral solution; Furoscix subcutaneous on-body infusor and Lasix ONYU subcutaneous, alternatives only, never the pick), torsemide (generic; Soaanz), bumetanide (Bumex), ethacrynic acid (Edecrin; for sulfa allergy). Not thiazides.",
+      "plainDescription": "A strong water pill that removes extra fluid, for heart failure, kidney and liver disease and swelling.",
+      "indication": "Edema, heart failure, CKD, cirrhosis",
+      "sourceIds": [
+        "medi-cal-rx-common6-2026-11"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "loop-diuretic",
+      "preferredAgent": {
+        "inn": "Furosemide (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+        "sigShort": "20-80 mg QAM, titrate",
+        "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "CDL listed; no restriction printed (p.141)",
+      "alternatives": [
+        {
+          "drug": "Furosemide tablets 40 mg, 80 mg; oral liquid 10 mg/mL and 40 mg/5 mL",
+          "note": "CDL listed; no restriction printed (p.141)",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Bumetanide tablets 0.5, 1, 2 mg",
+          "note": "CDL listed; no restriction printed (p.141)",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Torsemide tablets 5, 10, 20, 100 mg",
+          "note": "CDL listed; no restriction printed (p.142)",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Ethacrynic acid tablets 25 mg (Edecrin-type; sulfa-allergy option)",
+          "note": "CDL listed; no restriction printed (p.141)",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Furoscix (subcutaneous furosemide on-body infusor)",
+          "outcome": "pa",
+          "reason": "Not on CDL (subcutaneous furosemide not listed; furosemide is listed as injection 10 mg/mL, tablets and oral liquid, p.141); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Lasix ONYU (subcutaneous furosemide)",
+          "outcome": "pa",
+          "reason": "Not on CDL (subcutaneous furosemide not listed; furosemide is listed as injection 10 mg/mL, tablets and oral liquid, p.141); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read CDL p.141-142. Furosemide tablets 20/40/80 mg, bumetanide, ethacrynic acid and torsemide tablets carry no UM code. The LR at x=492 on p.141 belongs to finerenone, not furosemide. Soaanz (brand torsemide) is not named and its strengths are not checked against the listed torsemide strengths, so its status is not recorded. Edecrin and Lasix brand names are not printed. Furoscix and Lasix ONYU recorded as pa on the basis that the subcutaneous product is not among the listed furosemide forms. [Sonnet check 2026-11-18: Furosemide 20 mg tablets printed on p.141 with no UM code. Added Soaanz as an alternative under the generic torsemide entry (strengths 5/10/20/100 mg, p.142); a human should confirm whether 40/60 mg need a TAR. Upgraded to verified.] [Opus 2026-11-18: dropped Soaanz from alternatives; it is a separate 505(b)(2) torsemide product, not covered by the generic torsemide CDL entry without confirmation.]",
+      "sourceIds": [
+        "medi-cal-rx-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "medi-cal-rx-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "medi-cal-rx-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-18",
+      "payerId": "medi-cal-rx"
+    },
+    {
+      "classId": "loop-diuretic",
+      "preferredAgent": {
+        "inn": "Furosemide (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+        "sigShort": "20-80 mg QAM, titrate",
+        "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Furosemide tablets 40 and 80 mg; furosemide oral solution 10 mg/mL",
+          "note": "Tier 1, no flag (PDF p.69)",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Bumetanide tablets 0.5, 1 and 2 mg; bumetanide oral solution",
+          "note": "Tier 1, no flag (PDF p.69)",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Torsemide tablets 10, 20 and 100 mg",
+          "note": "Tier 1, no flag (5 mg shows no tier) (PDF p.70)",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Ethacrynic acid tablets 25 mg",
+          "note": "Tier 1, no flag (PDF p.69)",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Furosemide 20 mg tablets are Tier 1, no flag (PDF p.69). Bumetanide, ethacrynic acid and torsemide tablets are Tier 1 (pp.69-70). Furoscix, Lasix ONYU and Soaanz are absent and recorded nonformulary (PDF p.6); they are self-administered products, so they are not treated as medical-benefit exclusions. Sodium Edecrin injection (p.70) is not used. No PA or step therapy (PDF p.6-7). [Sonnet check 2026-11-18: removed 3 brand-only item(s) inferred nonformulary from absence; p.2 says the formulary 'is not an all-inclusive list' and the p.6 line is only the template definition of 'formulary', so absence is not a nonformulary finding; Kaiser prints no PA/ST (p.6-7)]",
+      "sourceIds": [
+        "kaiser-permanente-ca-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "kaiser-permanente-ca-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "kaiser-permanente-ca-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-18",
+      "payerId": "kaiser-permanente-ca"
+    },
+    {
+      "classId": "loop-diuretic",
+      "preferredAgent": {
+        "inn": "Furosemide (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet (list prints no strength)",
+        "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+        "sigShort": "20-80 mg QAM, titrate",
+        "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Furosemide (oral solution)",
+          "note": "Tier 1, no PA or ST (p.74)",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Torsemide (tablet)",
+          "note": "Tier 1, no PA or ST (p.74)",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Bumetanide (tablet)",
+          "note": "Tier 1, no PA or ST (p.73)",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Ethacrynic acid (tablet)",
+          "note": "Tier 2, no PA or ST (p.74)",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read pp.73-74 (Loop Diuretics). Furosemide tablet and solution, torsemide, bumetanide Tier 1 and ethacrynic acid Tier 2, all no PA or ST. Furoscix, Lasix ONYU and Soaanz not listed anywhere. The p.7 FAQ says provider-administered injectables are typically medical benefit, so the subcutaneous products may be covered elsewhere; the nonformulary outcome is for the pharmacy-benefit list only. [Sonnet check 2026-11-18: removed absence-inferred nonformulary items (Furoscix, Lasix ONYU, Soaanz): p.2 says drugs not on the list 'may not be covered' and p.7 says a listed drug 'may not be covered', so the list does not firmly state that absence means exclusion; absent brands left unrecorded, coverage unconfirmed]",
+      "sourceIds": [
+        "anthem-bcbs-ca-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "anthem-bcbs-ca-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "anthem-bcbs-ca-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-18",
+      "payerId": "anthem-bcbs-ca"
+    }
+  ],
+  "references": [
+    {
+      "id": "medi-cal-rx-common6-2026-11",
+      "label": "Medi-Cal Rx Contract Drugs List (November 1, 2026)",
+      "publisher": "California Department of Health Care Services (Medi-Cal Rx)",
+      "type": "payer",
+      "url": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "effectiveDate": "2026-11-01",
+      "accessed": "2026-11-18"
+    },
+    {
+      "id": "kaiser-permanente-ca-common6-2026-11",
+      "label": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (effective 11/03/2026; updated 11/01/2026)",
+      "publisher": "Kaiser Permanente",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "effectiveDate": "2026-11-03",
+      "accessed": "2026-11-18"
+    },
+    {
+      "id": "anthem-bcbs-ca-common6-2026-11",
+      "label": "2026 California Select Drug List, Four Tier (IND), Last Updated November 1, 2026",
+      "publisher": "Anthem Blue Cross",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "effectiveDate": "2026-11-01",
+      "accessed": "2026-11-18"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

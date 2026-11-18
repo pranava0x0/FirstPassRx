@@ -601915,6 +601915,3896 @@
           "definition": "Must fail a preferred drug first before the plan covers this one."
         }
       ]
+    },
+    {
+      "id": "ca-acid-reflux",
+      "label": "CA · Acid reflux & ulcers",
+      "stateCode": "CA",
+      "region": "California",
+      "topicId": "acid-reflux",
+      "topic": "Acid reflux & ulcers",
+      "classNoun": "Prescription type",
+      "unitNoun": "medication",
+      "tagline": "",
+      "dataStatus": "mixed",
+      "lastUpdated": "2026-11-18",
+      "capturedAt": "2026-11-18",
+      "payers": [
+        {
+          "id": "medi-cal-rx",
+          "name": "Medi-Cal Rx — California Medicaid Pharmacy Program (Fee-for-Service carve-out, statewide)",
+          "shortName": "Medi-Cal Rx",
+          "pbm": "Magellan Health (Magellan Medicaid Administration; DHCS vendor)",
+          "productName": "Medi-Cal Rx Contract Drugs List",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "Medi-Cal Rx Contract Drugs List (November 1, 2026)",
+          "formularyUrl": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "id": "kaiser-permanente-ca",
+          "name": "Kaiser Permanente (Commercial HMO)",
+          "shortName": "Kaiser Permanente",
+          "pbm": "Internal (Kaiser Foundation Health Plan formulary; closed integrated pharmacy)",
+          "productName": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+          "marketSegment": "commercial-employer",
+          "formularyId": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (effective 11/03/2026; updated 11/01/2026)",
+          "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ]
+        },
+        {
+          "id": "anthem-bcbs-ca",
+          "name": "Anthem Blue Cross of California (Commercial)",
+          "shortName": "Anthem Blue Cross CA",
+          "pbm": "CarelonRx",
+          "productName": "2026 California Select Drug List - Four Tier",
+          "marketSegment": "commercial-employer",
+          "formularyId": "2026 California Select Drug List, Four Tier (IND), Last Updated November 1, 2026",
+          "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "id": "ppi",
+          "name": "Proton pump inhibitors",
+          "shortName": "PPI",
+          "plainName": "Acid blocker (PPI)",
+          "description": "Proton pump inhibitors: omeprazole (Prilosec), pantoprazole (Protonix), esomeprazole (Nexium), lansoprazole (Prevacid, SoluTab), rabeprazole (Aciphex), dexlansoprazole (Dexilant), omeprazole/sodium bicarbonate (Zegerid, Konvomep). Capsules, tablets, packets and suspensions. Not H2 blockers or vonoprazan.",
+          "plainDescription": "A once-a-day pill that shuts down most stomach acid. Used for reflux, ulcers and to protect the stomach.",
+          "indication": "GERD, erosive esophagitis, ulcers, H. pylori",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "id": "pcab",
+          "name": "Potassium-competitive acid blocker",
+          "shortName": "P-CAB",
+          "plainName": "Newer acid blocker (vonoprazan)",
+          "description": "Vonoprazan (Voquezna tablets; Voquezna Triple Pak and Dual Pak for H. pylori). Brand only, no generic. Usually a step after PPIs. If the plan lists no vonoprazan, that is the finding: pick Voquezna as the reference product and record the barrier.",
+          "plainDescription": "A newer brand-name acid blocker, used when the usual acid pills haven't worked.",
+          "indication": "Erosive esophagitis, heartburn from GERD, H. pylori",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "id": "h2ra",
+          "name": "H2 blockers",
+          "shortName": "H2RA",
+          "plainName": "Milder acid reducer (H2 blocker)",
+          "description": "Histamine-2 receptor antagonists: famotidine (Pepcid; tablets, suspension), cimetidine, nizatidine. Prescription strengths. Not PPIs.",
+          "plainDescription": "A milder acid pill, often taken at bedtime or as needed.",
+          "indication": "Reflux, ulcers",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        }
+      ],
+      "records": [
+        {
+          "classId": "ppi",
+          "preferredAgent": {
+            "inn": "Omeprazole (delayed-release capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "20 mg delayed-release capsule",
+            "sig": "20 mg by mouth once daily before a meal: 4 weeks for GERD symptoms, 4 to 8 weeks for erosive esophagitis or ulcer healing (label).",
+            "sigShort": "20 mg QD AC",
+            "plainSig": "One capsule a day before a meal, usually for 4 to 8 weeks."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "CDL listed; no restriction printed (p.153)",
+          "alternatives": [
+            {
+              "drug": "Pantoprazole sodium (delayed-release tablet) 20 mg, 40 mg",
+              "note": "CDL listed; no restriction printed (p.153)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Rabeprazole sodium (delayed-release tablet) 20 mg",
+              "note": "CDL listed; no restriction printed (p.153)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Esomeprazole magnesium (delayed-release capsule) 20 mg, 40 mg",
+              "note": "CDL listed; no restriction printed (p.153)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Esomeprazole magnesium packets 2.5-40 mg",
+              "note": "CDL listed; covered only for members 21 years of age and younger (AL, p.153)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Lansoprazole (delayed-release capsule) 15 mg, 30 mg",
+              "note": "CDL listed; no restriction printed (p.153)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Lansoprazole disintegrating delayed-release tablet 15 mg, 30 mg",
+              "note": "CDL listed; covered only for members 21 years of age and younger (AL, p.153)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Dexlansoprazole (Dexilant)",
+              "outcome": "pa",
+              "reason": "Not on CDL (dexlansoprazole not listed in any form); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Omeprazole/sodium bicarbonate (Zegerid, Konvomep)",
+              "outcome": "pa",
+              "reason": "Not on CDL (omeprazole/sodium bicarbonate not listed; only omeprazole alone is listed, p.153); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read CDL p.153 (H/K ATPase inhibitors) by text and UM-column x-position. Omeprazole DR capsule, pantoprazole, rabeprazole carry no UM code. Esomeprazole packets (AL, row at y=162) and lansoprazole ODT (AL, row at y=284) are age-limited to 21 and under. Pick is judgment: cheapest unrestricted PPI. Sig is label dosing; CDL prints none. Dexlansoprazole and omeprazole/sodium bicarbonate searched by generic name on p.153-154; absent. [Sonnet check 2026-11-18: Dexlansoprazole absent in every form (searched pages 1-243); Dexilant stays pa under CDL p.4.]",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "medi-cal-rx"
+        },
+        {
+          "classId": "pcab",
+          "preferredAgent": {
+            "inn": "Vonoprazan (potassium-competitive acid blocker)",
+            "brand": "Voquezna",
+            "genericAvailable": false,
+            "strength": "20 mg tablet",
+            "sig": "20 mg by mouth once daily for 8 weeks to heal erosive esophagitis, then 10 mg once daily to maintain; 10 mg once daily for 4 weeks for heartburn from non-erosive GERD (label).",
+            "sigShort": "20 mg QD x8 wk",
+            "plainSig": "One pill a day for 8 weeks."
+          },
+          "preferredRestriction": "Not on CDL: vonoprazan is not listed in any form. Legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4). The CDL does not state a step rule for this product.",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Not listed on CDL (p.153-154)",
+          "alternatives": [],
+          "paRequired": [
+            {
+              "drug": "Voquezna Triple Pak and Voquezna Dual Pak (vonoprazan H. pylori kits)",
+              "outcome": "pa",
+              "reason": "Not on CDL (no vonoprazan kit listed; the H. pylori section p.154 lists only bismuth/metronidazole/tetracycline and omeprazole/amoxicillin/rifabutin kits); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Searched the CDL by generic name (vonoprazan) and brand (Voquezna): no entry. H. pylori section p.154 and acid-suppressant section p.153 read. Voquezna is the reference product per taxonomy; the recorded barrier is the authorization rule. Plan-level step therapy is not in this document, so stepTherapy is null.",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "medi-cal-rx"
+        },
+        {
+          "classId": "h2ra",
+          "preferredAgent": {
+            "inn": "Famotidine (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "20 mg tablet",
+            "sig": "GERD: 20 mg by mouth twice daily for up to 6 weeks. Duodenal ulcer: 40 mg once daily at bedtime or 20 mg twice daily for up to 8 weeks. Gastric ulcer: 40 mg once daily at bedtime (label).",
+            "sigShort": "20 mg BID (GERD)",
+            "plainSig": "One pill twice a day for reflux, or as your prescriber directs for an ulcer."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "CDL listed; no restriction printed (p.154)",
+          "alternatives": [
+            {
+              "drug": "Famotidine oral suspension 40 mg/5 mL",
+              "note": "CDL listed; no restriction printed (p.154)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cimetidine tablets 200, 300, 400, 800 mg and oral liquid 300 mg/5 mL",
+              "note": "CDL listed; no restriction printed (p.154)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Nizatidine capsules 150 mg, 300 mg",
+              "note": "CDL listed; no restriction printed (p.154)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read CDL p.154 (H2-receptor antagonists). Famotidine tablets 20 and 40 mg and suspension carry no UM code. Pepcid brand is not printed; the CDL lists generic names only. Pick is judgment (cheapest unrestricted H2RA).",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "medi-cal-rx"
+        },
+        {
+          "classId": "ppi",
+          "preferredAgent": {
+            "inn": "Omeprazole (delayed-release capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "10 mg capsule (two for 20 mg)",
+            "sig": "20 mg (two 10 mg capsules) by mouth once daily before a meal (label start for GERD/ulcer); the list prints omeprazole DR capsules at 10 mg and 40 mg only, no 20 mg",
+            "sigShort": "20 mg QD before meal",
+            "plainSig": "Two 10 mg capsules once a day before a meal."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Pantoprazole sodium (delayed-release tablet) 20 mg and 40 mg",
+              "note": "Tier 1, no flag (PDF p.76)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Omeprazole (delayed-release capsule) 10 mg",
+              "note": "Tier 1, no flag (PDF p.76)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Omeprazole DR capsules are listed only at 10 mg and 40 mg, Tier 1, no flag (PDF p.76). Pantoprazole 20 mg and 40 mg DR tablets are Tier 1 (p.76). Protonix SOLR 40 mg (p.76) is the IV product (medical benefit, Tier 2 MB), so it is not used. Strength is not on the list for omeprazole 20 mg; the formulary says not all strengths of a listed drug may be on it (PDF p.10), so the 20 mg start is not treated as nonformulary.6). Kaiser has no PA or step therapy (PDF p.6-7). Sig is a label regimen; the list prints no dose. [Sonnet check 2026-11-18: removed 5 brand-only item(s) inferred nonformulary from absence; p.2 says the formulary 'is not an all-inclusive list' and the p.6 line is only the template definition of 'formulary', so absence is not a nonformulary finding; Kaiser prints no PA/ST (p.6-7); list prints omeprazole cpdr 10 mg and 40 mg only (p.76); 20 mg not printed, so the label 20 mg start is delivered as 2 x 10 mg; 40 mg is not a label start dose]",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "kaiser-permanente-ca"
+        },
+        {
+          "classId": "pcab",
+          "preferredAgent": {
+            "inn": "Vonoprazan (tablet)",
+            "brand": "Voquezna",
+            "genericAvailable": false,
+            "strength": "20 mg tablet",
+            "sig": "20 mg by mouth once daily for 8 weeks to heal erosive esophagitis, then 10 mg once daily to maintain; 10 mg once daily for 4 weeks for heartburn from non-erosive GERD (label).",
+            "sigShort": "20 mg QD x8 wk",
+            "plainSig": "One pill a day for 8 weeks."
+          },
+          "preferredRestriction": "Voquezna is not printed on the Kaiser list, but the list is not all-inclusive (p.2), so coverage is unconfirmed; a non-formulary drug needs a physician exception request (p.7).",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": null,
+          "alternatives": [],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "No vonoprazan product appears in the formulary text (searched brand and generic, upper and lower case; PDF pp.76, 84, plus full-text search). Per the class note, Voquezna is the reference pick and the barrier is the finding.6), so absence is recorded as nonformulary. 7). [Sonnet check 2026-11-18: removed 2 brand-only item(s) inferred nonformulary from absence; p.2 says the formulary 'is not an all-inclusive list' and the p.6 line is only the template definition of 'formulary', so absence is not a nonformulary finding; Kaiser prints no PA/ST (p.6-7); verification lowered to partial: absence only]",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "kaiser-permanente-ca"
+        },
+        {
+          "classId": "h2ra",
+          "preferredAgent": {
+            "inn": "Famotidine (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "40 mg tablet",
+            "sig": "40 mg by mouth once daily at bedtime (label dose for active duodenal ulcer); the list prints only famotidine 40 mg tablets (p.76), so the 20 mg twice-daily GERD regimen has no matching printed strength",
+            "sigShort": "40 mg QHS",
+            "plainSig": "One tablet at bedtime."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Famotidine oral suspension 40 mg/5 mL",
+              "note": "Tier 1, no flag (PDF p.76)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cimetidine oral solution 300 mg/5 mL",
+              "note": "Tier 1, no flag (PDF p.76)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Famotidine tablets are listed at 40 mg only, Tier 1, no flag (PDF p.76); 20 mg tablets are not listed, so the 20 mg start is not used for the pick. Cimetidine is listed as solution only (p.76). Nizatidine is absent and recorded nonformulary under PDF p.6. Pepcid brand is not printed and is not brand-only, so it is not recorded. No PA or step therapy (PDF p.6-7). [Sonnet check 2026-11-18: removed 1 brand-only item(s) inferred nonformulary from absence; p.2 says the formulary 'is not an all-inclusive list' and the p.6 line is only the template definition of 'formulary', so absence is not a nonformulary finding; Kaiser prints no PA/ST (p.6-7); searched all famotidine rows: tablets 40 mg only; sig changed to the 40 mg label regimen]",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "kaiser-permanente-ca"
+        },
+        {
+          "classId": "ppi",
+          "preferredAgent": {
+            "inn": "Omeprazole (delayed-release capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "20 mg delayed-release capsule (list prints no strength)",
+            "sig": "20 mg by mouth once daily before a meal: 4 weeks for GERD symptoms, 4 to 8 weeks for erosive esophagitis or ulcer healing (label).",
+            "sigShort": "20 mg QD AC",
+            "plainSig": "One capsule a day before a meal, usually for 4 to 8 weeks."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Esomeprazole magnesium (delayed-release capsule)",
+              "note": "Tier 1, no PA or ST (p.100)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Lansoprazole (delayed-release capsule)",
+              "note": "Tier 1, no PA or ST (p.100)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Pantoprazole sodium (delayed-release tablet)",
+              "note": "Tier 2, no PA or ST (p.100)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Rabeprazole sodium (delayed-release tablet)",
+              "note": "Tier 2, no PA or ST (p.100)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read p.100 (Proton Pump Inhibitors). Omeprazole DR capsule, esomeprazole, lansoprazole Tier 1 with no restriction; pantoprazole and rabeprazole Tier 2 with no restriction. Dexilant, Konvomep, Zegerid, dexlansoprazole and omeprazole/bicarbonate not listed anywhere (grep of text and index). Strength not printed on list; label starting dose used in sig. Document also says 'Drugs that aren't on this list may not be covered' (p.2), a hedge; nonformulary is based on the p.5/p.7 definitions, not the p.2 hedge. [Sonnet check 2026-11-18: removed absence-inferred nonformulary items (Dexilant, Konvomep, Zegerid): p.2 says drugs not on the list 'may not be covered' and p.7 says a listed drug 'may not be covered', so the list does not firmly state that absence means exclusion; absent brands left unrecorded, coverage unconfirmed]",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "anthem-bcbs-ca"
+        },
+        {
+          "classId": "pcab",
+          "preferredAgent": {
+            "inn": "Vonoprazan (tablet)",
+            "brand": "Voquezna",
+            "genericAvailable": false,
+            "strength": "Tablet (list prints no strength)",
+            "sig": "20 mg by mouth once daily (label dosing for erosive esophagitis; list prints no sig)",
+            "sigShort": "20 mg PO daily",
+            "plainSig": "One pill by mouth once a day."
+          },
+          "preferredRestriction": "Not printed on this list (no vonoprazan/Voquezna entry); coverage unconfirmed, p.2: drugs not on this list 'may not be covered'. Confirm with plan.",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Not listed",
+          "alternatives": [],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "Read the full text and alphabetical index. No vonoprazan or Voquezna anywhere on the list. Per the class rule, Voquezna is the reference pick and the barrier is recorded as nonformulary. Class has no covered agent on this plan. Medical-benefit route not stated for an oral tablet. [Sonnet check 2026-11-18: removed absence-inferred nonformulary items (Voquezna, Voquezna Triple Pak / Dual Pak): p.2 says drugs not on the list 'may not be covered' and p.7 says a listed drug 'may not be covered', so the list does not firmly state that absence means exclusion; absent brands left unrecorded, coverage unconfirmed]",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "noCoveredAgent": true,
+          "payerId": "anthem-bcbs-ca"
+        },
+        {
+          "classId": "h2ra",
+          "preferredAgent": {
+            "inn": "Famotidine (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "20 mg tablet (list prints no strength)",
+            "sig": "GERD: 20 mg by mouth twice daily for up to 6 weeks. Duodenal ulcer: 40 mg once daily at bedtime or 20 mg twice daily for up to 8 weeks. Gastric ulcer: 40 mg once daily at bedtime (label).",
+            "sigShort": "20 mg BID (GERD)",
+            "plainSig": "One pill twice a day for reflux, or as your prescriber directs for an ulcer."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Cimetidine (tablet)",
+              "note": "Tier 1, no PA or ST (p.100)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cimetidine (oral solution)",
+              "note": "Tier 1, no PA or ST (p.100)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Famotidine (oral suspension, reconstituted)",
+              "note": "Tier 1, no PA or ST (p.100)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read p.100 (H-2 Antagonists). Famotidine tablet, cimetidine Tier 1 with no restriction. Nizatidine not listed anywhere. Strength not printed on list. [Sonnet check 2026-11-18: removed absence-inferred nonformulary items (Nizatidine): p.2 says drugs not on the list 'may not be covered' and p.7 says a listed drug 'may not be covered', so the list does not firmly state that absence means exclusion; absent brands left unrecorded, coverage unconfirmed; removed ranitidine alternative (withdrawn from US market 2020, stale listing)]",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "anthem-bcbs-ca"
+        }
+      ],
+      "references": [
+        {
+          "id": "medi-cal-rx-common6-2026-11",
+          "label": "Medi-Cal Rx Contract Drugs List (November 1, 2026)",
+          "publisher": "California Department of Health Care Services (Medi-Cal Rx)",
+          "type": "payer",
+          "url": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+          "effectiveDate": "2026-11-01",
+          "accessed": "2026-11-18"
+        },
+        {
+          "id": "kaiser-permanente-ca-common6-2026-11",
+          "label": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (effective 11/03/2026; updated 11/01/2026)",
+          "publisher": "Kaiser Permanente",
+          "type": "payer",
+          "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+          "effectiveDate": "2026-11-03",
+          "accessed": "2026-11-18"
+        },
+        {
+          "id": "anthem-bcbs-ca-common6-2026-11",
+          "label": "2026 California Select Drug List, Four Tier (IND), Last Updated November 1, 2026",
+          "publisher": "Anthem Blue Cross",
+          "type": "payer",
+          "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+          "effectiveDate": "2026-11-01",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Prior authorization (PA)",
+          "short": "Insurer sign-off first",
+          "definition": "Insurer sign-off needed before the drug is covered."
+        },
+        {
+          "term": "Step therapy",
+          "short": "Try a preferred drug first",
+          "definition": "Must fail a preferred drug first before the plan covers this one."
+        }
+      ]
+    },
+    {
+      "id": "ca-thyroid",
+      "label": "CA · Thyroid",
+      "stateCode": "CA",
+      "region": "California",
+      "topicId": "thyroid",
+      "topic": "Thyroid",
+      "classNoun": "Prescription type",
+      "unitNoun": "medication",
+      "tagline": "",
+      "dataStatus": "verified",
+      "lastUpdated": "2026-11-18",
+      "capturedAt": "2026-11-18",
+      "payers": [
+        {
+          "id": "medi-cal-rx",
+          "name": "Medi-Cal Rx — California Medicaid Pharmacy Program (Fee-for-Service carve-out, statewide)",
+          "shortName": "Medi-Cal Rx",
+          "pbm": "Magellan Health (Magellan Medicaid Administration; DHCS vendor)",
+          "productName": "Medi-Cal Rx Contract Drugs List",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "Medi-Cal Rx Contract Drugs List (November 1, 2026)",
+          "formularyUrl": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "id": "kaiser-permanente-ca",
+          "name": "Kaiser Permanente (Commercial HMO)",
+          "shortName": "Kaiser Permanente",
+          "pbm": "Internal (Kaiser Foundation Health Plan formulary; closed integrated pharmacy)",
+          "productName": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+          "marketSegment": "commercial-employer",
+          "formularyId": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (effective 11/03/2026; updated 11/01/2026)",
+          "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ]
+        },
+        {
+          "id": "anthem-bcbs-ca",
+          "name": "Anthem Blue Cross of California (Commercial)",
+          "shortName": "Anthem Blue Cross CA",
+          "pbm": "CarelonRx",
+          "productName": "2026 California Select Drug List - Four Tier",
+          "marketSegment": "commercial-employer",
+          "formularyId": "2026 California Select Drug List, Four Tier (IND), Last Updated November 1, 2026",
+          "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "id": "levothyroxine",
+          "name": "Levothyroxine (T4)",
+          "shortName": "T4",
+          "plainName": "Thyroid hormone (levothyroxine)",
+          "description": "Levothyroxine sodium: generic tablets and the brands Synthroid, Levoxyl, Unithroid, Euthyrox; Tirosint capsules; oral solutions Tirosint-SOL, Thyquidity, Ermeza. Generic tablets are AB-rated to specific reference brands, so a brand-only rule matters. Not liothyronine or desiccated thyroid.",
+          "plainDescription": "The standard daily pill that replaces thyroid hormone when your thyroid is underactive.",
+          "indication": "Hypothyroidism",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "id": "thyroid-t3-ndt",
+          "name": "Liothyronine (T3) and desiccated thyroid",
+          "shortName": "T3/NDT",
+          "plainName": "T3 or natural thyroid",
+          "description": "Liothyronine (Cytomel, generic tablets) and desiccated thyroid (Armour Thyroid, NP Thyroid; unapproved drugs under FDA enforcement action, often non-formulary; Adthyza reportedly discontinued). Levothyroxine is never this class's pick.",
+          "plainDescription": "Other thyroid pills, used alongside or instead of levothyroxine in some patients.",
+          "indication": "Hypothyroidism (second line)",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        }
+      ],
+      "records": [
+        {
+          "classId": "levothyroxine",
+          "preferredAgent": {
+            "inn": "Levothyroxine sodium (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "50 mcg tablet",
+            "sig": "Healthy adults: full replacement about 1.6 mcg/kg once daily. Older adults or heart disease: start 12.5 to 25 mcg daily and raise by 12.5 to 25 mcg every 6 to 8 weeks. Adjust to TSH. Take on an empty stomach 30 to 60 minutes before breakfast (label).",
+            "sigShort": "Start per weight/age, titrate to TSH",
+            "plainSig": "One pill every morning on an empty stomach, 30 to 60 minutes before breakfast. Your dose is adjusted by blood tests."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "CDL listed; no restriction printed (p.189)",
+          "alternatives": [
+            {
+              "drug": "Levothyroxine sodium oral solution 100 mcg/5 mL",
+              "note": "CDL listed; covered only for members 21 years of age and younger (AL, p.189)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Tirosint (levothyroxine sodium capsule)",
+              "outcome": "pa",
+              "reason": "Not on CDL (levothyroxine capsules not listed; only tablets and solution appear, p.189); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read CDL p.189 (thyroid). Levothyroxine tablets 25-300 mcg carry no UM code. The CDL prints generic names, so Synthroid, Levoxyl, Unithroid and Euthyrox are not named and their status is not established here; boglActive is false because no BOGL is stated. Tirosint-SOL, Thyquidity and Ermeza are brand oral solutions: the CDL's levothyroxine solution 100 mcg/5 mL (AL) cannot be matched to a brand product, so they are not recorded and need a human check. Tirosint capsules recorded as pa because the generic capsule is also not listed. [Sonnet check 2026-11-18: Pick printed on p.189 (tablets 25-300 mcg incl. 50 mcg, no UM code; solution 100 mcg/5 mL is AL, 21 and under). No levothyroxine capsule in any form, so Tirosint stays pa under CDL p.4 ('Legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant'). Brand-name tablets are covered under the generic tablet entry. Upgraded to verified.]",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "medi-cal-rx"
+        },
+        {
+          "classId": "thyroid-t3-ndt",
+          "preferredAgent": {
+            "inn": "Liothyronine sodium (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "25 mcg tablet",
+            "sig": "Start 25 mcg by mouth once daily; increase by 25 mcg every 1 to 2 weeks to the usual 25 to 75 mcg daily. Start 5 mcg daily in older adults or with heart disease (label).",
+            "sigShort": "25 mcg QD, titrate",
+            "plainSig": "One pill a day; your dose is adjusted by symptoms and blood tests."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "CDL listed; no restriction printed (p.189)",
+          "alternatives": [
+            {
+              "drug": "Liothyronine sodium tablets 5 mcg, 50 mcg",
+              "note": "CDL listed; no restriction printed (p.189)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Thyroid, pork (desiccated thyroid) tablets 15-300 mg",
+              "note": "CDL listed; no restriction printed (p.190). Listed by generic name; branded Armour Thyroid and NP Thyroid are not named. Contrary to the taxonomy's 'often non-formulary' note, the CDL lists it with no restriction.",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read CDL p.189-190. Liothyronine tablets 5, 25, 50 mcg carry no UM code. 'Thyroid, Pork' is listed on p.190 with no UM code, which contradicts the taxonomy's non-formulary assumption. Whether the branded desiccated products are covered rests on the generic-name listing (judgment) and FDA enforcement status is not checked here. Cytomel brand is not named; generic liothyronine covered. [Sonnet check 2026-11-18: Liothyronine 25 mcg is printed on p.189 (5, 25, 50 mcg, no UM code); pick changed from 5 mcg to 25 mcg, the label starting dose for hypothyroidism. Thyroid, Pork tablets (p.190, no UM code) kept as an alternative; Armour/NP Thyroid are not named, covered only by the generic-name entry. Upgraded to verified.]",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "medi-cal-rx"
+        },
+        {
+          "classId": "levothyroxine",
+          "preferredAgent": {
+            "inn": "Levothyroxine sodium (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "50 mcg tablet",
+            "sig": "Healthy adults: full replacement about 1.6 mcg/kg once daily. Older adults or heart disease: start 12.5 to 25 mcg daily and raise by 12.5 to 25 mcg every 6 to 8 weeks. Adjust to TSH. Take on an empty stomach 30 to 60 minutes before breakfast (label).",
+            "sigShort": "Start per weight/age, titrate to TSH",
+            "plainSig": "One pill every morning on an empty stomach, 30 to 60 minutes before breakfast. Your dose is adjusted by blood tests."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Levothyroxine sodium tablets 25, 50, 75, 88, 100, 112, 125, 137, 150, 175, 200 mcg",
+              "note": "Tier 1, no flag (300 mcg tablet shows no tier) (PDF p.84)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Generic levothyroxine tablets are Tier 1, no flag (PDF p.84). Synthroid, Levoxyl, Unithroid and Euthyrox are not printed, but they are brand versions of a covered generic, not brand-only products, so they are not recorded as barriers. Tirosint and the oral solutions are brand-only products that are absent, recorded nonformulary under PDF p.6. Injectable levothyroxine (p.84) is not used. No PA or step therapy (PDF p.6-7). [Sonnet check 2026-11-18: removed 4 brand-only item(s) inferred nonformulary from absence; p.2 says the formulary 'is not an all-inclusive list' and the p.6 line is only the template definition of 'formulary', so absence is not a nonformulary finding; Kaiser prints no PA/ST (p.6-7)]",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "kaiser-permanente-ca"
+        },
+        {
+          "classId": "thyroid-t3-ndt",
+          "preferredAgent": {
+            "inn": "Liothyronine sodium (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "25 mcg tablet",
+            "sig": "Start 25 mcg by mouth once daily; increase by 25 mcg every 1 to 2 weeks to the usual 25 to 75 mcg daily. Start 5 mcg daily in older adults or with heart disease (label).",
+            "sigShort": "25 mcg QD, titrate",
+            "plainSig": "One pill a day; your dose is adjusted by symptoms and blood tests."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Liothyronine sodium tablets 5 mcg and 50 mcg",
+              "note": "Tier 1, no flag (PDF p.84)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Liothyronine generic tablets are Tier 1, no flag at 5, 25 and 50 mcg (PDF p.84). The pick uses the 25 mcg label starting dose, not the 5 mcg tablet listed in the brief, so the strength delivers the sig. Cytomel is not printed, but generic liothyronine is covered, so no barrier is recorded for it. Desiccated thyroid products are absent from the formulary and recorded nonformulary under PDF p.6. No PA or step therapy (PDF p.6-7). [Sonnet check 2026-11-18: removed 3 brand-only item(s) inferred nonformulary from absence; p.2 says the formulary 'is not an all-inclusive list' and the p.6 line is only the template definition of 'formulary', so absence is not a nonformulary finding; Kaiser prints no PA/ST (p.6-7)]",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "kaiser-permanente-ca"
+        },
+        {
+          "classId": "levothyroxine",
+          "preferredAgent": {
+            "inn": "Levothyroxine sodium (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "50 mcg tablet (list prints no strength)",
+            "sig": "Healthy adults: full replacement about 1.6 mcg/kg once daily. Older adults or heart disease: start 12.5 to 25 mcg daily and raise by 12.5 to 25 mcg every 6 to 8 weeks. Adjust to TSH. Take on an empty stomach 30 to 60 minutes before breakfast (label).",
+            "sigShort": "Start per weight/age, titrate to TSH",
+            "plainSig": "One pill every morning on an empty stomach, 30 to 60 minutes before breakfast. Your dose is adjusted by blood tests."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Levo-T (levothyroxine sodium tablet)",
+              "note": "Tier 1, no PA or ST (p.99)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Levoxyl (levothyroxine sodium tablet)",
+              "note": "Tier 1, no PA or ST (p.99)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Unithroid (levothyroxine sodium tablet)",
+              "note": "Tier 1, no PA or ST (p.99)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read p.99 (Thyroid Hormones). Generic levothyroxine tablet and Levo-T, Levoxyl, Unithroid all Tier 1 with no restriction. No brand is preferred over generic on this list, so boglActive is false. Synthroid, Euthyrox and the Tirosint/Thyquidity/Ermeza products are not listed anywhere. [Sonnet check 2026-11-18: removed absence-inferred nonformulary items (Synthroid, Euthyrox, Tirosint, Tirosint-SOL, Thyquidity, Ermeza): p.2 says drugs not on the list 'may not be covered' and p.7 says a listed drug 'may not be covered', so the list does not firmly state that absence means exclusion; absent brands left unrecorded, coverage unconfirmed]",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "anthem-bcbs-ca"
+        },
+        {
+          "classId": "thyroid-t3-ndt",
+          "preferredAgent": {
+            "inn": "Liothyronine sodium (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "25 mcg tablet (list prints no strength)",
+            "sig": "Start 25 mcg by mouth once daily; increase by 25 mcg every 1 to 2 weeks to the usual 25 to 75 mcg daily. Start 5 mcg daily in older adults or with heart disease (label).",
+            "sigShort": "25 mcg QD, titrate",
+            "plainSig": "One pill a day; your dose is adjusted by symptoms and blood tests."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Liomny (liothyronine sodium tablet)",
+              "note": "Tier 1, no PA or ST (p.99)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read p.99. Liothyronine generic tablet and Liomny Tier 1 with no restriction. Desiccated thyroid products (Armour, NP Thyroid, Adthyza) not listed anywhere. [Sonnet check 2026-11-18: removed absence-inferred nonformulary items (Armour Thyroid, NP Thyroid, Adthyza): p.2 says drugs not on the list 'may not be covered' and p.7 says a listed drug 'may not be covered', so the list does not firmly state that absence means exclusion; absent brands left unrecorded, coverage unconfirmed; pick strength changed 5 mcg to 25 mcg (label starting dose)]",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "anthem-bcbs-ca"
+        }
+      ],
+      "references": [
+        {
+          "id": "medi-cal-rx-common6-2026-11",
+          "label": "Medi-Cal Rx Contract Drugs List (November 1, 2026)",
+          "publisher": "California Department of Health Care Services (Medi-Cal Rx)",
+          "type": "payer",
+          "url": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+          "effectiveDate": "2026-11-01",
+          "accessed": "2026-11-18"
+        },
+        {
+          "id": "kaiser-permanente-ca-common6-2026-11",
+          "label": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (effective 11/03/2026; updated 11/01/2026)",
+          "publisher": "Kaiser Permanente",
+          "type": "payer",
+          "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+          "effectiveDate": "2026-11-03",
+          "accessed": "2026-11-18"
+        },
+        {
+          "id": "anthem-bcbs-ca-common6-2026-11",
+          "label": "2026 California Select Drug List, Four Tier (IND), Last Updated November 1, 2026",
+          "publisher": "Anthem Blue Cross",
+          "type": "payer",
+          "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+          "effectiveDate": "2026-11-01",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Prior authorization (PA)",
+          "short": "Insurer sign-off first",
+          "definition": "Insurer sign-off needed before the drug is covered."
+        },
+        {
+          "term": "Step therapy",
+          "short": "Try a preferred drug first",
+          "definition": "Must fail a preferred drug first before the plan covers this one."
+        }
+      ]
+    },
+    {
+      "id": "ca-oral-steroids",
+      "label": "CA · Oral steroids",
+      "stateCode": "CA",
+      "region": "California",
+      "topicId": "oral-steroids",
+      "topic": "Oral steroids",
+      "classNoun": "Prescription type",
+      "unitNoun": "medication",
+      "tagline": "",
+      "dataStatus": "verified",
+      "lastUpdated": "2026-11-18",
+      "capturedAt": "2026-11-18",
+      "payers": [
+        {
+          "id": "medi-cal-rx",
+          "name": "Medi-Cal Rx — California Medicaid Pharmacy Program (Fee-for-Service carve-out, statewide)",
+          "shortName": "Medi-Cal Rx",
+          "pbm": "Magellan Health (Magellan Medicaid Administration; DHCS vendor)",
+          "productName": "Medi-Cal Rx Contract Drugs List",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "Medi-Cal Rx Contract Drugs List (November 1, 2026)",
+          "formularyUrl": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "id": "kaiser-permanente-ca",
+          "name": "Kaiser Permanente (Commercial HMO)",
+          "shortName": "Kaiser Permanente",
+          "pbm": "Internal (Kaiser Foundation Health Plan formulary; closed integrated pharmacy)",
+          "productName": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+          "marketSegment": "commercial-employer",
+          "formularyId": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (effective 11/03/2026; updated 11/01/2026)",
+          "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ]
+        },
+        {
+          "id": "anthem-bcbs-ca",
+          "name": "Anthem Blue Cross of California (Commercial)",
+          "shortName": "Anthem Blue Cross CA",
+          "pbm": "CarelonRx",
+          "productName": "2026 California Select Drug List - Four Tier",
+          "marketSegment": "commercial-employer",
+          "formularyId": "2026 California Select Drug List, Four Tier (IND), Last Updated November 1, 2026",
+          "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "id": "oral-corticosteroid",
+          "name": "Oral corticosteroids",
+          "shortName": "Oral steroid",
+          "plainName": "Steroid pills",
+          "description": "Systemic oral corticosteroids: prednisone (tablets, solution; Rayos delayed-release appears discontinued), methylprednisolone (Medrol, dose pack), prednisolone (solution, Orapred ODT, Millipred), dexamethasone (tablets, solution, Dexamethasone Intensol, TaperDex/Dxevo/HiDex packs; Hemady 20 mg is labeled for multiple myeloma only, an alternative, never the pick), hydrocortisone (Cortef; Alkindi Sprinkle and Khindivi oral solution for children). Deflazacort (Emflaza) and vamorolone (Agamree) for Duchenne are specialty alternatives only, never the pick. Not budesonide (Entocort, Uceris, Tarpeyo) or inhaled/topical steroids.",
+          "plainDescription": "Short courses of steroid pills that calm inflammation fast, for flares of asthma, COPD, arthritis, allergies and more.",
+          "indication": "Inflammatory flares, asthma/COPD exacerbations, autoimmune disease, adrenal insufficiency",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        }
+      ],
+      "records": [
+        {
+          "classId": "oral-corticosteroid",
+          "preferredAgent": {
+            "inn": "Prednisone (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "10 mg tablet",
+            "sig": "Dose by condition, 5 to 60 mg by mouth daily, with food (label). A common short course for a flare is 40 mg once daily for 5 days (practice, not label text); taper courses longer than 2 to 3 weeks.",
+            "sigShort": "5-60 mg QD; flare often 40 mg x5d",
+            "plainSig": "Take with food in the morning, at the dose and for the days your prescriber sets."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "CDL listed; no restriction printed (p.176)",
+          "alternatives": [
+            {
+              "drug": "Methylprednisolone tablets 4 mg and 4 mg Dosepak",
+              "note": "CDL listed; no restriction printed (p.175)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Prednisolone tablets 5 mg; oral liquid 5 mg/5 mL and 15 mg/5 mL; sodium phosphate orally disintegrating tablets 10, 15, 30 mg",
+              "note": "CDL listed; no restriction printed (p.175)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Dexamethasone tablets 0.5-6 mg; liquid drops 1 mg/mL; elixir and solution 0.5 mg/5 mL",
+              "note": "CDL listed; no restriction printed (p.173-174). Hemady 20 mg is not listed (see paRequired).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Hydrocortisone tablets 5, 10, 20 mg",
+              "note": "CDL listed; no restriction printed (p.174)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Hemady (dexamethasone 20 mg tablet)",
+              "outcome": "pa",
+              "reason": "Not on CDL (20 mg dexamethasone tablet not listed; dexamethasone tablets are 0.5-6 mg, p.174); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Alkindi Sprinkle and Khindivi (hydrocortisone oral granules and oral solution)",
+              "outcome": "pa",
+              "reason": "Not on CDL (hydrocortisone is listed as tablets only, p.174); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Emflaza (deflazacort)",
+              "outcome": "pa",
+              "reason": "Not on CDL (deflazacort not listed in any form); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Agamree (vamorolone oral suspension)",
+              "outcome": "pa",
+              "reason": "Not on CDL (vamorolone not listed in any form); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Rayos (delayed-release prednisone)",
+              "outcome": "pa",
+              "reason": "Not on CDL (prednisone is listed as tablets only, p.176); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read CDL p.173-176 (glucocorticoids) and p.210-214 (ophthalmic/nasal steroid sections, not picks). Prednisone tablets 1-50 mg carry no UM code; prednisone 10 mg is the pick (judgment). Methylprednisolone, prednisolone and hydrocortisone tablets carry no UM code. Brand names (Medrol, Orapred ODT, Millipred, Cortef, Dxevo/TaperDex packs) are not printed; generic names cover them. The brief's note on Hemady: its 20 mg strength is absent and the only dexamethasone tablets are 0.5-6 mg. [Sonnet check 2026-11-18: Prednisone is tablets only (p.176), dexamethasone tablets 0.5-6 mg (p.174), no deflazacort, no dexlansoprazole-type exceptions; Rayos, Hemady and Emflaza stay pa under CDL p.4.]",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "medi-cal-rx"
+        },
+        {
+          "classId": "oral-corticosteroid",
+          "preferredAgent": {
+            "inn": "Prednisone (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "10 mg tablet",
+            "sig": "Dose by condition, 5 to 60 mg by mouth daily, with food (label). A common short course for a flare is 40 mg once daily for 5 days (practice, not label text); taper courses longer than 2 to 3 weeks.",
+            "sigShort": "5-60 mg QD; flare often 40 mg x5d",
+            "plainSig": "Take with food in the morning, at the dose and for the days your prescriber sets."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Prednisone tablets 1, 2.5, 5, 20 and 50 mg; prednisone 10 mg and 5 mg 21-tablet dose packs (5 mg pack shows no tier)",
+              "note": "Tier 1, no flag (10 mg pack) (PDF p.79)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Methylprednisolone tablets 4, 8, 16 and 32 mg",
+              "note": "Tier 1, no flag (PDF p.79)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Prednisolone oral solution 15 mg/5 mL",
+              "note": "Tier 1, no flag (PDF p.79)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Dexamethasone tablets 0.5, 0.75, 1, 1.5, 2, 4 and 6 mg",
+              "note": "Tier 1, no flag (PDF p.78)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Hydrocortisone tablets 5 and 10 mg",
+              "note": "Tier 1, no flag (20 mg shows no tier) (PDF p.78)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Prednisone tablets are Tier 1, no flag (PDF p.79). Medrol and Orapred brands are not printed, but generic methylprednisolone and prednisolone solution are covered. Brand-only and specialty products named in the class description are absent and recorded nonformulary (PDF p.6). Orapred ODT is an absent dosage form of a listed drug, not a brand-only product, so it is not recorded (formulary dosage-form caveat, PDF p.10). Injectable Solu-Medrol and Solu-Cortef (p.79) are not used. No PA or step therapy (PDF p.6-7). [Sonnet check 2026-11-18: removed 7 brand-only item(s) inferred nonformulary from absence; p.2 says the formulary 'is not an all-inclusive list' and the p.6 line is only the template definition of 'formulary', so absence is not a nonformulary finding; Kaiser prints no PA/ST (p.6-7)]",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "kaiser-permanente-ca"
+        },
+        {
+          "classId": "oral-corticosteroid",
+          "preferredAgent": {
+            "inn": "Prednisone (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "10 mg tablet (list prints no strength)",
+            "sig": "Dose by condition, 5 to 60 mg by mouth daily, with food (label). A common short course for a flare is 40 mg once daily for 5 days (practice, not label text); taper courses longer than 2 to 3 weeks.",
+            "sigShort": "5-60 mg QD; flare often 40 mg x5d",
+            "plainSig": "Take with food in the morning, at the dose and for the days your prescriber sets."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Prednisone (tablet therapy pack)",
+              "note": "Tier 1, no PA or ST (p.66)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Prednisone (oral solution)",
+              "note": "Tier 1, no PA or ST (p.66)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Methylprednisolone (tablet)",
+              "note": "Tier 1, no PA or ST (p.66)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Methylprednisolone (tablet therapy pack)",
+              "note": "Tier 1, no PA or ST (p.66)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Dexamethasone (tablet)",
+              "note": "Tier 1, no PA or ST (p.66)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Dexamethasone (oral solution; elixir)",
+              "note": "Tier 1, no PA or ST (p.66)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Prednisolone (oral solution)",
+              "note": "Tier 1, no PA or ST (p.66)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Prednisolone sodium phosphate (oral solution)",
+              "note": "Tier 1, no PA or ST (p.66)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Hydrocortisone (tablet)",
+              "note": "Tier 1, no PA or ST (p.66)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read p.66 (Glucocorticosteroids). Prednisone tablet and therapy pack, methylprednisolone, dexamethasone, prednisolone solutions and hydrocortisone tablet all Tier 1 with no restriction. Medrol, Cortef, Dexamethasone Intensol, TaperDex, Dxevo and HiDex brand names are not listed; the generic forms of those products are listed above. Brand-only and specialty items above are not listed anywhere. [Sonnet check 2026-11-18: removed absence-inferred nonformulary items (Rayos, Hemady, Orapred ODT, Millipred, Alkindi Sprinkle, Khindivi, Emflaza, Agamree): p.2 says drugs not on the list 'may not be covered' and p.7 says a listed drug 'may not be covered', so the list does not firmly state that absence means exclusion; absent brands left unrecorded, coverage unconfirmed]",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "anthem-bcbs-ca"
+        }
+      ],
+      "references": [
+        {
+          "id": "medi-cal-rx-common6-2026-11",
+          "label": "Medi-Cal Rx Contract Drugs List (November 1, 2026)",
+          "publisher": "California Department of Health Care Services (Medi-Cal Rx)",
+          "type": "payer",
+          "url": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+          "effectiveDate": "2026-11-01",
+          "accessed": "2026-11-18"
+        },
+        {
+          "id": "kaiser-permanente-ca-common6-2026-11",
+          "label": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (effective 11/03/2026; updated 11/01/2026)",
+          "publisher": "Kaiser Permanente",
+          "type": "payer",
+          "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+          "effectiveDate": "2026-11-03",
+          "accessed": "2026-11-18"
+        },
+        {
+          "id": "anthem-bcbs-ca-common6-2026-11",
+          "label": "2026 California Select Drug List, Four Tier (IND), Last Updated November 1, 2026",
+          "publisher": "Anthem Blue Cross",
+          "type": "payer",
+          "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+          "effectiveDate": "2026-11-01",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Prior authorization (PA)",
+          "short": "Insurer sign-off first",
+          "definition": "Insurer sign-off needed before the drug is covered."
+        },
+        {
+          "term": "Step therapy",
+          "short": "Try a preferred drug first",
+          "definition": "Must fail a preferred drug first before the plan covers this one."
+        }
+      ]
+    },
+    {
+      "id": "ca-antibiotics",
+      "label": "CA · Antibiotics",
+      "stateCode": "CA",
+      "region": "California",
+      "topicId": "antibiotics",
+      "topic": "Antibiotics",
+      "classNoun": "Prescription type",
+      "unitNoun": "antibiotic",
+      "tagline": "",
+      "dataStatus": "verified",
+      "lastUpdated": "2026-11-18",
+      "capturedAt": "2026-11-18",
+      "payers": [
+        {
+          "id": "medi-cal-rx",
+          "name": "Medi-Cal Rx — California Medicaid Pharmacy Program (Fee-for-Service carve-out, statewide)",
+          "shortName": "Medi-Cal Rx",
+          "pbm": "Magellan Health (Magellan Medicaid Administration; DHCS vendor)",
+          "productName": "Medi-Cal Rx Contract Drugs List",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "Medi-Cal Rx Contract Drugs List (November 1, 2026)",
+          "formularyUrl": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "id": "kaiser-permanente-ca",
+          "name": "Kaiser Permanente (Commercial HMO)",
+          "shortName": "Kaiser Permanente",
+          "pbm": "Internal (Kaiser Foundation Health Plan formulary; closed integrated pharmacy)",
+          "productName": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+          "marketSegment": "commercial-employer",
+          "formularyId": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (effective 11/03/2026; updated 11/01/2026)",
+          "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ]
+        },
+        {
+          "id": "anthem-bcbs-ca",
+          "name": "Anthem Blue Cross of California (Commercial)",
+          "shortName": "Anthem Blue Cross CA",
+          "pbm": "CarelonRx",
+          "productName": "2026 California Select Drug List - Four Tier",
+          "marketSegment": "commercial-employer",
+          "formularyId": "2026 California Select Drug List, Four Tier (IND), Last Updated November 1, 2026",
+          "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "id": "abx-penicillin",
+          "name": "Penicillins",
+          "shortName": "Penicillin",
+          "plainName": "Amoxicillin-type antibiotic",
+          "description": "Oral penicillins: amoxicillin (capsules, tablets, chewables, suspension), amoxicillin-clavulanate (Augmentin, Augmentin XR, suspension), penicillin V potassium, dicloxacillin. Amoxicillin-clavulanate belongs to this class.",
+          "plainDescription": "The most common antibiotic family, for ear, sinus, throat, dental and skin infections.",
+          "indication": "Ear, sinus, strep throat, dental, skin infections",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "id": "abx-cephalosporin",
+          "name": "Oral cephalosporins",
+          "shortName": "Cephalosporin",
+          "plainName": "Cephalexin-type antibiotic",
+          "description": "Oral cephalosporins: cephalexin (Keflex), cefadroxil, cefuroxime axetil (Ceftin), cefprozil, cefaclor, cefdinir, cefpodoxime, cefixime (Suprax).",
+          "plainDescription": "A common antibiotic family for skin, urinary and ear infections, often used with a mild penicillin allergy.",
+          "indication": "Skin, urinary tract, ear and respiratory infections",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "id": "abx-macrolide",
+          "name": "Macrolides",
+          "shortName": "Macrolide",
+          "plainName": "Azithromycin-type antibiotic",
+          "description": "Oral macrolides: azithromycin (Zithromax, Z-Pak, suspension), clarithromycin (Biaxin, ER), erythromycin base/stearate/ethylsuccinate (Ery-Tab, Erythrocin, E.E.S., PCE).",
+          "plainDescription": "A short-course antibiotic for chest infections and for people allergic to penicillin.",
+          "indication": "Respiratory infections, penicillin allergy",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "id": "abx-tetracycline",
+          "name": "Tetracyclines",
+          "shortName": "Tetracycline",
+          "plainName": "Doxycycline-type antibiotic",
+          "description": "Oral tetracyclines: doxycycline hyclate and monohydrate (Vibramycin, Doryx, Doryx MPC, Acticlate, Targadox; Lymepak discontinued 2025), minocycline IR and ER (Minocin, Solodyn, Minolira, Ximino), tetracycline, sarecycline (Seysara), omadacycline (Nuzyra). Branded doxycycline/minocycline ER products are usually PA or excluded.",
+          "plainDescription": "Antibiotics for tick bites and Lyme disease, chest infections, MRSA skin infections and acne.",
+          "indication": "Lyme disease, respiratory and skin infections, acne",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "id": "abx-fluoroquinolone",
+          "name": "Fluoroquinolones",
+          "shortName": "Fluoroquinolone",
+          "plainName": "Cipro-type antibiotic",
+          "description": "Oral fluoroquinolones: ciprofloxacin (Cipro), levofloxacin (Levaquin), moxifloxacin (Avelox), ofloxacin, delafloxacin (Baxdela). Not ophthalmic/otic drops.",
+          "plainDescription": "Strong antibiotics kept for specific infections because of tendon and nerve side effects.",
+          "indication": "Complicated UTI, pneumonia, specific resistant infections",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "id": "abx-uti",
+          "name": "Urinary tract antibiotics",
+          "shortName": "UTI",
+          "plainName": "Bladder infection antibiotic",
+          "description": "Agents used mainly for uncomplicated urinary tract infection: nitrofurantoin (Macrobid, Macrodantin, suspension), sulfamethoxazole-trimethoprim (Bactrim, Bactrim DS), trimethoprim, fosfomycin (Monurol), methenamine hippurate (Hiprex; prophylaxis), and the newer brands pivmecillinam (Pivya), sulopenem etzadroxil/probenecid (Orlynvah), gepotidacin (Blujepa; also labeled for gonorrhea since 2025-12). Fluoroquinolones and cephalosporins belong to their own classes.",
+          "plainDescription": "Antibiotics for bladder infections.",
+          "indication": "Uncomplicated urinary tract infection",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "id": "abx-cdiff",
+          "name": "C. difficile treatments",
+          "shortName": "C. diff",
+          "plainName": "C. diff treatment",
+          "description": "Oral treatments for Clostridioides difficile infection: vancomycin capsules and oral solution (Vancocin, Firvanq kit), fidaxomicin (Dificid; an AB-rated generic is approved), fecal microbiota spores (Vowst, recurrence prevention). Metronidazole is an alternative only (guidelines reserve it for non-severe cases when the others are unavailable), never the pick. Rebyota and bezlotoxumab are provider-administered.",
+          "plainDescription": "Medicines for a serious gut infection that can follow antibiotic use.",
+          "indication": "C. difficile infection and recurrence",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        }
+      ],
+      "records": [
+        {
+          "classId": "abx-penicillin",
+          "preferredAgent": {
+            "inn": "Amoxicillin (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "500 mg capsule",
+            "sig": "Mild to moderate infection: 500 mg by mouth every 12 hours or 250 mg every 8 hours; severe: 875 mg every 12 hours or 500 mg every 8 hours. Strep throat: 10 days (label).",
+            "sigShort": "500 mg q8-12h",
+            "plainSig": "One capsule two or three times a day as directed. Finish the whole course."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "CDL listed; no restriction printed (p.12)",
+          "alternatives": [
+            {
+              "drug": "Amoxicillin tablets 500 mg, 875 mg, chewable tablets, and suspension",
+              "note": "CDL listed; no restriction printed (p.12)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Amoxicillin/clavulanate potassium chewable tablets, oral tablets 250 mg-1 g, and suspension (Augmentin-type)",
+              "note": "CDL listed; no restriction printed (p.11-12)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Penicillin V potassium tablets 125, 250, 500 mg",
+              "note": "CDL listed; no restriction printed (p.20)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Dicloxacillin sodium capsules 250, 500 mg and suspension",
+              "note": "CDL listed; no restriction printed (p.16)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Augmentin XR (extended-release amoxicillin/clavulanate)",
+              "outcome": "pa",
+              "reason": "Not on CDL (amoxicillin/clavulanate is listed as chewable, oral tablet and suspension only, p.11-12); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read CDL p.11-12 and p.16, p.20. Amoxicillin capsules 250/500 mg, tablets and amoxicillin/clavulanate carry no UM code. Pick 500 mg capsule is judgment (cheapest unrestricted, most common). Augmentin brand is not printed; generic amoxicillin/clavulanate covers it. [Sonnet check 2026-11-18: Amoxicillin/clavulanate is listed as chewable, oral tablets (250-1000 mg) and suspension (p.11-12), no extended-release form; Augmentin XR stays pa under CDL p.4.]",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "medi-cal-rx"
+        },
+        {
+          "classId": "abx-cephalosporin",
+          "preferredAgent": {
+            "inn": "Cephalexin (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "500 mg capsule",
+            "sig": "500 mg by mouth every 12 hours (or 250 mg every 6 hours) for strep throat, skin infection or cystitis; at least 10 days for strep throat (label).",
+            "sigShort": "500 mg q12h",
+            "plainSig": "One capsule twice a day. Finish the whole course."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "CDL listed; no restriction printed (p.15)",
+          "alternatives": [
+            {
+              "drug": "Cefadroxil tablets 1 g and capsules 500 mg; suspension",
+              "note": "CDL listed; no restriction printed (p.14)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefaclor capsules 250, 500 mg",
+              "note": "CDL listed; no restriction printed (p.14)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefdinir capsules 300 mg; liquid 125, 250 mg/5 mL",
+              "note": "CDL listed; no restriction printed (p.14)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefixime tablets/capsules 400 mg; liquid 100 mg/5 mL (Suprax-type)",
+              "note": "CDL listed; no restriction printed (p.14)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefpodoxime proxetil tablets 100, 200 mg; suspension",
+              "note": "CDL listed; no restriction printed (p.15)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefprozil tablets 250, 500 mg; suspension",
+              "note": "CDL listed; no restriction printed (p.15)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefuroxime axetil tablets 250, 500 mg (Ceftin-type)",
+              "note": "CDL listed; no restriction printed (p.15)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read CDL p.14-15. Oral cephalosporins listed by generic name with no UM code. Keflex, Ceftin, Suprax, Omnicef brand names are not printed; generics cover them. Pick is judgment.",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "medi-cal-rx"
+        },
+        {
+          "classId": "abx-macrolide",
+          "preferredAgent": {
+            "inn": "Azithromycin (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "250 mg tablet",
+            "sig": "500 mg by mouth on day 1, then 250 mg once daily on days 2 to 5 (label, Z-Pak course).",
+            "sigShort": "Z-Pak: 500 mg day 1, then 250 mg x4d",
+            "plainSig": "Two pills on day 1, then one pill a day for 4 more days."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "CDL listed; no restriction printed for tablets (p.13)",
+          "alternatives": [
+            {
+              "drug": "Azithromycin oral suspension 100, 200 mg/5 mL and 1 g powder packet",
+              "note": "CDL listed; no restriction printed (p.13)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Clarithromycin tablets 250, 500 mg; extended-release tablets 500 mg; suspension",
+              "note": "CDL listed; no restriction printed (p.16)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Erythromycin base tablets 250, 500 mg; delayed-release tablets 250, 333, 500 mg; delayed-release capsules 250 mg; erythromycin ethylsuccinate tablets 400 mg; erythromycin stearate tablets 250, 500 mg",
+              "note": "CDL listed; no restriction printed (p.17)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read CDL p.13 by text and x-position. The LR code (labeler restriction) sits on the azithromycin tablets row (x=492, y=356), but its footnote text reads 'Ophthalmic solution is restricted to NDC labeler code 82584 only.' Judgment: the LR applies to the ophthalmic solution, so oral tablets are recorded as unrestricted. A human should confirm this against the CDL printed layout. Z-Pak sig is label dosing. [Sonnet check 2026-11-18: Re-read p.13 by x/y. The LR code (x=493) is printed on the Azithromycin group's first row (y=357), the same layout as Aztreonam (y=492); the asterisk and footnote ('Ophthalmic solution is restricted to NDC labeler code 82584 only') attach to the 'Ophthalmic Solution *' row (y=468), and the Tablets row carries no asterisk. Oral tablets 250/500/600 mg are unrestricted. Upgraded to verified.]",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "medi-cal-rx"
+        },
+        {
+          "classId": "abx-tetracycline",
+          "preferredAgent": {
+            "inn": "Doxycycline hyclate (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "100 mg tablet",
+            "sig": "100 mg by mouth every 12 hours on day 1, then 100 mg once or twice daily by infection (label); early Lyme disease 100 mg twice daily for 10 to 21 days (IDSA). Take with a full glass of water and stay upright 30 minutes.",
+            "sigShort": "100 mg BID",
+            "plainSig": "One capsule twice a day with a full glass of water. Don't lie down for 30 minutes after."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "CDL listed; no restriction printed (p.17)",
+          "alternatives": [
+            {
+              "drug": "Doxycycline hyclate capsules 50, 100 mg",
+              "note": "CDL listed; no restriction printed (p.17)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Doxycycline monohydrate capsules 50, 100 mg and tablets 50, 75, 100 mg",
+              "note": "CDL listed; no restriction printed (p.17)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Minocycline HCl immediate-release tablets and capsules 50, 75, 100 mg",
+              "note": "CDL listed; no restriction printed (p.19)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Tetracycline capsules 250, 500 mg; oral liquid 125 mg/5 mL",
+              "note": "CDL listed; no restriction printed (p.21)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Doryx and Doryx MPC (delayed-release doxycycline hyclate)",
+              "outcome": "pa",
+              "reason": "Not on CDL (no delayed-release doxycycline is listed, p.17); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Solodyn, Minolira, Ximino (extended-release minocycline)",
+              "outcome": "pa",
+              "reason": "Not on CDL (only minocycline immediate-release tablets and capsules are listed, p.19); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Seysara (sarecycline)",
+              "outcome": "pa",
+              "reason": "Not on CDL (sarecycline not listed in any form); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Nuzyra (omadacycline)",
+              "outcome": "pa",
+              "reason": "Not on CDL (omadacycline not listed in any form); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read CDL p.17-21. Doxycycline hyclate 20/100 mg tablets and 50/100 mg capsules; monohydrate; minocycline IR; tetracycline all carry no UM code. Pick 100 mg BID is judgment (common label dose); course length per indication. Targadox and Acticlate brand names are not printed; generic doxycycline covers them. [Sonnet check 2026-11-18: Doxycycline hyclate is listed only as tablets (20, 100 mg) and capsules (p.17); minocycline only as IR tablets/capsules (p.19). No delayed-release or extended-release form, so Doryx, Solodyn, Minolira and Ximino stay pa under CDL p.4.]",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "medi-cal-rx"
+        },
+        {
+          "classId": "abx-fluoroquinolone",
+          "preferredAgent": {
+            "inn": "Ciprofloxacin HCl (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "500 mg tablet",
+            "sig": "500 mg by mouth every 12 hours for 7 to 14 days by infection; uncomplicated cystitis 250 mg every 12 hours for 3 days when no alternative fits (label).",
+            "sigShort": "500 mg BID",
+            "plainSig": "One pill twice a day. Avoid taking it with dairy, antacids or iron."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "CDL listed; no restriction printed (p.16)",
+          "alternatives": [
+            {
+              "drug": "Levofloxacin tablets 250, 500, 750 mg; oral solution 25 mg/mL",
+              "note": "CDL listed; no restriction printed (p.18)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Moxifloxacin HCl tablets 400 mg",
+              "note": "CDL listed; no restriction printed (p.19)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Ofloxacin tablets 200, 300, 400 mg",
+              "note": "CDL listed; no restriction printed (p.20)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Ciprofloxacin oral suspension 5% and 10%",
+              "note": "CDL listed; no restriction printed (p.16)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Baxdela (delafloxacin)",
+              "outcome": "pa",
+              "reason": "Not on CDL (delafloxacin not listed in any form); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read CDL p.16, 18-20. Ciprofloxacin, levofloxacin, moxifloxacin and ofloxacin tablets carry no UM code. Pick is judgment. Cipro, Levaquin and Avelox brand names are not printed; generic names cover them.",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "medi-cal-rx"
+        },
+        {
+          "classId": "abx-uti",
+          "preferredAgent": {
+            "inn": "Nitrofurantoin (monohydrate/macrocrystals capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "100 mg capsule",
+            "sig": "1 capsule (100 mg) by mouth twice daily for 5 days (label dosing)",
+            "sigShort": "100 mg PO BID x5 days",
+            "plainSig": "One 100 mg capsule by mouth twice a day for 5 days."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "CDL listed; no restriction printed (p.38)",
+          "alternatives": [
+            {
+              "drug": "Nitrofurantoin macrocrystals capsules 25, 50, 100 mg; tablets 50, 100 mg; oral suspension 5 mg/mL",
+              "note": "CDL listed; no restriction printed (p.38)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Trimethoprim and sulfamethoxazole tablets 80/400 mg and double-strength 160/800 mg; suspension",
+              "note": "CDL listed; no restriction printed (p.37)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Trimethoprim tablets 100, 200 mg",
+              "note": "CDL listed; no restriction printed (p.38)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Fosfomycin sachet 3 g (Monurol-type)",
+              "note": "CDL listed; no restriction printed (p.17)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Methenamine hippurate tablets 1 g (Hiprex-type; prophylaxis per label)",
+              "note": "CDL listed; no restriction printed (p.37)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Pivya (pivmecillinam)",
+              "outcome": "pa",
+              "reason": "Not on CDL (pivmecillinam not listed in any form); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Orlynvah (sulopenem etzadroxil/probenecid)",
+              "outcome": "pa",
+              "reason": "Not on CDL (sulopenem not listed in any form); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Blujepa (gepotidacin)",
+              "outcome": "pa",
+              "reason": "Not on CDL (gepotidacin not listed in any form); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read CDL p.17, 37-38. Nitrofurantoin monohydrate/macrocrystals 100 mg capsule (Macrobid-type) is listed with no UM code. Pick is judgment (the brief's UTI pick). Bactrim and Hiprex brand names are not printed; generics cover them.",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "medi-cal-rx"
+        },
+        {
+          "classId": "abx-cdiff",
+          "preferredAgent": {
+            "inn": "Vancomycin (oral capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "125 mg capsule",
+            "sig": "125 mg by mouth four times daily for 10 days for C. difficile infection (label).",
+            "sigShort": "125 mg QID x10d",
+            "plainSig": "One capsule four times a day for 10 days."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "CDL listed; no restriction printed (p.22)",
+          "alternatives": [
+            {
+              "drug": "Vancomycin oral solution 25 mg/mL and 50 mg/mL (Vancocin-type)",
+              "note": "CDL listed; covered only for members 21 years of age and younger (AL, p.22)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Metronidazole oral tablets 250, 500 mg",
+              "note": "CDL listed; no restriction printed (p.18). Alternative only, not a C. difficile pick.",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Dificid (fidaxomicin)",
+              "outcome": "pa",
+              "reason": "Not on CDL (fidaxomicin not listed in any form); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Vowst (fecal microbiota spores, oral)",
+              "outcome": "pa",
+              "reason": "Not on CDL (not listed in any form); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read CDL p.18, p.22. Vancomycin 125 and 250 mg capsules carry no UM code; the AL row (x=492, y=282) belongs to the oral solution, footnote 'members 21 years of age and younger'. Firvanq (vancomycin oral solution kit) is not named; the generic oral solution is AL-limited, so Firvanq status is not established. Rebyota and bezlotoxumab are provider-administered and excluded per brief. Fidaxomicin and Vowst searched by generic and brand name: absent. [Sonnet check 2026-11-18: Vancomycin capsules 125/250 mg printed on p.22 with no UM code; the AL footnote applies to the oral solution only. Upgraded to verified.]",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "medi-cal-rx"
+        },
+        {
+          "classId": "abx-penicillin",
+          "preferredAgent": {
+            "inn": "Amoxicillin (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "500 mg capsule",
+            "sig": "Mild to moderate infection: 500 mg by mouth every 12 hours or 250 mg every 8 hours; severe: 875 mg every 12 hours or 500 mg every 8 hours. Strep throat: 10 days (label).",
+            "sigShort": "500 mg q8-12h",
+            "plainSig": "One capsule two or three times a day as directed. Finish the whole course."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Amoxicillin-clavulanate tablets 875-125 mg, chewable 200-28.5 and 400-57 mg, and oral suspensions",
+              "note": "Tier 1, no flag (PDF p.12)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Penicillin V potassium tablets 250 and 500 mg",
+              "note": "Tier 1, no flag (PDF p.16)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Dicloxacillin capsules 250 and 500 mg",
+              "note": "Tier 1, no flag (PDF p.14)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Amoxicillin 500 mg capsules are Tier 1, no flag (PDF p.12). Amoxicillin-clavulanate and penicillin V tablets are Tier 1 (pp.12, 16). Augmentin brand suspension appears on p.12 but its tier is not captured in this pass, so it is not listed as an alternative. Augmentin XR (ER tablets) is absent and recorded nonformulary. IV penicillins are medical benefit and not used. No PA or step therapy (PDF p.6-7). [Sonnet check 2026-11-18: removed 1 brand-only item(s) inferred nonformulary from absence; p.2 says the formulary 'is not an all-inclusive list' and the p.6 line is only the template definition of 'formulary', so absence is not a nonformulary finding; Kaiser prints no PA/ST (p.6-7)]",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "kaiser-permanente-ca"
+        },
+        {
+          "classId": "abx-cephalosporin",
+          "preferredAgent": {
+            "inn": "Cephalexin (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "500 mg capsule",
+            "sig": "500 mg by mouth every 12 hours (or 250 mg every 6 hours) for strep throat, skin infection or cystitis; at least 10 days for strep throat (label).",
+            "sigShort": "500 mg q12h",
+            "plainSig": "One capsule twice a day. Finish the whole course."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Cefadroxil capsules 500 mg",
+              "note": "Tier 1, no flag (PDF p.13)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefaclor capsules 250 and 500 mg",
+              "note": "Tier 1, no flag (PDF p.13)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefdinir oral suspension 125 and 250 mg/5 mL",
+              "note": "Tier 1, no flag (250 mg/5 mL shows no tier) (PDF p.13)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefixime capsules 400 mg and oral suspension 100 mg/5 mL",
+              "note": "Tier 1, no flag (PDF p.13)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefpodoxime proxetil tablets 100 and 200 mg",
+              "note": "Tier 1, no flag (PDF p.13)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefuroxime axetil tablets 250 and 500 mg",
+              "note": "Tier 1, no flag (PDF p.14)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Cephalexin 500 mg capsules are Tier 1, no flag (PDF p.14). Other oral cephalosporins are Tier 1 as listed (pp.13-14). Cefprozil is absent from the formulary and recorded nonformulary (PDF p.6). Ceftin and Suprax brand names are not printed, but generic equivalents are covered, so no barrier is recorded. IV cephalosporins are medical benefit. No PA or step therapy (PDF p.6-7). [Sonnet check 2026-11-18: removed 1 brand-only item(s) inferred nonformulary from absence; p.2 says the formulary 'is not an all-inclusive list' and the p.6 line is only the template definition of 'formulary', so absence is not a nonformulary finding; Kaiser prints no PA/ST (p.6-7)]",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "kaiser-permanente-ca"
+        },
+        {
+          "classId": "abx-macrolide",
+          "preferredAgent": {
+            "inn": "Azithromycin (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "250 mg tablet",
+            "sig": "500 mg by mouth on day 1, then 250 mg once daily on days 2 to 5 (label, Z-Pak course).",
+            "sigShort": "Z-Pak: 500 mg day 1, then 250 mg x4d",
+            "plainSig": "Two pills on day 1, then one pill a day for 4 more days."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Azithromycin tablets 500 mg and 600 mg; oral suspensions 100 and 200 mg/5 mL",
+              "note": "Tier 1, no flag (PDF p.12)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Clarithromycin tablets 250 and 500 mg; oral suspensions 125 and 250 mg/5 mL",
+              "note": "Tier 1, no flag (PDF p.14)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Zithromax 1 gram pack (single dose)",
+              "note": "Tier 2, quantity limit not printed (PDF p.17)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Azithromycin 250 mg tablets are Tier 1, no flag (PDF p.12). Clarithromycin is Tier 1 (p.14). The Zithromax 1 gram pack is Tier 2 (p.17). Erythromycin oral tablets and capsules are absent; only IV erythromycin lactobionate (p.15-16) and topical forms are listed, so oral erythromycin is recorded nonformulary (PDF p.6). No PA or step therapy (PDF p.6-7). [Sonnet check 2026-11-18: removed 1 brand-only item(s) inferred nonformulary from absence; p.2 says the formulary 'is not an all-inclusive list' and the p.6 line is only the template definition of 'formulary', so absence is not a nonformulary finding; Kaiser prints no PA/ST (p.6-7)]",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "kaiser-permanente-ca"
+        },
+        {
+          "classId": "abx-tetracycline",
+          "preferredAgent": {
+            "inn": "Doxycycline hyclate (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "100 mg tablet",
+            "sig": "100 mg by mouth every 12 hours on day 1, then 100 mg once or twice daily by infection (label); early Lyme disease 100 mg twice daily for 10 to 21 days (IDSA). Take with a full glass of water and stay upright 30 minutes.",
+            "sigShort": "100 mg BID",
+            "plainSig": "One capsule twice a day with a full glass of water. Don't lie down for 30 minutes after."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Doxycycline hyclate capsules 100 mg and tablets 20 mg",
+              "note": "Tier 1, no flag (PDF p.14)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Doxycycline monohydrate tablets 50 and 100 mg",
+              "note": "Tier 1, no flag (PDF p.15)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Minocycline capsules 50, 75 and 100 mg",
+              "note": "Tier 1, no flag (PDF p.15)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Tetracycline capsules 500 mg",
+              "note": "Tier 1, no flag (PDF p.16)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Generic doxycycline hyclate and monohydrate tablets and minocycline capsules are Tier 1, no flag (pp.14-16). Brand-only tetracyclines named in the class description are absent and recorded nonformulary (PDF p.6). Minocin 100 mg IV (p.15, Tier 2 MB) is medical benefit and not used. Lymepak and Vibramycin are not printed; generic doxycycline covers them, so no barrier is recorded. No PA or step therapy (PDF p.6-7). [Sonnet check 2026-11-18: removed 5 brand-only item(s) inferred nonformulary from absence; p.2 says the formulary 'is not an all-inclusive list' and the p.6 line is only the template definition of 'formulary', so absence is not a nonformulary finding; Kaiser prints no PA/ST (p.6-7)]",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "kaiser-permanente-ca"
+        },
+        {
+          "classId": "abx-fluoroquinolone",
+          "preferredAgent": {
+            "inn": "Ciprofloxacin (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "500 mg tablet",
+            "sig": "500 mg by mouth every 12 hours for 7 to 14 days by infection; uncomplicated cystitis 250 mg every 12 hours for 3 days when no alternative fits (label).",
+            "sigShort": "500 mg BID",
+            "plainSig": "One pill twice a day. Avoid taking it with dairy, antacids or iron."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Ciprofloxacin tablets 250 and 750 mg",
+              "note": "Tier 1, no flag (PDF p.14)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Levofloxacin tablets 250, 500 and 750 mg; levofloxacin oral solution",
+              "note": "Tier 1, no flag (PDF p.15)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Moxifloxacin tablets 400 mg",
+              "note": "Tier 1, no flag (PDF p.15)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Ciprofloxacin 500 mg tablets are Tier 1, no flag (PDF p.14). Levofloxacin and moxifloxacin tablets are Tier 1 (p.15). Ofloxacin on the list is ophthalmic only (p.73), so oral ofloxacin is recorded nonformulary (PDF p.6). Cipro and Levaquin brand names are not printed; generic equivalents are covered. Baxdela is brand-only and absent, recorded nonformulary (PDF p.6). No PA or step therapy (PDF p.6-7). Fluoroquinolones are a restricted-use class in some labels; the list prints no restriction code. [Sonnet check 2026-11-18: removed 2 brand-only item(s) inferred nonformulary from absence; p.2 says the formulary 'is not an all-inclusive list' and the p.6 line is only the template definition of 'formulary', so absence is not a nonformulary finding; Kaiser prints no PA/ST (p.6-7)]",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "kaiser-permanente-ca"
+        },
+        {
+          "classId": "abx-uti",
+          "preferredAgent": {
+            "inn": "Nitrofurantoin monohydrate/macrocrystals (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "100 mg capsule",
+            "sig": "100 mg by mouth twice daily with food: 7 days (label); 5 days for uncomplicated cystitis (IDSA guideline course).",
+            "sigShort": "100 mg BID x5-7d",
+            "plainSig": "One capsule twice a day with food for 5 to 7 days."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Nitrofurantoin macrocrystals capsules 25 mg; nitrofurantoin oral suspension 25 mg/5 mL",
+              "note": "Tier 1, no flag (PDF p.22)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Trimethoprim tablets 100 mg",
+              "note": "Tier 1, no flag (PDF p.22)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Sulfamethoxazole-trimethoprim tablets 400-80 and 800-160 mg",
+              "note": "Tier 1, no flag (PDF p.16)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Methenamine hippurate tablets 1 gram (prophylaxis)",
+              "note": "Tier 1, no flag (PDF p.21)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Nitrofurantoin monohydrate/macrocrystals 100 mg capsules are Tier 1, no flag (PDF p.22). Trimethoprim and SMX-TMP tablets are Tier 1 (pp.16, 22). Methenamine is Tier 1 (p.21). Fosfomycin, Pivya, Orlynvah and Blujepa are absent and recorded nonformulary (PDF p.6). The 100 mg macrocrystal capsule row (p.22) shows no tier; the monohydrate 100 mg row is used. No PA or step therapy (PDF p.6-7). [Sonnet check 2026-11-18: removed 4 brand-only item(s) inferred nonformulary from absence; p.2 says the formulary 'is not an all-inclusive list' and the p.6 line is only the template definition of 'formulary', so absence is not a nonformulary finding; Kaiser prints no PA/ST (p.6-7)]",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "kaiser-permanente-ca"
+        },
+        {
+          "classId": "abx-cdiff",
+          "preferredAgent": {
+            "inn": "Vancomycin (oral capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "125 mg capsule",
+            "sig": "125 mg by mouth four times daily for 10 days for C. difficile infection (label).",
+            "sigShort": "125 mg QID x10d",
+            "plainSig": "One capsule four times a day for 10 days."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Vancomycin oral capsules 250 mg",
+              "note": "Tier 1, no flag (PDF p.16)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Firvanq (vancomycin oral solution kit) 25 and 50 mg/mL",
+              "note": "Tier 2 (PDF p.15)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Metronidazole tablets 250 and 500 mg (alternative only, not the C. diff pick)",
+              "note": "Tier 1, no flag (PDF p.18)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Vancomycin oral capsules 125 mg are Tier 1, no flag (PDF p.16). Firvanq is Tier 2 (p.15). Metronidazole is listed as an alternative only (p.18). Dificid and Vowst are absent and recorded nonformulary (PDF p.6). Rebyota and bezlotoxumab are provider-administered and not in this list, so they are left out. No PA or step therapy (PDF p.6-7). The Dificid generic is named in the class note, not on this list. [Sonnet check 2026-11-18: removed 2 brand-only item(s) inferred nonformulary from absence; p.2 says the formulary 'is not an all-inclusive list' and the p.6 line is only the template definition of 'formulary', so absence is not a nonformulary finding; Kaiser prints no PA/ST (p.6-7)]",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "kaiser-permanente-ca"
+        },
+        {
+          "classId": "abx-penicillin",
+          "preferredAgent": {
+            "inn": "Amoxicillin (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "500 mg capsule (list prints no strength)",
+            "sig": "Mild to moderate infection: 500 mg by mouth every 12 hours or 250 mg every 8 hours; severe: 875 mg every 12 hours or 500 mg every 8 hours. Strep throat: 10 days (label).",
+            "sigShort": "500 mg q8-12h",
+            "plainSig": "One capsule two or three times a day as directed. Finish the whole course."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Amoxicillin (tablet; chewable tablet; oral suspension)",
+              "note": "Tier 1, no PA or ST (p.94)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Amoxicillin-clavulanate (tablet; oral suspension)",
+              "note": "Tier 1, no PA or ST (p.95)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Amoxicillin-clavulanate ER (tablet)",
+              "note": "Tier 1, no PA or ST (p.94)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Penicillin V potassium (tablet; oral solution)",
+              "note": "Tier 1, no PA or ST (p.94)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Dicloxacillin sodium (capsule)",
+              "note": "Tier 1, no PA or ST (p.95)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Ampicillin (capsule)",
+              "note": "Tier 1, no PA or ST (p.94)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read pp.94-95 (Aminopenicillins, Natural Penicillins, Penicillin Combinations, Penicillinase-Resistant Penicillins). All listed penicillins Tier 1 with no restriction. Augmentin brand not listed; generic amoxicillin-clavulanate is listed, so not a brand-only item. Strength not printed on list.",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "anthem-bcbs-ca"
+        },
+        {
+          "classId": "abx-cephalosporin",
+          "preferredAgent": {
+            "inn": "Cephalexin (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "500 mg capsule (list prints no strength)",
+            "sig": "500 mg by mouth every 12 hours (or 250 mg every 6 hours) for strep throat, skin infection or cystitis; at least 10 days for strep throat (label).",
+            "sigShort": "500 mg q12h",
+            "plainSig": "One capsule twice a day. Finish the whole course."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Cephalexin (tablet; oral suspension)",
+              "note": "Tier 1, no PA or ST (p.58)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefadroxil (capsule; tablet; oral suspension)",
+              "note": "Tier 1, no PA or ST (p.58)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefaclor (capsule; oral suspension)",
+              "note": "Tier 1, no PA or ST (p.59)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefprozil (tablet; oral suspension)",
+              "note": "Tier 1, no PA or ST (p.59)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefuroxime axetil (tablet)",
+              "note": "Tier 1, no PA or ST (p.59)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefdinir (capsule; oral suspension)",
+              "note": "Tier 1, no PA or ST (p.59)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefixime (capsule)",
+              "note": "Tier 2, no PA or ST (p.59)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefpodoxime proxetil (tablet; oral suspension)",
+              "note": "Tier 2, no PA or ST (p.59)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read pp.58-59 (Cephalosporins 1st/2nd/3rd generation). Cephalexin Tier 1 with no restriction. Keflex, Ceftin and Suprax brand names are not listed, but the generic forms are, so they are not brand-only items. Strength not printed on list.",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "anthem-bcbs-ca"
+        },
+        {
+          "classId": "abx-macrolide",
+          "preferredAgent": {
+            "inn": "Azithromycin (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "250 mg tablet (list prints no strength)",
+            "sig": "500 mg by mouth on day 1, then 250 mg once daily on days 2 to 5 (label, Z-Pak course).",
+            "sigShort": "Z-Pak: 500 mg day 1, then 250 mg x4d",
+            "plainSig": "Two pills on day 1, then one pill a day for 4 more days."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Azithromycin (oral suspension, reconstituted)",
+              "note": "Tier 1, no PA or ST (p.81)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Clarithromycin (tablet; ER tablet; oral suspension)",
+              "note": "Tier 1, no PA or ST (p.82)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Erythromycin base (delayed-release tablet, Ery-Tab)",
+              "note": "Tier 1, no PA or ST (p.82)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Erythromycin (delayed-release tablet)",
+              "note": "Tier 1, no PA or ST (p.82)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Erythromycin base (tablet)",
+              "note": "Tier 2, no PA or ST (p.82)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Erythromycin base (delayed-release capsule particles)",
+              "note": "Tier 2, no PA or ST (p.82)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Erythromycin ethylsuccinate (tablet; E.E.S. 400)",
+              "note": "Tier 2, no PA or ST (p.82)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read pp.81-82 (Azithromycin, Clarithromycin, Erythromycins). Azithromycin tablet Tier 1 with no restriction. Zithromax, Biaxin, Erythrocin and PCE brand names not listed; generic forms are listed. Strength not printed on list.",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "anthem-bcbs-ca"
+        },
+        {
+          "classId": "abx-tetracycline",
+          "preferredAgent": {
+            "inn": "Doxycycline hyclate (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "100 mg tablet (list prints no strength)",
+            "sig": "100 mg by mouth every 12 hours on day 1, then 100 mg once or twice daily by infection (label); early Lyme disease 100 mg twice daily for 10 to 21 days (IDSA). Take with a full glass of water and stay upright 30 minutes.",
+            "sigShort": "100 mg BID",
+            "plainSig": "One capsule twice a day with a full glass of water. Don't lie down for 30 minutes after."
+          },
+          "preferredRestriction": "QL (2 tablets per 1 day) (p.98)",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Doxycycline hyclate (capsule)",
+              "note": "Tier 1, QL 2 capsules per day (p.98)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Doxycycline hyclate (delayed-release tablet 100 mg)",
+              "note": "Tier 1, QL 2 capsules per day (p.98)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Doxycycline hyclate (tablet 20 mg)",
+              "note": "Tier 1, QL 2 tablets per day (p.98)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Doxycycline monohydrate (capsule 50, 75, 100 mg; tablet 100, 75 mg)",
+              "note": "Tier 1, QL per day (p.98)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Minocycline HCl (capsule; tablet)",
+              "note": "Tier 1, QL (p.98-99)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Tetracycline HCl (capsule)",
+              "note": "Tier 1, QL 4 capsules per day (p.99)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Minocycline HCl ER (tablet)",
+              "note": "Tier 2, ST and QL (p.98)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Doxycycline hyclate (delayed-release tablet 75 mg, 150 mg)",
+              "outcome": "pa",
+              "reason": "PA; QL 2 capsules per day (page 98)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Doxycycline hyclate (tablet 50 mg)",
+              "outcome": "step",
+              "reason": "ST; QL 2 tablets per day (page 98)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Doxycycline hyclate (Targadox oral tablet, 50 mg)",
+              "outcome": "step",
+              "reason": "ST; QL 2 tablets per day (page 99)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Doxycycline monohydrate (capsule 150 mg; tablet 50 mg)",
+              "outcome": "step",
+              "reason": "ST; QL (page 98)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Minocycline HCl ER (tablet 45-135 mg)",
+              "outcome": "step",
+              "reason": "ST; QL 1 tablet per day (page 98)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read pp.98-99 (Tetracyclines). Doxycycline hyclate 100 mg tablet Tier 1 with QL 2 per day and no PA or ST; this is the pick. Doxycycline DR 75/150 mg (PA) and the 50 mg and 150 mg monohydrate rows (ST) are not the pick. Targadox row is ST; QL (page 99). Doryx, Doryx MPC, Vibramycin, Acticlate, Minocin, Solodyn, Lymepak not listed as brands; generic forms of them appear above. Seysara, Nuzyra, Minolira and Ximino not listed anywhere. Strength not printed on list. [Sonnet check 2026-11-18: removed absence-inferred nonformulary items (Seysara, Nuzyra, Minolira, Ximino): p.2 says drugs not on the list 'may not be covered' and p.7 says a listed drug 'may not be covered', so the list does not firmly state that absence means exclusion; absent brands left unrecorded, coverage unconfirmed]",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "anthem-bcbs-ca"
+        },
+        {
+          "classId": "abx-fluoroquinolone",
+          "preferredAgent": {
+            "inn": "Ciprofloxacin (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "500 mg tablet (list prints no strength)",
+            "sig": "500 mg by mouth every 12 hours for 7 to 14 days by infection; uncomplicated cystitis 250 mg every 12 hours for 3 days when no alternative fits (label).",
+            "sigShort": "500 mg BID",
+            "plainSig": "One pill twice a day. Avoid taking it with dairy, antacids or iron."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Ofloxacin (tablet)",
+              "note": "Tier 1, no PA or ST (p.76)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Levofloxacin (tablet)",
+              "note": "Tier 2, no PA or ST (p.76)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read p.76 (Fluoroquinolones). Ciprofloxacin, ofloxacin and levofloxacin oral tablets listed with no PA or ST. Moxifloxacin oral not listed. Baxdela not listed anywhere. [Sonnet check 2026-11-18: removed absence-inferred nonformulary items (Baxdela): p.2 says drugs not on the list 'may not be covered' and p.7 says a listed drug 'may not be covered', so the list does not firmly state that absence means exclusion; absent brands left unrecorded, coverage unconfirmed]",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "anthem-bcbs-ca"
+        },
+        {
+          "classId": "abx-uti",
+          "preferredAgent": {
+            "inn": "Nitrofurantoin monohydrate/macrocrystals (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "100 mg capsule (list prints no strength)",
+            "sig": "100 mg by mouth twice daily with food: 7 days (label); 5 days for uncomplicated cystitis (IDSA guideline course).",
+            "sigShort": "100 mg BID x5-7d",
+            "plainSig": "One capsule twice a day with food for 5 to 7 days."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Nitrofurantoin macrocrystals (capsule)",
+              "note": "Tier 1, no PA or ST (p.42)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Trimethoprim (tablet)",
+              "note": "Tier 1, no PA or ST (p.41)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Sulfamethoxazole-trimethoprim (tablet; oral suspension)",
+              "note": "Tier 1, no PA or ST (p.42)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Methenamine hippurate (tablet)",
+              "note": "Tier 2, no PA or ST (p.42)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read pp.41-42 (Anti-infective misc., Urinary anti-infectives). Nitrofurantoin monohydrate macrocrystals capsule Tier 1 with no restriction. Macrobid and Macrodantin brand names not listed; generic forms are. Pivya, Orlynvah, Blujepa and fosfomycin not listed anywhere. Strength not printed on list. [Sonnet check 2026-11-18: removed absence-inferred nonformulary items (Pivya, Orlynvah, Blujepa, Monurol): p.2 says drugs not on the list 'may not be covered' and p.7 says a listed drug 'may not be covered', so the list does not firmly state that absence means exclusion; absent brands left unrecorded, coverage unconfirmed]",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "anthem-bcbs-ca"
+        },
+        {
+          "classId": "abx-cdiff",
+          "preferredAgent": {
+            "inn": "Vancomycin HCl (oral capsule, 125 mg)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "125 mg capsule (list prints strength 125 mg)",
+            "sig": "125 mg by mouth four times daily for 10 days for C. difficile infection (label).",
+            "sigShort": "125 mg QID x10d",
+            "plainSig": "One capsule four times a day for 10 days."
+          },
+          "preferredRestriction": "QL 120 capsules per 30 days (p.42)",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 2",
+          "alternatives": [
+            {
+              "drug": "Metronidazole (capsule)",
+              "note": "Tier 1, no PA or ST (p.41). Alternative only, not the pick, per class rule",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Metronidazole (tablet)",
+              "note": "Tier 1, no PA or ST (p.41). Alternative only, not the pick, per class rule",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Vancomycin HCl (oral capsule, 250 mg)",
+              "note": "Tier 2, QL 240 capsules per 30 days (p.42)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read p.42 (Glycopeptides) and p.41 (Metronidazole). Vancomycin oral 125 mg capsule Tier 2, QL 120 per 30 days, no PA or ST, so it is the pick. Metronidazole is listed Tier 1 but is an alternative only, per class rule. Dificid, fidaxomicin, Vowst and Firvanq not listed anywhere. Rebyota and bezlotoxumab are medical-benefit products and were not used. [Sonnet check 2026-11-18: removed absence-inferred nonformulary items (Dificid, Vowst, Firvanq): p.2 says drugs not on the list 'may not be covered' and p.7 says a listed drug 'may not be covered', so the list does not firmly state that absence means exclusion; absent brands left unrecorded, coverage unconfirmed]",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "anthem-bcbs-ca"
+        }
+      ],
+      "references": [
+        {
+          "id": "medi-cal-rx-common6-2026-11",
+          "label": "Medi-Cal Rx Contract Drugs List (November 1, 2026)",
+          "publisher": "California Department of Health Care Services (Medi-Cal Rx)",
+          "type": "payer",
+          "url": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+          "effectiveDate": "2026-11-01",
+          "accessed": "2026-11-18"
+        },
+        {
+          "id": "kaiser-permanente-ca-common6-2026-11",
+          "label": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (effective 11/03/2026; updated 11/01/2026)",
+          "publisher": "Kaiser Permanente",
+          "type": "payer",
+          "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+          "effectiveDate": "2026-11-03",
+          "accessed": "2026-11-18"
+        },
+        {
+          "id": "anthem-bcbs-ca-common6-2026-11",
+          "label": "2026 California Select Drug List, Four Tier (IND), Last Updated November 1, 2026",
+          "publisher": "Anthem Blue Cross",
+          "type": "payer",
+          "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+          "effectiveDate": "2026-11-01",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Prior authorization (PA)",
+          "short": "Insurer sign-off first",
+          "definition": "Insurer sign-off needed before the drug is covered."
+        },
+        {
+          "term": "Step therapy",
+          "short": "Try a preferred drug first",
+          "definition": "Must fail a preferred drug first before the plan covers this one."
+        }
+      ]
+    },
+    {
+      "id": "ca-bph",
+      "label": "CA · Enlarged prostate (BPH)",
+      "stateCode": "CA",
+      "region": "California",
+      "topicId": "bph",
+      "topic": "Enlarged prostate (BPH)",
+      "classNoun": "Prescription type",
+      "unitNoun": "medication",
+      "tagline": "",
+      "dataStatus": "verified",
+      "lastUpdated": "2026-11-18",
+      "capturedAt": "2026-11-18",
+      "payers": [
+        {
+          "id": "medi-cal-rx",
+          "name": "Medi-Cal Rx — California Medicaid Pharmacy Program (Fee-for-Service carve-out, statewide)",
+          "shortName": "Medi-Cal Rx",
+          "pbm": "Magellan Health (Magellan Medicaid Administration; DHCS vendor)",
+          "productName": "Medi-Cal Rx Contract Drugs List",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "Medi-Cal Rx Contract Drugs List (November 1, 2026)",
+          "formularyUrl": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "id": "kaiser-permanente-ca",
+          "name": "Kaiser Permanente (Commercial HMO)",
+          "shortName": "Kaiser Permanente",
+          "pbm": "Internal (Kaiser Foundation Health Plan formulary; closed integrated pharmacy)",
+          "productName": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+          "marketSegment": "commercial-employer",
+          "formularyId": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (effective 11/03/2026; updated 11/01/2026)",
+          "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ]
+        },
+        {
+          "id": "anthem-bcbs-ca",
+          "name": "Anthem Blue Cross of California (Commercial)",
+          "shortName": "Anthem Blue Cross CA",
+          "pbm": "CarelonRx",
+          "productName": "2026 California Select Drug List - Four Tier",
+          "marketSegment": "commercial-employer",
+          "formularyId": "2026 California Select Drug List, Four Tier (IND), Last Updated November 1, 2026",
+          "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "id": "bph-alpha",
+          "name": "Alpha-1 blockers",
+          "shortName": "Alpha blocker",
+          "plainName": "Prostate flow pill (alpha blocker)",
+          "description": "Alpha-1 blockers for BPH: tamsulosin (Flomax), alfuzosin ER (Uroxatral), silodosin (Rapaflo), doxazosin (Cardura; Cardura XL is brand-only), terazosin. Combination dutasteride/tamsulosin (Jalyn) belongs to the 5-ARI class.",
+          "plainDescription": "A daily pill that relaxes the prostate so urine flows more easily.",
+          "indication": "Benign prostatic hyperplasia (BPH)",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "id": "bph-5ari",
+          "name": "5-alpha reductase inhibitors",
+          "shortName": "5-ARI",
+          "plainName": "Prostate-shrinking pill",
+          "description": "5-alpha reductase inhibitors for BPH: finasteride 5 mg (Proscar), dutasteride (Avodart), dutasteride/tamsulosin (Jalyn), finasteride/tadalafil (Entadfi; up to 26 weeks, not with alpha blockers). The pick is a single agent; the combinations are alternatives. Finasteride 1 mg (Propecia, hair loss) is not this class.",
+          "plainDescription": "A daily pill that slowly shrinks an enlarged prostate over months.",
+          "indication": "Benign prostatic hyperplasia (BPH)",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "id": "bph-pde5",
+          "name": "Tadalafil for BPH",
+          "shortName": "PDE5 (BPH)",
+          "plainName": "Daily tadalafil for BPH",
+          "description": "Tadalafil 2.5 mg and 5 mg once daily (Cialis, generic) for BPH symptoms. Plans often cover it for BPH only with a diagnosis-based PA and exclude it for erectile dysfunction: record the BPH rule. Sildenafil and vardenafil are not labeled for BPH.",
+          "plainDescription": "A low daily dose of tadalafil that eases urinary symptoms of an enlarged prostate.",
+          "indication": "BPH (with or without erectile dysfunction)",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        }
+      ],
+      "records": [
+        {
+          "classId": "bph-alpha",
+          "preferredAgent": {
+            "inn": "Tamsulosin HCl (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "0.4 mg capsule",
+            "sig": "0.4 mg by mouth once daily, 30 minutes after the same meal each day; may increase to 0.8 mg once daily after 2 to 4 weeks (label).",
+            "sigShort": "0.4 mg QD after a meal",
+            "plainSig": "One capsule a day, 30 minutes after the same meal."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "CDL listed; no restriction printed (p.220)",
+          "alternatives": [
+            {
+              "drug": "Alfuzosin HCl extended-release tablets 10 mg (Uroxatral-type)",
+              "note": "CDL listed; no restriction printed (p.220)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Terazosin HCl tablets and capsules 1, 2, 5, 10 mg",
+              "note": "CDL listed; no restriction printed (p.221)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Doxazosin mesylate tablets 1, 2, 4, 8 mg (immediate release)",
+              "note": "CDL listed; no restriction printed (p.129)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Rapaflo (silodosin)",
+              "outcome": "pa",
+              "reason": "Not on CDL (silodosin not listed in any form); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cardura XL (doxazosin extended-release)",
+              "outcome": "pa",
+              "reason": "Not on CDL (only doxazosin immediate-release tablets are listed, p.129); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read CDL p.129 and p.220-221. Tamsulosin, alfuzosin, terazosin and doxazosin IR carry no UM code. Pick is judgment (cheapest unrestricted alpha blocker, label dose). Flomax, Uroxatral and Cardura names are not printed; generics cover them. [Sonnet check 2026-11-18: Doxazosin listed as IR tablets only (p.129); Cardura XL stays pa under CDL p.4.]",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "medi-cal-rx"
+        },
+        {
+          "classId": "bph-5ari",
+          "preferredAgent": {
+            "inn": "Finasteride (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "5 mg tablet",
+            "sig": "5 mg by mouth once daily for BPH (label). Benefit builds over 6 to 12 months.",
+            "sigShort": "5 mg QD",
+            "plainSig": "One pill a day. It takes several months to work."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "CDL listed; no restriction printed (p.220)",
+          "alternatives": [
+            {
+              "drug": "Dutasteride capsules 0.5 mg (Avodart-type)",
+              "note": "CDL listed; no restriction printed (p.220). The page notes a federal exclusion for youth with gender-affirming-care indications; not a BPH rule.",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Jalyn (dutasteride/tamsulosin capsule)",
+              "outcome": "pa",
+              "reason": "Not on CDL (the combination capsule is not listed; its components are listed separately, dutasteride and tamsulosin, p.220); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Entadfi (finasteride/tadalafil)",
+              "outcome": "pa",
+              "reason": "Not on CDL (the combination is not listed; tadalafil is not listed in any form); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read CDL p.220. Finasteride 5 mg tablets and dutasteride 0.5 mg capsules carry no UM code. Pick is judgment (single agent, unrestricted). Proscar and Avodart brand names are not printed; generic covers them. Jalyn and Entadfi are recorded as pa because the combination products are absent.",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "medi-cal-rx"
+        },
+        {
+          "classId": "bph-pde5",
+          "preferredAgent": {
+            "inn": "Tadalafil (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "5 mg tablet",
+            "sig": "5 mg by mouth once daily at about the same time each day for BPH, with or without ED (label; 2.5 mg if CrCl 30-50).",
+            "sigShort": "5 mg QD",
+            "plainSig": "One pill a day at about the same time."
+          },
+          "preferredRestriction": "Not on CDL: tadalafil is not listed in any form, so a Treatment Authorization Request (TAR) is needed. CDL p.4: 'Legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant.'",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Not listed on CDL",
+          "alternatives": [],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Searched CDL by generic name (tadalafil) and brand (Cialis): no entry. Sildenafil is listed on p.136 only for pulmonary arterial hypertension and is not labeled for BPH, so it is not an alternative. Pick is the BPH-labeled dose per taxonomy; the barrier is authorization, not an exclusion. [Sonnet check 2026-11-18: Searched TADALAFIL and CIALIS across all 243 pages: absent. Pick kept at 5 mg daily; barrier is the TAR.]",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "medi-cal-rx"
+        },
+        {
+          "classId": "bph-alpha",
+          "preferredAgent": {
+            "inn": "Tamsulosin (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "0.4 mg capsule",
+            "sig": "0.4 mg by mouth once daily, 30 minutes after the same meal each day; may increase to 0.8 mg once daily after 2 to 4 weeks (label).",
+            "sigShort": "0.4 mg QD after a meal",
+            "plainSig": "One capsule a day, 30 minutes after the same meal."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Doxazosin tablets 1, 2 and 4 mg",
+              "note": "Tier 1, no flag (8 mg shows no tier) (PDF p.38)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Terazosin capsules 1, 2, 5 and 10 mg",
+              "note": "Tier 1, no flag (PDF p.38)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Alfuzosin ER tablets 10 mg",
+              "note": "Tier 1, no flag (PDF p.31)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Tamsulosin 0.4 mg capsules are Tier 1, no flag (PDF p.38). Doxazosin, terazosin and alfuzosin ER are Tier 1 (pp.31, 38). Silodosin and Cardura XL are absent and recorded nonformulary (PDF p.6). Uroxatral brand is not printed; generic alfuzosin is covered. No PA or step therapy (PDF p.6-7). [Sonnet check 2026-11-18: removed 2 brand-only item(s) inferred nonformulary from absence; p.2 says the formulary 'is not an all-inclusive list' and the p.6 line is only the template definition of 'formulary', so absence is not a nonformulary finding; Kaiser prints no PA/ST (p.6-7)]",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "kaiser-permanente-ca"
+        },
+        {
+          "classId": "bph-5ari",
+          "preferredAgent": {
+            "inn": "Finasteride (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "5 mg tablet",
+            "sig": "5 mg by mouth once daily for BPH (label). Benefit builds over 6 to 12 months.",
+            "sigShort": "5 mg QD",
+            "plainSig": "One pill a day. It takes several months to work."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Finasteride 5 mg tablets are Tier 1, no flag (PDF p.86). Dutasteride, Jalyn and Entadfi are absent and recorded nonformulary (PDF p.6). Propecia 1 mg is not this class and is not used. No PA or step therapy (PDF p.6-7). [Sonnet check 2026-11-18: removed 3 brand-only item(s) inferred nonformulary from absence; p.2 says the formulary 'is not an all-inclusive list' and the p.6 line is only the template definition of 'formulary', so absence is not a nonformulary finding; Kaiser prints no PA/ST (p.6-7)]",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "kaiser-permanente-ca"
+        },
+        {
+          "classId": "bph-pde5",
+          "preferredAgent": {
+            "inn": "Tadalafil (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "5 mg tablet",
+            "sig": "5 mg by mouth once daily at about the same time each day for BPH, with or without ED (label; 2.5 mg if CrCl 30-50).",
+            "sigShort": "5 mg QD",
+            "plainSig": "One pill a day at about the same time."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Tadalafil tablets 2.5 mg",
+              "note": "Tier 1, quantity limit 8 tablets per 30 days (PDF p.44)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Tadalafil 5 mg tablets are Tier 1 with a quantity limit of 8 tablets per 30 days (PDF p.44). The quantity limit is not a PA, step or diagnosis barrier, so preferredRestriction is null. The list does not print an indication, so no BPH-specific diagnosis rule is recorded; Kaiser has no PA (PDF p.6). Sildenafil and tadalafil 10 and 20 mg (PAH) are not BPH products and are not used. Cialis is not printed as brand-only and is not recorded.",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "kaiser-permanente-ca"
+        },
+        {
+          "classId": "bph-alpha",
+          "preferredAgent": {
+            "inn": "Tamsulosin HCl (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "0.4 mg capsule (list prints no strength)",
+            "sig": "0.4 mg by mouth once daily, 30 minutes after the same meal each day; may increase to 0.8 mg once daily after 2 to 4 weeks (label).",
+            "sigShort": "0.4 mg QD after a meal",
+            "plainSig": "One capsule a day, 30 minutes after the same meal."
+          },
+          "preferredRestriction": "QL (2 capsules per 1 day) (p.78)",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Alfuzosin HCl ER (tablet)",
+              "note": "Tier 1, QL 1 tablet per day (p.78)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Doxazosin mesylate (tablet 1, 2, 4 mg)",
+              "note": "Tier 1, QL 1 tablet per day (p.41)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Doxazosin mesylate (tablet 8 mg)",
+              "note": "Tier 1, QL 2 tablets per day (p.41)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Terazosin HCl (capsule 1, 2, 5 mg)",
+              "note": "Tier 1, QL 1 capsule per day (p.41)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Terazosin HCl (capsule 10 mg)",
+              "note": "Tier 1, QL 2 capsules per day (p.41)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read pp.41 and 78 (Antiadrenergics, Alpha 1-adrenoceptor antagonists). Tamsulosin capsule Tier 1, QL 2 capsules per day as printed (not a PA). Alfuzosin ER, doxazosin and terazosin Tier 1 listed. Rapaflo, silodosin and Cardura XL not listed anywhere. Dutasteride/tamsulosin (Jalyn) belongs to the 5-ARI class. [Sonnet check 2026-11-18: removed absence-inferred nonformulary items (Rapaflo / silodosin, Cardura XL): p.2 says drugs not on the list 'may not be covered' and p.7 says a listed drug 'may not be covered', so the list does not firmly state that absence means exclusion; absent brands left unrecorded, coverage unconfirmed]",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "anthem-bcbs-ca"
+        },
+        {
+          "classId": "bph-5ari",
+          "preferredAgent": {
+            "inn": "Finasteride (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "5 mg tablet (list prints no strength; 5 mg per class rule)",
+            "sig": "5 mg by mouth once daily for BPH (label). Benefit builds over 6 to 12 months.",
+            "sigShort": "5 mg QD",
+            "plainSig": "One pill a day. It takes several months to work."
+          },
+          "preferredRestriction": "QL (1 tablet per 1 day) (p.78)",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read p.78 (5-Alpha Reductase Inhibitors). Finasteride tablet Tier 1, QL 1 tablet per day, no PA or ST. Strength not printed on list; 5 mg per class rule and label BPH dose. Proscar brand not listed as a brand-only item. [Sonnet check 2026-11-18: removed absence-inferred nonformulary items (Avodart / dutasteride, Jalyn, Entadfi): p.2 says drugs not on the list 'may not be covered' and p.7 says a listed drug 'may not be covered', so the list does not firmly state that absence means exclusion; absent brands left unrecorded, coverage unconfirmed]",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "anthem-bcbs-ca"
+        },
+        {
+          "classId": "bph-pde5",
+          "preferredAgent": {
+            "inn": "Tadalafil (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "5 mg tablet (list row covers 2.5 mg and 5 mg)",
+            "sig": "5 mg by mouth once daily at about the same time each day for BPH, with or without ED (label; 2.5 mg if CrCl 30-50).",
+            "sigShort": "5 mg QD",
+            "plainSig": "One pill a day at about the same time."
+          },
+          "preferredRestriction": "PA; BE (benefit exclusion: may not be covered depending on plan design); QL 30 tablets per 30 days (p.58)",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read p.58 (Selective cGMP phosphodiesterase type 5 inhibitors). Tadalafil 2.5 mg and 5 mg Tier 1 with PA and BE and QL 30 per 30 days. The document does not state the BPH-diagnosis rule, so no diagnosis criterion is recorded. Cialis not listed as a brand-only item. Tadalafil 10/20 mg row is a different strength range and not used. Sildenafil and vardenafil are not labeled for BPH and not listed as picks. BE key: 'This drug may not be covered depending on your plans design' (p.14). [Sonnet check 2026-11-18: key p.14: BE = benefit exclusion, 'may not be covered depending on your plans design'; PA is a real PA; row (p.58) sits under PDE5 inhibitors and names no BPH criterion, so BPH coverage needs plan confirmation]",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "anthem-bcbs-ca"
+        }
+      ],
+      "references": [
+        {
+          "id": "medi-cal-rx-common6-2026-11",
+          "label": "Medi-Cal Rx Contract Drugs List (November 1, 2026)",
+          "publisher": "California Department of Health Care Services (Medi-Cal Rx)",
+          "type": "payer",
+          "url": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+          "effectiveDate": "2026-11-01",
+          "accessed": "2026-11-18"
+        },
+        {
+          "id": "kaiser-permanente-ca-common6-2026-11",
+          "label": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (effective 11/03/2026; updated 11/01/2026)",
+          "publisher": "Kaiser Permanente",
+          "type": "payer",
+          "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+          "effectiveDate": "2026-11-03",
+          "accessed": "2026-11-18"
+        },
+        {
+          "id": "anthem-bcbs-ca-common6-2026-11",
+          "label": "2026 California Select Drug List, Four Tier (IND), Last Updated November 1, 2026",
+          "publisher": "Anthem Blue Cross",
+          "type": "payer",
+          "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+          "effectiveDate": "2026-11-01",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Prior authorization (PA)",
+          "short": "Insurer sign-off first",
+          "definition": "Insurer sign-off needed before the drug is covered."
+        },
+        {
+          "term": "Step therapy",
+          "short": "Try a preferred drug first",
+          "definition": "Must fail a preferred drug first before the plan covers this one."
+        }
+      ]
+    },
+    {
+      "id": "ca-loop-diuretics",
+      "label": "CA · Loop diuretics",
+      "stateCode": "CA",
+      "region": "California",
+      "topicId": "loop-diuretics",
+      "topic": "Loop diuretics",
+      "classNoun": "Prescription type",
+      "unitNoun": "medication",
+      "tagline": "",
+      "dataStatus": "verified",
+      "lastUpdated": "2026-11-18",
+      "capturedAt": "2026-11-18",
+      "payers": [
+        {
+          "id": "medi-cal-rx",
+          "name": "Medi-Cal Rx — California Medicaid Pharmacy Program (Fee-for-Service carve-out, statewide)",
+          "shortName": "Medi-Cal Rx",
+          "pbm": "Magellan Health (Magellan Medicaid Administration; DHCS vendor)",
+          "productName": "Medi-Cal Rx Contract Drugs List",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "Medi-Cal Rx Contract Drugs List (November 1, 2026)",
+          "formularyUrl": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "id": "kaiser-permanente-ca",
+          "name": "Kaiser Permanente (Commercial HMO)",
+          "shortName": "Kaiser Permanente",
+          "pbm": "Internal (Kaiser Foundation Health Plan formulary; closed integrated pharmacy)",
+          "productName": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+          "marketSegment": "commercial-employer",
+          "formularyId": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (effective 11/03/2026; updated 11/01/2026)",
+          "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ]
+        },
+        {
+          "id": "anthem-bcbs-ca",
+          "name": "Anthem Blue Cross of California (Commercial)",
+          "shortName": "Anthem Blue Cross CA",
+          "pbm": "CarelonRx",
+          "productName": "2026 California Select Drug List - Four Tier",
+          "marketSegment": "commercial-employer",
+          "formularyId": "2026 California Select Drug List, Four Tier (IND), Last Updated November 1, 2026",
+          "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "id": "loop-diuretic",
+          "name": "Loop diuretics",
+          "shortName": "Loop",
+          "plainName": "Water pill (loop diuretic)",
+          "description": "Loop diuretics: furosemide (Lasix; tablets, oral solution; Furoscix subcutaneous on-body infusor and Lasix ONYU subcutaneous, alternatives only, never the pick), torsemide (generic; Soaanz), bumetanide (Bumex), ethacrynic acid (Edecrin; for sulfa allergy). Not thiazides.",
+          "plainDescription": "A strong water pill that removes extra fluid, for heart failure, kidney and liver disease and swelling.",
+          "indication": "Edema, heart failure, CKD, cirrhosis",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        }
+      ],
+      "records": [
+        {
+          "classId": "loop-diuretic",
+          "preferredAgent": {
+            "inn": "Furosemide (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "20 mg tablet",
+            "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+            "sigShort": "20-80 mg QAM, titrate",
+            "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "CDL listed; no restriction printed (p.141)",
+          "alternatives": [
+            {
+              "drug": "Furosemide tablets 40 mg, 80 mg; oral liquid 10 mg/mL and 40 mg/5 mL",
+              "note": "CDL listed; no restriction printed (p.141)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Bumetanide tablets 0.5, 1, 2 mg",
+              "note": "CDL listed; no restriction printed (p.141)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Torsemide tablets 5, 10, 20, 100 mg",
+              "note": "CDL listed; no restriction printed (p.142)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Ethacrynic acid tablets 25 mg (Edecrin-type; sulfa-allergy option)",
+              "note": "CDL listed; no restriction printed (p.141)",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Furoscix (subcutaneous furosemide on-body infusor)",
+              "outcome": "pa",
+              "reason": "Not on CDL (subcutaneous furosemide not listed; furosemide is listed as injection 10 mg/mL, tablets and oral liquid, p.141); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Lasix ONYU (subcutaneous furosemide)",
+              "outcome": "pa",
+              "reason": "Not on CDL (subcutaneous furosemide not listed; furosemide is listed as injection 10 mg/mL, tablets and oral liquid, p.141); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+              "sourceIds": [
+                "medi-cal-rx-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read CDL p.141-142. Furosemide tablets 20/40/80 mg, bumetanide, ethacrynic acid and torsemide tablets carry no UM code. The LR at x=492 on p.141 belongs to finerenone, not furosemide. Soaanz (brand torsemide) is not named and its strengths are not checked against the listed torsemide strengths, so its status is not recorded. Edecrin and Lasix brand names are not printed. Furoscix and Lasix ONYU recorded as pa on the basis that the subcutaneous product is not among the listed furosemide forms. [Sonnet check 2026-11-18: Furosemide 20 mg tablets printed on p.141 with no UM code. Added Soaanz as an alternative under the generic torsemide entry (strengths 5/10/20/100 mg, p.142); a human should confirm whether 40/60 mg need a TAR. Upgraded to verified.] [Opus 2026-11-18: dropped Soaanz from alternatives; it is a separate 505(b)(2) torsemide product, not covered by the generic torsemide CDL entry without confirmation.]",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "medi-cal-rx"
+        },
+        {
+          "classId": "loop-diuretic",
+          "preferredAgent": {
+            "inn": "Furosemide (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "20 mg tablet",
+            "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+            "sigShort": "20-80 mg QAM, titrate",
+            "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Furosemide tablets 40 and 80 mg; furosemide oral solution 10 mg/mL",
+              "note": "Tier 1, no flag (PDF p.69)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Bumetanide tablets 0.5, 1 and 2 mg; bumetanide oral solution",
+              "note": "Tier 1, no flag (PDF p.69)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Torsemide tablets 10, 20 and 100 mg",
+              "note": "Tier 1, no flag (5 mg shows no tier) (PDF p.70)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Ethacrynic acid tablets 25 mg",
+              "note": "Tier 1, no flag (PDF p.69)",
+              "sourceIds": [
+                "kaiser-permanente-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Furosemide 20 mg tablets are Tier 1, no flag (PDF p.69). Bumetanide, ethacrynic acid and torsemide tablets are Tier 1 (pp.69-70). Furoscix, Lasix ONYU and Soaanz are absent and recorded nonformulary (PDF p.6); they are self-administered products, so they are not treated as medical-benefit exclusions. Sodium Edecrin injection (p.70) is not used. No PA or step therapy (PDF p.6-7). [Sonnet check 2026-11-18: removed 3 brand-only item(s) inferred nonformulary from absence; p.2 says the formulary 'is not an all-inclusive list' and the p.6 line is only the template definition of 'formulary', so absence is not a nonformulary finding; Kaiser prints no PA/ST (p.6-7)]",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "kaiser-permanente-ca"
+        },
+        {
+          "classId": "loop-diuretic",
+          "preferredAgent": {
+            "inn": "Furosemide (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "20 mg tablet (list prints no strength)",
+            "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+            "sigShort": "20-80 mg QAM, titrate",
+            "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Furosemide (oral solution)",
+              "note": "Tier 1, no PA or ST (p.74)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Torsemide (tablet)",
+              "note": "Tier 1, no PA or ST (p.74)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Bumetanide (tablet)",
+              "note": "Tier 1, no PA or ST (p.73)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Ethacrynic acid (tablet)",
+              "note": "Tier 2, no PA or ST (p.74)",
+              "sourceIds": [
+                "anthem-bcbs-ca-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read pp.73-74 (Loop Diuretics). Furosemide tablet and solution, torsemide, bumetanide Tier 1 and ethacrynic acid Tier 2, all no PA or ST. Furoscix, Lasix ONYU and Soaanz not listed anywhere. The p.7 FAQ says provider-administered injectables are typically medical benefit, so the subcutaneous products may be covered elsewhere; the nonformulary outcome is for the pharmacy-benefit list only. [Sonnet check 2026-11-18: removed absence-inferred nonformulary items (Furoscix, Lasix ONYU, Soaanz): p.2 says drugs not on the list 'may not be covered' and p.7 says a listed drug 'may not be covered', so the list does not firmly state that absence means exclusion; absent brands left unrecorded, coverage unconfirmed]",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-18",
+          "payerId": "anthem-bcbs-ca"
+        }
+      ],
+      "references": [
+        {
+          "id": "medi-cal-rx-common6-2026-11",
+          "label": "Medi-Cal Rx Contract Drugs List (November 1, 2026)",
+          "publisher": "California Department of Health Care Services (Medi-Cal Rx)",
+          "type": "payer",
+          "url": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+          "effectiveDate": "2026-11-01",
+          "accessed": "2026-11-18"
+        },
+        {
+          "id": "kaiser-permanente-ca-common6-2026-11",
+          "label": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (effective 11/03/2026; updated 11/01/2026)",
+          "publisher": "Kaiser Permanente",
+          "type": "payer",
+          "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+          "effectiveDate": "2026-11-03",
+          "accessed": "2026-11-18"
+        },
+        {
+          "id": "anthem-bcbs-ca-common6-2026-11",
+          "label": "2026 California Select Drug List, Four Tier (IND), Last Updated November 1, 2026",
+          "publisher": "Anthem Blue Cross",
+          "type": "payer",
+          "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+          "effectiveDate": "2026-11-01",
+          "accessed": "2026-11-18"
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Prior authorization (PA)",
+          "short": "Insurer sign-off first",
+          "definition": "Insurer sign-off needed before the drug is covered."
+        },
+        {
+          "term": "Step therapy",
+          "short": "Try a preferred drug first",
+          "definition": "Must fail a preferred drug first before the plan covers this one."
+        }
+      ]
     }
   ]
 }

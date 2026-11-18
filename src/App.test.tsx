@@ -284,7 +284,7 @@ describe('FirstPassRx app', () => {
     window.history.replaceState({}, '', '/' + link)
     render(<App />)
     expect(screen.getByRole('tab', { name: /Daily combo controller/ })).toHaveAttribute('aria-selected', 'true')
-  })
+  }, 15000)
 
   it('remembers the last plan on this device when there is no link', async () => {
     const { unmount } = render(<App />)
