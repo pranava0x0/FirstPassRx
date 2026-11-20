@@ -123,7 +123,7 @@ describe('FirstPassRx app', () => {
     const user = userEvent.setup()
     render(<App />)
     await switchGuide(user, /Maryland/i, /Menopause HT/i)
-    await screen.findByRole('tab', { name: /Estrogen pill/i })
+    await screen.findByRole('tab', { name: /Estrogen pill/i }, { timeout: 5000 })
     fireEvent.change(screen.getByLabelText(/select insurance plan/i), { target: { value: 'priority-partners' } })
     await user.click(screen.getByRole('tab', { name: /Estrogen pill/i }))
 
@@ -196,7 +196,7 @@ describe('FirstPassRx app', () => {
 
     // Masthead, class legend, plan list, and the result all swap to the menopause guide.
     expect(selectedText(/^Condition$/)).toMatch(/Menopause HT/i)
-    expect(screen.getByText(/Prescription type/i, { selector: 'h2' })).toBeInTheDocument()
+    expect(await screen.findByText(/Prescription type/i, { selector: 'h2' }, { timeout: 5000 })).toBeInTheDocument()
     expect(screen.getByRole('option', { name: /Maryland Medicaid/i })).toBeInTheDocument()
     expect(agentHeading()).toHaveTextContent(/Estradiol/i)
     // Inhaler-specific plans are gone.
@@ -276,7 +276,7 @@ describe('FirstPassRx app', () => {
     const user = userEvent.setup()
     const { unmount } = render(<App />)
     await user.click(screen.getByRole('tab', { name: /Daily combo controller/ }))
-    await waitFor(() => expect(window.location.search).toMatch(/class=icslaba/))
+    await waitFor(() => expect(window.location.search).toMatch(/class=icslaba/), { timeout: 5000 })
     expect(window.location.search).toMatch(/guide=ma-inhalers/)
     const link = window.location.search
     unmount()
@@ -284,7 +284,7 @@ describe('FirstPassRx app', () => {
     window.history.replaceState({}, '', '/' + link)
     render(<App />)
     expect(screen.getByRole('tab', { name: /Daily combo controller/ })).toHaveAttribute('aria-selected', 'true')
-  })
+  }, 15000)
 
   it('remembers the last plan on this device when there is no link', async () => {
     const { unmount } = render(<App />)

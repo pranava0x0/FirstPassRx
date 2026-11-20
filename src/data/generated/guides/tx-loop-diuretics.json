@@ -1,0 +1,324 @@
+{
+  "id": "tx-loop-diuretics",
+  "label": "TX · Loop diuretics",
+  "stateCode": "TX",
+  "region": "Texas",
+  "topicId": "loop-diuretics",
+  "topic": "Loop diuretics",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-14",
+  "capturedAt": "2026-11-14",
+  "payers": [
+    {
+      "id": "tx-medicaid",
+      "name": "Texas Medicaid Vendor Drug Program (Fee-for-Service, statewide PDL binding on all MCOs)",
+      "shortName": "TX Medicaid FFS",
+      "pbm": "Texas Health and Human Services Commission (HHSC) Vendor Drug Program",
+      "formularyUrl": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "sourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "productName": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization Criteria, effective July 24, 2026"
+    },
+    {
+      "id": "bcbs-tx-commercial",
+      "name": "Blue Cross and Blue Shield of Texas (Commercial)",
+      "shortName": "BCBS Texas",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "sourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "productName": "Performance Drug List, July 2026",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Blue Cross and Blue Shield of Texas Performance Drug List, October 2026 (41722-T TX); PDF pages cited are PDF indices (printed page = PDF page - 10)"
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v18, updated 11/02/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "loop-diuretic",
+      "name": "Loop diuretics",
+      "shortName": "Loop",
+      "plainName": "Water pill (loop diuretic)",
+      "description": "Loop diuretics: furosemide (Lasix; tablets, oral solution; Furoscix subcutaneous on-body infusor and Lasix ONYU subcutaneous, alternatives only, never the pick), torsemide (generic; Soaanz), bumetanide (Bumex), ethacrynic acid (Edecrin; for sulfa allergy). Not thiazides.",
+      "plainDescription": "A strong water pill that removes extra fluid, for heart failure, kidney and liver disease and swelling.",
+      "indication": "Edema, heart failure, CKD, cirrhosis",
+      "sourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "loop-diuretic",
+      "preferredAgent": {
+        "inn": "Furosemide (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+        "sigShort": "20-80 mg QAM, titrate",
+        "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Covered (not a PDL class; Texas Medicaid formulary)",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Not a PDL class: the PDL table of contents has no diuretic heading. Furosemide, LASIX, torsemide, bumetanide, BUMEX, ethacrynic acid, EDECRIN, FUROSCIX and SOAANZ do not appear in the 88 pages. No status inferred. Pick and tier per brief; formulary status not checked against the txvendordrug formulary search.",
+      "sourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "lastReviewed": "2026-11-14",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "loop-diuretic",
+      "preferredAgent": {
+        "inn": "Furosemide (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet (list also prints 40 and 80 mg)",
+        "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+        "sigShort": "20-80 mg QAM, titrate",
+        "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Generic (Tier 1, p)",
+      "alternatives": [
+        {
+          "drug": "Torsemide tablet 5, 10, 20, 100 mg",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.44)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Bumetanide tablet 0.5 mg (Bumex reference), 1 mg",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.44)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Bumetanide tablet 2 mg; furosemide oral solution 10 mg/mL",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA printed (PDF p.44)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Furoscix (furosemide subcutaneous on-body kit 80 mg/10 mL)",
+          "outcome": "pa",
+          "reason": "Covered only with prior authorization (PA, QL 8 kits/180 days; PDF p.44)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Lasix ONYU (furosemide subcutaneous cartridge kit 80 mg/2.67 mL)",
+          "outcome": "pa",
+          "reason": "Covered only with prior authorization (PA, QL 8 kits/180 days, SP; PDF p.44)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Soaanz (torsemide)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Performance Drug List; the list states 'Drugs that are not shown are not covered' (PDF p.2). Exception route: call the ID-card number (PDF p.3).",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Edecrin (ethacrynic acid)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Performance Drug List; the list states 'Drugs that are not shown are not covered' (PDF p.2). Exception route: call the ID-card number (PDF p.3).",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDF p.44 (printed 34, Cardiovascular Agents, diuretics), tiers by x-position. Furosemide tab 20/40/80 mg (Lasix) p, no PA. Furoscix and Lasix ONYU NP with PA. Soaanz and ethacrynic acid not printed; nonformulary per PDF p.2. Bumex reference and torsemide p. [Sonnet check 2026-11-14: nonformulary items rest on p.2 'Drugs that are not shown are not covered'; exception route p.8.]",
+      "sourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "lastReviewed": "2026-11-14",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "loop-diuretic",
+      "preferredAgent": {
+        "inn": "Furosemide (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+        "sigShort": "20-80 mg QAM, titrate",
+        "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Furosemide (tablet 40 mg, 80 mg)",
+          "note": "Tier 1, no PA (PDG p. 48)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Furosemide (oral solution 10 mg/mL, 40 mg/5 mL)",
+          "note": "Tier 4, no PA (PDG p. 48)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Torsemide (tablet 5, 10, 20, 100 mg)",
+          "note": "Tier 2, no PA (PDG p. 50)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Bumetanide (tablet 0.5, 1 mg)",
+          "note": "Tier 2, no PA (PDG p. 46)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Bumetanide (tablet 2 mg)",
+          "note": "Tier 3, no PA (PDG p. 46)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Furoscix (furosemide subcutaneous on-body infusor)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Soaanz (torsemide)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Ethacrynic acid (Edecrin)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from the formulary text layer, row by row (each tier digit sits on the same row as its drug name; pypdf gave no x-coordinates for the digits). Formulary sig and quantity limits are as printed; the document prints no sig, so the sig is the label starting dose. Furosemide 20 mg tablet is Tier 1 with no PA (PDG p. 48). Lasix brand is not listed; the generic is. Bumex brand is not listed; the generic is. Torsemide is listed as Tier 2 (PDG p. 50). [Sonnet check 2026-11-06: tiers and flags re-read in layout (row-aligned) extraction, not flattened text; nonformulary reasons reworded to the front-matter wording.] [Reused: same national Humana PDP formulary]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "lastReviewed": "2026-11-06",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "tx-medicaid-pdl-2026-07",
+      "label": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization Criteria, effective July 24, 2026",
+      "publisher": "Texas Health and Human Services (Texas Medicaid Vendor Drug Program, txvendordrug.com)",
+      "type": "gov",
+      "url": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "effectiveDate": "2026-07-24",
+      "accessed": "2026-11-14"
+    },
+    {
+      "id": "bcbs-tx-performance-2026-10",
+      "label": "Blue Cross and Blue Shield of Texas Performance Drug List, October 2026 (41722-T TX); PDF pages cited are PDF indices (printed page = PDF page - 10)",
+      "publisher": "Blue Cross and Blue Shield of Texas (Prime Therapeutics LLC)",
+      "type": "payer",
+      "url": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-14"
+    },
+    {
+      "id": "humana-premier-rx-pdp-2026-11",
+      "label": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v18, updated 11/02/2026)",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-11-02",
+      "accessed": "2026-11-06"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

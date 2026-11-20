@@ -1,0 +1,378 @@
+{
+  "id": "ca-oral-steroids",
+  "label": "CA · Oral steroids",
+  "stateCode": "CA",
+  "region": "California",
+  "topicId": "oral-steroids",
+  "topic": "Oral steroids",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-11-18",
+  "capturedAt": "2026-11-18",
+  "payers": [
+    {
+      "id": "medi-cal-rx",
+      "name": "Medi-Cal Rx — California Medicaid Pharmacy Program (Fee-for-Service carve-out, statewide)",
+      "shortName": "Medi-Cal Rx",
+      "pbm": "Magellan Health (Magellan Medicaid Administration; DHCS vendor)",
+      "productName": "Medi-Cal Rx Contract Drugs List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Medi-Cal Rx Contract Drugs List (November 1, 2026)",
+      "formularyUrl": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "sourceIds": [
+        "medi-cal-rx-common6-2026-11"
+      ]
+    },
+    {
+      "id": "kaiser-permanente-ca",
+      "name": "Kaiser Permanente (Commercial HMO)",
+      "shortName": "Kaiser Permanente",
+      "pbm": "Internal (Kaiser Foundation Health Plan formulary; closed integrated pharmacy)",
+      "productName": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (List of Covered Drugs)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (effective 11/03/2026; updated 11/01/2026)",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "sourceIds": [
+        "kaiser-permanente-ca-common6-2026-11"
+      ]
+    },
+    {
+      "id": "anthem-bcbs-ca",
+      "name": "Anthem Blue Cross of California (Commercial)",
+      "shortName": "Anthem Blue Cross CA",
+      "pbm": "CarelonRx",
+      "productName": "2026 California Select Drug List - Four Tier",
+      "marketSegment": "commercial-employer",
+      "formularyId": "2026 California Select Drug List, Four Tier (IND), Last Updated November 1, 2026",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "sourceIds": [
+        "anthem-bcbs-ca-common6-2026-11"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "oral-corticosteroid",
+      "name": "Oral corticosteroids",
+      "shortName": "Oral steroid",
+      "plainName": "Steroid pills",
+      "description": "Systemic oral corticosteroids: prednisone (tablets, solution; Rayos delayed-release appears discontinued), methylprednisolone (Medrol, dose pack), prednisolone (solution, Orapred ODT, Millipred), dexamethasone (tablets, solution, Dexamethasone Intensol, TaperDex/Dxevo/HiDex packs; Hemady 20 mg is labeled for multiple myeloma only, an alternative, never the pick), hydrocortisone (Cortef; Alkindi Sprinkle and Khindivi oral solution for children). Deflazacort (Emflaza) and vamorolone (Agamree) for Duchenne are specialty alternatives only, never the pick. Not budesonide (Entocort, Uceris, Tarpeyo) or inhaled/topical steroids.",
+      "plainDescription": "Short courses of steroid pills that calm inflammation fast, for flares of asthma, COPD, arthritis, allergies and more.",
+      "indication": "Inflammatory flares, asthma/COPD exacerbations, autoimmune disease, adrenal insufficiency",
+      "sourceIds": [
+        "medi-cal-rx-common6-2026-11"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "oral-corticosteroid",
+      "preferredAgent": {
+        "inn": "Prednisone (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Dose by condition, 5 to 60 mg by mouth daily, with food (label). A common short course for a flare is 40 mg once daily for 5 days (practice, not label text); taper courses longer than 2 to 3 weeks.",
+        "sigShort": "5-60 mg QD; flare often 40 mg x5d",
+        "plainSig": "Take with food in the morning, at the dose and for the days your prescriber sets."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "CDL listed; no restriction printed (p.176)",
+      "alternatives": [
+        {
+          "drug": "Methylprednisolone tablets 4 mg and 4 mg Dosepak",
+          "note": "CDL listed; no restriction printed (p.175)",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Prednisolone tablets 5 mg; oral liquid 5 mg/5 mL and 15 mg/5 mL; sodium phosphate orally disintegrating tablets 10, 15, 30 mg",
+          "note": "CDL listed; no restriction printed (p.175)",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Dexamethasone tablets 0.5-6 mg; liquid drops 1 mg/mL; elixir and solution 0.5 mg/5 mL",
+          "note": "CDL listed; no restriction printed (p.173-174). Hemady 20 mg is not listed (see paRequired).",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Hydrocortisone tablets 5, 10, 20 mg",
+          "note": "CDL listed; no restriction printed (p.174)",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Hemady (dexamethasone 20 mg tablet)",
+          "outcome": "pa",
+          "reason": "Not on CDL (20 mg dexamethasone tablet not listed; dexamethasone tablets are 0.5-6 mg, p.174); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Alkindi Sprinkle and Khindivi (hydrocortisone oral granules and oral solution)",
+          "outcome": "pa",
+          "reason": "Not on CDL (hydrocortisone is listed as tablets only, p.174); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Emflaza (deflazacort)",
+          "outcome": "pa",
+          "reason": "Not on CDL (deflazacort not listed in any form); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Agamree (vamorolone oral suspension)",
+          "outcome": "pa",
+          "reason": "Not on CDL (vamorolone not listed in any form); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Rayos (delayed-release prednisone)",
+          "outcome": "pa",
+          "reason": "Not on CDL (prednisone is listed as tablets only, p.176); legend drugs not listed may be covered subject to authorization from a Medi-Cal consultant (CDL p.4).",
+          "sourceIds": [
+            "medi-cal-rx-common6-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read CDL p.173-176 (glucocorticoids) and p.210-214 (ophthalmic/nasal steroid sections, not picks). Prednisone tablets 1-50 mg carry no UM code; prednisone 10 mg is the pick (judgment). Methylprednisolone, prednisolone and hydrocortisone tablets carry no UM code. Brand names (Medrol, Orapred ODT, Millipred, Cortef, Dxevo/TaperDex packs) are not printed; generic names cover them. The brief's note on Hemady: its 20 mg strength is absent and the only dexamethasone tablets are 0.5-6 mg. [Sonnet check 2026-11-18: Prednisone is tablets only (p.176), dexamethasone tablets 0.5-6 mg (p.174), no deflazacort, no dexlansoprazole-type exceptions; Rayos, Hemady and Emflaza stay pa under CDL p.4.]",
+      "sourceIds": [
+        "medi-cal-rx-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "medi-cal-rx-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "medi-cal-rx-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-18",
+      "payerId": "medi-cal-rx"
+    },
+    {
+      "classId": "oral-corticosteroid",
+      "preferredAgent": {
+        "inn": "Prednisone (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Dose by condition, 5 to 60 mg by mouth daily, with food (label). A common short course for a flare is 40 mg once daily for 5 days (practice, not label text); taper courses longer than 2 to 3 weeks.",
+        "sigShort": "5-60 mg QD; flare often 40 mg x5d",
+        "plainSig": "Take with food in the morning, at the dose and for the days your prescriber sets."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Prednisone tablets 1, 2.5, 5, 20 and 50 mg; prednisone 10 mg and 5 mg 21-tablet dose packs (5 mg pack shows no tier)",
+          "note": "Tier 1, no flag (10 mg pack) (PDF p.79)",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Methylprednisolone tablets 4, 8, 16 and 32 mg",
+          "note": "Tier 1, no flag (PDF p.79)",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Prednisolone oral solution 15 mg/5 mL",
+          "note": "Tier 1, no flag (PDF p.79)",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Dexamethasone tablets 0.5, 0.75, 1, 1.5, 2, 4 and 6 mg",
+          "note": "Tier 1, no flag (PDF p.78)",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Hydrocortisone tablets 5 and 10 mg",
+          "note": "Tier 1, no flag (20 mg shows no tier) (PDF p.78)",
+          "sourceIds": [
+            "kaiser-permanente-ca-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Prednisone tablets are Tier 1, no flag (PDF p.79). Medrol and Orapred brands are not printed, but generic methylprednisolone and prednisolone solution are covered. Brand-only and specialty products named in the class description are absent and recorded nonformulary (PDF p.6). Orapred ODT is an absent dosage form of a listed drug, not a brand-only product, so it is not recorded (formulary dosage-form caveat, PDF p.10). Injectable Solu-Medrol and Solu-Cortef (p.79) are not used. No PA or step therapy (PDF p.6-7). [Sonnet check 2026-11-18: removed 7 brand-only item(s) inferred nonformulary from absence; p.2 says the formulary 'is not an all-inclusive list' and the p.6 line is only the template definition of 'formulary', so absence is not a nonformulary finding; Kaiser prints no PA/ST (p.6-7)]",
+      "sourceIds": [
+        "kaiser-permanente-ca-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "kaiser-permanente-ca-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "kaiser-permanente-ca-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-18",
+      "payerId": "kaiser-permanente-ca"
+    },
+    {
+      "classId": "oral-corticosteroid",
+      "preferredAgent": {
+        "inn": "Prednisone (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet (list prints no strength)",
+        "sig": "Dose by condition, 5 to 60 mg by mouth daily, with food (label). A common short course for a flare is 40 mg once daily for 5 days (practice, not label text); taper courses longer than 2 to 3 weeks.",
+        "sigShort": "5-60 mg QD; flare often 40 mg x5d",
+        "plainSig": "Take with food in the morning, at the dose and for the days your prescriber sets."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Prednisone (tablet therapy pack)",
+          "note": "Tier 1, no PA or ST (p.66)",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Prednisone (oral solution)",
+          "note": "Tier 1, no PA or ST (p.66)",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Methylprednisolone (tablet)",
+          "note": "Tier 1, no PA or ST (p.66)",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Methylprednisolone (tablet therapy pack)",
+          "note": "Tier 1, no PA or ST (p.66)",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Dexamethasone (tablet)",
+          "note": "Tier 1, no PA or ST (p.66)",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Dexamethasone (oral solution; elixir)",
+          "note": "Tier 1, no PA or ST (p.66)",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Prednisolone (oral solution)",
+          "note": "Tier 1, no PA or ST (p.66)",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Prednisolone sodium phosphate (oral solution)",
+          "note": "Tier 1, no PA or ST (p.66)",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Hydrocortisone (tablet)",
+          "note": "Tier 1, no PA or ST (p.66)",
+          "sourceIds": [
+            "anthem-bcbs-ca-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read p.66 (Glucocorticosteroids). Prednisone tablet and therapy pack, methylprednisolone, dexamethasone, prednisolone solutions and hydrocortisone tablet all Tier 1 with no restriction. Medrol, Cortef, Dexamethasone Intensol, TaperDex, Dxevo and HiDex brand names are not listed; the generic forms of those products are listed above. Brand-only and specialty items above are not listed anywhere. [Sonnet check 2026-11-18: removed absence-inferred nonformulary items (Rayos, Hemady, Orapred ODT, Millipred, Alkindi Sprinkle, Khindivi, Emflaza, Agamree): p.2 says drugs not on the list 'may not be covered' and p.7 says a listed drug 'may not be covered', so the list does not firmly state that absence means exclusion; absent brands left unrecorded, coverage unconfirmed]",
+      "sourceIds": [
+        "anthem-bcbs-ca-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "anthem-bcbs-ca-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "anthem-bcbs-ca-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-18",
+      "payerId": "anthem-bcbs-ca"
+    }
+  ],
+  "references": [
+    {
+      "id": "medi-cal-rx-common6-2026-11",
+      "label": "Medi-Cal Rx Contract Drugs List (November 1, 2026)",
+      "publisher": "California Department of Health Care Services (Medi-Cal Rx)",
+      "type": "payer",
+      "url": "https://medi-calrx.dhcs.ca.gov/cms/medicalrx/static-assets/documents/provider/forms-and-information/cdl/Medi-Cal_Rx_Contract_Drugs_List_FINAL.pdf",
+      "effectiveDate": "2026-11-01",
+      "accessed": "2026-11-18"
+    },
+    {
+      "id": "kaiser-permanente-ca-common6-2026-11",
+      "label": "Kaiser Permanente 2026 Northern California Commercial HMO Formulary (effective 11/03/2026; updated 11/01/2026)",
+      "publisher": "Kaiser Permanente",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/ca/commercial-hmo-formulary-ncal-en.pdf",
+      "effectiveDate": "2026-11-03",
+      "accessed": "2026-11-18"
+    },
+    {
+      "id": "anthem-bcbs-ca-common6-2026-11",
+      "label": "2026 California Select Drug List, Four Tier (IND), Last Updated November 1, 2026",
+      "publisher": "Anthem Blue Cross",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_4_Tier_CA_IND.pdf",
+      "effectiveDate": "2026-11-01",
+      "accessed": "2026-11-18"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

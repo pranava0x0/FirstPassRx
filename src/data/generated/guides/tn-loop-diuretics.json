@@ -1,0 +1,445 @@
+{
+  "id": "tn-loop-diuretics",
+  "label": "TN · Loop diuretics",
+  "stateCode": "TN",
+  "region": "Tennessee",
+  "topicId": "loop-diuretics",
+  "topic": "Loop diuretics",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-11-11",
+  "capturedAt": "2026-11-11",
+  "payers": [
+    {
+      "id": "tn-medicaid",
+      "name": "TennCare (Tennessee Medicaid)",
+      "shortName": "TennCare",
+      "aka": "TennCare Preferred Drug List, administered by OptumRx for every TennCare member",
+      "pbm": "OptumRx",
+      "productName": "TennCare Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "TennCare Preferred Drug List (PDL), effective November 2, 2026",
+      "formularyUrl": "https://contenthub-aem.optumrx.com/content/dam/contenthub/onboarding/assets/Tenncare/Tenncare-PDL.pdf",
+      "sourceIds": [
+        "tn-medicaid-pdl-2026-11"
+      ]
+    },
+    {
+      "id": "bcbst",
+      "name": "BlueCross BlueShield of Tennessee",
+      "shortName": "BCBS Tennessee",
+      "productName": "BCBST 2026 Essential Formulary (individual marketplace and small group)",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "BlueCross BlueShield of Tennessee Essential Formulary Guide (November 2026)",
+      "formularyUrl": "https://www.bcbst.com/docs/providers/2026-essential-formulary.pdf",
+      "sourceIds": [
+        "bcbst-essential-2026-11"
+      ]
+    },
+    {
+      "id": "uhc-tn",
+      "name": "UnitedHealthcare (Commercial)",
+      "shortName": "UnitedHealthcare",
+      "aka": "National commercial PDL (same list in every state)",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "paPolicyUrl": "https://www.uhcprovider.com/en/resource-library/drug-lists-pharmacy.html",
+      "productName": "UnitedHealthcare 2026 Commercial PDL (base list)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "UnitedHealthcare Commercial Prescription Drug List (PDL), Effective January 1, 2026",
+      "sourceIds": [
+        "uhc-commercial-pdl-2026"
+      ]
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v18, updated 11/02/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "loop-diuretic",
+      "name": "Loop diuretics",
+      "shortName": "Loop",
+      "plainName": "Water pill (loop diuretic)",
+      "description": "Loop diuretics: furosemide (Lasix; tablets, oral solution; Furoscix subcutaneous on-body infusor and Lasix ONYU subcutaneous, alternatives only, never the pick), torsemide (generic; Soaanz), bumetanide (Bumex), ethacrynic acid (Edecrin; for sulfa allergy). Not thiazides.",
+      "plainDescription": "A strong water pill that removes extra fluid, for heart failure, kidney and liver disease and swelling.",
+      "indication": "Edema, heart failure, CKD, cirrhosis",
+      "sourceIds": [
+        "tn-medicaid-pdl-2026-11"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "loop-diuretic",
+      "preferredAgent": {
+        "inn": "Furosemide (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+        "sigShort": "20-80 mg QAM, titrate",
+        "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred",
+      "alternatives": [
+        {
+          "drug": "Furosemide (oral solution)",
+          "note": "Preferred, no PA listed (PDL p.17)",
+          "sourceIds": [
+            "tn-medicaid-pdl-2026-11"
+          ]
+        },
+        {
+          "drug": "Torsemide (tablet)",
+          "note": "Preferred, no PA listed (PDL p.17)",
+          "sourceIds": [
+            "tn-medicaid-pdl-2026-11"
+          ]
+        },
+        {
+          "drug": "Bumetanide (tablet)",
+          "note": "Preferred, no PA listed (PDL p.17)",
+          "sourceIds": [
+            "tn-medicaid-pdl-2026-11"
+          ]
+        },
+        {
+          "drug": "Ethacrynic acid (tablet)",
+          "note": "Preferred, no PA listed (PDL p.17)",
+          "sourceIds": [
+            "tn-medicaid-pdl-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Lasix tablets",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p.17)",
+          "sourceIds": [
+            "tn-medicaid-pdl-2026-11"
+          ]
+        },
+        {
+          "drug": "Furoscix (furosemide subcutaneous on-body infusor)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA and QL required (PDL p.17)",
+          "sourceIds": [
+            "tn-medicaid-pdl-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Furosemide tablets and solution, torsemide, bumetanide and ethacrynic acid tablets Preferred, no PA (p.17). Lasix brand Not preferred (p.17); Furoscix Not preferred PA QL (p.17). Soaanz, Edecrin brand and Lasix ONYU do not appear in this PDL copy; not recorded. Strength 20 mg per brief; PDL prints none.",
+      "sourceIds": [
+        "tn-medicaid-pdl-2026-11"
+      ],
+      "coverageSourceIds": [
+        "tn-medicaid-pdl-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "tn-medicaid-pdl-2026-11"
+      ],
+      "lastReviewed": "2026-11-11",
+      "payerId": "tn-medicaid"
+    },
+    {
+      "classId": "loop-diuretic",
+      "preferredAgent": {
+        "inn": "Furosemide (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+        "sigShort": "20-80 mg QAM, titrate",
+        "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (generic)",
+      "alternatives": [
+        {
+          "drug": "Furosemide (oral solution 10 mg/mL and 40 mg/5 mL; tablets 40/80 mg)",
+          "note": "Tier 2, MT only (PDF p.67)",
+          "sourceIds": [
+            "bcbst-essential-2026-11"
+          ]
+        },
+        {
+          "drug": "Torsemide (tablet 5/10/20/100 mg)",
+          "note": "Tier 2, MT only (PDF p.67)",
+          "sourceIds": [
+            "bcbst-essential-2026-11"
+          ]
+        },
+        {
+          "drug": "Bumetanide (tablet 0.5/1/2 mg)",
+          "note": "Tier 2, MT only (PDF p.67)",
+          "sourceIds": [
+            "bcbst-essential-2026-11"
+          ]
+        },
+        {
+          "drug": "Ethacrynic acid (tablet 25 mg)",
+          "note": "Tier 2, MT only (PDF p.67)",
+          "sourceIds": [
+            "bcbst-essential-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p.67 (doc p.57). Furosemide, torsemide, bumetanide and ethacrynic acid generics are Tier 2, MT only, no PA. Lasix, Furoscix, Lasix ONYU, Soaanz, Edecrin and Bumex brands are not printed.",
+      "sourceIds": [
+        "bcbst-essential-2026-11"
+      ],
+      "coverageSourceIds": [
+        "bcbst-essential-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "bcbst-essential-2026-11"
+      ],
+      "lastReviewed": "2026-11-11",
+      "payerId": "bcbst"
+    },
+    {
+      "classId": "loop-diuretic",
+      "preferredAgent": {
+        "inn": "Furosemide (oral tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+        "sigShort": "20-80 mg QAM, titrate",
+        "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Torsemide (generic)",
+          "note": "Tier 1, no PA (PDL p. 21)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "Bumetanide oral (generic)",
+          "note": "Tier 1, no PA (PDL p. 19)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "BUMEX (bumetanide, brand)",
+          "note": "Tier 3, no PA (PDL p. 19)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "LASIX (furosemide, brand)",
+          "note": "Tier 4 (symbol key p. 5) (PDL p. 20)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "FUROSCIX (furosemide subcutaneous)",
+          "outcome": "pa",
+          "reason": "PA required; Tier 4; QL also listed (PDL p. 20)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "SOAANZ (torsemide, brand)",
+          "outcome": "nonformulary",
+          "reason": "Coded E with no PA or ST flag on its row. PDL symbol key (p. 5): \"May be excluded from coverage or subject to Prior Authorization in Connecticut, New Jersey and New York\". No PA is printed for this row, so it is recorded as excluded from coverage, matching earlier UHC records; QL also listed (PDL p. 21).",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from pp. 19-21 (Cardiovascular Agents). Generic furosemide is Tier 1 with no PA; the PDL prints no strength, and 20 mg is the label starting dose for edema. Ethacrynic acid (Edecrin) is not on this list and was not recorded. [Sonnet check 2026-11-06: E-coded rows re-worded to quote the PDL symbol key (p. 5) and treated as excluded when no PA/ST flag is printed.] [Reused: same national UHC PDL]",
+      "sourceIds": [
+        "uhc-commercial-pdl-2026"
+      ],
+      "coverageSourceIds": [
+        "uhc-commercial-pdl-2026"
+      ],
+      "restrictionSourceIds": [
+        "uhc-commercial-pdl-2026"
+      ],
+      "lastReviewed": "2026-11-06",
+      "payerId": "uhc-tn"
+    },
+    {
+      "classId": "loop-diuretic",
+      "preferredAgent": {
+        "inn": "Furosemide (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+        "sigShort": "20-80 mg QAM, titrate",
+        "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Furosemide (tablet 40 mg, 80 mg)",
+          "note": "Tier 1, no PA (PDG p. 48)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Furosemide (oral solution 10 mg/mL, 40 mg/5 mL)",
+          "note": "Tier 4, no PA (PDG p. 48)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Torsemide (tablet 5, 10, 20, 100 mg)",
+          "note": "Tier 2, no PA (PDG p. 50)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Bumetanide (tablet 0.5, 1 mg)",
+          "note": "Tier 2, no PA (PDG p. 46)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Bumetanide (tablet 2 mg)",
+          "note": "Tier 3, no PA (PDG p. 46)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Furoscix (furosemide subcutaneous on-body infusor)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Soaanz (torsemide)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Ethacrynic acid (Edecrin)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from the formulary text layer, row by row (each tier digit sits on the same row as its drug name; pypdf gave no x-coordinates for the digits). Formulary sig and quantity limits are as printed; the document prints no sig, so the sig is the label starting dose. Furosemide 20 mg tablet is Tier 1 with no PA (PDG p. 48). Lasix brand is not listed; the generic is. Bumex brand is not listed; the generic is. Torsemide is listed as Tier 2 (PDG p. 50). [Sonnet check 2026-11-06: tiers and flags re-read in layout (row-aligned) extraction, not flattened text; nonformulary reasons reworded to the front-matter wording.] [Reused: same national Humana Premier Rx PDP]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "lastReviewed": "2026-11-06",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "tn-medicaid-pdl-2026-11",
+      "label": "TennCare Preferred Drug List (PDL), effective November 2, 2026",
+      "publisher": "TennCare (Tennessee Medicaid), administered by OptumRx",
+      "type": "gov",
+      "url": "https://contenthub-aem.optumrx.com/content/dam/contenthub/onboarding/assets/Tenncare/Tenncare-PDL.pdf",
+      "effectiveDate": "2026-11-02",
+      "accessed": "2026-11-11"
+    },
+    {
+      "id": "bcbst-essential-2026-11",
+      "label": "BlueCross BlueShield of Tennessee Essential Formulary Guide (November 2026)",
+      "publisher": "BlueCross BlueShield of Tennessee",
+      "type": "payer",
+      "url": "https://www.bcbst.com/docs/providers/2026-essential-formulary.pdf",
+      "accessed": "2026-11-11"
+    },
+    {
+      "id": "uhc-commercial-pdl-2026",
+      "label": "UnitedHealthcare Commercial Prescription Drug List (PDL), Effective January 1, 2026",
+      "publisher": "UnitedHealthcare",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-11-06"
+    },
+    {
+      "id": "humana-premier-rx-pdp-2026-11",
+      "label": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v18, updated 11/02/2026)",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-11-02",
+      "accessed": "2026-11-06"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

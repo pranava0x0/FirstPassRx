@@ -1,0 +1,1977 @@
+{
+  "id": "tx-antibiotics",
+  "label": "TX · Antibiotics",
+  "stateCode": "TX",
+  "region": "Texas",
+  "topicId": "antibiotics",
+  "topic": "Antibiotics",
+  "classNoun": "Prescription type",
+  "unitNoun": "antibiotic",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-14",
+  "capturedAt": "2026-11-14",
+  "payers": [
+    {
+      "id": "tx-medicaid",
+      "name": "Texas Medicaid Vendor Drug Program (Fee-for-Service, statewide PDL binding on all MCOs)",
+      "shortName": "TX Medicaid FFS",
+      "pbm": "Texas Health and Human Services Commission (HHSC) Vendor Drug Program",
+      "formularyUrl": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "sourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "productName": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization Criteria, effective July 24, 2026"
+    },
+    {
+      "id": "bcbs-tx-commercial",
+      "name": "Blue Cross and Blue Shield of Texas (Commercial)",
+      "shortName": "BCBS Texas",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "sourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "productName": "Performance Drug List, July 2026",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Blue Cross and Blue Shield of Texas Performance Drug List, October 2026 (41722-T TX); PDF pages cited are PDF indices (printed page = PDF page - 10)"
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v18, updated 11/02/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "abx-penicillin",
+      "name": "Penicillins",
+      "shortName": "Penicillin",
+      "plainName": "Amoxicillin-type antibiotic",
+      "description": "Oral penicillins: amoxicillin (capsules, tablets, chewables, suspension), amoxicillin-clavulanate (Augmentin, Augmentin XR, suspension), penicillin V potassium, dicloxacillin. Amoxicillin-clavulanate belongs to this class.",
+      "plainDescription": "The most common antibiotic family, for ear, sinus, throat, dental and skin infections.",
+      "indication": "Ear, sinus, strep throat, dental, skin infections",
+      "sourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ]
+    },
+    {
+      "id": "abx-cephalosporin",
+      "name": "Oral cephalosporins",
+      "shortName": "Cephalosporin",
+      "plainName": "Cephalexin-type antibiotic",
+      "description": "Oral cephalosporins: cephalexin (Keflex), cefadroxil, cefuroxime axetil (Ceftin), cefprozil, cefaclor, cefdinir, cefpodoxime, cefixime (Suprax).",
+      "plainDescription": "A common antibiotic family for skin, urinary and ear infections, often used with a mild penicillin allergy.",
+      "indication": "Skin, urinary tract, ear and respiratory infections",
+      "sourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ]
+    },
+    {
+      "id": "abx-macrolide",
+      "name": "Macrolides",
+      "shortName": "Macrolide",
+      "plainName": "Azithromycin-type antibiotic",
+      "description": "Oral macrolides: azithromycin (Zithromax, Z-Pak, suspension), clarithromycin (Biaxin, ER), erythromycin base/stearate/ethylsuccinate (Ery-Tab, Erythrocin, E.E.S., PCE).",
+      "plainDescription": "A short-course antibiotic for chest infections and for people allergic to penicillin.",
+      "indication": "Respiratory infections, penicillin allergy",
+      "sourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ]
+    },
+    {
+      "id": "abx-tetracycline",
+      "name": "Tetracyclines",
+      "shortName": "Tetracycline",
+      "plainName": "Doxycycline-type antibiotic",
+      "description": "Oral tetracyclines: doxycycline hyclate and monohydrate (Vibramycin, Doryx, Doryx MPC, Acticlate, Targadox; Lymepak discontinued 2025), minocycline IR and ER (Minocin, Solodyn, Minolira, Ximino), tetracycline, sarecycline (Seysara), omadacycline (Nuzyra). Branded doxycycline/minocycline ER products are usually PA or excluded.",
+      "plainDescription": "Antibiotics for tick bites and Lyme disease, chest infections, MRSA skin infections and acne.",
+      "indication": "Lyme disease, respiratory and skin infections, acne",
+      "sourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ]
+    },
+    {
+      "id": "abx-fluoroquinolone",
+      "name": "Fluoroquinolones",
+      "shortName": "Fluoroquinolone",
+      "plainName": "Cipro-type antibiotic",
+      "description": "Oral fluoroquinolones: ciprofloxacin (Cipro), levofloxacin (Levaquin), moxifloxacin (Avelox), ofloxacin, delafloxacin (Baxdela). Not ophthalmic/otic drops.",
+      "plainDescription": "Strong antibiotics kept for specific infections because of tendon and nerve side effects.",
+      "indication": "Complicated UTI, pneumonia, specific resistant infections",
+      "sourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ]
+    },
+    {
+      "id": "abx-uti",
+      "name": "Urinary tract antibiotics",
+      "shortName": "UTI",
+      "plainName": "Bladder infection antibiotic",
+      "description": "Agents used mainly for uncomplicated urinary tract infection: nitrofurantoin (Macrobid, Macrodantin, suspension), sulfamethoxazole-trimethoprim (Bactrim, Bactrim DS), trimethoprim, fosfomycin (Monurol), methenamine hippurate (Hiprex; prophylaxis), and the newer brands pivmecillinam (Pivya), sulopenem etzadroxil/probenecid (Orlynvah), gepotidacin (Blujepa; also labeled for gonorrhea since 2025-12). Fluoroquinolones and cephalosporins belong to their own classes.",
+      "plainDescription": "Antibiotics for bladder infections.",
+      "indication": "Uncomplicated urinary tract infection",
+      "sourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ]
+    },
+    {
+      "id": "abx-cdiff",
+      "name": "C. difficile treatments",
+      "shortName": "C. diff",
+      "plainName": "C. diff treatment",
+      "description": "Oral treatments for Clostridioides difficile infection: vancomycin capsules and oral solution (Vancocin, Firvanq kit), fidaxomicin (Dificid; an AB-rated generic is approved), fecal microbiota spores (Vowst, recurrence prevention). Metronidazole is an alternative only (guidelines reserve it for non-severe cases when the others are unavailable), never the pick. Rebyota and bezlotoxumab are provider-administered.",
+      "plainDescription": "Medicines for a serious gut infection that can follow antibiotic use.",
+      "indication": "C. difficile infection and recurrence",
+      "sourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "abx-penicillin",
+      "preferredAgent": {
+        "inn": "Amoxicillin (capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "500 mg capsule",
+        "sig": "Mild to moderate infection: 500 mg by mouth every 12 hours or 250 mg every 8 hours; severe: 875 mg every 12 hours or 500 mg every 8 hours. Strep throat: 10 days (label).",
+        "sigShort": "500 mg q8-12h",
+        "plainSig": "One capsule two or three times a day as directed. Finish the whole course."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred",
+      "alternatives": [
+        {
+          "drug": "Amoxicillin/clavulanate (tablet and suspension, generic)",
+          "note": "Preferred, no PA (PDL p. 37)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "AUGMENTIN ES-600 (amoxicillin/clavulanate) suspension",
+          "note": "Preferred brand, no PA (PDL p. 37)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Penicillin VK (generic)",
+          "note": "Preferred, no PA (PDL p. 74)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Dicloxacillin (generic)",
+          "note": "Preferred, no PA (PDL p. 74)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "AUGMENTIN (amoxicillin/clavulanate) 125 mg suspension, tablets and XR tablets",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 37)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Amoxicillin/clavulanate chewable and XR tablets (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 37)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL p.74 'PENICILLINS': amoxicillin, dicloxacillin and penicillin VK preferred; PIVYA non-preferred (its UTI role is recorded in abx-uti). Amoxicillin-clavulanate sits in the beta-lactam/beta-lactamase inhibitor block on p.37 and is recorded here from that page. PDL prints no form for amoxicillin; capsule chosen as the pick. Generic preferred over AUGMENTIN, so no BOGL flag.",
+      "sourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "lastReviewed": "2026-11-14",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "abx-cephalosporin",
+      "preferredAgent": {
+        "inn": "Cephalexin (capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "500 mg capsule",
+        "sig": "500 mg by mouth every 12 hours (or 250 mg every 6 hours) for strep throat, skin infection or cystitis; at least 10 days for strep throat (label).",
+        "sigShort": "500 mg q12h",
+        "plainSig": "One capsule twice a day. Finish the whole course."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred",
+      "alternatives": [
+        {
+          "drug": "Cephalexin (oral suspension, generic)",
+          "note": "Preferred, no PA (PDL p. 37)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Cefadroxil capsules and suspension (generic)",
+          "note": "Preferred, no PA (PDL p. 37)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Cefprozil tablets and suspension (generic)",
+          "note": "Preferred, no PA (PDL p. 37)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Cefuroxime axetil tablets (generic)",
+          "note": "Preferred, no PA (PDL p. 37)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Cefpodoxime tablets and suspension (generic)",
+          "note": "Preferred, no PA (PDL p. 37)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Cephalexin tablets (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 37)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Cefadroxil tablets (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 37)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Cefaclor ER, IR capsules and suspension (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 37)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Cefdinir (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 37)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Cefixime (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 37)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL p.37 'CEPHALOSPORINS (ORAL)': cephalexin capsules and suspension preferred; cephalexin tablets non-preferred. Cefdinir and cefixime are non-preferred (x-position column, p.37). Amoxicillin-clavulanate is on p.37 but is recorded in abx-penicillin. Strength 500 mg per brief; PDL prints no strength.",
+      "sourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "lastReviewed": "2026-11-14",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "abx-macrolide",
+      "preferredAgent": {
+        "inn": "Azithromycin (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "250 mg tablet",
+        "sig": "500 mg by mouth on day 1, then 250 mg once daily on days 2 to 5 (label, Z-Pak course).",
+        "sigShort": "Z-Pak: 500 mg day 1, then 250 mg x4d",
+        "plainSig": "Two pills on day 1, then one pill a day for 4 more days."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred",
+      "alternatives": [
+        {
+          "drug": "ZITHROMAX Z-PAK (azithromycin)",
+          "note": "Preferred brand, no PA (PDL p. 59)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Clarithromycin tablets (generic)",
+          "note": "Preferred, no PA (PDL p. 59)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Erythromycin ethylsuccinate 200 and 400 mg suspension (generic)",
+          "note": "Preferred, no PA (PDL p. 59)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "ERY-TAB (erythromycin)",
+          "note": "Preferred brand, no PA (PDL p. 59)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Clarithromycin suspension and ER (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 59)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "E.E.S. (erythromycin ethylsuccinate) tablets and 200/400 suspension",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 59)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "ERYPED (erythromycin) 200 and 400 suspension",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 59)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "ERYTHROCIN (erythromycin)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 59)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Erythromycin base (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 59)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "ZITHROMAX (azithromycin) tablet, suspension, powder packet and TRI-PAK",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 59)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL p.59 'MACROLIDES (ORAL)': generic azithromycin preferred; ZITHROMAX Z-PAK preferred; ZITHROMAX tablet, suspension, powder packet and TRI-PAK non-preferred. Brand tablets are non-preferred while the generic is preferred, so no BOGL flag. Strength 250 mg per brief; PDL prints none. Clinical PA on p.59 (7-day trial of a preferred agent in last 180 days) is recorded as the reason for the non-preferred items.",
+      "sourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "lastReviewed": "2026-11-14",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "abx-tetracycline",
+      "preferredAgent": {
+        "inn": "Doxycycline hyclate (capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "100 mg capsule",
+        "sig": "100 mg by mouth every 12 hours on day 1, then 100 mg once or twice daily by infection (label); early Lyme disease 100 mg twice daily for 10 to 21 days (IDSA). Take with a full glass of water and stay upright 30 minutes.",
+        "sigShort": "100 mg BID",
+        "plainSig": "One capsule twice a day with a full glass of water. Don't lie down for 30 minutes after."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred",
+      "alternatives": [
+        {
+          "drug": "Doxycycline hyclate IR (generic)",
+          "note": "Preferred, no PA (PDL p. 82)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Doxycycline monohydrate 50 and 100 mg capsules, tablets and suspension (generic)",
+          "note": "Preferred, no PA (PDL p. 82)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Minocycline capsules (generic)",
+          "note": "Preferred, no PA (PDL p. 82)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "MORGIDOX (doxycycline hyclate)",
+          "note": "Preferred brand, no PA (PDL p. 82)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "DORYX (doxycycline hyclate)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 82)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Doxycycline hyclate DR (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 82)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Doxycycline monohydrate 40, 75 and 150 mg capsules (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 82)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Demeclocycline (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 82)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Minocycline tablets and ER (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 82)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "SOLODYN (minocycline) ER",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 82)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "MORGIDOX KIT (doxycycline hyclate)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 82)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "NUZYRA (omadacycline) tablets",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 82)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Tetracycline (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 82)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL p.82 'TETRACYCLINES': doxycycline hyclate capsules and IR, doxycycline monohydrate capsules, tablets and suspension, minocycline capsules, MORGIDOX and ORACEA preferred. DORYX, doxycycline hyclate DR, minocycline tablets and ER, SOLODYN, NUZYRA, tetracycline, demeclocycline and MORGIDOX KIT non-preferred. SEYSARA (sarecycline) and LYMEPAK are not in the PDL; no status inferred.",
+      "sourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "lastReviewed": "2026-11-14",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "abx-fluoroquinolone",
+      "preferredAgent": {
+        "inn": "Ciprofloxacin (immediate-release tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "500 mg tablet",
+        "sig": "500 mg by mouth every 12 hours for 7 to 14 days by infection; uncomplicated cystitis 250 mg every 12 hours for 3 days when no alternative fits (label).",
+        "sigShort": "500 mg BID",
+        "plainSig": "One pill twice a day. Avoid taking it with dairy, antacids or iron."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred",
+      "alternatives": [
+        {
+          "drug": "CIPRO (ciprofloxacin) suspension",
+          "note": "Preferred brand, no PA (PDL p. 41)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Levofloxacin solution and tablets (generic)",
+          "note": "Preferred, no PA (PDL p. 41)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "CIPRO (ciprofloxacin) tablets",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 41)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Ciprofloxacin suspension (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 41)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "BAXDELA (delafloxacin)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 41)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Moxifloxacin (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 41)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Ofloxacin (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 41)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL p.41 'FLUOROQUINOLONES, ORAL': generic 'ciprofloxacin IR' preferred, no PA; CIPRO suspension and levofloxacin solution and tablets preferred. CIPRO tablets (brand), ciprofloxacin suspension, BAXDELA, moxifloxacin and ofloxacin non-preferred. The PDL prints 'IR' without a dosage form; tablet is assumed as the usual IR form. Generic preferred over CIPRO brand tablets, so no BOGL flag. Strength 500 mg per brief.",
+      "sourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "lastReviewed": "2026-11-14",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "abx-uti",
+      "preferredAgent": {
+        "inn": "Nitrofurantoin monohydrate/macrocrystals (capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "100 mg capsule",
+        "sig": "100 mg by mouth twice daily with food: 7 days (label); 5 days for uncomplicated cystitis (IDSA guideline course).",
+        "sigShort": "100 mg BID x5-7d",
+        "plainSig": "One capsule twice a day with food for 5 to 7 days."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Covered (not a PDL class; Texas Medicaid formulary)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "PIVYA (pivmecillinam)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 74)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Not a PDL class: nitrofurantoin, sulfamethoxazole-trimethoprim, fosfomycin and methenamine do not appear in the PDL. Trimethoprim appears only in an ophthalmic combination (p.68). PIVYA (pivmecillinam) is non-preferred on p.74 and is the only UTI-indicated item found. ORLYNVAH and BLUJEPA are not in the document; no status inferred. Regimen per brief (5-day course; label regimens vary by product). Formulary status not checked against the txvendordrug formulary search.",
+      "sourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "lastReviewed": "2026-11-14",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "abx-cdiff",
+      "preferredAgent": {
+        "inn": "Vancomycin (oral capsule)",
+        "brand": "Vancocin",
+        "genericAvailable": true,
+        "strength": "125 mg capsule",
+        "sig": "125 mg by mouth four times daily for 10 days for C. difficile infection (label).",
+        "sigShort": "125 mg QID x10d",
+        "plainSig": "One capsule four times a day for 10 days."
+      },
+      "preferredRestriction": null,
+      "boglActive": true,
+      "boglNote": "Texas Medicaid PDL prefers brand VANCOCIN (vancomycin) and lists generic vancomycin as non-preferred (PA) (PDL p. 17); generic vancomycin capsules are AB-rated to Vancocin capsules, so asking for the brand (DAW) avoids the PA. The PDL says a drug name covers all dosage forms.",
+      "tier": "Preferred",
+      "alternatives": [
+        {
+          "drug": "DIFICID (fidaxomicin) tablets",
+          "note": "Preferred brand, no PA (PDL p. 17)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "FIRVANQ (vancomycin) oral kit",
+          "note": "Preferred brand, no PA (PDL p. 17)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Metronidazole tablets (generic)",
+          "note": "Preferred, no PA (PDL p. 17); alternative only, not the C. difficile pick",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Vancomycin (generic, oral)",
+          "outcome": "pa",
+          "reason": "Generic is not the preferred product: PDL prior authorization required; brand VANCOCIN is preferred (PDL p. 17)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "DIFICID (fidaxomicin) suspension",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 17)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Fidaxomicin (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 17)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "FLAGYL (metronidazole)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 17)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "VOWST (fecal microbiota spores, live-brpk)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 18)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL p.17 'ANTIBIOTICS, GASTROINTESTINAL': VANCOCIN (vancomycin), FIRVANQ (vancomycin), DIFICID tablets (fidaxomicin) and metronidazole tablets preferred. Generic vancomycin, DIFICID suspension, generic fidaxomicin, FLAGYL and metronidazole capsules non-preferred. VOWST (p.18) non-preferred. Brand preferred over generic vancomycin, but generic AB rating was not confirmed in this pass, so no BOGL flag is set. Metronidazole is an alternative only, not the pick. [Sonnet check 2026-11-14: re-read p.17 by x: VANCOCIN at x=77 (preferred), generic vancomycin at x=323 (non-preferred). Set boglActive true, brand pick. FIRVANQ is a solution kit, a different product, so not the BOGL.]",
+      "sourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "lastReviewed": "2026-11-14",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "abx-penicillin",
+      "preferredAgent": {
+        "inn": "Amoxicillin (capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "500 mg capsule (list also prints 250 mg)",
+        "sig": "Mild to moderate infection: 500 mg by mouth every 12 hours or 250 mg every 8 hours; severe: 875 mg every 12 hours or 500 mg every 8 hours. Strep throat: 10 days (label).",
+        "sigShort": "500 mg q8-12h",
+        "plainSig": "One capsule two or three times a day as directed. Finish the whole course."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Generic (Tier 1, p)",
+      "alternatives": [
+        {
+          "drug": "Amoxicillin tablet 500 mg, 875 mg",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.11)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Amoxicillin-clavulanate tablet 500-125 mg (Augmentin), 875-125 mg",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.11)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Amoxicillin-clavulanate oral suspension 200-28.5 mg/5 mL",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.11)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Amoxicillin-clavulanate oral suspension 250-62.5 mg, 400-57 mg/5 mL; tablet 250-125 mg; ER tablet 1000-62.5 mg",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA printed (PDF p.11)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Augmentin oral suspension 125-31.25 mg/5 mL (brand)",
+          "note": "Non-Preferred Brand (Tier 4, NP); no PA printed (PDF p.11)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Penicillin V potassium tablet 250, 500 mg",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.11)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Dicloxacillin capsule 250, 500 mg",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA printed (PDF p.11)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Ampicillin capsule 500 mg",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.11)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDF p.11 (printed 1), Penicillins; tiers by x-position. Amoxicillin cap 250/500 p, no QL or PA. Amoxicillin-clavulanate Augmentin 500-125 p. No penicillin row is PA or step-restricted. Amoxicillin-clavulanate belongs to this class per taxonomy.",
+      "sourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "lastReviewed": "2026-11-14",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "abx-cephalosporin",
+      "preferredAgent": {
+        "inn": "Cephalexin (capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "500 mg capsule (list also prints 250 mg)",
+        "sig": "500 mg by mouth every 12 hours (or 250 mg every 6 hours) for strep throat, skin infection or cystitis; at least 10 days for strep throat (label).",
+        "sigShort": "500 mg q12h",
+        "plainSig": "One capsule twice a day. Finish the whole course."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Generic (Tier 1, p)",
+      "alternatives": [
+        {
+          "drug": "Cefadroxil capsule 500 mg",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.12)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Cefdinir capsule 300 mg",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.12)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Cefuroxime axetil tablet 250 mg",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.12)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Cefuroxime axetil tablet 500 mg; cefadroxil tablet 1 g; cefprozil tablet and suspension; cefpodoxime tablet and suspension; cefixime capsule and suspension (Suprax); cefaclor capsule; cefdinir suspension; cefadroxil suspension; cephalexin 750 mg and suspension",
+          "note": "Non-Preferred Generic or Brand (Tier 2 or 4); no PA printed (PDF p.12)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDF p.12 (printed 2), Cephalosporins; tiers by x-position. Cephalexin 250/500 mg capsule p, 750 mg and suspension np. No PA or step on any oral cephalosporin row. Suprax and Ceftin appear only as reference names.",
+      "sourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "lastReviewed": "2026-11-14",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "abx-macrolide",
+      "preferredAgent": {
+        "inn": "Azithromycin (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "250 mg tablet (list also prints 500 mg; 600 mg is np)",
+        "sig": "500 mg by mouth on day 1, then 250 mg once daily on days 2 to 5 (label, Z-Pak course).",
+        "sigShort": "Z-Pak: 500 mg day 1, then 250 mg x4d",
+        "plainSig": "Two pills on day 1, then one pill a day for 4 more days."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Generic (Tier 1, p); QL 60 tablets/180 days",
+      "alternatives": [
+        {
+          "drug": "Azithromycin oral suspension 200 mg/5 mL (Zithromax reference)",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.13)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Azithromycin tablet 600 mg",
+          "note": "Non-Preferred Generic (Tier 2, np); QL 60 tablets/180 days (PDF p.13)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Azithromycin oral suspension 100 mg/5 mL",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA printed (PDF p.13)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Clarithromycin tablet 250, 500 mg; extended-release tablet 500 mg; oral suspension",
+          "note": "Non-Preferred Generic or Brand (Tier 2 or 4); QL on ER (PDF p.13)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Erythromycin ethylsuccinate, erythromycin base (DR and tablet), E.E.S. 400",
+          "note": "Non-Preferred Generic or Brand (Tier 2 or 4); no PA printed (PDF p.13)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDF p.13 (printed 3), Macrolides; tiers by x-position. Azithromycin tab 250/500 mg p with QL 60 tablets/180 days; the QL is a quantity limit, not PA. Z-Pak dosing is the label regimen; the list prints no sig.",
+      "sourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "lastReviewed": "2026-11-14",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "abx-tetracycline",
+      "preferredAgent": {
+        "inn": "Doxycycline hyclate (capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "100 mg capsule (list also prints 50 mg)",
+        "sig": "100 mg by mouth every 12 hours on day 1, then 100 mg once or twice daily by infection (label); early Lyme disease 100 mg twice daily for 10 to 21 days (IDSA). Take with a full glass of water and stay upright 30 minutes.",
+        "sigShort": "100 mg BID",
+        "plainSig": "One capsule twice a day with a full glass of water. Don't lie down for 30 minutes after."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Generic (Tier 1, p)",
+      "alternatives": [
+        {
+          "drug": "Doxycycline hyclate tablet 20 mg, 100 mg",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.13)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Doxycycline monohydrate capsule 50 mg, 100 mg; tablet 50 mg, 100 mg",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.13)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Minocycline HCl capsule 50 mg",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.13)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Minocycline HCl capsule 75 mg, 100 mg; doxycycline monohydrate tablet 75, 150 mg; doxycycline monohydrate suspension (Vibramycin); tetracycline capsule; demeclocycline tablet",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA printed (PDF p.13)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Nuzyra (omadacycline tablet)",
+          "note": "Non-Preferred Brand (Tier 4, NP); QL 30 tablets/180 days; no PA printed (PDF p.13)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Doryx and Doryx MPC (doxycycline delayed-release)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Performance Drug List; the list states 'Drugs that are not shown are not covered' (PDF p.2). Exception route: call the ID-card number (PDF p.3).",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Solodyn, Minolira, Ximino (minocycline extended-release)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Performance Drug List; the list states 'Drugs that are not shown are not covered' (PDF p.2). Exception route: call the ID-card number (PDF p.3).",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Seysara (sarecycline)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Performance Drug List; the list states 'Drugs that are not shown are not covered' (PDF p.2). Exception route: call the ID-card number (PDF p.3).",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Targadox and Lymepak (doxycycline)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Performance Drug List; the list states 'Drugs that are not shown are not covered' (PDF p.2). Exception route: call the ID-card number (PDF p.3).",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDF p.13 (printed 3), Tetracyclines; tiers by x-position. Doxycycline hyclate 100 mg capsule p (Vibramycin is the reference name). Full-text search found no Doryx, Solodyn, Minolira, Ximino, Seysara, Targadox or Lymepak; recorded as nonformulary per PDF p.2. [Sonnet check 2026-11-14: nonformulary items rest on p.2 'Drugs that are not shown are not covered'; exception route p.8.]",
+      "sourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "lastReviewed": "2026-11-14",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "abx-fluoroquinolone",
+      "preferredAgent": {
+        "inn": "Ciprofloxacin (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "500 mg tablet (list also prints 250 and 750 mg)",
+        "sig": "500 mg by mouth every 12 hours for 7 to 14 days by infection; uncomplicated cystitis 250 mg every 12 hours for 3 days when no alternative fits (label).",
+        "sigShort": "500 mg BID",
+        "plainSig": "One pill twice a day. Avoid taking it with dairy, antacids or iron."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Generic (Tier 1, p)",
+      "alternatives": [
+        {
+          "drug": "Ciprofloxacin tablet 250 mg, 750 mg (Cipro reference)",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.13)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Levofloxacin tablet 250, 500, 750 mg",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.13)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Ofloxacin tablet 300 mg",
+          "note": "Preferred Brand (Tier 3, P); no PA printed (PDF p.13)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Cipro oral suspension; ofloxacin tablet 400 mg; levofloxacin oral solution; moxifloxacin tablet 400 mg",
+          "note": "Non-Preferred Generic or Brand (Tier 2 or 4); no PA printed (PDF p.13)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Baxdela (delafloxacin tablet)",
+          "note": "Non-Preferred Brand (Tier 4, NP); QL 28 tablets/180 days; no PA printed (PDF p.13)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDF p.13 (printed 3), Fluoroquinolones; tiers by x-position. Ciprofloxacin 250/500 mg tablet (Cipro) p with no PA. Baxdela NP with QL only. No fluoroquinolone is PA-restricted on this list.",
+      "sourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "lastReviewed": "2026-11-14",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "abx-uti",
+      "preferredAgent": {
+        "inn": "Nitrofurantoin monohydrate macrocrystals (capsule, Macrobid-type)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "100 mg capsule",
+        "sig": "100 mg by mouth twice daily with food: 7 days (label); 5 days for uncomplicated cystitis (IDSA guideline course).",
+        "sigShort": "100 mg BID x5-7d",
+        "plainSig": "One capsule twice a day with food for 5 to 7 days."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Generic (Tier 1, p)",
+      "alternatives": [
+        {
+          "drug": "Nitrofurantoin macrocrystals capsule 50 mg (Macrodantin)",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.18)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Sulfamethoxazole-trimethoprim tablet 800-160 mg (Bactrim DS)",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.18)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Sulfamethoxazole-trimethoprim tablet 400-80 mg (Bactrim)",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.18)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Nitrofurantoin macrocrystals capsule 25 mg, 100 mg (Macrodantin); nitrofurantoin oral suspension; sulfamethoxazole-trimethoprim oral suspension; trimethoprim tablet 100 mg; methenamine hippurate tablet 1 g (Hiprex); fosfomycin 3 g packet (Monurol)",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA printed (PDF p.18)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Pivya (pivmecillinam)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Performance Drug List; the list states 'Drugs that are not shown are not covered' (PDF p.2). Exception route: call the ID-card number (PDF p.3).",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Orlynvah (sulopenem etzadroxil/probenecid)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Performance Drug List; the list states 'Drugs that are not shown are not covered' (PDF p.2). Exception route: call the ID-card number (PDF p.3).",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Blujepa (gepotidacin)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Performance Drug List; the list states 'Drugs that are not shown are not covered' (PDF p.2). Exception route: call the ID-card number (PDF p.3).",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDF p.18 (printed 8), Anti-Infective Agents; tiers by x-position. Nitrofurantoin monohydrate 100 mg (Macrobid) p. Pivya, Orlynvah and Blujepa not printed (full-text search); nonformulary per PDF p.2. Judgment: the 5-day duration follows the brief; the list prints no sig, so the label duration should be checked. [Sonnet check 2026-11-14: nonformulary items rest on p.2 'Drugs that are not shown are not covered'; exception route p.8.]",
+      "sourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "lastReviewed": "2026-11-14",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "abx-cdiff",
+      "preferredAgent": {
+        "inn": "Vancomycin hydrochloride (oral capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "125 mg capsule (list also prints 250 mg)",
+        "sig": "125 mg by mouth four times daily for 10 days for C. difficile infection (label).",
+        "sigShort": "125 mg QID x10d",
+        "plainSig": "One capsule four times a day for 10 days."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Non-Preferred Generic (Tier 2, np); QL 120 capsules/30 days; no PA printed",
+      "alternatives": [
+        {
+          "drug": "Dificid (fidaxomicin) oral suspension 40 mg/mL",
+          "note": "Preferred Brand (Tier 3, P); no PA printed (PDF p.12)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Fidaxomicin tablet 200 mg (generic; Dificid reference)",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA printed (PDF p.12)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Vancomycin oral solution 25 mg/mL, 50 mg/mL (Firvanq reference)",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA printed (PDF p.18)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Metronidazole tablet 250 mg, 500 mg (alternative only, never the pick)",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.18)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Vowst (fecal microbiota spores, live-brpk capsule)",
+          "outcome": "pa",
+          "reason": "Covered only with prior authorization (PA, QL 12 capsules/12 months, SP; PDF p.53)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDF p.18 (printed 8): vancomycin cap 125/250 mg np QL 120/30 days; vancomycin oral solution np; PDF p.12 Dificid oral suspension P and fidaxomicin tablet np. Vowst NP PA on PDF p.53. Rebyota and bezlotoxumab are provider-administered and omitted per brief. Judgment: the pick is a non-preferred generic because the list has no preferred oral C. diff agent; metronidazole is never the pick. [Sonnet check 2026-11-14: re-read p.18 by x-position: vancomycin cap 125/250 mg is 'np' (Tier 2) with QL 120 capsules/30 days, no PA code; 40 capsules for 10 days fits the QL.]",
+      "sourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "lastReviewed": "2026-11-14",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "abx-penicillin",
+      "preferredAgent": {
+        "inn": "Amoxicillin (capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "500 mg capsule",
+        "sig": "Mild to moderate infection: 500 mg by mouth every 12 hours or 250 mg every 8 hours; severe: 875 mg every 12 hours or 500 mg every 8 hours. Strep throat: 10 days (label).",
+        "sigShort": "500 mg q8-12h",
+        "plainSig": "One capsule two or three times a day as directed. Finish the whole course."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Amoxicillin-clavulanate (tablet 250-125 mg, 500-125 mg)",
+          "note": "Tier 2, no PA (PDG p. 14)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Amoxicillin-clavulanate (875-125 mg tablet)",
+          "note": "Tier 2, no PA (PDG p. 14)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Penicillin V potassium (tablet)",
+          "note": "Tier 2, no PA (PDG p. 17)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Dicloxacillin (capsule)",
+          "note": "Tier 2, no PA (PDG p. 15)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from the formulary text layer, row by row (each tier digit sits on the same row as its drug name; pypdf gave no x-coordinates for the digits). Formulary sig and quantity limits are as printed; the document prints no sig, so the sig is the label starting dose. Amoxicillin 500 mg capsule is Tier 1 with no PA (PDG p. 13). Augmentin and Augmentin XR brands are not listed; the generic amoxicillin-clavulanate is. [Reused: same national Humana PDP formulary]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "lastReviewed": "2026-11-06",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "abx-cephalosporin",
+      "preferredAgent": {
+        "inn": "Cephalexin (capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "500 mg capsule",
+        "sig": "500 mg by mouth every 12 hours (or 250 mg every 6 hours) for strep throat, skin infection or cystitis; at least 10 days for strep throat (label).",
+        "sigShort": "500 mg q12h",
+        "plainSig": "One capsule twice a day. Finish the whole course."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Cefadroxil (capsule 500 mg)",
+          "note": "Tier 2, no PA (PDG p. 14)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Cefdinir (capsule 300 mg)",
+          "note": "Tier 2, no PA (PDG p. 14)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Cefaclor (capsule 250, 500 mg)",
+          "note": "Tier 3, no PA (PDG p. 14)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Cefuroxime axetil (tablet)",
+          "note": "Tier 3, no PA (PDG p. 15)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Cefprozil (tablet)",
+          "note": "Tier 3, no PA (PDG p. 15)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Cefpodoxime (tablet)",
+          "note": "Tier 4, no PA (PDG p. 14)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Cefixime (capsule or tablet 400 mg)",
+          "note": "Tier 4, no PA (PDG p. 14)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from the formulary text layer, row by row (each tier digit sits on the same row as its drug name; pypdf gave no x-coordinates for the digits). Formulary sig and quantity limits are as printed; the document prints no sig, so the sig is the label starting dose. Cephalexin 500 mg capsule is Tier 1 with no PA (PDG p. 15). Keflex, Ceftin and Suprax brands are not listed; all eight generic oral cephalosporins in the class are listed. [Reused: same national Humana PDP formulary]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "lastReviewed": "2026-11-06",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "abx-macrolide",
+      "preferredAgent": {
+        "inn": "Azithromycin (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "250 mg tablet",
+        "sig": "500 mg by mouth on day 1, then 250 mg once daily on days 2 to 5 (label, Z-Pak course).",
+        "sigShort": "Z-Pak: 500 mg day 1, then 250 mg x4d",
+        "plainSig": "Two pills on day 1, then one pill a day for 4 more days."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2",
+      "alternatives": [
+        {
+          "drug": "Azithromycin (tablet 500 mg, 600 mg)",
+          "note": "Tier 2, no PA (PDG p. 14)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Clarithromycin (tablet 250, 500 mg)",
+          "note": "Tier 3, no PA (PDG p. 15)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Clarithromycin extended-release (tablet 500 mg)",
+          "note": "Tier 3, no PA (PDG p. 15)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Erythromycin (delayed-release tablet or capsule)",
+          "note": "Tier 4, no PA (PDG p. 16)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Erythromycin base (tablet 250, 500 mg)",
+          "note": "Tier 4, no PA (PDG p. 16)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Erythromycin ethylsuccinate and erythromycin stearate (E.E.S., Erythrocin oral)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from the formulary text layer, row by row (each tier digit sits on the same row as its drug name; pypdf gave no x-coordinates for the digits). Formulary sig and quantity limits are as printed; the document prints no sig, so the sig is the label starting dose. Azithromycin 250 mg tablet is Tier 2 with no PA (PDG p. 14); no macrolide is Tier 1. Zithromax, Biaxin, PCE are not listed. The only Erythrocin line is the IV lactobionate (PDG p. 16), which is not an oral agent. [Sonnet check 2026-11-06: tiers and flags re-read in layout (row-aligned) extraction, not flattened text; nonformulary reasons reworded to the front-matter wording.] [Reused: same national Humana PDP formulary]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "lastReviewed": "2026-11-06",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "abx-tetracycline",
+      "preferredAgent": {
+        "inn": "Doxycycline monohydrate (capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "100 mg capsule",
+        "sig": "100 mg by mouth every 12 hours on day 1, then 100 mg once or twice daily by infection (label); early Lyme disease 100 mg twice daily for 10 to 21 days (IDSA). Take with a full glass of water and stay upright 30 minutes.",
+        "sigShort": "100 mg BID",
+        "plainSig": "One capsule twice a day with a full glass of water. Don't lie down for 30 minutes after."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2",
+      "alternatives": [
+        {
+          "drug": "Doxycycline hyclate (tablet 100 mg; capsule 50, 100 mg)",
+          "note": "Tier 3, no PA (PDG p. 16)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Doxycycline monohydrate (tablet 100, 150, 50, 75 mg)",
+          "note": "Tier 3, no PA (PDG p. 16)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Minocycline (capsule 50, 75, 100 mg)",
+          "note": "Tier 2, no PA (PDG p. 17)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Doryx and Doryx MPC (doxycycline delayed-release)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Acticlate (doxycycline)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Targadox (doxycycline)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Lymepak (doxycycline)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Minocycline extended-release (Solodyn, Minolira, Ximino)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Tetracycline (oral)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Seysara (sarecycline)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Nuzyra (omadacycline)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Doxycycline monohydrate 100 mg capsule is Tier 2, no PA (PDG p. 16); the hyclate tablet and capsule are Tier 3. Pick follows the cheapest-tier rule: same molecule, lower tier. Minocycline capsule is also Tier 2 but doxycycline is the usual first-line tetracycline. Vibramycin, Minocin, Solodyn, Minolira and Ximino brands are not listed. The document prints no sig; sig is the label regimen. [Sonnet check 2026-11-06: tiers and flags re-read in layout (row-aligned) extraction, not flattened text; pick changed from hyclate tablet (Tier 3) to monohydrate capsule (Tier 2, same molecule); nonformulary reasons reworded to the front-matter wording.] [Reused: same national Humana PDP formulary]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "lastReviewed": "2026-11-06",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "abx-fluoroquinolone",
+      "preferredAgent": {
+        "inn": "Ciprofloxacin (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "500 mg tablet",
+        "sig": "500 mg by mouth every 12 hours for 7 to 14 days by infection; uncomplicated cystitis 250 mg every 12 hours for 3 days when no alternative fits (label).",
+        "sigShort": "500 mg BID",
+        "plainSig": "One pill twice a day. Avoid taking it with dairy, antacids or iron."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Ciprofloxacin (tablet 250, 750 mg)",
+          "note": "Tier 1, no PA (PDG p. 15)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Levofloxacin (tablet 250, 500, 750 mg)",
+          "note": "Tier 2, no PA (PDG p. 16)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Moxifloxacin (tablet 400 mg)",
+          "note": "Tier 3, no PA (PDG p. 17)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Ofloxacin (tablet 300, 400 mg)",
+          "note": "Tier 4, no PA (PDG p. 17)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Baxdela (delafloxacin)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from the formulary text layer, row by row (each tier digit sits on the same row as its drug name; pypdf gave no x-coordinates for the digits). Formulary sig and quantity limits are as printed; the document prints no sig, so the sig is the label starting dose. Ciprofloxacin 500 mg tablet is Tier 1 with no PA (PDG p. 15). Cipro, Levaquin and Avelox brands are not listed; generic ciprofloxacin, levofloxacin, moxifloxacin and ofloxacin are. [Sonnet check 2026-11-06: tiers and flags re-read in layout (row-aligned) extraction, not flattened text; nonformulary reasons reworded to the front-matter wording.] [Reused: same national Humana PDP formulary]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "lastReviewed": "2026-11-06",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "abx-uti",
+      "preferredAgent": {
+        "inn": "Sulfamethoxazole-trimethoprim (double-strength tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "800 mg/160 mg (DS) tablet",
+        "sig": "1 double-strength tablet (800/160 mg) by mouth twice daily: 10 to 14 days for urinary infection (label); 3 days for uncomplicated cystitis (IDSA guideline course). Drink plenty of fluids.",
+        "sigShort": "1 DS tab BID",
+        "plainSig": "One pill twice a day, with plenty of water."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Sulfamethoxazole-trimethoprim 400-80 mg tablet",
+          "note": "Tier 1, no PA (PDG p. 17)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Nitrofurantoin monohydrate/macrocrystals 100 mg capsule (Macrobid-type)",
+          "note": "Tier 3, no PA (PDG p. 17); first-line alternative for sulfa allergy or sulfa-resistant bacteria",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Trimethoprim 100 mg tablet",
+          "note": "Tier 2, no PA (PDG p. 17)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Nitrofurantoin macrocrystals 50, 100 mg capsule",
+          "note": "Tier 4, no PA (PDG p. 17)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Methenamine hippurate 1 g tablet (prophylaxis)",
+          "note": "Tier 3, no PA (PDG p. 16)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Fosfomycin tromethamine 3 g packet",
+          "note": "Tier 4, no PA (PDG p. 16)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Pivya (pivmecillinam)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Orlynvah (sulopenem etzadroxil/probenecid)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Blujepa (gepotidacin)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Sulfamethoxazole-trimethoprim 800-160 mg tablet is Tier 1, no PA (PDG p. 17); nitrofurantoin monohydrate/macrocrystals 100 mg is Tier 3. Both are first-line for uncomplicated cystitis in current IDSA guidance, so the Tier 1 agent is the pick; nitrofurantoin stays the first alternative. Brand names (Bactrim, Macrobid, Macrodantin, Hiprex, Monurol) are not listed. The document prints no sig. [Sonnet check 2026-11-06: tiers and flags re-read in layout (row-aligned) extraction, not flattened text; pick changed from nitrofurantoin (Tier 3) to SMX-TMP DS (Tier 1, both first-line); nonformulary reasons reworded to the front-matter wording.] [Reused: same national Humana PDP formulary]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "lastReviewed": "2026-11-06",
+      "payerId": "humana-premier-rx-pdp"
+    },
+    {
+      "classId": "abx-cdiff",
+      "preferredAgent": {
+        "inn": "Vancomycin (oral capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "125 mg capsule",
+        "sig": "125 mg by mouth four times daily for 10 days for C. difficile infection (label).",
+        "sigShort": "125 mg QID x10d",
+        "plainSig": "One capsule four times a day for 10 days."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 4, QL 120 per 30 days",
+      "alternatives": [
+        {
+          "drug": "Vancomycin (oral capsule 250 mg)",
+          "note": "Tier 4, QL 240 per 30 days, no PA (PDG p. 18)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Metronidazole (tablet 250, 500 mg)",
+          "note": "Tier 2, no PA (PDG p. 17)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Dificid (fidaxomicin 200 mg tablet)",
+          "note": "Tier 5, DL (30-day dispensing limit), no PA (PDG p. 15)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Fidaxomicin 200 mg tablet (generic)",
+          "note": "Tier 5, DL (30-day dispensing limit), no PA (PDG p. 16)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "VOWST (fecal microbiota spores capsule)",
+          "outcome": "pa",
+          "reason": "PA required (PDG p. 59)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Firvanq (vancomycin oral solution kit)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Vancocin (vancomycin oral)",
+          "outcome": "nonformulary",
+          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from the formulary text layer, row by row (each tier digit sits on the same row as its drug name; pypdf gave no x-coordinates for the digits). Formulary sig and quantity limits are as printed; the document prints no sig, so the sig is the label starting dose. Vancomycin 125 mg capsule is Tier 4 with QL 120 per 30 days, no PA (PDG p. 18); 125 mg QID for 10 days is 40 capsules, inside the limit. Metronidazole is listed as an alternative only, per the class description. Vowst is Tier 5 with PA (PDG p. 59). Dificid carries no PA mark in this formulary (PDG p. 15). Rebyota and bezlotoxumab are provider-administered and are not in this formulary. [Sonnet check 2026-11-06: tiers and flags re-read in layout (row-aligned) extraction, not flattened text; nonformulary reasons reworded to the front-matter wording; added generic fidaxomicin (p. 16) and QL on the pick.] [Reused: same national Humana PDP formulary]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "lastReviewed": "2026-11-06",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "tx-medicaid-pdl-2026-07",
+      "label": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization Criteria, effective July 24, 2026",
+      "publisher": "Texas Health and Human Services (Texas Medicaid Vendor Drug Program, txvendordrug.com)",
+      "type": "gov",
+      "url": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "effectiveDate": "2026-07-24",
+      "accessed": "2026-11-14"
+    },
+    {
+      "id": "bcbs-tx-performance-2026-10",
+      "label": "Blue Cross and Blue Shield of Texas Performance Drug List, October 2026 (41722-T TX); PDF pages cited are PDF indices (printed page = PDF page - 10)",
+      "publisher": "Blue Cross and Blue Shield of Texas (Prime Therapeutics LLC)",
+      "type": "payer",
+      "url": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-14"
+    },
+    {
+      "id": "humana-premier-rx-pdp-2026-11",
+      "label": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v18, updated 11/02/2026)",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-11-02",
+      "accessed": "2026-11-06"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}
