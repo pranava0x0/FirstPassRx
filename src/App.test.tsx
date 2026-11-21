@@ -1,4 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
+// Full-app renders run slowly while 16 other test files share the CPU (504 guides as of
+// 2026-11-21); each passes in under 5 s alone, but a different one hit the default 5 s cap per run.
+vi.setConfig({ testTimeout: 15000 })
 import { render, screen, within, fireEvent, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { StrictMode } from 'react'
