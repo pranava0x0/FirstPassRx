@@ -1,0 +1,809 @@
+{
+  "id": "pa-oral-steroids",
+  "label": "PA · Oral steroids",
+  "stateCode": "PA",
+  "region": "Pennsylvania",
+  "topicId": "oral-steroids",
+  "topic": "Oral steroids",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-11-15",
+  "capturedAt": "2026-11-15",
+  "payers": [
+    {
+      "id": "pa-medicaid",
+      "aka": "Statewide PDL binds fee-for-service and every Pennsylvania Medicaid managed care plan statewide (Physical HealthChoices + Community HealthChoices): same preferred/non-preferred status and PA criteria; each MCO runs its own PA intake (DHS MA Bulletin 2022-12-09)",
+      "name": "PA Medical Assistance Statewide Preferred Drug List (Fee-for-Service)",
+      "shortName": "PA Medicaid FFS",
+      "pbm": "OptumRx, Inc. (negotiates supplemental rebates / P&T support for DHS)",
+      "productName": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), Effective January 2026 v11",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), effective January 20, 2026 (v16)",
+      "formularyUrl": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-pdl-v16.pdf",
+      "sourceIds": [
+        "pa-medicaid-pdl-2026-v16"
+      ]
+    },
+    {
+      "id": "ibx-commercial",
+      "name": "Independence Blue Cross (Commercial)",
+      "shortName": "Independence Blue Cross",
+      "pbm": "FutureScripts (IBX's PBM subsidiary)",
+      "productName": "Select Drug Program® Formulary",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Independence Blue Cross Select Drug Program Formulary, effective October 1, 2026",
+      "formularyUrl": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "sourceIds": [
+        "ibx-select-2026-10"
+      ]
+    },
+    {
+      "id": "highmark-bcbs",
+      "name": "Highmark Blue Cross Blue Shield (Commercial)",
+      "shortName": "Highmark BCBS",
+      "pbm": "Prime Therapeutics (Highmark is a Prime owner-member Blue plan)",
+      "productName": "Highmark Comprehensive Formulary (Drug Search)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Highmark Comprehensive Formulary (Formulary Id 24651), therapeutic class listing: Endocrine > Glucocorticoids; formulary effective 11/06/2026",
+      "formularyUrl": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=endocrine%7cglucocorticoids",
+      "sourceIds": [
+        "highmark-24651-c22"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "oral-corticosteroid",
+      "name": "Oral corticosteroids",
+      "shortName": "Oral steroid",
+      "plainName": "Steroid pills",
+      "description": "Systemic oral corticosteroids: prednisone (tablets, solution; Rayos delayed-release appears discontinued), methylprednisolone (Medrol, dose pack), prednisolone (solution, Orapred ODT, Millipred), dexamethasone (tablets, solution, Dexamethasone Intensol, TaperDex/Dxevo/HiDex packs; Hemady 20 mg is labeled for multiple myeloma only, an alternative, never the pick), hydrocortisone (Cortef; Alkindi Sprinkle and Khindivi oral solution for children). Deflazacort (Emflaza) and vamorolone (Agamree) for Duchenne are specialty alternatives only, never the pick. Not budesonide (Entocort, Uceris, Tarpeyo) or inhaled/topical steroids.",
+      "plainDescription": "Short courses of steroid pills that calm inflammation fast, for flares of asthma, COPD, arthritis, allergies and more.",
+      "indication": "Inflammatory flares, asthma/COPD exacerbations, autoimmune disease, adrenal insufficiency",
+      "sourceIds": [
+        "pa-medicaid-pdl-2026-v16"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "oral-corticosteroid",
+      "preferredAgent": {
+        "inn": "Prednisone (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Dose by condition, 5 to 60 mg by mouth daily, with food (label). A common short course for a flare is 40 mg once daily for 5 days (practice, not label text); taper courses longer than 2 to 3 weeks.",
+        "sigShort": "5-60 mg QD; flare often 40 mg x5d",
+        "plainSig": "Take with food in the morning, at the dose and for the days your prescriber sets."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred (Statewide PDL; no tiers)",
+      "alternatives": [
+        {
+          "drug": "Prednisone dose pack; prednisone solution",
+          "note": "Preferred, no PA (PDL p. 26)",
+          "sourceIds": [
+            "pa-medicaid-pdl-2026-v16"
+          ]
+        },
+        {
+          "drug": "Methylprednisolone tablet and dose pack (generic)",
+          "note": "Preferred, no PA (PDL p. 26)",
+          "sourceIds": [
+            "pa-medicaid-pdl-2026-v16"
+          ]
+        },
+        {
+          "drug": "Dexamethasone tablet; dexamethasone solution, Intensol drop, elixir",
+          "note": "Preferred, no PA (PDL p. 26)",
+          "sourceIds": [
+            "pa-medicaid-pdl-2026-v16"
+          ]
+        },
+        {
+          "drug": "Hydrocortisone tablet",
+          "note": "Preferred, no PA (PDL p. 26)",
+          "sourceIds": [
+            "pa-medicaid-pdl-2026-v16"
+          ]
+        },
+        {
+          "drug": "Prednisolone solution",
+          "note": "Preferred, no PA (PDL p. 26)",
+          "sourceIds": [
+            "pa-medicaid-pdl-2026-v16"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Cortef (hydrocortisone) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 26)",
+          "sourceIds": [
+            "pa-medicaid-pdl-2026-v16"
+          ]
+        },
+        {
+          "drug": "Khindivi (hydrocortisone) solution; Alkindi Sprinkle (hydrocortisone) capsule",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 26)",
+          "sourceIds": [
+            "pa-medicaid-pdl-2026-v16"
+          ]
+        },
+        {
+          "drug": "Medrol (methylprednisolone) tablet and Medrol dose pack",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 26)",
+          "sourceIds": [
+            "pa-medicaid-pdl-2026-v16"
+          ]
+        },
+        {
+          "drug": "Dexamethasone dose pack",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 26)",
+          "sourceIds": [
+            "pa-medicaid-pdl-2026-v16"
+          ]
+        },
+        {
+          "drug": "Hemady (dexamethasone 20 mg) tablet",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 26)",
+          "sourceIds": [
+            "pa-medicaid-pdl-2026-v16"
+          ]
+        },
+        {
+          "drug": "Prednisolone tablet; cortisone tablet",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 26)",
+          "sourceIds": [
+            "pa-medicaid-pdl-2026-v16"
+          ]
+        },
+        {
+          "drug": "Prednisolone sodium phosphate ODT (generic Orapred ODT)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 27)",
+          "sourceIds": [
+            "pa-medicaid-pdl-2026-v16"
+          ]
+        },
+        {
+          "drug": "Deflazacort tablet and suspension; Emflaza tablet and suspension (QL)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 26)",
+          "sourceIds": [
+            "pa-medicaid-pdl-2026-v16"
+          ]
+        },
+        {
+          "drug": "Agamree (vamorolone) suspension",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 26)",
+          "sourceIds": [
+            "pa-medicaid-pdl-2026-v16"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL p.26-27 (GLUCOCORTICOIDS, ORAL) by x-position. Prednisone tablet is Preferred with no code. Generic methylprednisolone, dexamethasone, hydrocortisone and prednisolone solution are Preferred. Brand Medrol, Cortef, Hemady, Emflaza and Agamree are Non-Preferred (PA). Hemady is an alternative in the class description but is Non-Preferred on the PDL, so it is recorded as PA. Budesonide products (Eohilia, Tarpeyo, Entocort-type) are not systemic steroids for this class and are not recorded. Fludrocortisone is not in the class description and is not recorded. Sig is a label-based judgment; the PDL prints none.",
+      "sourceIds": [
+        "pa-medicaid-pdl-2026-v16"
+      ],
+      "coverageSourceIds": [
+        "pa-medicaid-pdl-2026-v16"
+      ],
+      "restrictionSourceIds": [
+        "pa-medicaid-pdl-2026-v16"
+      ],
+      "lastReviewed": "2026-11-15",
+      "payerId": "pa-medicaid"
+    },
+    {
+      "classId": "oral-corticosteroid",
+      "preferredAgent": {
+        "inn": "Prednisone (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Dose by condition, 5 to 60 mg by mouth daily, with food (label). A common short course for a flare is 40 mg once daily for 5 days (practice, not label text); taper courses longer than 2 to 3 weeks.",
+        "sigShort": "5-60 mg QD; flare often 40 mg x5d",
+        "plainSig": "Take with food in the morning, at the dose and for the days your prescriber sets."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Low-cost generic (LCG)",
+      "alternatives": [
+        {
+          "drug": "Prednisone therapy pack and oral solution or concentrate",
+          "note": "G, no PA flag (p. 26)",
+          "sourceIds": [
+            "ibx-select-2026-10"
+          ]
+        },
+        {
+          "drug": "Deltasone (prednisone) brand",
+          "note": "NPD tier, no PA flag (p. 25)",
+          "sourceIds": [
+            "ibx-select-2026-10"
+          ]
+        },
+        {
+          "drug": "Medrol (methylprednisolone) brand",
+          "note": "NPD tier, no PA flag (p. 54)",
+          "sourceIds": [
+            "ibx-select-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylprednisolone therapy pak (generic)",
+          "note": "G, no PA flag (p. 54)",
+          "sourceIds": [
+            "ibx-select-2026-10"
+          ]
+        },
+        {
+          "drug": "Prednisolone (solution, Pediapred and Veripred types) and Orapred ODT",
+          "note": "NPD tier, no PA flag (pp. 55-56). Orapred ODT NPD (p. 55).",
+          "sourceIds": [
+            "ibx-select-2026-10"
+          ]
+        },
+        {
+          "drug": "Prelone (prednisolone) brand",
+          "note": "NPD tier, no PA flag (p. 55)",
+          "sourceIds": [
+            "ibx-select-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydrocortisone (generic tablet)",
+          "note": "G, no PA flag (p. 53)",
+          "sourceIds": [
+            "ibx-select-2026-10"
+          ]
+        },
+        {
+          "drug": "Cortef (hydrocortisone) brand",
+          "note": "NPD tier, no PA flag (p. 52)",
+          "sourceIds": [
+            "ibx-select-2026-10"
+          ]
+        },
+        {
+          "drug": "Cortisone acetate tablet",
+          "note": "NPD tier, no PA flag (p. 52)",
+          "sourceIds": [
+            "ibx-select-2026-10"
+          ]
+        },
+        {
+          "drug": "Dexamethasone tablet (generic 6-, 10-, 13-day packs)",
+          "note": "G, no PA flag (p. 52)",
+          "sourceIds": [
+            "ibx-select-2026-10"
+          ]
+        },
+        {
+          "drug": "Dexpak and Dexabliss (dexamethasone packs)",
+          "note": "NPD tier, no PA flag (pp. 52-53)",
+          "sourceIds": [
+            "ibx-select-2026-10"
+          ]
+        },
+        {
+          "drug": "Hemady (dexamethasone 20 mg)",
+          "note": "NPD tier, no PA flag (p. 53). Labeled for multiple myeloma only.",
+          "sourceIds": [
+            "ibx-select-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Prednisone delayed-release tablet (generic)",
+          "outcome": "pa",
+          "reason": "PA required; NPD tier (p. 26)",
+          "sourceIds": [
+            "ibx-select-2026-10"
+          ]
+        },
+        {
+          "drug": "Rayos (prednisone delayed-release) brand",
+          "outcome": "pa",
+          "reason": "PA required; NPD tier (p. 55; PA-required list p. 15)",
+          "sourceIds": [
+            "ibx-select-2026-10"
+          ]
+        },
+        {
+          "drug": "Millipred (prednisolone) brand",
+          "outcome": "pa",
+          "reason": "PA required; NPD tier (p. 55; PA-required list p. 13)",
+          "sourceIds": [
+            "ibx-select-2026-10"
+          ]
+        },
+        {
+          "drug": "Prednisolone 5 mg tablet",
+          "outcome": "pa",
+          "reason": "PA required; NPD tier (p. 55)",
+          "sourceIds": [
+            "ibx-select-2026-10"
+          ]
+        },
+        {
+          "drug": "Emflaza (deflazacort) brand",
+          "outcome": "pa",
+          "reason": "PA required; NPD tier with SP (p. 53; PA-required list p. 11)",
+          "sourceIds": [
+            "ibx-select-2026-10"
+          ]
+        },
+        {
+          "drug": "Agamree (vamorolone) suspension",
+          "outcome": "pa",
+          "reason": "PA required; NPD tier with SP (p. 57; PA-required list p. 10)",
+          "sourceIds": [
+            "ibx-select-2026-10"
+          ]
+        },
+        {
+          "drug": "Alkindi Sprinkle (hydrocortisone granules)",
+          "outcome": "pa",
+          "reason": "PA required; NPD tier (p. 51; PA-required list p. 10)",
+          "sourceIds": [
+            "ibx-select-2026-10"
+          ]
+        },
+        {
+          "drug": "Khindivi (hydrocortisone oral solution)",
+          "outcome": "pa",
+          "reason": "PA required; NPD tier (p. 70; PA-required list p. 13)",
+          "sourceIds": [
+            "ibx-select-2026-10"
+          ]
+        },
+        {
+          "drug": "Deflazacort (generic tablet and suspension)",
+          "outcome": "pa",
+          "reason": "PA required; G tier with SP flag (p. 52)",
+          "sourceIds": [
+            "ibx-select-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Generic prednisone tablet is LCG with no PA flag (p. 26). Prednisone delayed-release is NPD with PA (p. 26), and Rayos is NPD with PA (p. 55). Dose and duration are per indication, so the sig is label-based and IBX does not print it.",
+      "sourceIds": [
+        "ibx-select-2026-10"
+      ],
+      "coverageSourceIds": [
+        "ibx-select-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "ibx-select-2026-10"
+      ],
+      "lastReviewed": "2026-11-15",
+      "payerId": "ibx-commercial"
+    },
+    {
+      "classId": "oral-corticosteroid",
+      "preferredAgent": {
+        "inn": "Prednisone (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Dose by condition, 5 to 60 mg by mouth daily, with food (label). A common short course for a flare is 40 mg once daily for 5 days (practice, not label text); taper courses longer than 2 to 3 weeks.",
+        "sigShort": "5-60 mg QD; flare often 40 mg x5d",
+        "plainSig": "Take with food in the morning, at the dose and for the days your prescriber sets."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1/ Formulary Generic Drug",
+      "alternatives": [
+        {
+          "drug": "Dexamethasone Intensol (drops)",
+          "note": "Tier 1 generic; no prior authorization shown",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Dexamethasone (elixir)",
+          "note": "Tier 1 generic; no prior authorization shown",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Dexamethasone (solution)",
+          "note": "Tier 1 generic; no prior authorization shown",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Dexamethasone (tablet)",
+          "note": "Tier 1 generic; no prior authorization shown; Low-Cost Generic Rx icon; 7 strength rows on page",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Dexamethasone (tablets,dose pack)",
+          "note": "Tier 1 generic; no prior authorization shown; 3 strength rows on page",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Hydrocortisone (tablet)",
+          "note": "Tier 1 generic; no prior authorization shown; 3 strength rows on page",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Methylprednisolone (tablet)",
+          "note": "Tier 1 generic; no prior authorization shown; 4 strength rows on page",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Methylprednisolone (tablets,dose pack)",
+          "note": "Tier 1 generic; no prior authorization shown; Low-Cost Generic Rx icon",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Prednisolone (solution)",
+          "note": "Tier 1 generic; no prior authorization shown",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Prednisolone sodium phosphate oral solution 5 mg base/5 mL, 15 mg/5 mL",
+          "note": "Tier 1 generic; no prior authorization shown; Low-Cost Generic Rx icon on the 15 mg/5 mL row; 2 strength rows on page",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Prednisone Intensol (concentrate)",
+          "note": "Tier 1 generic; no prior authorization shown",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Prednisone (tablets,dose pack)",
+          "note": "Tier 1 generic; no prior authorization shown; 2 strength rows on page",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Medrol tablet 2 mg",
+          "note": "Tier 2 brand; no prior authorization shown",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Agamree (suspension)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); prior authorization icon shown; quantity limit; day supply limit",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Alkindi Sprinkle (capsule, sprinkle)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); prior authorization icon shown; quantity limit; day supply limit; 4 strength rows on page",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Cortef (tablet)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); 3 strength rows on page",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Deflazacort (suspension)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); prior authorization icon shown; day supply limit",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Deflazacort (tablet)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); prior authorization icon shown; day supply limit; 4 strength rows on page",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Dexabliss (tablets,dose pack)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\")",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Dexlyt (tablet)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\")",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Emflaza (suspension)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); prior authorization icon shown; day supply limit",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Emflaza (tablet)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); prior authorization icon shown; day supply limit; 4 strength rows on page",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Hemady (tablet)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); prior authorization icon shown; day supply limit; Low-Cost Generic Rx icon",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Jaythari (suspension)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); prior authorization icon shown; day supply limit",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Jaythari (tablet)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); prior authorization icon shown; day supply limit; 4 strength rows on page",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Khindivi (solution)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); prior authorization icon shown; day supply limit",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Kymbee (suspension)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); prior authorization icon shown; day supply limit",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Kymbee (tablet)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); prior authorization icon shown; day supply limit; 4 strength rows on page",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Medrol (Pak) (tablets,dose pack)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\")",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Medrol tablet 4 mg, 8 mg, 16 mg",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); 3 strength rows on page",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Millipred Dp (tablets,dose pack)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); 2 strength rows on page",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Millipred (tablet)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\")",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Orapred Odt (tablet,disintegrating)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); 3 strength rows on page",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Pediapred (solution)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\")",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Prednisolone (tablet)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\")",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Prednisolone sodium phosphate oral solution 10 mg/5 mL, 20 mg/5 mL",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); 2 strength rows on page",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Prednisolone Sodium Phosphate (tablet,disintegrating)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); 3 strength rows on page",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Prednisone (solution)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\")",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Prednisone (tablet,delayed release (dr/ec))",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); prior authorization icon shown; 2 strength rows on page",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Pyquvi (suspension)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); prior authorization icon shown; day supply limit",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Rayos (tablet,delayed release (dr/ec))",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); prior authorization icon shown; 3 strength rows on page",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Veripred (solution)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\")",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        },
+        {
+          "drug": "Zcort (tablets,dose pack)",
+          "outcome": "nonformulary",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\")",
+          "sourceIds": [
+            "highmark-24651-c22"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read Highmark c22 (glucocorticoids) from the raw HTML. Prednisone 10 mg tablet is Tier 1 (Low-Cost Generic Rx icon). Generic methylprednisolone, dexamethasone, hydrocortisone, prednisolone solution and prednisone dose packs are Tier 1. Cortef, Medrol strengths other than 2 mg, Millipred and Orapred are Tier 3. Hemady, Rayos, prednisone DR, deflazacort-type products (Emflaza, Jaythari, Kymbee, Pyquvi), Agamree, Alkindi and Khindivi carry PA icons and Tier 3 status. Eohilia and Tarpeyo (budesonide) excluded per the class description. Dexamethasone injection excluded (not oral). The page prints no sig. [Audit 2026-11-22: Highmark FormularyNavigator c22: Medrol oral tablet 2 mg = Tier 2 (brand); 4, 8, 16 mg = Tier 3 /Non-Formulary Drug. Prednisolone sodium phosphate oral solution 5 mg base/5 mL and 15 mg/5 mL = Tier 1; 10 mg/5 mL and 20 mg/5 mL = Tier 3 /Non-Formulary Drug.]",
+      "sourceIds": [
+        "highmark-24651-c22"
+      ],
+      "coverageSourceIds": [
+        "highmark-24651-c22"
+      ],
+      "restrictionSourceIds": [
+        "highmark-24651-c22"
+      ],
+      "lastReviewed": "2026-11-15",
+      "payerId": "highmark-bcbs"
+    }
+  ],
+  "references": [
+    {
+      "id": "pa-medicaid-pdl-2026-v16",
+      "label": "Pennsylvania Medical Assistance Statewide Preferred Drug List (PDL), effective January 20, 2026 (v16)",
+      "publisher": "Pennsylvania Department of Human Services",
+      "type": "gov",
+      "url": "https://www.papdl.com/content/dam/ffs-medicaid/pa/pdl/penn-statewide-pdl-012026-pdl-v16.pdf",
+      "effectiveDate": "2026-01-20",
+      "accessed": "2026-11-15"
+    },
+    {
+      "id": "ibx-select-2026-10",
+      "label": "Independence Blue Cross Select Drug Program Formulary, effective October 1, 2026",
+      "publisher": "Independence Blue Cross",
+      "type": "payer",
+      "url": "https://www.ibx.com/documents/35221/56635/select-drug-guide.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-15"
+    },
+    {
+      "id": "highmark-24651-c22",
+      "label": "Highmark Comprehensive Formulary (Formulary Id 24651), therapeutic class listing: Endocrine > Glucocorticoids; formulary effective 11/06/2026",
+      "publisher": "Highmark Blue Cross Blue Shield",
+      "type": "payer",
+      "url": "https://client.formularynavigator.com/Search.aspx?siteCode=8103967260&drugSortBy=brand&drugSortOrder=asc&targetScreen=3&drugBrandListBaseTC=endocrine%7cglucocorticoids",
+      "effectiveDate": "2026-11-06",
+      "accessed": "2026-11-15"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

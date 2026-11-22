@@ -1,0 +1,562 @@
+{
+ "sources": [
+  {
+   "id": "qhp-json",
+   "name": "QHP machine-readable formulary (index/plans/drugs.json)",
+   "publisher": "Marketplace issuers via CMS",
+   "payerTypes": [
+    "marketplace-commercial"
+   ],
+   "format": "JSON",
+   "access": "public",
+   "machineReadable": true,
+   "governedBy": [
+    "aca-156-122",
+    "ffe-mr"
+   ],
+   "url": "https://data.healthcare.gov/datafile/py2026/machine_readable_PUF.xlsx",
+   "notes": "MR-PUF lists 108 issuer index URLs for PY2026 (verified 2026-11-22). Per-drug RxNorm id, tier, PA, step, quantity-limit. Some hosts (UHC) 403 curl. Not yet used by FirstPassRx."
+  },
+  {
+   "id": "qhp-schema",
+   "name": "QHP provider/formulary API schema",
+   "publisher": "CMS (GitHub)",
+   "payerTypes": [
+    "marketplace-commercial"
+   ],
+   "format": "JSON",
+   "access": "public",
+   "machineReadable": true,
+   "governedBy": [
+    "aca-156-122"
+   ],
+   "url": "https://github.com/CMSgov/QHP-provider-formulary-APIs",
+   "notes": "Schema repo, not data."
+  },
+  {
+   "id": "fn-fbo",
+   "name": "FormularyNavigator FBO / jsonFiles exports",
+   "publisher": "Formulary Navigator (payer-branded)",
+   "payerTypes": [
+    "marketplace-commercial",
+    "medicaid-mco",
+    "medicare-advantage"
+   ],
+   "format": "JSON",
+   "access": "public",
+   "machineReadable": true,
+   "governedBy": [
+    "aca-156-122",
+    "medicaid-438-10"
+   ],
+   "url": "https://fm.formularynavigator.com/FBO/",
+   "notes": "Already used. curl with browser UA works; WebFetch blocked. jsonFiles/publish/<n>/<m>/drugs.json also hosts QHP files (verified)."
+  },
+  {
+   "id": "partd-puf",
+   "name": "CMS Part D formulary, pharmacy network, pricing PUF",
+   "publisher": "CMS",
+   "payerTypes": [
+    "medicare-part-d"
+   ],
+   "format": "CSV",
+   "access": "public",
+   "machineReadable": true,
+   "governedBy": [
+    "partd-423-128"
+   ],
+   "url": "https://www.cms.gov/research-statistics-data-and-systems/files-for-order/nonidentifiabledatafiles/prescriptiondrugplanformularypharmacynetworkandpricinginformationfiles",
+   "notes": "Monthly pipe-delimited files; tier/PA/step flags. Excludes PACE, employer, non-Part D plans. Not yet used; could replace Humana PDP PDF scraping."
+  },
+  {
+   "id": "partd-prescribers",
+   "name": "Medicare Part D Prescribers by Geography and Drug",
+   "publisher": "CMS data.cms.gov",
+   "payerTypes": [
+    "medicare-part-d"
+   ],
+   "format": "API",
+   "access": "public",
+   "machineReadable": true,
+   "governedBy": [],
+   "url": "https://catalog.data.gov/dataset/medicare-part-d-prescribers-by-geography-and-drug",
+   "notes": "Yearly utilization; per-year dataset IDs; API filter syntax unconfirmed."
+  },
+  {
+   "id": "mpf",
+   "name": "Medicare Plan Finder",
+   "publisher": "CMS",
+   "payerTypes": [
+    "medicare-part-d",
+    "medicare-advantage"
+   ],
+   "format": "HTML",
+   "access": "browser-only",
+   "machineReadable": false,
+   "governedBy": [
+    "partd-423-128"
+   ],
+   "url": "https://www.medicare.gov/plan-compare/",
+   "notes": "Source behind PUF; not a stable data feed. Unconfirmed access terms."
+  },
+  {
+   "id": "humana-pdp",
+   "name": "Humana Part D PDP formulary PDFs",
+   "publisher": "Humana",
+   "payerTypes": [
+    "medicare-part-d"
+   ],
+   "format": "PDF",
+   "access": "public",
+   "machineReadable": false,
+   "governedBy": [
+    "partd-423-128"
+   ],
+   "url": "https://www.humana.com/",
+   "notes": "Already used. Part D PUF is a machine-readable alternative."
+  },
+  {
+   "id": "state-pdl-pdf",
+   "name": "State Medicaid PDL PDFs (TX VDP, Medi-Cal Rx CDL, eMedNY, IL HFS, others)",
+   "publisher": "State Medicaid agencies",
+   "payerTypes": [
+    "medicaid-ffs",
+    "medicaid-mco"
+   ],
+   "format": "PDF",
+   "access": "public",
+   "machineReadable": false,
+   "governedBy": [
+    "ssa-1927",
+    "medicaid-438-10",
+    "medicaid-431-60"
+   ],
+   "url": "https://txvendordrug.com/",
+   "notes": "Already used. txvendordrug.com blocks bots (browser tool needed). No required machine-readable format found. Direct PDF URLs rot."
+  },
+  {
+   "id": "masshealth-mhdl",
+   "name": "MassHealth Drug List (MHDL) HTML tables and PA forms",
+   "publisher": "MassHealth / Conduent",
+   "payerTypes": [
+    "medicaid-ffs"
+   ],
+   "format": "HTML",
+   "access": "public",
+   "machineReadable": false,
+   "governedBy": [
+    "ssa-1927"
+   ],
+   "url": "https://mhdl.pharmacy.services.conduent.com/MHDL/",
+   "notes": "Already used. HTML tables per class; plain curl works."
+  },
+  {
+   "id": "state-pdl-fhir",
+   "name": "State Medicaid FFS preferred drug list via Patient Access API",
+   "publisher": "State Medicaid agencies",
+   "payerTypes": [
+    "medicaid-ffs"
+   ],
+   "format": "FHIR",
+   "access": "auth",
+   "machineReadable": true,
+   "governedBy": [
+    "medicaid-431-60",
+    "cms-9115"
+   ],
+   "url": "https://www.ecfr.gov/current/title-42/section-431.60",
+   "notes": "Member-authenticated; no public access confirmed. Unconfirmed endpoints."
+  },
+  {
+   "id": "mco-formulary",
+   "name": "Medicaid MCO formularies (PDF/web)",
+   "publisher": "Medicaid MCOs",
+   "payerTypes": [
+    "medicaid-mco"
+   ],
+   "format": "PDF",
+   "access": "public",
+   "machineReadable": false,
+   "governedBy": [
+    "medicaid-438-10"
+   ],
+   "url": "https://www.ecfr.gov/current/title-42/section-438.10",
+   "notes": "438.10(i)(3) calls for a machine-readable file in a Secretary-specified format; none found."
+  },
+  {
+   "id": "commercial-pdf",
+   "name": "Commercial formulary PDFs (Anthem, BCBS plans, UHC national PDL, Kaiser)",
+   "publisher": "Commercial insurers",
+   "payerTypes": [
+    "commercial"
+   ],
+   "format": "PDF",
+   "access": "public",
+   "machineReadable": false,
+   "governedBy": [
+    "aca-156-122"
+   ],
+   "url": "https://www.uhcprovider.com/",
+   "notes": "Already used. UHC provider site blocks WebFetch; curl with browser UA works."
+  },
+  {
+   "id": "pa-criteria",
+   "name": "Payer and Medicaid PA criteria PDFs",
+   "publisher": "Payers / state agencies",
+   "payerTypes": [
+    "medicaid-ffs",
+    "medicaid-mco",
+    "commercial",
+    "medicare-part-d"
+   ],
+   "format": "PDF",
+   "access": "public",
+   "machineReadable": false,
+   "governedBy": [
+    "ssa-1927"
+   ],
+   "url": "https://www.cms.gov/priorities/burden-reduction/overview/interoperability/policies-regulations/cms-interoperability-prior-authorization-final-rule-cms-0057-f",
+   "notes": "Already used. 0057-F excludes drugs from PA APIs; 0062-P would add them (proposed)."
+  },
+  {
+   "id": "pa-metrics",
+   "name": "Public prior authorization metrics (annual)",
+   "publisher": "MA, Medicaid/CHIP, QHP payers",
+   "payerTypes": [
+    "medicare-advantage",
+    "medicaid-ffs",
+    "medicaid-mco",
+    "marketplace-commercial"
+   ],
+   "format": "HTML",
+   "access": "public",
+   "machineReadable": false,
+   "governedBy": [
+    "cms-0057"
+   ],
+   "url": "https://www.cms.gov/newsroom/fact-sheets/cms-interoperability-and-prior-authorization-final-rule-cms-0057-f",
+   "notes": "First due 2026-03-31. Excludes drugs. Not in FirstPassRx."
+  },
+  {
+   "id": "pdex-formulary",
+   "name": "Da Vinci PDex US Drug Formulary FHIR servers",
+   "publisher": "Payers (Optum, BCBSSC, others)",
+   "payerTypes": [
+    "medicare-advantage",
+    "medicaid-mco",
+    "commercial"
+   ],
+   "format": "FHIR",
+   "access": "public",
+   "machineReadable": true,
+   "governedBy": [
+    "cms-9115"
+   ],
+   "url": "https://www.hl7.org/fhir/us/davinci-drug-formulary/",
+   "notes": "Anonymous tier allowed by IG. Optum needs payer ID; BCBSSC needs client ID; no master directory. Big-carrier endpoints unconfirmed."
+  },
+  {
+   "id": "crd-pas",
+   "name": "Da Vinci CRD/DTR/PAS Prior Authorization APIs",
+   "publisher": "MA, Medicaid, QHP payers",
+   "payerTypes": [
+    "medicare-advantage",
+    "medicaid-ffs",
+    "medicaid-mco",
+    "marketplace-commercial"
+   ],
+   "format": "FHIR",
+   "access": "auth",
+   "machineReadable": true,
+   "governedBy": [
+    "cms-0057",
+    "cms-0062p"
+   ],
+   "url": "https://www.cms.gov/priorities/key-initiatives/burden-reduction/implementation-guides-standards/application-programming-interfaces-apis-and-relevant-standards-and-implementation-guides-igs",
+   "notes": "Non-drug until a drug rule is final. Provider-facing, authenticated."
+  },
+  {
+   "id": "tic-mrf",
+   "name": "Transparency in Coverage machine-readable files",
+   "publisher": "Group health plans and issuers",
+   "payerTypes": [
+    "commercial"
+   ],
+   "format": "JSON",
+   "access": "public",
+   "machineReadable": true,
+   "governedBy": [
+    "tic"
+   ],
+   "url": "https://www.cms.gov/newsroom/fact-sheets/transparency-coverage-proposed-rule-cms-9882-p",
+   "notes": "In-network and allowed-amount files only; Rx file not implemented."
+  },
+  {
+   "id": "nadac",
+   "name": "NADAC weekly acquisition cost",
+   "publisher": "CMS Medicaid",
+   "payerTypes": [
+    "medicaid-ffs"
+   ],
+   "format": "API",
+   "access": "public",
+   "machineReadable": true,
+   "governedBy": [],
+   "url": "https://data.medicaid.gov/api/1/datastore/query/fbb83258-11c7-47f5-8b18-5f8e79f7e704/0",
+   "notes": "Verified live (2026 dataset). One dataset ID per year. Acquisition cost, not patient cash price."
+  },
+  {
+   "id": "sdud",
+   "name": "State Drug Utilization Data",
+   "publisher": "CMS Medicaid",
+   "payerTypes": [
+    "medicaid-ffs",
+    "medicaid-mco"
+   ],
+   "format": "API",
+   "access": "public",
+   "machineReadable": true,
+   "governedBy": [
+    "ssa-1927"
+   ],
+   "url": "https://data.medicaid.gov/api/1/datastore/query/158a1baa-5506-400a-8ec3-97756f0b0536/0",
+   "notes": "2025 dataset id from metastore; query shape assumed same as NADAC (unconfirmed)."
+  },
+  {
+   "id": "costplus",
+   "name": "Cost Plus Drugs price list API",
+   "publisher": "Mark Cuban Cost Plus Drug Company",
+   "payerTypes": [
+    "cash-price"
+   ],
+   "format": "API",
+   "access": "public",
+   "machineReadable": true,
+   "governedBy": [],
+   "url": "https://api.costplusdrugs.com/pricelist/cpd",
+   "notes": "Already used. GET works (HEAD 405). Website behind challenge; ToS page 403s; API terms not found."
+  },
+  {
+   "id": "goodrx",
+   "name": "GoodRx price pages",
+   "publisher": "GoodRx",
+   "payerTypes": [
+    "cash-price"
+   ],
+   "format": "HTML",
+   "access": "browser-only",
+   "machineReadable": false,
+   "governedBy": [],
+   "url": "https://www.goodrx.com/",
+   "notes": "Already used. 403 to non-browser clients. ToS unread (403). Paid API terms bar storing data."
+  },
+  {
+   "id": "rxnorm",
+   "name": "RxNorm / RxNav API",
+   "publisher": "NLM",
+   "payerTypes": [
+    "reference"
+   ],
+   "format": "API",
+   "access": "public",
+   "machineReadable": true,
+   "governedBy": [],
+   "url": "https://rxnav.nlm.nih.gov/RxNormAPIs.html",
+   "notes": "Verified live. 20 req/s/IP; attribution. RxCUI joins QHP drugs.json to other sources."
+  },
+  {
+   "id": "dailymed",
+   "name": "DailyMed web services and SPL bulk",
+   "publisher": "NLM",
+   "payerTypes": [
+    "reference"
+   ],
+   "format": "API",
+   "access": "public",
+   "machineReadable": true,
+   "governedBy": [],
+   "url": "https://dailymed.nlm.nih.gov/dailymed/app-support-web-services.cfm",
+   "notes": "Verified live. GET only, no key."
+  },
+  {
+   "id": "openfda",
+   "name": "openFDA drug APIs (NDC, labels)",
+   "publisher": "FDA",
+   "payerTypes": [
+    "reference"
+   ],
+   "format": "API",
+   "access": "public",
+   "machineReadable": true,
+   "governedBy": [],
+   "url": "https://open.fda.gov/terms/",
+   "notes": "Verified live. Data generally unrestricted."
+  },
+  {
+   "id": "orange-ndc",
+   "name": "FDA Orange Book and NDC Directory bulk files",
+   "publisher": "FDA",
+   "payerTypes": [
+    "reference"
+   ],
+   "format": "CSV",
+   "access": "public",
+   "machineReadable": true,
+   "governedBy": [],
+   "url": "https://www.fda.gov/drugs/drug-approvals-and-databases/national-drug-code-directory",
+   "notes": "Not read this pass: terms/format unconfirmed."
+  }
+ ],
+ "laws": [
+  {
+   "id": "cms-9115",
+   "name": "CMS Interoperability and Patient Access final rule (CMS-9115-F)",
+   "citation": "85 FR 25510 (2020-05-01); 42 CFR 422.119, 431.60, 457.730, 45 CFR 156.221",
+   "url": "https://www.govinfo.gov/content/pkg/FR-2020-05-01/html/2020-05050.htm",
+   "requires": "Patient Access API (member-authenticated, includes MA-PD formulary and Medicaid PDL data) and public Provider Directory API.",
+   "appliesTo": "MA orgs, Medicaid/CHIP FFS and managed care, FFE QHP issuers (Provider Directory API exempts QHPs)",
+   "effective": "2020-06-30; API compliance 2021-01-01; enforcement 2021-07-01",
+   "coversDrugs": true
+  },
+  {
+   "id": "medicaid-431-60",
+   "name": "Medicaid Patient Access API: preferred drug list information",
+   "citation": "42 CFR 431.60(b)(4)",
+   "url": "https://www.ecfr.gov/current/title-42/section-431.60",
+   "requires": "State makes PDL information available through API within one business day of effective date.",
+   "appliesTo": "State Medicaid agencies (members only)",
+   "effective": "2021-01-01 (per 9115-F)",
+   "coversDrugs": true
+  },
+  {
+   "id": "cms-0057",
+   "name": "CMS Interoperability and Prior Authorization final rule (CMS-0057-F)",
+   "citation": "89 FR 8758 (2024-02-08); 42 CFR 422.119, 431.80 et al.",
+   "url": "https://www.federalregister.gov/documents/2024/02/08/2024-00895/medicare-and-medicaid-programs-patient-protection-and-affordable-care-act-advancing-interoperability",
+   "requires": "72h/7-day PA decisions, denial reasons, public PA metrics, Prior Authorization/Provider Access/Payer-to-Payer APIs.",
+   "appliesTo": "MA, Medicaid/CHIP FFS and managed care, FFE QHP issuers (QHPs exempt from decision times)",
+   "effective": "2026-01-01 (ops), 2026-03-31 (first metrics), 2027-01-01 (APIs)",
+   "coversDrugs": false
+  },
+  {
+   "id": "cms-0062p",
+   "name": "CMS Interoperability Standards and Prior Authorization for Drugs proposed rule (CMS-0062-P)",
+   "citation": "91 FR 19890 (2026-04-14)",
+   "url": "https://www.federalregister.gov/documents/2026/04/14/2026-07205/medicare-and-medicaid-programs-patient-protection-and-affordable-care-act-interoperability-standards",
+   "requires": "PROPOSED: 24h drug PA decisions (Medicaid/CHIP), 72h/24h for QHPs; NCPDP SCRIPT, Formulary & Benefit, RTPB; drug PA in APIs.",
+   "appliesTo": "Medicaid/CHIP, FFE QHPs, MA (per fact sheet)",
+   "effective": "Proposed compliance 2027-10-01; no final rule found",
+   "coversDrugs": true
+  },
+  {
+   "id": "aca-156-122",
+   "name": "QHP prescription drug benefit and formulary publication",
+   "citation": "45 CFR 156.122(c), (d)",
+   "url": "https://www.ecfr.gov/current/title-45/section-156.122",
+   "requires": "Public up-to-date formulary list with tiers and restrictions; FFE QHPs post in HHS-specified format (JSON) and submit to HHS; exception timelines 72h/24h.",
+   "appliesTo": "QHP issuers",
+   "effective": "Ongoing; JSON monthly update per CMS MR-PUF guidance",
+   "coversDrugs": true
+  },
+  {
+   "id": "ffe-mr",
+   "name": "CMS machine-readable QHP provider/formulary guidance",
+   "citation": "CMS-10558 information collection; CMSgov/QHP-provider-formulary-APIs",
+   "url": "https://github.com/CMSgov/QHP-provider-formulary-APIs",
+   "requires": "index.json, plans.json, drugs.json, providers.json posted publicly over HTTPS.",
+   "appliesTo": "FFE QHP issuers",
+   "effective": "Since PY2016",
+   "coversDrugs": true
+  },
+  {
+   "id": "partd-423-128",
+   "name": "Part D plan disclosure and formulary website requirements",
+   "citation": "42 CFR 423.128",
+   "url": "https://www.ecfr.gov/current/title-42/section-423.128",
+   "requires": "Current formulary on website updated at least monthly; negative-change notice; real-time tool with alternatives and UM status.",
+   "appliesTo": "Part D sponsors (PDP and MA-PD)",
+   "effective": "Ongoing",
+   "coversDrugs": true
+  },
+  {
+   "id": "medicaid-438-10",
+   "name": "Medicaid managed care formulary information",
+   "citation": "42 CFR 438.10(i)",
+   "url": "https://www.ecfr.gov/current/title-42/section-438.10",
+   "requires": "Disclose covered drugs and tiers; post drug list as a machine-readable file in a format specified by the Secretary (none found).",
+   "appliesTo": "MCOs, PIHPs, PAHPs, PCCM entities",
+   "effective": "Ongoing",
+   "coversDrugs": true
+  },
+  {
+   "id": "ssa-1927",
+   "name": "Medicaid drug rebate program: PA, P&T, DUR",
+   "citation": "SSA 1927(d); 42 USC 1396r-8(d)",
+   "url": "https://www.ssa.gov/OP_Home/ssact/title19/1927.htm",
+   "requires": "PA programs respond within 24 hours and allow 72-hour emergency supply ((d)(5), per state agency sources; statute text unread); formulary/P&T conditions in (d)(4) (unconfirmed).",
+   "appliesTo": "State Medicaid covered outpatient drugs",
+   "effective": "Since 1990",
+   "coversDrugs": true
+  },
+  {
+   "id": "tic",
+   "name": "Transparency in Coverage machine-readable files",
+   "citation": "85 FR 72158 (2020-11-12); 45 CFR 147.212 (citation unconfirmed); proposed 90 FR (2025-12-23)",
+   "url": "https://www.govinfo.gov/content/pkg/FR-2025-12-23/html/2025-23693.htm",
+   "requires": "In-network and allowed-amount MRFs; prescription drug MRF required but not implemented.",
+   "appliesTo": "Group health plans and issuers (non-grandfathered)",
+   "effective": "Medical files 2022-07-01; Rx file deferred",
+   "coversDrugs": false
+  },
+  {
+   "id": "state-step-therapy",
+   "name": "State step therapy reform laws",
+   "citation": "38 states + DC per ABA (2026); e.g. Illinois ban eff. 2026-01-01",
+   "url": "https://www.americanbar.org/groups/health_law/resources/esource/2026/state-step-therapy-laws-erisa/",
+   "requires": "Exception pathways for step therapy; Illinois bans it in fully insured plans.",
+   "appliesTo": "Fully insured state-regulated plans (not ERISA self-funded)",
+   "effective": "Varies by state",
+   "coversDrugs": true
+  },
+  {
+   "id": "state-gold-card",
+   "name": "State PA exemption (gold-carding)",
+   "citation": "Texas HB 3459 (2021), HB 3812 (2025)",
+   "url": "https://tdi.texas.gov/health/hb3459.html",
+   "requires": "Exempt physicians with high PA approval rates from PA for a service.",
+   "appliesTo": "State-regulated commercial plans in TX (similar laws elsewhere, unconfirmed)",
+   "effective": "2021 law; rules effective 2022-10-01",
+   "coversDrugs": false
+  },
+  {
+   "id": "state-formulary-notice",
+   "name": "State formulary change notice laws",
+   "citation": "215 ILCS 134/25 (IL); Maine PL ch. 429; Minn. Stat. 62Q.83; KY 806 KAR (excerpts only)",
+   "url": "https://ilga.gov/ftp/ILCS/Ch%200215/Act%200134/021501340K25.html",
+   "requires": "30-60 days' notice before removing a drug mid-year.",
+   "appliesTo": "State-regulated plans",
+   "effective": "Varies",
+   "coversDrugs": true
+  },
+  {
+   "id": "state-epa",
+   "name": "State electronic PA / NCPDP SCRIPT mandates",
+   "citation": "Md. (2026-07-01 deadline); Minn. Stat. 62J.497; W.Va. 2023; Alaska 2025",
+   "url": "https://mhcc.maryland.gov/electronic-preauthorization",
+   "requires": "Payers accept ePA for drugs using NCPDP SCRIPT.",
+   "appliesTo": "State-regulated payers and PBMs",
+   "effective": "Varies",
+   "coversDrugs": true
+  },
+  {
+   "id": "feist",
+   "name": "Feist v. Rural Telephone (compilation copyright)",
+   "citation": "499 U.S. 340 (1991)",
+   "url": "https://www.govinfo.gov/content/pkg/USREPORTS-499/pdf/USREPORTS-499-340.pdf",
+   "requires": "Facts are not copyrightable; compilations protected only for original selection/arrangement. No formulary-specific case found.",
+   "appliesTo": "Reuse of formulary lists",
+   "effective": "1991",
+   "coversDrugs": true
+  }
+ ]
+}

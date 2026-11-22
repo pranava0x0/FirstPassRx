@@ -396,7 +396,7 @@ import costPlusSnapshot from '../data/costplus-prices.json' with { type: 'json' 
  *   fluoxetine 90 mg weekly, diclofenac, PPIs and DR antibiotics showed Atelvia's price; those names
  *   are now honestly unpriced (Codex review, PR #32).
  */
-export const KNOWN_UNPRICED_GAP = 4826
+export const KNOWN_UNPRICED_GAP = 6620
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -2940,7 +2940,7 @@ function variantFor(path: string, want: string) {
 const TABLET = /\b(tablets?|tabs?)\b/i
 const CAPSULE = /\b(capsules?|caps?)\b/i
 const NOT_ORAL_SOLID =
-  /\b(solution|suspension|concentrate|elixir|syrup|liquid|patch|transdermal|injection|injectable|intramuscular|subcutaneous|cartridge|pen|syringe|vial|spray|nasal|cream|gel|ointment|ring|respimat|aerosol|chewable|odt|orally disintegrating|cp24)\b/i
+  /\b(solution|soln|recon|reconstituted|for oral suspension|suspension|concentrate|elixir|syrup|liquid|patch|transdermal|injection|injectable|intramuscular|subcutaneous|cartridge|pen|syringe|vial|spray|nasal|cream|gel|ointment|ring|respimat|aerosol|chewable|odt|orally disintegrating|cp24)\b/i
 
 function formConflict(name: string, point: PricePoint): boolean {
   const q = point.quantity

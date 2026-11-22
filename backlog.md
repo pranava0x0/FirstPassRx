@@ -11,6 +11,27 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## High
 
+- **Build the QHP JSON and Part D PUF fetchers before adding states** (high; Impact high, Effort
+  medium, Cost none). CMS publishes every Marketplace formulary as JSON (tier, PA, step, QL per RxCUI;
+  108 issuer indexes for PY2026) and every Part D formulary as monthly flat files. Scripts turn
+  commercial and Medicare cells into deterministic reads, and the first run doubles as an audit of the
+  agent-gathered UHC/Humana/Anthem cells. [Plan §1](docs/expansion-plan-2026-11.md). Added 2026-11-22.
+- **All 50 states, then territories, in waves** (high). Wave A (single Medicaid PDL): MN, LA, IN, MS,
+  SC, ND, AR, WY, AK, VT, KS, MO, ID, MT; IA after its 2026-12-01 move to one Optum PDL. Then hybrid
+  (AZ, CO, NE, NJ, NM, UT, NH, DE, CT, ME, WI), per-MCO (HI, OK, OR, NV, RI, SD; WV not researched),
+  then PR via Part D PUF, and GU/VI/AS/MP as Part D-only with an explicit "no published Medicaid
+  formulary" state. [Plan §2](docs/expansion-plan-2026-11.md),
+  [roster](docs/research/states-roster-2026-11-22.json). Added 2026-11-22.
+- **Next topic batch from per-state Part D volume** (high). `node scripts/state-top-drugs.mjs` puts
+  clopidogrel (top-50 gap in 18/18 covered states), allopurinol (17), montelukast (16), latanoprost
+  (16), spironolactone (13) and donepezil (7) outside every guide: antiplatelets, gout, oral asthma
+  controllers, glaucoma, heart failure/MRA, dementia. Add a Medicaid ranking from SDUD for pediatric
+  and younger-adult drugs (contraception, MOUD). [Plan §3](docs/expansion-plan-2026-11.md). Added 2026-11-22.
+- **Source registry + `npm run sources:check`** (high; Effort low). One row per cited document
+  (state, payer, URL, fetch tier, layout, min rows, sha256); fails on a missing archive, zero rows or
+  a reissue. The KY Medicaid PDL was reissued after 2026-11-03 and nothing flagged it.
+  [Plan §8](docs/expansion-plan-2026-11.md). Added 2026-11-22.
+
 - **Validate the new medication lookup and PA worksheet with prescribing staff.** The app now supports plan-first lookup, exact-label medication search, two-plan comparison, in-memory worksheets and incomplete exports. Measure time to find a correctly sourced product and prepare a reviewed draft, including when a plan has no exact listing. [Tasks and acceptance gates](docs/pa-design/README.md).
 
 - **Pilot ophthalmic cyclosporine in Washington; deepen existing PA-heavy drugs.** WA carriers reported
@@ -459,6 +480,35 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
   or specific molecules in the search index so patients without medical background find what they need.
 
 ## Medium
+
+- **Costs beyond the prescription** (medium): OTC equivalents at NADAC, dispensing fees, supplies
+  (spacers, pen needles, strips), the Part D out-of-pocket and insulin caps, copay-card links with the
+  federal-program exclusion, Part B ASP for clinic-given drugs, required monitoring labs.
+  [Plan §4](docs/expansion-plan-2026-11.md). Added 2026-11-22.
+- **PA improvements** (medium): criteria-coverage metric per state, per-state step-therapy override
+  law in the PA letter (fully insured only), decision clocks per payer type on the worksheet, CMS-0057-F
+  public PA metrics per payer (medical items only), ePA channel per payer, gold-card rules, watch
+  CMS-0062-P (drug PA via NCPDP from 2027-10-01 if finalised). [Plan §5](docs/expansion-plan-2026-11.md). Added 2026-11-22.
+- **Manufacturer facts lane** (medium): labeler and parent (openFDA NDC, Orange Book, EDGAR), recalls,
+  warning letters, shortages, Open Payments, patent/exclusivity; company-level ad spend from 10-K only.
+  Facts, no trust score. [Plan §6](docs/expansion-plan-2026-11.md). Added 2026-11-22.
+- **Evidence lane per class** (medium): 3-5 cited bullets from AHRQ, DERP, state P&T packets, VA/DoD,
+  ICER, Cochrane and specialty guidelines, Sonnet-written and Sonnet-fact-checked.
+  [Plan §7](docs/expansion-plan-2026-11.md). Added 2026-11-22.
+- **MCP servers** (medium): our own read-only `firstpassrx` MCP first, then QHP formulary, Part D PUF
+  and a reference MCP (RxNorm, openFDA, DailyMed, NADAC, Open Payments). None exists for payer tiers or
+  PA today. [Plan §9](docs/expansion-plan-2026-11.md), [source map](docs/data-sources-map.html). Added 2026-11-22.
+- **Human confirmations left by the common-drug run (2026-11-08 to 11-21, PR #33)** (medium). Each needs a
+  look at the source or a call to the plan; none blocks the cells, which say partial where it matters:
+  - OH: Anthem OH tadalafil for BPH is "PA; BE" (benefit exclusion on the member's plan?); Anthem omeprazole-sodium bicarbonate Tier 2 ST.
+  - GA: GA Medicaid tadalafil (BPH) status inferred from the Cialis 5 mg / tadalafil 2.5 mg rows; Anthem GA tadalafil "PA; BE" as in OH; CareSource C. diff pick is oral vancomycin solution (PA) because the PDL prints no capsule; CareSource famotidine pick is 40 mg (only strength printed).
+  - NC: NC Medicaid Voquezna tablet is Preferred but listed only under H. pylori combinations (P-CAB partial); BCBS NC lists no omeprazole or famotidine tablet (picks pantoprazole 40 mg, nizatidine 150 mg); BCBS NC reference dated November 2026 with no day printed; BCBS NC tadalafil 5 mg sits in the ED section.
+  - TN: BCBST prints only famotidine suspension and PAH tadalafil 20 mg (no completeness statement; both partial); TennCare Dexilant prints only QL (recorded as PA under the non-preferred rule); TennCare tadalafil BPH criteria are in the separate Criteria-PDL.
+  - MI: Common Formulary prints tamsulosin with no PA while the FFS PDL adds clinical PA (pick is tamsulosin, restriction noted); tadalafil 5 mg for BPH is on neither MI document (partial); BCBSM drops Orlynvah 2027-01-01.
+  - IL: whether Aetna/BCCHP/Molina enforce the HFS age-21+ PPI PA (their lists print none); MCO tadalafil PA criteria for BPH; Meridian PDL still dated Dec 2024.
+  - NY: Excellus BCBS famotidine tablet (guide prints only suspension); Voquezna on Excellus BCBS, Excellus Medicare and Anthem (not printed); tadalafil for BPH on NYRx (listed only for PAH) and Anthem ("BE" code).
+  - TX: TX Medicaid PPI clinical-PA criteria (separate DUR document); generic vancomycin capsules' AB rating to Vancocin; BCBS TX famotidine 20 mg via exception.
+- **Common-drug topics in MA, AL and DC** (medium): the last 3 states for queue item 0.
 
 - **High-volume lookup pilots: latanoprost for glaucoma, then allopurinol for gout maintenance.**
   About 10.3M and 14.9M US prescriptions, respectively (2024 estimates); PA burden unknown.

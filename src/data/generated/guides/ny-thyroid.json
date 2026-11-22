@@ -1,0 +1,789 @@
+{
+  "id": "ny-thyroid",
+  "label": "NY · Thyroid",
+  "stateCode": "NY",
+  "region": "New York",
+  "topicId": "thyroid",
+  "topic": "Thyroid",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-17",
+  "capturedAt": "2026-11-17",
+  "payers": [
+    {
+      "id": "ny-medicaid",
+      "name": "New York Medicaid (NYRx)",
+      "shortName": "NY Medicaid",
+      "aka": "NYRx — NYS Medicaid Pharmacy Program (Fee-for-Service); covers every NY Medicaid Managed Care plan's pharmacy benefit statewide since the April 1, 2023 pharmacy carve-out",
+      "pbm": "Prime Therapeutics / FHSC (NYRx fiscal agent)",
+      "formularyUrl": "https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf",
+      "paPolicyUrl": "https://www.health.ny.gov/health_care/medicaid/program/pharmacy/program_info.htm",
+      "sourceIds": [
+        "ny-medicaid-common6-2026-11"
+      ],
+      "productName": "NYRx — NY Medicaid Pharmacy Program (Fee-for-Service, statewide)",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "NYRx, the Medicaid Drug Program Preferred Drug List (revised October 22, 2026)"
+    },
+    {
+      "id": "ny-excellus-bcbs",
+      "name": "Excellus BlueCross BlueShield (Commercial / Individual & Family)",
+      "shortName": "Excellus BCBS",
+      "pbm": "Express Scripts (ESI)",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/251/Excellus_2026_Metal_Plans_Base___Simply_Blue_Plus___College_Blue_Plans_Formulary_Guide_2981_v26.pdf",
+      "sourceIds": [
+        "ny-excellus-bcbs-common6-2026-11"
+      ],
+      "productName": "Excellus BlueCross BlueShield 2026 Individual & Family Metal Plans (Base / Simply Blue Plus / College Blue) -- Commercial Exchange",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "2026 Individual & Family Metal Plans, Base, Simply Blue Plus and College Blue Plans Formulary Guide (2981)"
+    },
+    {
+      "id": "ny-uhc-commercial",
+      "name": "UnitedHealthcare (Commercial)",
+      "shortName": "UHC Commercial",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "sourceIds": [
+        "uhc-commercial-pdl-2026"
+      ],
+      "productName": "UnitedHealthcare 2026 Commercial Prescription Drug List (CT/NJ/NY footprint)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "UnitedHealthcare Commercial Prescription Drug List (PDL), Effective January 1, 2026"
+    },
+    {
+      "id": "ny-anthem-bcbs",
+      "name": "Anthem Blue Cross and Blue Shield of New York (Commercial)",
+      "shortName": "Anthem BCBS NY",
+      "pbm": "CarelonRx",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/143/2026_Select_3_Tier_NY_ABS_IND.pdf",
+      "sourceIds": [
+        "ny-anthem-bcbs-common6-2026-11"
+      ],
+      "productName": "Anthem BCBS New York 2026 Select Drug List -- Three-Tier (Individual/HIX Marketplace)",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "New York Select Drug List, Three Tier (Individual / HIX), 2026"
+    },
+    {
+      "id": "ny-excellus-medicare",
+      "name": "Excellus Medicare BlueActive (PPO)",
+      "shortName": "Excellus Medicare",
+      "pbm": "Express Scripts (Medicare Part D)",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/251/Excellus_Medicare_5T_DP_even.pdf",
+      "sourceIds": [
+        "ny-excellus-medicare-common6-2026-11"
+      ],
+      "productName": "Excellus Medicare BlueActive (PPO) 2026 Medicare Advantage Part D Formulary",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "2026 Formulary (List of Covered Drugs), Medicare BlueActive/Balanced/Classic/Enhanced/Essential/Plus/Vital (PPO) and Blue Choice Core/Optimum/Prime (HMO); Formulary ID 26059"
+    }
+  ],
+  "classes": [
+    {
+      "id": "levothyroxine",
+      "name": "Levothyroxine (T4)",
+      "shortName": "T4",
+      "plainName": "Thyroid hormone (levothyroxine)",
+      "description": "Levothyroxine sodium: generic tablets and the brands Synthroid, Levoxyl, Unithroid, Euthyrox; Tirosint capsules; oral solutions Tirosint-SOL, Thyquidity, Ermeza. Generic tablets are AB-rated to specific reference brands, so a brand-only rule matters. Not liothyronine or desiccated thyroid.",
+      "plainDescription": "The standard daily pill that replaces thyroid hormone when your thyroid is underactive.",
+      "indication": "Hypothyroidism",
+      "sourceIds": [
+        "ny-medicaid-common6-2026-11"
+      ]
+    },
+    {
+      "id": "thyroid-t3-ndt",
+      "name": "Liothyronine (T3) and desiccated thyroid",
+      "shortName": "T3/NDT",
+      "plainName": "T3 or natural thyroid",
+      "description": "Liothyronine (Cytomel, generic tablets) and desiccated thyroid (Armour Thyroid, NP Thyroid; unapproved drugs under FDA enforcement action, often non-formulary; Adthyza reportedly discontinued). Levothyroxine is never this class's pick.",
+      "plainDescription": "Other thyroid pills, used alongside or instead of levothyroxine in some patients.",
+      "indication": "Hypothyroidism (second line)",
+      "sourceIds": [
+        "ny-medicaid-common6-2026-11"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "levothyroxine",
+      "preferredAgent": {
+        "inn": "Levothyroxine sodium (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mcg tablet",
+        "sig": "Healthy adults: full replacement about 1.6 mcg/kg once daily. Older adults or heart disease: start 12.5 to 25 mcg daily and raise by 12.5 to 25 mcg every 6 to 8 weeks. Adjust to TSH. Take on an empty stomach 30 to 60 minutes before breakfast (label).",
+        "sigShort": "Start per weight/age, titrate to TSH",
+        "plainSig": "One pill every morning on an empty stomach, 30 to 60 minutes before breakfast. Your dose is adjusted by blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": "PDL p.79 exempts Synthroid, Unithroid and Levoxyl from PA but does not say they are preferred over the generic, so no BOGL.",
+      "tier": "Covered (not a PDL class; NYRx)",
+      "alternatives": [
+        {
+          "drug": "Synthroid, Unithroid, Levoxyl (levothyroxine brands)",
+          "note": "Covered without PA: listed as Mandatory Generic Program exempt (PDL p.79)",
+          "sourceIds": [
+            "ny-medicaid-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Levothyroxine has no PDL class entry. The only mention is the Mandatory Generic Program exempt list (PDL p.79), which names Synthroid, Unithroid and Levoxyl as exempt from PA. Tirosint, Euthyrox, Thyquidity and Ermeza are not listed and are not recorded. Strength and sig from label; the PDL prints none.",
+      "sourceIds": [
+        "ny-medicaid-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "ny-medicaid-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "ny-medicaid-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-17",
+      "payerId": "ny-medicaid"
+    },
+    {
+      "classId": "thyroid-t3-ndt",
+      "preferredAgent": {
+        "inn": "Liothyronine sodium (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mcg tablet",
+        "sig": "Start 25 mcg by mouth once daily; increase by 25 mcg every 1 to 2 weeks to the usual 25 to 75 mcg daily. Start 5 mcg daily in older adults or with heart disease (label).",
+        "sigShort": "25 mcg QD, titrate",
+        "plainSig": "One pill a day; your dose is adjusted by symptoms and blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Covered (not a PDL class; NYRx)",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Liothyronine (Cytomel), desiccated thyroid (Armour, NP Thyroid) and Adthyza are not on the NYRx PDL. Not a PDL class, so the generic is the pick. The 5 mcg strength is the titration tablet; sig follows the label starting-dose range. Levothyroxine is not the pick for this class. [Opus review 2026-11-17: liothyronine pick moved to 25 mcg, the label starting dose for most adults.]",
+      "sourceIds": [
+        "ny-medicaid-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "ny-medicaid-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "ny-medicaid-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-17",
+      "payerId": "ny-medicaid"
+    },
+    {
+      "classId": "levothyroxine",
+      "preferredAgent": {
+        "inn": "Levothyroxine sodium (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mcg tablet",
+        "sig": "Healthy adults: full replacement about 1.6 mcg/kg once daily. Older adults or heart disease: start 12.5 to 25 mcg daily and raise by 12.5 to 25 mcg every 6 to 8 weeks. Adjust to TSH. Take on an empty stomach 30 to 60 minutes before breakfast (label).",
+        "sigShort": "Start per weight/age, titrate to TSH",
+        "plainSig": "One pill every morning on an empty stomach, 30 to 60 minutes before breakfast. Your dose is adjusted by blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Levoxyl (oral tablet)",
+          "note": "Tier 1; no PA or ST printed (p. 76)",
+          "sourceIds": [
+            "ny-excellus-bcbs-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Unithroid",
+          "note": "Tier 1; no PA or ST printed (p. 76)",
+          "sourceIds": [
+            "ny-excellus-bcbs-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Levo-T",
+          "note": "Tier 1; no PA or ST printed (p. 76)",
+          "sourceIds": [
+            "ny-excellus-bcbs-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Synthroid",
+          "note": "Tier 3; no PA or ST printed (p. 76)",
+          "sourceIds": [
+            "ny-excellus-bcbs-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read p. 76 synthetic T4 block. Generic levothyroxine tablet Tier 1 without restriction. Synthroid is Tier 3 with no PA, so the plan does not prefer the brand over the generic: boglActive false. Not printed in this guide: Euthyrox, Tirosint, Tirosint-SOL, Thyquidity, Ermeza. Absence is not nonformulary (p. 3). p. 4 describes a Generic Advantage program (brand fills pay the price difference); the guide does not say whether it applies to this plan.",
+      "sourceIds": [
+        "ny-excellus-bcbs-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "ny-excellus-bcbs-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "ny-excellus-bcbs-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-17",
+      "payerId": "ny-excellus-bcbs"
+    },
+    {
+      "classId": "thyroid-t3-ndt",
+      "preferredAgent": {
+        "inn": "Liothyronine sodium (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mcg tablet (guide prints no strength)",
+        "sig": "Start 25 mcg by mouth once daily; increase by 25 mcg every 1 to 2 weeks to the usual 25 to 75 mcg daily. Start 5 mcg daily in older adults or with heart disease (label).",
+        "sigShort": "25 mcg QD, titrate",
+        "plainSig": "One pill a day; your dose is adjusted by symptoms and blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "LIOMNY (liothyronine product)",
+          "note": "Tier 1; no PA or ST printed (p. 75)",
+          "sourceIds": [
+            "ny-excellus-bcbs-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "NP Thyroid (desiccated thyroid, pork)",
+          "note": "Tier 1; no PA or ST printed (p. 75)",
+          "sourceIds": [
+            "ny-excellus-bcbs-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Niva Thyroid (desiccated thyroid)",
+          "note": "Tier 1; no PA or ST printed (p. 75)",
+          "sourceIds": [
+            "ny-excellus-bcbs-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Renthyroid (desiccated thyroid)",
+          "note": "Tier 1; no PA or ST printed (p. 75)",
+          "sourceIds": [
+            "ny-excellus-bcbs-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Thyroid (pork), desiccated",
+          "note": "Tier 1; no PA or ST printed (p. 75)",
+          "sourceIds": [
+            "ny-excellus-bcbs-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Adthyza (desiccated thyroid tablet)",
+          "note": "Tier 1 on one printed line; a second Adthyza line is Tier 3 (p. 75)",
+          "sourceIds": [
+            "ny-excellus-bcbs-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Armour Thyroid (desiccated thyroid)",
+          "note": "Tier 3; no PA or ST printed (p. 75)",
+          "sourceIds": [
+            "ny-excellus-bcbs-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Ameritroid (desiccated thyroid)",
+          "note": "Tier 3; no PA or ST printed (p. 75)",
+          "sourceIds": [
+            "ny-excellus-bcbs-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read p. 75 (thyroid animal source and T3 blocks) and p. 76 (liothyronine oral, Tier 1). Pick is 25 mcg, the label starting dose, rather than the 5 mcg in the brief, because 5 mcg tablets do not deliver the starting dose. The guide lists desiccated thyroid as covered, which conflicts with its unapproved status in research.md; the document governs for this plan, and the FDA enforcement status is not in the guide. The Adthyza strength column prints as garbled text; recorded as listed.",
+      "sourceIds": [
+        "ny-excellus-bcbs-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "ny-excellus-bcbs-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "ny-excellus-bcbs-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-17",
+      "payerId": "ny-excellus-bcbs"
+    },
+    {
+      "classId": "levothyroxine",
+      "preferredAgent": {
+        "inn": "Levothyroxine sodium (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mcg tablet",
+        "sig": "Healthy adults: full replacement about 1.6 mcg/kg once daily. Older adults or heart disease: start 12.5 to 25 mcg daily and raise by 12.5 to 25 mcg every 6 to 8 weeks. Adjust to TSH. Take on an empty stomach 30 to 60 minutes before breakfast (label).",
+        "sigShort": "Start per weight/age, titrate to TSH",
+        "plainSig": "One pill every morning on an empty stomach, 30 to 60 minutes before breakfast. Your dose is adjusted by blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "EUTHYROX (levothyroxine, brand tablet)",
+          "note": "Tier 1 (PDL p. 41)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "LEVO-T (levothyroxine, brand tablet)",
+          "note": "Tier 1 (PDL p. 41)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "UNITHROID (levothyroxine, brand tablet)",
+          "note": "Tier 1 (PDL p. 41)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "LEVOXYL (levothyroxine, brand tablet)",
+          "note": "Tier 2, no PA (PDL p. 41)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "SYNTHROID (levothyroxine, brand tablet)",
+          "outcome": "pa",
+          "reason": "Coded E with no PA or ST flag on its row. PDL symbol key (p. 5): \"May be excluded from coverage or subject to Prior Authorization in Connecticut, New Jersey and New York\". No PA is printed for this row, so it is recorded as excluded from coverage, matching earlier UHC records (PDL p. 41). New York is one of the named states, so it is recorded as PA: request prior authorization or a formulary exception.",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "TIROSINT (levothyroxine, brand capsule)",
+          "outcome": "pa",
+          "reason": "Coded E with no PA or ST flag on its row. PDL symbol key (p. 5): \"May be excluded from coverage or subject to Prior Authorization in Connecticut, New Jersey and New York\". No PA is printed for this row, so it is recorded as excluded from coverage, matching earlier UHC records (PDL p. 41). New York is one of the named states, so it is recorded as PA: request prior authorization or a formulary exception.",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "Levothyroxine sodium (oral capsule)",
+          "outcome": "pa",
+          "reason": "Coded E with no PA or ST flag on its row. PDL symbol key (p. 5): \"May be excluded from coverage or subject to Prior Authorization in Connecticut, New Jersey and New York\". No PA is printed for this row, so it is recorded as excluded from coverage, matching earlier UHC records (PDL p. 41). New York is one of the named states, so it is recorded as PA: request prior authorization or a formulary exception.",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "TIROSINT-SOL (levothyroxine oral solution)",
+          "outcome": "pa",
+          "reason": "PA required; Tier 2 (PDL p. 41)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "ERMEZA (levothyroxine oral solution)",
+          "outcome": "pa",
+          "reason": "PA required; Tier 2 (PDL p. 41)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "THYQUIDITY (levothyroxine oral solution)",
+          "outcome": "pa",
+          "reason": "PA required; E-coded (PDL p. 41)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from p. 41 (Hormonal Agents - Thyroid). Generic levothyroxine sodium tablet is Tier 1 with no PA. The PDL prints no strength; 50 mcg is the strength the class description and sig pair with. Brand Euthyrox, Levo-T and Unithroid are Tier 1 with no PA; the list does not state a preference for any one brand over the generic, so no BOGL is recorded. Synthroid and Tirosint are coded E. The list does not claim to be complete. [Sonnet check 2026-11-06: E-coded rows re-worded to quote the PDL symbol key (p. 5) and treated as excluded when no PA/ST flag is printed.] [Reused: same national UHC commercial PDL] [NY 2026-11-17: E-coded items remapped from excluded to PA, since the PDL key names New York as a state where E means excluded or subject to PA.]",
+      "sourceIds": [
+        "uhc-commercial-pdl-2026"
+      ],
+      "coverageSourceIds": [
+        "uhc-commercial-pdl-2026"
+      ],
+      "restrictionSourceIds": [
+        "uhc-commercial-pdl-2026"
+      ],
+      "lastReviewed": "2026-11-06",
+      "payerId": "ny-uhc-commercial"
+    },
+    {
+      "classId": "thyroid-t3-ndt",
+      "preferredAgent": {
+        "inn": "Liothyronine sodium (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mcg tablet",
+        "sig": "Start 25 mcg by mouth once daily; increase by 25 mcg every 1 to 2 weeks to the usual 25 to 75 mcg daily. Start 5 mcg daily in older adults or with heart disease (label).",
+        "sigShort": "25 mcg QD, titrate",
+        "plainSig": "One pill a day; your dose is adjusted by symptoms and blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2",
+      "alternatives": [
+        {
+          "drug": "NP Thyroid (desiccated thyroid)",
+          "note": "Tier 1, no PA (PDL p. 41)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "Thyroid oral (desiccated thyroid, generic)",
+          "note": "Tier 1, no PA (PDL p. 41)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "ARMOUR THYROID (desiccated thyroid)",
+          "note": "Tier 3, no PA (PDL p. 41)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "NIVA THYROID (desiccated thyroid)",
+          "note": "Tier 3, no PA (PDL p. 41)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "RENTHYROID (desiccated thyroid)",
+          "note": "Tier 3, no PA (PDL p. 41)",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "CYTOMEL (liothyronine, brand tablet)",
+          "outcome": "pa",
+          "reason": "Coded E with no PA or ST flag on its row. PDL symbol key (p. 5): \"May be excluded from coverage or subject to Prior Authorization in Connecticut, New Jersey and New York\". No PA is printed for this row, so it is recorded as excluded from coverage, matching earlier UHC records (PDL p. 41). New York is one of the named states, so it is recorded as PA: request prior authorization or a formulary exception.",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        },
+        {
+          "drug": "ADTHYZA (desiccated thyroid)",
+          "outcome": "pa",
+          "reason": "Coded E with no PA or ST flag on its row. PDL symbol key (p. 5): \"May be excluded from coverage or subject to Prior Authorization in Connecticut, New Jersey and New York\". No PA is printed for this row, so it is recorded as excluded from coverage, matching earlier UHC records (PDL p. 41). New York is one of the named states, so it is recorded as PA: request prior authorization or a formulary exception.",
+          "sourceIds": [
+            "uhc-commercial-pdl-2026"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from p. 41. Generic liothyronine is Tier 2 with no PA and is the class's most-prescribed agent, so it is the pick. Desiccated thyroid products appear on the list at Tier 1 and Tier 3; they are recorded as alternatives. The 5 mcg strength is the one the class description names; the list prints none. The 25 mcg starting dose is the label dose. [Sonnet check 2026-11-06: E-coded rows re-worded to quote the PDL symbol key (p. 5) and treated as excluded when no PA/ST flag is printed.] [Strength 2026-11-06: was \"5 mcg tablet\" with a 25 mcg start (five tablets); set to the 25 mcg tablet the label start calls for] [Reused: same national UHC commercial PDL] [NY 2026-11-17: E-coded items remapped from excluded to PA, since the PDL key names New York as a state where E means excluded or subject to PA.]",
+      "sourceIds": [
+        "uhc-commercial-pdl-2026"
+      ],
+      "coverageSourceIds": [
+        "uhc-commercial-pdl-2026"
+      ],
+      "restrictionSourceIds": [
+        "uhc-commercial-pdl-2026"
+      ],
+      "lastReviewed": "2026-11-06",
+      "payerId": "ny-uhc-commercial"
+    },
+    {
+      "classId": "levothyroxine",
+      "preferredAgent": {
+        "inn": "Levothyroxine sodium (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mcg tablet (list prints no strength for the generic tablet; 50 mcg is a common starting strength)",
+        "sig": "Healthy adults: full replacement about 1.6 mcg/kg once daily. Older adults or heart disease: start 12.5 to 25 mcg daily and raise by 12.5 to 25 mcg every 6 to 8 weeks. Adjust to TSH. Take on an empty stomach 30 to 60 minutes before breakfast (label).",
+        "sigShort": "Start per weight/age, titrate to TSH",
+        "plainSig": "One pill every morning on an empty stomach, 30 to 60 minutes before breakfast. Your dose is adjusted by blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "LEVOXYL (levothyroxine sodium tablet)",
+          "note": "Brand, Tier 1, no PA (page 75)",
+          "sourceIds": [
+            "ny-anthem-bcbs-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "UNITHROID (levothyroxine sodium tablet)",
+          "note": "Brand, Tier 1, no PA (page 75)",
+          "sourceIds": [
+            "ny-anthem-bcbs-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "LEVO-T (levothyroxine sodium tablet, 25-300 mcg listed)",
+          "note": "Brand, Tier 1, no PA (page 75)",
+          "sourceIds": [
+            "ny-anthem-bcbs-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Levothyroxine sodium (capsule)",
+          "note": "Tier 2, no PA (page 75)",
+          "sourceIds": [
+            "ny-anthem-bcbs-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read p75 (Thyroid hormones). Generic levothyroxine tablet Tier 1 with no notes; the Tier 2 levothyroxine capsule is listed without a brand name, so it is not assumed to be Tirosint. Brands Levoxyl, Unithroid and Levo-T are Tier 1 same as generic: the plan does not prefer a brand, so no BOGL. Synthroid, Euthyrox, Tirosint and the oral solutions are absent. [Sonnet check 2026-11-17: removed 6 brand-name nonformulary items: p.2 'Yes, this is a complete listing of all the drugs on the drug list' is tautological (qualified by plan design) and p.3 offers a prior-authorization/coverage-review route for unlisted drugs, so absence is not an exclusion]",
+      "sourceIds": [
+        "ny-anthem-bcbs-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "ny-anthem-bcbs-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "ny-anthem-bcbs-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-17",
+      "payerId": "ny-anthem-bcbs"
+    },
+    {
+      "classId": "thyroid-t3-ndt",
+      "preferredAgent": {
+        "inn": "Liothyronine sodium (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mcg tablet (list prints no strength; 25 mcg is the label starting dose)",
+        "sig": "Start 25 mcg by mouth once daily; increase by 25 mcg every 1 to 2 weeks to the usual 25 to 75 mcg daily. Start 5 mcg daily in older adults or with heart disease (label).",
+        "sigShort": "25 mcg QD, titrate",
+        "plainSig": "One pill a day; your dose is adjusted by symptoms and blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "LIOMNY (liothyronine sodium tablet, as listed)",
+          "note": "Brand line in the liothyronine section, Tier 1, no PA (page 75)",
+          "sourceIds": [
+            "ny-anthem-bcbs-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read p75. Liothyronine sodium tablet Tier 1 with no notes. Desiccated thyroid products are not listed; nonformulary rests on the page 2 completeness statement. Starting dose in the sig is the label dose, not the 5 mcg listed in the brief. [Sonnet check 2026-11-17: removed 4 brand-name nonformulary items: p.2 'Yes, this is a complete listing of all the drugs on the drug list' is tautological (qualified by plan design) and p.3 offers a prior-authorization/coverage-review route for unlisted drugs, so absence is not an exclusion] [Opus review 2026-11-17: liothyronine pick moved to 25 mcg, the label starting dose for most adults.]",
+      "sourceIds": [
+        "ny-anthem-bcbs-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "ny-anthem-bcbs-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "ny-anthem-bcbs-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-17",
+      "payerId": "ny-anthem-bcbs"
+    },
+    {
+      "classId": "levothyroxine",
+      "preferredAgent": {
+        "inn": "Levothyroxine sodium (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mcg tablet (strengths not printed in formulary)",
+        "sig": "Healthy adults: full replacement about 1.6 mcg/kg once daily. Older adults or heart disease: start 12.5 to 25 mcg daily and raise by 12.5 to 25 mcg every 6 to 8 weeks. Adjust to TSH. Take on an empty stomach 30 to 60 minutes before breakfast (label).",
+        "sigShort": "Start per weight/age, titrate to TSH",
+        "plainSig": "One pill every morning on an empty stomach, 30 to 60 minutes before breakfast. Your dose is adjusted by blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Unithroid (levothyroxine sodium tablet)",
+          "note": "Tier 1; no PA or ST printed (PDF p.81)",
+          "sourceIds": [
+            "ny-excellus-medicare-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Levoxyl (levothyroxine sodium tablet)",
+          "note": "Tier 2; no PA or ST printed (PDF p.81)",
+          "sourceIds": [
+            "ny-excellus-medicare-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Synthroid (levothyroxine sodium tablet)",
+          "note": "Tier 3; no PA or ST printed (PDF p.81)",
+          "sourceIds": [
+            "ny-excellus-medicare-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Levothyroxine generic tablet pick, tier 1, no restriction (PDF p.81). Generic and Unithroid both tier 1, so no BOGL: the plan does not prefer a brand over an AB-rated generic. Strengths not printed. Tirosint, Tirosint-SOL, Thyquidity, Ermeza, Euthyrox not listed: not printed in the list (no completeness claim; not recorded as an exclusion). [Sonnet check 2026-11-17: dropped 3 nonformulary item(s): the document's p.6 text says only to ask for an exception if a drug is not on the list and makes no completeness claim, so absence is not recorded as an exclusion]",
+      "sourceIds": [
+        "ny-excellus-medicare-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "ny-excellus-medicare-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "ny-excellus-medicare-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-17",
+      "payerId": "ny-excellus-medicare"
+    },
+    {
+      "classId": "thyroid-t3-ndt",
+      "preferredAgent": {
+        "inn": "Liothyronine sodium (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mcg tablet (strengths not printed in formulary)",
+        "sig": "Start 25 mcg by mouth once daily; increase by 25 mcg every 1 to 2 weeks to the usual 25 to 75 mcg daily. Start 5 mcg daily in older adults or with heart disease (label).",
+        "sigShort": "25 mcg QD, titrate",
+        "plainSig": "One pill a day; your dose is adjusted by symptoms and blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2",
+      "alternatives": [
+        {
+          "drug": "Liomny (brand listed in the thyroid section next to liothyronine; molecule not stated)",
+          "note": "Tier 2; no PA or ST printed (PDF p.81)",
+          "sourceIds": [
+            "ny-excellus-medicare-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Cytomel (liothyronine sodium tablet)",
+          "note": "Tier 4; no PA or ST printed (PDF p.81)",
+          "sourceIds": [
+            "ny-excellus-medicare-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Liothyronine generic tablet pick, tier 2, no restriction (PDF p.81). The class description suggests 5 mcg; the label starting dose is 25 mcg, so the 25 mcg strength is picked. Desiccated thyroid not listed. [Sonnet check 2026-11-17: dropped 1 nonformulary item(s): the document's p.6 text says only to ask for an exception if a drug is not on the list and makes no completeness claim, so absence is not recorded as an exclusion]",
+      "sourceIds": [
+        "ny-excellus-medicare-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "ny-excellus-medicare-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "ny-excellus-medicare-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-17",
+      "payerId": "ny-excellus-medicare"
+    }
+  ],
+  "references": [
+    {
+      "id": "ny-medicaid-common6-2026-11",
+      "label": "NYRx, the Medicaid Drug Program Preferred Drug List (revised October 22, 2026)",
+      "publisher": "New York State Medicaid (NYRx)",
+      "type": "payer",
+      "url": "https://newyork.fhsc.com/downloads/providers/NYRx_PDP_PDL.pdf",
+      "effectiveDate": "2026-10-22",
+      "accessed": "2026-11-17"
+    },
+    {
+      "id": "ny-excellus-bcbs-common6-2026-11",
+      "label": "2026 Individual & Family Metal Plans, Base, Simply Blue Plus and College Blue Plans Formulary Guide (2981)",
+      "publisher": "Excellus BCBS",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/251/Excellus_2026_Metal_Plans_Base___Simply_Blue_Plus___College_Blue_Plans_Formulary_Guide_2981_v26.pdf",
+      "effectiveDate": "2026-09-01",
+      "accessed": "2026-11-17"
+    },
+    {
+      "id": "uhc-commercial-pdl-2026",
+      "label": "UnitedHealthcare Commercial Prescription Drug List (PDL), Effective January 1, 2026",
+      "publisher": "UnitedHealthcare",
+      "type": "payer",
+      "url": "https://www.uhcprovider.com/content/dam/provider/docs/public/resources/pharmacy/commercial-pdl-jan-2026.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-11-06"
+    },
+    {
+      "id": "ny-anthem-bcbs-common6-2026-11",
+      "label": "New York Select Drug List, Three Tier (Individual / HIX), 2026",
+      "publisher": "Anthem Blue Cross and Blue Shield",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/143/2026_Select_3_Tier_NY_ABS_IND.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-17"
+    },
+    {
+      "id": "ny-excellus-medicare-common6-2026-11",
+      "label": "2026 Formulary (List of Covered Drugs), Medicare BlueActive/Balanced/Classic/Enhanced/Essential/Plus/Vital (PPO) and Blue Choice Core/Optimum/Prime (HMO); Formulary ID 26059",
+      "publisher": "Excellus BlueCross BlueShield",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/251/Excellus_Medicare_5T_DP_even.pdf",
+      "effectiveDate": "2026-09-01",
+      "accessed": "2026-11-17"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

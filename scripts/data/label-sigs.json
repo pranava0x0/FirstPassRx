@@ -861,7 +861,7 @@
  ],
  [
   "^(?!.*(clav|augmentin|pak|talicia|omeclamox|omeprazole|lansoprazole|vonoprazan|chew|suspension)).*amoxicillin",
-  "Mild to moderate infection: 500 mg by mouth every 12 hours or 250 mg every 8 hours; severe: 875 mg every 12 hours or 500 mg every 8 hours. Strep throat: 10 days (label).",
+  "Mild to moderate infection: 500 mg by mouth every 12 hours or 250 mg every 8 hours; severe: 500 mg every 8 hours (875 mg every 12 hours uses the tablet). Strep throat: 10 days (label).",
   "500 mg q8-12h",
   "One capsule two or three times a day as directed. Finish the whole course.",
   "^500\\b"
@@ -895,10 +895,16 @@
   "^500\\b"
  ],
  [
-  "^(?!.*(macrodantin|suspension|furadantin)).*(nitrofurantoin mono|macrobid)",
+  "^(?!.*(macrodantin|suspension|furadantin)).*(nitrofurantoin\\W+mono|macrobid)",
   "100 mg by mouth twice daily with food: 7 days (label); 5 days for uncomplicated cystitis (IDSA guideline course).",
   "100 mg BID x5-7d",
   "One capsule twice a day with food for 5 to 7 days."
+ ],
+ [
+  "^(?!.*(mono|macrobid|suspension|furadantin)).*(nitrofurantoin\\W+macrocrystal|macrodantin)",
+  "50 to 100 mg by mouth four times daily with food for 1 week, or at least 3 days after the urine is sterile (label, macrocrystals). Twice-daily dosing is for the monohydrate/macrocrystals capsule (Macrobid), not this one.",
+  "50-100 mg QID x7d",
+  "One capsule four times a day with food for about a week."
  ],
  [
   "^(?!.*(suspension|\\bSS\\b|single|\\b400\\b)).*(sulfamethoxazole|trimethoprim-sulfa|smx|bactrim)",

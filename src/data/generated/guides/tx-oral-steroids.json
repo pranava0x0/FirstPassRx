@@ -1,0 +1,524 @@
+{
+  "id": "tx-oral-steroids",
+  "label": "TX · Oral steroids",
+  "stateCode": "TX",
+  "region": "Texas",
+  "topicId": "oral-steroids",
+  "topic": "Oral steroids",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-11-14",
+  "capturedAt": "2026-11-14",
+  "payers": [
+    {
+      "id": "tx-medicaid",
+      "name": "Texas Medicaid Vendor Drug Program (Fee-for-Service, statewide PDL binding on all MCOs)",
+      "shortName": "TX Medicaid FFS",
+      "pbm": "Texas Health and Human Services Commission (HHSC) Vendor Drug Program",
+      "formularyUrl": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "sourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "productName": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization (PA) Criteria",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization Criteria, effective July 24, 2026"
+    },
+    {
+      "id": "bcbs-tx-commercial",
+      "name": "Blue Cross and Blue Shield of Texas (Commercial)",
+      "shortName": "BCBS Texas",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "sourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "productName": "Performance Drug List, July 2026",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Blue Cross and Blue Shield of Texas Performance Drug List, October 2026 (41722-T TX); PDF pages cited are PDF indices (printed page = PDF page - 10)"
+    },
+    {
+      "id": "humana-premier-rx-pdp",
+      "name": "Humana Premier Rx Plan (Medicare Part D, national standalone PDP)",
+      "shortName": "Humana Premier Rx (PDP)",
+      "pbm": "Humana Pharmacy Solutions",
+      "formularyUrl": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "sourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "productName": "Prescription Drug Guide - Humana Formulary - List of covered drugs or \"Drug List\" - Humana Premier Rx Plan (PDP), Formulary 26402",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v18, updated 11/02/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "oral-corticosteroid",
+      "name": "Oral corticosteroids",
+      "shortName": "Oral steroid",
+      "plainName": "Steroid pills",
+      "description": "Systemic oral corticosteroids: prednisone (tablets, solution; Rayos delayed-release appears discontinued), methylprednisolone (Medrol, dose pack), prednisolone (solution, Orapred ODT, Millipred), dexamethasone (tablets, solution, Dexamethasone Intensol, TaperDex/Dxevo/HiDex packs; Hemady 20 mg is labeled for multiple myeloma only, an alternative, never the pick), hydrocortisone (Cortef; Alkindi Sprinkle and Khindivi oral solution for children). Deflazacort (Emflaza) and vamorolone (Agamree) for Duchenne are specialty alternatives only, never the pick. Not budesonide (Entocort, Uceris, Tarpeyo) or inhaled/topical steroids.",
+      "plainDescription": "Short courses of steroid pills that calm inflammation fast, for flares of asthma, COPD, arthritis, allergies and more.",
+      "indication": "Inflammatory flares, asthma/COPD exacerbations, autoimmune disease, adrenal insufficiency",
+      "sourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "oral-corticosteroid",
+      "preferredAgent": {
+        "inn": "Prednisone (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Dose by condition, 5 to 60 mg by mouth daily, with food (label). A common short course for a flare is 40 mg once daily for 5 days (practice, not label text); taper courses longer than 2 to 3 weeks.",
+        "sigShort": "5-60 mg QD; flare often 40 mg x5d",
+        "plainSig": "Take with food in the morning, at the dose and for the days your prescriber sets."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred",
+      "alternatives": [
+        {
+          "drug": "Methylprednisolone tablet dose pack (generic)",
+          "note": "Preferred, no PA (PDL p. 43)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Dexamethasone elixir, solution and tablets (generic)",
+          "note": "Preferred, no PA (PDL p. 43)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Prednisolone solution (generic)",
+          "note": "Preferred, no PA (PDL p. 43)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Hydrocortisone (generic)",
+          "note": "Preferred, no PA (PDL p. 43)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "MEDROL (methylprednisolone) tablets",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 43)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Methylprednisolone tablets (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 43)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Dexamethasone Intensol (solution/tablet)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 43)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "HEMADY (dexamethasone)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 43)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "TAPERDEX (dexamethasone)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 44)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "RAYOS DR (prednisone)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 44)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Prednisone DR (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 43)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Prednisone tablet dose pack (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 43)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "MILLIPRED (prednisolone)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 43)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Prednisolone tablets (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 43)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Prednisolone sodium phosphate ODT and solution (generic)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 43)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "CORTEF (hydrocortisone)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 43)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "ALKINDI SPRINKLE (hydrocortisone)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 43)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "KHINDIVI (hydrocortisone)",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 43)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        },
+        {
+          "drug": "Cortisone",
+          "outcome": "pa",
+          "reason": "Not preferred: PA required (PDL p. 43)",
+          "sourceIds": [
+            "tx-medicaid-pdl-2026-07"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL p.43: 'prednisone solution, tablets' preferred, no PA. Prednisone tablet dose pack and prednisone DR are non-preferred (p.43). Generic preferred over CORTEF, MEDROL and MILLIPRED brands, so no BOGL flag. Budesonide EC (preferred, p.43) is a Crohn's/UC product and not listed as an alternative. RAYOS DR (p.44) and HEMADY (p.43) are non-preferred.",
+      "sourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "coverageSourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "restrictionSourceIds": [
+        "tx-medicaid-pdl-2026-07"
+      ],
+      "lastReviewed": "2026-11-14",
+      "payerId": "tx-medicaid"
+    },
+    {
+      "classId": "oral-corticosteroid",
+      "preferredAgent": {
+        "inn": "Prednisone (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet (list also prints 1, 2.5, 5, 20, 50 mg)",
+        "sig": "Dose by condition, 5 to 60 mg by mouth daily, with food (label). A common short course for a flare is 40 mg once daily for 5 days (practice, not label text); taper courses longer than 2 to 3 weeks.",
+        "sigShort": "5-60 mg QD; flare often 40 mg x5d",
+        "plainSig": "Take with food in the morning, at the dose and for the days your prescriber sets."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred Generic (Tier 1, p)",
+      "alternatives": [
+        {
+          "drug": "Prednisone tablet therapy pack 5 mg (21), 5 mg (48), 10 mg (21)",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.29)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Prednisone oral solution 5 mg/5 mL",
+          "note": "Preferred Brand (Tier 3, P); no PA printed (PDF p.29)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Methylprednisolone tablet 4 mg, 16 mg, 32 mg and dose pack (Medrol)",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.29)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Prednisolone sodium phosphate oral solution 15 mg/5 mL",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.29)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Dexamethasone tablet 0.5 to 6 mg",
+          "note": "Preferred Generic (Tier 1, p); no PA printed (PDF p.28)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Hydrocortisone tablet 5, 10, 20 mg (Cortef)",
+          "note": "Non-Preferred Generic (Tier 2, np); no PA printed (PDF p.28)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Medrol (methylprednisolone tablet 2 mg, 8 mg)",
+          "note": "Non-Preferred Brand or generic (Tier 2 or 4); no PA printed (PDF p.28-29)",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Hemady (dexamethasone 20 mg)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Performance Drug List; the list states 'Drugs that are not shown are not covered' (PDF p.2). Exception route: call the ID-card number (PDF p.3).",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Emflaza (deflazacort)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Performance Drug List; the list states 'Drugs that are not shown are not covered' (PDF p.2). Exception route: call the ID-card number (PDF p.3).",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Agamree (vamorolone)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Performance Drug List; the list states 'Drugs that are not shown are not covered' (PDF p.2). Exception route: call the ID-card number (PDF p.3).",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Alkindi Sprinkle (hydrocortisone granules)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Performance Drug List; the list states 'Drugs that are not shown are not covered' (PDF p.2). Exception route: call the ID-card number (PDF p.3).",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Khindivi (hydrocortisone oral solution)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Performance Drug List; the list states 'Drugs that are not shown are not covered' (PDF p.2). Exception route: call the ID-card number (PDF p.3).",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Rayos (prednisone delayed-release)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Performance Drug List; the list states 'Drugs that are not shown are not covered' (PDF p.2). Exception route: call the ID-card number (PDF p.3).",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Orapred ODT (prednisolone orally disintegrating tablet)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Performance Drug List; the list states 'Drugs that are not shown are not covered' (PDF p.2). Exception route: call the ID-card number (PDF p.3).",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "Millipred (prednisolone)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Performance Drug List; the list states 'Drugs that are not shown are not covered' (PDF p.2). Exception route: call the ID-card number (PDF p.3).",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        },
+        {
+          "drug": "TaperDex, Dxevo, HiDex (dexamethasone tablet packs)",
+          "outcome": "nonformulary",
+          "reason": "Not on the Performance Drug List; the list states 'Drugs that are not shown are not covered' (PDF p.2). Exception route: call the ID-card number (PDF p.3).",
+          "sourceIds": [
+            "bcbs-tx-performance-2026-10"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDF p.28-29 (printed 18-19) Corticosteroids; tiers by x-position. Prednisone tablet 1 to 50 mg p (no PA). Oral solution P. Dexamethasone soln and Intensol NP. Full-text search found no Hemady, Emflaza, Agamree, Alkindi, Khindivi, Rayos, Orapred ODT, Millipred or dexamethasone packs; recorded as nonformulary per PDF p.2. Budesonide and fludrocortisone are outside this class and omitted. [Sonnet check 2026-11-14: nonformulary items rest on p.2 'Drugs that are not shown are not covered'; exception route p.8.]",
+      "sourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "coverageSourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-tx-performance-2026-10"
+      ],
+      "lastReviewed": "2026-11-14",
+      "payerId": "bcbs-tx-commercial"
+    },
+    {
+      "classId": "oral-corticosteroid",
+      "preferredAgent": {
+        "inn": "Prednisone (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Dose by condition, 5 to 60 mg by mouth daily, with food (label). A common short course for a flare is 40 mg once daily for 5 days (practice, not label text); taper courses longer than 2 to 3 weeks.",
+        "sigShort": "5-60 mg QD; flare often 40 mg x5d",
+        "plainSig": "Take with food in the morning, at the dose and for the days your prescriber sets."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1, BvsD",
+      "alternatives": [
+        {
+          "drug": "Prednisone (dose pack, 10 mg and 5 mg)",
+          "note": "Tier 2, no PA (PDG p. 61)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Methylprednisolone (tablet 4, 8, 16, 32 mg)",
+          "note": "Tier 2, no PA, BvsD (PDG p. 61)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Methylprednisolone (4 mg dose pack)",
+          "note": "Tier 2, no PA (PDG p. 61)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Dexamethasone (tablet)",
+          "note": "Tier 2, no PA (PDG p. 60)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Prednisolone (oral solution 15 mg/5 mL)",
+          "note": "Tier 2, no PA (PDG p. 61)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        },
+        {
+          "drug": "Hydrocortisone (tablet 5, 10, 20 mg)",
+          "note": "Tier 2, no PA (PDG p. 54)",
+          "sourceIds": [
+            "humana-premier-rx-pdp-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read from the formulary text layer, row by row (each tier digit sits on the same row as its drug name; pypdf gave no x-coordinates for the digits). Formulary sig and quantity limits are as printed; the document prints no sig, so the sig is the label starting dose. Prednisone 10 mg tablet is Tier 1 with no PA; BvsD is a Part B versus Part D review flag, not a PA, so it is not in preferredRestriction (PDG p. 61). Not listed: Rayos, Medrol, Orapred ODT, Millipred, Cortef, TaperDex, Dxevo, HiDex. Hydrocortisone tablets print on p. 54 (in the list's dermatology block) and are cited as printed. [Sonnet check 2026-11-06: tiers and flags re-read in layout (row-aligned) extraction, not flattened text; nonformulary reasons reworded to the front-matter wording; prednisone tablets carry BvsD (Part B vs D review, not PA); dose pack does not; added Rayos and Khindivi as not listed.] [Reused: same national Humana PDP formulary] [Audit 2026-11-22: \"HEMADY (dexamethasone 20 mg)\" is not on the printed Humana list; absence is not exclusion (the guide, p.7, says to ask Humana whether an unlisted drug is covered), matching the NY/CA/VA/IL Humana records] [Audit 2026-11-22: \"ALKINDI SPRINKLE (hydrocortisone granules)\" is not on the printed Humana list; absence is not exclusion (the guide, p.7, says to ask Humana whether an unlisted drug is covered), matching the NY/CA/VA/IL Humana records] [Audit 2026-11-22: \"EMFLAZA (deflazacort)\" is not on the printed Humana list; absence is not exclusion (the guide, p.7, says to ask Humana whether an unlisted drug is covered), matching the NY/CA/VA/IL Humana records] [Audit 2026-11-22: \"AGAMREE (vamorolone)\" is not on the printed Humana list; absence is not exclusion (the guide, p.7, says to ask Humana whether an unlisted drug is covered), matching the NY/CA/VA/IL Humana records] [Audit 2026-11-22: \"RAYOS (prednisone delayed-release)\" is not on the printed Humana list; absence is not exclusion (the guide, p.7, says to ask Humana whether an unlisted drug is covered), matching the NY/CA/VA/IL Humana records] [Audit 2026-11-22: \"KHINDIVI (hydrocortisone oral solution)\" is not on the printed Humana list; absence is not exclusion (the guide, p.7, says to ask Humana whether an unlisted drug is covered), matching the NY/CA/VA/IL Humana records]",
+      "sourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "coverageSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "humana-premier-rx-pdp-2026-11"
+      ],
+      "lastReviewed": "2026-11-06",
+      "payerId": "humana-premier-rx-pdp"
+    }
+  ],
+  "references": [
+    {
+      "id": "tx-medicaid-pdl-2026-07",
+      "label": "Texas Medicaid Preferred Drug List (PDL) and Prior Authorization Criteria, effective July 24, 2026",
+      "publisher": "Texas Health and Human Services (Texas Medicaid Vendor Drug Program, txvendordrug.com)",
+      "type": "gov",
+      "url": "https://www.txvendordrug.com/sites/default/files/docs/2026-0724-preferred-drug-list.pdf",
+      "effectiveDate": "2026-07-24",
+      "accessed": "2026-11-14"
+    },
+    {
+      "id": "bcbs-tx-performance-2026-10",
+      "label": "Blue Cross and Blue Shield of Texas Performance Drug List, October 2026 (41722-T TX); PDF pages cited are PDF indices (printed page = PDF page - 10)",
+      "publisher": "Blue Cross and Blue Shield of Texas (Prime Therapeutics LLC)",
+      "type": "payer",
+      "url": "https://www.bcbstx.com/tx/documents/rx-drugs/drug-lists/performance-tx-2026.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-14"
+    },
+    {
+      "id": "humana-premier-rx-pdp-2026-11",
+      "label": "Humana Premier Rx Plan (PDP) Prescription Drug Guide, Humana Formulary 26402 (v18, updated 11/02/2026)",
+      "publisher": "Humana",
+      "type": "payer",
+      "url": "https://assets.humana.com/is/content/humana/20260005PDG2640226Cpdf",
+      "effectiveDate": "2026-11-02",
+      "accessed": "2026-11-06"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}
