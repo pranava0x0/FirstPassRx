@@ -629573,6 +629573,4187 @@
           "definition": "Must fail a preferred drug first before the plan covers this one."
         }
       ]
+    },
+    {
+      "id": "al-acid-reflux",
+      "label": "AL · Acid reflux & ulcers",
+      "stateCode": "AL",
+      "region": "Alabama",
+      "topicId": "acid-reflux",
+      "topic": "Acid reflux & ulcers",
+      "classNoun": "Prescription type",
+      "unitNoun": "medication",
+      "tagline": "",
+      "dataStatus": "mixed",
+      "lastUpdated": "2026-11-22",
+      "capturedAt": "2026-11-22",
+      "payers": [
+        {
+          "id": "al-medicaid",
+          "name": "Alabama Medicaid Agency (Fee-for-Service, statewide -- no MCO contracts)",
+          "shortName": "AL Medicaid FFS",
+          "pbm": "Administered directly by the Alabama Medicaid Agency (no contracted PBM identified)",
+          "formularyUrl": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_9-16-26.pdf",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "productName": "Alabama Medicaid Agency Preferred Drug List by Therapeutic Category",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "Alabama Medicaid PDL Reference Tool (updated 09/16/2026)"
+        },
+        {
+          "id": "bcbs-al-commercial",
+          "name": "Blue Cross and Blue Shield of Alabama (Commercial)",
+          "shortName": "BCBS Alabama",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "productName": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx1.0 Prescription Drug List",
+          "marketSegment": "commercial-employer",
+          "formularyId": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (2026)"
+        },
+        {
+          "id": "bcbs-al-medicare",
+          "name": "BCBS Alabama Blue Advantage (Medicare Advantage / Part D)",
+          "shortName": "Blue Advantage AL",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "productName": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)",
+          "marketSegment": "medicare-part-d",
+          "formularyId": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)"
+        }
+      ],
+      "classes": [
+        {
+          "id": "ppi",
+          "name": "Proton pump inhibitors",
+          "shortName": "PPI",
+          "plainName": "Acid blocker (PPI)",
+          "description": "Proton pump inhibitors: omeprazole (Prilosec), pantoprazole (Protonix), esomeprazole (Nexium), lansoprazole (Prevacid, SoluTab), rabeprazole (Aciphex), dexlansoprazole (Dexilant), omeprazole/sodium bicarbonate (Zegerid, Konvomep). Capsules, tablets, packets and suspensions. Not H2 blockers or vonoprazan.",
+          "plainDescription": "A once-a-day pill that shuts down most stomach acid. Used for reflux, ulcers and to protect the stomach.",
+          "indication": "GERD, erosive esophagitis, ulcers, H. pylori",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "id": "pcab",
+          "name": "Potassium-competitive acid blocker",
+          "shortName": "P-CAB",
+          "plainName": "Newer acid blocker (vonoprazan)",
+          "description": "Vonoprazan (Voquezna tablets; Voquezna Triple Pak and Dual Pak for H. pylori). Brand only, no generic. Usually a step after PPIs. If the plan lists no vonoprazan, that is the finding: pick Voquezna as the reference product and record the barrier.",
+          "plainDescription": "A newer brand-name acid blocker, used when the usual acid pills haven't worked.",
+          "indication": "Erosive esophagitis, heartburn from GERD, H. pylori",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "id": "h2ra",
+          "name": "H2 blockers",
+          "shortName": "H2RA",
+          "plainName": "Milder acid reducer (H2 blocker)",
+          "description": "Histamine-2 receptor antagonists: famotidine (Pepcid; tablets, suspension), cimetidine, nizatidine. Prescription strengths. Not PPIs.",
+          "plainDescription": "A milder acid pill, often taken at bedtime or as needed.",
+          "indication": "Reflux, ulcers",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        }
+      ],
+      "records": [
+        {
+          "classId": "ppi",
+          "preferredAgent": {
+            "inn": "Omeprazole (delayed-release capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "20 mg capsule",
+            "sig": "20 mg by mouth once daily before a meal: 4 weeks for GERD symptoms, 4 to 8 weeks for erosive esophagitis or ulcer healing (label).",
+            "sigShort": "20 mg QD AC",
+            "plainSig": "One capsule a day before a meal, usually for 4 to 8 weeks."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred generic, no PA required (PDL p. 18)",
+          "alternatives": [
+            {
+              "drug": "Pantoprazole sodium (generic)",
+              "note": "Preferred generic, no PA (PDL p. 18)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Esomeprazole magnesium (generic)",
+              "note": "Preferred generic, no PA (PDL p. 18)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Lansoprazole (generic)",
+              "note": "Preferred generic, no PA (PDL p. 18)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Dexlansoprazole (generic)",
+              "note": "Preferred generic, no PA (PDL p. 18)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Rabeprazole sodium (generic)",
+              "note": "Preferred generic, no PA (PDL p. 18)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Lansoprazole/amoxicillin/clarithromycin (generic H. pylori co-package)",
+              "note": "Preferred generic, no PA (PDL p. 18); combination kit, not a single-agent pick",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Dexilant (dexlansoprazole)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 18, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Nexium (esomeprazole magnesium)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 18, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Prevacid (lansoprazole)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 18, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Prilosec (omeprazole)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 18, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Protonix (pantoprazole)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 18, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Konvomep (omeprazole/sodium bicarbonate)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 18, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Omeprazole/sodium bicarbonate (generic)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 18, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Talicia (omeprazole/amoxicillin/rifabutin, H. pylori)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 18, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read PDL p. 18 (Antiulcer Agents and Acid Suppressants) by column: the generic omeprazole row sits in the Preferred Generic (no PA) column; Prilosec in the PA-required column. The PDL names no dosage form for the generic row; the pick is the delayed-release capsule per the label. Zegerid is not listed; Konvomep and the generic omeprazole/sodium bicarbonate are PA. Dexilant and the Voquenza products are recorded in their own rows.",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "al-medicaid"
+        },
+        {
+          "classId": "pcab",
+          "preferredAgent": {
+            "inn": "Vonoprazan (tablet)",
+            "brand": "Voquezna",
+            "genericAvailable": false,
+            "strength": "20 mg tablet",
+            "sig": "20 mg by mouth once daily for 8 weeks to heal erosive esophagitis, then 10 mg once daily to maintain; 10 mg once daily for 4 weeks for heartburn from non-erosive GERD (label).",
+            "sigShort": "20 mg QD x8 wk",
+            "plainSig": "One pill a day for 8 weeks."
+          },
+          "preferredRestriction": "PA required: vonoprazan is in the PDL's PA-required column (PDL p. 18). The reference tool prints no clinical criteria or step therapy for it.",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "PA required (PDL p. 18, PA-required column)",
+          "alternatives": [],
+          "paRequired": [
+            {
+              "drug": "Voquenza Dual (Voquezna Dual Pak, vonoprazan/amoxicillin, H. pylori)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 18, PA-required column); the PDL prints the name as 'Voquenza'",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Voquenza Triple (Voquezna Triple Pak, H. pylori)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 18, PA-required column); the PDL prints the name as 'Voquenza'",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "PDL p. 18 lists 'Voquenza' (sic; the brand is Voquezna), 'Voquenza Dual' and 'Voquenza Triple' in the PA-required column with no generic row. The reference tool gives no clinical criteria for them. Voquezna's 20 mg daily erosive-esophagitis dose is from the label, not the PDL. Pick is the brand because no P-CAB has a PDL-preferred status; the barrier is the PA. [Sonnet check 2026-11-22: rendered p. 18 confirms 'Voquenza', 'Voquenza Dual', 'Voquenza Triple' in the PA-required column, a misspelling of Voquezna in the PDL; recorded under the correct brand with the printed spelling noted.]",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "al-medicaid"
+        },
+        {
+          "classId": "h2ra",
+          "preferredAgent": {
+            "inn": "Famotidine (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "20 mg tablet",
+            "sig": "GERD: 20 mg by mouth twice daily for up to 6 weeks. Duodenal ulcer: 40 mg once daily at bedtime or 20 mg twice daily for up to 8 weeks. Gastric ulcer: 40 mg once daily at bedtime (label).",
+            "sigShort": "20 mg BID (GERD)",
+            "plainSig": "One pill twice a day for reflux, or as your prescriber directs for an ulcer."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Not a PDL class",
+          "alternatives": [],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "No H2 blocker (famotidine, cimetidine, nizatidine) appears anywhere in the 27-page PDL; the Antiulcer section (p. 18) lists PPIs only. Absence from the PDL is not exclusion: the reference tool does not say it is a complete list, so no PA or exclusion is recorded. Pick is the standard generic per the brief (partial). Label dose from the famotidine label; the PDL prints no dose.",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "al-medicaid"
+        },
+        {
+          "classId": "ppi",
+          "preferredAgent": {
+            "inn": "Omeprazole (delayed-release capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "20 mg capsule",
+            "sig": "20 mg by mouth once daily before a meal: 4 weeks for GERD symptoms, 4 to 8 weeks for erosive esophagitis or ulcer healing (label).",
+            "sigShort": "20 mg QD AC",
+            "plainSig": "One capsule a day before a meal, usually for 4 to 8 weeks."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Pantoprazole sodium (delayed-release tablet)",
+              "note": "Tier 1, no PA or step flag; dispensing-limit flag only (PDF p. 69)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Esomeprazole magnesium (delayed-release capsule)",
+              "note": "Tier 1, dispensing-limit flag only (PDF p. 68)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Lansoprazole (delayed-release capsule)",
+              "note": "Tier 1, dispensing-limit flag only (PDF p. 69)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Rabeprazole sodium (delayed-release tablet)",
+              "note": "Tier 1, dispensing-limit flag only (PDF p. 69)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Dexlansoprazole (delayed-release capsule, generic)",
+              "note": "Tier 1, dispensing-limit flag only (PDF p. 68)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "DEXILANT (dexlansoprazole) brand capsule 30 mg and 60 mg",
+              "outcome": "step",
+              "reason": "Step therapy (ST flag) on the brand; generic dexlansoprazole is tier 1 with no step flag (PDF p. 68)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "NEXIUM (esomeprazole magnesium) brand packets 2.5 mg and 5 mg",
+              "outcome": "step",
+              "reason": "Tier 3 brand with step therapy and dispensing-limit flags (PDF p. 69)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Tier and PA/ST/dispensing/limited-distribution flags read by glyph position on PDF pp. 68-69 (PDF page = printed page + 8). Omeprazole DR 20 mg carries a dispensing-limit flag only; the quantity limit is not printed (list points to AlabamaBlue.com/DrugList). Brand-only Konvomep, Zegerid and Voquezna (P-CAB class) are not listed. Omeprazole/sodium bicarbonate and Konvomep are not on the list.",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-commercial"
+        },
+        {
+          "classId": "pcab",
+          "preferredAgent": {
+            "inn": "Vonoprazan (tablet)",
+            "brand": "Voquezna",
+            "genericAvailable": false,
+            "strength": "20 mg tablet",
+            "sig": "20 mg by mouth once daily for 8 weeks to heal erosive esophagitis, then 10 mg once daily to maintain; 10 mg once daily for 4 weeks for heartburn from non-erosive GERD (label).",
+            "sigShort": "20 mg QD x8 wk",
+            "plainSig": "One pill a day for 8 weeks."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": null,
+          "alternatives": [],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "Voquezna is not listed anywhere in the PDF (text search for vonoprazan, Voquezna and VOQUEZNA returns nothing on any page). The list has no completeness claim, so no PA, step or non-formulary status is recorded. The class instruction to record a barrier cannot be met from this document. Human to confirm with the plan before using this record. Tier left null because the document does not state one.",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-commercial"
+        },
+        {
+          "classId": "h2ra",
+          "preferredAgent": {
+            "inn": "Famotidine (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "40 mg tablet",
+            "sig": "40 mg by mouth once daily at bedtime (label dose for active duodenal ulcer); other doses per indication.",
+            "sigShort": "40 mg once daily at bedtime",
+            "plainSig": "Take one 40 mg tablet at bedtime."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Famotidine (oral suspension 40 mg/5 mL)",
+              "note": "Tier 1, no PA or step flag (PDF p. 68)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cimetidine (oral solution 300 mg/5 mL)",
+              "note": "Tier 1, no PA or step flag (PDF p. 68)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Nizatidine (capsule 150 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 69)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Nizatidine (capsule 300 mg)",
+              "note": "Tier 3 (covered), no PA or step flag (PDF p. 69)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Famotidine 40 mg tablet (Pepcid) and 40 mg/5 mL suspension read on PDF p. 68, tier 1; no famotidine 20 mg line appears anywhere in the list. [Sonnet check 2026-11-22: confirmed by text search that 20 mg is not listed; removed the unsupported claim that 20 mg is OTC only. Whether 20 mg Rx tablets are covered is unconfirmed (absence is not exclusion; the list makes no completeness claim). 40 mg at bedtime is the label active duodenal ulcer dose.]",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-commercial"
+        },
+        {
+          "classId": "ppi",
+          "preferredAgent": {
+            "inn": "Omeprazole (delayed-release capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "20 mg delayed-release capsule",
+            "sig": "20 mg by mouth once daily before a meal: 4 weeks for GERD symptoms, 4 to 8 weeks for erosive esophagitis or ulcer healing (label).",
+            "sigShort": "20 mg QD AC",
+            "plainSig": "One capsule a day before a meal, usually for 4 to 8 weeks."
+          },
+          "preferredRestriction": "Quantity limit 60 capsules/30 days (20 mg and 40 mg), no PA (p.49).",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1 (Preferred Generic); QL 60 capsules/30 days, no PA",
+          "alternatives": [
+            {
+              "drug": "Pantoprazole sodium (delayed-release tablet 20 mg, 40 mg)",
+              "note": "Tier 1, QL 30 tablets/30 days (20 mg) or 60 tablets/30 days (40 mg), no PA (p.49)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Lansoprazole (delayed-release capsule 15 mg, 30 mg)",
+              "note": "Tier 2, QL 30 capsules/30 days, no PA (p.48)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Esomeprazole magnesium (delayed-release capsule 20 mg, 40 mg)",
+              "note": "Tier 3, QL 30 capsules/30 days, no PA (p.48)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Rabeprazole sodium (delayed-release tablet 20 mg)",
+              "note": "Tier 3, QL 30 tablets/30 days, no PA (p.49)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly, printed p.48-49 (PDF page = printed + 14). Omeprazole DR 20 mg capsule: Tier 1, QL 60 capsules/30 days, no PA. Brand PPIs (Dexilant, Protonix, Nexium, Prevacid, Aciphex, Prilosec, Zegerid, Konvomep) do not appear in the document text; no status recorded. [Sonnet check 2026-11-22: confirmed omeprazole 20 mg Tier 1, QL 60/30 days (PDF p.63); recorded the QL in tier and restriction.]",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-medicare"
+        },
+        {
+          "classId": "pcab",
+          "preferredAgent": {
+            "inn": "Vonoprazan (tablet)",
+            "brand": "Voquezna",
+            "genericAvailable": false,
+            "strength": "20 mg tablet",
+            "sig": "20 mg by mouth once daily for 8 weeks to heal erosive esophagitis, then 10 mg once daily to maintain; 10 mg once daily for 4 weeks for heartburn from non-erosive GERD (label).",
+            "sigShort": "20 mg QD x8 wk",
+            "plainSig": "One pill a day for 8 weeks."
+          },
+          "preferredRestriction": "Not listed in this formulary; coverage not confirmed. The formulary tells members to ask Member Services whether a drug not in it is covered (p.iv).",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Not listed in this document",
+          "alternatives": [],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "Vonoprazan, Voquezna, Voquezna Triple Pak, Voquezna Dual Pak and tegoprazan do not appear anywhere in the document text. Reference product per taxonomy. Not recorded as nonformulary: the formulary's own wording only asks members to confirm coverage with Member Services (p.iv). Barrier unknown, so verification is partial.",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-medicare"
+        },
+        {
+          "classId": "h2ra",
+          "preferredAgent": {
+            "inn": "Famotidine (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "20 mg tablet",
+            "sig": "GERD: 20 mg by mouth twice daily for up to 6 weeks. Duodenal ulcer: 40 mg once daily at bedtime or 20 mg twice daily for up to 8 weeks. Gastric ulcer: 40 mg once daily at bedtime (label).",
+            "sigShort": "20 mg BID (GERD)",
+            "plainSig": "One pill twice a day for reflux, or as your prescriber directs for an ulcer."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 2 (Generic)",
+          "alternatives": [
+            {
+              "drug": "Cimetidine (tablet 200, 300, 400, 800 mg)",
+              "note": "Tier 3, no PA (p.48)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Nizatidine (capsule 150 mg)",
+              "note": "Tier 4, no PA (p.49)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Nizatidine (capsule 300 mg)",
+              "note": "Tier 3, no PA (p.49)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Famotidine (oral suspension 40 mg/5 mL)",
+              "note": "Tier 4, no PA (p.48)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly, printed p.48 (famotidine tablets 20 mg and 40 mg, Tier 2, no QL or PA) and p.49 (nizatidine). Pepcid brand not listed.",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-medicare"
+        }
+      ],
+      "references": [
+        {
+          "id": "al-medicaid-common6-2026-11",
+          "label": "Alabama Medicaid PDL Reference Tool (updated 09/16/2026)",
+          "publisher": "Alabama Medicaid Agency",
+          "type": "gov",
+          "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_9-16-26.pdf",
+          "effectiveDate": "2026-09-16",
+          "accessed": "2026-11-22"
+        },
+        {
+          "id": "bcbs-al-commercial-common6-2026-11",
+          "label": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (2026)",
+          "publisher": "Blue Cross and Blue Shield of Alabama (pharmacy benefit: Prime Therapeutics LLC)",
+          "type": "payer",
+          "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+          "effectiveDate": "2026-11-01",
+          "accessed": "2026-11-22"
+        },
+        {
+          "id": "bcbs-al-medicare-common6-2026-11",
+          "label": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)",
+          "publisher": "Blue Cross and Blue Shield of Alabama (Blue Advantage Choice, Medicare Advantage Part D)",
+          "type": "payer",
+          "url": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+          "effectiveDate": "2026-01-20",
+          "accessed": "2026-11-22"
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Prior authorization (PA)",
+          "short": "Insurer sign-off first",
+          "definition": "Insurer sign-off needed before the drug is covered."
+        },
+        {
+          "term": "Step therapy",
+          "short": "Try a preferred drug first",
+          "definition": "Must fail a preferred drug first before the plan covers this one."
+        }
+      ]
+    },
+    {
+      "id": "al-thyroid",
+      "label": "AL · Thyroid",
+      "stateCode": "AL",
+      "region": "Alabama",
+      "topicId": "thyroid",
+      "topic": "Thyroid",
+      "classNoun": "Prescription type",
+      "unitNoun": "medication",
+      "tagline": "",
+      "dataStatus": "mixed",
+      "lastUpdated": "2026-11-22",
+      "capturedAt": "2026-11-22",
+      "payers": [
+        {
+          "id": "al-medicaid",
+          "name": "Alabama Medicaid Agency (Fee-for-Service, statewide -- no MCO contracts)",
+          "shortName": "AL Medicaid FFS",
+          "pbm": "Administered directly by the Alabama Medicaid Agency (no contracted PBM identified)",
+          "formularyUrl": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_9-16-26.pdf",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "productName": "Alabama Medicaid Agency Preferred Drug List by Therapeutic Category",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "Alabama Medicaid PDL Reference Tool (updated 09/16/2026)"
+        },
+        {
+          "id": "bcbs-al-commercial",
+          "name": "Blue Cross and Blue Shield of Alabama (Commercial)",
+          "shortName": "BCBS Alabama",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "productName": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx1.0 Prescription Drug List",
+          "marketSegment": "commercial-employer",
+          "formularyId": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (2026)"
+        },
+        {
+          "id": "bcbs-al-medicare",
+          "name": "BCBS Alabama Blue Advantage (Medicare Advantage / Part D)",
+          "shortName": "Blue Advantage AL",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "productName": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)",
+          "marketSegment": "medicare-part-d",
+          "formularyId": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)"
+        }
+      ],
+      "classes": [
+        {
+          "id": "levothyroxine",
+          "name": "Levothyroxine (T4)",
+          "shortName": "T4",
+          "plainName": "Thyroid hormone (levothyroxine)",
+          "description": "Levothyroxine sodium: generic tablets and the brands Synthroid, Levoxyl, Unithroid, Euthyrox; Tirosint capsules; oral solutions Tirosint-SOL, Thyquidity, Ermeza. Generic tablets are AB-rated to specific reference brands, so a brand-only rule matters. Not liothyronine or desiccated thyroid.",
+          "plainDescription": "The standard daily pill that replaces thyroid hormone when your thyroid is underactive.",
+          "indication": "Hypothyroidism",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "id": "thyroid-t3-ndt",
+          "name": "Liothyronine (T3) and desiccated thyroid",
+          "shortName": "T3/NDT",
+          "plainName": "T3 or natural thyroid",
+          "description": "Liothyronine (Cytomel, generic tablets) and desiccated thyroid (Armour Thyroid, NP Thyroid; unapproved drugs under FDA enforcement action, often non-formulary; Adthyza reportedly discontinued). Levothyroxine is never this class's pick.",
+          "plainDescription": "Other thyroid pills, used alongside or instead of levothyroxine in some patients.",
+          "indication": "Hypothyroidism (second line)",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        }
+      ],
+      "records": [
+        {
+          "classId": "levothyroxine",
+          "preferredAgent": {
+            "inn": "Levothyroxine sodium (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "50 mcg tablet",
+            "sig": "Healthy adults: full replacement about 1.6 mcg/kg once daily. Older adults or heart disease: start 12.5 to 25 mcg daily and raise by 12.5 to 25 mcg every 6 to 8 weeks. Adjust to TSH. Take on an empty stomach 30 to 60 minutes before breakfast (label).",
+            "sigShort": "Start per weight/age, titrate to TSH",
+            "plainSig": "One pill every morning on an empty stomach, 30 to 60 minutes before breakfast. Your dose is adjusted by blood tests."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Not a PDL class",
+          "alternatives": [],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "No levothyroxine product (generic tablets, Synthroid, Levoxyl, Unithroid, Euthyrox, Tirosint, Thyquidity, Ermeza) appears in the PDL; the Hormones section (p. 19-20) lists androgens, growth hormones and HAE agents only. Absence from the PDL is not exclusion: the reference tool does not say it is a complete list, so no PA or exclusion is recorded. Pick is the standard generic per the brief (partial).",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "al-medicaid"
+        },
+        {
+          "classId": "thyroid-t3-ndt",
+          "preferredAgent": {
+            "inn": "Liothyronine sodium (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "25 mcg tablet",
+            "sig": "Start 25 mcg by mouth once daily; increase by 25 mcg every 1 to 2 weeks to the usual 25 to 75 mcg daily. Start 5 mcg daily in older adults or with heart disease (label).",
+            "sigShort": "25 mcg QD, titrate",
+            "plainSig": "One pill a day; your dose is adjusted by symptoms and blood tests."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Not a PDL class",
+          "alternatives": [],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "Brief's sensible pick is 5 mcg; the Cytomel label's starting dose is 25 mcg daily, so the sig follows the label (deliberate deviation). No liothyronine (Cytomel), Armour Thyroid or NP Thyroid appears in the PDL; the PDL has no thyroid section. Absence from the PDL is not exclusion: the reference tool does not say it is a complete list, so no PA or exclusion is recorded. Pick is the standard generic per the brief (partial). [Sonnet check 2026-11-22: 25 mcg daily is the Cytomel label starting dose (5 mcg is not), so the 25 mcg tablet pick is right; still partial, no thyroid class on the PDL.]",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "al-medicaid"
+        },
+        {
+          "classId": "levothyroxine",
+          "preferredAgent": {
+            "inn": "Levothyroxine sodium (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "50 mcg tablet",
+            "sig": "Healthy adults: full replacement about 1.6 mcg/kg once daily. Older adults or heart disease: start 12.5 to 25 mcg daily and raise by 12.5 to 25 mcg every 6 to 8 weeks. Adjust to TSH. Take on an empty stomach 30 to 60 minutes before breakfast (label).",
+            "sigShort": "Start per weight/age, titrate to TSH",
+            "plainSig": "One pill every morning on an empty stomach, 30 to 60 minutes before breakfast. Your dose is adjusted by blood tests."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "SYNTHROID (levothyroxine sodium) brand tablet 25 to 300 mcg",
+              "note": "Tier 2 brand, no PA or step flag (PDF pp. 42-43)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "TIROSINT (levothyroxine sodium) capsule 13 to 200 mcg",
+              "note": "Tier 3 (covered), no PA or step flag (PDF p. 43)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "TIROSINT-SOL (levothyroxine sodium) oral solution",
+              "note": "Tier 3 (covered), no PA or step flag (PDF pp. 43-44)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "THYQUIDITY (levothyroxine sodium) oral solution 100 mcg/5 mL",
+              "note": "Tier 3 (covered), no PA or step flag (PDF p. 43)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "LEVOTHYROXINE SODIUM capsule 13 to 200 mcg (brand-named capsule)",
+              "note": "Tier 3 (covered), no PA or step flag (PDF p. 42)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Generic levothyroxine tablets are tier 1 (PDF p. 42) and Synthroid is tier 2 (PDF p. 43); the list states no brand-over-generic rule, so no BOGL. Levoxyl, Unithroid and Euthyrox are not listed.",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-commercial"
+        },
+        {
+          "classId": "thyroid-t3-ndt",
+          "preferredAgent": {
+            "inn": "Liothyronine sodium (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "25 mcg tablet",
+            "sig": "Start 25 mcg by mouth once daily; increase by 25 mcg every 1 to 2 weeks to the usual 25 to 75 mcg daily. Start 5 mcg daily in older adults or with heart disease (label).",
+            "sigShort": "25 mcg QD, titrate",
+            "plainSig": "One pill a day; your dose is adjusted by symptoms and blood tests."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Liothyronine sodium tablet 5 mcg and 50 mcg (generic, Cytomel reference)",
+              "note": "Tier 1, no PA or step flag (PDF p. 42)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "ARMOUR THYROID (thyroid tablet) 15 to 300 mg",
+              "note": "Tier 3 (covered), no PA or step flag (PDF p. 41)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "NP THYROID (thyroid tablet) 15 to 120 mg",
+              "note": "Tier 3 (covered), no PA or step flag (PDF pp. 42-43)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "NIVA THYROID (thyroid tablet) 15 to 120 mg",
+              "note": "Tier 3 (covered), no PA or step flag (PDF p. 42)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "THYROID (desiccated thyroid tablet) 15 to 120 mg",
+              "note": "Tier 3 (covered), no PA or step flag (PDF p. 43)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Liothyronine 5, 25 and 50 mcg tablets (Cytomel reference) are all tier 1 with no PA or step flag (PDF p. 42). Pick is 25 mcg, the label adult start. Desiccated thyroid lines are covered at tier 3 with no PA or step flag. [Sonnet check 2026-11-22: changed pick from 5 mcg to 25 mcg so the strength delivers the label start; sig rewritten.]",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-commercial"
+        },
+        {
+          "classId": "levothyroxine",
+          "preferredAgent": {
+            "inn": "Levothyroxine sodium (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "50 mcg tablet",
+            "sig": "Healthy adults: full replacement about 1.6 mcg/kg once daily. Older adults or heart disease: start 12.5 to 25 mcg daily and raise by 12.5 to 25 mcg every 6 to 8 weeks. Adjust to TSH. Take on an empty stomach 30 to 60 minutes before breakfast (label).",
+            "sigShort": "Start per weight/age, titrate to TSH",
+            "plainSig": "One pill every morning on an empty stomach, 30 to 60 minutes before breakfast. Your dose is adjusted by blood tests."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1 (Preferred Generic)",
+          "alternatives": [
+            {
+              "drug": "Levo-T (levothyroxine sodium tablet)",
+              "note": "Tier 3, no PA (p.59)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Levoxyl (levothyroxine sodium tablet)",
+              "note": "Tier 3, no PA (p.59)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Unithroid (levothyroxine sodium tablet)",
+              "note": "Tier 3, no PA (p.59)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Synthroid (levothyroxine sodium tablet)",
+              "note": "Tier 4 (non-preferred), no PA (p.59)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly, printed p.59 (PDF page 73). Generic levothyroxine tablet is Tier 1 with no QL or PA. Levo-T, Levoxyl and Unithroid (Tier 3) and Synthroid (Tier 4) are listed with no PA, so they are alternatives. Plan lists the generic at a lower tier than Synthroid, so no BOGL. Tirosint, Thyquidity, Ermeza and Euthyrox do not appear in the document; no status recorded.",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-medicare"
+        },
+        {
+          "classId": "thyroid-t3-ndt",
+          "preferredAgent": {
+            "inn": "Liothyronine sodium (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "25 mcg tablet",
+            "sig": "Start 25 mcg by mouth once daily; increase by 25 mcg every 1 to 2 weeks to the usual 25 to 75 mcg daily. Start 5 mcg daily in older adults or with heart disease (label).",
+            "sigShort": "25 mcg QD, titrate",
+            "plainSig": "One pill a day; your dose is adjusted by symptoms and blood tests."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 2 (Generic)",
+          "alternatives": [
+            {
+              "drug": "Liomny (liothyronine sodium tablet, brand)",
+              "note": "Tier 2, no PA (p.59)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly, printed p.59. Liothyronine 5 mcg tablet is Tier 2 with no QL or PA. 5 mcg is the brief's pick and the lowest strength; the list prints no sig. Cytomel, Armour Thyroid and NP Thyroid do not appear in the document; no status recorded.",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-medicare"
+        }
+      ],
+      "references": [
+        {
+          "id": "al-medicaid-common6-2026-11",
+          "label": "Alabama Medicaid PDL Reference Tool (updated 09/16/2026)",
+          "publisher": "Alabama Medicaid Agency",
+          "type": "gov",
+          "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_9-16-26.pdf",
+          "effectiveDate": "2026-09-16",
+          "accessed": "2026-11-22"
+        },
+        {
+          "id": "bcbs-al-commercial-common6-2026-11",
+          "label": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (2026)",
+          "publisher": "Blue Cross and Blue Shield of Alabama (pharmacy benefit: Prime Therapeutics LLC)",
+          "type": "payer",
+          "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+          "effectiveDate": "2026-11-01",
+          "accessed": "2026-11-22"
+        },
+        {
+          "id": "bcbs-al-medicare-common6-2026-11",
+          "label": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)",
+          "publisher": "Blue Cross and Blue Shield of Alabama (Blue Advantage Choice, Medicare Advantage Part D)",
+          "type": "payer",
+          "url": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+          "effectiveDate": "2026-01-20",
+          "accessed": "2026-11-22"
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Prior authorization (PA)",
+          "short": "Insurer sign-off first",
+          "definition": "Insurer sign-off needed before the drug is covered."
+        },
+        {
+          "term": "Step therapy",
+          "short": "Try a preferred drug first",
+          "definition": "Must fail a preferred drug first before the plan covers this one."
+        }
+      ]
+    },
+    {
+      "id": "al-oral-steroids",
+      "label": "AL · Oral steroids",
+      "stateCode": "AL",
+      "region": "Alabama",
+      "topicId": "oral-steroids",
+      "topic": "Oral steroids",
+      "classNoun": "Prescription type",
+      "unitNoun": "medication",
+      "tagline": "",
+      "dataStatus": "mixed",
+      "lastUpdated": "2026-11-22",
+      "capturedAt": "2026-11-22",
+      "payers": [
+        {
+          "id": "al-medicaid",
+          "name": "Alabama Medicaid Agency (Fee-for-Service, statewide -- no MCO contracts)",
+          "shortName": "AL Medicaid FFS",
+          "pbm": "Administered directly by the Alabama Medicaid Agency (no contracted PBM identified)",
+          "formularyUrl": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_9-16-26.pdf",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "productName": "Alabama Medicaid Agency Preferred Drug List by Therapeutic Category",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "Alabama Medicaid PDL Reference Tool (updated 09/16/2026)"
+        },
+        {
+          "id": "bcbs-al-commercial",
+          "name": "Blue Cross and Blue Shield of Alabama (Commercial)",
+          "shortName": "BCBS Alabama",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "productName": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx1.0 Prescription Drug List",
+          "marketSegment": "commercial-employer",
+          "formularyId": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (2026)"
+        },
+        {
+          "id": "bcbs-al-medicare",
+          "name": "BCBS Alabama Blue Advantage (Medicare Advantage / Part D)",
+          "shortName": "Blue Advantage AL",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "productName": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)",
+          "marketSegment": "medicare-part-d",
+          "formularyId": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)"
+        }
+      ],
+      "classes": [
+        {
+          "id": "oral-corticosteroid",
+          "name": "Oral corticosteroids",
+          "shortName": "Oral steroid",
+          "plainName": "Steroid pills",
+          "description": "Systemic oral corticosteroids: prednisone (tablets, solution; Rayos delayed-release appears discontinued), methylprednisolone (Medrol, dose pack), prednisolone (solution, Orapred ODT, Millipred), dexamethasone (tablets, solution, Dexamethasone Intensol, TaperDex/Dxevo/HiDex packs; Hemady 20 mg is labeled for multiple myeloma only, an alternative, never the pick), hydrocortisone (Cortef; Alkindi Sprinkle and Khindivi oral solution for children). Deflazacort (Emflaza) and vamorolone (Agamree) for Duchenne are specialty alternatives only, never the pick. Not budesonide (Entocort, Uceris, Tarpeyo) or inhaled/topical steroids.",
+          "plainDescription": "Short courses of steroid pills that calm inflammation fast, for flares of asthma, COPD, arthritis, allergies and more.",
+          "indication": "Inflammatory flares, asthma/COPD exacerbations, autoimmune disease, adrenal insufficiency",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        }
+      ],
+      "records": [
+        {
+          "classId": "oral-corticosteroid",
+          "preferredAgent": {
+            "inn": "Prednisone (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "10 mg tablet",
+            "sig": "Dose by condition, 5 to 60 mg by mouth daily, with food (label). A common short course for a flare is 40 mg once daily for 5 days (practice, not label text); taper courses longer than 2 to 3 weeks.",
+            "sigShort": "5-60 mg QD; flare often 40 mg x5d",
+            "plainSig": "Take with food in the morning, at the dose and for the days your prescriber sets."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Not a PDL class",
+          "alternatives": [],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "The PDL lists no systemic oral corticosteroid (prednisone, methylprednisolone, prednisolone, dexamethasone, hydrocortisone, Rayos, Hemady, Emflaza, Agamree). Only ophthalmic, otic and topical steroid rows appear, which are outside this class. Absence from the PDL is not exclusion: the reference tool does not say it is a complete list, so no PA or exclusion is recorded. Pick is the standard generic per the brief (partial). [Sonnet check 2026-11-22: sig rewritten to give a course length (5 to 60 mg/day label range; 5-day burst example); PDL text re-searched, no systemic oral steroid listed, still partial.]",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "al-medicaid"
+        },
+        {
+          "classId": "oral-corticosteroid",
+          "preferredAgent": {
+            "inn": "Prednisone (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "10 mg tablet",
+            "sig": "Dose by condition, 5 to 60 mg by mouth daily, with food (label). A common short course for a flare is 40 mg once daily for 5 days (practice, not label text); taper courses longer than 2 to 3 weeks.",
+            "sigShort": "5-60 mg QD; flare often 40 mg x5d",
+            "plainSig": "Take with food in the morning, at the dose and for the days your prescriber sets."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Prednisone (oral solution 5 mg/5 mL)",
+              "note": "Tier 2, no PA or step flag (PDF p. 32)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Prednisone (5 mg, 20 mg and 50 mg tablets; 21-tablet and 48-tablet therapy packs)",
+              "note": "Tier 1, no PA or step flag (PDF p. 32)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Methylprednisolone (tablet 4 mg, Medrol reference; dosepak)",
+              "note": "Tier 1, no PA or step flag (PDF p. 32)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Dexamethasone (tablet 0.5 to 6 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 31)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Dexamethasone (INTENSOL concentrate 1 mg/mL)",
+              "note": "Tier 3 (covered), no PA or step flag (PDF p. 31)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Hydrocortisone (tablet 5, 10 and 20 mg, Cortef reference)",
+              "note": "Tier 1, no PA or step flag (PDF p. 32)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Prednisolone sodium phosphate (oral solution)",
+              "note": "Tier 1, no PA or step flag (PDF p. 32)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "MEDROL (methylprednisolone) brand tablet 2 mg",
+              "note": "Tier 3 (covered), no PA or step flag (PDF p. 32)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Tier and flags read by glyph position on PDF pp. 31-32. Hemady, Rayos, Emflaza, Agamree, Alkindi, Khindivi, Orapred and Millipred are not listed. The pick is the prednisone 10 mg tablet; the dose and length come from the indication, not the list.",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-commercial"
+        },
+        {
+          "classId": "oral-corticosteroid",
+          "preferredAgent": {
+            "inn": "Prednisone (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "10 mg tablet",
+            "sig": "Dose by condition, 5 to 60 mg by mouth daily, with food (label). A common short course for a flare is 40 mg once daily for 5 days (practice, not label text); taper courses longer than 2 to 3 weeks.",
+            "sigShort": "5-60 mg QD; flare often 40 mg x5d",
+            "plainSig": "Take with food in the morning, at the dose and for the days your prescriber sets."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 2 (Generic)",
+          "alternatives": [
+            {
+              "drug": "Prednisone (tablet 1 mg)",
+              "note": "Tier 1, no PA (p.51)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Prednisone (tablet 2.5, 5, 20, 50 mg; therapy packs)",
+              "note": "Tier 2, no PA (p.51)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Methylprednisolone (tablet 4, 8, 16, 32 mg; 4 mg 21-tablet pack)",
+              "note": "Tier 2, no PA (p.51)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Dexamethasone (tablet 0.5, 0.75, 1, 2, 4, 6 mg)",
+              "note": "Tier 2, no PA (p.51)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Hydrocortisone (tablet 5, 10, 20 mg)",
+              "note": "Tier 2, no PA (p.51)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Prednisolone (oral solution 15 mg/5 mL; sodium phosphate oral solution 15 and 25 mg/5 mL)",
+              "note": "Tier 2, no PA (p.51)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Prednisone (oral solution 5 mg/5 mL)",
+              "note": "Tier 4, no PA (p.51)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly, printed p.51. Prednisone 10 mg tablet is Tier 2 with no QL or PA. Hemady, Medrol, Rayos, Alkindi, Khindivi, Emflaza, Agamree, Orapred and Millipred do not appear in the document; no status recorded. [Sonnet check 2026-11-22: confirmed prednisone 10 mg Tier 2, no QL or PA (PDF p.65 area, printed p.51). Replaced the open-ended sig with an explicit short-burst course; a human may confirm the example regimen.]",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-medicare"
+        }
+      ],
+      "references": [
+        {
+          "id": "al-medicaid-common6-2026-11",
+          "label": "Alabama Medicaid PDL Reference Tool (updated 09/16/2026)",
+          "publisher": "Alabama Medicaid Agency",
+          "type": "gov",
+          "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_9-16-26.pdf",
+          "effectiveDate": "2026-09-16",
+          "accessed": "2026-11-22"
+        },
+        {
+          "id": "bcbs-al-commercial-common6-2026-11",
+          "label": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (2026)",
+          "publisher": "Blue Cross and Blue Shield of Alabama (pharmacy benefit: Prime Therapeutics LLC)",
+          "type": "payer",
+          "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+          "effectiveDate": "2026-11-01",
+          "accessed": "2026-11-22"
+        },
+        {
+          "id": "bcbs-al-medicare-common6-2026-11",
+          "label": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)",
+          "publisher": "Blue Cross and Blue Shield of Alabama (Blue Advantage Choice, Medicare Advantage Part D)",
+          "type": "payer",
+          "url": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+          "effectiveDate": "2026-01-20",
+          "accessed": "2026-11-22"
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Prior authorization (PA)",
+          "short": "Insurer sign-off first",
+          "definition": "Insurer sign-off needed before the drug is covered."
+        },
+        {
+          "term": "Step therapy",
+          "short": "Try a preferred drug first",
+          "definition": "Must fail a preferred drug first before the plan covers this one."
+        }
+      ]
+    },
+    {
+      "id": "al-antibiotics",
+      "label": "AL · Antibiotics",
+      "stateCode": "AL",
+      "region": "Alabama",
+      "topicId": "antibiotics",
+      "topic": "Antibiotics",
+      "classNoun": "Prescription type",
+      "unitNoun": "antibiotic",
+      "tagline": "",
+      "dataStatus": "mixed",
+      "lastUpdated": "2026-11-22",
+      "capturedAt": "2026-11-22",
+      "payers": [
+        {
+          "id": "al-medicaid",
+          "name": "Alabama Medicaid Agency (Fee-for-Service, statewide -- no MCO contracts)",
+          "shortName": "AL Medicaid FFS",
+          "pbm": "Administered directly by the Alabama Medicaid Agency (no contracted PBM identified)",
+          "formularyUrl": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_9-16-26.pdf",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "productName": "Alabama Medicaid Agency Preferred Drug List by Therapeutic Category",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "Alabama Medicaid PDL Reference Tool (updated 09/16/2026)"
+        },
+        {
+          "id": "bcbs-al-commercial",
+          "name": "Blue Cross and Blue Shield of Alabama (Commercial)",
+          "shortName": "BCBS Alabama",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "productName": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx1.0 Prescription Drug List",
+          "marketSegment": "commercial-employer",
+          "formularyId": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (2026)"
+        },
+        {
+          "id": "bcbs-al-medicare",
+          "name": "BCBS Alabama Blue Advantage (Medicare Advantage / Part D)",
+          "shortName": "Blue Advantage AL",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "productName": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)",
+          "marketSegment": "medicare-part-d",
+          "formularyId": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)"
+        }
+      ],
+      "classes": [
+        {
+          "id": "abx-penicillin",
+          "name": "Penicillins",
+          "shortName": "Penicillin",
+          "plainName": "Amoxicillin-type antibiotic",
+          "description": "Oral penicillins: amoxicillin (capsules, tablets, chewables, suspension), amoxicillin-clavulanate (Augmentin, Augmentin XR, suspension), penicillin V potassium, dicloxacillin. Amoxicillin-clavulanate belongs to this class.",
+          "plainDescription": "The most common antibiotic family, for ear, sinus, throat, dental and skin infections.",
+          "indication": "Ear, sinus, strep throat, dental, skin infections",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "id": "abx-cephalosporin",
+          "name": "Oral cephalosporins",
+          "shortName": "Cephalosporin",
+          "plainName": "Cephalexin-type antibiotic",
+          "description": "Oral cephalosporins: cephalexin (Keflex), cefadroxil, cefuroxime axetil (Ceftin), cefprozil, cefaclor, cefdinir, cefpodoxime, cefixime (Suprax).",
+          "plainDescription": "A common antibiotic family for skin, urinary and ear infections, often used with a mild penicillin allergy.",
+          "indication": "Skin, urinary tract, ear and respiratory infections",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "id": "abx-macrolide",
+          "name": "Macrolides",
+          "shortName": "Macrolide",
+          "plainName": "Azithromycin-type antibiotic",
+          "description": "Oral macrolides: azithromycin (Zithromax, Z-Pak, suspension), clarithromycin (Biaxin, ER), erythromycin base/stearate/ethylsuccinate (Ery-Tab, Erythrocin, E.E.S., PCE).",
+          "plainDescription": "A short-course antibiotic for chest infections and for people allergic to penicillin.",
+          "indication": "Respiratory infections, penicillin allergy",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "id": "abx-tetracycline",
+          "name": "Tetracyclines",
+          "shortName": "Tetracycline",
+          "plainName": "Doxycycline-type antibiotic",
+          "description": "Oral tetracyclines: doxycycline hyclate and monohydrate (Vibramycin, Doryx, Doryx MPC, Acticlate, Targadox; Lymepak discontinued 2025), minocycline IR and ER (Minocin, Solodyn, Minolira, Ximino), tetracycline, sarecycline (Seysara), omadacycline (Nuzyra). Branded doxycycline/minocycline ER products are usually PA or excluded.",
+          "plainDescription": "Antibiotics for tick bites and Lyme disease, chest infections, MRSA skin infections and acne.",
+          "indication": "Lyme disease, respiratory and skin infections, acne",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "id": "abx-fluoroquinolone",
+          "name": "Fluoroquinolones",
+          "shortName": "Fluoroquinolone",
+          "plainName": "Cipro-type antibiotic",
+          "description": "Oral fluoroquinolones: ciprofloxacin (Cipro), levofloxacin (Levaquin), moxifloxacin (Avelox), ofloxacin, delafloxacin (Baxdela). Not ophthalmic/otic drops.",
+          "plainDescription": "Strong antibiotics kept for specific infections because of tendon and nerve side effects.",
+          "indication": "Complicated UTI, pneumonia, specific resistant infections",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "id": "abx-uti",
+          "name": "Urinary tract antibiotics",
+          "shortName": "UTI",
+          "plainName": "Bladder infection antibiotic",
+          "description": "Agents used mainly for uncomplicated urinary tract infection: nitrofurantoin (Macrobid, Macrodantin, suspension), sulfamethoxazole-trimethoprim (Bactrim, Bactrim DS), trimethoprim, fosfomycin (Monurol), methenamine hippurate (Hiprex; prophylaxis), and the newer brands pivmecillinam (Pivya), sulopenem etzadroxil/probenecid (Orlynvah), gepotidacin (Blujepa; also labeled for gonorrhea since 2025-12). Fluoroquinolones and cephalosporins belong to their own classes.",
+          "plainDescription": "Antibiotics for bladder infections.",
+          "indication": "Uncomplicated urinary tract infection",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "id": "abx-cdiff",
+          "name": "C. difficile treatments",
+          "shortName": "C. diff",
+          "plainName": "C. diff treatment",
+          "description": "Oral treatments for Clostridioides difficile infection: vancomycin capsules and oral solution (Vancocin, Firvanq kit), fidaxomicin (Dificid; an AB-rated generic is approved), fecal microbiota spores (Vowst, recurrence prevention). Metronidazole is an alternative only (guidelines reserve it for non-severe cases when the others are unavailable), never the pick. Rebyota and bezlotoxumab are provider-administered.",
+          "plainDescription": "Medicines for a serious gut infection that can follow antibiotic use.",
+          "indication": "C. difficile infection and recurrence",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        }
+      ],
+      "records": [
+        {
+          "classId": "abx-penicillin",
+          "preferredAgent": {
+            "inn": "Amoxicillin (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "500 mg capsule",
+            "sig": "Mild to moderate infection: 500 mg by mouth every 12 hours or 250 mg every 8 hours; severe: 500 mg every 8 hours (875 mg every 12 hours uses the tablet). Strep throat: 10 days (label).",
+            "sigShort": "500 mg q8-12h",
+            "plainSig": "One capsule two or three times a day as directed. Finish the whole course."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred generic, no PA required (PDL p. 6)",
+          "alternatives": [
+            {
+              "drug": "Amoxicillin and clavulanate (generic)",
+              "note": "Preferred generic, no PA (PDL p. 6)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Ampicillin (generic)",
+              "note": "Preferred generic, no PA (PDL p. 6)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Dicloxacillin (generic)",
+              "note": "Preferred generic, no PA (PDL p. 6)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Penicillin V potassium (generic)",
+              "note": "Preferred generic, no PA (PDL p. 6)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Augmentin (amoxicillin/clavulanate)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 6, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read PDL p. 6 (Penicillins) by column: amoxicillin, ampicillin, dicloxacillin, nafcillin, oxacillin and penicillin VK are in the Preferred Generic (no PA) column; Augmentin is in the PA-required column. The PDL names no dosage form for the generic rows. Parenteral penicillins (Pfizerpen, Bicillin, Unasyn, Zosyn, nafcillin/oxacillin IV) are medical-benefit and left out. Amoxicillin-clavulanate XR and suspension are not separately listed.",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "al-medicaid"
+        },
+        {
+          "classId": "abx-cephalosporin",
+          "preferredAgent": {
+            "inn": "Cephalexin (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "500 mg capsule",
+            "sig": "500 mg by mouth every 12 hours (or 250 mg every 6 hours) for strep throat, skin infection or cystitis; at least 10 days for strep throat (label).",
+            "sigShort": "500 mg q12h",
+            "plainSig": "One capsule twice a day. Finish the whole course."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred generic, no PA required (PDL p. 4)",
+          "alternatives": [
+            {
+              "drug": "Cefadroxil (generic)",
+              "note": "Preferred generic, no PA (PDL p. 4)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefaclor (generic)",
+              "note": "Preferred generic, no PA (PDL p. 4)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefdinir (generic)",
+              "note": "Preferred generic, no PA (PDL p. 4)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefixime (generic)",
+              "note": "Preferred generic, no PA (PDL p. 4)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefpodoxime (generic)",
+              "note": "Preferred generic, no PA (PDL p. 4)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefprozil (generic)",
+              "note": "Preferred generic, no PA (PDL p. 4)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefuroxime axetil (generic)",
+              "note": "Preferred generic, no PA (PDL p. 4)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read PDL p. 4 (Cephalosporins) by column: every oral cephalosporin generic is in the Preferred Generic (no PA) column. No oral cephalosporin brand (Keflex, Ceftin, Suprax, Cefzil) is listed. Parenteral cephalosporins on the same list (cefazolin, ceftriaxone, cefepime, cefotaxime, ceftazidime, cefotetan, cefoxitin) are medical-benefit and excluded from this class.",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "al-medicaid"
+        },
+        {
+          "classId": "abx-macrolide",
+          "preferredAgent": {
+            "inn": "Azithromycin (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "250 mg tablet",
+            "sig": "500 mg by mouth on day 1, then 250 mg once daily on days 2 to 5 (label, Z-Pak course).",
+            "sigShort": "Z-Pak: 500 mg day 1, then 250 mg x4d",
+            "plainSig": "Two pills on day 1, then one pill a day for 4 more days."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred generic, no PA required (PDL p. 4)",
+          "alternatives": [
+            {
+              "drug": "Erythromycin base (generic)",
+              "note": "Preferred generic, no PA (PDL p. 5)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Erythromycin ethylsuccinate (generic)",
+              "note": "Preferred generic, no PA (PDL p. 4)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Clarithromycin (generic)",
+              "note": "Preferred generic, no PA (PDL p. 5)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Clarithromycin extended-release (generic)",
+              "note": "Preferred generic, no PA (PDL p. 5)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Zithromax (azithromycin)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 4, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "E.E.S. (erythromycin ethylsuccinate)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 4, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "EryPed (erythromycin ethylsuccinate)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 4, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Erythrocin Stearate (erythromycin stearate)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 4, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read PDL p. 4 (Macrolides) and p. 5 by column. Azithromycin generic is Preferred Generic (no PA); Zithromax is PA-required. Erythromycin lactobionate is IV (Erythrocin Lactobionate, PA) and is excluded as medical-benefit. Biaxin is not listed. Dificid is in the Macrolides section but is recorded under the C. difficile class. [Sonnet check 2026-11-22: gatherer said clarithromycin was not on the PDL; clarithromycin and clarithromycin ER are Preferred Generic (no PA) at the top of p. 5 under Macrolides, so both were added as alternatives. Azithromycin generic (p. 4) and Zithromax PA confirmed by column on the rendered page.]",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "al-medicaid"
+        },
+        {
+          "classId": "abx-tetracycline",
+          "preferredAgent": {
+            "inn": "Doxycycline hyclate (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "100 mg tablet",
+            "sig": "100 mg by mouth every 12 hours on day 1, then 100 mg once or twice daily by infection (label); early Lyme disease 100 mg twice daily for 10 to 21 days (IDSA). Take with a full glass of water and stay upright 30 minutes.",
+            "sigShort": "100 mg BID",
+            "plainSig": "One capsule twice a day with a full glass of water. Don't lie down for 30 minutes after."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred generic, no PA required (PDL p. 6)",
+          "alternatives": [
+            {
+              "drug": "Minocycline (generic)",
+              "note": "Preferred generic, no PA (PDL p. 6)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Tetracycline (generic)",
+              "note": "Preferred generic, no PA (PDL p. 6)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Demeclocycline (generic)",
+              "note": "Preferred generic, no PA (PDL p. 6)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Doryx (doxycycline delayed-release)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 6, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Morgidox (doxycycline)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 6, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Minocin (minocycline)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 6, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Nuzyra (omadacycline)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 6, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read PDL p. 6 (Tetracyclines) by column: generic doxycycline, minocycline, tetracycline and demeclocycline are Preferred Generic (no PA); Doryx, Morgidox, Minocin and Nuzyra are PA-required. Doxycycline dose is the label regimen; the PDL prints no dose or form. Tigecycline (Tygacil) and Xerava are IV and excluded. Seysara, Solodyn, Minolira, Ximino, Acticlate, Targadox, Vibramycin and Lymepak do not appear on the PDL.",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "al-medicaid"
+        },
+        {
+          "classId": "abx-fluoroquinolone",
+          "preferredAgent": {
+            "inn": "Ciprofloxacin (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "500 mg tablet",
+            "sig": "500 mg by mouth every 12 hours for 7 to 14 days by infection; uncomplicated cystitis 250 mg every 12 hours for 3 days when no alternative fits (label).",
+            "sigShort": "500 mg BID",
+            "plainSig": "One pill twice a day. Avoid taking it with dairy, antacids or iron."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred generic, no PA required (PDL p. 6)",
+          "alternatives": [
+            {
+              "drug": "Levofloxacin (generic)",
+              "note": "Preferred generic, no PA (PDL p. 6)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Moxifloxacin (generic)",
+              "note": "Preferred generic, no PA (PDL p. 6)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Ofloxacin (generic)",
+              "note": "Preferred generic, no PA (PDL p. 6)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Ciprofloxacin extended-release (generic)",
+              "note": "Preferred generic, no PA (PDL p. 6)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Cipro (ciprofloxacin)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 6, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Baxdela (delafloxacin)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 6, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read PDL p. 6 (Quinolones) by column: ciprofloxacin, ciprofloxacin ER, levofloxacin, moxifloxacin and ofloxacin are Preferred Generic (no PA); Cipro and Baxdela are PA-required. The ophthalmic and otic fluoroquinolone rows on pp. 17 are outside this class. Levaquin and Avelox are not listed.",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "al-medicaid"
+        },
+        {
+          "classId": "abx-uti",
+          "preferredAgent": {
+            "inn": "Nitrofurantoin (macrocrystals capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "100 mg capsule",
+            "sig": "50 to 100 mg by mouth four times daily with food for 1 week, or at least 3 days after the urine is sterile (label, macrocrystals). Twice-daily dosing is for the monohydrate/macrocrystals capsule (Macrobid), not this one.",
+            "sigShort": "50-100 mg QID x7d",
+            "plainSig": "One capsule four times a day with food for about a week."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred generic, no PA required (PDL p. 6)",
+          "alternatives": [
+            {
+              "drug": "Sulfamethoxazole and trimethoprim (generic)",
+              "note": "Preferred generic, no PA (PDL p. 6)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Trimethoprim (generic)",
+              "note": "Preferred generic, no PA (PDL p. 6)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Fosfomycin (generic)",
+              "note": "Preferred generic, no PA (PDL p. 6)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Methenamine (generic; salt not stated on PDL)",
+              "note": "Preferred generic, no PA (PDL p. 6)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Macrobid (nitrofurantoin macrocrystals)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 6, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Bactrim (sulfamethoxazole/trimethoprim)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 6, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Bactrim DS (sulfamethoxazole/trimethoprim)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 6, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read PDL p. 6 (Urinary Anti-infectives and Sulfonamides) by column: generic nitrofurantoin macrocrystals, fosfomycin, methenamine and trimethoprim are Preferred Generic (no PA); Macrobid and Bactrim/Bactrim DS are PA-required. The PDL's Macrobid row prints the generic name garbled; the generic row reads 'nitrofurantoin macrocrystals'. Pivya, Orlynvah, Blujepa, Hiprex and Monurol are not listed. Urinary antiseptic combinations (Uribel, Urelle, methenamine/methylene blue/hyoscyamine) are analgesic-antiseptic products, not antibiotics for this class, and are not recorded.",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "al-medicaid"
+        },
+        {
+          "classId": "abx-cdiff",
+          "preferredAgent": {
+            "inn": "Vancomycin (oral capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "125 mg capsule",
+            "sig": "125 mg by mouth four times daily for 10 days for C. difficile infection (label).",
+            "sigShort": "125 mg QID x10d",
+            "plainSig": "One capsule four times a day for 10 days."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred generic, no PA required (PDL p. 5)",
+          "alternatives": [
+            {
+              "drug": "Metronidazole (generic; form not stated on PDL)",
+              "note": "Preferred generic, no PA (PDL p. 3); listed under nitroimidazole antiprotozoals, not as a C. difficile agent; alternative only",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Vancocin (vancomycin)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 5, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Firvanq (vancomycin oral kit)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 5, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Dificid (fidaxomicin)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 4, PA-required column); no generic row listed",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "PDL p. 5 has two generic 'vancomycin' rows in the Preferred Generic column, each paired with a PA-required brand (Vancocin, Firvanq); the rows name no dosage form and the PDL does not say whether the generic row covers the oral capsule or the IV product. The oral 125 mg QID x 10 day capsule is the pick per the label; form assignment is an inference from the Vancocin pairing. Vowst and Rebyota are not listed; bezlotoxumab is provider-administered and excluded. [Sonnet check 2026-11-22: rendered p. 5 confirms two Preferred Generic 'vancomycin' rows, one beside Firvanq and one beside Vancocin, both PA brands; no form is printed, so form stays an inference (partial). Dificid PA confirmed p. 4. Metronidazole is alternative only.]",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "al-medicaid"
+        },
+        {
+          "classId": "abx-penicillin",
+          "preferredAgent": {
+            "inn": "Amoxicillin (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "500 mg capsule",
+            "sig": "Mild to moderate infection: 500 mg by mouth every 12 hours or 250 mg every 8 hours; severe: 500 mg every 8 hours (875 mg every 12 hours uses the tablet). Strep throat: 10 days (label).",
+            "sigShort": "500 mg q8-12h",
+            "plainSig": "One capsule two or three times a day as directed. Finish the whole course."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Amoxicillin and clavulanate potassium (tablet 875-125 mg, generic)",
+              "note": "Tier 1, no PA or step flag (PDF p. 9)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Amoxicillin and clavulanate potassium (oral suspension, generic)",
+              "note": "Tier 1, no PA or step flag (PDF p. 9)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "AUGMENTIN (amoxicillin and clavulanate) brand oral suspension 125-31.25 mg/5 mL",
+              "note": "Tier 3 (covered), no PA or step flag (PDF p. 9)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Penicillin V potassium (tablet 500 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 9)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Dicloxacillin sodium (capsule 500 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 9)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Ampicillin (capsule 500 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 9)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Tier and flags read on PDF pp. 9 (anti-infective, penicillins). Augmentin appears as a brand tier 3 suspension; the generic amoxicillin-clavulanate tablet and suspension are tier 1. No PA or step flags on the penicillin block.",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-commercial"
+        },
+        {
+          "classId": "abx-cephalosporin",
+          "preferredAgent": {
+            "inn": "Cephalexin (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "500 mg capsule",
+            "sig": "500 mg by mouth every 12 hours (or 250 mg every 6 hours) for strep throat, skin infection or cystitis; at least 10 days for strep throat (label).",
+            "sigShort": "500 mg q12h",
+            "plainSig": "One capsule twice a day. Finish the whole course."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Cefadroxil (capsule 500 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 9)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefdinir (capsule 300 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 9)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefuroxime axetil (tablet 250 and 500 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 10)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefprozil (tablet 250 and 500 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 10)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefpodoxime proxetil (tablet 100 and 200 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 10)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefixime (oral suspension 200 mg/5 mL)",
+              "note": "Tier 1, no PA or step flag (PDF p. 10)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "CEFIXIME (oral suspension 100 mg/5 mL)",
+              "note": "Tier 3 (covered), no PA or step flag (PDF p. 10)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "CEFACLOR (capsule 250 and 500 mg)",
+              "note": "Tier 3 (covered), no PA or step flag (PDF p. 9)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "CEFADROXIL (tablet 1 g)",
+              "note": "Tier 3 (covered), no PA or step flag (PDF p. 9)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Cephalexin 250 and 500 mg capsules are tier 1 (PDF p. 10). Cefixime, cefaclor and cefpodoxime brand-named lines are covered at tier 3 with no flags. No PA or step flags in the cephalosporin block.",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-commercial"
+        },
+        {
+          "classId": "abx-macrolide",
+          "preferredAgent": {
+            "inn": "Azithromycin (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "250 mg tablet",
+            "sig": "500 mg by mouth on day 1, then 250 mg once daily on days 2 to 5 (label, Z-Pak course).",
+            "sigShort": "Z-Pak: 500 mg day 1, then 250 mg x4d",
+            "plainSig": "Two pills on day 1, then one pill a day for 4 more days."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Azithromycin (tablet 500 mg, Zithromax reference)",
+              "note": "Tier 1, no PA or step flag (PDF p. 10)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Azithromycin (tablet 600 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 10)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Azithromycin (oral suspension 100 and 200 mg/5 mL)",
+              "note": "Tier 1, no PA or step flag (PDF p. 10)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Clarithromycin (tablet 250 and 500 mg; extended-release 500 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 10)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Erythromycin (delayed-release tablet 250 and 500 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 10)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "E.E.S. 400 (erythromycin ethylsuccinate tablet 400 mg)",
+              "note": "Tier 3 (covered), no PA or step flag (PDF p. 10)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "ERYTHROMYCIN DR (delayed-release capsule 250 mg)",
+              "note": "Tier 3 (covered), no PA or step flag (PDF p. 10)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Azithromycin 250 mg tablet (Zithromax Z-Pak reference) is tier 1 with no flags (PDF p. 10). Macrolide block has no PA or step flags on the oral lines read.",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-commercial"
+        },
+        {
+          "classId": "abx-tetracycline",
+          "preferredAgent": {
+            "inn": "Doxycycline hyclate (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "100 mg tablet",
+            "sig": "100 mg by mouth every 12 hours on day 1, then 100 mg once or twice daily by infection (label); early Lyme disease 100 mg twice daily for 10 to 21 days (IDSA). Take with a full glass of water and stay upright 30 minutes.",
+            "sigShort": "100 mg BID",
+            "plainSig": "One capsule twice a day with a full glass of water. Don't lie down for 30 minutes after."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Doxycycline hyclate (capsule 100 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 11)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Doxycycline monohydrate (tablet 100 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 11)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Doxycycline monohydrate (capsule 50 and 100 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 11)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Minocycline hydrochloride (capsule 50, 75 and 100 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 11)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Tetracycline hydrochloride (capsule 250 and 500 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 11)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "NUZYRA (omadacycline tosylate) tablet 150 mg",
+              "note": "Tier 3 (covered), no PA or step flag; limited distribution flag only (PDF p. 11)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Doxycycline hyclate 100 mg tablet is tier 1, no flags (PDF p. 11). Nuzyra's limited-distribution flag is a pharmacy restriction, not a PA or step, so it stays an alternative. Doryx, Vibramycin, Solodyn, Minolira, Ximino, Acticlate, Targadox, Lymepak and Seysara are not listed.",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-commercial"
+        },
+        {
+          "classId": "abx-fluoroquinolone",
+          "preferredAgent": {
+            "inn": "Ciprofloxacin hydrochloride (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "500 mg tablet",
+            "sig": "500 mg by mouth every 12 hours for 7 to 14 days by infection; uncomplicated cystitis 250 mg every 12 hours for 3 days when no alternative fits (label).",
+            "sigShort": "500 mg BID",
+            "plainSig": "One pill twice a day. Avoid taking it with dairy, antacids or iron."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Ciprofloxacin hydrochloride (tablet 250 and 750 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 11)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Levofloxacin (tablet 250, 500 and 750 mg; oral solution)",
+              "note": "Tier 1, no PA or step flag (PDF p. 11)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Moxifloxacin hydrochloride (tablet 400 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 11)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Ofloxacin (tablet 400 mg)",
+              "note": "Tier 3 (covered), no PA or step flag (PDF p. 11)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "BAXDELA (delafloxacin meglumine) tablet 450 mg",
+              "note": "Tier 3 (covered), no PA or step flag (PDF p. 11)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Ciprofloxacin 500 mg (Cipro reference) is tier 1, no flags (PDF p. 11). Baxdela is listed as covered at tier 3 with no flags.",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-commercial"
+        },
+        {
+          "classId": "abx-uti",
+          "preferredAgent": {
+            "inn": "Nitrofurantoin monohydrate macrocrystals (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "100 mg capsule",
+            "sig": "100 mg by mouth twice daily with food: 7 days (label); 5 days for uncomplicated cystitis (IDSA guideline course).",
+            "sigShort": "100 mg BID x5-7d",
+            "plainSig": "One capsule twice a day with food for 5 to 7 days."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Nitrofurantoin macrocrystalline (capsule 25, 50 and 100 mg, Macrodantin reference)",
+              "note": "Tier 1, no PA or step flag (PDF p. 18)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Nitrofurantoin (oral suspension 25 mg/5 mL)",
+              "note": "Tier 1, no PA or step flag (PDF p. 18)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Sulfamethoxazole-trimethoprim (tablet 400-80 mg and 800-160 mg; suspension)",
+              "note": "Tier 1, no PA or step flag (PDF p. 18)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Trimethoprim (tablet 100 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 18)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Fosfomycin tromethamine (3 g packet)",
+              "note": "Tier 1, no PA or step flag (PDF p. 17)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Methenamine hippurate (tablet 1 g, Hiprex reference)",
+              "note": "Tier 1, no PA or step flag (PDF p. 17)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Nitrofurantoin monohydrate macrocrystals 100 mg (Macrobid reference) is tier 1, no flags (PDF p. 18). Pivya, Orlynvah and Blujepa are not listed.",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-commercial"
+        },
+        {
+          "classId": "abx-cdiff",
+          "preferredAgent": {
+            "inn": "Vancomycin hydrochloride (oral capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "125 mg capsule",
+            "sig": "125 mg by mouth four times daily for 10 days for C. difficile infection (label).",
+            "sigShort": "125 mg QID x10d",
+            "plainSig": "One capsule four times a day for 10 days."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Vancomycin hydrochloride (oral solution 25 and 50 mg/mL, generic)",
+              "note": "Tier 1, no PA or step flag (PDF p. 18)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "FIRVANQ (vancomycin hydrochloride) oral solution 25 and 50 mg/mL brand",
+              "note": "Tier 3 (covered), no PA or step flag (PDF p. 17)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Fidaxomicin (tablet 200 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 10)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "DIFICID (fidaxomicin) oral suspension 40 mg/mL brand",
+              "note": "Tier 2 brand, no PA or step flag (PDF p. 10)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Metronidazole (tablet 250 and 500 mg)",
+              "note": "Tier 1, no PA or step flag; listed as an alternative only, not the C. difficile pick (PDF p. 17)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "VOWST (fecal microbiota spores, live-brpk) capsule",
+              "outcome": "pa",
+              "reason": "Prior authorization (PA flag); tier 4 specialty; limited distribution flag; dispensing-limit flag (PDF p. 72)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Vancomycin 125 mg capsule (Vancocin reference) is tier 1, no flags (PDF p. 18). Vowst carries PA, dispensing-limit and limited-distribution flags on PDF p. 72. Rebyota and bezlotoxumab are not listed, consistent with the brief's medical-benefit exclusion.",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-commercial"
+        },
+        {
+          "classId": "abx-penicillin",
+          "preferredAgent": {
+            "inn": "Amoxicillin (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "500 mg capsule",
+            "sig": "Mild to moderate infection: 500 mg by mouth every 12 hours or 250 mg every 8 hours; severe: 500 mg every 8 hours (875 mg every 12 hours uses the tablet). Strep throat: 10 days (label).",
+            "sigShort": "500 mg q8-12h",
+            "plainSig": "One capsule two or three times a day as directed. Finish the whole course."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 2 (Generic)",
+          "alternatives": [
+            {
+              "drug": "Amoxicillin (tablet 500 mg, 875 mg)",
+              "note": "Tier 2, no PA (p.3)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Amoxicillin (chewable tablet 125 mg, 250 mg; oral suspension)",
+              "note": "Tier 2, no PA (p.3)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Amoxicillin-clavulanate (tablet 250-125, 500-125, 875-125 mg)",
+              "note": "Tier 2, no PA (p.3)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Amoxicillin-clavulanate (oral suspension 200-28.5, 400-57, 600-42.9 mg/5 mL)",
+              "note": "Tier 3, no PA (p.3)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Amoxicillin-clavulanate (oral suspension 250-62.5 mg/5 mL)",
+              "note": "Tier 4, no PA (p.3)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Penicillin V potassium (tablet 250, 500 mg; oral solution)",
+              "note": "Tier 2, no PA (p.7)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Ampicillin (capsule 500 mg)",
+              "note": "Tier 2, no PA (p.3)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Dicloxacillin (capsule 250 mg Tier 2; 500 mg Tier 3)",
+              "note": "No PA (p.5)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly, printed p.3, 5, 7. Amoxicillin 500 mg capsule is Tier 2 with no QL or PA. Augmentin brand not listed (generic amoxicillin-clavulanate is). Bicillin L-A (p.4) is an injection and is excluded.",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-medicare"
+        },
+        {
+          "classId": "abx-cephalosporin",
+          "preferredAgent": {
+            "inn": "Cephalexin (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "500 mg capsule",
+            "sig": "500 mg by mouth every 12 hours (or 250 mg every 6 hours) for strep throat, skin infection or cystitis; at least 10 days for strep throat (label).",
+            "sigShort": "500 mg q12h",
+            "plainSig": "One capsule twice a day. Finish the whole course."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 2 (Generic)",
+          "alternatives": [
+            {
+              "drug": "Cephalexin (suspension 125 mg/5 mL, 250 mg/5 mL)",
+              "note": "Tier 2, no PA (p.5)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefadroxil (capsule 500 mg; suspension)",
+              "note": "Tier 2, no PA (p.4)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefdinir (capsule 300 mg)",
+              "note": "Tier 2, no PA (p.4)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefdinir (suspension 125 mg/5 mL, 250 mg/5 mL)",
+              "note": "Tier 3, no PA (p.4)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefuroxime axetil (tablet 250, 500 mg)",
+              "note": "Tier 3, no PA (p.5)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefprozil (tablet 250, 500 mg)",
+              "note": "Tier 3, no PA (p.4)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefaclor (capsule 250, 500 mg)",
+              "note": "Tier 3, no PA (p.4)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefpodoxime proxetil (tablet 100, 200 mg; suspension)",
+              "note": "Tier 4, no PA (p.4)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cefixime (capsule 400 mg)",
+              "note": "Tier 4, no PA (p.4)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly, printed p.4-5. Cephalexin 500 mg capsule is Tier 2 with no QL or PA. Keflex, Ceftin and Suprax brands do not appear in the document. IV cephalosporins excluded (medical benefit).",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-medicare"
+        },
+        {
+          "classId": "abx-macrolide",
+          "preferredAgent": {
+            "inn": "Azithromycin (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "250 mg tablet",
+            "sig": "500 mg by mouth on day 1, then 250 mg once daily on days 2 to 5 (label, Z-Pak course).",
+            "sigShort": "Z-Pak: 500 mg day 1, then 250 mg x4d",
+            "plainSig": "Two pills on day 1, then one pill a day for 4 more days."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 2 (Generic)",
+          "alternatives": [
+            {
+              "drug": "Azithromycin (oral suspension 100 mg/5 mL, 200 mg/5 mL)",
+              "note": "Tier 3, no PA (p.4)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Clarithromycin (tablet 250, 500 mg)",
+              "note": "Tier 3, no PA (p.5)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Clarithromycin (oral suspension, listed as CLARITHROMYCIN)",
+              "note": "Tier 4, no PA (p.5)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Erythromycin (oral solution 2%)",
+              "note": "Tier 2, no PA (p.6)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Erythromycin (tablet 250, 500 mg; delayed-release tablet; delayed-release particle capsule)",
+              "note": "Tier 4, no PA (p.6)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly, printed p.4-6. Azithromycin 250 mg tablet is Tier 2 with no QL or PA (250, 500 and 600 mg share one row). Zithromax brand not listed. IV azithromycin (p.4) excluded.",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-medicare"
+        },
+        {
+          "classId": "abx-tetracycline",
+          "preferredAgent": {
+            "inn": "Doxycycline monohydrate (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "100 mg capsule",
+            "sig": "100 mg by mouth every 12 hours on day 1, then 100 mg once or twice daily by infection (label); early Lyme disease 100 mg twice daily for 10 to 21 days (IDSA). Take with a full glass of water and stay upright 30 minutes.",
+            "sigShort": "100 mg BID",
+            "plainSig": "One capsule twice a day with a full glass of water. Don't lie down for 30 minutes after."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 2 (Generic); no QL or PA",
+          "alternatives": [
+            {
+              "drug": "Doxycycline hyclate (tablet 100 mg)",
+              "note": "Tier 3, no PA (p.5). Higher-cost tablet form of the same molecule.",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Doxycycline monohydrate (tablet 50, 75, 100 mg)",
+              "note": "Tier 3, no PA (p.5)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Doxycycline hyclate (capsule 50, 100 mg)",
+              "note": "Tier 3, no PA (p.5)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Mondoxyne NL (doxycycline monohydrate capsule 100 mg, brand)",
+              "note": "Tier 2, no PA (p.6)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Avidoxy (doxycycline monohydrate tablet 100 mg, brand)",
+              "note": "Tier 3, no PA (p.4)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Minocycline (capsule 50, 75, 100 mg)",
+              "note": "Tier 2, no PA (p.6)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Minocycline (tablet 50, 75 mg)",
+              "note": "Tier 4, no PA (p.6)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Tetracycline (capsule 250, 500 mg)",
+              "note": "Tier 4, no PA (p.7)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly, printed p.4-7. Pick is the brief's named product, doxycycline hyclate 100 mg tablet, which this list places at Tier 3 (generic at a preferred-brand tier). Doxycycline monohydrate 100 mg capsule is Tier 2 and is listed as an alternative. Doryx, Lymepak, Targadox, Minolira, Ximino, Solodyn, Seysara and Nuzyra do not appear in the document. IV doxycycline (p.6) excluded. [Sonnet check 2026-11-22: doxycycline monohydrate cap 50/100 mg is Tier 2 (PDF p.19, printed p.5) vs hyclate tab 100 mg Tier 3; the plan clearly favors the capsule, so the pick moved to monohydrate 100 mg capsule and hyclate tablet became an alternative. Sig now has a 7-day course. Hyclate tab 20 mg (Tier 2) is the periodontitis product, not used.]",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-medicare"
+        },
+        {
+          "classId": "abx-fluoroquinolone",
+          "preferredAgent": {
+            "inn": "Ciprofloxacin (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "500 mg tablet",
+            "sig": "500 mg by mouth every 12 hours for 7 to 14 days by infection; uncomplicated cystitis 250 mg every 12 hours for 3 days when no alternative fits (label).",
+            "sigShort": "500 mg BID",
+            "plainSig": "One pill twice a day. Avoid taking it with dairy, antacids or iron."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 2 (Generic)",
+          "alternatives": [
+            {
+              "drug": "Levofloxacin (tablet 250, 500, 750 mg)",
+              "note": "Tier 2, no PA (p.6)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Levofloxacin (oral solution 25 mg/mL)",
+              "note": "Tier 4, no PA (p.6)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Moxifloxacin (tablet 400 mg)",
+              "note": "Tier 3, no PA (p.6)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly, printed p.5-6. Ciprofloxacin 250, 500 and 750 mg tablets are Tier 2 with no QL or PA. Cipro, Levaquin, Avelox and Baxdela brands do not appear in the document. IV ciprofloxacin (p.5) excluded. Ofloxacin appears only as eye and ear drops (p.68), outside this class.",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-medicare"
+        },
+        {
+          "classId": "abx-uti",
+          "preferredAgent": {
+            "inn": "Nitrofurantoin monohydrate macrocrystals (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "100 mg capsule",
+            "sig": "100 mg by mouth twice daily with food: 7 days (label); 5 days for uncomplicated cystitis (IDSA guideline course).",
+            "sigShort": "100 mg BID x5-7d",
+            "plainSig": "One capsule twice a day with food for 5 to 7 days."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 3 (Preferred Brand; generic listed at Tier 3)",
+          "alternatives": [
+            {
+              "drug": "Nitrofurantoin macrocrystalline (capsule 50, 100 mg)",
+              "note": "Tier 3, no PA (p.7)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Sulfamethoxazole-trimethoprim (tablet 400-80, 800-160 mg)",
+              "note": "Tier 2, no PA (p.7)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Trimethoprim (tablet 100 mg)",
+              "note": "Tier 2, no PA (p.8)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Sulfamethoxazole-trimethoprim (oral suspension 200-40 mg/5 mL)",
+              "note": "Tier 4, no PA (p.7)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Methenamine hippurate (tablet 1 g)",
+              "note": "Tier 3, no PA (p.6)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Fosfomycin tromethamine (powder packet 3 g)",
+              "note": "Tier 3, no PA (p.6)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly, printed p.6-8. Nitrofurantoin monohydrate macrocrystalline 100 mg capsule is Tier 3 (the only tier for nitrofurantoin here), no QL or PA. The list marks it # (high risk medication for patients over 65; legend p.vi). Pivya, Orlynvah, Blujepa, Bactrim, Macrobid and Hiprex do not appear in the document; no status recorded. [Sonnet check 2026-11-22: confirmed all nitrofurantoin macrocrystal capsules are Tier 3, no PA; # = high-risk medication for patients 65+ (PDF p.21). Pick kept.]",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-medicare"
+        },
+        {
+          "classId": "abx-cdiff",
+          "preferredAgent": {
+            "inn": "Vancomycin hydrochloride (oral capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "125 mg capsule",
+            "sig": "125 mg by mouth four times daily for 10 days for C. difficile infection (label).",
+            "sigShort": "125 mg QID x10d",
+            "plainSig": "One capsule four times a day for 10 days."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 4 (Non-Preferred Drug); covered, QL 120 capsules/30 days, no PA",
+          "alternatives": [
+            {
+              "drug": "Vancomycin hydrochloride (oral capsule 250 mg, base equivalent)",
+              "note": "Tier 4, QL 240 capsules/30 days, no PA (p.8)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Metronidazole (tablet 250, 500 mg)",
+              "note": "Tier 2, no PA (p.6). Alternative only, not the pick, per class rules.",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Fidaxomicin (tablet 200 mg, generic name)",
+              "note": "Tier 5, QL 20 tablets/10 days, no PA (p.6)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "DIFICID (fidaxomicin tablet 200 mg, brand)",
+              "note": "Tier 5, QL 20 tablets/10 days, no PA (p.5)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "DIFICID (fidaxomicin oral suspension 40 mg/mL, brand)",
+              "note": "Tier 5, QL 1 bottle/10 days, no PA (p.5)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "VOWST (fecal microbiota spores, live-brpk capsules)",
+              "outcome": "pa",
+              "reason": "PA required; QL 12 capsules/56 days (p.49)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly, printed p.5-6, 8, 49. Vancomycin 125 mg capsule is Tier 4 with QL 120 capsules/30 days and no PA; a 10-day QID course is 40 capsules. Dificid brand and generic fidaxomicin tablet are both Tier 5 with the same QL, so the plan shows no brand preference (boglActive false). Vowst requires PA. Vancomycin oral solution, Firvanq and Vancocin do not appear in the document. Rebyota and bezlotoxumab are not listed. [Sonnet check 2026-11-22: confirmed Vowst PA, Tier 5, QL 12 capsules/56 days (PDF p.63) and vancomycin 125 mg cap Tier 4, QL 120/30 days (PDF p.22). Pick kept.]",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-medicare"
+        }
+      ],
+      "references": [
+        {
+          "id": "al-medicaid-common6-2026-11",
+          "label": "Alabama Medicaid PDL Reference Tool (updated 09/16/2026)",
+          "publisher": "Alabama Medicaid Agency",
+          "type": "gov",
+          "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_9-16-26.pdf",
+          "effectiveDate": "2026-09-16",
+          "accessed": "2026-11-22"
+        },
+        {
+          "id": "bcbs-al-commercial-common6-2026-11",
+          "label": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (2026)",
+          "publisher": "Blue Cross and Blue Shield of Alabama (pharmacy benefit: Prime Therapeutics LLC)",
+          "type": "payer",
+          "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+          "effectiveDate": "2026-11-01",
+          "accessed": "2026-11-22"
+        },
+        {
+          "id": "bcbs-al-medicare-common6-2026-11",
+          "label": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)",
+          "publisher": "Blue Cross and Blue Shield of Alabama (Blue Advantage Choice, Medicare Advantage Part D)",
+          "type": "payer",
+          "url": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+          "effectiveDate": "2026-01-20",
+          "accessed": "2026-11-22"
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Prior authorization (PA)",
+          "short": "Insurer sign-off first",
+          "definition": "Insurer sign-off needed before the drug is covered."
+        },
+        {
+          "term": "Step therapy",
+          "short": "Try a preferred drug first",
+          "definition": "Must fail a preferred drug first before the plan covers this one."
+        }
+      ]
+    },
+    {
+      "id": "al-bph",
+      "label": "AL · Enlarged prostate (BPH)",
+      "stateCode": "AL",
+      "region": "Alabama",
+      "topicId": "bph",
+      "topic": "Enlarged prostate (BPH)",
+      "classNoun": "Prescription type",
+      "unitNoun": "medication",
+      "tagline": "",
+      "dataStatus": "mixed",
+      "lastUpdated": "2026-11-22",
+      "capturedAt": "2026-11-22",
+      "payers": [
+        {
+          "id": "al-medicaid",
+          "name": "Alabama Medicaid Agency (Fee-for-Service, statewide -- no MCO contracts)",
+          "shortName": "AL Medicaid FFS",
+          "pbm": "Administered directly by the Alabama Medicaid Agency (no contracted PBM identified)",
+          "formularyUrl": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_9-16-26.pdf",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "productName": "Alabama Medicaid Agency Preferred Drug List by Therapeutic Category",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "Alabama Medicaid PDL Reference Tool (updated 09/16/2026)"
+        },
+        {
+          "id": "bcbs-al-commercial",
+          "name": "Blue Cross and Blue Shield of Alabama (Commercial)",
+          "shortName": "BCBS Alabama",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "productName": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx1.0 Prescription Drug List",
+          "marketSegment": "commercial-employer",
+          "formularyId": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (2026)"
+        },
+        {
+          "id": "bcbs-al-medicare",
+          "name": "BCBS Alabama Blue Advantage (Medicare Advantage / Part D)",
+          "shortName": "Blue Advantage AL",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "productName": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)",
+          "marketSegment": "medicare-part-d",
+          "formularyId": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)"
+        }
+      ],
+      "classes": [
+        {
+          "id": "bph-alpha",
+          "name": "Alpha-1 blockers",
+          "shortName": "Alpha blocker",
+          "plainName": "Prostate flow pill (alpha blocker)",
+          "description": "Alpha-1 blockers for BPH: tamsulosin (Flomax), alfuzosin ER (Uroxatral), silodosin (Rapaflo), doxazosin (Cardura; Cardura XL is brand-only), terazosin. Combination dutasteride/tamsulosin (Jalyn) belongs to the 5-ARI class.",
+          "plainDescription": "A daily pill that relaxes the prostate so urine flows more easily.",
+          "indication": "Benign prostatic hyperplasia (BPH)",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "id": "bph-5ari",
+          "name": "5-alpha reductase inhibitors",
+          "shortName": "5-ARI",
+          "plainName": "Prostate-shrinking pill",
+          "description": "5-alpha reductase inhibitors for BPH: finasteride 5 mg (Proscar), dutasteride (Avodart), dutasteride/tamsulosin (Jalyn), finasteride/tadalafil (Entadfi; up to 26 weeks, not with alpha blockers). The pick is a single agent; the combinations are alternatives. Finasteride 1 mg (Propecia, hair loss) is not this class.",
+          "plainDescription": "A daily pill that slowly shrinks an enlarged prostate over months.",
+          "indication": "Benign prostatic hyperplasia (BPH)",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "id": "bph-pde5",
+          "name": "Tadalafil for BPH",
+          "shortName": "PDE5 (BPH)",
+          "plainName": "Daily tadalafil for BPH",
+          "description": "Tadalafil 2.5 mg and 5 mg once daily (Cialis, generic) for BPH symptoms. Plans often cover it for BPH only with a diagnosis-based PA and exclude it for erectile dysfunction: record the BPH rule. Sildenafil and vardenafil are not labeled for BPH.",
+          "plainDescription": "A low daily dose of tadalafil that eases urinary symptoms of an enlarged prostate.",
+          "indication": "BPH (with or without erectile dysfunction)",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        }
+      ],
+      "records": [
+        {
+          "classId": "bph-alpha",
+          "preferredAgent": {
+            "inn": "Tamsulosin (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "0.4 mg capsule",
+            "sig": "0.4 mg by mouth once daily, 30 minutes after the same meal each day; may increase to 0.8 mg once daily after 2 to 4 weeks (label).",
+            "sigShort": "0.4 mg QD after a meal",
+            "plainSig": "One capsule a day, 30 minutes after the same meal."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Not a PDL class for tamsulosin; doxazosin, terazosin and prazosin are on the PDL",
+          "alternatives": [
+            {
+              "drug": "Doxazosin (generic)",
+              "note": "Preferred generic, no PA (PDL p. 10; listed under Cardiovascular 'Alpha-Adrenergic Blocking Agents', indication not stated)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Terazosin (generic)",
+              "note": "Preferred generic, no PA (PDL p. 10)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Prazosin (generic)",
+              "note": "Preferred generic, no PA (PDL p. 10)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Cardura (doxazosin)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 10, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Cardura XL (doxazosin extended-release)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 10, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Tezruly",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 10, PA-required column); the PDL prints no strength or indication",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "Tamsulosin does not appear on the PDL. Absence from the PDL is not exclusion: the reference tool does not say it is a complete list, so no PA or exclusion is recorded. Pick is the standard generic per the brief (partial). Doxazosin, terazosin and prazosin are on the PDL under Cardiovascular Health; the PDL gives no indication for them. Alfuzosin (Uroxatral), silodosin (Rapaflo) and Jalyn are not listed.",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "al-medicaid"
+        },
+        {
+          "classId": "bph-5ari",
+          "preferredAgent": {
+            "inn": "Finasteride (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "5 mg tablet",
+            "sig": "5 mg by mouth once daily for BPH (label). Benefit builds over 6 to 12 months.",
+            "sigShort": "5 mg QD",
+            "plainSig": "One pill a day. It takes several months to work."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Not a PDL class",
+          "alternatives": [],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "No 5-alpha reductase inhibitor (finasteride, Proscar, dutasteride, Avodart, Jalyn, Entadfi) appears anywhere in the PDL. Absence from the PDL is not exclusion: the reference tool does not say it is a complete list, so no PA or exclusion is recorded. Pick is the standard generic per the brief (partial).",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "al-medicaid"
+        },
+        {
+          "classId": "bph-pde5",
+          "preferredAgent": {
+            "inn": "Tadalafil (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "5 mg tablet",
+            "sig": "5 mg by mouth once daily at about the same time each day for BPH, with or without ED (label; 2.5 mg if CrCl 30-50).",
+            "sigShort": "5 mg QD",
+            "plainSig": "One pill a day at about the same time."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Not a PDL class",
+          "alternatives": [],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "Tadalafil, Cialis, sildenafil and vardenafil do not appear anywhere in the PDL. The reference tool states no BPH or erectile-dysfunction rule, so no PA is recorded. Absence from the PDL is not exclusion: the reference tool does not say it is a complete list, so no PA or exclusion is recorded. Pick is the standard generic per the brief (partial).",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "al-medicaid"
+        },
+        {
+          "classId": "bph-alpha",
+          "preferredAgent": {
+            "inn": "Tamsulosin hydrochloride (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "0.4 mg capsule",
+            "sig": "0.4 mg by mouth once daily, 30 minutes after the same meal each day; may increase to 0.8 mg once daily after 2 to 4 weeks (label).",
+            "sigShort": "0.4 mg QD after a meal",
+            "plainSig": "One capsule a day, 30 minutes after the same meal."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Alfuzosin hydrochloride extended-release tablet 10 mg (Uroxatral reference)",
+              "note": "Tier 1, no PA or step flag (PDF p. 73)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Silodosin capsule 4 mg and 8 mg (Rapaflo reference)",
+              "note": "Tier 1, no PA or step flag (PDF p. 74)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Doxazosin mesylate tablet 1, 2, 4 and 8 mg (Cardura reference)",
+              "note": "Tier 1, no PA or step flag (PDF p. 55)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Terazosin hydrochloride capsule 1, 2, 5 and 10 mg",
+              "note": "Tier 1, no PA or step flag (PDF p. 57)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Tamsulosin 0.4 mg capsule is tier 1, no flags (PDF p. 74). Cardura XL is not listed. Doxazosin and terazosin are covered for BPH use only as the list shows them; the list gives no indication column.",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-commercial"
+        },
+        {
+          "classId": "bph-5ari",
+          "preferredAgent": {
+            "inn": "Finasteride (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "5 mg tablet",
+            "sig": "5 mg by mouth once daily for BPH (label). Benefit builds over 6 to 12 months.",
+            "sigShort": "5 mg QD",
+            "plainSig": "One pill a day. It takes several months to work."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Dutasteride (capsule 0.5 mg, Avodart reference)",
+              "note": "Tier 1, no PA or step flag (PDF p. 73)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Dutasteride and tamsulosin (capsule 0.5-0.4 mg, Jalyn reference)",
+              "note": "Tier 1, no PA or step flag (PDF p. 74)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Finasteride 5 mg (Proscar reference) is tier 1, no flags (PDF p. 74). Entadfi (finasteride-tadalafil) is not listed.",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-commercial"
+        },
+        {
+          "classId": "bph-pde5",
+          "preferredAgent": {
+            "inn": "Tadalafil (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "5 mg tablet",
+            "sig": "5 mg by mouth once daily at about the same time each day for BPH, with or without ED (label; 2.5 mg if CrCl 30-50).",
+            "sigShort": "5 mg QD",
+            "plainSig": "One pill a day at about the same time."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Tadalafil (tablet 2.5 mg)",
+              "note": "Tier 1, dispensing-limit flag only (PDF pp. 61-62)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "partial",
+          "verificationNote": "Tadalafil 2.5 mg and 5 mg (Cialis reference) are tier 1 with a single flag column marked (read as dispensing limit by the gatherer), listed in the block after the PAH products on PDF p. 61 and again under an ERECTILE DYSFUNCTION heading on PDF p. 62 (printed pp. 53-54). Tadalafil 20 mg (Adcirca, PAH) is tier 4 with PA/ST and is omitted. [Sonnet check 2026-11-22: corrected the earlier note that said no ED heading exists; the p. 62 heading is ED. The list prints no BPH indication, so BPH coverage and any diagnosis-based PA remain unconfirmed; keep partial.]",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-commercial"
+        },
+        {
+          "classId": "bph-alpha",
+          "preferredAgent": {
+            "inn": "Tamsulosin hydrochloride (capsule)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "0.4 mg capsule",
+            "sig": "0.4 mg by mouth once daily, 30 minutes after the same meal each day; may increase to 0.8 mg once daily after 2 to 4 weeks (label).",
+            "sigShort": "0.4 mg QD after a meal",
+            "plainSig": "One capsule a day, 30 minutes after the same meal."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 2 (Generic); QL 60 capsules/30 days, no PA",
+          "alternatives": [
+            {
+              "drug": "Terazosin (capsule 1 mg)",
+              "note": "Tier 1, QL 90 capsules/30 days, no PA (p.41). Lower-tier than the pick.",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Terazosin (capsule 2, 5, 10 mg)",
+              "note": "Tier 1, QL 60 capsules/30 days, no PA (p.41)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Doxazosin (tablet 1, 2, 4, 8 mg)",
+              "note": "Tier 2, QL 60 tablets/30 days, no PA (p.38)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Alfuzosin ER (tablet 10 mg)",
+              "note": "Tier 2, QL 30 tablets/30 days, no PA (p.50)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly, printed p.38, 41, 50-51. Tamsulosin 0.4 mg capsule is Tier 2 with QL 60 capsules/30 days and no PA; it is the brief's pick. Terazosin (Tier 1) is cheaper on this list and is an alternative. Flomax, Uroxatral, Rapaflo, Cardura and Cardura XL do not appear in the document.",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-medicare"
+        },
+        {
+          "classId": "bph-5ari",
+          "preferredAgent": {
+            "inn": "Finasteride (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "5 mg tablet",
+            "sig": "5 mg by mouth once daily for BPH (label). Benefit builds over 6 to 12 months.",
+            "sigShort": "5 mg QD",
+            "plainSig": "One pill a day. It takes several months to work."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1 (Preferred Generic); QL 30 tablets/30 days, no PA",
+          "alternatives": [
+            {
+              "drug": "Dutasteride (capsule 0.5 mg)",
+              "note": "Tier 2, QL 30 capsules/30 days, no PA (p.50)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly, printed p.50. Finasteride 5 mg tablet is Tier 1 with QL 30 tablets/30 days and no PA. Avodart, Proscar, Jalyn and Entadfi do not appear in the document; no status recorded.",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-medicare"
+        },
+        {
+          "classId": "bph-pde5",
+          "preferredAgent": {
+            "inn": "Tadalafil (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "5 mg tablet",
+            "sig": "5 mg by mouth once daily at about the same time each day for BPH, with or without ED (label; 2.5 mg if CrCl 30-50).",
+            "sigShort": "5 mg QD",
+            "plainSig": "One pill a day at about the same time."
+          },
+          "preferredRestriction": "PA required (p.51). The list does not print the PA criteria. The 2.5 mg and 5 mg tablets share one row.",
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 4 (Non-Preferred Drug); QL 30 tablets/30 days; PA",
+          "alternatives": [],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly, printed p.51. Tadalafil 2.5 mg and 5 mg: Tier 4, PA, QL 30 tablets/30 days. Sildenafil 20 mg and tadalafil 20 mg (PAH, p.71) are not BPH products and are not used. Cialis brand does not appear in the document. [Sonnet check 2026-11-22: confirmed tadalafil 2.5/5 mg Tier 4, PA, QL 30/30 days (PDF p.65, printed p.51). PA criteria are not printed in the list.]",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-medicare"
+        }
+      ],
+      "references": [
+        {
+          "id": "al-medicaid-common6-2026-11",
+          "label": "Alabama Medicaid PDL Reference Tool (updated 09/16/2026)",
+          "publisher": "Alabama Medicaid Agency",
+          "type": "gov",
+          "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_9-16-26.pdf",
+          "effectiveDate": "2026-09-16",
+          "accessed": "2026-11-22"
+        },
+        {
+          "id": "bcbs-al-commercial-common6-2026-11",
+          "label": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (2026)",
+          "publisher": "Blue Cross and Blue Shield of Alabama (pharmacy benefit: Prime Therapeutics LLC)",
+          "type": "payer",
+          "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+          "effectiveDate": "2026-11-01",
+          "accessed": "2026-11-22"
+        },
+        {
+          "id": "bcbs-al-medicare-common6-2026-11",
+          "label": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)",
+          "publisher": "Blue Cross and Blue Shield of Alabama (Blue Advantage Choice, Medicare Advantage Part D)",
+          "type": "payer",
+          "url": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+          "effectiveDate": "2026-01-20",
+          "accessed": "2026-11-22"
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Prior authorization (PA)",
+          "short": "Insurer sign-off first",
+          "definition": "Insurer sign-off needed before the drug is covered."
+        },
+        {
+          "term": "Step therapy",
+          "short": "Try a preferred drug first",
+          "definition": "Must fail a preferred drug first before the plan covers this one."
+        }
+      ]
+    },
+    {
+      "id": "al-loop-diuretics",
+      "label": "AL · Loop diuretics",
+      "stateCode": "AL",
+      "region": "Alabama",
+      "topicId": "loop-diuretics",
+      "topic": "Loop diuretics",
+      "classNoun": "Prescription type",
+      "unitNoun": "medication",
+      "tagline": "",
+      "dataStatus": "verified",
+      "lastUpdated": "2026-11-22",
+      "capturedAt": "2026-11-22",
+      "payers": [
+        {
+          "id": "al-medicaid",
+          "name": "Alabama Medicaid Agency (Fee-for-Service, statewide -- no MCO contracts)",
+          "shortName": "AL Medicaid FFS",
+          "pbm": "Administered directly by the Alabama Medicaid Agency (no contracted PBM identified)",
+          "formularyUrl": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_9-16-26.pdf",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "productName": "Alabama Medicaid Agency Preferred Drug List by Therapeutic Category",
+          "marketSegment": "medicaid-ffs",
+          "formularyId": "Alabama Medicaid PDL Reference Tool (updated 09/16/2026)"
+        },
+        {
+          "id": "bcbs-al-commercial",
+          "name": "Blue Cross and Blue Shield of Alabama (Commercial)",
+          "shortName": "BCBS Alabama",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "productName": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx1.0 Prescription Drug List",
+          "marketSegment": "commercial-employer",
+          "formularyId": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (2026)"
+        },
+        {
+          "id": "bcbs-al-medicare",
+          "name": "BCBS Alabama Blue Advantage (Medicare Advantage / Part D)",
+          "shortName": "Blue Advantage AL",
+          "pbm": "Prime Therapeutics",
+          "formularyUrl": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "productName": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)",
+          "marketSegment": "medicare-part-d",
+          "formularyId": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)"
+        }
+      ],
+      "classes": [
+        {
+          "id": "loop-diuretic",
+          "name": "Loop diuretics",
+          "shortName": "Loop",
+          "plainName": "Water pill (loop diuretic)",
+          "description": "Loop diuretics: furosemide (Lasix; tablets, oral solution; Furoscix subcutaneous on-body infusor and Lasix ONYU subcutaneous, alternatives only, never the pick), torsemide (generic; Soaanz), bumetanide (Bumex), ethacrynic acid (Edecrin; for sulfa allergy). Not thiazides.",
+          "plainDescription": "A strong water pill that removes extra fluid, for heart failure, kidney and liver disease and swelling.",
+          "indication": "Edema, heart failure, CKD, cirrhosis",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        }
+      ],
+      "records": [
+        {
+          "classId": "loop-diuretic",
+          "preferredAgent": {
+            "inn": "Furosemide (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "20 mg tablet",
+            "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+            "sigShort": "20-80 mg QAM, titrate",
+            "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Preferred generic, no PA required (PDL p. 12)",
+          "alternatives": [
+            {
+              "drug": "Torsemide (generic)",
+              "note": "Preferred generic, no PA (PDL p. 12)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Bumetanide (generic)",
+              "note": "Preferred generic, no PA (PDL p. 12)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Ethacrynic acid (generic)",
+              "note": "Preferred generic, no PA (PDL p. 12)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "Lasix (furosemide)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 12, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Furoscix (subcutaneous furosemide on-body infusor)",
+              "outcome": "pa",
+              "reason": "PA required (PDL p. 12, PA-required column)",
+              "sourceIds": [
+                "al-medicaid-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read PDL p. 12 (Diuretics) by column: generic furosemide, torsemide, bumetanide and ethacrynic acid are Preferred Generic (no PA); Lasix and Furoscix are PA-required. Soaanz (torsemide) and Edecrin brand, and Lasix ONYU, are not listed. Thiazide and potassium-sparing diuretics are outside this class. Furosemide dosing is the label range; the PDL prints none. [Sonnet check 2026-11-22: rendered p. 12 confirms Furoscix in the PA-required column (no criteria printed), furosemide/torsemide/bumetanide/ethacrynic acid Preferred Generic, Lasix PA. Hemiclor and Thalitone are PA but are chlorthalidone, outside this class.]",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "al-medicaid-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "al-medicaid"
+        },
+        {
+          "classId": "loop-diuretic",
+          "preferredAgent": {
+            "inn": "Furosemide (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "20 mg tablet",
+            "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+            "sigShort": "20-80 mg QAM, titrate",
+            "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1",
+          "alternatives": [
+            {
+              "drug": "Furosemide (tablet 40 mg and 80 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 58)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Bumetanide (tablet 0.5, 1 and 2 mg, Bumex reference)",
+              "note": "Tier 1, no PA or step flag (PDF p. 58)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Torsemide (tablet 5, 10, 20 and 100 mg)",
+              "note": "Tier 1, no PA or step flag (PDF p. 58)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Furosemide (oral solution 10 mg/mL)",
+              "note": "Tier 3 (covered), no PA or step flag (PDF p. 58)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "EDECRIN (ethacrynic acid tablet 25 mg)",
+              "note": "Tier 3 (covered), no PA or step flag (PDF p. 58)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "FUROSCIX READYFLOW (furosemide subcutaneous auto-injector 80 mg/mL)",
+              "note": "Tier 4, limited distribution flag only; no PA or step flag (PDF p. 58)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [
+            {
+              "drug": "FUROSCIX (furosemide subcutaneous cartridge kit 80 mg/10 mL)",
+              "outcome": "pa",
+              "reason": "Prior authorization (PA flag); tier 4 specialty; limited distribution and dispensing-limit flags (PDF p. 58)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "LASIX ONYU (furosemide subcutaneous cartridge kit 80 mg/2.67 mL)",
+              "outcome": "pa",
+              "reason": "Prior authorization (PA flag); tier 4 specialty; limited distribution and dispensing-limit flags (PDF p. 58)",
+              "sourceIds": [
+                "bcbs-al-commercial-common6-2026-11"
+              ]
+            }
+          ],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Furosemide 20 mg tablet is tier 1, no flags (PDF p. 58). Furoscix and Lasix ONYU subcutaneous kits carry PA flags. Soaanz is not listed.",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-commercial"
+        },
+        {
+          "classId": "loop-diuretic",
+          "preferredAgent": {
+            "inn": "Furosemide (tablet)",
+            "brand": null,
+            "genericAvailable": true,
+            "strength": "20 mg tablet",
+            "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+            "sigShort": "20-80 mg QAM, titrate",
+            "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+          },
+          "preferredRestriction": null,
+          "boglActive": false,
+          "boglNote": null,
+          "tier": "Tier 1 (Preferred Generic), no QL or PA",
+          "alternatives": [
+            {
+              "drug": "Furosemide (tablet 40, 80 mg)",
+              "note": "Tier 1, no PA (p.39). Same row as the pick.",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Furosemide (oral solution 8 mg/mL)",
+              "note": "Tier 2, no PA (p.38)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Furosemide (oral solution 10 mg/mL)",
+              "note": "Tier 2, no PA (p.39)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Bumetanide (tablet 0.5, 1 mg)",
+              "note": "Tier 2, no PA (p.37)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Bumetanide (tablet 2 mg)",
+              "note": "Tier 3, no PA (p.37)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            },
+            {
+              "drug": "Torsemide (tablet 5, 10, 20, 100 mg)",
+              "note": "Tier 2, no PA (p.42)",
+              "sourceIds": [
+                "bcbs-al-medicare-common6-2026-11"
+              ]
+            }
+          ],
+          "paRequired": [],
+          "stepTherapy": null,
+          "verification": "verified",
+          "verificationNote": "Read directly, printed p.37-39, 42. Furosemide 20 mg tablet is Tier 1 with no QL or PA. Injectables (furosemide 10 mg/mL, Tier 4, p.38; bumetanide, p.37) excluded as provider-administered. Lasix, Furoscix, Lasix ONYU, Soaanz, Demadex, Bumex and Edecrin do not appear in the document; no status recorded.",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "coverageSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "restrictionSourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ],
+          "lastReviewed": "2026-11-22",
+          "payerId": "bcbs-al-medicare"
+        }
+      ],
+      "references": [
+        {
+          "id": "al-medicaid-common6-2026-11",
+          "label": "Alabama Medicaid PDL Reference Tool (updated 09/16/2026)",
+          "publisher": "Alabama Medicaid Agency",
+          "type": "gov",
+          "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_9-16-26.pdf",
+          "effectiveDate": "2026-09-16",
+          "accessed": "2026-11-22"
+        },
+        {
+          "id": "bcbs-al-commercial-common6-2026-11",
+          "label": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (2026)",
+          "publisher": "Blue Cross and Blue Shield of Alabama (pharmacy benefit: Prime Therapeutics LLC)",
+          "type": "payer",
+          "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+          "effectiveDate": "2026-11-01",
+          "accessed": "2026-11-22"
+        },
+        {
+          "id": "bcbs-al-medicare-common6-2026-11",
+          "label": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)",
+          "publisher": "Blue Cross and Blue Shield of Alabama (Blue Advantage Choice, Medicare Advantage Part D)",
+          "type": "payer",
+          "url": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+          "effectiveDate": "2026-01-20",
+          "accessed": "2026-11-22"
+        }
+      ],
+      "glossary": [
+        {
+          "term": "Prior authorization (PA)",
+          "short": "Insurer sign-off first",
+          "definition": "Insurer sign-off needed before the drug is covered."
+        },
+        {
+          "term": "Step therapy",
+          "short": "Try a preferred drug first",
+          "definition": "Must fail a preferred drug first before the plan covers this one."
+        }
+      ]
     }
   ]
 }

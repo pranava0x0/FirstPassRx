@@ -1,0 +1,350 @@
+{
+  "id": "al-loop-diuretics",
+  "label": "AL · Loop diuretics",
+  "stateCode": "AL",
+  "region": "Alabama",
+  "topicId": "loop-diuretics",
+  "topic": "Loop diuretics",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-11-22",
+  "capturedAt": "2026-11-22",
+  "payers": [
+    {
+      "id": "al-medicaid",
+      "name": "Alabama Medicaid Agency (Fee-for-Service, statewide -- no MCO contracts)",
+      "shortName": "AL Medicaid FFS",
+      "pbm": "Administered directly by the Alabama Medicaid Agency (no contracted PBM identified)",
+      "formularyUrl": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_9-16-26.pdf",
+      "sourceIds": [
+        "al-medicaid-common6-2026-11"
+      ],
+      "productName": "Alabama Medicaid Agency Preferred Drug List by Therapeutic Category",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Alabama Medicaid PDL Reference Tool (updated 09/16/2026)"
+    },
+    {
+      "id": "bcbs-al-commercial",
+      "name": "Blue Cross and Blue Shield of Alabama (Commercial)",
+      "shortName": "BCBS Alabama",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+      "sourceIds": [
+        "bcbs-al-commercial-common6-2026-11"
+      ],
+      "productName": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx1.0 Prescription Drug List",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (2026)"
+    },
+    {
+      "id": "bcbs-al-medicare",
+      "name": "BCBS Alabama Blue Advantage (Medicare Advantage / Part D)",
+      "shortName": "Blue Advantage AL",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+      "sourceIds": [
+        "bcbs-al-medicare-common6-2026-11"
+      ],
+      "productName": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "loop-diuretic",
+      "name": "Loop diuretics",
+      "shortName": "Loop",
+      "plainName": "Water pill (loop diuretic)",
+      "description": "Loop diuretics: furosemide (Lasix; tablets, oral solution; Furoscix subcutaneous on-body infusor and Lasix ONYU subcutaneous, alternatives only, never the pick), torsemide (generic; Soaanz), bumetanide (Bumex), ethacrynic acid (Edecrin; for sulfa allergy). Not thiazides.",
+      "plainDescription": "A strong water pill that removes extra fluid, for heart failure, kidney and liver disease and swelling.",
+      "indication": "Edema, heart failure, CKD, cirrhosis",
+      "sourceIds": [
+        "al-medicaid-common6-2026-11"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "loop-diuretic",
+      "preferredAgent": {
+        "inn": "Furosemide (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+        "sigShort": "20-80 mg QAM, titrate",
+        "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred generic, no PA required (PDL p. 12)",
+      "alternatives": [
+        {
+          "drug": "Torsemide (generic)",
+          "note": "Preferred generic, no PA (PDL p. 12)",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Bumetanide (generic)",
+          "note": "Preferred generic, no PA (PDL p. 12)",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Ethacrynic acid (generic)",
+          "note": "Preferred generic, no PA (PDL p. 12)",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Lasix (furosemide)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p. 12, PA-required column)",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Furoscix (subcutaneous furosemide on-body infusor)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p. 12, PA-required column)",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL p. 12 (Diuretics) by column: generic furosemide, torsemide, bumetanide and ethacrynic acid are Preferred Generic (no PA); Lasix and Furoscix are PA-required. Soaanz (torsemide) and Edecrin brand, and Lasix ONYU, are not listed. Thiazide and potassium-sparing diuretics are outside this class. Furosemide dosing is the label range; the PDL prints none. [Sonnet check 2026-11-22: rendered p. 12 confirms Furoscix in the PA-required column (no criteria printed), furosemide/torsemide/bumetanide/ethacrynic acid Preferred Generic, Lasix PA. Hemiclor and Thalitone are PA but are chlorthalidone, outside this class.]",
+      "sourceIds": [
+        "al-medicaid-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "al-medicaid-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "al-medicaid-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-22",
+      "payerId": "al-medicaid"
+    },
+    {
+      "classId": "loop-diuretic",
+      "preferredAgent": {
+        "inn": "Furosemide (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+        "sigShort": "20-80 mg QAM, titrate",
+        "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Furosemide (tablet 40 mg and 80 mg)",
+          "note": "Tier 1, no PA or step flag (PDF p. 58)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Bumetanide (tablet 0.5, 1 and 2 mg, Bumex reference)",
+          "note": "Tier 1, no PA or step flag (PDF p. 58)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Torsemide (tablet 5, 10, 20 and 100 mg)",
+          "note": "Tier 1, no PA or step flag (PDF p. 58)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Furosemide (oral solution 10 mg/mL)",
+          "note": "Tier 3 (covered), no PA or step flag (PDF p. 58)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "EDECRIN (ethacrynic acid tablet 25 mg)",
+          "note": "Tier 3 (covered), no PA or step flag (PDF p. 58)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "FUROSCIX READYFLOW (furosemide subcutaneous auto-injector 80 mg/mL)",
+          "note": "Tier 4, limited distribution flag only; no PA or step flag (PDF p. 58)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "FUROSCIX (furosemide subcutaneous cartridge kit 80 mg/10 mL)",
+          "outcome": "pa",
+          "reason": "Prior authorization (PA flag); tier 4 specialty; limited distribution and dispensing-limit flags (PDF p. 58)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "LASIX ONYU (furosemide subcutaneous cartridge kit 80 mg/2.67 mL)",
+          "outcome": "pa",
+          "reason": "Prior authorization (PA flag); tier 4 specialty; limited distribution and dispensing-limit flags (PDF p. 58)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Furosemide 20 mg tablet is tier 1, no flags (PDF p. 58). Furoscix and Lasix ONYU subcutaneous kits carry PA flags. Soaanz is not listed.",
+      "sourceIds": [
+        "bcbs-al-commercial-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-commercial-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-commercial-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-22",
+      "payerId": "bcbs-al-commercial"
+    },
+    {
+      "classId": "loop-diuretic",
+      "preferredAgent": {
+        "inn": "Furosemide (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+        "sigShort": "20-80 mg QAM, titrate",
+        "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (Preferred Generic), no QL or PA",
+      "alternatives": [
+        {
+          "drug": "Furosemide (tablet 40, 80 mg)",
+          "note": "Tier 1, no PA (p.39). Same row as the pick.",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Furosemide (oral solution 8 mg/mL)",
+          "note": "Tier 2, no PA (p.38)",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Furosemide (oral solution 10 mg/mL)",
+          "note": "Tier 2, no PA (p.39)",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Bumetanide (tablet 0.5, 1 mg)",
+          "note": "Tier 2, no PA (p.37)",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Bumetanide (tablet 2 mg)",
+          "note": "Tier 3, no PA (p.37)",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Torsemide (tablet 5, 10, 20, 100 mg)",
+          "note": "Tier 2, no PA (p.42)",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly, printed p.37-39, 42. Furosemide 20 mg tablet is Tier 1 with no QL or PA. Injectables (furosemide 10 mg/mL, Tier 4, p.38; bumetanide, p.37) excluded as provider-administered. Lasix, Furoscix, Lasix ONYU, Soaanz, Demadex, Bumex and Edecrin do not appear in the document; no status recorded.",
+      "sourceIds": [
+        "bcbs-al-medicare-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-medicare-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-medicare-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-22",
+      "payerId": "bcbs-al-medicare"
+    }
+  ],
+  "references": [
+    {
+      "id": "al-medicaid-common6-2026-11",
+      "label": "Alabama Medicaid PDL Reference Tool (updated 09/16/2026)",
+      "publisher": "Alabama Medicaid Agency",
+      "type": "gov",
+      "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_9-16-26.pdf",
+      "effectiveDate": "2026-09-16",
+      "accessed": "2026-11-22"
+    },
+    {
+      "id": "bcbs-al-commercial-common6-2026-11",
+      "label": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (2026)",
+      "publisher": "Blue Cross and Blue Shield of Alabama (pharmacy benefit: Prime Therapeutics LLC)",
+      "type": "payer",
+      "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+      "effectiveDate": "2026-11-01",
+      "accessed": "2026-11-22"
+    },
+    {
+      "id": "bcbs-al-medicare-common6-2026-11",
+      "label": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)",
+      "publisher": "Blue Cross and Blue Shield of Alabama (Blue Advantage Choice, Medicare Advantage Part D)",
+      "type": "payer",
+      "url": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+      "effectiveDate": "2026-01-20",
+      "accessed": "2026-11-22"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}
