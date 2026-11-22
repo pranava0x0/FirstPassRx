@@ -50,10 +50,24 @@ function words(text) {
     .split(/[^a-z]+/)
     .filter(Boolean)
 }
+// "dapagliflozin (generic Farxiga)" is the generic, not Farxiga: the brand named after "generic"
+// (or "generic for/of/version of") is the reference product and leaves the key (Codex review, PR #40).
+const GENERIC_LINK = new Set(['for', 'of', 'to', 'version', 'equivalent', 'the'])
+function dropReferenceBrand(ws) {
+  const out = []
+  for (let i = 0; i < ws.length; i++) {
+    out.push(ws[i])
+    if (ws[i] !== 'generic' || i === 0) continue // "Generic dapagliflozin" names the molecule next
+    let j = i + 1
+    while (j < ws.length && GENERIC_LINK.has(ws[j])) j++
+    if (j < ws.length && !FORM[ws[j]] && !KEEP_FORM.has(ws[j]) && ws[j] !== 'available') i = j
+  }
+  return out
+}
 export function rawProductKey(label) {
   const [head, ...tail] = String(label).split(' · ')
   const out = new Set()
-  for (const w of words(head)) {
+  for (const w of dropReferenceBrand(words(head))) {
     if (FORM[w]) out.add(FORM[w])
     else if (!KEY_STRIP.has(w)) out.add(w)
   }
