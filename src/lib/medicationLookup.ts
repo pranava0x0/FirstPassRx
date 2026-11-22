@@ -1,5 +1,5 @@
 import type { FormularyRecord, PaItem } from '../types/formulary'
-import { medicationEntries } from './medicationEntries.mjs'
+import { medicationEntries, productKey } from './medicationEntries.mjs'
 import { preferredPaItem } from './paRequest'
 
 export interface Finding {
@@ -40,4 +40,13 @@ export function findings(record: FormularyRecord, label: string): Finding[] {
     }
   }
   return result
+}
+
+/** Findings for every listing of the same product in this record, whatever the plan calls it. Each
+ *  carries the plan's own wording (`matched`) so a different strength or spelling stays visible. */
+export function productFindings(record: FormularyRecord, label: string): (Finding & { matched: string })[] {
+  const key = productKey(label)
+  if (!key) return []
+  const labels = [...new Set(medicationEntries(record).map((e) => e.label))].filter((l) => productKey(l) === key)
+  return labels.flatMap((matched) => findings(record, matched).map((f) => ({ ...f, matched })))
 }

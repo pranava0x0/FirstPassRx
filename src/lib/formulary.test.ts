@@ -40,9 +40,10 @@ describe('KNOWN_COVERED_AND_BARRIER', () => {
 // "VA" reads as the U.S. Department of Veterans Affairs, a federal payer we don't cover. Virginia
 // guides spell the state out (user, 2026-11-22).
 describe('Virginia is never a bare "VA"', () => {
-  it('spells Virginia out in guide labels and payer names', () => {
+  it('spells Virginia out in guide labels, payer names and source titles', () => {
     for (const g of guides.filter((x) => x.stateCode === 'VA')) {
       expect(g.label, g.id).not.toMatch(/^VA\b/)
+      for (const ref of g.references) expect(ref.label, `${g.id} ${ref.id}`).not.toMatch(/^VA\b/)
       for (const p of g.payers) {
         expect(p.shortName, `${g.id} ${p.id}`).not.toMatch(/^VA\b/)
         expect(p.name, `${g.id} ${p.id}`).not.toMatch(/^VA\b/)
