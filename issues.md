@@ -232,6 +232,8 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
 
 ## Open (2026-11-22 review of PR #33)
 
+- **CareFirst (MD/DC) PDF gives no pypdf layout text** (`sources/state-dc-4bf6ff8e7920b90a.pdf`, 231 of 237
+  pages under 200 characters); PyMuPDF reads it. Its checks are SKIPPED until the extractor gets a fallback.
 - **KY Medicaid PDL reissued after our archive.** A live fetch on 2026-11-22 returns a different
   sha256 from the 2026-11-03 copy every KY guide cites. Re-archive and re-audit KY.
 - **Humana PDP manifest entry** is labelled v17 10/01 with a drift flag, while guides cite v18
