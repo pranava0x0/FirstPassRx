@@ -729,6 +729,10 @@ button {
 .pa-builder {
   margin-top: 12px;
   display: grid;
+  /* minmax(0, 1fr): an auto track grows to the widest child's min-content (the nowrap action
+     buttons), which pushed the whole builder 150px past a 375px phone screen. */
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
   gap: 14px;
   padding: 14px 12px 0;
   background: var(--paper);
@@ -834,7 +838,7 @@ button {
   bottom: 0;
   z-index: 2;
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   align-items: center;
   gap: 8px;
   margin: 0 -12px;
@@ -843,7 +847,7 @@ button {
   border-top: 1px solid var(--rule);
 }
 .pa-builder__actions .copy-btn {
-  flex: 1 1 auto;
+  flex: 1 1 150px;
   justify-content: center;
   padding: 0 12px;
   white-space: nowrap;
