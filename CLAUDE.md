@@ -810,10 +810,11 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   The Veterans Affairs National Formulary is a separate federal payer FirstPassRx does not cover; cite
   VA/DoD guidelines only as "U.S. Department of Veterans Affairs" evidence.
 - **"By medication" groups a product by `productKey` (src/lib/medicationEntries.mjs), not exact wording
-  (2026-11-22).** Dovato had ~30 spellings and the picker showed only Texas. The key is the part before
-  " · strength", minus strengths, tablet/oral/brand, device words (inhalation, aerosol, actuation) and
-  salts that never separate products (sodium, potassium, HCl, sulfate). Salts that do separate products
-  (furoate/propionate, succinate/tartrate) stay. Bare brands map through the generated
-  `medication-aliases.json`. Each card shows the plan's own listing ("Listed as"). `npm test` runs
-  `scripts/check-medication-catalog.mjs`, which fails if any product × state shows no plan card.
-
+  (2026-11-22).** Dovato had ~30 spellings and the picker showed only Texas. The key is the product's
+  words plus form/device tokens (~po, ~inj, ~td, ~vag, ~mdi, ~dpi, ~neb, ~er, ~dr); dosing notes in the
+  " · strength" part never enter it, single letters stay (Humulin N ≠ R), and only HCl/sulfate are
+  stripped (diclofenac sodium ≠ potassium). Merges the data justifies (bare brand, no-form spelling when
+  the product has one form everywhere, branded salt spelling) live in the generated
+  `medication-aliases.json`. A first cut that dropped the strength part merged Ozempic tablets with the
+  pen and estradiol patch with the vaginal insert; `scripts/check-medication-catalog.mjs` (in npm test)
+  now fails on any product × state without a plan card or any entry that mixes two forms.

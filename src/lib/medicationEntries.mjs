@@ -13,43 +13,116 @@ export function medicationEntries(record) {
 }
 
 // One product under its many spellings across plans ("DOVATO (dolutegravir/lamivudine)", "Dolutegravir-
-// lamivudine (Dovato) 50-300 mg", "Dovato® tabs"...). Drops strengths, quantity-limit notes and the
-// words "tablet", "oral", "brand"; keeps every other word, so a brand never merges with its generic,
-// salts and forms stay apart (Triumeq PD is not Triumeq), and combinations keep each molecule.
-// Salts that never tell two products apart here ("dolutegravir sodium"). Salts that do (furoate vs
-// propionate, succinate vs tartrate, hyclate vs monohydrate) stay in the key.
-const KEY_STRIP = new Set(['tablet', 'tablets', 'tab', 'tabs', 'oral', 'brand', 'name', 'mg', 'mcg', 'ml', 'unit', 'units', 'and', 'sodium', 'potassium', 'hcl', 'hydrochloride', 'sulfate', 'inhalation', 'aerosol', 'actuation', 'inhaler', 'inhal', 'aero', 'act', 'generic', 'base'])
-export function productKey(label, aliases) {
-  // A pick's label is "Product · strength"; the strength part repeats device and dosing notes
-  // ("108 (90 base) mcg/actuation inhalation aerosol"), so the product is named by what precedes it.
-  const s = String(label)
-    .split(' · ')[0]
+// lamivudine (Dovato) 50-300 mg", "Dovato® tabs"...). The key is the product's words (brand, molecules,
+// distinguishing salts) plus its form/device as tokens (~po, ~inj, ~td, ~vag, ~mdi, ~dpi, ~neb, ~er...),
+// read from the whole label, so Ozempic tablets ≠ Ozempic pen and Humulin N ≠ Humulin R. Strengths,
+// quantity-limit notes and dosing notes in the " · strength" part never enter it. A brand never merges
+// with its generic. Data-driven merges (a spelling with no form, a branded salt spelling) live in the
+// generated medication-aliases.json (see brandAliases), applied here.
+const FORM = {
+  tablet: '~po', tablets: '~po', tab: '~po', tabs: '~po', capsule: '~po', capsules: '~po', cap: '~po', caps: '~po', caplet: '~po',
+  pen: '~inj', pens: '~inj', injection: '~inj', injectable: '~inj', injector: '~inj', autoinjector: '~inj', syringe: '~inj',
+  vial: '~inj', subcutaneous: '~inj', kwikpen: '~inj', flextouch: '~inj', solostar: '~inj', prefilled: '~inj',
+  infusion: '~iv', intravenous: '~iv', iv: '~iv',
+  patch: '~td', transdermal: '~td',
+  vaginal: '~vag', insert: '~vag', ring: '~vag',
+  nasal: '~nasal',
+  nebulizer: '~neb', nebulized: '~neb', nebulizing: '~neb', respules: '~neb', nebules: '~neb',
+  hfa: '~mdi', mdi: '~mdi', aerosol: '~mdi', aero: '~mdi',
+  powder: '~dpi', diskus: '~dpi', dpi: '~dpi', flexhaler: '~dpi', ellipta: '~dpi', respiclick: '~dpi', handihaler: '~dpi',
+  digihaler: '~dpi', twisthaler: '~dpi', pressair: '~dpi', inhub: '~dpi',
+  respimat: '~smi',
+  er: '~er', xr: '~er', xl: '~er', sr: '~er', cr: '~er', la: '~er', extended: '~er',
+  dr: '~dr', ec: '~dr', delayed: '~dr',
+}
+// Words that are form-like but must stay as written (topical gel ≠ topical solution).
+const KEEP_FORM = new Set(['gel', 'cream', 'ointment', 'lotion', 'foam', 'shampoo', 'solution', 'suspension', 'granules', 'packet', 'packets', 'chewable', 'odt', 'film', 'spray', 'drops', 'sublingual', 'buccal', 'ophthalmic', 'otic', 'topical', 'rectal', 'suppository', 'enema', 'lozenge', 'troche'])
+const KEY_STRIP = new Set(['oral', 'brand', 'name', 'generic', 'and', 'mg', 'mcg', 'ml', 'unit', 'units', 'hcl', 'hydrochloride',
+  'sulfate', 'inhalation', 'inhaler', 'inhal', 'actuation', 'act', 'base', 'release', 'release', 'dose', 'per', 'day', 'daily', 'only'])
+const SALTS = new Set(['sodium', 'potassium'])
+
+function words(text) {
+  return String(text)
     .toLowerCase()
     .replace(/[®™]/g, ' ')
     .replace(/\((?:ql|quantity|limit|max)[^)]*\)/g, ' ')
     .replace(/\d+(?:\.\d+)?\s*(?:mg|mcg|ml|g|%|units?)?(?:\s*\/\s*\d+(?:\.\d+)?\s*(?:mg|mcg|ml|g|%)?)*/g, ' ')
-  const words = s.split(/[^a-z]+/).filter((w) => w.length > 1 && !KEY_STRIP.has(w))
-  // Names made only of initials ("E.E.S. (tablet)") leave no word; fall back to the letters themselves
-  // so the product still has a key of its own.
-  const key = [...new Set(words)].sort().join(' ') || s.replace(/[^a-z]+/g, '')
+    .split(/[^a-z]+/)
+    .filter(Boolean)
+}
+export function rawProductKey(label) {
+  const [head, ...tail] = String(label).split(' · ')
+  const out = new Set()
+  for (const w of words(head)) {
+    if (FORM[w]) out.add(FORM[w])
+    else if (!KEY_STRIP.has(w)) out.add(w)
+  }
+  // the strength part contributes only its form/device words, never its dosing notes
+  for (const w of words(tail.join(' '))) {
+    if (FORM[w]) out.add(FORM[w])
+    else if (KEEP_FORM.has(w)) out.add(w)
+  }
+  return [...out].sort().join(' ')
+}
+export function productKey(label, aliases) {
+  const key = rawProductKey(label)
   return (aliases && aliases[key]) || key
 }
+const formOf = (key) => key.split(' ').filter((w) => w.startsWith('~')).join(' ')
+const baseOf = (key) => key.split(' ').filter((w) => !w.startsWith('~')).join(' ')
 
-// A bare brand ("Dovato® tabs") maps to the product the plans name with that brand
-// (preferredAgent.brand + inn), when every such pick agrees. Built at split time.
-export function brandAliases(records) {
-  const seen = new Map()
+// Merges the data can justify, built at split time from every label:
+// 1. a bare brand ("Dovato® tabs") → the product the plans name with that brand (preferredAgent brand + inn);
+// 2. a branded spelling with sodium/potassium → the same brand without the salt (one brand is one
+//    product; generic diclofenac sodium vs potassium stay apart);
+// 3. a spelling with no form → the product's only form, when every listing of that product across all
+//    plans has the same form (Dovato: tablets only). Ozempic has tablets and pens, so it stays apart.
+export function brandAliases(records, labels) {
+  const brandWords = new Set()
+  const bareToFull = new Map()
   for (const r of records) {
     const a = r.preferredAgent
     if (!a?.brand || a.brand === a.inn) continue
-    const bare = productKey(a.brand)
+    const bare = rawProductKey(a.brand)
+    for (const w of bare.split(' ')) if (w && !w.startsWith('~')) brandWords.add(w)
     if (!bare || bare.includes(' ')) continue
-    const full = productKey(`${a.brand} (${a.inn})`)
+    const full = rawProductKey(`${a.brand} (${a.inn})`)
     if (full === bare) continue
-    if (!seen.has(bare)) seen.set(bare, new Set())
-    seen.get(bare).add(full)
+    if (!bareToFull.has(bare)) bareToFull.set(bare, new Set())
+    bareToFull.get(bare).add(full)
   }
   const out = {}
-  for (const [bare, fulls] of [...seen].sort()) if (fulls.size === 1) out[bare] = [...fulls][0]
-  return out
+  const resolve = (k) => { let seen = 0; while (out[k] && seen++ < 5) k = out[k]; return k }
+  for (const [bare, fulls] of bareToFull) if (fulls.size === 1) out[bare] = [...fulls][0]
+  const keys = new Set([...(labels ?? [])].map(rawProductKey))
+  // a bare brand with a form ("Dovato® tabs" → "dovato ~po") joins the brand's product, keeping its form
+  for (const k of keys) {
+    const b = baseOf(k)
+    const f = formOf(k)
+    if (!f || b.includes(' ') || bareToFull.get(b)?.size !== 1) continue
+    const full = [...bareToFull.get(b)][0]
+    if (formOf(full) && formOf(full) !== f) continue // "Adderall XR" is not the IR Adderall pick
+    out[k] = [...new Set([...full.split(' '), ...f.split(' ')])].sort().join(' ')
+  }
+  for (const k of keys) {
+    const ws = k.split(' ')
+    if (ws.some((w) => SALTS.has(w)) && ws.some((w) => brandWords.has(w))) {
+      const without = ws.filter((w) => !SALTS.has(w)).join(' ')
+      if (without !== k) out[k] = without
+    }
+  }
+  const formsByBase = new Map()
+  for (const k of keys) {
+    const r = resolve(out[k] ?? k)
+    const b = baseOf(r)
+    if (!formsByBase.has(b)) formsByBase.set(b, new Set())
+    formsByBase.get(b).add(formOf(r))
+  }
+  for (const [b, forms] of formsByBase) {
+    const real = [...forms].filter(Boolean)
+    if (forms.has('') && real.length === 1) out[b] = `${b} ${real[0]}`.split(' ').sort().join(' ')
+  }
+  for (const k of Object.keys(out)) out[k] = resolve(out[k])
+  for (const k of Object.keys(out)) if (out[k] === k) delete out[k]
+  return Object.fromEntries(Object.entries(out).sort())
 }
