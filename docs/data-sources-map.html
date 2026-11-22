@@ -1,0 +1,316 @@
+<title>FirstPassRx Source Map</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,600&display=swap">
+<style>
+/* Layout: laws column on the left, four payer lanes of source cards, a state tile grid below. */
+:root {
+  --bg: #f6f7f5; --panel: #ffffff; --ink: #1d2421; --muted: #5d6a64; --line: #d6ddd9;
+  --accent: #1f6f5c; --accent-soft: #dcefe8; --warn: #9a5b00; --warn-soft: #fbecd2; --bad: #a33a2b; --bad-soft: #f7dcd7;
+  --tile-covered: #1f6f5c; --tile-single: #7fb8a6; --tile-partial: #e3c27d; --tile-permco: #d99280; --tile-unknown: #cfd5d2;
+  --display: 'Fraunces', Georgia, serif; --body: 'IBM Plex Sans', system-ui, sans-serif; --mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121715; --panel: #1a211e; --ink: #e4ebe7; --muted: #9aa8a1; --line: #2e3833;
+  --accent: #5cc3a5; --accent-soft: #1d3a31; --warn: #e3b25e; --warn-soft: #3a2d17; --bad: #f08b79; --bad-soft: #3c211c;
+  --tile-covered: #4fb394; --tile-single: #2f6d5c; --tile-partial: #8a7032; --tile-permco: #8a4c3f; --tile-unknown: #39433f; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121715; --panel: #1a211e; --ink: #e4ebe7; --muted: #9aa8a1; --line: #2e3833;
+  --accent: #5cc3a5; --accent-soft: #1d3a31; --warn: #e3b25e; --warn-soft: #3a2d17; --bad: #f08b79; --bad-soft: #3c211c;
+  --tile-covered: #4fb394; --tile-single: #2f6d5c; --tile-partial: #8a7032; --tile-permco: #8a4c3f; --tile-unknown: #39433f; color-scheme: dark }
+body { background: var(--bg); color: var(--ink); font: 15px/1.5 var(--body); }
+.wrap { max-width: 1240px; margin: 0 auto; padding-block: 32px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 36px; }
+h1 { font: 600 2rem/1.15 var(--display); margin: 0; text-wrap: balance; }
+h2 { font: 600 1.25rem/1.2 var(--display); margin: 0 0 12px; }
+h3 { font: 600 .78rem/1 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+h4 { font: 600 .95rem/1.3 var(--body); margin: 0; }
+p { margin: 0; }
+.lede { max-width: 68ch; color: var(--muted); display: grid; gap: 8px; }
+.grid { display: grid; grid-template-columns: minmax(250px, 1fr) 3fr; gap: 24px; align-items: start; }
+@media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+.laws { display: grid; gap: 10px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); }
+@media (max-width: 860px) { .laws { position: static; } }
+.law { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; display: grid; gap: 4px; min-width: 0; }
+.law.on { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+.law .cite { font: .75rem/1.35 var(--mono); color: var(--muted); overflow-wrap: anywhere; }
+.law .eff { font-size: .8rem; }
+.law .drugs-no { color: var(--bad); font-size: .78rem; font-weight: 500; }
+.lanes { display: grid; gap: 22px; min-width: 0; }
+.lane-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.src { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 12px; display: grid; gap: 7px; align-content: start; min-width: 0; cursor: default; }
+.src:hover, .src:focus-within { border-color: var(--accent); }
+.src header { display: flex; justify-content: space-between; gap: 8px; align-items: start; }
+.pub, .note { font-size: .82rem; color: var(--muted); }
+.gov { font-size: .8rem; } .gov a { color: var(--accent); }
+.url { font: .72rem/1.3 var(--mono); color: var(--muted); overflow-wrap: anywhere; }
+.chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.chip, .pill { font: 500 .7rem/1 var(--mono); padding: 4px 6px; border-radius: 3px; background: var(--bg); border: 1px solid var(--line); white-space: nowrap; }
+.chip.mr, .pill.used { background: var(--accent-soft); border-color: transparent; color: var(--accent); }
+.chip.nmr { background: var(--warn-soft); border-color: transparent; color: var(--warn); }
+.pill.new { color: var(--muted); }
+.acc-browser-only, .acc-blocked-to-bots, .acc-auth { background: var(--bad-soft) !important; color: var(--bad); border-color: transparent !important; }
+.hosts { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 6px 18px; font: .8rem/1.4 var(--mono); }
+.hosts div { display: flex; justify-content: space-between; gap: 8px; border-bottom: 1px dashed var(--line); padding-block: 3px; min-width: 0; }
+.hosts span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.hosts span:last-child { font-variant-numeric: tabular-nums; color: var(--muted); }
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 6px; }
+.tile { border-radius: 4px; padding: 8px 6px; font: 600 .85rem/1 var(--mono); color: #fff; display: grid; gap: 4px; min-height: 48px; }
+.tile small { font: 400 .62rem/1.2 var(--body); opacity: .92; }
+.t-covered { background: var(--tile-covered); } .t-single { background: var(--tile-single); } .t-partial { background: var(--tile-partial); color: var(--ink); }
+.t-permco { background: var(--tile-permco); } .t-unknown { background: var(--tile-unknown); color: var(--ink); }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: .8rem; color: var(--muted); margin-bottom: 10px; }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; vertical-align: -1px; margin-right: 5px; }
+.flow { overflow-x: auto; }
+.flow ol { display: flex; gap: 8px; list-style: none; padding: 0; margin: 0; min-width: 760px; counter-reset: s; }
+.flow li { flex: 1; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 10px; font-size: .82rem; display: grid; gap: 4px; align-content: start; }
+.flow li b { font-size: .85rem; } .flow code { font: .72rem/1.35 var(--mono); color: var(--accent); overflow-wrap: anywhere; }
+a:focus-visible, .src:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) { .law, .src { transition: border-color .15s, box-shadow .15s; } }
+</style>
+<div class="wrap">
+  <header class="lede">
+    <h1>Where formulary data lives, and the rules that make it public</h1>
+    <p>Each card is one kind of source FirstPassRx reads or could read. The left column lists the federal rules, case law and state laws behind them. Hover a source to light up the rules that require it. Built 2026-11-22 from <code>docs/research/sources-graph.json</code> (researched 2026-11-22, cited in <code>docs/research/data-access-and-law-2026-11-22.md</code>) and <code>src/data/formulary.json</code>.</p>
+  </header>
+
+  <section class="flow" aria-label="How a cell gets built">
+    <h3>How a coverage cell is built today</h3>
+    <ol>
+      <li><b>Find the document</b>Payer roster per state, state PDL first<code>docs/research/states-roster-*.json</code></li>
+      <li><b>Archive the bytes</b>sha256 + fetch tier per host<code>npm run archive-sources</code></li>
+      <li><b>Extract rows</b>Layouts: optum, mgb, bcbs, mhdl, pdlcols, tiered<code>scripts/source_rows.py</code></li>
+      <li><b>Gather and check</b>Haiku reads one document for every class; Sonnet checks<code>.claude/workflows/formulary-gather.js</code></li>
+      <li><b>Merge and audit</b>Every claim against its source row<code>merge-gather.mjs · audit-cells.mjs</code></li>
+      <li><b>Price and sig</b>Cost Plus API, GoodRx in Chrome, label table<code>costplus.mjs · apply-label-sigs.mjs</code></li>
+    </ol>
+  </section>
+
+  <div class="grid">
+    <aside class="laws" aria-label="Laws and rules">
+      <h3>Laws and rules</h3>
+      <div class="law" id="law-cms-9115" data-law="cms-9115"><h4>CMS Interoperability and Patient Access final rule (CMS-9115-F)</h4><span class="cite">85 FR 25510 (2020-05-01); 42 CFR 422.119, 431.60, 457.730, 45 CFR 156.221</span><span class="eff">2020-06-30; API compliance 2021-01-01; enforcement 2021-07-01</span></div><div class="law" id="law-medicaid-431-60" data-law="medicaid-431-60"><h4>Medicaid Patient Access API: preferred drug list information</h4><span class="cite">42 CFR 431.60(b)(4)</span><span class="eff">2021-01-01 (per 9115-F)</span></div><div class="law" id="law-cms-0057" data-law="cms-0057"><h4>CMS Interoperability and Prior Authorization final rule (CMS-0057-F)</h4><span class="cite">89 FR 8758 (2024-02-08); 42 CFR 422.119, 431.80 et al.</span><span class="eff">2026-01-01 (ops), 2026-03-31 (first metrics), 2027-01-01 (APIs)</span><span class="drugs-no">Does not cover drugs</span></div><div class="law" id="law-cms-0062p" data-law="cms-0062p"><h4>CMS Interoperability Standards and Prior Authorization for Drugs proposed rule (CMS-0062-P)</h4><span class="cite">91 FR 19890 (2026-04-14)</span><span class="eff">Proposed compliance 2027-10-01; no final rule found</span></div><div class="law" id="law-aca-156-122" data-law="aca-156-122"><h4>QHP prescription drug benefit and formulary publication</h4><span class="cite">45 CFR 156.122(c), (d)</span><span class="eff">Ongoing; JSON monthly update per CMS MR-PUF guidance</span></div><div class="law" id="law-ffe-mr" data-law="ffe-mr"><h4>CMS machine-readable QHP provider/formulary guidance</h4><span class="cite">CMS-10558 information collection; CMSgov/QHP-provider-formulary-APIs</span><span class="eff">Since PY2016</span></div><div class="law" id="law-partd-423-128" data-law="partd-423-128"><h4>Part D plan disclosure and formulary website requirements</h4><span class="cite">42 CFR 423.128</span><span class="eff">Ongoing</span></div><div class="law" id="law-medicaid-438-10" data-law="medicaid-438-10"><h4>Medicaid managed care formulary information</h4><span class="cite">42 CFR 438.10(i)</span><span class="eff">Ongoing</span></div><div class="law" id="law-ssa-1927" data-law="ssa-1927"><h4>Medicaid drug rebate program: PA, P&amp;T, DUR</h4><span class="cite">SSA 1927(d); 42 USC 1396r-8(d)</span><span class="eff">Since 1990</span></div><div class="law" id="law-tic" data-law="tic"><h4>Transparency in Coverage machine-readable files</h4><span class="cite">85 FR 72158 (2020-11-12); 45 CFR 147.212 (citation unconfirmed); proposed 90 FR (2025-12-23)</span><span class="eff">Medical files 2022-07-01; Rx file deferred</span><span class="drugs-no">Does not cover drugs</span></div><div class="law" id="law-state-step-therapy" data-law="state-step-therapy"><h4>State step therapy reform laws</h4><span class="cite">38 states + DC per ABA (2026); e.g. Illinois ban eff. 2026-01-01</span><span class="eff">Varies by state</span></div><div class="law" id="law-state-gold-card" data-law="state-gold-card"><h4>State PA exemption (gold-carding)</h4><span class="cite">Texas HB 3459 (2021), HB 3812 (2025)</span><span class="eff">2021 law; rules effective 2022-10-01</span><span class="drugs-no">Does not cover drugs</span></div><div class="law" id="law-state-formulary-notice" data-law="state-formulary-notice"><h4>State formulary change notice laws</h4><span class="cite">215 ILCS 134/25 (IL); Maine PL ch. 429; Minn. Stat. 62Q.83; KY 806 KAR (excerpts only)</span><span class="eff">Varies</span></div><div class="law" id="law-state-epa" data-law="state-epa"><h4>State electronic PA / NCPDP SCRIPT mandates</h4><span class="cite">Md. (2026-07-01 deadline); Minn. Stat. 62J.497; W.Va. 2023; Alaska 2025</span><span class="eff">Varies</span></div><div class="law" id="law-feist" data-law="feist"><h4>Feist v. Rural Telephone (compilation copyright)</h4><span class="cite">499 U.S. 340 (1991)</span><span class="eff">1991</span></div>
+    </aside>
+    <div class="lanes">
+      <section><h2>Medicaid</h2><div class="lane-items">
+  <article class="src" data-id="fn-fbo" data-laws="aca-156-122 medicaid-438-10">
+    <header><h4>FormularyNavigator FBO / jsonFiles exports</h4><span class="pill used">used today</span></header>
+    <p class="pub">Formulary Navigator (payer-branded)</p>
+    <div class="chips"><span class="chip fmt">JSON</span><span class="chip acc acc-public">public</span><span class="chip mr">machine-readable</span></div>
+    <p class="gov">Required by: <a href="#law-aca-156-122">QHP prescription drug benefit and formulary publication</a>; <a href="#law-medicaid-438-10">Medicaid managed care formulary information</a></p>
+    <p class="note">Already used. curl with browser UA works; WebFetch blocked. jsonFiles/publish/&lt;n&gt;/&lt;m&gt;/drugs.json also hosts QHP files (verified).</p>
+    <a class="url" href="https://fm.formularynavigator.com/FBO/" rel="noopener">fm.formularynavigator.com/FBO/</a>
+  </article>
+  <article class="src" data-id="state-pdl-pdf" data-laws="ssa-1927 medicaid-438-10 medicaid-431-60">
+    <header><h4>State Medicaid PDL PDFs (TX VDP, Medi-Cal Rx CDL, eMedNY, IL HFS, others)</h4><span class="pill used">used today</span></header>
+    <p class="pub">State Medicaid agencies</p>
+    <div class="chips"><span class="chip fmt">PDF</span><span class="chip acc acc-public">public</span><span class="chip nmr">needs parsing</span></div>
+    <p class="gov">Required by: <a href="#law-ssa-1927">Medicaid drug rebate program: PA, P&amp;T, DUR</a>; <a href="#law-medicaid-438-10">Medicaid managed care formulary information</a>; <a href="#law-medicaid-431-60">Medicaid Patient Access API: preferred drug list information</a></p>
+    <p class="note">Already used. txvendordrug.com blocks bots (browser tool needed). No required machine-readable format found. Direct PDF URLs rot.</p>
+    <a class="url" href="https://txvendordrug.com/" rel="noopener">txvendordrug.com/</a>
+  </article>
+  <article class="src" data-id="masshealth-mhdl" data-laws="ssa-1927">
+    <header><h4>MassHealth Drug List (MHDL) HTML tables and PA forms</h4><span class="pill used">used today</span></header>
+    <p class="pub">MassHealth / Conduent</p>
+    <div class="chips"><span class="chip fmt">HTML</span><span class="chip acc acc-public">public</span><span class="chip nmr">needs parsing</span></div>
+    <p class="gov">Required by: <a href="#law-ssa-1927">Medicaid drug rebate program: PA, P&amp;T, DUR</a></p>
+    <p class="note">Already used. HTML tables per class; plain curl works.</p>
+    <a class="url" href="https://mhdl.pharmacy.services.conduent.com/MHDL/" rel="noopener">mhdl.pharmacy.services.conduent.com/MHDL/</a>
+  </article>
+  <article class="src" data-id="state-pdl-fhir" data-laws="medicaid-431-60 cms-9115">
+    <header><h4>State Medicaid FFS preferred drug list via Patient Access API</h4><span class="pill new">not used yet</span></header>
+    <p class="pub">State Medicaid agencies</p>
+    <div class="chips"><span class="chip fmt">FHIR</span><span class="chip acc acc-auth">auth</span><span class="chip mr">machine-readable</span></div>
+    <p class="gov">Required by: <a href="#law-medicaid-431-60">Medicaid Patient Access API: preferred drug list information</a>; <a href="#law-cms-9115">CMS Interoperability and Patient Access final rule (CMS-9115-F)</a></p>
+    <p class="note">Member-authenticated; no public access confirmed. Unconfirmed endpoints.</p>
+    <a class="url" href="https://www.ecfr.gov/current/title-42/section-431.60" rel="noopener">www.ecfr.gov/current/title-42/section-431.60</a>
+  </article>
+  <article class="src" data-id="mco-formulary" data-laws="medicaid-438-10">
+    <header><h4>Medicaid MCO formularies (PDF/web)</h4><span class="pill used">used today</span></header>
+    <p class="pub">Medicaid MCOs</p>
+    <div class="chips"><span class="chip fmt">PDF</span><span class="chip acc acc-public">public</span><span class="chip nmr">needs parsing</span></div>
+    <p class="gov">Required by: <a href="#law-medicaid-438-10">Medicaid managed care formulary information</a></p>
+    <p class="note">438.10(i)(3) calls for a machine-readable file in a Secretary-specified format; none found.</p>
+    <a class="url" href="https://www.ecfr.gov/current/title-42/section-438.10" rel="noopener">www.ecfr.gov/current/title-42/section-438.10</a>
+  </article>
+  <article class="src" data-id="pa-criteria" data-laws="ssa-1927">
+    <header><h4>Payer and Medicaid PA criteria PDFs</h4><span class="pill used">used today</span></header>
+    <p class="pub">Payers / state agencies</p>
+    <div class="chips"><span class="chip fmt">PDF</span><span class="chip acc acc-public">public</span><span class="chip nmr">needs parsing</span></div>
+    <p class="gov">Required by: <a href="#law-ssa-1927">Medicaid drug rebate program: PA, P&amp;T, DUR</a></p>
+    <p class="note">Already used. 0057-F excludes drugs from PA APIs; 0062-P would add them (proposed).</p>
+    <a class="url" href="https://www.cms.gov/priorities/burden-reduction/overview/interoperability/policies-regulations/cms-interoperability-prior-authorization-final-rule-cms-0057-f" rel="noopener">www.cms.gov/priorities/burden-reduction/overview/interoperability/poli</a>
+  </article>
+  <article class="src" data-id="pa-metrics" data-laws="cms-0057">
+    <header><h4>Public prior authorization metrics (annual)</h4><span class="pill new">not used yet</span></header>
+    <p class="pub">MA, Medicaid/CHIP, QHP payers</p>
+    <div class="chips"><span class="chip fmt">HTML</span><span class="chip acc acc-public">public</span><span class="chip nmr">needs parsing</span></div>
+    <p class="gov">Required by: <a href="#law-cms-0057">CMS Interoperability and Prior Authorization final rule (CMS-0057-F)</a></p>
+    <p class="note">First due 2026-03-31. Excludes drugs. Not in FirstPassRx.</p>
+    <a class="url" href="https://www.cms.gov/newsroom/fact-sheets/cms-interoperability-and-prior-authorization-final-rule-cms-0057-f" rel="noopener">www.cms.gov/newsroom/fact-sheets/cms-interoperability-and-prior-author</a>
+  </article>
+  <article class="src" data-id="pdex-formulary" data-laws="cms-9115">
+    <header><h4>Da Vinci PDex US Drug Formulary FHIR servers</h4><span class="pill new">not used yet</span></header>
+    <p class="pub">Payers (Optum, BCBSSC, others)</p>
+    <div class="chips"><span class="chip fmt">FHIR</span><span class="chip acc acc-public">public</span><span class="chip mr">machine-readable</span></div>
+    <p class="gov">Required by: <a href="#law-cms-9115">CMS Interoperability and Patient Access final rule (CMS-9115-F)</a></p>
+    <p class="note">Anonymous tier allowed by IG. Optum needs payer ID; BCBSSC needs client ID; no master directory. Big-carrier endpoints unconfirmed.</p>
+    <a class="url" href="https://www.hl7.org/fhir/us/davinci-drug-formulary/" rel="noopener">www.hl7.org/fhir/us/davinci-drug-formulary/</a>
+  </article>
+  <article class="src" data-id="crd-pas" data-laws="cms-0057 cms-0062p">
+    <header><h4>Da Vinci CRD/DTR/PAS Prior Authorization APIs</h4><span class="pill new">not used yet</span></header>
+    <p class="pub">MA, Medicaid, QHP payers</p>
+    <div class="chips"><span class="chip fmt">FHIR</span><span class="chip acc acc-auth">auth</span><span class="chip mr">machine-readable</span></div>
+    <p class="gov">Required by: <a href="#law-cms-0057">CMS Interoperability and Prior Authorization final rule (CMS-0057-F)</a>; <a href="#law-cms-0062p">CMS Interoperability Standards and Prior Authorization for Drugs proposed rule (CMS-0062-P)</a></p>
+    <p class="note">Non-drug until a drug rule is final. Provider-facing, authenticated.</p>
+    <a class="url" href="https://www.cms.gov/priorities/key-initiatives/burden-reduction/implementation-guides-standards/application-programming-interfaces-apis-and-relevant-standards-and-implementation-guides-igs" rel="noopener">www.cms.gov/priorities/key-initiatives/burden-reduction/implementation</a>
+  </article>
+  <article class="src" data-id="nadac" data-laws="">
+    <header><h4>NADAC weekly acquisition cost</h4><span class="pill new">not used yet</span></header>
+    <p class="pub">CMS Medicaid</p>
+    <div class="chips"><span class="chip fmt">API</span><span class="chip acc acc-public">public</span><span class="chip mr">machine-readable</span></div>
+    <p class="gov">No publication mandate (voluntary or commercial)</p>
+    <p class="note">Verified live (2026 dataset). One dataset ID per year. Acquisition cost, not patient cash price.</p>
+    <a class="url" href="https://data.medicaid.gov/api/1/datastore/query/fbb83258-11c7-47f5-8b18-5f8e79f7e704/0" rel="noopener">data.medicaid.gov/api/1/datastore/query/fbb83258-11c7-47f5-8b18-5f8e79</a>
+  </article>
+  <article class="src" data-id="sdud" data-laws="ssa-1927">
+    <header><h4>State Drug Utilization Data</h4><span class="pill new">not used yet</span></header>
+    <p class="pub">CMS Medicaid</p>
+    <div class="chips"><span class="chip fmt">API</span><span class="chip acc acc-public">public</span><span class="chip mr">machine-readable</span></div>
+    <p class="gov">Required by: <a href="#law-ssa-1927">Medicaid drug rebate program: PA, P&amp;T, DUR</a></p>
+    <p class="note">2025 dataset id from metastore; query shape assumed same as NADAC (unconfirmed).</p>
+    <a class="url" href="https://data.medicaid.gov/api/1/datastore/query/158a1baa-5506-400a-8ec3-97756f0b0536/0" rel="noopener">data.medicaid.gov/api/1/datastore/query/158a1baa-5506-400a-8ec3-97756f</a>
+  </article></div></section><section><h2>Medicare Part D</h2><div class="lane-items">
+  <article class="src" data-id="partd-puf" data-laws="partd-423-128">
+    <header><h4>CMS Part D formulary, pharmacy network, pricing PUF</h4><span class="pill new">not used yet</span></header>
+    <p class="pub">CMS</p>
+    <div class="chips"><span class="chip fmt">CSV</span><span class="chip acc acc-public">public</span><span class="chip mr">machine-readable</span></div>
+    <p class="gov">Required by: <a href="#law-partd-423-128">Part D plan disclosure and formulary website requirements</a></p>
+    <p class="note">Monthly pipe-delimited files; tier/PA/step flags. Excludes PACE, employer, non-Part D plans. Not yet used; could replace Humana PDP PDF scraping.</p>
+    <a class="url" href="https://www.cms.gov/research-statistics-data-and-systems/files-for-order/nonidentifiabledatafiles/prescriptiondrugplanformularypharmacynetworkandpricinginformationfiles" rel="noopener">www.cms.gov/research-statistics-data-and-systems/files-for-order/nonid</a>
+  </article>
+  <article class="src" data-id="partd-prescribers" data-laws="">
+    <header><h4>Medicare Part D Prescribers by Geography and Drug</h4><span class="pill used">used today</span></header>
+    <p class="pub">CMS data.cms.gov</p>
+    <div class="chips"><span class="chip fmt">API</span><span class="chip acc acc-public">public</span><span class="chip mr">machine-readable</span></div>
+    <p class="gov">No publication mandate (voluntary or commercial)</p>
+    <p class="note">Yearly utilization; per-year dataset IDs; API filter syntax unconfirmed.</p>
+    <a class="url" href="https://catalog.data.gov/dataset/medicare-part-d-prescribers-by-geography-and-drug" rel="noopener">catalog.data.gov/dataset/medicare-part-d-prescribers-by-geography-and-</a>
+  </article>
+  <article class="src" data-id="mpf" data-laws="partd-423-128">
+    <header><h4>Medicare Plan Finder</h4><span class="pill new">not used yet</span></header>
+    <p class="pub">CMS</p>
+    <div class="chips"><span class="chip fmt">HTML</span><span class="chip acc acc-browser-only">browser-only</span><span class="chip nmr">needs parsing</span></div>
+    <p class="gov">Required by: <a href="#law-partd-423-128">Part D plan disclosure and formulary website requirements</a></p>
+    <p class="note">Source behind PUF; not a stable data feed. Unconfirmed access terms.</p>
+    <a class="url" href="https://www.medicare.gov/plan-compare/" rel="noopener">www.medicare.gov/plan-compare/</a>
+  </article>
+  <article class="src" data-id="humana-pdp" data-laws="partd-423-128">
+    <header><h4>Humana Part D PDP formulary PDFs</h4><span class="pill used">used today</span></header>
+    <p class="pub">Humana</p>
+    <div class="chips"><span class="chip fmt">PDF</span><span class="chip acc acc-public">public</span><span class="chip nmr">needs parsing</span></div>
+    <p class="gov">Required by: <a href="#law-partd-423-128">Part D plan disclosure and formulary website requirements</a></p>
+    <p class="note">Already used. Part D PUF is a machine-readable alternative.</p>
+    <a class="url" href="https://www.humana.com/" rel="noopener">www.humana.com/</a>
+  </article></div></section><section><h2>Commercial and Marketplace</h2><div class="lane-items">
+  <article class="src" data-id="qhp-json" data-laws="aca-156-122 ffe-mr">
+    <header><h4>QHP machine-readable formulary (index/plans/drugs.json)</h4><span class="pill new">not used yet</span></header>
+    <p class="pub">Marketplace issuers via CMS</p>
+    <div class="chips"><span class="chip fmt">JSON</span><span class="chip acc acc-public">public</span><span class="chip mr">machine-readable</span></div>
+    <p class="gov">Required by: <a href="#law-aca-156-122">QHP prescription drug benefit and formulary publication</a>; <a href="#law-ffe-mr">CMS machine-readable QHP provider/formulary guidance</a></p>
+    <p class="note">MR-PUF lists 108 issuer index URLs for PY2026 (verified 2026-11-22). Per-drug RxNorm id, tier, PA, step, quantity-limit. Some hosts (UHC) 403 curl. Not yet used by FirstPassRx.</p>
+    <a class="url" href="https://data.healthcare.gov/datafile/py2026/machine_readable_PUF.xlsx" rel="noopener">data.healthcare.gov/datafile/py2026/machine_readable_PUF.xlsx</a>
+  </article>
+  <article class="src" data-id="qhp-schema" data-laws="aca-156-122">
+    <header><h4>QHP provider/formulary API schema</h4><span class="pill new">not used yet</span></header>
+    <p class="pub">CMS (GitHub)</p>
+    <div class="chips"><span class="chip fmt">JSON</span><span class="chip acc acc-public">public</span><span class="chip mr">machine-readable</span></div>
+    <p class="gov">Required by: <a href="#law-aca-156-122">QHP prescription drug benefit and formulary publication</a></p>
+    <p class="note">Schema repo, not data.</p>
+    <a class="url" href="https://github.com/CMSgov/QHP-provider-formulary-APIs" rel="noopener">github.com/CMSgov/QHP-provider-formulary-APIs</a>
+  </article>
+  <article class="src" data-id="commercial-pdf" data-laws="aca-156-122">
+    <header><h4>Commercial formulary PDFs (Anthem, BCBS plans, UHC national PDL, Kaiser)</h4><span class="pill used">used today</span></header>
+    <p class="pub">Commercial insurers</p>
+    <div class="chips"><span class="chip fmt">PDF</span><span class="chip acc acc-public">public</span><span class="chip nmr">needs parsing</span></div>
+    <p class="gov">Required by: <a href="#law-aca-156-122">QHP prescription drug benefit and formulary publication</a></p>
+    <p class="note">Already used. UHC provider site blocks WebFetch; curl with browser UA works.</p>
+    <a class="url" href="https://www.uhcprovider.com/" rel="noopener">www.uhcprovider.com/</a>
+  </article>
+  <article class="src" data-id="tic-mrf" data-laws="tic">
+    <header><h4>Transparency in Coverage machine-readable files</h4><span class="pill new">not used yet</span></header>
+    <p class="pub">Group health plans and issuers</p>
+    <div class="chips"><span class="chip fmt">JSON</span><span class="chip acc acc-public">public</span><span class="chip mr">machine-readable</span></div>
+    <p class="gov">Required by: <a href="#law-tic">Transparency in Coverage machine-readable files</a></p>
+    <p class="note">In-network and allowed-amount files only; Rx file not implemented.</p>
+    <a class="url" href="https://www.cms.gov/newsroom/fact-sheets/transparency-coverage-proposed-rule-cms-9882-p" rel="noopener">www.cms.gov/newsroom/fact-sheets/transparency-coverage-proposed-rule-c</a>
+  </article></div></section><section><h2>Prices and drug reference</h2><div class="lane-items">
+  <article class="src" data-id="costplus" data-laws="">
+    <header><h4>Cost Plus Drugs price list API</h4><span class="pill used">used today</span></header>
+    <p class="pub">Mark Cuban Cost Plus Drug Company</p>
+    <div class="chips"><span class="chip fmt">API</span><span class="chip acc acc-public">public</span><span class="chip mr">machine-readable</span></div>
+    <p class="gov">No publication mandate (voluntary or commercial)</p>
+    <p class="note">Already used. GET works (HEAD 405). Website behind challenge; ToS page 403s; API terms not found.</p>
+    <a class="url" href="https://api.costplusdrugs.com/pricelist/cpd" rel="noopener">api.costplusdrugs.com/pricelist/cpd</a>
+  </article>
+  <article class="src" data-id="goodrx" data-laws="">
+    <header><h4>GoodRx price pages</h4><span class="pill used">used today</span></header>
+    <p class="pub">GoodRx</p>
+    <div class="chips"><span class="chip fmt">HTML</span><span class="chip acc acc-browser-only">browser-only</span><span class="chip nmr">needs parsing</span></div>
+    <p class="gov">No publication mandate (voluntary or commercial)</p>
+    <p class="note">Already used. 403 to non-browser clients. ToS unread (403). Paid API terms bar storing data.</p>
+    <a class="url" href="https://www.goodrx.com/" rel="noopener">www.goodrx.com/</a>
+  </article>
+  <article class="src" data-id="rxnorm" data-laws="">
+    <header><h4>RxNorm / RxNav API</h4><span class="pill new">not used yet</span></header>
+    <p class="pub">NLM</p>
+    <div class="chips"><span class="chip fmt">API</span><span class="chip acc acc-public">public</span><span class="chip mr">machine-readable</span></div>
+    <p class="gov">No publication mandate (voluntary or commercial)</p>
+    <p class="note">Verified live. 20 req/s/IP; attribution. RxCUI joins QHP drugs.json to other sources.</p>
+    <a class="url" href="https://rxnav.nlm.nih.gov/RxNormAPIs.html" rel="noopener">rxnav.nlm.nih.gov/RxNormAPIs.html</a>
+  </article>
+  <article class="src" data-id="dailymed" data-laws="">
+    <header><h4>DailyMed web services and SPL bulk</h4><span class="pill new">not used yet</span></header>
+    <p class="pub">NLM</p>
+    <div class="chips"><span class="chip fmt">API</span><span class="chip acc acc-public">public</span><span class="chip mr">machine-readable</span></div>
+    <p class="gov">No publication mandate (voluntary or commercial)</p>
+    <p class="note">Verified live. GET only, no key.</p>
+    <a class="url" href="https://dailymed.nlm.nih.gov/dailymed/app-support-web-services.cfm" rel="noopener">dailymed.nlm.nih.gov/dailymed/app-support-web-services.cfm</a>
+  </article>
+  <article class="src" data-id="openfda" data-laws="">
+    <header><h4>openFDA drug APIs (NDC, labels)</h4><span class="pill new">not used yet</span></header>
+    <p class="pub">FDA</p>
+    <div class="chips"><span class="chip fmt">API</span><span class="chip acc acc-public">public</span><span class="chip mr">machine-readable</span></div>
+    <p class="gov">No publication mandate (voluntary or commercial)</p>
+    <p class="note">Verified live. Data generally unrestricted.</p>
+    <a class="url" href="https://open.fda.gov/terms/" rel="noopener">open.fda.gov/terms/</a>
+  </article>
+  <article class="src" data-id="orange-ndc" data-laws="">
+    <header><h4>FDA Orange Book and NDC Directory bulk files</h4><span class="pill new">not used yet</span></header>
+    <p class="pub">FDA</p>
+    <div class="chips"><span class="chip fmt">CSV</span><span class="chip acc acc-public">public</span><span class="chip mr">machine-readable</span></div>
+    <p class="gov">No publication mandate (voluntary or commercial)</p>
+    <p class="note">Not read this pass: terms/format unconfirmed.</p>
+    <a class="url" href="https://www.fda.gov/drugs/drug-approvals-and-databases/national-drug-code-directory" rel="noopener">www.fda.gov/drugs/drug-approvals-and-databases/national-drug-code-dire</a>
+  </article></div></section>
+    </div>
+  </div>
+
+  <section>
+    <h2>Hosts FirstPassRx cites most</h2>
+    <div class="hosts"><div><span>uhcprovider.com</span><span>751</span></div><div><span>assets.humana.com</span><span>411</span></div><div><span>fm.formularynavigator.com</span><span>405</span></div><div><span>client.formularynavigator.com</span><span>138</span></div><div><span>mhdl.pharmacy.services.conduent.com</span><span>133</span></div><div><span>healthy.kaiserpermanente.org</span><span>112</span></div><div><span>myprime.com</span><span>110</span></div><div><span>contenthub-aem.optumrx.com</span><span>102</span></div><div><span>dam.assets.ohio.gov</span><span>79</span></div><div><span>mi.primetherapeutics.com</span><span>75</span></div><div><span>medicaid.alabama.gov</span><span>74</span></div><div><span>dch.georgia.gov</span><span>62</span></div><div><span>newyork.fhsc.com</span><span>61</span></div><div><span>kyportal.medimpact.com</span><span>60</span></div></div>
+  </section>
+
+  <section>
+    <h2>Coverage by state and territory</h2>
+    <div class="legend"><span><i class="t-covered"></i>Covered</span><span><i class="t-single"></i>Single Medicaid PDL (cheap next)</span><span><i class="t-partial"></i>Partial or hybrid PDL</span><span><i class="t-permco"></i>Per-MCO lists</span><span><i class="t-unknown"></i>Unconfirmed</span></div>
+    <div class="tiles"><div class="tile t-covered" title="23 guides, 3 payers">AL<small>23 guides, 3 payers</small></div><div class="tile t-single" title="yes; cost low">AK<small>yes</small></div><div class="tile t-single" title="yes; cost medium">AZ<small>yes</small></div><div class="tile t-single" title="yes; cost low">AR<small>yes</small></div><div class="tile t-covered" title="29 guides, 3 payers">CA<small>29 guides, 3 payers</small></div><div class="tile t-single" title="yes for listed PDL classes; cost medium">CO<small>yes for listed PDL cla</small></div><div class="tile t-partial" title="partial; cost unknown">CT<small>partial</small></div><div class="tile t-partial" title="partial; cost medium">DE<small>partial</small></div><div class="tile t-covered" title="23 guides, 4 payers">DC<small>23 guides, 4 payers</small></div><div class="tile t-covered" title="29 guides, 4 payers">FL<small>29 guides, 4 payers</small></div><div class="tile t-covered" title="29 guides, 5 payers">GA<small>29 guides, 5 payers</small></div><div class="tile t-unknown" title="unconfirmed; cost high">HI<small>unconfirmed</small></div><div class="tile t-single" title="yes; cost low">ID<small>yes</small></div><div class="tile t-covered" title="29 guides, 8 payers">IL<small>29 guides, 8 payers</small></div><div class="tile t-single" title="yes; cost low">IN<small>yes</small></div><div class="tile t-single" title="yes; cost low">IA<small>yes</small></div><div class="tile t-single" title="yes for PDL classes; cost low">KS<small>yes for PDL classes</small></div><div class="tile t-covered" title="29 guides, 4 payers">KY<small>29 guides, 4 payers</small></div><div class="tile t-single" title="yes; cost low">LA<small>yes</small></div><div class="tile t-single" title="yes for FFS; cost unknown">ME<small>yes for FFS</small></div><div class="tile t-covered" title="29 guides, 8 payers">MD<small>29 guides, 8 payers</small></div><div class="tile t-covered" title="23 guides, 5 payers">MA<small>23 guides, 5 payers</small></div><div class="tile t-covered" title="29 guides, 4 payers">MI<small>29 guides, 4 payers</small></div><div class="tile t-single" title="yes; cost low">MN<small>yes</small></div><div class="tile t-single" title="yes; cost low">MS<small>yes</small></div><div class="tile t-single" title="yes; cost low">MO<small>yes</small></div><div class="tile t-single" title="yes for FFS PDL; cost low">MT<small>yes for FFS PDL</small></div><div class="tile t-partial" title="partial; cost medium">NE<small>partial</small></div><div class="tile t-unknown" title="unconfirmed; cost unknown">NV<small>unconfirmed</small></div><div class="tile t-partial" title="partial; cost medium">NH<small>partial</small></div><div class="tile t-partial" title="partial; cost medium">NJ<small>partial</small></div><div class="tile t-partial" title="partial; cost medium">NM<small>partial</small></div><div class="tile t-covered" title="29 guides, 5 payers">NY<small>29 guides, 5 payers</small></div><div class="tile t-covered" title="29 guides, 4 payers">NC<small>29 guides, 4 payers</small></div><div class="tile t-single" title="yes for FFS and expansion; cost low">ND<small>yes for FFS and expans</small></div><div class="tile t-covered" title="29 guides, 4 payers">OH<small>29 guides, 4 payers</small></div><div class="tile t-unknown" title="unconfirmed; cost high">OK<small>unconfirmed</small></div><div class="tile t-partial" title="partial; cost high">OR<small>partial</small></div><div class="tile t-covered" title="29 guides, 3 payers">PA<small>29 guides, 3 payers</small></div><div class="tile t-unknown" title="unconfirmed; cost unknown">RI<small>unconfirmed</small></div><div class="tile t-single" title="yes; cost low">SC<small>yes</small></div><div class="tile t-unknown" title="unconfirmed; cost unknown">SD<small>unconfirmed</small></div><div class="tile t-covered" title="29 guides, 4 payers">TN<small>29 guides, 4 payers</small></div><div class="tile t-covered" title="29 guides, 3 payers">TX<small>29 guides, 3 payers</small></div><div class="tile t-partial" title="partial; cost medium">UT<small>partial</small></div><div class="tile t-single" title="yes; cost low">VT<small>yes</small></div><div class="tile t-covered" title="29 guides, 8 payers">VA<small>29 guides, 8 payers</small></div><div class="tile t-covered" title="29 guides, 4 payers">WA<small>29 guides, 4 payers</small></div><div class="tile t-unknown" title="not researched yet">WV<small>not researched yet</small></div><div class="tile t-partial" title="partial; cost high">WI<small>partial</small></div><div class="tile t-single" title="yes; cost low">WY<small>yes</small></div><div class="tile t-unknown" title="unconfirmed; cost unknown">PR<small>unconfirmed</small></div><div class="tile t-unknown" title="unconfirmed; cost unknown">GU<small>unconfirmed</small></div><div class="tile t-partial" title="partial; cost unknown">VI<small>partial</small></div><div class="tile t-unknown" title="unconfirmed; cost unknown">AS<small>unconfirmed</small></div><div class="tile t-unknown" title="unconfirmed; cost unknown">MP<small>unconfirmed</small></div></div>
+  </section>
+</div>
+<script>
+document.querySelectorAll('.src').forEach((card) => {
+  card.tabIndex = 0
+  const laws = (card.dataset.laws || '').split(' ').filter(Boolean)
+  const on = (v) => laws.forEach((id) => document.querySelector('[data-law="' + id + '"]')?.classList.toggle('on', v))
+  card.addEventListener('mouseenter', () => on(true)); card.addEventListener('mouseleave', () => on(false))
+  card.addEventListener('focus', () => on(true)); card.addEventListener('blur', () => on(false))
+})
+</script>
