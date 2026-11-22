@@ -4,6 +4,24 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
 
 ## Fixed
 
+- **2026-11-22 · audit (scripts/source_rows.py) · the deterministic audit checked nothing outside MA.**
+  The extractor only knew four MassHealth-era layouts, so 391 of 432 cached sources gave 0 rows and every
+  check for the 15 common-drug states (Nov 8-21) was SKIPPED while the ledger reported cells as verified.
+  It also re-fetched live documents instead of the archived edition the records cite. Root cause: **code
+  bug** (no generic layout, network before archive). Fixed: `pdlcols` and `tiered` generic layouts
+  (column spans from header midpoints, because TX/NC PDL headers are centred), archived bytes first
+  (`--live` for the current edition), `scripts/audit-states.sh`. The queue item now runs the audit
+  before the Sonnet check.
+- **2026-11-22 · data (common-drug topics) · review fixes from PR #33.** 333 absence-inferred
+  "nonformulary" items removed from Humana PDP copies in 9 states (the Humana guide says to ask whether
+  an unlisted drug is covered; NY/CA/VA/IL already followed this); 33 cells whose note admitted an
+  assumed form or asked a human to confirm moved verified → partial (new test); Voquezna 10 mg picks
+  moved to 20 mg (the healing dose); ranitidine items annotated as withdrawn (FDA, April 2020); VA
+  Wellcare tagged as reused from IL. Label sigs: the Macrobid rule's regex missed "nitrofurantoin
+  (monohydrate…" so 2 cells kept "5 days (label)"; a Macrodantin (macrocrystals, four times daily) row
+  was missing; the amoxicillin capsule sig offered the 875 mg tablet dose. Root cause: **code bug** in
+  the sig table and **data bug** in reused records.
+
 - **2026-11-11 · PA worksheet lost entries on hide/reopen.** Answers now stay in tab memory for the same guide, plan, class and request. Clear worksheet or reload to discard. Verified on mobile and desktop.
 
 - **2026-10-22 · build (deploy) · the live site stopped updating after PR #21.** The Deploy to
@@ -212,7 +230,34 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   duplicate section. Root cause: **code bug** — found by the codex PR bot. Fixed: the lookup and
   the index-only section now both key off the same guide list, and the map was regenerated.
 
-## Open
+## Open (2026-11-22 review of PR #33)
+
+- **KY Medicaid PDL reissued after our archive.** A live fetch on 2026-11-22 returns a different
+  sha256 from the 2026-11-03 copy every KY guide cites. Re-archive and re-audit KY.
+- **Humana PDP manifest entry** is labelled v17 10/01 with a drift flag, while guides cite v18
+  11/02/2026; re-archive so the bytes match the cited edition.
+- **UHC "E" outside CT/NJ/NY.** The key reads "May be excluded from coverage or subject to Prior
+  Authorization in Connecticut, New Jersey and New York". We read it as excluded elsewhere and PA in
+  those 3 states; a reviewer read it as applying only in those states. Kept as nonformulary; confirm
+  with a UHC rep or the member-facing list.
+- **Anthem Select "complete listing" read two ways.** p.2 says "Yes, this is a complete listing of all
+  the drugs on the drug list" in the KY, NY and VA editions. KY/OH/GA treat absence (Voquezna) as
+  nonformulary; NY/CA/VA Sonnet checks called it hedged and left partial. Pick one reading for all
+  Anthem Select cells.
+- **Alternatives are priced by name only**, so another strength shows the captured strength's price
+  (tadalafil 2.5 mg shows 5 mg, ciprofloxacin 100 mg shows 500 mg). Pass a parsed strength or hide the
+  price on a mismatch.
+- **Stale documents behind verified cells:** UHC commercial PDL (2026-01-01) in 10 states, Meridian IL
+  (Dec 2024), BCBS Community IL (May 2025). Check for reissues.
+- **13 records list a product as both covered and a barrier** (per-strength or per-indication splits;
+  `KNOWN_COVERED_AND_BARRIER` in `src/lib/formulary.test.ts`). Re-read the sources and split the names.
+- **Discontinued products still listed as alternatives** (Rayos, Lymepak, Pediapred, Zithromax Tri-Pak,
+  Moxatag, Factive, Spectracef): verify against FDA marketing status and annotate. "Liomny" and "Dexlyt"
+  could not be identified.
+- **Liothyronine picks differ by state** (5 mcg older-adult start in ~26 cells, 25 mcg elsewhere). Both
+  sigs are label-correct; pick one representative strength per payer type.
+
+## Open (earlier)
 
 - **2026-10-21 · data (IL) · two IL Medicaid MCO sources are stale lists.** Meridian's cited PDL is
   dated December 1, 2024 and Blue Cross Community Health Plans' drug list says "Effective May 2025"

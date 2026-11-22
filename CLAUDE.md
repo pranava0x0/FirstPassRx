@@ -790,3 +790,19 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   checkout, but a worktree session can't write there with the file tools (Bash `mv` still works).
   Keep the gather dir in the worktree (`data-gathering/` is gitignored there too), point agents at
   the worktree path, and copy the dir to the main checkout before the worktree is removed.
+- **A deterministic audit that SKIPs everything reports nothing, and the ledger still says "verified"
+  (2026-11-22).** `audit-cells.mjs` printed `SKIPPED 519 · OK 0` for every common-drug state for two
+  weeks because `source_rows.py` only knew the MassHealth-era layouts. Read the OK/SKIPPED split, not
+  the exit code. The generic `pdlcols`/`tiered` layouts now cover most PDLs and tiered lists; a state
+  with more SKIPPED than OK checks needs a layout before its cells count as audited.
+- **PDL column headers are centred, not left-aligned (TX, NC).** Assigning a cell to the column whose
+  label starts at or before it put every TX/NC non-preferred drug in the preferred column (67 false
+  flags in NC). A column starts halfway between its label and the previous one.
+- **`source_rows.py` reads the archived edition first** (`sources/manifest.json` `saved_path`), so an
+  audit checks a record against the document it cites. `--live` compares against today's edition; a
+  different sha256 means the source was reissued (KY Medicaid PDL, found 2026-11-22).
+- **A label-sig regex with a literal space misses the parenthesised INN form.** `nitrofurantoin mono`
+  never matched "Nitrofurantoin (monohydrate/macrocrystals capsule)", so those cells kept the agent's
+  "5 days (label)". Use `\W+` between words in `label-sigs.json` rows, and re-run
+  `apply-label-sigs --dry-run` to see unmatched picks after any rule edit.
+
