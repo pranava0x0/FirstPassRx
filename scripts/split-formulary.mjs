@@ -3,7 +3,7 @@ import path from 'node:path'
 import process from 'node:process'
 import { fileURLToPath } from 'node:url'
 
-import { medicationEntries, productKey } from '../src/lib/medicationEntries.mjs'
+import { brandAliases, medicationEntries, productKey } from '../src/lib/medicationEntries.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const sourcePath = path.join(root, 'src/data/formulary.json')
@@ -38,11 +38,13 @@ for (const guide of formulary.guides) {
 // The optional lookup downloads names and guide/class pointers, never the full formulary.
 // One entry per product (productKey), named by its most widely listed spelling, so picking Dovato
 // reaches every state however each plan wrote it (2026-11-22: only Texas showed up before).
+const aliases = brandAliases(formulary.guides.flatMap((g) => g.records))
+outputs.set(path.join(outputDir, 'medication-aliases.json'), JSON.stringify(aliases, null, 1) + '\n')
 const byKey = new Map()
 for (const guide of formulary.guides) {
   for (const record of guide.records) {
     for (const { label } of medicationEntries(record)) {
-      const key = productKey(label) || label
+      const key = productKey(label, aliases) || label
       if (!byKey.has(key)) byKey.set(key, { scopes: new Set(), labels: new Map() })
       const entry = byKey.get(key)
       entry.scopes.add(guide.id + '/' + record.classId)
