@@ -553,14 +553,14 @@
         },
         {
           "drug": "Ranitidine",
-          "note": "NPD tier, no PA flag (p. 59)",
+          "note": "NPD tier, no PA flag (p. 59) Not dispensable: FDA requested withdrawal of all ranitidine from the US market in April 2020.",
           "sourceIds": [
             "ibx-select-2026-10"
           ]
         },
         {
           "drug": "Zantac (ranitidine) brand",
-          "note": "NPD tier, no PA flag (p. 60)",
+          "note": "NPD tier, no PA flag (p. 60) Not dispensable: FDA requested withdrawal of all ranitidine from the US market in April 2020.",
           "sourceIds": [
             "ibx-select-2026-10"
           ]
@@ -578,7 +578,7 @@
       ],
       "stepTherapy": null,
       "verification": "partial",
-      "verificationNote": "IBX lists generic famotidine as '40mg tab, suspension' at G (p. 58), with no 20 mg row. The brief suggested 20 mg; the picked strength is the one the guide lists. The 40 mg dose is the label duodenal ulcer dose. The generic 20 mg tablet is not printed, so its coverage is unverified (IBX legend p. 2 covers unlisted generics at the generic tier). Pepcid brand is NPD with PA (p. 59). [Sonnet check 2026-11-15: printed p. 58: 'famotidine 40mg tab, suspension' G, no PA/QL; the only famotidine row. 40 mg once daily at bedtime is a label duodenal ulcer regimen, so the sig fits. Generic 20 mg (the usual GERD strength) is not printed; p. 2 says unlisted covered generics pay at the generic tier. Kept partial.]",
+      "verificationNote": "IBX lists generic famotidine as '40mg tab, suspension' at G (p. 58), with no 20 mg row. The brief suggested 20 mg; the picked strength is the one the guide lists. The 40 mg dose is the label duodenal ulcer dose. The generic 20 mg tablet is not printed, so its coverage is unverified (IBX legend p. 2 covers unlisted generics at the generic tier). Pepcid brand is NPD with PA (p. 59). [Sonnet check 2026-11-15: printed p. 58: 'famotidine 40mg tab, suspension' G, no PA/QL; the only famotidine row. 40 mg once daily at bedtime is a label duodenal ulcer regimen, so the sig fits. Generic 20 mg (the usual GERD strength) is not printed; p. 2 says unlisted covered generics pay at the generic tier. Kept partial.] [Audit 2026-11-22: ranitidine withdrawn from US market 2020-04]",
       "sourceIds": [
         "ibx-select-2026-10"
       ],
@@ -608,7 +608,7 @@
       "tier": "Tier 1/ Formulary Generic Drug",
       "alternatives": [
         {
-          "drug": "Lansoprazole (capsule,delayed release(dr/ec))",
+          "drug": "Lansoprazole capsule, delayed release 30 mg",
           "note": "Tier 1 generic; no prior authorization shown; quantity limit",
           "sourceIds": [
             "highmark-24651-c30"
@@ -680,9 +680,9 @@
           ]
         },
         {
-          "drug": "Lansoprazole (capsule,delayed release(dr/ec))",
+          "drug": "Lansoprazole capsule, delayed release 15 mg",
           "outcome": "nonformulary",
-          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); quantity limit",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); 15 mg row only; quantity limit",
           "sourceIds": [
             "highmark-24651-c30"
           ]
@@ -826,7 +826,7 @@
       ],
       "stepTherapy": null,
       "verification": "verified",
-      "verificationNote": "Read Highmark c30 (PPIs) and c31 (PPI + antacid) from the raw FormularyNavigator HTML, including the PA/QL icons. Pick omeprazole DR 20 mg capsule: Tier 1 generic, quantity-limit icon only, no PA. Brand PPIs (Nexium, Prevacid, Protonix, Aciphex, Dexilant, Zegerid, Konvomep) and esomeprazole, lansoprazole 15 mg/ODT, rabeprazole and dexlansoprazole generics are Tier 3 with PA icons. Pantoprazole IV excluded (medical benefit). Omeprazole-sodium bicarbonate combinations are included per the class description. OTC omeprazole is not on the page. [Sonnet check 2026-11-15: omeprazole 20 mg capsule row re-read in the HTML: Tier 1, icons Low-Cost Generic Rx and Quantity Limit only, no PA; QL now recorded in preferredRestriction. Omeprazole DR tablet (Tier 3, QL only), omeprazole magnesium and some lansoprazole/pantoprazole rows are Tier 3 without a PA icon, so nonformulary is right; some rows also carry Market Watch/Member Note icons whose text was not read.]",
+      "verificationNote": "Read Highmark c30 (PPIs) and c31 (PPI + antacid) from the raw FormularyNavigator HTML, including the PA/QL icons. Pick omeprazole DR 20 mg capsule: Tier 1 generic, quantity-limit icon only, no PA. Brand PPIs (Nexium, Prevacid, Protonix, Aciphex, Dexilant, Zegerid, Konvomep) and esomeprazole, lansoprazole 15 mg/ODT, rabeprazole and dexlansoprazole generics are Tier 3 with PA icons. Pantoprazole IV excluded (medical benefit). Omeprazole-sodium bicarbonate combinations are included per the class description. OTC omeprazole is not on the page. [Sonnet check 2026-11-15: omeprazole 20 mg capsule row re-read in the HTML: Tier 1, icons Low-Cost Generic Rx and Quantity Limit only, no PA; QL now recorded in preferredRestriction. Omeprazole DR tablet (Tier 3, QL only), omeprazole magnesium and some lansoprazole/pantoprazole rows are Tier 3 without a PA icon, so nonformulary is right; some rows also carry Market Watch/Member Note icons whose text was not read.] [Audit 2026-11-22: Highmark FormularyNavigator c30: \"Lansoprazole Oral Capsule,Delayed Release(Dr/Ec) 15 Mg\" Tier 3 /Non-Formulary Drug; \"...30 Mg\" Tier 1/ Formulary Generic Drug (QL). Same-name pa/alt split by strength.]",
       "sourceIds": [
         "highmark-24651-c30",
         "highmark-24651-c31"
@@ -927,7 +927,7 @@
         {
           "drug": "Ranitidine Hcl (tablet)",
           "outcome": "nonformulary",
-          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); 2 strength rows on page",
+          "reason": "Tier 3 non-formulary (Highmark legend: \"Non-formulary drugs are not covered for members with a closed formulary\"); 2 strength rows on page Not dispensable: FDA requested withdrawal of all ranitidine from the US market in April 2020.",
           "sourceIds": [
             "highmark-24651-c28"
           ]
@@ -935,7 +935,7 @@
       ],
       "stepTherapy": null,
       "verification": "verified",
-      "verificationNote": "Read Highmark c28 (H2 blockers) from the raw HTML. Famotidine 20 mg and 40 mg generic tablets are Tier 1 with no PA icon (20 mg carries a member-note icon only). Pepcid brand is Tier 3; cimetidine and ranitidine are Tier 3; nizatidine capsules are Tier 1. Sig is the GERD label dose; the page prints none. [Sonnet check 2026-11-15: famotidine 20 mg member-note text read: \"Only Federal Legend versions of product are covered under Rx Benefit\" and may be subject to Market Watch; no PA/QL.]",
+      "verificationNote": "Read Highmark c28 (H2 blockers) from the raw HTML. Famotidine 20 mg and 40 mg generic tablets are Tier 1 with no PA icon (20 mg carries a member-note icon only). Pepcid brand is Tier 3; cimetidine and ranitidine are Tier 3; nizatidine capsules are Tier 1. Sig is the GERD label dose; the page prints none. [Sonnet check 2026-11-15: famotidine 20 mg member-note text read: \"Only Federal Legend versions of product are covered under Rx Benefit\" and may be subject to Market Watch; no PA/QL.] [Audit 2026-11-22: ranitidine withdrawn from US market 2020-04]",
       "sourceIds": [
         "highmark-24651-c28"
       ],

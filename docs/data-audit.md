@@ -39,6 +39,11 @@ JSON is re-derived whenever `source_rows.py` itself changes (signature = hash of
 | `mgb` | MGB Health Plan (FormularyNavigator PDF) | page, drug, reference (brand), tier (`1`-`6`, `MC`, `$0`), flags, notes, raw | shaded rectangles per row |
 | `bcbs` | BCBS MA Comprehensive Covered Medication List | page, drug, tier, flags, notes, section, label (generic/brand), raw | a "Generic drug"/"Brand drug" label starts each row |
 | `mhdl` | MassHealth `pubtheradetail.do?id=N` and `pubdruglist.do` | table, drug, brand, class, pa (full status text), flags, notes, raw | `<tr>` |
+| `pdlcols` (generic) | Any Medicaid PDL with status columns (PREFERRED / PREFERRED WITH PA / NON-PREFERRED) | page, drug, status, flags (PA for non-preferred and with-PA), section, raw, generic | the column a cell sits in; a column starts halfway between its header label and the previous one (labels are centred in TX/NC) |
+| `tiered` (generic) | Commercial / Part D lists: Drug Name \| Tier \| Requirements, one or two halves per page | page, drug, tier, notes, flags, section, raw, generic | a wrapped drug name is closed by the line that carries its tier |
+
+Bytes come from the archived edition the records cite (`sources/manifest.json`, newest entry per URL);
+`--live` fetches today's edition, and a different sha256 means the document was reissued.
 
 Flags are the uppercase codes found in the notes (`PA ST QL SP AL OTC HCD MC ...`). `raw` is the row's
 text exactly as extracted; every audit verdict quotes it.
@@ -96,6 +101,16 @@ summary you hand back.
    in `audit-cells.mjs`.
 
 ## Known limits
+
+- **Generic layouts are noisy (2026-11-22 baseline).** Over the 15 common-drug states, Sonnet reviewers
+  found 6 real errors in the first 221 flagged checks (97% false positives). Recurring causes, in order:
+  two-column or wrapped tiered PDFs (UHC, BCBST, BCBS NC, Florida Blue) leave common generics
+  NOT_FOUND; a different form's row matches (ophthalmic erythromycin for oral, Dificid for generic
+  fidaxomicin, packet vs capsule in the other PDL column); a `nonformulary` claim (UHC E code) is read
+  as "absent"; classes a Medicaid PDL deliberately omits come back NOT_FOUND instead of SKIPPED. Fixes
+  to try next: x-band column parsing instead of character columns, require a form match and skip
+  ophthalmic/topical sections, map outcome nonformulary to "listed as excluded" rather than "absent".
+  Until then the flagged list is a review queue, not an error count.
 
 - Unsupported sources are SKIPPED, not OK: PA form PDFs, plan policy PDFs, the BCBS formulary guide and
   July-2026 removals list (prose, not tables), the HTML medication look-up, and any URL that 404s.

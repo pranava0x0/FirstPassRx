@@ -498,6 +498,16 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 - **MCP servers** (medium): our own read-only `firstpassrx` MCP first, then QHP formulary, Part D PUF
   and a reference MCP (RxNorm, openFDA, DailyMed, NADAC, Open Payments). None exists for payer tiers or
   PA today. [Plan §9](docs/expansion-plan-2026-11.md), [source map](docs/data-sources-map.html). Added 2026-11-22.
+- **Human confirmations left by the common-drug run (2026-11-08 to 11-21, PR #33)** (medium). Each needs a
+  look at the source or a call to the plan; none blocks the cells, which say partial where it matters:
+  - OH: Anthem OH tadalafil for BPH is "PA; BE" (benefit exclusion on the member's plan?); Anthem omeprazole-sodium bicarbonate Tier 2 ST.
+  - GA: GA Medicaid tadalafil (BPH) status inferred from the Cialis 5 mg / tadalafil 2.5 mg rows; Anthem GA tadalafil "PA; BE" as in OH; CareSource C. diff pick is oral vancomycin solution (PA) because the PDL prints no capsule; CareSource famotidine pick is 40 mg (only strength printed).
+  - NC: NC Medicaid Voquezna tablet is Preferred but listed only under H. pylori combinations (P-CAB partial); BCBS NC lists no omeprazole or famotidine tablet (picks pantoprazole 40 mg, nizatidine 150 mg); BCBS NC reference dated November 2026 with no day printed; BCBS NC tadalafil 5 mg sits in the ED section.
+  - TN: BCBST prints only famotidine suspension and PAH tadalafil 20 mg (no completeness statement; both partial); TennCare Dexilant prints only QL (recorded as PA under the non-preferred rule); TennCare tadalafil BPH criteria are in the separate Criteria-PDL.
+  - MI: Common Formulary prints tamsulosin with no PA while the FFS PDL adds clinical PA (pick is tamsulosin, restriction noted); tadalafil 5 mg for BPH is on neither MI document (partial); BCBSM drops Orlynvah 2027-01-01.
+  - IL: whether Aetna/BCCHP/Molina enforce the HFS age-21+ PPI PA (their lists print none); MCO tadalafil PA criteria for BPH; Meridian PDL still dated Dec 2024.
+  - NY: Excellus BCBS famotidine tablet (guide prints only suspension); Voquezna on Excellus BCBS, Excellus Medicare and Anthem (not printed); tadalafil for BPH on NYRx (listed only for PAH) and Anthem ("BE" code).
+  - TX: TX Medicaid PPI clinical-PA criteria (separate DUR document); generic vancomycin capsules' AB rating to Vancocin; BCBS TX famotidine 20 mg via exception.
 - **Common-drug topics in MA, AL and DC** (medium): the last 3 states for queue item 0.
 
 - **High-volume lookup pilots: latanoprost for glaucoma, then allopurinol for gout maintenance.**

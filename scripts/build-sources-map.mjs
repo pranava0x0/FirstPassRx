@@ -13,6 +13,10 @@ import { fileURLToPath } from 'node:url'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const graph = JSON.parse(readFileSync(join(ROOT, 'docs/research/sources-graph.json'), 'utf8'))
+for (const s of graph.sources ?? []) for (const k of ['id', 'name', 'format', 'access', 'payerTypes', 'governedBy'])
+  if (s[k] === undefined) throw new Error(`sources-graph.json: source ${s.id ?? '?'} lacks ${k}`)
+const lawIds = new Set((graph.laws ?? []).map((l) => l.id))
+for (const s of graph.sources) for (const g of s.governedBy) if (!lawIds.has(g)) throw new Error(`sources-graph.json: ${s.id} cites unknown law ${g}`)
 const rosterFile = readdirSync(join(ROOT, 'docs/research')).filter((f) => /^states-roster-.*\.json$/.test(f)).sort().pop()
 const roster = JSON.parse(readFileSync(join(ROOT, 'docs/research', rosterFile), 'utf8'))
 const data = JSON.parse(readFileSync(join(ROOT, 'src/data/formulary.json'), 'utf8'))
@@ -140,7 +144,7 @@ a:focus-visible, .src:focus-visible { outline: 2px solid var(--accent); outline-
 <div class="wrap">
   <header class="lede">
     <h1>Where formulary data lives, and the rules that make it public</h1>
-    <p>Each card is one kind of source FirstPassRx reads or could read. The left column lists the federal rules, case law and state laws behind them. Hover a source to light up the rules that require it. Built ${esc(new Date().toISOString().slice(0, 10))} from <code>docs/research/sources-graph.json</code> (researched 2026-11-22, cited in <code>docs/research/data-access-and-law-2026-11-22.md</code>) and <code>src/data/formulary.json</code>.</p>
+    <p>Each card is one kind of source FirstPassRx reads or could read. The left column lists the federal rules, case law and state laws behind them. Hover a source to light up the rules that require it. Data as of ${esc(data.guides.map((g) => g.lastUpdated ?? '').sort().pop())}, from <code>docs/research/sources-graph.json</code> (researched 2026-11-22, cited in <code>docs/research/data-access-and-law-2026-11-22.md</code>) and <code>src/data/formulary.json</code>.</p>
   </header>
 
   <section class="flow" aria-label="How a cell gets built">

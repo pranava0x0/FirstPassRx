@@ -6,6 +6,37 @@ import { buildGuideView, meta } from './formulary'
 const guides = (rawData as Formulary).guides.map(buildGuideView)
 const getGuideView = (id: string) => guides.find((guide) => guide.id === id) ?? guides[0]!
 
+// Records that list one product as both covered and a barrier, found 2026-11-22 (most are
+// per-strength or per-indication splits that need the source re-read). Fix and delete; never add.
+const KNOWN_COVERED_AND_BARRIER = new Set([
+  'va-nsaids|anthem-commercial|nsaid-oral|celecoxib oral capsule',
+  'va-nsaids|anthem-commercial|nsaid-oral|diclofenac potassium oral capsule',
+  'va-nsaids|anthem-commercial|nsaid-oral|diclofenac-misoprostol oral tablet delayed release',
+  'va-nsaids|anthem-commercial|nsaid-oral|ibuprofen-famotidine oral tablet',
+  'va-weight|sentara-commercial|aom-oral|Phentermine (weight management)',
+  'md-lipids|kpmidatlantic|pcsk9|Evolocumab (Repatha)',
+  'md-migraine|kpmidatlantic|gepant-acute|Rimegepant (Nurtec ODT)',
+  'dc-lipids|kpmidatlantic|pcsk9|Evolocumab (Repatha)',
+  'dc-weight|dc-medicaid|aom-oral|Phentermine (weight management)',
+  'dc-migraine|kpmidatlantic|gepant-acute|Rimegepant (Nurtec ODT)',
+  'mi-weight|bcbsm|aom-oral|Phentermine (weight management)',
+  'tn-immunology|tn-medicaid|tnf-inhibitor|adalimumab-adbm',
+  'nc-antibiotics|bcbs-nc|abx-cdiff|Fidaxomicin (tablet 200 mg, Dificid)',
+])
+
+describe('KNOWN_COVERED_AND_BARRIER', () => {
+  it('lists only overlaps that still exist (delete an entry once it is fixed)', () => {
+    const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
+    for (const key of KNOWN_COVERED_AND_BARRIER) {
+      const [gid, pid, cid, drug] = key.split('|')
+      const r = guides.find((g) => g.id === gid)?.records.find((x) => x.payerId === pid && x.classId === cid)
+      const covered = new Set([norm(r?.preferredAgent?.inn ?? ''), ...(r?.alternatives ?? []).map((a) => norm(a.drug))])
+      const still = (r?.paRequired ?? []).some((p) => p.drug === drug) && covered.has(norm(drug ?? ''))
+      expect(still, key).toBe(true)
+    }
+  })
+})
+
 describe('guides + global meta', () => {
   it('ships every guide in the expected order', () => {
     expect(guides.map((g) => g.id)).toEqual([
@@ -618,6 +649,30 @@ describe.each(guides.map((g) => [g.id, g] as const))('guide invariants: %s', (_i
     for (const r of guide.records) {
       expect(allowed.has(r.verification), `${guide.id} ${r.payerId}/${r.classId}`).toBe(true)
       expect(r.verificationNote, `${r.payerId}/${r.classId} note`).toBeTruthy()
+    }
+  })
+
+  // Review 2026-11-22: 33 cells said "verified" while their own note admitted an assumed form or
+  // asked a human to confirm. Such a cell is partial.
+  it('no verified cell admits an assumption in its note', () => {
+    const admits = /human should confirm|criteria are not verified here|\b(?:tablet|capsule|form) (?:is )?assumed\b|is assumed as/i
+    for (const r of guide.records) {
+      if (r.verification !== 'verified') continue
+      expect(admits.test(r.verificationNote ?? ''), `${guide.id} ${r.payerId}/${r.classId}`).toBe(false)
+    }
+  })
+
+  // Review 2026-11-22: per-strength source rows were flattened, so one record listed a product both
+  // as covered and as a barrier. KNOWN_COVERED_AND_BARRIER may only shrink.
+  it('no drug is both covered and a barrier in one record', () => {
+    const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
+    for (const r of guide.records) {
+      const covered = new Set([norm(r.preferredAgent?.inn ?? ''), ...(r.alternatives ?? []).map((a) => norm(a.drug))])
+      for (const p of r.paRequired ?? []) {
+        const key = `${guide.id}|${r.payerId}|${r.classId}|${p.drug}`
+        if (KNOWN_COVERED_AND_BARRIER.has(key)) continue
+        expect(covered.has(norm(p.drug)), key).toBe(false)
+      }
     }
   })
 })

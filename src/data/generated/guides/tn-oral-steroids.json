@@ -512,7 +512,7 @@
           ]
         },
         {
-          "drug": "Prednisolone sodium phosphate oral solution 10 mg/5 mL, 25 mg/2.5 mL, 5 mg/5 mL",
+          "drug": "Prednisolone sodium phosphate oral solution 10 mg/5 mL, 25 mg/5 mL, 5 mg/5 mL",
           "outcome": "nonformulary",
           "reason": "Coded E with no PA or ST flag on its row. PDL symbol key (p. 5): \"May be excluded from coverage or subject to Prior Authorization in Connecticut, New Jersey and New York\". No PA is printed for this row, so it is recorded as excluded from coverage, matching earlier UHC records (PDL p. 40).",
           "sourceIds": [
@@ -530,7 +530,7 @@
       ],
       "stepTherapy": null,
       "verification": "verified",
-      "verificationNote": "Read from p. 40 (Hormonal Agents - Oral Steroids). Generic prednisone tablet is Tier 1 with no PA. The PDL prints no strength; 10 mg is the class-description strength. Rayos, Emflaza, Agamree and Alkindi are not on this list and were not recorded. Hemady and the dexamethasone packs are listed and recorded as E. [Sonnet check 2026-11-06: E-coded rows re-worded to quote the PDL symbol key (p. 5) and treated as excluded when no PA/ST flag is printed.] [Reused: same national UHC PDL]",
+      "verificationNote": "Read from p. 40 (Hormonal Agents - Oral Steroids). Generic prednisone tablet is Tier 1 with no PA. The PDL prints no strength; 10 mg is the class-description strength. Rayos, Emflaza, Agamree and Alkindi are not on this list and were not recorded. Hemady and the dexamethasone packs are listed and recorded as E. [Sonnet check 2026-11-06: E-coded rows re-worded to quote the PDL symbol key (p. 5) and treated as excluded when no PA/ST flag is printed.] [Reused: same national UHC PDL] [Audit 2026-11-22: UHC PDL p.40 prints \"10 mg/5ml, 25 mg/5ml, 5 mg/5ml\" (tier E); 25 mg/2.5 mL was a typo]",
       "sourceIds": [
         "uhc-commercial-pdl-2026"
       ],
@@ -602,59 +602,10 @@
           ]
         }
       ],
-      "paRequired": [
-        {
-          "drug": "HEMADY (dexamethasone 20 mg)",
-          "outcome": "nonformulary",
-          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
-          "sourceIds": [
-            "humana-premier-rx-pdp-2026-11"
-          ]
-        },
-        {
-          "drug": "ALKINDI SPRINKLE (hydrocortisone granules)",
-          "outcome": "nonformulary",
-          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
-          "sourceIds": [
-            "humana-premier-rx-pdp-2026-11"
-          ]
-        },
-        {
-          "drug": "EMFLAZA (deflazacort)",
-          "outcome": "nonformulary",
-          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
-          "sourceIds": [
-            "humana-premier-rx-pdp-2026-11"
-          ]
-        },
-        {
-          "drug": "AGAMREE (vamorolone)",
-          "outcome": "nonformulary",
-          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
-          "sourceIds": [
-            "humana-premier-rx-pdp-2026-11"
-          ]
-        },
-        {
-          "drug": "RAYOS (prednisone delayed-release)",
-          "outcome": "nonformulary",
-          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
-          "sourceIds": [
-            "humana-premier-rx-pdp-2026-11"
-          ]
-        },
-        {
-          "drug": "KHINDIVI (hydrocortisone oral solution)",
-          "outcome": "nonformulary",
-          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
-          "sourceIds": [
-            "humana-premier-rx-pdp-2026-11"
-          ]
-        }
-      ],
+      "paRequired": [],
       "stepTherapy": null,
       "verification": "verified",
-      "verificationNote": "Read from the formulary text layer, row by row (each tier digit sits on the same row as its drug name; pypdf gave no x-coordinates for the digits). Formulary sig and quantity limits are as printed; the document prints no sig, so the sig is the label starting dose. Prednisone 10 mg tablet is Tier 1 with no PA; BvsD is a Part B versus Part D review flag, not a PA, so it is not in preferredRestriction (PDG p. 61). Not listed: Rayos, Medrol, Orapred ODT, Millipred, Cortef, TaperDex, Dxevo, HiDex. Hydrocortisone tablets print on p. 54 (in the list's dermatology block) and are cited as printed. [Sonnet check 2026-11-06: tiers and flags re-read in layout (row-aligned) extraction, not flattened text; nonformulary reasons reworded to the front-matter wording; prednisone tablets carry BvsD (Part B vs D review, not PA); dose pack does not; added Rayos and Khindivi as not listed.] [Reused: same national Humana Premier Rx PDP]",
+      "verificationNote": "Read from the formulary text layer, row by row (each tier digit sits on the same row as its drug name; pypdf gave no x-coordinates for the digits). Formulary sig and quantity limits are as printed; the document prints no sig, so the sig is the label starting dose. Prednisone 10 mg tablet is Tier 1 with no PA; BvsD is a Part B versus Part D review flag, not a PA, so it is not in preferredRestriction (PDG p. 61). Not listed: Rayos, Medrol, Orapred ODT, Millipred, Cortef, TaperDex, Dxevo, HiDex. Hydrocortisone tablets print on p. 54 (in the list's dermatology block) and are cited as printed. [Sonnet check 2026-11-06: tiers and flags re-read in layout (row-aligned) extraction, not flattened text; nonformulary reasons reworded to the front-matter wording; prednisone tablets carry BvsD (Part B vs D review, not PA); dose pack does not; added Rayos and Khindivi as not listed.] [Reused: same national Humana Premier Rx PDP] [Audit 2026-11-22: \"HEMADY (dexamethasone 20 mg)\" is not on the printed Humana list; absence is not exclusion (the guide, p.7, says to ask Humana whether an unlisted drug is covered), matching the NY/CA/VA/IL Humana records] [Audit 2026-11-22: \"ALKINDI SPRINKLE (hydrocortisone granules)\" is not on the printed Humana list; absence is not exclusion (the guide, p.7, says to ask Humana whether an unlisted drug is covered), matching the NY/CA/VA/IL Humana records] [Audit 2026-11-22: \"EMFLAZA (deflazacort)\" is not on the printed Humana list; absence is not exclusion (the guide, p.7, says to ask Humana whether an unlisted drug is covered), matching the NY/CA/VA/IL Humana records] [Audit 2026-11-22: \"AGAMREE (vamorolone)\" is not on the printed Humana list; absence is not exclusion (the guide, p.7, says to ask Humana whether an unlisted drug is covered), matching the NY/CA/VA/IL Humana records] [Audit 2026-11-22: \"RAYOS (prednisone delayed-release)\" is not on the printed Humana list; absence is not exclusion (the guide, p.7, says to ask Humana whether an unlisted drug is covered), matching the NY/CA/VA/IL Humana records] [Audit 2026-11-22: \"KHINDIVI (hydrocortisone oral solution)\" is not on the printed Humana list; absence is not exclusion (the guide, p.7, says to ask Humana whether an unlisted drug is covered), matching the NY/CA/VA/IL Humana records]",
       "sourceIds": [
         "humana-premier-rx-pdp-2026-11"
       ],

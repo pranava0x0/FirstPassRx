@@ -9,7 +9,7 @@
 // appears anywhere in that state's guides (pick, alternatives, PA items). Medicare-only data: it
 // under-counts pediatric and reproductive-age drugs (ADHD, contraception, acne), so read the gaps as
 // a prioritisation signal, not a census.
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'
 import { spawnSync } from 'node:child_process'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -42,8 +42,10 @@ function loadCsv() {
     if (!CSV_URL[YEAR]) throw new Error(`no CSV URL known for data year ${YEAR}; add it from data.cms.gov/data.json`)
     mkdirSync(dirname(file), { recursive: true })
     console.error(`downloading ${CSV_URL[YEAR]}`)
-    const r = spawnSync('curl', ['-sSL', '--fail', '-o', file, CSV_URL[YEAR]], { stdio: 'inherit' })
+    const tmp = `${file}.part`
+    const r = spawnSync('curl', ['-sSL', '--fail', '-o', tmp, CSV_URL[YEAR]], { stdio: 'inherit' })
     if (r.status !== 0) throw new Error('download failed')
+    renameSync(tmp, file) // only a complete download becomes the cache
   }
   return readFileSync(file, 'utf8')
 }
@@ -64,7 +66,11 @@ function parseLine(line) {
 const lines = loadCsv().split(/\r?\n/).filter(Boolean)
 const head = parseLine(lines[0])
 const col = (n) => head.indexOf(n)
-const [iLvl, iDesc, iGen, iClm, iCst, iBen] = ['Prscrbr_Geo_Lvl', 'Prscrbr_Geo_Desc', 'Gnrc_Name', 'Tot_Clms', 'Tot_Drug_Cst', 'Tot_Benes'].map(col)
+head[0] = head[0].replace(/^\uFEFF/, '')
+const COLS = ['Prscrbr_Geo_Lvl', 'Prscrbr_Geo_Desc', 'Gnrc_Name', 'Tot_Clms', 'Tot_Drug_Cst', 'Tot_Benes']
+const missing = COLS.filter((c) => col(c) < 0)
+if (missing.length) throw new Error(`CMS CSV is missing columns ${missing.join(', ')}; delete the cached file if it is truncated`)
+const [iLvl, iDesc, iGen, iClm, iCst, iBen] = COLS.map(col)
 const byState = new Map()
 for (const line of lines.slice(1)) {
   const f = parseLine(line)
@@ -98,11 +104,18 @@ for (const g of data.guides) {
 const isCovered = (st, generic) => {
   const text = coveredText.get(st)
   if (!text) return false
-  // every molecule in a combo must appear ("Amlodipine Besylate/Benazepril" → amlodipine + benazepril)
+  // Every molecule of a combo must appear as a whole word, and a single-molecule generic must not be
+  // satisfied only by a combo that contains it ("atenolol" inside "atenolol chlorthalidone").
   const mols = generic.split(/\/|-(?=[A-Z])/).map((m) => norm(m).split(' ')[0]).filter((w) => w.length > 3)
-  return mols.length > 0 && mols.every((w) => text.includes(` ${w}`))
+  if (!mols.length) return false
+  const whole = (w) => new RegExp(`(?<![a-z])${w}(?![a-z])`).test(text)
+  if (!mols.every(whole)) return false
+  if (mols.length > 1) return true
+  // single molecule: needs at least one mention not immediately joined to another molecule
+  return new RegExp(`(?<![a-z])${mols[0]}(?![a-z])(?! (?:hydrochlorothiazide|chlorthalidone|metformin|ezetimibe|amlodipine|valsartan|losartan|olmesartan|benazepril|lisinopril|clavulanate|naloxone|acetaminophen|tamsulosin|dapagliflozin|empagliflozin|sitagliptin))`).test(text)
 }
 
+if (byState.size < 50) throw new Error(`only ${byState.size} jurisdictions parsed from the CMS CSV; expected 50+`)
 const want = args.states ? String(args.states).split(',') : [...byState.keys()].sort()
 const report = { source: CSV_URL[YEAR], dataYear: YEAR, top: TOP, generatedFrom: 'src/data/formulary.json', states: {} }
 const gapCount = new Map()

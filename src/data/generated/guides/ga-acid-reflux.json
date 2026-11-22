@@ -654,7 +654,7 @@
         },
         {
           "drug": "Ranitidine (tablet)",
-          "note": "Tier 1, no PA or ST (p. 71)",
+          "note": "Tier 1, no PA or ST (p. 71) Not dispensable: FDA requested withdrawal of all ranitidine from the US market in April 2020.",
           "sourceIds": [
             "anthem-ga-select-2026"
           ]
@@ -663,7 +663,7 @@
       "paRequired": [],
       "stepTherapy": null,
       "verification": "verified",
-      "verificationNote": "H-2 block read by x-position on p. 71. Famotidine 20 mg tablet Tier 1, no Notes. Pepcid brand not printed; generic is.",
+      "verificationNote": "H-2 block read by x-position on p. 71. Famotidine 20 mg tablet Tier 1, no Notes. Pepcid brand not printed; generic is. [Audit 2026-11-22: ranitidine withdrawn from US market 2020-04]",
       "sourceIds": [
         "anthem-ga-select-2026"
       ],
@@ -903,8 +903,8 @@
         }
       ],
       "stepTherapy": null,
-      "verification": "verified",
-      "verificationNote": "Read from p. 34. The famotidine suspension is the Tier 1 covered famotidine product. The 20 mg and 40 mg famotidine tablets, the usual prescription form, are coded E on this list, so the pick is the covered suspension rather than the tablet. Suspension strength 40 mg/5 mL is the label strength; the PDL prints no strength. [Sonnet check 2026-11-06: Pick changed from the suspension to the 20 mg tablet, the form prescribers write for adults. Row \"famotidine oral tablet 20 mg, 40 mg\" is Tier cell E (p. 34); the suspension and cimetidine are Tier 1. The PDL gives no reason for the E code. Separately, p. 5 says benefit designs \"allow us to exclude a medication if determined to be Therapeutically Equivalent to another covered product or OTC option\", and famotidine 20 mg is sold OTC, but this is an inference and does not explain the 40 mg strength. A human should confirm tablet coverage.] [Reused: same national UHC PDL]",
+      "verification": "partial",
+      "verificationNote": "Read from p. 34. The famotidine suspension is the Tier 1 covered famotidine product. The 20 mg and 40 mg famotidine tablets, the usual prescription form, are coded E on this list, so the pick is the covered suspension rather than the tablet. Suspension strength 40 mg/5 mL is the label strength; the PDL prints no strength. [Sonnet check 2026-11-06: Pick changed from the suspension to the 20 mg tablet, the form prescribers write for adults. Row \"famotidine oral tablet 20 mg, 40 mg\" is Tier cell E (p. 34); the suspension and cimetidine are Tier 1. The PDL gives no reason for the E code. Separately, p. 5 says benefit designs \"allow us to exclude a medication if determined to be Therapeutically Equivalent to another covered product or OTC option\", and famotidine 20 mg is sold OTC, but this is an inference and does not explain the 40 mg strength. A human should confirm tablet coverage.] [Reused: same national UHC PDL] [Audit 2026-11-22: note states an assumption or an unread criterion, so the cell is partial]",
       "sourceIds": [
         "uhc-commercial-pdl-2026"
       ],
@@ -956,35 +956,10 @@
           ]
         }
       ],
-      "paRequired": [
-        {
-          "drug": "Rabeprazole sodium (generic)",
-          "outcome": "nonformulary",
-          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
-          "sourceIds": [
-            "humana-premier-rx-pdp-2026-11"
-          ]
-        },
-        {
-          "drug": "Dexilant (dexlansoprazole)",
-          "outcome": "nonformulary",
-          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
-          "sourceIds": [
-            "humana-premier-rx-pdp-2026-11"
-          ]
-        },
-        {
-          "drug": "Omeprazole/sodium bicarbonate (Zegerid, Konvomep)",
-          "outcome": "nonformulary",
-          "reason": "Not listed on this formulary, which describes itself as a \"list of covered drugs\" (PDG p. 3). The document does not say unlisted drugs are excluded. PDG p. 7: \"Formulary exception: You can ask us to cover a drug even if it is not on our formulary.\"",
-          "sourceIds": [
-            "humana-premier-rx-pdp-2026-11"
-          ]
-        }
-      ],
+      "paRequired": [],
       "stepTherapy": null,
       "verification": "verified",
-      "verificationNote": "Read from the formulary text layer, row by row (each tier digit sits on the same row as its drug name; pypdf gave no x-coordinates for the digits). Formulary sig and quantity limits are as printed; the document prints no sig, so the sig is the label starting dose. Omeprazole 20 mg DR capsule is Tier 1 with no PA (PDG p. 59). Not listed in the document: rabeprazole, dexlansoprazole, omeprazole/sodium bicarbonate, Prevacid SoluTab, Nexium brand. Omeprazole 10 mg DR capsule (Tier 1, PDG p. 59) is a lower strength of the same product and is not the pick. [Sonnet check 2026-11-06: tiers and flags re-read in layout (row-aligned) extraction, not flattened text; nonformulary reasons reworded to the front-matter wording; removed \"omeprazole magnesium\" alternative (not a listed product; only esomeprazole magnesium is, p. 58).] [Reused: same national Humana Premier Rx PDP]",
+      "verificationNote": "Read from the formulary text layer, row by row (each tier digit sits on the same row as its drug name; pypdf gave no x-coordinates for the digits). Formulary sig and quantity limits are as printed; the document prints no sig, so the sig is the label starting dose. Omeprazole 20 mg DR capsule is Tier 1 with no PA (PDG p. 59). Not listed in the document: rabeprazole, dexlansoprazole, omeprazole/sodium bicarbonate, Prevacid SoluTab, Nexium brand. Omeprazole 10 mg DR capsule (Tier 1, PDG p. 59) is a lower strength of the same product and is not the pick. [Sonnet check 2026-11-06: tiers and flags re-read in layout (row-aligned) extraction, not flattened text; nonformulary reasons reworded to the front-matter wording; removed \"omeprazole magnesium\" alternative (not a listed product; only esomeprazole magnesium is, p. 58).] [Reused: same national Humana Premier Rx PDP] [Audit 2026-11-22: \"Rabeprazole sodium (generic)\" is not on the printed Humana list; absence is not exclusion (the guide, p.7, says to ask Humana whether an unlisted drug is covered), matching the NY/CA/VA/IL Humana records] [Audit 2026-11-22: \"Dexilant (dexlansoprazole)\" is not on the printed Humana list; absence is not exclusion (the guide, p.7, says to ask Humana whether an unlisted drug is covered), matching the NY/CA/VA/IL Humana records] [Audit 2026-11-22: \"Omeprazole/sodium bicarbonate (Zegerid, Konvomep)\" is not on the printed Humana list; absence is not exclusion (the guide, p.7, says to ask Humana whether an unlisted drug is covered), matching the NY/CA/VA/IL Humana records]",
       "sourceIds": [
         "humana-premier-rx-pdp-2026-11"
       ],

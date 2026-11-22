@@ -31,6 +31,7 @@ USER_AGENT = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 )
+REPO_ROOT = Path(__file__).resolve().parent.parent
 SCRIPT_SIGNATURE = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()[:12]
 DEFAULT_OUT = "data-gathering/rows"
 FLAG_RE = re.compile(r"(?<![A-Za-z])(PA|ST|QL|SP|AL|AGE|OTC|HCD|MC|NF|DL|LA|HD|LD|MB)(?![A-Za-z])")
@@ -66,14 +67,23 @@ def archived_bytes(url: str) -> Optional[bytes]:
     global _MANIFEST
     if _MANIFEST is None:
         _MANIFEST = {}
-        mf = Path("sources/manifest.json")
-        if mf.exists():
+        mf = REPO_ROOT / "sources/manifest.json"
+        if not mf.exists():
+            LOG.warning("no %s: every source will be fetched live", mf)
+        else:
+            # A URL can have several entries (one per archived edition); the newest one is the
+            # edition the current records cite.
+            newest: dict[str, tuple[str, str]] = {}
             for e in json.loads(mf.read_text()).get("entries", {}).values():
-                if e.get("ok") and e.get("saved_path"):
-                    _MANIFEST.setdefault(e["url"], e["saved_path"])
+                if not (e.get("ok") and e.get("saved_path")):
+                    continue
+                stamp = e.get("last_verified") or e.get("first_archived") or ""
+                if e["url"] not in newest or stamp > newest[e["url"]][0]:
+                    newest[e["url"]] = (stamp, e["saved_path"])
+            _MANIFEST = {u: sp for u, (_t, sp) in newest.items()}
     sp = _MANIFEST.get(url)
-    if sp and Path(sp).exists():
-        return Path(sp).read_bytes()
+    if sp and (REPO_ROOT / sp).exists():
+        return (REPO_ROOT / sp).read_bytes()
     return None
 
 
@@ -399,6 +409,9 @@ def parse_pdlcols_page(text: str, cols: Optional[list[tuple[int, str]]]) -> tupl
             if kind == "class":
                 section = seg if seg.isupper() or not section else f"{section} {seg}"
                 continue
+            if kind == "pref" and not any(k == "class" for _s, k in cols) and seg.isupper() and len(seg.split()) >= 2 and not re.search(r"\d", seg):
+                section, last = seg, {}  # an all-caps class heading in a PDL with no class column
+                continue
             first = seg.split()[0].lower().strip(",.;()")
             prev = last.get(kind)
             if prev is not None and (first in CONT_WORDS or re.match(r"^[\d(.%/]", seg)):
@@ -490,6 +503,8 @@ def extract_pdf(path: Path) -> tuple[list[dict[str, Any]], dict[str, Any]]:
             if not det:
                 text = page.extract_text(extraction_mode="layout")
                 g_rows, pdl_cols = parse_pdlcols_page(text, pdl_cols)
+                if not g_rows:
+                    pdl_cols = None  # don't carry PDL columns into appendix or prose pages
                 g_layout = "pdlcols"
                 if not g_rows:
                     g_rows, tier_halves = parse_tiered_page(text, tier_halves)
