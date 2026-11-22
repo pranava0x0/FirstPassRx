@@ -59,6 +59,8 @@ describe('one product across spellings (Dovato showed only Texas, 2026-11-22)', 
     expect(productKey('Dolutegravir sodium/lamivudine (Dovato)')).toBe(dovato[0])
     expect(productKey('Dovato® tabs', aliasData)).toBe(dovato[0])
     expect(productKey('Dovato Oral Tablet', aliasData)).toBe(dovato[0])
+    expect(productKey('E.E.S. (tablet)')).toBeTruthy()
+    expect(productKey('E.E.S. (tablet)')).not.toBe(productKey('Ery-Tab (tablet)'))
     // salts that name different products stay apart
     expect(productKey('Fluticasone furoate')).not.toBe(productKey('Fluticasone propionate'))
     // a brand never merges with its generic, a form with another form, or one combination with another

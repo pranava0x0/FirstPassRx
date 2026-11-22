@@ -809,3 +809,11 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   Spell "Virginia" out in labels, payer names and UI copy (a test enforces it for guides and payers).
   The Veterans Affairs National Formulary is a separate federal payer FirstPassRx does not cover; cite
   VA/DoD guidelines only as "U.S. Department of Veterans Affairs" evidence.
+- **"By medication" groups a product by `productKey` (src/lib/medicationEntries.mjs), not exact wording
+  (2026-11-22).** Dovato had ~30 spellings and the picker showed only Texas. The key is the part before
+  " · strength", minus strengths, tablet/oral/brand, device words (inhalation, aerosol, actuation) and
+  salts that never separate products (sodium, potassium, HCl, sulfate). Salts that do separate products
+  (furoate/propionate, succinate/tartrate) stay. Bare brands map through the generated
+  `medication-aliases.json`. Each card shows the plan's own listing ("Listed as"). `npm test` runs
+  `scripts/check-medication-catalog.mjs`, which fails if any product × state shows no plan card.
+

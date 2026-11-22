@@ -27,15 +27,15 @@ async function switchGuide(user: ReturnType<typeof userEvent.setup>, stateName: 
   const stateSelect = screen.getByLabelText(/^State$/) as HTMLSelectElement
   const stateOpt = [...stateSelect.options].find((o) => stateName.test(o.textContent ?? ''))!
   await user.selectOptions(stateSelect, stateOpt.value)
-  // Guide chunks load lazily; under full-suite load (248 guides) this can take over the 1 s default.
-  await waitFor(() => expect(screen.getByLabelText(/^Condition$/)).toBeEnabled(), { timeout: 5000 })
+  // Guide chunks load lazily; under full-suite load (504 guides) this has taken over 5 s.
+  await waitFor(() => expect(screen.getByLabelText(/^Condition$/)).toBeEnabled(), { timeout: 12000 })
   const topicSelect = screen.getByLabelText(/^Condition$/) as HTMLSelectElement
   const topicOpt = [...topicSelect.options].find((o) => topicName.test(o.textContent ?? ''))!
   await user.selectOptions(topicSelect, topicOpt.value)
   await waitFor(() => {
     expect(topicSelect.value).toBe(topicOpt.value)
     expect(screen.queryByText(/^Loading$/)).not.toBeInTheDocument()
-  }, { timeout: 5000 })
+  }, { timeout: 12000 })
 }
 
 /** Selected option text of a labelled select. */
@@ -126,7 +126,7 @@ describe('FirstPassRx app', () => {
     const user = userEvent.setup()
     render(<App />)
     await switchGuide(user, /Maryland/i, /Menopause HT/i)
-    await screen.findByRole('tab', { name: /Estrogen pill/i }, { timeout: 5000 })
+    await screen.findByRole('tab', { name: /Estrogen pill/i }, { timeout: 10000 })
     fireEvent.change(screen.getByLabelText(/select insurance plan/i), { target: { value: 'priority-partners' } })
     await user.click(screen.getByRole('tab', { name: /Estrogen pill/i }))
 

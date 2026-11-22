@@ -18,15 +18,20 @@ export function medicationEntries(record) {
 // salts and forms stay apart (Triumeq PD is not Triumeq), and combinations keep each molecule.
 // Salts that never tell two products apart here ("dolutegravir sodium"). Salts that do (furoate vs
 // propionate, succinate vs tartrate, hyclate vs monohydrate) stay in the key.
-const KEY_STRIP = new Set(['tablet', 'tablets', 'tab', 'tabs', 'oral', 'brand', 'name', 'mg', 'mcg', 'ml', 'unit', 'units', 'and', 'sodium', 'potassium', 'hcl', 'hydrochloride'])
+const KEY_STRIP = new Set(['tablet', 'tablets', 'tab', 'tabs', 'oral', 'brand', 'name', 'mg', 'mcg', 'ml', 'unit', 'units', 'and', 'sodium', 'potassium', 'hcl', 'hydrochloride', 'sulfate', 'inhalation', 'aerosol', 'actuation', 'inhaler', 'inhal', 'aero', 'act', 'generic', 'base'])
 export function productKey(label, aliases) {
+  // A pick's label is "Product · strength"; the strength part repeats device and dosing notes
+  // ("108 (90 base) mcg/actuation inhalation aerosol"), so the product is named by what precedes it.
   const s = String(label)
+    .split(' · ')[0]
     .toLowerCase()
     .replace(/[®™]/g, ' ')
     .replace(/\((?:ql|quantity|limit|max)[^)]*\)/g, ' ')
     .replace(/\d+(?:\.\d+)?\s*(?:mg|mcg|ml|g|%|units?)?(?:\s*\/\s*\d+(?:\.\d+)?\s*(?:mg|mcg|ml|g|%)?)*/g, ' ')
   const words = s.split(/[^a-z]+/).filter((w) => w.length > 1 && !KEY_STRIP.has(w))
-  const key = [...new Set(words)].sort().join(' ')
+  // Names made only of initials ("E.E.S. (tablet)") leave no word; fall back to the letters themselves
+  // so the product still has a key of its own.
+  const key = [...new Set(words)].sort().join(' ') || s.replace(/[^a-z]+/g, '')
   return (aliases && aliases[key]) || key
 }
 
