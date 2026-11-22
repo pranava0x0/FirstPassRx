@@ -161,7 +161,7 @@ with cited, authoritative comparisons:
 - **State P&T committee packets**: public meeting materials often include the class review the PDL
   decision rests on (PA DHS, WA HCA, many others). They show both the evidence and the reason a
   class is preferred.
-- **VA/DoD clinical practice guidelines and VA National Formulary drug class reviews** (public).
+- **U.S. Department of Veterans Affairs (VA/DoD) clinical practice guidelines and VA National Formulary drug class reviews** (public; federal evidence sources, not the State of Virginia).
 - **ICER** reports for new brand-only products (net-price and value assessments, public summaries).
 - **Cochrane** reviews (abstracts free).
 - **Specialty guidelines**: ADA Standards of Care, ACC/AHA, GINA and GOLD, AGA (GERD, P-CABs), AUA

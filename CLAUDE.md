@@ -805,4 +805,7 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   never matched "Nitrofurantoin (monohydrate/macrocrystals capsule)", so those cells kept the agent's
   "5 days (label)". Use `\W+` between words in `label-sigs.json` rows, and re-run
   `apply-label-sigs --dry-run` to see unmatched picks after any rule edit.
-
+- **"VA" is the State of Virginia here, never the U.S. Department of Veterans Affairs (user, 2026-11-22).**
+  Spell "Virginia" out in labels, payer names and UI copy (a test enforces it for guides and payers).
+  The Veterans Affairs National Formulary is a separate federal payer FirstPassRx does not cover; cite
+  VA/DoD guidelines only as "U.S. Department of Veterans Affairs" evidence.
