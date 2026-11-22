@@ -1,6 +1,6 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import { GuideProvider, guideOptions, loadGuideView, type GuideView } from '../lib/formulary'
-import { findings } from '../lib/medicationLookup'
+import { productFindings } from '../lib/medicationLookup'
 import catalogUrl from '../data/generated/medications.json?url'
 import { PaRequest } from './PaRequest'
 
@@ -170,8 +170,8 @@ function Coverage({
   const [opened, setOpened] = useState<number | null>(null)
   if (!record || !payer || !drugClass) return <p>No record for this plan and class.</p>
   if (record.verification === 'example') return <p>This guide has an illustrative record only. Coverage is unknown.</p>
-  const rows = findings(record, drug)
-  if (!rows.length) return <p>No exact listing in this guide. Coverage is unknown.</p>
+  const rows = productFindings(record, drug)
+  if (!rows.length) return <p>Not listed by this plan in this guide. Coverage is unknown.</p>
   return (
     <GuideProvider value={guide}>
       {rows.map((row, i) => (
@@ -180,6 +180,7 @@ function Coverage({
             <strong>{row.label}</strong>
             {row.detail && <> · {row.detail}</>}
           </p>
+          {row.matched !== drug && <p className="med-finding__listed">Listed as: {row.matched}</p>}
           <p>
             {record.verification === 'verified' ? 'Verified' : 'Partially verified'}{' '}
             · Reviewed {record.lastReviewed}
@@ -278,8 +279,9 @@ export function PlanComparison({ start, back }: { start: CompareStart; back: () 
       </h2>
       <p>{start.drug}</p>
       <p>
-        {guideOptions.find((g) => g.id === start.guideId)?.topic} · {start.classId} · Matches use the listed
-        name and strength when available. Unlisted or differently worded entries have unknown coverage.
+        {guideOptions.find((g) => g.id === start.guideId)?.topic} · {start.classId} · Matches the same product
+        however each plan words it; each result shows the plan's own listing. Unlisted products have unknown
+        coverage.
       </p>
       <div className="med-columns">
         <ComparePlan start={start} second={false} />
@@ -321,7 +323,7 @@ export function MedicationLookup({ compare }: { compare: (start: CompareStart) =
   const matched =
     guide?.payers.filter((p) => {
       const r = guide.getRecord(p.id, classId)
-      return r && findings(r, drug).length > 0
+      return r && productFindings(r, drug).length > 0
     }) ?? []
   const scopeLabel = (s: string) => {
     const [g, c] = s.split('/')

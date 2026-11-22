@@ -50,5 +50,5 @@ it('keeps the comparison on one exact product and marks a missing listing unknow
   await user.selectOptions(await screen.findByLabelText('Second plan'), 'mgb')
   const regions = screen.getByRole('region', { name: 'Plan comparison' }).querySelectorAll('section')
   expect(within(regions[0]!).getByText('PA required', { selector: 'strong' })).toBeVisible()
-  expect(within(regions[1]!).getByText(/No exact listing.*unknown/)).toBeVisible()
+  expect(within(regions[1]!).getByText(/Not listed by this plan.*unknown/)).toBeVisible()
 })
