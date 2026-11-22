@@ -38,7 +38,8 @@ for (const guide of formulary.guides) {
 // The optional lookup downloads names and guide/class pointers, never the full formulary.
 // One entry per product (productKey), named by its most widely listed spelling, so picking Dovato
 // reaches every state however each plan wrote it (2026-11-22: only Texas showed up before).
-const aliases = brandAliases(formulary.guides.flatMap((g) => g.records))
+const allRecords = formulary.guides.flatMap((g) => g.records)
+const aliases = brandAliases(allRecords, allRecords.flatMap((r) => medicationEntries(r).map((e) => e.label)))
 outputs.set(path.join(outputDir, 'medication-aliases.json'), JSON.stringify(aliases, null, 1) + '\n')
 const byKey = new Map()
 for (const guide of formulary.guides) {

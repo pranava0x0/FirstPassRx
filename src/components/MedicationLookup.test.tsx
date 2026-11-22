@@ -33,22 +33,29 @@ it('can retry a failed catalog, browse without typing, and compare the selected 
   })
 })
 
-it('keeps the comparison on one exact product and marks a missing listing unknown', async () => {
+it('matches one product under each plan\'s own wording and marks a missing listing unknown', async () => {
   const user = userEvent.setup()
-  render(
+  const { unmount } = render(
     <PlanComparison
-      start={{
-        drug: 'Albuterol HFA inhaler (generic)',
-        guideId: 'ma-inhalers',
-        classId: 'saba',
-        payerId: 'masshealth',
-      }}
+      start={{ drug: 'Albuterol HFA inhaler (generic)', guideId: 'ma-inhalers', classId: 'saba', payerId: 'masshealth' }}
       back={() => {}}
     />,
   )
   expect(await screen.findByLabelText('First plan')).toHaveValue('masshealth')
   await user.selectOptions(await screen.findByLabelText('Second plan'), 'mgb')
-  const regions = screen.getByRole('region', { name: 'Plan comparison' }).querySelectorAll('section')
+  let regions = screen.getByRole('region', { name: 'Plan comparison' }).querySelectorAll('section')
   expect(within(regions[0]!).getByText('PA required', { selector: 'strong' })).toBeVisible()
+  // MGB prints the same generic as "Albuterol sulfate HFA · 90 mcg"
+  expect(within(regions[1]!).getByText(/Listed as: Albuterol sulfate HFA/)).toBeVisible()
+  unmount()
+
+  render(
+    <PlanComparison
+      start={{ drug: 'ProAir Digihaler', guideId: 'ma-inhalers', classId: 'saba', payerId: 'masshealth' }}
+      back={() => {}}
+    />,
+  )
+  await user.selectOptions(await screen.findByLabelText('Second plan'), 'mgb')
+  regions = screen.getByRole('region', { name: 'Plan comparison' }).querySelectorAll('section')
   expect(within(regions[1]!).getByText(/Not listed by this plan.*unknown/)).toBeVisible()
 })

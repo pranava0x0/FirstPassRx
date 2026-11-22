@@ -53,12 +53,19 @@ describe('one product across spellings (Dovato showed only Texas, 2026-11-22)', 
       'Dovato (dolutegravir/lamivudine) 50 mg/300 mg tablet',
       'Dolutegravir and lamivudine (Dovato)',
       'Dovato (dolutegravir-lamivudine), brand (QL 1 tab per day)',
-    ].map((l) => productKey(l))
+    ].map((l) => productKey(l, aliasData))
     expect(new Set(dovato).size).toBe(1)
     // a salt-only spelling (Washington) and a bare brand (TennCare, Highmark) land on the same product
-    expect(productKey('Dolutegravir sodium/lamivudine (Dovato)')).toBe(dovato[0])
+    expect(productKey('Dolutegravir sodium/lamivudine (Dovato)', aliasData)).toBe(dovato[0])
     expect(productKey('Dovato® tabs', aliasData)).toBe(dovato[0])
     expect(productKey('Dovato Oral Tablet', aliasData)).toBe(dovato[0])
+    expect(productKey('E.E.S. (tablet)')).not.toBe(productKey('Ery-Tab (tablet)'))
+    // forms, devices and single-letter product names stay apart (review of PR #40)
+    expect(productKey('Ozempic tablets (oral semaglutide)', aliasData)).not.toBe(productKey('Ozempic (semaglutide) pen-injector', aliasData))
+    expect(productKey('Humulin N', aliasData)).not.toBe(productKey('Humulin R U-100', aliasData))
+    expect(productKey('Estradiol · 10 mcg vaginal insert', aliasData)).not.toBe(productKey('Estradiol · 0.05 mg/24 hr patch', aliasData))
+    expect(productKey('Albuterol sulfate · 90 mcg/actuation HFA inhaler', aliasData)).not.toBe(productKey('albuterol sulfate · 2.5mg/3mL nebulizer solution', aliasData))
+    expect(productKey('Diclofenac sodium DR tablet', aliasData)).not.toBe(productKey('Diclofenac potassium tablet', aliasData))
     // salts that name different products stay apart
     expect(productKey('Fluticasone furoate')).not.toBe(productKey('Fluticasone propionate'))
     // a brand never merges with its generic, a form with another form, or one combination with another
