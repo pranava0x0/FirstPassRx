@@ -66,6 +66,10 @@ describe('one product across spellings (Dovato showed only Texas, 2026-11-22)', 
     expect(productKey('Estradiol · 10 mcg vaginal insert', aliasData)).not.toBe(productKey('Estradiol · 0.05 mg/24 hr patch', aliasData))
     expect(productKey('Albuterol sulfate · 90 mcg/actuation HFA inhaler', aliasData)).not.toBe(productKey('albuterol sulfate · 2.5mg/3mL nebulizer solution', aliasData))
     expect(productKey('Diclofenac sodium DR tablet', aliasData)).not.toBe(productKey('Diclofenac potassium tablet', aliasData))
+    // a generic that names its reference brand is still the generic (Codex review, PR #40)
+    expect(productKey('dapagliflozin (generic Farxiga)', aliasData)).not.toBe(productKey('Farxiga (dapagliflozin, brand)', aliasData))
+    expect(productKey('dapagliflozin-metformin ER (generic Xigduo XR)', aliasData)).not.toBe(productKey('Xigduo XR (dapagliflozin-metformin ER)', aliasData))
+    expect(productKey('albuterol · 90 mcg/actuation HFA inhaler', aliasData)).not.toBe(productKey('albuterol tablets (oral)', aliasData))
     // salts that name different products stay apart
     expect(productKey('Fluticasone furoate')).not.toBe(productKey('Fluticasone propionate'))
     // a brand never merges with its generic, a form with another form, or one combination with another
