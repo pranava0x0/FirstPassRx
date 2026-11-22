@@ -59,14 +59,15 @@ ledger names the stamp so the next run resumes from disk instead of re-gathering
 2. **One rolling PR, never a new one per run** (user, 2026-10-21: "try not to have so many
    PRs"). `gh pr list --state open --author @me`. If any open PR from this work exists (a
    burndown PR or a manual follow-up branch), check out its branch, `git merge origin/main`,
-   and keep stacking on it. Only when none is open: `git checkout -b burndown/rolling`.
+   and keep stacking on it. Only when none is open: `git fetch && git checkout -B burndown/rolling origin/main`
+   (`-B`: a merged rolling branch may still exist locally).
    **Merge it once it is more than 3 days old** (user, 2026-11-22). Before doing the queue item, if
    the open rolling PR's `createdAt` is more than 72 hours ago:
    `gh pr view <n> --json createdAt,mergeable,reviewDecision,statusCheckRollup`. Merge only if
    `mergeable` is MERGEABLE, every check passed, and no review requests changes; read any unresolved
    review comments (Codex bot included) and fix them first (at most ~3 rounds, then merge). Merge
-   with `gh pr merge <n> --merge --delete-branch`, then `git checkout main && git pull --ff-only`
-   and start a fresh `burndown/rolling` for today's work. If a check fails or a reviewer requests
+   with `gh pr merge <n> --merge --delete-branch`, then
+   `git fetch && git checkout -B burndown/rolling origin/main` for today's work. If a check fails or a reviewer requests
    changes, don't merge: fix it today or log why in the ledger. Never merge with `--admin`.
 3. Read the ledger; take the first unchecked queue item (or resume the in-flight one).
 4. Do it. Commit at each green checkpoint.
