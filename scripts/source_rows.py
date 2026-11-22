@@ -54,16 +54,43 @@ def extract_flags(text: str) -> list[str]:
 
 # ---------------------------------------------------------------- fetch
 
-def fetch(url: str, out_dir: Path, refresh: bool, index: dict[str, Any]) -> tuple[Path, str, str]:
-    """Return (raw_path, sha256, fetched_at). Local paths are copied into the cache by hash."""
+_MANIFEST: Optional[dict[str, str]] = None
+
+
+def archived_bytes(url: str) -> Optional[bytes]:
+    """Bytes of the edition the records were built from (sources/manifest.json), if archived.
+
+    The audit checks records against what they cite, so the archived copy wins over a live fetch;
+    pass --live to compare against the current edition instead (a reissue shows up as a new sha256).
+    """
+    global _MANIFEST
+    if _MANIFEST is None:
+        _MANIFEST = {}
+        mf = Path("sources/manifest.json")
+        if mf.exists():
+            for e in json.loads(mf.read_text()).get("entries", {}).values():
+                if e.get("ok") and e.get("saved_path"):
+                    _MANIFEST.setdefault(e["url"], e["saved_path"])
+    sp = _MANIFEST.get(url)
+    if sp and Path(sp).exists():
+        return Path(sp).read_bytes()
+    return None
+
+
+def fetch(url: str, out_dir: Path, refresh: bool, index: dict[str, Any], live: bool = False) -> tuple[Path, str, str]:
+    """Return (raw_path, sha256, fetched_at). Archived source bytes first, then the network."""
     raw_dir = out_dir / "raw"
     raw_dir.mkdir(parents=True, exist_ok=True)
     entry = index.get(url)
-    if entry and not refresh:
+    archived = None if live else archived_bytes(url)
+    if archived is None and entry and not refresh and not live:
         for cand in raw_dir.glob(entry["sha256"] + ".*"):
             LOG.info("cache hit bytes %s", url)
             return cand, entry["sha256"], entry["fetched_at"]
-    if re.match(r"^https?://", url):
+    if archived is not None:
+        data = archived
+        LOG.info("archive hit %s", url)
+    elif re.match(r"^https?://", url):
         tmp = raw_dir / ".download.tmp"
         cmd = ["curl", "-4", "-sSL", "--max-time", "240", "-A", USER_AGENT, "-w", "%{http_code}", "-o", str(tmp), url]
         res = subprocess.run(cmd, capture_output=True, text=True)
@@ -305,6 +332,147 @@ def parse_bcbs_page(ps: PageScan, header_y: float) -> list[dict[str, Any]]:
     return out
 
 
+# ---------------------------------------------------------------- generic layouts (any state)
+#
+# The layouts above are tuned to specific documents. The two below read pypdf's layout-mode text
+# (character columns preserved) and cover the two shapes almost every other source takes:
+#   pdlcols  Medicaid PDL with status columns: "PREFERRED | (PREFERRED WITH PA) | NON-PREFERRED".
+#            The column a drug sits in is its status; non-preferred / with-PA columns carry PA
+#            (on a binary Medicaid PDL being non-preferred is the PA trigger, see CLAUDE.md).
+#   tiered   Commercial / Part D list: "Drug Name | Tier | Requirements" (often two side-by-side
+#            halves). A wrapped drug name is closed by the line that carries its tier.
+# Rows carry generic=True; audit-cells.mjs never lets a generic row alone produce FLAG_MISMATCH on
+# a restriction it can't see (it degrades to AMBIGUOUS), but presence/absence and column status count.
+
+SEG_RE = re.compile(r"\S+(?: \S+)*")  # runs separated by 2+ spaces
+PDL_HDR_RE = re.compile(r"(NON[- ]?PREFERRED(?: AGENTS| DRUGS)?|PREFERRED WITH (?:PA|CLINICAL CRITERIA)|PREFERRED(?: AGENTS| DRUGS)?|PDL DRUG CATEGORY|DRUG CLASS|THERAPEUTIC CLASS|CATEGORY|CLASS)", re.I)
+CONT_WORDS = {"drops", "suspension", "solution", "tablet", "tablets", "capsule", "capsules", "oil", "cream",
+              "ointment", "gel", "vial", "injection", "inhaler", "spray", "patch", "kit", "powder", "packet",
+              "er", "dr", "xr", "sr", "chewable", "oral", "otic", "syrup", "elixir", "pen", "lotion", "foam"}
+TIER_TOKEN_RE = re.compile(r"^(?:Tier\s*([1-6])|([1-6])|(\$0)|(E|NF|NP|SP|PV|MB)|(Preferred|Non-?Preferred|Not Preferred))$", re.I)
+TIER_HDR_RE = re.compile(r"\b(Drug(?: Name)?|Medication(?: Name)?|Drug Tier|Tier|Requirements?(?:\s*(?:&|/|and)\s*Limits)?|Notes|Coverage Requirements and Limits|Limits)\b", re.I)
+
+
+def _segments(line: str) -> list[tuple[int, str]]:
+    return [(m.start(), m.group(0)) for m in SEG_RE.finditer(line.replace("\t", " "))]
+
+
+def _pdl_header(line: str) -> Optional[list[tuple[int, str]]]:
+    up = line.upper()
+    if "PREFERRED" not in up or not re.search(r"NON[- ]?PREFERRED", up):
+        return None
+    segs = _segments(line)
+    # a real column-header row is only header labels (prose that mentions "non-preferred" is not)
+    if not segs or len(segs) > 6 or not all(PDL_HDR_RE.fullmatch(t.strip(" :*")) or t.upper() in {"PDL", "DRUGS", "AGENTS"} for _s, t in segs):
+        return None
+    cols = []
+    for m in PDL_HDR_RE.finditer(line):
+        lab = m.group(1).upper()
+        kind = "nonpref" if lab.startswith("NON") else ("prefpa" if "WITH" in lab else ("pref" if lab.startswith("PREFERRED") else "class"))
+        cols.append((m.start(), kind))
+    return cols if sum(k != "class" for _s, k in cols) >= 2 else None
+
+
+def _col_of(start: int, cols: list[tuple[int, str]]) -> str:
+    """Column whose span holds `start`. Header labels are often centred over their column (TX, NC),
+    so a column begins halfway between its label and the previous label, not at its label."""
+    best = cols[0][1]
+    for i in range(1, len(cols)):
+        if start >= (cols[i - 1][0] + cols[i][0]) / 2:
+            best = cols[i][1]
+    return best
+
+
+def parse_pdlcols_page(text: str, cols: Optional[list[tuple[int, str]]]) -> tuple[list[dict[str, Any]], Optional[list[tuple[int, str]]]]:
+    rows: list[dict[str, Any]] = []
+    last: dict[str, dict[str, Any]] = {}
+    section = ""
+    for line in text.splitlines():
+        hdr = _pdl_header(line)
+        if hdr:
+            cols, last = hdr, {}
+            continue
+        if not cols:
+            continue
+        for start, seg in _segments(line):
+            kind = _col_of(start, cols)
+            if kind == "class":
+                section = seg if seg.isupper() or not section else f"{section} {seg}"
+                continue
+            first = seg.split()[0].lower().strip(",.;()")
+            prev = last.get(kind)
+            if prev is not None and (first in CONT_WORDS or re.match(r"^[\d(.%/]", seg)):
+                prev["drug"] = norm_space(prev["drug"] + " " + seg)
+                prev["raw"] = norm_space(prev["raw"].split(" | ")[0] + " " + seg) + " | " + prev["notes"]
+                continue
+            status = {"pref": "Preferred", "prefpa": "Preferred with PA", "nonpref": "Non-preferred"}[kind]
+            flags = extract_flags(seg)
+            if kind != "pref" and "PA" not in flags:
+                flags = ["PA"] + flags
+            row = {"drug": seg, "tier": None, "notes": status, "flags": flags, "section": section,
+                   "status": status, "generic": True, "raw": f"{seg} | {status}"}
+            rows.append(row)
+            last[kind] = row
+    return rows, cols
+
+
+def _tier_header(line: str) -> Optional[list[int]]:
+    """Return the char starts of each 'Drug' column (1 or 2 halves) when the line is a tiered header."""
+    if not re.search(r"\bTier\b", line, re.I):
+        return None
+    drug = [m.start() for m in re.finditer(r"\b(?:Drug Name|Drug|Medication Name|Medication)\b(?!\s*Tier)", line, re.I)]
+    if not drug:
+        return None
+    if not TIER_HDR_RE.search(line):
+        return None
+    return drug[:2]
+
+
+def parse_tiered_page(text: str, halves: Optional[list[int]]) -> tuple[list[dict[str, Any]], Optional[list[int]]]:
+    rows: list[dict[str, Any]] = []
+    lines = text.splitlines()
+    for line in lines:
+        h = _tier_header(line)
+        if h:
+            halves = h
+            break
+    if not halves:
+        return rows, halves
+    bounds = [(halves[i] - 2 if i else 0, halves[i + 1] - 2 if i + 1 < len(halves) else 10**6) for i in range(len(halves))]
+    for lo, hi in bounds:
+        acc: list[str] = []
+        section = ""
+        for line in lines:
+            if _tier_header(line):
+                acc = []
+                continue
+            part = line.replace("\t", " ")[lo:hi]
+            segs = _segments(part)
+            if not segs:
+                continue
+            tier_i = next((i for i, (_s, t) in enumerate(segs) if i > 0 and TIER_TOKEN_RE.match(t)), None)
+            if tier_i is None:
+                txt = " ".join(t for _s, t in segs)
+                if txt.startswith("*") or (txt.isupper() and txt.endswith("*")):
+                    section, acc = txt.strip("* "), []
+                else:
+                    acc.append(txt)
+                continue
+            drug = norm_space(" ".join(acc + [t for _s, t in segs[:tier_i]]))
+            acc = []
+            m = TIER_TOKEN_RE.match(segs[tier_i][1])
+            tier = m.group(1) or m.group(2) or (m.group(3) and "$0") or (m.group(4) or m.group(5) or "").title()
+            notes = norm_space(" ".join(t for _s, t in segs[tier_i + 1:]))
+            # glued two-column runs and index pages ("OLUMIANT . . . . 42") are not rows
+            if not drug or len(drug) > 110 or ". . ." in drug or ". . ." in notes:
+                continue
+            flags = extract_flags(notes)
+            # a commercial "non-preferred" tier is a cost tier, not a PA (CLAUDE.md, BCBS IL note): no flag added
+            rows.append({"drug": drug, "tier": tier, "notes": notes, "flags": flags, "section": section,
+                         "generic": True, "raw": norm_space(f"{drug} | tier {tier} | {notes}")})
+    return rows, halves
+
+
 def extract_pdf(path: Path) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     from pypdf import PdfReader  # type: ignore
 
@@ -313,12 +481,27 @@ def extract_pdf(path: Path) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     layouts: dict[str, int] = {}
     section = ""
     stats = {"pages": len(reader.pages), "table_pages": 0, "skipped_pages": []}
+    pdl_cols: Optional[list[tuple[int, str]]] = None
+    tier_halves: Optional[list[int]] = None
     for pn, page in enumerate(reader.pages, start=1):
         try:
             ps = scan_page(page)
             det = detect_layout(ps)
             if not det:
-                stats["skipped_pages"].append(pn)
+                text = page.extract_text(extraction_mode="layout")
+                g_rows, pdl_cols = parse_pdlcols_page(text, pdl_cols)
+                g_layout = "pdlcols"
+                if not g_rows:
+                    g_rows, tier_halves = parse_tiered_page(text, tier_halves)
+                    g_layout = "tiered"
+                if not g_rows:
+                    stats["skipped_pages"].append(pn)
+                    continue
+                layouts[g_layout] = layouts.get(g_layout, 0) + 1
+                stats["table_pages"] += 1
+                for r in g_rows:
+                    r["page"] = pn
+                rows.extend(g_rows)
                 continue
             layout, hy = det
             layouts[layout] = layouts.get(layout, 0) + 1
@@ -499,8 +682,8 @@ def extract_mhdl_html(path: Path) -> tuple[list[dict[str, Any]], dict[str, Any]]
 
 # ---------------------------------------------------------------- driver
 
-def process(url: str, out_dir: Path, refresh: bool, index: dict[str, Any]) -> None:
-    path, sha, fetched_at = fetch(url, out_dir, refresh, index)
+def process(url: str, out_dir: Path, refresh: bool, index: dict[str, Any], live: bool = False) -> None:
+    path, sha, fetched_at = fetch(url, out_dir, refresh, index, live)
     rows_file = out_dir / f"{sha}.json"
     if rows_file.exists() and not refresh:
         prev = json.loads(rows_file.read_text())
@@ -527,7 +710,8 @@ def main(argv: Optional[list[str]] = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("sources", nargs="+")
     ap.add_argument("--out-dir", default=DEFAULT_OUT)
-    ap.add_argument("--refresh", action="store_true", help="re-download and re-extract")
+    ap.add_argument("--refresh", action="store_true", help="re-extract (and re-read bytes)")
+    ap.add_argument("--live", action="store_true", help="fetch the current edition instead of the archived copy")
     ap.add_argument("-v", "--verbose", action="store_true")
     args = ap.parse_args(argv)
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format="%(levelname)s %(message)s")
@@ -538,7 +722,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     failed = 0
     for src in args.sources:
         try:
-            process(src, out_dir, args.refresh, index)
+            process(src, out_dir, args.refresh, index, args.live)
         except Exception as exc:
             failed += 1
             LOG.error("FAILED %s: %s", src, exc)
