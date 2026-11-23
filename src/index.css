@@ -28,6 +28,15 @@
   --status-warn: #8a4b00;
   --status-deny: #8e1f1a;
 
+  /* Per-medication map fills (src/components/MedicationMap.tsx). Each status also carries a glyph
+   * and a word; text on the darkest fill is --paper. */
+  --st-preferred: #0a6e5c;
+  --st-alternative: #9fcfbf;
+  --st-pa: #e7c27d;
+  --st-nonformulary: #d99891;
+  --st-notlisted: #e9e7de;
+  --st-unknown: #fbfaf7;
+
   --font-serif: "New York", "Iowan Old Style", "Palatino", "Palatino Linotype", "Georgia",
     "Times New Roman", serif;
   --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, "Helvetica Neue",
@@ -1499,7 +1508,7 @@ button {
 /* Shared coverage desk controls. The plan guide stays the default reading surface. */
 .masthead__mark img { width: 40px; height: 40px; vertical-align: middle; margin-right: 5px }
 .masthead__mark i { font-family: Georgia,serif }
-.lookup-nav { display:flex; gap:6px; margin:10px 0 }
+.lookup-nav { display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 }
 .lookup-nav button,.desk-action,.med-workspace button { min-height:44px; padding:7px 12px; border:1px solid var(--rule-faint); border-radius:8px; background:var(--paper); color:var(--accent-deep); font:600 14px var(--font-sans); cursor:pointer }
 .lookup-nav button[aria-pressed=true] { border-color:var(--accent); background:var(--sig-highlight) }
 .plan-select,.seg__btn,.recommendation-hero,.rx-option-card,.pa-builder,.copy-btn,.appeal-btn,.price-box,.desk-action { border-radius:8px }
@@ -1522,3 +1531,92 @@ button {
 .med-finding+.med-finding { border-top:1px solid var(--rule-faint); padding-top:8px }
 .med-columns { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px }
 @media(max-width:650px){.med-columns{grid-template-columns:1fr;gap:0}}
+
+/* ---- One medication, every state ---- */
+.med-map { position:relative }
+.med-map__form .med-input input { font-size:16px }
+.med-map__form .med-input button { width:auto; padding:0 14px; border-radius:0 8px 8px 0 }
+.med-quick { display:flex; flex-wrap:wrap; align-items:center; gap:6px }
+.med-quick button[aria-pressed=true] { border-color:var(--accent); background:var(--sig-highlight) }
+.med-note { color:var(--ink-muted); font-size:14px }
+.med-labels { margin:6px 0 14px }
+.med-labels summary { min-height:44px; display:flex; align-items:center; cursor:pointer; color:var(--accent-deep); font-weight:600 }
+.med-labels ul { list-style:none; padding:0; margin:0; max-height:260px; overflow:auto }
+.med-labels label { display:flex; gap:8px; align-items:flex-start; font-weight:400; min-height:44px; margin:0; padding:10px 0 }
+.med-stats { border-top:3px solid var(--ink); padding-top:10px; margin-bottom:14px }
+.med-stats__lead { font:400 1.15rem/1.4 var(--font-serif) }
+.med-stats__lead strong { font-weight:700 }
+.med-types { list-style:none; padding:0; margin:8px 0 0; display:grid; gap:10px }
+.med-types li { display:grid; gap:3px; min-width:0 }
+.med-types__name { font-weight:600; font-size:14px }
+.med-types__words { font-size:13px; color:var(--ink-muted) }
+.med-bar { display:flex; height:12px; border:1px solid var(--rule); border-radius:4px; overflow:hidden }
+.med-bar__seg { flex-basis:0; min-width:3px }
+.med-map .med-fill--preferred { background:var(--st-preferred); color:var(--paper) }
+.med-map .med-fill--alternative { background:var(--st-alternative); color:var(--ink) }
+.med-map .med-fill--pa { background:var(--st-pa); color:var(--ink) }
+.med-map .med-fill--nonformulary { background:var(--st-nonformulary); color:var(--ink) }
+.med-map .med-fill--notListed { background:var(--st-notlisted); color:var(--ink) }
+.med-map .med-fill--unknown { background:var(--st-unknown); color:var(--ink) }
+.us-map { display:grid; grid-template-columns:repeat(11,minmax(0,1fr)); gap:3px; margin:10px auto; max-width:560px }
+.med-map .us-tile { aspect-ratio:1; min-width:0; min-height:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; padding:0; border:1px solid var(--rule); border-radius:4px; font:700 clamp(9px,2.6vw,14px)/1 var(--font-sans); overflow:hidden }
+.med-map button.us-tile { cursor:pointer; transition:transform 90ms ease }
+button.us-tile:hover { transform:scale(1.06) }
+.us-tile.is-selected { outline:3px solid var(--ink); outline-offset:1px; z-index:1 }
+.us-tile--off { background:transparent; border-style:dashed; border-color:var(--rule-faint); color:var(--rule) ; font-weight:500 }
+.us-tile.med-fill--unknown { border-style:dashed }
+.us-tile__code { display:block; white-space:nowrap }
+.us-tile__star { font-size:.8em; margin-left:1px }
+.us-tile__dots { display:flex; flex-wrap:wrap; justify-content:center; gap:1px; max-width:90%; line-height:0 }
+.med-dot { display:inline-block; width:7px; height:7px; border-radius:999px; border:1px solid var(--ink-muted); vertical-align:middle }
+.us-tile__dots .med-dot { width:clamp(3px,1vw,7px); height:clamp(3px,1vw,7px); border-width:1px; border-color:var(--paper) }
+.us-tile.med-fill--preferred .med-dot { border-color:var(--paper) }
+/* On the dark tile a preferred plan's dot is solid paper, so solid always means preferred there. */
+.med-map .us-tile.med-fill--preferred .med-dot.med-fill--preferred { background:var(--paper) }
+.us-tile:not(.med-fill--preferred) .us-tile__dots .med-dot { border-color:var(--ink-muted) }
+.med-dot--off { border-style:dashed; background:transparent }
+.med-legend { list-style:none; padding:0; margin:4px 0 14px; display:flex; flex-wrap:wrap; gap:4px 14px; font-size:13px }
+.med-map__list-h { font:600 1.1rem var(--font-serif); margin-top:8px }
+.med-state-list { list-style:none; padding:0; margin:0 0 12px; display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr)); gap:6px }
+.med-map .med-state-list button { width:100%; min-height:44px; display:grid; grid-template-columns:minmax(0,1fr); gap:3px; align-items:center; text-align:left; color:var(--ink); font-weight:500 }
+.med-state-list button[aria-pressed=true] { border-color:var(--ink); background:var(--paper-shade) }
+.med-state-list__count { font:400 13px var(--font-sans); color:var(--ink-muted) }
+.med-state-list__dots { display:flex; gap:3px }
+.med-state { position:relative; border-top:3px solid var(--ink); padding-top:12px; margin-top:8px }
+.med-state h3 { font:600 1.35rem var(--font-serif) }
+.med-state h3:focus { outline:none }
+.med-state h4 { font:600 1rem var(--font-serif); margin:0 0 6px }
+.med-party { color:var(--accent-deep) }
+.med-plans { list-style:none; padding:0; margin:0 }
+.med-plan { border-top:1px solid var(--rule-faint); padding:10px 0 }
+.med-plan p { margin:0 0 4px }
+.med-cell + .med-cell { border-top:1px dashed var(--rule-faint); margin-top:6px; padding-top:6px }
+.med-status { font-weight:600 }
+.med-status > span { display:inline-block; min-width:1.2em; text-align:center; border-radius:4px; padding:0 3px }
+.med-status--preferred > span { background:var(--st-preferred); color:var(--paper) }
+.med-status--alternative > span { background:var(--st-alternative) }
+.med-status--pa > span { background:var(--st-pa) }
+.med-status--nonformulary > span { background:var(--st-nonformulary) }
+.med-status--notListed > span { background:var(--st-notlisted) }
+.med-status--unknown > span { border:1px dashed var(--rule) }
+.med-kv { display:grid; grid-template-columns:auto minmax(0,1fr); gap:2px 10px; margin:4px 0; font-size:14px }
+.med-kv dt { color:var(--ink-muted) }
+.med-kv dd { margin:0 }
+.med-sources { display:flex; flex-wrap:wrap; gap:4px 12px; font-size:14px }
+.med-sources a { display:inline-flex; align-items:center; min-height:44px }
+.med-cash { border-top:1px solid var(--rule); padding-top:10px; margin-top:6px }
+.med-cash ul { padding-left:18px; margin:0 }
+.med-cash a { overflow-wrap:anywhere }
+.mono { font-family:var(--font-mono) }
+.confetti { position:absolute; left:50%; top:18px; width:0; height:0; pointer-events:none; z-index:5 }
+.confetti i { position:absolute; width:7px; height:7px; border-radius:2px; background:var(--st-preferred); opacity:0; animation:confetti 300ms cubic-bezier(.2,.7,.3,1) both }
+.confetti i:nth-child(3n) { background:var(--st-pa) }
+.confetti i:nth-child(3n+1) { background:var(--st-alternative) }
+@keyframes confetti {
+  0% { opacity:1; transform:rotate(var(--a)) translateY(0) scale(1) }
+  100% { opacity:0; transform:rotate(var(--a)) translateY(calc(-1 * var(--d))) scale(.6) }
+}
+@media (prefers-reduced-motion: reduce) {
+  .confetti { display:none }
+  button.us-tile:hover { transform:none }
+}

@@ -29,7 +29,7 @@ function useGuideLoad(id: string) {
   return { ...(load?.id === id ? load : {}), retry: () => setAttempt((n) => n + 1) }
 }
 
-function MedicationPicker({
+export function MedicationPicker({
   names,
   selected,
   onPick,

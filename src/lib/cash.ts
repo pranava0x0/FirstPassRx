@@ -395,8 +395,9 @@ import costPlusSnapshot from '../data/costplus-prices.json' with { type: 'json' 
  * 4780 → 4826 (2026-11-07): the Atelvia rule matched any "delayed-release" text, so DR naproxen,
  *   fluoxetine 90 mg weekly, diclofenac, PPIs and DR antibiotics showed Atelvia's price; those names
  *   are now honestly unpriced (Codex review, PR #32).
+ * 6620 → 6593 (2026-11-22): Dovato's GoodRx price (and catalog growth since the last tightening).
  */
-export const KNOWN_UNPRICED_GAP = 6620
+export const KNOWN_UNPRICED_GAP = 6593
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
@@ -445,6 +446,9 @@ export interface CashLinkRule {
   /** ISO date both prices above were read directly off the vendor page (real browser session,
    * not a secondary aggregator). */
   pricesCapturedAt?: string
+  /** One line of context read off the same vendor page at the same time (pharmacy range, retail
+   * price, generic/Cost Plus availability). */
+  cashNote?: string
 }
 
 export const CASH_LINK_RULES: readonly CashLinkRule[] = [
@@ -738,6 +742,17 @@ export const CASH_LINK_RULES: readonly CashLinkRule[] = [
     matches: /bictegravir|biktarvy/i,
     goodRxSlug: 'biktarvy',
     pricesCapturedAt: '2026-10-22',
+  },
+  {
+    // Dovato only: Triumeq (abacavir) and Juluca (rilpivirine) also contain dolutegravir, and
+    // Triumeq names "dolutegravir…lamivudine" too. GoodRx standard price, CVS-anchored, read in
+    // the user's Chrome 2026-11-22 (range $2,897 to $3,597 across pharmacies). Cost Plus does not
+    // carry Dovato.
+    matches: /^(?!.*\b(abacavir|triumeq|rilpivirine|juluca)\b).*(dovato|dolutegravir\W+(sodium\W+)?(and\W+)?lamivudine)/i,
+    goodRxSlug: 'dovato',
+    goodRxPrice: { price: 3223, quantity: '30 tablets, 50/300mg' },
+    pricesCapturedAt: '2026-11-22',
+    cashNote: 'GoodRx pharmacies ranged $2,897 (Weis) to $3,597 (Costco); retail about $4,181. No generic; Cost Plus Drugs does not carry it.',
   },
   {
     matches: /dupilumab|dupixent/i,
@@ -3000,6 +3015,11 @@ export function costPlusPrice(name: string, strength?: string): PricePoint | nul
 /** ISO date the prices above were captured, or null if this drug has no explicit cash-link rule. */
 export function pricesCapturedAt(name: string): string | null {
   return cashLinkRule(name)?.pricesCapturedAt ?? null
+}
+
+/** Context captured with the price (pharmacy range, retail price), or null. */
+export function cashNote(name: string): string | null {
+  return cashLinkRule(name)?.cashNote ?? null
 }
 
 /** Whether this drug resolves to an explicit rule, vs. the generic fallback-slug guesser. */
