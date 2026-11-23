@@ -4,6 +4,13 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
 
 ## Fixed
 
+- **2026-11-23 · audit (scripts/source_rows.py `tiered`) · back-of-book index rows read as tier rows.**
+  BCBS AL's index prints "doxycycline hyclate tab 100 mg ........ 3" (3 = page), so the audit flagged the
+  tier-1 doxycycline pick as tier 3 and matched every Blue Advantage drug against index lines. Only spaced
+  ". . ." leaders were skipped. Root cause: **code bug**. Fixed: any run of 4+ dots (spaced or not) marks an
+  index line. No Python test harness exists for source_rows.py; the AL re-audit (FLAG_MISMATCH 1 → 0) is the
+  check.
+
 - **2026-11-22 · audit (scripts/source_rows.py) · the deterministic audit checked nothing outside MA.**
   The extractor only knew four MassHealth-era layouts, so 391 of 432 cached sources gave 0 rows and every
   check for the 15 common-drug states (Nov 8-21) was SKIPPED while the ledger reported cells as verified.
@@ -231,6 +238,13 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   the index-only section now both key off the same guide list, and the map was regenerated.
 
 ## Open (2026-11-22 review of PR #33)
+
+- **2026-11-23 · AL audit: two of three payer documents are unaudited.** `audit-cells --state=AL` on the six
+  common-drug guides: BCBS AL Source+Rx 85 OK, 20 reviewed and accepted (wrapped names and brand rows; every
+  record matched the PDF row by hand). AL Medicaid's PDL Reference Tool (88 checks) and BCBS AL Blue Advantage
+  (93 checks) are all SKIPPED: no layout reads either document's table pages. Until one does, those 34 cells'
+  "verified" rests on the 2026-11-22 Sonnet check only. Blue Advantage's earlier 92 NOT_FOUND came from its
+  back-of-book index being read as rows (fixed below).
 
 - **CareFirst (MD/DC) PDF gives no pypdf layout text** (`sources/state-dc-4bf6ff8e7920b90a.pdf`, 231 of 237
   pages under 200 characters); PyMuPDF reads it. Its checks are SKIPPED until the extractor gets a fallback.

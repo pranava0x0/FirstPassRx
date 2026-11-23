@@ -360,6 +360,7 @@ CONT_WORDS = {"drops", "suspension", "solution", "tablet", "tablets", "capsule",
               "ointment", "gel", "vial", "injection", "inhaler", "spray", "patch", "kit", "powder", "packet",
               "er", "dr", "xr", "sr", "chewable", "oral", "otic", "syrup", "elixir", "pen", "lotion", "foam"}
 TIER_TOKEN_RE = re.compile(r"^(?:Tier\s*([1-6])|([1-6])|(\$0)|(E|NF|NP|SP|PV|MB)|(Preferred|Non-?Preferred|Not Preferred))$", re.I)
+INDEX_LEADER_RE = re.compile(r"(?:\. ?){4,}")  # dot leader of a back-of-book index
 TIER_HDR_RE = re.compile(r"\b(Drug(?: Name)?|Medication(?: Name)?|Drug Tier|Tier|Requirements?(?:\s*(?:&|/|and)\s*Limits)?|Notes|Coverage Requirements and Limits|Limits)\b", re.I)
 
 
@@ -476,8 +477,9 @@ def parse_tiered_page(text: str, halves: Optional[list[int]]) -> tuple[list[dict
             m = TIER_TOKEN_RE.match(segs[tier_i][1])
             tier = m.group(1) or m.group(2) or (m.group(3) and "$0") or (m.group(4) or m.group(5) or "").title()
             notes = norm_space(" ".join(t for _s, t in segs[tier_i + 1:]))
-            # glued two-column runs and index pages ("OLUMIANT . . . . 42") are not rows
-            if not drug or len(drug) > 110 or ". . ." in drug or ". . ." in notes:
+            # glued two-column runs and index pages ("OLUMIANT . . . . 42", "doxycycline tab 100 mg ....... 3")
+            # are not rows: the number after the dot leader is a page, not a tier
+            if not drug or len(drug) > 110 or INDEX_LEADER_RE.search(drug) or INDEX_LEADER_RE.search(notes):
                 continue
             flags = extract_flags(notes)
             # a commercial "non-preferred" tier is a cost tier, not a PA (CLAUDE.md, BCBS IL note): no flag added
