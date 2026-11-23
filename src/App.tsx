@@ -17,6 +17,7 @@ import { Controls } from './components/Controls'
 import { ResultCard } from './components/ResultCard'
 import { MedicationLookup, PlanComparison, type CompareStart } from './components/MedicationLookup'
 import { PaDraftProvider } from './lib/paDrafts'
+import { MedicationMap } from './components/MedicationMap'
 
 const PANEL_ID = 'result-panel'
 const LAST_PICK_KEY = 'fprx:last-pick'
@@ -54,7 +55,15 @@ export default function App() {
 }
 
 function CoverageDesk() {
-  const [lane,setLane] = useState<'plan'|'drug'>('plan')
+  // ?med= deep-links the per-medication map.
+  const [lane,setLaneState] = useState<'plan'|'drug'|'map'>(() =>
+    typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('med') ? 'map' : 'plan')
+  function setLane(next: 'plan'|'drug'|'map') {
+    const url = new URL(window.location.href)
+    for (const k of next === 'map' ? ['guide', 'plan', 'class'] : ['med', 'state']) url.searchParams.delete(k)
+    if (url.toString() !== window.location.href) window.history.replaceState({}, '', url.toString())
+    setLaneState(next)
+  }
   const [visitedLookup,setVisitedLookup] = useState(false)
   const [comparison,setComparison] = useState<CompareStart|null>(null)
   const compareTrigger = useRef<HTMLElement | null>(null)
@@ -121,14 +130,20 @@ function CoverageDesk() {
   // this device. Only once the loaded guide matches the picker, so a half-switched state
   // never gets written.
   useEffect(() => {
+    // The medication map owns the URL while it is open (?med=, ?state=); the plan pick is still
+    // remembered on this device.
     if (!hydrated.current || activeGuideId === undefined || activeGuideId !== guide.id) return
+    if (lane === 'map') {
+      writeLastPick({ guideId: guide.id, payerId, classId })
+      return
+    }
     const url = new URL(window.location.href)
     url.searchParams.set('guide', guide.id)
     url.searchParams.set('plan', payerId)
     url.searchParams.set('class', classId)
     if (url.toString() !== window.location.href) window.history.replaceState({}, '', url.toString())
     writeLastPick({ guideId: guide.id, payerId, classId })
-  }, [guide.id, payerId, classId, activeGuideId])
+  }, [guide.id, payerId, classId, activeGuideId, lane])
 
   // Changing state keeps the condition when that state has it; otherwise jump to the state's
   // first available condition instead of landing on an empty "not covered" page.
@@ -207,7 +222,7 @@ function CoverageDesk() {
 
   return (
     <GuideProvider value={guide}>
-      <a className="skip-link" href={comparison || lane==='drug' ? '#med-panel' : `#${PANEL_ID}`}>
+      <a className="skip-link" href={lane==='map' && !comparison ? '#map-panel' : comparison || lane==='drug' ? '#med-panel' : `#${PANEL_ID}`}>
         Skip to result
       </a>
 
@@ -224,6 +239,7 @@ function CoverageDesk() {
           <nav className="lookup-nav" aria-label="Lookup method">
             <button aria-pressed={lane==='plan'} onClick={()=>{setLane('plan');setComparison(null)}}>By plan</button>
             <button aria-pressed={lane==='drug'} onClick={()=>{setVisitedLookup(true);setLane('drug');setComparison(null)}}>By medication</button>
+            <button aria-pressed={lane==='map'} onClick={()=>{setLane('map');setComparison(null)}}>Across states</button>
           </nav>
           <div hidden={lane!=='plan' || !!comparison}>
           <Controls
@@ -298,6 +314,7 @@ function CoverageDesk() {
             {visitedLookup && <div hidden={lane!=='drug' || !!comparison}><MedicationLookup compare={openComparison}/></div>}
             {comparison && <PlanComparison start={comparison} back={closeComparison}/>}
           </div>
+          {lane==='map' && !comparison && <div id="map-panel" tabIndex={-1}><MedicationMap/></div>}
         </main>
 
         <section className="disclaimer-group">

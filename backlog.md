@@ -481,6 +481,17 @@ Ideas, each with a priority (low / medium / high). Reprioritize periodically.
 
 ## Medium
 
+- **Aetna Standard formulary for Virginia employer plans** (medium, 2026-11-23). `va-hiv` now has
+  Aetna's Advanced Control Plan (national list, partial). Employers also pick Aetna's Standard
+  Plan; add it as a second Aetna payer, and add Aetna commercial to Virginia's other topics, which
+  still have no Aetna PPO.
+- **Medication map in the dark theme** (low, 2026-11-23). The map uses only `:root` tokens
+  (`--st-*`), so it follows whenever the app-wide dark theme (Low list) lands; give the five
+  `--st-*` fills dark values then and check AA on the tile codes.
+- **Medication map: copay cards beyond Dovato** (medium, 2026-11-23). `src/lib/copayPrograms.ts`
+  has one entry (ViiVConnect for Dovato, cap read off ViiV's own PDF). Biktarvy (Advancing Access),
+  Jardiance, Eliquis and the GLP-1s are the next most-searched.
+
 - **Costs beyond the prescription** (medium): OTC equivalents at NADAC, dispensing fees, supplies
   (spacers, pen needles, strips), the Part D out-of-pocket and insulin caps, copay-card links with the
   federal-program exclusion, Part B ASP for clinic-given drugs, required monitoring labs.

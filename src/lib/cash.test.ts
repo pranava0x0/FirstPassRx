@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { CASH_LINK_RULES, costPlusUrl, goodRxUrl, hasCashLinkRule, goodRxPrice, costPlusPrice, pricesCapturedAt, priceSuppressedByForm, KNOWN_UNPRICED_GAP } from './cash'
+import { CASH_LINK_RULES, cashNote, costPlusUrl, goodRxUrl, hasCashLinkRule, goodRxPrice, costPlusPrice, pricesCapturedAt, priceSuppressedByForm, KNOWN_UNPRICED_GAP } from './cash'
 import costPlusSnapshot from '../data/costplus-prices.json'
 import rawData from '../data/formulary.json'
 import type { Formulary } from '../types/formulary'
@@ -612,5 +612,34 @@ describe('delayed-release products keep their own price (Codex, 2026-11-06)', ()
     expect(goodRxPrice('Pantoprazole sodium (delayed-release tablet)')?.quantity).toBe('30 tablets, 40mg')
     expect(goodRxPrice('Naproxen DR (delayed-release tablet)')).toBeNull()
     expect(goodRxPrice('Fluoxetine delayed-release capsule 90 mg')).toBeNull()
+  })
+})
+
+describe('Dovato cash rule', () => {
+  const dovato = [
+    'Dovato (dolutegravir/lamivudine) 50/300 mg tablet',
+    'Dolutegravir-lamivudine (Dovato)',
+    'Dolutegravir sodium/lamivudine (Dovato)',
+    'Dolutegravir and lamivudine (Dovato)',
+    'DOVATO (dolutegravir-lamivudine) 50-300 mg',
+  ]
+  it.each(dovato)('prices %s at the captured GoodRx standard price', (name) => {
+    expect(goodRxPrice(name)).toEqual({ price: 3223, quantity: '30 tablets, 50/300mg' })
+    expect(goodRxUrl(name)).toBe('https://www.goodrx.com/dovato')
+    expect(pricesCapturedAt(name)).toBe('2026-11-22')
+    expect(costPlusUrl(name)).toBeNull()
+    expect(cashNote(name)).toMatch(/\$2,897 \(Weis\) to \$3,597 \(Costco\)/)
+  })
+  it('keeps the price at the pick strength', () => {
+    expect(goodRxPrice('Dolutegravir-lamivudine', '50 mg/300 mg tablet')?.price).toBe(3223)
+  })
+  it.each([
+    'Dolutegravir-abacavir-lamivudine (Triumeq)',
+    'Abacavir/dolutegravir/lamivudine (Triumeq) 600/50/300 mg',
+    'TRIUMEQ (dolutegravir/abacavir/lamivudine) tablet',
+    'Dolutegravir-rilpivirine (Juluca)',
+    'Darunavir-cobicistat-FTC-TAF (Symtuza), rilpivirine-FTC-TAF (Odefsey), dolutegravir-rilpivirine (Juluca)',
+  ])('never prices sibling dolutegravir product %s as Dovato', (name) => {
+    expect(goodRxPrice(name)?.price).not.toBe(3223)
   })
 })
