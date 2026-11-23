@@ -817,7 +817,8 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   the product has one form everywhere, branded salt spelling) live in the generated
   `medication-aliases.json`. A first cut that dropped the strength part merged Ozempic tablets with the
   pen and estradiol patch with the vaginal insert; `scripts/check-medication-catalog.mjs` (in npm test)
-  now fails on any product × state without a plan card or any entry that mixes two forms.- **Reading a downloaded PDF here: PyMuPDF, not the Read tool.** The Read tool's page renderer needs
+  now fails on any product × state without a plan card or any entry that mixes two forms.
+- **Reading a downloaded PDF here: PyMuPDF, not the Read tool.** The Read tool's page renderer needs
   poppler (`pdftoppm`), which this machine doesn't have, and `pdftotext`/`qpdf` are missing too.
   PyMuPDF (`fitz`), pdfplumber and pypdf live in the user site-packages, which `python3 -I` (required
   for untrusted downloads) drops: run `python3 -I` and `sys.path.append(<~/Library/Python/*/lib/python/site-packages>)`
