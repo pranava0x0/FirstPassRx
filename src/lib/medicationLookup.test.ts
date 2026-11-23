@@ -1,7 +1,11 @@
 import { describe, expect, it } from 'vitest'
-import { getDefaultGuideView } from './formulary'
-import { preferredLabel } from './medicationEntries.mjs'
-import { findings } from './medicationLookup'
+import { getDefaultGuideView, guideOptions } from './formulary'
+import { preferredLabel, productKey } from './medicationEntries.mjs'
+import { findings, productFindings } from './medicationLookup'
+import catalogData from '../data/generated/medications.json'
+import aliasData from '../data/generated/medication-aliases.json'
+import rawData from '../data/formulary.json'
+import type { Formulary } from '../types/formulary'
 
 const guide = getDefaultGuideView()
 const record = guide.getRecord('masshealth', 'saba')!
@@ -38,5 +42,61 @@ describe('exact medication findings', () => {
     expect(rows.map((row) => row.label)).toEqual(['Plan review required', 'PA required'])
     expect(rows[0]?.detail).toContain('Prior authorization required')
     expect(rows[1]?.sources).toEqual(record.paRequired[0]!.sourceIds)
+  })
+})
+
+describe('one product across spellings (Dovato showed only Texas, 2026-11-22)', () => {
+  it('gives every spelling of a product the same key, and keeps different products apart', () => {
+    const dovato = [
+      'DOVATO (dolutegravir/lamivudine)',
+      'Dolutegravir-lamivudine (Dovato) 50-300 mg',
+      'Dovato (dolutegravir/lamivudine) 50 mg/300 mg tablet',
+      'Dolutegravir and lamivudine (Dovato)',
+      'Dovato (dolutegravir-lamivudine), brand (QL 1 tab per day)',
+    ].map((l) => productKey(l, aliasData))
+    expect(new Set(dovato).size).toBe(1)
+    // a salt-only spelling (Washington) and a bare brand (TennCare, Highmark) land on the same product
+    expect(productKey('Dolutegravir sodium/lamivudine (Dovato)', aliasData)).toBe(dovato[0])
+    expect(productKey('Dovato® tabs', aliasData)).toBe(dovato[0])
+    expect(productKey('Dovato Oral Tablet', aliasData)).toBe(dovato[0])
+    expect(productKey('E.E.S. (tablet)')).not.toBe(productKey('Ery-Tab (tablet)'))
+    // forms, devices and single-letter product names stay apart (review of PR #40)
+    expect(productKey('Ozempic tablets (oral semaglutide)', aliasData)).not.toBe(productKey('Ozempic (semaglutide) pen-injector', aliasData))
+    expect(productKey('Humulin N', aliasData)).not.toBe(productKey('Humulin R U-100', aliasData))
+    expect(productKey('Estradiol · 10 mcg vaginal insert', aliasData)).not.toBe(productKey('Estradiol · 0.05 mg/24 hr patch', aliasData))
+    expect(productKey('Albuterol sulfate · 90 mcg/actuation HFA inhaler', aliasData)).not.toBe(productKey('albuterol sulfate · 2.5mg/3mL nebulizer solution', aliasData))
+    expect(productKey('Diclofenac sodium DR tablet', aliasData)).not.toBe(productKey('Diclofenac potassium tablet', aliasData))
+    // a generic that names its reference brand is still the generic (Codex review, PR #40)
+    expect(productKey('dapagliflozin (generic Farxiga)', aliasData)).not.toBe(productKey('Farxiga (dapagliflozin, brand)', aliasData))
+    expect(productKey('dapagliflozin-metformin ER (generic Xigduo XR)', aliasData)).not.toBe(productKey('Xigduo XR (dapagliflozin-metformin ER)', aliasData))
+    expect(productKey('albuterol · 90 mcg/actuation HFA inhaler', aliasData)).not.toBe(productKey('albuterol tablets (oral)', aliasData))
+    // salts that name different products stay apart
+    expect(productKey('Fluticasone furoate')).not.toBe(productKey('Fluticasone propionate'))
+    // a brand never merges with its generic, a form with another form, or one combination with another
+    expect(productKey('Dolutegravir/lamivudine')).not.toBe(dovato[0])
+    expect(productKey('Triumeq PD (dolutegravir-abacavir-lamivudine) tablet for suspension')).not.toBe(
+      productKey('Triumeq (dolutegravir-abacavir-lamivudine) tablet'),
+    )
+    expect(productKey('Juluca (dolutegravir-rilpivirine)')).not.toBe(dovato[0])
+  })
+
+  it('lists Dovato once, in every state that has an HIV guide', () => {
+    const catalog = catalogData as Record<string, string[]>
+    expect(Object.keys(catalog).filter((k) => /dovato/i.test(k))).toHaveLength(1)
+    const name = Object.keys(catalog).find((k) => /^dovato \(dolutegravir.lamivudine\)$/i.test(k))
+    expect(name).toBeTruthy()
+    const states = new Set(catalog[name!]!.map((s) => s.slice(0, 2)))
+    for (const g of guideOptions.filter((x) => x.topicId === 'hiv')) expect(states.has(g.id.slice(0, 2)), g.id).toBe(true)
+  })
+
+  it('finds a plan\'s own spelling and reports it', () => {
+    const tx = (rawData as Formulary).guides.find((g) => g.id === 'tx-hiv')!
+    const rec = tx.records.find((r) => JSON.stringify(r).includes('DOVATO (dolutegravir/lamivudine)'))!
+    const hits = productFindings(rec, 'Dovato (dolutegravir-lamivudine)')
+    expect(hits.length).toBeGreaterThan(0)
+    expect(hits.some((h) => h.matched === 'DOVATO (dolutegravir/lamivudine)')).toBe(true)
+    const tn = (rawData as Formulary).guides.find((g) => g.id === 'tn-hiv')!
+    const tnRec = tn.records.find((r) => r.payerId === 'tn-medicaid' && r.classId === 'hiv-art')!
+    expect(productFindings(tnRec, 'Dovato (dolutegravir-lamivudine)').map((h) => h.matched)).toContain('Dovato® tabs')
   })
 })

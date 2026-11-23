@@ -809,3 +809,20 @@ Append-only. These are quirks specific to this repo's data sources and tooling, 
   Spell "Virginia" out in labels, payer names and UI copy (a test enforces it for guides and payers).
   The Veterans Affairs National Formulary is a separate federal payer FirstPassRx does not cover; cite
   VA/DoD guidelines only as "U.S. Department of Veterans Affairs" evidence.
+- **"By medication" groups a product by `productKey` (src/lib/medicationEntries.mjs), not exact wording
+  (2026-11-22).** Dovato had ~30 spellings and the picker showed only Texas. The key is the product's
+  words plus form/device tokens (~po, ~inj, ~td, ~vag, ~mdi, ~dpi, ~neb, ~er, ~dr); dosing notes in the
+  " · strength" part never enter it, single letters stay (Humulin N ≠ R), and only HCl/sulfate are
+  stripped (diclofenac sodium ≠ potassium). Merges the data justifies (bare brand, no-form spelling when
+  the product has one form everywhere, branded salt spelling) live in the generated
+  `medication-aliases.json`. A first cut that dropped the strength part merged Ozempic tablets with the
+  pen and estradiol patch with the vaginal insert; `scripts/check-medication-catalog.mjs` (in npm test)
+  now fails on any product × state without a plan card or any entry that mixes two forms.
+- **Reading a downloaded PDF here: PyMuPDF, not the Read tool.** The Read tool's page renderer needs
+  poppler (`pdftoppm`), which this machine doesn't have, and `pdftotext`/`qpdf` are missing too.
+  PyMuPDF (`fitz`), pdfplumber and pypdf live in the user site-packages, which `python3 -I` (required
+  for untrusted downloads) drops: run `python3 -I` and `sys.path.append(<~/Library/Python/*/lib/python/site-packages>)`
+  before `import fitz`. Grep every page for the drug names first, then print only those pages
+  (Aetna's 252-page Advanced Control guide → pp.36-38 for HIV, legend on p.21).
+- **The per-medication map counts a plan as one payer in one state.** A national PDP or UHC list
+  that appears in 10 states is 10 plans; say so next to any "N of M plans" figure (the view does).
