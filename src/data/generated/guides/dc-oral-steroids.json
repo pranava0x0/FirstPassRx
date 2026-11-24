@@ -1,0 +1,446 @@
+{
+  "id": "dc-oral-steroids",
+  "label": "DC · Oral steroids",
+  "stateCode": "DC",
+  "region": "District of Columbia",
+  "topicId": "oral-steroids",
+  "topic": "Oral steroids",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-24",
+  "capturedAt": "2026-11-24",
+  "payers": [
+    {
+      "id": "dc-medicaid",
+      "name": "DC Medicaid",
+      "shortName": "DC Medicaid",
+      "aka": "DC Medicaid fee-for-service and DC Healthcare Alliance (DHCF); DC Healthy Families MCOs run their own formularies",
+      "pbm": "Prime Therapeutics",
+      "productName": "DC Medicaid / DC Healthcare Alliance Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "District of Columbia Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "formularyUrl": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "sourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ]
+    },
+    {
+      "id": "amerihealth-caritas-dc",
+      "name": "AmeriHealth Caritas District of Columbia",
+      "shortName": "AmeriHealth Caritas DC",
+      "aka": "DC Healthy Families Medicaid MCO",
+      "pbm": "PerformRx",
+      "productName": "AmeriHealth Caritas DC drug formulary",
+      "marketSegment": "medicaid-mco",
+      "formularyId": "AmeriHealth Caritas DC Drug Formulary (effective June 1, 2026)",
+      "formularyUrl": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "sourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ]
+    },
+    {
+      "id": "carefirst",
+      "name": "CareFirst BlueCross BlueShield",
+      "shortName": "CareFirst",
+      "pbm": "CVS Caremark",
+      "formularyUrl": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "paPolicyUrl": "https://member.carefirst.com/carefirst-resources/pdf/drugs-requiring-prior-authorization-formulary-2.pdf",
+      "productName": "CareFirst individual and family Exchange Formulary 2",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "CareFirst Exchange Formulary 2026 (5-Tier), last updated 10/01/26",
+      "sourceIds": [
+        "carefirst-common6-2026-11"
+      ]
+    },
+    {
+      "id": "kpmidatlantic",
+      "name": "Kaiser Permanente Mid-Atlantic",
+      "shortName": "Kaiser MAS",
+      "pbm": "Kaiser Permanente (in-house)",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "productName": "Kaiser Mid-Atlantic Marketplace formulary",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "Kaiser Permanente Marketplace Formulary (Mid-Atlantic region), last update 10/06/2026",
+      "sourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "oral-corticosteroid",
+      "name": "Oral corticosteroids",
+      "shortName": "Oral steroid",
+      "plainName": "Steroid pills",
+      "description": "Systemic oral corticosteroids: prednisone (tablets, solution; Rayos delayed-release appears discontinued), methylprednisolone (Medrol, dose pack), prednisolone (solution, Orapred ODT, Millipred), dexamethasone (tablets, solution, Dexamethasone Intensol, TaperDex/Dxevo/HiDex packs; Hemady 20 mg is labeled for multiple myeloma only, an alternative, never the pick), hydrocortisone (Cortef; Alkindi Sprinkle and Khindivi oral solution for children). Deflazacort (Emflaza) and vamorolone (Agamree) for Duchenne are specialty alternatives only, never the pick. Not budesonide (Entocort, Uceris, Tarpeyo) or inhaled/topical steroids.",
+      "plainDescription": "Short courses of steroid pills that calm inflammation fast, for flares of asthma, COPD, arthritis, allergies and more.",
+      "indication": "Inflammatory flares, asthma/COPD exacerbations, autoimmune disease, adrenal insufficiency",
+      "sourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "oral-corticosteroid",
+      "preferredAgent": {
+        "inn": "Prednisone (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Dose by condition, 5 to 60 mg by mouth daily, with food (label). A common short course for a flare is 40 mg once daily for 5 days (practice, not label text); taper courses longer than 2 to 3 weeks.",
+        "sigShort": "5-60 mg QD; flare often 40 mg x5d",
+        "plainSig": "Take with food in the morning, at the dose and for the days your prescriber sets."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not a PDL class",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Not a PDL class: the PDL legend says any therapeutic class not listed \"will continue to be covered\" for DC Medicaid fee-for-service members (p. 6). Coverage and restrictions for this class are not in the document; absence from the PDL is not treated as exclusion. The PDL has no systemic oral corticosteroid class: the only corticosteroid classes are ophthalmic, intranasal, inhaled and topical (pp. 58, 63-64, 67-68). Prednisone, methylprednisolone, prednisolone, dexamethasone oral, hydrocortisone (Cortef, Alkindi, Khindivi), Rayos, Hemady, Emflaza and Agamree are not printed. The sig is a label-style placeholder by indication; the PDL prints none. [Sonnet check 2026-11-24: sig changed to a real label regimen with course length; absence re-confirmed by page-text grep of all 70 pages.]",
+      "sourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-24",
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "oral-corticosteroid",
+      "preferredAgent": {
+        "inn": "Prednisone (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Dose by condition, 5 to 60 mg by mouth daily, with food (label). A common short course for a flare is 40 mg once daily for 5 days (practice, not label text); taper courses longer than 2 to 3 weeks.",
+        "sigShort": "5-60 mg QD; flare often 40 mg x5d",
+        "plainSig": "Take with food in the morning, at the dose and for the days your prescriber sets."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "F (formulary; no note printed)",
+      "alternatives": [
+        {
+          "drug": "Prednisone oral tablet therapy pack 10 mg (21) and 5 mg (21)",
+          "note": "F, no note printed (PDF p. 133)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Prednisone oral solution; PREDNISONE INTENSOL oral concentrate",
+          "note": "F, no note printed (PDF p. 133)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Prednisolone oral solution; prednisolone sodium phosphate oral solution 15 mg/5 mL, 5 mg/5 mL",
+          "note": "F, no note printed (PDF p. 133)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Methylprednisolone oral tablet; MEDROL oral tablet 2 mg",
+          "note": "F, no note printed (PDF p. 132)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Dexamethasone oral tablet, oral solution, oral elixir; DEXAMETHASONE INTENSOL",
+          "note": "F, no note printed (PDF p. 116, 131)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Hydrocortisone oral (tablet); MEDPURA HYDROCORTISONE",
+          "note": "F, no note printed (PDF p. 132)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "AGAMREE (vamorolone)",
+          "outcome": "pa",
+          "reason": "Non-formulary: prior authorization required (PDF p. 130)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p. 132-133 (corticosteroids) and cross-checked p. 116, 130 and 131. Prednisone oral tablet and therapy pack are F with no note. The prednisone strength is the common 10 mg tablet; the document prints no strength. Text search found no Hemady, Emflaza, Cortef, Orapred, Alkindi or Khindivi entries, so no status is asserted for them. The document makes no reference to the DC PDL or to Medicaid, so no PDL rule was applied. [Sonnet check 2026-11-24: sig given a concrete course; Agamree NF PA read on PDF p. 130.]",
+      "sourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-24",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "oral-corticosteroid",
+      "preferredAgent": {
+        "inn": "Prednisone (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Dose by condition, 5 to 60 mg by mouth daily, with food (label). A common short course for a flare is 40 mg once daily for 5 days (practice, not label text); taper courses longer than 2 to 3 weeks.",
+        "sigShort": "5-60 mg QD; flare often 40 mg x5d",
+        "plainSig": "Take with food in the morning, at the dose and for the days your prescriber sets."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Methylprednisolone tablet 4, 8, 16, 32 mg; methylprednisolone 4 mg therapy pack (21)",
+          "note": "Tier 1, no PA printed (PDF p. 119)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Medrol tablet 2 mg (brand)",
+          "note": "Tier 2 (preferred brand per key); no PA printed (PDF p. 119)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Dexamethasone tablet 0.5, 0.75, 1, 1.5, 2, 4, 6 mg; dexamethasone elixir 0.5 mg/5 mL",
+          "note": "Tier 1, no PA printed (PDF p. 119)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Prednisolone sodium phosphate orally disintegrating tablet 10, 15, 30 mg; prednisolone oral solution 5, 15, 25 mg/5 mL",
+          "note": "Tier 1, no PA printed (PDF p. 119-120)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Hydrocortisone tablet 5, 10, 20 mg",
+          "note": "Tier 1, no PA printed (PDF p. 119)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Prednisone tablet therapy packs 5 mg (21 and 48) and 10 mg (21 and 48)",
+          "note": "Tier 1, no PA printed (PDF p. 120)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Dexamethasone concentrate 1 mg/mL (listed in capitals as 'DEXAMETHASON CON 1MG/ML'; name truncated in document)",
+          "note": "Tier 2 (PDF p. 118); no PA printed",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Deflazacort (tablet 6, 18, 30, 36 mg; oral suspension 22.75 mg/mL)",
+          "outcome": "pa",
+          "reason": "PA and quantity limit (PA, QL 60 tabs every 30 days for 6 mg; PDF p. 118). Tier 4 per document",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p. 118-120 (Glucocorticoids). Prednisone tablets 1 to 50 mg and therapy packs are Tier 1 with no PA/ST/QL printed; 10 mg tablet chosen as the reference strength. Deflazacort is Tier 4 with PA and QL. Not listed (no status asserted): Hemady, Rayos, Alkindi Sprinkle, Khindivi, Agamree, Emflaza brand, TaperDex/Dxevo/HiDex packs, Orapred, Millipred, Cortef brand, Decadron. Dexamethasone 1.5 mg tablet is Tier 1 (generic, not brand TaperDex). [Sonnet check 2026-11-21: sig rewritten to a label regimen with course length]",
+      "sourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-21",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "oral-corticosteroid",
+      "preferredAgent": {
+        "inn": "Prednisone (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "10 mg tablet",
+        "sig": "Dose by condition, 5 to 60 mg by mouth daily, with food (label). A common short course for a flare is 40 mg once daily for 5 days (practice, not label text); taper courses longer than 2 to 3 weeks.",
+        "sigShort": "5-60 mg QD; flare often 40 mg x5d",
+        "plainSig": "Take with food in the morning, at the dose and for the days your prescriber sets."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "1, 2, 3 (split by form)",
+      "alternatives": [
+        {
+          "drug": "Methylprednisolone",
+          "note": "Tier 1, 2 or 3 by form (p.31); no restriction printed",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Dexamethasone",
+          "note": "Tier 1, 2 or 3 by form (p.30); no restriction printed",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Prednisolone",
+          "note": "Tier 1, 2 or 3 by form (p.31); no restriction printed",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Hydrocortisone (oral)",
+          "note": "Tier 1, 3 or 4 by form (p.31); no restriction printed",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Hemady (dexamethasone 20 mg, multiple myeloma)",
+          "outcome": "nonformulary",
+          "reason": "Brand-only, not on the list (p.30); p.2 says any product not found is non-formulary",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Emflaza (deflazacort) and deflazacort generic",
+          "outcome": "nonformulary",
+          "reason": "Not on the list (pp.30-31); p.2 says any product not found is non-formulary",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Agamree (vamorolone)",
+          "outcome": "nonformulary",
+          "reason": "Not on the list (pp.30-31); p.2 says any product not found is non-formulary",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Alkindi Sprinkle (hydrocortisone granules)",
+          "outcome": "nonformulary",
+          "reason": "Brand-only, not on the list (p.31); p.2 says any product not found is non-formulary",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Khindivi (hydrocortisone oral solution)",
+          "outcome": "nonformulary",
+          "reason": "Brand-only, not on the list (p.31); p.2 says any product not found is non-formulary",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read pp.30-31 (adrenal and corticosteroid lines): prednisone, methylprednisolone and prednisolone tier '1, 2, 3'; hydrocortisone '1, 3, 4'; dexamethasone '1, 2, 3'. Tier is split by form, so the tablet's tier is not confirmed. No restriction printed on any oral steroid. SOLU-CORTEF (tier 2, 3, MB, p.31) and CELESTONE SOLUSPAN (p.30) are injectables under the medical benefit; left out. Rayos, the Medrol brand, TaperDex/Dxevo/HiDex packs and Millipred/Orapred are not separately printed; the generic lines are read as covering the generic products. The Rayos brand is not on the list and is multi-source by prednisone name, so not recorded as nonformulary. [Sonnet check 2026-11-21: tier cell lists several tiers with no form printed on the list (p.2 says tiers can differ by dosage form), so the exact form's tier cannot be read; stays partial. No PA/ST/QL flag on the line, confirmed.]",
+      "sourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-21",
+      "payerId": "kpmidatlantic"
+    }
+  ],
+  "references": [
+    {
+      "id": "dc-medicaid-common6-2026-11",
+      "label": "District of Columbia Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "publisher": "District of Columbia Department of Health Care Finance",
+      "type": "gov",
+      "url": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "effectiveDate": "2026-09-18",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": "amerihealth-caritas-dc-common6-2026-11",
+      "label": "AmeriHealth Caritas DC Drug Formulary (effective June 1, 2026)",
+      "publisher": "AmeriHealth Caritas District of Columbia",
+      "type": "payer",
+      "url": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "effectiveDate": "2026-06-01",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": "carefirst-common6-2026-11",
+      "label": "CareFirst Exchange Formulary 2026 (5-Tier), last updated 10/01/26",
+      "publisher": "CareFirst BlueCross BlueShield",
+      "type": "payer",
+      "url": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-21"
+    },
+    {
+      "id": "kpmidatlantic-common6-2026-11",
+      "label": "Kaiser Permanente Marketplace Formulary (Mid-Atlantic region), last update 10/06/2026",
+      "publisher": "Kaiser Permanente",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "effectiveDate": "2026-10-06",
+      "accessed": "2026-11-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

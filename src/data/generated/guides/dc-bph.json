@@ -1,0 +1,786 @@
+{
+  "id": "dc-bph",
+  "label": "DC · Enlarged prostate (BPH)",
+  "stateCode": "DC",
+  "region": "District of Columbia",
+  "topicId": "bph",
+  "topic": "Enlarged prostate (BPH)",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-24",
+  "capturedAt": "2026-11-24",
+  "payers": [
+    {
+      "id": "dc-medicaid",
+      "name": "DC Medicaid",
+      "shortName": "DC Medicaid",
+      "aka": "DC Medicaid fee-for-service and DC Healthcare Alliance (DHCF); DC Healthy Families MCOs run their own formularies",
+      "pbm": "Prime Therapeutics",
+      "productName": "DC Medicaid / DC Healthcare Alliance Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "District of Columbia Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "formularyUrl": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "sourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ]
+    },
+    {
+      "id": "amerihealth-caritas-dc",
+      "name": "AmeriHealth Caritas District of Columbia",
+      "shortName": "AmeriHealth Caritas DC",
+      "aka": "DC Healthy Families Medicaid MCO",
+      "pbm": "PerformRx",
+      "productName": "AmeriHealth Caritas DC drug formulary",
+      "marketSegment": "medicaid-mco",
+      "formularyId": "AmeriHealth Caritas DC Drug Formulary (effective June 1, 2026)",
+      "formularyUrl": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "sourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ]
+    },
+    {
+      "id": "carefirst",
+      "name": "CareFirst BlueCross BlueShield",
+      "shortName": "CareFirst",
+      "pbm": "CVS Caremark",
+      "formularyUrl": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "paPolicyUrl": "https://member.carefirst.com/carefirst-resources/pdf/drugs-requiring-prior-authorization-formulary-2.pdf",
+      "productName": "CareFirst individual and family Exchange Formulary 2",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "CareFirst Exchange Formulary 2026 (5-Tier), last updated 10/01/26",
+      "sourceIds": [
+        "carefirst-common6-2026-11"
+      ]
+    },
+    {
+      "id": "kpmidatlantic",
+      "name": "Kaiser Permanente Mid-Atlantic",
+      "shortName": "Kaiser MAS",
+      "pbm": "Kaiser Permanente (in-house)",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "productName": "Kaiser Mid-Atlantic Marketplace formulary",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "Kaiser Permanente Marketplace Formulary (Mid-Atlantic region), last update 10/06/2026",
+      "sourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "bph-alpha",
+      "name": "Alpha-1 blockers",
+      "shortName": "Alpha blocker",
+      "plainName": "Prostate flow pill (alpha blocker)",
+      "description": "Alpha-1 blockers for BPH: tamsulosin (Flomax), alfuzosin ER (Uroxatral), silodosin (Rapaflo), doxazosin (Cardura; Cardura XL is brand-only), terazosin. Combination dutasteride/tamsulosin (Jalyn) belongs to the 5-ARI class.",
+      "plainDescription": "A daily pill that relaxes the prostate so urine flows more easily.",
+      "indication": "Benign prostatic hyperplasia (BPH)",
+      "sourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ]
+    },
+    {
+      "id": "bph-5ari",
+      "name": "5-alpha reductase inhibitors",
+      "shortName": "5-ARI",
+      "plainName": "Prostate-shrinking pill",
+      "description": "5-alpha reductase inhibitors for BPH: finasteride 5 mg (Proscar), dutasteride (Avodart), dutasteride/tamsulosin (Jalyn), finasteride/tadalafil (Entadfi; up to 26 weeks, not with alpha blockers). The pick is a single agent; the combinations are alternatives. Finasteride 1 mg (Propecia, hair loss) is not this class.",
+      "plainDescription": "A daily pill that slowly shrinks an enlarged prostate over months.",
+      "indication": "Benign prostatic hyperplasia (BPH)",
+      "sourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ]
+    },
+    {
+      "id": "bph-pde5",
+      "name": "Tadalafil for BPH",
+      "shortName": "PDE5 (BPH)",
+      "plainName": "Daily tadalafil for BPH",
+      "description": "Tadalafil 2.5 mg and 5 mg once daily (Cialis, generic) for BPH symptoms. Plans often cover it for BPH only with a diagnosis-based PA and exclude it for erectile dysfunction: record the BPH rule. Sildenafil and vardenafil are not labeled for BPH.",
+      "plainDescription": "A low daily dose of tadalafil that eases urinary symptoms of an enlarged prostate.",
+      "indication": "BPH (with or without erectile dysfunction)",
+      "sourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "bph-alpha",
+      "preferredAgent": {
+        "inn": "Tamsulosin (capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.4 mg capsule",
+        "sig": "0.4 mg by mouth once daily, 30 minutes after the same meal each day; may increase to 0.8 mg once daily after 2 to 4 weeks (label).",
+        "sigShort": "0.4 mg QD after a meal",
+        "plainSig": "One capsule a day, 30 minutes after the same meal."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred",
+      "alternatives": [
+        {
+          "drug": "Alfuzosin (extended-release)",
+          "note": "Preferred, no PA (PDL p. 47)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Doxazosin",
+          "note": "Preferred, no PA (PDL p. 47)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Terazosin",
+          "note": "Preferred, no PA (PDL p. 47)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Cardura (doxazosin, brand)",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 47, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Cardura XL (doxazosin extended-release, brand-only)",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 47, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Rapaflo (silodosin, brand)",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 47, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Silodosin (generic)",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 47, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Tezruly (terazosin oral solution, brand)",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 47, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL p. 47, BPH Agents: Alpha Blockers: tamsulosin, alfuzosin, doxazosin and terazosin are Preferred; Cardura, Cardura XL, Rapaflo, silodosin and Tezruly are PA. Cardura and Rapaflo are brand PA with generic Preferred, so no BOGL. The PDL prints no strength or sig; 0.4 mg daily is label dosing. Uroxatral is not printed. [Sonnet check 2026-11-24: Preferred/PA column re-read by x-position (Preferred x~55, PA x~307); no change.]",
+      "sourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-24",
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "bph-5ari",
+      "preferredAgent": {
+        "inn": "Finasteride (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg by mouth once daily for BPH (label). Benefit builds over 6 to 12 months.",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day. It takes several months to work."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred",
+      "alternatives": [
+        {
+          "drug": "Dutasteride (PDL prints no form)",
+          "note": "Preferred, no PA (PDL p. 47)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Dutasteride-tamsulosin (combination)",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 47, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Proscar (finasteride, brand)",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 47, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL p. 47, BPH Agents: Androgen Hormone Inhibitors: finasteride and dutasteride are Preferred; Proscar (brand) and dutasteride-tamsulosin are PA. Proscar is PA while the generic finasteride is Preferred, so no BOGL. Jalyn, Avodart and Entadfi (finasteride-tadalafil combination) are not printed anywhere in the PDL and are not recorded as PA or excluded; the PDL says it may not include all marketed drugs (p. 6). [Sonnet check 2026-11-24: Preferred/PA column re-read by x-position (Preferred x~55, PA x~307); no change.]",
+      "sourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-24",
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "bph-pde5",
+      "preferredAgent": {
+        "inn": "Tadalafil (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg by mouth once daily at about the same time each day for BPH, with or without ED (label; 2.5 mg if CrCl 30-50).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day at about the same time."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not a PDL class",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "The PDL lists generic tadalafil as Preferred, no PA, under PDE Inhibitors for PPH/PAH (p. 60), with Adcirca and Revatio-type PAH products listed PA. That PAH listing does not cover BPH. The PDL has no BPH tadalafil line, so BPH-use coverage is not stated and is not treated as exclusion. The PDL excludes erectile dysfunction drugs (p. 6), and the BPH indication here is not ED, but the PDL does not say so explicitly. Cialis (brand) is not printed. Sildenafil and vardenafil are not BPH agents and are not in this record. [Sonnet check 2026-11-24: tadalafil appears only on p. 60 under PAH (Preferred column); no Cialis/Entadfi/Jalyn line; no change.]",
+      "sourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-24",
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "bph-alpha",
+      "preferredAgent": {
+        "inn": "Tamsulosin hydrochloride (capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.4 mg capsule",
+        "sig": "0.4 mg by mouth once daily, 30 minutes after the same meal each day; may increase to 0.8 mg once daily after 2 to 4 weeks (label).",
+        "sigShort": "0.4 mg QD after a meal",
+        "plainSig": "One capsule a day, 30 minutes after the same meal."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "F (formulary; no note printed)",
+      "alternatives": [
+        {
+          "drug": "Alfuzosin hydrochloride ER (extended-release tablet)",
+          "note": "F, no note printed (PDF p. 27). Uroxatral brand not in the text layer",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Doxazosin mesylate (oral tablet 1, 2, 4 mg; 8 mg)",
+          "note": "F with quantity limits (1, 2, 4 mg QL 30 per 30 days; 8 mg QL 60 per 30 days) (PDF p. 38-39). Cardura XL not in the text layer",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Terazosin HCl (oral capsule 1, 2, 5, 10 mg)",
+          "note": "F with quantity limits (QL 30 or 60 per 30 days) (PDF p. 38-39)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read PDF p. 27 (Selective Alpha-1-Adrenergic Blocking Agents: tamsulosin HCl F, alfuzosin HCl ER F) and p. 38-39 (doxazosin and terazosin, F with quantity limits). Tamsulosin capsule strength is not printed; 0.4 mg is the label dose. Flomax, Rapaflo (silodosin) and Uroxatral brands are not in the text layer, so no status is asserted for them. The document makes no reference to the DC PDL or to Medicaid, so no PDL rule was applied. [Sonnet check 2026-11-24: strength printed nowhere in the document (tamsulosin line \"F\" only, furosemide tablet \"F\" only); strength unconfirmed, verification lowered to partial.]",
+      "sourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-24",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "bph-5ari",
+      "preferredAgent": {
+        "inn": "Finasteride (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg by mouth once daily for BPH (label). Benefit builds over 6 to 12 months.",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day. It takes several months to work."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "F (formulary; QL 30 per 30 days)",
+      "alternatives": [
+        {
+          "drug": "Dutasteride (oral capsule)",
+          "note": "F with QL 30 per 30 days (PDF p. 160). Avodart brand not in the text layer",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p. 160 (5-Alpha-Reductase Inhibitors): finasteride oral tablet 5 mg F with QL 30 per 30 days; dutasteride oral F with QL 30 per 30 days. Proscar, Jalyn and Entadfi are not in the text layer, so no status is asserted for them. Finasteride 1 mg (Propecia) is outside this class and not recorded. The document makes no reference to the DC PDL or to Medicaid, so no PDL rule was applied.",
+      "sourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-24",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "bph-pde5",
+      "preferredAgent": {
+        "inn": "Tadalafil (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg by mouth once daily at about the same time each day for BPH, with or without ED (label; 2.5 mg if CrCl 30-50).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day at about the same time."
+      },
+      "preferredRestriction": "Not listed in this document: no tadalafil product, coverage status, tier, PA or step rule is printed. Treat coverage as unverified.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not listed in document",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Text search (case-insensitive) for tadalafil, Cialis, Adcirca, Alyq and Tadliq across PDF pages 1-233 found no entries. No status, tier, PA or step rule is printed, so coverage is recorded as unverified and no barrier is asserted. The pick is the label BPH dose of tadalafil 5 mg daily, a product a prescriber would write. The document makes no reference to the DC PDL or to Medicaid, so no PDL rule was applied. [Sonnet check 2026-11-24: tadalafil/Cialis confirmed absent from all 233 pages (grep); coverage unconfirmed, not asserted as excluded.]",
+      "sourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-24",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "bph-alpha",
+      "preferredAgent": {
+        "inn": "Tamsulosin hydrochloride (capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.4 mg capsule",
+        "sig": "0.4 mg by mouth once daily, 30 minutes after the same meal each day; may increase to 0.8 mg once daily after 2 to 4 weeks (label).",
+        "sigShort": "0.4 mg QD after a meal",
+        "plainSig": "One capsule a day, 30 minutes after the same meal."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Alfuzosin ER tablet 10 mg",
+          "note": "Tier 1, no PA printed (PDF p. 134)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Silodosin capsule 4 mg, 8 mg",
+          "note": "Tier 1, no PA printed (PDF p. 134)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Doxazosin mesylate tablet 1, 2, 4, 8 mg",
+          "note": "Tier 1, no PA printed (PDF p. 134)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Terazosin hydrochloride capsule 1, 2, 5, 10 mg",
+          "note": "Tier 1, no PA printed (PDF p. 134)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Cardura XL (doxazosin extended-release tablet 4 mg, 8 mg; brand)",
+          "note": "Tier 3 (PDF p. 134); no PA printed",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p. 134 (Genitourinary, Benign Prostatic Hyperplasia). Tamsulosin capsule 0.4 mg is Tier 1 with no requirement text. Flomax, Rapaflo and Uroxatral brands are not listed (no status asserted). Cardura XL is the only brand-only product in this class that is listed. [Sonnet check 2026-11-21: rechecked against the PDF, no change]",
+      "sourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-21",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "bph-5ari",
+      "preferredAgent": {
+        "inn": "Finasteride (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg by mouth once daily for BPH (label). Benefit builds over 6 to 12 months.",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day. It takes several months to work."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Dutasteride capsule 0.5 mg",
+          "note": "Tier 1, no PA printed (PDF p. 134)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Dutasteride-tamsulosin capsule 0.5-0.4 mg (generic; Jalyn-type)",
+          "note": "Tier 1, no PA printed (PDF p. 134)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p. 134 (Benign Prostatic Hyperplasia). Finasteride tablet 5 mg is Tier 1 with no requirement text. Proscar, Avodart, Jalyn and Entadfi brands are not listed (no status asserted). The dutasteride-tamsulosin row is in italic (generic convention, PyMuPDF font flags). [Sonnet check 2026-11-21: rechecked against the PDF, no change]",
+      "sourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-21",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "bph-pde5",
+      "preferredAgent": {
+        "inn": "Tadalafil (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg by mouth once daily at about the same time each day for BPH, with or without ED (label; 2.5 mg if CrCl 30-50).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day at about the same time."
+      },
+      "preferredRestriction": "Prior authorization required, with quantity limit 30 tablets every 30 days (PA, QL, PDF p. 134). The document prints no PA criteria and no diagnosis rule for BPH.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Tadalafil tablet 2.5 mg (BPH)",
+          "outcome": "pa",
+          "reason": "PA and quantity limit (30 tablets every 30 days, PDF p. 134)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p. 134 (BPH section). Tadalafil 2.5 mg and 5 mg both carry PA, QL (30 tabs every 30 days); the printed tier is Tier 1 for both. Tadalafil 10 mg and 20 mg appear in the erectile dysfunction section (PDF p. 135, QL 6 tabs per month) and are not BPH products, so they are not listed. Sildenafil is not labeled for BPH and is not listed. Cialis brand is not listed. [Sonnet check 2026-11-21: tadalafil 2.5 and 5 mg Tier 1 with PA, QL 30 per 30 days confirmed on PDF p. 134]",
+      "sourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-21",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "bph-alpha",
+      "preferredAgent": {
+        "inn": "Tamsulosin hydrochloride (capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.4 mg capsule",
+        "sig": "0.4 mg by mouth once daily, 30 minutes after the same meal each day; may increase to 0.8 mg once daily after 2 to 4 weeks (label).",
+        "sigShort": "0.4 mg QD after a meal",
+        "plainSig": "One capsule a day, 30 minutes after the same meal."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "1",
+      "alternatives": [
+        {
+          "drug": "Alfuzosin hydrochloride (extended-release)",
+          "note": "Tier 1 (p.14)",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Doxazosin mesylate",
+          "note": "Tier 1 (p.16)",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Terazosin hydrochloride",
+          "note": "Tier 1 (p.16)",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Silodosin",
+          "note": "Tier 3 (p.14); covered at a higher tier, no restriction printed",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Cardura XL (doxazosin extended-release)",
+          "outcome": "nonformulary",
+          "reason": "Brand-only, not on the list (p.16 lists only doxazosin mesylate); p.2 says any product not found is non-formulary",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read pp.14 and 16: tamsulosin tier 1, no restriction (p.14); alfuzosin tier 1; silodosin tier 3; doxazosin and terazosin tier 1. Flomax, Uroxatral and Rapaflo are multi-source and not separately printed. Cardura XL is brand-only and not on the list.",
+      "sourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-21",
+      "payerId": "kpmidatlantic"
+    },
+    {
+      "classId": "bph-5ari",
+      "preferredAgent": {
+        "inn": "Finasteride (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg by mouth once daily for BPH (label). Benefit builds over 6 to 12 months.",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day. It takes several months to work."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "1",
+      "alternatives": [
+        {
+          "drug": "Dutasteride",
+          "note": "Tier 3 (p.35); covered at a higher tier, no restriction printed",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Jalyn (dutasteride/tamsulosin)",
+          "outcome": "nonformulary",
+          "reason": "Not on the list; no dutasteride/tamsulosin line appears (p.35 lists only dutasteride and finasteride); p.2 says any product not found is non-formulary",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Entadfi (finasteride/tadalafil)",
+          "outcome": "nonformulary",
+          "reason": "Brand-only, not on the list (pp.35-43); p.2 says any product not found is non-formulary",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "p.35: finasteride tier 1, no restriction; dutasteride tier 3. Strength is not printed on the list (the generic name covers all forms); 5 mg is the label BPH dose. Proscar and Avodart are multi-source and not separately printed.",
+      "sourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-21",
+      "payerId": "kpmidatlantic"
+    },
+    {
+      "classId": "bph-pde5",
+      "preferredAgent": {
+        "inn": "Tadalafil (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg by mouth once daily at about the same time each day for BPH, with or without ED (label; 2.5 mg if CrCl 30-50).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day at about the same time."
+      },
+      "preferredRestriction": "Prior authorization, quantity limit and higher-cost flags (PA, QL, HC) on the list line; the list does not print the PA criteria or the indication the PA covers.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "1",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "p.43 (vasodilating agents section, next to ED products): tadalafil tier 1 with 'PA, QL, HC'. The list does not state the indication for this line, so BPH coverage under the PA cannot be confirmed. Tadalafil for pulmonary hypertension (p.18, PA, LD, HC) is a different product and not counted. Sildenafil (ED, tier 1, QL, HC) and Levitra (tier 3) are not labeled for BPH and are left out. Cialis brand is multi-source and not separately printed. [Sonnet check 2026-11-21: re-read p.43: the only oral tadalafil line sits under VASODILATING AGENTS beside sildenafil/LEVITRA/CAVERJECT (ED products), tier 1 with PA, QL, HC. No BPH indication or criteria printed, so partial stays and the PA flag is kept.]",
+      "sourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-21",
+      "payerId": "kpmidatlantic"
+    }
+  ],
+  "references": [
+    {
+      "id": "dc-medicaid-common6-2026-11",
+      "label": "District of Columbia Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "publisher": "District of Columbia Department of Health Care Finance",
+      "type": "gov",
+      "url": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "effectiveDate": "2026-09-18",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": "amerihealth-caritas-dc-common6-2026-11",
+      "label": "AmeriHealth Caritas DC Drug Formulary (effective June 1, 2026)",
+      "publisher": "AmeriHealth Caritas District of Columbia",
+      "type": "payer",
+      "url": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "effectiveDate": "2026-06-01",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": "carefirst-common6-2026-11",
+      "label": "CareFirst Exchange Formulary 2026 (5-Tier), last updated 10/01/26",
+      "publisher": "CareFirst BlueCross BlueShield",
+      "type": "payer",
+      "url": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-21"
+    },
+    {
+      "id": "kpmidatlantic-common6-2026-11",
+      "label": "Kaiser Permanente Marketplace Formulary (Mid-Atlantic region), last update 10/06/2026",
+      "publisher": "Kaiser Permanente",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "effectiveDate": "2026-10-06",
+      "accessed": "2026-11-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

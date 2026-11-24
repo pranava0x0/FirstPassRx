@@ -246,6 +246,15 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   "verified" rests on the 2026-11-22 Sonnet check only. Blue Advantage's earlier 92 NOT_FOUND came from its
   back-of-book index being read as rows (fixed below).
 
+- **2026-11-24 · DC common-drug audit: three of four payer documents are unaudited.** `audit-states.sh` on the
+  six new DC guides: Kaiser MAS 78 OK; its 5 FLAG_MISMATCH + 6 AMBIGUOUS are generic rows (dexamethasone,
+  hydrocortisone, torsemide, furosemide injection, omeprazole-sodium bicarbonate, naproxen-esomeprazole) matched
+  to distinct brand products (Hemady, Khindivi, Soaanz, Lasix ONYU, Konvomep, Nexium) and were reviewed as false
+  positives but not recorded with `--accept-remaining`, because that would also accept CareFirst's 94 unreviewed
+  NOT_FOUND checks (cause not investigated; probably the text-layer problem in the next item).
+  The DC PDL (79 checks) and AmeriHealth Caritas DC formulary (82) are all SKIPPED: no layout reads them. Those
+  cells' "verified" rests on the 2026-11-24 Sonnet check only.
+
 - **CareFirst (MD/DC) PDF gives no pypdf layout text** (`sources/state-dc-4bf6ff8e7920b90a.pdf`, 231 of 237
   pages under 200 characters); PyMuPDF reads it. Its checks are SKIPPED until the extractor gets a fallback.
 - **KY Medicaid PDL reissued after our archive.** A live fetch on 2026-11-22 returns a different
