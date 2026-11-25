@@ -1,0 +1,554 @@
+{
+  "id": "ma-loop-diuretics",
+  "label": "MA · Loop diuretics",
+  "stateCode": "MA",
+  "region": "Massachusetts",
+  "topicId": "loop-diuretics",
+  "topic": "Loop diuretics",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "verified",
+  "lastUpdated": "2026-11-25",
+  "capturedAt": "2026-11-25",
+  "payers": [
+    {
+      "id": "masshealth",
+      "name": "MassHealth",
+      "shortName": "MassHealth",
+      "aka": "Massachusetts Medicaid",
+      "pbm": "Conduent (PBA)",
+      "formularyUrl": "https://mhdl.pharmacy.services.conduent.com/MHDL/pubdownloadpdfcurrent.do?id=45",
+      "paPolicyUrl": "https://mhdl.pharmacy.services.conduent.com/MHDL/pubpa.do?category=Prior+Authorization+Forms+for+Pharmacy+Services",
+      "productName": "MassHealth fee-for-service pharmacy benefit",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "MassHealth Drug List (November 16, 2026)",
+      "sourceIds": [
+        "masshealth-mhdl-common6-2026-11"
+      ]
+    },
+    {
+      "id": "bcbsma",
+      "name": "Blue Cross Blue Shield of Massachusetts",
+      "shortName": "BCBS MA",
+      "aka": "Blue Cross",
+      "pbm": "CVS Caremark",
+      "formularyUrl": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-000720261-standard-control-with-advanced-control-specialty-formulary-comprehensive-covered-medication-list-july-2026.pdf",
+      "productName": "Standard Control with Advanced Control Specialty Formulary (CVS Caremark)",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Standard Control with Advanced Control Specialty Formulary, Comprehensive Covered Medication List (effective 07/01/2026)",
+      "sourceIds": [
+        "bcbsma-common6-2026-11"
+      ]
+    },
+    {
+      "id": "tufts",
+      "name": "Tufts Health Plan",
+      "shortName": "Tufts",
+      "aka": "Point32Health",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://contenthub-aem.optumrx.com/content/dam/contenthub/rx-assets/en/documents/clients/harvard-pilgrim/p32-formulary-documents/2026/P32H-Value-Direct-3T-Comprehensive-Tufts.pdf",
+      "paPolicyUrl": "https://www.point32health.org/documents/hphc-ma-std-pa-form-medication",
+      "productName": "Tufts Value Direct 3-Tier",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Prescription drug list, Direct 3-Tier (effective Jan. 1, 2026; footers show last update 10/15/26)",
+      "sourceIds": [
+        "tufts-common6-2026-11"
+      ]
+    },
+    {
+      "id": "harvardpilgrim",
+      "name": "Harvard Pilgrim Health Care",
+      "shortName": "Harvard Pilgrim",
+      "aka": "Point32Health",
+      "pbm": "OptumRx",
+      "formularyUrl": "https://contenthub-aem.optumrx.com/content/dam/contenthub/rx-assets/en/documents/clients/harvard-pilgrim/hphc-formulary-documents/2026-oe/HPHC-Select-3T-Comprehensive.pdf",
+      "paPolicyUrl": "https://www.point32health.org/documents/hphc-ma-std-pa-form-medication",
+      "productName": "Harvard Pilgrim Select 3-Tier",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Harvard Pilgrim Select 3-Tier 2026 Prescription Drug List (comprehensive); Last Update 10/15/26",
+      "sourceIds": [
+        "harvardpilgrim-common6-2026-11"
+      ]
+    },
+    {
+      "id": "mgb",
+      "name": "Mass General Brigham Health Plan",
+      "shortName": "MGB Health Plan",
+      "aka": "formerly AllWays / Neighborhood Health Plan",
+      "pbm": "Optum Rx",
+      "formularyUrl": "https://fm.formularynavigator.com/FBO/192/20266T.pdf",
+      "paPolicyUrl": "https://massgeneralbrighamhealthplan.org/providers/pharmacy-guidelines/commercial",
+      "productName": "MGB Health Plan 6-Tier commercial formulary",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Mass General Brigham Health Plan 2026 6 Tier Pharmacy Formulary (current as of 10/1/2026)",
+      "sourceIds": [
+        "mgb-common6-2026-11"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "loop-diuretic",
+      "name": "Loop diuretics",
+      "shortName": "Loop",
+      "plainName": "Water pill (loop diuretic)",
+      "description": "Loop diuretics: furosemide (Lasix; tablets, oral solution; Furoscix subcutaneous on-body infusor and Lasix ONYU subcutaneous, alternatives only, never the pick), torsemide (generic; Soaanz), bumetanide (Bumex), ethacrynic acid (Edecrin; for sulfa allergy). Not thiazides.",
+      "plainDescription": "A strong water pill that removes extra fluid, for heart failure, kidney and liver disease and swelling.",
+      "indication": "Edema, heart failure, CKD, cirrhosis",
+      "sourceIds": [
+        "masshealth-mhdl-common6-2026-11"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "loop-diuretic",
+      "preferredAgent": {
+        "inn": "Furosemide (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+        "sigShort": "20-80 mg QAM, titrate",
+        "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Covered without PA",
+      "alternatives": [
+        {
+          "drug": "Torsemide (tablet)",
+          "note": "Covered without PA; M90 (MHDL p. 80; Table 18 p. 263)",
+          "sourceIds": [
+            "masshealth-t18-common6-2026-11",
+            "masshealth-mhdl-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Bumetanide (tablet)",
+          "note": "Covered without PA; M90 (MHDL p. 28; Table 18 p. 263)",
+          "sourceIds": [
+            "masshealth-t18-common6-2026-11",
+            "masshealth-mhdl-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Lasix (furosemide tablet and injection, brand)",
+          "outcome": "pa",
+          "reason": "Brand PA required (# symbol) (MHDL p. 53; Table 18 p. 263)",
+          "sourceIds": [
+            "masshealth-t18-common6-2026-11",
+            "masshealth-mhdl-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Furosemide oral solution",
+          "outcome": "pa",
+          "reason": "PA for age 13 or older. Criteria: appropriate diagnosis and tube-feeding or swallowing-disorder medical necessity (Table 18 p. 263, 279)",
+          "sourceIds": [
+            "masshealth-t18-common6-2026-11",
+            "masshealth-mhdl-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Furoscix (furosemide on-body infusor) and generic on-body infusor",
+          "outcome": "pa",
+          "reason": "PA. Criteria: weight 43 kg or more, specialist, fluid overload despite 40 to 160 mg oral furosemide equivalents, and CKD, age under 18, or Lasix ONYU failure; quantity 8 units/30 days (Table 18 p. 279)",
+          "sourceIds": [
+            "masshealth-t18-common6-2026-11",
+            "masshealth-mhdl-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Lasix ONYU (furosemide on-body infusor, brand)",
+          "outcome": "pa",
+          "reason": "PA. Criteria: age 18 or older, specialist, fluid overload despite 40 to 160 mg oral furosemide equivalents; quantity 8 units/30 days (Table 18 p. 281)",
+          "sourceIds": [
+            "masshealth-t18-common6-2026-11",
+            "masshealth-mhdl-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Ethacrynic acid (tablet) and Edecrin (brand)",
+          "outcome": "pa",
+          "reason": "PA. Criteria: inadequate response or adverse reaction to one, or contraindication to all, of bumetanide, furosemide, torsemide (Table 18 p. 279). Edecrin brand is not on the List",
+          "sourceIds": [
+            "masshealth-t18-common6-2026-11",
+            "masshealth-mhdl-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Enbumyst (bumetanide nasal spray, brand)",
+          "outcome": "pa",
+          "reason": "PA. Criteria: age 18 or older, specialist, fluid overload despite 1 to 4 mg oral bumetanide equivalents; quantity 12 units/30 days (Table 18 p. 279)",
+          "sourceIds": [
+            "masshealth-t18-common6-2026-11",
+            "masshealth-mhdl-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Soaanz (torsemide, brand)",
+          "outcome": "pa",
+          "reason": "Brand name not on the MassHealth Drug List. The List states 'Any drug that does not appear on the List requires PA, except for drugs described in 130 CMR 406.413(B) ... which are not available to MassHealth adult members' (MHDL p. 2; legend p. 18). Read as PA by that rule; the generic is listed separately.",
+          "sourceIds": [
+            "masshealth-mhdl-common6-2026-11"
+          ],
+          "note": null
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read in MHDL A-Z (p. 28, 40, 42, 45, 53, 54, 80) and Table 18 (drug list p. 263; criteria p. 279-280). Furosemide 20 mg tablet is covered without PA. Sig is label knowledge; the List prints no sig. [Sonnet check 2026-11-25: unlisted brand names kept as PA under the List's p. 2 rule, which excepts 130 CMR 406.413(B) excluded drugs for adults. Pick coverage verified against the A-Z code (no PA); strengths and sigs are label-based, the List prints none.]",
+      "sourceIds": [
+        "masshealth-t18-common6-2026-11",
+        "masshealth-mhdl-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "masshealth-mhdl-common6-2026-11",
+        "masshealth-t18-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "masshealth-t18-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-25",
+      "payerId": "masshealth"
+    },
+    {
+      "classId": "loop-diuretic",
+      "preferredAgent": {
+        "inn": "Furosemide (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+        "sigShort": "20-80 mg QAM, titrate",
+        "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Lasix (furosemide tablet 20, 40, 80 mg)",
+          "note": "Brand, listed at Tier 3; generic furosemide is Tier 1 (p. 87)",
+          "sourceIds": [
+            "bcbsma-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Furosemide (tablet 40 mg; tablet 80 mg; oral solution 10 mg/mL, 40 mg/5 mL)",
+          "note": "Tier 1, no PA printed (p. 87)",
+          "sourceIds": [
+            "bcbsma-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Torsemide (tablet 5, 10, 20, 100 mg)",
+          "note": "Tier 1, no PA printed (p. 87). Soaanz brand not present",
+          "sourceIds": [
+            "bcbsma-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Bumetanide (tablet 0.5, 1, 2 mg; oral solution)",
+          "note": "Tier 1, no PA printed (p. 87)",
+          "sourceIds": [
+            "bcbsma-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Ethacrynic acid (tablet 25 mg)",
+          "note": "Tier 1, no PA printed (p. 87). Edecrin brand not present",
+          "sourceIds": [
+            "bcbsma-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read LOOP DIURETICS on p. 87. Furosemide tabs 20/40 mg and 80 mg Tier 1, no flags. Furoscix, Lasix ONYU, Soaanz and Edecrin brands are NOT in this document; not recorded. Document p. 15 says: \"This isn't a complete list of covered medications, and inclusion on the list doesn't guarantee coverage.\" Tier meanings are not printed; tier numbers are as shown per drug. PA/QL flags read from the PyMuPDF text layer by row, not rendered.",
+      "sourceIds": [
+        "bcbsma-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "bcbsma-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "bcbsma-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-25",
+      "payerId": "bcbsma"
+    },
+    {
+      "classId": "loop-diuretic",
+      "preferredAgent": {
+        "inn": "Furosemide (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+        "sigShort": "20-80 mg QAM, titrate",
+        "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 ($)",
+      "alternatives": [
+        {
+          "drug": "Furosemide (oral solution, 8 mg/mL and 10 mg/mL)",
+          "note": "Tier 1, no PA printed (PDL p. 67)",
+          "sourceIds": [
+            "tufts-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Bumetanide (tablet 0.5/1/2 mg)",
+          "note": "Tier 1, no PA printed (PDL p. 65)",
+          "sourceIds": [
+            "tufts-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Torsemide (tablet 5/10/20/100 mg)",
+          "note": "Tier 1, no PA printed (PDL p. 70)",
+          "sourceIds": [
+            "tufts-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Ethacrynic acid (tablet 25 mg)",
+          "note": "Tier 1, no PA printed (PDL p. 66)",
+          "sourceIds": [
+            "tufts-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL pp. 65-67, 70. Furosemide 20 mg tablet: Tier 1, no PA (p. 67). Lasix, Edecrin, Bumex and Demadex brands are not printed. Furoscix, Lasix ONYU and Soaanz are not printed, so they are recorded as not listed.",
+      "sourceIds": [
+        "tufts-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "tufts-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "tufts-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-25",
+      "payerId": "tufts"
+    },
+    {
+      "classId": "loop-diuretic",
+      "preferredAgent": {
+        "inn": "Furosemide (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+        "sigShort": "20-80 mg QAM, titrate",
+        "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 ($)",
+      "alternatives": [
+        {
+          "drug": "Furosemide oral solution 10 mg/mL, 8 mg/mL",
+          "note": "Tier 1 ($), HSA code only (PDL p. 73)",
+          "sourceIds": [
+            "harvardpilgrim-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Torsemide oral tablet 5, 10, 20, 100 mg",
+          "note": "Tier 1 ($), HSA code only (PDL p. 76)",
+          "sourceIds": [
+            "harvardpilgrim-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Bumetanide oral tablet 0.5, 1, 2 mg",
+          "note": "Tier 1 ($), HSA code only (PDL p. 71)",
+          "sourceIds": [
+            "harvardpilgrim-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Ethacrynic acid oral tablet 25 mg",
+          "note": "Tier 1 ($), HSA code only (PDL p. 72)",
+          "sourceIds": [
+            "harvardpilgrim-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly on PDL pp. 71-76. All loop diuretics listed are Tier 1 with only the HSA glossary code (preventive-drug cost-share note, not a PA, step or quantity limit). Furoscix, Lasix ONYU, Lasix, Soaanz, Edecrin and Bumex brand names are not printed.",
+      "sourceIds": [
+        "harvardpilgrim-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "harvardpilgrim-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "harvardpilgrim-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-25",
+      "payerId": "harvardpilgrim"
+    },
+    {
+      "classId": "loop-diuretic",
+      "preferredAgent": {
+        "inn": "Furosemide (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+        "sigShort": "20-80 mg QAM, titrate",
+        "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Furosemide oral solution 10 mg/mL",
+          "note": "Tier 1, no PA (PDF p. 39)",
+          "sourceIds": [
+            "mgb-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Furosemide oral solution 8 mg/mL",
+          "note": "Tier 2 (PDF p. 39)",
+          "sourceIds": [
+            "mgb-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Torsemide (oral tablet)",
+          "note": "Tier 1, no PA (PDF p. 89)",
+          "sourceIds": [
+            "mgb-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Bumetanide 0.5 / 1 mg tablet",
+          "note": "Tier 1, no PA (PDF p. 13)",
+          "sourceIds": [
+            "mgb-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Bumetanide 2 mg tablet",
+          "note": "Tier 2 (PDF p. 13)",
+          "sourceIds": [
+            "mgb-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Ethacrynic acid (Edecrin reference)",
+          "note": "Tier 2, no PA (PDF p. 33)",
+          "sourceIds": [
+            "mgb-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Legend (PDF p. 1): PA = prior authorization, SP = specialty drug, ST = step therapy, QL = quantity limit, OTC = over-the-counter. Tier numbers are as printed; the list prints no tier definitions. Furosemide oral tablet, Lasix reference Tier 1 (PDF p. 39). Furoscix, Lasix ONYU and Soaanz are absent from the list (searched); not recorded as nonformulary. Sig is label starting dosing; the list prints none.",
+      "sourceIds": [
+        "mgb-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "mgb-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "mgb-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-25",
+      "payerId": "mgb"
+    }
+  ],
+  "references": [
+    {
+      "id": "masshealth-mhdl-common6-2026-11",
+      "label": "MassHealth Drug List (November 16, 2026)",
+      "publisher": "MassHealth (Executive Office of Health and Human Services)",
+      "type": "gov",
+      "url": "https://mhdl.pharmacy.services.conduent.com/MHDL/pubdownloadpdfcurrent.do?id=45",
+      "effectiveDate": "2026-11-16",
+      "accessed": "2026-11-25"
+    },
+    {
+      "id": "masshealth-t18-common6-2026-11",
+      "label": "MassHealth Drug List, Table 18: Cardiovascular Agents",
+      "publisher": "MassHealth (Executive Office of Health and Human Services)",
+      "type": "gov",
+      "url": "https://mhdl.pharmacy.services.conduent.com/MHDL/pubtheradetail.do?id=18",
+      "effectiveDate": "2026-11-16",
+      "accessed": "2026-11-25"
+    },
+    {
+      "id": "bcbsma-common6-2026-11",
+      "label": "Standard Control with Advanced Control Specialty Formulary, Comprehensive Covered Medication List (effective 07/01/2026)",
+      "publisher": "Blue Cross Blue Shield of Massachusetts (pharmacy benefit administered by CVS Caremark)",
+      "type": "payer",
+      "url": "https://home.bluecrossma.com/collateral/sites/g/files/csphws1571/files/acquiadam-assets/55-000720261-standard-control-with-advanced-control-specialty-formulary-comprehensive-covered-medication-list-july-2026.pdf",
+      "effectiveDate": "2026-07-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "tufts-common6-2026-11",
+      "label": "Prescription drug list, Direct 3-Tier (effective Jan. 1, 2026; footers show last update 10/15/26)",
+      "publisher": "Tufts Health Plan (Point32Health), pharmacy benefit administered by OptumRx",
+      "type": "payer",
+      "url": "https://contenthub-aem.optumrx.com/content/dam/contenthub/rx-assets/en/documents/clients/harvard-pilgrim/p32-formulary-documents/2026/P32H-Value-Direct-3T-Comprehensive-Tufts.pdf",
+      "effectiveDate": "2026-01-01",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "harvardpilgrim-common6-2026-11",
+      "label": "Harvard Pilgrim Select 3-Tier 2026 Prescription Drug List (comprehensive); Last Update 10/15/26",
+      "publisher": "Harvard Pilgrim Health Care (Point32Health), administered by Optum Rx",
+      "type": "payer",
+      "url": "https://contenthub-aem.optumrx.com/content/dam/contenthub/rx-assets/en/documents/clients/harvard-pilgrim/hphc-formulary-documents/2026-oe/HPHC-Select-3T-Comprehensive.pdf",
+      "effectiveDate": "2026-10-15",
+      "accessed": "2026-10-21"
+    },
+    {
+      "id": "mgb-common6-2026-11",
+      "label": "Mass General Brigham Health Plan 2026 6 Tier Pharmacy Formulary (current as of 10/1/2026)",
+      "publisher": "Mass General Brigham Health Plan",
+      "type": "payer",
+      "url": "https://fm.formularynavigator.com/FBO/192/20266T.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-10-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

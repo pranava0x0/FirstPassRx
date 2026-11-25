@@ -237,6 +237,11 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   duplicate section. Root cause: **code bug** — found by the codex PR bot. Fixed: the lookup and
   the index-only section now both key off the same guide list, and the map was regenerated.
 
+## Open (2026-11-25)
+
+- **2026-11-25 · data · MA common-drug guides: 25 audit checks unreviewed.** `audit-cells` on the six new MA guides: 7 FLAG_MISMATCH (MassHealth 5, Tufts 1, Harvard Pilgrim 1), 7 NOT_FOUND, 11 AMBIGUOUS, 34 SKIPPED (MassHealth A-Z PDF has no extractor layout). Report: `data-gathering/audit-2026-11-25/ma/report.json` (main checkout). Root cause unknown until reviewed. Status: Open.
+- **2026-11-25 · data · Tufts and Harvard Pilgrim 2026 lists print no solid oral PPI or famotidine tablet.** Only packets/suspensions (PPIs PA) appear; no completeness or OTC-exclusion statement. Picks set to omeprazole 20 mg capsule / famotidine 20 mg tablet, partial. Confirm with the plans or the 2027 lists. Status: Open.
+
 ## Open (2026-11-22 review of PR #33)
 
 - **2026-11-23 · AL audit: two of three payer documents are unaudited.** `audit-cells --state=AL` on the six

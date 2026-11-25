@@ -398,7 +398,7 @@ import costPlusSnapshot from '../data/costplus-prices.json' with { type: 'json' 
  * 6620 → 6593 (2026-11-22): Dovato's GoodRx price (and catalog growth since the last tightening).
  * 6593 → 6718 (2026-11-23): Alabama's six common-drug guides merged with main's Aetna Virginia data.
  */
-export const KNOWN_UNPRICED_GAP = 6763
+export const KNOWN_UNPRICED_GAP = 6962
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake
