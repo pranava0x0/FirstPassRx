@@ -4,6 +4,13 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
 
 ## Fixed
 
+- **2026-11-23 · audit (scripts/source_rows.py `tiered`) · back-of-book index rows read as tier rows.**
+  BCBS AL's index prints "doxycycline hyclate tab 100 mg ........ 3" (3 = page), so the audit flagged the
+  tier-1 doxycycline pick as tier 3 and matched every Blue Advantage drug against index lines. Only spaced
+  ". . ." leaders were skipped. Root cause: **code bug**. Fixed: any run of 4+ dots (spaced or not) marks an
+  index line. No Python test harness exists for source_rows.py; the AL re-audit (FLAG_MISMATCH 1 → 0) is the
+  check.
+
 - **2026-11-22 · audit (scripts/source_rows.py) · the deterministic audit checked nothing outside MA.**
   The extractor only knew four MassHealth-era layouts, so 391 of 432 cached sources gave 0 rows and every
   check for the 15 common-drug states (Nov 8-21) was SKIPPED while the ledger reported cells as verified.
@@ -230,7 +237,28 @@ Living audit trail. Each bug: date, area, description, root cause (code bug vs. 
   duplicate section. Root cause: **code bug** — found by the codex PR bot. Fixed: the lookup and
   the index-only section now both key off the same guide list, and the map was regenerated.
 
+## Open (2026-11-25)
+
+- **2026-11-25 · data · MA common-drug guides: 25 audit checks unreviewed.** `audit-cells` on the six new MA guides: 7 FLAG_MISMATCH (MassHealth 5, Tufts 1, Harvard Pilgrim 1), 7 NOT_FOUND, 11 AMBIGUOUS, 34 SKIPPED (MassHealth A-Z PDF has no extractor layout). Report: `data-gathering/audit-2026-11-25/ma/report.json` (main checkout). Root cause unknown until reviewed. Status: Open.
+- **2026-11-25 · data · Tufts and Harvard Pilgrim 2026 lists print no solid oral PPI or famotidine tablet.** Only packets/suspensions (PPIs PA) appear; no completeness or OTC-exclusion statement. Picks set to omeprazole 20 mg capsule / famotidine 20 mg tablet, partial. Confirm with the plans or the 2027 lists. Status: Open.
+
 ## Open (2026-11-22 review of PR #33)
+
+- **2026-11-23 · AL audit: two of three payer documents are unaudited.** `audit-cells --state=AL` on the six
+  common-drug guides: BCBS AL Source+Rx 85 OK, 20 reviewed and accepted (wrapped names and brand rows; every
+  record matched the PDF row by hand). AL Medicaid's PDL Reference Tool (88 checks) and BCBS AL Blue Advantage
+  (93 checks) are all SKIPPED: no layout reads either document's table pages. Until one does, those 34 cells'
+  "verified" rests on the 2026-11-22 Sonnet check only. Blue Advantage's earlier 92 NOT_FOUND came from its
+  back-of-book index being read as rows (fixed below).
+
+- **2026-11-24 · DC common-drug audit: three of four payer documents are unaudited.** `audit-states.sh` on the
+  six new DC guides: Kaiser MAS 78 OK; its 5 FLAG_MISMATCH + 6 AMBIGUOUS are generic rows (dexamethasone,
+  hydrocortisone, torsemide, furosemide injection, omeprazole-sodium bicarbonate, naproxen-esomeprazole) matched
+  to distinct brand products (Hemady, Khindivi, Soaanz, Lasix ONYU, Konvomep, Nexium) and were reviewed as false
+  positives but not recorded with `--accept-remaining`, because that would also accept CareFirst's 94 unreviewed
+  NOT_FOUND checks (cause not investigated; probably the text-layer problem in the next item).
+  The DC PDL (79 checks) and AmeriHealth Caritas DC formulary (82) are all SKIPPED: no layout reads them. Those
+  cells' "verified" rests on the 2026-11-24 Sonnet check only.
 
 - **CareFirst (MD/DC) PDF gives no pypdf layout text** (`sources/state-dc-4bf6ff8e7920b90a.pdf`, 231 of 237
   pages under 200 characters); PyMuPDF reads it. Its checks are SKIPPED until the extractor gets a fallback.

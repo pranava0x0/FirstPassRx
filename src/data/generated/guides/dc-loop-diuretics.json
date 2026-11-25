@@ -1,0 +1,370 @@
+{
+  "id": "dc-loop-diuretics",
+  "label": "DC · Loop diuretics",
+  "stateCode": "DC",
+  "region": "District of Columbia",
+  "topicId": "loop-diuretics",
+  "topic": "Loop diuretics",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-24",
+  "capturedAt": "2026-11-24",
+  "payers": [
+    {
+      "id": "dc-medicaid",
+      "name": "DC Medicaid",
+      "shortName": "DC Medicaid",
+      "aka": "DC Medicaid fee-for-service and DC Healthcare Alliance (DHCF); DC Healthy Families MCOs run their own formularies",
+      "pbm": "Prime Therapeutics",
+      "productName": "DC Medicaid / DC Healthcare Alliance Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "District of Columbia Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "formularyUrl": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "sourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ]
+    },
+    {
+      "id": "amerihealth-caritas-dc",
+      "name": "AmeriHealth Caritas District of Columbia",
+      "shortName": "AmeriHealth Caritas DC",
+      "aka": "DC Healthy Families Medicaid MCO",
+      "pbm": "PerformRx",
+      "productName": "AmeriHealth Caritas DC drug formulary",
+      "marketSegment": "medicaid-mco",
+      "formularyId": "AmeriHealth Caritas DC Drug Formulary (effective June 1, 2026)",
+      "formularyUrl": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "sourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ]
+    },
+    {
+      "id": "carefirst",
+      "name": "CareFirst BlueCross BlueShield",
+      "shortName": "CareFirst",
+      "pbm": "CVS Caremark",
+      "formularyUrl": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "paPolicyUrl": "https://member.carefirst.com/carefirst-resources/pdf/drugs-requiring-prior-authorization-formulary-2.pdf",
+      "productName": "CareFirst individual and family Exchange Formulary 2",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "CareFirst Exchange Formulary 2026 (5-Tier), last updated 10/01/26",
+      "sourceIds": [
+        "carefirst-common6-2026-11"
+      ]
+    },
+    {
+      "id": "kpmidatlantic",
+      "name": "Kaiser Permanente Mid-Atlantic",
+      "shortName": "Kaiser MAS",
+      "pbm": "Kaiser Permanente (in-house)",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "productName": "Kaiser Mid-Atlantic Marketplace formulary",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "Kaiser Permanente Marketplace Formulary (Mid-Atlantic region), last update 10/06/2026",
+      "sourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "loop-diuretic",
+      "name": "Loop diuretics",
+      "shortName": "Loop",
+      "plainName": "Water pill (loop diuretic)",
+      "description": "Loop diuretics: furosemide (Lasix; tablets, oral solution; Furoscix subcutaneous on-body infusor and Lasix ONYU subcutaneous, alternatives only, never the pick), torsemide (generic; Soaanz), bumetanide (Bumex), ethacrynic acid (Edecrin; for sulfa allergy). Not thiazides.",
+      "plainDescription": "A strong water pill that removes extra fluid, for heart failure, kidney and liver disease and swelling.",
+      "indication": "Edema, heart failure, CKD, cirrhosis",
+      "sourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "loop-diuretic",
+      "preferredAgent": {
+        "inn": "Furosemide (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+        "sigShort": "20-80 mg QAM, titrate",
+        "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not a PDL class",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Not a PDL class: the PDL legend says any therapeutic class not listed \"will continue to be covered\" for DC Medicaid fee-for-service members (p. 6). Coverage and restrictions for this class are not in the document; absence from the PDL is not treated as exclusion. The PDL has no standalone loop diuretic class. The only diuretic entries are combinations with ACE inhibitors, ARBs and beta blockers (pp. 17-19). Furosemide, torsemide, bumetanide, ethacrynic acid (Edecrin), Lasix, Lasix ONYU, Furoscix and Soaanz are not printed anywhere in the PDL. Absence is not exclusion. The 20 mg starting dose is label dosing; the PDL prints none. [Sonnet check 2026-11-24: absence from the PDL re-confirmed by page-text grep of all 70 pages; no change.]",
+      "sourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-24",
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "loop-diuretic",
+      "preferredAgent": {
+        "inn": "Furosemide (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+        "sigShort": "20-80 mg QAM, titrate",
+        "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "F (formulary; no note printed)",
+      "alternatives": [
+        {
+          "drug": "Furosemide oral solution 10 mg/mL, 8 mg/mL",
+          "note": "F, no note printed (PDF p. 50, 109)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Torsemide (oral tablet)",
+          "note": "F, no note printed (PDF p. 50, 109). Soaanz brand not in the text layer",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Bumetanide (oral tablet)",
+          "note": "F, no note printed (PDF p. 50, 109). Bumex brand not in the text layer",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read PDF p. 50 and p. 109 (Loop Diuretics): furosemide oral tablet F, torsemide oral F, bumetanide oral F, none with a note. The furosemide strength is not printed; 20 mg is the label starting dose. Lasix, Furoscix, Lasix ONYU and Edecrin (ethacrynic acid) are not in the text layer, so no status is asserted for them. The document makes no reference to the DC PDL or to Medicaid, so no PDL rule was applied. [Sonnet check 2026-11-24: strength printed nowhere in the document (tamsulosin line \"F\" only, furosemide tablet \"F\" only); strength unconfirmed, verification lowered to partial.]",
+      "sourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-24",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "loop-diuretic",
+      "preferredAgent": {
+        "inn": "Furosemide (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+        "sigShort": "20-80 mg QAM, titrate",
+        "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Furosemide tablet 40 mg and 80 mg",
+          "note": "Tier 1, no PA printed (PDF p. 57)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Furosemide oral solution 8 mg/mL and 10 mg/mL",
+          "note": "Tier 1, no PA printed (PDF p. 57)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Torsemide tablet 5, 10, 20, 100 mg",
+          "note": "Tier 1, no PA printed (PDF p. 57)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Bumetanide tablet 0.5, 1, 2 mg",
+          "note": "Tier 1, no PA printed (PDF p. 56)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Ethacrynic acid tablet 25 mg (generic; sulfa-allergy option)",
+          "note": "Tier 3 (PDF p. 57); no PA printed",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p. 56-57 (Diuretics, Loop). Furosemide tablet 20 mg is Tier 1 with no requirement text; furosemide IV is medical benefit (M). Lasix brand, Furoscix, Lasix ONYU, Soaanz and Edecrin brand are not listed (no status asserted). Furoscix and Lasix ONYU are not in the document, so no alternatives are asserted for them. [Sonnet check 2026-11-21: rechecked against the PDF, no change]",
+      "sourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-21",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "loop-diuretic",
+      "preferredAgent": {
+        "inn": "Furosemide (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "Edema: 20 to 80 mg by mouth as a single dose; repeat or raise by 20 or 40 mg no sooner than 6 to 8 hours later until the response is right (label). Check potassium.",
+        "sigShort": "20-80 mg QAM, titrate",
+        "plainSig": "One pill in the morning. Your dose may be adjusted to how much fluid you lose."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "1, 3 (split by form)",
+      "alternatives": [
+        {
+          "drug": "Torsemide",
+          "note": "Tier 1 (p.25)",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Bumetanide",
+          "note": "Tier 3 with medical benefit listing (p.25); covered at a higher tier",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Ethacrynic acid",
+          "note": "Tier 3 (p.25); covered at a higher tier, for sulfa allergy per class description",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Furoscix (furosemide on-body infusor)",
+          "outcome": "nonformulary",
+          "reason": "Brand-only, not on the list (p.25 lists only the oral furosemide line); p.2 says any product not found is non-formulary",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Lasix ONYU (subcutaneous furosemide)",
+          "outcome": "nonformulary",
+          "reason": "Brand-only, not on the list (p.25); p.2 says any product not found is non-formulary",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Soaanz (torsemide)",
+          "outcome": "nonformulary",
+          "reason": "Brand-only, not on the list (p.25); p.2 says any product not found is non-formulary",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Read p.25 (diuretics): furosemide tier '1, 3' with MB (split by form, the list does not say which is oral tablet); torsemide tier 1; bumetanide tier 3 with MB; ethacrynic acid tier 3; ethacrynate sodium IV listed MSD/MB (left out). Lasix and Edecrin brands are multi-source and not separately printed. Furoscix, Lasix ONYU and Soaanz are brand-only and not on the list. [Sonnet check 2026-11-21: tier cell lists several tiers with no form printed on the list (p.2 says tiers can differ by dosage form), so the exact form's tier cannot be read; stays partial. No PA/ST/QL flag on the line, confirmed.]",
+      "sourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-21",
+      "payerId": "kpmidatlantic"
+    }
+  ],
+  "references": [
+    {
+      "id": "dc-medicaid-common6-2026-11",
+      "label": "District of Columbia Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "publisher": "District of Columbia Department of Health Care Finance",
+      "type": "gov",
+      "url": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "effectiveDate": "2026-09-18",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": "amerihealth-caritas-dc-common6-2026-11",
+      "label": "AmeriHealth Caritas DC Drug Formulary (effective June 1, 2026)",
+      "publisher": "AmeriHealth Caritas District of Columbia",
+      "type": "payer",
+      "url": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "effectiveDate": "2026-06-01",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": "carefirst-common6-2026-11",
+      "label": "CareFirst Exchange Formulary 2026 (5-Tier), last updated 10/01/26",
+      "publisher": "CareFirst BlueCross BlueShield",
+      "type": "payer",
+      "url": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-21"
+    },
+    {
+      "id": "kpmidatlantic-common6-2026-11",
+      "label": "Kaiser Permanente Marketplace Formulary (Mid-Atlantic region), last update 10/06/2026",
+      "publisher": "Kaiser Permanente",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "effectiveDate": "2026-10-06",
+      "accessed": "2026-11-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

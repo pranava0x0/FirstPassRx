@@ -1,0 +1,560 @@
+{
+  "id": "al-bph",
+  "label": "AL · Enlarged prostate (BPH)",
+  "stateCode": "AL",
+  "region": "Alabama",
+  "topicId": "bph",
+  "topic": "Enlarged prostate (BPH)",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-22",
+  "capturedAt": "2026-11-22",
+  "payers": [
+    {
+      "id": "al-medicaid",
+      "name": "Alabama Medicaid Agency (Fee-for-Service, statewide -- no MCO contracts)",
+      "shortName": "AL Medicaid FFS",
+      "pbm": "Administered directly by the Alabama Medicaid Agency (no contracted PBM identified)",
+      "formularyUrl": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_9-16-26.pdf",
+      "sourceIds": [
+        "al-medicaid-common6-2026-11"
+      ],
+      "productName": "Alabama Medicaid Agency Preferred Drug List by Therapeutic Category",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Alabama Medicaid PDL Reference Tool (updated 09/16/2026)"
+    },
+    {
+      "id": "bcbs-al-commercial",
+      "name": "Blue Cross and Blue Shield of Alabama (Commercial)",
+      "shortName": "BCBS Alabama",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+      "sourceIds": [
+        "bcbs-al-commercial-common6-2026-11"
+      ],
+      "productName": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx1.0 Prescription Drug List",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (2026)"
+    },
+    {
+      "id": "bcbs-al-medicare",
+      "name": "BCBS Alabama Blue Advantage (Medicare Advantage / Part D)",
+      "shortName": "Blue Advantage AL",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+      "sourceIds": [
+        "bcbs-al-medicare-common6-2026-11"
+      ],
+      "productName": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "bph-alpha",
+      "name": "Alpha-1 blockers",
+      "shortName": "Alpha blocker",
+      "plainName": "Prostate flow pill (alpha blocker)",
+      "description": "Alpha-1 blockers for BPH: tamsulosin (Flomax), alfuzosin ER (Uroxatral), silodosin (Rapaflo), doxazosin (Cardura; Cardura XL is brand-only), terazosin. Combination dutasteride/tamsulosin (Jalyn) belongs to the 5-ARI class.",
+      "plainDescription": "A daily pill that relaxes the prostate so urine flows more easily.",
+      "indication": "Benign prostatic hyperplasia (BPH)",
+      "sourceIds": [
+        "al-medicaid-common6-2026-11"
+      ]
+    },
+    {
+      "id": "bph-5ari",
+      "name": "5-alpha reductase inhibitors",
+      "shortName": "5-ARI",
+      "plainName": "Prostate-shrinking pill",
+      "description": "5-alpha reductase inhibitors for BPH: finasteride 5 mg (Proscar), dutasteride (Avodart), dutasteride/tamsulosin (Jalyn), finasteride/tadalafil (Entadfi; up to 26 weeks, not with alpha blockers). The pick is a single agent; the combinations are alternatives. Finasteride 1 mg (Propecia, hair loss) is not this class.",
+      "plainDescription": "A daily pill that slowly shrinks an enlarged prostate over months.",
+      "indication": "Benign prostatic hyperplasia (BPH)",
+      "sourceIds": [
+        "al-medicaid-common6-2026-11"
+      ]
+    },
+    {
+      "id": "bph-pde5",
+      "name": "Tadalafil for BPH",
+      "shortName": "PDE5 (BPH)",
+      "plainName": "Daily tadalafil for BPH",
+      "description": "Tadalafil 2.5 mg and 5 mg once daily (Cialis, generic) for BPH symptoms. Plans often cover it for BPH only with a diagnosis-based PA and exclude it for erectile dysfunction: record the BPH rule. Sildenafil and vardenafil are not labeled for BPH.",
+      "plainDescription": "A low daily dose of tadalafil that eases urinary symptoms of an enlarged prostate.",
+      "indication": "BPH (with or without erectile dysfunction)",
+      "sourceIds": [
+        "al-medicaid-common6-2026-11"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "bph-alpha",
+      "preferredAgent": {
+        "inn": "Tamsulosin (capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.4 mg capsule",
+        "sig": "0.4 mg by mouth once daily, 30 minutes after the same meal each day; may increase to 0.8 mg once daily after 2 to 4 weeks (label).",
+        "sigShort": "0.4 mg QD after a meal",
+        "plainSig": "One capsule a day, 30 minutes after the same meal."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not a PDL class for tamsulosin; doxazosin, terazosin and prazosin are on the PDL",
+      "alternatives": [
+        {
+          "drug": "Doxazosin (generic)",
+          "note": "Preferred generic, no PA (PDL p. 10; listed under Cardiovascular 'Alpha-Adrenergic Blocking Agents', indication not stated)",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Terazosin (generic)",
+          "note": "Preferred generic, no PA (PDL p. 10)",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Prazosin (generic)",
+          "note": "Preferred generic, no PA (PDL p. 10)",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Cardura (doxazosin)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p. 10, PA-required column)",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Cardura XL (doxazosin extended-release)",
+          "outcome": "pa",
+          "reason": "PA required (PDL p. 10, PA-required column)",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Tezruly",
+          "outcome": "pa",
+          "reason": "PA required (PDL p. 10, PA-required column); the PDL prints no strength or indication",
+          "sourceIds": [
+            "al-medicaid-common6-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Tamsulosin does not appear on the PDL. Absence from the PDL is not exclusion: the reference tool does not say it is a complete list, so no PA or exclusion is recorded. Pick is the standard generic per the brief (partial). Doxazosin, terazosin and prazosin are on the PDL under Cardiovascular Health; the PDL gives no indication for them. Alfuzosin (Uroxatral), silodosin (Rapaflo) and Jalyn are not listed.",
+      "sourceIds": [
+        "al-medicaid-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "al-medicaid-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "al-medicaid-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-22",
+      "payerId": "al-medicaid"
+    },
+    {
+      "classId": "bph-5ari",
+      "preferredAgent": {
+        "inn": "Finasteride (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg by mouth once daily for BPH (label). Benefit builds over 6 to 12 months.",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day. It takes several months to work."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not a PDL class",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "No 5-alpha reductase inhibitor (finasteride, Proscar, dutasteride, Avodart, Jalyn, Entadfi) appears anywhere in the PDL. Absence from the PDL is not exclusion: the reference tool does not say it is a complete list, so no PA or exclusion is recorded. Pick is the standard generic per the brief (partial).",
+      "sourceIds": [
+        "al-medicaid-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "al-medicaid-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "al-medicaid-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-22",
+      "payerId": "al-medicaid"
+    },
+    {
+      "classId": "bph-pde5",
+      "preferredAgent": {
+        "inn": "Tadalafil (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg by mouth once daily at about the same time each day for BPH, with or without ED (label; 2.5 mg if CrCl 30-50).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day at about the same time."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not a PDL class",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Tadalafil, Cialis, sildenafil and vardenafil do not appear anywhere in the PDL. The reference tool states no BPH or erectile-dysfunction rule, so no PA is recorded. Absence from the PDL is not exclusion: the reference tool does not say it is a complete list, so no PA or exclusion is recorded. Pick is the standard generic per the brief (partial).",
+      "sourceIds": [
+        "al-medicaid-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "al-medicaid-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "al-medicaid-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-22",
+      "payerId": "al-medicaid"
+    },
+    {
+      "classId": "bph-alpha",
+      "preferredAgent": {
+        "inn": "Tamsulosin hydrochloride (capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.4 mg capsule",
+        "sig": "0.4 mg by mouth once daily, 30 minutes after the same meal each day; may increase to 0.8 mg once daily after 2 to 4 weeks (label).",
+        "sigShort": "0.4 mg QD after a meal",
+        "plainSig": "One capsule a day, 30 minutes after the same meal."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Alfuzosin hydrochloride extended-release tablet 10 mg (Uroxatral reference)",
+          "note": "Tier 1, no PA or step flag (PDF p. 73)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Silodosin capsule 4 mg and 8 mg (Rapaflo reference)",
+          "note": "Tier 1, no PA or step flag (PDF p. 74)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Doxazosin mesylate tablet 1, 2, 4 and 8 mg (Cardura reference)",
+          "note": "Tier 1, no PA or step flag (PDF p. 55)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Terazosin hydrochloride capsule 1, 2, 5 and 10 mg",
+          "note": "Tier 1, no PA or step flag (PDF p. 57)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Tamsulosin 0.4 mg capsule is tier 1, no flags (PDF p. 74). Cardura XL is not listed. Doxazosin and terazosin are covered for BPH use only as the list shows them; the list gives no indication column.",
+      "sourceIds": [
+        "bcbs-al-commercial-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-commercial-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-commercial-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-22",
+      "payerId": "bcbs-al-commercial"
+    },
+    {
+      "classId": "bph-5ari",
+      "preferredAgent": {
+        "inn": "Finasteride (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg by mouth once daily for BPH (label). Benefit builds over 6 to 12 months.",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day. It takes several months to work."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Dutasteride (capsule 0.5 mg, Avodart reference)",
+          "note": "Tier 1, no PA or step flag (PDF p. 73)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Dutasteride and tamsulosin (capsule 0.5-0.4 mg, Jalyn reference)",
+          "note": "Tier 1, no PA or step flag (PDF p. 74)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Finasteride 5 mg (Proscar reference) is tier 1, no flags (PDF p. 74). Entadfi (finasteride-tadalafil) is not listed.",
+      "sourceIds": [
+        "bcbs-al-commercial-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-commercial-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-commercial-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-22",
+      "payerId": "bcbs-al-commercial"
+    },
+    {
+      "classId": "bph-pde5",
+      "preferredAgent": {
+        "inn": "Tadalafil (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg by mouth once daily at about the same time each day for BPH, with or without ED (label; 2.5 mg if CrCl 30-50).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day at about the same time."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Tadalafil (tablet 2.5 mg)",
+          "note": "Tier 1, dispensing-limit flag only (PDF pp. 61-62)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Tadalafil 2.5 mg and 5 mg (Cialis reference) are tier 1 with a single flag column marked (read as dispensing limit by the gatherer), listed in the block after the PAH products on PDF p. 61 and again under an ERECTILE DYSFUNCTION heading on PDF p. 62 (printed pp. 53-54). Tadalafil 20 mg (Adcirca, PAH) is tier 4 with PA/ST and is omitted. [Sonnet check 2026-11-22: corrected the earlier note that said no ED heading exists; the p. 62 heading is ED. The list prints no BPH indication, so BPH coverage and any diagnosis-based PA remain unconfirmed; keep partial.]",
+      "sourceIds": [
+        "bcbs-al-commercial-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-commercial-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-commercial-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-22",
+      "payerId": "bcbs-al-commercial"
+    },
+    {
+      "classId": "bph-alpha",
+      "preferredAgent": {
+        "inn": "Tamsulosin hydrochloride (capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "0.4 mg capsule",
+        "sig": "0.4 mg by mouth once daily, 30 minutes after the same meal each day; may increase to 0.8 mg once daily after 2 to 4 weeks (label).",
+        "sigShort": "0.4 mg QD after a meal",
+        "plainSig": "One capsule a day, 30 minutes after the same meal."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (Generic); QL 60 capsules/30 days, no PA",
+      "alternatives": [
+        {
+          "drug": "Terazosin (capsule 1 mg)",
+          "note": "Tier 1, QL 90 capsules/30 days, no PA (p.41). Lower-tier than the pick.",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Terazosin (capsule 2, 5, 10 mg)",
+          "note": "Tier 1, QL 60 capsules/30 days, no PA (p.41)",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Doxazosin (tablet 1, 2, 4, 8 mg)",
+          "note": "Tier 2, QL 60 tablets/30 days, no PA (p.38)",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Alfuzosin ER (tablet 10 mg)",
+          "note": "Tier 2, QL 30 tablets/30 days, no PA (p.50)",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly, printed p.38, 41, 50-51. Tamsulosin 0.4 mg capsule is Tier 2 with QL 60 capsules/30 days and no PA; it is the brief's pick. Terazosin (Tier 1) is cheaper on this list and is an alternative. Flomax, Uroxatral, Rapaflo, Cardura and Cardura XL do not appear in the document.",
+      "sourceIds": [
+        "bcbs-al-medicare-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-medicare-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-medicare-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-22",
+      "payerId": "bcbs-al-medicare"
+    },
+    {
+      "classId": "bph-5ari",
+      "preferredAgent": {
+        "inn": "Finasteride (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg by mouth once daily for BPH (label). Benefit builds over 6 to 12 months.",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day. It takes several months to work."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (Preferred Generic); QL 30 tablets/30 days, no PA",
+      "alternatives": [
+        {
+          "drug": "Dutasteride (capsule 0.5 mg)",
+          "note": "Tier 2, QL 30 capsules/30 days, no PA (p.50)",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly, printed p.50. Finasteride 5 mg tablet is Tier 1 with QL 30 tablets/30 days and no PA. Avodart, Proscar, Jalyn and Entadfi do not appear in the document; no status recorded.",
+      "sourceIds": [
+        "bcbs-al-medicare-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-medicare-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-medicare-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-22",
+      "payerId": "bcbs-al-medicare"
+    },
+    {
+      "classId": "bph-pde5",
+      "preferredAgent": {
+        "inn": "Tadalafil (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "5 mg tablet",
+        "sig": "5 mg by mouth once daily at about the same time each day for BPH, with or without ED (label; 2.5 mg if CrCl 30-50).",
+        "sigShort": "5 mg QD",
+        "plainSig": "One pill a day at about the same time."
+      },
+      "preferredRestriction": "PA required (p.51). The list does not print the PA criteria. The 2.5 mg and 5 mg tablets share one row.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 4 (Non-Preferred Drug); QL 30 tablets/30 days; PA",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly, printed p.51. Tadalafil 2.5 mg and 5 mg: Tier 4, PA, QL 30 tablets/30 days. Sildenafil 20 mg and tadalafil 20 mg (PAH, p.71) are not BPH products and are not used. Cialis brand does not appear in the document. [Sonnet check 2026-11-22: confirmed tadalafil 2.5/5 mg Tier 4, PA, QL 30/30 days (PDF p.65, printed p.51). PA criteria are not printed in the list.]",
+      "sourceIds": [
+        "bcbs-al-medicare-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-medicare-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-medicare-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-22",
+      "payerId": "bcbs-al-medicare"
+    }
+  ],
+  "references": [
+    {
+      "id": "al-medicaid-common6-2026-11",
+      "label": "Alabama Medicaid PDL Reference Tool (updated 09/16/2026)",
+      "publisher": "Alabama Medicaid Agency",
+      "type": "gov",
+      "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_9-16-26.pdf",
+      "effectiveDate": "2026-09-16",
+      "accessed": "2026-11-22"
+    },
+    {
+      "id": "bcbs-al-commercial-common6-2026-11",
+      "label": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (2026)",
+      "publisher": "Blue Cross and Blue Shield of Alabama (pharmacy benefit: Prime Therapeutics LLC)",
+      "type": "payer",
+      "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+      "effectiveDate": "2026-11-01",
+      "accessed": "2026-11-22"
+    },
+    {
+      "id": "bcbs-al-medicare-common6-2026-11",
+      "label": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)",
+      "publisher": "Blue Cross and Blue Shield of Alabama (Blue Advantage Choice, Medicare Advantage Part D)",
+      "type": "payer",
+      "url": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+      "effectiveDate": "2026-01-20",
+      "accessed": "2026-11-22"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

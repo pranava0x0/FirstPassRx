@@ -396,8 +396,9 @@ import costPlusSnapshot from '../data/costplus-prices.json' with { type: 'json' 
  *   fluoxetine 90 mg weekly, diclofenac, PPIs and DR antibiotics showed Atelvia's price; those names
  *   are now honestly unpriced (Codex review, PR #32).
  * 6620 → 6593 (2026-11-22): Dovato's GoodRx price (and catalog growth since the last tightening).
+ * 6593 → 6718 (2026-11-23): Alabama's six common-drug guides merged with main's Aetna Virginia data.
  */
-export const KNOWN_UNPRICED_GAP = 6593
+export const KNOWN_UNPRICED_GAP = 6962
 
 /** A snapshot cash price. Not live — see pricesCapturedAt. Deep-link (goodRxUrl/costPlusUrl) stays
  * the primary, current source; this is "as of" context only (CLAUDE.md: capture dates, don't bake

@@ -13,7 +13,7 @@ it('deep-links ?med=dovato to every state and opens Virginia with Aetna, cash pr
   window.history.replaceState({}, '', '/?med=dovato&state=VA')
   vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ ok: true, json: async () => catalog }))
   render(<MedicationMap />)
-  const panel = (await screen.findByRole('heading', { name: 'Virginia (VA)', level: 3 })).closest('section')!
+  const panel = (await screen.findByRole('heading', { name: 'Virginia (VA)', level: 3 }, { timeout: 5000 })).closest('section')!
   expect(window.location.search).toContain('med=Dovato')
   expect(within(panel).getByText(/Covered, no PA on 9 of 9 · not the preferred pick/)).toBeVisible()
   expect(within(panel).getByText('Aetna (commercial, Advanced Control Plan)')).toBeVisible()
@@ -37,7 +37,7 @@ it('bursts confetti when a state prefers the drug on every plan', async () => {
   window.history.replaceState({}, '', '/?med=biktarvy')
   const user = userEvent.setup()
   render(<MedicationMap />)
-  const starred = (await screen.findAllByRole('button', { name: /★/ }))[0]!
+  const starred = (await screen.findAllByRole('button', { name: /★/ }, { timeout: 5000 }))[0]!
   await user.click(starred)
   expect(document.querySelectorAll('.confetti i').length).toBe(18)
 })

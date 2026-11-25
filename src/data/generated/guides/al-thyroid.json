@@ -1,0 +1,425 @@
+{
+  "id": "al-thyroid",
+  "label": "AL · Thyroid",
+  "stateCode": "AL",
+  "region": "Alabama",
+  "topicId": "thyroid",
+  "topic": "Thyroid",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-22",
+  "capturedAt": "2026-11-22",
+  "payers": [
+    {
+      "id": "al-medicaid",
+      "name": "Alabama Medicaid Agency (Fee-for-Service, statewide -- no MCO contracts)",
+      "shortName": "AL Medicaid FFS",
+      "pbm": "Administered directly by the Alabama Medicaid Agency (no contracted PBM identified)",
+      "formularyUrl": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_9-16-26.pdf",
+      "sourceIds": [
+        "al-medicaid-common6-2026-11"
+      ],
+      "productName": "Alabama Medicaid Agency Preferred Drug List by Therapeutic Category",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "Alabama Medicaid PDL Reference Tool (updated 09/16/2026)"
+    },
+    {
+      "id": "bcbs-al-commercial",
+      "name": "Blue Cross and Blue Shield of Alabama (Commercial)",
+      "shortName": "BCBS Alabama",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+      "sourceIds": [
+        "bcbs-al-commercial-common6-2026-11"
+      ],
+      "productName": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx1.0 Prescription Drug List",
+      "marketSegment": "commercial-employer",
+      "formularyId": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (2026)"
+    },
+    {
+      "id": "bcbs-al-medicare",
+      "name": "BCBS Alabama Blue Advantage (Medicare Advantage / Part D)",
+      "shortName": "Blue Advantage AL",
+      "pbm": "Prime Therapeutics",
+      "formularyUrl": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+      "sourceIds": [
+        "bcbs-al-medicare-common6-2026-11"
+      ],
+      "productName": "Blue Advantage Choice 2026 Formulary (List of Covered Drugs)",
+      "marketSegment": "medicare-part-d",
+      "formularyId": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)"
+    }
+  ],
+  "classes": [
+    {
+      "id": "levothyroxine",
+      "name": "Levothyroxine (T4)",
+      "shortName": "T4",
+      "plainName": "Thyroid hormone (levothyroxine)",
+      "description": "Levothyroxine sodium: generic tablets and the brands Synthroid, Levoxyl, Unithroid, Euthyrox; Tirosint capsules; oral solutions Tirosint-SOL, Thyquidity, Ermeza. Generic tablets are AB-rated to specific reference brands, so a brand-only rule matters. Not liothyronine or desiccated thyroid.",
+      "plainDescription": "The standard daily pill that replaces thyroid hormone when your thyroid is underactive.",
+      "indication": "Hypothyroidism",
+      "sourceIds": [
+        "al-medicaid-common6-2026-11"
+      ]
+    },
+    {
+      "id": "thyroid-t3-ndt",
+      "name": "Liothyronine (T3) and desiccated thyroid",
+      "shortName": "T3/NDT",
+      "plainName": "T3 or natural thyroid",
+      "description": "Liothyronine (Cytomel, generic tablets) and desiccated thyroid (Armour Thyroid, NP Thyroid; unapproved drugs under FDA enforcement action, often non-formulary; Adthyza reportedly discontinued). Levothyroxine is never this class's pick.",
+      "plainDescription": "Other thyroid pills, used alongside or instead of levothyroxine in some patients.",
+      "indication": "Hypothyroidism (second line)",
+      "sourceIds": [
+        "al-medicaid-common6-2026-11"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "levothyroxine",
+      "preferredAgent": {
+        "inn": "Levothyroxine sodium (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mcg tablet",
+        "sig": "Healthy adults: full replacement about 1.6 mcg/kg once daily. Older adults or heart disease: start 12.5 to 25 mcg daily and raise by 12.5 to 25 mcg every 6 to 8 weeks. Adjust to TSH. Take on an empty stomach 30 to 60 minutes before breakfast (label).",
+        "sigShort": "Start per weight/age, titrate to TSH",
+        "plainSig": "One pill every morning on an empty stomach, 30 to 60 minutes before breakfast. Your dose is adjusted by blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not a PDL class",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "No levothyroxine product (generic tablets, Synthroid, Levoxyl, Unithroid, Euthyrox, Tirosint, Thyquidity, Ermeza) appears in the PDL; the Hormones section (p. 19-20) lists androgens, growth hormones and HAE agents only. Absence from the PDL is not exclusion: the reference tool does not say it is a complete list, so no PA or exclusion is recorded. Pick is the standard generic per the brief (partial).",
+      "sourceIds": [
+        "al-medicaid-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "al-medicaid-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "al-medicaid-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-22",
+      "payerId": "al-medicaid"
+    },
+    {
+      "classId": "thyroid-t3-ndt",
+      "preferredAgent": {
+        "inn": "Liothyronine sodium (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mcg tablet",
+        "sig": "Start 25 mcg by mouth once daily; increase by 25 mcg every 1 to 2 weeks to the usual 25 to 75 mcg daily. Start 5 mcg daily in older adults or with heart disease (label).",
+        "sigShort": "25 mcg QD, titrate",
+        "plainSig": "One pill a day; your dose is adjusted by symptoms and blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not a PDL class",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Brief's sensible pick is 5 mcg; the Cytomel label's starting dose is 25 mcg daily, so the sig follows the label (deliberate deviation). No liothyronine (Cytomel), Armour Thyroid or NP Thyroid appears in the PDL; the PDL has no thyroid section. Absence from the PDL is not exclusion: the reference tool does not say it is a complete list, so no PA or exclusion is recorded. Pick is the standard generic per the brief (partial). [Sonnet check 2026-11-22: 25 mcg daily is the Cytomel label starting dose (5 mcg is not), so the 25 mcg tablet pick is right; still partial, no thyroid class on the PDL.]",
+      "sourceIds": [
+        "al-medicaid-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "al-medicaid-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "al-medicaid-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-22",
+      "payerId": "al-medicaid"
+    },
+    {
+      "classId": "levothyroxine",
+      "preferredAgent": {
+        "inn": "Levothyroxine sodium (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mcg tablet",
+        "sig": "Healthy adults: full replacement about 1.6 mcg/kg once daily. Older adults or heart disease: start 12.5 to 25 mcg daily and raise by 12.5 to 25 mcg every 6 to 8 weeks. Adjust to TSH. Take on an empty stomach 30 to 60 minutes before breakfast (label).",
+        "sigShort": "Start per weight/age, titrate to TSH",
+        "plainSig": "One pill every morning on an empty stomach, 30 to 60 minutes before breakfast. Your dose is adjusted by blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "SYNTHROID (levothyroxine sodium) brand tablet 25 to 300 mcg",
+          "note": "Tier 2 brand, no PA or step flag (PDF pp. 42-43)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "TIROSINT (levothyroxine sodium) capsule 13 to 200 mcg",
+          "note": "Tier 3 (covered), no PA or step flag (PDF p. 43)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "TIROSINT-SOL (levothyroxine sodium) oral solution",
+          "note": "Tier 3 (covered), no PA or step flag (PDF pp. 43-44)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "THYQUIDITY (levothyroxine sodium) oral solution 100 mcg/5 mL",
+          "note": "Tier 3 (covered), no PA or step flag (PDF p. 43)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "LEVOTHYROXINE SODIUM capsule 13 to 200 mcg (brand-named capsule)",
+          "note": "Tier 3 (covered), no PA or step flag (PDF p. 42)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Generic levothyroxine tablets are tier 1 (PDF p. 42) and Synthroid is tier 2 (PDF p. 43); the list states no brand-over-generic rule, so no BOGL. Levoxyl, Unithroid and Euthyrox are not listed.",
+      "sourceIds": [
+        "bcbs-al-commercial-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-commercial-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-commercial-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-22",
+      "payerId": "bcbs-al-commercial"
+    },
+    {
+      "classId": "thyroid-t3-ndt",
+      "preferredAgent": {
+        "inn": "Liothyronine sodium (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mcg tablet",
+        "sig": "Start 25 mcg by mouth once daily; increase by 25 mcg every 1 to 2 weeks to the usual 25 to 75 mcg daily. Start 5 mcg daily in older adults or with heart disease (label).",
+        "sigShort": "25 mcg QD, titrate",
+        "plainSig": "One pill a day; your dose is adjusted by symptoms and blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Liothyronine sodium tablet 5 mcg and 50 mcg (generic, Cytomel reference)",
+          "note": "Tier 1, no PA or step flag (PDF p. 42)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "ARMOUR THYROID (thyroid tablet) 15 to 300 mg",
+          "note": "Tier 3 (covered), no PA or step flag (PDF p. 41)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "NP THYROID (thyroid tablet) 15 to 120 mg",
+          "note": "Tier 3 (covered), no PA or step flag (PDF pp. 42-43)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "NIVA THYROID (thyroid tablet) 15 to 120 mg",
+          "note": "Tier 3 (covered), no PA or step flag (PDF p. 42)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "THYROID (desiccated thyroid tablet) 15 to 120 mg",
+          "note": "Tier 3 (covered), no PA or step flag (PDF p. 43)",
+          "sourceIds": [
+            "bcbs-al-commercial-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Liothyronine 5, 25 and 50 mcg tablets (Cytomel reference) are all tier 1 with no PA or step flag (PDF p. 42). Pick is 25 mcg, the label adult start. Desiccated thyroid lines are covered at tier 3 with no PA or step flag. [Sonnet check 2026-11-22: changed pick from 5 mcg to 25 mcg so the strength delivers the label start; sig rewritten.]",
+      "sourceIds": [
+        "bcbs-al-commercial-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-commercial-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-commercial-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-22",
+      "payerId": "bcbs-al-commercial"
+    },
+    {
+      "classId": "levothyroxine",
+      "preferredAgent": {
+        "inn": "Levothyroxine sodium (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "50 mcg tablet",
+        "sig": "Healthy adults: full replacement about 1.6 mcg/kg once daily. Older adults or heart disease: start 12.5 to 25 mcg daily and raise by 12.5 to 25 mcg every 6 to 8 weeks. Adjust to TSH. Take on an empty stomach 30 to 60 minutes before breakfast (label).",
+        "sigShort": "Start per weight/age, titrate to TSH",
+        "plainSig": "One pill every morning on an empty stomach, 30 to 60 minutes before breakfast. Your dose is adjusted by blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1 (Preferred Generic)",
+      "alternatives": [
+        {
+          "drug": "Levo-T (levothyroxine sodium tablet)",
+          "note": "Tier 3, no PA (p.59)",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Levoxyl (levothyroxine sodium tablet)",
+          "note": "Tier 3, no PA (p.59)",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Unithroid (levothyroxine sodium tablet)",
+          "note": "Tier 3, no PA (p.59)",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Synthroid (levothyroxine sodium tablet)",
+          "note": "Tier 4 (non-preferred), no PA (p.59)",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly, printed p.59 (PDF page 73). Generic levothyroxine tablet is Tier 1 with no QL or PA. Levo-T, Levoxyl and Unithroid (Tier 3) and Synthroid (Tier 4) are listed with no PA, so they are alternatives. Plan lists the generic at a lower tier than Synthroid, so no BOGL. Tirosint, Thyquidity, Ermeza and Euthyrox do not appear in the document; no status recorded.",
+      "sourceIds": [
+        "bcbs-al-medicare-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-medicare-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-medicare-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-22",
+      "payerId": "bcbs-al-medicare"
+    },
+    {
+      "classId": "thyroid-t3-ndt",
+      "preferredAgent": {
+        "inn": "Liothyronine sodium (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "25 mcg tablet",
+        "sig": "Start 25 mcg by mouth once daily; increase by 25 mcg every 1 to 2 weeks to the usual 25 to 75 mcg daily. Start 5 mcg daily in older adults or with heart disease (label).",
+        "sigShort": "25 mcg QD, titrate",
+        "plainSig": "One pill a day; your dose is adjusted by symptoms and blood tests."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 2 (Generic)",
+      "alternatives": [
+        {
+          "drug": "Liomny (liothyronine sodium tablet, brand)",
+          "note": "Tier 2, no PA (p.59)",
+          "sourceIds": [
+            "bcbs-al-medicare-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read directly, printed p.59. Liothyronine 5 mcg tablet is Tier 2 with no QL or PA. 5 mcg is the brief's pick and the lowest strength; the list prints no sig. Cytomel, Armour Thyroid and NP Thyroid do not appear in the document; no status recorded.",
+      "sourceIds": [
+        "bcbs-al-medicare-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "bcbs-al-medicare-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "bcbs-al-medicare-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-22",
+      "payerId": "bcbs-al-medicare"
+    }
+  ],
+  "references": [
+    {
+      "id": "al-medicaid-common6-2026-11",
+      "label": "Alabama Medicaid PDL Reference Tool (updated 09/16/2026)",
+      "publisher": "Alabama Medicaid Agency",
+      "type": "gov",
+      "url": "https://medicaid.alabama.gov/documents/4.0_Programs/4.3_Pharmacy-DME/4.3.7_Preferred_Drug_List/4.3.7_PDL_Reference_Tool_9-16-26.pdf",
+      "effectiveDate": "2026-09-16",
+      "accessed": "2026-11-22"
+    },
+    {
+      "id": "bcbs-al-commercial-common6-2026-11",
+      "label": "Blue Cross and Blue Shield of Alabama Standardized Source+Rx 1.0 Prescription Drug List (2026)",
+      "publisher": "Blue Cross and Blue Shield of Alabama (pharmacy benefit: Prime Therapeutics LLC)",
+      "type": "payer",
+      "url": "https://www.myprime.com/content/dam/prime/memberportal/WebDocs/2026/Formularies/HIM/2026_AL_4T_Standardized_Source+Rx_1.0.pdf",
+      "effectiveDate": "2026-11-01",
+      "accessed": "2026-11-22"
+    },
+    {
+      "id": "bcbs-al-medicare-common6-2026-11",
+      "label": "Blue Advantage Choice 2026 Formulary, List of Covered Drugs (Approved Formulary ID 00026212_V10; H0104_CHF26_C; formulary updated 01/20/2026)",
+      "publisher": "Blue Cross and Blue Shield of Alabama (Blue Advantage Choice, Medicare Advantage Part D)",
+      "type": "payer",
+      "url": "https://www.bcbsalmedicare.com/sales/documents/d/medicare/h0104_chf26_c-february-508c-updated-01-2026",
+      "effectiveDate": "2026-01-20",
+      "accessed": "2026-11-22"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}

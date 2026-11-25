@@ -1,0 +1,1039 @@
+{
+  "id": "dc-acid-reflux",
+  "label": "DC · Acid reflux & ulcers",
+  "stateCode": "DC",
+  "region": "District of Columbia",
+  "topicId": "acid-reflux",
+  "topic": "Acid reflux & ulcers",
+  "classNoun": "Prescription type",
+  "unitNoun": "medication",
+  "tagline": "",
+  "dataStatus": "mixed",
+  "lastUpdated": "2026-11-24",
+  "capturedAt": "2026-11-24",
+  "payers": [
+    {
+      "id": "dc-medicaid",
+      "name": "DC Medicaid",
+      "shortName": "DC Medicaid",
+      "aka": "DC Medicaid fee-for-service and DC Healthcare Alliance (DHCF); DC Healthy Families MCOs run their own formularies",
+      "pbm": "Prime Therapeutics",
+      "productName": "DC Medicaid / DC Healthcare Alliance Preferred Drug List",
+      "marketSegment": "medicaid-ffs",
+      "formularyId": "District of Columbia Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "formularyUrl": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "sourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ]
+    },
+    {
+      "id": "amerihealth-caritas-dc",
+      "name": "AmeriHealth Caritas District of Columbia",
+      "shortName": "AmeriHealth Caritas DC",
+      "aka": "DC Healthy Families Medicaid MCO",
+      "pbm": "PerformRx",
+      "productName": "AmeriHealth Caritas DC drug formulary",
+      "marketSegment": "medicaid-mco",
+      "formularyId": "AmeriHealth Caritas DC Drug Formulary (effective June 1, 2026)",
+      "formularyUrl": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "sourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ]
+    },
+    {
+      "id": "carefirst",
+      "name": "CareFirst BlueCross BlueShield",
+      "shortName": "CareFirst",
+      "pbm": "CVS Caremark",
+      "formularyUrl": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "paPolicyUrl": "https://member.carefirst.com/carefirst-resources/pdf/drugs-requiring-prior-authorization-formulary-2.pdf",
+      "productName": "CareFirst individual and family Exchange Formulary 2",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "CareFirst Exchange Formulary 2026 (5-Tier), last updated 10/01/26",
+      "sourceIds": [
+        "carefirst-common6-2026-11"
+      ]
+    },
+    {
+      "id": "kpmidatlantic",
+      "name": "Kaiser Permanente Mid-Atlantic",
+      "shortName": "Kaiser MAS",
+      "pbm": "Kaiser Permanente (in-house)",
+      "formularyUrl": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "productName": "Kaiser Mid-Atlantic Marketplace formulary",
+      "marketSegment": "commercial-exchange",
+      "formularyId": "Kaiser Permanente Marketplace Formulary (Mid-Atlantic region), last update 10/06/2026",
+      "sourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ]
+    }
+  ],
+  "classes": [
+    {
+      "id": "ppi",
+      "name": "Proton pump inhibitors",
+      "shortName": "PPI",
+      "plainName": "Acid blocker (PPI)",
+      "description": "Proton pump inhibitors: omeprazole (Prilosec), pantoprazole (Protonix), esomeprazole (Nexium), lansoprazole (Prevacid, SoluTab), rabeprazole (Aciphex), dexlansoprazole (Dexilant), omeprazole/sodium bicarbonate (Zegerid, Konvomep). Capsules, tablets, packets and suspensions. Not H2 blockers or vonoprazan.",
+      "plainDescription": "A once-a-day pill that shuts down most stomach acid. Used for reflux, ulcers and to protect the stomach.",
+      "indication": "GERD, erosive esophagitis, ulcers, H. pylori",
+      "sourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ]
+    },
+    {
+      "id": "pcab",
+      "name": "Potassium-competitive acid blocker",
+      "shortName": "P-CAB",
+      "plainName": "Newer acid blocker (vonoprazan)",
+      "description": "Vonoprazan (Voquezna tablets; Voquezna Triple Pak and Dual Pak for H. pylori). Brand only, no generic. Usually a step after PPIs. If the plan lists no vonoprazan, that is the finding: pick Voquezna as the reference product and record the barrier.",
+      "plainDescription": "A newer brand-name acid blocker, used when the usual acid pills haven't worked.",
+      "indication": "Erosive esophagitis, heartburn from GERD, H. pylori",
+      "sourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ]
+    },
+    {
+      "id": "h2ra",
+      "name": "H2 blockers",
+      "shortName": "H2RA",
+      "plainName": "Milder acid reducer (H2 blocker)",
+      "description": "Histamine-2 receptor antagonists: famotidine (Pepcid; tablets, suspension), cimetidine, nizatidine. Prescription strengths. Not PPIs.",
+      "plainDescription": "A milder acid pill, often taken at bedtime or as needed.",
+      "indication": "Reflux, ulcers",
+      "sourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "classId": "ppi",
+      "preferredAgent": {
+        "inn": "Omeprazole (delayed-release capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg capsule",
+        "sig": "20 mg by mouth once daily before a meal: 4 weeks for GERD symptoms, 4 to 8 weeks for erosive esophagitis or ulcer healing (label).",
+        "sigShort": "20 mg QD AC",
+        "plainSig": "One capsule a day before a meal, usually for 4 to 8 weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred",
+      "alternatives": [
+        {
+          "drug": "Pantoprazole sodium",
+          "note": "Preferred, no PA (PDL p. 46)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Esomeprazole (capsules, OTC and Rx)",
+          "note": "Preferred, no PA (PDL p. 46)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Nexium suspension (esomeprazole)",
+          "note": "Preferred, no PA (PDL p. 46)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Dexilant",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 46, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "dexlansoprazole",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 46, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "esomeprazole susp",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 46, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Konvomep (omeprazole/sodium bicarbonate, brand-only kit)",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 46, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "lansoprazole (all forms)",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 46, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Nexium",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 46, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "omeprazole-sodium bicarbonate (OTC and Rx; generic Zegerid-type)",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 46, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "omeprazole magnesium OTC",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 46, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "omeprazole OTC",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 46, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Prevacid caps",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 46, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Prevacid 15 mg OTC",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 46, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Prevacid SoluTab",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 46, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Prilosec suspension (Rx)",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 46, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Protonix",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 46, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "rabeprazole",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 46, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDL p. 46 (Proton Pump Inhibitors) by column x-position: Preferred column = esomeprazole caps (OTC and Rx), Nexium susp, omeprazole (Rx), pantoprazole; all other PPI lines are in the Requires Prior Authorization column. The PDL prints no form, strength or sig for omeprazole Rx; the capsule form and 20 mg starting dose are label dosing, not PDL text. Protonix and Nexium are brand PA while the generic is Preferred, so no BOGL. Dexilant and Konvomep are listed PA. Zegerid is not named; the omeprazole-sodium bicarbonate line (PA) is the nearest match. OTC omeprazole and Prevacid 15 mg OTC are listed PA here and are not the pick. [Sonnet check 2026-11-24: Preferred/PA column re-read by x-position (Preferred x~55, PA x~307); no change.] The PDL prints no form or strength for omeprazole.",
+      "sourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-24",
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "pcab",
+      "preferredAgent": {
+        "inn": "Vonoprazan (Voquezna tablets)",
+        "brand": "Voquezna",
+        "genericAvailable": false,
+        "strength": "20 mg tablet",
+        "sig": "20 mg by mouth once daily for 8 weeks to heal erosive esophagitis, then 10 mg once daily to maintain; 10 mg once daily for 4 weeks for heartburn from non-erosive GERD (label).",
+        "sigShort": "20 mg QD x8 wk",
+        "plainSig": "One pill a day for 8 weeks."
+      },
+      "preferredRestriction": "Requires prior authorization (PDL p. 45, listed under H. pylori Combinations, Requires Prior Authorization column)",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Requires Prior Authorization",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Voquezna Dual Pak (vonoprazan H. pylori kit)",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 45, H. pylori Combinations, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Voquezna Triple Pak (vonoprazan H. pylori kit)",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 45, H. pylori Combinations, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL p. 45 lists Voquezna (single tablet) under H. pylori Combinations, Requires Prior Authorization column, next to Voquezna Dual Pak and Triple Pak. The PDL has no separate vonoprazan line for erosive esophagitis or heartburn, so the single-tablet barrier is the H. pylori-section PA listing as printed; the PDL does not state a step or quantity rule for it. No generic vonoprazan exists (research.md). Pylera, Talicia and Omeclamox-Pak (H. pylori kits, PA, p. 45) are not vonoprazan and were not added. Label dose is not printed in the PDL. [Sonnet check 2026-11-24: Preferred/PA column re-read by x-position (Preferred x~55, PA x~307); no change.]",
+      "sourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-24",
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "h2ra",
+      "preferredAgent": {
+        "inn": "Famotidine (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "GERD: 20 mg by mouth twice daily for up to 6 weeks. Duodenal ulcer: 40 mg once daily at bedtime or 20 mg twice daily for up to 8 weeks. Gastric ulcer: 40 mg once daily at bedtime (label).",
+        "sigShort": "20 mg BID (GERD)",
+        "plainSig": "One pill twice a day for reflux, or as your prescriber directs for an ulcer."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Preferred",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Cimetidine (solution and tablets)",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 45, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Nizatidine (capsules)",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 45, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Ranitidine (syrup and tablets)",
+          "outcome": "pa",
+          "reason": "Requires prior authorization (PDL p. 45, Requires Prior Authorization column)",
+          "sourceIds": [
+            "dc-medicaid-common6-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "PDL p. 45, Histamine-2-Receptor Antagonists: famotidine susp and tabs is in the Preferred column; cimetidine, nizatidine and ranitidine are in the Requires Prior Authorization column. The PDL prints no sig or strength for famotidine; 20 mg twice daily is label GERD dosing. Ranitidine remains listed as printed; not verified against market status. [Sonnet check 2026-11-24: Preferred/PA column re-read by x-position (Preferred x~55, PA x~307); no change.]",
+      "sourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "dc-medicaid-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-24",
+      "payerId": "dc-medicaid"
+    },
+    {
+      "classId": "ppi",
+      "preferredAgent": {
+        "inn": "Omeprazole (delayed-release capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg capsule",
+        "sig": "20 mg by mouth once daily before a meal: 4 weeks for GERD symptoms, 4 to 8 weeks for erosive esophagitis or ulcer healing (label).",
+        "sigShort": "20 mg QD AC",
+        "plainSig": "One capsule a day before a meal, usually for 4 to 8 weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "F (formulary; QL 60 per 30 days; no PA or step printed)",
+      "alternatives": [
+        {
+          "drug": "Pantoprazole sodium (delayed-release tablet)",
+          "note": "F, QL 60 per 30 days, no PA or step printed (PDF p. 129)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Omeprazole magnesium (delayed-release capsule)",
+          "note": "F, QL 60 per 30 days, no PA or step printed (PDF p. 129)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "NEXIUM (esomeprazole) oral packet 2.5 mg, 5 mg",
+          "note": "F, age restriction max 7 years (PDF p. 129)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Esomeprazole magnesium (delayed-release capsule)",
+          "outcome": "step",
+          "reason": "Step therapy: ST flag with QL 30 per 30 days (PDF p. 129); step criteria not printed on that page",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Lansoprazole (delayed-release capsule 15 mg and 30 mg)",
+          "outcome": "step",
+          "reason": "Step therapy: ST flag with QL (PDF p. 129); step criteria not printed on that page",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Rabeprazole sodium (delayed-release tablet)",
+          "outcome": "step",
+          "reason": "Step therapy: ST flag with QL 30 per 30 days (PDF p. 129); step criteria not printed on that page",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Omeprazole-sodium bicarbonate (capsule 20-1100 mg; CVS and generic lines)",
+          "outcome": "step",
+          "reason": "Step therapy: ST flag with QL 30 per 30 days (PDF p. 129)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "PRILOSEC oral packet",
+          "outcome": "step",
+          "reason": "Step therapy: ST flag with QL 60 per 30 days; age max 7 years (PDF p. 129)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Pantoprazole sodium (oral packet)",
+          "outcome": "pa",
+          "reason": "Prior authorization required, QL 30 per 30 days (PDF p. 129)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Omeprazole-sodium bicarbonate (capsule 40-1100 mg; packet 40-1680 mg)",
+          "outcome": "pa",
+          "reason": "Non-formulary: prior authorization required (PDF p. 129)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "ZEGERID oral packet 20-1680 mg",
+          "outcome": "pa",
+          "reason": "Non-formulary: prior authorization required (PDF p. 129)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p. 121 (antacids), p. 128 (H2 and Voquezna) and p. 129 (Proton-Pump Inhibitors). Legend PDF p. 2: F = formulary, NF = non-formulary with PA, ST = step therapy, QL = quantity limit, AL = age restriction. Omeprazole DR capsule is F with QL 60 per 30 days and no PA or ST. No strength is printed for omeprazole DR; 20 mg is the label starting dose. Text search found no Dexilant, dexlansoprazole, Konvomep, Protonix, Prevacid or Aciphex entries, so no status is asserted for those brands. The document makes no reference to the DC PDL or to Medicaid, so no PDL rule was applied. [Sonnet check 2026-11-24: sig given a label course; ST/QL flags and F status re-read on PDF p. 129.]",
+      "sourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-24",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "pcab",
+      "preferredAgent": {
+        "inn": "Vonoprazan (tablet)",
+        "brand": "Voquezna",
+        "genericAvailable": false,
+        "strength": "20 mg tablet",
+        "sig": "20 mg by mouth once daily for 8 weeks to heal erosive esophagitis, then 10 mg once daily to maintain; 10 mg once daily for 4 weeks for heartburn from non-erosive GERD (label).",
+        "sigShort": "20 mg QD x8 wk",
+        "plainSig": "One pill a day for 8 weeks."
+      },
+      "preferredRestriction": "Non-formulary: prior authorization required (PDF p. 128-129).",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "NF (non-formulary; prior authorization required)",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "VOQUEZNA DUAL PAK (vonoprazan H. pylori dual pak)",
+          "outcome": "pa",
+          "reason": "Non-formulary: prior authorization required (PDF p. 128)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "VOQUEZNA TRIPLE PAK (vonoprazan H. pylori triple pak)",
+          "outcome": "pa",
+          "reason": "Non-formulary: prior authorization required (PDF p. 128-129)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p. 128 (Potassium-Competitive Acid Blockers: VOQUEZNA NF PA; VOQUEZNA DUAL PAK NF PA) and p. 129 (VOQUEZNA NF PA; VOQUEZNA TRIPLE PAK NF PA). The H. pylori packs also appear in the anti-infective pages (PDF p. 8-9, 13-15), each NF PA. No strength, generic or step rule is printed. The record uses NF with PA as the printed barrier; the document makes no completeness claim. The document makes no reference to the DC PDL or to Medicaid, so no PDL rule was applied. [Sonnet check 2026-11-24: NF PA for Voquezna, Dual Pak, Triple Pak read as printed NF/PA on PDF p. 128-129; sig given label course.]",
+      "sourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-24",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "h2ra",
+      "preferredAgent": {
+        "inn": "Famotidine (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "GERD: 20 mg by mouth twice daily for up to 6 weeks. Duodenal ulcer: 40 mg once daily at bedtime or 20 mg twice daily for up to 8 weeks. Gastric ulcer: 40 mg once daily at bedtime (label).",
+        "sigShort": "20 mg BID (GERD)",
+        "plainSig": "One pill twice a day for reflux, or as your prescriber directs for an ulcer."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "F (formulary; no PA, ST or QL printed)",
+      "alternatives": [
+        {
+          "drug": "Cimetidine (tablet 300, 400, 800 mg; oral solution 300 mg/5 mL)",
+          "note": "F, no PA, ST or QL printed (PDF p. 128)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Nizatidine (oral capsule)",
+          "note": "F, no PA, ST or QL printed (PDF p. 128)",
+          "sourceIds": [
+            "amerihealth-caritas-dc-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p. 128 (Histamine H2-Antagonists): famotidine oral F; cimetidine tablets and solution F; nizatidine capsule F. None carries a PA, ST or QL note. The famotidine strength is not printed; 20 mg is the label dose. Pepcid brand is not in the text layer, so no status is asserted for it. The document makes no reference to the DC PDL or to Medicaid, so no PDL rule was applied. [Sonnet check 2026-11-24: sig given a label course.]",
+      "sourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "amerihealth-caritas-dc-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-24",
+      "payerId": "amerihealth-caritas-dc"
+    },
+    {
+      "classId": "ppi",
+      "preferredAgent": {
+        "inn": "Omeprazole (delayed-release capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg capsule",
+        "sig": "20 mg by mouth once daily before a meal: 4 weeks for GERD symptoms, 4 to 8 weeks for erosive esophagitis or ulcer healing (label).",
+        "sigShort": "20 mg QD AC",
+        "plainSig": "One capsule a day before a meal, usually for 4 to 8 weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Esomeprazole magnesium (delayed-release capsule) 20 mg and 40 mg; esomeprazole for delayed-release suspension packets 2.5, 5, 10 mg (age under 1 year only)",
+          "note": "Tier 1, no PA printed (PDF p. 133)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Lansoprazole (delayed-release capsule) 15 mg and 30 mg",
+          "note": "Tier 1, no PA printed (PDF p. 133)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Pantoprazole sodium (delayed-release tablet) 20 mg and 40 mg",
+          "note": "Tier 1, no PA printed (PDF p. 134)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Rabeprazole sodium (delayed-release tablet) 20 mg",
+          "note": "Tier 1, no PA printed (PDF p. 134)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Omeprazole (delayed-release capsule) 10 mg and 40 mg",
+          "note": "Tier 1, no PA printed (PDF p. 133)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Omeprazole-sodium bicarbonate powder pack 20-1680 mg and 40-1680 mg (generic; Zegerid-type)",
+          "note": "Tier 3 (PDF p. 133-134); no PA printed. Brand Zegerid is not listed",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Amoxicillin-clarithromycin-lansoprazole combination pak 500/500/30 mg (H. pylori regimen)",
+          "note": "Tier 1 combination kit, PDF p. 134; not a single-agent pick",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Helidac (bismuth H. pylori kit)",
+          "note": "Tier 3, PDF p. 134; kit, not a single-agent pick",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Helidac (bismuth/metronidazole/tetracycline H. pylori therapy kit, brand)",
+          "note": "Tier 3, no PA printed; H. pylori kit, not a single-agent pick (PDF p. 134)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p. 133-134 (Proton Pump Inhibitors section, legend PDF p. 3). Omeprazole cap DR 20 mg is Tier 1 with no PA/ST/QL printed. Text search (case-insensitive) for DEXILANT/dexlansoprazole, VOQUEZNA, KONVOMEP, Zegerid brand, Prilosec, Protonix, Nexium, Prevacid, Aciphex: no entries, so no status is asserted for those brands. Document lists generic omeprazole-sodium bicarbonate at Tier 3 (not a brand listing). Intro (PDF p. 1) says the document 'contains information about the drugs we cover' but does not state unlisted drugs are excluded. [Sonnet check 2026-11-21: added Helidac (Tier 3, PDF p. 134) as an H. pylori kit alternative; Voquezna, Dexilant, Konvomep absent from the PDF, no status asserted]",
+      "sourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-21",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "pcab",
+      "preferredAgent": {
+        "inn": "Vonoprazan (tablet)",
+        "brand": "Voquezna",
+        "genericAvailable": false,
+        "strength": "20 mg tablet",
+        "sig": "20 mg by mouth once daily for 8 weeks to heal erosive esophagitis, then 10 mg once daily to maintain; 10 mg once daily for 4 weeks for heartburn from non-erosive GERD (label).",
+        "sigShort": "20 mg QD x8 wk",
+        "plainSig": "One pill a day for 8 weeks."
+      },
+      "preferredRestriction": "Not listed in this document: no coverage status, tier, PA or step rule is printed for VOQUEZNA. Treat coverage as unverified.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not listed in document",
+      "alternatives": [],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "partial",
+      "verificationNote": "Text search (case-insensitive) for VOQUEZNA, vonoprazan, Voquezna Triple Pak and Dual Pak: no match in PDF pages 1-237. Per the class rule, Voquezna is the reference pick and the barrier is recorded as 'not listed', not as an asserted PA or step rule. Strength and sig are label dosing, not printed in this document. Tegoprazan is not approved per research.md and is not listed here. [Sonnet check 2026-11-21: rechecked against the PDF, no change]",
+      "sourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-21",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "h2ra",
+      "preferredAgent": {
+        "inn": "Famotidine (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "GERD: 20 mg by mouth twice daily for up to 6 weeks. Duodenal ulcer: 40 mg once daily at bedtime or 20 mg twice daily for up to 8 weeks. Gastric ulcer: 40 mg once daily at bedtime (label).",
+        "sigShort": "20 mg BID (GERD)",
+        "plainSig": "One pill twice a day for reflux, or as your prescriber directs for an ulcer."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Tier 1",
+      "alternatives": [
+        {
+          "drug": "Famotidine tablet 40 mg",
+          "note": "Tier 1, no PA printed (PDF p. 130)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Famotidine oral suspension 40 mg/5 mL",
+          "note": "Tier 1, no PA printed (PDF p. 130)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Cimetidine tablet 200, 300, 400, 800 mg",
+          "note": "Tier 1, no PA printed (PDF p. 130)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Nizatidine capsule 150 mg and 300 mg",
+          "note": "Tier 1, no PA printed (PDF p. 130)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Ranitidine tablet 150 mg and 300 mg",
+          "note": "Tier 1, no PA printed (PDF p. 130)",
+          "sourceIds": [
+            "carefirst-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read PDF p. 130 (H2-Receptor Antagonists). Famotidine tab 20 mg and 40 mg are Tier 1 with no requirement text. Famotidine IV and preservative-free injection are medical benefit (M) and not used here. Pepcid brand not listed. [Sonnet check 2026-11-21: rechecked against the PDF, no change]",
+      "sourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "carefirst-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-21",
+      "payerId": "carefirst"
+    },
+    {
+      "classId": "ppi",
+      "preferredAgent": {
+        "inn": "Omeprazole (delayed-release capsule)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg capsule",
+        "sig": "20 mg by mouth once daily before a meal: 4 weeks for GERD symptoms, 4 to 8 weeks for erosive esophagitis or ulcer healing (label).",
+        "sigShort": "20 mg QD AC",
+        "plainSig": "One capsule a day before a meal, usually for 4 to 8 weeks."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "1",
+      "alternatives": [
+        {
+          "drug": "Pantoprazole sodium (oral delayed-release)",
+          "note": "Tier 1 on the list, no restriction printed; also listed for IV as MSD/MB (p.30)",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Omeprazole-sodium bicarbonate (generic)",
+          "note": "Tier 3 (p.30); covered at a higher tier, no restriction printed",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Dexilant (dexlansoprazole)",
+          "outcome": "nonformulary",
+          "reason": "Not on the list: no dexlansoprazole line appears in the antiulcer section (pp.29-30); p.2 says any product not found is non-formulary",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Prevacid / lansoprazole",
+          "outcome": "nonformulary",
+          "reason": "Lansoprazole not on the list (pp.29-30); p.2 says any product not found is non-formulary",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Aciphex / rabeprazole",
+          "outcome": "nonformulary",
+          "reason": "Rabeprazole not on the list (pp.29-30); p.2 says any product not found is non-formulary",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Nexium oral / esomeprazole (oral)",
+          "outcome": "nonformulary",
+          "reason": "Only esomeprazole sodium for IV appears (p.29, MSD/MB); no oral esomeprazole line; p.2 says any product not found is non-formulary",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Konvomep (omeprazole/sodium bicarbonate oral suspension kit)",
+          "outcome": "nonformulary",
+          "reason": "Not on the list (pp.29-30); only the generic omeprazole-sodium bicarbonate line appears at tier 3; p.2 says any product not found is non-formulary",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Read pp.2-3 (tier key; 'Any product not found on the list will be considered non-formulary.' on p.2) and pp.29-30 (antiulcer section). Pick omeprazole tier 1, no restriction (p.30). Form and strength are not printed; 20 mg DR capsule is the label starting dose. Dexilant, Konvomep and the other named PPI brands/forms are not on the list. Generic lansoprazole and rabeprazole are not on the list either, so recorded as nonformulary. Pylera (p.30, tier 3) is a bismuth H. pylori kit, not a PPI; left out.",
+      "sourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-21",
+      "payerId": "kpmidatlantic"
+    },
+    {
+      "classId": "pcab",
+      "preferredAgent": {
+        "inn": "Vonoprazan (tablet)",
+        "brand": "Voquezna",
+        "genericAvailable": false,
+        "strength": "20 mg tablet",
+        "sig": "20 mg by mouth once daily for 8 weeks to heal erosive esophagitis, then 10 mg once daily to maintain; 10 mg once daily for 4 weeks for heartburn from non-erosive GERD (label).",
+        "sigShort": "20 mg QD x8 wk",
+        "plainSig": "One pill a day for 8 weeks."
+      },
+      "preferredRestriction": "Not covered on this formulary: vonoprazan is not on the list, and p.2 says any product not found is non-formulary.",
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "Not listed",
+      "alternatives": [],
+      "paRequired": [
+        {
+          "drug": "Voquezna (vonoprazan) tablets",
+          "outcome": "nonformulary",
+          "reason": "Not on the list: no vonoprazan line in the antiulcer section (pp.29-30); p.2 says any product not found is non-formulary",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        },
+        {
+          "drug": "Voquezna Triple Pak / Dual Pak (H. pylori kits)",
+          "outcome": "nonformulary",
+          "reason": "Not on the list (pp.29-30); p.2 says any product not found is non-formulary",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "Searched the full PDF text for VOQUEZNA and vonoprazan: no hits. Read pp.2 and 29-30. The only P-CAB-adjacent line is PYLERA (tier 3, p.30), a different product, not a P-CAB. Pick is the reference product Voquezna, as the brief directs. [Sonnet check 2026-11-21: re-searched the PDF: no VOQUEZNA/vonoprazan line anywhere (47 pages). Resolution: Voquezna is NOT on the formulary; the pick is the reference product the prescriber would write, with the barrier in preferredRestriction, and the nonformulary paRequired entries are the correct reading, not a contradiction. Basis, p.2: 'Please remember that this list is subject to change and will be updated from time to time during the year. Any product not found on the list will be considered non-formulary.' Hedges: list subject to change; p.2 also refers to the Evidence of Coverage for limitations/exclusions. The statement is explicit, so verified stands.]",
+      "sourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-21",
+      "payerId": "kpmidatlantic"
+    },
+    {
+      "classId": "h2ra",
+      "preferredAgent": {
+        "inn": "Famotidine (tablet)",
+        "brand": null,
+        "genericAvailable": true,
+        "strength": "20 mg tablet",
+        "sig": "GERD: 20 mg by mouth twice daily for up to 6 weeks. Duodenal ulcer: 40 mg once daily at bedtime or 20 mg twice daily for up to 8 weeks. Gastric ulcer: 40 mg once daily at bedtime (label).",
+        "sigShort": "20 mg BID (GERD)",
+        "plainSig": "One pill twice a day for reflux, or as your prescriber directs for an ulcer."
+      },
+      "preferredRestriction": null,
+      "boglActive": false,
+      "boglNote": null,
+      "tier": "1",
+      "alternatives": [
+        {
+          "drug": "Cimetidine",
+          "note": "Tier 3 (p.29); covered at a higher tier, no restriction printed",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        }
+      ],
+      "paRequired": [
+        {
+          "drug": "Nizatidine",
+          "outcome": "nonformulary",
+          "reason": "Not on the list (pp.29-30); p.2 says any product not found is non-formulary",
+          "sourceIds": [
+            "kpmidatlantic-common6-2026-11"
+          ]
+        }
+      ],
+      "stepTherapy": null,
+      "verification": "verified",
+      "verificationNote": "famotidine tier 1 with no restriction (p.30); the MSD on the same line is the premixed IV product. Cimetidine tier 3 (p.29). Nizatidine not on the list. Pepcid brand not on the list (generic covered); not treated as a separate barrier.",
+      "sourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "coverageSourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "restrictionSourceIds": [
+        "kpmidatlantic-common6-2026-11"
+      ],
+      "lastReviewed": "2026-11-21",
+      "payerId": "kpmidatlantic"
+    }
+  ],
+  "references": [
+    {
+      "id": "dc-medicaid-common6-2026-11",
+      "label": "District of Columbia Pharmacy Preferred Drug List (PDL), effective September 18, 2026",
+      "publisher": "District of Columbia Department of Health Care Finance",
+      "type": "gov",
+      "url": "https://dc.fhsc.com/downloads/providers/DCRx_PDL_listing.pdf",
+      "effectiveDate": "2026-09-18",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": "amerihealth-caritas-dc-common6-2026-11",
+      "label": "AmeriHealth Caritas DC Drug Formulary (effective June 1, 2026)",
+      "publisher": "AmeriHealth Caritas District of Columbia",
+      "type": "payer",
+      "url": "https://www.amerihealthcaritasdc.com/pdf/member/drug-formulary.pdf",
+      "effectiveDate": "2026-06-01",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": "carefirst-common6-2026-11",
+      "label": "CareFirst Exchange Formulary 2026 (5-Tier), last updated 10/01/26",
+      "publisher": "CareFirst BlueCross BlueShield",
+      "type": "payer",
+      "url": "https://member.carefirst.com/carefirst-resources/pdf/exchange-formulary-sum7277-2026.pdf",
+      "effectiveDate": "2026-10-01",
+      "accessed": "2026-11-21"
+    },
+    {
+      "id": "kpmidatlantic-common6-2026-11",
+      "label": "Kaiser Permanente Marketplace Formulary (Mid-Atlantic region), last update 10/06/2026",
+      "publisher": "Kaiser Permanente",
+      "type": "payer",
+      "url": "https://healthy.kaiserpermanente.org/content/dam/kporg/final/documents/formularies/mas/marketplace-formulary-mas-en.pdf",
+      "effectiveDate": "2026-10-06",
+      "accessed": "2026-11-21"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Prior authorization (PA)",
+      "short": "Insurer sign-off first",
+      "definition": "Insurer sign-off needed before the drug is covered."
+    },
+    {
+      "term": "Step therapy",
+      "short": "Try a preferred drug first",
+      "definition": "Must fail a preferred drug first before the plan covers this one."
+    }
+  ]
+}
